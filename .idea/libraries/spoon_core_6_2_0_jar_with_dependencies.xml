@@ -1,0 +1,80 @@
+<component name="libraryTable">
+  <library name="spoon-core-6.2.0-jar-with-dependencies">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/spoon-core-6.2.0-jar-with-dependencies.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="http://spoon.gforge.inria.fr/mvnsites/spoon-core/apidocs/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$USER_HOME$/spoon/spooned" />
+      <root url="file://$USER_HOME$/spoon/src/main/java" />
+      <root url="file://$USER_HOME$/spoon/src/test/java" />
+      <root url="file://$USER_HOME$/spoon/src/test/resources" />
+      <root url="file://$USER_HOME$/spoon/src/test/resources/spoon/test/api" />
+      <root url="file://$USER_HOME$/spoon/target/api" />
+      <root url="file://$USER_HOME$/spoon/target/class" />
+      <root url="file://$USER_HOME$/spoon/target/class-declaration" />
+      <root url="file://$USER_HOME$/spoon/target/cu-onemoretype" />
+      <root url="file://$USER_HOME$/spoon/target/draw2d" />
+      <root url="file://$USER_HOME$/spoon/target/executable" />
+      <root url="file://$USER_HOME$/spoon/target/foo" />
+      <root url="file://$USER_HOME$/spoon/target/foo2" />
+      <root url="file://$USER_HOME$/spoon/target/generated" />
+      <root url="file://$USER_HOME$/spoon/target/import-with-generics" />
+      <root url="file://$USER_HOME$/spoon/target/issue1306" />
+      <root url="file://$USER_HOME$/spoon/target/issue1501" />
+      <root url="file://$USER_HOME$/spoon/target/literal" />
+      <root url="file://$USER_HOME$/spoon/target/new-class" />
+      <root url="file://$USER_HOME$/spoon/target/noclasspath" />
+      <root url="file://$USER_HOME$/spoon/target/parameter" />
+      <root url="file://$USER_HOME$/spoon/target/print-not-all/array" />
+      <root url="file://$USER_HOME$/spoon/target/print-not-all/command" />
+      <root url="file://$USER_HOME$/spoon/target/print-not-all/default" />
+      <root url="file://$USER_HOME$/spoon/target/spoon-dumbitf" />
+      <root url="file://$USER_HOME$/spoon/target/spoon-jdtbatchcompiler" />
+      <root url="file://$USER_HOME$/spoon/target/spoon-jdtimport-inheritedstatic" />
+      <root url="file://$USER_HOME$/spoon/target/spoon-jdtimport-itfimport" />
+      <root url="file://$USER_HOME$/spoon/target/spoon-packageinfo" />
+      <root url="file://$USER_HOME$/spoon/target/spoon-rename-processor" />
+      <root url="file://$USER_HOME$/spoon/target/spoon-rule" />
+      <root url="file://$USER_HOME$/spoon/target/spoon-sort-import" />
+      <root url="file://$USER_HOME$/spoon/target/spoon-test" />
+      <root url="file://$USER_HOME$/spoon/target/spoon-trycatch" />
+      <root url="file://$USER_HOME$/spoon/target/spoon/super_imports/src" />
+      <root url="file://$USER_HOME$/spoon/target/spoon/test/output" />
+      <root url="file://$USER_HOME$/spoon/target/spooned" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-AccessFullyQualifiedFieldTest-Field" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-AccessFullyQualifiedFieldTest-Local" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-AccessFullyQualifiedFieldTest-Loop" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-AccessFullyQualifiedFieldTest-MultiAutoImport" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-AccessFullyQualifiedFieldTest-MultiNoAutoImport" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-AccessFullyQualifiedFieldTest-StaticMethod" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-AccessFullyQualifiedFieldTest-TryCatch" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-AccessFullyQualifiedFieldTest-privateStatic" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-AnnotationTest-firstspoon" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-accessPath" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-annotation-output" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-apache" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-autoImports" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-autoref" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-innerenum" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-javalang" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-javalang-sub" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-multiplecu" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-refactoring-test" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-rxjava" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-staticjava3" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-staticmethod" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-typeandfield" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-with-resources" />
+      <root url="file://$USER_HOME$/spoon/target/spooned-without-resources" />
+      <root url="file://$USER_HOME$/spoon/target/spooned/test/template/testclasses" />
+      <root url="file://$USER_HOME$/spoon/target/test-classes" />
+      <root url="file://$USER_HOME$/spoon/target/test-classes/spoon/test/api" />
+      <root url="file://$USER_HOME$/spoon/target/testIdenticalPrettyPrinter" />
+      <root url="file://$USER_HOME$/spoon/target/type" />
+      <root url="file://$USER_HOME$/spoon/target/variable" />
+    </SOURCES>
+  </library>
+</component>

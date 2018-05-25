@@ -1,0 +1,26 @@
+
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(‚“üÁþÿÿÿÿ8¹¢ç¥¹,
+rsquid:UselessImportCheck"BRemove this unused import 'spoon.reflect.declaration.CtParameter'.(Àš„àùÿÿÿÿ8¹¢ç¥¹,
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(©¸Ÿ¸ùÿÿÿÿ8éòÌ¦¹,
+osquid:UselessImportCheck"?Remove this unused import 'spoon.reflect.declaration.CtMethod'.(°ËÛ‚ûÿÿÿÿ8¹¢ç¥¹,
+Fsquid:S1148#"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8¹¢ç¥¹,
+nsquid:CommentedOutCodeLine0"<This block of commented-out lines of code should be removed.(þÒÛöýÿÿÿÿ8Áù¨¦¹,
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(“Øñüÿÿÿÿ8ƒõ¬¦¹,
+[
+squid:S106:"9Replace this use of System.out or System.err by a logger.(ÈÃ±Ðþÿÿÿÿ8ƒËû¦¹,
+esquid:UselessImportCheck
+"5Remove this unused import 'java.lang.reflect.Method'.(Í“¯äüÿÿÿÿ8¹¢ç¥¹,
+isquid:CommentedOutCodeLine<"<This block of commented-out lines of code should be removed.(œëùä8Áù¨¦¹,
+[
+squid:S106 "9Replace this use of System.out or System.err by a logger.( „ˆ—üÿÿÿÿ8ßÍÍ¦¹,
+V
+squid:S106!"9Replace this use of System.out or System.err by a logger.(¦¯Å¢8ß³®¦¹,
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(êÊéçøÿÿÿÿ8ƒõ¬¦¹,
+8squid:S1220""Move this file to a named package.8¹¢ç¥¹,
+ksquid:UselessImportCheck"@Remove this unused import 'spoon.reflect.declaration.CtElement'.(…”ÆÃ8¹¢ç¥¹,
+V
+squid:S106"9Replace this use of System.out or System.err by a logger.(Áªø8ÖÎ±¦¹,
+tsquid:UselessImportCheck	"DRemove this unused import 'spoon.reflect.visitor.filter.TypeFilter'.(ÇÚÒ‹ýÿÿÿÿ8¹¢ç¥¹,

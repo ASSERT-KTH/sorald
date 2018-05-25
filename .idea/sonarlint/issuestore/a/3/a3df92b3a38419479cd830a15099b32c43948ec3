@@ -1,0 +1,26 @@
+
+\squid:S18544"9Remove this useless assignment to local variable "value".(ßÏ²³þÿÿÿÿ8£ªé¥¹,
+[
+squid:S106Q"9Replace this use of System.out or System.err by a logger.(ø­È§þÿÿÿÿ8£ªé¥¹,
+osquid:UselessImportCheck"?Remove this unused import 'spoon.reflect.declaration.CtMethod'.(°ËÛ‚ûÿÿÿÿ8£ªé¥¹,
+nsquid:CommentedOutCodeLineX"<This block of commented-out lines of code should be removed.(—Ûóäûÿÿÿÿ8£ªé¥¹,
+[
+squid:S106)"9Replace this use of System.out or System.err by a logger.(Ù‚çóüÿÿÿÿ8£ªé¥¹,
+Wsquid:S3516"9Refactor this method to not always return the same value.(Ý¥—8£ªé¥¹,
+Msquid:S14814"*Remove this unused "value" local variable.(ßÏ²³þÿÿÿÿ8£ªé¥¹,
+nsquid:CommentedOutCodeLineZ"<This block of commented-out lines of code should be removed.(¿§ìÿÿÿÿÿ8£ªé¥¹,
+[
+squid:S106*"9Replace this use of System.out or System.err by a logger.(œ€Äœÿÿÿÿÿ8£ªé¥¹,
+8squid:S1220""Move this file to a named package.8£ªé¥¹,
+isquid:CommentedOutCodeLinek"<This block of commented-out lines of code should be removed.(­¶Ò¹8£ªé¥¹,
+nsquid:CommentedOutCodeLineD"<This block of commented-out lines of code should be removed.(è«ðýÿÿÿÿ8£ªé¥¹,
+Zsquid:S2589L"7Remove this expression which always evaluates to "true"(”¢¬Ýùÿÿÿÿ8£ªé¥¹,
+isquid:CommentedOutCodeLineh"<This block of commented-out lines of code should be removed.(ø¼‡·8£ªé¥¹,
+[
+squid:S106J"9Replace this use of System.out or System.err by a logger.(öƒçúÿÿÿÿ8£ªé¥¹,
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(×¬³í8£ªé¥¹,
+nsquid:CommentedOutCodeLineV"<This block of commented-out lines of code should be removed.(—Ûóäûÿÿÿÿ8£ªé¥¹,
+_squid:UselessImportCheck"/Remove this unused import 'org.json.JSONArray'.(¬¸Ê’üÿÿÿÿ8£ªé¥¹,
+isquid:CommentedOutCodeLine;"<This block of commented-out lines of code should be removed.(¥³‚š8£ªé¥¹,
+V
+squid:S106N"9Replace this use of System.out or System.err by a logger.(ˆ®Éö8£ªé¥¹,

@@ -1,0 +1,8 @@
+
+rsquid:UselessImportCheck"BRemove this unused import 'spoon.reflect.declaration.CtParameter'.(Àš„àùÿÿÿÿ8£ªé¥¹,
+tsquid:UselessImportCheck"JRemove this unused import 'spoon.reflect.reference.CtExecutableReference'.(£ù²'8£ªé¥¹,
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(œëùä8£ªé¥¹,
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(™—­ëýÿÿÿÿ8£ªé¥¹,
+8squid:S1220""Move this file to a named package.8£ªé¥¹,
+ksquid:UselessImportCheck"@Remove this unused import 'spoon.reflect.declaration.CtElement'.(…”ÆÃ8£ªé¥¹,
