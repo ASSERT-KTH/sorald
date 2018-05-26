@@ -258,21 +258,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32804233" />
+      <window_info anchor="bottom" id="Messages" order="3" sideWeight="0.49973017" weight="0.32804233" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50026983" side_tool="true" weight="0.32946146" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.4287223" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.41904762" />
+      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.41904762" />
       <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49973017" weight="0.2344245" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.493007" visible="true" weight="0.18348624" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.493007" visible="true" weight="0.18348624" />
       <window_info x="678" y="252" width="631" height="620" id="Learn" order="2" sideWeight="0.4983871" weight="0.32973558" />
       <window_info id="Structure" order="7" sideWeight="0.50345784" side_tool="true" weight="0.17754991" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
@@ -288,7 +288,6 @@
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.3284055" />
-      <window_info anchor="bottom" id="Messages" order="3" sideWeight="0.49973017" weight="0.32804233" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
