@@ -1,6 +1,7 @@
 import org.json.JSONArray;
 import spoon.Launcher;
 import spoon.processing.Processor;
+import spoon.support.gui.SpoonModelTree;
 
 public class Main {
 	public static void main(String[] args) throws Exception

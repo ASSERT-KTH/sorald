@@ -213,6 +213,7 @@ public class MavenLauncher extends spoon.Launcher {
                     }
                     try {
                         spoon.MavenLauncher.InheritanceModel dependencyModel = readPOM(java.nio.file.Paths.get(depPath.toString(), (fileName + ".pom")).toString(), null);
+                        if (dependencyModel == null) throw new IllegalArgumentException("[Spoon inserted check] null pointer is dereferenced");;
                         output.addAll(dependencyModel.getDependencies(true));
                     } catch (java.lang.Exception ignore) {
                     }
@@ -251,26 +252,56 @@ public class MavenLauncher extends spoon.Launcher {
                     org.codehaus.plexus.util.xml.Xpp3Dom configuration = ((org.codehaus.plexus.util.xml.Xpp3Dom) (plugin.getConfiguration()));
                     org.codehaus.plexus.util.xml.Xpp3Dom source = configuration.getChild("source");
                     if (source != null) {
-                        return java.lang.Integer.parseInt(extractVariable(source.getValue()).substring(2));
+                        try {
+                            return java.lang.Integer.parseInt(extractVariable(source.getValue()).substring(2));
+                        }
+                        catch(Exception e)
+                        {
+                            e.printStackTrace();
+                        };
                     }
                     break;
                 }
             }
             java.lang.String javaVersion = getProperty("java.version");
             if (javaVersion != null) {
-                return java.lang.Integer.parseInt(extractVariable(javaVersion).substring(2));
+                try {
+                    return java.lang.Integer.parseInt(extractVariable(javaVersion).substring(2));
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                };
             }
             javaVersion = getProperty("java.src.version");
             if (javaVersion != null) {
-                return java.lang.Integer.parseInt(extractVariable(javaVersion).substring(2));
+                try {
+                    return java.lang.Integer.parseInt(extractVariable(javaVersion).substring(2));
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                };
             }
             javaVersion = getProperty("maven.compiler.source");
             if (javaVersion != null) {
-                return java.lang.Integer.parseInt(extractVariable(javaVersion).substring(2));
+                try {
+                    return java.lang.Integer.parseInt(extractVariable(javaVersion).substring(2));
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                };
             }
             javaVersion = getProperty("maven.compile.source");
             if (javaVersion != null) {
-                return java.lang.Integer.parseInt(extractVariable(javaVersion).substring(2));
+                try {
+                    return java.lang.Integer.parseInt(extractVariable(javaVersion).substring(2));
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                };
             }
             return getEnvironment().getComplianceLevel();
         }

@@ -100,21 +100,37 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
         System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition());
         System.out.println("\n\n");
 
-        CtExpression expression=element.getTarget();
+        CtExpression target=element.getTarget();
 
-        boolean isVar=expression instanceof CtVariableRead;
-        System.out.println(isVar);
+        boolean isVar=target instanceof CtVariableRead;
 
 
         CtCodeSnippetStatement snippet = getFactory().Core().createCodeSnippetStatement();
         final String value = String.format("if (%s == null) "
-                        + "throw new IllegalArgumentException(\"[Spoon inserted check] null passed as parameter\");",
-                element.getSimpleName());
+                        + "throw new IllegalArgumentException(\"[Spoon inserted check] null pointer is dereferenced\");",
+                target.toString());
         snippet.setValue(value);
 
         // we insert the snippet at the beginning of the method body.
         if (isVar) {
             element.getParent(CtStatement.class).insertBefore(snippet);
+        }
+        else
+        {
+            CtTry ctTry= getFactory().createTry();
+            CtBlock ctBlock=element.getParent(CtBlock.class).clone();
+            ctTry.setBody(ctBlock);
+            System.out.println(ctTry);
+            CtElement elem=(CtElement) ctTry;
+            CtBlock ctBlock1=element.getParent(CtBlock.class);
+            ctBlock1.replace(elem);
+            CtCodeSnippetStatement snipcat= getFactory().createCodeSnippetStatement();
+            final String cat="catch(Exception e)\n" +
+                    "{\n" +
+                    "    e.printStackTrace();\n" +
+                    "}";
+            snipcat.setValue(cat);
+            ctTry.insertAfter(snipcat);
         }
 
     }
