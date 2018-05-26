@@ -64,12 +64,6 @@ public class Bug
                 obj = jsonArray.getJSONObject(i);
                 Bug bug = new Bug(obj);
                 SetOfBugs.add(bug);
-                /*
-                System.out.println(obj);
-                System.out.println(obj.get("line"));
-                System.out.println(obj.get("message"));
-                System.out.println("\n\n\n");
-                */
             } catch (JSONException e) {
                 e.printStackTrace();
             }

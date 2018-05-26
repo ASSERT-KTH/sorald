@@ -14,8 +14,8 @@ public class ParseAPI {
     public static JSONArray parse(int rulekey, String fname)throws Exception
     {
         String ruleparameter="&rules=squid:S"+ Integer.toString(rulekey);
-        String url="https://sonarqube.ow2.org/api/issues/search?types=BUG+"+"&componentKeys=fr.inria.gforge.spoon:spoon-core";
-        if(true)
+        String url="https://sonarqube.ow2.org/api/issues/search?types=BUG"+ruleparameter+"&componentKeys=fr.inria.gforge.spoon:spoon-core";
+        if(fname.length()>0)
         {
             url=url+":"+fname;
         }
@@ -38,7 +38,6 @@ public class ParseAPI {
             response.append(inputLine);
         }
         in.close();
-
         JSONObject jo = new JSONObject(response.toString());
         JSONArray jsonArray = jo.getJSONArray("issues");
         return jsonArray;

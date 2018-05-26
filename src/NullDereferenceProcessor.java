@@ -120,7 +120,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
             CtTry ctTry= getFactory().createTry();
             CtBlock ctBlock=element.getParent(CtBlock.class).clone();
             ctTry.setBody(ctBlock);
-            System.out.println(ctTry);
             CtElement elem=(CtElement) ctTry;
             CtBlock ctBlock1=element.getParent(CtBlock.class);
             ctBlock1.replace(elem);
