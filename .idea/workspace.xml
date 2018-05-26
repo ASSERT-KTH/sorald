@@ -18,8 +18,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+            <state relative-caret-position="165">
+              <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -27,7 +27,7 @@
       <file leaf-file-name="ParseAPI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ParseAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
+            <state relative-caret-position="555">
               <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
             </state>
           </provider>
@@ -36,7 +36,7 @@
       <file leaf-file-name="NullDereferenceProcessor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NullDereferenceProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
+            <state relative-caret-position="1665">
               <caret line="122" column="38" selection-start-line="122" selection-start-column="38" selection-end-line="122" selection-end-column="38" />
             </state>
           </provider>
@@ -45,12 +45,8 @@
       <file leaf-file-name="Bug.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Bug.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
+            <state relative-caret-position="855">
               <caret line="65" column="35" selection-start-line="65" selection-start-column="35" selection-end-line="65" selection-end-column="35" />
-              <folding>
-                <element signature="e#2262#2263#0" expanded="true" />
-                <element signature="e#2293#2294#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -58,7 +54,7 @@
       <file leaf-file-name="MavenLauncher.java" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/spoon/src/main/java/spoon/MavenLauncher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
+            <state relative-caret-position="5055">
               <caret line="376" column="13" selection-start-line="376" selection-start-column="13" selection-end-line="376" selection-end-column="13" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -112,10 +108,10 @@
         <option value="$PROJECT_DIR$/src/SetOfBugs.java" />
         <option value="$PROJECT_DIR$/src/My.java" />
         <option value="$PROJECT_DIR$/.classpath" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Bug.java" />
         <option value="$PROJECT_DIR$/src/ParseAPI.java" />
         <option value="$PROJECT_DIR$/src/NullDereferenceProcessor.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -151,9 +147,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -262,16 +258,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32804233" />
-      <window_info anchor="bottom" id="Messages" order="3" sideWeight="0.49973017" weight="0.32804233" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50026983" side_tool="true" weight="0.32946146" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="2" visible="true" weight="0.42962962" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.4287223" />
       <window_info anchor="bottom" id="Run" order="6" weight="0.41904762" />
       <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49973017" weight="0.2344245" />
       <window_info id="Capture Tool" order="3" />
@@ -292,6 +288,7 @@
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.3284055" />
+      <window_info anchor="bottom" id="Messages" order="3" sideWeight="0.49973017" weight="0.32804233" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -343,9 +340,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spooned/spoon/support/compiler/ZipFolder.java" />
     <entry file="file://$PROJECT_DIR$/src/EmptyMethodBodyProcessor.java" />
-    <entry file="file://$PROJECT_DIR$/src/NotNullCheckAdderProcessor.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NotNullCheckAdderProcessor.java" />
     <entry file="file://$PROJECT_DIR$/src/ResourceProcessor.java" />
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -355,13 +350,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EmptyMethodBodyProcessor.java" />
-    <entry file="file://$PROJECT_DIR$/src/NotNullCheckAdderProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="30" column="62" lean-forward="true" selection-start-line="30" selection-end-line="30" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NotNullCheckAdderProcessor.java" />
     <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -522,13 +511,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/act/MavenLauncher.java" />
-    <entry file="file://$PROJECT_DIR$/src/NotNullCheckAdderProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NotNullCheckAdderProcessor.java" />
     <entry file="file://$USER_HOME$/spoon/src/main/java/spoon/reflect/path/CtPathStringBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="665">
@@ -551,7 +534,7 @@
     </entry>
     <entry file="file://$USER_HOME$/spoon/src/main/java/spoon/MavenLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
+        <state relative-caret-position="5055">
           <caret line="376" column="13" selection-start-line="376" selection-start-column="13" selection-end-line="376" selection-end-column="13" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -568,25 +551,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Bug.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
+        <state relative-caret-position="855">
           <caret line="65" column="35" selection-start-line="65" selection-start-column="35" selection-end-line="65" selection-end-column="35" />
-          <folding>
-            <element signature="e#2262#2263#0" expanded="true" />
-            <element signature="e#2293#2294#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ParseAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
+        <state relative-caret-position="555">
           <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NullDereferenceProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
+        <state relative-caret-position="1665">
           <caret line="122" column="38" selection-start-line="122" selection-start-column="38" selection-end-line="122" selection-end-column="38" />
         </state>
       </provider>
@@ -600,8 +579,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        <state relative-caret-position="165">
+          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
         </state>
       </provider>
     </entry>
