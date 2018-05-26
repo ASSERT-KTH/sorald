@@ -9,5 +9,5 @@ It also contains a static method createSetOfBugs which returns a hashSet when gi
 
 NullDereferenceProcessor.java contains the actual processor for repairing instances where nullable objects have been dereferenced.
 It has a constructor with a JSONArray as a parameter. It creates a SetOfBugs using createSetOfBugs method of the Bug class.
-It is parsing over all CtExecutable references and checking their names and positions. This part is not complete yet.
-Once it finds the bugs, it will repair them(to be implemented).
+It is parsing over all CtInvocation references and checking their names(of target of CtInvocation) and positions.
+This processor is currently working correctly on MavenLauncher.java file in spoon, but not for others.
