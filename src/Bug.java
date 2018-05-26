@@ -11,7 +11,7 @@ public class Bug
     private JSONObject jsonObject;
     private long lineNumber;
     private String name;
-
+    private String fileName;
     public Bug() throws Exception {
 //        throw new Exception("ERROR : Please pass JsonObject to constructor of Bug");
     }
@@ -28,6 +28,8 @@ public class Bug
     {
         lineNumber=(long)(int)jsonObject.get("line");//cast first to int then to long
         name=(String) jsonObject.get("message");
+        String split[]=jsonObject.get("component").toString().split("/");
+        fileName=split[split.length-1];
     }
 
     @Override
@@ -83,5 +85,8 @@ public class Bug
         return lineNumber;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
 }
 

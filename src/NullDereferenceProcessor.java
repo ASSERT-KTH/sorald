@@ -12,11 +12,13 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 
-public class NullDereferenceProcessor extends AbstractProcessor<CtExecutableReference<?>> {
+public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>> {
 
     private JSONArray jsonArray;
     private Set<Bug> SetOfBugs;
     private Set<Long> SetOfLineNumbers;
+    private Set<String> SetOfFileNames;
+    private Bug thisBug;
     public  NullDereferenceProcessor() throws Exception {
         throw new Exception("ERROR : Please pass JsonArray to constructor of this processor");
     }
@@ -25,91 +27,95 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtExecutableRefe
         this.jsonArray=jsonArray;
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();
+        SetOfFileNames=new HashSet<String>();
+        thisBug=new Bug();
         for(Bug bug:SetOfBugs)
         {
             SetOfLineNumbers.add(bug.getLineNumber());
+            SetOfFileNames.add(bug.getFileName());
+            thisBug=bug;
         }
     }
 
 
         @Override
-        public boolean isToBeProcessed(CtExecutableReference<?> element)
+        public boolean isToBeProcessed(CtInvocation<?> element)
         {
-            return true;
-            /*
-            boolean answer = !element.getType().isPrimitive();// only for objects
-            return answer;
-            */
-
-        }
-    @Override
-    public void process(CtExecutableReference<?> element) {
-        if(element==null)
-        {
-            return;
-        }
-
-        CtElement executable=element.getParent();
-        long line = (long) executable.getPosition().getLine();
-//        String signature = element.getSignature();
-        if(true)
-        {
-
-        }
-        String executableName=executable.toString();
-        boolean contains=false;
-        Bug thisBug= null;
-        try {
-            thisBug = new Bug();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        for(Bug bug:SetOfBugs)
-        {
-            if(bug.getLineNumber()!=line)
+            if(element==null||element.getTarget()==null)
             {
-                continue;
+                return false;
             }
-            String bugName=bug.getName();
-            String[] split = bugName.split("\"");
-            for(String bugword:split)
+
+            CtExpression expr=element.getTarget();
+            long line = (long) expr.getPosition().getLine();
+            String targetName=expr.toString();
+            String split1[]=element.getPosition().getFile().toString().split("/");
+            String fileOfElement=split1[split1.length-1];
+            if(!SetOfLineNumbers.contains(line)||!SetOfFileNames.contains(fileOfElement))
             {
-                if(executableName.contains(bugword))
+                return false;
+            }
+            boolean contains=false;
+            try {
+                thisBug = new Bug();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            for(Bug bug:SetOfBugs)
+            {
+                if(bug.getLineNumber()!=line||!bug.getFileName().equals(fileOfElement))
                 {
-                    try {
-                        thisBug=new Bug(bug);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    continue;
+                }
+                String bugName=bug.getName();
+                String[] split = bugName.split("\"");
+                for(String bugword:split)
+                {
+                    if(targetName.contains(bugword))
+                    {
+                        try {
+                            thisBug=new Bug(bug);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        contains=true;
+                        break;
                     }
-                    contains=true;
+                }
+                if(contains)
+                {
                     break;
                 }
             }
-            if(contains)
+            if(!contains)
             {
-                break;
+                return false;
             }
+            return true;
+
         }
-        if(!contains)
-        {
-            return;
-        }
-        System.out.println(thisBug.getName()+" hello");
-//        System.out.println(signature);
-        System.out.println(element+"    hello     "+element.getParent()+"      hello     "+element.getParent().getPosition()+ "  "+element.getPath());
+    @Override
+    public void process(CtInvocation<?> element) {
+
+        System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition());
         System.out.println("\n\n");
-        /*
+
+        CtExpression expression=element.getTarget();
+
+        boolean isVar=expression instanceof CtVariableRead;
+        System.out.println(isVar);
+
+
         CtCodeSnippetStatement snippet = getFactory().Core().createCodeSnippetStatement();
-        // this snippet contains an if check.
         final String value = String.format("if (%s == null) "
                         + "throw new IllegalArgumentException(\"[Spoon inserted check] null passed as parameter\");",
                 element.getSimpleName());
         snippet.setValue(value);
 
         // we insert the snippet at the beginning of the method body.
-        if (element.getParent(CtExecutable.class).getBody() != null) {
-            element.getParent(CtExecutable.class).getBody().insertBegin(snippet);
+        if (isVar) {
+            element.getParent(CtStatement.class).insertBefore(snippet);
         }
-        */
+
     }
 }

@@ -1,14 +1,13 @@
 
-jsquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(õ„‡´úÿÿÿÿ8£ªé¥¹,
-‚squid:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(Ôô¡Óüÿÿÿÿ8£ªé¥¹,
-V
-squid:S106"9Replace this use of System.out or System.err by a logger.(Çûşˆ8£ªé¥¹,
-esquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(ò«À8£ªé¥¹,
 ]squid:S1118":Add a private constructor to hide the implicit public one.(óÖüšúÿÿÿÿ8£ªé¥¹,
-squid:S1488$"aImmediately return this expression instead of assigning it to the temporary variable "jsonArray".(­§ûÊ8£ªé¥¹,
-8squid:S1220""Move this file to a named package.8£ªé¥¹,
-isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ùë»À8£ªé¥¹,
-U
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÁØÕx8£ªé¥¹,
 V
-squid:S106"9Replace this use of System.out or System.err by a logger.(™“¤­8£ªé¥¹,
+squid:S106"9Replace this use of System.out or System.err by a logger.(™“¤­8­ã­¹¹,
+‚squid:S1149!"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(Ôô¡Óüÿÿÿÿ8£ªé¥¹,
+V
+squid:S106"9Replace this use of System.out or System.err by a logger.(Çûşˆ8£ªé¥¹,
+esquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(ò«À8£ªé¥¹,
+8squid:S1220""Move this file to a named package.8£ªé¥¹,
+U
+squid:S106"9Replace this use of System.out or System.err by a logger.(ÁØÕx8£ªé¥¹,
+jsquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(õ„‡´úÿÿÿÿ8£ªé¥¹,
+squid:S1488*"aImmediately return this expression instead of assigning it to the temporary variable "jsonArray".(­§ûÊ8£ªé¥¹,
