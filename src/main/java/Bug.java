@@ -26,10 +26,7 @@ public class Bug
     }
     private void init() throws JSONException
     {
-        lineNumber=(long)(int)(jsonObject.get("line"));//cast first to int then to long
-        int x=5;
-        System.out.println(x);
-        //njn
+        lineNumber=(long)(int)(jsonObject.get("line"));//cast first to int thecn to long
         name=(String) jsonObject.get("message");
         String split[]=jsonObject.get("component").toString().split("/");
         fileName=split[split.length-1];

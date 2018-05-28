@@ -45,9 +45,12 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
             {
                 return false;
             }
+//            System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition());
+//            System.out.println("\n\n");
 
             CtExpression expr=element.getTarget();
-            long line = (long) expr.getPosition().getLine();
+            long line = (long) element.getPosition().getLine();
+
             String targetName=expr.toString();
             String split1[]=element.getPosition().getFile().toString().split("/");
             String fileOfElement=split1[split1.length-1];
@@ -98,9 +101,17 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
     public void process(CtInvocation<?> element) {
 
         System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition());
+
+        List<CtTypeReference<?>> typeCasts = element.getTarget().getTypeCasts();
+        for(CtTypeReference ct:typeCasts)
+        {
+            System.out.println(ct);
+        }
         System.out.println("\n\n");
 
         CtExpression target=element.getTarget();
+
+
 
         boolean isVar=target instanceof CtVariableRead;
 
