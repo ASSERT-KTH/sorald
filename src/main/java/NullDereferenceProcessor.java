@@ -7,11 +7,14 @@ import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.code.CtVariableRead;
+import spoon.reflect.cu.SourcePosition;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.reference.CtExecutableReference;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import static java.lang.Math.abs;
 
 
 public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>> {
@@ -52,9 +55,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
 //            System.out.println("\n\n");
 
             CtExpression expr=element.getTarget();
-
             long line = (long) element.getPosition().getLine();
-
             String targetName=expr.toString();
             String split1[]=element.getPosition().getFile().toString().split("/");
             String fileOfElement=split1[split1.length-1];
@@ -81,14 +82,23 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                 {
                     if(targetName.contains(bugword))
                     {
-                        try {
-                            thisBug=new Bug(bug);
-                            thisBugName=bugword;
-                        } catch (JSONException e) {
+                        try
+                        {
+                            SourcePosition sp = expr.getPosition();
+                            int exprcolumn = sp.getColumn();
+                            int bugcolumn = bug.locations.getJSONObject(0).getJSONObject("textRange").getInt("startOffset");
+                            if(abs(exprcolumn-bugcolumn)<=1) {
+                                thisBug = new Bug(bug);
+                                thisBug.printBugLocations();
+                                thisBugName = bugword;
+                                contains = true;
+                                break;
+                            }
+                        }
+                        catch (JSONException e)
+                        {
                             e.printStackTrace();
                         }
-                        contains=true;
-                        break;
                     }
                 }
                 if(contains)
@@ -107,6 +117,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
     public void process(CtInvocation<?> element) {
 //        System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition() +"   hello  "+element.getTarget().getType());
         System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition());
+//        System.out.println(element.getTarget().getPosition().getLine());
 
 
 

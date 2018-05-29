@@ -27,8 +27,7 @@ public class Bug
     }
     private void init() throws JSONException
     {
-        JSONArray locations=
-                jsonObject.getJSONArray("flows").getJSONObject(0).getJSONArray("locations");
+        locations=jsonObject.getJSONArray("flows").getJSONObject(0).getJSONArray("locations");
         lineNumber=(long)(int)(jsonObject.get("line"));//cast first to int thecn to long
         name=(String) jsonObject.get("message");
         String split[]=jsonObject.get("component").toString().split("/");
@@ -93,10 +92,12 @@ public class Bug
     public void printBugLocations()
     {
         try {
+            if(locations!=null)
             for(int i=0;i<locations.length();++i)
             {
                 System.out.println(locations.getJSONObject(i));
             }
+            else System.out.println("null");
         } catch (JSONException e) {
             e.printStackTrace();
         }
