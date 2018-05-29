@@ -16,12 +16,12 @@ import java.util.Set;
 
 public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>> {
 
-    private JSONArray jsonArray;
-    private Set<Bug> SetOfBugs;
-    private Set<Long> SetOfLineNumbers;
-    private Set<String> SetOfFileNames;
-    private Bug thisBug;
-    private String thisBugName;
+    private JSONArray jsonArray;//array of JSONObjects, each of which is a bug
+    private Set<Bug> SetOfBugs;//set of bugs, corresponding to jsonArray
+    private Set<Long> SetOfLineNumbers;//set of line numbers corresponding to bugs, just for efficiency
+    private Set<String> SetOfFileNames;//-----
+    private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
+    private String thisBugName;        //name (message) of current thisBug.
     public  NullDereferenceProcessor() throws Exception {
         throw new Exception("ERROR : Please pass JsonArray to constructor of this processor");
     }
