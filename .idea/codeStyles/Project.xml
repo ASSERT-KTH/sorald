@@ -1,5 +1,7 @@
 <component name="ProjectCodeStyleConfiguration">
   <code_scheme name="Project" version="173">
+    <option name="AUTODETECT_INDENTS" value="false" />
+    <option name="LINE_SEPARATOR" value="&#10;" />
     <codeStyleSettings language="JAVA">
       <option name="BRACE_STYLE" value="2" />
       <option name="CLASS_BRACE_STYLE" value="2" />

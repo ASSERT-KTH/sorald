@@ -63,7 +63,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
             {
                 return false;
             }
-            boolean contains=false;
             try {
                 thisBug = new Bug();
             } catch (Exception e) {
@@ -89,10 +88,8 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                             int bugcolumn = bug.locations.getJSONObject(0).getJSONObject("textRange").getInt("startOffset");
                             if(abs(exprcolumn-bugcolumn)<=1) {
                                 thisBug = new Bug(bug);
-                                thisBug.printBugLocations();
                                 thisBugName = bugword;
-                                contains = true;
-                                break;
+                                return true;
                             }
                         }
                         catch (JSONException e)
@@ -101,24 +98,12 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                         }
                     }
                 }
-                if(contains)
-                {
-                    break;
-                }
             }
-            if(!contains)
-            {
-                return false;
-            }
-            return true;
-
+            return false;
         }
     @Override
     public void process(CtInvocation<?> element) {
-//        System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition() +"   hello  "+element.getTarget().getType());
         System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition());
-//        System.out.println(element.getTarget().getPosition().getLine());
-
 
 
 
@@ -136,7 +121,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
         }
         else if(target instanceof CtInvocation)
         {
-
+            /*
             CtTry ctTry= getFactory().createTry();
             CtBlock ctBlock=element.getParent(CtBlock.class).clone();
             ctTry.setBody(ctBlock);
@@ -150,10 +135,11 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                     "}";
             snipcat.setValue(cat);
             ctTry.insertAfter(snipcat);
+            */
 
-//            thisBug.printBugLocations();
             CtInvocation invo=(CtInvocation) target;
             System.out.println();
+
         }
 
         System.out.println("\n\n");
