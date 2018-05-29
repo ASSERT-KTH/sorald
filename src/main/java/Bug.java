@@ -8,10 +8,11 @@ import java.util.Set;
 public class Bug
 {
 
-    private JSONObject jsonObject;
-    private long lineNumber;
-    private String name;
-    private String fileName;
+    public JSONObject jsonObject;
+    public JSONArray locations;
+    public long lineNumber;
+    public String name;
+    public String fileName;
     public Bug() throws Exception {
 //        throw new Exception("ERROR : Please pass JsonObject to constructor of Bug");
     }
@@ -26,6 +27,8 @@ public class Bug
     }
     private void init() throws JSONException
     {
+        JSONArray locations=
+                jsonObject.getJSONArray("flows").getJSONObject(0).getJSONArray("locations");
         lineNumber=(long)(int)(jsonObject.get("line"));//cast first to int thecn to long
         name=(String) jsonObject.get("message");
         String split[]=jsonObject.get("component").toString().split("/");
@@ -71,6 +74,10 @@ public class Bug
         return SetOfBugs;
     }
 
+    public JSONObject getJsonObject(){return jsonObject;}
+
+    public JSONArray getLocations(){ return locations;}
+
     public String getName() {
         return name;
     }
@@ -82,5 +89,16 @@ public class Bug
     public String getFileName() {
         return fileName;
     }
-}
 
+    public void printBugLocations()
+    {
+        try {
+            for(int i=0;i<locations.length();++i)
+            {
+                System.out.println(locations.getJSONObject(i));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+}

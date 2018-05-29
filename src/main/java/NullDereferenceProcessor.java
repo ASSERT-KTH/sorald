@@ -1,15 +1,17 @@
-import org.json.*;
+import org.json.JSONArray;
+import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.*;
+import spoon.reflect.code.CtCodeSnippetStatement;
+import spoon.reflect.code.CtExpression;
+import spoon.reflect.code.CtInvocation;
+import spoon.reflect.code.CtStatement;
+import spoon.reflect.code.CtVariableRead;
 import spoon.reflect.declaration.CtElement;
-import spoon.reflect.declaration.CtExecutable;
-import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.declaration.CtParameter;
 import spoon.reflect.reference.CtExecutableReference;
-import spoon.reflect.reference.CtTypeReference;
-import spoon.reflect.visitor.filter.TypeFilter;
-import java.lang.reflect.Method;
-import java.util.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>> {
@@ -19,6 +21,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
     private Set<Long> SetOfLineNumbers;
     private Set<String> SetOfFileNames;
     private Bug thisBug;
+    private String thisBugName;
     public  NullDereferenceProcessor() throws Exception {
         throw new Exception("ERROR : Please pass JsonArray to constructor of this processor");
     }
@@ -33,7 +36,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
         {
             SetOfLineNumbers.add(bug.getLineNumber());
             SetOfFileNames.add(bug.getFileName());
-            thisBug=bug;
+//            System.out.println(bug.getJsonObject().toString()+"\n\n");
         }
     }
 
@@ -49,6 +52,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
 //            System.out.println("\n\n");
 
             CtExpression expr=element.getTarget();
+
             long line = (long) element.getPosition().getLine();
 
             String targetName=expr.toString();
@@ -70,6 +74,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                 {
                     continue;
                 }
+
                 String bugName=bug.getName();
                 String[] split = bugName.split("\"");
                 for(String bugword:split)
@@ -78,6 +83,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                     {
                         try {
                             thisBug=new Bug(bug);
+                            thisBugName=bugword;
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -99,35 +105,27 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
         }
     @Override
     public void process(CtInvocation<?> element) {
-
+//        System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition() +"   hello  "+element.getTarget().getType());
         System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition());
 
-        List<CtTypeReference<?>> typeCasts = element.getTarget().getTypeCasts();
-        for(CtTypeReference ct:typeCasts)
-        {
-            System.out.println(ct);
-        }
-        System.out.println("\n\n");
+
+
 
         CtExpression target=element.getTarget();
 
-
-
-        boolean isVar=target instanceof CtVariableRead;
-
-
         CtCodeSnippetStatement snippet = getFactory().Core().createCodeSnippetStatement();
         final String value = String.format("if (%s == null) "
-                        + "throw new IllegalArgumentException(\"[Spoon inserted check] null pointer is dereferenced\");",
-                target.toString());
+                        + "throw new IllegalStateException(\"[Spoon inserted check], "+"%s might be null\");",
+                target.toString(),thisBugName);
         snippet.setValue(value);
 
-        // we insert the snippet at the beginning of the method body.
-        if (isVar) {
+//        boolean isVariable=target instanceof CtVariableRead;
+        if (target instanceof CtVariableRead) {
             element.getParent(CtStatement.class).insertBefore(snippet);
         }
-        else
+        else if(target instanceof CtInvocation)
         {
+
             CtTry ctTry= getFactory().createTry();
             CtBlock ctBlock=element.getParent(CtBlock.class).clone();
             ctTry.setBody(ctBlock);
@@ -141,7 +139,12 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                     "}";
             snipcat.setValue(cat);
             ctTry.insertAfter(snipcat);
+
+//            thisBug.printBugLocations();
+            CtInvocation invo=(CtInvocation) target;
+            System.out.println();
         }
 
+        System.out.println("\n\n");
     }
 }
