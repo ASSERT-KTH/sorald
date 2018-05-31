@@ -25,12 +25,10 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
     private Set<String> SetOfFileNames;//-----
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
-    public  NullDereferenceProcessor() throws Exception {
-        throw new Exception("ERROR : Please pass JsonArray to constructor of this processor");
-    }
 
-    public NullDereferenceProcessor(JSONArray jsonArray) throws Exception {
-        this.jsonArray=jsonArray;
+    public NullDereferenceProcessor() throws Exception {
+        jsonArray=ParseAPI.parse(2259,"");
+//        JSONArray jsonArray=ParseAPI.parse(2259,"src/main/java/spoon/MavenLauncher.java");
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();
         SetOfFileNames=new HashSet<String>();
@@ -39,7 +37,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
         {
             SetOfLineNumbers.add(bug.getLineNumber());
             SetOfFileNames.add(bug.getFileName());
-//            System.out.println(bug.getJsonObject().toString()+"\n\n");
         }
     }
 
@@ -52,7 +49,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                 return false;
             }
 //            System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition());
-//            System.out.println("\n\n");
 
             CtExpression expr=element.getTarget();
             long line = (long) element.getPosition().getLine();
@@ -103,15 +99,14 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
         }
     @Override
     public void process(CtInvocation<?> element) {
-        System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition());
-
+//        System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition());
 
 
         CtExpression target=element.getTarget();
 
         CtCodeSnippetStatement snippet = getFactory().Core().createCodeSnippetStatement();
         final String value = String.format("if (%s == null) "
-                        + "throw new IllegalStateException(\"[Spoon inserted check], "+"%s might be null\");",
+                        + "throw new IllegalStateException(\"[Spoon inserted check], repairs sonarqube rule 2259:Null pointers should not be dereferenced,\n"+"%s might be null\");",
                 target.toString(),thisBugName);
         snippet.setValue(value);
 
@@ -137,11 +132,9 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
             ctTry.insertAfter(snipcat);
             */
 
-            CtInvocation invo=(CtInvocation) target;
-            System.out.println();
 
         }
 
-        System.out.println("\n\n");
+//        System.out.println("\n\n");
     }
 }

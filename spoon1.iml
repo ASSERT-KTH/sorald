@@ -32,6 +32,5 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="spoon-core-6.3.0-SNAPSHOT-jar-with-dependencies" level="project" />
-    <orderEntry type="library" name="act" level="project" />
   </component>
 </module>

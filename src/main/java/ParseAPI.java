@@ -14,7 +14,7 @@ public class ParseAPI {
     public static JSONArray parse(int rulekey, String fname)throws Exception
     {
         String ruleparameter="&rules=squid:S"+ Integer.toString(rulekey);
-        String url="https://sonarqube.ow2.org/api/issues/search?types=BUG"+ruleparameter+"&componentKeys=fr.inria.gforge.spoon:spoon-core";
+        String url="https://sonarqube.ow2.org/api/issues/search?resolved=false"+ruleparameter+"&componentKeys=fr.inria.gforge.spoon:spoon-core";
         if(fname.length()>0)
         {
             url=url+":"+fname;

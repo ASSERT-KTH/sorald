@@ -2,6 +2,7 @@
   <library name="spoon-core-6.3.0-SNAPSHOT-jar-with-dependencies">
     <CLASSES>
       <root url="jar://$USER_HOME$/Sniper Mode/spoon/target/spoon-core-6.3.0-SNAPSHOT-jar-with-dependencies.jar!/" />
+      <root url="file://$USER_HOME$/Sniper Mode/spoon" />
     </CLASSES>
     <JAVADOC>
       <root url="http://spoon.gforge.inria.fr/mvnsites/spoon-core/apidocs/" />

@@ -14,7 +14,7 @@ public class Bug
     public String name;
     public String fileName;
     public Bug() throws Exception {
-//        throw new Exception("ERROR : Please pass JsonObject to constructor of Bug");
+
     }
 
     public Bug(JSONObject jsonObject) throws JSONException {
@@ -27,11 +27,16 @@ public class Bug
     }
     private void init() throws JSONException
     {
-        locations=jsonObject.getJSONArray("flows").getJSONObject(0).getJSONArray("locations");
+        JSONArray flow=jsonObject.getJSONArray("flows");
+        if(flow.length()>0)
+        {
+            locations = flow.getJSONObject(0).getJSONArray("locations");
+        }
         lineNumber=(long)(int)(jsonObject.get("line"));//cast first to int thecn to long
         name=(String) jsonObject.get("message");
         String split[]=jsonObject.get("component").toString().split("/");
         fileName=split[split.length-1];
+//        System.out.println(name.toString()+"\n\n");
     }
 
     @Override
@@ -93,9 +98,10 @@ public class Bug
     {
         try {
             if(locations!=null)
-            for(int i=0;i<locations.length();++i)
             {
-                System.out.println(locations.getJSONObject(i));
+                for (int i = 0; i < locations.length(); ++i) {
+                    System.out.println(locations.getJSONObject(i));
+                }
             }
             else System.out.println("null");
         } catch (JSONException e) {

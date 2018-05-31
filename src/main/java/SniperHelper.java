@@ -8,12 +8,13 @@ public class SniperHelper
 {
     public static void process(CtClass element, JSONArray array)throws Exception
     {
-        NullDereferenceProcessor ndp = new NullDereferenceProcessor(array);
+        NullDereferenceProcessor ndp = new NullDereferenceProcessor();
         List<CtInvocation> invo = element.getElements(e -> e instanceof CtInvocation);
-        invo.removeIf(ctInvocation -> !ndp.isToBeProcessed(ctInvocation));
+//        invo.removeIf(ctInvocation -> !ndp.isToBeProcessed(ctInvocation));
         for(CtInvocation i:invo)
         {
-            System.out.println(i);
+//            if(i!=null)
+//            System.out.println(i);
         }
     }
 }
