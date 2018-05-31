@@ -5,25 +5,21 @@
   </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java" description="}" line="122" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java" line="104" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7145885-b94a-40e5-a69f-3a3515b34dba" name="Default" comment="Added profiles.xml and settings.xml">
-      <change afterPath="$PROJECT_DIR$/src/main/java/NonSerializableSuperClassProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spooned/spoon/support/StandardEnvironment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bug.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DeadStoreProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DeadStoreProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spooned/spoon/reflect/factory/ModuleFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spooned/spoon/reflect/factory/SubFactory.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SerializableFieldProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SerializableFieldProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SniperHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SniperHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Bug.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Bug.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DeadStoreProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DeadStoreProcessor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/NullDereferenceProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/NullDereferenceProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SerializableFieldProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SerializableFieldProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SniperHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SniperHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spoon/support/StandardEnvironment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NonSerializableSuperClassProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/NonSerializableSuperClassProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spoon/reflect/factory/ModuleFactory$CtUnnamedModule$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spoon/reflect/factory/ModuleFactory$CtUnnamedModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spoon/reflect/factory/ModuleFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spoon/reflect/factory/SubFactory.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -3946,45 +3942,15 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+    <leaf>
+      <file leaf-file-name="ResourceCloseProcessor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="90">
+              <caret line="107" column="9" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NonSerializableSuperClassProcessor.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/NonSerializableSuperClassProcessor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="99" column="106" lean-forward="true" selection-start-line="99" selection-start-column="106" selection-end-line="99" selection-end-column="106" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Bug.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bug.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1350">
-              <caret line="104" column="51" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ParseAPI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ParseAPI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -4000,11 +3966,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getelementtype</find>
-      <find>boolean equa</find>
-      <find>get</find>
-      <find>tostring</find>
-      <find>never</find>
       <find>source</find>
       <find>catch</find>
       <find>print</find>
@@ -4026,6 +3987,15 @@
       <find>sys</find>
       <find>stan</find>
       <find>class</find>
+      <find>FileInput</find>
+      <find>zip</find>
+      <find>fileout</find>
+      <find>input</find>
+      <find>in</find>
+      <find>inputstr</find>
+      <find>fileou</find>
+      <find>filein</find>
+      <find>fileo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -4040,7 +4010,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/EmptyMethodBodyProcessor.java" />
-        <option value="$PROJECT_DIR$/spooned/spoon/support/compiler/ZipFolder.java" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/Learning" />
         <option value="$PROJECT_DIR$/src/ResourceProcessor.java" />
         <option value="$USER_HOME$/spoon/src/main/java/spoon/support/template/Parameters.java" />
@@ -4068,14 +4037,18 @@
         <option value="$PROJECT_DIR$/spooned/spoon/support/compiler/jdt/JDTTreeBuilderHelper.java" />
         <option value="$USER_HOME$/TBCH/act/StandardEnvironment.java" />
         <option value="$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/SerializableFieldProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/java/DeadStoreProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bug.java" />
         <option value="$PROJECT_DIR$/src/main/java/NonSerializableSuperClass.java" />
         <option value="$PROJECT_DIR$/src/main/java/SniperHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$USER_HOME$/TBCH/act/SubFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/NonSerializableSuperClassProcessor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SerializableFieldProcessor.java" />
+        <option value="$USER_HOME$/TBCH/act/Test.java" />
+        <option value="$PROJECT_DIR$/spooned/spoon/support/compiler/ZipFolder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$USER_HOME$/TBCH/act/ZipFolder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java" />
       </list>
     </option>
   </component>
@@ -4134,7 +4107,7 @@
               <item name="spoon1" type="462c0819:PsiDirectoryNode" />
               <item name="spooned" type="462c0819:PsiDirectoryNode" />
               <item name="spoon" type="462c0819:PsiDirectoryNode" />
-              <item name="reflect" type="462c0819:PsiDirectoryNode" />
+              <item name="support" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
@@ -4142,8 +4115,8 @@
               <item name="spoon1" type="462c0819:PsiDirectoryNode" />
               <item name="spooned" type="462c0819:PsiDirectoryNode" />
               <item name="spoon" type="462c0819:PsiDirectoryNode" />
-              <item name="reflect" type="462c0819:PsiDirectoryNode" />
-              <item name="factory" type="462c0819:PsiDirectoryNode" />
+              <item name="support" type="462c0819:PsiDirectoryNode" />
+              <item name="compiler" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
@@ -4200,7 +4173,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -4302,35 +4275,66 @@
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="bottom" id="TODO" order="10" weight="0.32804233" />
-      <window_info anchor="bottom" id="Messages" order="3" sideWeight="0.49973017" weight="0.32804233" />
+      <window_info anchor="bottom" id="TODO" order="9" weight="0.32804233" />
+      <window_info anchor="bottom" id="Messages" order="3" sideWeight="0.49973017" weight="0.32581967" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
-      <window_info id="Image Layers" order="5" />
+      <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5008095" side_tool="true" weight="0.33650795" />
       <window_info anchor="right" x="0" y="0" width="413" height="855" id="Documentation" order="8" side_tool="true" weight="0.32973558" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.42857143" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4991905" visible="true" weight="0.410582" />
+      <window_info active="true" anchor="bottom" id="Run" order="4" sideWeight="0.4991905" visible="true" weight="0.49692622" />
       <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.4991905" weight="0.33650795" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.48803827" visible="true" weight="0.18294658" />
-      <window_info anchor="bottom" id="Find" order="5" weight="0.32804233" />
+      <window_info content_ui="combo" id="Project" order="5" sideWeight="0.48803827" weight="0.18294658" />
       <window_info x="678" y="252" width="631" height="620" id="Learn" order="2" sideWeight="0.4983871" weight="0.32973558" />
       <window_info id="Structure" order="7" sideWeight="0.50345784" side_tool="true" weight="0.17754991" />
-      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
       <window_info id="UI Designer" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info id="Favorites" order="4" sideWeight="0.5119617" side_tool="true" weight="0.18294658" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.39894179" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.39894179" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="SonarLint" order="11" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="7" weight="0.32804233" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="bottom" id="Find" order="7" weight="0.32804233" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info active="true" anchor="bottom" id="Run" order="4" sideWeight="0.4991905" visible="true" weight="0.4973545" />
+      <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="SonarLint" order="11" />
+      <window_info content_ui="combo" id="Project" order="5" sideWeight="0.48803827" visible="true" weight="0.18294658" />
+      <window_info id="Structure" order="7" sideWeight="0.50345784" side_tool="true" weight="0.17754991" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="bottom" id="TODO" order="9" weight="0.32804233" />
+      <window_info anchor="bottom" id="Message" order="5" />
+      <window_info id="Image Layers" order="6" />
+      <window_info id="Designer" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info id="UI Designer" order="1" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.39894179" />
+      <window_info anchor="right" x="0" y="0" width="413" height="855" id="Documentation" order="8" side_tool="true" weight="0.32973558" />
+      <window_info x="678" y="252" width="631" height="620" id="Learn" order="2" sideWeight="0.4983871" weight="0.32973558" />
+      <window_info anchor="right" id="Palette&#9;" order="1" />
+      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.4991905" weight="0.33650795" />
+      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5008095" side_tool="true" weight="0.33650795" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.42857143" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="3" sideWeight="0.49973017" weight="0.32592592" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info id="Favorites" order="4" sideWeight="0.5119617" side_tool="true" weight="0.18294658" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -4368,54 +4372,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/DeadStoreProcessor.java</url>
+          <line>52</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="7" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Sniper Mode/spoon/src/main/java/spoon/MavenLauncher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2153">
-          <caret line="378" column="38" selection-start-line="378" selection-start-column="38" selection-end-line="378" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/System.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/spoon/src/main/java/spoon/MavenLauncher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="69" column="32" lean-forward="true" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/function/Predicate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Sniper Mode/spoon/src/main/java/spoon/reflect/visitor/Filter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/A.java" />
-    <entry file="file://$USER_HOME$/spoon/src/main/java/spoon/support/reflect/declaration/CtElementImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="138" column="52" selection-start-line="138" selection-start-column="52" selection-end-line="138" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/TBCH/act/CtAnnotationImpl.java" />
     <entry file="file://$USER_HOME$/TBCH/act/CtAnnotationImpl.java" />
     <entry file="file://$USER_HOME$/Sniper Mode/spoon/src/main/java/spoon/reflect/visitor/DefaultJavaPrettyPrinter.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -4518,13 +4486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParseAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/TBCH/act/JDTTreeBuilderHelper.java" />
     <entry file="file://$PROJECT_DIR$/spooned/spoon/support/compiler/jdt/JDTTreeBuilderHelper.java" />
     <entry file="file://$PROJECT_DIR$/spooned/spoon/support/compiler/jdt/ReferenceBuilder.java" />
@@ -4580,16 +4541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DeadStoreProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/SniperHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -4600,63 +4551,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spooned/spoon/support/StandardEnvironment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#10210#10211#0" expanded="true" />
-            <element signature="e#10247#10248#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/TBCH/act/StandardEnvironment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="161" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SerializableFieldProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/spooned/spoon/support/StandardEnvironment.java" />
+    <entry file="file://$USER_HOME$/TBCH/act/StandardEnvironment.java" />
     <entry file="file://$USER_HOME$/spoon/src/main/java/spoon/reflect/factory/ModuleFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="42" column="23" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="23" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/TBCH/act/ModuleFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="40" column="39" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/TBCH/act/ModuleFactory.java" />
     <entry file="file://$USER_HOME$/spoon/spooned/spoon/reflect/factory/SubFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -4664,6 +4568,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spooned/spoon/reflect/factory/ModuleFactory.java" />
+    <entry file="file://$USER_HOME$/TBCH/act/SubFactory.java" />
+    <entry file="file://$PROJECT_DIR$/spooned/spoon/reflect/factory/SubFactory.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/NonSerializableSuperClassProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SerializableFieldProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="72" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/spoon/spooned/spoon/reflect/visitor/Filter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/TBCH/act/Test.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Bug.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1350">
@@ -4671,27 +4606,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spooned/spoon/reflect/factory/ModuleFactory.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/TBCH/act/SubFactory.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/DeadStoreProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="300">
+          <caret line="20" column="90" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="90" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spooned/spoon/reflect/factory/SubFactory.java">
+    <entry file="file://$USER_HOME$/spoon/src/main/java/spoon/support/reflect/code/CtTryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="149">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#1990#1991#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/NonSerializableSuperClassProcessor.java">
+    <entry file="file://$USER_HOME$/spoon/src/main/java/spoon/support/visitor/replace/ReplacementVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="99" column="106" lean-forward="true" selection-start-line="99" selection-start-column="106" selection-end-line="99" selection-end-column="106" />
+        <state relative-caret-position="141">
+          <caret line="1884" selection-start-line="1884" selection-end-line="1884" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParseAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/spoon/src/main/java/spoon/support/visitor/ProcessingVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spooned/spoon/support/compiler/ZipFolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1935">
+          <caret line="194" column="53" selection-start-line="194" selection-start-column="53" selection-end-line="194" selection-end-column="53" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3190#3191#0" expanded="true" />
+            <element signature="e#3227#3228#0" expanded="true" />
+            <element signature="e#3537#3538#0" expanded="true" />
+            <element signature="e#3578#3579#0" expanded="true" />
+            <element signature="e#3609#3610#0" expanded="true" />
+            <element signature="e#3637#3638#0" expanded="true" />
+            <element signature="e#3683#3684#0" expanded="true" />
+            <element signature="e#3715#3716#0" expanded="true" />
+            <element signature="e#3989#3990#0" expanded="true" />
+            <element signature="e#4016#4017#0" expanded="true" />
+            <element signature="e#4071#4072#0" expanded="true" />
+            <element signature="e#4114#4115#0" expanded="true" />
+            <element signature="e#4156#4157#0" expanded="true" />
+            <element signature="e#4183#4184#0" expanded="true" />
+            <element signature="e#4238#4239#0" expanded="true" />
+            <element signature="e#4294#4295#0" expanded="true" />
+            <element signature="e#4337#4338#0" expanded="true" />
+            <element signature="e#4381#4382#0" expanded="true" />
+            <element signature="e#4440#4441#0" expanded="true" />
+            <element signature="e#4525#4526#0" expanded="true" />
+            <element signature="e#4588#4589#0" expanded="true" />
+            <element signature="e#4673#4674#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/TBCH/act/ZipFolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1571">
+          <caret line="194" column="72" selection-start-line="194" selection-start-column="67" selection-end-line="194" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="107" column="9" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -4715,7 +4724,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -11,7 +11,7 @@ public class Main {
 		launcher.addInputResource("/home/ashutosh/TBCH/act/");
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
-		launcher.addProcessor((Processor) new NonSerializableSuperClassProcessor());
+		launcher.addProcessor((Processor) new ResourceCloseProcessor());
 		launcher.run();
 //	   	new SpoonModelTree(launcher.getFactory());
 
