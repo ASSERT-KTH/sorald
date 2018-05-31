@@ -42,7 +42,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
             {
                 return false;
             }
-//            System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition());
 
             CtExpression expr=element.getTarget();
             long line = (long) element.getPosition().getLine();
@@ -93,8 +92,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
         }
     @Override
     public void process(CtInvocation<?> element) {
-//        System.out.println(element+"    hello     "+element.getTarget()+"      hello     "+element.getPosition());
-
 
         CtExpression target=element.getTarget();
 
@@ -123,7 +120,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                     "}";
             snipcat.setValue(cat);
             ctTry.insertAfter(snipcat);
-                    }
+        }
 
     }
 }

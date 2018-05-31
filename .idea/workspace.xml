@@ -4,31 +4,26 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java" description="}" line="125" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java" description="}" line="122" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7145885-b94a-40e5-a69f-3a3515b34dba" name="Default" comment="Added profiles.xml and settings.xml">
-      <change afterPath="$PROJECT_DIR$/src/main/java/SerializableFieldProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/spoon_core_6_3_0_SNAPSHOT_jar_with_dependencies.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/spoon_core_6_3_0_SNAPSHOT_jar_with_dependencies.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/NonSerializableSuperClassProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spooned/spoon/support/compiler/jdt/JDTTreeBuilderHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spooned/spoon/support/compiler/jdt/ReferenceBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spooned/spoon/support/template/Parameters.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spooned/spoon/support/StandardEnvironment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bug.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DeadStoreProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DeadStoreProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SerializableFieldProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SerializableFieldProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/SniperHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SniperHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Bug.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Bug.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/DeadStoreProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DeadStoreProcessor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/NullDereferenceProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/NullDereferenceProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SerializableFieldProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SerializableFieldProcessor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/SniperHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SniperHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spoon/support/compiler/jdt/JDTTreeBuilderHelper$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spoon/support/compiler/jdt/JDTTreeBuilderHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spoon/support/compiler/jdt/ReferenceBuilder$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spoon/support/compiler/jdt/ReferenceBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spoon/support/template/Parameters$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spoon/support/template/Parameters$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spoon/support/template/Parameters.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spoon/support/StandardEnvironment.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -3955,8 +3950,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="240">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -3964,11 +3959,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SerializableFieldProcessor.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/SerializableFieldProcessor.java">
+      <file leaf-file-name="NonSerializableSuperClassProcessor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/NonSerializableSuperClassProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="104" column="1" lean-forward="true" selection-start-line="104" selection-start-column="1" selection-end-line="104" selection-end-column="1" />
+            <state relative-caret-position="130">
+              <caret line="99" column="106" lean-forward="true" selection-start-line="99" selection-start-column="106" selection-end-line="99" selection-end-column="106" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -3979,8 +3974,8 @@
       <file leaf-file-name="Bug.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Bug.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1290">
-              <caret line="100" column="12" selection-start-line="100" selection-start-column="12" selection-end-line="100" selection-end-column="12" />
+            <state relative-caret-position="1350">
+              <caret line="104" column="51" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -4026,6 +4021,11 @@
       <find>println</find>
       <find>inser</find>
       <find>inserted ch</find>
+      <find>transient</find>
+      <find>trans</find>
+      <find>sys</find>
+      <find>stan</find>
+      <find>class</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -4065,14 +4065,17 @@
         <option value="$USER_HOME$/TBCH/act/MavenLauncher.java" />
         <option value="$USER_HOME$/Spoon latest merged with sniper/spoon/src/main/java/spoon/reflect/visitor/printer/change/SourceFragment.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParseAPI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bug.java" />
         <option value="$PROJECT_DIR$/spooned/spoon/support/compiler/jdt/JDTTreeBuilderHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/SniperHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/DeadStoreProcessor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$USER_HOME$/TBCH/act/StandardEnvironment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/java/SerializableFieldProcessor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DeadStoreProcessor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bug.java" />
+        <option value="$PROJECT_DIR$/src/main/java/NonSerializableSuperClass.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SniperHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$USER_HOME$/TBCH/act/SubFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/NonSerializableSuperClassProcessor.java" />
       </list>
     </option>
   </component>
@@ -4095,7 +4098,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -4112,6 +4114,36 @@
               <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
               <item name="spoon1" type="47feb1d3:ProjectViewModuleNode" />
               <item name="spoon1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spoon1" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="spoon1" type="462c0819:PsiDirectoryNode" />
+              <item name="spooned" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spoon1" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="spoon1" type="462c0819:PsiDirectoryNode" />
+              <item name="spooned" type="462c0819:PsiDirectoryNode" />
+              <item name="spoon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spoon1" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="spoon1" type="462c0819:PsiDirectoryNode" />
+              <item name="spooned" type="462c0819:PsiDirectoryNode" />
+              <item name="spoon" type="462c0819:PsiDirectoryNode" />
+              <item name="reflect" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spoon1" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="spoon1" type="462c0819:PsiDirectoryNode" />
+              <item name="spooned" type="462c0819:PsiDirectoryNode" />
+              <item name="spoon" type="462c0819:PsiDirectoryNode" />
+              <item name="reflect" type="462c0819:PsiDirectoryNode" />
+              <item name="factory" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
@@ -4155,8 +4187,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -4275,6 +4308,7 @@
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5008095" side_tool="true" weight="0.33650795" />
+      <window_info anchor="right" x="0" y="0" width="413" height="855" id="Documentation" order="8" side_tool="true" weight="0.32973558" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.42857143" />
       <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4991905" visible="true" weight="0.410582" />
@@ -4282,6 +4316,7 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="0" />
       <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.48803827" visible="true" weight="0.18294658" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.32804233" />
       <window_info x="678" y="252" width="631" height="620" id="Learn" order="2" sideWeight="0.4983871" weight="0.32973558" />
       <window_info id="Structure" order="7" sideWeight="0.50345784" side_tool="true" weight="0.17754991" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
@@ -4293,10 +4328,8 @@
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="SonarLint" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" x="0" y="0" width="413" height="855" id="Documentation" order="8" side_tool="true" weight="0.32973558" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="5" weight="0.32804233" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -4339,52 +4372,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/spoon/src/main/java/spoon/support/compiler/jdt/JDTBasedSpoonCompiler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="581" selection-start-line="581" selection-end-line="581" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Sniper Mode/spoon/target/spoon-core-6.3.0-SNAPSHOT-jar-with-dependencies.jar!/spoon/MavenLauncher.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Sniper Mode/spoon/src/main/java/spoon/Launcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="724" column="20" selection-start-line="724" selection-start-column="20" selection-end-line="724" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Sniper Mode/spoon/src/main/java/spoon/support/JavaOutputProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="132" column="15" selection-start-line="132" selection-start-column="8" selection-end-line="132" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/spoon/src/main/java/spoon/support/reflect/declaration/CtAnnotationImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="361" column="67" selection-start-line="361" selection-start-column="67" selection-end-line="361" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Sniper Mode/spoon/src/main/java/spoon/reflect/code/CtVariableRead.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spooned/spoon/MavenLauncher.java" />
-    <entry file="file://$USER_HOME$/spoon/src/main/java/spoon/Launcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="73" column="7" lean-forward="true" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Sniper Mode/spoon/src/main/java/spoon/MavenLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2153">
@@ -4538,32 +4525,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bug.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="100" column="12" selection-start-line="100" selection-start-column="12" selection-end-line="100" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/TBCH/act/JDTTreeBuilderHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="185" column="7" selection-start-line="185" selection-start-column="7" selection-end-line="185" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spooned/spoon/support/compiler/jdt/JDTTreeBuilderHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-720" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spooned/spoon/support/compiler/jdt/ReferenceBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="768" column="40" selection-start-line="768" selection-start-column="29" selection-end-line="768" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/TBCH/act/JDTTreeBuilderHelper.java" />
+    <entry file="file://$PROJECT_DIR$/spooned/spoon/support/compiler/jdt/JDTTreeBuilderHelper.java" />
+    <entry file="file://$PROJECT_DIR$/spooned/spoon/support/compiler/jdt/ReferenceBuilder.java" />
     <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Number.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -4585,16 +4549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SniperHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Integer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -4609,55 +4563,135 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DeadStoreProcessor.java">
+    <entry file="file://$USER_HOME$/Sniper Mode/spoon/src/main/java/spoon/support/StandardEnvironment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+        <state relative-caret-position="285">
+          <caret line="180" column="24" selection-start-line="180" selection-start-column="24" selection-end-line="180" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="1395">
+          <caret line="103" column="8" selection-start-line="103" selection-start-column="8" selection-end-line="103" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Sniper Mode/spoon/src/main/java/spoon/support/StandardEnvironment.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/DeadStoreProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="180" column="24" selection-start-line="180" selection-start-column="24" selection-end-line="180" selection-end-column="24" />
+        <state relative-caret-position="15">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SniperHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spooned/spoon/support/StandardEnvironment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#10210#10211#0" expanded="true" />
+            <element signature="e#10247#10248#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/TBCH/act/StandardEnvironment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
+        <state relative-caret-position="1425">
           <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="161" selection-end-column="5" />
-          <folding>
-            <element signature="e#4451#4452#0" expanded="true" />
-            <element signature="e#4479#4480#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="26" selection-start-column="26" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/SerializableFieldProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="104" column="1" lean-forward="true" selection-start-line="104" selection-start-column="1" selection-end-line="104" selection-end-column="1" />
+        <state relative-caret-position="64">
+          <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/spoon/src/main/java/spoon/reflect/factory/ModuleFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="42" column="23" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="23" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/TBCH/act/ModuleFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="40" column="39" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/spoon/spooned/spoon/reflect/factory/SubFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bug.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="104" column="51" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spooned/spoon/reflect/factory/ModuleFactory.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/TBCH/act/SubFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spooned/spoon/reflect/factory/SubFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/NonSerializableSuperClassProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="99" column="106" lean-forward="true" selection-start-line="99" selection-start-column="106" selection-end-line="99" selection-end-column="106" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -4681,7 +4715,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>

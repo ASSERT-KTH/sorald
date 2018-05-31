@@ -1,16 +1,19 @@
 import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
-import spoon.reflect.code.CtAssignment;
-import spoon.reflect.code.CtCodeSnippetStatement;
-import spoon.reflect.code.CtLocalVariable;
-import spoon.reflect.code.CtStatement;
+import spoon.reflect.code.*;
+import spoon.reflect.declaration.CtClass;
+import spoon.reflect.declaration.CtConstructor;
+import spoon.reflect.declaration.CtField;
+import spoon.reflect.declaration.ModifierKind;
+import spoon.reflect.reference.CtTypeReference;
+import spoon.support.reflect.CtExtendedModifier;
 
+import java.lang.reflect.Constructor;
 import java.util.HashSet;
 import java.util.Set;
 
-
-public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
+public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClass> {
 
     private JSONArray jsonArray;//array of JSONObjects, each of which is a bug
     private Set<Bug> SetOfBugs;//set of bugs, corresponding to jsonArray
@@ -18,9 +21,8 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
     private Set<String> SetOfFileNames;//-----
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
-    String var;//contains name of variable which is uselessly assigned in the current bug.
-    public DeadStoreProcessor() throws Exception {
-        jsonArray=ParseAPI.parse(1854,"");
+    public NonSerializableSuperClassProcessor() throws Exception {
+        jsonArray=ParseAPI.parse(2055,"");
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();
         SetOfFileNames=new HashSet<String>();
@@ -29,34 +31,31 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
         {
             SetOfLineNumbers.add(bug.getLineNumber());
             SetOfFileNames.add(bug.getFileName());
+//            System.out.println(bug.getJsonObject()+"\n\n");
         }
     }
 
 
     @Override
-    public boolean isToBeProcessed(CtStatement element)
+    public boolean isToBeProcessed(CtClass element)
     {
+        if(element.getSuperclass()==null)
+        {
+            return false;
+        }
         if(element==null)
         {
             return false;
         }
         long line =-1;
         String targetName="",fileOfElement="";
-        if(element instanceof CtLocalVariable)
-        {
-            targetName = ((CtLocalVariable)element).getSimpleName();
-            line=(long) element.getPosition().getLine();
-            String split1[]=element.getPosition().getFile().toString().split("/");
-            fileOfElement=split1[split1.length-1];
-        }
-        else if(element instanceof CtAssignment)
-        {
-            targetName=((CtAssignment) element).getAssigned().toString();
-            line=(long) element.getPosition().getLine();
-            String split1[]=element.getPosition().getFile().toString().split("/");
-            fileOfElement=split1[split1.length-1];
-        }
-        else return false;
+
+        line=(long) element.getPosition().getLine();
+        String split1[]=element.getPosition().getFile().toString().split("/");
+        fileOfElement=split1[split1.length-1];
+        CtClass ct =(CtClass)element.getSuperclass().getTypeDeclaration();
+        targetName=ct.getSimpleName();
+
         if(!SetOfLineNumbers.contains(line)||!SetOfFileNames.contains(fileOfElement))
         {
             return false;
@@ -84,7 +83,6 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
                     {
                         thisBug = new Bug(bug);
                         thisBugName = bugword;
-                        var=targetName;
                         return true;
                     }
                     catch (JSONException e)
@@ -97,12 +95,28 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
         return false;
     }
     @Override
-    public void process(CtStatement element) {
-        CtCodeSnippetStatement snippet = getFactory().Core().createCodeSnippetStatement();
-        final String value = String.format("//[Spoon inserted check], repairs sonarqube rule 1854:Dead stores should be removed,\n//useless assignment to %s removed",
-                var);
-        snippet.setValue(value);
-        element.insertAfter(snippet);
-        element.delete();
+    public void process(CtClass element) {
+
+        String value = String.format("[Spoon inserted constructor], repairs sonarqube rule 2055:\nThe non-serializable super class of a \"Serializable\" class should have a no-argument constructor.\n");
+        value=value+String.format("This class is a superclass of %s.",element.getSimpleName());
+        CtComment comment = getFactory().createComment(value,CtComment.CommentType.BLOCK);
+
+        CtClass ct =(CtClass)element.getSuperclass().getTypeDeclaration();
+        CtConstructor alreadyPresent=ct.getConstructor();
+        if(alreadyPresent!=null)
+        {
+            return;
+        }
+
+
+
+        CtConstructor constructor = getFactory().createConstructor();
+
+        CtStatement statement = getFactory().createBlock();
+
+        constructor.setBody(statement);
+        constructor.setVisibility(ModifierKind.PUBLIC);
+        constructor.addComment(comment);
+        ct.addConstructor(constructor);
     }
 }

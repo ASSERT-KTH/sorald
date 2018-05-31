@@ -10,11 +10,7 @@ public class SniperHelper
     public static void process(CtClass element)throws Exception
     {
         NullDereferenceProcessor ndp = new NullDereferenceProcessor();
-        List<CtInvocation> invo = element.getElements(e -> e instanceof CtStatement);
+        List<CtInvocation> invo = element.getElements(e -> e instanceof CtInvocation);
         invo.removeIf(ctInvocation -> !ndp.isToBeProcessed(ctInvocation));
-        for(CtInvocation i:invo)
-        {
-            System.out.println(i);
-        }
     }
 }

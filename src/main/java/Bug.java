@@ -36,7 +36,6 @@ public class Bug
         name=(String) jsonObject.get("message");
         String split[]=jsonObject.get("component").toString().split("/");
         fileName=split[split.length-1];
-//        System.out.println(name.toString()+"\n\n");
     }
 
     @Override
@@ -103,7 +102,7 @@ public class Bug
                     System.out.println(locations.getJSONObject(i));
                 }
             }
-            else System.out.println("null");
+            else System.out.println("null locations");
         } catch (JSONException e) {
             e.printStackTrace();
         }

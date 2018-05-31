@@ -4,10 +4,8 @@ import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
-
 import java.util.HashSet;
 import java.util.Set;
-
 
 public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
 
@@ -17,12 +15,9 @@ public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
     private Set<String> SetOfFileNames;//-----
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
-
-
     public SerializableFieldProcessor() throws Exception {
         jsonArray=ParseAPI.parse(1948,"src/main/java/spoon/support/StandardEnvironment.java");
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
-
         SetOfLineNumbers=new HashSet<Long>();
         SetOfFileNames=new HashSet<String>();
         thisBug=new Bug();
@@ -43,17 +38,10 @@ public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
         }
         long line =-1;
         String targetName="",fileOfElement="";
-        /*
-        System.out.println(element);
-        System.out.println(element.getPosition());
-        System.out.println(element.getSimpleName());
-        System.out.println("\n\n");
-        */
         line=(long) element.getPosition().getLine();
         String split1[]=element.getPosition().getFile().toString().split("/");
         fileOfElement=split1[split1.length-1];
         targetName=element.getSimpleName();
-//        System.out.println(element+"\n"+element.getPosition()+"\n"+targetName+"matches\n\n");
         if(!SetOfLineNumbers.contains(line)||!SetOfFileNames.contains(fileOfElement))
         {
             return false;
@@ -81,7 +69,6 @@ public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
                     {
                         thisBug = new Bug(bug);
                         thisBugName = bugword;
-                        System.out.println(element+"\n"+element.getPosition()+"\nmatches\n\n");
                         return true;
                     }
                     catch (JSONException e)
