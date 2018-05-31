@@ -2,14 +2,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.*;
-import spoon.reflect.code.CtCodeSnippetStatement;
-import spoon.reflect.code.CtExpression;
-import spoon.reflect.code.CtInvocation;
-import spoon.reflect.code.CtStatement;
-import spoon.reflect.code.CtVariableRead;
 import spoon.reflect.cu.SourcePosition;
 import spoon.reflect.declaration.CtElement;
-import spoon.reflect.reference.CtExecutableReference;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -110,13 +104,12 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                 target.toString(),thisBugName);
         snippet.setValue(value);
 
-//        boolean isVariable=target instanceof CtVariableRead;
         if (target instanceof CtVariableRead) {
             element.getParent(CtStatement.class).insertBefore(snippet);
         }
         else if(target instanceof CtInvocation)
         {
-            /*
+
             CtTry ctTry= getFactory().createTry();
             CtBlock ctBlock=element.getParent(CtBlock.class).clone();
             ctTry.setBody(ctBlock);
@@ -130,11 +123,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                     "}";
             snipcat.setValue(cat);
             ctTry.insertAfter(snipcat);
-            */
+                    }
 
-
-        }
-
-//        System.out.println("\n\n");
     }
 }

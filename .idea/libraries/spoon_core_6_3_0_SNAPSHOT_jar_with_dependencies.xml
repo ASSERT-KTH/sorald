@@ -1,17 +1,17 @@
 <component name="libraryTable">
   <library name="spoon-core-6.3.0-SNAPSHOT-jar-with-dependencies">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Sniper Mode/spoon/target/spoon-core-6.3.0-SNAPSHOT-jar-with-dependencies.jar!/" />
-      <root url="file://$USER_HOME$/Sniper Mode/spoon" />
+      <root url="jar://$USER_HOME$/spoon/target/spoon-core-6.3.0-SNAPSHOT-jar-with-dependencies.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="http://spoon.gforge.inria.fr/mvnsites/spoon-core/apidocs/" />
     </JAVADOC>
     <SOURCES>
-      <root url="file://$USER_HOME$/Sniper Mode/spoon/src/main/java" />
-      <root url="file://$USER_HOME$/Sniper Mode/spoon/src/test/java" />
-      <root url="file://$USER_HOME$/Sniper Mode/spoon/src/test/resources" />
-      <root url="file://$USER_HOME$/Sniper Mode/spoon/src/test/resources/spoon/test/api" />
+      <root url="file://$USER_HOME$/spoon/spooned" />
+      <root url="file://$USER_HOME$/spoon/src/main/java" />
+      <root url="file://$USER_HOME$/spoon/src/test/java" />
+      <root url="file://$USER_HOME$/spoon/src/test/resources" />
+      <root url="file://$USER_HOME$/spoon/src/test/resources/spoon/test/api" />
     </SOURCES>
   </library>
 </component>

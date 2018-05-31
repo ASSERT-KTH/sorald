@@ -1,16 +1,15 @@
 import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
-import spoon.reflect.code.CtAssignment;
-import spoon.reflect.code.CtCodeSnippetStatement;
-import spoon.reflect.code.CtLocalVariable;
-import spoon.reflect.code.CtStatement;
+import spoon.reflect.code.*;
+import spoon.reflect.declaration.CtField;
+import spoon.reflect.declaration.ModifierKind;
 
 import java.util.HashSet;
 import java.util.Set;
 
 
-public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
+public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
 
     private JSONArray jsonArray;//array of JSONObjects, each of which is a bug
     private Set<Bug> SetOfBugs;//set of bugs, corresponding to jsonArray
@@ -18,10 +17,12 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
     private Set<String> SetOfFileNames;//-----
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
-    String var;//contains name of variable which is uselessly assigned in the current bug.
-    public DeadStoreProcessor() throws Exception {
-        jsonArray=ParseAPI.parse(1854,"");
+
+
+    public SerializableFieldProcessor() throws Exception {
+        jsonArray=ParseAPI.parse(1948,"src/main/java/spoon/support/StandardEnvironment.java");
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
+
         SetOfLineNumbers=new HashSet<Long>();
         SetOfFileNames=new HashSet<String>();
         thisBug=new Bug();
@@ -34,7 +35,7 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
 
 
     @Override
-    public boolean isToBeProcessed(CtStatement element)
+    public boolean isToBeProcessed(CtField element)
     {
         if(element==null)
         {
@@ -42,21 +43,17 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
         }
         long line =-1;
         String targetName="",fileOfElement="";
-        if(element instanceof CtLocalVariable)
-        {
-            targetName = ((CtLocalVariable)element).getSimpleName();
-            line=(long) element.getPosition().getLine();
-            String split1[]=element.getPosition().getFile().toString().split("/");
-            fileOfElement=split1[split1.length-1];
-        }
-        else if(element instanceof CtAssignment)
-        {
-            targetName=((CtAssignment) element).getAssigned().toString();
-            line=(long) element.getPosition().getLine();
-            String split1[]=element.getPosition().getFile().toString().split("/");
-            fileOfElement=split1[split1.length-1];
-        }
-        else return false;
+        /*
+        System.out.println(element);
+        System.out.println(element.getPosition());
+        System.out.println(element.getSimpleName());
+        System.out.println("\n\n");
+        */
+        line=(long) element.getPosition().getLine();
+        String split1[]=element.getPosition().getFile().toString().split("/");
+        fileOfElement=split1[split1.length-1];
+        targetName=element.getSimpleName();
+//        System.out.println(element+"\n"+element.getPosition()+"\n"+targetName+"matches\n\n");
         if(!SetOfLineNumbers.contains(line)||!SetOfFileNames.contains(fileOfElement))
         {
             return false;
@@ -84,8 +81,7 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
                     {
                         thisBug = new Bug(bug);
                         thisBugName = bugword;
-                        System.out.println(element+"\nmatches\n\n");
-                        var=targetName;
+                        System.out.println(element+"\n"+element.getPosition()+"\nmatches\n\n");
                         return true;
                     }
                     catch (JSONException e)
@@ -98,12 +94,12 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
         return false;
     }
     @Override
-    public void process(CtStatement element) {
+    public void process(CtField element) {
+        element.addModifier(ModifierKind.TRANSIENT);
         CtCodeSnippetStatement snippet = getFactory().Core().createCodeSnippetStatement();
-        final String value = String.format("//[Spoon inserted check], repairs sonarqube rule 1854:Dead stores should be removed,\n//useless assignment to %s removed",
-                var);
+        final String value = String.format("/*[Spoon inserted modifier], repairs sonarqube rule 1948:\nFields in a \"Serializable\" class should either be transient or serializable*/");
         snippet.setValue(value);
-        element.insertAfter(snippet);
-        element.delete();
+        CtComment comment = getFactory().createComment(value,CtComment.CommentType.BLOCK);
+        element.addComment(comment);
     }
 }
