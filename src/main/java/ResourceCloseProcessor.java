@@ -8,12 +8,6 @@ import spoon.reflect.reference.CtVariableReference;
 import java.util.HashSet;
 import java.util.Set;
 
-/*
-If a bug is contained in a block which is a descendant block of another block,
-only one of the bug might be repaired since blocks are being cloned and replaced. We can simply
-apply the processor twice for this. But will have to wait for sonarqube page to update after one
-bug is repaired because line numbers will have changed.
-*/
 public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall> {
 
     private JSONArray jsonArray;//array of JSONObjects, each of which is a bug
@@ -107,7 +101,6 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
 
         if(parent instanceof CtLocalVariable)
         {
-            System.out.println(parent.getPosition());
             CtLocalVariable variable = ((CtLocalVariable) parent).clone();
 
             CtBlock block=parent.getParent(CtBlock.class);
