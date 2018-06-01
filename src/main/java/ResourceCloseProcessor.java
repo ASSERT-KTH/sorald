@@ -105,13 +105,12 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
 
             CtBlock block=parent.getParent(CtBlock.class);
             parent.delete();
-            CtBlock block1= block.clone();
 
             CtTryWithResource tryWithResource = getFactory().createTryWithResource();
-            tryWithResource.setBody(block1);
             tryWithResource.addResource(variable);
             tryWithResource.addComment(comment);
             block.replace(tryWithResource);
+            tryWithResource.setBody(block);
         }
         else if(parent instanceof CtAssignment)
         {
@@ -132,11 +131,7 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
                     parent.delete();
                     var.delete();
 
-                    CtBlock block1 = block.clone();
-                    block1.updateAllParentsBelow();
-
                     CtTryWithResource tryWithResource = getFactory().createTryWithResource();
-                    tryWithResource.setBody(block1);
                     tryWithResource.addResource(variable);
                     tryWithResource.addComment(comment);
 

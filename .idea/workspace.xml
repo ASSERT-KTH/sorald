@@ -8,9 +8,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java" line="99" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7145885-b94a-40e5-a69f-3a3515b34dba" name="Default" comment="Added profiles.xml and settings.xml">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java" afterDir="false" />
-    </list>
+    <list default="true" id="b7145885-b94a-40e5-a69f-3a3515b34dba" name="Default" comment="Added profiles.xml and settings.xml" />
     <ignored path="$PROJECT_DIR$/bin/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -3933,7 +3931,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -3945,11 +3943,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResourceCloseProcessor.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ResourceCloseProcessor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="-241">
+              <caret line="103" column="52" selection-start-line="103" selection-start-column="52" selection-end-line="103" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -3979,7 +3977,7 @@
       <find>sourcestart</find>
       <find>println</find>
       <find>inser</find>
-      <find>inserted ch</find>
+      <find />
       <find>transient</find>
       <find>trans</find>
       <find>stan</find>
@@ -4178,7 +4176,7 @@
     <property name="SearchEverywhereHistoryKey" value="parseint&#9;PSI&#9;JAVA://java.lang.Integer#parseInt&#10;getmodifiersourcestart&#9;PSI&#9;JAVA://spoon.reflect.cu.position.DeclarationSourcePosition#getModifierSourceStart&#10;declarationsourceposition&#9;FILE&#9;file:///home/ashutosh/Spoon latest merged with sniper/spoon/src/main/java/spoon/reflect/cu/position/DeclarationSourcePosition.java&#10;sniper&#9;PSI&#9;JAVA://spoon.support.compiler.SnippetCompilationError&#10;getPosition&#9;FILE&#9;file:///home/ashutosh/spoon/target/test-classes/spoon/test/fieldaccesses/TargetedAccessPosition.class&#10;processingdone&#9;PSI&#9;JAVA://spoon.processing.Processor#processingDone" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/spoon" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -4666,10 +4664,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-241">
+          <caret line="103" column="52" selection-start-line="103" selection-start-column="52" selection-end-line="103" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/spooned/spoon/support/compiler/ZipFolder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="177" column="26" selection-start-line="177" selection-start-column="21" selection-end-line="177" selection-end-column="26" />
+        <state relative-caret-position="454">
+          <caret line="184" column="41" lean-forward="true" selection-start-line="184" selection-start-column="41" selection-end-line="184" selection-end-column="41" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -4709,16 +4717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>
@@ -4736,7 +4734,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
