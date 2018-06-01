@@ -16,7 +16,7 @@ public class Main {
 //	   	new SpoonModelTree(launcher.getFactory());
 
         /*
-        //Sniper Mode
+        //Sniper Mode . Add pavel's refDJPP branch of spoon to use this.
         Launcher launcher = new Launcher();
         launcher.addInputResource("/home/ashutosh/TBCH/act");
         launcher.getEnvironment().setCommentEnabled(true);

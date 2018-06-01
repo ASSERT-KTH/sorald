@@ -1,15 +1,12 @@
 import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
-import spoon.reflect.code.*;
+import spoon.reflect.code.CtComment;
+import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtConstructor;
-import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
-import spoon.reflect.reference.CtTypeReference;
-import spoon.support.reflect.CtExtendedModifier;
 
-import java.lang.reflect.Constructor;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,7 +28,6 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
         {
             SetOfLineNumbers.add(bug.getLineNumber());
             SetOfFileNames.add(bug.getFileName());
-//            System.out.println(bug.getJsonObject()+"\n\n");
         }
     }
 

@@ -1,6 +1,4 @@
-import org.json.JSONArray;
 import spoon.reflect.code.CtInvocation;
-import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtClass;
 
 import java.util.List;

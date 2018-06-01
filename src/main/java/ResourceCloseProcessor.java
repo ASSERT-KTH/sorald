@@ -1,18 +1,19 @@
-import com.sun.xml.internal.ws.spi.db.BindingHelper;
 import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtElement;
-import spoon.reflect.declaration.CtVariable;
-import spoon.reflect.reference.CtFieldReference;
 import spoon.reflect.reference.CtVariableReference;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-
+/*
+If a bug is contained in a block which is a descendant block of another block,
+only one of the bug might be repaired since blocks are being cloned and replaced. We can simply
+apply the processor twice for this. But will have to wait for sonarqube page to update after one
+bug is repaired because line numbers will have changed.
+*/
 public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall> {
 
     private JSONArray jsonArray;//array of JSONObjects, each of which is a bug
@@ -93,19 +94,20 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
         }
         return false;
     }
+
     @Override
     public void process(CtConstructorCall element) {
-        /*
+
         CtCodeSnippetStatement snippet = getFactory().Core().createCodeSnippetStatement();
         final String value = String.format("[Spoon inserted try-with-resource],\n Repairs sonarqube rule 2095:\n %s should be closed",var);
         snippet.setValue(value);
-        element.insertAfter(snippet);
-        */
+        CtComment comment = getFactory().createComment(value, CtComment.CommentType.BLOCK);
 
         CtElement parent = element.getParent(e -> e instanceof CtAssignment || e instanceof CtLocalVariable);
 
         if(parent instanceof CtLocalVariable)
         {
+            System.out.println(parent.getPosition());
             CtLocalVariable variable = ((CtLocalVariable) parent).clone();
 
             CtBlock block=parent.getParent(CtBlock.class);
@@ -115,54 +117,41 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
             CtTryWithResource tryWithResource = getFactory().createTryWithResource();
             tryWithResource.setBody(block1);
             tryWithResource.addResource(variable);
-            CtBlock bb=(CtBlock) tryWithResource;
+            tryWithResource.addComment(comment);
             block.replace(tryWithResource);
-
         }
         else if(parent instanceof CtAssignment)
         {
-            System.out.println(element+"\n"+element.getExecutable().getDeclaringType().getSimpleName()+"\n"+element.getPosition());
-
+            System.out.println(parent.getPosition()+" assignment");
             CtAssignment assign= (CtAssignment) parent;
             CtExpression expr = assign.getAssigned();
 
             if(expr instanceof CtVariableWrite)
             {
-                System.out.println("tttttttttttttttttttttttttttttttttttttttttttttttttttt");
                 CtVariableWrite variableWrite = (CtVariableWrite) expr;
                 CtVariableReference variableReference = variableWrite.getVariable();
-                System.out.println();
                 if(variableReference.getDeclaration() instanceof CtLocalVariable)
                 {
-                    System.out.println("inside");
-
                     CtLocalVariable var = (CtLocalVariable) variableReference.getDeclaration();
-
                     CtLocalVariable variable = var.clone();
                     variable.setAssignment(assign.getAssignment().clone());
-                    CtBlock block = parent.getParent(CtBlock.class);
+                    CtBlock block=parent.getParent(CtBlock.class);
 
-//                    ((CtVariableWrite)((CtAssignment) parent).getAssigned()).getVariable().getDeclaration().delete();
-                    var.delete();
                     parent.delete();
+                    var.delete();
 
                     CtBlock block1 = block.clone();
+                    block1.updateAllParentsBelow();
 
                     CtTryWithResource tryWithResource = getFactory().createTryWithResource();
                     tryWithResource.setBody(block1);
                     tryWithResource.addResource(variable);
-                    block.replace(tryWithResource);
+                    tryWithResource.addComment(comment);
+
+                    CtBlock bb= getFactory().createCtBlock(tryWithResource);
+                    block.replace(bb);
                 }
             }
-
         }
-        System.out.println("\n\n");
     }
 }
-
-
-
-
-
-
-
