@@ -9,16 +9,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7145885-b94a-40e5-a69f-3a3515b34dba" name="Default" comment="Added profiles.xml and settings.xml">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/spoon_core_6_3_0_SNAPSHOT_jar_with_dependencies.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/spoon_core_6_3_0_SNAPSHOT_jar_with_dependencies.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spooned/spoon/support/compiler/ZipFolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/spooned/spoon/support/compiler/ZipFolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NonSerializableSuperClassProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NonSerializableSuperClassProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SniperHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SniperHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/NonSerializableSuperClassProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/NonSerializableSuperClassProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ResourceCloseProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ResourceCloseProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SniperHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SniperHelper.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -3957,8 +3948,8 @@
       <file leaf-file-name="ResourceCloseProcessor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="146" column="44" lean-forward="true" selection-start-line="146" selection-start-column="44" selection-end-line="146" selection-end-column="44" />
+            <state relative-caret-position="389">
+              <caret line="146" column="49" lean-forward="true" selection-start-line="146" selection-start-column="49" selection-end-line="146" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -4325,6 +4316,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="9" weight="0.32804233" />
@@ -4754,8 +4746,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="146" column="44" lean-forward="true" selection-start-line="146" selection-start-column="44" selection-end-line="146" selection-end-column="44" />
+        <state relative-caret-position="389">
+          <caret line="146" column="49" lean-forward="true" selection-start-line="146" selection-start-column="49" selection-end-line="146" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -4779,7 +4771,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

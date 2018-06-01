@@ -122,7 +122,6 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
         }
         else if(parent instanceof CtAssignment)
         {
-            System.out.println(parent.getPosition()+" assignment");
             CtAssignment assign= (CtAssignment) parent;
             CtExpression expr = assign.getAssigned();
 
@@ -150,6 +149,7 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
 
                     CtBlock bb= getFactory().createCtBlock(tryWithResource);
                     block.replace(bb);
+                    tryWithResource.setBody(block);
                 }
             }
         }

@@ -181,25 +181,30 @@ public class ZipFolder implements SpoonFolder {
             try (ZipInputStream zipInput = new ZipInputStream(new BufferedInputStream(new FileInputStream(file)))) {
                 ZipEntry entry;
                 while ((entry = zipInput.getNextEntry()) != null) {
-                    File f = new File(((destDir + (File.separator)) + (entry.getName())));
-                    if (entry.isDirectory()) {
-                        // if its a directory, create it
-                        f.mkdir();
-                        continue;
+                    /* [Spoon inserted try-with-resource],
+                     Repairs sonarqube rule 2095:
+                     FileOutputStream should be closed
+                     */
+                    try (// in the zip entry iteration
+                    OutputStream output = new BufferedOutputStream(new FileOutputStream(f))) {
+                        File f = new File(((destDir + (File.separator)) + (entry.getName())));
+                        if (entry.isDirectory()) {
+                            // if its a directory, create it
+                            f.mkdir();
+                            continue;
+                        }
+                        // deflate in buffer
+                        final int buffer = 2048;
+                        // Force parent directory creation, sometimes directory was not yet handled
+                        f.getParentFile().mkdirs();
+                        int count;
+                        byte[] data = new byte[buffer];
+                        while ((count = zipInput.read(data, 0, buffer)) != (-1)) {
+                            output.write(data, 0, count);
+                        } 
+                        output.flush();
+                        output.close();
                     }
-                    // deflate in buffer
-                    final int buffer = 2048;
-                    // Force parent directory creation, sometimes directory was not yet handled
-                    f.getParentFile().mkdirs();
-                    // in the zip entry iteration
-                    OutputStream output = new BufferedOutputStream(new FileOutputStream(f));
-                    int count;
-                    byte[] data = new byte[buffer];
-                    while ((count = zipInput.read(data, 0, buffer)) != (-1)) {
-                        output.write(data, 0, count);
-                    } 
-                    output.flush();
-                    output.close();
                 } 
                 zipInput.close();
             }
