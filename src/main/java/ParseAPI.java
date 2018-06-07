@@ -30,6 +30,7 @@ public class ParseAPI {
             throw new Exception("ERROR : Wrong Reponse Code from Sonarqube API. Check Internet Connection");
         }
         System.out.println("GET Request Successful");
+        System.out.println();
         BufferedReader in = new BufferedReader( new InputStreamReader(con.getInputStream()));
         String inputLine;
         StringBuffer response = new StringBuffer();

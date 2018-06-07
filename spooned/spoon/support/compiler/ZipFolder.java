@@ -70,28 +70,24 @@ public class ZipFolder implements SpoonFolder {
         // Indexing content
         if ((files) == null) {
             files = new ArrayList<>();
+            ZipInputStream zipInput = null;
             try {
-                /* [Spoon inserted try-with-resource],
-                 Repairs sonarqube rule 2095:
-                 FileInputStream should be closed
-                 */
-                try (ZipInputStream zipInput = new ZipInputStream(new BufferedInputStream(new FileInputStream(file)))) {
-                    ZipEntry entry;
-                    while ((entry = zipInput.getNextEntry()) != null) {
-                        // deflate in buffer
-                        final int buffer = 2048;
-                        ByteArrayOutputStream output = new ByteArrayOutputStream(buffer);
-                        int count;
-                        byte[] data = new byte[buffer];
-                        while ((count = zipInput.read(data, 0, buffer)) != (-1)) {
-                            output.write(data, 0, count);
-                        } 
-                        output.flush();
-                        output.close();
-                        files.add(new ZipFile(this, entry.getName(), output.toByteArray()));
+                zipInput = new ZipInputStream(new BufferedInputStream(new FileInputStream(file)));
+                ZipEntry entry;
+                while ((entry = zipInput.getNextEntry()) != null) {
+                    // deflate in buffer
+                    final int buffer = 2048;
+                    ByteArrayOutputStream output = new ByteArrayOutputStream(buffer);
+                    int count;
+                    byte[] data = new byte[buffer];
+                    while ((count = zipInput.read(data, 0, buffer)) != (-1)) {
+                        output.write(data, 0, count);
                     } 
-                    zipInput.close();
-                }
+                    output.flush();
+                    output.close();
+                    files.add(new ZipFile(this, entry.getName(), output.toByteArray()));
+                } 
+                zipInput.close();
             } catch (Exception e) {
                 Launcher.LOGGER.error(e.getMessage(), e);
             }
@@ -173,41 +169,32 @@ public class ZipFolder implements SpoonFolder {
      * physically extracts on disk all files of this zip file in the destinationDir `destDir`
      */
     public void extract(File destDir) {
+        ZipInputStream zipInput = null;
         try {
-            /* [Spoon inserted try-with-resource],
-             Repairs sonarqube rule 2095:
-             FileInputStream should be closed
-             */
-            try (ZipInputStream zipInput = new ZipInputStream(new BufferedInputStream(new FileInputStream(file)))) {
-                ZipEntry entry;
-                while ((entry = zipInput.getNextEntry()) != null) {
-                    /* [Spoon inserted try-with-resource],
-                     Repairs sonarqube rule 2095:
-                     FileOutputStream should be closed
-                     */
-                    try (// in the zip entry iteration
-                    OutputStream output = new BufferedOutputStream(new FileOutputStream(f))) {
-                        File f = new File(((destDir + (File.separator)) + (entry.getName())));
-                        if (entry.isDirectory()) {
-                            // if its a directory, create it
-                            f.mkdir();
-                            continue;
-                        }
-                        // deflate in buffer
-                        final int buffer = 2048;
-                        // Force parent directory creation, sometimes directory was not yet handled
-                        f.getParentFile().mkdirs();
-                        int count;
-                        byte[] data = new byte[buffer];
-                        while ((count = zipInput.read(data, 0, buffer)) != (-1)) {
-                            output.write(data, 0, count);
-                        } 
-                        output.flush();
-                        output.close();
-                    }
+            zipInput = new ZipInputStream(new BufferedInputStream(new FileInputStream(file)));
+            ZipEntry entry;
+            while ((entry = zipInput.getNextEntry()) != null) {
+                File f = new File(((destDir + (File.separator)) + (entry.getName())));
+                if (entry.isDirectory()) {
+                    // if its a directory, create it
+                    f.mkdir();
+                    continue;
+                }
+                // deflate in buffer
+                final int buffer = 2048;
+                // Force parent directory creation, sometimes directory was not yet handled
+                f.getParentFile().mkdirs();
+                // in the zip entry iteration
+                OutputStream output = new BufferedOutputStream(new FileOutputStream(f));
+                int count;
+                byte[] data = new byte[buffer];
+                while ((count = zipInput.read(data, 0, buffer)) != (-1)) {
+                    output.write(data, 0, count);
                 } 
-                zipInput.close();
-            }
+                output.flush();
+                output.close();
+            } 
+            zipInput.close();
         } catch (Exception e) {
             Launcher.LOGGER.error(e.getMessage(), e);
         }

@@ -1,0 +1,216 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+# Sidebar
+entries:
+- title: Sidebar
+  subcategories:
+    - title: Getting started
+      audience: writers, designers
+      platform: all
+      product: all
+      version: all
+
+      items:
+        - title: Code Analysis
+          url: /first_analysis_processor.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: Code Transformation
+          url: /first_transformation.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: Architecture Checking
+          url: /architecture_test.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: Runtime Reflection
+          url: /reflection.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: Examples
+          url: /examples.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: Javadoc
+          external_url: http://spoon.gforge.inria.fr/mvnsites/spoon-core/apidocs
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: FAQ
+          url: /faq.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+
+    - title: Usage
+      audience: writers, designers
+      platform: all
+      product: all
+      version: all
+
+      items:
+        - title: From Java
+          url: /launcher.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: Command Line
+          url: /command_line.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: From Maven Plugin
+          url: /maven.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: From Gradle Plugin
+          url: /gradle.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+    - title: Spoon Meta model
+      audience: writers, designers
+      platform: all
+      product: all
+      version: all
+
+      items:
+        - title: Structural elements
+          url: /structural_elements.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: Code elements
+          url: /code_elements.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: References
+          url: /references.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: Create elements with factories
+          url: /factories.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: Comments and Positions
+          url: /comments.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+    - title: Querying source code elements
+      audience: writers, designers
+      platform: all
+      product: all
+      version: all
+
+      items:
+        - title: Filter
+          url: /filter.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: Path
+          url: /path.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+        - title: Matchers
+          url: /matcher.html
+          audience: writers, designers
+          platform: all
+          product: all
+          version: all
+
+    - title: Transforming source code
+      audience: writers, designers
+      platform: all
+      product: all
+      version: all
+
+      items:
+          - title: Processor for elements
+            url: /processor.html
+            audience: writers, designers
+            platform: all
+            product: all
+            version: all
+
+          - title: Processor for annotations
+            url: /processor_annotations.html
+            audience: writers, designers
+            platform: all
+            product: all
+            version: all
+
+          - title: Templates
+            url: /template_definition.html
+            audience: writers, designers
+            platform: all
+            product: all
+            version: all
+
+    - title: Testing
+      audience: writers, designers
+      platform: all
+      product: all
+      version: all
+
+      items:
+          - title: Quickstart
+            url: /testing_quickstart.html
+            audience: writers, designers
+            platform: all
+            product: all
+            version: all
+
+          - title: Assertions
+            url: /testing_assertions.html
+            audience: writers, designers
+            platform: all
+            product: all
+            version: all

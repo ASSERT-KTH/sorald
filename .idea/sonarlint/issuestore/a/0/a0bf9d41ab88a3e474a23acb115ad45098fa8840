@@ -1,9 +1,0 @@
-
-\squid:S1155">Use isEmpty() to check whether the collection is empty or not.(ñ—ª¤8£ªé¥¹,
-Dsquid:S1481""&Remove this unused "x" local variable.(×¡¾—8£ªé¥¹,
-wsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Å³ÛÄ8£ªé¥¹,
-wsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(æ€†8£ªé¥¹,
-isquid:CommentedOutCodeLine$"<This block of commented-out lines of code should be removed.(±İÊ²8£ªé¥¹,
-¿squid:S1598" This file "EmptyMethodBodyProcessor.java" should be located in "fr/inria/gforge/spoon/analysis" directory, not in "/home/ashutosh/eclipse-workspace/spoon1/src".(’Âº»8£ªé¥¹,
-U
-squid:S106&"9Replace this use of System.out or System.err by a logger.(ëÀÛt8£ªé¥¹,

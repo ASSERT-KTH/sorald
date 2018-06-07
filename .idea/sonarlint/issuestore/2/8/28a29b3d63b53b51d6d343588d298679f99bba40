@@ -1,26 +1,0 @@
-
-Msquid:S001086")Either remove or fill this block of code.(ÒÌâ–øÿÿÿÿ8©É¹¹,
-jsquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(ñ…¡Ôıÿÿÿÿ8Æà­¹¹,
-V
-squid:S106_"9Replace this use of System.out or System.err by a logger.(•úªó8Æà­¹¹,
-isquid:CommentedOutCodeLine`"<This block of commented-out lines of code should be removed.(Õ«Ğ·8Ê°¹¹,
-vsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(©…º8Æà­¹¹,
-jsquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(«Øâÿÿÿÿÿ8Æà­¹¹,
-rsquid:UselessImportCheck"BRemove this unused import 'spoon.reflect.declaration.CtParameter'.(Àš„àùÿÿÿÿ8¹¢ç¥¹,
-osquid:UselessImportCheck"?Remove this unused import 'spoon.reflect.declaration.CtMethod'.(°ËÛ‚ûÿÿÿÿ8¹¢ç¥¹,
-isquid:CommentedOutCodeLined"<This block of commented-out lines of code should be removed.(œëùä8Áù¨¦¹,
-squid:S00116"[Rename this field "SetOfLineNumbers" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıÿËúÿÿÿÿ8Æà­¹¹,
-8squid:S1220""Move this file to a named package.8¹¢ç¥¹,
-[
-squid:S106b"9Replace this use of System.out or System.err by a logger.(ˆšÑÖüÿÿÿÿ8Æà­¹¹,
-ssquid:S00116"TRename this field "SetOfBugs" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(––Ûü8Æà­¹¹,
-V
-squid:S106a"9Replace this use of System.out or System.err by a logger.(Ğñ­í8ƒËû¦¹,
-Fsquid:S1148P"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Æà­¹¹,
-nsquid:CommentedOutCodeLine'"<This block of commented-out lines of code should be removed.(şÒÛöıÿÿÿÿ8Áù¨¦¹,
-csquid:S2259_"EA "NullPointerException" could be thrown; "thisBug" is nullable here.(•úªó8Æà­¹¹,
-Fsquid:S1148?"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¹¢ç¥¹,
-nsquid:CommentedOutCodeLine4"<This block of commented-out lines of code should be removed.(„ò¨ÿÿÿÿÿ8Æà­¹¹,
-v
-squid:S135A"YReduce the total number of break and continue statements in this loop to use at most one.(ß’Òø8Æà­¹¹,
-usquid:S3776,"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(Ïµ„Ïşÿÿÿÿ8Æà­¹¹,

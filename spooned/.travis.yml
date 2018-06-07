@@ -1,0 +1,23 @@
+language: java
+
+dist: trusty
+
+group: edge
+
+env:
+  - SCRIPT=travis-jdk9.sh
+  - SCRIPT=travis-jdk8.sh
+  - SCRIPT=travis-coverage.sh
+  - SCRIPT=travis-verify.sh
+  - SCRIPT=travis-maven339-jdk8.sh
+  - SCRIPT=travis-jdk8-other-seed.sh
+
+install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dcheckstyle.skip=true -B -V
+script: ./chore/travis/$SCRIPT
+
+cache:
+  directories:
+  - $HOME/.m2
+
+before_cache:
+  - rm -rf $HOME/.m2/fr/inria/ # delete all to be sure we always get last snapshot of spoon

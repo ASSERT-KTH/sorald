@@ -1,10 +1,0 @@
-
-1squid:S1220""Move this file to a named package.
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¨‰ãˆÿÿÿÿÿ
-bsquid:CommentedOutCodeLineB"<This block of commented-out lines of code should be removed.(Áªø
-^squid:S001129"FDefine and throw a dedicated exception instead of using a generic one.(éî
-nsquid:S001177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š®¿éøÿÿÿÿ
-?squid:S1148H"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-usquid:S22937"YReplace the type specification in this constructor call with the diamond operator ("<>").(Š®¿éøÿÿÿÿ
-^squid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(’¢á¬
-^squid:S001126"FDefine and throw a dedicated exception instead of using a generic one.(ä‚õ¯

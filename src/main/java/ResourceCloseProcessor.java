@@ -109,7 +109,8 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
             CtTryWithResource tryWithResource = getFactory().createTryWithResource();
             tryWithResource.addResource(variable);
             tryWithResource.addComment(comment);
-            block.replace(tryWithResource);
+            CtBlock bb = getFactory().createCtBlock(tryWithResource);
+            block.replace(bb);
             tryWithResource.setBody(block);
         }
         else if(parent instanceof CtAssignment)
