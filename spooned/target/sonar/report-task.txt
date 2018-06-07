@@ -1,7 +1,0 @@
-organization=ashutosh1598-github
-projectKey=fr.inria.gforge.spoon:spoon-core
-serverUrl=https://sonarcloud.io
-serverVersion=7.2.0.12953
-dashboardUrl=https://sonarcloud.io/dashboard/index/fr.inria.gforge.spoon:spoon-core
-ceTaskId=AWPaNmGfTzX59Iu7AnnY
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWPaNmGfTzX59Iu7AnnY
