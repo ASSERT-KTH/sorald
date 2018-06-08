@@ -5,34 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7145885-b94a-40e5-a69f-3a3515b34dba" name="Default" comment="Added profiles.xml and settings.xml">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint-state.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/8/28a29b3d63b53b51d6d343588d298679f99bba40" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/5/354079a72b91a4280407c16a36f47d1986fd85a5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/924f089edb4af5ee45c8a9d1129cd28e2b368138" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a0bf9d41ab88a3e474a23acb115ad45098fa8840" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/3/a3df92b3a38419479cd830a15099b32c43948ec3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b78c6b01e5637f5ea21cdd090b197bb6754c7d49" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fe703dbb0c6b50ca28deb8ad46c3f4792b89922b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spoon1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spoon1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spooned/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spooned/spoon/support/compiler/ZipFolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/spooned/spoon/support/compiler/ZipFolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParseAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParseAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ResourceCloseProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/NullDereferenceProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/NullDereferenceProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParseAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ParseAPI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ResourceCloseProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ResourceCloseProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spoon/support/compiler/ZipFolder.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -3959,7 +3932,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
+            <state relative-caret-position="555">
               <caret line="42" selection-start-line="34" selection-start-column="4" selection-end-line="42" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -3971,7 +3944,7 @@
       <file leaf-file-name="NullDereferenceProcessor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="345">
               <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -3983,8 +3956,8 @@
       <file leaf-file-name="NullDereferenceProcessorTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/NullDereferenceProcessorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="743">
-              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+            <state relative-caret-position="625">
+              <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -4114,9 +4087,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -4126,43 +4096,15 @@
             </path>
             <path>
               <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spoon1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spoon1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spoon1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spoon1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spoon1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spoon1" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -4374,7 +4316,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="9" weight="0.32804233" />
@@ -4388,7 +4329,7 @@
       <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.4991905" weight="0.33650795" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="5" sideWeight="0.48803827" visible="true" weight="0.18294658" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" sideWeight="0.48803827" visible="true" weight="0.18294658" />
       <window_info anchor="bottom" id="SonarLint" order="11" weight="0.32910052" />
       <window_info x="678" y="252" width="631" height="620" id="Learn" order="2" sideWeight="0.4983871" weight="0.32973558" />
       <window_info id="Structure" order="7" sideWeight="0.50345784" side_tool="true" weight="0.17754991" />
@@ -4399,12 +4340,12 @@
       <window_info anchor="bottom" id="Debug" order="6" weight="0.4116402" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="3" sideWeight="0.49973017" weight="0.32486773" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
       <window_info anchor="right" x="0" y="0" width="413" height="855" id="Documentation" order="8" side_tool="true" weight="0.32973558" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32804233" />
-      <window_info anchor="bottom" id="Messages" order="3" sideWeight="0.49973017" weight="0.32486773" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -4456,49 +4397,13 @@
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/TBCH/act/A.java" />
     <entry file="jar://$USER_HOME$/Spoon latest merged with sniper/spoon/target/spoon-core-6.3.0-SNAPSHOT-jar-with-dependencies.jar!/spoon/reflect/visitor/printer/change/SourceFragment.class" />
-    <entry file="file://$USER_HOME$/Spoon latest merged with sniper/spoon/src/main/java/spoon/reflect/cu/SourcePosition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="90" column="15" lean-forward="true" selection-start-line="90" selection-start-column="15" selection-end-line="90" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Spoon latest merged with sniper/spoon/src/main/java/spoon/reflect/cu/SourcePosition.java" />
     <entry file="file://$USER_HOME$/TBCH/act/MavenLauncher.java" />
-    <entry file="file://$USER_HOME$/Spoon latest merged with sniper/spoon/src/main/java/spoon/support/reflect/cu/position/DeclarationSourcePositionImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Spoon latest merged with sniper/spoon/src/main/java/spoon/reflect/visitor/printer/change/SourceFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2985">
-          <caret line="451" column="9" lean-forward="true" selection-start-line="451" selection-start-column="9" selection-end-line="451" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Spoon latest merged with sniper/spoon/src/main/java/spoon/reflect/cu/position/DeclarationSourcePosition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Spoon latest merged with sniper/spoon/src/main/java/spoon/reflect/factory/ExecutableFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Spoon latest merged with sniper/spoon/src/main/java/spoon/support/reflect/cu/position/SourcePositionImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Spoon latest merged with sniper/spoon/src/main/java/spoon/support/reflect/cu/position/DeclarationSourcePositionImpl.java" />
+    <entry file="file://$USER_HOME$/Spoon latest merged with sniper/spoon/src/main/java/spoon/reflect/visitor/printer/change/SourceFragment.java" />
+    <entry file="file://$USER_HOME$/Spoon latest merged with sniper/spoon/src/main/java/spoon/reflect/cu/position/DeclarationSourcePosition.java" />
+    <entry file="file://$USER_HOME$/Spoon latest merged with sniper/spoon/src/main/java/spoon/reflect/factory/ExecutableFactory.java" />
+    <entry file="file://$USER_HOME$/Spoon latest merged with sniper/spoon/src/main/java/spoon/support/reflect/cu/position/SourcePositionImpl.java" />
     <entry file="jar://$USER_HOME$/Downloads/java-json.jar!/org/json/JSONArray.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -4623,9 +4528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4657,9 +4559,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
           <caret line="101" column="25" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4672,7 +4571,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/NullDereferenceProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="345">
           <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -4682,7 +4581,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
+        <state relative-caret-position="555">
           <caret line="42" selection-start-line="34" selection-start-column="4" selection-end-line="42" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -4692,8 +4591,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/NullDereferenceProcessorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="743">
-          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+        <state relative-caret-position="625">
+          <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
