@@ -39,7 +39,7 @@ class NullDereferenceProcessorTest {
         launcher.addInputResource("./source/act/");
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
-        launcher.addProcessor((Processor) new NullDereferenceProcessor());
+        launcher.addProcessor((Processor) new NullDereferenceProcessor("fr.inria.gforge.spoon:spoon-core"));
         launcher.run();
 //	   	new SpoonModelTree(launcher.getFactory());
 
@@ -55,7 +55,7 @@ class NullDereferenceProcessorTest {
         launcher.addInputResource("./source/act/");
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
-        launcher.addProcessor((Processor) new NullDereferenceProcessor());
+        launcher.addProcessor((Processor) new NullDereferenceProcessor("fr.inria.gforge.spoon:spoon-core"));
         launcher.run();
 //	   	new SpoonModelTree(launcher.getFactory());
 

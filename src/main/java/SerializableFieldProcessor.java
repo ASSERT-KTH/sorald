@@ -15,8 +15,8 @@ public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
     private Set<String> SetOfFileNames;//-----
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
-    public SerializableFieldProcessor() throws Exception {
-        jsonArray=ParseAPI.parse(1948,"src/main/java/spoon/support/StandardEnvironment.java");
+    public SerializableFieldProcessor(String projectKey) throws Exception {
+        jsonArray=ParseAPI.parse(1948,"src/main/java/spoon/support/StandardEnvironment.java",projectKey);
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();
         SetOfFileNames=new HashSet<String>();
@@ -87,6 +87,6 @@ public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
         final String value = String.format("/*[Spoon inserted modifier], repairs sonarqube rule 1948:\nFields in a \"Serializable\" class should either be transient or serializable*/");
         snippet.setValue(value);
         CtComment comment = getFactory().createComment(value,CtComment.CommentType.BLOCK);
-        element.addComment(comment);
+//        element.addComment(comment);
     }
 }

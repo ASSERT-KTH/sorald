@@ -11,10 +11,11 @@ public class ParseAPI {
     The second parameter is the specific file or directory in spoon you want to get the bugs for.
     Example: fname="src/main/java/spoon/MavenLauncher.java"; If you want to parse the entire source code, you need to pass "src/" in fname
      */
-    public static JSONArray parse(int rulekey, String fname)throws Exception
+    public static JSONArray parse(int rulekey, String fname,String projectKey)throws Exception
     {
         String ruleparameter="&rules=squid:S"+ Integer.toString(rulekey);
-        String url="https://sonarqube.ow2.org/api/issues/search?resolved=false"+ruleparameter+"&componentKeys=fr.inria.gforge.spoon:spoon-core";
+//        String url="https://sonarqube.ow2.org/api/issues/search?resolved=false"+ruleparameter+"&componentKeys=fr.inria.gforge.spoon:spoon-core";
+        String url="https://sonarqube.ow2.org/api/issues/search?resolved=false"+ruleparameter+"&componentKeys="+projectKey;
         if(fname.length()>0)
         {
             url=url+":"+fname;

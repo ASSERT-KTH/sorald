@@ -18,8 +18,8 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
     private Set<String> SetOfFileNames;//-----
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
-    public NonSerializableSuperClassProcessor() throws Exception {
-        jsonArray=ParseAPI.parse(2055,"");
+    public NonSerializableSuperClassProcessor(String projectKey) throws Exception {
+        jsonArray=ParseAPI.parse(2055,"",projectKey);
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();
         SetOfFileNames=new HashSet<String>();
@@ -103,13 +103,8 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
         {
             return;
         }
-
-
-
         CtConstructor constructor = getFactory().createConstructor();
-
         CtStatement statement = getFactory().createBlock();
-
         constructor.setBody(statement);
         constructor.setVisibility(ModifierKind.PUBLIC);
         constructor.addComment(comment);

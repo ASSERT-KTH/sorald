@@ -1,0 +1,64 @@
+/**
+ * Copyright (C) 2006-2017 INRIA and contributors
+ * Spoon - http://spoon.gforge.inria.fr/
+ *
+ * This software is governed by the CeCILL-C License under French law and
+ * abiding by the rules of distribution of free software. You can use, modify
+ * and/or redistribute the software under the terms of the CeCILL-C license as
+ * circulated by CEA, CNRS and INRIA at http://www.cecill.info.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the CeCILL-C License for more details.
+ *
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL-C license and that you accept its terms.
+ */
+package spoon.support.reflect.declaration;
+
+import spoon.reflect.annotations.MetamodelPropertyField;
+import spoon.reflect.declaration.CtNamedElement;
+import spoon.reflect.factory.Factory;
+import spoon.reflect.factory.FactoryImpl;
+import spoon.reflect.path.CtRole;
+import spoon.reflect.reference.CtReference;
+
+import static spoon.reflect.path.CtRole.NAME;
+
+public abstract class CtNamedElementImpl extends CtElementImpl implements CtNamedElement {
+
+	private static final long serialVersionUID = 1L;
+
+	@MetamodelPropertyField(role = CtRole.NAME)
+	String simpleName = "";
+
+	@Override
+	public CtReference getReference() {
+		return null;
+	}
+
+	@Override
+	public String getSimpleName() {
+		return simpleName;
+	}
+
+	@Override
+	public <T extends CtNamedElement> T setSimpleName(String simpleName) {
+		Factory factory = getFactory();
+		if (factory == null) {
+			this.simpleName = simpleName;
+			return (T) this;
+		}
+		if (factory instanceof FactoryImpl) {
+			simpleName = ((FactoryImpl) factory).dedup(simpleName);
+		}
+		getFactory().getEnvironment().getModelChangeListener().onObjectUpdate(this, NAME, simpleName, this.simpleName);
+		this.simpleName = simpleName;
+		return (T) this;
+	}
+
+	@Override
+	public CtNamedElement clone() {
+		return (CtNamedElement) super.clone();
+	}
+}

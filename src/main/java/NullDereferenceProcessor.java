@@ -21,9 +21,8 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
 
-    public NullDereferenceProcessor() throws Exception {
-        jsonArray=ParseAPI.parse(2259,"");
-//        JSONArray jsonArray=ParseAPI.parse(2259,"src/main/java/spoon/MavenLauncher.java");
+    public NullDereferenceProcessor(String projectKey) throws Exception {
+        jsonArray=ParseAPI.parse(2259,"",projectKey);
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();
         SetOfFileNames=new HashSet<String>();
