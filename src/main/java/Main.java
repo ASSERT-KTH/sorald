@@ -1,14 +1,18 @@
+import jdk.nashorn.internal.parser.JSONParser;
+import org.json.*;
+import org.json.JSONString;
 import spoon.Launcher;
 import spoon.processing.Processor;
 import spoon.support.gui.SpoonModelTree;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.util.*;
 
 
 public class Main {
-	public static void main(String[] args) throws Exception
+
+    public static void main(String[] args) throws Exception
     {
+
         //Not Sniper  Mode
 		Launcher launcher = new Launcher();
 		launcher.addInputResource("./source/act/");
