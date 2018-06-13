@@ -56,7 +56,7 @@ public class Main {
         }
         else //no arguments given
         {
-            processor=rule.get(1854);//default DeadstoreProcessor
+            processor=rule.get(1948);//default DeadstoreProcessor
             projectKey="fr.inria.gforge.spoon:spoon-core";
             System.out.println("No arguments given. Using "+ processor.getName()+ " by default on spoon-core");
         }
