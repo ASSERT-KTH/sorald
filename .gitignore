@@ -2,6 +2,7 @@
 .project
 .settings/
 target/
+spooned/
 *.class
 *.logs
 .idea/
