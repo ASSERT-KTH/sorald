@@ -17,7 +17,7 @@ Then do :
 
 `cd target`
 
-`java -jar spoon1-1.0-SNAPSHOT-jar-with-dependencies.jar`
+`java -jar sonarqube-repair-0.1-SNAPSHOT-jar-with-dependencies.jar`
 
 The repaired code will appear in sonarqube-repair/spooned/
 
