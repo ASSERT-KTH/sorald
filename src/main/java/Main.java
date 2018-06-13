@@ -1,4 +1,3 @@
-import jdk.nashorn.internal.parser.JSONParser;
 import org.json.*;
 import org.json.JSONString;
 import spoon.Launcher;
@@ -15,7 +14,7 @@ public class Main {
 
         //Not Sniper  Mode
 		Launcher launcher = new Launcher();
-		launcher.addInputResource("./source/act/");
+		launcher.addInputResource("/home/ashutosh/eclipse-workspace/spoon1/source/act/");
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
 //        launcher.getEnvironment().

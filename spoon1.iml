@@ -17,6 +17,7 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.json:json:20160810" level="project" />
     <orderEntry type="library" name="Maven: fr.inria.gforge.spoon:spoon-core:6.3.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.tycho:org.eclipse.jdt.core:3.13.50.v20171007-0855" level="project" />
     <orderEntry type="library" name="Maven: com.martiansoftware:jsap:2.1" level="project" />
@@ -28,6 +29,5 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.2" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20180130" level="project" />
   </component>
 </module>

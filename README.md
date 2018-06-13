@@ -1,13 +1,24 @@
 # sonarqube-repair
 
-This is the the first draft of the repair system.
+This is the initial draft of the system to repair sonarqube bugs.
 
-ParseAPI class makes a get request to sonarqube and parses them to generate a JSONArray.
+To use it, run:
 
-Bug.java has description of objects of type bugs. For each instance of a bug, a Bug object will be created. It has fields like lineNumber and bugName.
-It also contains a static method createSetOfBugs which returns a hashSet when given a JSONArray having many individual bugs.
+`git clone https://github.com/kth-tcs/sonarqube-repair.git`
 
-NullDereferenceProcessor.java contains the actual processor for repairing instances where nullable objects have been dereferenced.
-It has a constructor with a JSONArray as a parameter. It creates a SetOfBugs using createSetOfBugs method of the Bug class.
-It is parsing over all CtInvocation references and checking their names(of target of CtInvocation) and positions.
-This processor is currently working correctly on MavenLauncher.java file in spoon, but not for others.
+`cd sonarqube-repair`
+
+Then open the src/main/java/Main.java file. Change the directory in the statement `launcher.addInputResource("/home/ashutosh/eclipse-workspace/spoon1/source/act/");`
+to the source files that you want to repair. Also change the rule in `launcher.addProcessor()` to the rule you want to repair.
+
+Then do :
+
+`mvn -U clean package`
+
+`cd target`
+
+`java -jar spoon1-1.0-SNAPSHOT-jar-with-dependencies.jar`
+
+The repaired code will appear in sonarqube-repair/spooned/
+
+Feel free to open issues.
