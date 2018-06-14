@@ -9,7 +9,7 @@ To use it, run:
 `cd sonarqube-repair`
 
 Put the source files you want to repair
-in the directory "sonarqube-repair/source/act"
+in the directory "sonarqube-repair/source/act/"
 
 Then do :
 
@@ -17,7 +17,11 @@ Then do :
 
 `cd target`
 
-`java -jar sonarqube-repair-0.1-SNAPSHOT-jar-with-dependencies.jar arg1 arg2`
+`java -jar target/sonarqube-repair-0.1-SNAPSHOT-jar-with-dependencies.jar arg1 arg2`
+
+If this command is run from somewhere other than `sonarqube-repair/` , you need to create
+a directory `source/act/` in that location and put your source files there.
+
 
 arg1 and arg2 are optional parameters.
 Give either 0, 1 or 2 arguments. first argument is sonarqube rule-number which you 

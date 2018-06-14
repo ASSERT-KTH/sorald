@@ -2,6 +2,9 @@ import java.net.*;
 import java.io.*;
 
 import org.json.*;
+
+import static java.lang.System.exit;
+
 public class ParseAPI {
 
 
@@ -15,7 +18,7 @@ public class ParseAPI {
     {
         String ruleparameter="&rules=squid:S"+ Integer.toString(rulekey);
 //        String url="https://sonarqube.ow2.org/api/issues/search?resolved=false"+ruleparameter+"&componentKeys=fr.inria.gforge.spoon:spoon-core";
-        String url="https://sonarqube.ow2.org/api/issues/search?resolved=false"+ruleparameter+"&componentKeys="+projectKey;
+        String url="https://sonarqube.ow2.org/api/issues/search?resolved=false&ps=500"+ruleparameter+"&componentKeys="+projectKey;
         if(fname.length()>0)
         {
             url=url+":"+fname;
@@ -42,6 +45,13 @@ public class ParseAPI {
         in.close();
         JSONObject jo = new JSONObject(response.toString());
         JSONArray jsonArray = jo.getJSONArray("issues");
+        if(jsonArray.length()==0)
+        {
+            System.out.println("No Sonarqube issues found. Maybe you entered wrong project key.");
+            System.out.println("Here is the JSON response from Sonarqube:");
+            System.out.println(jo.toString());
+            exit(0);
+        }
         return jsonArray;
     }
 }
