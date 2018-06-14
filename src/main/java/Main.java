@@ -2,7 +2,8 @@ import spoon.Launcher;
 import spoon.processing.Processor;
 
 import java.lang.reflect.Constructor;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
@@ -23,9 +24,12 @@ public class Main {
 
         //Not Sniper  Mode
 		Launcher launcher = new Launcher();
-		launcher.addInputResource("/home/ashutosh/eclipse-workspace/spoon1/source/act/");
+		launcher.addInputResource("./source/act/");
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
+//        launcher.getEnvironment().setPreserveLineNumbers(true);
+        launcher.getEnvironment().setTabulationSize(4);
+        launcher.getEnvironment().useTabulations(true);
 
         String projectKey="fr.inria.gforge.spoon:spoon-core";
         Class<?> processor;
@@ -70,14 +74,14 @@ public class Main {
         /*
         //Sniper Mode . Add pavel's refDJPP branch of spoon as library to use this.
         Launcher launcher = new Launcher();
-        launcher.addInputResource("/home/ashutosh/TBCH/act");
+        launcher.addInputResource("/home/ashutosh/eclipse-workspace/spoon1/source/act/");
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
         launcher.buildModel();
         Factory f = launcher.getFactory();
         new SourceFragmentsTreeCreatingChangeCollector().attachTo(f.getEnvironment());
 
-        CtClass<?> ctClass = launcher.getFactory().Class().get(ReferenceBuilder.class);
+        CtClass<?> ctClass = launcher.getFactory().Class().get(JDTTreeBuilderHelper.class);
 //        SniperHelper.process(ctClass);
 
         ChangesAwareDefaultJavaPrettyPrinter printer = new ChangesAwareDefaultJavaPrettyPrinter(f.getEnvironment());
@@ -86,6 +90,7 @@ public class Main {
         toBePrinted.add(ctClass);
         printer.calculate(cu, toBePrinted);
         */
+
         System.out.println("done");
 	}
 	public static void initmap()
