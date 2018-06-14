@@ -9,19 +9,17 @@ import java.util.Map;
 
 public class Main {
 
-    private static Map<Integer, Class<? extends Processor>> rule;
+
 
     /**
      *
      * @param args string array. Give either 0, 1 or 2 arguments. first argument is sonarqube rule-number which you can get from https://rules.sonarsource.com/java/type/Bug
      *             second argument is the projectKey for the sonarqube analysis of source files. for  example "fr.inria.gforge.spoon:spoon-core"
-     * @throws Exception might occur at getConstructor or newInstance
      */
     public static void main(String[] args) throws Exception
     {
-        initmap();
+        TestHelp.initmap();
         System.out.println();
-
         //Not Sniper  Mode
 		Launcher launcher = new Launcher();
 		launcher.addInputResource("./source/act/");
@@ -36,12 +34,8 @@ public class Main {
         if(args.length>0)
         {
             int rulenumber = Integer.parseInt(args[0]);
-            if(!rule.containsKey(rulenumber))
-            {
-                System.out.println("Sorry. Repair is not available for this rule.");
-                return;
-            }
-            processor=rule.get(rulenumber);
+
+            processor=TestHelp.getProcessor(rulenumber);
 
             if(args.length==1)
             {
@@ -60,7 +54,7 @@ public class Main {
         }
         else //no arguments given
         {
-            processor=rule.get(1948);//default DeadstoreProcessor
+            processor=TestHelp.getProcessor(1948);//default DeadstoreProcessor
             projectKey="fr.inria.gforge.spoon:spoon-core";
             System.out.println("No arguments given. Using "+ processor.getName()+ " by default on spoon-core");
         }
@@ -93,13 +87,4 @@ public class Main {
 
         System.out.println("done");
 	}
-	public static void initmap()
-    {
-        rule = new HashMap<>();
-        rule.putIfAbsent(1854,DeadStoreProcessor.class);
-        rule.putIfAbsent(1948,SerializableFieldProcessor.class);
-        rule.putIfAbsent(2055,NonSerializableSuperClassProcessor.class);
-        rule.putIfAbsent(2095,ResourceCloseProcessor.class);
-        rule.putIfAbsent(2259,NullDereferenceProcessor.class);
-    }
 }
