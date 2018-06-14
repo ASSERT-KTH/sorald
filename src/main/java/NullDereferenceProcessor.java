@@ -3,8 +3,6 @@ import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.*;
 import spoon.reflect.cu.SourcePosition;
-import spoon.reflect.declaration.CtElement;
-import spoon.reflect.reference.CtExecutableReference;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +20,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
     private String thisBugName;        //name (message) of current thisBug.
 
     public NullDereferenceProcessor(String projectKey) throws Exception {
-        jsonArray=ParseAPI.parse(2259,"",projectKey);
+        jsonArray= ParseAPI.parse(2259,"",projectKey);
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();
         SetOfFileNames=new HashSet<String>();

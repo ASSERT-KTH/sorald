@@ -18,7 +18,15 @@ public class ParseAPI {
     {
         String ruleparameter="&rules=squid:S"+ Integer.toString(rulekey);
 //        String url="https://sonarqube.ow2.org/api/issues/search?resolved=false"+ruleparameter+"&componentKeys=fr.inria.gforge.spoon:spoon-core";
-        String url="https://sonarqube.ow2.org/api/issues/search?resolved=false&ps=500"+ruleparameter+"&componentKeys="+projectKey;
+        String url="";
+        if(projectKey.equals("se.kth:sonatest"))
+        {
+            url = "https://sonarcloud.io/api/issues/search?resolved=false&ps=500" + ruleparameter + "&componentKeys=" + projectKey;
+        }
+        else
+        {
+            url = "https://sonarqube.ow2.org/api/issues/search?resolved=false&ps=500" + ruleparameter + "&componentKeys=" + projectKey;
+        }
         if(fname.length()>0)
         {
             url=url+":"+fname;
@@ -51,6 +59,10 @@ public class ParseAPI {
             System.out.println("Here is the JSON response from Sonarqube:");
             System.out.println(jo.toString());
             exit(0);
+        }
+        if(projectKey.equals("se.kth:sonatest"))
+        {
+            System.out.println(jsonArray.toString());
         }
         return jsonArray;
     }

@@ -19,7 +19,7 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
     String var;//contains name of resource which is unclosed in the current bug.
 
     public ResourceCloseProcessor(String projectKey) throws Exception {
-        jsonArray=ParseAPI.parse(2095,"",projectKey);
+        jsonArray= ParseAPI.parse(2095,"",projectKey);
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();
         SetOfFileNames=new HashSet<String>();

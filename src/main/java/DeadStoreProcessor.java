@@ -20,7 +20,7 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
     private String thisBugName;        //name (message) of current thisBug.
     String var;//contains name of variable which is uselessly assigned in the current bug.
     public DeadStoreProcessor(String projectKey) throws Exception {
-        jsonArray=ParseAPI.parse(1854,"",projectKey);
+        jsonArray= ParseAPI.parse(1854,"",projectKey);
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();
         SetOfFileNames=new HashSet<String>();

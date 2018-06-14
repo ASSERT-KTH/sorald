@@ -16,7 +16,7 @@ public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
     public SerializableFieldProcessor(String projectKey) throws Exception {
-        jsonArray=ParseAPI.parse(1948,"",projectKey);
+        jsonArray= ParseAPI.parse(1948,"",projectKey);
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();
         SetOfFileNames=new HashSet<String>();
