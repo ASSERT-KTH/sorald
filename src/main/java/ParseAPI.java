@@ -58,7 +58,6 @@ public class ParseAPI {
             System.out.println("No Sonarqube issues found. Maybe you entered wrong project key.");
             System.out.println("Here is the JSON response from Sonarqube:");
             System.out.println(jo.toString());
-            exit(0);
         }
         if(projectKey.equals("se.kth:sonatest"))
         {

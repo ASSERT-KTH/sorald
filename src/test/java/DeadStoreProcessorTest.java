@@ -1,3 +1,5 @@
+import org.json.JSONArray;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import spoon.Launcher;
 
@@ -15,10 +17,6 @@ class DeadStoreProcessorTest {
     private static boolean suppress=false;
     private void executeCommand(String command,String dir)
     {
-        if(suppress)
-        {
-            command = command + " >/dev/null";
-        }
         System.out.println("command : cd "+dir+" && "+command);
         StringBuffer output = new StringBuffer();
         Process p;
@@ -36,7 +34,10 @@ class DeadStoreProcessorTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(output.toString());
+        if(!suppress)
+        {
+            System.out.println(output.toString());
+        }
     }
 
     @Test
@@ -64,5 +65,7 @@ class DeadStoreProcessorTest {
         executeCommand("mvn clean package",cdrep);
         executeCommand(sonarAnalysis,cdrep);
         suppress=false;
+        JSONArray array = ParseAPI.parse(1854,"","se.kth:sonarepaired");
+        Assertions.assertTrue(array.length()==0);
     }
 }
