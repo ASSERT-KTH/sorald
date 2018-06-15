@@ -38,7 +38,7 @@ public class TestHelp
         return rule.get(ruleKey);
     }
 
-    public static void repair(String pathToFile,int rulekey) throws Exception {
+    public static void repair(String pathToFile, String projectKey, int rulekey) throws Exception {
 
         //Not Sniper  Mode
         Launcher launcher = new Launcher();
@@ -50,13 +50,13 @@ public class TestHelp
         launcher.getEnvironment().setTabulationSize(4);
         launcher.getEnvironment().useTabulations(true);
 
-        String projectKey="se.kth:sonatest";
 
         Class<?> processor = getProcessor(rulekey);
         Constructor<?> cons = processor.getConstructor(String.class);
         Object object = cons.newInstance(projectKey);
         launcher.addProcessor( (Processor)object);
         launcher.run();
+//        new SpoonModelTree(launcher.getFactory());
     }
 
     public static boolean checkBugs(String pathToFile,int rulekey) throws Exception {
@@ -116,3 +116,26 @@ public class TestHelp
         return checkBugs(pathToFile,rulekey);
     }
 }
+/*
+
+        /*
+        //Sniper Mode . Add pavel's refDJPP branch of spoon as library to use this.
+        Launcher launcher = new Launcher();
+        launcher.addInputResource("/home/ashutosh/eclipse-workspace/spoon1/source/act/");
+        launcher.getEnvironment().setCommentEnabled(true);
+        launcher.getEnvironment().setAutoImports(true);
+        launcher.buildModel();
+        Factory f = launcher.getFactory();
+        new SourceFragmentsTreeCreatingChangeCollector().attachTo(f.getEnvironment());
+
+        CtClass<?> ctClass = launcher.getFactory().Class().get(JDTTreeBuilderHelper.class);
+//        SniperHelper.process(ctClass);
+
+        ChangesAwareDefaultJavaPrettyPrinter printer = new ChangesAwareDefaultJavaPrettyPrinter(f.getEnvironment());
+        CompilationUnit cu = f.CompilationUnit().getOrCreate(ctClass);
+        List<CtType<?>> toBePrinted = new ArrayList<>();
+        toBePrinted.add(ctClass);
+        printer.calculate(cu, toBePrinted);
+        */
+
+ */

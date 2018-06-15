@@ -19,8 +19,6 @@ If you want to skip tests(they are computationally expensive), run :
  
 `mvn -U clean package -Dmaven.test.skip=true`
 
-`cd target`
-
 `java -jar target/sonarqube-repair-0.1-SNAPSHOT-jar-with-dependencies.jar arg1 arg2`
 
 If this command is run from somewhere other than `sonarqube-repair/` , you need to create
