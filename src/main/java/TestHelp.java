@@ -16,7 +16,6 @@ public class TestHelp
 
     public static void initmap()
     {
-        if(rule==null)
         rule = new HashMap<>();
         rule.putIfAbsent(1854,DeadStoreProcessor.class);
         rule.putIfAbsent(1948,SerializableFieldProcessor.class);
@@ -75,7 +74,7 @@ public class TestHelp
         sleep(1000*10);
 
         JSONArray array = ParseAPI.parse(rulekey,"","se.kth:sonarepaired");
-        
+
         copy(cdtest+pathToFile,cdrep+pathToFile);//copy file back from sonatest to sonarepair
 
 //        Execute.command("rm -rf ./spooned/");

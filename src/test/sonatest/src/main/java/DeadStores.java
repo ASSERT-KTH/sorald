@@ -7,5 +7,6 @@ public class DeadStores
         y=x*x*y;
         System.out.println(y);
         x=5;
+        y=10;
     }
 }
