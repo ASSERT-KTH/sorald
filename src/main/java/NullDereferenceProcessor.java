@@ -144,7 +144,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
             CtCodeSnippetStatement snipcat = getFactory().createCodeSnippetStatement();
             final String cat = "catch(Exception e)\n" +
                     "{\n" +
-                    "    e.printStackTrace();\n" +
+                    "    throw new IllegalSt;\n" +
                     "}";
             snipcat.setValue(cat);
             ctTry.insertAfter(snipcat);
