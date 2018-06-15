@@ -29,6 +29,7 @@ class ProcessorTest {
     {
         String pathToFile = "src/main/java/NullDereferences.java";
         TestHelp.repair(pathToFile,2259);
+        assertFalse(TestHelp.hasSonarBug(pathToFile,2259));
     }
 
 }

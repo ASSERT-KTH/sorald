@@ -5,6 +5,7 @@ import spoon.processing.Processor;
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import static java.lang.System.exit;
 import static java.lang.Thread.sleep;
@@ -85,7 +86,16 @@ public class TestHelp
         }
         else
         {
-            return true;
+            Set<Bug> setOfBugs = Bug.createSetOfBugs(array);
+            for(Bug bug : setOfBugs)
+            {
+                String bugFileName = bug.getFileName();
+                if(bugFileName.equals(fileName))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 //        return (array.length()>0);
     }
