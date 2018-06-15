@@ -9,8 +9,6 @@ import java.util.Map;
 
 public class Main {
 
-
-
     /**
      *
      * @param args string array. Give either 0, 1 or 2 arguments. first argument is sonarqube rule-number which you can get from https://rules.sonarsource.com/java/type/Bug
@@ -55,7 +53,7 @@ public class Main {
         {
             processor=TestHelp.getProcessor(2259);//default DeadstoreProcessor
 //            projectKey="fr.inria.gforge.spoon:spoon-core";
-            projectKey="se.kth:sonatest";
+            projectKey="fr.inria.gforge.spoon:spoon-core";
             System.out.println("No arguments given. Using "+ processor.getName()+ " by default on spoon-core");
         }
         Constructor<?> cons = processor.getConstructor(String.class);
