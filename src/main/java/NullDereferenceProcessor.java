@@ -44,6 +44,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
             CtExpression expr=element.getTarget();
             long line = (long) element.getPosition().getLine();
             String targetName=expr.toString();
+
             String split1[]=element.getPosition().getFile().toString().split("/");
             String fileOfElement=split1[split1.length-1];
             if(!SetOfLineNumbers.contains(line)||!SetOfFileNames.contains(fileOfElement))
@@ -55,6 +56,8 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+
             for(Bug bug:SetOfBugs)
             {
                 if(bug.getLineNumber()!=line||!bug.getFileName().equals(fileOfElement))
@@ -63,10 +66,16 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                 }
                 String bugName=bug.getName();
                 String[] split = bugName.split("\"");
+
                 for(String bugword:split)
                 {
+                    if(bugword.indexOf('(')!=-1)
+                    {
+                        bugword = bugword.substring(0, bugword.indexOf('('));
+                    }
                     if(targetName.contains(bugword))
                     {
+
                         try {
                             SourcePosition sp = expr.getPosition();
                             if (!sp.isValidPosition()) {
@@ -106,7 +115,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
         }
     @Override
     public void process(CtInvocation<?> element) {
-        System.out.println(element +"  dfgdfg"+element.getPosition());
         CtExpression target=element.getTarget();
         CtCodeSnippetStatement snippet = getFactory().Core().createCodeSnippetStatement();
         final String value = String.format("if (%s == null) "
@@ -118,9 +126,8 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
         if (target instanceof CtVariableRead) {
             snippet.addComment(comment);
             CtStatement st= element.getParent(CtStatement.class);
-//            System.out.println(st.toString());
             if(st!=null) {
-//                st.insertBefore(snippet);
+                st.insertBefore(snippet);
             }
         }
         else if(target instanceof CtInvocation)

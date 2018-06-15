@@ -53,8 +53,9 @@ public class Main {
         }
         else //no arguments given
         {
-            processor=TestHelp.getProcessor(1948);//default DeadstoreProcessor
-            projectKey="fr.inria.gforge.spoon:spoon-core";
+            processor=TestHelp.getProcessor(2259);//default DeadstoreProcessor
+//            projectKey="fr.inria.gforge.spoon:spoon-core";
+            projectKey="se.kth:sonatest";
             System.out.println("No arguments given. Using "+ processor.getName()+ " by default on spoon-core");
         }
         Constructor<?> cons = processor.getConstructor(String.class);

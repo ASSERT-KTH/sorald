@@ -92,6 +92,7 @@ public class TestHelp
                 String bugFileName = bug.getFileName();
                 if(bugFileName.equals(fileName))
                 {
+                    System.out.println(bug.getJsonObject().toString());
                     return true;
                 }
             }
