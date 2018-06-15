@@ -19,7 +19,7 @@ public class ParseAPI {
         String ruleparameter="&rules=squid:S"+ Integer.toString(rulekey);
 //        String url="https://sonarqube.ow2.org/api/issues/search?resolved=false"+ruleparameter+"&componentKeys=fr.inria.gforge.spoon:spoon-core";
         String url="";
-        if(projectKey.equals("se.kth:sonatest"))
+        if(projectKey.equals("se.kth:sonatest")||projectKey.equals("se.kth:sonarepaired"))
         {
             url = "https://sonarcloud.io/api/issues/search?resolved=false&ps=500" + ruleparameter + "&componentKeys=" + projectKey;
         }

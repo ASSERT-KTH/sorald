@@ -18,7 +18,6 @@ public class Main {
      */
     public static void main(String[] args) throws Exception
     {
-        TestHelp.initmap();
         System.out.println();
         //Not Sniper  Mode
 		Launcher launcher = new Launcher();

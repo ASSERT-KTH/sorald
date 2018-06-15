@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static java.lang.System.exit;
+import static java.lang.Thread.sleep;
 
 public class TestHelp
 {
@@ -39,7 +40,6 @@ public class TestHelp
 
     public static void repair(String pathToFile,int rulekey) throws Exception {
 
-        initmap();
         //Not Sniper  Mode
         Launcher launcher = new Launcher();
 
@@ -59,28 +59,50 @@ public class TestHelp
         launcher.run();
     }
 
-    public static boolean runAnalysis(String pathToFile,int rulekey) throws Exception {
-        String sonarAnalysis = "mvn sonar:sonar   -Dsonar.organization=ashutosh1598-github   -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=2b8cc80c8434c1ea108801afa994a6a91d4facd7";
+    public static boolean checkBugs(String pathToFile,int rulekey) throws Exception {
         String cdrep = "./src/test/sonarepaired/";
         String cdtest = "./src/test/sonatest/";
 
         String arr[]=pathToFile.split("/");
         String fileName=arr[arr.length-1];
 
-        Execute.command("cp "+"./spooned/" + fileName +" "+cdrep+pathToFile,".");
+        copy("./spooned/"+fileName,cdrep+pathToFile);
+
         Execute.command("mvn clean package",cdrep,true);
-        Execute.command(sonarAnalysis,cdrep,true);
+
+        doSonarAnalysis(cdrep);
+
+        sleep(1000*10);
 
         JSONArray array = ParseAPI.parse(rulekey,"","se.kth:sonarepaired");
+        
+        copy(cdtest+pathToFile,cdrep+pathToFile);//copy file back from sonatest to sonarepair
 
-        Execute.command("cp "+cdtest+pathToFile+" "+cdrep+pathToFile);//copy file back from sonatest to sonarepair
-        Execute.command("rm -rf ./spooned/");
+//        Execute.command("rm -rf ./spooned/");
 
+        if(array.length()==0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+//        return (array.length()>0);
+    }
 
-        return (array.length()>0);
+    public static void copy(String from,String to)
+    {
+        Execute.command("cp " + from + " " + to);
+    }
+
+    public static void doSonarAnalysis(String dir)
+    {
+        String sonarAnalysis = "mvn sonar:sonar   -Dsonar.organization=ashutosh1598-github   -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=2b8cc80c8434c1ea108801afa994a6a91d4facd7";
+        Execute.command(sonarAnalysis,dir,true);
     }
 
     public static boolean hasSonarBug(String pathToFile,int rulekey) throws Exception {
-        return runAnalysis(pathToFile,rulekey);
+        return checkBugs(pathToFile,rulekey);
     }
 }
