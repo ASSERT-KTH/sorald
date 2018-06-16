@@ -68,7 +68,7 @@ public class TestHelp {
 
         doSonarAnalysis(cdrep);
 
-        sleep(1000 * 10);
+        sleep((long) 1000 * 10);
 
         JSONArray array = ParseAPI.parse(rulekey, "", "se.kth:sonarepaired");
 
@@ -97,7 +97,7 @@ public class TestHelp {
     }
 
     public static void doSonarAnalysis(String dir) {
-        String sonarAnalysis = "mvn sonar:sonar   -Dsonar.organization=ashutosh1598-github   -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=2b8cc80c8434c1ea108801afa994a6a91d4facd7";
+        String sonarAnalysis = "mvn sonar:sonar -Dsonar.organization=kimsun1598-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=95b00d7c27acc6500c2641efe2b497442368d037";
         Execute.command(sonarAnalysis, dir, true);
     }
 

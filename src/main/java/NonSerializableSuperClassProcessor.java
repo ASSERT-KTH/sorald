@@ -39,10 +39,6 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
         {
             return false;
         }
-        if(element==null)
-        {
-            return false;
-        }
         long line =-1;
         String targetName="",fileOfElement="";
 
