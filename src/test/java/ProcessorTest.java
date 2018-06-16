@@ -22,16 +22,18 @@ class ProcessorTest {
     @Test
     void DeadStore()throws Exception
     {
+        String cdtest = "./src/test/sonatest/";
         String pathToFile = "src/main/java/DeadStores.java";
-        TestHelp.repair(pathToFile,projectKey,1854);
+        TestHelp.repair(cdtest+pathToFile,projectKey,1854);
         assertFalse(TestHelp.hasSonarBug(pathToFile,1854));
     }
 
     @Test
     void NullDereference()throws Exception
     {
+        String cdtest = "./src/test/sonatest/";
         String pathToFile = "src/main/java/NullDereferences.java";
-        TestHelp.repair(pathToFile,projectKey,2259);
+        TestHelp.repair(cdtest+pathToFile,projectKey,2259);
         assertFalse(TestHelp.hasSonarBug(pathToFile,2259));
     }
 

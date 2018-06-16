@@ -39,7 +39,7 @@ public class TestHelp {
         //Not Sniper  Mode
         Launcher launcher = new Launcher();
 
-        launcher.addInputResource("./src/test/sonatest/" + pathToFile);
+        launcher.addInputResource(pathToFile);
 
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
@@ -74,7 +74,7 @@ public class TestHelp {
 
         copy(cdtest + pathToFile, cdrep + pathToFile);//copy file back from sonatest to sonarepair
 
-//        Execute.command("rm -rf ./spooned/");
+        Execute.command("rm -rf ./spooned/");
 
         if (array.length() == 0) {
             return false;
@@ -89,7 +89,6 @@ public class TestHelp {
             }
             return false;
         }
-//        return (array.length()>0);
     }
 
     public static void copy(String from, String to) {

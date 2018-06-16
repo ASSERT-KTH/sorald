@@ -40,7 +40,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
             {
                 return false;
             }
-
             CtExpression expr=element.getTarget();
             long line = (long) element.getPosition().getLine();
             String targetName=expr.toString();
@@ -52,12 +51,10 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                 return false;
             }
             try {
-                thisBug = new Bug();
+                thisBug = new    Bug();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
             for(Bug bug:SetOfBugs)
             {
                 if(bug.getLineNumber()!=line||!bug.getFileName().equals(fileOfElement))
@@ -66,7 +63,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                 }
                 String bugName=bug.getName();
                 String[] split = bugName.split("\"");
-
                 for(String bugword:split)
                 {
                     if(bugword.indexOf('(')!=-1)
@@ -75,7 +71,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                     }
                     if(targetName.contains(bugword))
                     {
-
                         try {
                             SourcePosition sp = expr.getPosition();
                             if (!sp.isValidPosition()) {
@@ -94,6 +89,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                                 }
 
                             } else if(element.getTarget() instanceof CtInvocation) {
+
                                 CtInvocation target1 = (CtInvocation) element.getTarget();
                                 if(target1.getExecutable().getSimpleName().equals(bugword)) {
                                     if (abs(exprcolumn - bugcolumn) <= 1) {
