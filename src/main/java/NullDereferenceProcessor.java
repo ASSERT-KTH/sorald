@@ -140,6 +140,5 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
             snipcat.setValue(cat);
             ctTry.insertAfter(snipcat);
         }
-        System.out.println("Bug\n");
     }
 }
