@@ -46,7 +46,6 @@ public class TestHelp {
         launcher.getEnvironment().setTabulationSize(4);
         launcher.getEnvironment().useTabulations(true);
 
-
         Class<?> processor = getProcessor(rulekey);
         Constructor<?> cons = processor.getConstructor(String.class);
         Object object = cons.newInstance(projectKey);

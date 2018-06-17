@@ -32,7 +32,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
         }
     }
 
-
         @Override
         public boolean isToBeProcessed(CtInvocation<?> element)
         {
@@ -43,7 +42,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
             CtExpression expr=element.getTarget();
             long line = (long) element.getPosition().getLine();
             String targetName=expr.toString();
-
             String split1[]=element.getPosition().getFile().toString().split("/");
             String fileOfElement=split1[split1.length-1];
             if(!SetOfLineNumbers.contains(line)||!SetOfFileNames.contains(fileOfElement))
@@ -129,9 +127,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
         else if(target instanceof CtInvocation)
         {
             CtTry ctTry = getFactory().createTry();
-//            CtBlock ctBlock = element.getParent(CtBlock.class).clone();
-//            ctTry.setBody(ctBlock);
-//            CtElement elem = (CtElement) ctTry;
             CtBlock bb = getFactory().createCtBlock(ctTry);
             CtBlock ctBlock1 = element.getParent(CtBlock.class);
             ctBlock1.replace(bb);

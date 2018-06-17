@@ -13,7 +13,6 @@ class ProcessorTest {
     {
         String cdrep = "./src/test/sonarepaired/";
         String cdtest = "./src/test/sonatest/";
-
         TestHelp.copy(cdtest+"src",cdrep+"src");
         TestHelp.doSonarAnalysis(cdrep);
         TestHelp.doSonarAnalysis(cdtest);

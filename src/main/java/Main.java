@@ -10,7 +10,7 @@ public class Main {
         System.out.println();
 
         String projectKey="fr.inria.gforge.spoon:spoon-core";
-        int rulenumber = 2259;//default NullDereference
+        int rulenumber = 2095;//default NullDereference
 
         if(args.length>0)
         {
@@ -40,3 +40,11 @@ public class Main {
         System.out.println("done");
 	}
 }
+/*
+        rule.putIfAbsent(1854, DeadStoreProcessor.class);
+        rule.putIfAbsent(1948, SerializableFieldProcessor.class);
+        rule.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
+        rule.putIfAbsent(2095, ResourceCloseProcessor.class);
+        rule.putIfAbsent(2259, NullDereferenceProcessor.class);
+
+ */

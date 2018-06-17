@@ -48,7 +48,6 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
         fileOfElement=split1[split1.length-1];
 
 
-
         if(!SetOfLineNumbers.contains(line)||!SetOfFileNames.contains(fileOfElement))
         {
             return false;
@@ -99,18 +98,26 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
 
         CtElement parent = element.getParent(e -> e instanceof CtAssignment || e instanceof CtLocalVariable);
 
-        if(parent instanceof CtLocalVariable)
-        {
+        System.out.println(element + " "+element.getPosition());
+        boolean isInTry = parent.getParent(CtBlock.class).getParent() instanceof CtTry;
+        if(parent instanceof CtLocalVariable) {
             CtLocalVariable variable = ((CtLocalVariable) parent).clone();
 
-            CtBlock block=parent.getParent(CtBlock.class);
+            CtBlock block = parent.getParent(CtBlock.class);
             parent.delete();
 
             CtTryWithResource tryWithResource = getFactory().createTryWithResource();
             tryWithResource.addResource(variable);
             tryWithResource.addComment(comment);
             CtBlock bb = getFactory().createCtBlock(tryWithResource);
-            block.replace(bb);
+            if (isInTry)
+            {
+                block.getParent().replace(bb);
+            }
+            else
+            {
+                block.replace(bb);
+            }
             tryWithResource.setBody(block);
         }
         else if(parent instanceof CtAssignment)
@@ -137,7 +144,14 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
                     tryWithResource.addComment(comment);
 
                     CtBlock bb= getFactory().createCtBlock(tryWithResource);
-                    block.replace(bb);
+                    if(isInTry)
+                    {
+                        block.getParent().replace(tryWithResource);
+                    }
+                    else
+                    {
+                        block.replace(bb);
+                    }
                     tryWithResource.setBody(block);
                 }
             }
