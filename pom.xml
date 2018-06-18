@@ -15,12 +15,22 @@
             <artifactId>json</artifactId>
             <version>20160810</version>
         </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.2.0</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.group.project</groupId>
+            <artifactId>Project</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/spoon-core-6.3.0-SNAPSHOT-jar-with-dependencies.jar</systemPath>
+        </dependency>
+
     </dependencies>
 
 
