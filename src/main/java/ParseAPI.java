@@ -18,13 +18,13 @@ public class ParseAPI {
     {
         String ruleparameter="&rules=squid:S"+ Integer.toString(rulekey);
         String url="";
-        if(projectKey.equals("se.kth:sonatest")||projectKey.equals("se.kth:sonarepaired")||true)
+        if(projectKey.equals("fr.inria.gforge.spoon:spoon-core"))
         {
-            url = "https://sonarcloud.io/api/issues/search?resolved=false&ps=500" + ruleparameter + "&componentKeys=" + projectKey;
+            url = "https://sonarqube.ow2.org/api/issues/search?resolved=false&ps=500" + ruleparameter + "&componentKeys=" + projectKey;
         }
         else
         {
-            url = "https://sonarqube.ow2.org/api/issues/search?resolved=false&ps=500" + ruleparameter + "&componentKeys=" + projectKey;
+            url = "https://sonarcloud.io/api/issues/search?resolved=false&ps=500" + ruleparameter + "&componentKeys=" + projectKey;
         }
         if(fname.length()>0)
         {
