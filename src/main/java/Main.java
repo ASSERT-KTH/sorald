@@ -13,7 +13,7 @@ public class Main {
     {
 
         String projectKey="fr.inria.gforge.spoon:spoon-core";
-        int rulenumber = 2095;//default NullDereference
+        int rulenumber = 1948;//default NullDereference
 
         if(args.length>0)
         {
