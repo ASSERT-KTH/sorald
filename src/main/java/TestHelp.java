@@ -1,6 +1,8 @@
 import org.json.JSONArray;
 import spoon.Launcher;
+import spoon.experimental.modelobs.SourceFragmentsTreeCreatingChangeCollector;
 import spoon.processing.Processor;
+import spoon.reflect.factory.Factory;
 
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
@@ -45,6 +47,10 @@ public class TestHelp {
         launcher.getEnvironment().setAutoImports(true);
         launcher.getEnvironment().setTabulationSize(4);
         launcher.getEnvironment().useTabulations(true);
+        
+        Factory factory = launcher.getFactory();
+        
+		new SourceFragmentsTreeCreatingChangeCollector().attachTo(factory.getEnvironment());
 
         Class<?> processor = getProcessor(rulekey);
         Constructor<?> cons = processor.getConstructor(String.class);
