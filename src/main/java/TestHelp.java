@@ -1,8 +1,15 @@
 import org.json.JSONArray;
 import spoon.Launcher;
+import spoon.experimental.modelobs.SourceFragmentsTreeCreatingChangeCollector;
 import spoon.processing.Processor;
+
+import spoon.reflect.factory.Factory;
+import spoon.reflect.visitor.PrettyPrinter;
+import spoon.reflect.visitor.printer.change.ChangesAwareDefaultJavaPrettyPrinter;
+
 import spoon.experimental.modelobs.SourceFragmentsTreeCreatingChangeCollector;
 import spoon.reflect.factory.Factory;
+
 
 
 import java.lang.reflect.Constructor;
@@ -40,7 +47,12 @@ public class TestHelp {
     public static void repair(String pathToFile, String projectKey, int rulekey) throws Exception {
 
         //Not Sniper  Mode
-        Launcher launcher = new Launcher();
+        Launcher launcher = new Launcher() {
+        	@Override
+        	public PrettyPrinter createPrettyPrinter() {
+        		return new ChangesAwareDefaultJavaPrettyPrinter(getEnvironment());
+        	}
+        };
 
         launcher.addInputResource(pathToFile);
 
@@ -53,6 +65,7 @@ public class TestHelp {
         Factory factory = launcher.getFactory();
 
         new SourceFragmentsTreeCreatingChangeCollector().attachTo(factory.getEnvironment());
+
 
         Class<?> processor = getProcessor(rulekey);
         Constructor<?> cons = processor.getConstructor(String.class);
