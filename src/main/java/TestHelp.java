@@ -8,7 +8,8 @@ import spoon.processing.Processor;
 import spoon.reflect.factory.Factory;
 import spoon.experimental.modelobs.SourceFragmentsTreeCreatingChangeCollector;
 import spoon.reflect.factory.Factory;
-
+import spoon.reflect.visitor.PrettyPrinter;
+import spoon.reflect.visitor.printer.change.ChangesAwareDefaultJavaPrettyPrinter;
 
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
@@ -60,7 +61,12 @@ public class TestHelp {
     public static void repair(String pathToFile, String projectKey, int rulekey) throws Exception {
 
         //Not Sniper  Mode
-        Launcher launcher = new Launcher();
+        Launcher launcher = new Launcher() {
+        	@Override
+        	public PrettyPrinter createPrettyPrinter() {
+        		return new ChangesAwareDefaultJavaPrettyPrinter(getEnvironment());
+        	}
+        };
 
         launcher.addInputResource(pathToFile);
 
