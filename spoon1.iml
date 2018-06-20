@@ -31,5 +31,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="java-checks-5.5.0-SNAPSHOT" level="project" />
   </component>
 </module>

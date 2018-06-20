@@ -1,4 +1,5 @@
 import org.json.JSONArray;
+import org.sonar.java.checks.AbsOnNegativeCheck;
 import spoon.Launcher;
 import spoon.experimental.modelobs.SourceFragmentsTreeCreatingChangeCollector;
 import spoon.processing.Processor;
@@ -50,27 +51,22 @@ public class TestHelp {
         Launcher launcher = new Launcher() {
         	@Override
         	public PrettyPrinter createPrettyPrinter() {
+                new SourceFragmentsTreeCreatingChangeCollector().attachTo(factory.getEnvironment());
         		return new ChangesAwareDefaultJavaPrettyPrinter(getEnvironment());
         	}
         };
 
         launcher.addInputResource(pathToFile);
 
-
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
-        launcher.getEnvironment().useTabulations(true);
-        launcher.getEnvironment().setTabulationSize(4);
-
-        Factory factory = launcher.getFactory();
-
-        new SourceFragmentsTreeCreatingChangeCollector().attachTo(factory.getEnvironment());
-
+//        launcher.getEnvironment().useTabulations(true);
+//        launcher.getEnvironment().setTabulationSize(4);
 
         Class<?> processor = getProcessor(rulekey);
         Constructor<?> cons = processor.getConstructor(String.class);
         Object object = cons.newInstance(projectKey);
-        launcher.addProcessor((Processor) object);
+//        launcher.addProcessor((Processor) object);
         launcher.run();
 //        new SpoonModelTree(launcher.getFactory());
     }

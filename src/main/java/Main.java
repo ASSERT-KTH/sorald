@@ -1,3 +1,4 @@
+
 public class Main {
 
     /**
@@ -36,7 +37,6 @@ public class Main {
             System.out.println("No arguments given. Using "+ TestHelp.getProcessor(rulenumber).getName()+ " by default on "+projectKey);
         }
         TestHelp.repair("./source/act/",projectKey,rulenumber);
-
         System.out.println("done");
 	}
 }
