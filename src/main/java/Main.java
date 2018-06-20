@@ -2,6 +2,7 @@ import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.java.se.checks.NullDereferenceCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
+
 public class Main {
 
     /**
@@ -39,7 +40,6 @@ public class Main {
             System.out.println("No arguments given. Using "+ TestHelp.getProcessor(rulenumber).getName()+ " by default on "+projectKey);
         }
         TestHelp.repair("./source/act/",projectKey,rulenumber);
-
         System.out.println("done");
 	}
 }
