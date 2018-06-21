@@ -1,15 +1,11 @@
 import org.json.JSONArray;
-import org.sonar.java.checks.AbsOnNegativeCheck;
 import spoon.Launcher;
 import spoon.experimental.modelobs.SourceFragmentsTreeCreatingChangeCollector;
 import spoon.processing.Processor;
 
-import spoon.reflect.factory.Factory;
 import spoon.reflect.visitor.PrettyPrinter;
 import spoon.reflect.visitor.printer.change.ChangesAwareDefaultJavaPrettyPrinter;
 
-import spoon.experimental.modelobs.SourceFragmentsTreeCreatingChangeCollector;
-import spoon.reflect.factory.Factory;
 
 
 
@@ -51,8 +47,12 @@ public class TestHelp {
         Launcher launcher = new Launcher() {
         	@Override
         	public PrettyPrinter createPrettyPrinter() {
-                new SourceFragmentsTreeCreatingChangeCollector().attachTo(factory.getEnvironment());
         		return new ChangesAwareDefaultJavaPrettyPrinter(getEnvironment());
+        	}
+        	@Override
+        	public void process() {
+                new SourceFragmentsTreeCreatingChangeCollector().attachTo(factory.getEnvironment());
+        		super.process();
         	}
         };
 
