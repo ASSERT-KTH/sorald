@@ -1,4 +1,5 @@
 import org.json.JSONArray;
+import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import spoon.Launcher;
 import spoon.processing.Processor;
 

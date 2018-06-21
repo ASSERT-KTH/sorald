@@ -1,3 +1,6 @@
+import org.sonar.java.checks.NullDereferenceInConditionalCheck;
+import org.sonar.java.checks.verifier.JavaCheckVerifier;
+//import org.sonar.plugins.java.api.JavaFileScanner;
 public class Main {
 
     /**
@@ -7,7 +10,22 @@ public class Main {
      */
     public static void main(String[] args) throws Exception
     {
-        System.out.println();
+
+        String cdrep = "./src/test/sonarepaired/";
+        String cdtest = "./src/test/sonatest/";
+//        String pathToFile = "src/main/java/NullDereferenceInConditionalCheck.java";
+        String pathToFile = "src/main/java/DeadStores.java";
+//        JavaCheckVerifier.verify(cdtest + pathToFile, new NullDereferenceInConditionalCheck());
+        try {
+            JavaCheckVerifier.verify(cdtest + pathToFile, new NullDereferenceInConditionalCheck());
+        }
+        catch(Exception ignored)
+        {
+
+        }
+
+        System.out.println("hurray");
+        if(true)return;
 
         String projectKey="fr.inria.gforge.spoon:spoon-core";
         int rulenumber = 2095;//default NullDereference
