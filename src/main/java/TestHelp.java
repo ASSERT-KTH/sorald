@@ -1,19 +1,20 @@
-import org.json.JSONArray;
+import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.java.se.checks.NullDereferenceCheck;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import spoon.Launcher;
 import spoon.processing.Processor;
 
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import static java.lang.System.exit;
-import static java.lang.Thread.sleep;
 
 public class TestHelp {
 
     public static Map<Integer, Class<? extends Processor>> rule;
+    public static Map<Integer, Class<? extends JavaFileScanner>> rulecheck;
 
     public static void initmap() {
         rule = new HashMap<>();
@@ -22,6 +23,12 @@ public class TestHelp {
         rule.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
         rule.putIfAbsent(2095, ResourceCloseProcessor.class);
         rule.putIfAbsent(2259, NullDereferenceProcessor.class);
+        rulecheck = new HashMap<>();
+        rulecheck.putIfAbsent(1854, DeadStoreCheck.class);
+//        rulecheck.putIfAbsent(1948, SerializableFieldProcessor.class);
+//        rulecheck.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
+//        rulecheck.putIfAbsent(2095, ResourceCloseProcessor.class);
+        rulecheck.putIfAbsent(2259, NullDereferenceCheck.class);
     }
 
     public static Class<?> getProcessor(int ruleKey) {
@@ -33,6 +40,16 @@ public class TestHelp {
             exit(0);
         }
         return rule.get(ruleKey);
+    }
+    public static Class<?> getChecker(int ruleKey) {
+        if (rulecheck == null) {
+            initmap();
+        }
+        if (!rulecheck.containsKey(ruleKey)) {
+            System.out.println("Sorry. Checker not available for rule " + ruleKey);
+            exit(0);
+        }
+        return rulecheck.get(ruleKey);
     }
 
     public static void repair(String pathToFile, String projectKey, int rulekey) throws Exception {
@@ -56,39 +73,24 @@ public class TestHelp {
     }
 
     public static boolean checkBugs(String pathToFile, int rulekey) throws Exception {
-        String cdrep = "./src/test/sonarepaired/";
-        String cdtest = "./src/test/sonatest/";
 
         String arr[] = pathToFile.split("/");
         String fileName = arr[arr.length - 1];
 
-        copy("./spooned/" + fileName, cdrep + pathToFile);
+        Class<?> checker = getChecker(rulekey);
+        Constructor<?> cons = checker.getConstructor();
+        Object object = cons.newInstance();
 
-        Execute.command("mvn clean package", cdrep, true);
 
-        doSonarAnalysis(cdrep);
-
-        sleep((long) 1000 * 10);
-
-        JSONArray array = ParseAPI.parse(rulekey, "", "se.kth:sonarepaired");
-
-        copy(cdtest + pathToFile, cdrep + pathToFile);//copy file back from sonatest to sonarepair
-
-        Execute.command("rm -rf ./spooned/");
-
-        if (array.length() == 0) {
-            return false;
-        } else {
-            Set<Bug> setOfBugs = Bug.createSetOfBugs(array);
-            for (Bug bug : setOfBugs) {
-                String bugFileName = bug.getFileName();
-                if (bugFileName.equals(fileName)) {
-                    System.out.println(bug.getJsonObject().toString());
-                    return true;
-                }
-            }
+        try
+        {
+            JavaCheckVerifier.verify(pathToFile, (JavaFileScanner) object);
+        }
+        catch(Exception ignored)
+        {
             return false;
         }
+        return true;
     }
 
     public static void copy(String from, String to) {
