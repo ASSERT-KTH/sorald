@@ -6,9 +6,9 @@ public class NullDereferences
     public void Ndrf()
     {
         String str=null,a=null,b=null;
-        if(a == null && (b != null || b.length()>0)){} // Noncompliant {{Either reverse the equality operator in the "b" null test, or reverse the logical operator that follows it.}}
-        if((str) == null && str.length() == 0){} // Noncompliant
-        if((str == null) && str.length() == 0){} // Noncompliant
+        if(a == null && (b != null || b.length()>0)){} // Noncompliant
+        if((str) == null && str.length() == 0){} 
+        if((str == null) && str.length() == 0){}
     }
     private String extractVariable(String value) {
         if (value != null && value.startsWith("$")) {
@@ -19,19 +19,19 @@ public class NullDereferences
     int getSourceVersion() {
         String javaVersion = getProperty("java.version");
         if (javaVersion != null) {
-            return Integer.parseInt(extractVariable(javaVersion).substring(2));
+            return Integer.parseInt(extractVariable(javaVersion).substring(2));// Noncompliant
         }
         javaVersion = getProperty("java.src.version");
         if (javaVersion != null) {
-            return Integer.parseInt(extractVariable(javaVersion).substring(2));
+            return Integer.parseInt(extractVariable(javaVersion).substring(2));// Noncompliant
         }
         javaVersion = getProperty("maven.compiler.source");
         if (javaVersion != null) {
-            return Integer.parseInt(extractVariable(javaVersion).substring(2));
+            return Integer.parseInt(extractVariable(javaVersion).substring(2));// Noncompliant
         }
         javaVersion = getProperty("maven.compile.source");
         if (javaVersion != null) {
-            return Integer.parseInt(extractVariable(javaVersion).substring(2));
+            return Integer.parseInt(extractVariable(javaVersion).substring(2));// Noncompliant
         }
         // return the current compliance level of spoon
         int x=5;

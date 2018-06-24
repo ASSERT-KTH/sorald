@@ -30,13 +30,13 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
+<!--
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.2.0</version>
-            <!--<scope>test</scope>-->
         </dependency>
+        -->
 
 
         <dependency>
@@ -46,16 +46,9 @@
             <scope>system</scope>
             <systemPath>${basedir}/lib/java-checks-testkit-5.5.0-SNAPSHOT.jar</systemPath>
         </dependency>
-<!--
-        <dependency>
-            <groupId>org.group.project</groupId>
-            <artifactId>Project</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/java-checks-5.5.0-SNAPSHOT.jar</systemPath>
-        </dependency>
--->
-         <!--https://mvnrepository.com/artifact/org.sonarsource.java/sonar-java-plugin -->
+
+
+        <!--https://mvnrepository.com/artifact/org.sonarsource.java/sonar-java-plugin -->
 
         <dependency>
             <groupId>org.sonarsource.java</groupId>

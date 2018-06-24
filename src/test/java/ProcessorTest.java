@@ -1,45 +1,38 @@
-import org.junit.jupiter.api.Test;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.sonar.java.checks.DeadStoreCheck;
+import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.java.se.checks.NullDereferenceCheck;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
 
-
-class ProcessorTest {
+public class ProcessorTest {
 
     private static String projectKey = "se.kth:sonatest";
-/*
-    @BeforeAll
-    static void updateSonatestAnalysis()
-    {
-        String cdrep = "./src/test/sonarepaired/";
-        String cdtest = "./src/test/sonatest/";
-        TestHelp.copy(cdtest+"src",cdrep+"src");
-        TestHelp.doSonarAnalysis(cdrep);
-        TestHelp.doSonarAnalysis(cdtest);
-    }
-*/
-    @Test
-    void DeadStore()throws Exception
-    {
-        String cdtest = "./src/test/sonatest/";
-        String pathToFile = cdtest + "src/main/java/DeadStores.java";
-        String pathToRepairedFile = "./spooned/DeadStores.java";
+    private static String cdtest ="./src/test/sonatest/";
+    private static String pathToFile = cdtest + "src/main/java/";
 
-        assertTrue(TestHelp.hasSonarBug(pathToFile,1854));
+    @Test
+    public void DeadStore()throws Exception
+    {
+        String fileName = "DeadStores.java";
+        String pathToRepairedFile = "./spooned/" + fileName;
+
+        JavaCheckVerifier.verify(pathToFile + fileName, new DeadStoreCheck());
         TestHelp.repair(pathToFile,projectKey,1854);
-        assertFalse(TestHelp.hasSonarBug(pathToRepairedFile,1854));
+        JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new DeadStoreCheck());
     }
 
     @Test
-    void NullDereference()throws Exception
+    public void NullDereference()throws Exception
     {
-        String cdtest = "./src/test/sonatest/";
-        String pathToFile = cdtest + "src/main/java/NullDereferences.java";
-        String pathToRepairedFile = "./spooned/NullDereferences.java";
+        String fileName = "NullDereferences.java";
+        String pathToRepairedFile = "./spooned/" + fileName;
 
-        assertTrue(TestHelp.hasSonarBug(pathToFile,2259));
+        JavaCheckVerifier.verify(pathToFile + fileName,new NullDereferenceCheck());
         TestHelp.repair(pathToFile,projectKey,2259);
-        assertFalse(TestHelp.hasSonarBug(pathToFile,2259));
+        JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new NullDereferenceCheck());
     }
 
 }

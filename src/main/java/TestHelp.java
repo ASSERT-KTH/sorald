@@ -81,15 +81,7 @@ public class TestHelp {
         Constructor<?> cons = checker.getConstructor();
         Object object = cons.newInstance();
 
-
-        try
-        {
-            JavaCheckVerifier.verify(pathToFile, (JavaFileScanner) object);
-        }
-        catch(Exception ignored)
-        {
-            return false;
-        }
+        JavaCheckVerifier.verify(pathToFile, (JavaFileScanner) object);
         return true;
     }
 
