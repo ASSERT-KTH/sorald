@@ -78,7 +78,7 @@ public class TestHelp {
         };
 
         launcher.addInputResource(pathToFile);
-
+/*
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
         launcher.getEnvironment().useTabulations(true);

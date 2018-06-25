@@ -14,7 +14,7 @@ public class Main {
     {
 
         String projectKey="fr.inria.gforge.spoon:spoon-core";
-        int rulenumber = 1948;//default NullDereference
+        int rulenumber = 2259;
 
         if(args.length>0)
         {
@@ -24,7 +24,7 @@ public class Main {
             {
                 projectKey="fr.inria.gforge.spoon:spoon-core";
                 System.out.println("One argument given. Applying "+TestHelp.getProcessor(rulenumber).getName()+ " on "+projectKey);
-            }
+            
             else if(args.length==2)
             {
                 projectKey = args[1];
