@@ -1,3 +1,0 @@
-module simple_module_with_code {
-    exports fr.simplemodule.pack;
-}
