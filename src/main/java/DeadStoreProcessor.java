@@ -98,11 +98,11 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
     }
     @Override
     public void process(CtStatement element) {
+        System.out.println("BUG\n");
         CtCodeSnippetStatement snippet = getFactory().Core().createCodeSnippetStatement();
         final String value = String.format("//[Spoon inserted check], repairs sonarqube rule 1854:Dead stores should be removed,\n//useless assignment to %s removed",
                 var);
         snippet.setValue(value);
-        element.insertAfter(snippet);
         element.delete();
     }
 }

@@ -78,7 +78,7 @@ public class TestHelp {
         };
 
         launcher.addInputResource(pathToFile);
-/*
+
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
         launcher.getEnvironment().useTabulations(true);
@@ -91,7 +91,7 @@ public class TestHelp {
         Class<?> processor = getProcessor(rulekey);
         Constructor<?> cons = processor.getConstructor(String.class);
         Object object = cons.newInstance(projectKey);
-//        launcher.addProcessor((Processor) object);
+        launcher.addProcessor((Processor) object);
         launcher.run();
 //        new SpoonModelTree(launcher.getFactory());
     }
