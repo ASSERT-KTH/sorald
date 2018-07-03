@@ -1,46 +1,54 @@
 # sonarqube-repair
 
-This is the initial draft of the system to repair sonarqube bugs.
+sonarqube-repair is a system to repair sonarqube bugs.
 
-**List of Merged Pull Requests :**
+## Handled Sonarqube bugs
 
-1- https://github.com/INRIA/spoon/pull/2059
+### Null pointers should not be dereferenced ([Sonar Rule 2259](https://rules.sonarsource.com/c/RSPEC-2259)) -   
 
-2- https://github.com/INRIA/spoon/pull/2121
-
-**List of handled Sonarqube bugs:**
-
-1- Null pointers should not be dereferenced(Sonar Rule 2259) -   
 The repair is implemented as follows :
 
 Consider a statement like `x.functionCall();` where `x` is nullable. If `x` is
 a variable, then the repair adds an if-check to test if `x` is null.
 If `x` is itself the result of a function call, it is enclosed by a try-catch
-block. The repair does not yet handle array dereference like `arr[0]` where `arr`
+block. The repair does not handle array dereference like `arr[0]` where `arr`
 is nullable.
 
-2- Dead Stores should be removed(Sonar Rule 1854) -   
-A simple repair, it just deletes the useless assignments.
+Add link to class that implements this repair.
 
-3- Fields in a "Serializable" class should be serializable(Sonar rule 1948) -
-Currently the repair just adds the modifier transient to all non-serializable
-fields, but the plan is to give user the option if they want to go the class
+### Dead Stores should be removed (Sonar Rule 1854) -   
+
+The repair repair consists of deleting the useless assignment.
+
+Add link to class that implements this repair.
+
+### Fields in a "Serializable" class should be serializable (Sonar rule 1948) -
+
+The repair adds the modifier `transient` to all non-serializable
+fields. In the future, the plan is to give user the option if they want to go the class
 of that field and add `implements Serializable` to it.
 
-4- non-serializable super class of a "Serializable" class should have a
- no-argument constructor(Sonar Rule 2055). -    
- The repair adds a no-argument empty constructor to the superclass.
- 
-5- Resources should be closed(Sonar Rule 2095) -   
+Add link to class that implements this repair.
+
+Merged Pull Requests:
+
+* https://github.com/INRIA/spoon/pull/2059
+* https://github.com/INRIA/spoon/pull/2121
+
+
+### Non-serializable super class of a "Serializable" class should have a no-argument constructor(Sonar Rule 2055). -    
+
+The repair adds a no-argument empty constructor to the superclass.
+
+Add link to class that implements this repair.
+
+### Resources should be closed (Sonar Rule 2095) -   
 
 The repair encloses the parent block of resource intialization in a try-with resources.
 If it was already in a try block it replaces the try with try-with-resources instead 
 of creating a new one, so that useless nested try blocks are not created.
 
- 
-
-
-**Usage:**
+## Usage
 
 To use it, run:
 
@@ -48,23 +56,11 @@ To use it, run:
 
 `cd sonarqube-repair`
 
-Put the source files you want to repair
-in the directory "sonarqube-repair/source/act/"
-
-Then do :
-
 `mvn -U clean package`
 
-If you want to skip tests, run : 
- 
-`mvn -U clean package -Dmaven.test.skip=true`
+To start sonarqube-repair:
 
 `java -jar target/sonarqube-repair-0.1-SNAPSHOT-jar-with-dependencies.jar arg1 arg2`
-
-If this command is run from somewhere other than `sonarqube-repair/` , you need
- to create a directory `source/act/` in that location and put your source 
- files there.
-
 
 arg1 and arg2 are optional parameters.
 Give either 0, 1 or 2 arguments. first argument is sonarqube rule-number which you 
@@ -75,4 +71,9 @@ If you don't provide arguments, default value will be used.
 
 The repaired code will appear in ./spooned/ from where the command is run.
 
-Feel free to open issues.
+If this command is run from somewhere other than `sonarqube-repair/` , you need
+ to create a directory `source/act/` in that location and put your source 
+ files there.
+
+
+
