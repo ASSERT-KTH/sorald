@@ -1,16 +1,12 @@
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.java.se.checks.NullDereferenceCheck;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
-
 public class ProcessorTest {
 
     private static String projectKey = "se.kth:sonatest";
-    private static String cdtest ="./src/test/sonatest/";
+    private static String cdtest ="./src/test/resources/sonatest/";
     private static String pathToFile = cdtest + "src/main/java/";
 
     @Test
