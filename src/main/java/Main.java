@@ -1,8 +1,3 @@
-import org.sonar.java.checks.DeadStoreCheck;
-import org.sonar.java.checks.verifier.JavaCheckVerifier;
-import org.sonar.java.se.checks.NullDereferenceCheck;
-import org.sonar.plugins.java.api.JavaFileScanner;
-
 public class Main {
 
     /**
@@ -14,7 +9,7 @@ public class Main {
     {
 
         String projectKey="fr.inria.gforge.spoon:spoon-core";
-        int rulenumber = 1854;
+        int rulenumber = 2259;
 
         if(args.length>0)
         {

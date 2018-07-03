@@ -90,7 +90,7 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
 
     @Override
     public void process(CtConstructorCall element) {
-
+        System.out.println("BUG\n");
         CtCodeSnippetStatement snippet = getFactory().Core().createCodeSnippetStatement();
         final String value = String.format("[Spoon inserted try-with-resource],\n Repairs sonarqube rule 2095:\n %s should be closed",var);
         snippet.setValue(value);

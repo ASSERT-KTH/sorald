@@ -109,6 +109,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
         }
     @Override
     public void process(CtInvocation<?> element) {
+        System.out.println("BUG\n");
         CtExpression target=element.getTarget();
         CtCodeSnippetStatement snippet = getFactory().Core().createCodeSnippetStatement();
         final String value = String.format("if (%s == null) "
