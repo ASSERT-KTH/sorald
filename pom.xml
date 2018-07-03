@@ -17,7 +17,7 @@
             <version>20160810</version>
         </dependency>
 
-        <dependency>
+
 <!--
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
@@ -55,7 +55,6 @@
             <groupId>org.sonarsource.java</groupId>
             <artifactId>sonar-java-plugin</artifactId>
             <version>5.4.0.14284</version>
-            <scope>provided</scope>
         </dependency>
 
 
