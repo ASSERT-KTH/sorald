@@ -1,9 +1,9 @@
 import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
-import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -83,10 +83,5 @@ public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
     @Override
     public void process(CtField element) {
         element.addModifier(ModifierKind.TRANSIENT);
-        CtCodeSnippetStatement snippet = getFactory().Core().createCodeSnippetStatement();
-        final String value = String.format("/*[Spoon inserted modifier], repairs sonarqube rule 1948:\nFields in a \"Serializable\" class should either be transient or serializable*/");
-        snippet.setValue(value);
-        CtComment comment = getFactory().createComment(value,CtComment.CommentType.BLOCK);
-//        element.addComment(comment);
     }
 }

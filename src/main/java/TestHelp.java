@@ -2,18 +2,12 @@ import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.java.se.checks.NullDereferenceCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
-import org.json.JSONArray;
 import spoon.Launcher;
 import spoon.experimental.modelobs.SourceFragmentsTreeCreatingChangeCollector;
 import spoon.processing.Processor;
 import spoon.reflect.factory.Factory;
-import spoon.experimental.modelobs.SourceFragmentsTreeCreatingChangeCollector;
-import spoon.reflect.factory.Factory;
 import spoon.reflect.visitor.PrettyPrinter;
 import spoon.reflect.visitor.printer.change.ChangesAwareDefaultJavaPrettyPrinter;
-import spoon.reflect.visitor.PrettyPrinter;
-import spoon.reflect.visitor.printer.change.ChangesAwareDefaultJavaPrettyPrinter;
-
 
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
@@ -35,9 +29,6 @@ public class TestHelp {
         rule.putIfAbsent(2259, NullDereferenceProcessor.class);
         rulecheck = new HashMap<>();
         rulecheck.putIfAbsent(1854, DeadStoreCheck.class);
-//        rulecheck.putIfAbsent(1948, SerializableFieldProcessor.class);
-//        rulecheck.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
-//        rulecheck.putIfAbsent(2095, ResourceCloseProcessor.class);
         rulecheck.putIfAbsent(2259, NullDereferenceCheck.class);
     }
 
@@ -140,23 +131,3 @@ public class TestHelp {
         return checkBugs(pathToFile, rulekey);
     }
 }
-        /*
-        //Sniper Mode . Add pavel's refDJPP branch of spoon as library to use this.
-        Launcher launcher = new Launcher();
-        launcher.addInputResource("/home/ashutosh/eclipse-workspace/spoon1/source/act/");
-        launcher.getEnvironment().setCommentEnabled(true);
-        launcher.getEnvironment().setAutoImports(true);
-        launcher.buildModel();
-        Factory f = launcher.getFactory();
-        new SourceFragmentsTreeCreatingChangeCollector().attachTo(f.getEnvironment());
-
-        CtClass<?> ctClass = launcher.getFactory().Class().get(JDTTreeBuilderHelper.class);
-//        SniperHelper.process(ctClass);
-
-        ChangesAwareDefaultJavaPrettyPrinter printer = new ChangesAwareDefaultJavaPrettyPrinter(f.getEnvironment());
-        CompilationUnit cu = f.CompilationUnit().getOrCreate(ctClass);
-        List<CtType<?>> toBePrinted = new ArrayList<>();
-        toBePrinted.add(ctClass);
-        printer.calculate(cu, toBePrinted);
-        */
-
