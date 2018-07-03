@@ -75,5 +75,8 @@ If this command is run from somewhere other than `sonarqube-repair/` , you need
  to create a directory `source/act/` in that location and put your source 
  files there.
 
+## Case studies
+
+Spoon SonarQube: <https://sonarqube.ow2.org/project/issues?id=fr.inria.gforge.spoon%3Aspoon-core&resolved=false&types=BUG>
 
 
