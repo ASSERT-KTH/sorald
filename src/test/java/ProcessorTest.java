@@ -1,3 +1,4 @@
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
@@ -8,7 +9,12 @@ public class ProcessorTest {
     private static String projectKey = "se.kth:sonatest";
     private static String cdtest ="./src/test/resources/sonatest/";
     private static String pathToFile = cdtest + "src/main/java/";
-
+    @BeforeClass
+    public static void runSonar()
+    {
+        String dir = "./src/test/resources/sonatest/";
+        TestHelp.doSonarAnalysis(dir);
+    }
     @Test
     public void DeadStore()throws Exception
     {
