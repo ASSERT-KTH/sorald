@@ -1,11 +1,8 @@
-import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
-import org.sonar.java.se.checks.NullDereferenceCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import spoon.Launcher;
 import spoon.experimental.modelobs.SourceFragmentsTreeCreatingChangeCollector;
 import spoon.processing.Processor;
-import spoon.reflect.factory.Factory;
 import spoon.reflect.visitor.PrettyPrinter;
 import spoon.reflect.visitor.printer.change.ChangesAwareDefaultJavaPrettyPrinter;
 
@@ -18,7 +15,6 @@ import static java.lang.System.exit;
 public class TestHelp {
 
     public static Map<Integer, Class<? extends Processor>> rule;
-    public static Map<Integer, Class<? extends JavaFileScanner>> rulecheck;
 
     public static void initmap() {
         rule = new HashMap<>();
@@ -27,9 +23,6 @@ public class TestHelp {
         rule.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
         rule.putIfAbsent(2095, ResourceCloseProcessor.class);
         rule.putIfAbsent(2259, NullDereferenceProcessor.class);
-        rulecheck = new HashMap<>();
-        rulecheck.putIfAbsent(1854, DeadStoreCheck.class);
-        rulecheck.putIfAbsent(2259, NullDereferenceCheck.class);
     }
 
     public static Class<?> getProcessor(int ruleKey) {
@@ -42,20 +35,9 @@ public class TestHelp {
         }
         return rule.get(ruleKey);
     }
-    public static Class<?> getChecker(int ruleKey) {
-        if (rulecheck == null) {
-            initmap();
-        }
-        if (!rulecheck.containsKey(ruleKey)) {
-            System.out.println("Sorry. Checker not available for rule " + ruleKey);
-            exit(0);
-        }
-        return rulecheck.get(ruleKey);
-    }
 
-    public static void repair(String pathToFile, String projectKey, int rulekey) throws Exception {
-
-        //Not Sniper  Mode
+    public static void repair(String pathToFile, String projectKey, int rulekey) throws Exception
+    {
         Launcher launcher = new Launcher() {
         	@Override
         	public PrettyPrinter createPrettyPrinter() {
@@ -67,17 +49,9 @@ public class TestHelp {
         		super.process();
         	}
         };
-
         launcher.addInputResource(pathToFile);
-
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
-        launcher.getEnvironment().useTabulations(true);
-        launcher.getEnvironment().setTabulationSize(4);
-
-        Factory factory = launcher.getFactory();
-
-        new SourceFragmentsTreeCreatingChangeCollector().attachTo(factory.getEnvironment());
 
         Class<?> processor = getProcessor(rulekey);
         Constructor<?> cons = processor.getConstructor(String.class);
@@ -88,7 +62,6 @@ public class TestHelp {
     }
 
     public static void normalRepair(String pathToFile, String projectKey, int rulekey) throws Exception {
-
         //Not Sniper  Mode
         Launcher launcher = new Launcher();
 
@@ -96,26 +69,13 @@ public class TestHelp {
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
         launcher.getEnvironment().useTabulations(true);
-//        launcher.getEnvironment().setTabulationSize(4);
+        launcher.getEnvironment().setTabulationSize(4);
         Class<?> processor = getProcessor(rulekey);
         Constructor<?> cons = processor.getConstructor(String.class);
         Object object = cons.newInstance(projectKey);
         launcher.addProcessor((Processor) object);
         launcher.run();
 //        new SpoonModelTree(launcher.getFactory());
-    }
-
-    public static boolean checkBugs(String pathToFile, int rulekey) throws Exception {
-
-        String arr[] = pathToFile.split("/");
-        String fileName = arr[arr.length - 1];
-
-        Class<?> checker = getChecker(rulekey);
-        Constructor<?> cons = checker.getConstructor();
-        Object object = cons.newInstance();
-
-        JavaCheckVerifier.verify(pathToFile, (JavaFileScanner) object);
-        return true;
     }
 
     public static void copy(String from, String to) {
@@ -125,9 +85,5 @@ public class TestHelp {
     public static void doSonarAnalysis(String dir) {
         String sonarAnalysis = "mvn sonar:sonar -Dsonar.organization=kimsun1598-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=95b00d7c27acc6500c2641efe2b497442368d037";
         Execute.command(sonarAnalysis, dir, true);
-    }
-
-    public static boolean hasSonarBug(String pathToFile, int rulekey) throws Exception {
-        return checkBugs(pathToFile, rulekey);
     }
 }
