@@ -1,6 +1,7 @@
 import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
+import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtConstructor;
@@ -91,6 +92,7 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
 //        value=value+String.format("This class is a superclass of %s.",element.getSimpleName());
 //        CtComment comment = getFactory().createComment(value,CtComment.CommentType.BLOCK);
 
+        System.out.println("BUG\n");
         CtClass ct =(CtClass)element.getSuperclass().getTypeDeclaration();
         CtConstructor alreadyPresent=ct.getConstructor();
         if(alreadyPresent!=null)
@@ -101,6 +103,7 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
         CtStatement statement = getFactory().createBlock();
         constructor.setBody(statement);
         constructor.setVisibility(ModifierKind.PUBLIC);
+        constructor.setPosition(ct.getPosition());
         ct.addConstructor(constructor);
     }
 }
