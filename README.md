@@ -14,21 +14,21 @@ If `x` is itself the result of a function call, it is enclosed by a try-catch
 block. The repair does not handle array dereference like `arr[0]` where `arr`
 is nullable.
 
-Add link to class that implements this repair.
+[NullDereferenceProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/NullDereferenceProcessor.java)
 
-### Dead Stores should be removed (Sonar Rule 1854) -   
+### Dead Stores should be removed([Sonar Rule 1854](https://rules.sonarsource.com/c/RSPEC-1854)) -   
 
 The repair repair consists of deleting the useless assignment.
 
-Add link to class that implements this repair.
+[DeadStoreProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/DeadStoreProcessor.java)
 
-### Fields in a "Serializable" class should be serializable (Sonar rule 1948) -
+### Fields in a "Serializable" class should be serializable ([Sonar Rule 1948](https://rules.sonarsource.com/c/RSPEC-1948)) -
 
 The repair adds the modifier `transient` to all non-serializable
 fields. In the future, the plan is to give user the option if they want to go the class
 of that field and add `implements Serializable` to it.
 
-Add link to class that implements this repair.
+[SerializableFieldProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/SerializableFieldProcessor.java)
 
 Merged Pull Requests:
 
@@ -36,17 +36,19 @@ Merged Pull Requests:
 * https://github.com/INRIA/spoon/pull/2121
 
 
-### Non-serializable super class of a "Serializable" class should have a no-argument constructor(Sonar Rule 2055). -    
+### Non-serializable super class of a "Serializable" class should have a no-argument constructor ([Sonar Rule 2055](https://rules.sonarsource.com/c/RSPEC-2055)) -
 
 The repair adds a no-argument empty constructor to the superclass.
 
-Add link to class that implements this repair.
+[DeadStoreProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/DeadStoreProcessor.java)
 
-### Resources should be closed (Sonar Rule 2095) -   
+### Resources should be closed ([Sonar Rule 2095](https://rules.sonarsource.com/c/RSPEC-2095)) -
 
 The repair encloses the parent block of resource intialization in a try-with resources.
 If it was already in a try block it replaces the try with try-with-resources instead 
 of creating a new one, so that useless nested try blocks are not created.
+
+[ResourceCloseProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/ResourceCloseProcessor.java)
 
 ## Usage
 

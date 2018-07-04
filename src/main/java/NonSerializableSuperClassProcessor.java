@@ -1,7 +1,6 @@
 import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
-import spoon.reflect.code.CtComment;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtConstructor;
@@ -88,10 +87,9 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
     }
     @Override
     public void process(CtClass element) {
-
-        String value = String.format("[Spoon inserted constructor], repairs sonarqube rule 2055:\nThe non-serializable super class of a \"Serializable\" class should have a no-argument constructor.\n");
-        value=value+String.format("This class is a superclass of %s.",element.getSimpleName());
-        CtComment comment = getFactory().createComment(value,CtComment.CommentType.BLOCK);
+//        String value = String.format("[Spoon inserted constructor], repairs sonarqube rule 2055:\nThe non-serializable super class of a \"Serializable\" class should have a no-argument constructor.\n");
+//        value=value+String.format("This class is a superclass of %s.",element.getSimpleName());
+//        CtComment comment = getFactory().createComment(value,CtComment.CommentType.BLOCK);
 
         CtClass ct =(CtClass)element.getSuperclass().getTypeDeclaration();
         CtConstructor alreadyPresent=ct.getConstructor();
@@ -103,7 +101,6 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
         CtStatement statement = getFactory().createBlock();
         constructor.setBody(statement);
         constructor.setVisibility(ModifierKind.PUBLIC);
-        constructor.addComment(comment);
         ct.addConstructor(constructor);
     }
 }

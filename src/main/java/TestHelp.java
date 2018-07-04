@@ -1,5 +1,3 @@
-import org.sonar.java.checks.verifier.JavaCheckVerifier;
-import org.sonar.plugins.java.api.JavaFileScanner;
 import spoon.Launcher;
 import spoon.experimental.modelobs.SourceFragmentsTreeCreatingChangeCollector;
 import spoon.processing.Processor;
@@ -52,6 +50,8 @@ public class TestHelp {
         launcher.addInputResource(pathToFile);
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
+        launcher.getEnvironment().useTabulations(true);
+        launcher.getEnvironment().setTabulationSize(4);
 
         Class<?> processor = getProcessor(rulekey);
         Constructor<?> cons = processor.getConstructor(String.class);
