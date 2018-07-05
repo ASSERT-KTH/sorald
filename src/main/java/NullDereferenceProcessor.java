@@ -116,10 +116,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                         + "throw new IllegalStateException(\"[Spoon inserted check], %s might be null\");",
                 target.toString(),thisBugName);
         snippet.setValue(value);
-        String comm = String.format("Repairs sonarqube rule 2259:Null pointers should not be dereferenced\n%s might be null",thisBugName);
-        CtComment comment = getFactory().createComment(comm,CtComment.CommentType.BLOCK);
         if (target instanceof CtVariableRead) {
-            snippet.addComment(comment);
             CtStatement st= element.getParent(CtStatement.class);
             if(st!=null) {
                 st.insertBefore(snippet);
@@ -132,7 +129,6 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
             CtBlock ctBlock1 = element.getParent(CtBlock.class);
             ctBlock1.replace(bb);
             ctTry.setBody(ctBlock1);
-            ctTry.addComment(comment);
             CtCodeSnippetStatement snipcat = getFactory().createCodeSnippetStatement();
             final String cat = "catch(Exception e)\n" +
                     "{\n" +
