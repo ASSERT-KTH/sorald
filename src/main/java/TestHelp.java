@@ -12,7 +12,7 @@ import static java.lang.System.exit;
 
 public class TestHelp {
 
-    public static Map<Integer, Class<? extends Processor>> rule;
+    private static Map<Integer, Class<? extends Processor>> rule;
 
     public static void initmap() {
         rule = new HashMap<>();

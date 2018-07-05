@@ -8,24 +8,24 @@ import java.util.Set;
 public class Bug
 {
 
-    public JSONObject jsonObject;
-    public JSONArray locations;
-    public long lineNumber;
-    public String name;
-    public String fileName;
-    public Bug() throws Exception {
+    private JSONObject jsonObject;
+    private JSONArray locations;
+    private long lineNumber;
+    private String name;
+    private String fileName;
+    public Bug() {
 
     }
 
-    public Bug(JSONObject jsonObject) throws JSONException {
+    public Bug(JSONObject jsonObject){
         this.jsonObject=jsonObject;
         init();
     }
-    public Bug(Bug bug) throws JSONException {
+    public Bug(Bug bug){
         this.jsonObject=bug.jsonObject;
         init();
     }
-    private void init() throws JSONException
+    private void init()
     {
         JSONArray flow=jsonObject.getJSONArray("flows");
         if(flow.length()>0)
@@ -34,7 +34,7 @@ public class Bug
         }
         lineNumber=(long)(int)(jsonObject.get("line"));//cast first to int thecn to long
         name=(String) jsonObject.get("message");
-        String split[]=jsonObject.get("component").toString().split("/");
+        String[] split=jsonObject.get("component").toString().split("/");
         fileName=split[split.length-1];
     }
 
@@ -60,7 +60,7 @@ public class Bug
     }
 
     public static Set<Bug> createSetOfBugs(JSONArray jsonArray) throws Exception {
-        Set<Bug> SetOfBugs = new HashSet<Bug>();
+        Set<Bug> setOfBugs = new HashSet<>();
         if (jsonArray == null) {
             throw new Exception("null JSONArray passed to createSetOfBugs()");
         }
@@ -69,12 +69,12 @@ public class Bug
             try {
                 obj = jsonArray.getJSONObject(i);
                 Bug bug = new Bug(obj);
-                SetOfBugs.add(bug);
+                setOfBugs.add(bug);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        return SetOfBugs;
+        return setOfBugs;
     }
 
     public JSONObject getJsonObject(){return jsonObject;}
