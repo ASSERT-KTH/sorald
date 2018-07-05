@@ -1,13 +1,14 @@
 import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
-import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtConstructor;
 import spoon.reflect.declaration.ModifierKind;
+import spoon.reflect.reference.CtTypeReference;
 
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 
 public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClass> {
@@ -18,6 +19,7 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
     private Set<String> SetOfFileNames;//-----
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
+    private static int inp=-1;
     public NonSerializableSuperClassProcessor(String projectKey) throws Exception {
         jsonArray= ParseAPI.parse(2055,"",projectKey);
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
@@ -29,6 +31,12 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
             SetOfLineNumbers.add(bug.getLineNumber());
             SetOfFileNames.add(bug.getFileName());
         }
+        Scanner sc = new Scanner(System.in);
+        String message = String.format("There are two possible repair for this bug." +
+                " Either add no-argument constructor in super class or remove \"implements Serializable\" " +
+                "from this class. Type 0 for first option and 1 for second.");
+        System.out.println(message);
+        inp = sc.nextInt();
     }
 
 
@@ -88,22 +96,36 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
     }
     @Override
     public void process(CtClass element) {
-//        String value = String.format("[Spoon inserted constructor], repairs sonarqube rule 2055:\nThe non-serializable super class of a \"Serializable\" class should have a no-argument constructor.\n");
-//        value=value+String.format("This class is a superclass of %s.",element.getSimpleName());
-//        CtComment comment = getFactory().createComment(value,CtComment.CommentType.BLOCK);
 
         System.out.println("BUG\n");
-        CtClass ct =(CtClass)element.getSuperclass().getTypeDeclaration();
-        CtConstructor alreadyPresent=ct.getConstructor();
-        if(alreadyPresent!=null)
-        {
-            return;
+        if (inp == 0) {
+            System.out.println("zero selected");
+            CtClass ct = (CtClass) element.getSuperclass().getTypeDeclaration();
+            CtConstructor alreadyPresent = ct.getConstructor();
+            if (alreadyPresent != null) {
+                return;
+            }
+            CtConstructor constructor = getFactory().createConstructor();
+            CtStatement statement = getFactory().createBlock();
+            constructor.setBody(statement);
+            constructor.setVisibility(ModifierKind.PUBLIC);
+            constructor.setPosition(ct.getPosition());
+            ct.addConstructor(constructor);
+        } else if (inp == 1) {
+            System.out.println("one selected");
+            CtTypeReference ctTypeReference = null;
+
+            Set<CtTypeReference<?>> superInterfaces = element.getSuperInterfaces();
+            for (CtTypeReference ct : superInterfaces) {
+                System.out.println(ct.getQualifiedName());
+                if (ct.getQualifiedName().equals("java.io.Serializable")) {
+                    ctTypeReference = ct;
+                    break;
+                }
+            }
+            if (ctTypeReference != null) {
+                element.removeSuperInterface(ctTypeReference);
+            }
         }
-        CtConstructor constructor = getFactory().createConstructor();
-        CtStatement statement = getFactory().createBlock();
-        constructor.setBody(statement);
-        constructor.setVisibility(ModifierKind.PUBLIC);
-        constructor.setPosition(ct.getPosition());
-        ct.addConstructor(constructor);
     }
 }
