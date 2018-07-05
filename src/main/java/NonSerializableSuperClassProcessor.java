@@ -100,7 +100,21 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
         System.out.println("BUG\n");
         if (inp == 0) {
             System.out.println("zero selected");
-            CtClass ct = (CtClass) element.getSuperclass().getTypeDeclaration();
+            CtClass ct=element;
+            while(true)
+            {
+                if(ct.getSuperclass()==null)
+                    break;
+                ct = (CtClass) ct.getSuperclass().getTypeDeclaration();
+                if(ct.getSimpleName().equals(thisBugName))
+                {
+                    break;
+                }
+            }
+            if(!ct.getSimpleName().equals(thisBugName))
+            {
+                return;
+            }
             CtConstructor alreadyPresent = ct.getConstructor();
             if (alreadyPresent != null) {
                 return;
