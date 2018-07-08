@@ -56,27 +56,14 @@ To use it, run:
 
 `git clone https://github.com/kth-tcs/sonarqube-repair.git`
 
-`cd sonarqube-repair`
-
-`mvn -U clean package`
-
-To start sonarqube-repair:
-
-`java -jar target/sonarqube-repair-0.1-SNAPSHOT-jar-with-dependencies.jar arg1 arg2`
-
-arg1 and arg2 are optional parameters.
-Give either 0, 1 or 2 arguments. first argument is sonarqube rule-number which you 
-can get from https://rules.sonarsource.com/java/type/Bug .
-Second argument is the projectKey for the sonarqube analysis of source files. for 
-example "fr.inria.gforge.spoon:spoon-core"
-If you don't provide arguments, default value will be used.
-
-The repaired code will appear in ./spooned/ from where the command is run.
-
-If this command is run from somewhere other than `sonarqube-repair/` , you need
- to create a directory `source/act/` in that location and put your source 
- files there.
-
+Import it as maven project in your favourtite Java IDE. Put files to be 
+repaired in `sonarqube-repair/source/act/`. Note that you need to create this directory.
+Then run the main function. You can either give command line arguments or set the rule
+number and project-key manually in the main function in `src/main/java/Main.java`.
+ The repaired files will
+appear in `sonarqube-repair/spooned/` . Also you need to set the url of
+ the sonar analysis of your project in `src/main/java/ParseAPI.java`
+  if it is different from [sonarcloud.io](https://sonarcloud.io/about) 
 ## Case studies
 
 Spoon SonarQube: <https://sonarqube.ow2.org/project/issues?id=fr.inria.gforge.spoon%3Aspoon-core&resolved=false&types=BUG>
