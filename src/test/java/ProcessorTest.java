@@ -9,12 +9,14 @@ public class ProcessorTest {
     private static String projectKey = "se.kth:sonatest";
     private static String cdtest ="./src/test/resources/sonatest/";
     private static String pathToFile = cdtest + "src/main/java/";
+    /*
     @BeforeClass
     public static void runSonar()
     {
         String dir = "./src/test/resources/sonatest/";
         TestHelp.doSonarAnalysis(dir);
     }
+    */
     @Test
     public void DeadStore()throws Exception
     {
@@ -22,7 +24,7 @@ public class ProcessorTest {
         String pathToRepairedFile = "./spooned/" + fileName;
 
         JavaCheckVerifier.verify(pathToFile + fileName, new DeadStoreCheck());
-        TestHelp.repair(pathToFile,projectKey,1854);
+        TestHelp.normalRepair(pathToFile,projectKey,1854);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new DeadStoreCheck());
     }
 
@@ -33,7 +35,7 @@ public class ProcessorTest {
         String pathToRepairedFile = "./spooned/" + fileName;
 
         JavaCheckVerifier.verify(pathToFile + fileName,new NullDereferenceCheck());
-        TestHelp.repair(pathToFile,projectKey,2259);
+        TestHelp.normalRepair(pathToFile,projectKey,2259);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new NullDereferenceCheck());
     }
 

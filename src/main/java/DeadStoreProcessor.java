@@ -1,5 +1,8 @@
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.sonar.java.AnalyzerMessage;
+import org.sonar.java.checks.DeadStoreCheck;
+import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtCodeSnippetStatement;
@@ -20,6 +23,8 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
     private String thisBugName;        //name (message) of current thisBug.
     String var;//contains name of variable which is uselessly assigned in the current bug.
     public DeadStoreProcessor(String projectKey) throws Exception {
+        Set<AnalyzerMessage> verify = JavaCheckVerifier.verify("./source/act/ReferenceBuilder.java", new DeadStoreCheck(), true);
+        System.out.println("hello\n"+verify+"\nhello");
         jsonArray= ParseAPI.parse(1854,"",projectKey);
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();
