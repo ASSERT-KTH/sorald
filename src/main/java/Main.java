@@ -9,7 +9,7 @@ public class Main {
     {
 
         String projectKey="fr.inria.gforge.spoon:spoon-core";
-        int rulenumber = 1854;
+        int rulenumber = 2055;
         if(args.length>0)
         {
             rulenumber = Integer.parseInt(args[0]);

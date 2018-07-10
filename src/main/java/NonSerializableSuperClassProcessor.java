@@ -1,5 +1,9 @@
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.sonar.java.AnalyzerMessage;
+import org.sonar.java.checks.DeadStoreCheck;
+import org.sonar.java.checks.serialization.SerializableSuperConstructorCheck;
+import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtClass;
@@ -7,7 +11,9 @@ import spoon.reflect.declaration.CtConstructor;
 import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.reference.CtTypeReference;
 
+import java.io.File;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -20,11 +26,16 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
     private static int inp=-1;
-    public NonSerializableSuperClassProcessor(String projectKey) throws Exception {
-        jsonArray= ParseAPI.parse(2055,"",projectKey);
-        SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
-        SetOfLineNumbers=new HashSet<Long>();
-        SetOfFileNames=new HashSet<String>();
+    public NonSerializableSuperClassProcessor(List<File> files) throws Exception {
+        Set<AnalyzerMessage> total = new HashSet<>();
+        for(File file :files)
+        {
+            Set<AnalyzerMessage> verify = JavaCheckVerifier.verify(file.getAbsolutePath(), new SerializableSuperConstructorCheck(), true);
+            total.addAll(verify);
+        }
+        SetOfBugs = Bug.createSetOfBugs(total);
+        SetOfLineNumbers=new HashSet<>();
+        SetOfFileNames=new HashSet<>();
         thisBug=new Bug();
         for(Bug bug:SetOfBugs)
         {
@@ -51,8 +62,7 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
         String targetName="",fileOfElement="";
 
         line=(long) element.getPosition().getLine();
-        String split1[]=element.getPosition().getFile().toString().split("/");
-        fileOfElement=split1[split1.length-1];
+        fileOfElement=element.getPosition().getFile().getName();
         CtClass ct =(CtClass)element.getSuperclass().getTypeDeclaration();
         targetName=ct.getSimpleName();
 

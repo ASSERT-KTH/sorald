@@ -1,11 +1,17 @@
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.sonar.java.AnalyzerMessage;
+import org.sonar.java.checks.DeadStoreCheck;
+import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.java.se.checks.UnclosedResourcesCheck;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.reference.CtVariableReference;
 
+import java.io.File;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall> {
@@ -18,11 +24,16 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
     private String thisBugName;        //name (message) of current thisBug.
     String var;//contains name of resource which is unclosed in the current bug.
 
-    public ResourceCloseProcessor(String projectKey) throws Exception {
-        jsonArray= ParseAPI.parse(2095,"",projectKey);
-        SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
-        SetOfLineNumbers=new HashSet<Long>();
-        SetOfFileNames=new HashSet<String>();
+    public ResourceCloseProcessor(List<File> files) throws Exception {
+        Set<AnalyzerMessage> total = new HashSet<>();
+        for(File file :files)
+        {
+            Set<AnalyzerMessage> verify = JavaCheckVerifier.verify(file.getAbsolutePath(), new UnclosedResourcesCheck(), true);
+            total.addAll(verify);
+        }
+        SetOfBugs = Bug.createSetOfBugs(total);
+        SetOfLineNumbers=new HashSet<>();
+        SetOfFileNames=new HashSet<>();
         thisBug=new Bug();
         for(Bug bug:SetOfBugs)
         {
@@ -44,8 +55,7 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
         String targetName="",fileOfElement="";
         targetName = element.getExecutable().getDeclaringType().getSimpleName();
         line=(long) element.getPosition().getLine();
-        String split1[]=element.getPosition().getFile().toString().split("/");
-        fileOfElement=split1[split1.length-1];
+        fileOfElement=element.getPosition().getFile().getName();
 
 
         if(!SetOfLineNumbers.contains(line)||!SetOfFileNames.contains(fileOfElement))

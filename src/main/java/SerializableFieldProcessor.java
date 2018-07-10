@@ -1,10 +1,16 @@
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.sonar.java.AnalyzerMessage;
+import org.sonar.java.checks.DeadStoreCheck;
+import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
+import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
 
+import java.io.File;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
@@ -15,11 +21,16 @@ public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
     private Set<String> SetOfFileNames;//-----
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
-    public SerializableFieldProcessor(String projectKey) throws Exception {
-        jsonArray= ParseAPI.parse(1948,"",projectKey);
-        SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
-        SetOfLineNumbers=new HashSet<Long>();
-        SetOfFileNames=new HashSet<String>();
+    public SerializableFieldProcessor(List<File> files) throws Exception {
+        Set<AnalyzerMessage> total = new HashSet<>();
+        for(File file :files)
+        {
+            Set<AnalyzerMessage> verify = JavaCheckVerifier.verify(file.getAbsolutePath(), new SerializableFieldInSerializableClassCheck(), true);
+            total.addAll(verify);
+        }
+        SetOfBugs = Bug.createSetOfBugs(total);
+        SetOfLineNumbers=new HashSet<>();
+        SetOfFileNames=new HashSet<>();
         thisBug=new Bug();
         for(Bug bug:SetOfBugs)
         {
@@ -39,8 +50,7 @@ public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
         long line =-1;
         String targetName="",fileOfElement="";
         line=(long) element.getPosition().getLine();
-        String split1[]=element.getPosition().getFile().toString().split("/");
-        fileOfElement=split1[split1.length-1];
+        fileOfElement=element.getPosition().getFile().getName();
         targetName=element.getSimpleName();
         if(!SetOfLineNumbers.contains(line)||!SetOfFileNames.contains(fileOfElement))
         {
@@ -82,6 +92,7 @@ public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
     }
     @Override
     public void process(CtField element) {
+        System.out.println("BUG");
         element.addModifier(ModifierKind.TRANSIENT);
     }
 }

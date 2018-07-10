@@ -1,4 +1,3 @@
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.java.checks.DeadStoreCheck;
@@ -9,26 +8,30 @@ import spoon.reflect.code.CtCodeSnippetStatement;
 import spoon.reflect.code.CtLocalVariable;
 import spoon.reflect.code.CtStatement;
 
+import java.io.File;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
 public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
 
-    private JSONArray jsonArray;//array of JSONObjects, each of which is a bug
     private Set<Bug> SetOfBugs;//set of bugs, corresponding to jsonArray
     private Set<Long> SetOfLineNumbers;//set of line numbers corresponding to bugs, just for efficiency
     private Set<String> SetOfFileNames;//-----
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
     String var;//contains name of variable which is uselessly assigned in the current bug.
-    public DeadStoreProcessor(String projectKey) throws Exception {
-        Set<AnalyzerMessage> verify = JavaCheckVerifier.verify("./source/act/ReferenceBuilder.java", new DeadStoreCheck(), true);
-        System.out.println("hello\n"+verify+"\nhello");
-        jsonArray= ParseAPI.parse(1854,"",projectKey);
-        SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
-        SetOfLineNumbers=new HashSet<Long>();
-        SetOfFileNames=new HashSet<String>();
+    public DeadStoreProcessor(List<File> files)  {
+        Set<AnalyzerMessage> total = new HashSet<>();
+        for(File file :files)
+        {
+            Set<AnalyzerMessage> verify = JavaCheckVerifier.verify(file.getAbsolutePath(), new DeadStoreCheck(), true);
+            total.addAll(verify);
+        }
+        SetOfBugs = Bug.createSetOfBugs(total);
+        SetOfLineNumbers=new HashSet<>();
+        SetOfFileNames=new HashSet<>();
         thisBug=new Bug();
         for(Bug bug:SetOfBugs)
         {
@@ -51,17 +54,16 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
         {
             targetName = ((CtLocalVariable)element).getSimpleName();
             line=(long) element.getPosition().getLine();
-            String split1[]=element.getPosition().getFile().toString().split("/");
-            fileOfElement=split1[split1.length-1];
+            fileOfElement=element.getPosition().getFile().getName();
         }
         else if(element instanceof CtAssignment)
         {
             targetName=((CtAssignment) element).getAssigned().toString();
             line=(long) element.getPosition().getLine();
-            String split1[]=element.getPosition().getFile().toString().split("/");
-            fileOfElement=split1[split1.length-1];
+            fileOfElement=element.getPosition().getFile().getName();
         }
         else return false;
+
         if(!SetOfLineNumbers.contains(line)||!SetOfFileNames.contains(fileOfElement))
         {
             return false;

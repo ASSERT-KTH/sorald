@@ -1,10 +1,16 @@
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.sonar.java.AnalyzerMessage;
+import org.sonar.java.checks.DeadStoreCheck;
+import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.java.se.checks.NullDereferenceCheck;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.*;
 import spoon.reflect.cu.SourcePosition;
 
+import java.io.File;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static java.lang.Math.abs;
@@ -19,11 +25,16 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
 
-    public NullDereferenceProcessor(String projectKey) throws Exception {
-        jsonArray= ParseAPI.parse(2259,"",projectKey);
-        SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
-        SetOfLineNumbers=new HashSet<Long>();
-        SetOfFileNames=new HashSet<String>();
+    public NullDereferenceProcessor(List<File> files) throws Exception {
+        Set<AnalyzerMessage> total = new HashSet<>();
+        for(File file :files)
+        {
+            Set<AnalyzerMessage> verify = JavaCheckVerifier.verify(file.getAbsolutePath(), new NullDereferenceCheck(), true);
+            total.addAll(verify);
+        }
+        SetOfBugs = Bug.createSetOfBugs(total);
+        SetOfLineNumbers=new HashSet<>();
+        SetOfFileNames=new HashSet<>();
         thisBug=new Bug();
         for(Bug bug:SetOfBugs)
         {
@@ -42,8 +53,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
             CtExpression expr=element.getTarget();
             long line = (long) element.getPosition().getLine();
             String targetName=expr.toString();
-            String split1[]=element.getPosition().getFile().toString().split("/");
-            String fileOfElement=split1[split1.length-1];
+            String fileOfElement=element.getPosition().getFile().getName();
             if(!SetOfLineNumbers.contains(line)||!SetOfFileNames.contains(fileOfElement))
             {
                 return false;
@@ -75,7 +85,7 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
                                 continue;
                             }
                             int exprcolumn = sp.getColumn();
-                            int bugcolumn = bug.getJsonObject().getJSONObject("textRange").getInt("startOffset");
+                            int bugcolumn = bug.getMessage().primaryLocation().startCharacter;
                             if (element.getTarget() instanceof CtVariableRead) {
                                 if(targetName.equals(bugword))
                                 {

@@ -1,15 +1,11 @@
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.sonar.java.AnalyzerMessage;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class Bug
 {
-
-    private JSONObject jsonObject;
-    private JSONArray locations;
+    private AnalyzerMessage message;
     private long lineNumber;
     private String name;
     private String fileName;
@@ -17,31 +13,26 @@ public class Bug
 
     }
 
-    public Bug(JSONObject jsonObject){
-        this.jsonObject=jsonObject;
+    public Bug(Bug bug){
+        this.message=bug.message;
         init();
     }
-    public Bug(Bug bug){
-        this.jsonObject=bug.jsonObject;
+    public Bug(AnalyzerMessage message)
+    {
+        this.message = message;
         init();
     }
     private void init()
     {
-        JSONArray flow=jsonObject.getJSONArray("flows");
-        if(flow.length()>0)
-        {
-            locations = flow.getJSONObject(0).getJSONArray("locations");
-        }
-        lineNumber=(long)(int)(jsonObject.get("line"));//cast first to int thecn to long
-        name=(String) jsonObject.get("message");
-        String[] split=jsonObject.get("component").toString().split("/");
-        fileName=split[split.length-1];
+        this.lineNumber=message.getLine();
+        this.name=message.getMessage();
+        this.fileName=message.getFile().getName();
     }
 
     @Override
     public int hashCode()
     {
-        return this.jsonObject.toString().hashCode();
+        return this.message.toString().hashCode();
     }
 
     @Override
@@ -56,30 +47,19 @@ public class Bug
             return true;
         }
         Bug rhs=(Bug) obj;
-        return rhs.jsonObject.toString().equals(this.jsonObject.toString());
+        return rhs.message.toString().equals(this.message.toString());
     }
 
-    public static Set<Bug> createSetOfBugs(JSONArray jsonArray) throws Exception {
+    public static Set<Bug> createSetOfBugs(Set<AnalyzerMessage> total){
         Set<Bug> setOfBugs = new HashSet<>();
-        if (jsonArray == null) {
-            throw new Exception("null JSONArray passed to createSetOfBugs()");
-        }
-        for (int i = 0; i < jsonArray.length(); ++i) {
-            JSONObject obj = null;
-            try {
-                obj = jsonArray.getJSONObject(i);
-                Bug bug = new Bug(obj);
-                setOfBugs.add(bug);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
+        for (AnalyzerMessage message : total) {
+            Bug bug = new Bug(message);
+            setOfBugs.add(bug);
         }
         return setOfBugs;
     }
 
-    public JSONObject getJsonObject(){return jsonObject;}
-
-    public JSONArray getLocations(){ return locations;}
 
     public String getName() {
         return name;
@@ -93,18 +73,9 @@ public class Bug
         return fileName;
     }
 
-    public void printBugLocations()
+    public AnalyzerMessage getMessage()
     {
-        try {
-            if(locations!=null)
-            {
-                for (int i = 0; i < locations.length(); ++i) {
-                    System.out.println(locations.getJSONObject(i));
-                }
-            }
-            else System.out.println("null locations");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        return message;
     }
+
 }
