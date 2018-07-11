@@ -1,6 +1,11 @@
+import com.google.common.collect.Lists;
 import org.sonar.java.AnalyzerMessage;
+import org.sonar.java.ast.JavaAstScanner;
+import org.sonar.java.ast.parser.JavaParser;
 import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import spoon.Launcher;
 import spoon.experimental.modelobs.SourceFragmentsTreeCreatingChangeCollector;
 import spoon.processing.Processor;
@@ -13,6 +18,7 @@ import java.lang.reflect.Constructor;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.lang.System.exit;
 
@@ -42,6 +48,29 @@ public class TestHelp {
 
     public static void repair(String pathToFile, String projectKey, int rulekey) throws Exception
     {
+        String[] ext = new String[1];
+        ext[0]="java";
+        Path testJars = Paths.get(pathToFile);
+        List<File> files = getFilesRecursively(testJars, ext);
+        List<String> filenames = Lists.newArrayList() ;
+        for(File file : files)
+        {
+            filenames.add(file.getAbsolutePath());
+//            Set<AnalyzerMessage> verify = MultipleFilesJavaCheckVerifier.verify(Arrays.asList(file.getAbsolutePath()), new DeadStoreCheck(), true);
+//            System.out.println(verify);
+        }
+        System.out.println("\n\n\n");
+        Set<AnalyzerMessage> total = MultipleFilesJavaCheckVerifier.verify((filenames), new DeadStoreCheck(), true);
+        for(AnalyzerMessage message : total)
+        {
+            System.out.println(message);
+        }
+
+
+        if(true)
+        {
+            return;
+        }
         Launcher launcher = new Launcher() {
         	@Override
         	public PrettyPrinter createPrettyPrinter() {
@@ -59,14 +88,19 @@ public class TestHelp {
         launcher.getEnvironment().useTabulations(true);
         launcher.getEnvironment().setTabulationSize(4);
 
-        String[] ext = new String[1];
-        ext[0]="java";
-        Path testJars = Paths.get(pathToFile);
-        List<File> files = getFilesRecursively(testJars, ext);
+//        String[] ext = new String[1];
+//        ext[0]="java";
+//        Path testJars = Paths.get(pathToFile);
+//        List<File> files = getFilesRecursively(testJars, ext);
+//        List<String> filenames = Lists.newArrayList() ;
+//        for(File file : files)
+//        {
+//            filenames.add(file.getAbsolutePath());
+//        }
 
         Class<?> processor = getProcessor(rulekey);
         Constructor<?> cons = processor.getConstructor(List.class);
-        Object object = cons.newInstance(files);
+        Object object = cons.newInstance(filenames);
         launcher.addProcessor((Processor) object);
         launcher.run();
 //        new SpoonModelTree(launcher.getFactory());

@@ -4,6 +4,7 @@ import org.sonar.java.AnalyzerMessage;
 import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.java.checks.serialization.SerializableSuperConstructorCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtClass;
@@ -26,13 +27,13 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
     private static int inp=-1;
-    public NonSerializableSuperClassProcessor(List<File> files) throws Exception {
-        Set<AnalyzerMessage> total = new HashSet<>();
-        for(File file :files)
+    public NonSerializableSuperClassProcessor(List<String> files) throws Exception {
+        for(String str:files)
         {
-            Set<AnalyzerMessage> verify = JavaCheckVerifier.verify(file.getAbsolutePath(), new SerializableSuperConstructorCheck(), true);
-            total.addAll(verify);
+            System.out.println(str);
         }
+        Set<AnalyzerMessage> total = MultipleFilesJavaCheckVerifier.verify(files, new SerializableSuperConstructorCheck(), true);
+        System.out.println(total.size());
         SetOfBugs = Bug.createSetOfBugs(total);
         SetOfLineNumbers=new HashSet<>();
         SetOfFileNames=new HashSet<>();
@@ -47,7 +48,7 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
                 " Either add no-argument constructor in super class or remove \"implements Serializable\" " +
                 "from this class. Type 0 for first option and 1 for second.");
         System.out.println(message);
-        inp = sc.nextInt();
+//        inp = sc.nextInt();
     }
 
 

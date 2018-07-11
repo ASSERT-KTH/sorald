@@ -38,6 +38,7 @@
         </dependency>
         -->
 
+
         <dependency>
             <groupId>org.sonar.java</groupId>
             <artifactId>Project</artifactId>
@@ -46,11 +47,15 @@
             <systemPath>${basedir}/lib/java-checks-testkit-5.5.0-SNAPSHOT.jar</systemPath>
         </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/org.sonarsource.java/sonar-java-plugin -->
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>sonar-java-plugin</artifactId>
-            <version>5.4.0.14284</version>
+            <version>5.5.0.14655</version>
+            <scope>provided</scope>
         </dependency>
+
 
         <dependency>
             <groupId>org.assertj</groupId>

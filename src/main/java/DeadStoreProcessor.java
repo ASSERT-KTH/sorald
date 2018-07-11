@@ -2,6 +2,7 @@ import org.json.JSONException;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtCodeSnippetStatement;
@@ -9,6 +10,7 @@ import spoon.reflect.code.CtLocalVariable;
 import spoon.reflect.code.CtStatement;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,19 +24,17 @@ public class DeadStoreProcessor extends AbstractProcessor<CtStatement> {
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
     String var;//contains name of variable which is uselessly assigned in the current bug.
-    public DeadStoreProcessor(List<File> files)  {
-        Set<AnalyzerMessage> total = new HashSet<>();
-        for(File file :files)
-        {
-            Set<AnalyzerMessage> verify = JavaCheckVerifier.verify(file.getAbsolutePath(), new DeadStoreCheck(), true);
-            total.addAll(verify);
-        }
+    public DeadStoreProcessor(List<String> files)  {
+        Set<AnalyzerMessage> total = MultipleFilesJavaCheckVerifier.verify(files, new DeadStoreCheck(), true);
+//        Set<AnalyzerMessage> verify = JavaCheckVerifier.verify("./source/act/ReferenceBuilder.java", new DeadStoreCheck(), true);
+        System.out.println(total);
         SetOfBugs = Bug.createSetOfBugs(total);
         SetOfLineNumbers=new HashSet<>();
         SetOfFileNames=new HashSet<>();
         thisBug=new Bug();
         for(Bug bug:SetOfBugs)
         {
+            System.out.println(bug.getMessage());
             SetOfLineNumbers.add(bug.getLineNumber());
             SetOfFileNames.add(bug.getFileName());
         }
