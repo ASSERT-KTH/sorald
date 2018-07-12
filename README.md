@@ -38,7 +38,12 @@ Merged Pull Requests:
 
 ### Non-serializable super class of a "Serializable" class should have a no-argument constructor ([Sonar Rule 2055](https://rules.sonarsource.com/c/RSPEC-2055)) -
 
-The repair adds a no-argument empty constructor to the superclass.
+The repair adds a no-argument empty constructor to the superclass, or removes
+"implements Serializable" from the subclass, depending on user's choice.
+
+Merged Pull Requests:
+
+* https://github.com/INRIA/spoon/pull/2173
 
 [DeadStoreProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/DeadStoreProcessor.java)
 
