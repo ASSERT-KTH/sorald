@@ -55,8 +55,13 @@ of creating a new one, so that useless nested try blocks are not created.
 
 [ResourceCloseProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/ResourceCloseProcessor.java)
 
-## Usage
+## Getting Started
 
+### Prerequisites 
+A JDK(java 1.8 or above) and a java IDE is needed to use this repair system.
+Maven is required to build the project.
+
+### Usage
 To use it, run:
 
 `git clone https://github.com/kth-tcs/sonarqube-repair.git`
@@ -68,7 +73,24 @@ number and project-key manually in the main function in `src/main/java/Main.java
  The repaired files will
 appear in `sonarqube-repair/spooned/` . Also you need to set the url of
  the sonar analysis of your project in `src/main/java/ParseAPI.java`
-  if it is different from [sonarcloud.io](https://sonarcloud.io/about) 
+  if it is different from [sonarcloud.io](https://sonarcloud.io/about)
+ 
+## Running the tests
+
+run `mvn test` to run the tests for all repairs.
+
+## Contributing
+
+### Issues 
+Feel free to open issues on this github repository.
+
+### Pull requests
+Pull requests for improvements or new features are welcome by all contributers.
+
+## Authors
+* Ashutosh Kumar Verma [ashutosh1598](https://github.com/ashutosh1598)
+* Martin Monperrus [monperrus](https://github.com/monperrus)
+* Pavel Pvojtechovsky  [pvojtechovsky](https://github.com/pvojtechovsky)
 
 ## Implementation notes
 
