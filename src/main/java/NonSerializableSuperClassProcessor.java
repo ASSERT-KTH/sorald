@@ -20,7 +20,8 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
     private static int inp=-1;
-    public NonSerializableSuperClassProcessor(String projectKey) throws Exception {
+    private static boolean defolt = false;
+    public NonSerializableSuperClassProcessor(String projectKey,boolean defolt1) throws Exception {
         jsonArray= ParseAPI.parse(2055,"",projectKey);
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();
@@ -31,14 +32,20 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
             SetOfLineNumbers.add(bug.getLineNumber());
             SetOfFileNames.add(bug.getFileName());
         }
-        Scanner sc = new Scanner(System.in);
-        String message = String.format("There are two possible repair for this bug." +
-                " Either add no-argument constructor in super class or remove \"implements Serializable\" " +
-                "from this class. Type 0 for first option and 1 for second.");
-        System.out.println(message);
-        inp = sc.nextInt();
+        if(!defolt1)
+        {
+            Scanner sc = new Scanner(System.in);
+            String message = String.format("There are two possible repair for this bug." +
+                    " Either add no-argument constructor in super class or remove \"implements Serializable\" " +
+                    "from this class. Type 0 for first option and 1 for second.");
+            System.out.println(message);
+            inp = sc.nextInt();
+        }
+        else
+        {
+            defolt = true;
+        }
     }
-
 
     @Override
     public boolean isToBeProcessed(CtClass element)
@@ -98,7 +105,7 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
     public void process(CtClass element) {
 
         System.out.println("BUG\n");
-        if (inp == 0) {
+        if (defolt || inp == 0) {
             System.out.println("zero selected");
             CtClass ct=element;
             while(true)
