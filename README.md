@@ -69,6 +69,11 @@ number and project-key manually in the main function in `src/main/java/Main.java
 appear in `sonarqube-repair/spooned/` . Also you need to set the url of
  the sonar analysis of your project in `src/main/java/ParseAPI.java`
   if it is different from [sonarcloud.io](https://sonarcloud.io/about) 
+
+## Implementation notes
+
+Sonarjava had to be changed in order to return the appropriate issue information, the changes are at https://github.com/kth-tcs/sonar-java/pull/1
+
 ## Case studies
 
 Spoon SonarQube: <https://sonarqube.ow2.org/project/issues?id=fr.inria.gforge.spoon%3Aspoon-core&resolved=false&types=BUG>
