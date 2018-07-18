@@ -12,7 +12,7 @@ public class NonSerializableSuperClassProcessorTest {
     private static String pathToFile = cdtest + "src/main/java/";
 
     @Test
-    public void NullDereference()throws Exception
+    public void test()throws Exception
     {
         String fileName = "SerializableSuperConstructorCheck.java";
         String pathToRepairedFile = "./spooned/" + fileName;

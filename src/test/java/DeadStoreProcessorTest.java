@@ -9,7 +9,7 @@ public class DeadStoreProcessorTest {
     private static String pathToFile = cdtest + "src/main/java/";
 
     @Test
-    public void DeadStore()throws Exception
+    public void test()throws Exception
     {
         String fileName = "DeadStores.java";
         String pathToRepairedFile = "./spooned/" + fileName;

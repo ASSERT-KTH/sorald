@@ -9,7 +9,7 @@ public class NullDereferenceProcessorTest {
     private static String pathToFile = cdtest + "src/main/java/";
 
     @Test
-    public void NullDereference()throws Exception
+    public void test()throws Exception
     {
         String fileName = "NullDereferences.java";
         String pathToRepairedFile = "./spooned/" + fileName;
