@@ -34,6 +34,7 @@ Merged Pull Requests:
 
 * https://github.com/INRIA/spoon/pull/2059
 * https://github.com/INRIA/spoon/pull/2121
+* https://github.com/INRIA/spoon/pull/2241  (very successful, removes 83 sonarqube bugs in one go)
 
 
 ### Non-serializable super class of a "Serializable" class should have a no-argument constructor ([Sonar Rule 2055](https://rules.sonarsource.com/c/RSPEC-2055)) -
