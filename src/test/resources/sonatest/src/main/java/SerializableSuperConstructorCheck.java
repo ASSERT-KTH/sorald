@@ -1,51 +1,17 @@
-import java.io.Serializable;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+public class Fruit {
+    private Season ripe;
 
-class NonSerializableWithoutConstructor {
-  
+    public Fruit (Season ripe) {}
+    public void setRipe(Season ripe) {}
+    public Season getRipe() {}
 }
 
-class NonSerializableWithAccessibleNoArgConstructor {
-  
-  public NonSerializableWithAccessibleNoArgConstructor(String arg1) {}
-  public NonSerializableWithAccessibleNoArgConstructor() {}
-  
-}
+public class SerializableSuperConstructorCheck extends Fruit implements Serializable {  // Noncompliant; nonserializable ancestor doesn't have no-arg constructor
+    private static final long serialVersionUID = 1;
 
-class NonSerializableWithoutAccessibleNoArgConstructor {
-  
-//  public NonSerializableWithoutAccessibleNoArgConstructor(String arg1) {}
-//  private NonSerializableWithoutAccessibleNoArgConstructor() {}
-  
-}
+    private String variety;
 
-class A extends NonSerializableWithoutConstructor implements Serializable {
-
-}
-
-class B extends NonSerializableWithAccessibleNoArgConstructor implements Serializable {
-
-}
-
-class C extends NonSerializableWithoutAccessibleNoArgConstructor implements Serializable { // Noncompliant {{Add a no-arg constructor to "NonSerializableWithoutAccessibleNoArgConstructor".}
-    public C()
-    {
-
-    }
-}
-
-class D implements Serializable {
-  
-}
-
-class E extends NonSerializableWithoutAccessibleNoArgConstructor {
-    public E()
-    {
-
-    }
-}
-
-class F extends A {
-  
+    public SerializableSuperConstructorCheck(Season ripe, String variety) { }
+    public void setVariety(String variety) {}
+    public String getVarity() {}
 }
