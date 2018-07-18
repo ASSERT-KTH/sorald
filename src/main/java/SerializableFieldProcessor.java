@@ -1,10 +1,12 @@
 import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
+import spoon.reflect.code.CtComment;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
@@ -83,5 +85,18 @@ public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
     @Override
     public void process(CtField element) {
         element.addModifier(ModifierKind.TRANSIENT);
+        List<CtComment> comments = element.getComments();
+        CtComment sp = null;
+        for(CtComment comment : comments)
+        {
+            if(comment.getContent().indexOf("Noncompliant")!=-1)
+            {
+                sp = comment;
+            }
+        }
+        if(sp!=null)
+        {
+            element.removeComment(sp);
+        }
     }
 }

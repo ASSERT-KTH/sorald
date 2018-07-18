@@ -15,8 +15,8 @@ class NonSerializableWithAccessibleNoArgConstructor {
 
 class NonSerializableWithoutAccessibleNoArgConstructor {
   
-  public NonSerializableWithoutAccessibleNoArgConstructor(String arg1) {}
-  private NonSerializableWithoutAccessibleNoArgConstructor() {}
+//  public NonSerializableWithoutAccessibleNoArgConstructor(String arg1) {}
+//  private NonSerializableWithoutAccessibleNoArgConstructor() {}
   
 }
 
@@ -28,8 +28,11 @@ class B extends NonSerializableWithAccessibleNoArgConstructor implements Seriali
 
 }
 
-class C extends NonSerializableWithoutAccessibleNoArgConstructor implements Serializable { // Noncompliant {{Add a no-arg constructor to "NonSerializableWithoutAccessibleNoArgConstructor".}}
-  
+class C extends NonSerializableWithoutAccessibleNoArgConstructor implements Serializable { // Noncompliant {{Add a no-arg constructor to "NonSerializableWithoutAccessibleNoArgConstructor".}
+    public C()
+    {
+
+    }
 }
 
 class D implements Serializable {
@@ -37,7 +40,10 @@ class D implements Serializable {
 }
 
 class E extends NonSerializableWithoutAccessibleNoArgConstructor {
-  
+    public E()
+    {
+
+    }
 }
 
 class F extends A {

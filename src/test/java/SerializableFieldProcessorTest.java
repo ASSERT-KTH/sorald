@@ -11,11 +11,11 @@ public class SerializableFieldProcessorTest {
     @Test
     public void test() throws Exception{
 
-        String fileName = "SerializableFieldInSerializableClassCheck.java";
+        String fileName = "SerializableFieldProcessorTest.java";
         String pathToRepairedFile = "./spooned/" + fileName;
 
         JavaCheckVerifier.verify(pathToFile + fileName, new SerializableFieldInSerializableClassCheck());
-        TestHelp.normalRepair(pathToFile,projectKey,1948);
+        TestHelp.normalRepair(pathToFile + fileName,projectKey,1948);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new SerializableFieldInSerializableClassCheck());
     }
 

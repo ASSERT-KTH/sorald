@@ -15,7 +15,7 @@ public class NullDereferenceProcessorTest {
         String pathToRepairedFile = "./spooned/" + fileName;
 
         JavaCheckVerifier.verify(pathToFile + fileName,new NullDereferenceCheck());
-        TestHelp.normalRepair(pathToFile,projectKey,2259);
+        TestHelp.normalRepair(pathToFile + fileName,projectKey,2259);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new NullDereferenceCheck());
     }
 
