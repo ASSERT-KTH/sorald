@@ -16,11 +16,17 @@ is nullable.
 
 [NullDereferenceProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/NullDereferenceProcessor.java)
 
+
 ### Dead Stores should be removed([Sonar Rule 1854](https://rules.sonarsource.com/c/RSPEC-1854)) -   
 
 The repair repair consists of deleting the useless assignment.
 
 [DeadStoreProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/DeadStoreProcessor.java)
+
+Merged Pull Requests:
+
+* https://github.com/INRIA/spoon/pull/2265
+(removes one sonar violation)
 
 ### Fields in a "Serializable" class should be serializable ([Sonar Rule 1948](https://rules.sonarsource.com/c/RSPEC-1948)) -
 
@@ -32,9 +38,9 @@ of that field and add `implements Serializable` to it.
 
 Merged Pull Requests:
 
-* https://github.com/INRIA/spoon/pull/2059
-* https://github.com/INRIA/spoon/pull/2121
-* https://github.com/INRIA/spoon/pull/2241  (very successful, removes 83 sonarqube bugs in one go)
+* https://github.com/INRIA/spoon/pull/2059  (removes 10 sonarqube bugs)
+* https://github.com/INRIA/spoon/pull/2121  (removes 3 sonarqube bugs)
+* https://github.com/INRIA/spoon/pull/2241  (removes 83 sonarqube bugs)
 
 
 ### Non-serializable super class of a "Serializable" class should have a no-argument constructor ([Sonar Rule 2055](https://rules.sonarsource.com/c/RSPEC-2055)) -
@@ -42,11 +48,12 @@ Merged Pull Requests:
 The repair adds a no-argument empty constructor to the superclass, or removes
 "implements Serializable" from the subclass, depending on user's choice.
 
+[NonSerializableSuperClassProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/NonSerializableSuperClassProcessor.java)
+
 Merged Pull Requests:
 
-* https://github.com/INRIA/spoon/pull/2173
+* https://github.com/INRIA/spoon/pull/2173 (removes 3 sonar violations)
 
-[DeadStoreProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/DeadStoreProcessor.java)
 
 ### Resources should be closed ([Sonar Rule 2095](https://rules.sonarsource.com/c/RSPEC-2095)) -
 
@@ -55,6 +62,7 @@ If it was already in a try block it replaces the try with try-with-resources ins
 of creating a new one, so that useless nested try blocks are not created.
 
 [ResourceCloseProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/ResourceCloseProcessor.java)
+
 
 ## Getting Started
 
