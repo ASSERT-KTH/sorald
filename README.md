@@ -27,6 +27,8 @@ Merged Pull Requests:
 
 * https://github.com/INRIA/spoon/pull/2265
 (removes one sonar violation)
+* https://github.com/INRIA/spoon/pull/2256
+(removes two sonar violations)
 
 ### Fields in a "Serializable" class should be serializable ([Sonar Rule 1948](https://rules.sonarsource.com/c/RSPEC-1948)) -
 
