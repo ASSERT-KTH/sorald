@@ -85,15 +85,16 @@ public class TestHelp {
     Simple helper method that removes the mandatory // Noncompliant comments from test files.
      */
     public static void removeComplianceComments(String pathToRepairedFile) {
+        final String complianceComment = "// Noncompliant";
         try {
             BufferedReader file = new BufferedReader(new FileReader(pathToRepairedFile));
             StringBuffer inputBuffer = new StringBuffer();
             String line;
 
             while ((line = file.readLine()) != null) {
-                if(line.contains("// Noncompliant")){
+                if(line.contains(complianceComment)){
                     line.trim();
-                    line = line.substring(0, line.length() - ("//Noncompliant".length()) - 1);
+                    line = line.substring(0, line.length() - (complianceComment.length()));
                 }
                 inputBuffer.append(line+'\n');
             }
