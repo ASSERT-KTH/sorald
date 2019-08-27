@@ -6,10 +6,12 @@
 
 public class ArrayToString {
 
-    public void foo() {
+    public void foo(String[] args) {
         String[] array1 = {"F", "O", "O"};
         System.out.println(array1.toString());// Noncompliant
         varargsTest(1, 2, 3);
+        String argStr = args.toString();// Noncompliant
+        int argHash = args.hashCode();// Noncompliant
     }
 
     private void varargsTest(int ... array2){
