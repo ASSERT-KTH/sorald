@@ -1,8 +1,8 @@
 import spoon.Launcher;
-import spoon.experimental.modelobs.SourceFragmentsTreeCreatingChangeCollector;
+// import spoon.support.modelobs.SourceFragmentsTreeCreatingChangeCollector;
 import spoon.processing.Processor;
 import spoon.reflect.visitor.PrettyPrinter;
-import spoon.reflect.visitor.printer.change.SniperJavaPrettyPrinter;
+// import spoon.reflect.visitor.printer.change.SniperJavaPrettyPrinter;
 
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
@@ -20,6 +20,7 @@ public class TestHelp {
         rule.putIfAbsent(1948, SerializableFieldProcessor.class);
         rule.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
         rule.putIfAbsent(2095, ResourceCloseProcessor.class);
+        rule.putIfAbsent(2116, ArrayToStringProcessor.class);
         rule.putIfAbsent(2259, NullDereferenceProcessor.class);
     }
 
@@ -34,6 +35,7 @@ public class TestHelp {
         return rule.get(ruleKey);
     }
 
+    /*
     public static void repair(String pathToFile, String projectKey, int rulekey) throws Exception
     {
         Launcher launcher = new Launcher() {
@@ -60,6 +62,7 @@ public class TestHelp {
         launcher.run();
 //        new SpoonModelTree(launcher.getFactory());
     }
+    */
 
     public static void normalRepair(String pathToFile, String projectKey, int rulekey) throws Exception {
         //Not Sniper  Mode

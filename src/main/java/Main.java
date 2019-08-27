@@ -9,7 +9,7 @@ public class Main {
     {
 
         String projectKey="fr.inria.gforge.spoon:spoon-core";
-        int rulenumber = 1854;
+        int rulenumber = 2116;
         if(args.length>0)
         {
             rulenumber = Integer.parseInt(args[0]);
@@ -33,7 +33,7 @@ public class Main {
         {
             System.out.println("No arguments given. Using "+ TestHelp.getProcessor(rulenumber).getName()+ " by default on "+projectKey);
         }
-        TestHelp.repair("./source/act/",projectKey,rulenumber);
+        TestHelp.normalRepair("./source/act/",projectKey,rulenumber);
         System.out.println("done");
 	}
 }
