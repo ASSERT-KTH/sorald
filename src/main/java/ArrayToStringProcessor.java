@@ -53,17 +53,12 @@ public class ArrayToStringProcessor extends AbstractProcessor<CtInvocation<?>> {
     }
     @Override
     public void process(CtInvocation<?> element) {
-        CtExpression target = element.getTarget();
-        // System.out.println(target);
-        // CtCodeSnippetExpression snippetExpression = getFactory().Code().createCodeSnippetExpression("Arrays.toString(" + target + ")");
-        CtCodeSnippetExpression snippetExpression = getFactory().Code().createCodeSnippetExpression("Arrays");
-
+        CtExpression prevTarget = element.getTarget();
+        CtCodeSnippetExpression newTarget = getFactory().Code().createCodeSnippetExpression("Arrays");
         CtType arraysClass = getFactory().Class().get(Arrays.class);
         CtMethod toStringMethod = (CtMethod) arraysClass.getMethodsByName("toString").get(0);
-        System.out.println(toStringMethod);
         CtExecutableReference refToString = getFactory().Executable().createReference(toStringMethod);
-        refToString.setStatic(true);
-        CtInvocation arraysToString = getFactory().Code().createInvocation(null, refToString, target);
+        CtInvocation arraysToString = getFactory().Code().createInvocation(newTarget, refToString, prevTarget);
 
         arraysToString.setImplicit(false);
 
