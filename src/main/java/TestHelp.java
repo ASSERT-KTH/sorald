@@ -1,6 +1,9 @@
 import spoon.Launcher;
 // import spoon.support.modelobs.SourceFragmentsTreeCreatingChangeCollector;
 import spoon.processing.Processor;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileOutputStream;
 import spoon.reflect.visitor.PrettyPrinter;
 // import spoon.reflect.visitor.printer.change.SniperJavaPrettyPrinter;
 
@@ -76,6 +79,32 @@ public class TestHelp {
         launcher.addProcessor((Processor) object);
         launcher.run();
 //        new SpoonModelTree(launcher.getFactory());
+    }
+
+    /*
+    Simple helper method that removes the mandatory // Noncompliant comments from test files.
+     */
+    public static void removeComplianceComments(String pathToRepairedFile) {
+        try {
+            BufferedReader file = new BufferedReader(new FileReader(pathToRepairedFile));
+            StringBuffer inputBuffer = new StringBuffer();
+            String line;
+
+            while ((line = file.readLine()) != null) {
+                if(line.contains("// Noncompliant")){
+                    line.trim();
+                    line = line.substring(0, line.length() - ("//Noncompliant".length()) - 1);
+                }
+                inputBuffer.append(line+'\n');
+            }
+            file.close();
+            FileOutputStream fileOut = new FileOutputStream(pathToRepairedFile);
+            fileOut.write(inputBuffer.toString().getBytes());
+            fileOut.close();
+
+        } catch (Exception e) {
+            System.out.println("Problem reading file.");
+        }
     }
 
     public static void copy(String from, String to) {
