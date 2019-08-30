@@ -41,7 +41,6 @@ public class ArrayToStringProcessor extends AbstractProcessor<CtInvocation<?>> {
             method = (CtMethod) arraysClass.getMethodsByName(TOSTRING).get(0);
         } else {
             System.err.println("Unhandled case. Something went wrong.");
-            System.exit(1);
         }
         CtExecutableReference refToMethod = getFactory().Executable().createReference(method);
         CtInvocation newInvocation  = getFactory().Code().createInvocation(newTarget, refToMethod, prevTarget);
