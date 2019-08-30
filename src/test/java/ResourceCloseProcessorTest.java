@@ -19,6 +19,7 @@ public class ResourceCloseProcessorTest {
 
         JavaCheckVerifier.verify(pathToFile + fileName, new UnclosedResourcesCheck());
         TestHelp.normalRepair(pathToFile + fileName,projectKey,2095);
+        TestHelp.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new UnclosedResourcesCheck());
 
     }

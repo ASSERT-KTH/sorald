@@ -30,14 +30,14 @@
         </dependency>
         -->
 
-        <!--
+
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>7.1.0-SNAPSHOT</version>
+            <version>7.5.0</version>
         </dependency>
-        -->
 
+<!--
         <dependency>
             <groupId>org.sonar.java</groupId>
             <artifactId>Project</artifactId>
@@ -45,11 +45,18 @@
             <scope>system</scope>
             <systemPath>${basedir}/lib/java-checks-testkit-5.5.0-SNAPSHOT.jar</systemPath>
         </dependency>
+-->
+        <dependency>
+            <groupId>org.sonarsource.java</groupId>
+            <artifactId>java-checks-testkit</artifactId>
+            <version>5.5.0.14655</version>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>sonar-java-plugin</artifactId>
-            <version>5.4.0.14284</version>
+            <version>5.7.0.15470</version>
         </dependency>
 
         <dependency>

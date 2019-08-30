@@ -1,3 +1,9 @@
+/**
+ * DISABLED as per commit b965cad6f327d8fd0fb97a3af8f6427de61685c4
+ * The processor is non-functioning. See commit message above for more info.
+ */
+/*
+/*
 import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
@@ -139,3 +145,4 @@ public class NullDereferenceProcessor extends AbstractProcessor<CtInvocation<?>>
         }
     }
 }
+*/

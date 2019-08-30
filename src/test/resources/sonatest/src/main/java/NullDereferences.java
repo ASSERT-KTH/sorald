@@ -1,3 +1,9 @@
+/**
+ * DISABLED as per commit b965cad6f327d8fd0fb97a3af8f6427de61685c4
+ * The processor is non-functioning. See commit message above for more info.
+ */
+/*
+/*
 import java.io.*;
 
 public class NullDereferences
@@ -44,7 +50,22 @@ public class NullDereferences
         }
         return value;
     }
+    @CheckForNull
+    private String getName(){
+        return null;
+    }
+
+    public boolean isNameEmpty() {
+        return getName().length() == 0; // Noncompliant; the result of getName() could be null, but isn't null-checked
+    }
+
+    private void nullCheck(int s)
+    {
+        if(s == null){
+            System.out.println(s.toString()); // Noncompliant;
+        }
+    }
 
 
 }
-
+*/

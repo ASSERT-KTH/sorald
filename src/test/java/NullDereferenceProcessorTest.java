@@ -1,3 +1,8 @@
+/**
+ * DISABLED as per commit b965cad6f327d8fd0fb97a3af8f6427de61685c4
+ * The processor is non-functioning. See commit message above for more info.
+ */
+/*
 import org.junit.Test;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.java.se.checks.NullDereferenceCheck;
@@ -20,3 +25,4 @@ public class NullDereferenceProcessorTest {
     }
 
 }
+*/

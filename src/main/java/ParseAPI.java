@@ -58,7 +58,7 @@ public class ParseAPI {
             System.out.println("Here is the JSON response from Sonarqube:");
             System.out.println(jo.toString());
         }
-        if(projectKey.equals("se.kth:sonatest"))
+        if(projectKey.equals("fr.inria.gforge.spoon:spoon-core"))
         {
             System.out.println(jsonArray.toString());
         }
