@@ -1,3 +1,8 @@
+/**
+ * DISABLED as per commit b965cad6f327d8fd0fb97a3af8f6427de61685c4.
+ * The test is unable to find the error in the initial state. See commit mesage above for more info.
+ */
+/*
 /*
 public class Fruit {
     private Season ripe;

@@ -1,3 +1,7 @@
+/**
+ * DISABLED as per commit b965cad6f327d8fd0fb97a3af8f6427de61685c4.
+ * The test is unable to find the error in the initial state. See commit mesage above for more info.
+ */
 /*
 import org.junit.Test;
 import org.sonar.java.checks.serialization.SerializableSuperConstructorCheck;
