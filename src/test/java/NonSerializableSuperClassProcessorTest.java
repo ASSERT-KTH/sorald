@@ -1,3 +1,4 @@
+/*
 import org.junit.Test;
 import org.sonar.java.checks.serialization.SerializableSuperConstructorCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
@@ -21,5 +22,5 @@ public class NonSerializableSuperClassProcessorTest {
         TestHelp.normalRepair(pathToFile,projectKey,2055);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new SerializableSuperConstructorCheck());
     }
-    
 }
+*/

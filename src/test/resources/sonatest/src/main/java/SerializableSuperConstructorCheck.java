@@ -1,3 +1,4 @@
+/*
 public class Fruit {
     private Season ripe;
 
@@ -15,3 +16,4 @@ public class SerializableSuperConstructorCheck extends Fruit implements Serializ
     public void setVariety(String variety) {}
     public String getVarity() {}
 }
+*/

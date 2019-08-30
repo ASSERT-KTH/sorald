@@ -1,3 +1,4 @@
+/*
 import java.io.*;
 
 public class NullDereferences
@@ -62,4 +63,4 @@ public class NullDereferences
 
 
 }
-
+*/

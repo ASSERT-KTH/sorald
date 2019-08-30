@@ -1,3 +1,4 @@
+/*
 import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
@@ -150,3 +151,4 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
         }
     }
 }
+*/

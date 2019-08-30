@@ -4,7 +4,6 @@ import spoon.processing.Processor;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileOutputStream;
-import spoon.reflect.visitor.PrettyPrinter;
 // import spoon.reflect.visitor.printer.change.SniperJavaPrettyPrinter;
 
 import java.lang.reflect.Constructor;
@@ -21,10 +20,10 @@ public class TestHelp {
         rule = new HashMap<>();
         rule.putIfAbsent(1854, DeadStoreProcessor.class);
         rule.putIfAbsent(1948, SerializableFieldProcessor.class);
-        rule.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
+        // rule.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
         rule.putIfAbsent(2095, ResourceCloseProcessor.class);
         rule.putIfAbsent(2116, ArrayToStringProcessor.class);
-        rule.putIfAbsent(2259, NullDereferenceProcessor.class);
+        // rule.putIfAbsent(2259, NullDereferenceProcessor.class);
     }
 
     public static Class<?> getProcessor(int ruleKey) {

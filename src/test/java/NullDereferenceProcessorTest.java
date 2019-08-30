@@ -1,3 +1,4 @@
+/*
 import org.junit.Test;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.java.se.checks.NullDereferenceCheck;
@@ -20,3 +21,4 @@ public class NullDereferenceProcessorTest {
     }
 
 }
+*/
