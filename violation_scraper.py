@@ -1,6 +1,6 @@
 import requests;
 import json;
-from collections import Counter
+from collections import Counter # Counts and orders the list of violations
 import sys;
 from urllib.parse import quote_plus # Make sysarg url-safe
 # Url to SQ instance (overwritten by cmd arguments).
@@ -40,6 +40,7 @@ def get_violations(url, project_key):
         pageIndex += 1;
     return violated_rules;
 
+# Pretty prints a list, printing every object on its own line
 def pretty_print(listVar):
     for obj in listVar:
         print(obj);
