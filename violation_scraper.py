@@ -3,14 +3,14 @@ import json;
 from collections import Counter # Counts and orders the list of violations
 import sys;
 from urllib.parse import quote_plus # Make sysarg url-safe
-# Url to SQ instance (overwritten by cmd arguments).
-url = "http://127.0.0.1:9000/";
-# If a SQ instance with multiple projects is specified (such as OW2 containing Spoon-Core), the specific project can be chosen (overwritten by cmd args).
-project_key= "";
 # Number of issues per page (Max 500)
 pageSize = 500;
 
 def set_cmd_values():
+    # Url to SQ instance (overwritten by cmd arguments).
+    url = "http://127.0.0.1:9000/";
+    # If a SQ instance with multiple projects is specified (such as OW2 containing Spoon-Core), the specific project can be chosen (overwritten by cmd args).
+    project_key= "";
     if(len(sys.argv) > 1):
         url = sys.argv[1];
     if(not url.endswith("/")):
