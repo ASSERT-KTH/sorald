@@ -4,10 +4,6 @@ import spoon.reflect.code.CtExpression;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
-import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.declaration.CtType;
-
-import java.util.Arrays;
 
 public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
 
@@ -28,13 +24,13 @@ public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
             if(op.getKind() == BinaryOperatorKind.EQ){
                 CtExpression left = op.getLeftHandOperand();
                 CtExpression right = op.getRightHandOperand();
+
                 /*
-                Boxing boxed types returns the same type.
                 The reason we don't check for the case where one variable is boxed is because Java implicitly unboxes
                 the boxed type to primitive, making the == check fine. See JLS #5.6.2:
                 https://docs.oracle.com/javase/specs/jls/se8/html/jls-5.html#jls-5.6.2
                  */
-                if(left.getType().box() == left.getType() && right.getType().box() == right.getType()){
+                if(!left.getType().isPrimitive() && !right.getType().isPrimitive()){
                     return true;
                 }
             }
@@ -43,18 +39,9 @@ public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
     }
     @Override
     public void process(CtElement element) {
-        CtBinaryOperator binaryOperator = (CtBinaryOperator)element;
-        // System.out.println(binaryOperator.getLeftHandOperand().getType().getTypeDeclaration().getMethodsByName("equals").get(0)); // String
-        // System.out.println(binaryOperator.getLeftHandOperand().getType().getClass()); // class spoon.support.reflect.reference.CtTypeReferenceImpl
-        // CtType leftClass = getFactory().Type().STRING.getTypeDeclaration();
-        // CtMethod leftMethod = (CtMethod) binaryOperator.getLeftHandOperand().getType().getTypeDeclaration().getMethodsByName("equals").get(0);
-        CtCodeSnippetExpression newBinaryOperator = getFactory().Code().createCodeSnippetExpression(binaryOperator.getLeftHandOperand().toString() + ".equals(" + binaryOperator.getRightHandOperand() + ");");
-        // System.out.println(newBinaryOperator);
-        binaryOperator.replace(newBinaryOperator);
-        // CtType leftClass = getFactory().Class().get(binaryOperator.getLeftHandOperand().getType().class);
-        // CtMethod method = null;
-        // method = (CtMethod) leftClass.getMethodsByName("equals").get(0);
-        // System.out.println(leftClass);
-        // System.out.println(leftMethod);
+        CtBinaryOperator bo = (CtBinaryOperator)element;
+        CtCodeSnippetExpression newBinaryOperator = getFactory().Code().createCodeSnippetExpression(
+                bo.getLeftHandOperand().toString() + ".equals(" + bo.getRightHandOperand() + ");");
+        bo.replace(newBinaryOperator);
     }
 }
