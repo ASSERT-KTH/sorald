@@ -41,7 +41,7 @@ public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
     public void process(CtElement element) {
         CtBinaryOperator bo = (CtBinaryOperator)element;
         CtCodeSnippetExpression newBinaryOperator = getFactory().Code().createCodeSnippetExpression(
-                bo.getLeftHandOperand().toString() + ".equals(" + bo.getRightHandOperand() + ");");
+                bo.getLeftHandOperand().toString() + ".equals(" + bo.getRightHandOperand() + ")");
         bo.replace(newBinaryOperator);
     }
 }

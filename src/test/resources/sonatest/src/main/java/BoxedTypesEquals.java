@@ -30,10 +30,13 @@ public class BoxedTypesEquals {
     }
 
     // String is not primitive and should use .equals()
-    private void stringCompare(){
+    private boolean stringCompare(){
         String firstName = getFirstName(); // String overrides equals
         String lastName = getLastName();
-        eq = (firstName == lastName);// Noncompliant
+        if(firstName == lastName){// Noncompliant
+            return true;
+        }
+        return false;
     }
 
     private String getFirstName(){
