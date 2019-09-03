@@ -6,6 +6,18 @@
 
 public class BoxedTypesEquals {
 
+    public void foo(){
+        String firstName = getFirstName(); // String overrides equals
+        String lastName = getLastName();
+        boolean eq = (firstName == lastName);// Noncompliant
+        int x = 5;
+        int y = 5;
+        eq = (x == y); // Compliant; Non-boxed variables
+        /*
+        Add a custom type equality check which overrides the equals() method
+         */
+    }
+
     private String getFirstName(){
         return new String("John");
     }
@@ -13,8 +25,4 @@ public class BoxedTypesEquals {
     private String getLastName(){
         return new String("John");
     }
-
-    String firstName = getFirstName(); // String overrides equals
-    String lastName = getLastName();
-    boolean x = (firstName == lastName);// Noncompliant
 }
