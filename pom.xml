@@ -53,10 +53,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.sonarsource.java/sonar-java-plugin -->
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>sonar-java-plugin</artifactId>
-            <version>5.7.0.15470</version>
+            <version>5.14.0.18788</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
