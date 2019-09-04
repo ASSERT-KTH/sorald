@@ -29,8 +29,11 @@ public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
                 The reason we don't check for the case where one variable is boxed is because Java implicitly unboxes
                 the boxed type to primitive, making the == check fine. See JLS #5.6.2:
                 https://docs.oracle.com/javase/specs/jls/se8/html/jls-5.html#jls-5.6.2
-                 */
-                if(!left.getType().isPrimitive() && !right.getType().isPrimitive()){
+                */
+                String nullType = getFactory().Code().createCodeSnippetExpression("").getType().NULL_TYPE_NAME;
+                if(!left.getType().isPrimitive() && !right.getType().isPrimitive() &&
+                        !left.getType().getSimpleName().equals(nullType) &&
+                        !right.getType().getSimpleName().equals(nullType)){
                     return true;
                 }
             }
