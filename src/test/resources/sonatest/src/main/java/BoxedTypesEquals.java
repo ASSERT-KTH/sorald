@@ -13,6 +13,7 @@ public class BoxedTypesEquals {
         int e = 4;
         Integer f = 4;
         eq = (e == f);// Compliant;
+        eq = (f == e);// Compliant;
     }
 
     // Integer is not primitive and should use .equals()
@@ -27,6 +28,25 @@ public class BoxedTypesEquals {
         int x = 5;
         int y = 5;
         eq = (x == y); // Compliant;
+        eq = (y == x); // Compliant;
+    }
+
+    // Null comparisons are excluded from transformation
+    private void nullCompare(){
+        String x = null;
+        eq = (x == null); // Compliant
+        eq = (null == x); // Compliant
+    }
+
+    // ENUM comparisons are excluded from transformation
+    private void nullCompare(){
+        enum foo {
+            BAR,
+            XOR
+        }
+        foo x = foo.BAR;
+        eq = (x == foo.BAR); // Compliant
+        eq = (foo.XOR == x); // Compliant
     }
 
     // String is not primitive and should use .equals()
