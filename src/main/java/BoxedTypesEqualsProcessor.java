@@ -21,10 +21,9 @@ public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
         }
         if (candidate instanceof CtBinaryOperator){
             CtBinaryOperator op = (CtBinaryOperator)candidate;
-            if(op.getKind() == BinaryOperatorKind.EQ){
+            if(op.getKind() == BinaryOperatorKind.EQ || op.getKind() == BinaryOperatorKind.NE){
                 CtExpression left = op.getLeftHandOperand();
                 CtExpression right = op.getRightHandOperand();
-
                 /*
                 The reason we don't check for the case where one variable is boxed is because Java implicitly unboxes
                 the boxed type to primitive, making the == check fine. See JLS #5.6.2:
@@ -44,8 +43,12 @@ public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
     @Override
     public void process(CtElement element) {
         CtBinaryOperator bo = (CtBinaryOperator)element;
+        String negation = "";
+        if(((CtBinaryOperator) element).getKind() == BinaryOperatorKind.NE){
+            negation = "!";
+        }
         CtCodeSnippetExpression newBinaryOperator = getFactory().Code().createCodeSnippetExpression(
-                bo.getLeftHandOperand().toString() + ".equals(" + bo.getRightHandOperand() + ")");
+                negation + bo.getLeftHandOperand().toString() + ".equals(" + bo.getRightHandOperand() + ")");
         bo.replace(newBinaryOperator);
     }
 }

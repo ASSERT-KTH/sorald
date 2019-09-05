@@ -12,7 +12,7 @@ public class BoxedTypesEquals {
     private void mixedCompare(){
         int e = 4;
         Integer f = 4;
-        eq = (e == f);// Compliant;
+        eq = (e != f);// Compliant;
         eq = (f == e);// Compliant;
     }
 
@@ -20,7 +20,7 @@ public class BoxedTypesEquals {
     private boolean IntegerCompare(){
         Integer a = 5;
         Integer b = 5;
-        return b == a;// Noncompliant
+        return b != a;// Noncompliant
     }
 
     // Int is primitive and can use ==
