@@ -23,6 +23,7 @@ public class TestHelp {
         // rule.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
         rule.putIfAbsent(2095, ResourceCloseProcessor.class);
         rule.putIfAbsent(2116, ArrayToStringProcessor.class);
+        rule.putIfAbsent(4973, BoxedTypesEqualsProcessor.class);
         // rule.putIfAbsent(2259, NullDereferenceProcessor.class);
     }
 
