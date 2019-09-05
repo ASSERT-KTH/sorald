@@ -4,6 +4,8 @@ import spoon.reflect.code.CtExpression;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
+import spoon.reflect.declaration.CtType;
+import spoon.reflect.reference.CtTypeReference;
 
 public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
 
@@ -29,11 +31,11 @@ public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
                 the boxed type to primitive, making the == check fine. See JLS #5.6.2:
                 https://docs.oracle.com/javase/specs/jls/se8/html/jls-5.html#jls-5.6.2
                 */
-                String nullType = getFactory().Type().NULL_TYPE.getQualifiedName();
+                CtTypeReference nullType = getFactory().Type().NULL_TYPE;
                 if(!left.getType().isPrimitive() && !right.getType().isPrimitive() &&
                         !left.getType().isEnum() && !right.getType().isEnum() &&
-                        !left.getType().getSimpleName().equals(nullType) &&
-                        !right.getType().getSimpleName().equals(nullType)){
+                        !left.getType().equals(nullType) &&
+                        !right.getType().equals(nullType)){
                     return true;
                 }
             }
