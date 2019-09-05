@@ -33,7 +33,11 @@ public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
                 String nullType = getFactory().Code().createCodeSnippetExpression("").getType().NULL_TYPE_NAME;
                 if(!left.getType().isPrimitive() && !right.getType().isPrimitive() &&
                         !left.getType().getSimpleName().equals(nullType) &&
-                        !right.getType().getSimpleName().equals(nullType)){
+                        !right.getType().getSimpleName().equals(nullType) &&
+                        !left.getType().getSimpleName().equals("CommentType") &&
+                        !right.getType().getSimpleName().equals("CommentType") &&
+                        !left.toString().equals("CtRole.COMMENT") &&
+                        !right.toString().equals("CtRole.COMMENT")){
                     return true;
                 }
             }
