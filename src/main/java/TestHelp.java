@@ -1,11 +1,9 @@
 import spoon.Launcher;
-// import spoon.support.modelobs.SourceFragmentsTreeCreatingChangeCollector;
 import spoon.processing.Processor;
+import spoon.support.sniper.SniperJavaPrettyPrinter;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileOutputStream;
-// import spoon.reflect.visitor.printer.change.SniperJavaPrettyPrinter;
-
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,8 +21,8 @@ public class TestHelp {
         // rule.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
         rule.putIfAbsent(2095, ResourceCloseProcessor.class);
         rule.putIfAbsent(2116, ArrayToStringProcessor.class);
-        rule.putIfAbsent(4973, BoxedTypesEqualsProcessor.class);
         // rule.putIfAbsent(2259, NullDereferenceProcessor.class);
+        rule.putIfAbsent(4973, BoxedTypesEqualsProcessor.class);
     }
 
     public static Class<?> getProcessor(int ruleKey) {
@@ -38,20 +36,14 @@ public class TestHelp {
         return rule.get(ruleKey);
     }
 
-    /*
     public static void repair(String pathToFile, String projectKey, int rulekey) throws Exception
     {
         Launcher launcher = new Launcher() {
-        	@Override
-        	public PrettyPrinter createPrettyPrinter() {
-        		return new SniperJavaPrettyPrinter(getEnvironment());
-        	}
-        	@Override
-        	public void process() {
-                new SourceFragmentsTreeCreatingChangeCollector().attachTo(factory.getEnvironment());
-        		super.process();
-        	}
         };
+        launcher.getEnvironment().setPrettyPrinterCreator(() -> {
+                    return new SniperJavaPrettyPrinter(launcher.getEnvironment());
+                }
+        );
         launcher.addInputResource(pathToFile);
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setAutoImports(true);
@@ -63,14 +55,11 @@ public class TestHelp {
         Object object = cons.newInstance(projectKey);
         launcher.addProcessor((Processor) object);
         launcher.run();
-//        new SpoonModelTree(launcher.getFactory());
     }
-    */
 
     public static void normalRepair(String pathToFile, String projectKey, int rulekey) throws Exception {
         //Not Sniper  Mode
         Launcher launcher = new Launcher();
-
         launcher.addInputResource(pathToFile);
         launcher.getEnvironment().setAutoImports(true);
         Class<?> processor = getProcessor(rulekey);
