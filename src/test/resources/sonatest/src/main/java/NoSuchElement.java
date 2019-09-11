@@ -5,7 +5,7 @@
 import java.util.Iterator;
 import java.util.Stack;
 
-public class NoSuchElement implements Iterator<String> {
+public class NoSuchElement implements Iterator {
     private Stack<String> stack = new Stack();
 
     @Override
@@ -14,10 +14,11 @@ public class NoSuchElement implements Iterator<String> {
     }
 
     @Override
-    public String next(){ // Noncompliant; Should throw a NoSuchElementException rather than return null
+    public String next(){ // Noncompliant
         if(!hasNext()){
             return null;
+        }else{
+            return stack.pop();
         }
-        return stack.pop();
     }
 }
