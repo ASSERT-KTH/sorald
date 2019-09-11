@@ -1,8 +1,9 @@
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtBlock;
-import spoon.reflect.code.CtIf;
 import spoon.reflect.code.CtCodeSnippetExpression;
-import spoon.reflect.code.CtCodeSnippetStatement;
+import spoon.reflect.code.CtExpression;
+import spoon.reflect.code.CtIf;
+import spoon.reflect.code.CtThrow;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
@@ -31,10 +32,13 @@ public class NoSuchElementProcessor extends AbstractProcessor<CtMethod> {
         expr.setValue("!hasNext()");
         anIf.setCondition(expr);
         CtType noSuchElementClass = getFactory().Class().get(NoSuchElementException.class);
-        CtCodeSnippetStatement stmnt = getFactory().Core().createCodeSnippetStatement();
-        stmnt.setValue("throw new " + ((CtClass) noSuchElementClass).getConstructor().getSignature());
+        CtThrow throwStmnt = getFactory().createCtThrow("");
+        throwStmnt.setThrownExpression(
+                ((CtExpression<? extends Throwable>)
+                        getFactory().createConstructorCall(noSuchElementClass.getReference(), new CtExpression[]{})
+                ));
         CtBlock block = getFactory().Core().createBlock();
-        block.addStatement(stmnt);
+        block.addStatement(throwStmnt);
         anIf.setThenStatement(block);
         method.getBody().getStatements().get(0).insertBefore(anIf);
     }
