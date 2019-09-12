@@ -5,8 +5,12 @@ import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtIf;
 import spoon.reflect.code.CtThrow;
 import spoon.reflect.declaration.CtClass;
+import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
+import spoon.reflect.reference.CtTypeReference;
+
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class NoSuchElementProcessor extends AbstractProcessor<CtMethod> {
@@ -14,11 +18,37 @@ public class NoSuchElementProcessor extends AbstractProcessor<CtMethod> {
         ParseAPI.parse(2272,"",projectKey);
     }
 
+    /**
+     *
+     * @param candidate - Every method of the scanned file
+     * @return Whether the method should have the transformation applied to it.
+     *
+     * We want to process the next() method of any custom Iterator class which doesn't already throw the correct error.
+     */
     @Override
     public boolean isToBeProcessed(CtMethod candidate) {
-        if(candidate.getParent(CtClass.class).getSuperInterfaces().toString().contains("Iterator")){
-            if(candidate.getSignature().contains("next()") &&
-                    !candidate.getBody().getStatements().toString().contains("throw new NoSuchElementException")){
+        // Iterator of all implemented classes
+        Iterator<CtTypeReference<?>> implementations = candidate.getParent(CtClass.class).getSuperInterfaces().iterator();
+        // Type reference to the Iterator class
+        CtTypeReference<?> iteratorTypeRef = getFactory().Code().createCtTypeReference(java.util.Iterator.class);
+        // Type reference to the NoSuchElement exception
+        CtTypeReference<?> noSuchElementTypeRef = getFactory().Code().createCtTypeReference(java.util.NoSuchElementException.class);
+        // Check all implementations for the Iterator class
+        while(implementations.hasNext() && candidate.getSignature().equals("next()")){ //FIXME AST-compliant way of checking the method?
+            if(implementations.next().equals(iteratorTypeRef)){
+                // If Iterator is implemented, iterate over all statements
+                Iterator<CtElement> statements = candidate.getBody().descendantIterator();
+                while (statements.hasNext()) {
+                    CtElement element = statements.next();
+                    // If a statement throws, check if it throws the correct error already
+                    if(element instanceof CtThrow) {
+                        for(CtTypeReference typeRef: element.getReferencedTypes()){
+                            if(typeRef.equals(noSuchElementTypeRef)){
+                                return false;
+                            }
+                        }
+                    }
+                }
                 return true;
             }
         }
