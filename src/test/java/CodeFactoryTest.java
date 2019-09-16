@@ -16,6 +16,5 @@ public class CodeFactoryTest {
         TestHelp.normalRepair(pathToFile,projectKey,2116);
         TestHelp.repair(pathToFile,projectKey,2116);
         TestHelp.removeComplianceComments(pathToRepairedFile);
-        JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
     }
 }
