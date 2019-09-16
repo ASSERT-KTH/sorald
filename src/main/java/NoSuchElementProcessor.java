@@ -4,12 +4,10 @@ import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtIf;
 import spoon.reflect.code.CtThrow;
-import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtTypeReference;
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -27,20 +25,15 @@ public class NoSuchElementProcessor extends AbstractProcessor<CtMethod> {
      */
     @Override
     public boolean isToBeProcessed(CtMethod candidate) {
-        // Iterator of all implemented classes
-        Iterator<CtTypeReference<?>> implementations = candidate.getParent(CtClass.class).getSuperInterfaces().iterator();
-        // Type reference to the Iterator class
-        CtTypeReference<?> iteratorTypeRef = getFactory().Code().createCtTypeReference(java.util.Iterator.class);
-        // Type reference to the NoSuchElement exception
-        CtTypeReference<?> noSuchElementTypeRef = getFactory().Code().createCtTypeReference(java.util.NoSuchElementException.class);
-        // Check all implementations for the Iterator class
-        while(implementations.hasNext() && candidate.getSignature().equals("next()")){ //FIXME AST-compliant way of checking the method?
-            if(implementations.next().equals(iteratorTypeRef)){
-                // If Iterator is implemented, iterate over all statements
+        CtType iteratorInterface = getFactory().Interface().get(Iterator.class);
+        CtMethod next = (CtMethod) iteratorInterface.getMethodsByName("next").get(0);
+        if(candidate.isOverriding(next)){
+                // If next() in the Iterator class is overridden, check if the correct error is thrown.
                 Iterator<CtElement> statements = candidate.getBody().descendantIterator();
+                CtTypeReference<?> noSuchElementTypeRef = getFactory().Code().createCtTypeReference(java.util.NoSuchElementException.class);
                 while (statements.hasNext()) {
                     CtElement element = statements.next();
-                    // If a statement throws, check if it throws the correct error already
+                    // If a throw is found, check that it is the correct one
                     if(element instanceof CtThrow) {
                         for(CtTypeReference typeRef: element.getReferencedTypes()){
                             if(typeRef.equals(noSuchElementTypeRef)){
@@ -51,7 +44,6 @@ public class NoSuchElementProcessor extends AbstractProcessor<CtMethod> {
                 }
                 return true;
             }
-        }
         return false;
     }
 
