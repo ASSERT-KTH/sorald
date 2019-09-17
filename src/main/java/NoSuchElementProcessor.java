@@ -28,22 +28,22 @@ public class NoSuchElementProcessor extends AbstractProcessor<CtMethod> {
         CtType iteratorInterface = getFactory().Interface().get(Iterator.class);
         CtMethod next = (CtMethod) iteratorInterface.getMethodsByName("next").get(0);
         if(candidate.isOverriding(next)){
-                // If next() in the Iterator class is overridden, check if the correct error is thrown.
-                Iterator<CtElement> statements = candidate.getBody().descendantIterator();
-                CtTypeReference<?> noSuchElementTypeRef = getFactory().Code().createCtTypeReference(java.util.NoSuchElementException.class);
-                while (statements.hasNext()) {
-                    CtElement element = statements.next();
-                    // If a throw is found, check that it is the correct one
-                    if(element instanceof CtThrow) {
-                        for(CtTypeReference typeRef: element.getReferencedTypes()){
-                            if(typeRef.equals(noSuchElementTypeRef)){
-                                return false;
-                            }
+            // If next() in the Iterator class is overridden, check if the correct error is thrown.
+            Iterator<CtElement> statements = candidate.getBody().descendantIterator();
+            CtTypeReference<?> noSuchElementTypeRef = getFactory().Code().createCtTypeReference(java.util.NoSuchElementException.class);
+            while (statements.hasNext()) {
+                CtElement element = statements.next();
+                // If a throw is found, check that it is the correct one
+                if(element instanceof CtThrow) {
+                    for(CtTypeReference typeRef: element.getReferencedTypes()){
+                        if(typeRef.equals(noSuchElementTypeRef)){
+                            return false;
                         }
                     }
                 }
-                return true;
             }
+            return true;
+        }
         return false;
     }
 
