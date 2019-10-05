@@ -13,20 +13,10 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtTypeReference;
 import java.util.Arrays;
 
-public class CodeFactory extends SubFactory {
-	public <T> CtNewClass<T> createNewClass(CtType<T> superClass, CtExpression<?>...parameters) {
-		CtNewClass<T> ctNewClass = factory.Core().createNewClass();
-		CtConstructor<T> constructor = ((CtClass) superClass).getConstructor(Arrays.stream(parameters).map(x -> x.getType()).toArray(CtTypeReference[]::new));
-		/*
-		CtTypeReference[] paranetersType = new CtTypeReference[parameters.length];
-		for(int i = 0; i < parameters.length; i++) {
-			paranetersType[i] = parameters[i].getType();
-		}
-		CtConstructor<T> constructor = ((CtClass) superClass).getConstructor(paranetersType);
-		*/
-		if (constructor == null) {
-			throw new SpoonException("no appropriate constructor for these parameters " + parameters.toString());// Noncompliant
-		}
-		return ctNewClass;
+public class CodeFactory {
+	public void createNewClass(CtExpression<?>...parameters) {
+		Arrays.stream(parameters).map(x -> x.getType());
+		
+		parameters.toString();
 	}
 }
