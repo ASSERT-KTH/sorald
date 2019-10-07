@@ -5,17 +5,6 @@
  */
 package spoon.reflect.factory;
 
-
-import java.lang.annotation.Annotation;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.IntFunction;
 import spoon.SpoonException;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtAssignment;
@@ -60,15 +49,21 @@ import spoon.reflect.reference.CtReference;
 import spoon.reflect.reference.CtTypeReference;
 import spoon.reflect.reference.CtVariableReference;
 
-import static spoon.reflect.code.CtComment.CommentType.INLINE;
-import static spoon.reflect.code.CtComment.CommentType.JAVADOC;
-
+import java.lang.annotation.Annotation;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * This sub-factory contains utility methods to create code elements. To avoid
  * over-using reflection, consider using {@link spoon.template.Template}.
  */
 public class CodeFactory extends SubFactory {
+
 	/**
 	 * Creates a {@link spoon.reflect.code.CtCodeElement} sub-factory.
 	 */
@@ -100,11 +95,8 @@ public class CodeFactory extends SubFactory {
 	 * {@linkplain CtTypeAccess#getAccessedType() accessedType} field of the returned {@link CtTypeAccess}. If the
 	 * given {@code accessedType} is unique and cloning is not needed, use
 	 * {@link #createTypeAccessWithoutCloningReference(CtTypeReference)} instead of this method.</p>
-	 *
-	 * @param accessedType
-	 * 		a type reference to the accessed type.
-	 * @param <T>
-	 * 		the type of the expression.
+	 * @param accessedType a type reference to the accessed type.
+	 * @param <T> the type of the expression.
 	 * @return a accessed type expression.
 	 */
 	public <T> CtTypeAccess<T> createTypeAccess(CtTypeReference<T> accessedType) {
@@ -139,11 +131,8 @@ public class CodeFactory extends SubFactory {
 
 	/**
 	 * Creates a accessed type, see {@link #createTypeAccess(CtTypeReference)} for details.
-	 *
-	 * @param accessedType
-	 * 		a type reference to the accessed type.
-	 * @param <T>
-	 * 		the type of the expression.
+	 * @param accessedType a type reference to the accessed type.
+	 * @param <T> the type of the expression.
 	 * @return a accessed type expression.
 	 */
 	public <T> CtTypeAccess<T> createTypeAccessWithoutCloningReference(CtTypeReference<T> accessedType) {
@@ -162,13 +151,14 @@ public class CodeFactory extends SubFactory {
 	 * @return the class access expression.
 	 */
 	public <T> CtFieldAccess<Class<T>> createClassAccess(CtTypeReference<T> type) {
-		@SuppressWarnings({ "rawtypes", "unchecked" })
-		CtTypeReference<Class<T>> classType = ((CtTypeReference) (factory.Type().createReference(Class.class)));
+		@SuppressWarnings({ "rawtypes", "unchecked" }) CtTypeReference<Class<T>> classType = (CtTypeReference) factory.Type().createReference(Class.class);
 		CtTypeAccess<T> typeAccess = factory.Code().createTypeAccess(type);
+
 		CtFieldReference<Class<T>> fieldReference = factory.Core().createFieldReference();
 		fieldReference.setSimpleName("class");
 		fieldReference.setType(classType);
 		fieldReference.setDeclaringType(type);
+
 		CtFieldRead<Class<T>> fieldRead = factory.Core().createFieldRead();
 		fieldRead.setType(classType.clone());
 		fieldRead.setVariable(fieldReference);
@@ -179,17 +169,16 @@ public class CodeFactory extends SubFactory {
 	/**
 	 * Creates a constructor call. The correct constructor is inferred based on parameters
 	 *
-	 * @param type
-	 * 		the decelerating type of the constructor
-	 * @param parameters
-	 * 		the arguments of the constructor call
-	 * @param <T>
-	 * 		the actual type of the decelerating type of the constructor if available
+	 * @param type the decelerating type of the constructor
+	 * @param parameters the arguments of the constructor call
+	 * @param <T> the actual type of the decelerating type of the constructor if available
 	 * @return the constructor call
 	 */
-	public <T> CtConstructorCall<T> createConstructorCall(CtTypeReference<T> type, CtExpression<?>... parameters) {
-		CtConstructorCall<T> constructorCall = factory.Core().createConstructorCall();
-		CtExecutableReference<T> executableReference = factory.Core().createExecutableReference();
+	public <T> CtConstructorCall<T> createConstructorCall(CtTypeReference<T> type, CtExpression<?>...parameters) {
+		CtConstructorCall<T> constructorCall = factory.Core()
+				.createConstructorCall();
+		CtExecutableReference<T> executableReference = factory.Core()
+				.createExecutableReference();
 		executableReference.setType(type);
 		executableReference.setDeclaringType(type == null ? type : type.clone());
 		executableReference.setSimpleName(CtExecutableReference.CONSTRUCTOR_NAME);
@@ -206,11 +195,11 @@ public class CodeFactory extends SubFactory {
 	/**
 	 * Creates a new anonymous class.
 	 */
-	public <T> CtNewClass<T> createNewClass(CtType<T> superClass, CtExpression<?>... parameters) {
+	public <T> CtNewClass<T> createNewClass(CtType<T> superClass, CtExpression<?>...parameters) {
 		CtNewClass<T> ctNewClass = factory.Core().createNewClass();
-		CtConstructor<T> constructor = ((CtClass) (superClass)).getConstructor(Arrays.stream(parameters).map(( x) -> x.getType()).toArray(CtTypeReference[]::new));
+		CtConstructor<T> constructor = ((CtClass) superClass).getConstructor(Arrays.stream(parameters).map(x -> x.getType()).toArray(CtTypeReference[]::new));
 		if (constructor == null) {
-			throw new SpoonException("no appropriate constructor for these parameters " + Arrays.toString(parameters));
+			throw new SpoonException("no appropriate constructor for these parameters " + parameters.toString());
 		}
 		CtExecutableReference<T> executableReference = constructor.getReference();
 		ctNewClass.setArguments(Arrays.asList(parameters));
@@ -271,9 +260,9 @@ public class CodeFactory extends SubFactory {
 		CtLiteral<T> literal = factory.Core().<T>createLiteral();
 		literal.setValue(value);
 		if (value != null) {
-			literal.setType(((CtTypeReference<T>) (factory.Type().<T>createReference(((Class<T>) (value.getClass()))).unbox())));
+			literal.setType((CtTypeReference<T>) factory.Type().<T>createReference((Class<T>) value.getClass()).unbox());
 		} else {
-			literal.setType(((CtTypeReference<T>) (factory.Type().nullType())));
+			literal.setType((CtTypeReference<T>) factory.Type().nullType());
 		}
 		return literal;
 	}
@@ -289,7 +278,7 @@ public class CodeFactory extends SubFactory {
 		if (value.getClass().getComponentType().isArray()) {
 			throw new RuntimeException("can only create one-dimension arrays");
 		}
-		final CtTypeReference<T> componentTypeRef = factory.Type().createReference(((Class<T>) (value.getClass().getComponentType())));
+		final CtTypeReference<T> componentTypeRef = factory.Type().createReference((Class<T>) value.getClass().getComponentType());
 		final CtArrayTypeReference<T[]> arrayReference = factory.Type().createArrayReference(componentTypeRef);
 		CtNewArray<T[]> array = factory.Core().<T[]>createNewArray().setType(arrayReference);
 		for (T e : value) {
@@ -350,7 +339,7 @@ public class CodeFactory extends SubFactory {
 	 * 		Modifiers of the catch variable
 	 * @return a new catch variable declaration
 	 */
-	public <T> CtCatchVariable<T> createCatchVariable(CtTypeReference<T> type, String name, ModifierKind... modifierKinds) {
+	public <T> CtCatchVariable<T> createCatchVariable(CtTypeReference<T> type, String name, ModifierKind...modifierKinds) {
 		return factory.Core().<T>createCatchVariable().<CtCatchVariable<T>>setSimpleName(name).<CtCatchVariable<T>>setType(type).setModifiers(new HashSet<>(Arrays.asList(modifierKinds)));
 	}
 
@@ -419,7 +408,7 @@ public class CodeFactory extends SubFactory {
 			va = factory.Core().createFieldRead();
 			// creates a this target for non-static fields to avoid name conflicts...
 			if (!isStatic) {
-				((CtFieldAccess<T>) (va)).setTarget(createThisAccess(((CtFieldReference<T>) (variable)).getDeclaringType()));
+				((CtFieldAccess<T>) va).setTarget(createThisAccess(((CtFieldReference<T>) variable).getDeclaringType()));
 			}
 		} else {
 			va = factory.Core().createVariableRead();
@@ -493,7 +482,8 @@ public class CodeFactory extends SubFactory {
 	 * @return a field
 	 */
 	public <T> CtField<T> createCtField(String name, CtTypeReference<T> type, String exp, ModifierKind... visibilities) {
-		return factory.Core().createField().<CtField<T>>setModifiers(modifiers(visibilities)).<CtField<T>>setSimpleName(name).<CtField<T>>setType(type).setDefaultExpression(this.<T>createCodeSnippetExpression(exp));
+		return factory.Core().createField().<CtField<T>>setModifiers(modifiers(visibilities)).<CtField<T>>setSimpleName(name).<CtField<T>>setType(type)
+				.setDefaultExpression(this.<T>createCodeSnippetExpression(exp));
 	}
 
 	/**
@@ -515,9 +505,7 @@ public class CodeFactory extends SubFactory {
 	 * If element is CtBlock, then it directly returns that element
 	 * If element is null, then it returns null.
 	 * note: It must not create empty CtBlock - as expected in CtCatch, CtExecutable, CtLoop and CtTry setBody implementations
-	 *
 	 * @param element
-	 * 		
 	 * @return CtBlock instance
 	 */
 	public <T extends CtStatement> CtBlock<?> getOrCreateCtBlock(T element) {
@@ -525,7 +513,7 @@ public class CodeFactory extends SubFactory {
 			return null;
 		}
 		if (element instanceof CtBlock<?>) {
-			return ((CtBlock<?>) (element));
+			return (CtBlock<?>) element;
 		}
 		return this.createCtBlock(element);
 	}
@@ -553,7 +541,8 @@ public class CodeFactory extends SubFactory {
 	 * @return a catch.
 	 */
 	public CtCatch createCtCatch(String nameCatch, Class<? extends Throwable> exception, CtBlock<?> ctBlock) {
-		final CtCatchVariable<Throwable> catchVariable = factory.Core().<Throwable>createCatchVariable().<CtCatchVariable<Throwable>>setType(this.<Throwable>createCtTypeReference(exception)).setSimpleName(nameCatch);
+		final CtCatchVariable<Throwable> catchVariable = factory.Core().<Throwable>createCatchVariable().<CtCatchVariable<Throwable>>setType(this.<Throwable>createCtTypeReference(exception))
+				.setSimpleName(nameCatch);
 		return factory.Core().createCatch().setParameter(catchVariable).setBody(ctBlock);
 	}
 
@@ -621,7 +610,7 @@ public class CodeFactory extends SubFactory {
 	public <R extends CtReference, E extends CtNamedElement> List<R> getReferences(List<E> elements) {
 		List<R> refs = new ArrayList<>(elements.size());
 		for (E e : elements) {
-			refs.add(((R) (e.getReference())));
+			refs.add((R) e.getReference());
 		}
 		return refs;
 	}
@@ -670,14 +659,12 @@ public class CodeFactory extends SubFactory {
 	/**
 	 * Creates a comment
 	 *
-	 * @param content
-	 * 		The content of the comment
-	 * @param type
-	 * 		The comment type
+	 * @param content The content of the comment
+	 * @param type The comment type
 	 * @return a new CtComment
 	 */
 	public CtComment createComment(String content, CtComment.CommentType type) {
-		if (type == JAVADOC) {
+		if (type == CtComment.CommentType.JAVADOC) {
 			return factory.Core().createJavaDoc().setContent(content);
 		}
 		return factory.Core().createComment().setContent(content).setCommentType(type);
@@ -686,24 +673,22 @@ public class CodeFactory extends SubFactory {
 	/**
 	 * Creates an inline comment
 	 *
-	 * @param content
-	 * 		The content of the comment
+	 * @param content The content of the comment
 	 * @return a new CtComment
 	 */
 	public CtComment createInlineComment(String content) {
 		if (content.contains(CtComment.LINE_SEPARATOR)) {
-			throw new SpoonException("The content of your comment contain at least one line separator. " + "Please consider using a block comment by calling createComment(\"your content\", CtComment.CommentType.BLOCK).");
+			throw new SpoonException("The content of your comment contain at least one line separator. "
+					+ "Please consider using a block comment by calling createComment(\"your content\", CtComment.CommentType.BLOCK).");
 		}
-		return createComment(content, INLINE);
+		return createComment(content, CtComment.CommentType.INLINE);
 	}
 
 	/**
 	 * Creates a javadoc tag
 	 *
-	 * @param content
-	 * 		The content of the javadoc tag with a possible paramater
-	 * @param type
-	 * 		The tag type
+	 * @param content The content of the javadoc tag with a possible paramater
+	 * @param type The tag type
 	 * @return a new CtJavaDocTag
 	 */
 	public CtJavaDocTag createJavaDocTag(String content, CtJavaDocTag.TagType type) {
@@ -711,13 +696,13 @@ public class CodeFactory extends SubFactory {
 			content = "";
 		}
 		CtJavaDocTag docTag = factory.Core().createJavaDocTag();
-		if ((type != null) && type.hasParam()) {
+		if (type != null && type.hasParam()) {
 			int firstWord = content.indexOf(' ');
 			int firstLine = content.indexOf('\n');
-			if ((firstLine < firstWord) && (firstLine >= 0)) {
+			if (firstLine < firstWord && firstLine >= 0) {
 				firstWord = firstLine;
 			}
-			if (firstWord == (-1)) {
+			if (firstWord == -1) {
 				firstWord = content.length();
 			}
 			String param = content.substring(0, firstWord);
@@ -726,5 +711,5 @@ public class CodeFactory extends SubFactory {
 		}
 		return docTag.setContent(content.trim()).setType(type);
 	}
-}
 
+}
