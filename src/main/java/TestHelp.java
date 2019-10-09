@@ -42,7 +42,9 @@ public class TestHelp {
         Launcher launcher = new Launcher() {
         };
         launcher.getEnvironment().setPrettyPrinterCreator(() -> {
-                    return new SniperJavaPrettyPrinter(launcher.getEnvironment());
+            SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
+            sniper.setIgnoreImplicit(false);
+                    return sniper;
                 }
         );
         launcher.addInputResource(pathToFile);

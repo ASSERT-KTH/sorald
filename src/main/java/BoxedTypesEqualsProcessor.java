@@ -30,11 +30,20 @@ public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
                 the boxed type to primitive, making the == check fine. See JLS #5.6.2:
                 https://docs.oracle.com/javase/specs/jls/se8/html/jls-5.html#jls-5.6.2
                 */
-                CtTypeReference nullType = getFactory().Type().NULL_TYPE;
-                if(!left.getType().isPrimitive() && !right.getType().isPrimitive() &&
-                        !left.getType().isEnum() && !right.getType().isEnum() &&
-                        !left.getType().equals(nullType) &&
-                        !right.getType().equals(nullType)){
+                CtTypeReference stringType = getFactory().Type().STRING;
+
+                /*
+                Case 1: Both variables are strings.
+                Case 2: The left variable is a string and the right one is boxed.
+                Case 3: The left variable is boxed and the right one is a string.
+                Case 4: Both variables are boxed.
+                 */
+                if(
+                    (left.getType().equals(stringType) && right.getType().equals(stringType)) ||
+                    (left.getType().equals(stringType) && !right.getType().unbox().equals(right.getType())) ||
+                    (!left.getType().unbox().equals(left.getType()) && right.getType().equals(stringType)) ||
+                    (!left.getType().unbox().equals(left.getType()) && !right.getType().unbox().equals(right.getType())))
+                {
                     return true;
                 }
             }
@@ -49,7 +58,7 @@ public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
             negation = "!";
         }
         CtCodeSnippetExpression newBinaryOperator = getFactory().Code().createCodeSnippetExpression(
-                negation + bo.getLeftHandOperand().toString() + ".equals(" + bo.getRightHandOperand() + ")");
+                negation + bo.getLeftHandOperand().toString() + ".equals(" + bo.getRightHandOperand().toString() + ")");
         bo.replace(newBinaryOperator);
     }
 }
