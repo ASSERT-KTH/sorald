@@ -1,5 +1,9 @@
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.*;
+import spoon.reflect.declaration.CtElement;
+import spoon.reflect.declaration.CtMethod;
+import spoon.reflect.declaration.CtType;
+import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtTypeReference;
 import java.util.List;
 import java.math.BigDecimal;
@@ -13,9 +17,6 @@ public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtCo
     @Override
     public boolean isToBeProcessed(CtConstructorCall cons)
     {
-        //System.out.println(cons);
-        //System.out.println(cons.getType());
-        // cons.getType() == CtTypeReference
         CtTypeReference bigDecimalTypeRef = getFactory().createCtTypeReference(BigDecimal.class);
         CtTypeReference doubleTypeRef = getFactory().createCtTypeReference(double.class);
 
@@ -32,5 +33,12 @@ public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtCo
     public void process(CtConstructorCall cons) {
         System.out.println("Processing!");
         System.out.println(cons);
+        CtType bigDecimalClass = getFactory().Class().get(BigDecimal.class);
+        CtCodeSnippetExpression invoker = getFactory().Code().createCodeSnippetExpression("BigDecimal");
+        CtMethod valueOfMethod = (CtMethod) bigDecimalClass.getMethodsByName("valueOf").get(0);
+        CtExecutableReference refToMethod = getFactory().Executable().createReference(valueOfMethod);
+        CtExpression arg = (CtExpression) cons.getArguments().get(0);
+        CtInvocation newInvocation  = getFactory().Code().createInvocation(invoker, refToMethod, arg);
+        cons.replace(newInvocation);
     }
 }
