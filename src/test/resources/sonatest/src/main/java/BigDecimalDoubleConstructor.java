@@ -17,9 +17,17 @@ public class BigDecimalDoubleConstructor {
     */
     public void foo(String[] args) {
         double d = 1.1;
+        float f = 2.2;
+        float f1 = 2f;
         BigDecimal bd1 = new BigDecimal(d);// Noncompliant
         BigDecimal bd2 = new BigDecimal(1.1); // Noncompliant
-        BigDecimal bd3 = BigDecimal.valueOf(d); // Compliant
-        BigDecimal bd4 = new BigDecimal("1.1"); // Compliant; using String constructor will result in precise value
+        BigDecimal bd3 = new BigDecimal(f); // Noncompliant
+        BigDecimal bd4 = new BigDecimal(f1); // Noncompliant
+        BigDecimal bd5 = BigDecimal.valueOf(d); // Compliant
+        BigDecimal bd6 = new BigDecimal("1.1"); // Compliant; using String constructor will result in precise value
+        BigDecimal bd7 = BigDecimal.valueOf(f); // Compliant
+        BigDecimal bd8 = BigDecimal.valueOf(f1); // Compliant
+
+
     }
 }

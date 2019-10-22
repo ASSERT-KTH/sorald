@@ -19,11 +19,13 @@ public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtCo
     {
         CtTypeReference bigDecimalTypeRef = getFactory().createCtTypeReference(BigDecimal.class);
         CtTypeReference doubleTypeRef = getFactory().createCtTypeReference(double.class);
+        CtTypeReference floatTypeRef = getFactory().createCtTypeReference(float.class);
 
 
         if(cons.getType().equals(bigDecimalTypeRef)){
             List<CtExpression> expr = cons.getArguments();
-            if(expr.size() == 1 && expr.get(0).getType().equals(doubleTypeRef)){
+            if(expr.size() == 1 &&
+                    (expr.get(0).getType().equals(doubleTypeRef) || expr.get(0).getType().equals(floatTypeRef))){
                 return true;
             }
         }
@@ -31,8 +33,6 @@ public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtCo
     }
     @Override
     public void process(CtConstructorCall cons) {
-        System.out.println("Processing!");
-        System.out.println(cons);
         CtType bigDecimalClass = getFactory().Class().get(BigDecimal.class);
         CtCodeSnippetExpression invoker = getFactory().Code().createCodeSnippetExpression("BigDecimal");
         CtMethod valueOfMethod = (CtMethod) bigDecimalClass.getMethodsByName("valueOf").get(0);
