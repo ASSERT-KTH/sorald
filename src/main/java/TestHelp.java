@@ -20,6 +20,7 @@ public class TestHelp {
         rule.putIfAbsent(1948, SerializableFieldProcessor.class);
         // rule.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
         rule.putIfAbsent(2095, ResourceCloseProcessor.class);
+        rule.putIfAbsent(2111, BigDecimalDoubleConstructorProcessor.class);
         rule.putIfAbsent(2116, ArrayToStringProcessor.class);
         // rule.putIfAbsent(2259, NullDereferenceProcessor.class);
         rule.putIfAbsent(2272, NoSuchElementProcessor.class);
