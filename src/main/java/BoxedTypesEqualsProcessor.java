@@ -25,6 +25,8 @@ public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
             if(op.getKind() == BinaryOperatorKind.EQ || op.getKind() == BinaryOperatorKind.NE){
                 CtExpression left = op.getLeftHandOperand();
                 CtExpression right = op.getRightHandOperand();
+                CtTypeReference lType = left.getType();
+                CtTypeReference rType = right.getType();
                 /*
                 The reason we don't check for the case where one variable is boxed is because Java implicitly unboxes
                 the boxed type to primitive, making the == check fine. See JLS #5.6.2:
@@ -38,11 +40,11 @@ public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
                 Case 3: The left variable is boxed and the right one is a string.
                 Case 4: Both variables are boxed.
                  */
-                if(
-                    (left.getType().equals(stringType) && right.getType().equals(stringType)) ||
-                    (left.getType().equals(stringType) && !right.getType().unbox().equals(right.getType())) ||
-                    (!left.getType().unbox().equals(left.getType()) && right.getType().equals(stringType)) ||
-                    (!left.getType().unbox().equals(left.getType()) && !right.getType().unbox().equals(right.getType())))
+                if ((lType != null && rType != null) &&
+                        ((lType.equals(stringType) && rType.equals(stringType)) ||
+                        (lType.equals(stringType) && !rType.unbox().equals(rType)) ||
+                        (!lType.unbox().equals(lType) && rType.equals(stringType)) ||
+                        (!lType.unbox().equals(lType) && !rType.unbox().equals(rType))))
                 {
                     return true;
                 }
