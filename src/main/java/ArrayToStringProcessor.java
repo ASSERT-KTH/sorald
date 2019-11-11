@@ -22,8 +22,8 @@ public class ArrayToStringProcessor extends AbstractProcessor<CtInvocation<?>> {
             return false;
         }
         if(candidate.getTarget().getType().isArray()){
-            if(candidate.getExecutable().toString().equals(TOSTRING + "()") ||
-                    (candidate.getExecutable().toString().equals(HASHCODE + "()"))){
+            if(candidate.getExecutable().getSignature().equals(TOSTRING + "()") ||
+                    (candidate.getExecutable().getSignature().equals(HASHCODE + "()"))){
                 return true;
             }
         }
@@ -35,9 +35,9 @@ public class ArrayToStringProcessor extends AbstractProcessor<CtInvocation<?>> {
         CtCodeSnippetExpression newTarget = getFactory().Code().createCodeSnippetExpression("Arrays");
         CtType arraysClass = getFactory().Class().get(Arrays.class);
         CtMethod method = null;
-        if(element.getExecutable().toString().equals(HASHCODE + "()")){
+        if(element.getExecutable().getSignature().equals(HASHCODE + "()")){
             method = (CtMethod) arraysClass.getMethodsByName(HASHCODE).get(0);
-        } else if(element.getExecutable().toString().equals(TOSTRING + "()")){
+        } else if(element.getExecutable().getSignature().equals(TOSTRING + "()")){
             method = (CtMethod) arraysClass.getMethodsByName(TOSTRING).get(0);
         } else {
             System.err.println("Unhandled case. Something went wrong.");
