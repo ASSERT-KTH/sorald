@@ -30,24 +30,11 @@
         </dependency>
         -->
 
-<!--
+        <!-- https://mvnrepository.com/artifact/fr.inria.gforge.spoon/spoon-core -->
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>7.5.0</version>
-        </dependency>
--->
-        <!--
-        Use this local version which includes https://github.com/INRIA/spoon/pull/3137 until the Maven version
-        does so too (current latest version (which doesn't include the fix) is 7.6.0-beta-4.
-        Sniper mode will crash on plenty of files without the fix.
-        -->
-        <dependency>
-            <groupId>fr.inria.gforge.spoon</groupId>
-            <artifactId>spoon-core</artifactId>
-            <version>7.6.0-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/spoon-core-7.6.0-SNAPSHOT-jar-with-dependencies.jar</systemPath>
+            <version>8.1.0-beta-2</version>
         </dependency>
 
 <!--

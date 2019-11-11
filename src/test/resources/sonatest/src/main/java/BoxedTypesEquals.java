@@ -59,6 +59,15 @@ public class BoxedTypesEquals {
         return false;
     }
 
+    // Object comparison should not be converted
+    private void objectCompare(){
+        Object a = 1;
+        Object b = 1;
+        eq = a == b; // Compliant
+        int x = 2;
+        eq = a == x; // Compliant
+    }
+
     private String getFirstName(){
         return new String("John");
     }
