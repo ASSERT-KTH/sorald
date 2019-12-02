@@ -2,7 +2,7 @@
  * DISABLED as per commit b965cad6f327d8fd0fb97a3af8f6427de61685c4.
  * The test is unable to find the error in the initial state. See commit mesage above for more info.
  */
-/*
+
 import org.junit.Test;
 import org.sonar.java.checks.serialization.SerializableSuperConstructorCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
@@ -23,8 +23,9 @@ public class NonSerializableSuperClassProcessorTest {
         String pathToRepairedFile = "./spooned/" + fileName;
 
         JavaCheckVerifier.verify(pathToFile + fileName,new SerializableSuperConstructorCheck());
-        TestHelp.normalRepair(pathToFile,projectKey,2055);
+        TestHelp.repair(pathToFile,projectKey,2055);
+        TestHelp.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new SerializableSuperConstructorCheck());
     }
 }
-*/
+

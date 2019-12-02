@@ -2,8 +2,6 @@
  * DISABLED as per commit b965cad6f327d8fd0fb97a3af8f6427de61685c4.
  * The test is unable to find the error in the initial state. See commit message above for more info.
  */
-/*
-/*
 import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;
@@ -27,7 +25,7 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
     private String thisBugName;        //name (message) of current thisBug.
     private static int inp=-1;
     private static boolean defolt = false;
-    public NonSerializableSuperClassProcessor(String projectKey,boolean defolt1) throws Exception {
+    public NonSerializableSuperClassProcessor(String projectKey) throws Exception {
         jsonArray= ParseAPI.parse(2055,"",projectKey);
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();
@@ -38,7 +36,7 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
             SetOfLineNumbers.add(bug.getLineNumber());
             SetOfFileNames.add(bug.getFileName());
         }
-        if(!defolt1)
+        if(!true == true)
         {
             Scanner sc = new Scanner(System.in);
             String message = String.format("There are two possible repair for this bug." +
@@ -156,4 +154,3 @@ public class NonSerializableSuperClassProcessor extends AbstractProcessor<CtClas
         }
     }
 }
-*/
