@@ -44,7 +44,7 @@ Pull Requests:
 * [Apache PDFBox](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/pdfbox/2272)
 -----
 
-#### Strings and Boxed types should be compared using "equals()" ([Sonar Rule 2272](https://rules.sonarsource.com/java/RSPEC-4973))
+#### Strings and Boxed types should be compared using "equals()" ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
 Any comparison of strings or boxed types using `==` or `!=` is replaced by `equals`
 
 Pull Requests:
