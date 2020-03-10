@@ -32,7 +32,9 @@ public class Bug
         {
             locations = flow.getJSONObject(0).getJSONArray("locations");
         }
-        lineNumber=(long)(int)(jsonObject.get("line"));//cast first to int thecn to long
+        if (jsonObject.has("line")) {
+            lineNumber = (long) (int) (jsonObject.get("line"));//cast first to int thecn to long
+        }
         name=(String) jsonObject.get("message");
         String[] split=jsonObject.get("component").toString().split("/");
         fileName=split[split.length-1];
