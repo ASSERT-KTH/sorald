@@ -87,7 +87,7 @@ public class TestHelp {
             while ((line = file.readLine()) != null) {
                 if(line.contains(complianceComment)){
                     line.trim();
-                    line = line.substring(0, line.length() - (complianceComment.length()));
+                    line = line.substring(0, line.indexOf(complianceComment));
                 }
                 inputBuffer.append(line+'\n');
             }
