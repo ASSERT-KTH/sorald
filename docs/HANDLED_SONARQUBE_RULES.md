@@ -1,45 +1,54 @@
-## Handled Sonarqube rules
+## Handled SonarQube rules
 
-Sonarqube-repair can currently repair violations of 7 Sonarqube rules of which 5 are labeled as `BUG` and 2 as `Code Smell`.
+Sonarqube-repair can currently repair violations of 7 SonarQube rules of which 5 are labeled as `BUG` and 2 as `Code Smell`.
 
 ### *BUG*
 
 #### Resources should be closed ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
 
-The repair encloses the parent block of resource intialization in a try-with resources.
+The repair encloses the parent block of resource initialization in a try-with resources.
 If it was already in a try block it replaces the try with try-with-resources instead 
 of creating a new one, so that useless nested try blocks are not created.
 
 [ResourceCloseProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/ResourceCloseProcessor.java)
 
 ------
-#### "BigDecimal(double)" should not be used ([Sonar Rule 2111](https://rules.sonarsource.com/java/RSPEC-2111))
-Any constructor of BigDecimal which has a parameter of type `float` or `double` is replaced with an invocation of the BigDecmail.valueOf(parameter) method.
+
+####"BigDecimal(double)" should not be used ([Sonar Rule 2111](https://rules.sonarsource.com/java/RSPEC-2111))
+
+Any constructor of `BigDecimal` that has a parameter of type `float` or `double` is replaced with an invocation of the `BigDecimal.valueOf(parameter)` method.
 
 Pull Requests:
 
 * [Apache PDFBox](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/pdfbox/2111)
 * [Apache Commons Configuration](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/commons-configuration/2111)
+
 -----
+
 #### "HashCode" and "toString" should not be called on array instances ([Sonar Rule 2116](https://rules.sonarsource.com/java/RSPEC-2116))
-Any invocation of toString() or hashCode() on an array is replaced with Arrays.toString(parameter) or Arrays.hashCode(parameter).
+
+Any invocation of `toString()` or `hashCode()` on an array is replaced with `Arrays.toString(parameter)` or `Arrays.hashCode(parameter)`.
 
 Pull Requests:
 
 * [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/spoon-core/2116)
 
 -----
+
 #### "Iterator.next()" methods should throw "NoSuchElementException" ([Sonar Rule 2272](https://rules.sonarsource.com/java/RSPEC-2272))
-Any implementation of the Itarator next() method which does not throw the NoSuchElementException has a code snippet added to its start. The code snippet consists of a call to hasNext() and a throw of the error.
+
+Any implementation of the `Iterator.next()` method that does not throw `NoSuchElementException` has a code snippet added to its start. The code snippet consists of a call to `hasNext()` and a throw of the error.
 
 Pull Requests:
 
 * [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/spoon-core/2272)
 * [Apache PDFBox](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/pdfbox/2272)
+
 -----
 
 #### Strings and Boxed types should be compared using "equals()" ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
-Any comparison of strings or boxed types using `==` or `!=` is replaced by `equals`
+
+Any comparison of strings or boxed types using `==` or `!=` is replaced by `equals`.
 
 Pull Requests:
 
@@ -51,6 +60,7 @@ Pull Requests:
 * [Apache Sling Launchpad Base](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/sling-launchpad-base/4973)
 * [Apache Sling Scripting ESX](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/sling-scripting-esx/4973)
 * [Apache Sling Scripting JCR](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/sling-scripting-jcr/4973)
+
 -----
 
 ### *Code Smell*
@@ -67,7 +77,9 @@ Merged Pull Requests:
 (removes one sonar violation)
 * https://github.com/INRIA/spoon/pull/2256
 (removes two sonar violations)
+
 ------
+
 #### Fields in a "Serializable" class should be serializable ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
 
 The repair adds the modifier `transient` to all non-serializable
@@ -78,6 +90,6 @@ of that field and add `implements Serializable` to it.
 
 Merged Pull Requests:
 
-* https://github.com/INRIA/spoon/pull/2059  (removes 10 sonarqube bugs)
-* https://github.com/INRIA/spoon/pull/2121  (removes 3 sonarqube bugs)
-* https://github.com/INRIA/spoon/pull/2241  (removes 83 sonarqube bugs)
+* https://github.com/INRIA/spoon/pull/2059  (removes 10 SonarQube bugs)
+* https://github.com/INRIA/spoon/pull/2121  (removes 3 SonarQube bugs)
+* https://github.com/INRIA/spoon/pull/2241  (removes 83 SonarQube bugs)
