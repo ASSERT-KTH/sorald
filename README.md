@@ -43,8 +43,8 @@ Pull requests for improvements or new features are welcome by all contributers.
 * Haris Adzemovic [HarisAdzemovic](https://github.com/HarisAdzemovic)
 
 ## Implementation notes
-#### This only applies to the 2 Code Smells and Bug S2095
-Sonarjava had to be changed in order to return the appropriate issue information for offline-repair. The changes are at https://github.com/kth-tcs/sonar-java/pull/1 . Now I(Ashutosh) don't think that doing offline-repair is a good idea and we should stick to using the web api. I don't know of a way to offline detect issues which have their components in more than one file.
+
+Implementation notes can be found [here](IMPLEMENTATION_NOTES.md).
 
 ## Case studies
 

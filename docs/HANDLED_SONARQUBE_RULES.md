@@ -81,8 +81,3 @@ Merged Pull Requests:
 * https://github.com/INRIA/spoon/pull/2059  (removes 10 sonarqube bugs)
 * https://github.com/INRIA/spoon/pull/2121  (removes 3 sonarqube bugs)
 * https://github.com/INRIA/spoon/pull/2241  (removes 83 sonarqube bugs)
-
-##### NOTE:
-
-Both processors for code smells and one bug (Resources should be closed) are written in a different way from the others, using the plugin Sonarjava for localising bugs. The processors and their implementations have not been maintained and your milage may vary.
-The remaining processors leverage the capabilities of Spoon for both localising and repairing violations.
