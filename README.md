@@ -4,7 +4,7 @@ Sonarqube-repair is a collection of java code transformations made with the [Spo
 
 ## Handled SonarQube rules
 
-Sonarqube-repair can currently repair violations of 7 SonarQube rules of which 5 are labeled as `BUG` and 2 as `Code Smell`. [Checkout out the handled rules](HANDLED_SONARQUBE_RULES.md).
+Sonarqube-repair can currently repair violations of 7 SonarQube rules of which 5 are labeled as `BUG` and 2 as `Code Smell`. [Checkout out the handled rules](/docs/HANDLED_SONARQUBE_RULES.md).
 
 ## Getting Started
 ### Prerequisites 
@@ -42,4 +42,4 @@ Contributions are welcome! Feel free to open issues on this GitHub repository, a
 
 ## Implementation notes
 
-Implementation notes can be found [here](IMPLEMENTATION_NOTES.md).
+Implementation notes can be found [here](/docs/IMPLEMENTATION_NOTES.md).
