@@ -20,8 +20,8 @@ Any constructor of `BigDecimal` that has a parameter of type `float` or `double`
 
 Pull Requests:
 
-* [Apache PDFBox](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/pdfbox/2111)
-* [Apache Commons Configuration](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/commons-configuration/2111)
+* [Apache PDFBox](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/pdfbox/2111)
+* [Apache Commons Configuration](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/commons-configuration/2111)
 
 -----
 
@@ -31,7 +31,7 @@ Any invocation of `toString()` or `hashCode()` on an array is replaced with `Arr
 
 Pull Requests:
 
-* [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/spoon-core/2116)
+* [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/spoon-core/2116)
 
 -----
 
@@ -41,8 +41,8 @@ Any implementation of the `Iterator.next()` method that does not throw `NoSuchEl
 
 Pull Requests:
 
-* [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/spoon-core/2272)
-* [Apache PDFBox](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/pdfbox/2272)
+* [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/spoon-core/2272)
+* [Apache PDFBox](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/pdfbox/2272)
 
 -----
 
@@ -52,14 +52,14 @@ Any comparison of strings or boxed types using `==` or `!=` is replaced by `equa
 
 Pull Requests:
 
-* [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/spoon-core/4973)
-* [Apache JSPWiki](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/jspwiki/4973)
-* [Apache Sling Auth Core](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/sling-auth-core/4973)
-* [Apache Sling Discovery](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/sling-discovery/4973)
-* [Apache Sling Feature](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/sling-feature/4973)
-* [Apache Sling Launchpad Base](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/sling-launchpad-base/4973)
-* [Apache Sling Scripting ESX](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/sling-scripting-esx/4973)
-* [Apache Sling Scripting JCR](https://github.com/kth-tcs/sonarqube-repair/tree/master/pull-requests/sling-scripting-jcr/4973)
+* [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/spoon-core/4973)
+* [Apache JSPWiki](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/jspwiki/4973)
+* [Apache Sling Auth Core](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-auth-core/4973)
+* [Apache Sling Discovery](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-discovery/4973)
+* [Apache Sling Feature](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-feature/4973)
+* [Apache Sling Launchpad Base](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-launchpad-base/4973)
+* [Apache Sling Scripting ESX](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-scripting-esx/4973)
+* [Apache Sling Scripting JCR](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-scripting-jcr/4973)
 
 -----
 
