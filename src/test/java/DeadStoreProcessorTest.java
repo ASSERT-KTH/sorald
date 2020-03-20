@@ -8,10 +8,11 @@ public class DeadStoreProcessorTest {
     public void test()throws Exception
     {
         String fileName = "DeadStores.java";
+        String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
         String pathToRepairedFile = "./spooned/" + fileName;
 
-        JavaCheckVerifier.verify(Constants.PATH_TO_FILE + fileName, new DeadStoreCheck());
-        TestHelp.normalRepair(Constants.PATH_TO_FILE,Constants.PROJECT_KEY,1854);
+        JavaCheckVerifier.verify(pathToBuggyFile, new DeadStoreCheck());
+        TestHelp.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,1854);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new DeadStoreCheck());
     }
 

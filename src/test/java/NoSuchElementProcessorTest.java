@@ -8,10 +8,11 @@ public class NoSuchElementProcessorTest {
     public void test()throws Exception
     {
         String fileName = "NoSuchElement.java";
+        String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
         String pathToRepairedFile = "./spooned/" + fileName;
 
-        JavaCheckVerifier.verify(Constants.PATH_TO_FILE + fileName, new IteratorNextExceptionCheck());
-        TestHelp.normalRepair(Constants.PATH_TO_FILE,Constants.PROJECT_KEY,2272);
+        JavaCheckVerifier.verify(pathToBuggyFile, new IteratorNextExceptionCheck());
+        TestHelp.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,2272);
         TestHelp.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new IteratorNextExceptionCheck());
     }

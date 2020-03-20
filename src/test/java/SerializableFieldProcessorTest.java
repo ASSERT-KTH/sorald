@@ -8,10 +8,11 @@ public class SerializableFieldProcessorTest {
     public void test() throws Exception{
 
         String fileName = "SerializableFieldProcessorTest.java";
+        String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
         String pathToRepairedFile = "./spooned/" + fileName;
 
-        JavaCheckVerifier.verify(Constants.PATH_TO_FILE + fileName, new SerializableFieldInSerializableClassCheck());
-        TestHelp.normalRepair(Constants.PATH_TO_FILE + fileName,Constants.PROJECT_KEY,1948);
+        JavaCheckVerifier.verify(pathToBuggyFile, new SerializableFieldInSerializableClassCheck());
+        TestHelp.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,1948);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new SerializableFieldInSerializableClassCheck());
     }
 

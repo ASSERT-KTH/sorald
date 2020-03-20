@@ -8,10 +8,11 @@ public class ResourceCloseProcessorTest {
     public void test() throws Exception{
 
         String fileName = "ZipFolder.java";
+        String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
         String pathToRepairedFile = "./spooned/" + fileName;
 
-        JavaCheckVerifier.verify(Constants.PATH_TO_FILE + fileName, new UnclosedResourcesCheck());
-        TestHelp.normalRepair(Constants.PATH_TO_FILE + fileName,Constants.PROJECT_KEY,2095);
+        JavaCheckVerifier.verify(pathToBuggyFile, new UnclosedResourcesCheck());
+        TestHelp.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,2095);
         TestHelp.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new UnclosedResourcesCheck());
 
