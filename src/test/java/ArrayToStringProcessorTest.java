@@ -25,7 +25,6 @@ public class ArrayToStringProcessorTest {
         String pathToRepairedFile = "./spooned/spoon/reflect/factory/" + fileName;
 
         JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
-        TestHelp.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,2116);
         TestHelp.repair(pathToBuggyFile,Constants.PROJECT_KEY,2116);
         TestHelp.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
