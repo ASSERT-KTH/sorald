@@ -4,18 +4,28 @@ import org.sonar.java.checks.verifier.JavaCheckVerifier;
 
 public class ArrayToStringProcessorTest {
 
-    private static String projectKey = "se.kth:sonatest";
-    private static String cdtest ="./src/test/resources/sonatest/";
-    private static String pathToFile = cdtest + "src/main/java/";
-
     @Test
-    public void test()throws Exception
+    public void arrayToStringProcessorTest()throws Exception
     {
         String fileName = "ArrayToString.java";
+        String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
         String pathToRepairedFile = "./spooned/" + fileName;
 
-        JavaCheckVerifier.verify(pathToFile + fileName, new ArrayHashCodeAndToStringCheck());
-        TestHelp.normalRepair(pathToFile,projectKey,2116);
+        JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+        TestHelp.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,2116);
+        TestHelp.removeComplianceComments(pathToRepairedFile);
+        JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
+    }
+
+    @Test
+    public void arrayToStringProcessorTest2()throws Exception
+    {
+        String fileName = "CodeFactory.java";
+        String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
+        String pathToRepairedFile = "./spooned/spoon/reflect/factory/" + fileName;
+
+        JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+        TestHelp.repair(pathToBuggyFile,Constants.PROJECT_KEY,2116);
         TestHelp.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
     }

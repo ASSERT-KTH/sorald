@@ -17,6 +17,6 @@ public class CodeFactory {
 	public void createNewClass(CtExpression<?>...parameters) {
 		Arrays.stream(parameters).map(x -> x.getType());
 		
-		parameters.toString();
+		parameters.toString(); // Noncompliant
 	}
 }
