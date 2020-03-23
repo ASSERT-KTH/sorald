@@ -59,7 +59,7 @@ Pull Requests:
 * [Apache Sling Feature](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-feature/4973)
 * [Apache Sling Launchpad Base](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-launchpad-base/4973)
 * [Apache Sling Scripting ESX](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-scripting-esx/4973)
-* [Apache Sling Scripting JCR](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-scripting-jcr/4973)
+* [Apache Sling Scripting JSP](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-scripting-jsp/4973)
 
 -----
 
