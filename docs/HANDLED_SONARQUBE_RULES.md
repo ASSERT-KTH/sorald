@@ -10,18 +10,39 @@ The repair encloses the parent block of resource initialization in a try-with re
 If it was already in a try block it replaces the try with try-with-resources instead 
 of creating a new one, so that useless nested try blocks are not created.
 
-[ResourceCloseProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/ResourceCloseProcessor.java)
+Example:
+```diff
+-            ZipInputStream zipInput = null;
+-            try {
+-                zipInput = new ZipInputStream(new BufferedInputStream(new FileInputStream(file)));// Noncompliant
++            try (ZipInputStream zipInput = new ZipInputStream(new BufferedInputStream(new FileInputStream(file)))) {
+                 ZipEntry entry;
+...
+             zipInput.close();
+-            } catch (Exception e) {
+-                Launcher.LOGGER.error(e.getMessage(), e);
+             }
+```
 
 ------
 
-####"BigDecimal(double)" should not be used ([Sonar Rule 2111](https://rules.sonarsource.com/java/RSPEC-2111))
+#### "BigDecimal(double)" should not be used ([Sonar Rule 2111](https://rules.sonarsource.com/java/RSPEC-2111))
 
 Any constructor of `BigDecimal` that has a parameter of type `float` or `double` is replaced with an invocation of the `BigDecimal.valueOf(parameter)` method.
 
-Pull Requests:
+Example:
+```diff
+         double d = 1.1;
+         float f = 2.2;
+-        BigDecimal bd1 = new BigDecimal(d);// Noncompliant
+-        BigDecimal bd2 = new BigDecimal(1.1); // Noncompliant
+-        BigDecimal bd3 = new BigDecimal(f); // Noncompliant
++        BigDecimal bd1 = BigDecimal.valueOf(d);
++        BigDecimal bd2 = BigDecimal.valueOf(1.1); 
++        BigDecimal bd3 = BigDecimal.valueOf(f); 
+```
 
-* [Apache PDFBox](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/pdfbox/2111)
-* [Apache Commons Configuration](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/commons-configuration/2111)
+Check out an accepted PR in [Apache PDFBox](https://github.com/apache/pdfbox/pull/76) that repairs one BigDecimalDoubleConstructor violation.
 
 -----
 
@@ -29,9 +50,15 @@ Pull Requests:
 
 Any invocation of `toString()` or `hashCode()` on an array is replaced with `Arrays.toString(parameter)` or `Arrays.hashCode(parameter)`.
 
-Pull Requests:
+Example:
+```diff
+-        String argStr = args.toString();// Noncompliant
+-        int argHash = args.hashCode();// Noncompliant
++        String argStr = Arrays.toString(args);
++        int argHash = Arrays.hashCode(args);
+```
 
-* [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/spoon-core/2116)
+Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/3134) that repairs one ArrayHashCodeAndToString violation.
 
 -----
 
@@ -39,10 +66,21 @@ Pull Requests:
 
 Any implementation of the `Iterator.next()` method that does not throw `NoSuchElementException` has a code snippet added to its start. The code snippet consists of a call to `hasNext()` and a throw of the error.
 
-Pull Requests:
+Example:
+```diff
++import java.util.NoSuchElementException;
+...
+     @Override
+-    public String next(){ // Noncompliant
++    public String next() {
++        if (!hasNext()) {
++            throw new NoSuchElementException();
++        }
+         ...
+     }
+```
 
-* [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/spoon-core/2272)
-* [Apache PDFBox](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/pdfbox/2272)
+Check out an accepted PR in [Apache PDFBox](https://github.com/apache/pdfbox/pull/75) that repairs two IteratorNextException violations.
 
 -----
 
@@ -50,16 +88,16 @@ Pull Requests:
 
 Any comparison of strings or boxed types using `==` or `!=` is replaced by `equals`.
 
-Pull Requests:
+Example:
+```diff
+-        return b != a;// Noncompliant
++        return !b.equals(a);
+...
+-        if(firstName == lastName){// Noncompliant
++        if (firstName.equals(lastName)) {
+```
 
-* [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/spoon-core/4973)
-* [Apache JSPWiki](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/jspwiki/4973)
-* [Apache Sling Auth Core](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-auth-core/4973)
-* [Apache Sling Discovery](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-discovery/4973)
-* [Apache Sling Feature](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-feature/4973)
-* [Apache Sling Launchpad Base](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-launchpad-base/4973)
-* [Apache Sling Scripting ESX](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-scripting-esx/4973)
-* [Apache Sling Scripting JSP](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-scripting-jsp/4973)
+Check out an accepted PR in [Apache Sling Discovery](https://github.com/apache/sling-org-apache-sling-discovery-impl/pull/1) that repairs one CompareStringsBoxedTypesWithEquals violation.
 
 -----
 
@@ -69,14 +107,22 @@ Pull Requests:
 
 The repair consists of deleting useless assignments.
 
-[DeadStoreProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/DeadStoreProcessor.java)
+Example:
+```diff
+     public void dead()
+     {
+         int x=5;
+         int y=10;
+         int z;
+         y=x*x*y;
+         System.out.println(y);
+-        x=5;// Noncompliant
+-        y=10;// Noncompliant
+-        z=20;// Noncompliant
+     }
+```
 
-Merged Pull Requests:
-
-* https://github.com/INRIA/spoon/pull/2265
-(removes one sonar violation)
-* https://github.com/INRIA/spoon/pull/2256
-(removes two sonar violations)
+Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/2265) that repairs one DeadStore violation.
 
 ------
 
@@ -86,10 +132,11 @@ The repair adds the modifier `transient` to all non-serializable
 fields. In the future, the plan is to give user the option if they want to go to the class
 of that field and add `implements Serializable` to it.
 
-[SerializableFieldProcessor](https://github.com/kth-tcs/sonarqube-repair/blob/master/src/main/java/SerializableFieldProcessor.java)
+Example:
+```diff
+ public class SerializableFieldProcessorTest implements Serializable {
+-    private Unser uns;// Noncompliant
++    private transient Unser uns;
+```
 
-Merged Pull Requests:
-
-* https://github.com/INRIA/spoon/pull/2059  (removes 10 SonarQube bugs)
-* https://github.com/INRIA/spoon/pull/2121  (removes 3 SonarQube bugs)
-* https://github.com/INRIA/spoon/pull/2241  (removes 83 SonarQube bugs)
+Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/2121) that repairs three SerializableFieldInSerializableClass violations.
