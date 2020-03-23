@@ -42,10 +42,7 @@ Example:
 +        BigDecimal bd3 = BigDecimal.valueOf(f); 
 ```
 
-Pull Requests:
-
-* [Apache PDFBox](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/pdfbox/2111)
-* [Apache Commons Configuration](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/commons-configuration/2111)
+Check out an accepted PR in [Apache PDFBox](https://github.com/apache/pdfbox/pull/76) that repairs one BigDecimalDoubleConstructor violation.
 
 -----
 
@@ -61,9 +58,7 @@ Example:
 +        int argHash = Arrays.hashCode(args);
 ```
 
-Pull Requests:
-
-* [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/spoon-core/2116)
+Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/3134) that repairs one ArrayHashCodeAndToString violation.
 
 -----
 
@@ -85,10 +80,7 @@ Example:
      }
 ```
 
-Pull Requests:
-
-* [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/spoon-core/2272)
-* [Apache PDFBox](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/pdfbox/2272)
+Check out an accepted PR in [Apache PDFBox](https://github.com/apache/pdfbox/pull/75) that repairs two IteratorNextException violations.
 
 -----
 
@@ -105,16 +97,7 @@ Example:
 +        if (firstName.equals(lastName)) {
 ```
 
-Pull Requests:
-
-* [Spoon](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/spoon-core/4973)
-* [Apache JSPWiki](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/jspwiki/4973)
-* [Apache Sling Auth Core](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-auth-core/4973)
-* [Apache Sling Discovery](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-discovery/4973)
-* [Apache Sling Feature](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-feature/4973)
-* [Apache Sling Launchpad Base](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-launchpad-base/4973)
-* [Apache Sling Scripting ESX](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-scripting-esx/4973)
-* [Apache Sling Scripting JCR](https://github.com/kth-tcs/sonarqube-repair/tree/master/experimentation/pull-requests/sling-scripting-jcr/4973)
+Check out an accepted PR in [Apache Sling Discovery](https://github.com/apache/sling-org-apache-sling-discovery-impl/pull/1) that repairs one CompareStringsBoxedTypesWithEquals violation.
 
 -----
 
@@ -139,12 +122,7 @@ Example:
      }
 ```
 
-Merged Pull Requests:
-
-* https://github.com/INRIA/spoon/pull/2265
-(removes one sonar violation)
-* https://github.com/INRIA/spoon/pull/2256
-(removes two sonar violations)
+Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/2265) that repairs one DeadStore violation.
 
 ------
 
@@ -161,8 +139,4 @@ Example:
 +    private transient Unser uns;
 ```
 
-Merged Pull Requests:
-
-* https://github.com/INRIA/spoon/pull/2059  (removes 10 SonarQube bugs)
-* https://github.com/INRIA/spoon/pull/2121  (removes 3 SonarQube bugs)
-* https://github.com/INRIA/spoon/pull/2241  (removes 83 SonarQube bugs)
+Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/2121) that repairs three SerializableFieldInSerializableClass violations.
