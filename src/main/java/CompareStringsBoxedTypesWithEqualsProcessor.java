@@ -6,9 +6,9 @@ import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.reference.CtTypeReference;
 
-public class BoxedTypesEqualsProcessor extends AbstractProcessor<CtElement> {
+public class CompareStringsBoxedTypesWithEqualsProcessor extends AbstractProcessor<CtElement> {
 
-    public BoxedTypesEqualsProcessor(String projectKey) throws Exception {
+    public CompareStringsBoxedTypesWithEqualsProcessor(String projectKey) throws Exception {
         ParseAPI.parse(4973,"",projectKey);
     }
 

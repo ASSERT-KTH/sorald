@@ -8,7 +8,7 @@ import spoon.reflect.reference.CtVariableReference;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall> {
+public class UnclosedResourcesProcessor extends AbstractProcessor<CtConstructorCall> {
 
     private JSONArray jsonArray;//array of JSONObjects, each of which is a bug
     private Set<Bug> SetOfBugs;//set of bugs, corresponding to jsonArray
@@ -18,7 +18,7 @@ public class ResourceCloseProcessor extends AbstractProcessor<CtConstructorCall>
     private String thisBugName;        //name (message) of current thisBug.
     String var;//contains name of resource which is unclosed in the current bug.
 
-    public ResourceCloseProcessor(String projectKey) throws Exception {
+    public UnclosedResourcesProcessor(String projectKey) throws Exception {
         jsonArray= ParseAPI.parse(2095,"",projectKey);
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();

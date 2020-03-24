@@ -2,12 +2,12 @@ import org.junit.Test;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 
-public class ArrayToStringProcessorTest {
+public class ArrayHashCodeAndToStringProcessorTest {
 
     @Test
     public void arrayToStringProcessorTest()throws Exception
     {
-        String fileName = "ArrayToString.java";
+        String fileName = "ArrayHashCodeAndToString.java";
         String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
         String pathToRepairedFile = "./spooned/" + fileName;
 

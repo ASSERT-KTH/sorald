@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
+public class SerializableFieldInSerializableClassProcessor extends AbstractProcessor<CtField> {
 
     private JSONArray jsonArray;//array of JSONObjects, each of which is a bug
     private Set<Bug> SetOfBugs;//set of bugs, corresponding to jsonArray
@@ -17,7 +17,7 @@ public class SerializableFieldProcessor extends AbstractProcessor<CtField> {
     private Set<String> SetOfFileNames;//-----
     private Bug thisBug;               //current bug. This is set inside isToBeProcessed function
     private String thisBugName;        //name (message) of current thisBug.
-    public SerializableFieldProcessor(String projectKey) throws Exception {
+    public SerializableFieldInSerializableClassProcessor(String projectKey) throws Exception {
         jsonArray= ParseAPI.parse(1948,"",projectKey);
         SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
         SetOfLineNumbers=new HashSet<Long>();

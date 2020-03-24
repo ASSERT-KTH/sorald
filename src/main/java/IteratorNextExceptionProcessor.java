@@ -11,8 +11,8 @@ import spoon.reflect.reference.CtTypeReference;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class NoSuchElementProcessor extends AbstractProcessor<CtMethod> {
-    public NoSuchElementProcessor(String projectKey) throws Exception {
+public class IteratorNextExceptionProcessor extends AbstractProcessor<CtMethod> {
+    public IteratorNextExceptionProcessor(String projectKey) throws Exception {
         ParseAPI.parse(2272,"",projectKey);
     }
 

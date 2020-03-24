@@ -17,14 +17,14 @@ public class TestHelp {
     public static void initmap() {
         rule = new HashMap<>();
         rule.putIfAbsent(1854, DeadStoreProcessor.class);
-        rule.putIfAbsent(1948, SerializableFieldProcessor.class);
+        rule.putIfAbsent(1948, SerializableFieldInSerializableClassProcessor.class);
         // rule.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
-        rule.putIfAbsent(2095, ResourceCloseProcessor.class);
+        rule.putIfAbsent(2095, UnclosedResourcesProcessor.class);
         rule.putIfAbsent(2111, BigDecimalDoubleConstructorProcessor.class);
-        rule.putIfAbsent(2116, ArrayToStringProcessor.class);
+        rule.putIfAbsent(2116, ArrayHashCodeAndToStringProcessor.class);
         // rule.putIfAbsent(2259, NullDereferenceProcessor.class);
-        rule.putIfAbsent(2272, NoSuchElementProcessor.class);
-        rule.putIfAbsent(4973, BoxedTypesEqualsProcessor.class);
+        rule.putIfAbsent(2272, IteratorNextExceptionProcessor.class);
+        rule.putIfAbsent(4973, CompareStringsBoxedTypesWithEqualsProcessor.class);
     }
 
     public static Class<?> getProcessor(int ruleKey) {
