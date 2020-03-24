@@ -4,7 +4,7 @@
  * "==" compares memory location.
  */
 
-public class BoxedTypesEquals {
+public class CompareStringsBoxedTypesWithEquals {
 
     boolean eq = true;
 

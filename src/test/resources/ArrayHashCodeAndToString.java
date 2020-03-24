@@ -4,7 +4,7 @@
  * Instead, Arrays.toString(ARRAY_VARIABLE) should be used.
  */
 
-public class ArrayToString {
+public class ArrayHashCodeAndToString {
 
     public void foo(String[] args) {
         String[] array1 = {"F", "O", "O"};

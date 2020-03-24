@@ -2,12 +2,12 @@ import org.junit.Test;
 import org.sonar.java.checks.CompareStringsBoxedTypesWithEqualsCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 
-public class BoxedTypesEqualsProcessorTest {
+public class CompareStringsBoxedTypesWithEqualsProcessorTest {
 
     @Test
     public void test()throws Exception
     {
-        String fileName = "BoxedTypesEquals.java";
+        String fileName = "CompareStringsBoxedTypesWithEquals.java";
         String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
         String pathToRepairedFile = "./spooned/" + fileName;
 

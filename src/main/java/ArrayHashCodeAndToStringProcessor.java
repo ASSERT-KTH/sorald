@@ -5,12 +5,12 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
 import java.util.Arrays;
 
-public class ArrayToStringProcessor extends AbstractProcessor<CtInvocation<?>> {
+public class ArrayHashCodeAndToStringProcessor extends AbstractProcessor<CtInvocation<?>> {
 
     final String TOSTRING = "toString";
     final String HASHCODE = "hashCode";
 
-    public ArrayToStringProcessor(String projectKey) throws Exception {
+    public ArrayHashCodeAndToStringProcessor(String projectKey) throws Exception {
         ParseAPI.parse(2116,"",projectKey);
     }
 

@@ -5,7 +5,7 @@
 import java.util.Iterator;
 import java.util.Stack;
 
-public class NoSuchElement implements Iterator {
+public class IteratorNextException implements Iterator {
     private Stack<String> stack = new Stack();
 
     @Override
