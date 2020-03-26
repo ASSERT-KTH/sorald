@@ -31,12 +31,4 @@ public class TestHelp {
         }
     }
 
-    public static void copy(String from, String to) {
-        Execute.command("cp " + from + " " + to);
-    }
-
-    public static void doSonarAnalysis(String dir) {
-        String sonarAnalysis = "mvn sonar:sonar -Dsonar.organization=kimsun1598-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=95b00d7c27acc6500c2641efe2b497442368d037";
-        Execute.command(sonarAnalysis, dir, true);
-    }
 }
