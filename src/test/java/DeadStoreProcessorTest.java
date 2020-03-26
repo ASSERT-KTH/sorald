@@ -12,7 +12,7 @@ public class DeadStoreProcessorTest {
         String pathToRepairedFile = "./spooned/" + fileName;
 
         JavaCheckVerifier.verify(pathToBuggyFile, new DeadStoreCheck());
-        TestHelp.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,1854);
+        Main.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,1854);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new DeadStoreCheck());
     }
 

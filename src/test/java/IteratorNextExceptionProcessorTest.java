@@ -12,7 +12,7 @@ public class IteratorNextExceptionProcessorTest {
         String pathToRepairedFile = "./spooned/" + fileName;
 
         JavaCheckVerifier.verify(pathToBuggyFile, new IteratorNextExceptionCheck());
-        TestHelp.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,2272);
+        Main.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,2272);
         TestHelp.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new IteratorNextExceptionCheck());
     }

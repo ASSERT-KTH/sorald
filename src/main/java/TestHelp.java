@@ -1,48 +1,8 @@
-import spoon.Launcher;
-import spoon.processing.Processor;
-import spoon.support.sniper.SniperJavaPrettyPrinter;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileOutputStream;
-import java.lang.reflect.Constructor;
 
 public class TestHelp {
-
-    public static void repair(String pathToFile, String projectKey, int rulekey) throws Exception
-    {
-        Launcher launcher = new Launcher() {
-        };
-        launcher.getEnvironment().setPrettyPrinterCreator(() -> {
-            SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
-            sniper.setIgnoreImplicit(false);
-                    return sniper;
-                }
-        );
-        launcher.addInputResource(pathToFile);
-        launcher.getEnvironment().setCommentEnabled(true);
-        launcher.getEnvironment().setAutoImports(true);
-        launcher.getEnvironment().useTabulations(true);
-        launcher.getEnvironment().setTabulationSize(4);
-
-        Class<?> processor = Processors.getProcessor(rulekey);
-        Constructor<?> cons = processor.getConstructor(String.class);
-        Object object = cons.newInstance(projectKey);
-        launcher.addProcessor((Processor) object);
-        launcher.run();
-    }
-
-    public static void normalRepair(String pathToFile, String projectKey, int rulekey) throws Exception {
-        //Not Sniper  Mode
-        Launcher launcher = new Launcher();
-        launcher.addInputResource(pathToFile);
-        launcher.getEnvironment().setAutoImports(true);
-        Class<?> processor = Processors.getProcessor(rulekey);
-        Constructor<?> cons = processor.getConstructor(String.class);
-        Object object = cons.newInstance(projectKey);
-        launcher.addProcessor((Processor) object);
-        launcher.run();
-//        new SpoonModelTree(launcher.getFactory());
-    }
 
     /*
     Simple helper method that removes the mandatory // Noncompliant comments from test files.

@@ -1,4 +1,46 @@
+import spoon.Launcher;
+import spoon.processing.Processor;
+import spoon.support.sniper.SniperJavaPrettyPrinter;
+
+import java.lang.reflect.Constructor;
+
 public class Main {
+
+    public static void repair(String pathToFile, String projectKey, int rulekey) throws Exception
+    {
+        Launcher launcher = new Launcher() {
+        };
+        launcher.getEnvironment().setPrettyPrinterCreator(() -> {
+                    SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
+                    sniper.setIgnoreImplicit(false);
+                    return sniper;
+                }
+        );
+        launcher.addInputResource(pathToFile);
+        launcher.getEnvironment().setCommentEnabled(true);
+        launcher.getEnvironment().setAutoImports(true);
+        launcher.getEnvironment().useTabulations(true);
+        launcher.getEnvironment().setTabulationSize(4);
+
+        Class<?> processor = Processors.getProcessor(rulekey);
+        Constructor<?> cons = processor.getConstructor(String.class);
+        Object object = cons.newInstance(projectKey);
+        launcher.addProcessor((Processor) object);
+        launcher.run();
+    }
+
+    public static void normalRepair(String pathToFile, String projectKey, int rulekey) throws Exception {
+        //Not Sniper  Mode
+        Launcher launcher = new Launcher();
+        launcher.addInputResource(pathToFile);
+        launcher.getEnvironment().setAutoImports(true);
+        Class<?> processor = Processors.getProcessor(rulekey);
+        Constructor<?> cons = processor.getConstructor(String.class);
+        Object object = cons.newInstance(projectKey);
+        launcher.addProcessor((Processor) object);
+        launcher.run();
+//        new SpoonModelTree(launcher.getFactory());
+    }
 
     /**
      *
@@ -33,7 +75,7 @@ public class Main {
         {
             System.out.println("No arguments given. Using "+ Processors.getProcessor(rulenumber).getName()+ " by default on "+projectKey);
         }
-        TestHelp.repair("./source/act/",projectKey,rulenumber);
+        repair("./source/act/",projectKey,rulenumber);
         System.out.println("done");
 	}
 }
