@@ -23,8 +23,15 @@ public class Main {
         launcher.getEnvironment().setTabulationSize(4);
 
         Class<?> processor = Processors.getProcessor(rulekey);
-        Constructor<?> cons = processor.getConstructor(String.class);
-        Object object = cons.newInstance(projectKey);
+        Constructor<?> cons;
+        Object object;
+        try {
+            cons = processor.getConstructor(String.class);
+            object = cons.newInstance(projectKey);
+        } catch (NoSuchMethodException e) {
+            cons = processor.getConstructor();
+            object = cons.newInstance();
+        }
         launcher.addProcessor((Processor) object);
         launcher.run();
     }
@@ -35,8 +42,15 @@ public class Main {
         launcher.addInputResource(pathToFile);
         launcher.getEnvironment().setAutoImports(true);
         Class<?> processor = Processors.getProcessor(rulekey);
-        Constructor<?> cons = processor.getConstructor(String.class);
-        Object object = cons.newInstance(projectKey);
+        Constructor<?> cons;
+        Object object;
+        try {
+            cons = processor.getConstructor(String.class);
+            object = cons.newInstance(projectKey);
+        } catch (NoSuchMethodException e) {
+            cons = processor.getConstructor();
+            object = cons.newInstance();
+        }
         launcher.addProcessor((Processor) object);
         launcher.run();
 //        new SpoonModelTree(launcher.getFactory());

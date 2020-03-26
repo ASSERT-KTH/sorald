@@ -10,10 +10,6 @@ public class ArrayHashCodeAndToStringProcessor extends AbstractProcessor<CtInvoc
     final String TOSTRING = "toString";
     final String HASHCODE = "hashCode";
 
-    public ArrayHashCodeAndToStringProcessor(String projectKey) throws Exception {
-        ParseAPI.parse(2116,"",projectKey);
-    }
-
     @Override
     public boolean isToBeProcessed(CtInvocation<?> candidate)
     {
