@@ -12,8 +12,8 @@ public class UnclosedResourcesProcessorTest {
         String pathToRepairedFile = "./spooned/" + fileName;
 
         JavaCheckVerifier.verify(pathToBuggyFile, new UnclosedResourcesCheck());
-        TestHelp.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,2095);
-        TestHelp.removeComplianceComments(pathToRepairedFile);
+        Main.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,2095);
+        TestHelper.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new UnclosedResourcesCheck());
 
     }
