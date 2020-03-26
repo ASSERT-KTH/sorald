@@ -1,3 +1,5 @@
+package sonarquberepair.processor.spoonbased;
+
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;

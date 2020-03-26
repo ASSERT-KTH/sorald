@@ -1,3 +1,5 @@
+package sonarquberepair.processor.sonarbased;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import spoon.processing.AbstractProcessor;

@@ -1,3 +1,5 @@
+package sonarquberepair;
+
 import spoon.Launcher;
 import spoon.processing.Processor;
 import spoon.support.sniper.SniperJavaPrettyPrinter;

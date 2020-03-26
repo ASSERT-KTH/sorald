@@ -71,7 +71,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>sonarquberepair.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

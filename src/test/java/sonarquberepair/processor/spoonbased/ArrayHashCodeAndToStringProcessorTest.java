@@ -1,6 +1,11 @@
+package sonarquberepair.processor.spoonbased;
+
 import org.junit.Test;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import sonarquberepair.Constants;
+import sonarquberepair.Main;
+import sonarquberepair.TestHelper;
 
 public class ArrayHashCodeAndToStringProcessorTest {
 

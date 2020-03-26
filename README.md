@@ -24,7 +24,7 @@ A JDK (java 1.8 or above)
 
 5) Run the main Sonarqube-repair function. 
 
-You can either give command line arguments or set the rule number and project-key manually in the main function in `src/main/java/Main.java`. The repaired files will appear in `sonarqube-repair/spooned/` . Also you need to set the url of the sonar analysis of your project in `src/main/java/ParseAPI.java` if it is different from [sonarcloud.io](https://sonarcloud.io/about)
+You can either give command line arguments or set the rule number and project-key manually in the main function in `src/main/java/sonarquberepair/Main.java`. The repaired files will appear in `sonarqube-repair/spooned/` . Also you need to set the url of the sonar analysis of your project in `src/main/java/ParseAPI.java` if it is different from [sonarcloud.io](https://sonarcloud.io/about)
  
 ##### If you want to run it on GitHub projects to propose PRs with fixes
 

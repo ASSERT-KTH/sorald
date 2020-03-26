@@ -1,6 +1,10 @@
+package sonarquberepair.processor.sonarbased;
+
 import org.junit.Test;
 import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import sonarquberepair.Constants;
+import sonarquberepair.Main;
 
 public class DeadStoreProcessorTest {
 
