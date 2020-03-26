@@ -13,7 +13,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 
         JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
         Main.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,2116);
-        TestHelp.removeComplianceComments(pathToRepairedFile);
+        TestHelper.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
     }
 
@@ -26,7 +26,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 
         JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
         Main.repair(pathToBuggyFile,Constants.PROJECT_KEY,2116);
-        TestHelp.removeComplianceComments(pathToRepairedFile);
+        TestHelper.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
     }
 

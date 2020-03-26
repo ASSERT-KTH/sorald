@@ -13,7 +13,7 @@ public class BigDecimalDoubleConstructorProcessorTest {
 
         JavaCheckVerifier.verify(pathToBuggyFile, new BigDecimalDoubleConstructorCheck());
         Main.repair(pathToBuggyFile,Constants.PROJECT_KEY,2111);
-        TestHelp.removeComplianceComments(pathToRepairedFile);
+        TestHelper.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new BigDecimalDoubleConstructorCheck());
     }
 

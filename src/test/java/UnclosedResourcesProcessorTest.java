@@ -13,7 +13,7 @@ public class UnclosedResourcesProcessorTest {
 
         JavaCheckVerifier.verify(pathToBuggyFile, new UnclosedResourcesCheck());
         Main.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,2095);
-        TestHelp.removeComplianceComments(pathToRepairedFile);
+        TestHelper.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new UnclosedResourcesCheck());
 
     }

@@ -13,7 +13,7 @@ public class IteratorNextExceptionProcessorTest {
 
         JavaCheckVerifier.verify(pathToBuggyFile, new IteratorNextExceptionCheck());
         Main.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,2272);
-        TestHelp.removeComplianceComments(pathToRepairedFile);
+        TestHelper.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new IteratorNextExceptionCheck());
     }
 }

@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileOutputStream;
 
-public class TestHelp {
+public class TestHelper {
 
     /*
     Simple helper method that removes the mandatory // Noncompliant comments from test files.

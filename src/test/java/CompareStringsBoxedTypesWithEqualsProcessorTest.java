@@ -13,7 +13,7 @@ public class CompareStringsBoxedTypesWithEqualsProcessorTest {
 
         JavaCheckVerifier.verify(pathToBuggyFile, new CompareStringsBoxedTypesWithEqualsCheck());
         Main.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,4973);
-        TestHelp.removeComplianceComments(pathToRepairedFile);
+        TestHelper.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new CompareStringsBoxedTypesWithEqualsCheck());
     }
 
