@@ -17,12 +17,12 @@ public class Main {
             if(args.length==1)
             {
                 projectKey = "fr.inria.gforge.spoon:spoon-core";
-                System.out.println("One argument given. Applying " + TestHelp.getProcessor(rulenumber).getName() + " on " + projectKey);
+                System.out.println("One argument given. Applying " + Processors.getProcessor(rulenumber).getName() + " on " + projectKey);
             }
             else if(args.length==2)
             {
                 projectKey = args[1];
-                System.out.println("Two argument given. Applying "+TestHelp.getProcessor(rulenumber).getName()+ " on "+projectKey);
+                System.out.println("Two argument given. Applying "+Processors.getProcessor(rulenumber).getName()+ " on "+projectKey);
             }
             else
             {
@@ -31,7 +31,7 @@ public class Main {
         }
         else //no arguments given
         {
-            System.out.println("No arguments given. Using "+ TestHelp.getProcessor(rulenumber).getName()+ " by default on "+projectKey);
+            System.out.println("No arguments given. Using "+ Processors.getProcessor(rulenumber).getName()+ " by default on "+projectKey);
         }
         TestHelp.repair("./source/act/",projectKey,rulenumber);
         System.out.println("done");

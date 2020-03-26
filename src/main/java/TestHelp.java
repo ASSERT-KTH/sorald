@@ -5,38 +5,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileOutputStream;
 import java.lang.reflect.Constructor;
-import java.util.HashMap;
-import java.util.Map;
-
-import static java.lang.System.exit;
 
 public class TestHelp {
-
-    private static Map<Integer, Class<? extends Processor>> rule;
-
-    public static void initmap() {
-        rule = new HashMap<>();
-        rule.putIfAbsent(1854, DeadStoreProcessor.class);
-        rule.putIfAbsent(1948, SerializableFieldInSerializableClassProcessor.class);
-        // rule.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
-        rule.putIfAbsent(2095, UnclosedResourcesProcessor.class);
-        rule.putIfAbsent(2111, BigDecimalDoubleConstructorProcessor.class);
-        rule.putIfAbsent(2116, ArrayHashCodeAndToStringProcessor.class);
-        // rule.putIfAbsent(2259, NullDereferenceProcessor.class);
-        rule.putIfAbsent(2272, IteratorNextExceptionProcessor.class);
-        rule.putIfAbsent(4973, CompareStringsBoxedTypesWithEqualsProcessor.class);
-    }
-
-    public static Class<?> getProcessor(int ruleKey) {
-        if (rule == null) {
-            initmap();
-        }
-        if (!rule.containsKey(ruleKey)) {
-            System.out.println("Sorry. Repair not available for rule " + ruleKey);
-            exit(0);
-        }
-        return rule.get(ruleKey);
-    }
 
     public static void repair(String pathToFile, String projectKey, int rulekey) throws Exception
     {
@@ -54,7 +24,7 @@ public class TestHelp {
         launcher.getEnvironment().useTabulations(true);
         launcher.getEnvironment().setTabulationSize(4);
 
-        Class<?> processor = getProcessor(rulekey);
+        Class<?> processor = Processors.getProcessor(rulekey);
         Constructor<?> cons = processor.getConstructor(String.class);
         Object object = cons.newInstance(projectKey);
         launcher.addProcessor((Processor) object);
@@ -66,7 +36,7 @@ public class TestHelp {
         Launcher launcher = new Launcher();
         launcher.addInputResource(pathToFile);
         launcher.getEnvironment().setAutoImports(true);
-        Class<?> processor = getProcessor(rulekey);
+        Class<?> processor = Processors.getProcessor(rulekey);
         Constructor<?> cons = processor.getConstructor(String.class);
         Object object = cons.newInstance(projectKey);
         launcher.addProcessor((Processor) object);
