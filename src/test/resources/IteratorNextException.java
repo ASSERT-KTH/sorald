@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Stack;
 
 public class IteratorNextException implements Iterator {
+
     private Stack<String> stack = new Stack();
 
     @Override
@@ -14,11 +15,12 @@ public class IteratorNextException implements Iterator {
     }
 
     @Override
-    public String next(){ // Noncompliant
-        if(!hasNext()){
+    public String next() { // Noncompliant
+        if (!hasNext()) {
             return null;
-        }else{
+        } else {
             return stack.pop();
         }
     }
+
 }

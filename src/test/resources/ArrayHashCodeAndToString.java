@@ -6,15 +6,16 @@
 
 public class ArrayHashCodeAndToString {
 
-    public void foo(String[] args) {
-        String[] array1 = {"F", "O", "O"};
-        System.out.println(array1.toString());// Noncompliant
-        varargsTest(1, 2, 3);
-        String argStr = args.toString();// Noncompliant
-        int argHash = args.hashCode();// Noncompliant
-    }
+	public void foo(String[] args) {
+		String[] array1 = {"F", "O", "O"};
+		System.out.println(array1.toString()); // Noncompliant
+		varargsTest(1, 2, 3);
+		String argStr = args.toString(); // Noncompliant
+		int argHash = args.hashCode(); // Noncompliant
+	}
 
-    private void varargsTest(int ... array2){
-        String a = array2.toString();// Noncompliant
-    }
+	private void varargsTest(int... array2) {
+		String a = array2.toString(); // Noncompliant
+	}
+
 }

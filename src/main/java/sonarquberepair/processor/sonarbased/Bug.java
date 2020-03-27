@@ -7,108 +7,106 @@ import org.json.JSONObject;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Bug
-{
+public class Bug {
 
-    private JSONObject jsonObject;
-    private JSONArray locations;
-    private long lineNumber;
-    private String name;
-    private String fileName;
-    public Bug() {
+	private JSONObject jsonObject;
+	private JSONArray locations;
+	private long lineNumber;
+	private String name;
+	private String fileName;
 
-    }
+	public Bug() {}
 
-    public Bug(JSONObject jsonObject){
-        this.jsonObject=jsonObject;
-        init();
-    }
-    public Bug(Bug bug){
-        this.jsonObject=bug.jsonObject;
-        init();
-    }
-    private void init()
-    {
-        JSONArray flow=jsonObject.getJSONArray("flows");
-        if(flow.length()>0)
-        {
-            locations = flow.getJSONObject(0).getJSONArray("locations");
-        }
-        if (jsonObject.has("line")) {
-            lineNumber = (long) (int) (jsonObject.get("line"));//cast first to int thecn to long
-        }
-        name=(String) jsonObject.get("message");
-        String[] split=jsonObject.get("component").toString().split("/");
-        fileName=split[split.length-1];
-    }
+	public Bug(JSONObject jsonObject) {
+		this.jsonObject = jsonObject;
+		init();
+	}
 
-    @Override
-    public int hashCode()
-    {
-        return this.jsonObject.toString().hashCode();
-    }
+	public Bug(Bug bug) {
+		this.jsonObject = bug.jsonObject;
+		init();
+	}
 
-    @Override
-    public boolean equals(Object obj)
-    {
-        if(!(obj instanceof Bug))
-        {
-            return false;
-        }
-        if(obj==this)
-        {
-            return true;
-        }
-        Bug rhs=(Bug) obj;
-        return rhs.jsonObject.toString().equals(this.jsonObject.toString());
-    }
+	private void init() {
+		JSONArray flow = jsonObject.getJSONArray("flows");
+		if (flow.length() > 0) {
+			locations = flow.getJSONObject(0).getJSONArray("locations");
+		}
+		if (jsonObject.has("line")) {
+			lineNumber = (long) (int) (jsonObject.get("line")); //cast first to int then to long
+		}
+		name = (String) jsonObject.get("message");
+		String[] split = jsonObject.get("component").toString().split("/");
+		fileName = split[split.length - 1];
+	}
 
-    public static Set<Bug> createSetOfBugs(JSONArray jsonArray) throws Exception {
-        Set<Bug> setOfBugs = new HashSet<>();
-        if (jsonArray == null) {
-            throw new Exception("null JSONArray passed to createSetOfBugs()");
-        }
-        for (int i = 0; i < jsonArray.length(); ++i) {
-            JSONObject obj = null;
-            try {
-                obj = jsonArray.getJSONObject(i);
-                Bug bug = new Bug(obj);
-                setOfBugs.add(bug);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return setOfBugs;
-    }
+	@Override
+	public int hashCode() {
+		return this.jsonObject.toString().hashCode();
+	}
 
-    public JSONObject getJsonObject(){return jsonObject;}
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Bug)) {
+			return false;
+		}
+		if (obj == this) {
+			return true;
+		}
+		Bug rhs = (Bug) obj;
+		return rhs.jsonObject.toString().equals(this.jsonObject.toString());
+	}
 
-    public JSONArray getLocations(){ return locations;}
+	public static Set<Bug> createSetOfBugs(JSONArray jsonArray) throws Exception {
+		Set<Bug> setOfBugs = new HashSet<>();
+		if (jsonArray == null) {
+			throw new Exception("null JSONArray passed to createSetOfBugs()");
+		}
+		for (int i = 0; i < jsonArray.length(); ++i) {
+			JSONObject obj = null;
+			try {
+				obj = jsonArray.getJSONObject(i);
+				Bug bug = new Bug(obj);
+				setOfBugs.add(bug);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+		return setOfBugs;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public JSONObject getJsonObject() {
+		return jsonObject;
+	}
 
-    public long getLineNumber() {
-        return lineNumber;
-    }
+	public JSONArray getLocations() {
+		return locations;
+	}
 
-    public String getFileName() {
-        return fileName;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void printBugLocations()
-    {
-        try {
-            if(locations!=null)
-            {
-                for (int i = 0; i < locations.length(); ++i) {
-                    System.out.println(locations.getJSONObject(i));
-                }
-            }
-            else System.out.println("null locations");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
+	public long getLineNumber() {
+		return lineNumber;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void printBugLocations() {
+		try {
+			if (locations != null) {
+				for (int i = 0; i < locations.length(); ++i) {
+					System.out.println(locations.getJSONObject(i));
+				}
+			} else {
+				System.out.println("null locations");
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

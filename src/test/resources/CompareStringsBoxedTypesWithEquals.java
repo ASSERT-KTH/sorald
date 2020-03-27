@@ -9,22 +9,22 @@ public class CompareStringsBoxedTypesWithEquals {
     boolean eq = true;
 
     // Java implicitly converts one variable to primitive if something boxed and primitive is compared.
-    private void mixedCompare(){
+    private void mixedCompare() {
         int e = 4;
         Integer f = 4;
-        eq = (e != f);// Compliant;
-        eq = (f == e);// Compliant;
+        eq = (e != f); // Compliant;
+        eq = (f == e); // Compliant;
     }
 
     // Integer is not primitive and should use .equals()
-    private boolean IntegerCompare(){
+    private boolean IntegerCompare() {
         Integer a = 5;
         Integer b = 5;
-        return b != a;// Noncompliant
+        return b != a; // Noncompliant
     }
 
     // Int is primitive and can use ==
-    private void intCompare(){
+    private void intCompare() {
         int x = 5;
         int y = 5;
         eq = (x == y); // Compliant;
@@ -32,14 +32,14 @@ public class CompareStringsBoxedTypesWithEquals {
     }
 
     // Null comparisons are excluded from transformation
-    private void nullCompare(){
+    private void nullCompare() {
         String x = null;
         eq = (x == null); // Compliant
         eq = (null == x); // Compliant
     }
 
     // ENUM comparisons are excluded from transformation
-    private void nullCompare(){
+    private void nullCompare() {
         enum foo {
             BAR,
             XOR
@@ -50,17 +50,17 @@ public class CompareStringsBoxedTypesWithEquals {
     }
 
     // String is not primitive and should use .equals()
-    private boolean stringCompare(){
+    private boolean stringCompare() {
         String firstName = getFirstName(); // String overrides equals
         String lastName = getLastName();
-        if(firstName == lastName){// Noncompliant
+        if (firstName == lastName) { // Noncompliant
             return true;
         }
         return false;
     }
 
     // Object comparison should not be converted
-    private void objectCompare(){
+    private void objectCompare() {
         Object a = 1;
         Object b = 1;
         eq = a == b; // Compliant
@@ -75,4 +75,5 @@ public class CompareStringsBoxedTypesWithEquals {
     private String getLastName(){
         return new String("John");
     }
+
 }
