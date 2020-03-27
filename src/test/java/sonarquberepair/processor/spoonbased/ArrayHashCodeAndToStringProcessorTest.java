@@ -9,30 +9,28 @@ import sonarquberepair.TestHelper;
 
 public class ArrayHashCodeAndToStringProcessorTest {
 
-    @Test
-    public void arrayToStringProcessorTest()throws Exception
-    {
-        String fileName = "ArrayHashCodeAndToString.java";
-        String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-        String pathToRepairedFile = "./spooned/" + fileName;
+	@Test
+	public void arrayToStringProcessorTest() throws Exception {
+		String fileName = "ArrayHashCodeAndToString.java";
+		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
+		String pathToRepairedFile = "./spooned/" + fileName;
 
-        JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
-        Main.normalRepair(pathToBuggyFile,Constants.PROJECT_KEY,2116);
-        TestHelper.removeComplianceComments(pathToRepairedFile);
-        JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
-    }
+		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+		Main.normalRepair(pathToBuggyFile, Constants.PROJECT_KEY, 2116);
+		TestHelper.removeComplianceComments(pathToRepairedFile);
+		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
+	}
 
-    @Test
-    public void arrayToStringProcessorTest2()throws Exception
-    {
-        String fileName = "CodeFactory.java";
-        String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-        String pathToRepairedFile = "./spooned/spoon/reflect/factory/" + fileName;
+	@Test
+	public void arrayToStringProcessorTest2() throws Exception {
+		String fileName = "CodeFactory.java";
+		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
+		String pathToRepairedFile = "./spooned/spoon/reflect/factory/" + fileName;
 
-        JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
-        Main.repair(pathToBuggyFile,Constants.PROJECT_KEY,2116);
-        TestHelper.removeComplianceComments(pathToRepairedFile);
-        JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
-    }
+		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2116);
+		TestHelper.removeComplianceComments(pathToRepairedFile);
+		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
+	}
 
 }
