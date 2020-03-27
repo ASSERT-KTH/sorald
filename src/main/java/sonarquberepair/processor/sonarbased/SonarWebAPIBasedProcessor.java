@@ -1,12 +1,41 @@
+package sonarquberepair.processor.sonarbased;
+
 import java.net.*;
 import java.io.*;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.json.*;
+import spoon.processing.AbstractProcessor;
+import spoon.reflect.declaration.CtElement;
 
 import static java.lang.System.exit;
 
-public class ParseAPI {
+public abstract class SonarWebAPIBasedProcessor<E extends CtElement> extends AbstractProcessor<E> {
 
+    protected JSONArray jsonArray;//array of JSONObjects, each of which is a bug
+    protected Set<Bug> SetOfBugs;//set of bugs, corresponding to jsonArray
+    protected Set<Long> SetOfLineNumbers;//set of line numbers corresponding to bugs, just for efficiency
+    protected Set<String> SetOfFileNames;//-----
+    protected Bug thisBug;               //current bug. This is set inside isToBeProcessed function
+    protected String thisBugName;        //name (message) of current thisBug.
+
+    SonarWebAPIBasedProcessor(int ruleKey, String projectKey) {
+        try {
+            jsonArray= this.parse(ruleKey,"",projectKey);
+            SetOfBugs = Bug.createSetOfBugs(this.jsonArray);
+            SetOfLineNumbers=new HashSet<Long>();
+            SetOfFileNames=new HashSet<String>();
+            thisBug=new Bug();
+            for(Bug bug:SetOfBugs)
+            {
+                SetOfLineNumbers.add(bug.getLineNumber());
+                SetOfFileNames.add(bug.getFileName());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /*
     parse(int,String) makes a GET request and parses the returned JSONObject.
@@ -14,7 +43,7 @@ public class ParseAPI {
     The second parameter is the specific file or directory in spoon you want to get the bugs for.
     Example: fname="src/main/java/spoon/MavenLauncher.java"; If you want to parse the entire source code, you need to pass "src/" in fname
      */
-    public static JSONArray parse(int rulekey, String fname,String projectKey)throws Exception
+    private JSONArray parse(int rulekey, String fname,String projectKey)throws Exception
     {
         String ruleparameter="&rules=squid:S"+ Integer.toString(rulekey);
         String url="";

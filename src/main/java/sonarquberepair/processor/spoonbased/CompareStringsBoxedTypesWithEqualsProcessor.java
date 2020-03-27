@@ -1,3 +1,5 @@
+package sonarquberepair.processor.spoonbased;
+
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
@@ -8,12 +10,7 @@ import spoon.reflect.reference.CtTypeReference;
 
 public class CompareStringsBoxedTypesWithEqualsProcessor extends AbstractProcessor<CtElement> {
 
-    public CompareStringsBoxedTypesWithEqualsProcessor(String projectKey) throws Exception {
-        ParseAPI.parse(4973,"",projectKey);
-    }
-
     @Override
-
     public boolean isToBeProcessed(CtElement candidate)
     {
         if(candidate==null)

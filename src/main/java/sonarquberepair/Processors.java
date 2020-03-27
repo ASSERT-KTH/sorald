@@ -1,3 +1,12 @@
+package sonarquberepair;
+
+import sonarquberepair.processor.sonarbased.DeadStoreProcessor;
+import sonarquberepair.processor.sonarbased.SerializableFieldInSerializableClassProcessor;
+import sonarquberepair.processor.sonarbased.UnclosedResourcesProcessor;
+import sonarquberepair.processor.spoonbased.ArrayHashCodeAndToStringProcessor;
+import sonarquberepair.processor.spoonbased.BigDecimalDoubleConstructorProcessor;
+import sonarquberepair.processor.spoonbased.CompareStringsBoxedTypesWithEqualsProcessor;
+import sonarquberepair.processor.spoonbased.IteratorNextExceptionProcessor;
 import spoon.processing.Processor;
 
 import java.util.HashMap;

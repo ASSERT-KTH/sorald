@@ -1,3 +1,5 @@
+package sonarquberepair.processor.spoonbased;
+
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtElement;
@@ -9,10 +11,6 @@ import java.util.List;
 import java.math.BigDecimal;
 
 public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtConstructorCall> {
-
-    public BigDecimalDoubleConstructorProcessor(String projectKey) throws Exception {
-        ParseAPI.parse(2111,"",projectKey);
-    }
 
     @Override
     public boolean isToBeProcessed(CtConstructorCall cons)

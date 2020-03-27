@@ -1,3 +1,5 @@
+package sonarquberepair;
+
 public class Constants {
 
     public static final String PROJECT_KEY = "se.kth:sonatest";

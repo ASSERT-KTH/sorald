@@ -1,3 +1,5 @@
+package sonarquberepair.processor.spoonbased;
+
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCodeSnippetExpression;
@@ -12,9 +14,6 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class IteratorNextExceptionProcessor extends AbstractProcessor<CtMethod> {
-    public IteratorNextExceptionProcessor(String projectKey) throws Exception {
-        ParseAPI.parse(2272,"",projectKey);
-    }
 
     /**
      *
