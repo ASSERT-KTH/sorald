@@ -22,13 +22,6 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-<!--
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.2.0</version>
-        </dependency>
-        -->
 
         <!-- https://mvnrepository.com/artifact/fr.inria.gforge.spoon/spoon-core -->
         <dependency>
@@ -37,15 +30,6 @@
             <version>8.1.0-beta-2</version>
         </dependency>
 
-<!--
-        <dependency>
-            <groupId>org.sonar.java</groupId>
-            <artifactId>Project</artifactId>
-            <version>1.1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/java-checks-testkit-5.5.0-SNAPSHOT.jar</systemPath>
-        </dependency>
--->
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-checks-testkit</artifactId>
@@ -60,23 +44,6 @@
             <version>5.14.0.18788</version>
             <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.10.0</version>
-        </dependency>
-
-        <!--
-        <dependency>
-            <groupId>org.group.project</groupId>
-            <artifactId>Project</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/spoon-core-7.1.0-SNAPSHOT-jar-with-dependencies.jar</systemPath>
-        </dependency>
-        -->
-
 
     </dependencies>
 

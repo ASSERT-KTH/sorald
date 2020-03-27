@@ -79,11 +79,3 @@ public class Main {
         System.out.println("done");
 	}
 }
-/*
-        rule.putIfAbsent(1854, DeadStoreProcessor.class);
-        rule.putIfAbsent(1948, SerializableFieldProcessor.class);
-        rule.putIfAbsent(2055, NonSerializableSuperClassProcessor.class);
-        rule.putIfAbsent(2095, ResourceCloseProcessor.class);
-        rule.putIfAbsent(2259, NullDereferenceProcessor.class);
-
- */
