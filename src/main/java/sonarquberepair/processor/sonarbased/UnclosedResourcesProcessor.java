@@ -14,7 +14,7 @@ public class UnclosedResourcesProcessor extends SonarWebAPIBasedProcessor<CtCons
 
     String var;//contains name of resource which is unclosed in the current bug.
 
-    public UnclosedResourcesProcessor(String projectKey) throws Exception {
+    public UnclosedResourcesProcessor(String projectKey) {
         super(2095, projectKey);
     }
 

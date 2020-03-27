@@ -16,7 +16,7 @@ public class DeadStoreProcessor extends SonarWebAPIBasedProcessor<CtStatement> {
 
     String var;//contains name of variable which is uselessly assigned in the current bug.
 
-    public DeadStoreProcessor(String projectKey) throws Exception {
+    public DeadStoreProcessor(String projectKey) {
         super(1854, projectKey);
     }
 

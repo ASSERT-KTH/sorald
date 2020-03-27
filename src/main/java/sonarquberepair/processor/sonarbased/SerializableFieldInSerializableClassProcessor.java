@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class SerializableFieldInSerializableClassProcessor extends SonarWebAPIBasedProcessor<CtField> {
 
-    public SerializableFieldInSerializableClassProcessor(String projectKey) throws Exception {
+    public SerializableFieldInSerializableClassProcessor(String projectKey) {
         super(1948, projectKey);
     }
 
