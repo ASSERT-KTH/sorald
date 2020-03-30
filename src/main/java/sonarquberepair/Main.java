@@ -8,39 +8,22 @@ import java.lang.reflect.Constructor;
 
 public class Main {
 
-	public static void repair(String pathToFile, String projectKey, int ruleKey) throws Exception {
-		Launcher launcher = new Launcher(){};
-		launcher.getEnvironment().setPrettyPrinterCreator(() -> {
-					SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
-					sniper.setIgnoreImplicit(false);
-					return sniper;
-				}
-		);
-		launcher.addInputResource(pathToFile);
-		launcher.getEnvironment().setCommentEnabled(true);
-		launcher.getEnvironment().setAutoImports(true);
-		launcher.getEnvironment().useTabulations(true);
-		launcher.getEnvironment().setTabulationSize(4);
-
-		Class<?> processor = Processors.getProcessor(ruleKey);
-		Constructor<?> cons;
-		Object object;
-		try {
-			cons = processor.getConstructor(String.class);
-			object = cons.newInstance(projectKey);
-		} catch (NoSuchMethodException e) {
-			cons = processor.getConstructor();
-			object = cons.newInstance();
-		}
-		launcher.addProcessor((Processor) object);
-		launcher.run();
-	}
-
-	public static void normalRepair(String pathToFile, String projectKey, int ruleKey) throws Exception {
-		//Not Sniper  Mode
+	public static void repair(String pathToFile, String projectKey, int ruleKey, boolean sniperMode) throws Exception {
 		Launcher launcher = new Launcher();
 		launcher.addInputResource(pathToFile);
 		launcher.getEnvironment().setAutoImports(true);
+		if (sniperMode) {
+			launcher.getEnvironment().setPrettyPrinterCreator(() -> {
+						SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
+						sniper.setIgnoreImplicit(false);
+						return sniper;
+					}
+			);
+			launcher.getEnvironment().setCommentEnabled(true);
+			launcher.getEnvironment().useTabulations(true);
+			launcher.getEnvironment().setTabulationSize(4);
+		}
+
 		Class<?> processor = Processors.getProcessor(ruleKey);
 		Constructor<?> cons;
 		Object object;
@@ -53,7 +36,6 @@ public class Main {
 		}
 		launcher.addProcessor((Processor) object);
 		launcher.run();
-//        new SpoonModelTree(launcher.getFactory());
 	}
 
 	/**
@@ -78,7 +60,7 @@ public class Main {
 		} else { //no arguments given
 			System.out.println("No arguments given. Using " + Processors.getProcessor(ruleNumber).getName() + " by default on " + projectKey);
 		}
-		repair("./source/act/", projectKey, ruleNumber);
+		repair("./source/act/", projectKey, ruleNumber, true);
 		System.out.println("done");
 	}
 

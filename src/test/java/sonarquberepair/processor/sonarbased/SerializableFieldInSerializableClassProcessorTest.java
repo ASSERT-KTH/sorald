@@ -16,7 +16,7 @@ public class SerializableFieldInSerializableClassProcessorTest {
 		String pathToRepairedFile = "./spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new SerializableFieldInSerializableClassCheck());
-		Main.normalRepair(pathToBuggyFile, Constants.PROJECT_KEY, 1948);
+		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 1948, false);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new SerializableFieldInSerializableClassCheck());
 	}
 

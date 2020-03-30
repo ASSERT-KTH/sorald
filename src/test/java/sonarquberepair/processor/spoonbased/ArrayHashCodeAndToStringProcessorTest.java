@@ -16,7 +16,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 		String pathToRepairedFile = "./spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
-		Main.normalRepair(pathToBuggyFile, Constants.PROJECT_KEY, 2116);
+		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2116, false);
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
 	}
@@ -28,7 +28,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 		String pathToRepairedFile = "./spooned/spoon/reflect/factory/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
-		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2116);
+		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2116, true);
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
 	}

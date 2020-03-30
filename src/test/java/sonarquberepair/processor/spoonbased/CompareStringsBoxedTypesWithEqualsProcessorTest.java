@@ -16,7 +16,7 @@ public class CompareStringsBoxedTypesWithEqualsProcessorTest {
 		String pathToRepairedFile = "./spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new CompareStringsBoxedTypesWithEqualsCheck());
-		Main.normalRepair(pathToBuggyFile, Constants.PROJECT_KEY, 4973);
+		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 4973, false);
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new CompareStringsBoxedTypesWithEqualsCheck());
 	}

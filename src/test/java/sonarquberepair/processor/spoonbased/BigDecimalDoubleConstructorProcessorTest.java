@@ -16,7 +16,7 @@ public class BigDecimalDoubleConstructorProcessorTest {
 		String pathToRepairedFile = "./spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new BigDecimalDoubleConstructorCheck());
-		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2111);
+		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2111, true);
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new BigDecimalDoubleConstructorCheck());
 	}

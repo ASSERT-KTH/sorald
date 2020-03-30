@@ -15,7 +15,7 @@ public class DeadStoreProcessorTest {
 		String pathToRepairedFile = "./spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new DeadStoreCheck());
-		Main.normalRepair(pathToBuggyFile, Constants.PROJECT_KEY, 1854);
+		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 1854, false);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new DeadStoreCheck());
 	}
 
