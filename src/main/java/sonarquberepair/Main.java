@@ -1,12 +1,16 @@
 package sonarquberepair;
 
-import spoon.Launcher;
-import spoon.processing.Processor;
-import spoon.support.sniper.SniperJavaPrettyPrinter;
+import com.martiansoftware.jsap.JSAP;
+import com.martiansoftware.jsap.JSAPException;
+import com.martiansoftware.jsap.JSAPResult;
+import com.martiansoftware.jsap.FlaggedOption;
 
-import java.lang.reflect.Constructor;
+import sonarquberepair.branch.BranchMain;
+
+import java.util.Arrays;
 
 public class Main {
+	private static MainApi main;
 
 	public static void repair(String pathToFile, String projectKey, int ruleKey, PrettyPrintingStrategy prettyPrintingStrategy) throws Exception {
 		Launcher launcher = new Launcher();
@@ -63,4 +67,9 @@ public class Main {
 		System.out.println("Done.");
 	}
 
+	public static void main(String[] args) throws Exception{
+		System.out.println(Arrays.toString(args));
+		main = getMain(args);
+		main.start(args);
+	}
 }
