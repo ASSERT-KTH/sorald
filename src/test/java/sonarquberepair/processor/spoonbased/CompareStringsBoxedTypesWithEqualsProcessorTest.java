@@ -5,6 +5,7 @@ import org.sonar.java.checks.CompareStringsBoxedTypesWithEqualsCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import sonarquberepair.Constants;
 import sonarquberepair.Main;
+import sonarquberepair.PrettyPrintingStrategy;
 import sonarquberepair.TestHelper;
 
 public class CompareStringsBoxedTypesWithEqualsProcessorTest {
@@ -16,7 +17,7 @@ public class CompareStringsBoxedTypesWithEqualsProcessorTest {
 		String pathToRepairedFile = "./spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new CompareStringsBoxedTypesWithEqualsCheck());
-		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 4973, false);
+		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 4973, PrettyPrintingStrategy.NORMAL);
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new CompareStringsBoxedTypesWithEqualsCheck());
 	}

@@ -5,6 +5,7 @@ import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassC
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import sonarquberepair.Constants;
 import sonarquberepair.Main;
+import sonarquberepair.PrettyPrintingStrategy;
 
 public class SerializableFieldInSerializableClassProcessorTest {
 
@@ -16,7 +17,7 @@ public class SerializableFieldInSerializableClassProcessorTest {
 		String pathToRepairedFile = "./spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new SerializableFieldInSerializableClassCheck());
-		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 1948, false);
+		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 1948, PrettyPrintingStrategy.NORMAL);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new SerializableFieldInSerializableClassCheck());
 	}
 

@@ -8,11 +8,11 @@ import java.lang.reflect.Constructor;
 
 public class Main {
 
-	public static void repair(String pathToFile, String projectKey, int ruleKey, boolean sniperMode) throws Exception {
+	public static void repair(String pathToFile, String projectKey, int ruleKey, PrettyPrintingStrategy prettyPrintingStrategy) throws Exception {
 		Launcher launcher = new Launcher();
 		launcher.addInputResource(pathToFile);
 		launcher.getEnvironment().setAutoImports(true);
-		if (sniperMode) {
+		if (prettyPrintingStrategy == PrettyPrintingStrategy.SNIPER) {
 			launcher.getEnvironment().setPrettyPrinterCreator(() -> {
 						SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
 						sniper.setIgnoreImplicit(false);
@@ -59,7 +59,7 @@ public class Main {
 			projectKey = args[1];
 		}
 		System.out.println("Applying " + Processors.getProcessor(ruleKey).getName() + "...");
-		repair("./source/act/", projectKey, ruleKey, true);
+		repair("./source/act/", projectKey, ruleKey, PrettyPrintingStrategy.SNIPER);
 		System.out.println("Done.");
 	}
 
