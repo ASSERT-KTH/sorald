@@ -9,40 +9,22 @@ import java.lang.reflect.Constructor;
 public class LegacyMain implements MainApi{
 
 	@Override
-	public void repair(String pathToFile, String projectKey, int ruleKey) throws Exception {
-		Launcher launcher = new Launcher(){};
-		launcher.getEnvironment().setPrettyPrinterCreator(() -> {
-					SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
-					sniper.setIgnoreImplicit(false);
-					return sniper;
-				}
-		);
-		launcher.addInputResource(pathToFile);
-		launcher.getEnvironment().setCommentEnabled(true);
-		launcher.getEnvironment().setAutoImports(true);
-		launcher.getEnvironment().useTabulations(true);
-		launcher.getEnvironment().setTabulationSize(4);
-
-		Class<?> processor = Processors.getProcessor(ruleKey);
-		Constructor<?> cons;
-		Object object;
-		try {
-			cons = processor.getConstructor(String.class);
-			object = cons.newInstance(projectKey);
-		} catch (NoSuchMethodException e) {
-			cons = processor.getConstructor();
-			object = cons.newInstance();
-		}
-		launcher.addProcessor((Processor) object);
-		launcher.run();
-	}
-
-	@Override
-	public void normalRepair(String pathToFile, String projectKey, int ruleKey) throws Exception {
-		//Not Sniper  Mode
+	public static void repair(String pathToFile, String projectKey, int ruleKey, PrettyPrintingStrategy prettyPrintingStrategy) throws Exception {
 		Launcher launcher = new Launcher();
 		launcher.addInputResource(pathToFile);
 		launcher.getEnvironment().setAutoImports(true);
+		if (prettyPrintingStrategy == PrettyPrintingStrategy.SNIPER) {
+			launcher.getEnvironment().setPrettyPrinterCreator(() -> {
+						SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
+						sniper.setIgnoreImplicit(false);
+						return sniper;
+					}
+			);
+			launcher.getEnvironment().setCommentEnabled(true);
+			launcher.getEnvironment().useTabulations(true);
+			launcher.getEnvironment().setTabulationSize(4);
+		}
+
 		Class<?> processor = Processors.getProcessor(ruleKey);
 		Constructor<?> cons;
 		Object object;
@@ -55,7 +37,6 @@ public class LegacyMain implements MainApi{
 		}
 		launcher.addProcessor((Processor) object);
 		launcher.run();
-//        new SpoonModelTree(launcher.getFactory());
 	}
 
 	/**

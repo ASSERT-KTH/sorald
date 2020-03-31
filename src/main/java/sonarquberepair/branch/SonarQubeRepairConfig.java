@@ -3,6 +3,7 @@ package sonarquberepair;
 import java.util.List;
 import java.util.ArrayList;
 
+/* All config settings of SonarQube should be gathered here */
 public class SonarQubeRepairConfig {
 	private static SonarQubeRepairConfig config;
 	private final List<Integer> ruleNumbers = new ArrayList<Integer>();

@@ -10,34 +10,11 @@ import java.util.Arrays;
 public class Main {
 	private static MainApi main;
 
-	public static void repair(String pathToFile, String projectKey, int ruleKey, PrettyPrintingStrategy prettyPrintingStrategy) throws Exception {
-		Launcher launcher = new Launcher();
-		launcher.addInputResource(pathToFile);
-		launcher.getEnvironment().setAutoImports(true);
-		if (prettyPrintingStrategy == PrettyPrintingStrategy.SNIPER) {
-			launcher.getEnvironment().setPrettyPrinterCreator(() -> {
-						SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
-						sniper.setIgnoreImplicit(false);
-						return sniper;
-					}
-			);
-			launcher.getEnvironment().setCommentEnabled(true);
-			launcher.getEnvironment().useTabulations(true);
-			launcher.getEnvironment().setTabulationSize(4);
-		}
 
-		Class<?> processor = Processors.getProcessor(ruleKey);
-		Constructor<?> cons;
-		Object object;
-		try {
-			cons = processor.getConstructor(String.class);
-			object = cons.newInstance(projectKey);
-		} catch (NoSuchMethodException e) {
-			cons = processor.getConstructor();
-			object = cons.newInstance();
-		}
-		launcher.addProcessor((Processor) object);
-		launcher.run();
+	/* abstraction from legacty main */
+	public static void repair(String pathToFile, String projectKey, int ruleKey, PrettyPrintingStrategy prettyPrintingStrategy) throws Exception {
+		main = new LegacyMain();
+		main.repair(pathToFile,projectKey,ruleKey);
 	}
 
 	public static MainApi getMain(String[] args) throws JSAPException{
@@ -47,7 +24,7 @@ public class Main {
 		FlaggedOption opt = new FlaggedOption("versionMode");
         opt.setLongFlag("versionMode");
         opt.setStringParser(JSAP.STRING_PARSER);
-        opt.setDefault("LNameEGACY");
+        opt.setDefault("LEGACY");
         opt.setHelp("LEGACY: use legacy sonarqube repair. NEW: current sonarqube repair.");
         jsap.registerParameter(opt);
 
