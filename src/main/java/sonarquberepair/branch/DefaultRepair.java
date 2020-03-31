@@ -1,10 +1,11 @@
-package sonarquberepair.branch;
+package sonarquberepair;
 
 import spoon.Launcher;
 import spoon.processing.Processor;
 import spoon.support.sniper.SniperJavaPrettyPrinter;
 
 import java.lang.reflect.Constructor;
+import java.io.File;
 
 import sonarquberepair.Processors;
 
@@ -20,6 +21,7 @@ public class DefaultRepair implements IRepair {
 		//Not Sniper  Mode
 		Launcher launcher = new Launcher();
 		launcher.addInputResource(repairPath);
+		launcher.setSourceOutputDirectory(SonarQubeRepairConfig.getInstance().getWorkSpace() + File.separator + "spooned");
 		launcher.getEnvironment().setAutoImports(true);
 		Class<?> processor = Processors.getProcessor(ruleKey);
 		Constructor<?> cons;

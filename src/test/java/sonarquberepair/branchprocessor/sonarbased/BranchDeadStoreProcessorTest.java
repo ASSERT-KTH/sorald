@@ -12,14 +12,16 @@ public class BranchDeadStoreProcessorTest {
 	public void test() throws Exception {
 		String fileName = "DeadStores.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-		String pathToRepairedFile = "./spooned/" + fileName;
+		String workspace = "sonar-branch-workspace";
+		String pathToRepairedFile = workspace + "/spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new DeadStoreCheck());
 		Main.main(new String[]{
 			"--versionMode","NEW",
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
-			"--ruleNumbers","1854"});
+			"--ruleNumbers","1854",
+			"--workspace",workspace});
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new DeadStoreCheck());
 	}
 

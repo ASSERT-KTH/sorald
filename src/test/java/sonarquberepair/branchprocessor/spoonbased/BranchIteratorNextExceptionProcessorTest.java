@@ -13,14 +13,16 @@ public class BranchIteratorNextExceptionProcessorTest {
 	public void test() throws Exception {
 		String fileName = "IteratorNextException.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-		String pathToRepairedFile = "./spooned/" + fileName;
+		String workspace = "sonar-branch-workspace";
+		String pathToRepairedFile = workspace + "/spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new IteratorNextExceptionCheck());
 		Main.main(new String[]{
 			"--versionMode","NEW",
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
-			"--ruleNumbers","2272"});
+			"--ruleNumbers","2272",
+			"--workspace",workspace});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new IteratorNextExceptionCheck());
 	}

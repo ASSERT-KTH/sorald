@@ -1,4 +1,4 @@
-package sonarquberepair.branch;
+package sonarquberepair;
 
 import spoon.Launcher;
 import spoon.processing.Processor;
@@ -53,6 +53,13 @@ public class BranchMain implements MainApi{
         opt.setHelp("Mode for repair. DEFAULT: usual repair, SNIPER: sniper mode on for more precise code transformation");
         jsap.registerParameter(opt);
 
+        opt = new FlaggedOption("workspace");
+        opt.setLongFlag("workspace");
+        opt.setStringParser(JSAP.STRING_PARSER);
+        opt.setDefault("./sonar-workspace");
+        opt.setHelp("Workspace of SonarQubeRepair");
+        jsap.registerParameter(opt);
+
 		return jsap;
 	}
 
@@ -63,6 +70,7 @@ public class BranchMain implements MainApi{
 		this.getConfig().setProjectKey(jsapRes.getString("projectKey"));
 		this.getConfig().setRepairPath(jsapRes.getString("repairPath"));
 		this.getConfig().setRepairMode(RepairMode.valueOf(jsapRes.getString("repairMode")));
+		this.getConfig().setWorkSpace(jsapRes.getString("workspace"));
 	}
 
 	public IRepair getRepairProcess() {
@@ -73,6 +81,10 @@ public class BranchMain implements MainApi{
 			repairProc = new DefaultRepair();
 		}
 		return repairProc;
+	}
+
+	public void clean()	{
+
 	}
 
 	/**

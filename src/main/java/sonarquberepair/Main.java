@@ -5,8 +5,6 @@ import com.martiansoftware.jsap.JSAPException;
 import com.martiansoftware.jsap.JSAPResult;
 import com.martiansoftware.jsap.FlaggedOption;
 
-import sonarquberepair.branch.BranchMain;
-
 import java.util.Arrays;
 
 public class Main {
@@ -63,8 +61,8 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws Exception{
-		System.out.println(Arrays.toString(args));
 		main = getMain(args);
 		main.start(args);
+		SonarQubeRepairConfig.resetConfig(); // in case, when we call main as a method instead of entry point (for test cases)
 	}
 }

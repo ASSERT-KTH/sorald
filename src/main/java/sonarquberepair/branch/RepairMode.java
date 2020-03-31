@@ -1,4 +1,4 @@
-package sonarquberepair.branch;
+package sonarquberepair;
 
 
 public enum RepairMode {

@@ -13,7 +13,8 @@ public class BranchBigDecimalDoubleConstructorProcessorTest {
 	public void test() throws Exception {
 		String fileName = "BigDecimalDoubleConstructor.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-		String pathToRepairedFile = "./spooned/" + fileName;
+		String workspace = "sonar-branch-workspace";
+		String pathToRepairedFile = workspace + "/spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new BigDecimalDoubleConstructorCheck());
 		Main.main(new String[]{
@@ -21,7 +22,8 @@ public class BranchBigDecimalDoubleConstructorProcessorTest {
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleNumbers","2111",
-			"--repairMode","SNIPER"});
+			"--repairMode","SNIPER",
+			"--workspace",workspace});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new BigDecimalDoubleConstructorCheck());
 	}

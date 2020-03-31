@@ -1,4 +1,4 @@
-package sonarquberepair.branch;
+package sonarquberepair;
 
 import spoon.Launcher;
 import spoon.processing.Processor;
@@ -7,6 +7,8 @@ import spoon.support.sniper.SniperJavaPrettyPrinter;
 import java.lang.reflect.Constructor;
 
 import sonarquberepair.Processors;
+
+import java.io.File;
 
 /* More precise code transformation repair */
 public class SniperRepair implements IRepair{
@@ -25,6 +27,7 @@ public class SniperRepair implements IRepair{
 		);
 
 		launcher.addInputResource(repairPath);
+		launcher.setSourceOutputDirectory(SonarQubeRepairConfig.getInstance().getWorkSpace() + File.separator + "spooned");
 		launcher.getEnvironment().setCommentEnabled(true);
 		launcher.getEnvironment().setAutoImports(true);
 		launcher.getEnvironment().useTabulations(true);

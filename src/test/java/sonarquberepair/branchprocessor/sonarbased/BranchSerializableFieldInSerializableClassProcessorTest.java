@@ -13,14 +13,16 @@ public class BranchSerializableFieldInSerializableClassProcessorTest {
 
 		String fileName = "SerializableFieldProcessorTest.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-		String pathToRepairedFile = "./spooned/" + fileName;
+		String workspace = "sonar-branch-workspace";
+		String pathToRepairedFile = workspace + "/spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new SerializableFieldInSerializableClassCheck());
 		Main.main(new String[]{
 			"--versionMode","NEW",
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
-			"--ruleNumbers","1948"});
+			"--ruleNumbers","1948",
+			"--workspace",workspace});
 
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new SerializableFieldInSerializableClassCheck());
 	}

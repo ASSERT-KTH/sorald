@@ -1,4 +1,4 @@
-package sonarquberepair.branch;
+package sonarquberepair;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -9,6 +9,7 @@ public class SonarQubeRepairConfig {
 	private String projectKey;
 	private RepairMode repairMode;
 	private String repairPath;
+	private String workspace;
 
 	private SonarQubeRepairConfig() {}
 
@@ -17,6 +18,10 @@ public class SonarQubeRepairConfig {
 			config = new SonarQubeRepairConfig();
 		}
 		return config;
+	}
+
+	public static void resetConfig() {
+		config = new SonarQubeRepairConfig();
 	}
 
 	public void setProjectKey(String projectKey) {
@@ -50,5 +55,13 @@ public class SonarQubeRepairConfig {
 
 	public String getRepairPath() {
 		return this.repairPath;
+	}
+
+	public void setWorkSpace(String workspace) {
+		this.workspace = workspace;
+	}
+
+	public String getWorkSpace() {
+		return this.workspace;
 	}
 }
