@@ -42,29 +42,24 @@ public class Main {
 		launcher.run();
 	}
 
-	/**
-	 * @param args string array.
-	 *             Give one or two arguments.
-	 *             The first argument is the Sonar rule key.
-	 *             The second argument is the project key for the Sonar analysis of source files.
-	 */
-	public static void main(String[] args) throws Exception {
-		if (args.length == 0) {
-			System.out.println("Please, provide the Sonar rule key, and optionally provide also the project key for the Sonar analysis.");
-			return;
-		}
-		if (args.length > 2) {
-			throw new IllegalArgumentException("Provide one or two arguments (only the Sonar rule key, and optionally also the project key for the Sonar analysis).");
-		}
+	public static MainApi getMain(String[] args) throws JSAPException{
+		JSAP jsap = new JSAP();
 
-		int ruleKey = Integer.parseInt(args[0]);
-		String projectKey = "";
-		if (args.length == 2) {
-			projectKey = args[1];
-		}
-		System.out.println("Applying " + Processors.getProcessor(ruleKey).getName() + "...");
-		repair("./source/act/", projectKey, ruleKey, PrettyPrintingStrategy.SNIPER);
-		System.out.println("Done.");
+		/* will be supporting multiple rules processing later so rulenumber(s) */
+		FlaggedOption opt = new FlaggedOption("versionMode");
+        opt.setLongFlag("versionMode");
+        opt.setStringParser(JSAP.STRING_PARSER);
+        opt.setDefault("LNameEGACY");
+        opt.setHelp("LEGACY: use legacy sonarqube repair. NEW: current sonarqube repair.");
+        jsap.registerParameter(opt);
+
+        JSAPResult res = jsap.parse(args);
+        String mode = res.getString("versionMode");
+        if (mode.equals("NEW")) {
+		return new BranchMain();
+        } else {
+		return new LegacyMain();
+        }
 	}
 
 	public static void main(String[] args) throws Exception{
