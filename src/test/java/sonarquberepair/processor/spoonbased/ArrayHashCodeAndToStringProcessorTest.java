@@ -5,6 +5,7 @@ import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import sonarquberepair.Constants;
 import sonarquberepair.Main;
+import sonarquberepair.PrettyPrintingStrategy;
 import sonarquberepair.TestHelper;
 
 public class ArrayHashCodeAndToStringProcessorTest {
@@ -16,7 +17,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 		String pathToRepairedFile = "./spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
-		Main.normalRepair(pathToBuggyFile, Constants.PROJECT_KEY, 2116);
+		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2116, PrettyPrintingStrategy.NORMAL);
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
 	}
@@ -28,7 +29,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 		String pathToRepairedFile = "./spooned/spoon/reflect/factory/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
-		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2116);
+		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2116, PrettyPrintingStrategy.SNIPER);
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
 	}

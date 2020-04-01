@@ -5,6 +5,7 @@ import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import sonarquberepair.Constants;
 import sonarquberepair.Main;
+import sonarquberepair.PrettyPrintingStrategy;
 
 public class DeadStoreProcessorTest {
 
@@ -15,7 +16,7 @@ public class DeadStoreProcessorTest {
 		String pathToRepairedFile = "./spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new DeadStoreCheck());
-		Main.normalRepair(pathToBuggyFile, Constants.PROJECT_KEY, 1854);
+		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 1854, PrettyPrintingStrategy.NORMAL);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new DeadStoreCheck());
 	}
 

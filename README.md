@@ -22,13 +22,24 @@ A JDK (java 1.8 or above)
 
 4) Add files to be repaired in the new folder
 
-5) Run the main Sonarqube-repair function. 
+5) In the terminal, run the main Sonarqube-repair function:
 
-You can either give command line arguments or set the rule number and project-key manually in the main function in `src/main/java/sonarquberepair/Main.java`. The repaired files will appear in `sonarqube-repair/spooned/` . Also you need to set the url of the sonar analysis of your project in `src/main/java/ParseAPI.java` if it is different from [sonarcloud.io](https://sonarcloud.io/about)
+ ```bash
+$ cd sonarqube-repair
+$ mvn package -DskipTests
+$ ls target/*jar
+target/sonarqube-repair-0.1-SNAPSHOT.jar  target/sonarqube-repair-0.1-SNAPSHOT-jar-with-dependencies.jar  target/sonarqube-repair-0.1-SNAPSHOT-javadoc.jar
+$ java -jar target/sonarqube-repair-0.1-SNAPSHOT-jar-with-dependencies.jar <arguments>
+ ```
+
+For the arguments, provide the Sonar rule key (see the supported rules [here](/docs/HANDLED_SONARQUBE_RULES.md)).
+For the rules 2095, 1854, and 1948, also provide the project key for the Sonar analysis (the url of the Sonar analysis of your project should be set in `src/main/java/sonarquberepair/processor/sonarbased/SonarWebAPIBasedProcessor.java` if it is different from [sonarcloud.io](https://sonarcloud.io/about)).
+ 
+Finally, the repaired files will appear in `sonarqube-repair/spooned/`.
  
 ##### If you want to run it on GitHub projects to propose PRs with fixes
 
-If you wish to run Sonarqube-repair on projects towards proposing fixes in the form of PRs, look at [this Git repository](https://github.com/HarisAdzemovic/SQ-Repair-CI-Integration) for an example. In it, Sonarqube-repair is ran on the three Apache projects defined in the *projects_for_model_1.txt* file.
+To run Sonarqube-repair on projects towards proposing fixes in the form of PRs, look at [this Git repository](https://github.com/HarisAdzemovic/SQ-Repair-CI-Integration) for an example. In it, Sonarqube-repair is ran on the three Apache projects defined in the *projects_for_model_1.txt* file.
  
 ## Contributing
 

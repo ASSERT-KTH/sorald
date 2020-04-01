@@ -5,6 +5,7 @@ import org.sonar.java.checks.IteratorNextExceptionCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import sonarquberepair.Constants;
 import sonarquberepair.Main;
+import sonarquberepair.PrettyPrintingStrategy;
 import sonarquberepair.TestHelper;
 
 public class IteratorNextExceptionProcessorTest {
@@ -16,7 +17,7 @@ public class IteratorNextExceptionProcessorTest {
 		String pathToRepairedFile = "./spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new IteratorNextExceptionCheck());
-		Main.normalRepair(pathToBuggyFile, Constants.PROJECT_KEY, 2272);
+		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2272, PrettyPrintingStrategy.NORMAL);
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new IteratorNextExceptionCheck());
 	}
