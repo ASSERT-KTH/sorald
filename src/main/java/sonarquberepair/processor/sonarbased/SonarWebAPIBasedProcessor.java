@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.json.JSONArray;
@@ -14,27 +13,30 @@ import spoon.reflect.declaration.CtElement;
 
 public abstract class SonarWebAPIBasedProcessor<E extends CtElement> extends AbstractProcessor<E> {
 
-	protected JSONArray jsonArray; //array of JSONObjects, each of which is a bug
-	protected Set<Bug> setOfBugs; //set of bugs, corresponding to jsonArray
-	protected Set<Long> setOfLineNumbers; //set of line numbers corresponding to bugs, just for efficiency
-	protected Set<String> setOfFileNames; //-----
-	protected Bug thisBug;               //current bug. This is set inside isToBeProcessed function
-	protected String thisBugName;        //name (message) of current thisBug.
+	private JSONArray jsonArray; //array of JSONObjects, each of which is a bug
+	private Set<Bug> setOfBugs; //set of bugs, corresponding to jsonArray
+	private int ruleKey;
 
 	SonarWebAPIBasedProcessor(int ruleKey, String projectKey) {
+		this.ruleKey = ruleKey;
 		try {
 			jsonArray = this.parse(ruleKey, "", projectKey);
 			setOfBugs = Bug.createSetOfBugs(this.jsonArray);
-			setOfLineNumbers = new HashSet<Long>();
-			setOfFileNames = new HashSet<String>();
-			thisBug = new Bug();
-			for (Bug bug : setOfBugs) {
-				setOfLineNumbers.add(bug.getLineNumber());
-				setOfFileNames.add(bug.getFileName());
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	protected boolean isToBeProcessedAccordingToSonar(CtElement element) {
+		int line = element.getPosition().getLine();
+		String fileOfElement = element.getPosition().getFile().getName();
+
+		for (Bug bug : setOfBugs) {
+			if (bug.getRuleKey() == this.ruleKey && bug.getLineNumber() == line && bug.getFileName().equals(fileOfElement)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/*

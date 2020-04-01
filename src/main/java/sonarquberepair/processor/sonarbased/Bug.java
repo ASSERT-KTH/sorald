@@ -11,7 +11,8 @@ public class Bug {
 
 	private JSONObject jsonObject;
 	private JSONArray locations;
-	private long lineNumber;
+	private String ruleName;
+	private int lineNumber;
 	private String name;
 	private String fileName;
 
@@ -32,8 +33,9 @@ public class Bug {
 		if (flow.length() > 0) {
 			locations = flow.getJSONObject(0).getJSONArray("locations");
 		}
+		ruleName = (String) jsonObject.get("rule");
 		if (jsonObject.has("line")) {
-			lineNumber = (long) (int) (jsonObject.get("line")); //cast first to int then to long
+			lineNumber = (int) (jsonObject.get("line"));
 		}
 		name = (String) jsonObject.get("message");
 		String[] split = jsonObject.get("component").toString().split("/");
@@ -87,7 +89,11 @@ public class Bug {
 		return name;
 	}
 
-	public long getLineNumber() {
+	public int getRuleKey() {
+		return Integer.parseInt(ruleName.replace("java:S", ""));
+	}
+
+	public int getLineNumber() {
 		return lineNumber;
 	}
 
