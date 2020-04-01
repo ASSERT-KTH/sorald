@@ -9,7 +9,7 @@ import java.lang.reflect.Constructor;
 public class LegacyMain implements MainApi{
 
 	@Override
-	public static void repair(String pathToFile, String projectKey, int ruleKey, PrettyPrintingStrategy prettyPrintingStrategy) throws Exception {
+	public void repair(String pathToFile, String projectKey, int ruleKey, PrettyPrintingStrategy prettyPrintingStrategy) throws Exception {
 		Launcher launcher = new Launcher();
 		launcher.addInputResource(pathToFile);
 		launcher.getEnvironment().setAutoImports(true);
@@ -45,25 +45,22 @@ public class LegacyMain implements MainApi{
 	 */
 	@Override
 	public void start(String[] args) throws Exception {
-		String projectKey = "fr.inria.gforge.spoon:spoon-core";
-		int ruleNumber = 2116;
-		if (args.length > 0) {
-			ruleNumber = Integer.parseInt(args[0]);
-
-			if (args.length == 1) {
-				projectKey = "fr.inria.gforge.spoon:spoon-core";
-				System.out.println("One argument given. Applying " + Processors.getProcessor(ruleNumber).getName() + " on " + projectKey);
-			} else if (args.length == 2) {
-				projectKey = args[1];
-				System.out.println("Two argument given. Applying " + Processors.getProcessor(ruleNumber).getName() + " on " + projectKey);
-			} else {
-				throw new IllegalArgumentException("Enter less than three arguments");
-			}
-		} else { //no arguments given
-			System.out.println("No arguments given. Using " + Processors.getProcessor(ruleNumber).getName() + " by default on " + projectKey);
+		if (args.length == 0) {
+			System.out.println("Please, provide the Sonar rule key, and optionally provide also the project key for the Sonar analysis.");
+			return;
 		}
-		repair("./source/act/", projectKey, ruleNumber);
-		System.out.println("done");
+		if (args.length > 2) {
+			throw new IllegalArgumentException("Provide one or two arguments (only the Sonar rule key, and optionally also the project key for the Sonar analysis).");
+		}
+
+		int ruleKey = Integer.parseInt(args[0]);
+		String projectKey = "";
+		if (args.length == 2) {
+			projectKey = args[1];
+		}
+		System.out.println("Applying " + Processors.getProcessor(ruleKey).getName() + "...");
+		repair("./source/act/", projectKey, ruleKey, PrettyPrintingStrategy.SNIPER);
+		System.out.println("Done.");
 	}
 
 }

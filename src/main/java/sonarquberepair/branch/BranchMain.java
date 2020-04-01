@@ -99,9 +99,5 @@ public class BranchMain implements MainApi{
 	}
 
 	@Override
-	public void repair(String pathToFile, String projectKey, int ruleKey) throws Exception {};
-
-	@Override
-	public void normalRepair(String pathToFile, String projectKey, int ruleKey) throws Exception {};
-
+	public void repair(String pathToFile, String projectKey, int ruleKey, PrettyPrintingStrategy  prettyPrintingStrategy) throws Exception {};
 }

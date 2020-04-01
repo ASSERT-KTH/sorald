@@ -14,7 +14,7 @@ public class Main {
 	/* abstraction from legacty main */
 	public static void repair(String pathToFile, String projectKey, int ruleKey, PrettyPrintingStrategy prettyPrintingStrategy) throws Exception {
 		main = new LegacyMain();
-		main.repair(pathToFile,projectKey,ruleKey);
+		main.repair(pathToFile,projectKey,ruleKey,prettyPrintingStrategy);
 	}
 
 	public static MainApi getMain(String[] args) throws JSAPException{
@@ -31,9 +31,9 @@ public class Main {
         JSAPResult res = jsap.parse(args);
         String mode = res.getString("versionMode");
         if (mode.equals("NEW")) {
-		return new BranchMain();
+			return new BranchMain();
         } else {
-		return new LegacyMain();
+			return new LegacyMain();
         }
 	}
 
