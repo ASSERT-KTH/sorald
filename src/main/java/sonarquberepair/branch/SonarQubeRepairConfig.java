@@ -8,7 +8,7 @@ public class SonarQubeRepairConfig {
 	private static SonarQubeRepairConfig config;
 	private final List<Integer> ruleNumbers = new ArrayList<Integer>();
 	private String projectKey;
-	private RepairMode repairMode;
+	private PrettyPrintingStrategy prettyPrintingStrategy;
 	private String repairPath;
 	private String workspace;
 
@@ -42,12 +42,12 @@ public class SonarQubeRepairConfig {
 		return this.ruleNumbers;
 	}
 
-	public void setRepairMode(RepairMode repairMode) {
-		this.repairMode = repairMode;
+	public void setPrettyPrintingStrategy(PrettyPrintingStrategy prettyPrintingStrategy) {
+		this.prettyPrintingStrategy = prettyPrintingStrategy;
 	}
 
-	public RepairMode getRepairMode() {
-		return repairMode;
+	public PrettyPrintingStrategy getPrettyPrintingStrategy() {
+		return this.prettyPrintingStrategy;
 	}
 
 	public void setRepairPath(String repairPath) {

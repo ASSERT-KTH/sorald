@@ -16,13 +16,23 @@ public class DefaultRepair implements IRepair {
 		String repairPath = SonarQubeRepairConfig.getInstance().getRepairPath();
 		String projectKey = SonarQubeRepairConfig.getInstance().getProjectKey();
 		int ruleKey = SonarQubeRepairConfig.getInstance().getRuleNumbers().get(0);
+		PrettyPrintingStrategy prettyPrintingStrategy = SonarQubeRepairConfig.getInstance().getPrettyPrintingStrategy();
 
-		System.out.println(repairPath + " " + projectKey + " " + ruleKey);
-		//Not Sniper  Mode
 		Launcher launcher = new Launcher();
 		launcher.addInputResource(repairPath);
-		launcher.setSourceOutputDirectory(SonarQubeRepairConfig.getInstance().getWorkSpace() + File.separator + "spooned");
 		launcher.getEnvironment().setAutoImports(true);
+		if (prettyPrintingStrategy == PrettyPrintingStrategy.SNIPER) {
+			launcher.getEnvironment().setPrettyPrinterCreator(() -> {
+						SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
+						sniper.setIgnoreImplicit(false);
+						return sniper;
+					}
+			);
+			launcher.getEnvironment().setCommentEnabled(true);
+			launcher.getEnvironment().useTabulations(true);
+			launcher.getEnvironment().setTabulationSize(4);
+		}
+
 		Class<?> processor = Processors.getProcessor(ruleKey);
 		Constructor<?> cons;
 		Object object;
@@ -35,6 +45,5 @@ public class DefaultRepair implements IRepair {
 		}
 		launcher.addProcessor((Processor) object);
 		launcher.run();
-//        new SpoonModelTree(launcher.getFactory());
 	}
 }

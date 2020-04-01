@@ -46,11 +46,11 @@ public class BranchMain implements MainApi{
         opt.setHelp("what is this projectKey ? ");
         jsap.registerParameter(opt);
 
-        opt = new FlaggedOption("repairMode");
-        opt.setLongFlag("repairMode");
+        opt = new FlaggedOption("prettyPrintingStrategy");
+        opt.setLongFlag("prettyPrintingStrategy");
         opt.setStringParser(JSAP.STRING_PARSER);
-        opt.setDefault(RepairMode.DEFAULT.name() + "");
-        opt.setHelp("Mode for repair. DEFAULT: usual repair, SNIPER: sniper mode on for more precise code transformation");
+        opt.setDefault(PrettyPrintingStrategy.NORMAL.name());
+        opt.setHelp("Mode for pretty printing . NORMAL: default pretty print, SNIPER: sniper mode on for more precise code transformation pretty print");
         jsap.registerParameter(opt);
 
         opt = new FlaggedOption("workspace");
@@ -69,22 +69,15 @@ public class BranchMain implements MainApi{
 		this.getConfig().addRuleNumbers(jsapRes.getInt("ruleNumbers"));
 		this.getConfig().setProjectKey(jsapRes.getString("projectKey"));
 		this.getConfig().setRepairPath(jsapRes.getString("repairPath"));
-		this.getConfig().setRepairMode(RepairMode.valueOf(jsapRes.getString("repairMode")));
+		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(jsapRes.getString("prettyPrintingStrategy")));
 		this.getConfig().setWorkSpace(jsapRes.getString("workspace"));
 	}
 
+
 	public IRepair getRepairProcess() {
 		IRepair repairProc;
-		if (this.getConfig().getRepairMode().name().equals("SNIPER")) {
-			repairProc = new SniperRepair();
-		} else {
-			repairProc = new DefaultRepair();
-		}
+		repairProc = new DefaultRepair(); // currently there is only one repair mode 
 		return repairProc;
-	}
-
-	public void clean()	{
-
 	}
 
 	/**

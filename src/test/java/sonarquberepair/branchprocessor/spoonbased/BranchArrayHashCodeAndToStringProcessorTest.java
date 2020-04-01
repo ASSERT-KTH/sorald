@@ -40,7 +40,7 @@ public class BranchArrayHashCodeAndToStringProcessorTest {
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleNumbers","2116",
-			"--repairMode","SNIPER",
+			"--prettyPrintingStrategy","SNIPER",
 			"--workspace",workspace});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
