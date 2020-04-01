@@ -20,6 +20,7 @@ public class DefaultRepair implements IRepair {
 
 		Launcher launcher = new Launcher();
 		launcher.addInputResource(repairPath);
+		launcher.setSourceOutputDirectory(SonarQubeRepairConfig.getInstance().getWorkSpace() + File.separator + "spooned");
 		launcher.getEnvironment().setAutoImports(true);
 		if (prettyPrintingStrategy == PrettyPrintingStrategy.SNIPER) {
 			launcher.getEnvironment().setPrettyPrinterCreator(() -> {
