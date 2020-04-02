@@ -18,9 +18,8 @@ Example:
 +            try (ZipInputStream zipInput = new ZipInputStream(new BufferedInputStream(new FileInputStream(file)))) {
                  ZipEntry entry;
 ...
-             zipInput.close();
--            } catch (Exception e) {
--                Launcher.LOGGER.error(e.getMessage(), e);
+             } catch (Exception e) {
+                 Launcher.LOGGER.error(e.getMessage(), e);
              }
 ```
 
