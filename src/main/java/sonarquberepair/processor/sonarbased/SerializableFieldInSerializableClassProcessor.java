@@ -1,10 +1,7 @@
 package sonarquberepair.processor.sonarbased;
 
-import spoon.reflect.code.CtComment;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
-
-import java.util.List;
 
 public class SerializableFieldInSerializableClassProcessor extends SonarWebAPIBasedProcessor<CtField> {
 
@@ -23,16 +20,6 @@ public class SerializableFieldInSerializableClassProcessor extends SonarWebAPIBa
 	@Override
 	public void process(CtField element) {
 		element.addModifier(ModifierKind.TRANSIENT);
-		List<CtComment> comments = element.getComments();
-		CtComment sp = null;
-		for (CtComment comment : comments) {
-			if (comment.getContent().indexOf("Noncompliant") != -1) {
-				sp = comment;
-			}
-		}
-		if (sp != null) {
-			element.removeComment(sp);
-		}
 	}
 
 }

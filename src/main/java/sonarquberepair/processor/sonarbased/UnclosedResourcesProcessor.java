@@ -2,20 +2,18 @@ package sonarquberepair.processor.sonarbased;
 
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtBlock;
-import spoon.reflect.code.CtCodeSnippetStatement;
-import spoon.reflect.code.CtComment;
 import spoon.reflect.code.CtConstructorCall;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtLocalVariable;
+import spoon.reflect.code.CtStatement;
 import spoon.reflect.code.CtTry;
 import spoon.reflect.code.CtTryWithResource;
 import spoon.reflect.code.CtVariableWrite;
 import spoon.reflect.declaration.CtElement;
+import spoon.reflect.path.CtRole;
 import spoon.reflect.reference.CtVariableReference;
 
 public class UnclosedResourcesProcessor extends SonarWebAPIBasedProcessor<CtConstructorCall> {
-
-	String var; //contains name of resource which is unclosed in the current bug.
 
 	public UnclosedResourcesProcessor(String projectKey) {
 		super(2095, projectKey);
@@ -26,67 +24,78 @@ public class UnclosedResourcesProcessor extends SonarWebAPIBasedProcessor<CtCons
 		if (element == null) {
 			return false;
 		}
+		CtElement parent = element.getParent(e -> e instanceof CtAssignment || e instanceof CtLocalVariable);
+		if (parent != null && parent.getRoleInParent() == CtRole.TRY_RESOURCE) {
+			return false;
+		}
 		return super.isToBeProcessedAccordingToSonar(element);
 	}
 
 	@Override
 	public void process(CtConstructorCall element) {
-		System.out.println("BUG\n");
-		CtCodeSnippetStatement snippet = getFactory().Core().createCodeSnippetStatement();
-		final String value = String.format("[Spoon inserted try-with-resource],\n Repairs sonarqube rule 2095:\n %s should be closed", var);
-		snippet.setValue(value);
-		CtComment comment = getFactory().createComment(value, CtComment.CommentType.BLOCK);
-
 		CtElement parent = element.getParent(e -> e instanceof CtAssignment || e instanceof CtLocalVariable);
 
-		System.out.println(element + " " + element.getPosition());
-		boolean isInTry = parent.getParent(CtBlock.class).getParent() instanceof CtTry;
 		if (parent instanceof CtLocalVariable) {
-			CtLocalVariable variable = ((CtLocalVariable) parent).clone();
-
-			CtBlock block = parent.getParent(CtBlock.class);
-			parent.delete();
-
-			CtTryWithResource tryWithResource = getFactory().createTryWithResource();
-			tryWithResource.addResource(variable);
-			tryWithResource.addComment(comment);
-			CtBlock bb = getFactory().createCtBlock(tryWithResource);
-			if (isInTry) {
-				block.getParent().replace(bb);
-			} else {
-				block.replace(bb);
-			}
-			tryWithResource.setBody(block);
+			CtLocalVariable ctLocalVariable = ((CtLocalVariable) parent);
+			createCtTryWithResource(parent, ctLocalVariable.clone());
 		} else if (parent instanceof CtAssignment) {
-			CtAssignment assign = (CtAssignment) parent;
-			CtExpression expr = assign.getAssigned();
+			CtAssignment ctAssignment = (CtAssignment) parent;
+			CtExpression expressionAssigned = ctAssignment.getAssigned();
 
-			if (expr instanceof CtVariableWrite) {
-				CtVariableWrite variableWrite = (CtVariableWrite) expr;
-				CtVariableReference variableReference = variableWrite.getVariable();
-				if (variableReference.getDeclaration() instanceof CtLocalVariable) {
-					CtLocalVariable var = (CtLocalVariable) variableReference.getDeclaration();
-					CtLocalVariable variable = var.clone();
-					variable.setAssignment(assign.getAssignment().clone());
-					CtBlock block = parent.getParent(CtBlock.class);
-
-					parent.delete();
-					var.delete();
-
-					CtTryWithResource tryWithResource = getFactory().createTryWithResource();
-					tryWithResource.addResource(variable);
-					tryWithResource.addComment(comment);
-
-					CtBlock bb = getFactory().createCtBlock(tryWithResource);
-					if (isInTry) {
-						block.getParent().replace(tryWithResource);
-					} else {
-						block.replace(bb);
-					}
-					tryWithResource.setBody(block);
+			if (expressionAssigned instanceof CtVariableWrite) {
+				CtVariableWrite ctVariableWrite = (CtVariableWrite) expressionAssigned;
+				CtVariableReference ctVariableReference = ctVariableWrite.getVariable();
+				if (ctVariableReference.getDeclaration() instanceof CtLocalVariable) {
+					CtLocalVariable ctLocalVariable = (CtLocalVariable) ctVariableReference.getDeclaration();
+					CtLocalVariable clonedCtLocalVariable = ctLocalVariable.clone();
+					clonedCtLocalVariable.setAssignment(ctAssignment.getAssignment().clone());
+					ctLocalVariable.delete();
+					createCtTryWithResource(parent, clonedCtLocalVariable);
 				}
 			}
 		}
+	}
+
+	private void createCtTryWithResource(CtElement parent, CtLocalVariable variable) {
+		CtTryWithResource tryWithResource = getFactory().createTryWithResource();
+		tryWithResource.addResource(variable);
+
+		CtBlock parentCtBlock = parent.getParent(CtBlock.class);
+		boolean isInTry = parentCtBlock.getParent() instanceof CtTry;
+		if (isInTry) {
+			parent.delete();
+			tryWithResource.setCatchers(((CtTry) parentCtBlock.getParent()).getCatchers());
+			parentCtBlock.getParent().replace(tryWithResource);
+			tryWithResource.setBody(parentCtBlock);
+		} else {
+			CtBlock newCtBlock = null;
+			int indexOfTheFirstStatementToBeDeleted = -1;
+
+			for (int i = 0; i < parentCtBlock.getStatements().size(); i++) {
+				CtStatement ctStatement = parentCtBlock.getStatements().get(i);
+				if (ctStatement.equals(parent)) {
+					indexOfTheFirstStatementToBeDeleted = i + 1;
+					continue;
+				}
+				if (indexOfTheFirstStatementToBeDeleted != -1) {
+					if (newCtBlock == null) {
+						newCtBlock = getFactory().createCtBlock(ctStatement.clone());
+					} else {
+						newCtBlock.addStatement(ctStatement.clone());
+					}
+				}
+			}
+			int nbOfStatements = parentCtBlock.getStatements().size();
+			if (indexOfTheFirstStatementToBeDeleted != -1) {
+				for (int i = 0; i < (nbOfStatements - indexOfTheFirstStatementToBeDeleted); i++) {
+					parentCtBlock.getStatement(indexOfTheFirstStatementToBeDeleted).delete();
+				}
+			}
+
+			tryWithResource.setBody(newCtBlock);
+			parent.replace(tryWithResource);
+		}
+
 	}
 
 }
