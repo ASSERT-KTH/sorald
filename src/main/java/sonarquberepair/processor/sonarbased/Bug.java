@@ -10,36 +10,30 @@ import java.util.Set;
 public class Bug {
 
 	private JSONObject jsonObject;
-	private JSONArray locations;
 	private String ruleName;
 	private int lineNumber;
-	private String name;
 	private String fileName;
-
-	public Bug() {}
 
 	public Bug(JSONObject jsonObject) {
 		this.jsonObject = jsonObject;
-		init();
-	}
-
-	public Bug(Bug bug) {
-		this.jsonObject = bug.jsonObject;
-		init();
-	}
-
-	private void init() {
-		JSONArray flow = jsonObject.getJSONArray("flows");
-		if (flow.length() > 0) {
-			locations = flow.getJSONObject(0).getJSONArray("locations");
-		}
 		ruleName = (String) jsonObject.get("rule");
 		if (jsonObject.has("line")) {
 			lineNumber = (int) (jsonObject.get("line"));
 		}
-		name = (String) jsonObject.get("message");
 		String[] split = jsonObject.get("component").toString().split("/");
 		fileName = split[split.length - 1];
+	}
+
+	public int getRuleKey() {
+		return Integer.parseInt(ruleName.replace("java:S", ""));
+	}
+
+	public int getLineNumber() {
+		return lineNumber;
+	}
+
+	public String getFileName() {
+		return fileName;
 	}
 
 	@Override
@@ -65,7 +59,7 @@ public class Bug {
 			throw new Exception("null JSONArray passed to createSetOfBugs()");
 		}
 		for (int i = 0; i < jsonArray.length(); ++i) {
-			JSONObject obj = null;
+			JSONObject obj;
 			try {
 				obj = jsonArray.getJSONObject(i);
 				Bug bug = new Bug(obj);
@@ -75,44 +69,6 @@ public class Bug {
 			}
 		}
 		return setOfBugs;
-	}
-
-	public JSONObject getJsonObject() {
-		return jsonObject;
-	}
-
-	public JSONArray getLocations() {
-		return locations;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public int getRuleKey() {
-		return Integer.parseInt(ruleName.replace("java:S", ""));
-	}
-
-	public int getLineNumber() {
-		return lineNumber;
-	}
-
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void printBugLocations() {
-		try {
-			if (locations != null) {
-				for (int i = 0; i < locations.length(); ++i) {
-					System.out.println(locations.getJSONObject(i));
-				}
-			} else {
-				System.out.println("null locations");
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
 	}
 
 }
