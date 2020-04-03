@@ -51,6 +51,17 @@ Example:
 +        BigDecimal bd3 = BigDecimal.valueOf(f); 
 ```
 
+When the constructor of `BigDecimal` being called has two arguments, being the first one of type `float` or `double`, that argument is changed to `String`.
+
+Example:
+```diff
+        MathContext mc;
+-       BigDecimal bd4 = new BigDecimal(2.0, mc); // Noncompliant {{Use "BigDecimal.valueOf" instead.}}
+-       BigDecimal bd6 = new BigDecimal(2.0f, mc); // Noncompliant {{Use "BigDecimal.valueOf" instead.}}
++       BigDecimal bd4 = new BigDecimal("2.0", mc);
++       BigDecimal bd6 = new BigDecimal("2.0", mc);
+```
+
 Check out an accepted PR in [Apache PDFBox](https://github.com/apache/pdfbox/pull/76) that repairs one BigDecimalDoubleConstructor violation.
 
 -----
