@@ -22,7 +22,6 @@ public class BranchBigDecimalDoubleConstructorProcessorTest {
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleNumbers","2111",
-			"--prettyPrintingStrategy","SNIPER",
 			"--workspace",workspace});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new BigDecimalDoubleConstructorCheck());

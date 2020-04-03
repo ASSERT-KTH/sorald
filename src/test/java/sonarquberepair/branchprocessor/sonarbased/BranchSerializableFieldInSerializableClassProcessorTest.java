@@ -5,6 +5,7 @@ import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassC
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import sonarquberepair.Constants;
 import sonarquberepair.Main;
+import sonarquberepair.TestHelper;
 
 public class BranchSerializableFieldInSerializableClassProcessorTest {
 
@@ -23,7 +24,7 @@ public class BranchSerializableFieldInSerializableClassProcessorTest {
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleNumbers","1948",
 			"--workspace",workspace});
-
+		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new SerializableFieldInSerializableClassCheck());
 	}
 
