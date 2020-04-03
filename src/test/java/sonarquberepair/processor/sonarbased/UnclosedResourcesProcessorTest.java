@@ -12,7 +12,6 @@ public class UnclosedResourcesProcessorTest {
 
 	@Test
 	public void test() throws Exception {
-
 		String fileName = "ZipFolder.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
 		String pathToRepairedFile = "./spooned/" + fileName;
@@ -21,7 +20,6 @@ public class UnclosedResourcesProcessorTest {
 		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2095, PrettyPrintingStrategy.NORMAL);
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new UnclosedResourcesCheck());
-
 	}
 
 }
