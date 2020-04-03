@@ -1,11 +1,16 @@
-/**
- * Test for sonarqube rule s4973
- * Boxed types should be compared with equals() rather than "==" since equals compares values while
- * "==" compares memory location.
- */
+// Test for rule s4973
 
 public class CompareStringsBoxedTypesWithEquals {
 
+    // Test from https://rules.sonarsource.com/java/type/Bug/RSPEC-4973
+    public void main(String[] args) {
+        String firstName = getFirstName(); // String overrides equals
+        String lastName = getLastName();
+
+        if (firstName == lastName) { } ; // Noncompliant; false even if the strings have the same value
+    }
+
+    // Aditional tests
     boolean eq = true;
 
     // Java implicitly converts one variable to primitive if something boxed and primitive is compared.
@@ -39,7 +44,7 @@ public class CompareStringsBoxedTypesWithEquals {
     }
 
     // ENUM comparisons are excluded from transformation
-    private void nullCompare() {
+    private void nullCompare2() {
         enum foo {
             BAR,
             XOR
