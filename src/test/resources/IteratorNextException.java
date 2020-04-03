@@ -1,10 +1,9 @@
-/**
- * Test for sonarqube rule s2272
- * By contract, any implementation of Iterator.next() should throw a NoSuchElementException when there are no more elements.
- */
+// Test for rule s2272
+
 import java.util.Iterator;
 import java.util.Stack;
 
+// Test based on https://rules.sonarsource.com/java/type/Bug/RSPEC-2272
 public class IteratorNextException implements Iterator {
 
     private Stack<String> stack = new Stack();

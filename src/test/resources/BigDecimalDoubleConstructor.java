@@ -1,27 +1,33 @@
-/**
- * Test for sonarqube rule s2111.
- * From https://sonarqube.ow2.org/coding_rules#rule_key=squid%3AS2111:
- *
- * "The results of this constructor can be somewhat unpredictable. One might assume that writing new BigDecimal(0.1)
- * in Java creates a BigDecimal which is exactly equal to 0.1 (an unscaled value of 1, with a scale of 1),
- * but it is actually equal to 0.1000000000000000055511151231257827021181583404541015625.
- * This is because 0.1 cannot be represented exactly as a double (or, for that matter, as a binary fraction
- * of any finite length). Thus, the value that is being passed in to the constructor is not exactly equal to 0.1,
- * appearances notwithstanding".
- */
+// Test for rule s2111
+
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 public class BigDecimalDoubleConstructor {
 
-    /*
-   Code taken from Sonarqube documentation https://sonarqube.ow2.org/coding_rules#rule_key=squid%3AS2111
-    */
+    // Tests from https://rules.sonarsource.com/java/type/Bug/RSPEC-2111
+    public void main(String[] args) {
+        double d = 1.1;
+        BigDecimal bd1 = new BigDecimal(d); // Noncompliant; see comment above
+        BigDecimal bd2 = new BigDecimal(1.1); // Noncompliant; same result
+    }
+
+    // Tests from https://github.com/SonarSource/sonar-java/blob/master/java-checks-test-sources/src/main/java/checks/BigDecimalDoubleConstructorCheck.java
+    public void main2(String[] args) {
+        MathContext mc;
+        BigDecimal bd1 = new BigDecimal("1");
+        BigDecimal bd2 = new BigDecimal(2.0); // Noncompliant {{Use "BigDecimal.valueOf" instead.}}
+        BigDecimal bd4 = new BigDecimal(2.0, mc); // Noncompliant {{Use "BigDecimal.valueOf" instead.}}
+        BigDecimal bd5 = new BigDecimal(2.0f); // Noncompliant {{Use "BigDecimal.valueOf" instead.}}
+        BigDecimal bd6 = new BigDecimal(2.0f, mc); // Noncompliant {{Use "BigDecimal.valueOf" instead.}}
+        BigDecimal bd3 = BigDecimal.valueOf(2.0);
+    }
+
+    // Aditional tests
     public void foo(String[] args) {
         double d = 1.1;
         float f = 2.2;
         float f1 = 2f;
-        BigDecimal bd1 = new BigDecimal(d); // Noncompliant
-        BigDecimal bd2 = new BigDecimal(1.1); // Noncompliant
         BigDecimal bd3 = new BigDecimal(f); // Noncompliant
         BigDecimal bd4 = new BigDecimal(f1); // Noncompliant
         BigDecimal bd5 = BigDecimal.valueOf(d); // Compliant

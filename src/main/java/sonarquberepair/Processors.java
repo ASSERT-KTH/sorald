@@ -16,23 +16,21 @@ import static java.lang.System.exit;
 
 public class Processors {
 
-	private static Map<Integer, Class<? extends Processor>> RULE_KEY_TO_PROCESSOR;
+	private static final Map<Integer, Class<? extends Processor>> RULE_KEY_TO_PROCESSOR = init();
 
-	public static void init() {
-		RULE_KEY_TO_PROCESSOR = new HashMap<>();
-		RULE_KEY_TO_PROCESSOR.putIfAbsent(1854, DeadStoreProcessor.class);
-		RULE_KEY_TO_PROCESSOR.putIfAbsent(1948, SerializableFieldInSerializableClassProcessor.class);
-		RULE_KEY_TO_PROCESSOR.putIfAbsent(2095, UnclosedResourcesProcessor.class);
-		RULE_KEY_TO_PROCESSOR.putIfAbsent(2111, BigDecimalDoubleConstructorProcessor.class);
-		RULE_KEY_TO_PROCESSOR.putIfAbsent(2116, ArrayHashCodeAndToStringProcessor.class);
-		RULE_KEY_TO_PROCESSOR.putIfAbsent(2272, IteratorNextExceptionProcessor.class);
-		RULE_KEY_TO_PROCESSOR.putIfAbsent(4973, CompareStringsBoxedTypesWithEqualsProcessor.class);
+	private static Map init() {
+		Map<Integer, Class<? extends Processor>> TEMP_RULE_KEY_TO_PROCESSOR = new HashMap<>();
+		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(1854, DeadStoreProcessor.class);
+		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(1948, SerializableFieldInSerializableClassProcessor.class);
+		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2095, UnclosedResourcesProcessor.class);
+		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2111, BigDecimalDoubleConstructorProcessor.class);
+		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2116, ArrayHashCodeAndToStringProcessor.class);
+		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2272, IteratorNextExceptionProcessor.class);
+		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(4973, CompareStringsBoxedTypesWithEqualsProcessor.class);
+		return TEMP_RULE_KEY_TO_PROCESSOR;
 	}
 
 	public static Class<?> getProcessor(int ruleKey) {
-		if (RULE_KEY_TO_PROCESSOR == null) {
-			init();
-		}
 		if (!RULE_KEY_TO_PROCESSOR.containsKey(ruleKey)) {
 			System.out.println("Sorry, repair not available for rule " + ruleKey);
 			exit(0);

@@ -9,17 +9,18 @@
     <version>0.1-SNAPSHOT</version>
 
     <dependencies>
-
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20160810</version>
+            <version>20190722</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13</version>
             <scope>test</scope>
         </dependency>
 
@@ -27,13 +28,14 @@
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>8.1.0-beta-2</version>
+            <version>8.2.0-beta-2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.sonarsource.java/java-checks-testkit -->
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-checks-testkit</artifactId>
-            <version>5.5.0.14655</version>
+            <version>5.14.0.18788</version>
             <scope>test</scope>
         </dependency>
 
@@ -44,7 +46,6 @@
             <version>5.14.0.18788</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>com.martiansoftware</groupId>
             <artifactId>jsap</artifactId>
