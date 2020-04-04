@@ -10,17 +10,30 @@ import java.io.File;
 import sonarquberepair.Processors;
 
 public class DefaultRepair implements IRepair {
+	private String repairPath;
+	private String projectKey;
+	private String workspace;
+	private int ruleKey;
+	private PrettyPrintingStrategy prettyPrintingStrategy;
 
+	public DefaultRepair(String repairPath, String projectKey, String workspace,int ruleKey,PrettyPrintingStrategy prettyPrintingStrategy) {
+		this.repairPath = repairPath;
+		this.projectKey = projectKey;
+		this.workspace = workspace;
+		this.ruleKey = ruleKey;
+		this.prettyPrintingStrategy = prettyPrintingStrategy;
+	}
 	@Override
 	public void repair() throws Exception {
-		String repairPath = SonarQubeRepairConfig.getInstance().getRepairPath();
-		String projectKey = SonarQubeRepairConfig.getInstance().getProjectKey();
-		int ruleKey = SonarQubeRepairConfig.getInstance().getRuleNumbers().get(0);
-		PrettyPrintingStrategy prettyPrintingStrategy = SonarQubeRepairConfig.getInstance().getPrettyPrintingStrategy();
+		String repairPath = this.repairPath;
+		String projectKey = this.projectKey;
+		String outputDir = this.workspace + File.separator + "spooned";
+		int ruleKey = this.ruleKey;
+		PrettyPrintingStrategy prettyPrintingStrategy = this.prettyPrintingStrategy;
 
 		Launcher launcher = new Launcher();
 		launcher.addInputResource(repairPath);
-		launcher.setSourceOutputDirectory(SonarQubeRepairConfig.getInstance().getWorkSpace() + File.separator + "spooned");
+		launcher.setSourceOutputDirectory(outputDir);
 		launcher.getEnvironment().setAutoImports(true);
 		if (prettyPrintingStrategy == PrettyPrintingStrategy.SNIPER) {
 			launcher.getEnvironment().setPrettyPrinterCreator(() -> {

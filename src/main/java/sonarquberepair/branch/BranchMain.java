@@ -16,9 +16,10 @@ import com.martiansoftware.jsap.stringparsers.FileStringParser;
 import sonarquberepair.MainApi;
 
 public class BranchMain implements MainApi{
+	private final SonarQubeRepairConfig config = new SonarQubeRepairConfig();
 
-	public static SonarQubeRepairConfig getConfig() {
-		return SonarQubeRepairConfig.getInstance();
+	public SonarQubeRepairConfig getConfig() {
+		return this.config;
 	}
 
 	public JSAP defineArgs() throws JSAPException{
@@ -75,8 +76,14 @@ public class BranchMain implements MainApi{
 
 
 	public IRepair getRepairProcess() {
+		String repairPath = this.getConfig().getRepairPath();
+		String projectKey = this.getConfig().getProjectKey();
+		int ruleKey = this.getConfig().getRuleNumbers().get(0);
+		String workspace = this.getConfig().getWorkSpace();
+		PrettyPrintingStrategy prettyPrintingStrategy = this.getConfig().getPrettyPrintingStrategy();
+
 		IRepair repairProc;
-		repairProc = new DefaultRepair(); // currently there is only one repair mode 
+		repairProc = new DefaultRepair(repairPath,projectKey,workspace,ruleKey,prettyPrintingStrategy);
 		return repairProc;
 	}
 

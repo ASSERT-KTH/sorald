@@ -40,6 +40,5 @@ public class Main {
 	public static void main(String[] args) throws Exception{
 		main = getMain(args);
 		main.start(args);
-		SonarQubeRepairConfig.resetConfig(); // in case, when we call main as a method instead of entry point (for test cases)
 	}
 }

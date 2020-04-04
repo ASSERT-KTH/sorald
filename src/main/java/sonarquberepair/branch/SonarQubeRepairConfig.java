@@ -5,25 +5,13 @@ import java.util.ArrayList;
 
 /* All config settings of SonarQube should be gathered here */
 public class SonarQubeRepairConfig {
-	private static SonarQubeRepairConfig config;
 	private final List<Integer> ruleNumbers = new ArrayList<Integer>();
 	private String projectKey;
 	private PrettyPrintingStrategy prettyPrintingStrategy;
 	private String repairPath;
 	private String workspace;
 
-	private SonarQubeRepairConfig() {}
-
-	public static SonarQubeRepairConfig getInstance() {
-		if (config == null) {
-			config = new SonarQubeRepairConfig();
-		}
-		return config;
-	}
-
-	public static void resetConfig() {
-		config = new SonarQubeRepairConfig();
-	}
+	public SonarQubeRepairConfig() {}
 
 	public void setProjectKey(String projectKey) {
 		this.projectKey = projectKey;
