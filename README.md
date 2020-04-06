@@ -1,14 +1,16 @@
-# Sonarqube-repair
+# Sonarqube-repair [![Travis Build Status](https://travis-ci.com/kth-tcs/sonarqube-repair.svg?branch=master)](https://travis-ci.com/kth-tcs/sonarqube-repair)
 
-Sonarqube-repair is a collection of java code transformations made with the [Spoon](https://github.com/INRIA/spoon) library to repair violations of static rules defined by [SonarQube](https://rules.sonarsource.com).
+Sonarqube-repair is a collection of java code analyses and transformations made with the [Spoon](https://github.com/INRIA/spoon) library to repair violations of rules contained in [SonarQube](https://rules.sonarsource.com).
 
-## Handled SonarQube rules
+## Handled rules
 
-Sonarqube-repair can currently repair violations of 7 SonarQube rules of which 5 are labeled as `BUG` and 2 as `Code Smell`. [Checkout out the handled rules](/docs/HANDLED_SONARQUBE_RULES.md).
+Sonarqube-repair can currently repair violations of 7 rules of which 5 are labeled as `BUG` and 2 as `Code Smell`. [Check out the handled rules](/docs/HANDLED_RULES.md).
 
-## Getting Started
+## Getting started
+
 ### Prerequisites 
-A JDK (java 1.8 or above) 
+
+A JDK (java 1.8)
 
 ### Usage
 
@@ -28,11 +30,13 @@ A JDK (java 1.8 or above)
 $ cd sonarqube-repair
 $ mvn package -DskipTests
 $ ls target/*jar
-target/sonarqube-repair-0.1-SNAPSHOT.jar  target/sonarqube-repair-0.1-SNAPSHOT-jar-with-dependencies.jar  target/sonarqube-repair-0.1-SNAPSHOT-javadoc.jar
+target/sonarqube-repair-0.1-SNAPSHOT.jar
+target/sonarqube-repair-0.1-SNAPSHOT-jar-with-dependencies.jar
+target/sonarqube-repair-0.1-SNAPSHOT-javadoc.jar
 $ java -jar target/sonarqube-repair-0.1-SNAPSHOT-jar-with-dependencies.jar <arguments>
  ```
 
-For the arguments, provide the Sonar rule key (see the supported rules [here](/docs/HANDLED_SONARQUBE_RULES.md)).
+For the arguments, provide the Sonar rule key (see the supported rules [here](/docs/HANDLED_RULES.md)).
 For the rules 2095, 1854, and 1948, also provide the project key for the Sonar analysis (the url of the Sonar analysis of your project should be set in `src/main/java/sonarquberepair/processor/sonarbased/SonarWebAPIBasedProcessor.java` if it is different from [sonarcloud.io](https://sonarcloud.io/about)).
  
 Finally, the repaired files will appear in `sonarqube-repair/spooned/`.
@@ -43,13 +47,7 @@ To run Sonarqube-repair on projects towards proposing fixes in the form of PRs, 
  
 ## Contributing
 
-Contributions are welcome! Feel free to open issues on this GitHub repository, and also to open pull requests for making this project nicer.
-
-## Authors
-* Ashutosh Kumar Verma ([@ashutosh1598](https://github.com/ashutosh1598))
-* Martin Monperrus ([@monperrus](https://github.com/monperrus))
-* Pavel Pvojtechovsky ([@pvojtechovsky](https://github.com/pvojtechovsky))
-* Haris Adzemovic ([@HarisAdzemovic](https://github.com/HarisAdzemovic))
+Contributions are welcome! Feel free to open issues on this GitHub repository, and also to open pull requests for making this project nicer (see instructions [here](/docs/CONTRIBUTING.md)).
 
 ## Implementation notes
 

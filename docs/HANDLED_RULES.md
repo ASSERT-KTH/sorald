@@ -1,16 +1,16 @@
-## Handled SonarQube rules
+## Handled rules
 
-Sonarqube-repair can currently repair violations of 7 SonarQube rules of which 5 are labeled as `Bug` and 2 as `Code Smell`:
+Sonarqube-repair can currently repair violations of 7 rules of which 5 are labeled as `BUG` and 2 as `Code Smell`:
 
-* [Bug](HANDLED_SONARQUBE_RULES.md#*Bug*)
-    * [Resources should be closed](HANDLED_SONARQUBE_RULES.md#resources-should-be-closed-sonar-rule-2095httpsrulessonarsourcecomjavarspec-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
-    * ["BigDecimal(double)" should not be used](HANDLED_SONARQUBE_RULES.md#bigdecimaldouble-should-not-be-used-sonar-rule-2111httpsrulessonarsourcecomjavarspec-2111) ([Sonar Rule 2111](https://rules.sonarsource.com/java/RSPEC-2111))
-    * ["hashCode" and "toString" should not be called on array instances](HANDLED_SONARQUBE_RULES.md#hashcode-and-tostring-should-not-be-called-on-array-instances-sonar-rule-2116httpsrulessonarsourcecomjavarspec-2116) ([Sonar Rule 2116](https://rules.sonarsource.com/java/RSPEC-2116))
-    * ["Iterator.next()" methods should throw "NoSuchElementException"](HANDLED_SONARQUBE_RULES.md#iteratornext-methods-should-throw-nosuchelementexception-sonar-rule-2272httpsrulessonarsourcecomjavarspec-2272) ([Sonar Rule 2272](https://rules.sonarsource.com/java/RSPEC-2272))
-    * [Strings and Boxed types should be compared using "equals()"](HANDLED_SONARQUBE_RULES.md#strings-and-boxed-types-should-be-compared-using-equals-sonar-rule-4973httpsrulessonarsourcecomjavarspec-4973) ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
-* [Code Smell](HANDLED_SONARQUBE_RULES.md#*Code Smell*)
-    * [Unused assignments should be removed](HANDLED_SONARQUBE_RULES.md#unused-assignments-should-be-removed-sonar-rule-1854httpsrulessonarsourcecomjavarspec-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
-    * [Fields in a "Serializable" class should either be transient or serializable](HANDLED_SONARQUBE_RULES.md#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948httpsrulessonarsourcecomjavarspec-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
+* [Bug](HANDLED_RULES.md#bug)
+    * [Resources should be closed](HANDLED_RULES.md#resources-should-be-closed-sonar-rule-2095httpsrulessonarsourcecomjavarspec-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
+    * ["BigDecimal(double)" should not be used](HANDLED_RULES.md#bigdecimaldouble-should-not-be-used-sonar-rule-2111httpsrulessonarsourcecomjavarspec-2111) ([Sonar Rule 2111](https://rules.sonarsource.com/java/RSPEC-2111))
+    * ["hashCode" and "toString" should not be called on array instances](HANDLED_RULES.md#hashcode-and-tostring-should-not-be-called-on-array-instances-sonar-rule-2116httpsrulessonarsourcecomjavarspec-2116) ([Sonar Rule 2116](https://rules.sonarsource.com/java/RSPEC-2116))
+    * ["Iterator.next()" methods should throw "NoSuchElementException"](HANDLED_RULES.md#iteratornext-methods-should-throw-nosuchelementexception-sonar-rule-2272httpsrulessonarsourcecomjavarspec-2272) ([Sonar Rule 2272](https://rules.sonarsource.com/java/RSPEC-2272))
+    * [Strings and Boxed types should be compared using "equals()"](HANDLED_RULES.md#strings-and-boxed-types-should-be-compared-using-equals-sonar-rule-4973httpsrulessonarsourcecomjavarspec-4973) ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
+* [Code Smell](HANDLED_RULES.md#code-smell)
+    * [Unused assignments should be removed](HANDLED_RULES.md#unused-assignments-should-be-removed-sonar-rule-1854httpsrulessonarsourcecomjavarspec-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
+    * [Fields in a "Serializable" class should either be transient or serializable](HANDLED_RULES.md#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948httpsrulessonarsourcecomjavarspec-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
 
 ### *Bug*
 
@@ -89,9 +89,11 @@ Any implementation of the `Iterator.next()` method that does not throw `NoSuchEl
 Example:
 ```diff
 +import java.util.NoSuchElementException;
+
+public class IteratorNextException implements Iterator {
 ...
      @Override
--    public String next(){ // Noncompliant
+-    public String next() { // Noncompliant
 +    public String next() {
 +        if (!hasNext()) {
 +            throw new NoSuchElementException();
@@ -110,11 +112,11 @@ Any comparison of strings or boxed types using `==` or `!=` is replaced by `equa
 
 Example:
 ```diff
--        return b != a;// Noncompliant
-+        return !b.equals(a);
+-        if (firstName == lastName) // Noncompliant
++        if (firstName.equals(lastName))
 ...
--        if(firstName == lastName){// Noncompliant
-+        if (firstName.equals(lastName)) {
+-        return b != a; // Noncompliant
++        return !b.equals(a);
 ```
 
 Check out an accepted PR in [Apache Sling Discovery](https://github.com/apache/sling-org-apache-sling-discovery-impl/pull/1) that repairs one CompareStringsBoxedTypesWithEquals violation.
