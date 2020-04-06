@@ -5,7 +5,6 @@ import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import sonarquberepair.Constants;
 import sonarquberepair.Main;
-import sonarquberepair.PrettyPrintingStrategy;
 import sonarquberepair.TestHelper;
 
 public class ArrayHashCodeAndToStringProcessorTest {
@@ -14,10 +13,15 @@ public class ArrayHashCodeAndToStringProcessorTest {
 	public void arrayToStringProcessorTest() throws Exception {
 		String fileName = "ArrayHashCodeAndToString.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-		String pathToRepairedFile = "./spooned/" + fileName;
+		String workspace = "sonar-branch-workspace";
+		String pathToRepairedFile = workspace + "/spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
-		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2116, PrettyPrintingStrategy.NORMAL);
+		Main.main(new String[]{
+			"--repairPath",pathToBuggyFile,
+			"--projectKey",Constants.PROJECT_KEY,
+			"--ruleNumbers","2116",
+			"--workspace",workspace});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
 	}
@@ -26,10 +30,16 @@ public class ArrayHashCodeAndToStringProcessorTest {
 	public void arrayToStringProcessorTest2() throws Exception {
 		String fileName = "CodeFactory.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-		String pathToRepairedFile = "./spooned/spoon/reflect/factory/" + fileName;
+		String workspace = "sonar-branch-workspace";
+		String pathToRepairedFile = workspace + "/spooned/spoon/reflect/factory/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
-		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2116, PrettyPrintingStrategy.SNIPER);
+		Main.main(new String[]{
+			"--repairPath",pathToBuggyFile,
+			"--projectKey",Constants.PROJECT_KEY,
+			"--ruleNumbers","2116",
+			"--prettyPrintingStrategy","SNIPER",
+			"--workspace",workspace});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
 	}

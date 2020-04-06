@@ -5,19 +5,24 @@ import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassC
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import sonarquberepair.Constants;
 import sonarquberepair.Main;
-import sonarquberepair.PrettyPrintingStrategy;
 import sonarquberepair.TestHelper;
 
 public class SerializableFieldInSerializableClassProcessorTest {
 
 	@Test
 	public void test() throws Exception {
+
 		String fileName = "SerializableFieldProcessorTest.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-		String pathToRepairedFile = "./spooned/" + fileName;
+		String workspace = "sonar-branch-workspace";
+		String pathToRepairedFile = workspace + "/spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new SerializableFieldInSerializableClassCheck());
-		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 1948, PrettyPrintingStrategy.NORMAL);
+		Main.main(new String[]{
+			"--repairPath",pathToBuggyFile,
+			"--projectKey",Constants.PROJECT_KEY,
+			"--ruleNumbers","1948",
+			"--workspace",workspace});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new SerializableFieldInSerializableClassCheck());
 	}

@@ -5,7 +5,6 @@ import org.sonar.java.checks.BigDecimalDoubleConstructorCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import sonarquberepair.Constants;
 import sonarquberepair.Main;
-import sonarquberepair.PrettyPrintingStrategy;
 import sonarquberepair.TestHelper;
 
 public class BigDecimalDoubleConstructorProcessorTest {
@@ -14,10 +13,15 @@ public class BigDecimalDoubleConstructorProcessorTest {
 	public void test() throws Exception {
 		String fileName = "BigDecimalDoubleConstructor.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-		String pathToRepairedFile = "./spooned/" + fileName;
+		String workspace = "sonar-branch-workspace";
+		String pathToRepairedFile = workspace + "/spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new BigDecimalDoubleConstructorCheck());
-		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2111, PrettyPrintingStrategy.NORMAL);
+		Main.main(new String[]{
+			"--repairPath",pathToBuggyFile,
+			"--projectKey",Constants.PROJECT_KEY,
+			"--ruleNumbers","2111",
+			"--workspace",workspace});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new BigDecimalDoubleConstructorCheck());
 	}

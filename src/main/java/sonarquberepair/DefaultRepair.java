@@ -9,7 +9,7 @@ import java.io.File;
 
 import sonarquberepair.Processors;
 
-public class DefaultRepair implements IRepair {
+public class DefaultRepair {
 	private String repairPath;
 	private String projectKey;
 	private String workspace;
@@ -23,7 +23,11 @@ public class DefaultRepair implements IRepair {
 		this.ruleKey = ruleKey;
 		this.prettyPrintingStrategy = prettyPrintingStrategy;
 	}
-	@Override
+	
+	public DefaultRepair(SonarQubeRepairConfig config) {
+		this(config.getRepairPath(),config.getProjectKey(),config.getWorkSpace(),config.getRuleNumbers().get(0),config.getPrettyPrintingStrategy());
+	}
+
 	public void repair() throws Exception {
 		String repairPath = this.repairPath;
 		String projectKey = this.projectKey;
