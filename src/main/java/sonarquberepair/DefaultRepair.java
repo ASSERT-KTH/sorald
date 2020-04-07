@@ -25,10 +25,10 @@ public class DefaultRepair {
 		launcher.getEnvironment().setAutoImports(true);
 		if (this.config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER) {
 			launcher.getEnvironment().setPrettyPrinterCreator(() -> {
-						SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
-						sniper.setIgnoreImplicit(false);
-						return sniper;
-					}
+				SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
+				sniper.setIgnoreImplicit(false);
+				return sniper;
+			}
 			);
 			launcher.getEnvironment().setCommentEnabled(true);
 			launcher.getEnvironment().useTabulations(true);

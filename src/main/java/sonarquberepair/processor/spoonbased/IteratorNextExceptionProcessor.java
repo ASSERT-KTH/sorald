@@ -55,8 +55,8 @@ public class IteratorNextExceptionProcessor extends AbstractProcessor<CtMethod> 
 		CtType noSuchElementClass = getFactory().Class().get(NoSuchElementException.class);
 		CtThrow throwStmnt = getFactory().createCtThrow("");
 		throwStmnt.setThrownExpression(
-				((CtExpression<? extends Throwable>)
-						getFactory().createConstructorCall(noSuchElementClass.getReference(), new CtExpression[]{})
+			((CtExpression<? extends Throwable>)
+				getFactory().createConstructorCall(noSuchElementClass.getReference(), new CtExpression[]{})
 				));
 		CtBlock block = getFactory().Core().createBlock();
 		block.addStatement(throwStmnt);

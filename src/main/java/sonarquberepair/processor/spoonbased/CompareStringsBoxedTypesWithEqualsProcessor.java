@@ -36,27 +36,27 @@ public class CompareStringsBoxedTypesWithEqualsProcessor extends AbstractProcess
 				Case 4: Both variables are boxed.
 				*/
 				if ((lType != null && rType != null) &&
-						((lType.equals(stringType) && rType.equals(stringType)) ||
-								(lType.equals(stringType) && !rType.unbox().equals(rType)) ||
-								(!lType.unbox().equals(lType) && rType.equals(stringType)) ||
-								(!lType.unbox().equals(lType) && !rType.unbox().equals(rType)))) {
+					((lType.equals(stringType) && rType.equals(stringType)) ||
+						(lType.equals(stringType) && !rType.unbox().equals(rType)) ||
+						(!lType.unbox().equals(lType) && rType.equals(stringType)) ||
+						(!lType.unbox().equals(lType) && !rType.unbox().equals(rType)))) {
 					return true;
-				}
 			}
 		}
-		return false;
 	}
+	return false;
+}
 
-	@Override
-	public void process(CtElement element) {
-		CtBinaryOperator bo = (CtBinaryOperator) element;
-		String negation = "";
-		if (((CtBinaryOperator) element).getKind() == BinaryOperatorKind.NE) {
-			negation = "!";
-		}
-		CtCodeSnippetExpression newBinaryOperator = getFactory().Code().createCodeSnippetExpression(
-				negation + bo.getLeftHandOperand().toString() + ".equals(" + bo.getRightHandOperand().toString() + ")");
-		bo.replace(newBinaryOperator);
+@Override
+public void process(CtElement element) {
+	CtBinaryOperator bo = (CtBinaryOperator) element;
+	String negation = "";
+	if (((CtBinaryOperator) element).getKind() == BinaryOperatorKind.NE) {
+		negation = "!";
 	}
+	CtCodeSnippetExpression newBinaryOperator = getFactory().Code().createCodeSnippetExpression(
+		negation + bo.getLeftHandOperand().toString() + ".equals(" + bo.getRightHandOperand().toString() + ")");
+	bo.replace(newBinaryOperator);
+}
 
 }
