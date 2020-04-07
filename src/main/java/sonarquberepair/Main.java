@@ -26,39 +26,39 @@ public class Main {
 
 		/* will be supporting multiple rules processing later so rulenumber(s) */
 		FlaggedOption opt = new FlaggedOption("ruleNumbers");
-        opt.setLongFlag("ruleNumbers");
-        opt.setStringParser(JSAP.INTEGER_PARSER);
-        opt.setDefault("2116");
-        opt.setHelp("Sonarqube rule number, Check https://rules.sonarsource.com/java");
-        jsap.registerParameter(opt);
+		opt.setLongFlag("ruleNumbers");
+		opt.setStringParser(JSAP.INTEGER_PARSER);
+		opt.setDefault("2116");
+		opt.setHelp("Sonarqube rule number, Check https://rules.sonarsource.com/java");
+		jsap.registerParameter(opt);
 
-        opt = new FlaggedOption("projectKey");
-        opt.setLongFlag("projectKey");
-        opt.setStringParser(JSAP.STRING_PARSER);
-        opt.setDefault("fr.inria.gforge.spoon:spoon-core");
-        opt.setHelp("what is this projectKey ? ");
-        jsap.registerParameter(opt);
+		opt = new FlaggedOption("projectKey");
+		opt.setLongFlag("projectKey");
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setDefault("fr.inria.gforge.spoon:spoon-core");
+		opt.setHelp("what is this projectKey ? ");
+		jsap.registerParameter(opt);
 
-        opt = new FlaggedOption("repairPath");
-        opt.setLongFlag("repairPath");
-        opt.setStringParser(JSAP.STRING_PARSER);
-        opt.setDefault("./source/act/");
-        opt.setHelp("what is this projectKey ? ");
-        jsap.registerParameter(opt);
+		opt = new FlaggedOption("repairPath");
+		opt.setLongFlag("repairPath");
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setDefault("./source/act/");
+		opt.setHelp("what is this projectKey ? ");
+		jsap.registerParameter(opt);
 
-        opt = new FlaggedOption("prettyPrintingStrategy");
-        opt.setLongFlag("prettyPrintingStrategy");
-        opt.setStringParser(JSAP.STRING_PARSER);
-        opt.setDefault(PrettyPrintingStrategy.NORMAL.name());
-        opt.setHelp("Mode for pretty printing . NORMAL: default pretty print, SNIPER: sniper mode on for more precise code transformation pretty print");
-        jsap.registerParameter(opt);
+		opt = new FlaggedOption("prettyPrintingStrategy");
+		opt.setLongFlag("prettyPrintingStrategy");
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setDefault(PrettyPrintingStrategy.NORMAL.name());
+		opt.setHelp("Mode for pretty printing . NORMAL: default pretty print, SNIPER: sniper mode on for more precise code transformation pretty print");
+		jsap.registerParameter(opt);
 
-        opt = new FlaggedOption("workspace");
-        opt.setLongFlag("workspace");
-        opt.setStringParser(JSAP.STRING_PARSER);
-        opt.setDefault("./sonar-workspace");
-        opt.setHelp("Workspace of SonarQubeRepair");
-        jsap.registerParameter(opt);
+		opt = new FlaggedOption("workspace");
+		opt.setLongFlag("workspace");
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setDefault("./sonar-workspace");
+		opt.setHelp("Workspace of SonarQubeRepair");
+		jsap.registerParameter(opt);
 
 		return jsap;
 	}
