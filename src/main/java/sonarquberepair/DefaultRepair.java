@@ -10,36 +10,20 @@ import java.io.File;
 import sonarquberepair.Processors;
 
 public class DefaultRepair {
-	private String repairPath;
-	private String projectKey;
-	private String workspace;
-	private int ruleKey;
-	private PrettyPrintingStrategy prettyPrintingStrategy;
-
-	public DefaultRepair(String repairPath, String projectKey, String workspace,int ruleKey,PrettyPrintingStrategy prettyPrintingStrategy) {
-		this.repairPath = repairPath;
-		this.projectKey = projectKey;
-		this.workspace = workspace;
-		this.ruleKey = ruleKey;
-		this.prettyPrintingStrategy = prettyPrintingStrategy;
-	}
+	private SonarQubeRepairConfig config;
 	
 	public DefaultRepair(SonarQubeRepairConfig config) {
-		this(config.getRepairPath(),config.getProjectKey(),config.getWorkSpace(),config.getRuleNumbers().get(0),config.getPrettyPrintingStrategy());
+		this.config = config;
 	}
 
 	public void repair() throws Exception {
-		String repairPath = this.repairPath;
-		String projectKey = this.projectKey;
-		String outputDir = this.workspace + File.separator + "spooned";
-		int ruleKey = this.ruleKey;
-		PrettyPrintingStrategy prettyPrintingStrategy = this.prettyPrintingStrategy;
+		String outputDir = this.config.getWorkSpace() + File.separator + "spooned";
 
 		Launcher launcher = new Launcher();
-		launcher.addInputResource(repairPath);
+		launcher.addInputResource(this.config.getRepairPath());
 		launcher.setSourceOutputDirectory(outputDir);
 		launcher.getEnvironment().setAutoImports(true);
-		if (prettyPrintingStrategy == PrettyPrintingStrategy.SNIPER) {
+		if (this.config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER) {
 			launcher.getEnvironment().setPrettyPrinterCreator(() -> {
 						SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
 						sniper.setIgnoreImplicit(false);
@@ -51,12 +35,12 @@ public class DefaultRepair {
 			launcher.getEnvironment().setTabulationSize(4);
 		}
 
-		Class<?> processor = Processors.getProcessor(ruleKey);
+		Class<?> processor = Processors.getProcessor(config.getRuleNumbers().get(0));
 		Constructor<?> cons;
 		Object object;
 		try {
 			cons = processor.getConstructor(String.class);
-			object = cons.newInstance(projectKey);
+			object = cons.newInstance(config.getProjectKey());
 		} catch (NoSuchMethodException e) {
 			cons = processor.getConstructor();
 			object = cons.newInstance();
