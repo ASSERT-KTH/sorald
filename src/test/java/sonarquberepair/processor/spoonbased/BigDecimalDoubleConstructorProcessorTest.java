@@ -13,15 +13,14 @@ public class BigDecimalDoubleConstructorProcessorTest {
 	public void test() throws Exception {
 		String fileName = "BigDecimalDoubleConstructor.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-		String workspace = "sonar-branch-workspace";
-		String pathToRepairedFile = workspace + "/spooned/" + fileName;
+		String pathToRepairedFile = Constants.WORKSPACE + "/spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new BigDecimalDoubleConstructorCheck());
 		Main.main(new String[]{
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleNumbers","2111",
-			"--workspace",workspace});
+			"--workspace",Constants.WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new BigDecimalDoubleConstructorCheck());
 	}

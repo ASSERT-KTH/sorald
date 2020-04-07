@@ -13,15 +13,14 @@ public class ArrayHashCodeAndToStringProcessorTest {
 	public void arrayToStringProcessorTest() throws Exception {
 		String fileName = "ArrayHashCodeAndToString.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-		String workspace = "sonar-branch-workspace";
-		String pathToRepairedFile = workspace + "/spooned/" + fileName;
+		String pathToRepairedFile = Constants.WORKSPACE + "/spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
 		Main.main(new String[]{
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleNumbers","2116",
-			"--workspace",workspace});
+			"--workspace",Constants.WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
 	}
@@ -30,8 +29,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 	public void arrayToStringProcessorTest2() throws Exception {
 		String fileName = "CodeFactory.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-		String workspace = "sonar-branch-workspace";
-		String pathToRepairedFile = workspace + "/spooned/spoon/reflect/factory/" + fileName;
+		String pathToRepairedFile = Constants.WORKSPACE + "/spooned/spoon/reflect/factory/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
 		Main.main(new String[]{
@@ -39,7 +37,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleNumbers","2116",
 			"--prettyPrintingStrategy","SNIPER",
-			"--workspace",workspace});
+			"--workspace",Constants.WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
 	}
