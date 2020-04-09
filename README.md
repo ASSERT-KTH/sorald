@@ -30,10 +30,10 @@ A JDK (java 1.8)
 $ cd sonarqube-repair
 $ mvn package -DskipTests
 $ ls target/*jar
-target/sonarqube-repair-0.1-SNAPSHOT.jar
-target/sonarqube-repair-0.1-SNAPSHOT-jar-with-dependencies.jar
-target/sonarqube-repair-0.1-SNAPSHOT-javadoc.jar
-$ java -jar target/sonarqube-repair-0.1-SNAPSHOT-jar-with-dependencies.jar <arguments>
+target/sonarqube-repair-1.0.jar
+target/sonarqube-repair-1.0-jar-with-dependencies.jar
+target/sonarqube-repair-1.0-javadoc.jar
+$ java -jar target/sonarqube-repair-1.0-jar-with-dependencies.jar <arguments>
  ```
 
 For the arguments, provide the Sonar rule key (see the supported rules [here](/docs/HANDLED_RULES.md)).
