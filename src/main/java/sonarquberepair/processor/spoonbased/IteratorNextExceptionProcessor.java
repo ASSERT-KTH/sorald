@@ -10,9 +10,14 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtTypeReference;
+import spoon.reflect.declaration.CtType;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
+import sonarquberepair.UniqueTypesCollector;
+
+import java.util.HashMap;
 
 public class IteratorNextExceptionProcessor extends AbstractProcessor<CtMethod> {
 
@@ -48,6 +53,8 @@ public class IteratorNextExceptionProcessor extends AbstractProcessor<CtMethod> 
 
 	@Override
 	public void process(CtMethod method) {
+		UniqueTypesCollector.getInstance().findAndAddTopTypeOf(method);
+
 		CtIf anIf = getFactory().Core().createIf();
 		CtCodeSnippetExpression expr = getFactory().Core().createCodeSnippetExpression();
 		expr.setValue("!hasNext()");

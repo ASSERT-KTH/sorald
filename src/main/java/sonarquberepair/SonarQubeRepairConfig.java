@@ -2,12 +2,17 @@ package sonarquberepair;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import spoon.reflect.declaration.CtType;
 
 /* All config settings of SonarQube should be gathered here */
 public class SonarQubeRepairConfig {
 	private final List<Integer> ruleNumbers = new ArrayList<Integer>();
+	private HashMap<Integer,CtType> topLevelTypes4Output = new HashMap<Integer,CtType>(); 
 	private String projectKey;
 	private PrettyPrintingStrategy prettyPrintingStrategy;
+	private OutputStrategy outputStrategy;
 	private String repairPath;
 	private String workspace;
 
@@ -20,7 +25,6 @@ public class SonarQubeRepairConfig {
 	public String getProjectKey() {
 		return this.projectKey;
 	}
-
 
 	public void addRuleNumbers(int ruleNumber) {
 		this.ruleNumbers.add(ruleNumber);
@@ -38,6 +42,14 @@ public class SonarQubeRepairConfig {
 		return this.prettyPrintingStrategy;
 	}
 
+	public void setOutputStrategy(OutputStrategy outputStrategy) {
+		this.outputStrategy = outputStrategy;
+	}
+
+	public OutputStrategy getOutputStrategy() {
+		return this.outputStrategy;
+	}
+
 	public void setRepairPath(String repairPath) {
 		this.repairPath = repairPath;
 	}
@@ -52,5 +64,9 @@ public class SonarQubeRepairConfig {
 
 	public String getWorkSpace() {
 		return this.workspace;
+	}
+
+	public HashMap<Integer,CtType> getTopLevelTypes4Output() {
+		return this.topLevelTypes4Output;
 	}
 }

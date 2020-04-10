@@ -12,7 +12,6 @@ import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
 
 public abstract class SonarWebAPIBasedProcessor<E extends CtElement> extends AbstractProcessor<E> {
-
 	private JSONArray jsonArray; //array of JSONObjects, each of which is a bug
 	private Set<Bug> setOfBugs; //set of bugs, corresponding to jsonArray
 	private int ruleKey;

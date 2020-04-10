@@ -7,8 +7,12 @@ import spoon.reflect.code.CtInvocation;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
+import spoon.reflect.declaration.CtType;
 
 import java.util.Arrays;
+import java.util.HashMap;
+
+import sonarquberepair.UniqueTypesCollector;
 
 public class ArrayHashCodeAndToStringProcessor extends AbstractProcessor<CtInvocation<?>> {
 
@@ -31,6 +35,8 @@ public class ArrayHashCodeAndToStringProcessor extends AbstractProcessor<CtInvoc
 
 @Override
 public void process(CtInvocation<?> element) {
+	UniqueTypesCollector.getInstance().findAndAddTopTypeOf(element);
+
 	CtExpression prevTarget = element.getTarget();
 	CtCodeSnippetExpression newTarget = getFactory().Code().createCodeSnippetExpression("Arrays");
 	CtType arraysClass = getFactory().Class().get(Arrays.class);

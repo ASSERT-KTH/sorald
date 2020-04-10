@@ -10,9 +10,13 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtTypeReference;
+import spoon.reflect.declaration.CtType;
 
 import java.util.List;
 import java.math.BigDecimal;
+import java.util.HashMap;
+
+import sonarquberepair.UniqueTypesCollector;
 
 public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtConstructorCall> {
 
@@ -34,6 +38,8 @@ public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtCo
 
 @Override
 public void process(CtConstructorCall cons) {
+	UniqueTypesCollector.getInstance().findAndAddTopTypeOf(cons);
+
 	if (cons.getArguments().size() == 1) {
 		CtType bigDecimalClass = getFactory().Class().get(BigDecimal.class);
 		CtCodeSnippetExpression invoker = getFactory().Code().createCodeSnippetExpression("BigDecimal");
@@ -51,4 +57,5 @@ public void process(CtConstructorCall cons) {
 		cons.replace(newCtConstructorCall);
 	}
 }
+
 }

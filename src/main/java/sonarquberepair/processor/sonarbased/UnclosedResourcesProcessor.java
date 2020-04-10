@@ -12,6 +12,9 @@ import spoon.reflect.code.CtVariableWrite;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.path.CtRole;
 import spoon.reflect.reference.CtVariableReference;
+import spoon.reflect.declaration.CtType;
+
+import sonarquberepair.UniqueTypesCollector;
 
 public class UnclosedResourcesProcessor extends SonarWebAPIBasedProcessor<CtConstructorCall> {
 
@@ -31,8 +34,11 @@ public class UnclosedResourcesProcessor extends SonarWebAPIBasedProcessor<CtCons
 		return super.isToBeProcessedAccordingToSonar(element);
 	}
 
+
 	@Override
 	public void process(CtConstructorCall element) {
+		UniqueTypesCollector.getInstance().findAndAddTopTypeOf(element);
+
 		CtElement parent = element.getParent(e -> e instanceof CtAssignment || e instanceof CtLocalVariable);
 
 		if (parent instanceof CtLocalVariable) {

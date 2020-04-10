@@ -6,8 +6,14 @@ import spoon.support.sniper.SniperJavaPrettyPrinter;
 
 import java.lang.reflect.Constructor;
 import java.io.File;
+import java.util.HashMap;
 
 import sonarquberepair.Processors;
+import spoon.support.JavaOutputProcessor;
+import spoon.support.QueueProcessingManager;
+import spoon.processing.ProcessingManager;
+import spoon.reflect.factory.Factory;
+import spoon.reflect.CtModel;
 
 public class DefaultRepair {
 	private SonarQubeRepairConfig config;
@@ -19,6 +25,7 @@ public class DefaultRepair {
 	public void repair() throws Exception {
 		String outputDir = this.config.getWorkSpace() + File.separator + "spooned";
 
+		System.out.println(this.config.getRepairPath());
 		Launcher launcher = new Launcher();
 		launcher.addInputResource(this.config.getRepairPath());
 		launcher.setSourceOutputDirectory(outputDir);
@@ -45,7 +52,23 @@ public class DefaultRepair {
 			cons = processor.getConstructor();
 			object = cons.newInstance();
 		}
-		launcher.addProcessor((Processor) object);
-		launcher.run();
+
+		CtModel model = launcher.buildModel();
+        Factory factory = launcher.getFactory();
+        ProcessingManager processingManager = new QueueProcessingManager(factory);
+        JavaOutputProcessor javaOutputProcessor = launcher.createOutputWriter();
+        processingManager.addProcessor((Processor) object);
+        processingManager.process(factory.Class().getAll());
+
+        if (this.config.getOutputStrategy() == OutputStrategy.ONLYCHANGED) {
+        	for (Integer key : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().keySet()) {
+            	javaOutputProcessor.process(UniqueTypesCollector.getInstance().getTopLevelTypes4Output().get(key));
+        	}
+        } else {
+        	processingManager.addProcessor(javaOutputProcessor);
+        	processingManager.process(factory.Class().getAll());
+        }
+
+        UniqueTypesCollector.getInstance().reset();
 	}
 }

@@ -1,7 +1,12 @@
 package sonarquberepair.processor.sonarbased;
 
 import spoon.reflect.declaration.CtField;
+import spoon.reflect.declaration.CtType;
 import spoon.reflect.declaration.ModifierKind;
+
+import sonarquberepair.UniqueTypesCollector;
+
+import java.util.HashMap;
 
 public class SerializableFieldInSerializableClassProcessor extends SonarWebAPIBasedProcessor<CtField> {
 
@@ -19,6 +24,7 @@ public class SerializableFieldInSerializableClassProcessor extends SonarWebAPIBa
 
 	@Override
 	public void process(CtField element) {
+		UniqueTypesCollector.getInstance().findAndAddTopTypeOf(element);
 		element.addModifier(ModifierKind.TRANSIENT);
 	}
 

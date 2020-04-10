@@ -7,6 +7,9 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.reference.CtTypeReference;
+import spoon.reflect.declaration.CtType;
+
+import sonarquberepair.UniqueTypesCollector;
 
 public class CompareStringsBoxedTypesWithEqualsProcessor extends AbstractProcessor<CtElement> {
 
@@ -49,6 +52,8 @@ public class CompareStringsBoxedTypesWithEqualsProcessor extends AbstractProcess
 
 @Override
 public void process(CtElement element) {
+	UniqueTypesCollector.getInstance().findAndAddTopTypeOf(element);
+
 	CtBinaryOperator bo = (CtBinaryOperator) element;
 	String negation = "";
 	if (((CtBinaryOperator) element).getKind() == BinaryOperatorKind.NE) {
