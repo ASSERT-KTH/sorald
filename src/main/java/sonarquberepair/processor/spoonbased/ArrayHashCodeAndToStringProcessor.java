@@ -35,7 +35,7 @@ public class ArrayHashCodeAndToStringProcessor extends AbstractProcessor<CtInvoc
 
 @Override
 public void process(CtInvocation<?> element) {
-	UniqueTypesCollector.getInstance().findAndAddTopTypeOf(element);
+	UniqueTypesCollector.getInstance().collect(element);
 
 	CtExpression prevTarget = element.getTarget();
 	CtCodeSnippetExpression newTarget = getFactory().Code().createCodeSnippetExpression("Arrays");

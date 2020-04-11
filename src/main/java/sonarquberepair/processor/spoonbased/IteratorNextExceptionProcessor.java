@@ -53,7 +53,7 @@ public class IteratorNextExceptionProcessor extends AbstractProcessor<CtMethod> 
 
 	@Override
 	public void process(CtMethod method) {
-		UniqueTypesCollector.getInstance().findAndAddTopTypeOf(method);
+		UniqueTypesCollector.getInstance().collect(method);
 
 		CtIf anIf = getFactory().Core().createIf();
 		CtCodeSnippetExpression expr = getFactory().Core().createCodeSnippetExpression();

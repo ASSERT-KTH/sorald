@@ -7,6 +7,7 @@ import spoon.support.sniper.SniperJavaPrettyPrinter;
 import java.lang.reflect.Constructor;
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 
 import sonarquberepair.Processors;
 import spoon.support.JavaOutputProcessor;
@@ -61,13 +62,20 @@ public class DefaultRepair {
         processingManager.process(factory.Class().getAll());
 
         if (this.config.getOutputStrategy() == OutputStrategy.ONLYCHANGED) {
-        	for (Integer key : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().keySet()) {
-            	javaOutputProcessor.process(UniqueTypesCollector.getInstance().getTopLevelTypes4Output().get(key));
+        	for (String inputPath : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().keySet()) {
+            	javaOutputProcessor.process(UniqueTypesCollector.getInstance().getTopLevelTypes4Output().get(inputPath));
+
+            	List<File> list = javaOutputProcessor.getCreatedFiles();
+            	if (!list.isEmpty()) {
+            		String outputPath = list.get(list.size() - 1).getAbsolutePath();
+            		OutInputPathDictionary.getInstance().put(outputPath,inputPath);
+            	}
         	}
         } else {
         	processingManager.addProcessor(javaOutputProcessor);
         	processingManager.process(factory.Class().getAll());
         }
+
 
         UniqueTypesCollector.getInstance().reset();
 	}

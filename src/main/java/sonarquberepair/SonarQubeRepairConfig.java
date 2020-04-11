@@ -9,7 +9,6 @@ import spoon.reflect.declaration.CtType;
 /* All config settings of SonarQube should be gathered here */
 public class SonarQubeRepairConfig {
 	private final List<Integer> ruleNumbers = new ArrayList<Integer>();
-	private HashMap<Integer,CtType> topLevelTypes4Output = new HashMap<Integer,CtType>(); 
 	private String projectKey;
 	private PrettyPrintingStrategy prettyPrintingStrategy;
 	private OutputStrategy outputStrategy;
@@ -66,7 +65,4 @@ public class SonarQubeRepairConfig {
 		return this.workspace;
 	}
 
-	public HashMap<Integer,CtType> getTopLevelTypes4Output() {
-		return this.topLevelTypes4Output;
-	}
 }

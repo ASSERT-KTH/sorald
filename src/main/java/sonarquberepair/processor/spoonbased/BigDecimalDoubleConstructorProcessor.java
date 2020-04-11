@@ -38,7 +38,7 @@ public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtCo
 
 @Override
 public void process(CtConstructorCall cons) {
-	UniqueTypesCollector.getInstance().findAndAddTopTypeOf(cons);
+	UniqueTypesCollector.getInstance().collect(cons);
 
 	if (cons.getArguments().size() == 1) {
 		CtType bigDecimalClass = getFactory().Class().get(BigDecimal.class);

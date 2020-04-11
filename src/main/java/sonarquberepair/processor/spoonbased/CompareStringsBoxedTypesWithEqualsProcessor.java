@@ -52,7 +52,7 @@ public class CompareStringsBoxedTypesWithEqualsProcessor extends AbstractProcess
 
 @Override
 public void process(CtElement element) {
-	UniqueTypesCollector.getInstance().findAndAddTopTypeOf(element);
+	UniqueTypesCollector.getInstance().collect(element);
 
 	CtBinaryOperator bo = (CtBinaryOperator) element;
 	String negation = "";

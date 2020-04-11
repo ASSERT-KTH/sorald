@@ -37,7 +37,7 @@ public class UnclosedResourcesProcessor extends SonarWebAPIBasedProcessor<CtCons
 
 	@Override
 	public void process(CtConstructorCall element) {
-		UniqueTypesCollector.getInstance().findAndAddTopTypeOf(element);
+		UniqueTypesCollector.getInstance().collect(element);
 
 		CtElement parent = element.getParent(e -> e instanceof CtAssignment || e instanceof CtLocalVariable);
 

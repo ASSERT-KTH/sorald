@@ -29,7 +29,7 @@ public class DeadStoreProcessor extends SonarWebAPIBasedProcessor<CtStatement> {
 
 	@Override
 	public void process(CtStatement element) {
-		UniqueTypesCollector.getInstance().findAndAddTopTypeOf(element);
+		UniqueTypesCollector.getInstance().collect(element);
 		element.delete();
 	}
 

@@ -24,7 +24,7 @@ public class SerializableFieldInSerializableClassProcessor extends SonarWebAPIBa
 
 	@Override
 	public void process(CtField element) {
-		UniqueTypesCollector.getInstance().findAndAddTopTypeOf(element);
+		UniqueTypesCollector.getInstance().collect(element);
 		element.addModifier(ModifierKind.TRANSIENT);
 	}
 
