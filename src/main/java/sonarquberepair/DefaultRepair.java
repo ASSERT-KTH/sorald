@@ -17,8 +17,10 @@ import spoon.reflect.factory.Factory;
 import spoon.reflect.CtModel;
 
 public class DefaultRepair {
+	private final SonarGitPatchGenerator generator = new SonarGitPatchGenerator();
 	private SonarQubeRepairConfig config;
-	
+	private int patchCounter = 1;
+
 	public DefaultRepair(SonarQubeRepairConfig config) {
 		this.config = config;
 	}
@@ -65,10 +67,20 @@ public class DefaultRepair {
         	for (String inputPath : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().keySet()) {
             	javaOutputProcessor.process(UniqueTypesCollector.getInstance().getTopLevelTypes4Output().get(inputPath));
 
+            	/* if also generating git patches */
+            	File patchDir = new File(this.config.getWorkSpace() + File.separator + "SonarGitPatches");
+
+            	if (!patchDir.exists()) {
+            		patchDir.mkdirs();
+            	}
             	List<File> list = javaOutputProcessor.getCreatedFiles();
             	if (!list.isEmpty()) {
             		String outputPath = list.get(list.size() - 1).getAbsolutePath();
-            		OutInputPathDictionary.getInstance().put(outputPath,inputPath);
+            		if (this.config.getGitRepoPath() != null) {
+            			this.generator.setGitProjectRootDir(this.config.getGitRepoPath());
+            			generator.generate(inputPath,outputPath, patchDir.getAbsolutePath() + File.separator + "sonarpatch_" + this.patchCounter);
+            			this.patchCounter++;
+            		}
             	}
         	}
         } else {

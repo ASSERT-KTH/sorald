@@ -67,6 +67,12 @@ public class Main {
 		opt.setHelp("Workspace of SonarQubeRepair");
 		jsap.registerParameter(opt);
 
+		opt = new FlaggedOption("gitRepoPath");
+		opt.setLongFlag("gitRepoPath");
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setHelp("Workspace of SonarQubeRepair");
+		jsap.registerParameter(opt);
+
 		return jsap;
 	}
 
@@ -79,6 +85,7 @@ public class Main {
 		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(jsapRes.getString("prettyPrintingStrategy")));
 		this.getConfig().setOutputStrategy(OutputStrategy.valueOf(jsapRes.getString("outputStrategy")));
 		this.getConfig().setWorkSpace(jsapRes.getString("workspace"));
+		this.getConfig().setGitRepoPath(jsapRes.getString("gitRepoPath"));
 	}
 
 

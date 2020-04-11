@@ -14,6 +14,7 @@ public class SonarQubeRepairConfig {
 	private OutputStrategy outputStrategy;
 	private String repairPath;
 	private String workspace;
+	private String gitRepoPath;
 
 	public SonarQubeRepairConfig() {}
 
@@ -65,4 +66,11 @@ public class SonarQubeRepairConfig {
 		return this.workspace;
 	}
 
+	public void setGitRepoPath(String gitRepoPath) {
+		this.gitRepoPath = gitRepoPath;
+	}
+
+	public String getGitRepoPath() {
+		return this.gitRepoPath;
+	}
 }
