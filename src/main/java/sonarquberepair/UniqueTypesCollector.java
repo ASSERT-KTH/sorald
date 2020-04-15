@@ -9,9 +9,11 @@ import spoon.reflect.declaration.CtElement;
 public class UniqueTypesCollector {
 	private static UniqueTypesCollector uniqueTypesCollector;
 
-	private Map<String,CtType> topLevelTypes4Output = new HashMap<String,CtType>();
+	private Map<String,CtType> topLevelTypes4Output;
 
-	private UniqueTypesCollector() {}
+	private UniqueTypesCollector() {
+		this.topLevelTypes4Output = new HashMap<String,CtType>();
+	}
 
 	public static UniqueTypesCollector getInstance() {
 		if (uniqueTypesCollector == null) {

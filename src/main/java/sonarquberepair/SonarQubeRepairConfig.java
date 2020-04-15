@@ -9,7 +9,7 @@ public class SonarQubeRepairConfig {
 	private String projectKey;
 	private PrettyPrintingStrategy prettyPrintingStrategy;
 	private FileOutputStrategy fileOutputStrategy;
-	private String repairPath;
+	private String originalFilesPath;
 	private String workspace;
 	private String gitRepoPath;
 
@@ -47,19 +47,19 @@ public class SonarQubeRepairConfig {
 		return this.fileOutputStrategy;
 	}
 
-	public void setRepairPath(String repairPath) {
-		this.repairPath = repairPath;
+	public void setOriginalFilesPath(String originalFilesPath) {
+		this.originalFilesPath = originalFilesPath;
 	}
 
-	public String getRepairPath() {
-		return this.repairPath;
+	public String getOriginalFilesPath() {
+		return this.originalFilesPath;
 	}
 
-	public void setWorkSpace(String workspace) {
+	public void setWorkspace(String workspace) {
 		this.workspace = workspace;
 	}
 
-	public String getWorkSpace() {
+	public String getWorkspace() {
 		return this.workspace;
 	}
 

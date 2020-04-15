@@ -17,7 +17,7 @@ public class UnclosedResourcesProcessorTest {
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new UnclosedResourcesCheck());
 		Main.main(new String[]{
-			"--repairPath",pathToBuggyFile,
+			"--originalFilesPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleKeys","2095",
 			"--workspace",Constants.WORKSPACE});

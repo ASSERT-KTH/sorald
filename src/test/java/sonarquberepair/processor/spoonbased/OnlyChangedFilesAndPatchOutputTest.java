@@ -12,7 +12,7 @@ public class OnlyChangedFilesAndPatchOutputTest {
 	@Test
 	public void test() throws Exception {
 		Main.main(new String[]{
-			"--repairPath",Constants.PATH_TO_FILE,
+			"--originalFilesPath",Constants.PATH_TO_FILE,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleKeys","2111",
 			"--workspace","ChangedOnlyFilesOutput",

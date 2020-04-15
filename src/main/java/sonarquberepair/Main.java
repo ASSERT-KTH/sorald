@@ -33,8 +33,8 @@ public class Main {
 		opt.setHelp("what is this projectKey ?");
 		jsap.registerParameter(opt);
 
-		opt = new FlaggedOption("repairPath");
-		opt.setLongFlag("repairPath");
+		opt = new FlaggedOption("originalFilesPath");
+		opt.setLongFlag("originalFilesPath");
 		opt.setStringParser(JSAP.STRING_PARSER);
 		opt.setDefault("./source/act/");
 		opt.setHelp("The input folder or file for SonarQube Repair to work on");
@@ -75,32 +75,24 @@ public class Main {
 
 		this.getConfig().addRuleKeys(jsapRes.getInt("ruleKeys"));
 		this.getConfig().setProjectKey(jsapRes.getString("projectKey"));
-		this.getConfig().setRepairPath(jsapRes.getString("repairPath"));
+		this.getConfig().setoriginalFilesPath(jsapRes.getString("originalFilesPath"));
 		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(jsapRes.getString("prettyPrintingStrategy")));
 		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(jsapRes.getString("fileOutputStrategy")));
-		this.getConfig().setWorkSpace(jsapRes.getString("workspace"));
+		this.getConfig().setWorkspace(jsapRes.getString("workspace"));
 		this.getConfig().setGitRepoPath(jsapRes.getString("gitRepoPath"));
 	}
 
 
 	public DefaultRepair getRepairProcess() {
-		DefaultRepair repairProc = new DefaultRepair(this.config);
-		return repairProc;
-	}
-
-	/**
-	 * @param args string array. Give either 0, 1 or 2 arguments. first argument is sonarqube rule-number which you can get from https://rules.sonarsource.com/java/type/Bug
-	 *             second argument is the projectKey for the sonarqube analysis of source files. for  example "fr.inria.gforge.spoon:spoon-core"
-	 */
-	public void start(String[] args) throws Exception {
-		JSAP jsap = defineArgs();
-		this.initConfig(jsap,args);
-		this.getRepairProcess().repair();
-		System.out.println("done");
+		DefaultRepair defaultRepair = new DefaultRepair(this.config);
+		return defaultRepair;
 	}
 
 	public static void main(String[] args) throws Exception{
 		Main main = new Main();
-		main.start(args);
+		JSAP jsap = defineArgs();
+		this.initConfig(jsap,args);
+		this.getRepairProcess().repair();
+		System.out.println("done");
 	}
 }

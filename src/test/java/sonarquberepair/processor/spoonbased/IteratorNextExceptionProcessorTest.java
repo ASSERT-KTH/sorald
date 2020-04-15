@@ -17,7 +17,7 @@ public class IteratorNextExceptionProcessorTest {
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new IteratorNextExceptionCheck());
 		Main.main(new String[]{
-			"--repairPath",pathToBuggyFile,
+			"--originalFilesPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleKeys","2272",
 			"--workspace",Constants.WORKSPACE});

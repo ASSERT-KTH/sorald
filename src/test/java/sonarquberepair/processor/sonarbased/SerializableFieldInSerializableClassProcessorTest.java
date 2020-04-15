@@ -17,7 +17,7 @@ public class SerializableFieldInSerializableClassProcessorTest {
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new SerializableFieldInSerializableClassCheck());
 		Main.main(new String[]{
-			"--repairPath",pathToBuggyFile,
+			"--originalFilesPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleKeys","1948",
 			"--workspace",Constants.WORKSPACE});

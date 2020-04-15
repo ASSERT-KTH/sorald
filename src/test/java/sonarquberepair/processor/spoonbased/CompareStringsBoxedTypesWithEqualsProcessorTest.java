@@ -17,7 +17,7 @@ public class CompareStringsBoxedTypesWithEqualsProcessorTest {
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new CompareStringsBoxedTypesWithEqualsCheck());
 		Main.main(new String[]{
-			"--repairPath",pathToBuggyFile,
+			"--originalFilesPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleKeys","4973",
 			"--workspace",Constants.WORKSPACE});

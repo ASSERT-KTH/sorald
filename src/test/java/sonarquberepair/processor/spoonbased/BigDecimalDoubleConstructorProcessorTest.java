@@ -17,7 +17,7 @@ public class BigDecimalDoubleConstructorProcessorTest {
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new BigDecimalDoubleConstructorCheck());
 		Main.main(new String[]{
-			"--repairPath",pathToBuggyFile,
+			"--originalFilesPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleKeys","2111",
 			"--workspace",Constants.WORKSPACE});

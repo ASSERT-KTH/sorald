@@ -23,11 +23,11 @@ public class DefaultRepair {
 	}
 
 	public void repair() throws Exception {
-		File outputDir = new File(this.config.getWorkSpace() + File.separator + "spooned");
+		File outputDir = new File(this.config.getWorkspace() + File.separator + "spooned");
 
 		Launcher launcher = new Launcher();
 		
-		launcher.addInputResource(this.config.getRepairPath());
+		launcher.addInputResource(this.config.getoriginalFilesPath());
 		launcher.setSourceOutputDirectory(outputDir.getAbsolutePath());
 		launcher.getEnvironment().setAutoImports(true);
 		if (this.config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER) {
@@ -65,7 +65,7 @@ public class DefaultRepair {
 				javaOutputProcessor.process(UniqueTypesCollector.getInstance().getTopLevelTypes4Output().get(inputPath));
 
 				/* if also generating git patches */
-				File patchDir = new File(this.config.getWorkSpace() + File.separator + "SonarGitPatches");
+				File patchDir = new File(this.config.getWorkspace() + File.separator + "SonarGitPatches");
 
 				if (!patchDir.exists()) {
 					patchDir.mkdirs();

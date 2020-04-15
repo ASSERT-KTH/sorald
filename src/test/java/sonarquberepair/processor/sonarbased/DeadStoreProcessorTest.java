@@ -16,7 +16,7 @@ public class DeadStoreProcessorTest {
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new DeadStoreCheck());
 		Main.main(new String[]{
-			"--repairPath",pathToBuggyFile,
+			"--originalFilesPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleKeys","1854",
 			"--workspace",Constants.WORKSPACE});

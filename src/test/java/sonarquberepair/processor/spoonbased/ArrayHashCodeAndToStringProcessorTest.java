@@ -17,7 +17,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
 		Main.main(new String[]{
-			"--repairPath",pathToBuggyFile,
+			"--originalFilesPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleKeys","2116",
 			"--workspace",Constants.WORKSPACE});
@@ -33,7 +33,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
 		Main.main(new String[]{
-			"--repairPath",pathToBuggyFile,
+			"--originalFilesPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
 			"--ruleKeys","2116",
 			"--prettyPrintingStrategy","SNIPER",
