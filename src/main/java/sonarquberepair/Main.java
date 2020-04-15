@@ -47,10 +47,10 @@ public class Main {
 		opt.setHelp("Mode for pretty printing . NORMAL: default pretty print, SNIPER: sniper mode on for more precise code transformation pretty print");
 		jsap.registerParameter(opt);
 
-		opt = new FlaggedOption("outputStrategy");
-		opt.setLongFlag("outputStrategy");
+		opt = new FlaggedOption("fileOutputStrategy");
+		opt.setLongFlag("fileOutputStrategy");
 		opt.setStringParser(JSAP.STRING_PARSER);
-		opt.setDefault(OutputStrategy.ONLYCHANGED.name());
+		opt.setDefault(FileOutputStrategy.ONLYCHANGED.name());
 		opt.setHelp("Mode for output. ONLYCHANGED: default choice outputing only files modified by processors, ALL: everything including those unchanged files");
 		jsap.registerParameter(opt);
 
@@ -77,7 +77,7 @@ public class Main {
 		this.getConfig().setProjectKey(jsapRes.getString("projectKey"));
 		this.getConfig().setRepairPath(jsapRes.getString("repairPath"));
 		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(jsapRes.getString("prettyPrintingStrategy")));
-		this.getConfig().setOutputStrategy(OutputStrategy.valueOf(jsapRes.getString("outputStrategy")));
+		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(jsapRes.getString("fileOutputStrategy")));
 		this.getConfig().setWorkSpace(jsapRes.getString("workspace"));
 		this.getConfig().setGitRepoPath(jsapRes.getString("gitRepoPath"));
 	}

@@ -8,7 +8,7 @@ public class SonarQubeRepairConfig {
 	private final List<Integer> ruleNumbers = new ArrayList<Integer>();
 	private String projectKey;
 	private PrettyPrintingStrategy prettyPrintingStrategy;
-	private OutputStrategy outputStrategy;
+	private FileOutputStrategy fileOutputStrategy;
 	private String repairPath;
 	private String workspace;
 	private String gitRepoPath;
@@ -39,12 +39,12 @@ public class SonarQubeRepairConfig {
 		return this.prettyPrintingStrategy;
 	}
 
-	public void setOutputStrategy(OutputStrategy outputStrategy) {
-		this.outputStrategy = outputStrategy;
+	public void setFileOutputStrategy(FileOutputStrategy fileOutputStrategy) {
+		this.fileOutputStrategy = fileOutputStrategy;
 	}
 
-	public OutputStrategy getOutputStrategy() {
-		return this.outputStrategy;
+	public FileOutputStrategy getFileOutputStrategy() {
+		return this.fileOutputStrategy;
 	}
 
 	public void setRepairPath(String repairPath) {

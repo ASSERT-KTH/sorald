@@ -28,7 +28,6 @@ public class UniqueTypesCollector {
 		this.uniqueTypesCollector = new UniqueTypesCollector();
 	}
 
-	@Override
 	public void collect(CtElement element) {
 		if (this.topLevelTypes4Output != null) {
 			CtType t = (CtType)element.getParent(CtType.class);

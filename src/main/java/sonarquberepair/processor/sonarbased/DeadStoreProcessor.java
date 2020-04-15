@@ -4,7 +4,7 @@ import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtLocalVariable;
 import spoon.reflect.code.CtStatement;
 
-import sonarquberepair.UniqueTypesCollector;Zz
+import sonarquberepair.UniqueTypesCollector;
 
 public class DeadStoreProcessor extends SonarWebAPIBasedProcessor<CtStatement> {
 

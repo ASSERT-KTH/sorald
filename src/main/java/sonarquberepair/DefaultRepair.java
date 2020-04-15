@@ -19,7 +19,7 @@ import spoon.reflect.CtModel;
 import spoon.IncrementalLauncher;
 
 public class DefaultRepair {
-	private final SonarGitPatchGenerator generator = new SonarGitPatchGenerator();
+	private final GitPatchGenerator generator = new GitPatchGenerator();
 	private SonarQubeRepairConfig config;
 	private int patchCounter = 1;
 
@@ -65,7 +65,7 @@ public class DefaultRepair {
 		processingManager.addProcessor((Processor) object);
 		processingManager.process(factory.Class().getAll());
 
-		if (this.config.getOutputStrategy() == OutputStrategy.ONLYCHANGED) {
+		if (this.config.getFileOutputStrategy() == FileOutputStrategy.ONLYCHANGED) {
 			for (String inputPath : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().keySet()) {
 				javaOutputProcessor.process(UniqueTypesCollector.getInstance().getTopLevelTypes4Output().get(inputPath));
 
