@@ -7,10 +7,8 @@ import spoon.reflect.code.CtInvocation;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
-import spoon.reflect.declaration.CtType;
 
 import java.util.Arrays;
-import java.util.HashMap;
 
 import sonarquberepair.UniqueTypesCollector;
 

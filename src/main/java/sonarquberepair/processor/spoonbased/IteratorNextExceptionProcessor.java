@@ -10,14 +10,11 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtTypeReference;
-import spoon.reflect.declaration.CtType;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import sonarquberepair.UniqueTypesCollector;
-
-import java.util.HashMap;
 
 public class IteratorNextExceptionProcessor extends AbstractProcessor<CtMethod> {
 

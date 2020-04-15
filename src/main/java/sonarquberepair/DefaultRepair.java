@@ -6,8 +6,9 @@ import spoon.support.sniper.SniperJavaPrettyPrinter;
 
 import java.lang.reflect.Constructor;
 import java.io.File;
-import java.util.HashMap;
 import java.util.List;
+import java.nio.file.Paths;
+
 
 import sonarquberepair.Processors;
 import spoon.support.JavaOutputProcessor;
@@ -15,6 +16,7 @@ import spoon.support.QueueProcessingManager;
 import spoon.processing.ProcessingManager;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.CtModel;
+import spoon.IncrementalLauncher;
 
 public class DefaultRepair {
 	private final SonarGitPatchGenerator generator = new SonarGitPatchGenerator();
@@ -26,12 +28,12 @@ public class DefaultRepair {
 	}
 
 	public void repair() throws Exception {
-		String outputDir = this.config.getWorkSpace() + File.separator + "spooned";
+		File outputDir = new File(this.config.getWorkSpace() + File.separator + "spooned");
 
-		System.out.println(this.config.getRepairPath());
 		Launcher launcher = new Launcher();
+		
 		launcher.addInputResource(this.config.getRepairPath());
-		launcher.setSourceOutputDirectory(outputDir);
+		launcher.setSourceOutputDirectory(outputDir.getAbsolutePath());
 		launcher.getEnvironment().setAutoImports(true);
 		if (this.config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER) {
 			launcher.getEnvironment().setPrettyPrinterCreator(() -> {
@@ -57,38 +59,38 @@ public class DefaultRepair {
 		}
 
 		CtModel model = launcher.buildModel();
-        Factory factory = launcher.getFactory();
-        ProcessingManager processingManager = new QueueProcessingManager(factory);
-        JavaOutputProcessor javaOutputProcessor = launcher.createOutputWriter();
-        processingManager.addProcessor((Processor) object);
-        processingManager.process(factory.Class().getAll());
+		Factory factory = launcher.getFactory();
+		ProcessingManager processingManager = new QueueProcessingManager(factory);
+		JavaOutputProcessor javaOutputProcessor = launcher.createOutputWriter();
+		processingManager.addProcessor((Processor) object);
+		processingManager.process(factory.Class().getAll());
 
-        if (this.config.getOutputStrategy() == OutputStrategy.ONLYCHANGED) {
-        	for (String inputPath : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().keySet()) {
-            	javaOutputProcessor.process(UniqueTypesCollector.getInstance().getTopLevelTypes4Output().get(inputPath));
+		if (this.config.getOutputStrategy() == OutputStrategy.ONLYCHANGED) {
+			for (String inputPath : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().keySet()) {
+				javaOutputProcessor.process(UniqueTypesCollector.getInstance().getTopLevelTypes4Output().get(inputPath));
 
-            	/* if also generating git patches */
-            	File patchDir = new File(this.config.getWorkSpace() + File.separator + "SonarGitPatches");
+				/* if also generating git patches */
+				File patchDir = new File(this.config.getWorkSpace() + File.separator + "SonarGitPatches");
 
-            	if (!patchDir.exists()) {
-            		patchDir.mkdirs();
-            	}
-            	List<File> list = javaOutputProcessor.getCreatedFiles();
-            	if (!list.isEmpty()) {
-            		String outputPath = list.get(list.size() - 1).getAbsolutePath();
-            		if (this.config.getGitRepoPath() != null) {
-            			this.generator.setGitProjectRootDir(this.config.getGitRepoPath());
-            			generator.generate(inputPath,outputPath, patchDir.getAbsolutePath() + File.separator + "sonarpatch_" + this.patchCounter);
-            			this.patchCounter++;
-            		}
-            	}
-        	}
-        } else {
-        	processingManager.addProcessor(javaOutputProcessor);
-        	processingManager.process(factory.Class().getAll());
-        }
+				if (!patchDir.exists()) {
+					patchDir.mkdirs();
+				}
+				List<File> list = javaOutputProcessor.getCreatedFiles();
+				if (!list.isEmpty()) {
+					String outputPath = list.get(list.size() - 1).getAbsolutePath();
+					if (this.config.getGitRepoPath() != null) {
+						this.generator.setGitProjectRootDir(this.config.getGitRepoPath());
+						generator.generate(inputPath,outputPath, patchDir.getAbsolutePath() + File.separator + "sonarpatch_" + this.patchCounter);
+						this.patchCounter++;
+					}
+				}
+			}
+		} else {
+			processingManager.addProcessor(javaOutputProcessor);
+			processingManager.process(factory.Class().getAll());
+		}
 
 
-        UniqueTypesCollector.getInstance().reset();
+		UniqueTypesCollector.getInstance().reset();
 	}
 }

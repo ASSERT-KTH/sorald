@@ -1,17 +1,11 @@
 package sonarquberepair;
 
-import spoon.Launcher;
-import spoon.processing.Processor;
 import spoon.support.sniper.SniperJavaPrettyPrinter;
-
-import java.lang.reflect.Constructor;
 
 import com.martiansoftware.jsap.FlaggedOption;
 import com.martiansoftware.jsap.JSAP;
 import com.martiansoftware.jsap.JSAPException;
 import com.martiansoftware.jsap.JSAPResult;
-import com.martiansoftware.jsap.stringparsers.EnumeratedStringParser;
-import com.martiansoftware.jsap.stringparsers.FileStringParser;
 
 
 public class Main {
@@ -36,14 +30,14 @@ public class Main {
 		opt.setLongFlag("projectKey");
 		opt.setStringParser(JSAP.STRING_PARSER);
 		opt.setDefault("fr.inria.gforge.spoon:spoon-core");
-		opt.setHelp("what is this projectKey ? ");
+		opt.setHelp("what is this projectKey ?");
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption("repairPath");
 		opt.setLongFlag("repairPath");
 		opt.setStringParser(JSAP.STRING_PARSER);
 		opt.setDefault("./source/act/");
-		opt.setHelp("what is this projectKey ? ");
+		opt.setHelp("The input folder or file for SonarQube Repair to work on");
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption("prettyPrintingStrategy");

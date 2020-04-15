@@ -11,7 +11,6 @@ public class SerializableFieldInSerializableClassProcessorTest {
 
 	@Test
 	public void test() throws Exception {
-
 		String fileName = "SerializableFieldProcessorTest.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
 		String pathToRepairedFile = Constants.WORKSPACE + "/spooned/" + fileName;

@@ -2,9 +2,6 @@ package sonarquberepair;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.HashMap;
-
-import spoon.reflect.declaration.CtType;
 
 /* All config settings of SonarQube should be gathered here */
 public class SonarQubeRepairConfig {

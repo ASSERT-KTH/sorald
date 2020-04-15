@@ -1,22 +1,15 @@
 package sonarquberepair.processor.spoonbased;
 
+import sonarquberepair.UniqueTypesCollector;
 import spoon.processing.AbstractProcessor;
-import spoon.reflect.code.CtCodeSnippetExpression;
-import spoon.reflect.code.CtConstructorCall;
-import spoon.reflect.code.CtExpression;
-import spoon.reflect.code.CtInvocation;
-import spoon.reflect.code.CtLiteral;
+import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtTypeReference;
-import spoon.reflect.declaration.CtType;
 
-import java.util.List;
 import java.math.BigDecimal;
-import java.util.HashMap;
-
-import sonarquberepair.UniqueTypesCollector;
+import java.util.List;
 
 public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtConstructorCall> {
 

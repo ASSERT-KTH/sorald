@@ -6,7 +6,7 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.declaration.CtElement;
 
 /* Only add the CtType object if it does not exist in the map yet */
-public class UniqueTypesCollector implements Collector<CtElement>{
+public class UniqueTypesCollector {
 	private static UniqueTypesCollector uniqueTypesCollector;
 
 	private Map<String,CtType> topLevelTypes4Output = new HashMap<String,CtType>();

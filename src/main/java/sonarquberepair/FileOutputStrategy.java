@@ -1,6 +1,6 @@
 package sonarquberepair;
 
-public enum OutputStrategy {
+public enum FileOutputStrategy {
 	ALL,
 	ONLYCHANGED
 }

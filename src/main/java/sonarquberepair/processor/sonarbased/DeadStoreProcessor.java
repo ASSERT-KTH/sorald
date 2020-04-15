@@ -3,12 +3,8 @@ package sonarquberepair.processor.sonarbased;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtLocalVariable;
 import spoon.reflect.code.CtStatement;
-import spoon.reflect.declaration.CtType;
-import sonarquberepair.SonarQubeRepairConfig;
 
-import sonarquberepair.UniqueTypesCollector;
-
-import java.util.HashMap;
+import sonarquberepair.UniqueTypesCollector;Zz
 
 public class DeadStoreProcessor extends SonarWebAPIBasedProcessor<CtStatement> {
 
@@ -32,6 +28,5 @@ public class DeadStoreProcessor extends SonarWebAPIBasedProcessor<CtStatement> {
 		UniqueTypesCollector.getInstance().collect(element);
 		element.delete();
 	}
-
 
 }

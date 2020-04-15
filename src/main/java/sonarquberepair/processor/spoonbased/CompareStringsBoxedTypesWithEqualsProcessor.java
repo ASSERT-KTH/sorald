@@ -7,7 +7,6 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.reference.CtTypeReference;
-import spoon.reflect.declaration.CtType;
 
 import sonarquberepair.UniqueTypesCollector;
 
