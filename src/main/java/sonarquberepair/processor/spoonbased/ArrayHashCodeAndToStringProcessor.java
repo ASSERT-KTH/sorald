@@ -22,33 +22,34 @@ public class ArrayHashCodeAndToStringProcessor extends AbstractProcessor<CtInvoc
 		if (candidate == null || candidate.getTarget() == null) {
 			return false;
 		}
+		
 		if (candidate.getTarget().getType().isArray()) {
 			if (candidate.getExecutable().getSignature().equals(TOSTRING + "()") ||
 				(candidate.getExecutable().getSignature().equals(HASHCODE + "()"))) {
 				return true;
+			}
 		}
+		return false;
 	}
-	return false;
-}
 
-@Override
-public void process(CtInvocation<?> element) {
-	UniqueTypesCollector.getInstance().collect(element);
+	@Override
+	public void process(CtInvocation<?> element) {
+		UniqueTypesCollector.getInstance().collect(element);
 
-	CtExpression prevTarget = element.getTarget();
-	CtCodeSnippetExpression newTarget = getFactory().Code().createCodeSnippetExpression("Arrays");
-	CtType arraysClass = getFactory().Class().get(Arrays.class);
-	CtMethod method = null;
-	if (element.getExecutable().getSignature().equals(HASHCODE + "()")) {
-		method = (CtMethod) arraysClass.getMethodsByName(HASHCODE).get(0);
-	} else if (element.getExecutable().getSignature().equals(TOSTRING + "()")) {
-		method = (CtMethod) arraysClass.getMethodsByName(TOSTRING).get(0);
-	} else {
-		System.err.println("Unhandled case. Something went wrong.");
+		CtExpression prevTarget = element.getTarget();
+		CtCodeSnippetExpression newTarget = getFactory().Code().createCodeSnippetExpression("Arrays");
+		CtType arraysClass = getFactory().Class().get(Arrays.class);
+		CtMethod method = null;
+		if (element.getExecutable().getSignature().equals(HASHCODE + "()")) {
+			method = (CtMethod) arraysClass.getMethodsByName(HASHCODE).get(0);
+		} else if (element.getExecutable().getSignature().equals(TOSTRING + "()")) {
+			method = (CtMethod) arraysClass.getMethodsByName(TOSTRING).get(0);
+		} else {
+			System.err.println("Unhandled case. Something went wrong.");
+		}
+		CtExecutableReference refToMethod = getFactory().Executable().createReference(method);
+		CtInvocation newInvocation = getFactory().Code().createInvocation(newTarget, refToMethod, prevTarget);
+		element.replace(newInvocation);
 	}
-	CtExecutableReference refToMethod = getFactory().Executable().createReference(method);
-	CtInvocation newInvocation = getFactory().Code().createInvocation(newTarget, refToMethod, prevTarget);
-	element.replace(newInvocation);
-}
 
 }

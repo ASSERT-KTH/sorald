@@ -43,24 +43,24 @@ public class CompareStringsBoxedTypesWithEqualsProcessor extends AbstractProcess
 						(!lType.unbox().equals(lType) && rType.equals(stringType)) ||
 						(!lType.unbox().equals(lType) && !rType.unbox().equals(rType)))) {
 					return true;
+				}
 			}
 		}
+		return false;
 	}
-	return false;
-}
 
-@Override
-public void process(CtElement element) {
-	UniqueTypesCollector.getInstance().collect(element);
+	@Override
+	public void process(CtElement element) {
+		UniqueTypesCollector.getInstance().collect(element);
 
-	CtBinaryOperator bo = (CtBinaryOperator) element;
-	String negation = "";
-	if (((CtBinaryOperator) element).getKind() == BinaryOperatorKind.NE) {
-		negation = "!";
+		CtBinaryOperator bo = (CtBinaryOperator) element;
+		String negation = "";
+		if (((CtBinaryOperator) element).getKind() == BinaryOperatorKind.NE) {
+			negation = "!";
+		}
+		CtCodeSnippetExpression newBinaryOperator = getFactory().Code().createCodeSnippetExpression(
+			negation + bo.getLeftHandOperand().toString() + ".equals(" + bo.getRightHandOperand().toString() + ")");
+		bo.replace(newBinaryOperator);
 	}
-	CtCodeSnippetExpression newBinaryOperator = getFactory().Code().createCodeSnippetExpression(
-		negation + bo.getLeftHandOperand().toString() + ".equals(" + bo.getRightHandOperand().toString() + ")");
-	bo.replace(newBinaryOperator);
-}
 
 }
