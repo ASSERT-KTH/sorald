@@ -11,5 +11,5 @@ spooned/
 .eclipse
 SampleProcessor.java
 script.sh
-sonar-branch-workspace/
+sonar-workspace/
 OnlyChangedFilesOutput/
