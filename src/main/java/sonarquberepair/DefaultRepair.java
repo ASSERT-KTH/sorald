@@ -27,7 +27,7 @@ public class DefaultRepair {
 
 		Launcher launcher = new Launcher();
 		
-		launcher.addInputResource(this.config.getoriginalFilesPath());
+		launcher.addInputResource(this.config.getOriginalFilesPath());
 		launcher.setSourceOutputDirectory(outputDir.getAbsolutePath());
 		launcher.getEnvironment().setAutoImports(true);
 		if (this.config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER) {

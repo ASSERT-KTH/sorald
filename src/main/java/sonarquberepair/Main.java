@@ -75,7 +75,7 @@ public class Main {
 
 		this.getConfig().addRuleKeys(jsapRes.getInt("ruleKeys"));
 		this.getConfig().setProjectKey(jsapRes.getString("projectKey"));
-		this.getConfig().setoriginalFilesPath(jsapRes.getString("originalFilesPath"));
+		this.getConfig().setOriginalFilesPath(jsapRes.getString("originalFilesPath"));
 		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(jsapRes.getString("prettyPrintingStrategy")));
 		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(jsapRes.getString("fileOutputStrategy")));
 		this.getConfig().setWorkspace(jsapRes.getString("workspace"));
@@ -88,11 +88,19 @@ public class Main {
 		return defaultRepair;
 	}
 
-	public static void main(String[] args) throws Exception{
-		Main main = new Main();
-		JSAP jsap = defineArgs();
+	/**
+	 * @param args string array. Give either 0, 1 or 2 arguments. first argument is sonarqube rule-number which you can get from https://rules.sonarsource.com/java/type/Bug
+	 *             second argument is the projectKey for the sonarqube analysis of source files. for  example "fr.inria.gforge.spoon:spoon-core"
+	 */
+	public void start(String[] args) throws Exception {
+		JSAP jsap = this.defineArgs();
 		this.initConfig(jsap,args);
 		this.getRepairProcess().repair();
 		System.out.println("done");
+	}
+
+	public static void main(String[] args) throws Exception{
+		Main main = new Main();
+		main.start(args);
 	}
 }
