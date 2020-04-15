@@ -23,7 +23,7 @@ public class Main {
 		opt.setLongFlag("ruleKeys");
 		opt.setStringParser(JSAP.INTEGER_PARSER);
 		opt.setDefault("2116");
-		opt.setHelp("Sonarqube rule number, Check https://rules.sonarsource.com/java");
+		opt.setHelp("Sonarqube rule key, Check https://rules.sonarsource.com/java");
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption("projectKey");
@@ -37,7 +37,7 @@ public class Main {
 		opt.setLongFlag("originalFilesPath");
 		opt.setStringParser(JSAP.STRING_PARSER);
 		opt.setDefault("./source/act/");
-		opt.setHelp("The input folder or file for SonarQube Repair to work on");
+		opt.setHelp("The input folder or file for sonarqube-repair to work on");
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption("prettyPrintingStrategy");
@@ -58,13 +58,13 @@ public class Main {
 		opt.setLongFlag("workspace");
 		opt.setStringParser(JSAP.STRING_PARSER);
 		opt.setDefault("./sonar-workspace");
-		opt.setHelp("Workspace of SonarQubeRepair");
+		opt.setHelp("Workspace of sonarqube-repair");
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption("gitRepoPath");
 		opt.setLongFlag("gitRepoPath");
 		opt.setStringParser(JSAP.STRING_PARSER);
-		opt.setHelp("Root Path of the Git repo directory");
+		opt.setHelp("Root Path of the input Github repo directory");
 		jsap.registerParameter(opt);
 
 		return jsap;
@@ -88,10 +88,6 @@ public class Main {
 		return defaultRepair;
 	}
 
-	/**
-	 * @param args string array. Give either 0, 1 or 2 arguments. first argument is sonarqube rule-number which you can get from https://rules.sonarsource.com/java/type/Bug
-	 *             second argument is the projectKey for the sonarqube analysis of source files. for  example "fr.inria.gforge.spoon:spoon-core"
-	 */
 	public void start(String[] args) throws Exception {
 		JSAP jsap = this.defineArgs();
 		this.initConfig(jsap,args);

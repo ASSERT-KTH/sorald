@@ -16,7 +16,6 @@ public class CastArithmeticOperandTest {
         String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
         String pathToRepairedFile = Constants.WORKSPACE + "/spooned/" + fileName;
 
-        System.out.println(pathToBuggyFile + " " + pathToRepairedFile);
         JavaCheckVerifier.verify(pathToBuggyFile, new CastArithmeticOperandCheck());
         Main.main(new String[]{
             "--originalFilesPath",pathToBuggyFile,
