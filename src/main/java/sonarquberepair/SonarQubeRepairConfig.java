@@ -23,8 +23,8 @@ public class SonarQubeRepairConfig {
 		return this.projectKey;
 	}
 
-	public void addRuleKeys(int ruleNumber) {
-		this.ruleKeys.add(ruleNumber);
+	public void addRuleKeys(int rulekey) {
+		this.ruleKeys.add(rulekey);
 	}
 
 	public List<Integer> getRuleKeys() {

@@ -18,7 +18,7 @@ public class Main {
 	public JSAP defineArgs() throws JSAPException{
 		JSAP jsap = new JSAP();
 
-		/* will be supporting multiple rules processing later so rulenumber(s) */
+		/* will be supporting multiple rules processing later so rulekey(s) */
 		FlaggedOption opt = new FlaggedOption("ruleKeys");
 		opt.setLongFlag("ruleKeys");
 		opt.setStringParser(JSAP.INTEGER_PARSER);
