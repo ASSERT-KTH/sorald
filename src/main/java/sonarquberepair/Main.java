@@ -19,8 +19,8 @@ public class Main {
 		JSAP jsap = new JSAP();
 
 		/* will be supporting multiple rules processing later so rulenumber(s) */
-		FlaggedOption opt = new FlaggedOption("ruleNumbers");
-		opt.setLongFlag("ruleNumbers");
+		FlaggedOption opt = new FlaggedOption("ruleKeys");
+		opt.setLongFlag("ruleKeys");
 		opt.setStringParser(JSAP.INTEGER_PARSER);
 		opt.setDefault("2116");
 		opt.setHelp("Sonarqube rule number, Check https://rules.sonarsource.com/java");
@@ -50,8 +50,8 @@ public class Main {
 		opt = new FlaggedOption("fileOutputStrategy");
 		opt.setLongFlag("fileOutputStrategy");
 		opt.setStringParser(JSAP.STRING_PARSER);
-		opt.setDefault(FileOutputStrategy.ONLYCHANGED.name());
-		opt.setHelp("Mode for output. ONLYCHANGED: default choice outputing only files modified by processors, ALL: everything including those unchanged files");
+		opt.setDefault(FileOutputStrategy.CHANGED_ONLY.name());
+		opt.setHelp("Mode for output. CHANGED_ONLY: default choice outputing only files modified by processors, ALL: everything including those unchanged files");
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption("workspace");
@@ -64,7 +64,7 @@ public class Main {
 		opt = new FlaggedOption("gitRepoPath");
 		opt.setLongFlag("gitRepoPath");
 		opt.setStringParser(JSAP.STRING_PARSER);
-		opt.setHelp("Workspace of SonarQubeRepair");
+		opt.setHelp("Root Path of the Git repo directory");
 		jsap.registerParameter(opt);
 
 		return jsap;
@@ -73,7 +73,7 @@ public class Main {
 	public void initConfig(JSAP jsap,String[] args) {
 		JSAPResult jsapRes = jsap.parse(args);
 
-		this.getConfig().addRuleNumbers(jsapRes.getInt("ruleNumbers"));
+		this.getConfig().addRuleKeys(jsapRes.getInt("ruleKeys"));
 		this.getConfig().setProjectKey(jsapRes.getString("projectKey"));
 		this.getConfig().setRepairPath(jsapRes.getString("repairPath"));
 		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(jsapRes.getString("prettyPrintingStrategy")));

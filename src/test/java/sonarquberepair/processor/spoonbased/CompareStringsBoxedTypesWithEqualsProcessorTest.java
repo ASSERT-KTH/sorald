@@ -19,7 +19,7 @@ public class CompareStringsBoxedTypesWithEqualsProcessorTest {
 		Main.main(new String[]{
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
-			"--ruleNumbers","4973",
+			"--ruleKeys","4973",
 			"--workspace",Constants.WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new CompareStringsBoxedTypesWithEqualsCheck());

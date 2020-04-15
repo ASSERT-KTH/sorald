@@ -19,7 +19,7 @@ public class SerializableFieldInSerializableClassProcessorTest {
 		Main.main(new String[]{
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
-			"--ruleNumbers","1948",
+			"--ruleKeys","1948",
 			"--workspace",Constants.WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new SerializableFieldInSerializableClassCheck());

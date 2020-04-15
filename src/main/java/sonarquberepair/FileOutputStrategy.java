@@ -2,5 +2,5 @@ package sonarquberepair;
 
 public enum FileOutputStrategy {
 	ALL,
-	ONLYCHANGED
+	CHANGED_ONLY
 }

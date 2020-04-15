@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /* All config settings of SonarQube should be gathered here */
 public class SonarQubeRepairConfig {
-	private final List<Integer> ruleNumbers = new ArrayList<Integer>();
+	private final List<Integer> ruleKeys = new ArrayList<Integer>();
 	private String projectKey;
 	private PrettyPrintingStrategy prettyPrintingStrategy;
 	private FileOutputStrategy fileOutputStrategy;
@@ -23,12 +23,12 @@ public class SonarQubeRepairConfig {
 		return this.projectKey;
 	}
 
-	public void addRuleNumbers(int ruleNumber) {
-		this.ruleNumbers.add(ruleNumber);
+	public void addRuleKeys(int ruleNumber) {
+		this.ruleKeys.add(ruleNumber);
 	}
 
-	public List<Integer> getRuleNumbers() {
-		return this.ruleNumbers;
+	public List<Integer> getRuleKeys() {
+		return this.ruleKeys;
 	}
 
 	public void setPrettyPrintingStrategy(PrettyPrintingStrategy prettyPrintingStrategy) {

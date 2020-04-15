@@ -19,7 +19,7 @@ public class UnclosedResourcesProcessorTest {
 		Main.main(new String[]{
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
-			"--ruleNumbers","2095",
+			"--ruleKeys","2095",
 			"--workspace",Constants.WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new UnclosedResourcesCheck());

@@ -14,14 +14,14 @@ public class OnlyChangedFilesAndPatchOutputTest {
 		Main.main(new String[]{
 			"--repairPath",Constants.PATH_TO_FILE,
 			"--projectKey",Constants.PROJECT_KEY,
-			"--ruleNumbers","2111",
-			"--workspace","OnlyChangedFilesOutput",
+			"--ruleKeys","2111",
+			"--workspace","ChangedOnlyFilesOutput",
 			"--gitRepoPath","."});
 
-		File file = new File("OnlyChangedFilesOutput" + File.separator + "spooned");
+		File file = new File("ChangedOnlyFilesOutput" + File.separator + "spooned");
 		Assert.assertEquals(file.list().length,1);
 
-		file = new File("OnlyChangedFilesOutput" + File.separator + "SonarGitPatches");
+		file = new File("ChangedOnlyFilesOutput" + File.separator + "SonarGitPatches");
 		Assert.assertEquals(file.list().length,1);
 	}
 

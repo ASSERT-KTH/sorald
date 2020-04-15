@@ -19,7 +19,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 		Main.main(new String[]{
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
-			"--ruleNumbers","2116",
+			"--ruleKeys","2116",
 			"--workspace",Constants.WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
@@ -35,7 +35,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 		Main.main(new String[]{
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
-			"--ruleNumbers","2116",
+			"--ruleKeys","2116",
 			"--prettyPrintingStrategy","SNIPER",
 			"--workspace",Constants.WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);

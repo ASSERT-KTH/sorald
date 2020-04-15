@@ -19,7 +19,7 @@ public class BigDecimalDoubleConstructorProcessorTest {
 		Main.main(new String[]{
 			"--repairPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
-			"--ruleNumbers","2111",
+			"--ruleKeys","2111",
 			"--workspace",Constants.WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new BigDecimalDoubleConstructorCheck());

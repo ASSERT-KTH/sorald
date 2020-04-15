@@ -1,22 +1,17 @@
 package sonarquberepair;
 
-import spoon.Launcher;
-import spoon.processing.Processor;
-import spoon.support.sniper.SniperJavaPrettyPrinter;
-
 import java.lang.reflect.Constructor;
 import java.io.File;
 import java.util.List;
-import java.nio.file.Paths;
 
-
-import sonarquberepair.Processors;
+import spoon.Launcher;
+import spoon.processing.Processor;
+import spoon.support.sniper.SniperJavaPrettyPrinter;
 import spoon.support.JavaOutputProcessor;
 import spoon.support.QueueProcessingManager;
 import spoon.processing.ProcessingManager;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.CtModel;
-import spoon.IncrementalLauncher;
 
 public class DefaultRepair {
 	private final GitPatchGenerator generator = new GitPatchGenerator();
@@ -47,7 +42,7 @@ public class DefaultRepair {
 			launcher.getEnvironment().setTabulationSize(4);
 		}
 
-		Class<?> processor = Processors.getProcessor(config.getRuleNumbers().get(0));
+		Class<?> processor = Processors.getProcessor(config.getRuleKeys().get(0));
 		Constructor<?> cons;
 		Object object;
 		try {
@@ -65,7 +60,7 @@ public class DefaultRepair {
 		processingManager.addProcessor((Processor) object);
 		processingManager.process(factory.Class().getAll());
 
-		if (this.config.getFileOutputStrategy() == FileOutputStrategy.ONLYCHANGED) {
+		if (this.config.getFileOutputStrategy() == FileOutputStrategy.CHANGED_ONLY) {
 			for (String inputPath : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().keySet()) {
 				javaOutputProcessor.process(UniqueTypesCollector.getInstance().getTopLevelTypes4Output().get(inputPath));
 
