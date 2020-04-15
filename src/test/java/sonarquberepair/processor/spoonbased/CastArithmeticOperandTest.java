@@ -14,10 +14,15 @@ public class CastArithmeticOperandTest {
     public void test() throws Exception {
         String fileName = "CastArithmeticOperand.java";
         String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-        String pathToRepairedFile = "./spooned/" + fileName;
+        String pathToRepairedFile = Constants.WORKSPACE + "/spooned/" + fileName;
 
         JavaCheckVerifier.verify(pathToBuggyFile, new CastArithmeticOperandCheck());
-        Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2184, PrettyPrintingStrategy.SNIPER);
+        Main.main(new String[]{
+            "--originalFilesPath",pathToBuggyFile,
+            "--projectKey",Constants.PROJECT_KEY,
+            "--ruleKeys","2184",
+            "--prettyPrintingStrategy","SNIPER",
+            "--workspace",Constants.WORKSPACE});
         TestHelper.removeComplianceComments(pathToRepairedFile);
         JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new CastArithmeticOperandCheck());
     }
