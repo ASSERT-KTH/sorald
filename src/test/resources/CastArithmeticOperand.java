@@ -1,15 +1,26 @@
-/**
- * Tests for Sonarqube rule "Math operands should be cast before assignment": see rule description at https://rules.sonarsource.com/java/type/Bug/RSPEC-2184
- * The actual tests were obtained from
- * https://github.com/SonarSource/sonar-java/blob/master/java-checks/src/test/files/checks/CastArithmeticOperandCheck.java
- * and
- * https://rules.sonarsource.com/java/type/Bug/RSPEC-2184
- */
+// Test for rule s2184
 
 import java.util.Date;
 
 class CastArithmeticOperand {
 
+    // Tests from https://rules.sonarsource.com/java/type/Bug/RSPEC-2184
+    float twoThirds = 2/3; // Noncompliant; int division. Yields 0.0
+    long millisInYear = 1000*3600*24*365; // Noncompliant; int multiplication. Yields 1471228928
+    long bigNum = Integer.MAX_VALUE + 2; // Noncompliant. Yields -2147483647
+    long bigNegNum =  Integer.MIN_VALUE-1; // Noncompliant, gives a positive result instead of a negative one.
+    int seconds;
+    Date myDate = new Date(seconds * 1000); // Noncompliant, won't produce the expected result if seconds > 2_147_483
+
+    public long compute(int factor){
+        return factor * 10000; // Noncompliant, won't produce the expected result if factor > 214_748
+    }
+
+    public float compute2(long factor){
+        return factor / 123; // Noncompliant, will be rounded to closest long integer
+    }
+
+    // Tests from https://github.com/SonarSource/sonar-java/blob/master/java-checks/src/test/files/checks/CastArithmeticOperandCheck.java
     CastArithmeticOperand(int a, long l) {}
 
     void foo() {
@@ -37,11 +48,6 @@ class CastArithmeticOperand {
         unknownMethod(1 + 2); // Compliant
         longMethod(12 / 7, 12 / 7);   // Compliant dividing two ints into and widening into a long can't cause any harm
         double d2  = 1 / 2 / 2 * 0.5; // Noncompliant
-
-        float twoThirds = 2/3; // Noncompliant; int division. Yields 0.0
-        long millisInYear = 1000*3600*24*365; // Noncompliant; int multiplication. Yields 1471228928
-        long bigNum = Integer.MAX_VALUE + 2; // Noncompliant. Yields -2147483647
-        long bigNegNum =  Integer.MIN_VALUE-1; // Noncompliant, gives a positive result instead of a negative one.
     }
 
 
@@ -82,14 +88,6 @@ class CastArithmeticOperand {
     void test_constructors() {
         java.util.Date date1 = new java.util.Date(2 + 1); // Noncompliant {{Cast one of the operands of this addition operation to a "long".}}
         java.util.Date date2 = new java.util.Date("today"); // Compliant
-    }
-
-    public long compute(int factor){
-        return factor * 10000;  // Noncompliant, won't produce the expected result if factor > 214_748
-    }
-
-    public float compute2(long factor){
-        return factor / 123;  // Noncompliant, will be rounded to closest long integer
     }
 
 }

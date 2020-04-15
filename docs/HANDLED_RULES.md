@@ -1,6 +1,6 @@
 ## Handled rules
 
-Sonarqube-repair can currently repair violations of 7 rules of which 5 are labeled as `BUG` and 2 as `Code Smell`:
+Sonarqube-repair can currently repair violations of 8 rules of which 6 are labeled as `BUG` and 2 as `Code Smell`:
 
 * [Bug](HANDLED_RULES.md#bug)
     * [Resources should be closed](HANDLED_RULES.md#resources-should-be-closed-sonar-rule-2095httpsrulessonarsourcecomjavarspec-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
@@ -8,6 +8,7 @@ Sonarqube-repair can currently repair violations of 7 rules of which 5 are label
     * ["hashCode" and "toString" should not be called on array instances](HANDLED_RULES.md#hashcode-and-tostring-should-not-be-called-on-array-instances-sonar-rule-2116httpsrulessonarsourcecomjavarspec-2116) ([Sonar Rule 2116](https://rules.sonarsource.com/java/RSPEC-2116))
     * ["Iterator.next()" methods should throw "NoSuchElementException"](HANDLED_RULES.md#iteratornext-methods-should-throw-nosuchelementexception-sonar-rule-2272httpsrulessonarsourcecomjavarspec-2272) ([Sonar Rule 2272](https://rules.sonarsource.com/java/RSPEC-2272))
     * [Strings and Boxed types should be compared using "equals()"](HANDLED_RULES.md#strings-and-boxed-types-should-be-compared-using-equals-sonar-rule-4973httpsrulessonarsourcecomjavarspec-4973) ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
+    * [Math operands should be cast before assignment](HANDLED_RULES.md#math-operands-should-be-cast-before-assignment-sonar-rule-2184httpsrulessonarsourcecomjavarspec-2184) ([Sonar Rule 2184](https://rules.sonarsource.com/java/RSPEC-2184))
 * [Code Smell](HANDLED_RULES.md#code-smell)
     * [Unused assignments should be removed](HANDLED_RULES.md#unused-assignments-should-be-removed-sonar-rule-1854httpsrulessonarsourcecomjavarspec-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
     * [Fields in a "Serializable" class should either be transient or serializable](HANDLED_RULES.md#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948httpsrulessonarsourcecomjavarspec-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
@@ -120,6 +121,23 @@ Example:
 ```
 
 Check out an accepted PR in [Apache Sling Discovery](https://github.com/apache/sling-org-apache-sling-discovery-impl/pull/1) that repairs one CompareStringsBoxedTypesWithEquals violation.
+
+-----
+
+#### Math operands should be cast before assignment ([Sonar Rule 2184](https://rules.sonarsource.com/java/RSPEC-2184))
+
+In arithmetic expressions, when the operands are `int` and/or `long`, but the result of the expression is assigned to a `long`, `double`, or `float`, the first operand is casted to the final type before the operation takes place.
+
+Example:
+```diff
+-    float twoThirds = 2/3; // Noncompliant; int division. Yields 0.0
++    float twoThirds = (float) 2/3;
+...
+     public long compute(int factor){
+-        return factor * 10000; // Noncompliant, won't produce the expected result if factor > 214748
++        return (long) factor * 10000; 
+     }
+```
 
 -----
 
