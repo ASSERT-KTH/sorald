@@ -5,7 +5,6 @@ import org.sonar.java.checks.IteratorNextExceptionCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import sonarquberepair.Constants;
 import sonarquberepair.Main;
-import sonarquberepair.PrettyPrintingStrategy;
 import sonarquberepair.TestHelper;
 
 public class IteratorNextExceptionProcessorTest {
@@ -14,10 +13,14 @@ public class IteratorNextExceptionProcessorTest {
 	public void test() throws Exception {
 		String fileName = "IteratorNextException.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
-		String pathToRepairedFile = "./spooned/" + fileName;
+		String pathToRepairedFile = Constants.WORKSPACE + "/spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new IteratorNextExceptionCheck());
-		Main.repair(pathToBuggyFile, Constants.PROJECT_KEY, 2272, PrettyPrintingStrategy.NORMAL);
+		Main.main(new String[]{
+			"--originalFilesPath",pathToBuggyFile,
+			"--projectKey",Constants.PROJECT_KEY,
+			"--ruleKeys","2272",
+			"--workspace",Constants.WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new IteratorNextExceptionCheck());
 	}

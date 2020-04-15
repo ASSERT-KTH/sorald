@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>se.kth.castor</groupId>
     <artifactId>sonarqube-repair</artifactId>
     <version>1.1-SNAPSHOT</version>
@@ -15,7 +12,6 @@
             <artifactId>json</artifactId>
             <version>20190722</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
@@ -23,14 +19,12 @@
             <version>4.13</version>
             <scope>test</scope>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/fr.inria.gforge.spoon/spoon-core -->
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
             <version>8.2.0-beta-2</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.sonarsource.java/java-checks-testkit -->
         <dependency>
             <groupId>org.sonarsource.java</groupId>
@@ -38,7 +32,6 @@
             <version>5.14.0.18788</version>
             <scope>test</scope>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.sonarsource.java/sonar-java-plugin -->
         <dependency>
             <groupId>org.sonarsource.java</groupId>
@@ -46,14 +39,22 @@
             <version>5.14.0.18788</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.martiansoftware</groupId>
+            <artifactId>jsap</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jgit</groupId>
+            <artifactId>org.eclipse.jgit</artifactId>
+            <version>5.7.0.202003110725-r</version>
+        </dependency>
     </dependencies>
-
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <repositories>
         <repository>
             <id>maven.inria.fr-snapshot</id>
@@ -61,10 +62,36 @@
             <url>http://maven.inria.fr/artifactory/spoon-public-snapshot</url>
         </repository>
     </repositories>
-    
     <build>
         <plugins>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-gitexe</artifactId>
+                        <version>1.9.1</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>perform</goal>
+                        </goals>
+                        <configuration>
+                            <pomFileName>pom.xml</pomFileName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -91,7 +118,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -105,13 +131,11 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.21.0</version>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -121,8 +145,6 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
-
 </project>

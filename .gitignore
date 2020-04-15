@@ -10,3 +10,6 @@ spooned/
 .idea/
 .eclipse
 SampleProcessor.java
+script.sh
+sonar-workspace/
+OnlyChangedFilesOutput/

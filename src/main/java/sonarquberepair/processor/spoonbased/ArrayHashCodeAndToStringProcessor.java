@@ -10,6 +10,8 @@ import spoon.reflect.reference.CtExecutableReference;
 
 import java.util.Arrays;
 
+import sonarquberepair.UniqueTypesCollector;
+
 public class ArrayHashCodeAndToStringProcessor extends AbstractProcessor<CtInvocation<?>> {
 
 	final String TOSTRING = "toString";
@@ -20,9 +22,10 @@ public class ArrayHashCodeAndToStringProcessor extends AbstractProcessor<CtInvoc
 		if (candidate == null || candidate.getTarget() == null) {
 			return false;
 		}
+		
 		if (candidate.getTarget().getType().isArray()) {
 			if (candidate.getExecutable().getSignature().equals(TOSTRING + "()") ||
-					(candidate.getExecutable().getSignature().equals(HASHCODE + "()"))) {
+				(candidate.getExecutable().getSignature().equals(HASHCODE + "()"))) {
 				return true;
 			}
 		}
@@ -31,6 +34,8 @@ public class ArrayHashCodeAndToStringProcessor extends AbstractProcessor<CtInvoc
 
 	@Override
 	public void process(CtInvocation<?> element) {
+		UniqueTypesCollector.getInstance().collect(element);
+
 		CtExpression prevTarget = element.getTarget();
 		CtCodeSnippetExpression newTarget = getFactory().Code().createCodeSnippetExpression("Arrays");
 		CtType arraysClass = getFactory().Class().get(Arrays.class);

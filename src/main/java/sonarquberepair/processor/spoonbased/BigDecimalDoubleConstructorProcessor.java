@@ -1,18 +1,15 @@
 package sonarquberepair.processor.spoonbased;
 
+import sonarquberepair.UniqueTypesCollector;
 import spoon.processing.AbstractProcessor;
-import spoon.reflect.code.CtCodeSnippetExpression;
-import spoon.reflect.code.CtConstructorCall;
-import spoon.reflect.code.CtExpression;
-import spoon.reflect.code.CtInvocation;
-import spoon.reflect.code.CtLiteral;
+import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtTypeReference;
 
-import java.util.List;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtConstructorCall> {
 
@@ -25,7 +22,7 @@ public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtCo
 		if (cons.getType().equals(bigDecimalTypeRef)) {
 			List<CtExpression> expr = cons.getArguments();
 			if ((expr.size() == 1 || expr.size() == 2) &&
-					(expr.get(0).getType().equals(doubleTypeRef) || expr.get(0).getType().equals(floatTypeRef))) {
+				(expr.get(0).getType().equals(doubleTypeRef) || expr.get(0).getType().equals(floatTypeRef))) {
 				return true;
 			}
 		}
@@ -34,6 +31,8 @@ public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtCo
 
 	@Override
 	public void process(CtConstructorCall cons) {
+		UniqueTypesCollector.getInstance().collect(cons);
+
 		if (cons.getArguments().size() == 1) {
 			CtType bigDecimalClass = getFactory().Class().get(BigDecimal.class);
 			CtCodeSnippetExpression invoker = getFactory().Code().createCodeSnippetExpression("BigDecimal");
@@ -51,4 +50,5 @@ public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtCo
 			cons.replace(newCtConstructorCall);
 		}
 	}
+
 }

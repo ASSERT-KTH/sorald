@@ -4,6 +4,8 @@ import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtLocalVariable;
 import spoon.reflect.code.CtStatement;
 
+import sonarquberepair.UniqueTypesCollector;
+
 public class DeadStoreProcessor extends SonarWebAPIBasedProcessor<CtStatement> {
 
 	public DeadStoreProcessor(String projectKey) {
@@ -23,6 +25,7 @@ public class DeadStoreProcessor extends SonarWebAPIBasedProcessor<CtStatement> {
 
 	@Override
 	public void process(CtStatement element) {
+		UniqueTypesCollector.getInstance().collect(element);
 		element.delete();
 	}
 

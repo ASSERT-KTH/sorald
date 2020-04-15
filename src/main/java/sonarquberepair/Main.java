@@ -1,66 +1,102 @@
 package sonarquberepair;
 
-import spoon.Launcher;
-import spoon.processing.Processor;
 import spoon.support.sniper.SniperJavaPrettyPrinter;
 
-import java.lang.reflect.Constructor;
+import com.martiansoftware.jsap.FlaggedOption;
+import com.martiansoftware.jsap.JSAP;
+import com.martiansoftware.jsap.JSAPException;
+import com.martiansoftware.jsap.JSAPResult;
+
 
 public class Main {
+	private final SonarQubeRepairConfig config = new SonarQubeRepairConfig();
 
-	public static void repair(String pathToFile, String projectKey, int ruleKey, PrettyPrintingStrategy prettyPrintingStrategy) throws Exception {
-		Launcher launcher = new Launcher();
-		launcher.addInputResource(pathToFile);
-		launcher.getEnvironment().setAutoImports(true);
-		if (prettyPrintingStrategy == PrettyPrintingStrategy.SNIPER) {
-			launcher.getEnvironment().setPrettyPrinterCreator(() -> {
-						SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
-						sniper.setIgnoreImplicit(false);
-						return sniper;
-					}
-			);
-			launcher.getEnvironment().setCommentEnabled(true);
-			launcher.getEnvironment().useTabulations(true);
-			launcher.getEnvironment().setTabulationSize(4);
-		}
-
-		Class<?> processor = Processors.getProcessor(ruleKey);
-		Constructor<?> cons;
-		Object object;
-		try {
-			cons = processor.getConstructor(String.class);
-			object = cons.newInstance(projectKey);
-		} catch (NoSuchMethodException e) {
-			cons = processor.getConstructor();
-			object = cons.newInstance();
-		}
-		launcher.addProcessor((Processor) object);
-		launcher.run();
+	public SonarQubeRepairConfig getConfig() {
+		return this.config;
 	}
 
-	/**
-	 * @param args string array.
-	 *             Give one or two arguments.
-	 *             The first argument is the Sonar rule key.
-	 *             The second argument is the project key for the Sonar analysis of source files.
-	 */
-	public static void main(String[] args) throws Exception {
-		if (args.length == 0) {
-			System.out.println("Please, provide the Sonar rule key, and optionally provide also the project key for the Sonar analysis.");
-			return;
-		}
-		if (args.length > 2) {
-			throw new IllegalArgumentException("Provide one or two arguments (only the Sonar rule key, and optionally also the project key for the Sonar analysis).");
-		}
+	public JSAP defineArgs() throws JSAPException{
+		JSAP jsap = new JSAP();
 
-		int ruleKey = Integer.parseInt(args[0]);
-		String projectKey = "";
-		if (args.length == 2) {
-			projectKey = args[1];
-		}
-		System.out.println("Applying " + Processors.getProcessor(ruleKey).getName() + "...");
-		repair("./source/act/", projectKey, ruleKey, PrettyPrintingStrategy.SNIPER);
-		System.out.println("Done.");
+		/* will be supporting multiple rules processing later so rulekey(s) */
+		FlaggedOption opt = new FlaggedOption("ruleKeys");
+		opt.setLongFlag("ruleKeys");
+		opt.setStringParser(JSAP.INTEGER_PARSER);
+		opt.setDefault("2116");
+		opt.setHelp("Sonarqube rule key, Check https://rules.sonarsource.com/java");
+		jsap.registerParameter(opt);
+
+		opt = new FlaggedOption("projectKey");
+		opt.setLongFlag("projectKey");
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setDefault("fr.inria.gforge.spoon:spoon-core");
+		opt.setHelp("what is this projectKey ?");
+		jsap.registerParameter(opt);
+
+		opt = new FlaggedOption("originalFilesPath");
+		opt.setLongFlag("originalFilesPath");
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setDefault("./source/act/");
+		opt.setHelp("The input folder or file for sonarqube-repair to work on");
+		jsap.registerParameter(opt);
+
+		opt = new FlaggedOption("prettyPrintingStrategy");
+		opt.setLongFlag("prettyPrintingStrategy");
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setDefault(PrettyPrintingStrategy.NORMAL.name());
+		opt.setHelp("Mode for pretty printing . NORMAL: default pretty print, SNIPER: sniper mode on for more precise code transformation pretty print");
+		jsap.registerParameter(opt);
+
+		opt = new FlaggedOption("fileOutputStrategy");
+		opt.setLongFlag("fileOutputStrategy");
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setDefault(FileOutputStrategy.CHANGED_ONLY.name());
+		opt.setHelp("Mode for output. CHANGED_ONLY: default choice outputing only files modified by processors, ALL: everything including those unchanged files");
+		jsap.registerParameter(opt);
+
+		opt = new FlaggedOption("workspace");
+		opt.setLongFlag("workspace");
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setDefault("./sonar-workspace");
+		opt.setHelp("Workspace of sonarqube-repair");
+		jsap.registerParameter(opt);
+
+		opt = new FlaggedOption("gitRepoPath");
+		opt.setLongFlag("gitRepoPath");
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setHelp("Root Path of the input Github repo directory");
+		jsap.registerParameter(opt);
+
+		return jsap;
 	}
 
+	public void initConfig(JSAP jsap,String[] args) {
+		JSAPResult jsapRes = jsap.parse(args);
+
+		this.getConfig().addRuleKeys(jsapRes.getInt("ruleKeys"));
+		this.getConfig().setProjectKey(jsapRes.getString("projectKey"));
+		this.getConfig().setOriginalFilesPath(jsapRes.getString("originalFilesPath"));
+		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(jsapRes.getString("prettyPrintingStrategy")));
+		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(jsapRes.getString("fileOutputStrategy")));
+		this.getConfig().setWorkspace(jsapRes.getString("workspace"));
+		this.getConfig().setGitRepoPath(jsapRes.getString("gitRepoPath"));
+	}
+
+
+	public DefaultRepair getRepairProcess() {
+		DefaultRepair defaultRepair = new DefaultRepair(this.config);
+		return defaultRepair;
+	}
+
+	public void start(String[] args) throws Exception {
+		JSAP jsap = this.defineArgs();
+		this.initConfig(jsap,args);
+		this.getRepairProcess().repair();
+		System.out.println("done");
+	}
+
+	public static void main(String[] args) throws Exception{
+		Main main = new Main();
+		main.start(args);
+	}
 }

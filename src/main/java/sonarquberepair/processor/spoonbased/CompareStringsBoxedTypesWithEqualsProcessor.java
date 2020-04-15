@@ -8,6 +8,8 @@ import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.reference.CtTypeReference;
 
+import sonarquberepair.UniqueTypesCollector;
+
 public class CompareStringsBoxedTypesWithEqualsProcessor extends AbstractProcessor<CtElement> {
 
 	@Override
@@ -36,10 +38,10 @@ public class CompareStringsBoxedTypesWithEqualsProcessor extends AbstractProcess
 				Case 4: Both variables are boxed.
 				*/
 				if ((lType != null && rType != null) &&
-						((lType.equals(stringType) && rType.equals(stringType)) ||
-								(lType.equals(stringType) && !rType.unbox().equals(rType)) ||
-								(!lType.unbox().equals(lType) && rType.equals(stringType)) ||
-								(!lType.unbox().equals(lType) && !rType.unbox().equals(rType)))) {
+					((lType.equals(stringType) && rType.equals(stringType)) ||
+						(lType.equals(stringType) && !rType.unbox().equals(rType)) ||
+						(!lType.unbox().equals(lType) && rType.equals(stringType)) ||
+						(!lType.unbox().equals(lType) && !rType.unbox().equals(rType)))) {
 					return true;
 				}
 			}
@@ -49,13 +51,15 @@ public class CompareStringsBoxedTypesWithEqualsProcessor extends AbstractProcess
 
 	@Override
 	public void process(CtElement element) {
+		UniqueTypesCollector.getInstance().collect(element);
+
 		CtBinaryOperator bo = (CtBinaryOperator) element;
 		String negation = "";
 		if (((CtBinaryOperator) element).getKind() == BinaryOperatorKind.NE) {
 			negation = "!";
 		}
 		CtCodeSnippetExpression newBinaryOperator = getFactory().Code().createCodeSnippetExpression(
-				negation + bo.getLeftHandOperand().toString() + ".equals(" + bo.getRightHandOperand().toString() + ")");
+			negation + bo.getLeftHandOperand().toString() + ".equals(" + bo.getRightHandOperand().toString() + ")");
 		bo.replace(newBinaryOperator);
 	}
 

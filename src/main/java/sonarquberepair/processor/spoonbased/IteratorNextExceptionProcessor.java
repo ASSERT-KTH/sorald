@@ -14,6 +14,8 @@ import spoon.reflect.reference.CtTypeReference;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import sonarquberepair.UniqueTypesCollector;
+
 public class IteratorNextExceptionProcessor extends AbstractProcessor<CtMethod> {
 
 	/**
@@ -48,6 +50,8 @@ public class IteratorNextExceptionProcessor extends AbstractProcessor<CtMethod> 
 
 	@Override
 	public void process(CtMethod method) {
+		UniqueTypesCollector.getInstance().collect(method);
+
 		CtIf anIf = getFactory().Core().createIf();
 		CtCodeSnippetExpression expr = getFactory().Core().createCodeSnippetExpression();
 		expr.setValue("!hasNext()");
@@ -55,8 +59,8 @@ public class IteratorNextExceptionProcessor extends AbstractProcessor<CtMethod> 
 		CtType noSuchElementClass = getFactory().Class().get(NoSuchElementException.class);
 		CtThrow throwStmnt = getFactory().createCtThrow("");
 		throwStmnt.setThrownExpression(
-				((CtExpression<? extends Throwable>)
-						getFactory().createConstructorCall(noSuchElementClass.getReference(), new CtExpression[]{})
+			((CtExpression<? extends Throwable>)
+				getFactory().createConstructorCall(noSuchElementClass.getReference(), new CtExpression[]{})
 				));
 		CtBlock block = getFactory().Core().createBlock();
 		block.addStatement(throwStmnt);
