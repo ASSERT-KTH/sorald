@@ -8,6 +8,7 @@ import sonarquberepair.processor.spoonbased.BigDecimalDoubleConstructorProcessor
 import sonarquberepair.processor.spoonbased.CastArithmeticOperandProcessor;
 import sonarquberepair.processor.spoonbased.CompareStringsBoxedTypesWithEqualsProcessor;
 import sonarquberepair.processor.spoonbased.IteratorNextExceptionProcessor;
+import sonarquberepair.processor.spoonbased.GetClassLoaderProcessor;
 import spoon.processing.Processor;
 
 import java.util.HashMap;
@@ -29,6 +30,7 @@ public class Processors {
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2272, IteratorNextExceptionProcessor.class);
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(4973, CompareStringsBoxedTypesWithEqualsProcessor.class);
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2184, CastArithmeticOperandProcessor.class);
+		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(3032, GetClassLoaderProcessor.class);
 		return TEMP_RULE_KEY_TO_PROCESSOR;
 	}
 
