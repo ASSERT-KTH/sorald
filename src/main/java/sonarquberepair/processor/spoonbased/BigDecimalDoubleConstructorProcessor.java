@@ -1,7 +1,6 @@
 package sonarquberepair.processor.spoonbased;
 
-import sonarquberepair.UniqueTypesCollector;
-import spoon.processing.AbstractProcessor;
+import sonarquberepair.processor.SQRAbstractProcessor;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
@@ -11,7 +10,7 @@ import spoon.reflect.reference.CtTypeReference;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtConstructorCall> {
+public class BigDecimalDoubleConstructorProcessor extends SQRAbstractProcessor<CtConstructorCall> {
 
 	@Override
 	public boolean isToBeProcessed(CtConstructorCall cons) {
@@ -31,7 +30,7 @@ public class BigDecimalDoubleConstructorProcessor extends AbstractProcessor<CtCo
 
 	@Override
 	public void process(CtConstructorCall cons) {
-		UniqueTypesCollector.getInstance().collect(cons);
+		super.process(cons);
 
 		if (cons.getArguments().size() == 1) {
 			CtType bigDecimalClass = getFactory().Class().get(BigDecimal.class);

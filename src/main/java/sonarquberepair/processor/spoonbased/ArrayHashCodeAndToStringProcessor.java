@@ -1,6 +1,6 @@
 package sonarquberepair.processor.spoonbased;
 
-import spoon.processing.AbstractProcessor;
+import sonarquberepair.processor.SQRAbstractProcessor;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtInvocation;
@@ -10,9 +10,7 @@ import spoon.reflect.reference.CtExecutableReference;
 
 import java.util.Arrays;
 
-import sonarquberepair.UniqueTypesCollector;
-
-public class ArrayHashCodeAndToStringProcessor extends AbstractProcessor<CtInvocation<?>> {
+public class ArrayHashCodeAndToStringProcessor extends SQRAbstractProcessor<CtInvocation<?>> {
 
 	final String TOSTRING = "toString";
 	final String HASHCODE = "hashCode";
@@ -34,7 +32,7 @@ public class ArrayHashCodeAndToStringProcessor extends AbstractProcessor<CtInvoc
 
 	@Override
 	public void process(CtInvocation<?> element) {
-		UniqueTypesCollector.getInstance().collect(element);
+		super.process(element);
 
 		CtExpression prevTarget = element.getTarget();
 		CtCodeSnippetExpression newTarget = getFactory().Code().createCodeSnippetExpression("Arrays");

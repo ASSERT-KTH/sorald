@@ -1,6 +1,6 @@
 package sonarquberepair.processor.spoonbased;
 
-import spoon.processing.AbstractProcessor;
+import sonarquberepair.processor.SQRAbstractProcessor;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtField;
@@ -11,9 +11,7 @@ import spoon.reflect.visitor.filter.TypeFilter;
 
 import java.util.List;
 
-import sonarquberepair.UniqueTypesCollector;
-
-public class CastArithmeticOperandProcessor extends AbstractProcessor<CtBinaryOperator> {
+public class CastArithmeticOperandProcessor extends SQRAbstractProcessor<CtBinaryOperator> {
 
     private CtTypeReference typeToBeUsedToCast;
 
@@ -39,7 +37,7 @@ public class CastArithmeticOperandProcessor extends AbstractProcessor<CtBinaryOp
 
     @Override
     public void process(CtBinaryOperator element) {
-        UniqueTypesCollector.getInstance().collect(element);
+        super.process(element);
 
         CtCodeSnippetExpression newBinaryOperator = element.getFactory().createCodeSnippetExpression("(" + typeToBeUsedToCast.getSimpleName() + ") " + element.getLeftHandOperand());
         element.setLeftHandOperand(newBinaryOperator);
