@@ -1,5 +1,3 @@
-import java.lang.ClassLoader;
-import java.lang.ClassNotFoundException;
 import javax.ejb.embeddable.EJBContainer;
 
 public class GetClassLoader {

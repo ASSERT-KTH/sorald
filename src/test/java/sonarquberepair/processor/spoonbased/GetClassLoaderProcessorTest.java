@@ -22,7 +22,6 @@ public class GetClassLoaderProcessorTest {
 			"--ruleKeys","3032",
 			"--workspace",Constants.WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
-		System.out.println(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new GetClassLoaderCheck());
 	}
 
