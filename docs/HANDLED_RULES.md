@@ -2,16 +2,16 @@
 
 Sonarqube-repair can currently repair violations of 8 rules of which 6 are labeled as `BUG` and 2 as `Code Smell`:
 
-* [Bug](HANDLED_RULES.md#bug)
-    * [Resources should be closed](HANDLED_RULES.md#resources-should-be-closed-sonar-rule-2095httpsrulessonarsourcecomjavarspec-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
-    * ["BigDecimal(double)" should not be used](HANDLED_RULES.md#bigdecimaldouble-should-not-be-used-sonar-rule-2111httpsrulessonarsourcecomjavarspec-2111) ([Sonar Rule 2111](https://rules.sonarsource.com/java/RSPEC-2111))
-    * ["hashCode" and "toString" should not be called on array instances](HANDLED_RULES.md#hashcode-and-tostring-should-not-be-called-on-array-instances-sonar-rule-2116httpsrulessonarsourcecomjavarspec-2116) ([Sonar Rule 2116](https://rules.sonarsource.com/java/RSPEC-2116))
-    * ["Iterator.next()" methods should throw "NoSuchElementException"](HANDLED_RULES.md#iteratornext-methods-should-throw-nosuchelementexception-sonar-rule-2272httpsrulessonarsourcecomjavarspec-2272) ([Sonar Rule 2272](https://rules.sonarsource.com/java/RSPEC-2272))
-    * [Strings and Boxed types should be compared using "equals()"](HANDLED_RULES.md#strings-and-boxed-types-should-be-compared-using-equals-sonar-rule-4973httpsrulessonarsourcecomjavarspec-4973) ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
-    * [Math operands should be cast before assignment](HANDLED_RULES.md#math-operands-should-be-cast-before-assignment-sonar-rule-2184httpsrulessonarsourcecomjavarspec-2184) ([Sonar Rule 2184](https://rules.sonarsource.com/java/RSPEC-2184))
-* [Code Smell](HANDLED_RULES.md#code-smell)
-    * [Unused assignments should be removed](HANDLED_RULES.md#unused-assignments-should-be-removed-sonar-rule-1854httpsrulessonarsourcecomjavarspec-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
-    * [Fields in a "Serializable" class should either be transient or serializable](HANDLED_RULES.md#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948httpsrulessonarsourcecomjavarspec-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
+* [Bug](#bug)
+    * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
+    * ["BigDecimal(double)" should not be used](#bigdecimaldouble-should-not-be-used-sonar-rule-2111) ([Sonar Rule 2111](https://rules.sonarsource.com/java/RSPEC-2111))
+    * ["hashCode" and "toString" should not be called on array instances](#hashcode-and-tostring-should-not-be-called-on-array-instances-sonar-rule-2116) ([Sonar Rule 2116](https://rules.sonarsource.com/java/RSPEC-2116))
+    * ["Iterator.next()" methods should throw "NoSuchElementException"](#iteratornext-methods-should-throw-nosuchelementexception-sonar-rule-2272) ([Sonar Rule 2272](https://rules.sonarsource.com/java/RSPEC-2272))
+    * [Strings and Boxed types should be compared using "equals()"](#strings-and-boxed-types-should-be-compared-using-equals-sonar-rule-4973) ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
+    * [Math operands should be cast before assignment](#math-operands-should-be-cast-before-assignment-sonar-rule-2184) ([Sonar Rule 2184](https://rules.sonarsource.com/java/RSPEC-2184))
+* [Code Smell](#code-smell)
+    * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
+    * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
 
 ### *Bug*
 
