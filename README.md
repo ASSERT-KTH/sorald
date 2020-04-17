@@ -1,4 +1,4 @@
-# Sonarqube-repair [![Travis Build Status](https://travis-ci.com/kth-tcs/sonarqube-repair.svg?branch=master)](https://travis-ci.com/kth-tcs/sonarqube-repair)
+# Sonarqube-repair [![Travis Build Status](https://travis-ci.com/SpoonLabs/sonarqube-repair.svg?branch=master)](https://travis-ci.com/SpoonLabs/sonarqube-repair)
 
 Sonarqube-repair is a collection of java code analyses and transformations made with the [Spoon](https://github.com/INRIA/spoon) library to repair violations of rules contained in [SonarQube](https://rules.sonarsource.com).
 
@@ -16,7 +16,7 @@ A JDK (java 1.8)
 
 ##### If you want to run it from your IDE
 
-1) Clone this repository: `git clone https://github.com/kth-tcs/sonarqube-repair.git`
+1) Clone this repository: `git clone https://github.com/SpoonLabs/sonarqube-repair.git`
 
 2) Import it as Maven project in your Java IDE
 
