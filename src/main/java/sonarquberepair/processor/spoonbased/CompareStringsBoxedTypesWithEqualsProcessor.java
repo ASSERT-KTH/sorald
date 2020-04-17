@@ -1,6 +1,6 @@
 package sonarquberepair.processor.spoonbased;
 
-import spoon.processing.AbstractProcessor;
+import sonarquberepair.processor.SQRAbstractProcessor;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.declaration.CtElement;
@@ -8,9 +8,7 @@ import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.reference.CtTypeReference;
 
-import sonarquberepair.UniqueTypesCollector;
-
-public class CompareStringsBoxedTypesWithEqualsProcessor extends AbstractProcessor<CtElement> {
+public class CompareStringsBoxedTypesWithEqualsProcessor extends SQRAbstractProcessor<CtElement> {
 
 	@Override
 	public boolean isToBeProcessed(CtElement candidate) {
@@ -51,7 +49,7 @@ public class CompareStringsBoxedTypesWithEqualsProcessor extends AbstractProcess
 
 	@Override
 	public void process(CtElement element) {
-		UniqueTypesCollector.getInstance().collect(element);
+		super.process(element);
 
 		CtBinaryOperator bo = (CtBinaryOperator) element;
 		String negation = "";

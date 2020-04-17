@@ -8,10 +8,10 @@ import java.util.Set;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import spoon.processing.AbstractProcessor;
+import sonarquberepair.processor.SQRAbstractProcessor;
 import spoon.reflect.declaration.CtElement;
 
-public abstract class SonarWebAPIBasedProcessor<E extends CtElement> extends AbstractProcessor<E> {
+public abstract class SonarWebAPIBasedProcessor<E extends CtElement> extends SQRAbstractProcessor<E> {
 
 	private JSONArray jsonArray; //array of JSONObjects, each of which is a bug
 	private Set<Bug> setOfBugs; //set of bugs, corresponding to jsonArray

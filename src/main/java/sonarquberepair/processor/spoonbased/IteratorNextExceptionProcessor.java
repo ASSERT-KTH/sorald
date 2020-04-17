@@ -1,6 +1,6 @@
 package sonarquberepair.processor.spoonbased;
 
-import spoon.processing.AbstractProcessor;
+import sonarquberepair.processor.SQRAbstractProcessor;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
@@ -14,9 +14,7 @@ import spoon.reflect.reference.CtTypeReference;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import sonarquberepair.UniqueTypesCollector;
-
-public class IteratorNextExceptionProcessor extends AbstractProcessor<CtMethod> {
+public class IteratorNextExceptionProcessor extends SQRAbstractProcessor<CtMethod> {
 
 	/**
 	 * @param candidate - Every method of the scanned file
@@ -50,7 +48,7 @@ public class IteratorNextExceptionProcessor extends AbstractProcessor<CtMethod> 
 
 	@Override
 	public void process(CtMethod method) {
-		UniqueTypesCollector.getInstance().collect(method);
+		super.process(method);
 
 		CtIf anIf = getFactory().Core().createIf();
 		CtCodeSnippetExpression expr = getFactory().Core().createCodeSnippetExpression();
