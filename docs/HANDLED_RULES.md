@@ -141,6 +141,42 @@ Example:
 
 -----
 
+#### JEE applications should not "getClassLoader" ([Sonar Rule 3032](https://rules.sonarsource.com/java/RSPEC-3032))
+
+Using the standard getClassLoader() may not return the right class loader in Java Enterprise Edition context, i.e. the code use any of these [javax packages](https://docs.oracle.com/javaee/6/api/overview-summary.html). Instead, go through the currentThread. In particular, this processor will transform the code in `.java` files if they appear to use the `javax` package.
+
+Example:
+```diff
++    ClassLoader d = Thread.currentThread().getContextClassLoader();
+-    ClassLoader d = this.getClass().getClassLoader(); // Noncompliant
++    public void case1() {
++        ClassLoader c = Thread.currentThread().getContextClassLoader();
++
++    }
+-    public void case1() {
+-        ClassLoader c = this.getClass().getClassLoader(); // Noncompliant
+-    }
++    public void case2() throws ClassNotFoundException {
++        Thread.currentThread().getContextClassLoader().loadClass("anotherclass");
++    }
+-    public void case2() throws ClassNotFoundException{
+-        Dummy.class.getClassLoader().loadClass("anotherclass"); // Noncompliant
+-    }
++    abstract class InnerClass {
++        ClassLoader f = Thread.currentThread().getContextClassLoader();
++        public void hello() {
++            Thread.currentThread().getContextClassLoader();
++        }
++    }
+-    abstract class InnerClass {
+-        ClassLoader f = this.getClass().getClassLoader(); // Noncompliant 
+-        public void hello() {
+-            this.getClass().getClassLoader(); // Noncompliant
+-       }
+-    }
+```
+
+-----
 ### *Code Smell*
 
 #### Unused assignments should be removed ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
