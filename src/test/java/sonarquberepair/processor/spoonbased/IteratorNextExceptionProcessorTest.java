@@ -19,7 +19,7 @@ public class IteratorNextExceptionProcessorTest {
 		Main.main(new String[]{
 			"--originalFilesPath",pathToBuggyFile,
 			"--projectKey",Constants.PROJECT_KEY,
-			"--ruleKeys","3032",
+			"--ruleKeys","2272",
 			"--workspace",Constants.WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new IteratorNextExceptionCheck());
