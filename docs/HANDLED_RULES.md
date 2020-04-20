@@ -2,6 +2,7 @@
 
 Sonarqube-repair can currently repair violations of 10 rules of which 8 are labeled as `BUG` and 2 as `Code Smell`:
 
+
 * [Bug](#bug)
     * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
     * ["BigDecimal(double)" should not be used](#bigdecimaldouble-should-not-be-used-sonar-rule-2111) ([Sonar Rule 2111](https://rules.sonarsource.com/java/RSPEC-2111))
@@ -154,6 +155,7 @@ Example:
 ```
 
 -----
+
 #### "compareTo" should not return "Integer.MIN_VALUE" ([Sonar Rule 2167](https://rules.sonarsource.com/java/RSPEC-2167))
 Returning Integer.MIN_VALUE can cause errors because the return value of compareTo is sometimes inversed, with the expectation that negative values become positive. However, inversing Integer.MIN_VALUE yields Integer.MIN_VALUE rather than Integer.MAX_VALUE therefore it's better to return -1.
 
