@@ -147,33 +147,10 @@ Using the standard `getClassLoader()` may not return the right class loader in J
 
 Example:
 ```diff
-+    ClassLoader d = Thread.currentThread().getContextClassLoader();
 -    ClassLoader d = this.getClass().getClassLoader(); // Noncompliant
-+    public void case1() {
-+        ClassLoader c = Thread.currentThread().getContextClassLoader();
-+
-+    }
--    public void case1() {
--        ClassLoader c = this.getClass().getClassLoader(); // Noncompliant
--    }
-+    public void case2() throws ClassNotFoundException {
-+        Thread.currentThread().getContextClassLoader().loadClass("anotherclass");
-+    }
--    public void case2() throws ClassNotFoundException{
--        Dummy.class.getClassLoader().loadClass("anotherclass"); // Noncompliant
--    }
-+    abstract class InnerClass {
-+        ClassLoader f = Thread.currentThread().getContextClassLoader();
-+        public void hello() {
-+            Thread.currentThread().getContextClassLoader();
-+        }
-+    }
--    abstract class InnerClass {
--        ClassLoader f = this.getClass().getClassLoader(); // Noncompliant 
--        public void hello() {
--            this.getClass().getClassLoader(); // Noncompliant
--       }
--    }
++    ClassLoader d = Thread.currentThread().getContextClassLoader();
+-    Dummy.class.getClassLoader().loadClass("anotherclass"); // Noncompliant
++    Thread.currentThread().getContextClassLoader().loadClass("anotherclass");
 ```
 
 -----
