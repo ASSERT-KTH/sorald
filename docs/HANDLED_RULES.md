@@ -1,6 +1,6 @@
 ## Handled rules
 
-Sonarqube-repair can currently repair violations of 8 rules of which 6 are labeled as `BUG` and 2 as `Code Smell`:
+Sonarqube-repair can currently repair violations of 9 rules of which 7 are labeled as `BUG` and 2 as `Code Smell`:
 
 * [Bug](#bug)
     * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
@@ -143,7 +143,7 @@ Example:
 
 #### JEE applications should not "getClassLoader" ([Sonar Rule 3032](https://rules.sonarsource.com/java/RSPEC-3032))
 
-Using the standard `getClassLoader()` may not return the right class loader in Java Enterprise Edition context. Instead, `getClassLoader()` usage such as `this.getClass().getClassLoader()` and `Dummy.class.getClassLoader()` should be replaced by `Thread.currentThread().getClassLoader()`. In particular, such replacement only occurs if the `.java` files use the `javax` package in its imports.
+Using the standard `getClassLoader()` may not return the right class loader in Java Enterprise Edition context. Instead, `getClassLoader()` usage such as `this.getClass().getClassLoader()` and `Dummy.class.getClassLoader()` should be replaced by `Thread.currentThread().getContextClassLoader()`. In particular, such replacement only occurs if the `.java` files use the `javax` package in its imports.
 
 Example:
 ```diff
