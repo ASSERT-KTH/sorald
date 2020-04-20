@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompareToReturnValueProcessor extends SQRAbstractProcessor<CtMethod<?>> {
-	public final List<CtMethod<?>> emptyMethods = new ArrayList<>();
 
 	@Override
 	public boolean isToBeProcessed(CtMethod<?> method) {
