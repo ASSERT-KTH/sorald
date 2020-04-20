@@ -1,6 +1,5 @@
 ## Handled rules
-
-Sonarqube-repair can currently repair violations of 9 rules of which 7 are labeled as `BUG` and 2 as `Code Smell`:
+Sonarqube-repair can currently repair violations of 10 rules of which 8 are labeled as `BUG` and 2 as `Code Smell`:
 
 * [Bug](#bug)
     * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
@@ -154,6 +153,21 @@ Example:
 ```
 
 -----
+
+#### "compareTo" should not return "Integer.MIN_VALUE" ([Sonar Rule 2167](https://rules.sonarsource.com/java/RSPEC-2167))
+Returning `Integer.MIN_VALUE` can cause errors because the return value of `compareTo` is sometimes inversed, with the expectation that negative values become positive. However, inversing `Integer.MIN_VALUE` yields `Integer.MIN_VALUE` rather than `Integer.MAX_VALUE`. Any `return Integer.MIN_VALUE` in a `compareTo` method is then replaced by `return -1`.
+
+```diff
+-  public int compareTo(CompareToReturnValue a) {
+-    return Integer.MIN_VALUE; // Noncompliant
+-  }
++  public int compareTo(CompareToReturnValue a) {
++     return -1;
++  }
+```
+
+-----
+
 ### *Code Smell*
 
 #### Unused assignments should be removed ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
