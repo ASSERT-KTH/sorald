@@ -1,5 +1,4 @@
 ## Handled rules
-
 Sonarqube-repair can currently repair violations of 10 rules of which 8 are labeled as `BUG` and 2 as `Code Smell`:
 
 * [Bug](#bug)
@@ -155,7 +154,7 @@ Example:
 
 -----
 #### "compareTo" should not return "Integer.MIN_VALUE" ([Sonar Rule 2167](https://rules.sonarsource.com/java/RSPEC-2167))
-Returning Integer.MIN_VALUE can cause errors because the return value of compareTo is sometimes inversed, with the expectation that negative values become positive. However, inversing Integer.MIN_VALUE yields Integer.MIN_VALUE rather than Integer.MAX_VALUE therefore it's better to return -1.
+Returning `Integer.MIN_VALUE` can cause errors because the return value of `compareTo` is sometimes inversed, with the expectation that negative values become positive. However, inversing `Integer.MIN_VALUE` yields `Integer.MIN_VALUE` rather than `Integer.MAX_VALUE` therefore it's better to `return -1`.
 
 ```diff
 -  public int compareTo(CompareToReturnValue a) {
