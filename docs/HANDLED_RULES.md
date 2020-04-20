@@ -143,7 +143,7 @@ Example:
 
 #### JEE applications should not "getClassLoader" ([Sonar Rule 3032](https://rules.sonarsource.com/java/RSPEC-3032))
 
-Using the standard getClassLoader() may not return the right class loader in Java Enterprise Edition context, i.e. the code use any of these [javax packages](https://docs.oracle.com/javaee/6/api/overview-summary.html). Instead, go through the currentThread. In particular, this processor will transform the code in `.java` files if they appear to use the `javax` package.
+Using the standard `getClassLoader()` may not return the right class loader in Java Enterprise Edition context, i.e. the code use any of these [javax packages](https://docs.oracle.com/javaee/6/api/overview-summary.html). Instead, go through the currentThread. In particular, this processor will transform the code in `.java` files if they appear to use the `javax` package.
 
 Example:
 ```diff
