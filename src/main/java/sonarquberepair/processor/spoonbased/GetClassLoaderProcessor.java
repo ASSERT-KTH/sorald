@@ -2,7 +2,6 @@ package sonarquberepair.processor.spoonbased;
 
 import sonarquberepair.processor.SQRAbstractProcessor;
 
-import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.declaration.CtMethod;
