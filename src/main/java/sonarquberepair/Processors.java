@@ -7,6 +7,7 @@ import sonarquberepair.processor.spoonbased.ArrayHashCodeAndToStringProcessor;
 import sonarquberepair.processor.spoonbased.BigDecimalDoubleConstructorProcessor;
 import sonarquberepair.processor.spoonbased.CastArithmeticOperandProcessor;
 import sonarquberepair.processor.spoonbased.CompareStringsBoxedTypesWithEqualsProcessor;
+import sonarquberepair.processor.spoonbased.EqualsOnAtomicClassProcessor;
 import sonarquberepair.processor.spoonbased.IteratorNextExceptionProcessor;
 import sonarquberepair.processor.spoonbased.GetClassLoaderProcessor;
 import sonarquberepair.processor.spoonbased.CompareToReturnValueProcessor;
@@ -36,6 +37,7 @@ public class Processors {
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(3032, GetClassLoaderProcessor.class);
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2167, CompareToReturnValueProcessor.class);
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2164, MathOnFloatProcessor.class);
+		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2204, EqualsOnAtomicClassProcessor.class);
 		return TEMP_RULE_KEY_TO_PROCESSOR;
 	}
 
