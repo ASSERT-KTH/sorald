@@ -3,7 +3,7 @@
 Sonarqube-repair is a collection of java code analyses and transformations made with the [Spoon](https://github.com/INRIA/spoon) library to repair violations of rules contained in [SonarQube](https://rules.sonarsource.com).
 
 ## Handled rules
-Sonarqube-repair can currently repair violations of 11 rules of which 9 are labeled as `BUG` and 2 as `Code Smell`. [Check out the handled rules](/docs/HANDLED_RULES.md).
+Sonarqube-repair can currently repair violations of 12 rules of which 10 are labeled as `BUG` and 2 as `Code Smell`. [Check out the handled rules](/docs/HANDLED_RULES.md).
 
 ## Getting started
 

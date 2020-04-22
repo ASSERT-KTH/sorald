@@ -1,5 +1,5 @@
 ## Handled rules
-Sonarqube-repair can currently repair violations of 11 rules of which 9 are labeled as `BUG` and 2 as `Code Smell`:
+Sonarqube-repair can currently repair violations of 12 rules of which 10 are labeled as `BUG` and 2 as `Code Smell`:
 
 * [Bug](#bug)
     * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
@@ -11,6 +11,7 @@ Sonarqube-repair can currently repair violations of 11 rules of which 9 are labe
     * [JEE applications should not "getClassLoader"](#jee-applications-should-not-getclassloader-sonar-rule-3032) ([Sonar Rule 3032](https://rules.sonarsource.com/java/RSPEC-3032))
     * ["compareTo" should not return "Integer.MIN_VALUE"](#compareto-should-not-return-integermin_value-sonar-rule-2167) ([Sonar Rule 2167](https://rules.sonarsource.com/java/RSPEC-2167))
     * [Math should not be performed on floats](#math-should-not-be-performed-on-floats-sonar-rule-2164) ([Sonar Rule 2164](https://rules.sonarsource.com/java/RSPEC-2164))
+    * [".equals()" should not be used to test the values of "Atomic" classes](#equals-should-not-be-used-to-test-the-values-of-atomic-classes-sonar-rule-2204) ([Sonar Rule 2204](https://rules.sonarsource.com/java/RSPEC-2204))
 * [Code Smell](#code-smell)
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
@@ -181,6 +182,20 @@ Example:
          float b = 1.0f;
 -        float c = a + b; // Noncompliant, yields 1.6777216E7 not 1.6777217E7
 +        float c = (double) a + (double) b;
+```
+
+-----
+
+#### ".equals()" should not be used to test the values of "Atomic" classes ([Sonar Rule 2204](https://rules.sonarsource.com/java/RSPEC-2204))
+
+Any equality comparison between `AtomicInteger`, `AtomicLong`, or `AtomicBoolean` objects using the method `equals`, i.e., `obj1.equals(obj2)`, is replaced by a binary operator of the kind equals, where the left and right hand operands are calls to the method `.get()` using both objects.
+
+Example:
+```diff
+ 		AtomicInteger aInt1 = new AtomicInteger(0);
+ 		AtomicInteger aInt2 = new AtomicInteger(0);
+-		isEqual = aInt1.equals(aInt2); // Noncompliant
++		isEqual = aInt1.get() == aInt2.get();
 ```
 
 -----
