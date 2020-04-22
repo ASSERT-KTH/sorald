@@ -10,6 +10,7 @@ import sonarquberepair.processor.spoonbased.CompareStringsBoxedTypesWithEqualsPr
 import sonarquberepair.processor.spoonbased.IteratorNextExceptionProcessor;
 import sonarquberepair.processor.spoonbased.GetClassLoaderProcessor;
 import sonarquberepair.processor.spoonbased.CompareToReturnValueProcessor;
+import sonarquberepair.processor.spoonbased.MathOnFloatProcessor;
 
 import spoon.processing.Processor;
 
@@ -34,6 +35,7 @@ public class Processors {
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2184, CastArithmeticOperandProcessor.class);
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(3032, GetClassLoaderProcessor.class);
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2167, CompareToReturnValueProcessor.class);
+		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2164, MathOnFloatProcessor.class);
 		return TEMP_RULE_KEY_TO_PROCESSOR;
 	}
 

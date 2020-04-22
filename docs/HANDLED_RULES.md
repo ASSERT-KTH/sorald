@@ -1,5 +1,5 @@
 ## Handled rules
-Sonarqube-repair can currently repair violations of 10 rules of which 8 are labeled as `BUG` and 2 as `Code Smell`:
+Sonarqube-repair can currently repair violations of 11 rules of which 9 are labeled as `BUG` and 2 as `Code Smell`:
 
 * [Bug](#bug)
     * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
@@ -10,6 +10,7 @@ Sonarqube-repair can currently repair violations of 10 rules of which 8 are labe
     * [Math operands should be cast before assignment](#math-operands-should-be-cast-before-assignment-sonar-rule-2184) ([Sonar Rule 2184](https://rules.sonarsource.com/java/RSPEC-2184))
     * [JEE applications should not "getClassLoader"](#jee-applications-should-not-getclassloader-sonar-rule-3032) ([Sonar Rule 3032](https://rules.sonarsource.com/java/RSPEC-3032))
     * ["compareTo" should not return "Integer.MIN_VALUE"](#compareto-should-not-return-integermin_value-sonar-rule-2167) ([Sonar Rule 2167](https://rules.sonarsource.com/java/RSPEC-2167))
+    * [Math should not be performed on floats](#math-should-not-be-performed-on-floats-sonar-rule-2164) ([Sonar Rule 2164](https://rules.sonarsource.com/java/RSPEC-2164))
 * [Code Smell](#code-smell)
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
@@ -166,6 +167,20 @@ Returning `Integer.MIN_VALUE` can cause errors because the return value of `comp
 +  public int compareTo(CompareToReturnValue a) {
 +     return -1;
 +  }
+```
+
+-----
+
+#### Math should not be performed on floats ([Sonar Rule 2164](https://rules.sonarsource.com/java/RSPEC-2164))
+
+In arithmetic expressions between two `float`s, both left and right operands are casted to `double`.
+
+Example:
+```diff
+         float a = 16777216.0f;
+         float b = 1.0f;
+-        float c = a + b; // Noncompliant, yields 1.6777216E7 not 1.6777217E7
++        float c = (double) a + (double) b;
 ```
 
 -----
