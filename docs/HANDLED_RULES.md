@@ -1,5 +1,5 @@
 ## Handled rules
-Sonarqube-repair can currently repair violations of 12 rules of which 10 are labeled as `BUG` and 2 as `Code Smell`:
+Sonarqube-repair can currently repair violations of 13 rules of which 11 are labeled as `BUG` and 2 as `Code Smell`:
 
 * [Bug](#bug)
     * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
@@ -11,6 +11,7 @@ Sonarqube-repair can currently repair violations of 12 rules of which 10 are lab
     * [JEE applications should not "getClassLoader"](#jee-applications-should-not-getclassloader-sonar-rule-3032) ([Sonar Rule 3032](https://rules.sonarsource.com/java/RSPEC-3032))
     * ["compareTo" should not return "Integer.MIN_VALUE"](#compareto-should-not-return-integermin_value-sonar-rule-2167) ([Sonar Rule 2167](https://rules.sonarsource.com/java/RSPEC-2167))
     * [Math should not be performed on floats](#math-should-not-be-performed-on-floats-sonar-rule-2164) ([Sonar Rule 2164](https://rules.sonarsource.com/java/RSPEC-2164))
+    * [Synchronization should not be based on Strings or boxed primitives](#Synchronization-should-not-be-based-on-Strings-or-boxed-primitives) ([Sonar Rule 1860](https://rules.sonarsource.com/java/tag/multi-threading/RSPEC-1860))
     * [".equals()" should not be used to test the values of "Atomic" classes](#equals-should-not-be-used-to-test-the-values-of-atomic-classes-sonar-rule-2204) ([Sonar Rule 2204](https://rules.sonarsource.com/java/RSPEC-2204))
 * [Code Smell](#code-smell)
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
@@ -196,6 +197,38 @@ Example:
  		AtomicInteger aInt2 = new AtomicInteger(0);
 -		isEqual = aInt1.equals(aInt2); // Noncompliant
 +		isEqual = aInt1.get() == aInt2.get();
+```
+
+-----
+
+#### Synchronization should not be based on Strings or boxed primitives ([Sonar Rule 1860](https://rules.sonarsource.com/java/RSPEC-1860))
+
+Objects which are pooled and potentially reused should not be used for synchronization. If they are, it can cause unrelated threads to deadlock with unhelpful stacktraces. Specifically, String literals, and boxed primitives such as Integers should not be used as lock objects because they are pooled and reused.
+
+Example:
+```diff
+-  private final Boolean bLock = Boolean.FALSE;
++  private final Object bLockLegal = new Object();
+   private final InnerClass i = new InnerClass();
+-  void method1() {
+-    synchronized(bLock) {}
+-    synchronized(i.getLock()){}
+-  }
++  void method1() {
++    synchronized(bLockLegal) {}
++    synchronized(i.getLockLegal()){}
++  }
+   class InnerClass {
+        public Boolean innerLock = Boolean.FALSE;
++       public Object innerLockLegal = new Object();
+
+        public Boolean getLock() {
+            return this.innerLock;
+        }
++       public Object getLockLegal() {
++           return this.innerLockLegal;
++       }
+  }
 ```
 
 -----
