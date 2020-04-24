@@ -245,17 +245,16 @@ class SynchronizationOnGetClass {
 -    InnerClass i = new InnerClass();
 -    synchronized (i.getObject().getClass()) { // Noncompliant - object's modifier is unknown, assume non-final nor enum
 -  }
-+    public void method1() {
-+        InnerClass i = new InnerClass();
-+        synchronized(Object.class) {}
++  public void method1() {
++    InnerClass i = new InnerClass();
++    synchronized(Object.class) {}
 +  }
- 
--   public void method2() {
--     synchronized (getClass()) {}
--   }
-+   public void method2() {
-+     synchronized(SynchronizationOnGetClass.class) {}
-+   }
+-  public void method2() {
+-    synchronized (getClass()) {}
+-  }
++  public void method2() {
++    synchronized(SynchronizationOnGetClass.class) {}
++  }
 }
 ```
 
