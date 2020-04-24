@@ -16,13 +16,13 @@ public class SynchronizationOnGetClassProcessorTest {
 		String pathToRepairedFile = Constants.WORKSPACE + "/spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new SynchronizationOnGetClassCheck());
-        Main.main(new String[]{
-                "--originalFilesPath",pathToBuggyFile,
-                "--projectKey", Constants.PROJECT_KEY,
-                "--ruleKeys","3067",
-                "--workspace",Constants.WORKSPACE});
-        TestHelper.removeComplianceComments(pathToRepairedFile);
-        JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new SynchronizationOnGetClassCheck());
+		Main.main(new String[]{
+			"--originalFilesPath",pathToBuggyFile,
+			"--projectKey", Constants.PROJECT_KEY,
+			"--ruleKeys","3067",
+			"--workspace",Constants.WORKSPACE});
+		TestHelper.removeComplianceComments(pathToRepairedFile);
+		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new SynchronizationOnGetClassCheck());
 	}
 
 }
