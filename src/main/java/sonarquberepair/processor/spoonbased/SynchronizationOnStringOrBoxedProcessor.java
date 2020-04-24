@@ -11,7 +11,6 @@ import spoon.reflect.code.CtSynchronized;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtFieldRead;
 import spoon.reflect.code.CtInvocation;
-import spoon.reflect.code.CtReturn;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtVariableReference;
@@ -25,11 +24,10 @@ import java.util.Map;
 public class SynchronizationOnStringOrBoxedProcessor extends SQRAbstractProcessor<CtSynchronized> {
     private Map<Integer,CtVariableReference> old2NewFields;
     private Map<Integer,CtExecutableReference> old2NewMethods;
-    private HashSet<String> invalidTypes;
 
     public SynchronizationOnStringOrBoxedProcessor() {
-        this.old2NewFields = new HashMap<Integer,CtVariableReference>();
-        this.old2NewMethods = new HashMap<Integer,CtExecutableReference>();
+        this.old2NewFields = new HashMap<>();
+        this.old2NewMethods = new HashMap<>();
     }
 
     @Override

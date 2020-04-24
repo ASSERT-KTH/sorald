@@ -11,7 +11,7 @@ Sonarqube-repair can currently repair violations of 13 rules of which 11 are lab
     * [JEE applications should not "getClassLoader"](#jee-applications-should-not-getclassloader-sonar-rule-3032) ([Sonar Rule 3032](https://rules.sonarsource.com/java/RSPEC-3032))
     * ["compareTo" should not return "Integer.MIN_VALUE"](#compareto-should-not-return-integermin_value-sonar-rule-2167) ([Sonar Rule 2167](https://rules.sonarsource.com/java/RSPEC-2167))
     * [Math should not be performed on floats](#math-should-not-be-performed-on-floats-sonar-rule-2164) ([Sonar Rule 2164](https://rules.sonarsource.com/java/RSPEC-2164))
-    * [Synchronization should not be based on Strings or boxed primitives](#Synchronization-should-not-be-based-on-Strings-or-boxed-primitives) ([Sonar Rule 1860](https://rules.sonarsource.com/java/tag/multi-threading/RSPEC-1860))
+    * [Synchronization should not be based on Strings or boxed primitives](#synchronization-should-not-be-based-on-Strings-or-boxed-primitives) ([Sonar Rule 1860](https://rules.sonarsource.com/java/tag/multi-threading/RSPEC-1860))
     * [".equals()" should not be used to test the values of "Atomic" classes](#equals-should-not-be-used-to-test-the-values-of-atomic-classes-sonar-rule-2204) ([Sonar Rule 2204](https://rules.sonarsource.com/java/RSPEC-2204))
 * [Code Smell](#code-smell)
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
@@ -203,11 +203,11 @@ Example:
 
 #### Synchronization should not be based on Strings or boxed primitives ([Sonar Rule 1860](https://rules.sonarsource.com/java/RSPEC-1860))
 
-Objects which are pooled and potentially reused should not be used for synchronization. If they are, it can cause unrelated threads to deadlock with unhelpful stacktraces. Specifically, String literals, and boxed primitives such as Integers should not be used as lock objects because they are pooled and reused.
+Objects which are pooled, such as Strings or boxed primitives and potentially reused should not be used for synchronization, since that can cause deadlocks. The transformation will do the following. If the lock is a field of the current class where the synchronization block is in, then it will simply adding a new field as an Object lock. If the lock is obtained from another object through the get method, it will add a new field for the new object lock and a new method return the object. 
 
 Example:
 ```diff
--  private final Boolean bLock = Boolean.FALSE;
+   private final Boolean bLock = Boolean.FALSE;
 +  private final Object bLockLegal = new Object();
    private final InnerClass i = new InnerClass();
 -  void method1() {
