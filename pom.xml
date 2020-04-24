@@ -29,8 +29,16 @@
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-checks-testkit</artifactId>
-            <version>5.14.0.18788</version>
-            <scope>test</scope>
+            <version>5.14.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/libs/java-checks-testkit-5.14.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.sonarsource.java</groupId>
+            <artifactId>java-frontend</artifactId>
+            <version>5.14.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/libs/java-frontend-5.14.0-SNAPSHOT.jar</systemPath>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.sonarsource.java/sonar-java-plugin -->
         <dependency>

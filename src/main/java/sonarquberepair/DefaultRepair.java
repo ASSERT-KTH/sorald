@@ -43,15 +43,8 @@ public class DefaultRepair {
 		}
 
 		Class<?> processor = Processors.getProcessor(config.getRuleKeys().get(0));
-		Constructor<?> cons;
-		Object object;
-		try {
-			cons = processor.getConstructor(String.class);
-			object = cons.newInstance(config.getProjectKey());
-		} catch (NoSuchMethodException e) {
-			cons = processor.getConstructor();
-			object = cons.newInstance();
-		}
+		Constructor<?> cons = processor.getConstructor(String.class);
+		Object object = cons.newInstance(this.config.getOriginalFilesPath());
 
 		CtModel model = launcher.buildModel();
 		Factory factory = launcher.getFactory();

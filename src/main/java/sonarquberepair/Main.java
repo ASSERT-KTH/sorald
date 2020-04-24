@@ -1,7 +1,5 @@
 package sonarquberepair;
 
-import spoon.support.sniper.SniperJavaPrettyPrinter;
-
 import com.martiansoftware.jsap.FlaggedOption;
 import com.martiansoftware.jsap.JSAP;
 import com.martiansoftware.jsap.JSAPException;
@@ -24,13 +22,6 @@ public class Main {
 		opt.setStringParser(JSAP.INTEGER_PARSER);
 		opt.setDefault("2116");
 		opt.setHelp("Sonarqube rule key, Check https://rules.sonarsource.com/java");
-		jsap.registerParameter(opt);
-
-		opt = new FlaggedOption("projectKey");
-		opt.setLongFlag("projectKey");
-		opt.setStringParser(JSAP.STRING_PARSER);
-		opt.setDefault("fr.inria.gforge.spoon:spoon-core");
-		opt.setHelp("what is this projectKey ?");
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption("originalFilesPath");
@@ -74,7 +65,6 @@ public class Main {
 		JSAPResult jsapRes = jsap.parse(args);
 
 		this.getConfig().addRuleKeys(jsapRes.getInt("ruleKeys"));
-		this.getConfig().setProjectKey(jsapRes.getString("projectKey"));
 		this.getConfig().setOriginalFilesPath(jsapRes.getString("originalFilesPath"));
 		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(jsapRes.getString("prettyPrintingStrategy")));
 		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(jsapRes.getString("fileOutputStrategy")));

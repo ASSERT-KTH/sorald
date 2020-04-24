@@ -1,20 +1,19 @@
 package sonarquberepair;
 
-import sonarquberepair.processor.sonarbased.DeadStoreProcessor;
-import sonarquberepair.processor.sonarbased.SerializableFieldInSerializableClassProcessor;
-import sonarquberepair.processor.sonarbased.UnclosedResourcesProcessor;
-import sonarquberepair.processor.spoonbased.ArrayHashCodeAndToStringProcessor;
-import sonarquberepair.processor.spoonbased.BigDecimalDoubleConstructorProcessor;
-import sonarquberepair.processor.spoonbased.CastArithmeticOperandProcessor;
-import sonarquberepair.processor.spoonbased.CompareStringsBoxedTypesWithEqualsProcessor;
-import sonarquberepair.processor.spoonbased.EqualsOnAtomicClassProcessor;
-import sonarquberepair.processor.spoonbased.IteratorNextExceptionProcessor;
-import sonarquberepair.processor.spoonbased.GetClassLoaderProcessor;
-import sonarquberepair.processor.spoonbased.CompareToReturnValueProcessor;
-import sonarquberepair.processor.spoonbased.MathOnFloatProcessor;
-import sonarquberepair.processor.spoonbased.SynchronizationOnStringOrBoxedProcessor;
-import sonarquberepair.processor.spoonbased.SynchronizationOnGetClassProcessor;
-
+import sonarquberepair.processor.ArrayHashCodeAndToStringProcessor;
+import sonarquberepair.processor.BigDecimalDoubleConstructorProcessor;
+import sonarquberepair.processor.CastArithmeticOperandProcessor;
+import sonarquberepair.processor.CompareStringsBoxedTypesWithEqualsProcessor;
+import sonarquberepair.processor.CompareToReturnValueProcessor;
+import sonarquberepair.processor.DeadStoreProcessor;
+import sonarquberepair.processor.EqualsOnAtomicClassProcessor;
+import sonarquberepair.processor.GetClassLoaderProcessor;
+import sonarquberepair.processor.IteratorNextExceptionProcessor;
+import sonarquberepair.processor.MathOnFloatProcessor;
+import sonarquberepair.processor.SerializableFieldInSerializableClassProcessor;
+import sonarquberepair.processor.SynchronizationOnGetClassProcessor;
+import sonarquberepair.processor.SynchronizationOnStringOrBoxedProcessor;
+import sonarquberepair.processor.UnclosedResourcesProcessor;
 import spoon.processing.Processor;
 
 import java.util.HashMap;
