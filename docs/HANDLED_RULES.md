@@ -203,7 +203,7 @@ Example:
 
 #### Synchronization should not be based on Strings or boxed primitives ([Sonar Rule 1860](https://rules.sonarsource.com/java/RSPEC-1860))
 
-Objects which are pooled, such as Strings or boxed primitives and potentially reused should not be used for synchronization, since that can cause deadlocks. The transformation will do the following. If the lock is a field of the current class where the synchronization block is in, then it will simply adding a new field as an Object lock. If the lock is obtained from another object through the get method, it will add a new field for the new object lock and a new method return the object. 
+Objects which are pooled, such as Strings or boxed primitives, and potentially reused should not be used for synchronization, since they can cause deadlocks. The transformation will do the following. If the lock is a field of the current class where the synchronization block is in, then it will simply add a new field as an `Object` lock. If the lock is obtained from another object through the `get` method, it will add a new field for the new `Object` lock and a new method to get the object. 
 
 Example:
 ```diff
