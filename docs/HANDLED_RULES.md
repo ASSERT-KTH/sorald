@@ -1,5 +1,5 @@
 ## Handled rules
-Sonarqube-repair can currently repair violations of 14 rules of which 12 are labeled as `BUG` and 2 as `Code Smell`:
+Sonarqube-repair can currently repair violations of 15 rules of which 13 are labeled as `BUG` and 2 as `Code Smell`:
 
 * [Bug](#bug)
     * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
