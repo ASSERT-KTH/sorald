@@ -6,7 +6,6 @@ import java.util.ArrayList;
 /* All config settings of SonarQube should be gathered here */
 public class SonarQubeRepairConfig {
 	private final List<Integer> ruleKeys = new ArrayList<Integer>();
-	private String projectKey;
 	private PrettyPrintingStrategy prettyPrintingStrategy;
 	private FileOutputStrategy fileOutputStrategy;
 	private String originalFilesPath;
@@ -14,14 +13,6 @@ public class SonarQubeRepairConfig {
 	private String gitRepoPath;
 
 	public SonarQubeRepairConfig() {}
-
-	public void setProjectKey(String projectKey) {
-		this.projectKey = projectKey;
-	}
-
-	public String getProjectKey() {
-		return this.projectKey;
-	}
 
 	public void addRuleKeys(int ruleKey) {
 		this.ruleKeys.add(ruleKey);

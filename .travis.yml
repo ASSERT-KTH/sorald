@@ -2,3 +2,6 @@ language: java
 
 jdk:
   - openjdk10
+
+before_install:
+  - ./init.sh

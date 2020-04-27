@@ -13,3 +13,4 @@ SampleProcessor.java
 script.sh
 sonar-workspace/
 OnlyChangedFilesOutput/
+sonar-java/
