@@ -21,7 +21,7 @@ import spoon.reflect.declaration.CtElement;
 /** superclass for all processors */
 public abstract class SQRAbstractProcessor<E extends CtElement> extends AbstractProcessor<E> {
 	private Set<Bug> bugs;
-	
+
 	SQRAbstractProcessor(String originalFilesPath, JavaFileScanner check) {
 		try {
 			List<String> filesToScan = new ArrayList<>();

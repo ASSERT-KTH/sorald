@@ -11,7 +11,7 @@ public class SelfAssignementProcessorTest {
 
 	@Test
 	public void test() throws Exception {
-		String fileName = "SelfAssignment.java";
+		String fileName = "SelfAssignement.java";
 		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
 		String pathToRepairedFile = Constants.WORKSPACE + "/spooned/" + fileName;
 

@@ -50,6 +50,8 @@ public class SelfAssignementProcessor extends SQRAbstractProcessor<CtAssignment<
 
 	@Override	
 	public void process(CtAssignment<?,?> element) {
+		super.process(element);
+		
 		Factory factory = element.getFactory();
 		CtType<?> type = element.getParent(CtType.class);
 
