@@ -24,14 +24,14 @@ So the name of your new processor is `CastArithmeticOperandCheck` replacing "Che
 
 2) Create the processor
 
-Once you have the name for the new processor, you can create a class using that name in `src/main/java/sonarquberepair.processor.spoonbased`.
-This new class must extend `AbstractProcessor` and implement the methods `isToBeProcessed` and `process` (check out real examples of processors [here](/src/main/java/sonarquberepair/processor/spoonbased)).
+Once you have the name for the new processor, you can create a class using that name in `src/main/java/sonarquberepair/processor`.
+This new class must extend `SQRAbstractProcessor` and implement the methods `isToBeProcessed` and `process` (check out real examples of processors [here](/src/main/java/sonarquberepair/processor)).
 After implementing your new processor, plug it in Sonarqube-repair by adding it in the code of [Processors](/src/main/java/sonarquberepair/Processors.java).
 
 3) Create a test class for the processor
 
 Your processor is done, so now it's time to test it.
-For that, you should first to create a test class, with the same name as your processor plus the word "Test", and place it in [here](/src/test/java/sonarquberepair/processor/spoonbased).
+For that, you should first to create a test class, with the same name as your processor plus the word "Test", and place it in [here](/src/test/java/sonarquberepair/processor).
 See in this same folder how the tests usually are.
 Then, you should create a java file in the [testing resources](/src/test/resources), which is the file you will use in your test class.
 Such a resource should contain at least the examples that SonarSource provides, because your processor should at least work on them. 
