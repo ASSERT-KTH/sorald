@@ -10,11 +10,11 @@ import sonarquberepair.processor.EqualsOnAtomicClassProcessor;
 import sonarquberepair.processor.GetClassLoaderProcessor;
 import sonarquberepair.processor.IteratorNextExceptionProcessor;
 import sonarquberepair.processor.MathOnFloatProcessor;
+import sonarquberepair.processor.SQRAbstractProcessor;
 import sonarquberepair.processor.SerializableFieldInSerializableClassProcessor;
 import sonarquberepair.processor.SynchronizationOnGetClassProcessor;
 import sonarquberepair.processor.SynchronizationOnStringOrBoxedProcessor;
 import sonarquberepair.processor.UnclosedResourcesProcessor;
-import spoon.processing.Processor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,10 +23,10 @@ import static java.lang.System.exit;
 
 public class Processors {
 
-	private static final Map<Integer, Class<? extends Processor>> RULE_KEY_TO_PROCESSOR = init();
+	private static final Map<Integer, Class<? extends SQRAbstractProcessor>> RULE_KEY_TO_PROCESSOR = init();
 
 	private static Map init() {
-		Map<Integer, Class<? extends Processor>> TEMP_RULE_KEY_TO_PROCESSOR = new HashMap<>();
+		Map<Integer, Class<? extends SQRAbstractProcessor>> TEMP_RULE_KEY_TO_PROCESSOR = new HashMap<>();
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(1854, DeadStoreProcessor.class);
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(1948, SerializableFieldInSerializableClassProcessor.class);
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2095, UnclosedResourcesProcessor.class);
