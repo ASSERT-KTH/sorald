@@ -11,7 +11,6 @@ import spoon.reflect.code.CtFieldRead;
 import spoon.reflect.code.CtFieldAccess;
 import spoon.reflect.code.CtArrayAccess;
 import spoon.reflect.code.CtVariableAccess;
-import spoon.reflect.code.CtTargetedExpression;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.declaration.CtType;
@@ -35,10 +34,10 @@ public class SelfAssignementProcessor extends SQRAbstractProcessor<CtAssignment<
 			return false;
 		}
 
-		if (!candidate.getAssigned().toString().contains("this.") && candidate.getAssigned().toString().contains(".")) {
-			return false;
+		if (leftExpression.toString().equals(rightExpression.toString())) {
+			return true;
 		}
-		
+
 		return true;
 	}
 
@@ -57,17 +56,13 @@ public class SelfAssignementProcessor extends SQRAbstractProcessor<CtAssignment<
 		CtExpression<?> rightExpression = element.getAssignment();
 		CtExpression<?> leftExpression2Check;
 		CtExpression<?> rightExpression2Check;
-		boolean isArrayAccess = false;
 		if (leftExpression instanceof CtArrayAccess && rightExpression instanceof CtArrayAccess) {
 			leftExpression2Check = ((CtArrayAccess)leftExpression).getTarget();
 			rightExpression2Check = ((CtArrayAccess)rightExpression).getTarget();
-			isArrayAccess = true;
 		} else {
 			leftExpression2Check = leftExpression;
 			rightExpression2Check = rightExpression;
 		}
-		System.out.println(element);
-		System.out.println(leftExpression2Check + " " + rightExpression2Check);
 		boolean instanceOfFieldAccess = leftExpression2Check instanceof CtFieldAccess && rightExpression2Check instanceof CtFieldAccess; // True if no identical local variable present
 		boolean instanceOfVariableAccess = leftExpression2Check instanceof CtVariableAccess && rightExpression2Check instanceof CtVariableAccess;
 

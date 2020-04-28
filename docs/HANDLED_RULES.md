@@ -265,8 +265,6 @@ class SynchronizationOnGetClass {
 
 Any assignment with identical left and right expressions will be processed. If the identifier being using in the self-assignment exists as both a local variable and a field, then the left expression will be changed by adding this. at the beginning of the expression. In any other case, including cases where there are invocations or access to another class field, such as objectA.b = objectA.b, the assignment will be removed.
 
-In particular, this processor will only process self-assigments contained inside a single class file, meaning cases such as `a.b = a.b` will not be processed, while `this.a.b = this.a.b` will be fixed. The motivation is `a.b = a.b` is uncommon and classpath of `a` might not be present during the processing.
-
 Example:
 ```diff
 class SelfAssignement {
