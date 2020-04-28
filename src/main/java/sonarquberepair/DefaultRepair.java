@@ -20,6 +20,9 @@ public class DefaultRepair {
 
 	public DefaultRepair(SonarQubeRepairConfig config) {
 		this.config = config;
+		if (this.config.getGitRepoPath() != null) {
+			this.generator.setGitProjectRootDir(this.config.getGitRepoPath());
+		}
 	}
 
 	public void repair() throws Exception {
@@ -77,7 +80,6 @@ public class DefaultRepair {
 		if (!list.isEmpty()) {
 			String outputPath = list.get(list.size() - 1).getAbsolutePath();
 			if (this.config.getGitRepoPath() != null) {
-				this.generator.setGitProjectRootDir(this.config.getGitRepoPath());
 				generator.generate(inputPath,outputPath, patchDir.getAbsolutePath() + File.separator + "sonarpatch_" + this.patchCounter);
 				this.patchCounter++;
 			}
