@@ -4,8 +4,10 @@ import java.lang.reflect.Constructor;
 import java.io.File;
 import java.util.List;
 
+import java.util.Map;
 import spoon.Launcher;
 import spoon.processing.Processor;
+import spoon.reflect.declaration.CtType;
 import spoon.support.sniper.SniperJavaPrettyPrinter;
 import spoon.support.JavaOutputProcessor;
 import spoon.support.QueueProcessingManager;
@@ -60,10 +62,10 @@ public class DefaultRepair {
 		processingManager.process(factory.Class().getAll());
 
 		if (this.config.getFileOutputStrategy() == FileOutputStrategy.CHANGED_ONLY) {
-			for (String inputPath : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().keySet()) {
-				javaOutputProcessor.process(UniqueTypesCollector.getInstance().getTopLevelTypes4Output().get(inputPath));
+			for (Map.Entry<String, CtType> inputPath : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().entrySet()) {
+				javaOutputProcessor.process(inputPath.getValue());
 				if (this.config.getGitRepoPath() != null) {
-					createPatches(inputPath, javaOutputProcessor);
+					createPatches(inputPath.getKey(), javaOutputProcessor);
 				}
 			}
 		}
