@@ -56,22 +56,7 @@ public class DefaultRepair {
 		if (this.config.getFileOutputStrategy() == FileOutputStrategy.CHANGED_ONLY) {
 			for (String inputPath : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().keySet()) {
 				javaOutputProcessor.process(UniqueTypesCollector.getInstance().getTopLevelTypes4Output().get(inputPath));
-
-				/* if also generating git patches */
-				File patchDir = new File(this.config.getWorkspace() + File.separator + "SonarGitPatches");
-
-				if (!patchDir.exists()) {
-					patchDir.mkdirs();
-				}
-				List<File> list = javaOutputProcessor.getCreatedFiles();
-				if (!list.isEmpty()) {
-					String outputPath = list.get(list.size() - 1).getAbsolutePath();
-					if (this.config.getGitRepoPath() != null) {
-						this.generator.setGitProjectRootDir(this.config.getGitRepoPath());
-						generator.generate(inputPath,outputPath, patchDir.getAbsolutePath() + File.separator + "sonarpatch_" + this.patchCounter);
-						this.patchCounter++;
-					}
-				}
+				createPatches(inputPath, javaOutputProcessor);
 			}
 		} else {
 			processingManager.addProcessor(javaOutputProcessor);
@@ -80,5 +65,22 @@ public class DefaultRepair {
 
 
 		UniqueTypesCollector.getInstance().reset();
+	}
+
+	private void createPatches(String inputPath, JavaOutputProcessor javaOutputProcessor) {
+		File patchDir = new File(this.config.getWorkspace() + File.separator + "SonarGitPatches");
+
+		if (!patchDir.exists()) {
+			patchDir.mkdirs();
+		}
+		List<File> list = javaOutputProcessor.getCreatedFiles();
+		if (!list.isEmpty()) {
+			String outputPath = list.get(list.size() - 1).getAbsolutePath();
+			if (this.config.getGitRepoPath() != null) {
+				this.generator.setGitProjectRootDir(this.config.getGitRepoPath());
+				generator.generate(inputPath,outputPath, patchDir.getAbsolutePath() + File.separator + "sonarpatch_" + this.patchCounter);
+				this.patchCounter++;
+			}
+		}
 	}
 }
