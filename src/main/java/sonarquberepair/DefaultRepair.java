@@ -59,7 +59,9 @@ public class DefaultRepair {
 		if (this.config.getFileOutputStrategy() == FileOutputStrategy.CHANGED_ONLY) {
 			for (String inputPath : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().keySet()) {
 				javaOutputProcessor.process(UniqueTypesCollector.getInstance().getTopLevelTypes4Output().get(inputPath));
-				createPatches(inputPath, javaOutputProcessor);
+				if (this.config.getGitRepoPath() != null) {
+					createPatches(inputPath, javaOutputProcessor);
+				}
 			}
 		} else {
 			processingManager.addProcessor(javaOutputProcessor);
@@ -79,10 +81,8 @@ public class DefaultRepair {
 		List<File> list = javaOutputProcessor.getCreatedFiles();
 		if (!list.isEmpty()) {
 			String outputPath = list.get(list.size() - 1).getAbsolutePath();
-			if (this.config.getGitRepoPath() != null) {
-				generator.generate(inputPath,outputPath, patchDir.getAbsolutePath() + File.separator + "sonarpatch_" + this.patchCounter);
-				this.patchCounter++;
-			}
+			generator.generate(inputPath,outputPath, patchDir.getAbsolutePath() + File.separator + "sonarpatch_" + this.patchCounter);
+			this.patchCounter++;
 		}
 	}
 }
