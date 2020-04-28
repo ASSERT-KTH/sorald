@@ -12,5 +12,5 @@ spooned/
 SampleProcessor.java
 script.sh
 sonar-workspace/
-OnlyChangedFilesOutput/
+FileOutputStrategyTest/
 sonar-java/

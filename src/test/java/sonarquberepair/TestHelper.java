@@ -1,6 +1,7 @@
 package sonarquberepair;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileOutputStream;
 
@@ -31,6 +32,16 @@ public class TestHelper {
 		} catch (Exception e) {
 			System.out.println("Problem reading file.");
 		}
+	}
+
+	public static boolean deleteDirectory(File directoryToBeDeleted) {
+		File[] allContents = directoryToBeDeleted.listFiles();
+		if (allContents != null) {
+			for (File file : allContents) {
+				deleteDirectory(file);
+			}
+		}
+		return directoryToBeDeleted.delete();
 	}
 
 }
