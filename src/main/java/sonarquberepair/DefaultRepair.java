@@ -16,7 +16,7 @@ import spoon.reflect.CtModel;
 public class DefaultRepair {
 	private final GitPatchGenerator generator = new GitPatchGenerator();
 	private SonarQubeRepairConfig config;
-	private int patchCounter = 1;
+	private int patchCounter = 0;
 
 	public DefaultRepair(SonarQubeRepairConfig config) {
 		this.config = config;
