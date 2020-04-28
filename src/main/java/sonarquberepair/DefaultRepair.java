@@ -54,6 +54,9 @@ public class DefaultRepair {
 		ProcessingManager processingManager = new QueueProcessingManager(factory);
 		JavaOutputProcessor javaOutputProcessor = launcher.createOutputWriter();
 		processingManager.addProcessor((Processor) object);
+		if (this.config.getFileOutputStrategy() == FileOutputStrategy.ALL) {
+			processingManager.addProcessor(javaOutputProcessor);
+		}
 		processingManager.process(factory.Class().getAll());
 
 		if (this.config.getFileOutputStrategy() == FileOutputStrategy.CHANGED_ONLY) {
@@ -63,11 +66,7 @@ public class DefaultRepair {
 					createPatches(inputPath, javaOutputProcessor);
 				}
 			}
-		} else {
-			processingManager.addProcessor(javaOutputProcessor);
-			processingManager.process(factory.Class().getAll());
 		}
-
 
 		UniqueTypesCollector.getInstance().reset();
 	}
