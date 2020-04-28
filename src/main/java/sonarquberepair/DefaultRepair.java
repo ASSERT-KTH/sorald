@@ -17,7 +17,7 @@ import spoon.reflect.factory.Factory;
 public class DefaultRepair {
 	private final GitPatchGenerator generator = new GitPatchGenerator();
 	private SonarQubeRepairConfig config;
-	private int patchCounter = 0;
+	private int patchedFileCounter = 0;
 
 	public DefaultRepair(SonarQubeRepairConfig config) {
 		this.config = config;
@@ -61,10 +61,10 @@ public class DefaultRepair {
 		processingManager.process(factory.Class().getAll());
 
 		if (this.config.getFileOutputStrategy() == FileOutputStrategy.CHANGED_ONLY) {
-			for (Map.Entry<String, CtType> inputPath : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().entrySet()) {
-				javaOutputProcessor.process(inputPath.getValue());
+			for (Map.Entry<String, CtType> patchedFile : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().entrySet()) {
+				javaOutputProcessor.process(patchedFile.getValue());
 				if (this.config.getGitRepoPath() != null) {
-					createPatches(inputPath.getKey(), javaOutputProcessor);
+					createPatches(patchedFile.getKey(), javaOutputProcessor);
 				}
 			}
 		}
@@ -72,7 +72,7 @@ public class DefaultRepair {
 		UniqueTypesCollector.getInstance().reset();
 	}
 
-	private void createPatches(String inputPath, JavaOutputProcessor javaOutputProcessor) {
+	private void createPatches(String patchedFilePath, JavaOutputProcessor javaOutputProcessor) {
 		File patchDir = new File(this.config.getWorkspace() + File.separator + "SonarGitPatches");
 
 		if (!patchDir.exists()) {
@@ -81,8 +81,8 @@ public class DefaultRepair {
 		List<File> list = javaOutputProcessor.getCreatedFiles();
 		if (!list.isEmpty()) {
 			String outputPath = list.get(list.size() - 1).getAbsolutePath();
-			generator.generate(inputPath,outputPath, patchDir.getAbsolutePath() + File.separator + "sonarpatch_" + this.patchCounter);
-			this.patchCounter++;
+			generator.generate(patchedFilePath,outputPath, patchDir.getAbsolutePath() + File.separator + "sonarpatch_" + this.patchedFileCounter);
+			this.patchedFileCounter++;
 		}
 	}
 }
