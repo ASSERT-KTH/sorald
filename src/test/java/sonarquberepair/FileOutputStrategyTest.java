@@ -5,7 +5,7 @@ import org.junit.Assert;
 
 import java.io.File;
 
-public class OnlyChangedFilesAndPatchOutputTest {
+public class FileOutputStrategyTest {
 
 	@Test
 	public void test() throws Exception {
