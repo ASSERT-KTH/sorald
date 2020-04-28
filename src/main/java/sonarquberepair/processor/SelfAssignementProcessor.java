@@ -31,7 +31,7 @@ public class SelfAssignementProcessor extends SQRAbstractProcessor<CtAssignment<
 		CtExpression<?> leftExpression = candidate.getAssigned();
 		CtExpression<?> rightExpression = candidate.getAssignment();
 		if (rightExpression == null || candidate.getParent(CtAssignment.class) != null) {
-			/* Ignore multiple assigment case*/
+			/* Ignore multiple assignment case*/
 			return false;
 		}
 
@@ -47,7 +47,7 @@ public class SelfAssignementProcessor extends SQRAbstractProcessor<CtAssignment<
 	@Override	
 	public void process(CtAssignment<?,?> element) {
 		super.process(element);
-		
+
 		Factory factory = element.getFactory();
 		CtType<?> type = element.getParent(CtType.class);
 
