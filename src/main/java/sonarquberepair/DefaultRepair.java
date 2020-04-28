@@ -13,7 +13,6 @@ import spoon.support.JavaOutputProcessor;
 import spoon.support.QueueProcessingManager;
 import spoon.processing.ProcessingManager;
 import spoon.reflect.factory.Factory;
-import spoon.reflect.CtModel;
 
 public class DefaultRepair {
 	private final GitPatchGenerator generator = new GitPatchGenerator();
@@ -51,7 +50,7 @@ public class DefaultRepair {
 		Constructor<?> cons = processor.getConstructor(String.class);
 		Object object = cons.newInstance(this.config.getOriginalFilesPath());
 
-		CtModel model = launcher.buildModel();
+		launcher.buildModel();
 		Factory factory = launcher.getFactory();
 		ProcessingManager processingManager = new QueueProcessingManager(factory);
 		JavaOutputProcessor javaOutputProcessor = launcher.createOutputWriter();
