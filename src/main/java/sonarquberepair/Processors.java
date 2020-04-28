@@ -15,6 +15,7 @@ import sonarquberepair.processor.SerializableFieldInSerializableClassProcessor;
 import sonarquberepair.processor.SynchronizationOnGetClassProcessor;
 import sonarquberepair.processor.SynchronizationOnStringOrBoxedProcessor;
 import sonarquberepair.processor.UnclosedResourcesProcessor;
+import sonarquberepair.processor.SelfAssignementProcessor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,6 +42,7 @@ public class Processors {
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2204, EqualsOnAtomicClassProcessor.class);
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(1860, SynchronizationOnStringOrBoxedProcessor.class);
 		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(3067, SynchronizationOnGetClassProcessor.class);
+		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(1656, SelfAssignementProcessor.class);
 		return TEMP_RULE_KEY_TO_PROCESSOR;
 	}
 

@@ -1,5 +1,5 @@
 ## Handled rules
-Sonarqube-repair can currently repair violations of 14 rules of which 12 are labeled as `BUG` and 2 as `Code Smell`:
+Sonarqube-repair can currently repair violations of 15 rules of which 13 are labeled as `BUG` and 2 as `Code Smell`:
 
 * [Bug](#bug)
     * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
@@ -14,6 +14,7 @@ Sonarqube-repair can currently repair violations of 14 rules of which 12 are lab
     * [Synchronization should not be based on Strings or boxed primitives](#synchronization-should-not-be-based-on-Strings-or-boxed-primitives-sonar-rule-1860) ([Sonar Rule 1860](https://rules.sonarsource.com/java/tag/multi-threading/RSPEC-1860))
     * [".equals()" should not be used to test the values of "Atomic" classes](#equals-should-not-be-used-to-test-the-values-of-atomic-classes-sonar-rule-2204) ([Sonar Rule 2204](https://rules.sonarsource.com/java/RSPEC-2204))
     * ["getClass" should not be used for synchronization](#getclass-should-not-be-used-for-synchronization-sonar-rule-3067) ([Sonar Rule 3067](https://rules.sonarsource.com/java/type/Bug/RSPEC-3067))
+    * [Variables should not be self-assigned](#variables-should-not-be-self-assigned-sonar-rule-1656) ([Sonar Rule 1656](https://rules.sonarsource.com/java/type/Bug/RSPEC-1656))
 * [Code Smell](#code-smell)
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
@@ -259,6 +260,47 @@ class SynchronizationOnGetClass {
 ```
 
 -----
+
+#### Variables should not be self-assigned ([Sonar Rule 1656](https://rules.sonarsource.com/java/type/Bug/RSPEC-1656))
+
+Any assignment with identical left and right expressions will be processed. If the identifier being used in the self-assignment exists as both a local variable and a field, then the left expression will be changed by adding `this.` at the beginning of the expression. In any other case, including cases where there are invocations or access to another class field, such as `objectA.b = objectA.b`, the assignment will be removed.
+
+Example:
+```diff
+class SelfAssignement {
+   int a,c = 0;
+   int[] b = {0};
+   int h = 0;
+   int[] g = 0;
+   SelfAssignementCheckB checkB = new SelfAssignementCheckB();
+-  void method(int e,int h) {
+-    a = a; // Noncompliant [[sc=7;ec=8]] {{Remove or correct this useless self-assignment.}}
+-    this.a = this.a; // Noncompliant
+-    b[0] = b[0]; // Noncompliant
+-    b[fun()] = b[fun()]; // Noncompliant
+-    int d = 0;
+-    d = d; // Noncompliant
+-    e = e; // Noncompliant
+     int[] g = new int[]{ 0 };
+-    g[fun()] = g[fun()]; // Noncompliant
+-    h = h;
+-    checkB.b = checkB.b; // Noncompliant
+-    checkB.getSelf().foo = checkB.getSelf().foo; // Noncompliant
+-  }
++  void method(int e,int h) {
++    int d = 0;
+     int[] g = new int[]{ 0 };
++    this.g[fun()] = g[fun()];
++    this.h = h;
++  }
+   int fun() {
+     return 0;
+   }
+}
+```
+
+-----
+
 ### *Code Smell*
 
 #### Unused assignments should be removed ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
