@@ -35,13 +35,11 @@ public class SelfAssignementProcessor extends SQRAbstractProcessor<CtAssignment<
 			return false;
 		}
 
-		if (leftExpression.toString().equals(rightExpression.toString())) {
-			if (!candidate.getAssigned().toString().contains("this.") && candidate.getAssigned().toString().contains(".")) {
-				return false;
-			}
-			return true;
+		if (!candidate.getAssigned().toString().contains("this.") && candidate.getAssigned().toString().contains(".")) {
+			return false;
 		}
-		return false;
+		
+		return true;
 	}
 
 	@Override	
