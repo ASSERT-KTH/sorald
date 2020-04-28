@@ -263,7 +263,7 @@ class SynchronizationOnGetClass {
 
 #### Variables should not be self-assigned ([Sonar Rule 1656](https://rules.sonarsource.com/java/type/Bug/RSPEC-1656))
 
-Any assignment with identical left and right expressions will be processed. If the identifier being using in the self-assignment exists as both a local variable and a field, then the left expression will be changed by adding this. at the beginning of the expression. In any other case, including cases where there are invocations or access to another class field, such as objectA.b = objectA.b, the assignment will be removed.
+Any assignment with identical left and right expressions will be processed. If the identifier being used in the self-assignment exists as both a local variable and a field, then the left expression will be changed by adding `this.` at the beginning of the expression. In any other case, including cases where there are invocations or access to another class field, such as `objectA.b = objectA.b`, the assignment will be removed.
 
 Example:
 ```diff
@@ -272,6 +272,7 @@ class SelfAssignement {
    int[] b = {0};
    int h = 0;
    int[] g = 0;
+   SelfAssignementCheckB checkB = new SelfAssignementCheckB();
 -  void method(int e,int h) {
 -    a = a; // Noncompliant [[sc=7;ec=8]] {{Remove or correct this useless self-assignment.}}
 -    this.a = this.a; // Noncompliant
@@ -283,6 +284,8 @@ class SelfAssignement {
      int[] g = new int[]{ 0 };
 -    g[fun()] = g[fun()]; // Noncompliant
 -    h = h;
+-    checkB.b = checkB.b; // Noncompliant
+-    checkB.getSelf().foo = checkB.getSelf().foo; // Noncompliant
 -  }
 +  void method(int e,int h) {
 +    int d = 0;
