@@ -16,10 +16,6 @@ import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.declaration.CtType;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 public class SelfAssignementProcessor extends SQRAbstractProcessor<CtAssignment<?,?>> {
 
 	public SelfAssignementProcessor(String originalFilesPath) {
@@ -59,25 +55,31 @@ public class SelfAssignementProcessor extends SQRAbstractProcessor<CtAssignment<
 		CtFieldRead<?> fieldRead = factory.createFieldRead();
 
 		fieldRead.setTarget(access);
-
 		CtExpression<?> leftExpression = element.getAssigned();
 		CtExpression<?> rightExpression = element.getAssignment();
+		CtExpression<?> leftExpression2Check;
+		CtExpression<?> rightExpression2Check;
+		boolean isArrayAccess = false;
+		if (leftExpression instanceof CtArrayAccess && rightExpression instanceof CtArrayAccess) {
+			leftExpression2Check = ((CtArrayAccess)leftExpression).getTarget();
+			rightExpression2Check = ((CtArrayAccess)rightExpression).getTarget();
+			isArrayAccess = true;
+		} else {
+			leftExpression2Check = leftExpression;
+			rightExpression2Check = rightExpression;
+		}
+		System.out.println(element);
+		System.out.println(leftExpression2Check + " " + rightExpression2Check);
+		boolean instanceOfFieldAccess = leftExpression2Check instanceof CtFieldAccess && rightExpression2Check instanceof CtFieldAccess; // True if no identical local variable present
+		boolean instanceOfVariableAccess = leftExpression2Check instanceof CtVariableAccess && rightExpression2Check instanceof CtVariableAccess;
 
-		if (leftExpression instanceof CtFieldAccess && rightExpression instanceof CtFieldAccess) {
+		if (instanceOfFieldAccess) {
 			element.delete();
-		} else if (leftExpression instanceof CtVariableAccess && rightExpression instanceof CtVariableAccess) {
-			CtField<?> field = type.getField(leftExpression.toString());
+		} else if (!instanceOfFieldAccess && instanceOfVariableAccess) {
+			CtField<?> field = type.getField(leftExpression2Check.toString());
 			if (field != null) {
 				fieldRead.setVariable(((CtVariable)field).getReference());
-				leftExpression.replace(fieldRead);
-			} else {
-				element.delete();
-			}
-		} else if (leftExpression instanceof CtArrayAccess && rightExpression instanceof CtArrayAccess) {
-			CtField<?> field = type.getField(((CtArrayAccess)leftExpression).getTarget().toString());
-			if (field != null) {
-				CtTargetedExpression targetExpression = (CtTargetedExpression) ((CtArrayAccess)leftExpression).getTarget();
-				targetExpression.setTarget(access);
+				leftExpression2Check.replace(fieldRead);
 			} else {
 				element.delete();
 			}
