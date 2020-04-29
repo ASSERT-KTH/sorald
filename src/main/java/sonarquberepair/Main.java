@@ -6,7 +6,11 @@ import com.martiansoftware.jsap.JSAPException;
 import com.martiansoftware.jsap.JSAPResult;
 import com.martiansoftware.jsap.Switch;
 import com.martiansoftware.jsap.stringparsers.FileStringParser;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import org.apache.commons.lang.StringUtils;
 
 public class Main {
 	private final SonarQubeRepairConfig config = new SonarQubeRepairConfig();
@@ -18,12 +22,12 @@ public class Main {
 	public JSAP defineArgs() throws JSAPException{
 		JSAP jsap = new JSAP();
 
-		/* will be supporting multiple rules processing later so rulekey(s) */
 		FlaggedOption opt = new FlaggedOption("ruleKeys");
 		opt.setLongFlag("ruleKeys");
-		opt.setStringParser(JSAP.INTEGER_PARSER);
-		opt.setDefault("2116");
-		opt.setHelp("Choose one of the following rule keys:" + Processors.getRuleDescriptions());
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setList(true);
+		opt.setListSeparator(',');
+		opt.setHelp("Choose one or more of the following rule keys (use ',' to separate multiple keys):" + Processors.getRuleDescriptions());
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption("originalFilesPath");
@@ -76,6 +80,15 @@ public class Main {
 			}
 			printUsage(jsap);
 		}
+
+		for (String ruleKey : arguments.getStringArray("ruleKeys")) {
+			if (Processors.getProcessor(Integer.parseInt(ruleKey)) == null) {
+				System.out.println("Sorry, repair not available for rule " + ruleKey +
+						". See the available rules below.");
+				printUsage(jsap);
+			}
+		}
+
 		if (arguments.getBoolean("help")) {
 			printUsage(jsap);
 		}
@@ -89,7 +102,10 @@ public class Main {
 	}
 
 	public void initConfig(JSAPResult arguments) {
-		this.getConfig().addRuleKeys(arguments.getInt("ruleKeys"));
+		List<Integer> ruleKeys = new ArrayList<>(Arrays.asList(arguments.getStringArray("ruleKeys")).stream()
+				.map(s -> Integer.parseInt(s))
+				.collect(Collectors.toList()));
+		this.getConfig().addRuleKeys(ruleKeys);
 		this.getConfig().setOriginalFilesPath(arguments.getFile("originalFilesPath").getAbsolutePath());
 		this.getConfig().setWorkspace(arguments.getString("workspace"));
 		if (arguments.getFile("gitRepoPath") != null) {

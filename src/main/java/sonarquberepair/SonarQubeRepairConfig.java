@@ -1,11 +1,11 @@
 package sonarquberepair;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /* All config settings of SonarQube should be gathered here */
 public class SonarQubeRepairConfig {
-	private final List<Integer> ruleKeys = new ArrayList<Integer>();
+	private final List<Integer> ruleKeys = new ArrayList<>();
 	private PrettyPrintingStrategy prettyPrintingStrategy;
 	private FileOutputStrategy fileOutputStrategy;
 	private String originalFilesPath;
@@ -14,8 +14,8 @@ public class SonarQubeRepairConfig {
 
 	public SonarQubeRepairConfig() {}
 
-	public void addRuleKeys(int ruleKey) {
-		this.ruleKeys.add(ruleKey);
+	public void addRuleKeys(List<Integer> ruleKeys) {
+		this.ruleKeys.addAll(ruleKeys);
 	}
 
 	public List<Integer> getRuleKeys() {

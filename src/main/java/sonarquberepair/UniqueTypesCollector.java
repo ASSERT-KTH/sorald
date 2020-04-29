@@ -34,11 +34,34 @@ public class UniqueTypesCollector {
 		if (this.topLevelTypes4Output != null) {
 			CtType t = (CtType)element.getParent(CtType.class);
 			CtType topParent = t.getReference().getTopLevelType().getDeclaration();
-			String originalFilePath = element.getPosition().getFile().getAbsolutePath();
+			String filePath = element.getPosition().getFile().getAbsolutePath();
 
-			if (!this.topLevelTypes4Output.containsKey(originalFilePath)) {
-				this.topLevelTypes4Output.put(originalFilePath,topParent);
+			checkIfThereIsTheSameClassInTheOriginalPath(filePath);
+			if (!this.topLevelTypes4Output.containsKey(filePath)) {
+				this.topLevelTypes4Output.put(filePath,topParent);
 			}
+		}
+	}
+
+	/*
+		When multiple processors are executed, and the first one executed changes a file
+		that is also changed by another processor later, the file is registered as changed twice,
+		but with different locations (and changes), what leads to the lost of a part of the
+		transformations when printing only changed files (FileOutputStrategy.CHANGED_ONLY).
+		In such a case, the following method will unregistered an old version of the file.
+	 */
+	private void checkIfThereIsTheSameClassInTheOriginalPath(String filePath) {
+		Object topLevelTypeToBeRemoved = null;
+		for (Map.Entry topLevelType : this.topLevelTypes4Output.entrySet()) {
+			int index = filePath.indexOf("spooned/intermediate");
+			filePath = ".*" + filePath.substring(index + "spooned/intermediate".length(), filePath.length());
+			if (topLevelType.getKey().toString().matches(filePath)) {
+				topLevelTypeToBeRemoved = topLevelType.getKey();
+				break;
+			}
+		}
+		if (topLevelTypeToBeRemoved != null) {
+			this.topLevelTypes4Output.remove(topLevelTypeToBeRemoved);
 		}
 	}
 }
