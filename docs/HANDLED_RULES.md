@@ -1,5 +1,5 @@
 ## Handled rules
-Sonarqube-repair can currently repair violations of 15 rules of which 13 are labeled as `BUG` and 2 as `Code Smell`:
+Sonarqube-repair can currently repair violations of 16 rules of which 14 are labeled as `BUG` and 2 as `Code Smell`:
 
 * [Bug](#bug)
     * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
@@ -15,6 +15,7 @@ Sonarqube-repair can currently repair violations of 15 rules of which 13 are lab
     * [".equals()" should not be used to test the values of "Atomic" classes](#equals-should-not-be-used-to-test-the-values-of-atomic-classes-sonar-rule-2204) ([Sonar Rule 2204](https://rules.sonarsource.com/java/RSPEC-2204))
     * ["getClass" should not be used for synchronization](#getclass-should-not-be-used-for-synchronization-sonar-rule-3067) ([Sonar Rule 3067](https://rules.sonarsource.com/java/type/Bug/RSPEC-3067))
     * [Variables should not be self-assigned](#variables-should-not-be-self-assigned-sonar-rule-1656) ([Sonar Rule 1656](https://rules.sonarsource.com/java/type/Bug/RSPEC-1656))
+    * [Exception should not be created without being thrown](#exception-should-not-be-created-without-being-thrown-sonar-rule-3984) ([Sonar Rule 3984](https://rules.sonarsource.com/java/RSPEC-3984))
 * [Code Smell](#code-smell)
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
@@ -297,6 +298,20 @@ class SelfAssignement {
      return 0;
    }
 }
+```
+
+-----
+
+#### Exception should not be created without being thrown ([Sonar Rule 3984](https://rules.sonarsource.com/java/RSPEC-3984))
+
+Throw a `Throwable` that has been created but not thrown.
+
+Example:
+```diff
+        if (x < 0) {
+-           new IllegalArgumentException("x must be nonnegative"); // Noncompliant {{Throw this exception or remove this useless statement}}
++           throw new IllegalArgumentException("x must be nonnegative");
+        }
 ```
 
 -----
