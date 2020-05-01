@@ -17,20 +17,13 @@ A JDK (java 1.8)
 
 1) Clone this repository: `git clone https://github.com/SpoonLabs/sonarqube-repair.git`
 
-2) Run the script `./init.sh`:
+2) Import it as Maven project in your Java IDE
 
-```bash
-$ chmod +x ./init.sh
-$ ./init.sh
-```
+3) Create the folder `sonarqube-repair/source/act/`
 
-3) Import it as Maven project in your Java IDE
+4) Add files to be repaired in the new folder
 
-4) Create the folder `sonarqube-repair/source/act/`
-
-5) Add files to be repaired in the new folder
-
-6) In the terminal, run the main Sonarqube-repair function:
+5) In the terminal, run the main Sonarqube-repair function:
 
  ```bash
 $ cd sonarqube-repair
