@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.plugins.java.api.JavaFileScanner;
+
+import sonarquberepair.sonarjava.SQRMultipleFilesJavaCheckVerifier;
 import sonarquberepair.UniqueTypesCollector;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;

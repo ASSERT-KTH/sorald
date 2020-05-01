@@ -40,15 +40,15 @@ import org.sonar.plugins.java.api.tree.Tree;
 
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
-import static sonarquberepair.processor.Expectations.IssueAttribute.EFFORT_TO_FIX;
-import static sonarquberepair.processor.Expectations.IssueAttribute.END_COLUMN;
-import static sonarquberepair.processor.Expectations.IssueAttribute.END_LINE;
-import static sonarquberepair.processor.Expectations.IssueAttribute.FLOWS;
-import static sonarquberepair.processor.Expectations.IssueAttribute.LINE;
-import static sonarquberepair.processor.Expectations.IssueAttribute.MESSAGE;
-import static sonarquberepair.processor.Expectations.IssueAttribute.ORDER;
-import static sonarquberepair.processor.Expectations.IssueAttribute.SECONDARY_LOCATIONS;
-import static sonarquberepair.processor.Expectations.IssueAttribute.START_COLUMN;
+import static sonarquberepair.sonarjava.Expectations.IssueAttribute.EFFORT_TO_FIX;
+import static sonarquberepair.sonarjava.Expectations.IssueAttribute.END_COLUMN;
+import static sonarquberepair.sonarjava.Expectations.IssueAttribute.END_LINE;
+import static sonarquberepair.sonarjava.Expectations.IssueAttribute.FLOWS;
+import static sonarquberepair.sonarjava.Expectations.IssueAttribute.LINE;
+import static sonarquberepair.sonarjava.Expectations.IssueAttribute.MESSAGE;
+import static sonarquberepair.sonarjava.Expectations.IssueAttribute.ORDER;
+import static sonarquberepair.sonarjava.Expectations.IssueAttribute.SECONDARY_LOCATIONS;
+import static sonarquberepair.sonarjava.Expectations.IssueAttribute.START_COLUMN;
 
 class Expectations {
 

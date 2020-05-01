@@ -1,4 +1,4 @@
-package sonarquberepair.java;
+package sonarquberepair.sonarjava;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;

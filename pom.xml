@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>se.kth.castor</groupId>
-    <artifactId>sonarqube-repair</artifactId>
+    <artifactId>sonarqube-repair-testing</artifactId>
     <version>1.1-SNAPSHOT</version>
 
     <name>Sonarqube-repair</name>
@@ -19,6 +19,12 @@
     </licenses>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/fr.inria.gforge.spoon/spoon-core -->
+        <dependency>
+            <groupId>fr.inria.gforge.spoon</groupId>
+            <artifactId>spoon-core</artifactId>
+            <version>8.2.0-beta-2</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
             <groupId>org.json</groupId>
@@ -32,30 +38,37 @@
             <version>4.13</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/fr.inria.gforge.spoon/spoon-core -->
         <dependency>
-            <groupId>fr.inria.gforge.spoon</groupId>
-            <artifactId>spoon-core</artifactId>
-            <version>8.2.0-beta-2</version>
+            <groupId>org.sonarsource.java</groupId>
+            <artifactId>java-checks</artifactId>
+            <version>5.13.1.18282</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.sonarsource.java/java-checks-testkit -->
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-checks-testkit</artifactId>
-            <version>5.14.0-SNAPSHOT</version>
+            <version>5.13.1.18282</version>
         </dependency>
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-frontend</artifactId>
-            <version>5.14.0-SNAPSHOT</version>
+            <version>5.13.1.18282</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.sonarsource.java/sonar-java-plugin -->
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>sonar-java-plugin</artifactId>
-            <version>5.14.0.18788</version>
+            <version>5.13.1.18282</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>29.0-jre</version>
+        </dependency>
+
         <dependency>
             <groupId>com.martiansoftware</groupId>
             <artifactId>jsap</artifactId>
