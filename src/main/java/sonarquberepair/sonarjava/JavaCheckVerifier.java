@@ -30,7 +30,7 @@ import org.sonar.plugins.java.api.JavaVersion;
 import org.sonar.plugins.java.api.tree.SyntaxTrivia;
 import org.sonar.plugins.java.api.tree.Tree;
 
-@Beta
+/* Taken from https://github.com/SonarSource/sonar-java/blob/5.13.1.18282/java-checks-testkit/src/main/java/org/sonar/java/checks/verifier/JavaCheckVerifier.java */
 public class JavaCheckVerifier extends CheckVerifier {
 
   /**

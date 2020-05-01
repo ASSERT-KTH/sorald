@@ -43,6 +43,7 @@ import org.sonar.java.SonarComponents;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/* Taken from https://github.com/SonarSource/sonar-java/blob/5.13.1.18282/java-checks-testkit/src/main/java/org/sonar/java/checks/verifier/CheckVerifier.java */
 public abstract class CheckVerifier {
   private static final Logger LOG = Loggers.get(CheckVerifier.class);
 

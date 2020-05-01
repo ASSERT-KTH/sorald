@@ -15,12 +15,7 @@ import org.sonar.java.model.JavaVersionImpl;
 import org.sonar.plugins.java.api.JavaFileScanner;
 
 
-/**
- * Please read the documentation of @see org.sonar.java.checks.verifier.JavaCheckVerifier
- *
- * The main difference is that this class run a check on multiple files and verifies the results at the end of analysis.
- */
-@Beta
+/* Taken from https://github.com/SonarSource/sonar-java/blob/5.13.1.18282/java-checks-testkit/src/main/java/org/sonar/java/checks/verifier/MultipleFilesJavaCheckVerifier.java */
 public class SQRMultipleFilesJavaCheckVerifier extends CheckVerifier {
 
   /**

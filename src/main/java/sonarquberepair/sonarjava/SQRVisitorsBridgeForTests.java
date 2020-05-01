@@ -26,6 +26,7 @@ import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.java.model.VisitorsBridge;
 import org.sonar.java.model.DefaultJavaFileScannerContext;
 
+/* Taken from https://github.com/SonarSource/sonar-java/blob/5.13.1.18282/java-frontend/src/main/java/org/sonar/java/model/VisitorsBridgeForTests.java */
 public class SQRVisitorsBridgeForTests extends VisitorsBridge {
 
   private TestJavaFileScannerContext testContext;
