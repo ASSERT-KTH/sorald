@@ -12,7 +12,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.sonar.java.AnalyzerMessage;
-import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sonarquberepair.UniqueTypesCollector;
 import spoon.processing.AbstractProcessor;
@@ -36,7 +35,8 @@ public abstract class SQRAbstractProcessor<E extends CtElement> extends Abstract
 					e.printStackTrace();
 				}
 			}
-			Set<AnalyzerMessage> issues = MultipleFilesJavaCheckVerifier.verify(filesToScan, check, false);
+
+			Set<AnalyzerMessage> issues = SQRMultipleFilesJavaCheckVerifier.verify(filesToScan, check, false);
 			bugs = new HashSet<>();
 			for (AnalyzerMessage message : issues) {
 				Bug BugOffline = new Bug(message);
