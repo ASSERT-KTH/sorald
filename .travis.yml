@@ -4,4 +4,4 @@ jdk:
   - openjdk10
 
 script:
-  - mvn test
+  - java -jar /home/travis/build/fermadeiral/sonarqube-repair/target/sonarqube-repair-1.1-SNAPSHOT-jar-with-dependencies.jar --originalFilesPath /home/travis/build/fermadeiral/sonarqube-repair/src/test/resources/ArrayHashCodeAndToString.java --ruleKeys 2184
