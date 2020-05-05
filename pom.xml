@@ -43,6 +43,11 @@
             <artifactId>java-checks</artifactId>
             <version>5.13.1.18282</version>
         </dependency>
+        <dependency>
+            <groupId>fr.inria.gforge.spoon</groupId>
+            <artifactId>spoon-core</artifactId>
+            <version>8.1.0-beta-2</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.sonarsource.java/java-checks-testkit -->
         <dependency>
             <groupId>org.sonarsource.java</groupId>
