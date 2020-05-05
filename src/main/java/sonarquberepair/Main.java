@@ -30,34 +30,34 @@ public class Main {
 		opt.setLongFlag("originalFilesPath");
 		opt.setStringParser(FileStringParser.getParser().setMustExist(true));
 		opt.setRequired(true);
-		opt.setHelp("The input folder or file for sonarqube-repair to work on");
+		opt.setHelp("The path to the file or folder to be analyzed and possibly repaired.");
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption("prettyPrintingStrategy");
 		opt.setLongFlag("prettyPrintingStrategy");
 		opt.setStringParser(JSAP.STRING_PARSER);
 		opt.setDefault(PrettyPrintingStrategy.NORMAL.name());
-		opt.setHelp("Mode for pretty printing . NORMAL: default pretty print, SNIPER: sniper mode on for more precise code transformation pretty print");
+		opt.setHelp("Mode for pretty printing the source code: 'NORMAL', which means that all source code will be printed and its formatting might change (such as indentation), and 'SNIPER', which means that only statements changed towards the repair of sonar rule violations will be printed.");
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption("fileOutputStrategy");
 		opt.setLongFlag("fileOutputStrategy");
 		opt.setStringParser(JSAP.STRING_PARSER);
 		opt.setDefault(FileOutputStrategy.CHANGED_ONLY.name());
-		opt.setHelp("Mode for output. CHANGED_ONLY: default choice outputing only files modified by processors, ALL: everything including those unchanged files");
+		opt.setHelp("Mode for outputting files: 'CHANGED_ONLY', which means that only changed files will be created in the workspace, and 'ALL', which means that all files, including the unchanged ones, will be created in the workspace.");
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption("workspace");
 		opt.setLongFlag("workspace");
 		opt.setStringParser(JSAP.STRING_PARSER);
 		opt.setDefault("./sonar-workspace");
-		opt.setHelp("Workspace of sonarqube-repair");
+		opt.setHelp("The path to a folder that will be used as workspace by sonarqube-repair, i.e. the path for the output.");
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption("gitRepoPath");
 		opt.setLongFlag("gitRepoPath");
 		opt.setStringParser(FileStringParser.getParser().setMustExist(true).setMustBeDirectory(true));
-		opt.setHelp("Root Path of the input Github repo directory");
+		opt.setHelp("The path to a git repository directory.");
 		jsap.registerParameter(opt);
 
 		Switch sw = new Switch("help");
