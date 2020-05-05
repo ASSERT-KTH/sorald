@@ -61,15 +61,29 @@ public class Main {
 		return jsap;
 	}
 
-	public void initConfig(JSAP jsap,String[] args) {
-		JSAPResult jsapRes = jsap.parse(args);
+	public void checkArguments(JSAP jsap, JSAPResult arguments) {
+		if (!arguments.success()) {
+			for (java.util.Iterator<?> errors = arguments.getErrorMessageIterator(); errors.hasNext();) {
+				System.err.println("Error: " + errors.next());
+			}
+			printUsage(jsap);
+		}
+	}
 
-		this.getConfig().addRuleKeys(jsapRes.getInt("ruleKeys"));
-		this.getConfig().setOriginalFilesPath(jsapRes.getString("originalFilesPath"));
-		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(jsapRes.getString("prettyPrintingStrategy")));
-		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(jsapRes.getString("fileOutputStrategy")));
-		this.getConfig().setWorkspace(jsapRes.getString("workspace"));
-		this.getConfig().setGitRepoPath(jsapRes.getString("gitRepoPath"));
+	public static void printUsage(JSAP jsap) {
+		System.err.println("Arguments: ");
+		System.err.println();
+		System.err.println(jsap.getHelp());
+		System.exit(-1);
+	}
+
+	public void initConfig(JSAPResult arguments) {
+		this.getConfig().addRuleKeys(arguments.getInt("ruleKeys"));
+		this.getConfig().setOriginalFilesPath(arguments.getString("originalFilesPath"));
+		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(arguments.getString("prettyPrintingStrategy")));
+		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(arguments.getString("fileOutputStrategy")));
+		this.getConfig().setWorkspace(arguments.getString("workspace"));
+		this.getConfig().setGitRepoPath(arguments.getString("gitRepoPath"));
 	}
 
 
@@ -80,7 +94,9 @@ public class Main {
 
 	public void start(String[] args) throws Exception {
 		JSAP jsap = this.defineArgs();
-		this.initConfig(jsap,args);
+		JSAPResult arguments = jsap.parse(args);
+		this.checkArguments(jsap, arguments);
+		this.initConfig(arguments);
 		this.getRepairProcess().repair();
 		System.out.println("done");
 	}
