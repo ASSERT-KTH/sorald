@@ -1,9 +1,11 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
+import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
 
+@ProcessorAnnotation(description="Fields in a \"Serializable\" class should either be transient or serializable")
 public class SerializableFieldInSerializableClassProcessor extends SQRAbstractProcessor<CtField> {
 
 	public SerializableFieldInSerializableClassProcessor(String originalFilesPath) {

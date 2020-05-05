@@ -1,6 +1,7 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
+import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtInvocation;
@@ -10,6 +11,7 @@ import spoon.reflect.reference.CtExecutableReference;
 
 import java.util.Arrays;
 
+@ProcessorAnnotation(description="\"hashCode\" and \"toString\" should not be called on array instances")
 public class ArrayHashCodeAndToStringProcessor extends SQRAbstractProcessor<CtInvocation<?>> {
 
 	final String TOSTRING = "toString";

@@ -1,6 +1,7 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.CompareStringsBoxedTypesWithEqualsCheck;
+import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.declaration.CtElement;
@@ -8,6 +9,7 @@ import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.reference.CtTypeReference;
 
+@ProcessorAnnotation(description="Strings and Boxed types should be compared using \"equals()\"")
 public class CompareStringsBoxedTypesWithEqualsProcessor extends SQRAbstractProcessor<CtElement> {
 
 	public CompareStringsBoxedTypesWithEqualsProcessor(String originalFilesPath) {

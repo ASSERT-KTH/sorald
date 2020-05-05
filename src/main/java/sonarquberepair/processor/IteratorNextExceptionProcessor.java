@@ -1,6 +1,7 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.IteratorNextExceptionCheck;
+import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
@@ -14,6 +15,7 @@ import spoon.reflect.reference.CtTypeReference;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+@ProcessorAnnotation(description="\"Iterator.next()\" methods should throw \"NoSuchElementException\"")
 public class IteratorNextExceptionProcessor extends SQRAbstractProcessor<CtMethod> {
 
 	public IteratorNextExceptionProcessor(String originalFilesPath) {
