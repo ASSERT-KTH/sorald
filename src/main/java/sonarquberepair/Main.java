@@ -90,9 +90,11 @@ public class Main {
 
 	public void initConfig(JSAPResult arguments) {
 		this.getConfig().addRuleKeys(arguments.getInt("ruleKeys"));
-		this.getConfig().setOriginalFilesPath(arguments.getString("originalFilesPath"));
+		this.getConfig().setOriginalFilesPath(arguments.getFile("originalFilesPath").getAbsolutePath());
 		this.getConfig().setWorkspace(arguments.getString("workspace"));
-		this.getConfig().setGitRepoPath(arguments.getString("gitRepoPath"));
+		if (arguments.getFile("gitRepoPath") != null) {
+			this.getConfig().setGitRepoPath(arguments.getFile("gitRepoPath").getAbsolutePath());
+		}
 		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(arguments.getString("prettyPrintingStrategy")));
 		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(arguments.getString("fileOutputStrategy")));
 	}
