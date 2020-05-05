@@ -4,6 +4,7 @@ import com.martiansoftware.jsap.FlaggedOption;
 import com.martiansoftware.jsap.JSAP;
 import com.martiansoftware.jsap.JSAPException;
 import com.martiansoftware.jsap.JSAPResult;
+import com.martiansoftware.jsap.Switch;
 
 
 public class Main {
@@ -58,6 +59,12 @@ public class Main {
 		opt.setHelp("Root Path of the input Github repo directory");
 		jsap.registerParameter(opt);
 
+		Switch sw = new Switch("help");
+		sw.setShortFlag('h');
+		sw.setLongFlag("help");
+		sw.setDefault("false");
+		jsap.registerParameter(sw);
+
 		return jsap;
 	}
 
@@ -66,6 +73,9 @@ public class Main {
 			for (java.util.Iterator<?> errors = arguments.getErrorMessageIterator(); errors.hasNext();) {
 				System.err.println("Error: " + errors.next());
 			}
+			printUsage(jsap);
+		}
+		if (arguments.getBoolean("help")) {
 			printUsage(jsap);
 		}
 	}
