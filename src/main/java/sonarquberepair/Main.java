@@ -5,6 +5,7 @@ import com.martiansoftware.jsap.JSAP;
 import com.martiansoftware.jsap.JSAPException;
 import com.martiansoftware.jsap.JSAPResult;
 import com.martiansoftware.jsap.Switch;
+import com.martiansoftware.jsap.stringparsers.FileStringParser;
 
 
 public class Main {
@@ -27,8 +28,8 @@ public class Main {
 
 		opt = new FlaggedOption("originalFilesPath");
 		opt.setLongFlag("originalFilesPath");
-		opt.setStringParser(JSAP.STRING_PARSER);
-		opt.setDefault("./source/act/");
+		opt.setStringParser(FileStringParser.getParser().setMustExist(true));
+		opt.setRequired(true);
 		opt.setHelp("The input folder or file for sonarqube-repair to work on");
 		jsap.registerParameter(opt);
 
@@ -55,7 +56,7 @@ public class Main {
 
 		opt = new FlaggedOption("gitRepoPath");
 		opt.setLongFlag("gitRepoPath");
-		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setStringParser(FileStringParser.getParser().setMustExist(true).setMustBeDirectory(true));
 		opt.setHelp("Root Path of the input Github repo directory");
 		jsap.registerParameter(opt);
 
