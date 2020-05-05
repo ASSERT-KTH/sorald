@@ -1,6 +1,7 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.se.checks.UnclosedResourcesCheck;
+import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtConstructorCall;
@@ -14,6 +15,7 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.path.CtRole;
 import spoon.reflect.reference.CtVariableReference;
 
+@ProcessorAnnotation(description="Resources should be closed")
 public class UnclosedResourcesProcessor extends SQRAbstractProcessor<CtConstructorCall> {
 
 	public UnclosedResourcesProcessor(String originalFilesPath) {

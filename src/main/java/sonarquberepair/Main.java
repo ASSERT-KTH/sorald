@@ -23,7 +23,7 @@ public class Main {
 		opt.setLongFlag("ruleKeys");
 		opt.setStringParser(JSAP.INTEGER_PARSER);
 		opt.setDefault("2116");
-		opt.setHelp("Sonarqube rule key, Check https://rules.sonarsource.com/java");
+		opt.setHelp("Choose one of the following rule keys:" + Processors.getRuleDescriptions());
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption("originalFilesPath");

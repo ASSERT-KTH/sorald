@@ -1,10 +1,12 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.DeadStoreCheck;
+import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtLocalVariable;
 import spoon.reflect.code.CtStatement;
 
+@ProcessorAnnotation(description="Unused assignments should be removed")
 public class DeadStoreProcessor extends SQRAbstractProcessor<CtStatement> {
 
 	public DeadStoreProcessor(String originalFilesPath) {
