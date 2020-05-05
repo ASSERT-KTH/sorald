@@ -33,6 +33,19 @@ public class Main {
 		opt.setHelp("The path to the file or folder to be analyzed and possibly repaired.");
 		jsap.registerParameter(opt);
 
+		opt = new FlaggedOption("workspace");
+		opt.setLongFlag("workspace");
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setDefault("./sonar-workspace");
+		opt.setHelp("The path to a folder that will be used as workspace by sonarqube-repair, i.e. the path for the output.");
+		jsap.registerParameter(opt);
+
+		opt = new FlaggedOption("gitRepoPath");
+		opt.setLongFlag("gitRepoPath");
+		opt.setStringParser(FileStringParser.getParser().setMustExist(true).setMustBeDirectory(true));
+		opt.setHelp("The path to a git repository directory.");
+		jsap.registerParameter(opt);
+
 		opt = new FlaggedOption("prettyPrintingStrategy");
 		opt.setLongFlag("prettyPrintingStrategy");
 		opt.setStringParser(JSAP.STRING_PARSER);
@@ -45,19 +58,6 @@ public class Main {
 		opt.setStringParser(JSAP.STRING_PARSER);
 		opt.setDefault(FileOutputStrategy.CHANGED_ONLY.name());
 		opt.setHelp("Mode for outputting files: 'CHANGED_ONLY', which means that only changed files will be created in the workspace, and 'ALL', which means that all files, including the unchanged ones, will be created in the workspace.");
-		jsap.registerParameter(opt);
-
-		opt = new FlaggedOption("workspace");
-		opt.setLongFlag("workspace");
-		opt.setStringParser(JSAP.STRING_PARSER);
-		opt.setDefault("./sonar-workspace");
-		opt.setHelp("The path to a folder that will be used as workspace by sonarqube-repair, i.e. the path for the output.");
-		jsap.registerParameter(opt);
-
-		opt = new FlaggedOption("gitRepoPath");
-		opt.setLongFlag("gitRepoPath");
-		opt.setStringParser(FileStringParser.getParser().setMustExist(true).setMustBeDirectory(true));
-		opt.setHelp("The path to a git repository directory.");
 		jsap.registerParameter(opt);
 
 		Switch sw = new Switch("help");
@@ -91,10 +91,10 @@ public class Main {
 	public void initConfig(JSAPResult arguments) {
 		this.getConfig().addRuleKeys(arguments.getInt("ruleKeys"));
 		this.getConfig().setOriginalFilesPath(arguments.getString("originalFilesPath"));
-		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(arguments.getString("prettyPrintingStrategy")));
-		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(arguments.getString("fileOutputStrategy")));
 		this.getConfig().setWorkspace(arguments.getString("workspace"));
 		this.getConfig().setGitRepoPath(arguments.getString("gitRepoPath"));
+		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(arguments.getString("prettyPrintingStrategy")));
+		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(arguments.getString("fileOutputStrategy")));
 	}
 
 
