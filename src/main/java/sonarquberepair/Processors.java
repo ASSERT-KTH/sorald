@@ -1,5 +1,6 @@
 package sonarquberepair;
 
+import java.lang.annotation.Annotation;
 import sonarquberepair.processor.ArrayHashCodeAndToStringProcessor;
 import sonarquberepair.processor.BigDecimalDoubleConstructorProcessor;
 import sonarquberepair.processor.CastArithmeticOperandProcessor;
@@ -54,6 +55,21 @@ public class Processors {
 			exit(0);
 		}
 		return RULE_KEY_TO_PROCESSOR.get(ruleKey);
+	}
+
+	public static String getRuleDescriptions() {
+		String descriptions = "";
+		for (Map.Entry ruleKeyToProcessor : RULE_KEY_TO_PROCESSOR.entrySet()) {
+			Class processorClass = (Class) ruleKeyToProcessor.getValue();
+			Annotation[] annotations = processorClass.getAnnotations();
+			for (Annotation annotation : annotations) {
+				if (annotation instanceof ProcessorAnnotation) {
+					ProcessorAnnotation myAnnotation = (ProcessorAnnotation) annotation;
+					descriptions += "\n" + ruleKeyToProcessor.getKey() + ": " + myAnnotation.description();
+				}
+			}
+		}
+		return descriptions;
 	}
 
 }

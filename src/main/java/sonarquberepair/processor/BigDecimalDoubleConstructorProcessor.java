@@ -1,6 +1,7 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.BigDecimalDoubleConstructorCheck;
+import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
@@ -10,6 +11,7 @@ import spoon.reflect.reference.CtTypeReference;
 import java.math.BigDecimal;
 import java.util.List;
 
+@ProcessorAnnotation(description="\"BigDecimal(double)\" should not be used")
 public class BigDecimalDoubleConstructorProcessor extends SQRAbstractProcessor<CtConstructorCall> {
 
 	public BigDecimalDoubleConstructorProcessor(String originalFilesPath) {

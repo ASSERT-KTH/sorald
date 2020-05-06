@@ -2,6 +2,7 @@ package sonarquberepair.processor;
 
 import org.sonar.java.checks.GetClassLoaderCheck;
 
+import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.declaration.CtMethod;
@@ -13,6 +14,7 @@ import spoon.reflect.declaration.CtImport;
 
 import java.util.HashMap;
 
+@ProcessorAnnotation(description="JEE applications should not \"getClassLoader\"")
 public class GetClassLoaderProcessor extends SQRAbstractProcessor<CtInvocation<?>> {
 	private HashMap<Integer,Boolean> hashCodesOfTypesUsingJEE = new HashMap<Integer,Boolean>();
 

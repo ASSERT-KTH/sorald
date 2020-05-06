@@ -1,6 +1,7 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.synchronization.SynchronizationOnGetClassCheck;
+import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtSynchronized;
@@ -12,6 +13,7 @@ import spoon.reflect.reference.CtTypeReference;
 
 import java.util.Set;
 
+@ProcessorAnnotation(description="\"getClass\" should not be used for synchronization")
 public class SynchronizationOnGetClassProcessor extends SQRAbstractProcessor<CtSynchronized> {
 
 	public SynchronizationOnGetClassProcessor(String originalFilesPath) {

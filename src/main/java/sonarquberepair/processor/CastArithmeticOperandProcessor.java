@@ -1,6 +1,7 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.CastArithmeticOperandCheck;
+import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtField;
@@ -11,6 +12,7 @@ import spoon.reflect.visitor.filter.TypeFilter;
 
 import java.util.List;
 
+@ProcessorAnnotation(description="Math operands should be cast before assignment")
 public class CastArithmeticOperandProcessor extends SQRAbstractProcessor<CtBinaryOperator> {
 
     private CtTypeReference typeToBeUsedToCast;

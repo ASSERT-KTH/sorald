@@ -1,6 +1,7 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.MathOnFloatCheck;
+import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.code.CtCodeSnippetExpression;
@@ -9,6 +10,7 @@ import spoon.reflect.visitor.filter.TypeFilter;
 
 import java.util.List;
 
+@ProcessorAnnotation(description="Math should not be performed on floats")
 public class MathOnFloatProcessor extends SQRAbstractProcessor<CtBinaryOperator> {
 
     public MathOnFloatProcessor(String originalFilesPath) {

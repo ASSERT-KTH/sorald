@@ -1,10 +1,12 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.CompareToReturnValueCheck;
+import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.code.CtReturn;
 import spoon.reflect.code.CtLiteral;
 
+@ProcessorAnnotation(description="\"compareTo\" should not return \"Integer.MIN_VALUE\"")
 public class CompareToReturnValueProcessor extends SQRAbstractProcessor<CtReturn<?>> {
 
 	public CompareToReturnValueProcessor(String originalFilesPath) {
