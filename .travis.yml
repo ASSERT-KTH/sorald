@@ -3,9 +3,6 @@ language: java
 jdk:
   - openjdk10
 
-before_install:
-  - ./init.sh
-
 script:
   - java -jar /home/travis/build/SpoonLabs/sonarqube-repair/target/sonarqube-repair-1.1-SNAPSHOT-jar-with-dependencies.jar --originalFilesPath /home/travis/build/SpoonLabs/sonarqube-repair/src/test/resources/ArrayHashCodeAndToString.java --ruleKeys 2184
   - mvn test

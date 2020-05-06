@@ -17,17 +17,10 @@ A JDK (java 1.8)
 
 1) Clone this repository: `git clone https://github.com/SpoonLabs/sonarqube-repair.git`
 
-2) Run the script `./init.sh`:
-
-```bash
-$ cd sonarqube-repair
-$ chmod +x ./init.sh
-$ ./init.sh
-```
-
-3) Build and run the tool:
+2) Build and run the tool:
 
  ```bash
+$ cd sonarqube-repair
 $ mvn package -DskipTests
 $ java -jar target/sonarqube-repair-1.1-SNAPSHOT-jar-with-dependencies.jar <arguments>
  ```
