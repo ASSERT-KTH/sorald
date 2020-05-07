@@ -22,8 +22,6 @@ import sonarquberepair.processor.SelfAssignementProcessor;
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.lang.System.exit;
-
 public class Processors {
 
 	private static final Map<Integer, Class<? extends SQRAbstractProcessor>> RULE_KEY_TO_PROCESSOR = init();
@@ -50,11 +48,10 @@ public class Processors {
 	}
 
 	public static Class<?> getProcessor(int ruleKey) {
-		if (!RULE_KEY_TO_PROCESSOR.containsKey(ruleKey)) {
-			System.out.println("Sorry, repair not available for rule " + ruleKey);
-			exit(0);
+		if (RULE_KEY_TO_PROCESSOR.containsKey(ruleKey)) {
+			return RULE_KEY_TO_PROCESSOR.get(ruleKey);
 		}
-		return RULE_KEY_TO_PROCESSOR.get(ruleKey);
+		return null;
 	}
 
 	public static String getRuleDescriptions() {

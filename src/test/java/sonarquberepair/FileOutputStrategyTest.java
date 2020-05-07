@@ -19,7 +19,7 @@ public class FileOutputStrategyTest {
 	public void test_onlyChangedFilesAndPatchOutput() throws Exception {
 		Main.main(new String[]{
 			"--originalFilesPath",Constants.PATH_TO_FILE,
-			"--ruleKeys","2111",
+			"--ruleKeys","4973",
 			"--fileOutputStrategy", FileOutputStrategy.CHANGED_ONLY.name(),
 			"--workspace", fileOutputStrategyTestWorkspace,
 			"--gitRepoPath","."});
@@ -35,7 +35,7 @@ public class FileOutputStrategyTest {
 	public void test_onlyChangedFilesAndNoPatchOutput() throws Exception {
 		Main.main(new String[]{
 				"--originalFilesPath",Constants.PATH_TO_FILE,
-				"--ruleKeys","2111",
+				"--ruleKeys","4973",
 				"--fileOutputStrategy", FileOutputStrategy.CHANGED_ONLY.name(),
 				"--workspace", fileOutputStrategyTestWorkspace});
 
@@ -50,7 +50,7 @@ public class FileOutputStrategyTest {
 	public void test_allFilesAndNoPatchOutput() throws Exception {
 		Main.main(new String[]{
 				"--originalFilesPath",Constants.PATH_TO_FILE,
-				"--ruleKeys","2111",
+				"--ruleKeys","4973",
 				"--fileOutputStrategy", FileOutputStrategy.ALL.name(),
 				"--workspace", fileOutputStrategyTestWorkspace});
 
