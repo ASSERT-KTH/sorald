@@ -81,6 +81,12 @@ The arguments are the following:
 
   [-h|--help]
 ```
+
+Example of a concrete call to sonarqube-repair, in which multiple rule keys are given as input:
+
+```bash
+$ java -jar target/sonarqube-repair-1.1-SNAPSHOT-jar-with-dependencies.jar --originalFilesPath src/test/resources/MultipleProcessors.java --workspace /tmp/ --ruleKeys 2111,2184,2204
+```
  
 ##### If you want to run it on GitHub projects to propose PRs with fixes
 
