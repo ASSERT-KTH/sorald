@@ -5,7 +5,7 @@ import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.code.CtConstructorCall;
 import spoon.reflect.code.CtThrow;
 
-@ProcessorAnnotation(description="Exception should not be created without being thrown")
+@ProcessorAnnotation(key = 3984, description = "Exception should not be created without being thrown")
 public class UnusedThrowableProcessor extends SQRAbstractProcessor<CtConstructorCall> {
 
 	public UnusedThrowableProcessor(String originalFilesPath) {

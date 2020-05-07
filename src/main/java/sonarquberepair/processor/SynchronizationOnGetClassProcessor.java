@@ -13,7 +13,7 @@ import spoon.reflect.reference.CtTypeReference;
 
 import java.util.Set;
 
-@ProcessorAnnotation(description="\"getClass\" should not be used for synchronization")
+@ProcessorAnnotation(key = 3067, description = "\"getClass\" should not be used for synchronization")
 public class SynchronizationOnGetClassProcessor extends SQRAbstractProcessor<CtSynchronized> {
 
 	public SynchronizationOnGetClassProcessor(String originalFilesPath) {

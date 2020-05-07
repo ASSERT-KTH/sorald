@@ -9,7 +9,7 @@ import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.reference.CtTypeReference;
 
-@ProcessorAnnotation(description="Strings and Boxed types should be compared using \"equals()\"")
+@ProcessorAnnotation(key = 4973, description = "Strings and Boxed types should be compared using \"equals()\"")
 public class CompareStringsBoxedTypesWithEqualsProcessor extends SQRAbstractProcessor<CtElement> {
 
 	public CompareStringsBoxedTypesWithEqualsProcessor(String originalFilesPath) {

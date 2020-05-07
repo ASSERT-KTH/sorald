@@ -16,7 +16,7 @@ import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.declaration.CtType;
 
-@ProcessorAnnotation(description="Variables should not be self-assigned")
+@ProcessorAnnotation(key = 1656, description = "Variables should not be self-assigned")
 public class SelfAssignementProcessor extends SQRAbstractProcessor<CtAssignment<?,?>> {
 
 	public SelfAssignementProcessor(String originalFilesPath) {

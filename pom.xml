@@ -63,6 +63,11 @@
             <artifactId>org.eclipse.jgit</artifactId>
             <version>5.7.0.202003110725-r</version>
         </dependency>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.12</version>
+        </dependency>
     </dependencies>
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>

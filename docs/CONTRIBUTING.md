@@ -26,7 +26,6 @@ So the name of your new processor is `CastArithmeticOperandCheck` replacing "Che
 
 Once you have the name for the new processor, you can create a class using that name in `src/main/java/sonarquberepair/processor`.
 This new class must extend `SQRAbstractProcessor` and implement the methods `isToBeProcessed` and `process` (check out real examples of processors [here](/src/main/java/sonarquberepair/processor)).
-After implementing your new processor, plug it in Sonarqube-repair by adding it in the code of [Processors](/src/main/java/sonarquberepair/Processors.java).
 
 3) Create a test class for the processor
 
@@ -40,10 +39,8 @@ You can find the examples provided by SonarSource in its [rules' webpage](https:
 4) Update documentation
 
 Your processor is done, it's passing the minimum tests, so now you can update the documentation.
-There are two files that you should update: [README.md](/README.md) and [HANDLED_RULES.md](/docs/HANDLED_RULES.md).
-In the `README.md` file, you should only uṕdate the number of rules handled by Sonarqube-repair.
-In the `HANDLED_RULES.md` file, you should do the same, but you should also add the new handled rule in the table of contents and a summary of its processor with an example.
-You should do it following the same way as the existing handled rules are documented. 
+In the `HANDLED_RULES.md` file, you should add the new handled rule in the table of contents, and then a summary of its processor with an example.
+You should do it following the same way as the existing handled rules are documented (note that the table of contents and summaries are alphabetically ordered).
 
 5) Open a PR
 

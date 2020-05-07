@@ -15,7 +15,7 @@ import spoon.reflect.reference.CtTypeReference;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-@ProcessorAnnotation(description="\"Iterator.next()\" methods should throw \"NoSuchElementException\"")
+@ProcessorAnnotation(key = 2272, description = "\"Iterator.next()\" methods should throw \"NoSuchElementException\"")
 public class IteratorNextExceptionProcessor extends SQRAbstractProcessor<CtMethod> {
 
 	public IteratorNextExceptionProcessor(String originalFilesPath) {

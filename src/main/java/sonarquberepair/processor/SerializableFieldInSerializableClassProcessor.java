@@ -5,7 +5,7 @@ import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
 
-@ProcessorAnnotation(description="Fields in a \"Serializable\" class should either be transient or serializable")
+@ProcessorAnnotation(key = 1948, description = "Fields in a \"Serializable\" class should either be transient or serializable")
 public class SerializableFieldInSerializableClassProcessor extends SQRAbstractProcessor<CtField> {
 
 	public SerializableFieldInSerializableClassProcessor(String originalFilesPath) {

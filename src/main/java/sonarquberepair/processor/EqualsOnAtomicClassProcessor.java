@@ -13,7 +13,7 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
 
-@ProcessorAnnotation(description="\".equals()\" should not be used to test the values of \"Atomic\" classes")
+@ProcessorAnnotation(key = 2204, description = "\".equals()\" should not be used to test the values of \"Atomic\" classes")
 public class EqualsOnAtomicClassProcessor extends SQRAbstractProcessor<CtInvocation> {
 
 	public EqualsOnAtomicClassProcessor(String originalFilesPath) {
