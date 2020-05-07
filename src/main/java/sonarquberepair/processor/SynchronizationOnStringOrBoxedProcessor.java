@@ -21,7 +21,7 @@ import spoon.reflect.declaration.CtMethod;
 import java.util.HashMap;
 import java.util.Map;
 
-@ProcessorAnnotation(description="Synchronization should not be based on Strings or boxed primitives")
+@ProcessorAnnotation(key = 1860, description = "Synchronization should not be based on Strings or boxed primitives")
 public class SynchronizationOnStringOrBoxedProcessor extends SQRAbstractProcessor<CtSynchronized> {
     private Map<Integer,CtVariableReference> old2NewFields;
     private Map<Integer,CtExecutableReference> old2NewMethods;

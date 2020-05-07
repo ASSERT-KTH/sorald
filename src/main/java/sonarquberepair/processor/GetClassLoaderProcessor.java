@@ -14,7 +14,7 @@ import spoon.reflect.declaration.CtImport;
 
 import java.util.HashMap;
 
-@ProcessorAnnotation(description="JEE applications should not \"getClassLoader\"")
+@ProcessorAnnotation(key = 3032, description = "JEE applications should not \"getClassLoader\"")
 public class GetClassLoaderProcessor extends SQRAbstractProcessor<CtInvocation<?>> {
 	private HashMap<Integer,Boolean> hashCodesOfTypesUsingJEE = new HashMap<Integer,Boolean>();
 

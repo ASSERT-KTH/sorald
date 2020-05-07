@@ -11,7 +11,7 @@ import spoon.reflect.reference.CtTypeReference;
 import java.math.BigDecimal;
 import java.util.List;
 
-@ProcessorAnnotation(description="\"BigDecimal(double)\" should not be used")
+@ProcessorAnnotation(key = 2111, description = "\"BigDecimal(double)\" should not be used")
 public class BigDecimalDoubleConstructorProcessor extends SQRAbstractProcessor<CtConstructorCall> {
 
 	public BigDecimalDoubleConstructorProcessor(String originalFilesPath) {

@@ -11,7 +11,7 @@ import spoon.reflect.reference.CtExecutableReference;
 
 import java.util.Arrays;
 
-@ProcessorAnnotation(description="\"hashCode\" and \"toString\" should not be called on array instances")
+@ProcessorAnnotation(key = 2116, description = "\"hashCode\" and \"toString\" should not be called on array instances")
 public class ArrayHashCodeAndToStringProcessor extends SQRAbstractProcessor<CtInvocation<?>> {
 
 	final String TOSTRING = "toString";

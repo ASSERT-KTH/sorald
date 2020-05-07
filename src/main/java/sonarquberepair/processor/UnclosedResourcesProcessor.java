@@ -15,7 +15,7 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.path.CtRole;
 import spoon.reflect.reference.CtVariableReference;
 
-@ProcessorAnnotation(description="Resources should be closed")
+@ProcessorAnnotation(key = 2095, description = "Resources should be closed")
 public class UnclosedResourcesProcessor extends SQRAbstractProcessor<CtConstructorCall> {
 
 	public UnclosedResourcesProcessor(String originalFilesPath) {

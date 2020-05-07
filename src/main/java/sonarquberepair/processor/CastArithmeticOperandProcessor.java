@@ -12,7 +12,7 @@ import spoon.reflect.visitor.filter.TypeFilter;
 
 import java.util.List;
 
-@ProcessorAnnotation(description="Math operands should be cast before assignment")
+@ProcessorAnnotation(key = 2184, description = "Math operands should be cast before assignment")
 public class CastArithmeticOperandProcessor extends SQRAbstractProcessor<CtBinaryOperator> {
 
     private CtTypeReference typeToBeUsedToCast;

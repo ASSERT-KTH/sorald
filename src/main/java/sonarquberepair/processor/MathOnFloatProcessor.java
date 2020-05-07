@@ -10,7 +10,7 @@ import spoon.reflect.visitor.filter.TypeFilter;
 
 import java.util.List;
 
-@ProcessorAnnotation(description="Math should not be performed on floats")
+@ProcessorAnnotation(key = 2164, description = "Math should not be performed on floats")
 public class MathOnFloatProcessor extends SQRAbstractProcessor<CtBinaryOperator> {
 
     public MathOnFloatProcessor(String originalFilesPath) {

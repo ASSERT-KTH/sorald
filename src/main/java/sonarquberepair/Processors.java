@@ -1,23 +1,9 @@
 package sonarquberepair;
 
 import java.lang.annotation.Annotation;
-import sonarquberepair.processor.ArrayHashCodeAndToStringProcessor;
-import sonarquberepair.processor.BigDecimalDoubleConstructorProcessor;
-import sonarquberepair.processor.CastArithmeticOperandProcessor;
-import sonarquberepair.processor.CompareStringsBoxedTypesWithEqualsProcessor;
-import sonarquberepair.processor.CompareToReturnValueProcessor;
-import sonarquberepair.processor.DeadStoreProcessor;
-import sonarquberepair.processor.EqualsOnAtomicClassProcessor;
-import sonarquberepair.processor.GetClassLoaderProcessor;
-import sonarquberepair.processor.IteratorNextExceptionProcessor;
-import sonarquberepair.processor.MathOnFloatProcessor;
+import java.util.Set;
+import org.reflections.Reflections;
 import sonarquberepair.processor.SQRAbstractProcessor;
-import sonarquberepair.processor.SerializableFieldInSerializableClassProcessor;
-import sonarquberepair.processor.SynchronizationOnGetClassProcessor;
-import sonarquberepair.processor.SynchronizationOnStringOrBoxedProcessor;
-import sonarquberepair.processor.UnclosedResourcesProcessor;
-import sonarquberepair.processor.UnusedThrowableProcessor;
-import sonarquberepair.processor.SelfAssignementProcessor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,22 +16,17 @@ public class Processors {
 
 	private static Map init() {
 		Map<Integer, Class<? extends SQRAbstractProcessor>> TEMP_RULE_KEY_TO_PROCESSOR = new HashMap<>();
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(1854, DeadStoreProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(1948, SerializableFieldInSerializableClassProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2095, UnclosedResourcesProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2111, BigDecimalDoubleConstructorProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2116, ArrayHashCodeAndToStringProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2272, IteratorNextExceptionProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(4973, CompareStringsBoxedTypesWithEqualsProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2184, CastArithmeticOperandProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(3032, GetClassLoaderProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2167, CompareToReturnValueProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2164, MathOnFloatProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(2204, EqualsOnAtomicClassProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(1860, SynchronizationOnStringOrBoxedProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(3067, SynchronizationOnGetClassProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(1656, SelfAssignementProcessor.class);
-		TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(3984, UnusedThrowableProcessor.class);
+		Reflections reflections = new Reflections("sonarquberepair.processor");
+		Set<Class<? extends SQRAbstractProcessor>> allProcessors = reflections.getSubTypesOf(SQRAbstractProcessor.class);
+		for (Class<? extends SQRAbstractProcessor> processor : allProcessors) {
+			Annotation[] annotations = processor.getAnnotations();
+			for (Annotation annotation : annotations) {
+				if (annotation instanceof ProcessorAnnotation) {
+					ProcessorAnnotation myAnnotation = (ProcessorAnnotation) annotation;
+					TEMP_RULE_KEY_TO_PROCESSOR.putIfAbsent(myAnnotation.key(), processor);
+				}
+			}
+		}
 		return TEMP_RULE_KEY_TO_PROCESSOR;
 	}
 
