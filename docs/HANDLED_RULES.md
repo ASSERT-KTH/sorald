@@ -1,47 +1,40 @@
 ## Handled rules
-Sonarqube-repair can currently repair violations of 16 rules of which 14 are labeled as `BUG` and 2 as `Code Smell`:
+Sonarqube-repair can currently repair violations of the following rules:
 
 * [Bug](#bug)
-    * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
-    * ["BigDecimal(double)" should not be used](#bigdecimaldouble-should-not-be-used-sonar-rule-2111) ([Sonar Rule 2111](https://rules.sonarsource.com/java/RSPEC-2111))
-    * ["hashCode" and "toString" should not be called on array instances](#hashcode-and-tostring-should-not-be-called-on-array-instances-sonar-rule-2116) ([Sonar Rule 2116](https://rules.sonarsource.com/java/RSPEC-2116))
-    * ["Iterator.next()" methods should throw "NoSuchElementException"](#iteratornext-methods-should-throw-nosuchelementexception-sonar-rule-2272) ([Sonar Rule 2272](https://rules.sonarsource.com/java/RSPEC-2272))
-    * [Strings and Boxed types should be compared using "equals()"](#strings-and-boxed-types-should-be-compared-using-equals-sonar-rule-4973) ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
-    * [Math operands should be cast before assignment](#math-operands-should-be-cast-before-assignment-sonar-rule-2184) ([Sonar Rule 2184](https://rules.sonarsource.com/java/RSPEC-2184))
-    * [JEE applications should not "getClassLoader"](#jee-applications-should-not-getclassloader-sonar-rule-3032) ([Sonar Rule 3032](https://rules.sonarsource.com/java/RSPEC-3032))
-    * ["compareTo" should not return "Integer.MIN_VALUE"](#compareto-should-not-return-integermin_value-sonar-rule-2167) ([Sonar Rule 2167](https://rules.sonarsource.com/java/RSPEC-2167))
-    * [Math should not be performed on floats](#math-should-not-be-performed-on-floats-sonar-rule-2164) ([Sonar Rule 2164](https://rules.sonarsource.com/java/RSPEC-2164))
-    * [Synchronization should not be based on Strings or boxed primitives](#synchronization-should-not-be-based-on-Strings-or-boxed-primitives-sonar-rule-1860) ([Sonar Rule 1860](https://rules.sonarsource.com/java/tag/multi-threading/RSPEC-1860))
     * [".equals()" should not be used to test the values of "Atomic" classes](#equals-should-not-be-used-to-test-the-values-of-atomic-classes-sonar-rule-2204) ([Sonar Rule 2204](https://rules.sonarsource.com/java/RSPEC-2204))
+    * ["BigDecimal(double)" should not be used](#bigdecimaldouble-should-not-be-used-sonar-rule-2111) ([Sonar Rule 2111](https://rules.sonarsource.com/java/RSPEC-2111))
+    * ["Iterator.next()" methods should throw "NoSuchElementException"](#iteratornext-methods-should-throw-nosuchelementexception-sonar-rule-2272) ([Sonar Rule 2272](https://rules.sonarsource.com/java/RSPEC-2272))
+    * ["compareTo" should not return "Integer.MIN_VALUE"](#compareto-should-not-return-integermin_value-sonar-rule-2167) ([Sonar Rule 2167](https://rules.sonarsource.com/java/RSPEC-2167))
     * ["getClass" should not be used for synchronization](#getclass-should-not-be-used-for-synchronization-sonar-rule-3067) ([Sonar Rule 3067](https://rules.sonarsource.com/java/type/Bug/RSPEC-3067))
-    * [Variables should not be self-assigned](#variables-should-not-be-self-assigned-sonar-rule-1656) ([Sonar Rule 1656](https://rules.sonarsource.com/java/type/Bug/RSPEC-1656))
+    * ["hashCode" and "toString" should not be called on array instances](#hashcode-and-tostring-should-not-be-called-on-array-instances-sonar-rule-2116) ([Sonar Rule 2116](https://rules.sonarsource.com/java/RSPEC-2116))
     * [Exception should not be created without being thrown](#exception-should-not-be-created-without-being-thrown-sonar-rule-3984) ([Sonar Rule 3984](https://rules.sonarsource.com/java/RSPEC-3984))
+    * [JEE applications should not "getClassLoader"](#jee-applications-should-not-getclassloader-sonar-rule-3032) ([Sonar Rule 3032](https://rules.sonarsource.com/java/RSPEC-3032))
+    * [Math operands should be cast before assignment](#math-operands-should-be-cast-before-assignment-sonar-rule-2184) ([Sonar Rule 2184](https://rules.sonarsource.com/java/RSPEC-2184))
+    * [Math should not be performed on floats](#math-should-not-be-performed-on-floats-sonar-rule-2164) ([Sonar Rule 2164](https://rules.sonarsource.com/java/RSPEC-2164))
+    * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
+    * [Strings and Boxed types should be compared using "equals()"](#strings-and-boxed-types-should-be-compared-using-equals-sonar-rule-4973) ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
+    * [Synchronization should not be based on Strings or boxed primitives](#synchronization-should-not-be-based-on-Strings-or-boxed-primitives-sonar-rule-1860) ([Sonar Rule 1860](https://rules.sonarsource.com/java/tag/multi-threading/RSPEC-1860))
+    * [Variables should not be self-assigned](#variables-should-not-be-self-assigned-sonar-rule-1656) ([Sonar Rule 1656](https://rules.sonarsource.com/java/type/Bug/RSPEC-1656))
 * [Code Smell](#code-smell)
-    * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
+    * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
 
 ### *Bug*
 
-#### Resources should be closed ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
+#### ".equals()" should not be used to test the values of "Atomic" classes ([Sonar Rule 2204](https://rules.sonarsource.com/java/RSPEC-2204))
 
-The repair encloses the parent block of resource initialization in a try-with resources.
-If it was already in a try block it replaces the try with try-with-resources instead 
-of creating a new one, so that useless nested try blocks are not created.
+Any equality comparison between `AtomicInteger`, `AtomicLong`, or `AtomicBoolean` objects using the method `equals`, i.e., `obj1.equals(obj2)`, is replaced by a binary operator of the kind equals, where the left and right hand operands are calls to the method `.get()` using both objects.
 
 Example:
 ```diff
--            ZipInputStream zipInput = null;
--            try {
--                zipInput = new ZipInputStream(new BufferedInputStream(new FileInputStream(file)));// Noncompliant
-+            try (ZipInputStream zipInput = new ZipInputStream(new BufferedInputStream(new FileInputStream(file)))) {
-                 ZipEntry entry;
-...
-             } catch (Exception e) {
-                 Launcher.LOGGER.error(e.getMessage(), e);
-             }
+ 		AtomicInteger aInt1 = new AtomicInteger(0);
+ 		AtomicInteger aInt2 = new AtomicInteger(0);
+-		isEqual = aInt1.equals(aInt2); // Noncompliant
++		isEqual = aInt1.get() == aInt2.get();
 ```
 
-------
+-----
 
 #### "BigDecimal(double)" should not be used ([Sonar Rule 2111](https://rules.sonarsource.com/java/RSPEC-2111))
 
@@ -74,22 +67,6 @@ Check out an accepted PR in [Apache PDFBox](https://github.com/apache/pdfbox/pul
 
 -----
 
-#### "hashCode" and "toString" should not be called on array instances ([Sonar Rule 2116](https://rules.sonarsource.com/java/RSPEC-2116))
-
-Any invocation of `toString()` or `hashCode()` on an array is replaced with `Arrays.toString(parameter)` or `Arrays.hashCode(parameter)`.
-
-Example:
-```diff
--        String argStr = args.toString();// Noncompliant
--        int argHash = args.hashCode();// Noncompliant
-+        String argStr = Arrays.toString(args);
-+        int argHash = Arrays.hashCode(args);
-```
-
-Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/3134) that repairs one ArrayHashCodeAndToString violation.
-
------
-
 #### "Iterator.next()" methods should throw "NoSuchElementException" ([Sonar Rule 2272](https://rules.sonarsource.com/java/RSPEC-2272))
 
 Any implementation of the `Iterator.next()` method that does not throw `NoSuchElementException` has a code snippet added to its start. The code snippet consists of a call to `hasNext()` and a throw of the error.
@@ -114,20 +91,87 @@ Check out an accepted PR in [Apache PDFBox](https://github.com/apache/pdfbox/pul
 
 -----
 
-#### Strings and Boxed types should be compared using "equals()" ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
+#### "compareTo" should not return "Integer.MIN_VALUE" ([Sonar Rule 2167](https://rules.sonarsource.com/java/RSPEC-2167))
+Returning `Integer.MIN_VALUE` can cause errors because the return value of `compareTo` is sometimes inversed, with the expectation that negative values become positive. However, inversing `Integer.MIN_VALUE` yields `Integer.MIN_VALUE` rather than `Integer.MAX_VALUE`. Any `return Integer.MIN_VALUE` in a `compareTo` method is then replaced by `return -1`.
 
-Any comparison of strings or boxed types using `==` or `!=` is replaced by `equals`.
+```diff
+-  public int compareTo(CompareToReturnValue a) {
+-    return Integer.MIN_VALUE; // Noncompliant
+-  }
++  public int compareTo(CompareToReturnValue a) {
++     return -1;
++  }
+```
+
+-----
+
+#### "getClass" should not be used for synchronization ([Sonar Rule 3067](https://rules.sonarsource.com/java/RSPEC-3067))
+
+Any invocation using getClass will be typechecked if the object's invoked by `getClass` is final or an enum. If not, the invocation will be transformed to `.class` instead of `getClass`.
 
 Example:
 ```diff
--        if (firstName == lastName) // Noncompliant
-+        if (firstName.equals(lastName))
-...
--        return b != a; // Noncompliant
-+        return !b.equals(a);
+class SynchronizationOnGetClass {
+-  public void method1() {
+-    InnerClass i = new InnerClass();
+-    synchronized (i.getObject().getClass()) { // Noncompliant - object's modifier is unknown, assume non-final nor enum
+-  }
++  public void method1() {
++    InnerClass i = new InnerClass();
++    synchronized(Object.class) {}
++  }
+-  public void method2() {
+-    synchronized (getClass()) {}
+-  }
++  public void method2() {
++    synchronized(SynchronizationOnGetClass.class) {}
++  }
+}
 ```
 
-Check out an accepted PR in [Apache Sling Discovery](https://github.com/apache/sling-org-apache-sling-discovery-impl/pull/1) that repairs one CompareStringsBoxedTypesWithEquals violation.
+-----
+
+#### "hashCode" and "toString" should not be called on array instances ([Sonar Rule 2116](https://rules.sonarsource.com/java/RSPEC-2116))
+
+Any invocation of `toString()` or `hashCode()` on an array is replaced with `Arrays.toString(parameter)` or `Arrays.hashCode(parameter)`.
+
+Example:
+```diff
+-        String argStr = args.toString();// Noncompliant
+-        int argHash = args.hashCode();// Noncompliant
++        String argStr = Arrays.toString(args);
++        int argHash = Arrays.hashCode(args);
+```
+
+Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/3134) that repairs one ArrayHashCodeAndToString violation.
+
+-----
+
+#### Exception should not be created without being thrown ([Sonar Rule 3984](https://rules.sonarsource.com/java/RSPEC-3984))
+
+Throw a `Throwable` that has been created but not thrown.
+
+Example:
+```diff
+        if (x < 0) {
+-           new IllegalArgumentException("x must be nonnegative"); // Noncompliant {{Throw this exception or remove this useless statement}}
++           throw new IllegalArgumentException("x must be nonnegative");
+        }
+```
+
+-----
+
+#### JEE applications should not "getClassLoader" ([Sonar Rule 3032](https://rules.sonarsource.com/java/RSPEC-3032))
+
+Using the standard `getClassLoader()` may not return the right class loader in Java Enterprise Edition context. Instead, `getClassLoader()` usage such as `this.getClass().getClassLoader()` and `Dummy.class.getClassLoader()` should be replaced by `Thread.currentThread().getContextClassLoader()`. In particular, such replacement only occurs if the `.java` file uses the `javax` package in its imports.
+
+Example:
+```diff
+-    ClassLoader d = this.getClass().getClassLoader(); // Noncompliant
++    ClassLoader d = Thread.currentThread().getContextClassLoader();
+-    Dummy.class.getClassLoader().loadClass("anotherclass"); // Noncompliant
++    Thread.currentThread().getContextClassLoader().loadClass("anotherclass");
+```
 
 -----
 
@@ -148,34 +192,6 @@ Example:
 
 -----
 
-#### JEE applications should not "getClassLoader" ([Sonar Rule 3032](https://rules.sonarsource.com/java/RSPEC-3032))
-
-Using the standard `getClassLoader()` may not return the right class loader in Java Enterprise Edition context. Instead, `getClassLoader()` usage such as `this.getClass().getClassLoader()` and `Dummy.class.getClassLoader()` should be replaced by `Thread.currentThread().getContextClassLoader()`. In particular, such replacement only occurs if the `.java` file uses the `javax` package in its imports.
-
-Example:
-```diff
--    ClassLoader d = this.getClass().getClassLoader(); // Noncompliant
-+    ClassLoader d = Thread.currentThread().getContextClassLoader();
--    Dummy.class.getClassLoader().loadClass("anotherclass"); // Noncompliant
-+    Thread.currentThread().getContextClassLoader().loadClass("anotherclass");
-```
-
------
-
-#### "compareTo" should not return "Integer.MIN_VALUE" ([Sonar Rule 2167](https://rules.sonarsource.com/java/RSPEC-2167))
-Returning `Integer.MIN_VALUE` can cause errors because the return value of `compareTo` is sometimes inversed, with the expectation that negative values become positive. However, inversing `Integer.MIN_VALUE` yields `Integer.MIN_VALUE` rather than `Integer.MAX_VALUE`. Any `return Integer.MIN_VALUE` in a `compareTo` method is then replaced by `return -1`.
-
-```diff
--  public int compareTo(CompareToReturnValue a) {
--    return Integer.MIN_VALUE; // Noncompliant
--  }
-+  public int compareTo(CompareToReturnValue a) {
-+     return -1;
-+  }
-```
-
------
-
 #### Math should not be performed on floats ([Sonar Rule 2164](https://rules.sonarsource.com/java/RSPEC-2164))
 
 In arithmetic expressions between two `float`s, both left and right operands are casted to `double`.
@@ -190,17 +206,41 @@ Example:
 
 -----
 
-#### ".equals()" should not be used to test the values of "Atomic" classes ([Sonar Rule 2204](https://rules.sonarsource.com/java/RSPEC-2204))
+#### Resources should be closed ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
 
-Any equality comparison between `AtomicInteger`, `AtomicLong`, or `AtomicBoolean` objects using the method `equals`, i.e., `obj1.equals(obj2)`, is replaced by a binary operator of the kind equals, where the left and right hand operands are calls to the method `.get()` using both objects.
+The repair encloses the parent block of resource initialization in a try-with resources.
+If it was already in a try block it replaces the try with try-with-resources instead 
+of creating a new one, so that useless nested try blocks are not created.
 
 Example:
 ```diff
- 		AtomicInteger aInt1 = new AtomicInteger(0);
- 		AtomicInteger aInt2 = new AtomicInteger(0);
--		isEqual = aInt1.equals(aInt2); // Noncompliant
-+		isEqual = aInt1.get() == aInt2.get();
+-            ZipInputStream zipInput = null;
+-            try {
+-                zipInput = new ZipInputStream(new BufferedInputStream(new FileInputStream(file)));// Noncompliant
++            try (ZipInputStream zipInput = new ZipInputStream(new BufferedInputStream(new FileInputStream(file)))) {
+                 ZipEntry entry;
+...
+             } catch (Exception e) {
+                 Launcher.LOGGER.error(e.getMessage(), e);
+             }
 ```
+
+------
+
+#### Strings and Boxed types should be compared using "equals()" ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
+
+Any comparison of strings or boxed types using `==` or `!=` is replaced by `equals`.
+
+Example:
+```diff
+-        if (firstName == lastName) // Noncompliant
++        if (firstName.equals(lastName))
+...
+-        return b != a; // Noncompliant
++        return !b.equals(a);
+```
+
+Check out an accepted PR in [Apache Sling Discovery](https://github.com/apache/sling-org-apache-sling-discovery-impl/pull/1) that repairs one CompareStringsBoxedTypesWithEquals violation.
 
 -----
 
@@ -232,32 +272,6 @@ Example:
 +           return this.innerLockLegal;
 +       }
   }
-```
-
------
-
-#### "getClass" should not be used for synchronization ([Sonar Rule 3067](https://rules.sonarsource.com/java/RSPEC-3067))
-
-Any invocation using getClass will be typechecked if the object's invoked by `getClass` is final or an enum. If not, the invocation will be transformed to `.class` instead of `getClass`.
-
-Example:
-```diff
-class SynchronizationOnGetClass {
--  public void method1() {
--    InnerClass i = new InnerClass();
--    synchronized (i.getObject().getClass()) { // Noncompliant - object's modifier is unknown, assume non-final nor enum
--  }
-+  public void method1() {
-+    InnerClass i = new InnerClass();
-+    synchronized(Object.class) {}
-+  }
--  public void method2() {
--    synchronized (getClass()) {}
--  }
-+  public void method2() {
-+    synchronized(SynchronizationOnGetClass.class) {}
-+  }
-}
 ```
 
 -----
@@ -302,21 +316,24 @@ class SelfAssignement {
 
 -----
 
-#### Exception should not be created without being thrown ([Sonar Rule 3984](https://rules.sonarsource.com/java/RSPEC-3984))
+### *Code Smell*
 
-Throw a `Throwable` that has been created but not thrown.
+#### Fields in a "Serializable" class should either be transient or serializable ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
+
+The repair adds the modifier `transient` to all non-serializable
+fields. In the future, the plan is to give user the option if they want to go to the class
+of that field and add `implements Serializable` to it.
 
 Example:
 ```diff
-        if (x < 0) {
--           new IllegalArgumentException("x must be nonnegative"); // Noncompliant {{Throw this exception or remove this useless statement}}
-+           throw new IllegalArgumentException("x must be nonnegative");
-        }
+ public class SerializableFieldProcessorTest implements Serializable {
+-    private Unser uns;// Noncompliant
++    private transient Unser uns;
 ```
 
------
+Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/2121) that repairs three SerializableFieldInSerializableClass violations.
 
-### *Code Smell*
+------
 
 #### Unused assignments should be removed ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
 
@@ -338,20 +355,3 @@ Example:
 ```
 
 Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/2265) that repairs one DeadStore violation.
-
-------
-
-#### Fields in a "Serializable" class should either be transient or serializable ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
-
-The repair adds the modifier `transient` to all non-serializable
-fields. In the future, the plan is to give user the option if they want to go to the class
-of that field and add `implements Serializable` to it.
-
-Example:
-```diff
- public class SerializableFieldProcessorTest implements Serializable {
--    private Unser uns;// Noncompliant
-+    private transient Unser uns;
-```
-
-Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/2121) that repairs three SerializableFieldInSerializableClass violations.
