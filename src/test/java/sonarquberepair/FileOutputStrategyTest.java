@@ -18,7 +18,7 @@ public class FileOutputStrategyTest {
 	@Test
 	public void test_onlyChangedFilesAndPatchOutput() throws Exception {
 		Main.main(new String[]{
-			"--originalFilesPath",Constants.PATH_TO_FILE,
+			"--originalFilesPath",Constants.PATH_TO_RESOURCES_FILE,
 			"--ruleKeys","4973",
 			"--fileOutputStrategy", FileOutputStrategy.CHANGED_ONLY.name(),
 			"--workspace", fileOutputStrategyTestWorkspace,
@@ -34,7 +34,7 @@ public class FileOutputStrategyTest {
 	@Test
 	public void test_onlyChangedFilesAndNoPatchOutput() throws Exception {
 		Main.main(new String[]{
-				"--originalFilesPath",Constants.PATH_TO_FILE,
+				"--originalFilesPath",Constants.PATH_TO_RESOURCES_FILE,
 				"--ruleKeys","4973",
 				"--fileOutputStrategy", FileOutputStrategy.CHANGED_ONLY.name(),
 				"--workspace", fileOutputStrategyTestWorkspace});
@@ -49,7 +49,7 @@ public class FileOutputStrategyTest {
 	@Test
 	public void test_allFilesAndNoPatchOutput() throws Exception {
 		Main.main(new String[]{
-				"--originalFilesPath",Constants.PATH_TO_FILE,
+				"--originalFilesPath",Constants.PATH_TO_RESOURCES_FILE,
 				"--ruleKeys","4973",
 				"--fileOutputStrategy", FileOutputStrategy.ALL.name(),
 				"--workspace", fileOutputStrategyTestWorkspace});

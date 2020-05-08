@@ -11,7 +11,7 @@ public class DeadStoreProcessorTest {
 	@Test
 	public void test() throws Exception {
 		String fileName = "DeadStores.java";
-		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
+		String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FILE + fileName;
 		String pathToRepairedFile = Constants.WORKSPACE + "/spooned/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new DeadStoreCheck());

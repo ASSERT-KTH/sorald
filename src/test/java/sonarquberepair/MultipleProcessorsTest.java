@@ -11,7 +11,7 @@ public class MultipleProcessorsTest {
 	@Test
 	public void test_threeExistingRules() throws Exception {
 		String fileName = "MultipleProcessors.java";
-		String pathToBuggyFile = Constants.PATH_TO_FILE + fileName;
+		String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FILE + fileName;
 		String pathToRepairedFile = Constants.WORKSPACE + "/spooned/" + fileName;
 
 		Main.main(new String[]{
