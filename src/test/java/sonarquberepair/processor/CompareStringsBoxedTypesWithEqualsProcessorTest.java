@@ -12,14 +12,14 @@ public class CompareStringsBoxedTypesWithEqualsProcessorTest {
 	@Test
 	public void test() throws Exception {
 		String fileName = "CompareStringsBoxedTypesWithEquals.java";
-		String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FILE + fileName;
-		String pathToRepairedFile = Constants.WORKSPACE + "/spooned/" + fileName;
+		String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+		String pathToRepairedFile = Constants.SONAR_WORKSPACE + "/" + Constants.SPOONED +"/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new CompareStringsBoxedTypesWithEqualsCheck());
 		Main.main(new String[]{
-			"--originalFilesPath",pathToBuggyFile,
-			"--ruleKeys","4973",
-			"--workspace",Constants.WORKSPACE});
+				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,pathToBuggyFile,
+				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,"4973",
+				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,Constants.SONAR_WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new CompareStringsBoxedTypesWithEqualsCheck());
 	}

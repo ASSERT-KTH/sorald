@@ -1,6 +1,7 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.CompareToReturnValueCheck;
+import sonarquberepair.Constants;
 import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.code.CtReturn;
@@ -20,7 +21,7 @@ public class CompareToReturnValueProcessor extends SQRAbstractProcessor<CtReturn
 		}
 		CtMethod ctMethod = ctReturn.getParent(CtMethod.class);
 		String returnTypeName = ctMethod.getType().getSimpleName();
-		if (ctMethod.getSimpleName().equals("compareTo") && (returnTypeName.equals("int") || returnTypeName.equals("Integer"))
+		if (ctMethod.getSimpleName().equals("compareTo") && (returnTypeName.equals(Constants.INT) || returnTypeName.equals("Integer"))
 				&& ctReturn.getReturnedExpression().toString().indexOf("Integer.MIN_VALUE") != -1) {
 			return true;
 		}
