@@ -1,6 +1,7 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
+import sonarquberepair.Constants;
 import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
@@ -13,9 +14,6 @@ import java.util.Arrays;
 
 @ProcessorAnnotation(key = 2116, description = "\"hashCode\" and \"toString\" should not be called on array instances")
 public class ArrayHashCodeAndToStringProcessor extends SQRAbstractProcessor<CtInvocation<?>> {
-
-	final String TOSTRING = "toString";
-	final String HASHCODE = "hashCode";
 
 	public ArrayHashCodeAndToStringProcessor(String originalFilesPath) {
 		super(originalFilesPath, new ArrayHashCodeAndToStringCheck());
@@ -30,8 +28,8 @@ public class ArrayHashCodeAndToStringProcessor extends SQRAbstractProcessor<CtIn
 			return false;
 		}
 		if (candidate.getTarget().getType().isArray()) {
-			if (candidate.getExecutable().getSignature().equals(TOSTRING + "()") ||
-				(candidate.getExecutable().getSignature().equals(HASHCODE + "()"))) {
+			if (candidate.getExecutable().getSignature().equals(Constants.TOSTRING_METHOD_NAME + "()") ||
+				(candidate.getExecutable().getSignature().equals(Constants.HASHCODE_METHOD_NAME + "()"))) {
 				return true;
 			}
 		}
@@ -46,10 +44,10 @@ public class ArrayHashCodeAndToStringProcessor extends SQRAbstractProcessor<CtIn
 		CtCodeSnippetExpression newTarget = getFactory().Code().createCodeSnippetExpression("Arrays");
 		CtType arraysClass = getFactory().Class().get(Arrays.class);
 		CtMethod method = null;
-		if (element.getExecutable().getSignature().equals(HASHCODE + "()")) {
-			method = (CtMethod) arraysClass.getMethodsByName(HASHCODE).get(0);
-		} else if (element.getExecutable().getSignature().equals(TOSTRING + "()")) {
-			method = (CtMethod) arraysClass.getMethodsByName(TOSTRING).get(0);
+		if (element.getExecutable().getSignature().equals(Constants.HASHCODE_METHOD_NAME + "()")) {
+			method = (CtMethod) arraysClass.getMethodsByName(Constants.HASHCODE_METHOD_NAME).get(0);
+		} else if (element.getExecutable().getSignature().equals(Constants.TOSTRING_METHOD_NAME + "()")) {
+			method = (CtMethod) arraysClass.getMethodsByName(Constants.TOSTRING_METHOD_NAME).get(0);
 		} else {
 			System.err.println("Unhandled case. Something went wrong.");
 		}

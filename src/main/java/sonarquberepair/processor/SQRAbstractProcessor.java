@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
 import org.sonar.plugins.java.api.JavaFileScanner;
+import sonarquberepair.Constants;
 import sonarquberepair.UniqueTypesCollector;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
@@ -31,7 +32,7 @@ public abstract class SQRAbstractProcessor<E extends CtElement> extends Abstract
 			} else {
 				try (Stream<Path> walk = Files.walk(Paths.get(file.getAbsolutePath()))) {
 					filesToScan = walk.map(x -> x.toFile().getAbsolutePath())
-							.filter(f -> f.endsWith(".java")).collect(Collectors.toList());
+							.filter(f -> f.endsWith(Constants.JAVA_EXT)).collect(Collectors.toList());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

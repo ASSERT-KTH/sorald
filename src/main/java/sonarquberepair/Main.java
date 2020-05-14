@@ -22,43 +22,43 @@ public class Main {
 	public JSAP defineArgs() throws JSAPException{
 		JSAP jsap = new JSAP();
 
-		FlaggedOption opt = new FlaggedOption("ruleKeys");
-		opt.setLongFlag("ruleKeys");
+		FlaggedOption opt = new FlaggedOption(Constants.ARG_RULE_KEYS);
+		opt.setLongFlag(Constants.ARG_RULE_KEYS);
 		opt.setStringParser(JSAP.STRING_PARSER);
 		opt.setList(true);
 		opt.setListSeparator(',');
 		opt.setHelp("Choose one or more of the following rule keys (use ',' to separate multiple keys):" + Processors.getRuleDescriptions());
 		jsap.registerParameter(opt);
 
-		opt = new FlaggedOption("originalFilesPath");
-		opt.setLongFlag("originalFilesPath");
+		opt = new FlaggedOption(Constants.ARG_ORIGINAL_FILES_PATH);
+		opt.setLongFlag(Constants.ARG_ORIGINAL_FILES_PATH);
 		opt.setStringParser(FileStringParser.getParser().setMustExist(true));
 		opt.setRequired(true);
 		opt.setHelp("The path to the file or folder to be analyzed and possibly repaired.");
 		jsap.registerParameter(opt);
 
-		opt = new FlaggedOption("workspace");
-		opt.setLongFlag("workspace");
+		opt = new FlaggedOption(Constants.ARG_WORKSPACE);
+		opt.setLongFlag(Constants.ARG_WORKSPACE);
 		opt.setStringParser(JSAP.STRING_PARSER);
-		opt.setDefault("./sonar-workspace");
+		opt.setDefault("./" + Constants.SONAR_WORKSPACE);
 		opt.setHelp("The path to a folder that will be used as workspace by sonarqube-repair, i.e. the path for the output.");
 		jsap.registerParameter(opt);
 
-		opt = new FlaggedOption("gitRepoPath");
-		opt.setLongFlag("gitRepoPath");
+		opt = new FlaggedOption(Constants.ARG_GIT_REPO_PATH);
+		opt.setLongFlag(Constants.ARG_GIT_REPO_PATH);
 		opt.setStringParser(FileStringParser.getParser().setMustExist(true).setMustBeDirectory(true));
 		opt.setHelp("The path to a git repository directory.");
 		jsap.registerParameter(opt);
 
-		opt = new FlaggedOption("prettyPrintingStrategy");
-		opt.setLongFlag("prettyPrintingStrategy");
+		opt = new FlaggedOption(Constants.ARG_PRETTY_PRINTING_STRATEGY);
+		opt.setLongFlag(Constants.ARG_PRETTY_PRINTING_STRATEGY);
 		opt.setStringParser(JSAP.STRING_PARSER);
 		opt.setDefault(PrettyPrintingStrategy.NORMAL.name());
 		opt.setHelp("Mode for pretty printing the source code: 'NORMAL', which means that all source code will be printed and its formatting might change (such as indentation), and 'SNIPER', which means that only statements changed towards the repair of sonar rule violations will be printed.");
 		jsap.registerParameter(opt);
 
-		opt = new FlaggedOption("fileOutputStrategy");
-		opt.setLongFlag("fileOutputStrategy");
+		opt = new FlaggedOption(Constants.ARG_FILE_OUTPUT_STRATEGY);
+		opt.setLongFlag(Constants.ARG_FILE_OUTPUT_STRATEGY);
 		opt.setStringParser(JSAP.STRING_PARSER);
 		opt.setDefault(FileOutputStrategy.CHANGED_ONLY.name());
 		opt.setHelp("Mode for outputting files: 'CHANGED_ONLY', which means that only changed files will be created in the workspace, and 'ALL', which means that all files, including the unchanged ones, will be created in the workspace.");
@@ -81,7 +81,7 @@ public class Main {
 			printUsage(jsap);
 		}
 
-		for (String ruleKey : arguments.getStringArray("ruleKeys")) {
+		for (String ruleKey : arguments.getStringArray(Constants.ARG_RULE_KEYS)) {
 			if (Processors.getProcessor(Integer.parseInt(ruleKey)) == null) {
 				System.out.println("Sorry, repair not available for rule " + ruleKey +
 						". See the available rules below.");
@@ -102,17 +102,17 @@ public class Main {
 	}
 
 	public void initConfig(JSAPResult arguments) {
-		List<Integer> ruleKeys = new ArrayList<>(Arrays.asList(arguments.getStringArray("ruleKeys")).stream()
+		List<Integer> ruleKeys = new ArrayList<>(Arrays.asList(arguments.getStringArray(Constants.ARG_RULE_KEYS)).stream()
 				.map(s -> Integer.parseInt(s))
 				.collect(Collectors.toList()));
 		this.getConfig().addRuleKeys(ruleKeys);
-		this.getConfig().setOriginalFilesPath(arguments.getFile("originalFilesPath").getAbsolutePath());
-		this.getConfig().setWorkspace(arguments.getString("workspace"));
-		if (arguments.getFile("gitRepoPath") != null) {
-			this.getConfig().setGitRepoPath(arguments.getFile("gitRepoPath").getAbsolutePath());
+		this.getConfig().setOriginalFilesPath(arguments.getFile(Constants.ARG_ORIGINAL_FILES_PATH).getAbsolutePath());
+		this.getConfig().setWorkspace(arguments.getString(Constants.ARG_WORKSPACE));
+		if (arguments.getFile(Constants.ARG_GIT_REPO_PATH) != null) {
+			this.getConfig().setGitRepoPath(arguments.getFile(Constants.ARG_GIT_REPO_PATH).getAbsolutePath());
 		}
-		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(arguments.getString("prettyPrintingStrategy")));
-		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(arguments.getString("fileOutputStrategy")));
+		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(arguments.getString(Constants.ARG_PRETTY_PRINTING_STRATEGY)));
+		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(arguments.getString(Constants.ARG_FILE_OUTPUT_STRATEGY)));
 	}
 
 

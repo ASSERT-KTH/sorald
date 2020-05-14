@@ -14,7 +14,7 @@ public class Processors {
 
 	private static Map init() {
 		Map<Integer, Class<? extends SQRAbstractProcessor>> TEMP_RULE_KEY_TO_PROCESSOR = new HashMap<>();
-		Reflections reflections = new Reflections("sonarquberepair.processor");
+		Reflections reflections = new Reflections(Constants.PROCESSOR_PACKAGE);
 		Set<Class<? extends SQRAbstractProcessor>> allProcessors = reflections.getSubTypesOf(SQRAbstractProcessor.class);
 		for (Class<? extends SQRAbstractProcessor> processor : allProcessors) {
 			Annotation[] annotations = processor.getAnnotations();

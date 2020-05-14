@@ -1,6 +1,7 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.MathOnFloatCheck;
+import sonarquberepair.Constants;
 import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
@@ -49,8 +50,8 @@ public class MathOnFloatProcessor extends SQRAbstractProcessor<CtBinaryOperator>
     }
 
     private boolean isOperationBetweenFloats(CtBinaryOperator ctBinaryOperator) {
-        return ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals("float") &&
-                ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals("float");
+        return ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals(Constants.FLOAT) &&
+                ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals(Constants.FLOAT);
     }
 
     private boolean withinStringConcatenation(CtBinaryOperator ctBinaryOperator) {
@@ -59,8 +60,8 @@ public class MathOnFloatProcessor extends SQRAbstractProcessor<CtBinaryOperator>
             parent = parent.getParent();
         }
         return ((CtBinaryOperator) parent).getKind().compareTo(BinaryOperatorKind.PLUS) == 0 &&
-                (((CtBinaryOperator) parent).getLeftHandOperand().getType().getQualifiedName().equals("java.lang.String") ||
-                        ((CtBinaryOperator) parent).getRightHandOperand().getType().getQualifiedName().equals("java.lang.String"));
+                (((CtBinaryOperator) parent).getLeftHandOperand().getType().getQualifiedName().equals(Constants.STRING_QUALIFIED_NAME) ||
+                        ((CtBinaryOperator) parent).getRightHandOperand().getType().getQualifiedName().equals(Constants.STRING_QUALIFIED_NAME));
     }
 
 }

@@ -1,6 +1,7 @@
 package sonarquberepair.processor;
 
 import org.sonar.java.checks.CastArithmeticOperandCheck;
+import sonarquberepair.Constants;
 import sonarquberepair.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtElement;
@@ -103,37 +104,37 @@ public class CastArithmeticOperandProcessor extends SQRAbstractProcessor<CtBinar
     }
 
     private boolean isExpIntAndOrLong(CtBinaryOperator ctBinaryOperator) {
-        return (ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals("int") ||
-                ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals("long")) &&
-                (ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals("int") ||
-                ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals("long"));
+        return (ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals(Constants.INT) ||
+                ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals(Constants.LONG)) &&
+                (ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals(Constants.INT) ||
+                ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals(Constants.LONG));
     }
 
     private boolean isFloatingPoint(CtBinaryOperator ctBinaryOperator) {
-        return ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals("double") ||
-                ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals("float") ||
-                ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals("double") ||
-                ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals("float");
+        return ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals(Constants.DOUBLE) ||
+                ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals(Constants.FLOAT) ||
+                ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals(Constants.DOUBLE) ||
+                ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals(Constants.FLOAT);
     }
 
     private boolean isExpFullyInt(CtBinaryOperator ctBinaryOperator) {
-        return ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals("int") &&
-                ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals("int");
+        return ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals(Constants.INT) &&
+                ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals(Constants.INT);
     }
 
     private boolean isLongPartOfTheExp(CtBinaryOperator ctBinaryOperator) {
-        return ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals("long") ||
-                ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals("long");
+        return ctBinaryOperator.getLeftHandOperand().getType().getSimpleName().equals(Constants.LONG) ||
+                ctBinaryOperator.getRightHandOperand().getType().getSimpleName().equals(Constants.LONG);
     }
 
     private boolean isTypeLongOrDoubleOrFloat(CtTypeReference ctTypeReference) {
-        return ctTypeReference.getSimpleName().equals("long") ||
-                ctTypeReference.getSimpleName().equals("double") ||
-                ctTypeReference.getSimpleName().equals("float");
+        return ctTypeReference.getSimpleName().equals(Constants.LONG) ||
+                ctTypeReference.getSimpleName().equals(Constants.DOUBLE) ||
+                ctTypeReference.getSimpleName().equals(Constants.FLOAT);
     }
 
     private boolean isTypeLong(CtTypeReference ctTypeReference) {
-        return ctTypeReference.getSimpleName().equals("long");
+        return ctTypeReference.getSimpleName().equals(Constants.LONG);
     }
 
     private boolean checkDivisionInParents(CtBinaryOperator ctBinaryOperator) {

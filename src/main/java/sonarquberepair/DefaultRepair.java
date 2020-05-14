@@ -28,8 +28,8 @@ public class DefaultRepair {
 	}
 
 	public void repair() {
-		final String spoonedPath = this.config.getWorkspace() + File.separator + "spooned";
-		final String intermediateSpoonedPath = spoonedPath + File.separator + "intermediate";
+		final String spoonedPath = this.config.getWorkspace() + File.separator + Constants.SPOONED;
+		final String intermediateSpoonedPath = spoonedPath + File.separator + Constants.INTERMEDIATE;
 
 		String inputDirPath;
 		String outputDirPath;
@@ -131,7 +131,7 @@ public class DefaultRepair {
 	}
 
 	private void createPatches(String patchedFilePath, JavaOutputProcessor javaOutputProcessor) {
-		File patchDir = new File(this.config.getWorkspace() + File.separator + "SonarGitPatches");
+		File patchDir = new File(this.config.getWorkspace() + File.separator + Constants.PATCHES);
 
 		if (!patchDir.exists()) {
 			patchDir.mkdirs();
@@ -139,7 +139,7 @@ public class DefaultRepair {
 		List<File> list = javaOutputProcessor.getCreatedFiles();
 		if (!list.isEmpty()) {
 			String outputPath = list.get(list.size() - 1).getAbsolutePath();
-			generator.generate(patchedFilePath,outputPath, patchDir.getAbsolutePath() + File.separator + "sonarpatch_" + this.patchedFileCounter);
+			generator.generate(patchedFilePath,outputPath, patchDir.getAbsolutePath() + File.separator + Constants.PATCH_FILE_PREFIX + this.patchedFileCounter);
 			this.patchedFileCounter++;
 		}
 	}

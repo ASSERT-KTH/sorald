@@ -53,8 +53,8 @@ public class UniqueTypesCollector {
 	private void checkIfThereIsTheSameClassInTheOriginalPath(String filePath) {
 		Object topLevelTypeToBeRemoved = null;
 		for (Map.Entry topLevelType : this.topLevelTypes4Output.entrySet()) {
-			int index = filePath.indexOf("spooned/intermediate");
-			filePath = ".*" + filePath.substring(index + "spooned/intermediate".length(), filePath.length());
+			int index = filePath.indexOf(Constants.SPOONED_INTERMEDIATE);
+			filePath = ".*" + filePath.substring(index + Constants.SPOONED_INTERMEDIATE.length(), filePath.length());
 			if (topLevelType.getKey().toString().matches(filePath)) {
 				topLevelTypeToBeRemoved = topLevelType.getKey();
 				break;
