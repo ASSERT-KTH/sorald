@@ -26,8 +26,9 @@ $ java -jar target/sonarqube-repair-1.1-SNAPSHOT-jar-with-dependencies.jar <argu
 The arguments are the following:
 
 ```bash
-  [--ruleKeys <ruleKeys>]
-        Choose one of the following rule keys:
+  [--ruleKeys ruleKeys1,ruleKeys2,...,ruleKeysN ]
+        Choose one or more of the following rule keys (use ',' to separate
+        multiple keys):
         2272: "Iterator.next()" methods should throw "NoSuchElementException"
         2116: "hashCode" and "toString" should not be called on array instances
         1860: Synchronization should not be based on Strings or boxed primitives
