@@ -25,7 +25,7 @@ public class SelfAssignementProcessor extends SQRAbstractProcessor<CtAssignment<
 
 	@Override
 	public boolean isToBeProcessed(CtAssignment<?,?> candidate) {
-		if (!super.isToBeProcessedAccordingToSonar(candidate)) {
+		if (!super.isToBeProcessedAccordingToStandards(candidate)) {
 			return false;
 		}
 

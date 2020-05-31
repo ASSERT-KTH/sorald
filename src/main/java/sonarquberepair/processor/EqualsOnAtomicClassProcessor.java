@@ -22,7 +22,7 @@ public class EqualsOnAtomicClassProcessor extends SQRAbstractProcessor<CtInvocat
 
 	@Override
 	public boolean isToBeProcessed(CtInvocation candidate) {
-		if (!super.isToBeProcessedAccordingToSonar(candidate)) {
+		if (!super.isToBeProcessedAccordingToStandards(candidate)) {
 			return false;
 		}
 		if (candidate.getExecutable().getSignature().equals("equals(java.lang.Object)") &&

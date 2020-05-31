@@ -1,5 +1,7 @@
 package sonarquberepair;
 
+import sonarquberepair.processor.SQRAbstractProcessor;
+
 import java.lang.reflect.Constructor;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -17,6 +19,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Map;
 import java.util.List;
+import java.util.ArrayList;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
@@ -25,6 +28,7 @@ public class DefaultRepair {
 	private final GitPatchGenerator generator = new GitPatchGenerator();
 	private SonarQubeRepairConfig config;
 	private int patchedFileCounter = 0;
+	private List<SQRAbstractProcessor> addedProcessors = new ArrayList();
 
 	public DefaultRepair(SonarQubeRepairConfig config) {
 		this.config = config;
@@ -62,7 +66,6 @@ public class DefaultRepair {
 			Launcher launcher = createLauncher(inputDirPath, outputDirPath);
 
 			Processor processor = createProcessor(ruleKey, inputDirPath);
-
 			Factory factory = launcher.getFactory();
 			ProcessingManager processingManager = new QueueProcessingManager(factory);
 			processingManager.addProcessor(processor);
@@ -85,9 +88,17 @@ public class DefaultRepair {
 			}
 		}
 
+		this.printEndProcess();
 		deleteDirectory(new File(intermediateSpoonedPath));
-
 		UniqueTypesCollector.getInstance().reset();
+	}
+
+	public void printEndProcess() {
+		System.out.println("-----Number of fixes------");
+		for (SQRAbstractProcessor processor : addedProcessors) {
+			System.out.println(processor.getClass().getSimpleName() + ": " + processor.getCurrentFixesNbs());
+		}
+		System.out.println("-----End of report------");
 	}
 
 	// FIXME: this method was copied from TestHelper.java. We should extract it to a FileHelper to be visible for both main code and test code.
@@ -147,8 +158,9 @@ public class DefaultRepair {
 			Class<?> processor = Processors.getProcessor(ruleKey);
 			if (processor != null) {
 				Constructor<?> cons = processor.getConstructor(String.class);
-				Object object = cons.newInstance(inputDirPath);
-				return (Processor) object;
+				SQRAbstractProcessor object = ((SQRAbstractProcessor)cons.newInstance(inputDirPath)).setMaxFixesNbs(this.config.getMaxFixesPerRule());
+				this.addedProcessors.add(object);
+				return object;
 			}
 		} catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
 			e.printStackTrace();

@@ -24,7 +24,7 @@ public class CastArithmeticOperandProcessor extends SQRAbstractProcessor<CtBinar
 
     @Override
     public boolean isToBeProcessed(CtBinaryOperator candidate) {
-        if (!super.isToBeProcessedAccordingToSonar(candidate)) {
+        if (!super.isToBeProcessedAccordingToStandards(candidate)) {
             return false;
         }
 
