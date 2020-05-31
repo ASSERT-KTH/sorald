@@ -20,7 +20,7 @@ public class MathOnFloatProcessor extends SQRAbstractProcessor<CtBinaryOperator>
 
     @Override
     public boolean isToBeProcessed(CtBinaryOperator candidate) {
-        if (!super.isToBeProcessedAccordingToSonar(candidate)) {
+        if (!super.isToBeProcessedAccordingToStandards(candidate)) {
             return false;
         }
         List<CtBinaryOperator> binaryOperatorChildren = candidate.getElements(new TypeFilter<>(CtBinaryOperator.class));

@@ -20,7 +20,7 @@ public class BigDecimalDoubleConstructorProcessor extends SQRAbstractProcessor<C
 
 	@Override
 	public boolean isToBeProcessed(CtConstructorCall cons) {
-		if (!super.isToBeProcessedAccordingToSonar(cons)) {
+		if (!super.isToBeProcessedAccordingToStandards(cons)) {
 			return false;
 		}
 

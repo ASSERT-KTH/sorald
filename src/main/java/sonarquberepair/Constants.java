@@ -12,7 +12,7 @@ public class Constants {
 	public static final String ARG_SKIP_DUPLICATED_TYPES = "skipDuplicatedTypes";
 	public static final String ARG_PRETTY_PRINTING_STRATEGY = "prettyPrintingStrategy";
 	public static final String ARG_FILE_OUTPUT_STRATEGY = "fileOutputStrategy";
-
+	public static final String ARG_MAX_FIXES_PER_RULES = "maxFilesPerRule";
 	public static final String PROCESSOR_PACKAGE = "sonarquberepair.processor";
 
 	public static final String SONAR_WORKSPACE = "sonar-workspace";

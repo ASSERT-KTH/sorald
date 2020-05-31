@@ -12,6 +12,7 @@ public class SonarQubeRepairConfig {
 	private String workspace;
 	private String gitRepoPath;
 	private boolean skipDuplicatedTypes;
+	private int maxFixesPerRule;
 
 	public SonarQubeRepairConfig() {}
 
@@ -69,5 +70,13 @@ public class SonarQubeRepairConfig {
 
 	public boolean getSkipDuplicatedTypes() {
 		return this.skipDuplicatedTypes;
+	}
+
+	public void setMaxFixesPerRule(int maxFixesPerRule) {
+		this.maxFixesPerRule = maxFixesPerRule;
+	}
+
+	public int getMaxFixesPerRule() {
+		return this.maxFixesPerRule;
 	}
 }
