@@ -50,13 +50,17 @@ public abstract class SQRAbstractProcessor<E extends CtElement> extends Abstract
 		}
 	}
 
-	SQRAbstractProcessor(String originalFilesPath, JavaFileScanner check,int maxFixesNbs) {
-		this(originalFilesPath,check);
+	public SQRAbstractProcessor setMaxFixesNbs(int maxFixesNbs) {
 		this.maxFixesNbs = maxFixesNbs;
+		return this;
 	}
 
-	public boolean isToBeProcessed(CtElement element) {
-		return this.currentFixesNbs < this.maxFixesNbs && this.isToBeProcessedAccordingToSonar(CtElement element);
+	public int getCurrentFixesNbs() {
+		return this.currentFixesNbs;
+	}
+
+	public boolean isToBeProcessedAccordingToStandards(CtElement element) {
+		return (this.currentFixesNbs < this.maxFixesNbs) && this.isToBeProcessedAccordingToSonar(element);
 	}
 
 	public boolean isToBeProcessedAccordingToSonar(CtElement element) {

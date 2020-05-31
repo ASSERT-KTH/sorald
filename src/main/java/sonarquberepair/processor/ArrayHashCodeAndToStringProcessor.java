@@ -21,7 +21,7 @@ public class ArrayHashCodeAndToStringProcessor extends SQRAbstractProcessor<CtIn
 
 	@Override
 	public boolean isToBeProcessed(CtInvocation<?> candidate) {
-		if (!super.isToBeProcessedAccordingToSonar(candidate)) {
+		if (!super.isToBeProcessedAccordingToStandards(candidate)) {
 			return false;
 		}
 		if (candidate.getTarget() == null) {
