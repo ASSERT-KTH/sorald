@@ -1,4 +1,3 @@
-package apps;
 // Test for rule s2116
 
 public class ArrayHashCodeAndToString {

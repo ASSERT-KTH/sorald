@@ -9,18 +9,19 @@ import sonarquberepair.PrettyPrintingStrategy;
 import sonarquberepair.TestHelper;
 
 public class SkipDuplicatedTest {
+	private static final String WORKSPACE = "duplicated-types-ws";
 
 	@Test
 	public void arrayToStringProcessorTestSkipDuplicatedWithSuccess() throws Exception {
 		String fileName = "ArrayHashCodeAndToString.java";
 		String pathToBuggyFile = Constants.PATH_TO_DUPLICATED_FILES + fileName;
-		String pathToRepairedFile = Constants.SONAR_WORKSPACE + "/" + Constants.SPOONED +"/" + fileName;
+		String pathToRepairedFile = this.WORKSPACE + "/" + Constants.SPOONED +"/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
 		Main.main(new String[]{
 				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,Constants.PATH_TO_DUPLICATED_FILES,
 				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,"2116",
-				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,Constants.SONAR_WORKSPACE,
+				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,this.WORKSPACE,
 				Constants.ARG_SYMBOL + Constants.ARG_SKIP_DUPLICATED_TYPES});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
@@ -31,6 +32,6 @@ public class SkipDuplicatedTest {
 		Main.main(new String[]{
 				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,Constants.PATH_TO_DUPLICATED_FILES,
 				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,"2116",
-				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,Constants.SONAR_WORKSPACE });
+				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,this.WORKSPACE });
 	}
 }
