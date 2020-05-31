@@ -11,6 +11,7 @@ public class SonarQubeRepairConfig {
 	private String originalFilesPath;
 	private String workspace;
 	private String gitRepoPath;
+	private boolean skipDuplicatedTypes;
 
 	public SonarQubeRepairConfig() {}
 
@@ -60,5 +61,13 @@ public class SonarQubeRepairConfig {
 
 	public String getGitRepoPath() {
 		return this.gitRepoPath;
+	}
+
+	public void setSkipDuplicatedTypes(boolean skipDuplicatedTypes) {
+		this.skipDuplicatedTypes = skipDuplicatedTypes;
+	}
+
+	public boolean getSkipDuplicatedTypes() {
+		return this.skipDuplicatedTypes;
 	}
 }

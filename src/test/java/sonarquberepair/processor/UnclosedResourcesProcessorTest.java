@@ -12,7 +12,7 @@ public class UnclosedResourcesProcessorTest {
 	@Test
 	public void test() throws Exception {
 		String fileName = "ZipFolder.java";
-		String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+		String pathToBuggyFile = Constants.PATH_TO_BUGGY_FILES + fileName;
 		String pathToRepairedFile = Constants.SONAR_WORKSPACE + "/" + Constants.SPOONED +"/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new UnclosedResourcesCheck());

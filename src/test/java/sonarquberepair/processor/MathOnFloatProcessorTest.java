@@ -13,7 +13,7 @@ public class MathOnFloatProcessorTest {
     @Test
     public void test() throws Exception {
         String fileName = "MathOnFloat.java";
-        String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+        String pathToBuggyFile = Constants.PATH_TO_BUGGY_FILES + fileName;
         String pathToRepairedFile = Constants.SONAR_WORKSPACE + "/" + Constants.SPOONED +"/" + fileName;
 
         JavaCheckVerifier.verify(pathToBuggyFile, new MathOnFloatCheck());

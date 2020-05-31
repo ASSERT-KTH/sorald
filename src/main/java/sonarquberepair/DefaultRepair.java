@@ -3,9 +3,7 @@ package sonarquberepair;
 import java.lang.reflect.Constructor;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 
-import java.util.Map;
 import spoon.Launcher;
 import spoon.processing.Processor;
 import spoon.reflect.declaration.CtType;
@@ -14,6 +12,14 @@ import spoon.support.JavaOutputProcessor;
 import spoon.support.QueueProcessingManager;
 import spoon.processing.ProcessingManager;
 import spoon.reflect.factory.Factory;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Map;
+import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.IOException;
 
 public class DefaultRepair {
 	private final GitPatchGenerator generator = new GitPatchGenerator();
@@ -98,7 +104,27 @@ public class DefaultRepair {
 	private Launcher createLauncher(String inputDirPath, String outputDirPath) {
 		Launcher launcher = new Launcher();
 
-		launcher.addInputResource(inputDirPath);
+		if (this.config.getSkipDuplicatedTypes()) { // Load one file at a time , only one per type.
+			Set<String> addedTypes = new HashSet<String>();
+			try {
+				System.out.println("Loading files into spoon launcher ... ");
+				Files.find(Paths.get(inputDirPath),
+						   Integer.MAX_VALUE,
+						   (filePath, fileAttr) -> fileAttr.isRegularFile())
+							.forEach(x -> {
+								if(!addedTypes.contains(x.getFileName().toString())) {
+									addedTypes.add(x.getFileName().toString());
+									launcher.addInputResource(x.toString());
+								}
+							});
+				System.out.println("Done loading.");
+			} catch (IOException e) {
+				launcher.addInputResource(inputDirPath);
+			}
+		} else {
+			launcher.addInputResource(inputDirPath);
+		}
+
 		launcher.setSourceOutputDirectory(outputDirPath);
 		launcher.getEnvironment().setAutoImports(true);
 		if (this.config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER) {

@@ -13,7 +13,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 	@Test
 	public void arrayToStringProcessorTest() throws Exception {
 		String fileName = "ArrayHashCodeAndToString.java";
-		String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+		String pathToBuggyFile = Constants.PATH_TO_BUGGY_FILES + fileName;
 		String pathToRepairedFile = Constants.SONAR_WORKSPACE + "/" + Constants.SPOONED +"/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
@@ -28,7 +28,7 @@ public class ArrayHashCodeAndToStringProcessorTest {
 	@Test
 	public void arrayToStringProcessorTest2() throws Exception {
 		String fileName = "CodeFactory.java";
-		String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+		String pathToBuggyFile = Constants.PATH_TO_BUGGY_FILES + fileName;
 		String pathToRepairedFile = Constants.SONAR_WORKSPACE + "/" + Constants.SPOONED +"/spoon/reflect/factory/" + fileName;
 
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());

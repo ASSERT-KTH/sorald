@@ -9,6 +9,7 @@ public class Constants {
 	public static final String ARG_ORIGINAL_FILES_PATH = "originalFilesPath";
 	public static final String ARG_WORKSPACE = "workspace";
 	public static final String ARG_GIT_REPO_PATH = "gitRepoPath";
+	public static final String ARG_SKIP_DUPLICATED_TYPES = "skipDuplicatedTypes";
 	public static final String ARG_PRETTY_PRINTING_STRATEGY = "prettyPrintingStrategy";
 	public static final String ARG_FILE_OUTPUT_STRATEGY = "fileOutputStrategy";
 
@@ -18,6 +19,8 @@ public class Constants {
 	public static final String PATCHES = "SonarGitPatches";
 	public static final String PATCH_FILE_PREFIX = "sonarpatch_";
 	public static final String PATH_TO_RESOURCES_FOLDER = "./src/test/resources/";
+	public static final String PATH_TO_BUGGY_FILES = "./src/test/resources/buggyfiles/";
+	public static final String PATH_TO_DUPLICATED_FILES = "./src/test/resources/duplicatedfiles/";
 
 	public static final String JAVA_EXT = ".java";
 	public static final String PATCH_EXT = ".patch";

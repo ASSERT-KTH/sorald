@@ -18,7 +18,7 @@ public class FileOutputStrategyTest {
 	@Test
 	public void test_onlyChangedFilesAndPatchOutput() throws Exception {
 		Main.main(new String[]{
-				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,Constants.PATH_TO_RESOURCES_FOLDER,
+				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,Constants.PATH_TO_BUGGY_FILES,
 				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,"4973",
 				Constants.ARG_SYMBOL + Constants.ARG_FILE_OUTPUT_STRATEGY, FileOutputStrategy.CHANGED_ONLY.name(),
 				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE, fileOutputStrategyTestWorkspace,
@@ -34,7 +34,7 @@ public class FileOutputStrategyTest {
 	@Test
 	public void test_onlyChangedFilesAndNoPatchOutput() throws Exception {
 		Main.main(new String[]{
-				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,Constants.PATH_TO_RESOURCES_FOLDER,
+				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,Constants.PATH_TO_BUGGY_FILES,
 				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,"4973",
 				Constants.ARG_SYMBOL + Constants.ARG_FILE_OUTPUT_STRATEGY, FileOutputStrategy.CHANGED_ONLY.name(),
 				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE, fileOutputStrategyTestWorkspace});
@@ -49,7 +49,7 @@ public class FileOutputStrategyTest {
 	@Test
 	public void test_allFilesAndNoPatchOutput() throws Exception {
 		Main.main(new String[]{
-				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,Constants.PATH_TO_RESOURCES_FOLDER,
+				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,Constants.PATH_TO_BUGGY_FILES,
 				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,"4973",
 				Constants.ARG_SYMBOL + Constants.ARG_FILE_OUTPUT_STRATEGY, FileOutputStrategy.ALL.name(),
 				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE, fileOutputStrategyTestWorkspace});

@@ -64,7 +64,14 @@ public class Main {
 		opt.setHelp("Mode for outputting files: 'CHANGED_ONLY', which means that only changed files will be created in the workspace, and 'ALL', which means that all files, including the unchanged ones, will be created in the workspace.");
 		jsap.registerParameter(opt);
 
-		Switch sw = new Switch("help");
+		Switch sw = new Switch("skipDuplicatedTypes");
+		sw.setLongFlag("skipDuplicatedTypes");
+		sw.setDefault("false");
+		sw.setHelp("This will only build models of each type (class,enum..) once to avoid error when building spoon model");
+		jsap.registerParameter(sw);
+
+
+		sw = new Switch("help");
 		sw.setShortFlag('h');
 		sw.setLongFlag("help");
 		sw.setDefault("false");
@@ -113,6 +120,8 @@ public class Main {
 		}
 		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(arguments.getString(Constants.ARG_PRETTY_PRINTING_STRATEGY)));
 		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(arguments.getString(Constants.ARG_FILE_OUTPUT_STRATEGY)));
+
+		this.getConfig().setSkipDuplicatedTypes(arguments.getBoolean("skipDuplicatedTypes"));
 	}
 
 
