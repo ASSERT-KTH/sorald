@@ -101,6 +101,7 @@ public class DefaultRepair {
 		launcher.addInputResource(inputDirPath);
 		launcher.setSourceOutputDirectory(outputDirPath);
 		launcher.getEnvironment().setAutoImports(true);
+		launcher.getEnvironment().setIgnoreDuplicateDeclarations(true);
 		if (this.config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER) {
 			launcher.getEnvironment().setPrettyPrinterCreator(() -> {
 						SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
