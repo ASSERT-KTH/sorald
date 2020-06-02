@@ -24,7 +24,7 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
 
 	@Override
 	public boolean isToBeProcessed(CtConstructorCall element) {
-		if (!super.isToBeProcessedAccordingToSonar(element)) {
+		if (!super.isToBeProcessedAccordingToStandards(element)) {
 			return false;
 		}
 		CtElement parent = element.getParent(e -> e instanceof CtAssignment || e instanceof CtLocalVariable);

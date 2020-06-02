@@ -24,7 +24,7 @@ public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocatio
 
 	@Override
 	public boolean isToBeProcessed(CtInvocation<?> invocation) {
-		if (!super.isToBeProcessedAccordingToSonar(invocation)) {
+		if (!super.isToBeProcessedAccordingToStandards(invocation)) {
 			return false;
 		}
 		String invocationStr = invocation.toString();

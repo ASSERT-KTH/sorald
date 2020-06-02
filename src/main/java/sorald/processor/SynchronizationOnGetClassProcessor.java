@@ -22,7 +22,7 @@ public class SynchronizationOnGetClassProcessor extends SoraldAbstractProcessor<
 
 	@Override
 	public boolean isToBeProcessed(CtSynchronized element) {
-		if (!super.isToBeProcessedAccordingToSonar(element)) {
+		if (!super.isToBeProcessedAccordingToStandards(element)) {
 			return false;
 		}
 

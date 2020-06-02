@@ -14,7 +14,7 @@ public class SerializableFieldInSerializableClassProcessor extends SoraldAbstrac
 
 	@Override
 	public boolean isToBeProcessed(CtField element) {
-		if (!super.isToBeProcessedAccordingToSonar(element)) {
+		if (!super.isToBeProcessedAccordingToStandards(element)) {
 			return false;
 		}
 		return true;

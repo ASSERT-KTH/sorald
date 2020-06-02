@@ -16,7 +16,7 @@ public class CompareToReturnValueProcessor extends SoraldAbstractProcessor<CtRet
 
 	@Override
 	public boolean isToBeProcessed(CtReturn<?> ctReturn) {
-		if (!super.isToBeProcessedAccordingToSonar(ctReturn)) {
+		if (!super.isToBeProcessedAccordingToStandards(ctReturn)) {
 			return false;
 		}
 		CtMethod ctMethod = ctReturn.getParent(CtMethod.class);

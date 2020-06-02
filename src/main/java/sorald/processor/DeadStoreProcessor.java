@@ -15,7 +15,7 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 
 	@Override
 	public boolean isToBeProcessed(CtStatement element) {
-		if (!super.isToBeProcessedAccordingToSonar(element)) {
+		if (!super.isToBeProcessedAccordingToStandards(element)) {
 			return false;
 		}
 		if (element instanceof CtLocalVariable || element instanceof CtAssignment) {

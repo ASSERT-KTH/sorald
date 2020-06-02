@@ -30,7 +30,7 @@ public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMe
 	 */
 	@Override
 	public boolean isToBeProcessed(CtMethod candidate) {
-		if (!super.isToBeProcessedAccordingToSonar(candidate)) {
+		if (!super.isToBeProcessedAccordingToStandards(candidate)) {
 			return false;
 		}
 		CtType iteratorInterface = getFactory().Interface().get(Iterator.class);

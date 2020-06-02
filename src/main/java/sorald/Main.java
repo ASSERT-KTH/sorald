@@ -64,6 +64,13 @@ public class Main {
 		opt.setHelp("Mode for outputting files: 'CHANGED_ONLY', which means that only changed files will be created in the workspace, and 'ALL', which means that all files, including the unchanged ones, will be created in the workspace.");
 		jsap.registerParameter(opt);
 
+		opt = new FlaggedOption(Constants.ARG_MAX_FIXES_PER_RULES);
+		opt.setLongFlag(Constants.ARG_MAX_FIXES_PER_RULES);
+		opt.setStringParser(JSAP.INTEGER_PARSER);
+		opt.setDefault("" + Integer.MAX_VALUE);
+		opt.setHelp("Max number of fixes per rule. Default: Integer.MAX_VALUE (or all)");
+		jsap.registerParameter(opt);
+
 		Switch sw = new Switch("help");
 		sw.setShortFlag('h');
 		sw.setLongFlag("help");
@@ -113,6 +120,7 @@ public class Main {
 		}
 		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(arguments.getString(Constants.ARG_PRETTY_PRINTING_STRATEGY)));
 		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(arguments.getString(Constants.ARG_FILE_OUTPUT_STRATEGY)));
+		this.getConfig().setMaxFixesPerRule(arguments.getInt(Constants.ARG_MAX_FIXES_PER_RULES));
 	}
 
 

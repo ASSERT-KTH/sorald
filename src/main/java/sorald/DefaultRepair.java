@@ -1,11 +1,14 @@
 package sorald;
 
+import sorald.processor.SoraldAbstractProcessor;
+
 import java.lang.reflect.Constructor;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-
+import java.util.ArrayList;
 import java.util.Map;
+
 import spoon.Launcher;
 import spoon.processing.Processor;
 import spoon.reflect.declaration.CtType;
@@ -19,6 +22,7 @@ public class DefaultRepair {
 	private final GitPatchGenerator generator = new GitPatchGenerator();
 	private SoraldConfig config;
 	private int patchedFileCounter = 0;
+	private List<SoraldAbstractProcessor> addedProcessors = new ArrayList();
 
 	public DefaultRepair(SoraldConfig config) {
 		this.config = config;
@@ -56,7 +60,6 @@ public class DefaultRepair {
 			Launcher launcher = createLauncher(inputDirPath, outputDirPath);
 
 			Processor processor = createProcessor(ruleKey, inputDirPath);
-
 			Factory factory = launcher.getFactory();
 			ProcessingManager processingManager = new QueueProcessingManager(factory);
 			processingManager.addProcessor(processor);
@@ -79,9 +82,17 @@ public class DefaultRepair {
 			}
 		}
 
+		this.printEndProcess();
 		deleteDirectory(new File(intermediateSpoonedPath));
-
 		UniqueTypesCollector.getInstance().reset();
+	}
+
+	public void printEndProcess() {
+		System.out.println("-----Number of fixes------");
+		for (SoraldAbstractProcessor processor : addedProcessors) {
+			System.out.println(processor.getClass().getSimpleName() + ": " + processor.getCurrentFixesNbs());
+		}
+		System.out.println("-----End of report------");
 	}
 
 	// FIXME: this method was copied from TestHelper.java. We should extract it to a FileHelper to be visible for both main code and test code.
@@ -122,8 +133,9 @@ public class DefaultRepair {
 			Class<?> processor = Processors.getProcessor(ruleKey);
 			if (processor != null) {
 				Constructor<?> cons = processor.getConstructor(String.class);
-				Object object = cons.newInstance(inputDirPath);
-				return (Processor) object;
+				SoraldAbstractProcessor object = ((SoraldAbstractProcessor)cons.newInstance(inputDirPath)).setMaxFixesNbs(this.config.getMaxFixesPerRule());
+				this.addedProcessors.add(object);
+				return object;
 			}
 		} catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
 			e.printStackTrace();

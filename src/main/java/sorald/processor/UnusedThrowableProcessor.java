@@ -14,7 +14,7 @@ public class UnusedThrowableProcessor extends SoraldAbstractProcessor<CtConstruc
 
 	@Override
 	public boolean isToBeProcessed(CtConstructorCall element) {
-		if (!super.isToBeProcessedAccordingToSonar(element)) {
+		if (!super.isToBeProcessedAccordingToStandards(element)) {
 			return false;
 		}
 		return true;

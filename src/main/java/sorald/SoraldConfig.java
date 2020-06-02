@@ -11,6 +11,7 @@ public class SoraldConfig {
 	private String originalFilesPath;
 	private String workspace;
 	private String gitRepoPath;
+	private int maxFixesPerRule;
 
 	public SoraldConfig() {}
 
@@ -60,5 +61,13 @@ public class SoraldConfig {
 
 	public String getGitRepoPath() {
 		return this.gitRepoPath;
+	}
+
+	public void setMaxFixesPerRule(int maxFixesPerRule) {
+		this.maxFixesPerRule = maxFixesPerRule;
+	}
+
+	public int getMaxFixesPerRule() {
+		return this.maxFixesPerRule;
 	}
 }
