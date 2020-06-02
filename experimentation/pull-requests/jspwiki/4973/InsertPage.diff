@@ -1,5 +1,5 @@
 --- jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java	2019-11-05 12:25:33.000000000 +0100
-+++ ../../sonarqube-repair/spooned/org/apache/wiki/plugin/InsertPage.java	2019-11-05 12:15:38.000000000 +0100
++++ ../../sorald/spooned/org/apache/wiki/plugin/InsertPage.java	2019-11-05 12:15:38.000000000 +0100
 @@ -1,253 +1,253 @@
  /*
      Licensed to the Apache Software Foundation (ASF) under one

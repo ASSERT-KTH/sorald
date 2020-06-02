@@ -1,5 +1,5 @@
 --- src/main/java/org/apache/sling/launchpad/app/Main.java	2019-11-07 16:20:56.000000000 +0100
-+++ ../../sonarqube-repair/spooned/org/apache/sling/launchpad/app/Main.java	2019-11-07 16:28:37.000000000 +0100
++++ ../../sorald/spooned/org/apache/sling/launchpad/app/Main.java	2019-11-07 16:28:37.000000000 +0100
 @@ -1,989 +1,989 @@
  /*
   * Licensed to the Apache Software Foundation (ASF) under one or more

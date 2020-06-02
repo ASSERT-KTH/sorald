@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>se.kth.castor</groupId>
-    <artifactId>sonarqube-repair</artifactId>
+    <artifactId>sorald</artifactId>
     <version>1.1-SNAPSHOT</version>
 
-    <name>Sonarqube-repair</name>
-    <description>An automatic repair system for static code analysis warnings from SonarQube.</description>
-    <url>https://github.com/SpoonLabs/sonarqube-repair</url>
+    <name>Sorald</name>
+    <description>An automatic repair system for static code analysis warnings from Sonar Java.</description>
+    <url>https://github.com/SpoonLabs/sorald</url>
 
     <licenses>
         <license>
@@ -123,7 +123,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>sonarquberepair.Main</mainClass>
+                            <mainClass>sorald.Main</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Multi-Release>true</Multi-Release>
@@ -224,9 +224,9 @@
     </profiles>
 
     <scm>
-        <connection>scm:git:https://github.com/SpoonLabs/sonarqube-repair.git</connection>
-        <developerConnection>scm:git:ssh://github.com/SpoonLabs/sonarqube-repair.git</developerConnection>
-        <url>https://github.com/SpoonLabs/sonarqube-repair</url>
+        <connection>scm:git:https://github.com/SpoonLabs/sorald.git</connection>
+        <developerConnection>scm:git:ssh://github.com/SpoonLabs/sorald.git</developerConnection>
+        <url>https://github.com/SpoonLabs/sorald</url>
         <tag>HEAD</tag>
     </scm>
 

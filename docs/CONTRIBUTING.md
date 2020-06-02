@@ -1,6 +1,6 @@
 ## Contributing
 
-Pull requests are very welcome by the Sonarqube-repair team!
+Pull requests are very welcome by the Sorald team!
 
 ### Guidelines for all pull-requests
 
@@ -12,7 +12,7 @@ A PR will be accepted and merged when:
 
 ### Guidelines for new-processor pull-requests
 
-For adding a new processor in Sonarqube-repair, please, follow the instructions described below.
+For adding a new processor in Sorald, please, follow the instructions described below.
 
 1) Find the name for the new processor
 
@@ -24,13 +24,13 @@ So the name of your new processor is `CastArithmeticOperandCheck` replacing "Che
 
 2) Create the processor
 
-Once you have the name for the new processor, you can create a class using that name in `src/main/java/sonarquberepair/processor`.
-This new class must extend `SQRAbstractProcessor` and implement the methods `isToBeProcessed` and `process` (check out real examples of processors [here](/src/main/java/sonarquberepair/processor)).
+Once you have the name for the new processor, you can create a class using that name in `src/main/java/sorald/processor`.
+This new class must extend `SQRAbstractProcessor` and implement the methods `isToBeProcessed` and `process` (check out real examples of processors [here](/src/main/java/sorald/processor)).
 
 3) Create a test class for the processor
 
 Your processor is done, so now it's time to test it.
-For that, you should first to create a test class, with the same name as your processor plus the word "Test", and place it in [here](/src/test/java/sonarquberepair/processor).
+For that, you should first to create a test class, with the same name as your processor plus the word "Test", and place it in [here](/src/test/java/sorald/processor).
 See in this same folder how the tests usually are.
 Then, you should create a java file in the [testing resources](/src/test/resources), which is the file you will use in your test class.
 Such a resource should contain at least the examples that SonarSource provides, because your processor should at least work on them. 
@@ -53,7 +53,7 @@ This PR adds a processor for the rule [<RULE_DESCRIPTION, which should be the ti
 Transformation:
 
 ```diff
-<Here it goes the diff between your resource file (the one used in the test) and the Sonarqube-repair generated output for it>
+<Here it goes the diff between your resource file (the one used in the test) and the Sorald generated output for it>
 ```
 
 And then you can submit your PR!
