@@ -1,5 +1,5 @@
 --- src/main/java/spoon/support/sniper/internal/AbstractSourceFragmentContext.java	2019-10-07 13:22:40.000000000 +0200
-+++ ../../sonarqube-repair/spooned/spoon/support/sniper/internal/AbstractSourceFragmentContext.java	2019-10-30 17:57:38.000000000 +0100
++++ ../../sorald/spooned/spoon/support/sniper/internal/AbstractSourceFragmentContext.java	2019-10-30 17:57:38.000000000 +0100
 @@ -1,288 +1,288 @@
  /**
   * Copyright (C) 2006-2019 INRIA and contributors

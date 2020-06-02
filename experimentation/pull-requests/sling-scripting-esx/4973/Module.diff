@@ -1,5 +1,5 @@
 --- src/main/java/org/apache/sling/scripting/esx/Module.java	2019-11-07 13:51:07.000000000 +0100
-+++ ../../sonarqube-repair/spooned/org/apache/sling/scripting/esx/Module.java	2019-11-07 13:57:47.000000000 +0100
++++ ../../sorald/spooned/org/apache/sling/scripting/esx/Module.java	2019-11-07 13:57:47.000000000 +0100
 @@ -1,670 +1,670 @@
  /*
   * Licensed to the Apache Software Foundation (ASF) under one or more

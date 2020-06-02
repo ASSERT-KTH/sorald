@@ -1,5 +1,6 @@
 ## Handled rules
-Sonarqube-repair can currently repair violations of the following rules:
+
+Sorald can currently repair violations of the following rules:
 
 * [Bug](#bug)
     * [".equals()" should not be used to test the values of "Atomic" classes](#equals-should-not-be-used-to-test-the-values-of-atomic-classes-sonar-rule-2204) ([Sonar Rule 2204](https://rules.sonarsource.com/java/RSPEC-2204))

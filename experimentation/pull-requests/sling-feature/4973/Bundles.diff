@@ -1,5 +1,5 @@
 --- src/main/java/org/apache/sling/feature/Bundles.java	2019-11-06 15:21:54.000000000 +0100
-+++ ../../sonarqube-repair/spooned/org/apache/sling/feature/Bundles.java	2019-11-06 15:27:25.000000000 +0100
++++ ../../sorald/spooned/org/apache/sling/feature/Bundles.java	2019-11-06 15:27:25.000000000 +0100
 @@ -1,69 +1,69 @@
  /*
   * Licensed to the Apache Software Foundation (ASF) under one or more
