@@ -20,7 +20,7 @@ public class MaxFixesPerRuleTest {
 				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,pathToBuggyFile,
 				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,"2116",
 				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,Constants.SORALD_WORKSPACE,
-				Constants.ARG_SYMBOL + Constants.ARG_MAX_FIXES_PER_RULES,"3"});
+				Constants.ARG_SYMBOL + Constants.ARG_MAX_FIXES_PER_RULE,"3"});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck()); // one bug left
 	}

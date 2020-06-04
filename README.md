@@ -71,6 +71,10 @@ The arguments are the following:
         files, including the unchanged ones, will be created in the workspace.
         (default: CHANGED_ONLY)
 
+  [--maxFixesPerRule <maxFixesPerRule>]
+        Mode for outputting files: Max number of fixes per rule.
+        (default: Integer.MAX_VALUE )
+
   [-h|--help]
 ```
 

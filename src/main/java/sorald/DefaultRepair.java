@@ -90,7 +90,7 @@ public class DefaultRepair {
 	public void printEndProcess() {
 		System.out.println("-----Number of fixes------");
 		for (SoraldAbstractProcessor processor : addedProcessors) {
-			System.out.println(processor.getClass().getSimpleName() + ": " + processor.getCurrentFixesNbs());
+			System.out.println(processor.getClass().getSimpleName() + ": " + processor.getnbFixes());
 		}
 		System.out.println("-----End of report------");
 	}
@@ -133,7 +133,7 @@ public class DefaultRepair {
 			Class<?> processor = Processors.getProcessor(ruleKey);
 			if (processor != null) {
 				Constructor<?> cons = processor.getConstructor(String.class);
-				SoraldAbstractProcessor object = ((SoraldAbstractProcessor)cons.newInstance(inputDirPath)).setMaxFixesNbs(this.config.getMaxFixesPerRule());
+				SoraldAbstractProcessor object = ((SoraldAbstractProcessor)cons.newInstance(inputDirPath)).setMaxFixes(this.config.getMaxFixesPerRule());
 				this.addedProcessors.add(object);
 				return object;
 			}
