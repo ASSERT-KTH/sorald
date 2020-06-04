@@ -1,5 +1,5 @@
 --- src/main/java/org/apache/sling/scripting/jsp/jasper/xmlparser/XMLEncodingDetector.java	2019-11-07 14:23:09.000000000 +0100
-+++ ../../sonarqube-repair/spooned/org/apache/sling/scripting/jsp/jasper/xmlparser/XMLEncodingDetector.java	2019-11-07 14:41:58.000000000 +0100
++++ ../../sorald/spooned/org/apache/sling/scripting/jsp/jasper/xmlparser/XMLEncodingDetector.java	2019-11-07 14:41:58.000000000 +0100
 @@ -1,1637 +1,1637 @@
  /*
   * Licensed to the Apache Software Foundation (ASF) under one or more

@@ -1,5 +1,5 @@
 --- pdfbox/src/main/java/org/apache/pdfbox/pdmodel/interactive/documentnavigation/outline/PDOutlineItemIterator.java	2019-11-13 10:00:16.000000000 +0100
-+++ ../../sonarqube-repair/spooned/org/apache/pdfbox/pdmodel/interactive/documentnavigation/outline/PDOutlineItemIterator.java	2019-11-13 13:22:56.000000000 +0100
++++ ../../sorald/spooned/org/apache/pdfbox/pdmodel/interactive/documentnavigation/outline/PDOutlineItemIterator.java	2019-11-13 13:22:56.000000000 +0100
 @@ -1,64 +1,66 @@
  /*
   * Licensed to the Apache Software Foundation (ASF) under one or more

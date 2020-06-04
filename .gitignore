@@ -11,6 +11,6 @@ spooned/
 .eclipse
 SampleProcessor.java
 script.sh
-sonar-workspace/
+sorald-workspace/
 FileOutputStrategyTest/
 sonar-java/

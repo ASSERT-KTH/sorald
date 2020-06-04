@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>se.kth.castor</groupId>
-    <artifactId>sonarqube-repair</artifactId>
+    <artifactId>sorald</artifactId>
     <version>1.1-SNAPSHOT</version>
 
-    <name>Sonarqube-repair</name>
-    <description>An automatic repair system for static code analysis warnings from SonarQube.</description>
-    <url>https://github.com/SpoonLabs/sonarqube-repair</url>
+    <name>Sorald</name>
+    <description>An automatic repair system for static code analysis warnings from Sonar Java.</description>
+    <url>https://github.com/SpoonLabs/sorald</url>
 
     <licenses>
         <license>
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>8.1.0-beta-2</version>
+            <version>8.2.0-beta-10</version>
         </dependency>
         <dependency>
             <groupId>org.sonarsource.java</groupId>
@@ -124,12 +124,15 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.3.0</version>
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>sonarquberepair.Main</mainClass>
+                            <mainClass>sorald.Main</mainClass>
                         </manifest>
+                        <manifestEntries>
+                            <Multi-Release>true</Multi-Release>
+                        </manifestEntries>
                     </archive>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
@@ -226,9 +229,9 @@
     </profiles>
 
     <scm>
-        <connection>scm:git:https://github.com/SpoonLabs/sonarqube-repair.git</connection>
-        <developerConnection>scm:git:ssh://github.com/SpoonLabs/sonarqube-repair.git</developerConnection>
-        <url>https://github.com/SpoonLabs/sonarqube-repair</url>
+        <connection>scm:git:https://github.com/SpoonLabs/sorald.git</connection>
+        <developerConnection>scm:git:ssh://github.com/SpoonLabs/sorald.git</developerConnection>
+        <url>https://github.com/SpoonLabs/sorald</url>
         <tag>HEAD</tag>
     </scm>
 

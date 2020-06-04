@@ -1,6 +1,6 @@
-# Sonarqube-repair [![Travis Build Status](https://travis-ci.com/SpoonLabs/sonarqube-repair.svg?branch=master)](https://travis-ci.com/SpoonLabs/sonarqube-repair)
+# Sorald [![Travis Build Status](https://travis-ci.com/SpoonLabs/sorald.svg?branch=master)](https://travis-ci.com/SpoonLabs/sorald)
 
-Sonarqube-repair is a collection of java code analyses and transformations made with the [Spoon](https://github.com/INRIA/spoon) library to repair violations of rules contained in [SonarQube](https://rules.sonarsource.com).
+Sorald is a collection of java code analyses and transformations made with the [Spoon](https://github.com/INRIA/spoon) library to repair violations of rules contained in [SonarQube](https://rules.sonarsource.com).
 It can currently repair violations of [15+ rules](/docs/HANDLED_RULES.md).
 
 ## Getting started
@@ -13,14 +13,14 @@ A JDK (java 1.8)
 
 ##### If you want to run it from source code
 
-1) Clone this repository: `git clone https://github.com/SpoonLabs/sonarqube-repair.git`
+1) Clone this repository: `git clone https://github.com/SpoonLabs/sorald.git`
 
 2) Build and run the tool:
 
  ```bash
-$ cd sonarqube-repair
+$ cd sorald
 $ mvn package -DskipTests
-$ java -jar target/sonarqube-repair-1.1-SNAPSHOT-jar-with-dependencies.jar <arguments>
+$ java -jar target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar <arguments>
  ```
 
 The arguments are the following:
@@ -52,8 +52,8 @@ The arguments are the following:
         The path to the file or folder to be analyzed and possibly repaired.
 
   [--workspace <workspace>]
-        The path to a folder that will be used as workspace by sonarqube-repair,
-        i.e. the path for the output. (default: ./sonar-workspace)
+        The path to a folder that will be used as workspace by Sorald,
+        i.e. the path for the output. (default: ./sorald-workspace)
 
   [--gitRepoPath <gitRepoPath>]
         The path to a git repository directory.
@@ -74,15 +74,15 @@ The arguments are the following:
   [-h|--help]
 ```
 
-Example of a concrete call to sonarqube-repair, in which multiple rule keys are given as input:
+Example of a concrete call to Sorald, in which multiple rule keys are given as input:
 
 ```bash
-$ java -jar target/sonarqube-repair-1.1-SNAPSHOT-jar-with-dependencies.jar --originalFilesPath src/test/resources/MultipleProcessors.java --workspace /tmp/ --ruleKeys 2111,2184,2204
+$ java -jar target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar --originalFilesPath src/test/resources/MultipleProcessors.java --workspace /tmp/ --ruleKeys 2111,2184,2204
 ```
  
 ##### If you want to run it on GitHub projects to propose PRs with fixes
 
-To run Sonarqube-repair on projects towards proposing fixes in the form of PRs, look at [this Git repository](https://github.com/HarisAdzemovic/SQ-Repair-CI-Integration) for an example. In it, Sonarqube-repair is ran on the three Apache projects defined in the *projects_for_model_1.txt* file.
+To run Sorald on projects towards proposing fixes in the form of PRs, look at [this Git repository](https://github.com/HarisAdzemovic/SQ-Repair-CI-Integration) for an example. In it, Sorald is ran on the three Apache projects defined in the *projects_for_model_1.txt* file.
  
 ## Contributing
 
