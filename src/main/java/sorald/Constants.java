@@ -7,6 +7,10 @@ public class Constants {
 	public static final String ARG_SYMBOL = "--";
 	public static final String ARG_RULE_KEYS = "ruleKeys";
 	public static final String ARG_ORIGINAL_FILES_PATH = "originalFilesPath";
+	public static final String ARG_STATS_ON_GIT_REPOS = "statsOnGitRepos";
+	public static final String ARG_STATS_OUTPUT_FILE = "statsOutputFile";
+	public static final String ARG_GIT_REPOS_LIST = "gitReposList";
+	public static final String ARG_TEMP_DIR = "tempDir";
 	public static final String ARG_WORKSPACE = "workspace";
 	public static final String ARG_GIT_REPO_PATH = "gitRepoPath";
 	public static final String ARG_PRETTY_PRINTING_STRATEGY = "prettyPrintingStrategy";
@@ -36,5 +40,7 @@ public class Constants {
 
 	public static final String TOSTRING_METHOD_NAME = "toString";
 	public static final String HASHCODE_METHOD_NAME = "hashCode";
+
+	public static final String PATH_TO_STATS_OUTPUT = "experimentation/stats/warnings";
 
 }
