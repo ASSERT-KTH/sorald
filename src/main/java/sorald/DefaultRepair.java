@@ -90,7 +90,7 @@ public class DefaultRepair {
 	public void printEndProcess() {
 		System.out.println("-----Number of fixes------");
 		for (SoraldAbstractProcessor processor : addedProcessors) {
-			System.out.println(processor.getClass().getSimpleName() + ": " + processor.getnbFixes());
+			System.out.println(processor.getClass().getSimpleName() + ": " + processor.getNbFixes());
 		}
 		System.out.println("-----End of report------");
 	}

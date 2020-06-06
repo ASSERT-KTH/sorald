@@ -72,8 +72,8 @@ The arguments are the following:
         (default: CHANGED_ONLY)
 
   [--maxFixesPerRule <maxFixesPerRule>]
-        Mode for outputting files: Max number of fixes per rule.
-        (default: Integer.MAX_VALUE )
+        Max number of fixes per rule. Default: Integer.MAX_VALUE (or all)
+        (default: 2147483647)
 
   [-h|--help]
 ```
