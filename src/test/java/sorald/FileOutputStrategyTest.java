@@ -52,6 +52,7 @@ public class FileOutputStrategyTest {
 				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,Constants.PATH_TO_RESOURCES_FOLDER,
 				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,"4973",
 				Constants.ARG_SYMBOL + Constants.ARG_FILE_OUTPUT_STRATEGY, FileOutputStrategy.ALL.name(),
+				Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY, PrettyPrintingStrategy.NORMAL.name(),
 				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE, fileOutputStrategyTestWorkspace});
 
 		File spooned = new File(fileOutputStrategyTestWorkspace + File.separator + Constants.SPOONED);
