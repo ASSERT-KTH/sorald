@@ -53,7 +53,7 @@ public class Main {
 		opt = new FlaggedOption(Constants.ARG_PRETTY_PRINTING_STRATEGY);
 		opt.setLongFlag(Constants.ARG_PRETTY_PRINTING_STRATEGY);
 		opt.setStringParser(JSAP.STRING_PARSER);
-		opt.setDefault(PrettyPrintingStrategy.NORMAL.name());
+		opt.setDefault(PrettyPrintingStrategy.SNIPER.name());
 		opt.setHelp("Mode for pretty printing the source code: 'NORMAL', which means that all source code will be printed and its formatting might change (such as indentation), and 'SNIPER', which means that only statements changed towards the repair of Sonar rule violations will be printed.");
 		jsap.registerParameter(opt);
 

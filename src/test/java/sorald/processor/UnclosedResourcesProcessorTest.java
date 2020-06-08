@@ -5,6 +5,7 @@ import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.java.se.checks.UnclosedResourcesCheck;
 import sorald.Constants;
 import sorald.Main;
+import sorald.PrettyPrintingStrategy;
 import sorald.TestHelper;
 
 public class UnclosedResourcesProcessorTest {
@@ -19,6 +20,7 @@ public class UnclosedResourcesProcessorTest {
 		Main.main(new String[]{
 				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,pathToBuggyFile,
 				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,"2095",
+				Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY, PrettyPrintingStrategy.NORMAL.name(),
 				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,Constants.SORALD_WORKSPACE});
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new UnclosedResourcesCheck());

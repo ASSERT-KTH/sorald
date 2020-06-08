@@ -63,7 +63,7 @@ The arguments are the following:
         source code will be printed and its formatting might change (such as
         indentation), and 'SNIPER', which means that only statements changed
         towards the repair of sonar rule violations will be printed. (default:
-        NORMAL)
+        SNIPER)
 
   [--fileOutputStrategy <fileOutputStrategy>]
         Mode for outputting files: 'CHANGED_ONLY', which means that only changed
