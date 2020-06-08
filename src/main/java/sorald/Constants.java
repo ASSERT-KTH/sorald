@@ -11,7 +11,8 @@ public class Constants {
 	public static final String ARG_GIT_REPO_PATH = "gitRepoPath";
 	public static final String ARG_PRETTY_PRINTING_STRATEGY = "prettyPrintingStrategy";
 	public static final String ARG_FILE_OUTPUT_STRATEGY = "fileOutputStrategy";
-
+	public static final String ARG_MAX_FIXES_PER_RULE = "maxFixesPerRule";
+	
 	public static final String PROCESSOR_PACKAGE = "sorald.processor";
 
 	public static final String SORALD_WORKSPACE = "sorald-workspace";

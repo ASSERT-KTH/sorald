@@ -22,6 +22,8 @@ import spoon.reflect.declaration.CtElement;
 /** superclass for all processors */
 public abstract class SoraldAbstractProcessor<E extends CtElement> extends AbstractProcessor<E> {
 	private Set<Bug> bugs;
+	private int maxFixes = Integer.MAX_VALUE;
+	private int nbFixes = 0;
 
 	SoraldAbstractProcessor(String originalFilesPath, JavaFileScanner check) {
 		try {
@@ -48,6 +50,19 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 		}
 	}
 
+	public SoraldAbstractProcessor setMaxFixes(int maxFixes) {
+		this.maxFixes = maxFixes;
+		return this;
+	}
+
+	public int getNbFixes() {
+		return this.nbFixes;
+	}
+
+	public boolean isToBeProcessedAccordingToStandards(CtElement element) {
+		return (this.nbFixes < this.maxFixes) && this.isToBeProcessedAccordingToSonar(element);
+	}
+
 	public boolean isToBeProcessedAccordingToSonar(CtElement element) {
 		if (element == null) {
 			return false;
@@ -68,6 +83,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 	@Override
 	public void process(E element) {
 		UniqueTypesCollector.getInstance().collect(element);
+		this.nbFixes++;
 	}
 
 	class Bug {

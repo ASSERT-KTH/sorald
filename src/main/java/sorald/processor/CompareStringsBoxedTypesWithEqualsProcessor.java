@@ -18,7 +18,7 @@ public class CompareStringsBoxedTypesWithEqualsProcessor extends SoraldAbstractP
 
 	@Override
 	public boolean isToBeProcessed(CtElement candidate) {
-		if (!super.isToBeProcessedAccordingToSonar(candidate)) {
+		if (!super.isToBeProcessedAccordingToStandards(candidate)) {
 			return false;
 		}
 		if (candidate instanceof CtBinaryOperator) {
