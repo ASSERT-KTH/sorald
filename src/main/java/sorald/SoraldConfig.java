@@ -16,7 +16,12 @@ public class SoraldConfig {
 	public SoraldConfig() {}
 
 	public void addRuleKeys(List<Integer> ruleKeys) {
-		this.ruleKeys.addAll(ruleKeys);
+		for (int i = 0; i < ruleKeys.size(); i++) {
+			int ruleKey = ruleKeys.get(i);
+			if (!this.ruleKeys.contains(ruleKey)) {
+				this.ruleKeys.add(ruleKey);
+			}
+		}
 	}
 
 	public List<Integer> getRuleKeys() {
