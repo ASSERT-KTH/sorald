@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Color.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Bukkit</a> &gt; <a href="index.source.html" class="el_package">org.bukkit</a> &gt; <span class="el_source">Color.java</span></div><h1>Color.java</h1><pre class="source lang-java linenums">package org.bukkit;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import org.apache.commons.lang.Validate;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.configuration.serialization.SerializableAs;
+
+
+
+
+/**
+ * A container for a color palette. This class is immutable; the set methods
+ * return a new color. The color names listed as fields are HTML4 standards,
+ * but subject to change.
+ */
+@SerializableAs(&quot;Color&quot;)
+public final class Color implements ConfigurationSerializable {
+    private static final int BIT_MASK = 0xff;
+
+    /**
+     * White, or (0xFF,0xFF,0xFF) in (R,G,B)
+     */
+<span class="fc" id="L19">    public static final Color WHITE = fromRGB(0xffffff);</span>
+
+    /**
+     * Silver, or (0xC0,0xC0,0xC0) in (R,G,B)
+     */
+<span class="fc" id="L24">    public static final Color SILVER = fromRGB(0xc0c0c0);</span>
+
+    /**
+     * Gray, or (0x80,0x80,0x80) in (R,G,B)
+     */
+<span class="fc" id="L29">    public static final Color GRAY = fromRGB(0x808080);</span>
+
+    /**
+     * Black, or (0x00,0x00,0x00) in (R,G,B)
+     */
+<span class="fc" id="L34">    public static final Color BLACK = fromRGB(0x0);</span>
+
+    /**
+     * Red, or (0xFF,0x00,0x00) in (R,G,B)
+     */
+<span class="fc" id="L39">    public static final Color RED = fromRGB(0xff0000);</span>
+
+    /**
+     * Maroon, or (0x80,0x00,0x00) in (R,G,B)
+     */
+<span class="fc" id="L44">    public static final Color MAROON = fromRGB(0x800000);</span>
+
+    /**
+     * Yellow, or (0xFF,0xFF,0x00) in (R,G,B)
+     */
+<span class="fc" id="L49">    public static final Color YELLOW = fromRGB(0xffff00);</span>
+
+    /**
+     * Olive, or (0x80,0x80,0x00) in (R,G,B)
+     */
+<span class="fc" id="L54">    public static final Color OLIVE = fromRGB(0x808000);</span>
+
+    /**
+     * Lime, or (0x00,0xFF,0x00) in (R,G,B)
+     */
+<span class="fc" id="L59">    public static final Color LIME = fromRGB(0xff00);</span>
+
+    /**
+     * Green, or (0x00,0x80,0x00) in (R,G,B)
+     */
+<span class="fc" id="L64">    public static final Color GREEN = fromRGB(0x8000);</span>
+
+    /**
+     * Aqua, or (0x00,0xFF,0xFF) in (R,G,B)
+     */
+<span class="fc" id="L69">    public static final Color AQUA = fromRGB(0xffff);</span>
+
+    /**
+     * Teal, or (0x00,0x80,0x80) in (R,G,B)
+     */
+<span class="fc" id="L74">    public static final Color TEAL = fromRGB(0x8080);</span>
+
+    /**
+     * Blue, or (0x00,0x00,0xFF) in (R,G,B)
+     */
+<span class="fc" id="L79">    public static final Color BLUE = fromRGB(0xff);</span>
+
+    /**
+     * Navy, or (0x00,0x00,0x80) in (R,G,B)
+     */
+<span class="fc" id="L84">    public static final Color NAVY = fromRGB(0x80);</span>
+
+    /**
+     * Fuchsia, or (0xFF,0x00,0xFF) in (R,G,B)
+     */
+<span class="fc" id="L89">    public static final Color FUCHSIA = fromRGB(0xff00ff);</span>
+
+    /**
+     * Purple, or (0x80,0x00,0x80) in (R,G,B)
+     */
+<span class="fc" id="L94">    public static final Color PURPLE = fromRGB(0x800080);</span>
+
+    /**
+     * Orange, or (0xFF,0xA5,0x00) in (R,G,B)
+     */
+<span class="fc" id="L99">    public static final Color ORANGE = fromRGB(0xffa500);</span>
+
+    private final byte red;
+
+    private final byte green;
+
+    private final byte blue;
+
+    /**
+     * Creates a new Color object from a red, green, and blue
+     *
+     * @param red
+     * 		integer from 0-255
+     * @param green
+     * 		integer from 0-255
+     * @param blue
+     * 		integer from 0-255
+     * @return a new Color object for the red, green, blue
+     * @throws IllegalArgumentException
+     * 		if any value is strictly &gt;255 or &lt;0
+     */
+    public static Color fromRGB(int red, int green, int blue) throws IllegalArgumentException {
+<span class="fc" id="L121">        return new Color(red, green, blue);</span>
+    }
+
+    /**
+     * Creates a new Color object from a blue, green, and red
+     *
+     * @param blue
+     * 		integer from 0-255
+     * @param green
+     * 		integer from 0-255
+     * @param red
+     * 		integer from 0-255
+     * @return a new Color object for the red, green, blue
+     * @throws IllegalArgumentException
+     * 		if any value is strictly &gt;255 or &lt;0
+     */
+    public static Color fromBGR(int blue, int green, int red) throws IllegalArgumentException {
+<span class="fc" id="L138">        return new Color(red, green, blue);</span>
+    }
+
+    /**
+     * Creates a new color object from an integer that contains the red,
+     * green, and blue bytes in the lowest order 24 bits.
+     *
+     * @param rgb
+     * 		the integer storing the red, green, and blue values
+     * @return a new color object for specified values
+     * @throws IllegalArgumentException
+     * 		if any data is in the highest order 8
+     * 		bits
+     */
+    public static Color fromRGB(int rgb) throws IllegalArgumentException {
+<span class="fc bfc" id="L153" title="All 2 branches covered.">        Validate.isTrue((rgb &gt;&gt; 24) == 0, &quot;Extrenuous data in: &quot;, rgb);</span>
+<span class="fc" id="L154">        return fromRGB((rgb &gt;&gt; 16) &amp; BIT_MASK, (rgb &gt;&gt; 8) &amp; BIT_MASK, (rgb &gt;&gt; 0) &amp; BIT_MASK);</span>
+    }
+
+    /**
+     * Creates a new color object from an integer that contains the blue,
+     * green, and red bytes in the lowest order 24 bits.
+     *
+     * @param bgr
+     * 		the integer storing the blue, green, and red values
+     * @return a new color object for specified values
+     * @throws IllegalArgumentException
+     * 		if any data is in the highest order 8
+     * 		bits
+     */
+    public static Color fromBGR(int bgr) throws IllegalArgumentException {
+<span class="fc bfc" id="L169" title="All 2 branches covered.">        Validate.isTrue((bgr &gt;&gt; 24) == 0, &quot;Extrenuous data in: &quot;, bgr);</span>
+<span class="fc" id="L170">        return fromBGR((bgr &gt;&gt; 16) &amp; BIT_MASK, (bgr &gt;&gt; 8) &amp; BIT_MASK, (bgr &gt;&gt; 0) &amp; BIT_MASK);</span>
+    }
+
+<span class="fc" id="L173">    private Color(int red, int green, int blue) {</span>
+<span class="fc bfc" id="L174" title="All 4 branches covered.">        Validate.isTrue((red &gt;= 0) &amp;&amp; (red &lt;= BIT_MASK), &quot;Red is not between 0-255: &quot;, red);</span>
+<span class="fc bfc" id="L175" title="All 4 branches covered.">        Validate.isTrue((green &gt;= 0) &amp;&amp; (green &lt;= BIT_MASK), &quot;Green is not between 0-255: &quot;, green);</span>
+<span class="fc bfc" id="L176" title="All 4 branches covered.">        Validate.isTrue((blue &gt;= 0) &amp;&amp; (blue &lt;= BIT_MASK), &quot;Blue is not between 0-255: &quot;, blue);</span>
+<span class="fc" id="L177">        this.red = ((byte) (red));</span>
+<span class="fc" id="L178">        this.green = ((byte) (green));</span>
+<span class="fc" id="L179">        this.blue = ((byte) (blue));</span>
+<span class="fc" id="L180">    }</span>
+
+    /**
+     * Gets the red component
+     *
+     * @return red component, from 0 to 255
+     */
+    public int getRed() {
+<span class="fc" id="L188">        return BIT_MASK &amp; red;</span>
+    }
+
+    /**
+     * Creates a new Color object with specified component
+     *
+     * @param red
+     * 		the red component, from 0 to 255
+     * @return a new color object with the red component
+     */
+    public Color setRed(int red) {
+<span class="fc" id="L199">        return fromRGB(red, getGreen(), getBlue());</span>
+    }
+
+    /**
+     * Gets the green component
+     *
+     * @return green component, from 0 to 255
+     */
+    public int getGreen() {
+<span class="fc" id="L208">        return BIT_MASK &amp; green;</span>
+    }
+
+    /**
+     * Creates a new Color object with specified component
+     *
+     * @param green
+     * 		the red component, from 0 to 255
+     * @return a new color object with the red component
+     */
+    public Color setGreen(int green) {
+<span class="fc" id="L219">        return fromRGB(getRed(), green, getBlue());</span>
+    }
+
+    /**
+     * Gets the blue component
+     *
+     * @return blue component, from 0 to 255
+     */
+    public int getBlue() {
+<span class="fc" id="L228">        return BIT_MASK &amp; blue;</span>
+    }
+
+    /**
+     * Creates a new Color object with specified component
+     *
+     * @param blue
+     * 		the red component, from 0 to 255
+     * @return a new color object with the red component
+     */
+    public Color setBlue(int blue) {
+<span class="fc" id="L239">        return fromRGB(getRed(), getGreen(), blue);</span>
+    }
+
+    /**
+     *
+     *
+     * @return An integer representation of this color, as 0xRRGGBB
+     */
+    public int asRGB() {
+<span class="fc" id="L248">        return ((getRed() &lt;&lt; 16) | (getGreen() &lt;&lt; 8)) | (getBlue() &lt;&lt; 0);</span>
+    }
+
+    /**
+     *
+     *
+     * @return An integer representation of this color, as 0xBBGGRR
+     */
+    public int asBGR() {
+<span class="fc" id="L257">        return ((getBlue() &lt;&lt; 16) | (getGreen() &lt;&lt; 8)) | (getRed() &lt;&lt; 0);</span>
+    }
+
+    /**
+     * Creates a new color with its RGB components changed as if it was dyed
+     * with the colors passed in, replicating vanilla workbench dyeing
+     *
+     * @param colors
+     * 		The DyeColors to dye with
+     * @return A new color with the changed rgb components
+     */
+    // TODO: Javadoc what this method does, not what it mimics. API != Implementation
+    public Color mixDyes(DyeColor... colors) {
+<span class="nc" id="L270">        Validate.noNullElements(colors, &quot;Colors cannot be null&quot;);</span>
+<span class="nc" id="L271">        Color[] toPass = new Color[colors.length];</span>
+<span class="nc bnc" id="L272" title="All 2 branches missed.">        for (int i = 0; i &lt; colors.length; i++) {</span>
+<span class="nc" id="L273">            toPass[i] = colors[i].getColor();</span>
+        }
+<span class="nc" id="L275">        return mixColors(toPass);</span>
+    }
+
+    /**
+     * Creates a new color with its RGB components changed as if it was dyed
+     * with the colors passed in, replicating vanilla workbench dyeing
+     *
+     * @param colors
+     * 		The colors to dye with
+     * @return A new color with the changed rgb components
+     */
+    // TODO: Javadoc what this method does, not what it mimics. API != Implementation
+    public Color mixColors(Color... colors) {
+<span class="nc" id="L288">        Validate.noNullElements(colors, &quot;Colors cannot be null&quot;);</span>
+<span class="nc" id="L289">        int totalRed = this.getRed();</span>
+<span class="nc" id="L290">        int totalGreen = this.getGreen();</span>
+<span class="nc" id="L291">        int totalBlue = this.getBlue();</span>
+<span class="nc" id="L292">        int totalMax = Math.max(Math.max(totalRed, totalGreen), totalBlue);</span>
+<span class="nc bnc" id="L293" title="All 2 branches missed.">        for (Color color : colors) {</span>
+<span class="nc" id="L294">            totalRed += color.getRed();</span>
+<span class="nc" id="L295">            totalGreen += color.getGreen();</span>
+<span class="nc" id="L296">            totalBlue += color.getBlue();</span>
+<span class="nc" id="L297">            totalMax += Math.max(Math.max(color.getRed(), color.getGreen()), color.getBlue());</span>
+        }
+<span class="nc" id="L299">        float averageRed = totalRed / (colors.length + 1);</span>
+<span class="nc" id="L300">        float averageGreen = totalGreen / (colors.length + 1);</span>
+<span class="nc" id="L301">        float averageBlue = totalBlue / (colors.length + 1);</span>
+<span class="nc" id="L302">        float averageMax = totalMax / (colors.length + 1);</span>
+<span class="nc" id="L303">        float maximumOfAverages = Math.max(Math.max(averageRed, averageGreen), averageBlue);</span>
+<span class="nc" id="L304">        double gainFactor = (double) averageMax / (double) maximumOfAverages;</span>
+<span class="nc" id="L305">        return Color.fromRGB(((int) ((double) averageRed * (double) gainFactor)), ((int) ((double) averageGreen * (double) gainFactor)), ((int) ((double) averageBlue * (double) gainFactor)));</span>
+    }
+
+    @Override
+    public boolean equals(Object o) {
+<span class="pc bpc" id="L310" title="1 of 2 branches missed.">        if (!(o instanceof Color)) {</span>
+<span class="nc" id="L311">            return false;</span>
+        }
+<span class="fc" id="L313">        final Color that = ((Color) (o));</span>
+<span class="pc bpc" id="L314" title="1 of 6 branches missed.">        return ((this.blue == that.blue) &amp;&amp; (this.green == that.green)) &amp;&amp; (this.red == that.red);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L319">        return asRGB() ^ Color.class.hashCode();</span>
+    }
+
+    public Map&lt;String, Object&gt; serialize() {
+<span class="fc" id="L323">        return ImmutableMap.&lt;String, Object&gt;of(&quot;RED&quot;, getRed(), &quot;BLUE&quot;, getBlue(), &quot;GREEN&quot;, getGreen());</span>
+    }
+
+    @SuppressWarnings(&quot;javadoc&quot;)
+    public static Color deserialize(Map&lt;String, Object&gt; map) {
+<span class="fc" id="L328">        return fromRGB(asInt(&quot;RED&quot;, map), asInt(&quot;GREEN&quot;, map), asInt(&quot;BLUE&quot;, map));</span>
+    }
+
+    private static int asInt(String string, Map&lt;String, Object&gt; map) {
+<span class="fc" id="L332">        Object value = map.get(string);</span>
+<span class="pc bpc" id="L333" title="1 of 2 branches missed.">        if (value == null) {</span>
+<span class="nc" id="L334">            throw new IllegalArgumentException((string + &quot; not in map &quot;) + map);</span>
+        }
+<span class="pc bpc" id="L336" title="1 of 2 branches missed.">        if (!(value instanceof Number)) {</span>
+<span class="nc" id="L337">            throw new IllegalArgumentException(((string + '(') + value) + &quot;) is not a number&quot;);</span>
+        }
+<span class="fc" id="L339">        return ((Number) (value)).intValue();</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L344">        return (((&quot;Color:[rgb0x&quot; + Integer.toHexString(getRed()).toUpperCase()) + Integer.toHexString(getGreen()).toUpperCase()) + Integer.toHexString(getBlue()).toUpperCase()) + &quot;]&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
