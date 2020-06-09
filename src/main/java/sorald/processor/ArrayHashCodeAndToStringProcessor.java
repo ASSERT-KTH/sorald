@@ -3,11 +3,11 @@ package sorald.processor;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import sorald.Constants;
 import sorald.ProcessorAnnotation;
-import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtInvocation;
+import spoon.reflect.code.CtTypeAccess;
+import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
 
 import java.util.Arrays;
@@ -41,8 +41,8 @@ public class ArrayHashCodeAndToStringProcessor extends SoraldAbstractProcessor<C
 		super.process(element);
 
 		CtExpression prevTarget = element.getTarget();
-		CtCodeSnippetExpression newTarget = getFactory().Code().createCodeSnippetExpression("Arrays");
-		CtType arraysClass = getFactory().Class().get(Arrays.class);
+		CtClass arraysClass = getFactory().Class().get(Arrays.class);
+		CtTypeAccess<?> newTarget = getFactory().createTypeAccess(arraysClass.getReference());
 		CtMethod method = null;
 		if (element.getExecutable().getSignature().equals(Constants.HASHCODE_METHOD_NAME + "()")) {
 			method = (CtMethod) arraysClass.getMethodsByName(Constants.HASHCODE_METHOD_NAME).get(0);
