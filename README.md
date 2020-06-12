@@ -15,10 +15,17 @@ A JDK (java 1.8)
 
 1) Clone this repository: `git clone https://github.com/SpoonLabs/sorald.git`
 
-2) Build and run the tool:
+2) Run the script `./init.sh`:
+
+```bash
+$ cd sorald
+$ chmod +x ./init.sh
+$ ./init.sh
+```
+
+3) Build and run the tool:
 
  ```bash
-$ cd sorald
 $ mvn package -DskipTests
 $ java -jar target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar <arguments>
  ```
