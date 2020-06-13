@@ -4,5 +4,6 @@ jdk:
   - openjdk10
 
 script:
-  - java -jar /home/travis/build/SpoonLabs/sorald/target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar --originalFilesPath /home/travis/build/SpoonLabs/sorald/src/test/kura --ruleKeys 2184
+  - git clone https://github.com/eclipse/kura
+  - java -jar /home/travis/build/SpoonLabs/sorald/target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar --originalFilesPath kura --ruleKeys 2184
   - mvn test
