@@ -5,5 +5,7 @@ jdk:
 
 script:
   - git clone https://github.com/eclipse/kura
+  - git clone https://github.com/eclipse/hono
   - java -jar /home/travis/build/SpoonLabs/sorald/target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar --originalFilesPath kura --ruleKeys 2184
+  - java -jar /home/travis/build/SpoonLabs/sorald/target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar --originalFilesPath hono --ruleKeys 2184
   - mvn test
