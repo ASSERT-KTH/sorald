@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class ExplanationGenerator {
     private static final String CLOVER_REPORT_FILENAME = "clover.xml";
-    private static final String CLOVER_REPORT_PATH = "target" + CLOVER_REPORT_FILENAME;
+    private static final String CLOVER_REPORT_PATH = "target/site/" + CLOVER_REPORT_FILENAME;
 
     private static ExplanationGenerator _instance;
 
@@ -34,7 +34,9 @@ public class ExplanationGenerator {
             ) throws Exception {
         MavenCli cli = new MavenCli();
         System.setProperty("maven.multiModuleProjectDirectory", projectPath);
-        cli.doMain(new String[]{"clean", "compile"}, projectPath, System.out, System.err);
+        cli.doMain(new String[]{"clean", "clover:setup", "test", "clover:aggregate", "clover:clover",
+                        "-DtestFailureIgnore=true", "-fail-never"},
+                projectPath, System.out, System.err);
 
         String generatedCloverReportPath = projectPath + File.separator + CLOVER_REPORT_PATH;
         File cloverReportFile = new File(generatedCloverReportPath);
@@ -76,9 +78,12 @@ public class ExplanationGenerator {
     }
 
     public static void main(String[] args) throws Exception {
+        CloverHelper.getInstance().addCloverPluginToPom(new File("C:\\other\\daneshgah\\" +
+                "phd-kth\\projects\\explanation generation\\tmp\\photon\\pom.xml"),
+                new File("C:\\other\\daneshgah\\" + "phd-kth\\projects\\explanation generation\\tmp\\photon\\pom.xml"));
         ExplanationGenerator.getInstance().runTestsAndSaveCloverReport("C:\\other\\daneshgah\\" +
-                "phd-kth\\projects\\explanation generation\\tmp\\Tardis",
+                "phd-kth\\projects\\explanation generation\\tmp\\photon",
                 "C:\\other\\daneshgah\\phd-kth\\projects\\explanation generation\\tmp\\temp",
-                "tardis-org");
+                "photon-org");
     }
 }

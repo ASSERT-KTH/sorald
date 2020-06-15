@@ -49,13 +49,13 @@ public class CloverHelper {
         } else
             buildNode = buildNodes.item(0);
 
-        NodeList pluginsNodes = buildNode.getChildNodes();
+        NodeList buildChildNodes = buildNode.getChildNodes();
 
         Node pluginsNode = null;
 
-        for (int i = 0; i < pluginsNodes.getLength(); i++) {
-            if (pluginsNodes.item(i).getNodeName().equals("plugins")) {
-                pluginsNode = pluginsNodes.item(i);
+        for (int i = 0; i < buildChildNodes.getLength(); i++) {
+            if (buildChildNodes.item(i).getNodeName().equals("plugins")) {
+                pluginsNode = buildChildNodes.item(i);
                 break;
             }
         }
@@ -64,6 +64,25 @@ public class CloverHelper {
             pluginsNode = doc.createElement("plugins");
             buildNode.appendChild(pluginsNode);
         }
+
+        boolean cloverPluginExists = false;
+        NodeList pluginsChildNodes = pluginsNode.getChildNodes();
+        for(int i = 0; i < pluginsChildNodes.getLength(); i++){
+            if(pluginsChildNodes.item(i).getNodeName().equals("plugin")){
+                NodeList pluginChildNodes = pluginsChildNodes.item(i).getChildNodes();
+                for(int j = 0; j < pluginChildNodes.getLength(); j++){
+                    if(pluginChildNodes.item(j).getNodeName().equals("artifactId")
+                        && pluginChildNodes.item(j).getTextContent().equals("clover-maven-plugin")){
+                        cloverPluginExists = true;
+                        break;
+                    }
+                }
+                if(cloverPluginExists)
+                    break;
+            }
+        }
+        if(cloverPluginExists)
+            return;
 
         File cloverPluginFile =
                 new File(getClass().getClassLoader().getResource("clover_plugin_nod.xml").toURI());
