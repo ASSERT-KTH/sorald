@@ -38,6 +38,10 @@ import org.sonar.java.checks.synchronization.ValueBasedObjectUsedForLockCheck;
 import org.sonar.java.checks.unused.UnusedReturnedDataCheck;
 import org.sonar.java.checks.unused.UnusedThrowableCheck;
 import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
+import org.sonar.java.checks.xml.maven.DependencyWithSystemScopeCheck;
+import org.sonar.java.checks.xml.spring.DefaultMessageListenerContainerCheck;
+import org.sonar.java.checks.xml.spring.SingleConnectionFactoryCheck;
+import org.sonar.java.se.checks.*;
 import org.sonar.plugins.java.api.JavaFileScanner;
 
 public class MineSonarWarnings {
@@ -153,6 +157,24 @@ public class MineSonarWarnings {
         TEMP_SONAR_CHECKS.add(new GetClassLoaderCheck());
         TEMP_SONAR_CHECKS.add(new MathOnFloatCheck());
         TEMP_SONAR_CHECKS.add(new SymmetricEqualsCheck());
+
+        TEMP_SONAR_CHECKS.add(new ObjectOutputStreamCheck());
+        TEMP_SONAR_CHECKS.add(new NoWayOutLoopCheck());
+        TEMP_SONAR_CHECKS.add(new UnclosedResourcesCheck());
+        TEMP_SONAR_CHECKS.add(new DivisionByZeroCheck());
+        TEMP_SONAR_CHECKS.add(new LocksNotUnlockedCheck());
+        TEMP_SONAR_CHECKS.add(new StreamConsumedCheck());
+        TEMP_SONAR_CHECKS.add(new StreamNotConsumedCheck());
+        TEMP_SONAR_CHECKS.add(new OptionalGetBeforeIsPresentCheck());
+        TEMP_SONAR_CHECKS.add(new MinMaxRangeCheck());
+        TEMP_SONAR_CHECKS.add(new ConditionalUnreachableCodeCheck());
+        TEMP_SONAR_CHECKS.add(new NullDereferenceCheck());
+        TEMP_SONAR_CHECKS.add(new NonNullSetToNullCheck());
+        TEMP_SONAR_CHECKS.add(new CustomUnclosedResourcesCheck());
+
+//        TEMP_SONAR_CHECKS.add(new DefaultMessageListenerContainerCheck());
+//        TEMP_SONAR_CHECKS.add(new SingleConnectionFactoryCheck());
+//        TEMP_SONAR_CHECKS.add(new DependencyWithSystemScopeCheck());
 
         return TEMP_SONAR_CHECKS;
     }
