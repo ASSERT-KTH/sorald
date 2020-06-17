@@ -5,6 +5,7 @@ Sorald can currently repair violations of the following rules:
 * [Bug](#bug)
     * [".equals()" should not be used to test the values of "Atomic" classes](#equals-should-not-be-used-to-test-the-values-of-atomic-classes-sonar-rule-2204) ([Sonar Rule 2204](https://rules.sonarsource.com/java/RSPEC-2204))
     * ["BigDecimal(double)" should not be used](#bigdecimaldouble-should-not-be-used-sonar-rule-2111) ([Sonar Rule 2111](https://rules.sonarsource.com/java/RSPEC-2111))
+    * ["InterruptedException" should not be ignored](#interruptedexception-should-not-be-ignored-sonar-rule-2142) ([Sonar Rule 2142](https://rules.sonarsource.com/java/RSPEC-2142))
     * ["Iterator.next()" methods should throw "NoSuchElementException"](#iteratornext-methods-should-throw-nosuchelementexception-sonar-rule-2272) ([Sonar Rule 2272](https://rules.sonarsource.com/java/RSPEC-2272))
     * ["compareTo" should not return "Integer.MIN_VALUE"](#compareto-should-not-return-integermin_value-sonar-rule-2167) ([Sonar Rule 2167](https://rules.sonarsource.com/java/RSPEC-2167))
     * ["getClass" should not be used for synchronization](#getclass-should-not-be-used-for-synchronization-sonar-rule-3067) ([Sonar Rule 3067](https://rules.sonarsource.com/java/type/Bug/RSPEC-3067))
@@ -65,6 +66,27 @@ Example:
 ```
 
 Check out an accepted PR in [Apache PDFBox](https://github.com/apache/pdfbox/pull/76) that repairs one BigDecimalDoubleConstructor violation.
+
+-----
+
+#### "InterruptedException" should not be ignored ([Sonar Rule 2142](https://rules.sonarsource.com/java/RSPEC-2142))
+
+A `catch` block that catches an `InterruptedException`, but neither re-interrupts the method nor rethrows the `InterruptedException`, i.e., ignores the `InterruptedException`, is augmented with `Thread.currentThread().interrupt();`.
+
+Example:
+```diff
+    public void run() {
+        try {
+            while (true) {
+                // do stuff
+            } 
+-       } catch (InterruptedException e) { // Noncompliant; logging is not enough
++       } catch (InterruptedException e) {
+            LOGGER.log(Level.WARN, "Interrupted!", e);
++           Thread.currentThread().interrupt();
+        }
+    }
+```
 
 -----
 
