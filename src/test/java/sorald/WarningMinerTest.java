@@ -1,4 +1,4 @@
-package sonarquberepair;
+package sorald;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
