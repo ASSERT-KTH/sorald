@@ -38,9 +38,6 @@ import org.sonar.java.checks.synchronization.ValueBasedObjectUsedForLockCheck;
 import org.sonar.java.checks.unused.UnusedReturnedDataCheck;
 import org.sonar.java.checks.unused.UnusedThrowableCheck;
 import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
-import org.sonar.java.checks.xml.maven.DependencyWithSystemScopeCheck;
-import org.sonar.java.checks.xml.spring.DefaultMessageListenerContainerCheck;
-import org.sonar.java.checks.xml.spring.SingleConnectionFactoryCheck;
 import org.sonar.java.se.checks.*;
 import org.sonar.plugins.java.api.JavaFileScanner;
 
