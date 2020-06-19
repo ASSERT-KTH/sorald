@@ -3,6 +3,7 @@ package sorald.processor;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import sorald.Constants;
 import sorald.ProcessorAnnotation;
+import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtTypeAccess;
@@ -11,12 +12,17 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.reference.CtExecutableReference;
 
 import java.util.Arrays;
+import java.util.List;
 
 @ProcessorAnnotation(key = 2116, description = "\"hashCode\" and \"toString\" should not be called on array instances")
 public class ArrayHashCodeAndToStringProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
 
 	public ArrayHashCodeAndToStringProcessor(String originalFilesPath) {
 		super(originalFilesPath, new ArrayHashCodeAndToStringCheck());
+	}
+
+	public ArrayHashCodeAndToStringProcessor(List<Node> segment) {
+		super(segment, new ArrayHashCodeAndToStringCheck());
 	}
 
 	@Override

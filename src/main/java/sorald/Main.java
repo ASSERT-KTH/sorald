@@ -7,10 +7,18 @@ import com.martiansoftware.jsap.JSAPResult;
 import com.martiansoftware.jsap.Switch;
 import com.martiansoftware.jsap.stringparsers.FileStringParser;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.apache.commons.lang.StringUtils;
+import java.nio.file.Files;
+
+import sorald.FileTreeAlgorithm.Node;
+import sorald.FileTreeAlgorithm.SoraldTreeBuilderAlgorithm ;
+import sorald.FileTreeAlgorithm.FirstFitSegmentationAlgorithm;
+
+import java.io.File;
 
 public class Main {
 	private final SoraldConfig config = new SoraldConfig();
@@ -71,6 +79,20 @@ public class Main {
 		opt.setHelp("Max number of fixes per rule. Default: Integer.MAX_VALUE (or all)");
 		jsap.registerParameter(opt);
 
+		opt = new FlaggedOption(Constants.ARG_MAX_FILES_PER_SEGMENT);
+		opt.setLongFlag(Constants.ARG_MAX_FILES_PER_SEGMENT);
+		opt.setStringParser(JSAP.INTEGER_PARSER);
+		opt.setDefault("" + 6500);
+		opt.setHelp("Max number of files per loaded segment for segmented repair. It should be >= 3000 files per segment. Default: 6500 (256mb Jvm) . ");
+		jsap.registerParameter(opt);
+
+		opt = new FlaggedOption(Constants.ARG_REPAIR_STRATEGY);
+		opt.setLongFlag(Constants.ARG_REPAIR_STRATEGY);
+		opt.setStringParser(JSAP.STRING_PARSER);
+		opt.setDefault(RepairStrategy.DEFAULT.name());
+		opt.setHelp("Type of repair strategy. DEFAULT - load everything without splitting up the folder in segments, SEGMENT - splitting the folder into smaller segments and repair one segment at a time (need to specify --maxFilesPerSegment if not default). (default: DEFAULT)");
+		jsap.registerParameter(opt);
+
 		Switch sw = new Switch("help");
 		sw.setShortFlag('h');
 		sw.setLongFlag("help");
@@ -121,12 +143,26 @@ public class Main {
 		this.getConfig().setPrettyPrintingStrategy(PrettyPrintingStrategy.valueOf(arguments.getString(Constants.ARG_PRETTY_PRINTING_STRATEGY)));
 		this.getConfig().setFileOutputStrategy(FileOutputStrategy.valueOf(arguments.getString(Constants.ARG_FILE_OUTPUT_STRATEGY)));
 		this.getConfig().setMaxFixesPerRule(arguments.getInt(Constants.ARG_MAX_FIXES_PER_RULE));
+		this.getConfig().setMaxFilesPerSegment(arguments.getInt(Constants.ARG_MAX_FILES_PER_SEGMENT));
+		this.getConfig().setRepairStrategy(RepairStrategy.valueOf(arguments.getString(Constants.ARG_REPAIR_STRATEGY)));
 	}
 
 
-	public DefaultRepair getRepairProcess() {
-		DefaultRepair defaultRepair = new DefaultRepair(this.config);
-		return defaultRepair;
+	public IRepair getRepairProcess() {
+		IRepair repair;
+		/*SegmentedRepair repair = new SegmentedRepair(this.config);*/
+		switch (this.getConfig().getRepairStrategy()) {
+			case SEGMENT: {
+				Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(this.getConfig().getOriginalFilesPath());
+				LinkedList<LinkedList<Node>> segments = FirstFitSegmentationAlgorithm.segment(rootNode,this.getConfig().getMaxFilesPerSegment());
+				this.getConfig().setSegments(segments);
+				repair = new SegmentedRepair(this.config);
+				break;
+			}
+			default:
+				repair = new DefaultRepair(this.config);
+		}
+		return repair;
 	}
 
 	public void start(String[] args) throws Exception {

@@ -3,6 +3,7 @@ package sorald.processor;
 import org.sonar.java.checks.CastArithmeticOperandCheck;
 import sorald.Constants;
 import sorald.ProcessorAnnotation;
+import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtField;
@@ -20,6 +21,10 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
 
     public CastArithmeticOperandProcessor(String originalFilesPath) {
         super(originalFilesPath, new CastArithmeticOperandCheck());
+    }
+
+    public CastArithmeticOperandProcessor(List<Node> segment) {
+        super(segment, new CastArithmeticOperandCheck());
     }
 
     @Override

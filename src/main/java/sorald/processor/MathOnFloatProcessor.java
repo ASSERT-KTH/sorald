@@ -3,6 +3,7 @@ package sorald.processor;
 import org.sonar.java.checks.MathOnFloatCheck;
 import sorald.Constants;
 import sorald.ProcessorAnnotation;
+import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.code.CtCodeSnippetExpression;
@@ -16,6 +17,10 @@ public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperat
 
     public MathOnFloatProcessor(String originalFilesPath) {
         super(originalFilesPath, new MathOnFloatCheck());
+    }
+
+    public MathOnFloatProcessor(List<Node> segment) {
+        super(segment, new MathOnFloatCheck());
     }
 
     @Override

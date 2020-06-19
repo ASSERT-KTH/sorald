@@ -16,6 +16,7 @@ import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.UniqueTypesCollector;
+import sorald.FileTreeAlgorithm.Node;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
 
@@ -50,8 +51,40 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 		}
 	}
 
+	SoraldAbstractProcessor(List<Node> segment, JavaFileScanner check) {
+		try {
+			List<String> filesToScan = new ArrayList<>();
+			for (Node node : segment) {
+				if (node.isFileNode()) {
+					filesToScan.addAll(node.getJavaFiles());
+				} else {
+					try (Stream<Path> walk = Files.walk(Paths.get(node.getRootPath()))) {
+						filesToScan.addAll(walk.map(x -> x.toFile().getAbsolutePath())
+										.filter(f -> f.endsWith(Constants.JAVA_EXT)).collect(Collectors.toList()));
+					} catch (IOException e) {
+						e.printStackTrace();
+					}	
+				}
+			}
+
+			Set<AnalyzerMessage> issues = MultipleFilesJavaCheckVerifier.verify(filesToScan, check, false);
+			bugs = new HashSet<>();
+			for (AnalyzerMessage message : issues) {
+				Bug BugOffline = new Bug(message);
+				bugs.add(BugOffline);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public SoraldAbstractProcessor setMaxFixes(int maxFixes) {
 		this.maxFixes = maxFixes;
+		return this;
+	}
+
+	public SoraldAbstractProcessor setNbFixes(int nbFixes) {
+		this.nbFixes = nbFixes;
 		return this;
 	}
 

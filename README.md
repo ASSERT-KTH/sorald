@@ -26,12 +26,12 @@ $ java -jar target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar <arguments>
 The arguments are the following:
 
 ```bash
-  [--ruleKeys ruleKeys1,ruleKeys2,...,ruleKeysN ]
+    [--ruleKeys ruleKeys1,ruleKeys2,...,ruleKeysN ]
         Choose one or more of the following rule keys (use ',' to separate
         multiple keys):
         2272: "Iterator.next()" methods should throw "NoSuchElementException"
-        2116: "hashCode" and "toString" should not be called on array instances
         1860: Synchronization should not be based on Strings or boxed primitives
+        2116: "hashCode" and "toString" should not be called on array instances
         2184: Math operands should be cast before assignment
         4973: Strings and Boxed types should be compared using "equals()"
         2095: Resources should be closed
@@ -41,19 +41,20 @@ The arguments are the following:
         3032: JEE applications should not "getClassLoader"
         1656: Variables should not be self-assigned
         3067: "getClass" should not be used for synchronization
-        1948: Fields in a "Serializable" class should either be transient or
-        serializable
         2204: ".equals()" should not be used to test the values of "Atomic"
         classes
+        1948: Fields in a "Serializable" class should either be transient or
+        serializable
+        2142: "InterruptedException" should not be ignored
         1854: Unused assignments should be removed
-        2111: "BigDecimal(double)" should not be used (default: 2116)
+        2111: "BigDecimal(double)" should not be used
 
   --originalFilesPath <originalFilesPath>
         The path to the file or folder to be analyzed and possibly repaired.
 
   [--workspace <workspace>]
-        The path to a folder that will be used as workspace by Sorald,
-        i.e. the path for the output. (default: ./sorald-workspace)
+        The path to a folder that will be used as workspace by Sorald, i.e. the
+        path for the output. (default: ./sorald-workspace)
 
   [--gitRepoPath <gitRepoPath>]
         The path to a git repository directory.
@@ -62,7 +63,7 @@ The arguments are the following:
         Mode for pretty printing the source code: 'NORMAL', which means that all
         source code will be printed and its formatting might change (such as
         indentation), and 'SNIPER', which means that only statements changed
-        towards the repair of sonar rule violations will be printed. (default:
+        towards the repair of Sonar rule violations will be printed. (default:
         SNIPER)
 
   [--fileOutputStrategy <fileOutputStrategy>]
@@ -74,6 +75,18 @@ The arguments are the following:
   [--maxFixesPerRule <maxFixesPerRule>]
         Max number of fixes per rule. Default: Integer.MAX_VALUE (or all)
         (default: 2147483647)
+
+  [--maxFilesPerSegment <maxFilesPerSegment>]
+        Max number of files per loaded segment for segmented repair. It should
+        be >= 3000 files per segment. Default: 6500 (256mb Jvm) .  (default:
+        6500)
+
+  [--repairStrategy <repairStrategy>]
+        Type of repair strategy. DEFAULT - load everything without splitting up
+        the folder in segments, SEGMENT - splitting the folder into smaller
+        segments and repair one segment at a time (need to specify
+        --maxFilesPerSegment if not default). Default: DEFAULT (default:
+        DEFAULT)
 
   [-h|--help]
 ```

@@ -18,7 +18,7 @@ import spoon.support.QueueProcessingManager;
 import spoon.processing.ProcessingManager;
 import spoon.reflect.factory.Factory;
 
-public class DefaultRepair {
+public class DefaultRepair implements IRepair {
 	private final GitPatchGenerator generator = new GitPatchGenerator();
 	private SoraldConfig config;
 	private int patchedFileCounter = 0;
