@@ -150,7 +150,6 @@ public class Main {
 
 	public IRepair getRepairProcess() {
 		IRepair repair;
-		/*SegmentedRepair repair = new SegmentedRepair(this.config);*/
 		switch (this.getConfig().getRepairStrategy()) {
 			case SEGMENT: {
 				Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(this.getConfig().getOriginalFilesPath());
