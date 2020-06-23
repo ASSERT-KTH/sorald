@@ -143,8 +143,8 @@ public class ExplanationGenerator {
                 newChangedFilePath = newRepoPath + File.separator + changedFilePath;
 
 
-//        ExplanationGenerator.getInstance().printCloverReport(oldRepoPath, oldReportFilePath);
-//        ExplanationGenerator.getInstance().printCloverReport(newRepoPath, newReportFilePath);
+        ExplanationGenerator.getInstance().printCloverReport(oldRepoPath, oldReportFilePath);
+        ExplanationGenerator.getInstance().printCloverReport(newRepoPath, newReportFilePath);
 
 
         CloverReportForFile oldReport = new CloverReportForFile(oldReportFilePath, oldChangedFilePath),
