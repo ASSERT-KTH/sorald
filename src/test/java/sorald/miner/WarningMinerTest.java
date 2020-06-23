@@ -3,7 +3,6 @@ package sorald.miner;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import sorald.Constants;
-import sorald.miner.MineSonarWarnings;
 
 import static org.junit.Assert.*;
 
@@ -17,9 +16,9 @@ public class WarningMinerTest {
         File outputFile = File.createTempFile("warnings", null),
                 temp = Files.createTempDirectory("tempDir").toFile();
 
-        String fileName = "warning_miner/test_repos";
+        String fileName = "warning_miner/test_repos.txt";
         String pathToRepos = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
-        fileName = "warning_miner/test_results";
+        fileName = "warning_miner/test_results.txt";
         File correctResults = new File(Constants.PATH_TO_RESOURCES_FOLDER + fileName);
 
         MineSonarWarnings.main(new String[] {
