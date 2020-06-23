@@ -1,11 +1,16 @@
 package sorald.explanation;
 
+import gumtree.spoon.AstComparator;
+import gumtree.spoon.diff.ActionClassifier;
+import gumtree.spoon.diff.Diff;
+import gumtree.spoon.diff.operations.Operation;
 import org.eclipse.jgit.diff.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 
 public class Tmp {
     public static void main(String[] args) throws Exception {
@@ -14,7 +19,8 @@ public class Tmp {
                 tPath = "C:\\other\\daneshgah\\phd-kth\\" +
                         "projects\\explanation generation\\tmp\\temp\\GetClassLoader-fixed-and-printed-normally.java";
 
-        System.out.println(getDiff(sPath, tPath));
+        Diff diff = new AstComparator().compare(new File(sPath), new File(tPath));
+        List<Operation> opsWithoutMove = ActionClassifier.replaceMoveFromRoots(diff);
     }
 
     private static String getDiff(String file1, String file2) {

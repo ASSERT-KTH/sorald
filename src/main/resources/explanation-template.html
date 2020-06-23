@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  overflow: scroll;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="column" style="background-color:#fff;">
+    <pre class="prettyprint">
+{{old-code}}
+	</pre>
+  </div>
+  <div class="column" style="background-color:#eee;">
+    <pre class="prettyprint">
+{{new-code}}
+	</pre>
+  </div>
+</div>
+</body>
+</html>

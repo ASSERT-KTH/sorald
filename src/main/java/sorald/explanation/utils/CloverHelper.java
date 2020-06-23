@@ -1,10 +1,8 @@
-package sorald.explanation;
+package sorald.explanation.utils;
 
-import org.apache.xerces.impl.xs.opti.DefaultNode;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,6 +16,8 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 
 public class CloverHelper {
+    private static final String CLOVER_PLUGIN_DEFINITION_FILENAME = "clover_plugin_nod.xml";
+
     private static CloverHelper _instance;
 
     private DocumentBuilder documentBuilder;
@@ -85,7 +85,7 @@ public class CloverHelper {
             return;
 
         File cloverPluginFile =
-                new File(getClass().getClassLoader().getResource("clover_plugin_nod.xml").toURI());
+                new File(getClass().getClassLoader().getResource(CLOVER_PLUGIN_DEFINITION_FILENAME).toURI());
         Node cloverTag = documentBuilder.parse(cloverPluginFile).getDocumentElement();
         cloverTag = doc.importNode(cloverTag, true);
         pluginsNode.appendChild(cloverTag);
