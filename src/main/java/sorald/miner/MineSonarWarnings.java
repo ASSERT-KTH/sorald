@@ -1,4 +1,4 @@
-package sorald;
+package sorald.miner;
 
 import com.martiansoftware.jsap.FlaggedOption;
 import com.martiansoftware.jsap.JSAP;
@@ -40,6 +40,7 @@ import org.sonar.java.checks.unused.UnusedThrowableCheck;
 import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
 import org.sonar.java.se.checks.*;
 import org.sonar.plugins.java.api.JavaFileScanner;
+import sorald.Constants;
 
 public class MineSonarWarnings {
 

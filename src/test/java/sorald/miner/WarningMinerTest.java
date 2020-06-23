@@ -1,13 +1,14 @@
-package sorald;
+package sorald.miner;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
+import sorald.Constants;
+import sorald.miner.MineSonarWarnings;
+
 import static org.junit.Assert.*;
 
 import java.io.File;
 import java.nio.file.Files;
-import java.util.List;
-import java.util.Scanner;
 
 public class WarningMinerTest {
 

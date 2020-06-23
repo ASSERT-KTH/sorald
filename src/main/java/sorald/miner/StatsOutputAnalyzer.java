@@ -1,7 +1,8 @@
-package sorald;
+package sorald.miner;
 
 import com.martiansoftware.jsap.JSAPException;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import sorald.Constants;
 
 import java.io.File;
 import java.io.IOException;
