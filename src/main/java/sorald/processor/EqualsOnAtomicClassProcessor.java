@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import org.sonar.java.checks.EqualsOnAtomicClassCheck;
 import sorald.ProcessorAnnotation;
+import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.code.CtExpression;
@@ -13,12 +14,18 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
 
+import java.util.List;
+
 @ProcessorAnnotation(key = 2204, description = "\".equals()\" should not be used to test the values of \"Atomic\" classes")
 public class EqualsOnAtomicClassProcessor extends SoraldAbstractProcessor<CtInvocation> {
 
 	public EqualsOnAtomicClassProcessor(String originalFilesPath) {
 		super(originalFilesPath, new EqualsOnAtomicClassCheck());
 	}
+
+	public EqualsOnAtomicClassProcessor(List<Node> segment) {
+        super(segment, new EqualsOnAtomicClassCheck());
+    }
 
 	@Override
 	public boolean isToBeProcessed(CtInvocation candidate) {

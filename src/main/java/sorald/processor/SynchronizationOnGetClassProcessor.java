@@ -2,6 +2,7 @@ package sorald.processor;
 
 import org.sonar.java.checks.synchronization.SynchronizationOnGetClassCheck;
 import sorald.ProcessorAnnotation;
+import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtSynchronized;
@@ -12,6 +13,7 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtTypeReference;
 
 import java.util.Set;
+import java.util.List;
 
 @ProcessorAnnotation(key = 3067, description = "\"getClass\" should not be used for synchronization")
 public class SynchronizationOnGetClassProcessor extends SoraldAbstractProcessor<CtSynchronized> {
@@ -19,6 +21,10 @@ public class SynchronizationOnGetClassProcessor extends SoraldAbstractProcessor<
 	public SynchronizationOnGetClassProcessor(String originalFilesPath) {
 		super(originalFilesPath, new SynchronizationOnGetClassCheck());
 	}
+
+	public SynchronizationOnGetClassProcessor(List<Node> segment) {
+        super(segment, new SynchronizationOnGetClassCheck());
+    }
 
 	@Override
 	public boolean isToBeProcessed(CtSynchronized element) {

@@ -2,6 +2,7 @@ package sorald.processor;
 
 import org.sonar.java.checks.InterruptedExceptionCheck;
 import sorald.ProcessorAnnotation;
+import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.CtCatch;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtTypeAccess;
@@ -9,12 +10,18 @@ import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
 
+import java.util.List;
+
 @ProcessorAnnotation(key = 2142, description = "\"InterruptedException\" should not be ignored")
 public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCatch> {
 
 	public InterruptedExceptionProcessor(String originalFilesPath) {
 		super(originalFilesPath, new InterruptedExceptionCheck());
 	}
+
+	public InterruptedExceptionProcessor(List<Node> segment) {
+        super(segment, new InterruptedExceptionCheck());
+    }
 
 	@Override
 	public boolean isToBeProcessed(CtCatch candidate) {

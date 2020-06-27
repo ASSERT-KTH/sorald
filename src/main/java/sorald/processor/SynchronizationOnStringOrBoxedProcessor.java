@@ -2,6 +2,7 @@ package sorald.processor;
 
 import org.sonar.java.checks.SynchronizationOnStringOrBoxedCheck;
 import sorald.ProcessorAnnotation;
+import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.declaration.CtExecutable;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.declaration.ModifierKind;
@@ -20,6 +21,7 @@ import spoon.reflect.declaration.CtMethod;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 @ProcessorAnnotation(key = 1860, description = "Synchronization should not be based on Strings or boxed primitives")
 public class SynchronizationOnStringOrBoxedProcessor extends SoraldAbstractProcessor<CtSynchronized> {
@@ -30,6 +32,10 @@ public class SynchronizationOnStringOrBoxedProcessor extends SoraldAbstractProce
         super(originalFilesPath, new SynchronizationOnStringOrBoxedCheck());
         this.old2NewFields = new HashMap<>();
         this.old2NewMethods = new HashMap<>();
+    }
+
+    public SynchronizationOnStringOrBoxedProcessor(List<Node> segment) {
+        super(segment, new SynchronizationOnStringOrBoxedCheck());
     }
 
     @Override

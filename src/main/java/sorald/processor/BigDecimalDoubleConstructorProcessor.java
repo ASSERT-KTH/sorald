@@ -2,6 +2,7 @@ package sorald.processor;
 
 import org.sonar.java.checks.BigDecimalDoubleConstructorCheck;
 import sorald.ProcessorAnnotation;
+import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
@@ -17,6 +18,10 @@ public class BigDecimalDoubleConstructorProcessor extends SoraldAbstractProcesso
 	public BigDecimalDoubleConstructorProcessor(String originalFilesPath) {
 		super(originalFilesPath, new BigDecimalDoubleConstructorCheck());
 	}
+
+	public BigDecimalDoubleConstructorProcessor(List<Node> segment) {
+        super(segment, new BigDecimalDoubleConstructorCheck());
+    }
 
 	@Override
 	public boolean isToBeProcessed(CtConstructorCall cons) {

@@ -3,6 +3,7 @@ package sorald.processor;
 import org.sonar.java.checks.SelfAssignementCheck;
 
 import sorald.ProcessorAnnotation;
+import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.factory.Factory;
 
 import spoon.reflect.code.CtExpression;
@@ -16,12 +17,18 @@ import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.declaration.CtType;
 
+import java.util.List;
+
 @ProcessorAnnotation(key = 1656, description = "Variables should not be self-assigned")
 public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignment<?,?>> {
 
 	public SelfAssignementProcessor(String originalFilesPath) {
 		super(originalFilesPath, new SelfAssignementCheck());
 	}
+
+	public SelfAssignementProcessor(List<Node> segment) {
+        super(segment, new SelfAssignementCheck());
+    }
 
 	@Override
 	public boolean isToBeProcessed(CtAssignment<?,?> candidate) {

@@ -2,6 +2,7 @@ package sorald.processor;
 
 import org.sonar.java.checks.CompareStringsBoxedTypesWithEqualsCheck;
 import sorald.ProcessorAnnotation;
+import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.declaration.CtElement;
@@ -9,12 +10,18 @@ import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.reference.CtTypeReference;
 
+import java.util.List;
+
 @ProcessorAnnotation(key = 4973, description = "Strings and Boxed types should be compared using \"equals()\"")
 public class CompareStringsBoxedTypesWithEqualsProcessor extends SoraldAbstractProcessor<CtElement> {
 
 	public CompareStringsBoxedTypesWithEqualsProcessor(String originalFilesPath) {
 		super(originalFilesPath, new CompareStringsBoxedTypesWithEqualsCheck());
 	}
+
+	public CompareStringsBoxedTypesWithEqualsProcessor(List<Node> segment) {
+        super(segment, new CompareStringsBoxedTypesWithEqualsCheck());
+    }
 
 	@Override
 	public boolean isToBeProcessed(CtElement candidate) {

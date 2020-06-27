@@ -2,6 +2,7 @@ package sorald.processor;
 
 import org.sonar.java.se.checks.UnclosedResourcesCheck;
 import sorald.ProcessorAnnotation;
+import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtConstructorCall;
@@ -15,12 +16,18 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.path.CtRole;
 import spoon.reflect.reference.CtVariableReference;
 
+import java.util.List;
+
 @ProcessorAnnotation(key = 2095, description = "Resources should be closed")
 public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstructorCall> {
 
 	public UnclosedResourcesProcessor(String originalFilesPath) {
 		super(originalFilesPath, new UnclosedResourcesCheck());
 	}
+
+	public UnclosedResourcesProcessor(List<Node> segment) {
+        super(segment, new UnclosedResourcesCheck());
+    }
 
 	@Override
 	public boolean isToBeProcessed(CtConstructorCall element) {

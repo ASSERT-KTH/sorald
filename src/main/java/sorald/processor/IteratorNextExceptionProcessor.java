@@ -2,6 +2,7 @@ package sorald.processor;
 
 import org.sonar.java.checks.IteratorNextExceptionCheck;
 import sorald.ProcessorAnnotation;
+import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
@@ -14,6 +15,7 @@ import spoon.reflect.reference.CtTypeReference;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.List;
 
 @ProcessorAnnotation(key = 2272, description = "\"Iterator.next()\" methods should throw \"NoSuchElementException\"")
 public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMethod> {
@@ -21,6 +23,10 @@ public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMe
 	public IteratorNextExceptionProcessor(String originalFilesPath) {
 		super(originalFilesPath, new IteratorNextExceptionCheck());
 	}
+
+	public IteratorNextExceptionProcessor(List<Node> segment) {
+        super(segment, new IteratorNextExceptionCheck());
+    }
 
 	/**
 	 * @param candidate - Every method of the scanned file
