@@ -1,20 +1,21 @@
 package sorald.explanation;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.maven.cli.MavenCli;
 import sorald.explanation.models.CloverReportForFile;
 import sorald.explanation.models.ExecutionTraceChanges;
 import sorald.explanation.utils.CloverHelper;
 import sorald.explanation.utils.GumtreeComparison;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.util.List;
 
 public class ExplanationGenerator {
+    private static final String MAVEN_CLOVER_COMMAND = "{{maven-path}} " +
+            "-f \"{{path}}\" clean clover:setup test clover:aggregate " +
+            "clover:clover -DtestFailureIgnore=true -fail-never";
+    private static final String PATH_PLACEHOLDER = "{{path}}";
+    private static final String MAVEN_PATH_PLACEHOLDER = "{{maven-path}}";
     private static final String EXPLANATION_TEMPLATE_File = "explanation-template.html";
     private static final String CLOVER_REPORT_FILENAME = "clover.xml";
     private static final String CLOVER_REPORT_PATH = "target/site/clover/" + CLOVER_REPORT_FILENAME;
@@ -24,25 +25,42 @@ public class ExplanationGenerator {
     private static final String LINE_CODE_PLACEHOLDER = "{{code}}";
     private static final String OLD_CODE_PLACEHOLDER = "{{old-code}}";
     private static final String NEW_CODE_PLACEHOLDER = "{{new-code}}";
+    private static final String EXPLANATION_FILENAME = "explanation.html";
+    private static final String OLD_CLOVER_REPORT_FILENAME = "old-clover-report.xml";
+    private static final String NEW_CLOVER_REPORT_FILENAME = "new-clover-report.xml";
+
+    private String mavenPath;
 
     private static ExplanationGenerator _instance;
 
-    public static ExplanationGenerator getInstance() {
+    public static ExplanationGenerator getInstance(String mavenPath) {
         if (_instance == null)
-            _instance = new ExplanationGenerator();
+            _instance = new ExplanationGenerator(mavenPath);
         return _instance;
     }
 
-    private void runTestsAndSaveCloverReport
+    public ExplanationGenerator(String mavenPath){
+        this.mavenPath = mavenPath;
+    }
+
+    public void runTestsAndSaveCloverReport
             (
                     String projectPath,
                     String outputPath
             ) throws Exception {
-        MavenCli cli = new MavenCli();
-        System.setProperty("maven.multiModuleProjectDirectory", projectPath);
-        cli.doMain(new String[]{"clean", "clover:setup", "test", "clover:aggregate", "clover:clover",
-                        "-DtestFailureIgnore=true", "-fail-never"},
-                projectPath, System.out, System.err);
+
+        Runtime rt = Runtime.getRuntime();
+
+        String mavenCommand = MAVEN_CLOVER_COMMAND.replace(MAVEN_PATH_PLACEHOLDER, mavenPath)
+                .replace(PATH_PLACEHOLDER, projectPath);
+        System.out.println("Executing: " + mavenCommand);
+        Process pr = rt.exec(mavenCommand);
+
+        BufferedReader stdInput = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+        String s = null;
+        while ((s = stdInput.readLine()) != null) {
+            System.out.println(s);
+        }
 
         String generatedCloverReportPath = projectPath + File.separator + CLOVER_REPORT_PATH;
         File cloverReportFile = new File(generatedCloverReportPath);
@@ -124,37 +142,65 @@ public class ExplanationGenerator {
         toBePrinted = toBePrinted.replace(NEW_CODE_PLACEHOLDER, newCodeSw.toString());
         newCodeSw.close();
 
-        FileUtils.writeStringToFile(new File(outputPath), toBePrinted);
+        FileUtils.writeStringToFile(new File(outputPath + File.separator + EXPLANATION_FILENAME), toBePrinted);
     }
 
-    public static void main(String[] args) throws Exception {
-        String oldRepoPath = "C:\\other\\daneshgah\\phd-kth\\projects\\explanation generation\\tmp\\photon",
-                newRepoPath = "C:\\other\\daneshgah\\phd-kth\\projects\\explanation generation\\tmp\\photon2",
-                changedFilePath = "src\\main\\java\\de\\komoot\\photon\\PhotonDoc.java",
-                tmpDirPath = "C:\\other\\daneshgah\\phd-kth\\projects\\explanation generation\\tmp\\temp",
-                outputPath = "C:\\other\\daneshgah\\phd-kth\\projects\\explanation generation\\tmp\\temp\\explanation.html";
-
-        String oldReportFileName = "old-clover-report", newReportFileName = "new-clover-report";
-
-
-        String oldReportFilePath = tmpDirPath + File.separator + oldReportFileName,
-                newReportFilePath = tmpDirPath + File.separator + newReportFileName;
+    private void generateExplanation
+            (
+                    String oldRepoPath,
+                    String newRepoPath,
+                    String changedFilePath,
+                    String outputDirPath
+            ) throws Exception {
+        String oldReportFilePath = outputDirPath + File.separator + OLD_CLOVER_REPORT_FILENAME,
+                newReportFilePath = outputDirPath + File.separator + NEW_CLOVER_REPORT_FILENAME;
         String oldChangedFilePath = oldRepoPath + File.separator + changedFilePath,
                 newChangedFilePath = newRepoPath + File.separator + changedFilePath;
 
 
-        ExplanationGenerator.getInstance().printCloverReport(oldRepoPath, oldReportFilePath);
-        ExplanationGenerator.getInstance().printCloverReport(newRepoPath, newReportFilePath);
+        // computing and printing clover-report for old and new versions of the project
+        printCloverReport(oldRepoPath, oldReportFilePath);
+        printCloverReport(newRepoPath, newReportFilePath);
 
 
+        // loading the clover report to be used in next steps
         CloverReportForFile oldReport = new CloverReportForFile(oldReportFilePath, oldChangedFilePath),
                 newReport = new CloverReportForFile(newReportFilePath, newChangedFilePath);
 
 
+        // using gumtree-ast-diff to map the old and new code elements
         GumtreeComparison gtc = new GumtreeComparison(oldChangedFilePath, newChangedFilePath);
 
+
+        // computing the execution trace changes
         ExecutionTraceChanges etc = new ExecutionTraceChanges(oldReport, newReport, gtc);
 
-        ExplanationGenerator.getInstance().generateOutput(oldChangedFilePath, newChangedFilePath, outputPath, etc);
+
+        // printing the execution trace changes in the desired format
+        generateOutput(oldChangedFilePath, newChangedFilePath, outputDirPath, etc);
+    }
+
+    public static void main(String[] args) throws Exception {
+
+    }
+
+    private static void testGenerateExplanation() throws Exception {
+        String oldRepoPath = "C:\\other\\daneshgah\\phd-kth\\projects\\explanation generation\\tmp\\photon",
+                newRepoPath = "C:\\other\\daneshgah\\phd-kth\\projects\\explanation generation\\tmp\\photon2",
+                changedFilePath = "src\\main\\java\\de\\komoot\\photon\\PhotonDoc.java",
+                outputDirPath = "C:\\other\\daneshgah\\phd-kth\\projects\\explanation generation\\tmp\\temp";
+
+
+        getInstance("C:\\Program Files (x86)\\apache\\apache-maven-3.6.2\\bin\\mvn.cmd")
+                .generateExplanation(oldRepoPath, newRepoPath, changedFilePath, outputDirPath);
+        return;
+    }
+
+    public String getMavenPath() {
+        return mavenPath;
+    }
+
+    public void setMavenPath(String mavenPath) {
+        this.mavenPath = mavenPath;
     }
 }
