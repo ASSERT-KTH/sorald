@@ -3,7 +3,10 @@ package sorald.explanation;
 import com.google.gson.*;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.Git;
+import org.xml.sax.SAXException;
+import sorald.explanation.utils.CloverHelper;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.util.*;
 
@@ -12,18 +15,29 @@ public class RepoCompilationAnalyzerMain {
 //        args = new String[] {"C:\\other\\daneshgah\\phd-kth\\projects\\explanation generation\\tmp\\repos.txt",
 //                "C:\\other\\daneshgah\\phd-kth\\projects\\explanation generation\\tmp\\repo",
 //                "C:\\other\\daneshgah\\phd-kth\\projects\\explanation generation\\tmp\\output"};
-        String reposPath = args[0];
-        File cloneDir = new File(args[1]), outputDir = new File(args[2]);
-        String resultsPath = args[2] + File.separator + "results.json";
-        String mavenPath = args[3];
+//        String reposPath = args[0];
+//        File cloneDir = new File(args[1]), outputDir = new File(args[2]);
+//        String resultsPath = args[2] + File.separator + "results.json";
+//        String mavenPath = args[3];
+//
+//        analyzeRepos(reposPath, cloneDir, outputDir, resultsPath, mavenPath);
 
-        analyzeRepos(reposPath, cloneDir, outputDir, resultsPath, mavenPath);
+        summarizeResults();
     }
 
-    private static void summarizeResults() throws FileNotFoundException {
+    private static void summarizeResults() throws IOException, ParserConfigurationException, SAXException {
         File resultsDir = new File("experimentation/repositories");
 
         File[] files = resultsDir.listFiles();
+
+        Set<String> coveredCommitIds = new HashSet<>();
+        for (File file : files) {
+            if (!file.getName().startsWith("partial-result") && !file.getName().startsWith("results")) {
+                if(CloverHelper.getInstance().isAnythingCovered(file)){
+                    coveredCommitIds.add(file.getName().split("-")[0]);
+                }
+            }
+        }
 
         Map<String, Boolean> results = new HashMap<>();
         for (File file : files) {
@@ -32,7 +46,8 @@ public class RepoCompilationAnalyzerMain {
 
                 while(sc.hasNextLine()){
                     String line = sc.nextLine();
-                    results.put(line.split(" ")[0] + ":::" + line.split(" ")[1],
+                    results.put(line.split(" ")[0] + ":::" + line.split(" ")[1] + ":::"
+                                    + coveredCommitIds.contains(line.split(" ")[1]),
                             Boolean.parseBoolean(line.split(" ")[2]));
                 }
 
@@ -116,6 +131,10 @@ public class RepoCompilationAnalyzerMain {
             JsonObject repoResult = new JsonObject();
             repoResult.addProperty("project-addr", entry.getKey().split(":::")[0]);
             repoResult.addProperty("commit-id", entry.getKey().split(":::")[1]);
+            if(entry.getKey().split(":::").length > 2){
+                repoResult.addProperty("has-covered-code",
+                        Boolean.parseBoolean(entry.getKey().split(":::")[2]));
+            }
             repoResult.addProperty("is-clover-generated", entry.getValue());
             results.add(repoResult);
         }

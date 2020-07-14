@@ -3,6 +3,7 @@ package sorald.explanation.utils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -31,6 +32,23 @@ public class CloverHelper {
 
     public CloverHelper() throws ParserConfigurationException {
         documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+    }
+
+    public boolean isAnythingCovered(File inputPomFile) throws IOException, SAXException {
+        Document doc = documentBuilder.parse(inputPomFile);
+        doc.normalize();
+
+        NodeList projectNodes = doc.getElementsByTagName("project").item(0).getChildNodes();
+        for(int i = 0; i < projectNodes.getLength(); i++){
+            if(projectNodes.item(i).getNodeName().equals("metrics")){
+                if(Integer.parseInt(projectNodes.item(i).getAttributes()
+                        .getNamedItem("coveredstatements").getNodeValue()) > 0){
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     public void addCloverPluginToPom(File inputPomFile, File outputPomFile)
