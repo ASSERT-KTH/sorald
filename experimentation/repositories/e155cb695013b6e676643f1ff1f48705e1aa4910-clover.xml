@@ -1,0 +1,2092 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594334803179" clover="4.4.1">
+   <project name="duc-jchess 0.1.0" timestamp="1594334799881">
+      <metrics coveredelements="549" complexity="342" loc="3228" methods="202" classes="47" statements="831" packages="10" coveredconditionals="66" coveredmethods="105" elements="1189" ncloc="1914" files="45" conditionals="156" coveredstatements="378"/>
+      <package name="jchess.game.board">
+         <metrics coveredelements="162" complexity="31" loc="342" methods="17" classes="5" statements="125" coveredconditionals="22" coveredmethods="17" elements="164" ncloc="183" files="5" conditionals="22" coveredstatements="123"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/board/Board.java" name="Board.java">
+            <metrics coveredelements="22" coveredconditionals="4" complexity="10" loc="85" coveredmethods="6" methods="6" elements="23" classes="1" ncloc="35" statements="13" conditionals="4" coveredstatements="12"/>
+            <class name="Board">
+               <metrics coveredelements="22" coveredconditionals="4" complexity="10" coveredmethods="6" methods="6" elements="23" statements="13" conditionals="4" coveredstatements="12"/>
+            </class>
+            <line complexity="2" visibility="public" signature="Board()" num="16" count="22" type="method"/>
+            <line num="17" count="22" type="stmt"/>
+            <line num="18" count="22" type="stmt"/>
+            <line num="19" count="22" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="initTiles() : void" num="25" count="22" type="method"/>
+            <line num="27" count="22" type="stmt"/>
+            <line num="28" count="22" type="stmt"/>
+            <line falsecount="22" truecount="3718" num="28" type="cond"/>
+            <line num="29" count="3718" type="stmt"/>
+            <line complexity="3" visibility="public" signature="getTile(int) : Tile" num="45" count="1085" type="method"/>
+            <line num="46" count="1085" type="stmt"/>
+            <line falsecount="1080" truecount="5" num="46" type="cond"/>
+            <line num="47" count="5" type="stmt"/>
+            <line num="48" count="1080" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTile(int,int) : Tile" num="65" count="736" type="method"/>
+            <line num="66" count="736" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTile(BoardCoordinate) : Tile" num="74" count="144" type="method"/>
+            <line num="75" count="144" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTileCount() : int" num="81" count="170" type="method"/>
+            <line num="82" count="170" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/board/DefaultBoard.java" name="DefaultBoard.java">
+            <metrics coveredelements="113" coveredconditionals="18" complexity="11" loc="147" coveredmethods="1" methods="1" elements="114" classes="1" ncloc="93" statements="95" conditionals="18" coveredstatements="94"/>
+            <class name="DefaultBoard">
+               <metrics coveredelements="113" coveredconditionals="18" complexity="11" coveredmethods="1" methods="1" elements="114" statements="95" conditionals="18" coveredstatements="94"/>
+            </class>
+            <line complexity="11" visibility="protected" signature="initFigures() : void" num="36" count="6" type="method"/>
+            <line num="38" count="6" type="stmt"/>
+            <line num="40" count="6" type="stmt"/>
+            <line num="40" count="24" type="stmt"/>
+            <line falsecount="6" truecount="24" num="40" type="cond"/>
+            <line num="42" count="6" type="stmt"/>
+            <line num="42" count="12" type="stmt"/>
+            <line falsecount="6" truecount="12" num="42" type="cond"/>
+            <line num="43" count="6" type="stmt"/>
+            <line num="43" count="24" type="stmt"/>
+            <line falsecount="6" truecount="24" num="43" type="cond"/>
+            <line num="45" count="6" type="stmt"/>
+            <line num="45" count="24" type="stmt"/>
+            <line falsecount="6" truecount="24" num="45" type="cond"/>
+            <line num="46" count="6" type="stmt"/>
+            <line num="46" count="12" type="stmt"/>
+            <line falsecount="6" truecount="12" num="46" type="cond"/>
+            <line num="47" count="6" type="stmt"/>
+            <line num="47" count="24" type="stmt"/>
+            <line falsecount="6" truecount="24" num="47" type="cond"/>
+            <line num="49" count="6" type="stmt"/>
+            <line num="49" count="24" type="stmt"/>
+            <line falsecount="6" truecount="24" num="49" type="cond"/>
+            <line num="50" count="6" type="stmt"/>
+            <line num="50" count="12" type="stmt"/>
+            <line falsecount="6" truecount="12" num="50" type="cond"/>
+            <line num="51" count="6" type="stmt"/>
+            <line num="51" count="24" type="stmt"/>
+            <line falsecount="6" truecount="24" num="51" type="cond"/>
+            <line num="54" count="6" type="stmt"/>
+            <line num="55" count="6" type="stmt"/>
+            <line num="56" count="6" type="stmt"/>
+            <line num="57" count="6" type="stmt"/>
+            <line num="58" count="6" type="stmt"/>
+            <line num="59" count="6" type="stmt"/>
+            <line num="61" count="6" type="stmt"/>
+            <line num="62" count="6" type="stmt"/>
+            <line num="63" count="6" type="stmt"/>
+            <line num="64" count="6" type="stmt"/>
+            <line num="65" count="6" type="stmt"/>
+            <line num="66" count="6" type="stmt"/>
+            <line num="68" count="6" type="stmt"/>
+            <line num="69" count="6" type="stmt"/>
+            <line num="70" count="6" type="stmt"/>
+            <line num="71" count="6" type="stmt"/>
+            <line num="72" count="6" type="stmt"/>
+            <line num="73" count="6" type="stmt"/>
+            <line num="76" count="6" type="stmt"/>
+            <line num="77" count="6" type="stmt"/>
+            <line num="78" count="6" type="stmt"/>
+            <line num="79" count="6" type="stmt"/>
+            <line num="80" count="6" type="stmt"/>
+            <line num="81" count="6" type="stmt"/>
+            <line num="82" count="6" type="stmt"/>
+            <line num="84" count="6" type="stmt"/>
+            <line num="85" count="6" type="stmt"/>
+            <line num="86" count="6" type="stmt"/>
+            <line num="87" count="6" type="stmt"/>
+            <line num="88" count="6" type="stmt"/>
+            <line num="89" count="6" type="stmt"/>
+            <line num="90" count="6" type="stmt"/>
+            <line num="92" count="6" type="stmt"/>
+            <line num="93" count="6" type="stmt"/>
+            <line num="94" count="6" type="stmt"/>
+            <line num="95" count="6" type="stmt"/>
+            <line num="96" count="6" type="stmt"/>
+            <line num="97" count="6" type="stmt"/>
+            <line num="98" count="6" type="stmt"/>
+            <line num="101" count="6" type="stmt"/>
+            <line num="102" count="6" type="stmt"/>
+            <line num="103" count="6" type="stmt"/>
+            <line num="104" count="6" type="stmt"/>
+            <line num="105" count="6" type="stmt"/>
+            <line num="106" count="6" type="stmt"/>
+            <line num="108" count="6" type="stmt"/>
+            <line num="109" count="6" type="stmt"/>
+            <line num="110" count="6" type="stmt"/>
+            <line num="111" count="6" type="stmt"/>
+            <line num="112" count="6" type="stmt"/>
+            <line num="113" count="6" type="stmt"/>
+            <line num="115" count="6" type="stmt"/>
+            <line num="116" count="6" type="stmt"/>
+            <line num="117" count="6" type="stmt"/>
+            <line num="118" count="6" type="stmt"/>
+            <line num="119" count="6" type="stmt"/>
+            <line num="120" count="6" type="stmt"/>
+            <line num="123" count="6" type="stmt"/>
+            <line num="124" count="6" type="stmt"/>
+            <line num="125" count="6" type="stmt"/>
+            <line num="126" count="6" type="stmt"/>
+            <line num="127" count="6" type="stmt"/>
+            <line num="128" count="6" type="stmt"/>
+            <line num="129" count="6" type="stmt"/>
+            <line num="130" count="6" type="stmt"/>
+            <line num="131" count="6" type="stmt"/>
+            <line num="134" count="6" type="stmt"/>
+            <line num="135" count="6" type="stmt"/>
+            <line num="136" count="6" type="stmt"/>
+            <line num="137" count="6" type="stmt"/>
+            <line num="138" count="6" type="stmt"/>
+            <line num="139" count="6" type="stmt"/>
+            <line num="140" count="6" type="stmt"/>
+            <line num="141" count="6" type="stmt"/>
+            <line num="142" count="6" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/board/InvalidBoardCoordinateException.java" name="InvalidBoardCoordinateException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="8" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="InvalidBoardCoordinateException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/board/Tile.java" name="Tile.java">
+            <metrics coveredelements="17" coveredconditionals="0" complexity="6" loc="68" coveredmethods="6" methods="6" elements="17" classes="1" ncloc="31" statements="11" conditionals="0" coveredstatements="11"/>
+            <class name="Tile">
+               <metrics coveredelements="17" coveredconditionals="0" complexity="6" coveredmethods="6" methods="6" elements="17" statements="11" conditionals="0" coveredstatements="11"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Tile()" num="17" count="3722" type="method"/>
+            <line num="18" count="3722" type="stmt"/>
+            <line num="19" count="3722" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPiece() : Piece" num="26" count="387" type="method"/>
+            <line num="27" count="387" type="stmt"/>
+            <line complexity="1" visibility="public" signature="placePiece(Piece) : Piece" num="37" count="424" type="method"/>
+            <line num="38" count="424" type="stmt"/>
+            <line num="39" count="424" type="stmt"/>
+            <line num="40" count="424" type="stmt"/>
+            <line complexity="1" visibility="public" signature="removePiece() : Piece" num="47" count="6" type="method"/>
+            <line num="48" count="6" type="stmt"/>
+            <line num="49" count="6" type="stmt"/>
+            <line num="50" count="6" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addPromotionForPlayer(int) : void" num="58" count="290" type="method"/>
+            <line num="59" count="290" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isPromotionTileFor(int) : boolean" num="65" count="10" type="method"/>
+            <line num="66" count="10" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/board/TileFilter.java" name="TileFilter.java">
+            <metrics coveredelements="10" coveredconditionals="0" complexity="4" loc="34" coveredmethods="4" methods="4" elements="10" classes="1" ncloc="21" statements="6" conditionals="0" coveredstatements="6"/>
+            <class name="TileFilter">
+               <metrics coveredelements="10" coveredconditionals="0" complexity="4" coveredmethods="4" methods="4" elements="10" statements="6" conditionals="0" coveredstatements="6"/>
+            </class>
+            <line complexity="1" visibility="public" signature="TileFilter(BoardCoordinate[],BoardCoordinate[],BoardCoordinate[])" num="17" count="423" type="method"/>
+            <line num="18" count="423" type="stmt"/>
+            <line num="19" count="423" type="stmt"/>
+            <line num="20" count="423" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRepeat() : BoardCoordinate[]" num="23" count="12" type="method"/>
+            <line num="24" count="12" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSingle() : BoardCoordinate[]" num="27" count="14" type="method"/>
+            <line num="28" count="14" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSingleKill() : BoardCoordinate[]" num="31" count="12" type="method"/>
+            <line num="32" count="12" type="stmt"/>
+         </file>
+      </package>
+      <package name="tests.game">
+         <metrics coveredelements="1" complexity="7" loc="45" methods="7" classes="1" statements="0" coveredconditionals="0" coveredmethods="1" elements="7" ncloc="27" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/game/IOSystemMock.java" name="IOSystemMock.java">
+            <metrics coveredelements="1" coveredconditionals="0" complexity="7" loc="45" coveredmethods="1" methods="7" elements="7" classes="1" ncloc="27" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="IOSystemMock">
+               <metrics coveredelements="1" coveredconditionals="0" complexity="7" coveredmethods="1" methods="7" elements="7" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="handleSelectEvent(SelectEvent) : void" num="11" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="handleUpdateBoardEvent(UpdateBoardEvent) : void" num="16" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="handlePossibleMovesEvent(PossibleMovesEvent) : void" num="21" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="handlePossiblePromotionsEvent(PossiblePromotionsEvent) : void" num="26" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="handlePromotionSelectEvent(PromotionSelectEvent) : void" num="31" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="handleUpdateStatusMessageEvent(UpdateStatusMessageEvent) : void" num="36" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="setPlayer(Player) : void" num="41" count="48" type="method"/>
+         </file>
+      </package>
+      <package name="jchess">
+         <metrics coveredelements="0" complexity="4" loc="67" methods="4" classes="1" statements="14" coveredconditionals="0" coveredmethods="0" elements="18" ncloc="51" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/Application.java" name="Application.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="67" coveredmethods="0" methods="4" elements="18" classes="1" ncloc="51" statements="14" conditionals="0" coveredstatements="0"/>
+            <class name="Application">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="18" statements="14" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="Application()" num="35" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="main(String[]) : void" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="run() : void" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="handleNewGame(NewGameEvent) : void" num="56" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="jchess.game.pieces">
+         <metrics coveredelements="58" complexity="15" loc="353" methods="11" classes="7" statements="46" coveredconditionals="1" coveredmethods="11" elements="59" ncloc="131" files="7" conditionals="2" coveredstatements="46"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/pieces/Bishop.java" name="Bishop.java">
+            <metrics coveredelements="5" coveredconditionals="0" complexity="1" loc="44" coveredmethods="1" methods="1" elements="5" classes="1" ncloc="14" statements="4" conditionals="0" coveredstatements="4"/>
+            <class name="Bishop">
+               <metrics coveredelements="5" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="5" statements="4" conditionals="0" coveredstatements="4"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Bishop(int)" num="35" count="74" type="method"/>
+            <line num="36" count="74" type="stmt"/>
+            <line num="37" count="74" type="stmt"/>
+            <line num="38" count="74" type="stmt"/>
+            <line num="42" count="74" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/pieces/King.java" name="King.java">
+            <metrics coveredelements="5" coveredconditionals="0" complexity="1" loc="46" coveredmethods="1" methods="1" elements="5" classes="1" ncloc="16" statements="4" conditionals="0" coveredstatements="4"/>
+            <class name="King">
+               <metrics coveredelements="5" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="5" statements="4" conditionals="0" coveredstatements="4"/>
+            </class>
+            <line complexity="1" visibility="public" signature="King(int)" num="35" count="22" type="method"/>
+            <line num="36" count="22" type="stmt"/>
+            <line num="37" count="22" type="stmt"/>
+            <line num="38" count="22" type="stmt"/>
+            <line num="44" count="22" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/pieces/Knight.java" name="Knight.java">
+            <metrics coveredelements="5" coveredconditionals="0" complexity="1" loc="46" coveredmethods="1" methods="1" elements="5" classes="1" ncloc="16" statements="4" conditionals="0" coveredstatements="4"/>
+            <class name="Knight">
+               <metrics coveredelements="5" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="5" statements="4" conditionals="0" coveredstatements="4"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Knight(int)" num="35" count="36" type="method"/>
+            <line num="36" count="36" type="stmt"/>
+            <line num="37" count="36" type="stmt"/>
+            <line num="38" count="36" type="stmt"/>
+            <line num="44" count="36" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/pieces/Pawn.java" name="Pawn.java">
+            <metrics coveredelements="26" coveredconditionals="1" complexity="6" loc="74" coveredmethods="2" methods="2" elements="27" classes="1" ncloc="38" statements="23" conditionals="2" coveredstatements="23"/>
+            <class name="Pawn">
+               <metrics coveredelements="26" coveredconditionals="1" complexity="6" coveredmethods="2" methods="2" elements="27" statements="23" conditionals="2" coveredstatements="23"/>
+            </class>
+            <line complexity="4" visibility="public" signature="Pawn(int)" num="37" count="227" type="method"/>
+            <line num="38" count="227" type="stmt"/>
+            <line num="39" count="227" type="stmt"/>
+            <line num="40" count="227" type="stmt"/>
+            <line num="41" count="227" type="stmt"/>
+            <line num="42" count="86" type="stmt"/>
+            <line num="43" count="86" type="stmt"/>
+            <line num="44" count="86" type="stmt"/>
+            <line num="45" count="86" type="stmt"/>
+            <line num="46" count="86" type="stmt"/>
+            <line num="49" count="81" type="stmt"/>
+            <line num="50" count="81" type="stmt"/>
+            <line num="51" count="81" type="stmt"/>
+            <line num="52" count="81" type="stmt"/>
+            <line num="53" count="81" type="stmt"/>
+            <line num="56" count="60" type="stmt"/>
+            <line num="57" count="60" type="stmt"/>
+            <line num="58" count="60" type="stmt"/>
+            <line num="59" count="60" type="stmt"/>
+            <line num="60" count="60" type="stmt"/>
+            <line complexity="2" visibility="public" signature="postMoveCallback() : void" num="66" count="2" type="method"/>
+            <line num="68" count="2" type="stmt"/>
+            <line falsecount="0" truecount="2" num="68" type="cond"/>
+            <line num="69" count="2" type="stmt"/>
+            <line num="70" count="2" type="stmt"/>
+            <line num="71" count="2" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/pieces/Piece.java" name="Piece.java">
+            <metrics coveredelements="7" coveredconditionals="0" complexity="4" loc="52" coveredmethods="4" methods="4" elements="7" classes="1" ncloc="17" statements="3" conditionals="0" coveredstatements="3"/>
+            <class name="Piece">
+               <metrics coveredelements="7" coveredconditionals="0" complexity="4" coveredmethods="4" methods="4" elements="7" statements="3" conditionals="0" coveredstatements="3"/>
+            </class>
+            <line complexity="1" visibility="package" signature="Piece(int)" num="36" count="421" type="method"/>
+            <line num="37" count="421" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTileFilter() : TileFilter" num="40" count="30" type="method"/>
+            <line num="41" count="30" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlayerID() : int" num="44" count="38" type="method"/>
+            <line num="45" count="38" type="stmt"/>
+            <line complexity="1" visibility="public" signature="postMoveCallback() : void" num="48" count="1" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/pieces/Queen.java" name="Queen.java">
+            <metrics coveredelements="5" coveredconditionals="0" complexity="1" loc="46" coveredmethods="1" methods="1" elements="5" classes="1" ncloc="16" statements="4" conditionals="0" coveredstatements="4"/>
+            <class name="Queen">
+               <metrics coveredelements="5" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="5" statements="4" conditionals="0" coveredstatements="4"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Queen(int)" num="35" count="23" type="method"/>
+            <line num="36" count="23" type="stmt"/>
+            <line num="37" count="23" type="stmt"/>
+            <line num="38" count="23" type="stmt"/>
+            <line num="44" count="23" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/pieces/Rook.java" name="Rook.java">
+            <metrics coveredelements="5" coveredconditionals="0" complexity="1" loc="45" coveredmethods="1" methods="1" elements="5" classes="1" ncloc="14" statements="4" conditionals="0" coveredstatements="4"/>
+            <class name="Rook">
+               <metrics coveredelements="5" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="5" statements="4" conditionals="0" coveredstatements="4"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Rook(int)" num="36" count="39" type="method"/>
+            <line num="37" count="39" type="stmt"/>
+            <line num="38" count="39" type="stmt"/>
+            <line num="39" count="39" type="stmt"/>
+            <line num="43" count="39" type="stmt"/>
+         </file>
+      </package>
+      <package name="jchess.gui">
+         <metrics coveredelements="0" complexity="135" loc="1268" methods="77" classes="10" statements="388" coveredconditionals="0" coveredmethods="0" elements="539" ncloc="837" files="10" conditionals="74" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/gui/AboutBox.java" name="AboutBox.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="74" coveredmethods="0" methods="6" elements="25" classes="1" ncloc="61" statements="19" conditionals="0" coveredstatements="0"/>
+            <class name="AboutBox">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="6" elements="25" statements="19" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AboutBox()" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="actionPerformed(ActionEvent) : void" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="main(String[]) : void" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="onClose() : void" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="openWebsite(JLabel,String) : void" num="60" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="mouseClicked(MouseEvent) : void" num="64" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/gui/BoardView.java" name="BoardView.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="43" loc="319" coveredmethods="0" methods="20" elements="167" classes="1" ncloc="233" statements="117" conditionals="30" coveredstatements="0"/>
+            <class name="BoardView">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="43" coveredmethods="0" methods="20" elements="167" statements="117" conditionals="30" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="package" signature="&lt;clinit&gt;, line 68()" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="BoardView()" num="80" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="mouseClicked(MouseEvent) : void" num="91" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getGame() : Game" num="114" count="0" type="method"/>
+            <line num="115" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="paintComponent(Graphics) : void" num="119" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(Graphics) : void" num="134" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPreferredSize() : Dimension" num="140" count="0" type="method"/>
+            <line num="142" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMaximumSize() : Dimension" num="146" count="0" type="method"/>
+            <line num="148" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStatusMessageOverlay() : BufferedImage" num="151" count="0" type="method"/>
+            <line num="152" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStatusMessageOverlay(BufferedImage) : void" num="155" count="0" type="method"/>
+            <line num="156" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStatusAnimationTimer() : Timer" num="159" count="0" type="method"/>
+            <line num="160" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStatusMessage() : String" num="163" count="0" type="method"/>
+            <line num="164" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMinimumSize() : Dimension" num="167" count="0" type="method"/>
+            <line num="169" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWidth() : int" num="173" count="0" type="method"/>
+            <line num="174" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHeight() : int" num="178" count="0" type="method"/>
+            <line num="179" count="0" type="stmt"/>
+            <line complexity="11" visibility="package" signature="renderPiece(Graphics2D,Piece,int,int) : void" num="183" count="0" type="method"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="188" type="cond"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="200" type="cond"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="202" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="202" type="cond"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="204" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="204" type="cond"/>
+            <line num="205" count="0" type="stmt"/>
+            <line num="206" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="206" type="cond"/>
+            <line num="207" count="0" type="stmt"/>
+            <line num="208" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="208" type="cond"/>
+            <line num="209" count="0" type="stmt"/>
+            <line num="210" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="210" type="cond"/>
+            <line num="211" count="0" type="stmt"/>
+            <line complexity="8" visibility="package" signature="handleUpdateBoardEvent(UpdateBoardEvent) : void" num="216" count="0" type="method"/>
+            <line num="219" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="219" type="cond"/>
+            <line num="220" count="0" type="stmt"/>
+            <line num="222" count="0" type="stmt"/>
+            <line num="223" count="0" type="stmt"/>
+            <line num="226" count="0" type="stmt"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="230" count="0" type="stmt"/>
+            <line num="233" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="233" type="cond"/>
+            <line num="234" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="234" type="cond"/>
+            <line num="235" count="0" type="stmt"/>
+            <line num="236" count="0" type="stmt"/>
+            <line num="237" count="0" type="stmt"/>
+            <line num="238" count="0" type="stmt"/>
+            <line num="239" count="0" type="stmt"/>
+            <line num="241" count="0" type="stmt"/>
+            <line num="246" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="246" type="cond"/>
+            <line num="247" count="0" type="stmt"/>
+            <line num="248" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="248" type="cond"/>
+            <line num="249" count="0" type="stmt"/>
+            <line num="250" count="0" type="stmt"/>
+            <line num="251" count="0" type="stmt"/>
+            <line num="252" count="0" type="stmt"/>
+            <line num="254" count="0" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line num="260" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="handlePossibleMovesEvent(PossibleMovesEvent) : void" num="264" count="0" type="method"/>
+            <line num="267" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="267" type="cond"/>
+            <line num="268" count="0" type="stmt"/>
+            <line num="269" count="0" type="stmt"/>
+            <line num="270" count="0" type="stmt"/>
+            <line num="271" count="0" type="stmt"/>
+            <line num="272" count="0" type="stmt"/>
+            <line num="273" count="0" type="stmt"/>
+            <line num="274" count="0" type="stmt"/>
+            <line num="275" count="0" type="stmt"/>
+            <line num="278" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="handleUpdateStatusMessageEvent(UpdateStatusMessageEvent) : void" num="283" count="0" type="method"/>
+            <line num="286" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="286" type="cond"/>
+            <line num="287" count="0" type="stmt"/>
+            <line num="288" count="0" type="stmt"/>
+            <line num="289" count="0" type="stmt"/>
+            <line num="290" count="0" type="stmt"/>
+            <line complexity="3" visibility="package" signature="handlePossiblePromotionsEvent(PossiblePromotionsEvent) : void" num="294" count="0" type="method"/>
+            <line num="297" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="297" type="cond"/>
+            <line num="298" count="0" type="stmt"/>
+            <line num="300" count="0" type="stmt"/>
+            <line num="301" count="0" type="stmt"/>
+            <line num="302" count="0" type="stmt"/>
+            <line num="303" count="0" type="stmt"/>
+            <line num="305" count="0" type="stmt"/>
+            <line num="309" count="0" type="stmt"/>
+            <line num="310" count="0" type="stmt"/>
+            <line num="311" count="0" type="stmt"/>
+            <line num="313" count="0" type="stmt"/>
+            <line num="314" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/gui/DrawLocalSettings.java" name="DrawLocalSettings.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="130" coveredmethods="0" methods="3" elements="52" classes="1" ncloc="67" statements="41" conditionals="8" coveredstatements="0"/>
+            <class name="DrawLocalSettings">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="3" elements="52" statements="41" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="DrawLocalSettings(NewGameDialog)" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="actionPerformed(ActionEvent) : void" num="90" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="92" type="cond"/>
+            <line num="93" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="93" type="cond"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="97" type="cond"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="101" type="cond"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="trimString(JTextField) : String" num="121" count="0" type="method"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/gui/GUI.java" name="GUI.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="197" coveredmethods="0" methods="9" elements="77" classes="1" ncloc="130" statements="64" conditionals="4" coveredstatements="0"/>
+            <class name="GUI">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="9" elements="77" statements="64" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GUI()" num="61" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createNewGame(String,String,String) : void" num="79" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="showAboutBox() : void" num="104" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="105" type="cond"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="actionPerformed(ActionEvent) : void" num="118" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="120" type="cond"/>
+            <line num="121" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="showNewGameDialog() : void" num="125" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="initComponents() : void" num="132" count="0" type="method"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="createMenus() : void" num="158" count="0" type="method"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="actionPerformed(ActionEvent) : void" num="170" count="0" type="method"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="actionPerformed(ActionEvent) : void" num="185" count="0" type="method"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/gui/GUIConnector.java" name="GUIConnector.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="20" loc="88" coveredmethods="0" methods="8" elements="40" classes="1" ncloc="68" statements="20" conditionals="12" coveredstatements="0"/>
+            <class name="GUIConnector">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="20" coveredmethods="0" methods="8" elements="40" statements="20" conditionals="12" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GUIConnector()" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPlayer(Player) : void" num="28" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="handleSelectEvent(SelectEvent) : void" num="33" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="36" type="cond"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="handleUpdateBoardEvent(UpdateBoardEvent) : void" num="42" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="handleUpdateStatusMessageEvent(UpdateStatusMessageEvent) : void" num="51" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="54" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="handlePossibleMovesEvent(PossibleMovesEvent) : void" num="61" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="64" type="cond"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="handlePossiblePromotionsEvent(PossiblePromotionsEvent) : void" num="71" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="74" type="cond"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="handlePromotionSelectEvent(PromotionSelectEvent) : void" num="80" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="83" type="cond"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/gui/GameTab.java" name="GameTab.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="73" coveredmethods="0" methods="4" elements="13" classes="1" ncloc="26" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="GameTab">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="13" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GameTab(BoardView)" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getGame() : Game" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setGame(Game) : void" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBoardView() : BoardView" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/gui/NewGameDialog.java" name="NewGameDialog.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="81" coveredmethods="0" methods="3" elements="12" classes="1" ncloc="27" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="NewGameDialog">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="12" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="NewGameDialog(GUI)" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="initComponents() : void" num="54" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createNewGame(String,String,String) : void" num="72" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/gui/StatusAnimator.java" name="StatusAnimator.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="113" coveredmethods="0" methods="6" elements="61" classes="1" ncloc="87" statements="51" conditionals="4" coveredstatements="0"/>
+            <class name="StatusAnimator">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="6" elements="61" statements="51" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="package" signature="&lt;clinit&gt;, line 26()" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="StatusAnimator(BoardView,UpdateStatusMessageEvent)" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="actionPerformed(ActionEvent) : void" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="51" type="cond"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="setColor(long,Graphics2D) : void" num="63" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="drawBackground(Graphics2D) : void" num="92" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="drawMessage(Graphics2D) : void" num="99" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="102" type="cond"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/gui/TabbedPaneIcon.java" name="TabbedPaneIcon.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="55" coveredmethods="0" methods="5" elements="29" classes="1" ncloc="42" statements="20" conditionals="4" coveredstatements="0"/>
+            <class name="TabbedPaneIcon">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="5" elements="29" statements="20" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="TabbedPaneIcon(Icon)" num="17" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="paintIcon(Component,Graphics,int,int) : void" num="23" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="39" type="cond"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getIconWidth() : int" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line complexity="1" visibility="public" signature="getIconHeight() : int" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBounds() : Rectangle" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/gui/TabbedPaneWithCreateButton.java" name="TabbedPaneWithCreateButton.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="21" loc="138" coveredmethods="0" methods="13" elements="63" classes="1" ncloc="96" statements="38" conditionals="12" coveredstatements="0"/>
+            <class name="TabbedPaneWithCreateButton">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="21" coveredmethods="0" methods="13" elements="63" statements="38" conditionals="12" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="TabbedPaneWithCreateButton(GUI)" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addTab(String,Component) : void" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mouseReleased(MouseEvent) : void" num="67" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="mousePressed(MouseEvent) : void" num="70" count="0" type="method"/>
+            <line complexity="1" visibility="private" signature="showNewGameWindow() : void" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="6" visibility="public" signature="mouseClicked(MouseEvent) : void" num="77" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="81" type="cond"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="83" type="cond"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="88" type="cond"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="91" type="cond"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mouseEntered(MouseEvent) : void" num="98" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="mouseExited(MouseEvent) : void" num="101" count="0" type="method"/>
+            <line complexity="2" visibility="private" signature="updateAddIconRect() : void" num="104" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="105" type="cond"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getAddIconRect() : Rectangle" num="113" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="imageUpdate(Image,int,int,int,int,int) : boolean" num="117" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="paint(Graphics) : void" num="124" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="128" type="cond"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(Graphics) : void" num="133" count="0" type="method"/>
+            <line num="135" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="jchess.game">
+         <metrics coveredelements="159" complexity="74" loc="458" methods="24" classes="4" statements="135" coveredconditionals="35" coveredmethods="20" elements="203" ncloc="306" files="3" conditionals="44" coveredstatements="104"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/Game.java" name="Game.java">
+            <metrics coveredelements="137" coveredconditionals="35" complexity="64" loc="326" coveredmethods="11" methods="14" elements="179" classes="1" ncloc="240" statements="121" conditionals="44" coveredstatements="91"/>
+            <class name="Game">
+               <metrics coveredelements="137" coveredconditionals="35" complexity="64" coveredmethods="11" methods="14" elements="179" statements="121" conditionals="44" coveredstatements="91"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Game()" num="47" count="16" type="method"/>
+            <line num="48" count="16" type="stmt"/>
+            <line num="49" count="16" type="stmt"/>
+            <line complexity="4" visibility="public" signature="initializeGame(String[],IOSystem[]) : void" num="58" count="16" type="method"/>
+            <line num="59" count="16" type="stmt"/>
+            <line falsecount="16" truecount="0" num="59" type="cond"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="63" count="16" type="stmt"/>
+            <line falsecount="16" truecount="48" num="63" type="cond"/>
+            <line num="64" count="48" type="stmt"/>
+            <line num="65" count="48" type="stmt"/>
+            <line num="66" count="48" type="stmt"/>
+            <line num="69" count="16" type="stmt"/>
+            <line num="70" count="16" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBoard() : Board" num="73" count="21" type="method"/>
+            <line num="74" count="21" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPossibleMovesCoordinates() : HashSet&lt;BoardCoordinate&gt;" num="82" count="93" type="method"/>
+            <line num="83" count="93" type="stmt"/>
+            <line complexity="1" visibility="private" signature="emitPossibleMovesEvent() : void" num="86" count="10" type="method"/>
+            <line num="87" count="10" type="stmt"/>
+            <line num="88" count="10" type="stmt"/>
+            <line num="89" count="10" type="stmt"/>
+            <line num="90" count="10" type="stmt"/>
+            <line complexity="1" visibility="private" signature="emitPossiblePromotionsEvent() : void" num="93" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="emitUpdateBoardEvent() : void" num="100" count="19" type="method"/>
+            <line num="101" count="19" type="stmt"/>
+            <line num="102" count="19" type="stmt"/>
+            <line num="103" count="19" type="stmt"/>
+            <line num="104" count="19" type="stmt"/>
+            <line complexity="1" visibility="private" signature="emitUpdateStatusMessageEvent(String,UpdateStatusMessageEvent.Types) : void" num="107" count="30" type="method"/>
+            <line num="108" count="30" type="stmt"/>
+            <line num="109" count="30" type="stmt"/>
+            <line num="110" count="30" type="stmt"/>
+            <line complexity="14" visibility="public" signature="handleSelectEvent(SelectEvent) : void" num="113" count="23" type="method"/>
+            <line num="115" count="23" type="stmt"/>
+            <line falsecount="0" truecount="23" num="115" type="cond"/>
+            <line num="116" count="23" type="stmt"/>
+            <line num="117" count="23" type="stmt"/>
+            <line num="119" count="23" type="stmt"/>
+            <line falsecount="3" truecount="20" num="119" type="cond"/>
+            <line num="121" count="20" type="stmt"/>
+            <line num="122" count="20" type="stmt"/>
+            <line num="123" count="20" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="128" count="20" type="stmt"/>
+            <line falsecount="10" truecount="10" num="128" type="cond"/>
+            <line num="130" count="10" type="stmt"/>
+            <line num="131" count="10" type="stmt"/>
+            <line falsecount="10" truecount="0" num="131" type="cond"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="136" count="10" type="stmt"/>
+            <line num="137" count="10" type="stmt"/>
+            <line num="141" count="3" type="stmt"/>
+            <line num="142" count="3" type="stmt"/>
+            <line num="143" count="3" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="149" count="3" type="stmt"/>
+            <line falsecount="0" truecount="3" num="149" type="cond"/>
+            <line num="151" count="3" type="stmt"/>
+            <line falsecount="0" truecount="3" num="151" type="cond"/>
+            <line num="152" count="3" type="stmt"/>
+            <line num="153" count="3" type="stmt"/>
+            <line num="154" count="3" type="stmt"/>
+            <line num="157" count="3" type="stmt"/>
+            <line falsecount="2" truecount="1" num="157" type="cond"/>
+            <line num="158" count="1" type="stmt"/>
+            <line num="161" count="3" type="stmt"/>
+            <line num="163" count="3" type="stmt"/>
+            <line num="165" count="3" type="stmt"/>
+            <line falsecount="3" truecount="9" num="165" type="cond"/>
+            <line num="166" count="9" type="stmt"/>
+            <line num="169" count="3" type="stmt"/>
+            <line num="170" count="3" type="stmt"/>
+            <line num="172" count="3" type="stmt"/>
+            <line falsecount="3" truecount="0" num="172" type="cond"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="nextPlayer() : void" num="191" count="3" type="method"/>
+            <line num="192" count="3" type="stmt"/>
+            <line num="193" count="4" type="stmt"/>
+            <line num="194" count="4" type="stmt"/>
+            <line falsecount="3" truecount="1" num="195" type="cond"/>
+            <line complexity="5" visibility="private" signature="defeatPlayer(int) : void" num="202" count="1" type="method"/>
+            <line num="203" count="1" type="stmt"/>
+            <line num="204" count="1" type="stmt"/>
+            <line falsecount="1" truecount="169" num="204" type="cond"/>
+            <line num="205" count="169" type="stmt"/>
+            <line num="206" count="169" type="stmt"/>
+            <line num="207" count="169" type="stmt"/>
+            <line falsecount="168" truecount="1" num="207" type="cond"/>
+            <line num="209" count="1" type="stmt"/>
+            <line num="212" count="0" type="stmt"/>
+            <line num="215" count="1" type="stmt"/>
+            <line complexity="3" visibility="public" signature="handlePromotionSelectEvent(PromotionSelectEvent) : void" num="220" count="0" type="method"/>
+            <line num="223" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="223" type="cond"/>
+            <line num="224" count="0" type="stmt"/>
+            <line num="226" count="0" type="stmt"/>
+            <line num="227" count="0" type="stmt"/>
+            <line num="229" count="0" type="stmt"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="232" count="0" type="stmt"/>
+            <line num="234" count="0" type="stmt"/>
+            <line complexity="28" visibility="private" signature="collectPossibleMoveCoordinates() : void" num="238" count="10" type="method"/>
+            <line num="239" count="10" type="stmt"/>
+            <line num="241" count="10" type="stmt"/>
+            <line num="243" count="10" type="stmt"/>
+            <line num="244" count="30" type="stmt"/>
+            <line num="245" count="30" type="stmt"/>
+            <line falsecount="19" truecount="93" num="245" type="cond"/>
+            <line num="253" count="93" type="stmt"/>
+            <line num="254" count="93" type="stmt"/>
+            <line num="255" count="93" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line num="261" count="93" type="stmt"/>
+            <line num="261" count="6" type="stmt"/>
+            <line falsecount="87" truecount="6" num="261" type="cond"/>
+            <line num="263" count="87" type="stmt"/>
+            <line num="266" count="87" type="stmt"/>
+            <line num="266" count="5" type="stmt"/>
+            <line falsecount="82" truecount="5" num="266" type="cond"/>
+            <line num="269" count="82" type="stmt"/>
+            <line num="274" count="10" type="stmt"/>
+            <line num="275" count="32" type="stmt"/>
+            <line num="276" count="32" type="stmt"/>
+            <line falsecount="5" truecount="27" num="276" type="cond"/>
+            <line num="284" count="27" type="stmt"/>
+            <line num="285" count="27" type="stmt"/>
+            <line num="286" count="27" type="stmt"/>
+            <line num="288" count="0" type="stmt"/>
+            <line num="290" count="27" type="stmt"/>
+            <line falsecount="0" truecount="27" num="290" type="cond"/>
+            <line num="291" count="27" type="stmt"/>
+            <line num="296" count="10" type="stmt"/>
+            <line num="297" count="27" type="stmt"/>
+            <line num="298" count="27" type="stmt"/>
+            <line falsecount="4" truecount="23" num="298" type="cond"/>
+            <line num="306" count="23" type="stmt"/>
+            <line num="307" count="23" type="stmt"/>
+            <line num="308" count="23" type="stmt"/>
+            <line num="310" count="0" type="stmt"/>
+            <line num="312" count="23" type="stmt"/>
+            <line falsecount="14" truecount="9" num="312" type="cond"/>
+            <line num="313" count="9" type="stmt"/>
+            <line complexity="1" visibility="private" signature="collectPossiblePromotions() : void" num="318" count="0" type="method"/>
+            <line num="319" count="0" type="stmt"/>
+            <line num="321" count="0" type="stmt"/>
+            <line num="322" count="0" type="stmt"/>
+            <line num="323" count="0" type="stmt"/>
+            <line num="324" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/IOSystem.java" name="IOSystem.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="34" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="19" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="IOSystem">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/game/Player.java" name="Player.java">
+            <metrics coveredelements="22" coveredconditionals="0" complexity="10" loc="98" coveredmethods="9" methods="10" elements="24" classes="2" ncloc="47" statements="14" conditionals="0" coveredstatements="13"/>
+            <class name="Player">
+               <metrics coveredelements="22" coveredconditionals="0" complexity="10" coveredmethods="9" methods="10" elements="24" statements="14" conditionals="0" coveredstatements="13"/>
+            </class>
+            <class name="Player.PlayerColor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Player(String,IOSystem,PlayerColor)" num="42" count="48" type="method"/>
+            <line num="43" count="48" type="stmt"/>
+            <line num="44" count="48" type="stmt"/>
+            <line num="45" count="48" type="stmt"/>
+            <line num="46" count="48" type="stmt"/>
+            <line num="47" count="48" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="50" count="30" type="method"/>
+            <line num="51" count="30" type="stmt"/>
+            <line complexity="1" visibility="package" signature="setName(String) : void" num="54" count="48" type="method"/>
+            <line num="55" count="48" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getGame() : Game" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setGame(Game) : void" num="62" count="48" type="method"/>
+            <line num="63" count="48" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isActive() : boolean" num="71" count="12" type="method"/>
+            <line num="72" count="12" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setActive(boolean) : void" num="75" count="25" type="method"/>
+            <line num="76" count="25" type="stmt"/>
+            <line complexity="1" visibility="package" signature="setColor(PlayerColor) : void" num="79" count="48" type="method"/>
+            <line num="80" count="48" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isDefeated() : boolean" num="90" count="4" type="method"/>
+            <line num="91" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDefeated(boolean) : void" num="95" count="1" type="method"/>
+            <line num="96" count="1" type="stmt"/>
+         </file>
+      </package>
+      <package name="jchess.eventbus">
+         <metrics coveredelements="8" complexity="4" loc="45" methods="4" classes="1" statements="4" coveredconditionals="0" coveredmethods="4" elements="8" ncloc="21" files="1" conditionals="0" coveredstatements="4"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/eventbus/Controller.java" name="Controller.java">
+            <metrics coveredelements="8" coveredconditionals="0" complexity="4" loc="45" coveredmethods="4" methods="4" elements="8" classes="1" ncloc="21" statements="4" conditionals="0" coveredstatements="4"/>
+            <class name="Controller">
+               <metrics coveredelements="8" coveredconditionals="0" complexity="4" coveredmethods="4" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="4"/>
+            </class>
+            <line complexity="1" visibility="private" signature="Controller()" num="20" count="1" type="method"/>
+            <line num="22" count="1" type="stmt"/>
+            <line complexity="1" visibility="package" signature="&lt;clinit&gt;, line 26()" num="26" count="1" type="method"/>
+            <line num="27" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="subscribe(Object) : void" num="34" count="16" type="method"/>
+            <line num="35" count="16" type="stmt"/>
+            <line complexity="1" visibility="public" signature="post(Event) : void" num="42" count="59" type="method"/>
+            <line num="43" count="59" type="stmt"/>
+         </file>
+      </package>
+      <package name="jchess.eventbus.events">
+         <metrics coveredelements="80" complexity="34" loc="391" methods="34" classes="11" statements="50" coveredconditionals="0" coveredmethods="32" elements="84" ncloc="183" files="10" conditionals="0" coveredstatements="48"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/eventbus/events/AbstractIOSystemRelayEvent.java" name="AbstractIOSystemRelayEvent.java">
+            <metrics coveredelements="13" coveredconditionals="0" complexity="7" loc="63" coveredmethods="6" methods="7" elements="15" classes="1" ncloc="29" statements="8" conditionals="0" coveredstatements="7"/>
+            <class name="AbstractIOSystemRelayEvent">
+               <metrics coveredelements="13" coveredconditionals="0" complexity="7" coveredmethods="6" methods="7" elements="15" statements="8" conditionals="0" coveredstatements="7"/>
+            </class>
+            <line complexity="1" visibility="package" signature="AbstractIOSystemRelayEvent(Game)" num="17" count="94" type="method"/>
+            <line num="18" count="94" type="stmt"/>
+            <line complexity="1" visibility="package" signature="AbstractIOSystemRelayEvent(AbstractIOSystemRelayEvent)" num="21" count="29" type="method"/>
+            <line num="22" count="29" type="stmt"/>
+            <line num="23" count="29" type="stmt"/>
+            <line complexity="1" visibility="private" signature="hasVisitedIOSystem() : boolean" num="26" count="47" type="method"/>
+            <line num="27" count="47" type="stmt"/>
+            <line complexity="1" visibility="public" signature="shouldRelay(Game) : boolean" num="35" count="12" type="method"/>
+            <line num="36" count="12" type="stmt"/>
+            <line complexity="1" visibility="public" signature="shouldReceive(Game) : boolean" num="44" count="35" type="method"/>
+            <line num="45" count="35" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getGame() : Game" num="52" count="52" type="method"/>
+            <line num="53" count="52" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBoard() : Board" num="60" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/eventbus/events/Event.java" name="Event.java">
+            <metrics coveredelements="2" coveredconditionals="0" complexity="1" loc="20" coveredmethods="1" methods="1" elements="2" classes="1" ncloc="7" statements="1" conditionals="0" coveredstatements="1"/>
+            <class name="Event">
+               <metrics coveredelements="2" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="emit() : void" num="17" count="59" type="method"/>
+            <line num="18" count="59" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/eventbus/events/GenericErrorEvent.java" name="GenericErrorEvent.java">
+            <metrics coveredelements="7" coveredconditionals="0" complexity="3" loc="40" coveredmethods="3" methods="3" elements="7" classes="1" ncloc="15" statements="4" conditionals="0" coveredstatements="4"/>
+            <class name="GenericErrorEvent">
+               <metrics coveredelements="7" coveredconditionals="0" complexity="3" coveredmethods="3" methods="3" elements="7" statements="4" conditionals="0" coveredstatements="4"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GenericErrorEvent(Object,Exception)" num="19" count="3" type="method"/>
+            <line num="20" count="3" type="stmt"/>
+            <line num="21" count="3" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getContext() : Object" num="29" count="1" type="method"/>
+            <line num="30" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getException() : Exception" num="37" count="1" type="method"/>
+            <line num="38" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/eventbus/events/NewGameEvent.java" name="NewGameEvent.java">
+            <metrics coveredelements="10" coveredconditionals="0" complexity="4" loc="49" coveredmethods="4" methods="4" elements="10" classes="1" ncloc="22" statements="6" conditionals="0" coveredstatements="6"/>
+            <class name="NewGameEvent">
+               <metrics coveredelements="10" coveredconditionals="0" complexity="4" coveredmethods="4" methods="4" elements="10" statements="6" conditionals="0" coveredstatements="6"/>
+            </class>
+            <line complexity="1" visibility="public" signature="NewGameEvent(String[],IOSystem[],GameTab)" num="20" count="4" type="method"/>
+            <line num="21" count="4" type="stmt"/>
+            <line num="22" count="4" type="stmt"/>
+            <line num="23" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getIoSystems() : IOSystem[]" num="30" count="1" type="method"/>
+            <line num="31" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlayerNames() : String[]" num="38" count="1" type="method"/>
+            <line num="39" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getGameTab() : GameTab" num="46" count="1" type="method"/>
+            <line num="47" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/eventbus/events/PossibleMovesEvent.java" name="PossibleMovesEvent.java">
+            <metrics coveredelements="8" coveredconditionals="0" complexity="3" loc="36" coveredmethods="3" methods="3" elements="8" classes="1" ncloc="18" statements="5" conditionals="0" coveredstatements="5"/>
+            <class name="PossibleMovesEvent">
+               <metrics coveredelements="8" coveredconditionals="0" complexity="3" coveredmethods="3" methods="3" elements="8" statements="5" conditionals="0" coveredstatements="5"/>
+            </class>
+            <line complexity="1" visibility="public" signature="PossibleMovesEvent(Game,Set&lt;BoardCoordinate&gt;)" num="19" count="12" type="method"/>
+            <line num="20" count="12" type="stmt"/>
+            <line num="21" count="12" type="stmt"/>
+            <line complexity="1" visibility="public" signature="PossibleMovesEvent(PossibleMovesEvent)" num="24" count="1" type="method"/>
+            <line num="25" count="1" type="stmt"/>
+            <line num="26" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBoardCoordinates() : Set&lt;BoardCoordinate&gt;" num="33" count="2" type="method"/>
+            <line num="34" count="2" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/eventbus/events/PossiblePromotionsEvent.java" name="PossiblePromotionsEvent.java">
+            <metrics coveredelements="8" coveredconditionals="0" complexity="3" loc="37" coveredmethods="3" methods="3" elements="8" classes="1" ncloc="18" statements="5" conditionals="0" coveredstatements="5"/>
+            <class name="PossiblePromotionsEvent">
+               <metrics coveredelements="8" coveredconditionals="0" complexity="3" coveredmethods="3" methods="3" elements="8" statements="5" conditionals="0" coveredstatements="5"/>
+            </class>
+            <line complexity="1" visibility="public" signature="PossiblePromotionsEvent(Game,Set&lt;Class&lt;? extends Piece&gt;&gt;)" num="19" count="2" type="method"/>
+            <line num="20" count="2" type="stmt"/>
+            <line num="21" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="PossiblePromotionsEvent(PossiblePromotionsEvent)" num="25" count="1" type="method"/>
+            <line num="26" count="1" type="stmt"/>
+            <line num="27" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPossiblePromotions() : Set&lt;Class&lt;? extends Piece&gt;&gt;" num="34" count="2" type="method"/>
+            <line num="35" count="2" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/eventbus/events/PromotionSelectEvent.java" name="PromotionSelectEvent.java">
+            <metrics coveredelements="8" coveredconditionals="0" complexity="3" loc="35" coveredmethods="3" methods="3" elements="8" classes="1" ncloc="17" statements="5" conditionals="0" coveredstatements="5"/>
+            <class name="PromotionSelectEvent">
+               <metrics coveredelements="8" coveredconditionals="0" complexity="3" coveredmethods="3" methods="3" elements="8" statements="5" conditionals="0" coveredstatements="5"/>
+            </class>
+            <line complexity="1" visibility="public" signature="PromotionSelectEvent(Game,Class&lt;? extends Piece&gt;)" num="17" count="2" type="method"/>
+            <line num="18" count="2" type="stmt"/>
+            <line num="19" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="PromotionSelectEvent(PromotionSelectEvent)" num="23" count="1" type="method"/>
+            <line num="24" count="1" type="stmt"/>
+            <line num="25" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPieceClass() : Class&lt;? extends Piece&gt;" num="32" count="2" type="method"/>
+            <line num="33" count="2" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/eventbus/events/SelectEvent.java" name="SelectEvent.java">
+            <metrics coveredelements="8" coveredconditionals="0" complexity="4" loc="39" coveredmethods="3" methods="4" elements="10" classes="1" ncloc="21" statements="6" conditionals="0" coveredstatements="5"/>
+            <class name="SelectEvent">
+               <metrics coveredelements="8" coveredconditionals="0" complexity="4" coveredmethods="3" methods="4" elements="10" statements="6" conditionals="0" coveredstatements="5"/>
+            </class>
+            <line complexity="1" visibility="public" signature="SelectEvent(Game,BoardCoordinate)" num="17" count="25" type="method"/>
+            <line num="18" count="25" type="stmt"/>
+            <line num="19" count="25" type="stmt"/>
+            <line complexity="1" visibility="public" signature="SelectEvent(SelectEvent)" num="22" count="24" type="method"/>
+            <line num="23" count="24" type="stmt"/>
+            <line num="24" count="24" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBoardCoordinate() : BoardCoordinate" num="31" count="75" type="method"/>
+            <line num="32" count="75" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="35" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/eventbus/events/UpdateBoardEvent.java" name="UpdateBoardEvent.java">
+            <metrics coveredelements="4" coveredconditionals="0" complexity="2" loc="23" coveredmethods="2" methods="2" elements="4" classes="1" ncloc="10" statements="2" conditionals="0" coveredstatements="2"/>
+            <class name="UpdateBoardEvent">
+               <metrics coveredelements="4" coveredconditionals="0" complexity="2" coveredmethods="2" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="UpdateBoardEvent(Game)" num="16" count="20" type="method"/>
+            <line num="17" count="20" type="stmt"/>
+            <line complexity="1" visibility="public" signature="UpdateBoardEvent(UpdateBoardEvent)" num="20" count="1" type="method"/>
+            <line num="21" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/eventbus/events/UpdateStatusMessageEvent.java" name="UpdateStatusMessageEvent.java">
+            <metrics coveredelements="12" coveredconditionals="0" complexity="4" loc="49" coveredmethods="4" methods="4" elements="12" classes="2" ncloc="26" statements="8" conditionals="0" coveredstatements="8"/>
+            <class name="UpdateStatusMessageEvent">
+               <metrics coveredelements="12" coveredconditionals="0" complexity="4" coveredmethods="4" methods="4" elements="12" statements="8" conditionals="0" coveredstatements="8"/>
+            </class>
+            <class name="UpdateStatusMessageEvent.Types">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="UpdateStatusMessageEvent(Game,String,Types)" num="22" count="33" type="method"/>
+            <line num="23" count="33" type="stmt"/>
+            <line num="24" count="33" type="stmt"/>
+            <line num="25" count="33" type="stmt"/>
+            <line complexity="1" visibility="public" signature="UpdateStatusMessageEvent(UpdateStatusMessageEvent)" num="28" count="1" type="method"/>
+            <line num="29" count="1" type="stmt"/>
+            <line num="30" count="1" type="stmt"/>
+            <line num="31" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStatusMessage() : String" num="38" count="1" type="method"/>
+            <line num="39" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTypes() : Types" num="46" count="1" type="method"/>
+            <line num="47" count="1" type="stmt"/>
+         </file>
+      </package>
+      <package name="jchess.configurations">
+         <metrics coveredelements="0" complexity="1" loc="20" methods="1" classes="1" statements="1" coveredconditionals="0" coveredmethods="0" elements="2" ncloc="10" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/configurations/DefaultGameConfiguration.java" name="DefaultGameConfiguration.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="20" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="10" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="DefaultGameConfiguration">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="configure() : void" num="16" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="jchess.util">
+         <metrics coveredelements="81" complexity="37" loc="239" methods="23" classes="6" statements="68" coveredconditionals="8" coveredmethods="20" elements="105" ncloc="165" files="6" conditionals="14" coveredstatements="53"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/util/BoardCoordinate.java" name="BoardCoordinate.java">
+            <metrics coveredelements="30" coveredconditionals="5" complexity="14" loc="60" coveredmethods="7" methods="8" elements="42" classes="1" ncloc="43" statements="24" conditionals="10" coveredstatements="18"/>
+            <class name="BoardCoordinate">
+               <metrics coveredelements="30" coveredconditionals="5" complexity="14" coveredmethods="7" methods="8" elements="42" statements="24" conditionals="10" coveredstatements="18"/>
+            </class>
+            <line complexity="1" visibility="public" signature="BoardCoordinate(int,int)" num="12" count="3844" type="method"/>
+            <line num="13" count="3844" type="stmt"/>
+            <line num="14" count="3844" type="stmt"/>
+            <line num="15" count="3844" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getA() : int" num="22" count="1158" type="method"/>
+            <line num="23" count="1158" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getB() : int" num="26" count="1126" type="method"/>
+            <line num="27" count="1126" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getC() : int" num="30" count="451" type="method"/>
+            <line num="31" count="451" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getI() : int" num="34" count="329" type="method"/>
+            <line num="35" count="329" type="stmt"/>
+            <line complexity="7" visibility="public" signature="equals(Object) : boolean" num="38" count="87" type="method"/>
+            <line num="40" count="87" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line falsecount="87" truecount="0" num="40" type="cond"/>
+            <line num="41" count="87" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line falsecount="87" truecount="0" num="41" type="cond"/>
+            <line num="43" count="87" type="stmt"/>
+            <line num="45" count="87" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="87" truecount="0" num="45" type="cond"/>
+            <line num="46" count="87" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line falsecount="87" truecount="0" num="46" type="cond"/>
+            <line num="48" count="87" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line falsecount="87" truecount="0" num="48" type="cond"/>
+            <line num="50" count="87" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="53" count="210" type="method"/>
+            <line num="55" count="210" type="stmt"/>
+            <line num="56" count="210" type="stmt"/>
+            <line num="57" count="210" type="stmt"/>
+            <line num="58" count="210" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/util/CoordinateConverter.java" name="CoordinateConverter.java">
+            <metrics coveredelements="27" coveredconditionals="3" complexity="13" loc="72" coveredmethods="6" methods="7" elements="33" classes="1" ncloc="51" statements="22" conditionals="4" coveredstatements="18"/>
+            <class name="CoordinateConverter">
+               <metrics coveredelements="27" coveredconditionals="3" complexity="13" coveredmethods="6" methods="7" elements="33" statements="22" conditionals="4" coveredstatements="18"/>
+            </class>
+            <line complexity="2" visibility="package" signature="&lt;clinit&gt;, line 16()" num="16" count="1" type="method"/>
+            <line num="17" count="1" type="stmt"/>
+            <line num="18" count="1" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getPixel(PixelCoordinate) : int[]" num="24" count="162" type="method"/>
+            <line num="25" count="162" type="stmt"/>
+            <line complexity="5" visibility="public" signature="pixelToBoardCoordinate(PixelCoordinate) : BoardCoordinate" num="29" count="162" type="method"/>
+            <line num="30" count="162" type="stmt"/>
+            <line num="31" count="162" type="stmt"/>
+            <line num="32" count="161" type="stmt"/>
+            <line falsecount="161" truecount="0" num="32" type="cond"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="36" count="161" type="stmt"/>
+            <line num="38" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pixelToBoardCoordinate(int,int) : BoardCoordinate" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="boardToPixelCoordinate(BoardCoordinate) : PixelCoordinate" num="47" count="162" type="method"/>
+            <line num="48" count="162" type="stmt"/>
+            <line num="49" count="162" type="stmt"/>
+            <line num="52" count="162" type="stmt"/>
+            <line num="53" count="162" type="stmt"/>
+            <line num="55" count="162" type="stmt"/>
+            <line complexity="1" visibility="public" signature="boardToPixelCoordinate(int,int) : PixelCoordinate" num="58" count="162" type="method"/>
+            <line num="59" count="162" type="stmt"/>
+            <line complexity="2" visibility="public" signature="boardCoordinateToIndex(int,int) : int" num="63" count="4741" type="method"/>
+            <line num="64" count="4741" type="stmt"/>
+            <line falsecount="735" truecount="4006" num="64" type="cond"/>
+            <line num="65" count="4006" type="stmt"/>
+            <line num="67" count="735" type="stmt"/>
+            <line num="68" count="735" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/util/Logging.java" name="Logging.java">
+            <metrics coveredelements="8" coveredconditionals="0" complexity="3" loc="38" coveredmethods="3" methods="3" elements="8" classes="1" ncloc="22" statements="5" conditionals="0" coveredstatements="5"/>
+            <class name="Logging">
+               <metrics coveredelements="8" coveredconditionals="0" complexity="3" coveredmethods="3" methods="3" elements="8" statements="5" conditionals="0" coveredstatements="5"/>
+            </class>
+            <line complexity="1" visibility="package" signature="Logging(Logger)" num="25" count="2" type="method"/>
+            <line num="26" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setup() : void" num="29" count="17" type="method"/>
+            <line num="30" count="17" type="stmt"/>
+            <line num="31" count="17" type="stmt"/>
+            <line num="32" count="17" type="stmt"/>
+            <line complexity="1" visibility="public" signature="debug(String) : void" num="35" count="99" type="method"/>
+            <line num="36" count="99" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/util/PixelCoordinate.java" name="PixelCoordinate.java">
+            <metrics coveredelements="3" coveredconditionals="0" complexity="2" loc="18" coveredmethods="1" methods="2" elements="5" classes="1" ncloc="12" statements="3" conditionals="0" coveredstatements="2"/>
+            <class name="PixelCoordinate">
+               <metrics coveredelements="3" coveredconditionals="0" complexity="2" coveredmethods="1" methods="2" elements="5" statements="3" conditionals="0" coveredstatements="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="PixelCoordinate(int,int)" num="10" count="162" type="method"/>
+            <line num="11" count="162" type="stmt"/>
+            <line num="12" count="162" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="15" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/util/PixelCoordinateNotOnBoardException.java" name="PixelCoordinateNotOnBoardException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="7" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="PixelCoordinateNotOnBoardException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jchess/util/StringResources.java" name="StringResources.java">
+            <metrics coveredelements="13" coveredconditionals="0" complexity="5" loc="44" coveredmethods="3" methods="3" elements="17" classes="1" ncloc="34" statements="14" conditionals="0" coveredstatements="10"/>
+            <class name="StringResources">
+               <metrics coveredelements="13" coveredconditionals="0" complexity="5" coveredmethods="3" methods="3" elements="17" statements="14" conditionals="0" coveredstatements="10"/>
+            </class>
+            <line complexity="1" visibility="package" signature="StringResources(String)" num="17" count="2" type="method"/>
+            <line num="18" count="2" type="stmt"/>
+            <line num="19" count="2" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getString(String) : String" num="22" count="31" type="method"/>
+            <line num="23" count="31" type="stmt"/>
+            <line num="24" count="31" type="stmt"/>
+            <line num="25" count="31" type="stmt"/>
+            <line num="26" count="31" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getString(String,Locale) : String" num="34" count="1" type="method"/>
+            <line num="35" count="1" type="stmt"/>
+            <line num="36" count="1" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line num="38" count="1" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="duc-jchess 0.1.0" timestamp="1594334799881">
+      <metrics coveredelements="522" complexity="177" loc="1469" methods="111" classes="32" statements="340" packages="3" coveredconditionals="74" coveredmethods="111" elements="563" ncloc="1103" files="18" conditionals="112" coveredstatements="337"/>
+      <package name="tests.eventbus.events">
+         <metrics coveredelements="180" complexity="61" loc="601" methods="49" classes="16" statements="107" coveredconditionals="24" coveredmethods="49" elements="180" ncloc="436" files="8" conditionals="24" coveredstatements="107"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/eventbus/events/GenericErrorEventTest.java" name="GenericErrorEventTest.java">
+            <metrics coveredelements="17" coveredconditionals="0" complexity="6" loc="69" coveredmethods="6" methods="6" elements="17" classes="2" ncloc="48" statements="11" conditionals="0" coveredstatements="11"/>
+            <class name="GenericErrorEventTest">
+               <metrics coveredelements="13" complexity="4" methods="4" testruns="3" statements="9" coveredconditionals="0" coveredmethods="4" elements="13" testfailures="0" testduration="0.001" conditionals="0" coveredstatements="9" testpasses="3"/>
+            </class>
+            <class name="GenericErrorEventTest.GenericErrorEventHandler">
+               <metrics coveredelements="4" coveredconditionals="0" complexity="2" coveredmethods="2" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="26" count="3" type="method"/>
+            <line num="29" count="3" type="stmt"/>
+            <line num="30" count="3" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetContext() : void" num="33" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="35" count="1" type="stmt"/>
+            <line num="36" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetException() : void" num="39" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="43" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testSendGenericErrorEvent() : void" num="46" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="48" count="1" type="stmt"/>
+            <line num="50" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="handleGenericErrorEventFromApplication(GenericErrorEvent) : void" num="59" count="1" type="method"/>
+            <line num="62" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMessageCounter() : int" num="65" count="2" type="method"/>
+            <line num="66" count="2" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/eventbus/events/NewGameEventTest.java" name="NewGameEventTest.java">
+            <metrics coveredelements="20" coveredconditionals="0" complexity="7" loc="74" coveredmethods="7" methods="7" elements="20" classes="2" ncloc="54" statements="13" conditionals="0" coveredstatements="13"/>
+            <class name="NewGameEventTest">
+               <metrics coveredelements="16" complexity="5" methods="5" testruns="4" statements="11" coveredconditionals="0" coveredmethods="5" elements="16" testfailures="0" testduration="0.001" conditionals="0" coveredstatements="11" testpasses="4"/>
+            </class>
+            <class name="NewGameEventTest.NewGameEventHandler">
+               <metrics coveredelements="4" coveredconditionals="0" complexity="2" coveredmethods="2" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="26" count="4" type="method"/>
+            <line num="29" count="4" type="stmt"/>
+            <line num="30" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetIoSystems() : void" num="33" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="35" count="1" type="stmt"/>
+            <line num="36" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetPlayerNames() : void" num="39" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="42" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetGameTab() : void" num="45" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="47" count="1" type="stmt"/>
+            <line num="48" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testSendNewGameEvent() : void" num="51" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="53" count="1" type="stmt"/>
+            <line num="55" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="handleNewGameEventFromApplication(NewGameEvent) : void" num="64" count="1" type="method"/>
+            <line num="67" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMessageCounter() : int" num="70" count="2" type="method"/>
+            <line num="71" count="2" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/eventbus/events/PossibleMovesEventTest.java" name="PossibleMovesEventTest.java">
+            <metrics coveredelements="23" coveredconditionals="4" complexity="8" loc="77" coveredmethods="6" methods="6" elements="23" classes="2" ncloc="56" statements="13" conditionals="4" coveredstatements="13"/>
+            <class name="PossibleMovesEventTest">
+               <metrics coveredelements="10" complexity="3" methods="3" testruns="2" statements="7" coveredconditionals="0" coveredmethods="3" elements="10" testfailures="0" testduration="0.001" conditionals="0" coveredstatements="7" testpasses="2"/>
+            </class>
+            <class name="PossibleMovesEventTest.PossibleMovesEventHandler">
+               <metrics coveredelements="13" coveredconditionals="4" complexity="5" coveredmethods="3" methods="3" elements="13" statements="6" conditionals="4" coveredstatements="6"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="29" count="2" type="method"/>
+            <line num="32" count="2" type="stmt"/>
+            <line num="33" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetBoardCoordinates() : void" num="36" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="38" count="1" type="stmt"/>
+            <line num="39" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testSendPossibleMovesEvent() : void" num="42" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="44" count="1" type="stmt"/>
+            <line num="46" count="1" type="stmt"/>
+            <line num="48" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleSelectEventFromBoardView(PossibleMovesEvent) : void" num="55" count="2" type="method"/>
+            <line num="58" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="58" type="cond"/>
+            <line num="59" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleSelectEventFromIOSystem(PossibleMovesEvent) : void" num="63" count="2" type="method"/>
+            <line num="66" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="66" type="cond"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="69" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMessageCounter() : int" num="73" count="3" type="method"/>
+            <line num="74" count="3" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/eventbus/events/PossiblePromotionsEventTest.java" name="PossiblePromotionsEventTest.java">
+            <metrics coveredelements="27" coveredconditionals="4" complexity="8" loc="84" coveredmethods="6" methods="6" elements="27" classes="2" ncloc="62" statements="17" conditionals="4" coveredstatements="17"/>
+            <class name="PossiblePromotionsEventTest">
+               <metrics coveredelements="14" complexity="3" methods="3" testruns="2" statements="11" coveredconditionals="0" coveredmethods="3" elements="14" testfailures="0" testduration="0.001" conditionals="0" coveredstatements="11" testpasses="2"/>
+            </class>
+            <class name="PossiblePromotionsEventTest.PossiblePromotionsEventHandler">
+               <metrics coveredelements="13" coveredconditionals="4" complexity="5" coveredmethods="3" methods="3" elements="13" statements="6" conditionals="4" coveredstatements="6"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="31" count="2" type="method"/>
+            <line num="34" count="2" type="stmt"/>
+            <line num="35" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetPossiblePromotions() : void" num="38" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="40" count="1" type="stmt"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="42" count="1" type="stmt"/>
+            <line num="43" count="1" type="stmt"/>
+            <line num="44" count="1" type="stmt"/>
+            <line num="46" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testSendPossiblePromotionsEvent() : void" num="49" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="51" count="1" type="stmt"/>
+            <line num="53" count="1" type="stmt"/>
+            <line num="55" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handlePossiblePromotionsEventFromBoardView(PossiblePromotionsEvent) : void" num="62" count="2" type="method"/>
+            <line num="65" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="65" type="cond"/>
+            <line num="66" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handlePossiblePromotionsEventFromIOSystem(PossiblePromotionsEvent) : void" num="70" count="2" type="method"/>
+            <line num="73" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="73" type="cond"/>
+            <line num="75" count="1" type="stmt"/>
+            <line num="76" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMessageCounter() : int" num="80" count="3" type="method"/>
+            <line num="81" count="3" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/eventbus/events/PromotionSelectEventTest.java" name="PromotionSelectEventTest.java">
+            <metrics coveredelements="23" coveredconditionals="4" complexity="8" loc="74" coveredmethods="6" methods="6" elements="23" classes="2" ncloc="54" statements="13" conditionals="4" coveredstatements="13"/>
+            <class name="PromotionSelectEventTest">
+               <metrics coveredelements="10" complexity="3" methods="3" testruns="2" statements="7" coveredconditionals="0" coveredmethods="3" elements="10" testfailures="0" testduration="0.001" conditionals="0" coveredstatements="7" testpasses="2"/>
+            </class>
+            <class name="PromotionSelectEventTest.PromotionSelectEventHandler">
+               <metrics coveredelements="13" coveredconditionals="4" complexity="5" coveredmethods="3" methods="3" elements="13" statements="6" conditionals="4" coveredstatements="6"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="26" count="2" type="method"/>
+            <line num="29" count="2" type="stmt"/>
+            <line num="30" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetPieceClass() : void" num="33" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="35" count="1" type="stmt"/>
+            <line num="36" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testSendPromotionSelectEvent() : void" num="39" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="43" count="1" type="stmt"/>
+            <line num="45" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handlePromotionSelectEventFromGame(PromotionSelectEvent) : void" num="52" count="2" type="method"/>
+            <line num="55" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="55" type="cond"/>
+            <line num="56" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handlePromotionSelectEventFromIOSystem(PromotionSelectEvent) : void" num="60" count="2" type="method"/>
+            <line num="63" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="63" type="cond"/>
+            <line num="65" count="1" type="stmt"/>
+            <line num="66" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMessageCounter() : int" num="70" count="3" type="method"/>
+            <line num="71" count="3" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/eventbus/events/SelectEventTest.java" name="SelectEventTest.java">
+            <metrics coveredelements="24" coveredconditionals="4" complexity="8" loc="76" coveredmethods="6" methods="6" elements="24" classes="2" ncloc="55" statements="14" conditionals="4" coveredstatements="14"/>
+            <class name="SelectEventTest">
+               <metrics coveredelements="11" complexity="3" methods="3" testruns="2" statements="8" coveredconditionals="0" coveredmethods="3" elements="11" testfailures="0" testduration="0.0" conditionals="0" coveredstatements="8" testpasses="2"/>
+            </class>
+            <class name="SelectEventTest.SelectEventHandler">
+               <metrics coveredelements="13" coveredconditionals="4" complexity="5" coveredmethods="3" methods="3" elements="13" statements="6" conditionals="4" coveredstatements="6"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="27" count="2" type="method"/>
+            <line num="30" count="2" type="stmt"/>
+            <line num="31" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetBoardCoordinate() : void" num="34" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="36" count="1" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line num="38" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testSendSelectEvent() : void" num="41" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="43" count="1" type="stmt"/>
+            <line num="45" count="1" type="stmt"/>
+            <line num="47" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleSelectEventFromGame(SelectEvent) : void" num="54" count="2" type="method"/>
+            <line num="57" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="57" type="cond"/>
+            <line num="58" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleSelectEventFromIOSystem(SelectEvent) : void" num="62" count="2" type="method"/>
+            <line num="65" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="65" type="cond"/>
+            <line num="67" count="1" type="stmt"/>
+            <line num="68" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMessageCounter() : int" num="72" count="3" type="method"/>
+            <line num="73" count="3" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/eventbus/events/UpdateBoardEventTest.java" name="UpdateBoardEventTest.java">
+            <metrics coveredelements="20" coveredconditionals="4" complexity="7" loc="68" coveredmethods="5" methods="5" elements="20" classes="2" ncloc="49" statements="11" conditionals="4" coveredstatements="11"/>
+            <class name="UpdateBoardEventTest">
+               <metrics coveredelements="7" complexity="2" methods="2" testruns="1" statements="5" coveredconditionals="0" coveredmethods="2" elements="7" testfailures="0" testduration="0.0" conditionals="0" coveredstatements="5" testpasses="1"/>
+            </class>
+            <class name="UpdateBoardEventTest.UpdateBoardEventHandler">
+               <metrics coveredelements="13" coveredconditionals="4" complexity="5" coveredmethods="3" methods="3" elements="13" statements="6" conditionals="4" coveredstatements="6"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="26" count="1" type="method"/>
+            <line num="29" count="1" type="stmt"/>
+            <line num="30" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testSendUpdateBoardEvent() : void" num="33" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="35" count="1" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line num="39" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleUpdateBoardEventFromBoardView(UpdateBoardEvent) : void" num="46" count="2" type="method"/>
+            <line num="49" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="49" type="cond"/>
+            <line num="50" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleSelectEventFromIOSystem(UpdateBoardEvent) : void" num="54" count="2" type="method"/>
+            <line num="57" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="57" type="cond"/>
+            <line num="59" count="1" type="stmt"/>
+            <line num="60" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMessageCounter() : int" num="64" count="3" type="method"/>
+            <line num="65" count="3" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/eventbus/events/UpdateStatusMessageEventTest.java" name="UpdateStatusMessageEventTest.java">
+            <metrics coveredelements="26" coveredconditionals="4" complexity="9" loc="79" coveredmethods="7" methods="7" elements="26" classes="2" ncloc="58" statements="15" conditionals="4" coveredstatements="15"/>
+            <class name="UpdateStatusMessageEventTest">
+               <metrics coveredelements="13" complexity="4" methods="4" testruns="3" statements="9" coveredconditionals="0" coveredmethods="4" elements="13" testfailures="0" testduration="0.0" conditionals="0" coveredstatements="9" testpasses="3"/>
+            </class>
+            <class name="UpdateStatusMessageEventTest.UpdateStatusMessageEventHandler">
+               <metrics coveredelements="13" coveredconditionals="4" complexity="5" coveredmethods="3" methods="3" elements="13" statements="6" conditionals="4" coveredstatements="6"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="25" count="3" type="method"/>
+            <line num="28" count="3" type="stmt"/>
+            <line num="29" count="3" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetStatusMessage() : void" num="32" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="34" count="1" type="stmt"/>
+            <line num="35" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetTypes() : void" num="38" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="40" count="1" type="stmt"/>
+            <line num="41" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testSendUpdateStatusMessageEvent() : void" num="44" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="46" count="1" type="stmt"/>
+            <line num="48" count="1" type="stmt"/>
+            <line num="50" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleUpdateStatusMessageEventFromBoardView(UpdateStatusMessageEvent) : void" num="57" count="2" type="method"/>
+            <line num="60" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="60" type="cond"/>
+            <line num="61" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleUpdateStatusMessageEventFromIOSystem(UpdateStatusMessageEvent) : void" num="65" count="2" type="method"/>
+            <line num="68" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="68" type="cond"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMessageCounter() : int" num="75" count="3" type="method"/>
+            <line num="76" count="3" type="stmt"/>
+         </file>
+      </package>
+      <package name="tests.game">
+         <metrics coveredelements="298" complexity="93" loc="767" methods="57" classes="14" statements="203" coveredconditionals="38" coveredmethods="57" elements="332" ncloc="586" files="8" conditionals="72" coveredstatements="203"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/game/BishopMovementTest.java" name="BishopMovementTest.java">
+            <metrics coveredelements="44" coveredconditionals="2" complexity="10" loc="116" coveredmethods="9" methods="9" elements="44" classes="2" ncloc="87" statements="33" conditionals="2" coveredstatements="33"/>
+            <class name="BishopMovementTest">
+               <metrics coveredelements="40" complexity="9" methods="8" testruns="4" statements="30" coveredconditionals="2" coveredmethods="8" elements="40" testfailures="0" testduration="0.002" conditionals="2" coveredstatements="30" testpasses="4"/>
+            </class>
+            <class name="BishopMovementTest.BishopMovementBoard">
+               <metrics coveredelements="4" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="3"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="initFigures() : void" num="29" count="4" type="method"/>
+            <line num="31" count="4" type="stmt"/>
+            <line num="32" count="4" type="stmt"/>
+            <line num="33" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="BishopMovementTest()" num="41" count="4" type="method"/>
+            <line num="42" count="4" type="stmt"/>
+            <line num="43" count="4" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="configure() : void" num="44" count="4" type="method"/>
+            <line num="46" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setup() : void" num="51" count="4" type="method"/>
+            <line num="53" count="4" type="stmt"/>
+            <line num="54" count="4" type="stmt"/>
+            <line complexity="2" visibility="public" signature="possibleMovesBishop1() : void" num="60" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="62" count="1" type="stmt"/>
+            <line num="63" count="1" type="stmt"/>
+            <line num="65" count="1" type="stmt"/>
+            <line num="66" count="1" type="stmt"/>
+            <line falsecount="1" truecount="4" num="66" type="cond"/>
+            <line num="67" count="4" type="stmt"/>
+            <line num="68" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="moveBishop2() : void" num="72" testsuccess="true" count="1" testduration="0.002" type="method"/>
+            <line num="74" count="1" type="stmt"/>
+            <line num="75" count="1" type="stmt"/>
+            <line num="77" count="1" type="stmt"/>
+            <line num="79" count="1" type="stmt"/>
+            <line num="80" count="1" type="stmt"/>
+            <line num="83" count="1" type="stmt"/>
+            <line num="84" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="strikeBishop2() : void" num="87" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="89" count="1" type="stmt"/>
+            <line num="90" count="1" type="stmt"/>
+            <line num="92" count="1" type="stmt"/>
+            <line num="94" count="1" type="stmt"/>
+            <line num="95" count="1" type="stmt"/>
+            <line num="98" count="1" type="stmt"/>
+            <line num="99" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="possibleMovesBishop3() : void" num="103" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="105" count="1" type="stmt"/>
+            <line num="106" count="1" type="stmt"/>
+            <line num="108" count="1" type="stmt"/>
+            <line complexity="1" visibility="package" signature="emitAndSimulateRelay(SelectEvent) : void" num="111" count="6" type="method"/>
+            <line num="113" count="6" type="stmt"/>
+            <line num="114" count="6" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/game/BoardTest.java" name="BoardTest.java">
+            <metrics coveredelements="25" coveredconditionals="10" complexity="21" loc="69" coveredmethods="7" methods="7" elements="43" classes="1" ncloc="53" statements="8" conditionals="28" coveredstatements="8"/>
+            <class name="BoardTest">
+               <metrics coveredelements="25" complexity="21" methods="7" testruns="6" statements="8" coveredconditionals="10" coveredmethods="7" elements="43" testfailures="0" testduration="0.0" conditionals="28" coveredstatements="8" testpasses="6"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setup() : void" num="19" count="6" type="method"/>
+            <line num="21" count="6" type="stmt"/>
+            <line complexity="11" visibility="public" signature="testGetTile() : void" num="24" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line falsecount="0" truecount="1" num="26" type="cond"/>
+            <line falsecount="0" truecount="1" num="27" type="cond"/>
+            <line falsecount="0" truecount="1" num="28" type="cond"/>
+            <line falsecount="0" truecount="1" num="29" type="cond"/>
+            <line falsecount="0" truecount="1" num="30" type="cond"/>
+            <line falsecount="0" truecount="1" num="31" type="cond"/>
+            <line falsecount="0" truecount="1" num="32" type="cond"/>
+            <line falsecount="0" truecount="1" num="33" type="cond"/>
+            <line falsecount="0" truecount="1" num="34" type="cond"/>
+            <line falsecount="0" truecount="1" num="35" type="cond"/>
+            <line complexity="5" visibility="public" signature="testGetTileNotOnBoard() : void" num="39" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="42" count="1" type="stmt"/>
+            <line falsecount="0" truecount="0" num="43" type="cond"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line falsecount="0" truecount="0" num="46" type="cond"/>
+            <line complexity="1" visibility="public" signature="testGetTileNotOnBoard_byTileIndex_less_0() : void" num="49" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="51" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetTileNotOnBoard_byTileIndex_greater_168() : void" num="54" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="56" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetTileNotOnBoard_byBoardCoordinates() : void" num="59" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="61" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetTileNotOnBoard_byBoardCoordinate_Class() : void" num="64" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="66" count="1" type="stmt"/>
+            <line num="67" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/game/KingMovementTest.java" name="KingMovementTest.java">
+            <metrics coveredelements="29" coveredconditionals="0" complexity="6" loc="88" coveredmethods="6" methods="6" elements="29" classes="2" ncloc="67" statements="23" conditionals="0" coveredstatements="23"/>
+            <class name="KingMovementTest">
+               <metrics coveredelements="27" complexity="5" methods="5" testruns="1" statements="22" coveredconditionals="0" coveredmethods="5" elements="27" testfailures="0" testduration="0.001" conditionals="0" coveredstatements="22" testpasses="1"/>
+            </class>
+            <class name="KingMovementTest.KingMovementBoard">
+               <metrics coveredelements="2" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="1"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="initFigures() : void" num="29" count="1" type="method"/>
+            <line num="31" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="KingMovementTest()" num="39" count="1" type="method"/>
+            <line num="40" count="1" type="stmt"/>
+            <line num="41" count="1" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="configure() : void" num="42" count="1" type="method"/>
+            <line num="44" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setup() : void" num="50" count="1" type="method"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="53" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="possibleMovesKing() : void" num="59" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="61" count="1" type="stmt"/>
+            <line num="62" count="1" type="stmt"/>
+            <line num="64" count="1" type="stmt"/>
+            <line num="66" count="1" type="stmt"/>
+            <line num="67" count="1" type="stmt"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="69" count="1" type="stmt"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line num="73" count="1" type="stmt"/>
+            <line num="74" count="1" type="stmt"/>
+            <line num="75" count="1" type="stmt"/>
+            <line num="76" count="1" type="stmt"/>
+            <line num="77" count="1" type="stmt"/>
+            <line num="78" count="1" type="stmt"/>
+            <line complexity="1" visibility="package" signature="emitAndSimulateRelay(SelectEvent) : void" num="83" count="1" type="method"/>
+            <line num="85" count="1" type="stmt"/>
+            <line num="86" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/game/LooseConditionTest.java" name="LooseConditionTest.java">
+            <metrics coveredelements="23" coveredconditionals="0" complexity="6" loc="86" coveredmethods="6" methods="6" elements="23" classes="2" ncloc="65" statements="17" conditionals="0" coveredstatements="17"/>
+            <class name="LooseConditionTest">
+               <metrics coveredelements="19" complexity="5" methods="5" testruns="1" statements="14" coveredconditionals="0" coveredmethods="5" elements="19" testfailures="0" testduration="0.002" conditionals="0" coveredstatements="14" testpasses="1"/>
+            </class>
+            <class name="LooseConditionTest.LooseConditionBoard">
+               <metrics coveredelements="4" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="3"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="initFigures() : void" num="34" count="1" type="method"/>
+            <line num="36" count="1" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line num="38" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="LooseConditionTest()" num="46" count="1" type="method"/>
+            <line num="47" count="1" type="stmt"/>
+            <line num="48" count="1" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="configure() : void" num="49" count="1" type="method"/>
+            <line num="51" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setup() : void" num="57" count="1" type="method"/>
+            <line num="59" count="1" type="stmt"/>
+            <line num="60" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="possibleMovesKing() : void" num="66" testsuccess="true" count="1" testduration="0.002" type="method"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="69" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line num="73" count="1" type="stmt"/>
+            <line num="74" count="1" type="stmt"/>
+            <line num="76" count="1" type="stmt"/>
+            <line num="77" count="1" type="stmt"/>
+            <line complexity="1" visibility="package" signature="emitAndSimulateRelay(SelectEvent) : void" num="81" count="2" type="method"/>
+            <line num="83" count="2" type="stmt"/>
+            <line num="84" count="2" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/game/PawnMovementTest.java" name="PawnMovementTest.java">
+            <metrics coveredelements="56" coveredconditionals="0" complexity="10" loc="138" coveredmethods="10" methods="10" elements="56" classes="2" ncloc="102" statements="46" conditionals="0" coveredstatements="46"/>
+            <class name="PawnMovementTest">
+               <metrics coveredelements="49" complexity="9" methods="9" testruns="5" statements="40" coveredconditionals="0" coveredmethods="9" elements="49" testfailures="0" testduration="0.002" conditionals="0" coveredstatements="40" testpasses="5"/>
+            </class>
+            <class name="PawnMovementTest.PawnMovementBoard">
+               <metrics coveredelements="7" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="7" statements="6" conditionals="0" coveredstatements="6"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="initFigures() : void" num="29" count="5" type="method"/>
+            <line num="31" count="5" type="stmt"/>
+            <line num="32" count="5" type="stmt"/>
+            <line num="33" count="5" type="stmt"/>
+            <line num="35" count="5" type="stmt"/>
+            <line num="36" count="5" type="stmt"/>
+            <line num="37" count="5" type="stmt"/>
+            <line complexity="1" visibility="public" signature="PawnMovementTest()" num="45" count="5" type="method"/>
+            <line num="46" count="5" type="stmt"/>
+            <line num="47" count="5" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="configure() : void" num="48" count="5" type="method"/>
+            <line num="50" count="5" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setup() : void" num="57" count="5" type="method"/>
+            <line num="59" count="5" type="stmt"/>
+            <line num="60" count="5" type="stmt"/>
+            <line complexity="1" visibility="public" signature="possibleMovesPawn1() : void" num="66" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="69" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line num="72" count="1" type="stmt"/>
+            <line num="73" count="1" type="stmt"/>
+            <line num="74" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="possibleMovesPawn2() : void" num="77" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="79" count="1" type="stmt"/>
+            <line num="80" count="1" type="stmt"/>
+            <line num="82" count="1" type="stmt"/>
+            <line num="84" count="1" type="stmt"/>
+            <line num="85" count="1" type="stmt"/>
+            <line num="86" count="1" type="stmt"/>
+            <line num="87" count="1" type="stmt"/>
+            <line num="89" count="1" type="stmt"/>
+            <line num="90" count="1" type="stmt"/>
+            <line num="91" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="movePawn2() : void" num="94" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="96" count="1" type="stmt"/>
+            <line num="97" count="1" type="stmt"/>
+            <line num="99" count="1" type="stmt"/>
+            <line num="101" count="1" type="stmt"/>
+            <line num="102" count="1" type="stmt"/>
+            <line num="105" count="1" type="stmt"/>
+            <line num="106" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="strikePawn2() : void" num="109" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="111" count="1" type="stmt"/>
+            <line num="112" count="1" type="stmt"/>
+            <line num="114" count="1" type="stmt"/>
+            <line num="116" count="1" type="stmt"/>
+            <line num="117" count="1" type="stmt"/>
+            <line num="120" count="1" type="stmt"/>
+            <line num="121" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="possibleMovesPawn3() : void" num="125" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="127" count="1" type="stmt"/>
+            <line num="128" count="1" type="stmt"/>
+            <line num="130" count="1" type="stmt"/>
+            <line complexity="1" visibility="package" signature="emitAndSimulateRelay(SelectEvent) : void" num="133" count="7" type="method"/>
+            <line num="135" count="7" type="stmt"/>
+            <line num="136" count="7" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/game/QueenMovementTest.java" name="QueenMovementTest.java">
+            <metrics coveredelements="56" coveredconditionals="6" complexity="12" loc="125" coveredmethods="9" methods="9" elements="56" classes="2" ncloc="96" statements="41" conditionals="6" coveredstatements="41"/>
+            <class name="QueenMovementTest">
+               <metrics coveredelements="49" complexity="11" methods="8" testruns="4" statements="35" coveredconditionals="6" coveredmethods="8" elements="49" testfailures="0" testduration="0.003" conditionals="6" coveredstatements="35" testpasses="4"/>
+            </class>
+            <class name="QueenMovementTest.QueenMovementBoard">
+               <metrics coveredelements="7" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="7" statements="6" conditionals="0" coveredstatements="6"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="initFigures() : void" num="28" count="4" type="method"/>
+            <line num="30" count="4" type="stmt"/>
+            <line num="31" count="4" type="stmt"/>
+            <line num="32" count="4" type="stmt"/>
+            <line num="33" count="4" type="stmt"/>
+            <line num="34" count="4" type="stmt"/>
+            <line num="35" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="QueenMovementTest()" num="43" count="4" type="method"/>
+            <line num="44" count="4" type="stmt"/>
+            <line num="45" count="4" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="configure() : void" num="46" count="4" type="method"/>
+            <line num="48" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setup() : void" num="53" count="4" type="method"/>
+            <line num="55" count="4" type="stmt"/>
+            <line num="56" count="4" type="stmt"/>
+            <line complexity="4" visibility="public" signature="possibleMovesQueen1() : void" num="62" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="64" count="1" type="stmt"/>
+            <line num="65" count="1" type="stmt"/>
+            <line num="67" count="1" type="stmt"/>
+            <line num="68" count="1" type="stmt"/>
+            <line falsecount="1" truecount="4" num="68" type="cond"/>
+            <line num="69" count="4" type="stmt"/>
+            <line num="70" count="4" type="stmt"/>
+            <line num="72" count="1" type="stmt"/>
+            <line falsecount="1" truecount="13" num="72" type="cond"/>
+            <line num="73" count="13" type="stmt"/>
+            <line num="75" count="1" type="stmt"/>
+            <line falsecount="1" truecount="5" num="75" type="cond"/>
+            <line num="76" count="5" type="stmt"/>
+            <line num="77" count="5" type="stmt"/>
+            <line complexity="1" visibility="public" signature="moveQueen2() : void" num="81" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="83" count="1" type="stmt"/>
+            <line num="84" count="1" type="stmt"/>
+            <line num="86" count="1" type="stmt"/>
+            <line num="88" count="1" type="stmt"/>
+            <line num="89" count="1" type="stmt"/>
+            <line num="92" count="1" type="stmt"/>
+            <line num="93" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="strikeQueen2() : void" num="96" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="98" count="1" type="stmt"/>
+            <line num="99" count="1" type="stmt"/>
+            <line num="101" count="1" type="stmt"/>
+            <line num="103" count="1" type="stmt"/>
+            <line num="104" count="1" type="stmt"/>
+            <line num="107" count="1" type="stmt"/>
+            <line num="108" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="possibleMovesQueen3() : void" num="112" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="114" count="1" type="stmt"/>
+            <line num="115" count="1" type="stmt"/>
+            <line num="117" count="1" type="stmt"/>
+            <line complexity="1" visibility="package" signature="emitAndSimulateRelay(SelectEvent) : void" num="120" count="6" type="method"/>
+            <line num="122" count="6" type="stmt"/>
+            <line num="123" count="6" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/game/RookMovementTest.java" name="RookMovementTest.java">
+            <metrics coveredelements="29" coveredconditionals="4" complexity="8" loc="84" coveredmethods="6" methods="6" elements="29" classes="2" ncloc="66" statements="19" conditionals="4" coveredstatements="19"/>
+            <class name="RookMovementTest">
+               <metrics coveredelements="24" complexity="7" methods="5" testruns="1" statements="15" coveredconditionals="4" coveredmethods="5" elements="24" testfailures="0" testduration="0.0" conditionals="4" coveredstatements="15" testpasses="1"/>
+            </class>
+            <class name="RookMovementTest.RookMovementBoard">
+               <metrics coveredelements="5" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="5" statements="4" conditionals="0" coveredstatements="4"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="initFigures() : void" num="30" count="1" type="method"/>
+            <line num="32" count="1" type="stmt"/>
+            <line num="33" count="1" type="stmt"/>
+            <line num="34" count="1" type="stmt"/>
+            <line num="35" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RookMovementTest()" num="43" count="1" type="method"/>
+            <line num="44" count="1" type="stmt"/>
+            <line num="45" count="1" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="configure() : void" num="46" count="1" type="method"/>
+            <line num="48" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setup() : void" num="54" count="1" type="method"/>
+            <line num="56" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line complexity="3" visibility="public" signature="possibleMovesRook() : void" num="63" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="65" count="1" type="stmt"/>
+            <line num="66" count="1" type="stmt"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="69" count="1" type="stmt"/>
+            <line falsecount="1" truecount="13" num="69" type="cond"/>
+            <line num="70" count="13" type="stmt"/>
+            <line num="72" count="1" type="stmt"/>
+            <line falsecount="1" truecount="5" num="72" type="cond"/>
+            <line num="73" count="5" type="stmt"/>
+            <line num="74" count="5" type="stmt"/>
+            <line complexity="1" visibility="package" signature="emitAndSimulateRelay(SelectEvent) : void" num="79" count="1" type="method"/>
+            <line num="81" count="1" type="stmt"/>
+            <line num="82" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/game/TileTest.java" name="TileTest.java">
+            <metrics coveredelements="36" coveredconditionals="16" complexity="20" loc="61" coveredmethods="4" methods="4" elements="52" classes="1" ncloc="50" statements="16" conditionals="32" coveredstatements="16"/>
+            <class name="TileTest">
+               <metrics coveredelements="36" complexity="20" methods="4" testruns="4" statements="16" coveredconditionals="16" coveredmethods="4" elements="52" testfailures="0" testduration="0.001" conditionals="32" coveredstatements="16" testpasses="4"/>
+            </class>
+            <line complexity="4" visibility="public" signature="testGetPiece() : void" num="14" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="16" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="17" type="cond"/>
+            <line num="18" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="19" type="cond"/>
+            <line falsecount="0" truecount="1" num="20" type="cond"/>
+            <line complexity="4" visibility="public" signature="testPlacePiece() : void" num="23" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="25" count="1" type="stmt"/>
+            <line num="26" count="1" type="stmt"/>
+            <line num="27" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="28" type="cond"/>
+            <line num="29" count="1" type="stmt"/>
+            <line num="30" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="31" type="cond"/>
+            <line num="32" count="1" type="stmt"/>
+            <line num="33" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="34" type="cond"/>
+            <line complexity="4" visibility="public" signature="testRemovePiece() : void" num="37" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="39" count="1" type="stmt"/>
+            <line num="40" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="41" type="cond"/>
+            <line num="42" count="1" type="stmt"/>
+            <line num="43" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="44" type="cond"/>
+            <line falsecount="0" truecount="1" num="45" type="cond"/>
+            <line complexity="8" visibility="public" signature="testPromotion() : void" num="48" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="50" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="51" type="cond"/>
+            <line num="52" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="53" type="cond"/>
+            <line falsecount="0" truecount="1" num="54" type="cond"/>
+            <line falsecount="0" truecount="1" num="55" type="cond"/>
+            <line num="56" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="57" type="cond"/>
+            <line falsecount="0" truecount="1" num="58" type="cond"/>
+            <line falsecount="0" truecount="1" num="59" type="cond"/>
+         </file>
+      </package>
+      <package name="tests.util">
+         <metrics coveredelements="44" complexity="23" loc="101" methods="5" classes="2" statements="30" coveredconditionals="12" coveredmethods="5" elements="51" ncloc="81" files="2" conditionals="16" coveredstatements="27"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/util/CoordinateConverterTest.java" name="CoordinateConverterTest.java">
+            <metrics coveredelements="27" coveredconditionals="10" complexity="18" loc="55" coveredmethods="2" methods="2" elements="29" classes="1" ncloc="45" statements="15" conditionals="12" coveredstatements="15"/>
+            <class name="CoordinateConverterTest">
+               <metrics coveredelements="27" complexity="18" methods="2" testruns="2" statements="15" coveredconditionals="10" coveredmethods="2" elements="29" testfailures="0" testduration="0.73" conditionals="12" coveredstatements="15" testpasses="2"/>
+            </class>
+            <line complexity="9" visibility="public" signature="testBoardCoordinateToPixelCoordinate() : void" num="14" testsuccess="true" count="1" testduration="0.591" type="method"/>
+            <line num="18" count="1" type="stmt"/>
+            <line falsecount="1" truecount="14" num="18" type="cond"/>
+            <line num="19" count="14" type="stmt"/>
+            <line falsecount="14" truecount="210" num="19" type="cond"/>
+            <line num="20" count="210" type="stmt"/>
+            <line falsecount="49" truecount="161" num="20" type="cond"/>
+            <line num="26" count="161" type="stmt"/>
+            <line num="27" count="161" type="stmt"/>
+            <line num="28" count="161" type="stmt"/>
+            <line num="29" count="161" type="stmt"/>
+            <line num="30" count="161" type="stmt"/>
+            <line num="31" count="161" type="stmt"/>
+            <line num="32" count="161" type="stmt"/>
+            <line complexity="9" visibility="public" signature="testPixelCoordinateNotOnBoard() : void" num="38" testsuccess="true" count="1" testduration="0.139" type="method"/>
+            <line num="41" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="41" type="cond"/>
+            <line num="42" count="1" type="stmt"/>
+            <line falsecount="0" truecount="10" num="42" type="cond"/>
+            <line num="43" count="10" type="stmt"/>
+            <line falsecount="9" truecount="1" num="43" type="cond"/>
+            <line num="49" count="1" type="stmt"/>
+            <line num="50" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/tests/util/StringResourcesTest.java" name="StringResourcesTest.java">
+            <metrics coveredelements="17" coveredconditionals="2" complexity="5" loc="46" coveredmethods="3" methods="3" elements="22" classes="1" ncloc="36" statements="15" conditionals="4" coveredstatements="12"/>
+            <class name="StringResourcesTest">
+               <metrics coveredelements="17" complexity="5" methods="3" testruns="2" statements="15" coveredconditionals="2" coveredmethods="3" elements="22" testfailures="0" testduration="0.009" conditionals="4" coveredstatements="12" testpasses="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setup() : void" num="17" count="1" type="method"/>
+            <line num="19" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="testGetNativeString() : void" num="22" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="24" count="1" type="stmt"/>
+            <line num="25" count="1" type="stmt"/>
+            <line num="26" count="1" type="stmt"/>
+            <line falsecount="1" truecount="0" num="26" type="cond"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="29" count="1" type="stmt"/>
+            <line num="30" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="testGetTranslatedString() : void" num="33" testsuccess="true" count="1" testduration="0.009" type="method"/>
+            <line num="35" count="1" type="stmt"/>
+            <line num="36" count="1" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line num="38" count="1" type="stmt"/>
+            <line falsecount="1" truecount="0" num="38" type="cond"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="42" count="1" type="stmt"/>
+            <line num="43" count="1" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

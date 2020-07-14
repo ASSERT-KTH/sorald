@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594343760022" clover="4.4.1">
+   <project name="RecordManager 1.0.0-SNAPSHOT (Aggregated)" timestamp="1594343757224">
+      <metrics coveredelements="0" complexity="229" loc="1472" methods="229" classes="30" statements="231" packages="7" coveredconditionals="0" coveredmethods="0" elements="460" ncloc="994" files="30" conditionals="0" coveredstatements="0"/>
+      <package name="cz.mzk.recordmanager.api.model.query">
+         <metrics coveredelements="0" complexity="14" loc="85" methods="14" classes="2" statements="14" coveredconditionals="0" coveredmethods="0" elements="28" ncloc="59" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/query/LogicalOperator.java" name="LogicalOperator.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="8" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="LogicalOperator">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/query/ObalkyKnihTOCQuery.java" name="ObalkyKnihTOCQuery.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="77" coveredmethods="0" methods="14" elements="28" classes="1" ncloc="54" statements="14" conditionals="0" coveredstatements="0"/>
+            <class name="ObalkyKnihTOCQuery">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="14" elements="28" statements="14" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getLogicalOperator() : LogicalOperator" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLogicalOperator(LogicalOperator) : void" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getIsbns() : Collection&lt;Long&gt;" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setIsbns(Collection&lt;Long&gt;) : void" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setIsbn(Long) : void" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNbns() : Collection&lt;String&gt;" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setNbns(Collection&lt;String&gt;) : void" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setNbn(String) : void" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEans() : Collection&lt;String&gt;" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEans(Collection&lt;String&gt;) : void" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEan(String) : void" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOclcs() : Collection&lt;String&gt;" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOclcs(Collection&lt;String&gt;) : void" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOclc(String) : void" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="cz.mzk.recordmanager.api.model.batch">
+         <metrics coveredelements="0" complexity="30" loc="170" methods="30" classes="2" statements="30" coveredconditionals="0" coveredmethods="0" elements="60" ncloc="117" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/batch/BatchJobExecutionDTO.java" name="BatchJobExecutionDTO.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="16" loc="90" coveredmethods="0" methods="16" elements="32" classes="1" ncloc="62" statements="16" conditionals="0" coveredstatements="0"/>
+            <class name="BatchJobExecutionDTO">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="16" coveredmethods="0" methods="16" elements="32" statements="16" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getId() : Long" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setId(Long) : void" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getJobInstanceID() : Long" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setJobInstanceID(Long) : void" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCreateTime() : Date" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCreateTime(Date) : void" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStartTime() : Date" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStartTime(Date) : void" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEndTime() : Date" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEndTime(Date) : void" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStatus() : String" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStatus(String) : void" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExitCode() : String" num="74" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setExitCode(String) : void" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExitMessage() : String" num="82" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setExitMessage(String) : void" num="86" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/batch/JobExecutionQueryDTO.java" name="JobExecutionQueryDTO.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="80" coveredmethods="0" methods="14" elements="28" classes="1" ncloc="55" statements="14" conditionals="0" coveredstatements="0"/>
+            <class name="JobExecutionQueryDTO">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="14" elements="28" statements="14" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getJobName() : String" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setJobName(String) : void" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStartedFrom() : Date" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStartedFrom(Date) : void" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStartedTo() : Date" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStartedTo(Date) : void" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStatus() : String" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStatus(String) : void" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExitCode() : String" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setExitCode(String) : void" num="60" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLimit() : int" num="64" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLimit(int) : void" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOffset() : int" num="72" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOffset(int) : void" num="76" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="cz.mzk.recordmanager.api.model.user">
+         <metrics coveredelements="0" complexity="3" loc="28" methods="3" classes="1" statements="5" coveredconditionals="0" coveredmethods="0" elements="8" ncloc="19" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/user/UserDto.java" name="UserDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="28" coveredmethods="0" methods="3" elements="8" classes="1" ncloc="19" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="UserDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="8" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="UserDto(String,List&lt;String&gt;)" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLogin() : String" num="20" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRoles() : List&lt;String&gt;" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="cz.mzk.recordmanager.api.model.configurations">
+         <metrics coveredelements="0" complexity="52" loc="299" methods="52" classes="4" statements="52" coveredconditionals="0" coveredmethods="0" elements="104" ncloc="205" files="4" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/configurations/DownloadImportConfigurationDto.java" name="DownloadImportConfigurationDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="48" coveredmethods="0" methods="8" elements="16" classes="1" ncloc="33" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="DownloadImportConfigurationDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="8" elements="16" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getUrl() : String" num="17" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUrl(String) : void" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFormat() : String" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFormat(String) : void" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getJobName() : String" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setJobName(String) : void" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRegex() : String" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRegex(String) : void" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/configurations/ImportConfigurationDto.java" name="ImportConfigurationDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="18" loc="100" coveredmethods="0" methods="18" elements="36" classes="1" ncloc="69" statements="18" conditionals="0" coveredstatements="0"/>
+            <class name="ImportConfigurationDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="18" coveredmethods="0" methods="18" elements="36" statements="18" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getLibrary() : LibraryDto" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLibrary(LibraryDto) : void" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getIdPrefix() : String" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setIdPrefix(String) : void" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getContact() : ContactPersonDto" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setContact(ContactPersonDto) : void" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isThisLibrary() : boolean" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setThisLibrary(boolean) : void" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getConfigurationType() : String" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setConfigurationType(String) : void" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBaseWeight() : Long" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBaseWeight(Long) : void" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isClusterIdEnabled() : boolean" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setClusterIdEnabled(boolean) : void" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isFilteringEnabled() : boolean" num="85" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFilteringEnabled(boolean) : void" num="89" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isInterceptionEnabled() : boolean" num="93" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setInterceptionEnabled(boolean) : void" num="97" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/configurations/KrameriusConfigurationDto.java" name="KrameriusConfigurationDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="16" loc="90" coveredmethods="0" methods="16" elements="32" classes="1" ncloc="62" statements="16" conditionals="0" coveredstatements="0"/>
+            <class name="KrameriusConfigurationDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="16" coveredmethods="0" methods="16" elements="32" statements="16" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getUrl() : String" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUrl(String) : void" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUrlSolr() : String" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUrlSolr(String) : void" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getQueryRows() : Long" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setQueryRows(Long) : void" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMetadataStream() : String" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setMetadataStream(String) : void" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAuthToken() : String" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAuthToken(String) : void" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isDownloadPrivateFulltexts() : boolean" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDownloadPrivateFulltexts(boolean) : void" num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFulltextHarvestType() : String" num="75" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFulltextHarvestType(String) : void" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHarvestJobName() : String" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setHarvestJobName(String) : void" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/configurations/OaiHarvestConfigurationDto.java" name="OaiHarvestConfigurationDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="61" coveredmethods="0" methods="10" elements="20" classes="1" ncloc="41" statements="10" conditionals="0" coveredstatements="0"/>
+            <class name="OaiHarvestConfigurationDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="10" elements="20" statements="10" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getUrl() : String" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUrl(String) : void" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMetadataPrefix() : String" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setMetadataPrefix(String) : void" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExtractIdRegex() : String" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setExtractIdRegex(String) : void" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHarvestJobName() : String" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setHarvestJobName(String) : void" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSet() : String" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setSet(String) : void" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="cz.mzk.recordmanager.api.model.statistics">
+         <metrics coveredelements="0" complexity="92" loc="519" methods="92" classes="9" statements="92" coveredconditionals="0" coveredmethods="0" elements="184" ncloc="356" files="9" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/statistics/ActualStatisticsDto.java" name="ActualStatisticsDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="57" coveredmethods="0" methods="10" elements="20" classes="1" ncloc="39" statements="10" conditionals="0" coveredstatements="0"/>
+            <class name="ActualStatisticsDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="10" elements="20" statements="10" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getStatus() : String" num="17" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStatus(String) : void" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExitMessage() : String" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setExitMessage(String) : void" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStartTime() : Date" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStartTime(Date) : void" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getJobName() : String" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setJobName(String) : void" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getJobExecutionId() : Long" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setJobExecutionId(Long) : void" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/statistics/DedupRecordsDto.java" name="DedupRecordsDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="4" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="DedupRecordsDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/statistics/DownloadImportConfJobStatisticsDto.java" name="DownloadImportConfJobStatisticsDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="12" loc="65" coveredmethods="0" methods="12" elements="24" classes="1" ncloc="45" statements="12" conditionals="0" coveredstatements="0"/>
+            <class name="DownloadImportConfJobStatisticsDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="12" coveredmethods="0" methods="12" elements="24" statements="12" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getLibraryName() : String" num="17" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLibraryName(String) : void" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUrl() : String" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUrl(String) : void" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getImportJobName() : String" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setImportJobName(String) : void" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFormat() : String" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFormat(String) : void" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNoOfRecords() : Long" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setNoOfRecords(Long) : void" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getImportConfId() : Long" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setImportConfId(Long) : void" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/statistics/GeneralStatisticsDto.java" name="GeneralStatisticsDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="47" coveredmethods="0" methods="8" elements="16" classes="1" ncloc="32" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="GeneralStatisticsDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="8" elements="16" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getJobExecutionId() : Long" num="15" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setJobExecutionId(Long) : void" num="19" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStartTime() : Date" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStartTime(Date) : void" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEndTime() : Date" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEndTime(Date) : void" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStatus() : String" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStatus(String) : void" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/statistics/IndexAllRecordsJobStatisticsDto.java" name="IndexAllRecordsJobStatisticsDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="77" coveredmethods="0" methods="14" elements="28" classes="1" ncloc="53" statements="14" conditionals="0" coveredstatements="0"/>
+            <class name="IndexAllRecordsJobStatisticsDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="14" elements="28" statements="14" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getJobExecutionId() : Long" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setJobExecutionId(Long) : void" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStartTime() : Date" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStartTime(Date) : void" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEndTime() : Date" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEndTime(Date) : void" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStatus() : String" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStatus(String) : void" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFromParam() : Date" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFromParam(Date) : void" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getToParam() : Date" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setToParam(Date) : void" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStringVal() : String" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStringVal(String) : void" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/statistics/JobParameterDto.java" name="JobParameterDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="77" coveredmethods="0" methods="14" elements="28" classes="1" ncloc="53" statements="14" conditionals="0" coveredstatements="0"/>
+            <class name="JobParameterDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="14" elements="28" statements="14" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getTypeCd() : String" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTypeCd(String) : void" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getKeyName() : String" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setKeyName(String) : void" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStringVal() : String" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStringVal(String) : void" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDateVal() : Date" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDateVal(Date) : void" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLongVal() : Long" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLongVal(Long) : void" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDoubleVal() : Double" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDoubleVal(Double) : void" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getIdentifying() : String" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setIdentifying(String) : void" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/statistics/OaiHarvestJobStatisticsDto.java" name="OaiHarvestJobStatisticsDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="78" coveredmethods="0" methods="14" elements="28" classes="1" ncloc="53" statements="14" conditionals="0" coveredstatements="0"/>
+            <class name="OaiHarvestJobStatisticsDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="14" elements="28" statements="14" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getImportConfId() : Long" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setImportConfId(Long) : void" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLibraryName() : String" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLibraryName(String) : void" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUrl() : String" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUrl(String) : void" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFromParam() : Date" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFromParam(Date) : void" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getToParam() : Date" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setToParam(Date) : void" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNoOfRecords() : Long" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setNoOfRecords(Long) : void" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLibraryId() : Long" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLibraryId(Long) : void" num="74" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/statistics/RegenerateDedupKeysJobStatisticsDto.java" name="RegenerateDedupKeysJobStatisticsDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="4" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RegenerateDedupKeysJobStatisticsDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/statistics/StatisticDetailsDto.java" name="StatisticDetailsDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="20" loc="110" coveredmethods="0" methods="20" elements="40" classes="1" ncloc="75" statements="20" conditionals="0" coveredstatements="0"/>
+            <class name="StatisticDetailsDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="20" coveredmethods="0" methods="20" elements="40" statements="20" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getVersion() : Long" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setVersion(Long) : void" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getJobInstanceId() : Long" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setJobInstanceId(Long) : void" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExitCode() : String" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setExitCode(String) : void" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExitMessage() : String" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setExitMessage(String) : void" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getJobConfigurationLocation() : String" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setJobConfigurationLocation(String) : void" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getJobName() : String" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setJobName(String) : void" num="74" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getJobParameter() : List&lt;JobParameterDto&gt;" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setJobParameter(List&lt;JobParameterDto&gt;) : void" num="82" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getJobKey() : String" num="86" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setJobKey(String) : void" num="90" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCreateTime() : Date" num="94" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCreateTime(Date) : void" num="98" count="0" type="method"/>
+            <line num="99" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLastUpdated() : Date" num="102" count="0" type="method"/>
+            <line num="103" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLastUpdated(Date) : void" num="106" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="cz.mzk.recordmanager.api.service">
+         <metrics coveredelements="0" complexity="0" loc="119" methods="0" classes="4" statements="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="69" files="4" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/service/BatchService.java" name="BatchService.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="39" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="21" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="BatchService">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/service/ImportConfigurationService.java" name="ImportConfigurationService.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="11" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="6" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ImportConfigurationService">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/service/LibraryService.java" name="LibraryService.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="25" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="14" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="LibraryService">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/service/StatisticsService.java" name="StatisticsService.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="44" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="28" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="StatisticsService">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="cz.mzk.recordmanager.api.model">
+         <metrics coveredelements="0" complexity="38" loc="252" methods="38" classes="8" statements="38" coveredconditionals="0" coveredmethods="0" elements="76" ncloc="169" files="8" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/ContactPersonDto.java" name="ContactPersonDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="39" coveredmethods="0" methods="6" elements="12" classes="1" ncloc="26" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="ContactPersonDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="12" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getName() : String" num="15" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setName(String) : void" num="19" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEmail() : String" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEmail(String) : void" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPhone() : String" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPhone(String) : void" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/IdDto.java" name="IdDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="15" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="10" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="IdDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getId() : Long" num="7" count="0" type="method"/>
+            <line num="8" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setId(Long) : void" num="11" count="0" type="method"/>
+            <line num="12" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/ImportRecordsDto.java" name="ImportRecordsDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="26" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="18" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="ImportRecordsDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getFile() : File" num="11" count="0" type="method"/>
+            <line num="12" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFile(File) : void" num="15" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFormat() : String" num="19" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFormat(String) : void" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/LibraryDetailDto.java" name="LibraryDetailDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="22" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="14" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="LibraryDetailDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getOaiHarvestConfigurations() : List&lt;ImportConfigurationDto&gt;" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOaiHarvestConfigurations(List&lt;ImportConfigurationDto&gt;) : void" num="17" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/LibraryDto.java" name="LibraryDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="49" coveredmethods="0" methods="8" elements="16" classes="1" ncloc="33" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="LibraryDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="8" elements="16" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getName() : String" num="17" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setName(String) : void" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUrl() : String" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUrl(String) : void" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCatalogUrl() : String" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCatalogUrl(String) : void" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCity() : String" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCity(String) : void" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/OaiHarvestConfigurationDto.java" name="OaiHarvestConfigurationDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="59" coveredmethods="0" methods="10" elements="20" classes="1" ncloc="40" statements="10" conditionals="0" coveredstatements="0"/>
+            <class name="OaiHarvestConfigurationDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="10" elements="20" statements="10" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getId() : Long" num="19" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setId(Long) : void" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUrl() : String" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUrl(String) : void" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSet() : String" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setSet(String) : void" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMetadataPrefix() : String" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setMetadataPrefix(String) : void" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getContactPerson() : ContactPersonDto" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setContactPerson(ContactPersonDto) : void" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/PeriodDto.java" name="PeriodDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="27" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="18" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="PeriodDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getStart() : Date" num="11" count="0" type="method"/>
+            <line num="12" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStart(Date) : void" num="15" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEnd() : Date" num="19" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEnd(Date) : void" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cz.mzk.recordmanager.api/src/main/java/cz/mzk/recordmanager/api/model/RecordIdDto.java" name="RecordIdDto.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="15" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="10" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="RecordIdDto">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getCompleteInstitutionId() : String" num="7" count="0" type="method"/>
+            <line num="8" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCompleteInstitutionId(String) : void" num="11" count="0" type="method"/>
+            <line num="12" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="RecordManager 1.0.0-SNAPSHOT (Aggregated)" timestamp="1594343757224">
+      <metrics coveredelements="0" complexity="0" loc="0" methods="0" classes="0" statements="0" packages="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="0" files="0" conditionals="0" coveredstatements="0"/>
+   </testproject>
+</coverage>

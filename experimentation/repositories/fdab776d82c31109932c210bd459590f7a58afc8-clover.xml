@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594217965851" clover="4.4.1">
+   <project name="Ultra Structure 2.0.0-SNAPSHOT (Aggregated)" timestamp="1594217963147">
+      <metrics coveredelements="2" complexity="26" loc="841" methods="19" classes="22" statements="49" packages="3" coveredconditionals="0" coveredmethods="1" elements="72" ncloc="391" files="17" conditionals="4" coveredstatements="1"/>
+      <package name="com.chiralbehaviors.CoRE.pgTesting">
+         <metrics coveredelements="0" complexity="8" loc="120" methods="2" classes="1" statements="32" coveredconditionals="0" coveredmethods="0" elements="36" ncloc="104" files="1" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/postgresql-testing/src/main/java/com/chiralbehaviors/CoRE/pgTesting/AbstractPgTest.java" name="AbstractPgTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="120" coveredmethods="0" methods="2" elements="36" classes="1" ncloc="104" statements="32" conditionals="2" coveredstatements="0"/>
+            <class name="AbstractPgTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="2" elements="36" statements="32" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="package" signature="&lt;clinit&gt;, line 34()" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="findFreePort() : int" num="94" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="109" type="cond"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.chiralbehaviors.CoRE.meta.workspace.json.workflow">
+         <metrics coveredelements="0" complexity="5" loc="256" methods="5" classes="8" statements="5" coveredconditionals="0" coveredmethods="0" elements="10" ncloc="98" files="6" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/workflow/ChildSequencing.java" name="ChildSequencing.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="40" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="14" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="ChildSequencing">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="35" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/workflow/MetaProtocol.java" name="MetaProtocol.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="43" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="17" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="MetaProtocol">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/workflow/ParentSequencing.java" name="ParentSequencing.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="42" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="16" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="ParentSequencing">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/workflow/Protocol.java" name="Protocol.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="53" coveredmethods="0" methods="0" elements="0" classes="3" ncloc="25" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Protocol">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="Protocol.Child">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="Protocol.Match">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/workflow/SelfSequencing.java" name="SelfSequencing.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="38" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="12" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="SelfSequencing">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/workflow/SiblingSequencing.java" name="SiblingSequencing.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="40" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="14" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="SiblingSequencing">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="35" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.chiralbehaviors.CoRE.meta.workspace.json">
+         <metrics coveredelements="2" complexity="13" loc="465" methods="12" classes="13" statements="12" coveredconditionals="0" coveredmethods="1" elements="26" ncloc="189" files="10" conditionals="2" coveredstatements="1"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/Constraint.java" name="Constraint.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="50" coveredmethods="0" methods="1" elements="2" classes="2" ncloc="22" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="Constraint">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="Constraint.Cardinality">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/Edge.java" name="Edge.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="42" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="14" statements="1" conditionals="2" coveredstatements="0"/>
+            <class name="Edge">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="1" elements="4" statements="1" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="toString() : String" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="39" type="cond"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/Existential.java" name="Existential.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="58" coveredmethods="0" methods="1" elements="2" classes="2" ncloc="30" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="Existential">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="Existential.Domain">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="50" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/Facet.java" name="Facet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="47" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="19" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="Facet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="41" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/FacetApplication.java" name="FacetApplication.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="39" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="12" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="FacetApplication">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/Import.java" name="Import.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="40" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="13" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="Import">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="35" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/Inference.java" name="Inference.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="37" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="11" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="Inference">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/JsonWorkspace.java" name="JsonWorkspace.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="67" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="39" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="JsonWorkspace">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="58" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/Rel.java" name="Rel.java">
+            <metrics coveredelements="2" coveredconditionals="0" complexity="3" loc="50" coveredmethods="1" methods="3" elements="6" classes="2" ncloc="20" statements="3" conditionals="0" coveredstatements="1"/>
+            <class name="Rel">
+               <metrics coveredelements="2" coveredconditionals="0" complexity="2" coveredmethods="1" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="1"/>
+            </class>
+            <class name="Rel.NamedRel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Rel()" num="47" count="7" type="method"/>
+            <line num="48" count="7" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/main/java/com/chiralbehaviors/CoRE/meta/workspace/json/Sequencing.java" name="Sequencing.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="35" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="9" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="Sequencing">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="31" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="Ultra Structure 2.0.0-SNAPSHOT (Aggregated)" timestamp="1594217963147">
+      <metrics coveredelements="3" complexity="1" loc="42" methods="1" classes="1" statements="2" packages="1" coveredconditionals="0" coveredmethods="1" elements="3" ncloc="13" files="1" conditionals="0" coveredstatements="2"/>
+      <package name="com.chiralbehaviors.CoRE.workspace.json">
+         <metrics coveredelements="3" complexity="1" loc="42" methods="1" classes="1" statements="2" coveredconditionals="0" coveredmethods="1" elements="3" ncloc="13" files="1" conditionals="0" coveredstatements="2"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/dsl/src/test/java/com/chiralbehaviors/CoRE/workspace/json/TestParse.java" name="TestParse.java">
+            <metrics coveredelements="3" coveredconditionals="0" complexity="1" loc="42" coveredmethods="1" methods="1" elements="3" classes="1" ncloc="13" statements="2" conditionals="0" coveredstatements="2"/>
+            <class name="TestParse">
+               <metrics coveredelements="3" complexity="1" methods="1" testruns="1" statements="2" coveredconditionals="0" coveredmethods="1" elements="3" testfailures="0" testduration="0.277" conditionals="0" coveredstatements="2" testpasses="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testRead() : void" num="36" testsuccess="true" count="1" testduration="0.277" type="method"/>
+            <line num="38" count="1" type="stmt"/>
+            <line num="40" count="1" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

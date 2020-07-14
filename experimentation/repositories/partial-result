@@ -1,0 +1,730 @@
+https://github.com/komoot/photon.git f42cbb3aec611ea9e7878290af41d3bdf2be2f7c true
+https://github.com/contextproject/discover.git cd582f5a63700a477674801f983f1cfe99862663 false
+https://github.com/apache/commons-lang.git 32a9a350c67f1418784fff266d7e7881ca6346ad true
+https://github.com/apache/commons-math.git 849d551b8a9507a2ae8dfb81db36aa544a81ee47 true
+https://github.com/apache/commons-codec.git e80304ccec2f01aab18a227ac5f2a30393c75d80 true
+https://github.com/google/guava.git 03f43227fea9c02bc7bc0fb374001f37c9d5cb43 false
+https://github.com/FasterXML/jackson-databind.git 820ac929d875d2af4a1fe4f18de46c6790bfa7b0 true
+https://github.com/FasterXML/jackson-dataformat-xml.git 6021b07fff5588263bce88406ab6778a50edbb38 true
+https://github.com/IDPF/epubcheck.git fd33b09d10a8daea7a02e33a36cd2a3ce5122580 true
+https://github.com/treasure-data/td-import-java.git e05dcb4a3049d1cd9d68d706309fe5958fbb646c true
+https://github.com/Atmosphere/atmosphere-extensions.git 3352eb8769d52bf4a9f412237d91a6bfd317737a false
+https://github.com/astefanutti/camel-cdi.git 686c7f5fe3a706f47378e0c49c323040795ddff8 true
+https://github.com/imagej/imagej-ui-swing.git 6eebcfe7540948a8c542e2d64abc2d137e37151f true
+https://github.com/FIWARE-Middleware/KIARA.git d21dc7e9ff233e9265bdde0ee2b1d670c9104fb7 false Maven time limit violated.
+https://github.com/mbosecke/pebble.git ed03fae86a257d6389cd83f897e1bde4b707a85f true
+https://github.com/metamx/java-util.git 23eb982ff9acdcb84a83d912cc90145d8eb6d3d5 true
+https://github.com/btrplace/scheduler.git 47b3d0580e298a62e06bdb9c885913cbdf794afb true
+https://github.com/tuwiendsg/rSYBL.git ba472aa03922eb60657453834bb363cf9203d81c true
+https://github.com/sker65/go-dmd-clock.git c44e2001c7b1a3474c4f86c7feb3338be7dfba9c true
+https://github.com/liferay/liferay-maven-support.git e1fc1ec1a016dd47d45acbbbe0f970eafb892c45 false Clover report not generated.
+https://github.com/0xCopy/RelaxFactory.git a730846e0c602260e01419c2a8afa2542d2a76ae true
+https://github.com/caskdata/hydrator-plugins.git f52948721e15148677b13485f66229e783519263 false Clover report not generated.
+https://github.com/joelittlejohn/jsonschema2pojo.git b00b496894c9b112d1900ca06a0555d9ae0df110 false Clover report not generated.
+https://github.com/ArcBees/gwtquery.git 93e02bc8eb030081061c56134ebee1f585981107 true
+https://github.com/redpen-cc/redpen.git 81fc86b342c128b9b8b5e9e0892d1f7b36dc7ad4 true
+https://github.com/sviperll/chicory.git a88b05b7031b0446db7793b387dc540a749a5b3f true
+https://github.com/spotify/cassandra-reaper.git 598015a836f1ae053cac6e09eca15297e2976ab3 false Clover report not generated.
+https://github.com/sakai-mirror/calendar.git b1280567b6b36b779d5c22f19e64f048aa5172ee false Clover report not generated.
+https://github.com/notthebees/languagegames.git 0bcf4447cc48167f42974c44b64b78a9917c020a true
+https://github.com/imagej/ij1-patcher.git 995ae08e48d142d374dbbbb4927340b25e7a00d0 true
+https://github.com/cjdev/versions-maven-plugin.git ebfbcd091257224774ee430fa508a9f39190ab2f true
+https://github.com/phax/as2-lib.git a5d9bb2fdbe8a8cc3331f35935660da8a554c022 true
+https://github.com/RolecraftDev/RolecraftCore.git 28b9c8fe1b52e82a69272dfabcf37cefb22212cb false Clover report not generated.
+https://github.com/dbs-leipzig/gradoop.git 12f5487b48332e90bb79047f8614a4c495a5d0b4 true
+https://github.com/dbsoftcombr/dbssdk.git 9cb5e256ed87b0b6c8df66eb448002cc86db3b6e false Clover report not generated.
+https://github.com/shabbies/clockwork.git fc22792feaf03bc77436eb50f895df1ed7fcd978 true
+https://github.com/skillcoyne/IGCSA.git 9b8f1a5b6e572f780e04ae7698d25540fb7498ae false Clover report not generated.
+https://github.com/GlobalTechnology/idm-user-management.git c02790f9f642acaccd373d63db37244252ab59e7 true
+https://github.com/instance01/MinigamesAPI.git 41edae3a5f081b67cac36c8eab98598afa5dec8e false Clover report not generated.
+https://github.com/jaywarrick/JEX.git a488e2f3229f008ec516c8abfcfd9d7b6cc612e2 false Clover report not generated.
+https://github.com/mwcaisse/AndroidFT.git ffc8f5b93e72bc3e9377d649919d77a18f44060e true
+https://github.com/figarocms/cucumber-jvm-fixtures.git null false Clover report not generated.
+https://github.com/jillesvangurp/jsonj.git 1da0c44c5bdb60c0cd806c48d2da5a8a75bf84af false Clover report not generated.
+https://github.com/SonarSource/sslr.git 22bf141801c021c127b5f37f5cce23213110580f true
+https://github.com/OpenTreeOfLife/taxomachine.git 3326c56e00567aacbe0a84d026e82631a00eb71c false Clover report not generated.
+https://github.com/The-Dream-Team/Tardis.git d3a48632f8536d4cf784faadb0a4801291fc00f5 true
+https://github.com/digipost/digipost-api-client-java.git 2c213dc62a1867672378a2f0fb4f0fbf0e7a623f true
+https://github.com/nuxeo/nuxeo-platform-video.git 47489b53df740f00133ce73e9f7a35934499a8b7 false Clover report not generated.
+https://github.com/INL/BlackLab.git 9b77ee3e607dac46c355d9bb7c6f9d5c72af30e3 true
+https://github.com/andrewgaul/s3proxy.git 34b844fcaf6fc004e9d8f545c4d1b01777b18203 true
+https://github.com/OpenRock/OpenICF-java-framework.git b433440dc7689b81a2b37c93eb6079efe87c7aa7 false Clover report not generated.
+https://github.com/blurpy/kouchat-android.git 39222ce2c8eddfa8cd2d45cb5cb9abf7b64e6226 false Clover report not generated.
+https://github.com/hypercube1024/firefly.git ed3fc75b7c54a65b1e7d8141d01b49144bb423a3 false Clover report not generated.
+https://github.com/Poweruser/MinetickMod.git 815f5cd63086468e9d4130648e5399afd9e005e3 false Clover report not generated.
+https://github.com/exoplatform/wiki.git 20ec4b3fedd210e5274ed0d8f6e5c520d80a37e7 true
+https://github.com/Bukkit/Bukkit.git f210234e59275330f83b994e199c76f6abd41ee7 true
+https://github.com/zanata/zanata-api.git f56cad1a793cee300e845bd2ad6a8b5f62406abb false Clover report not generated.
+https://github.com/stripe/stripe-java.git d04d477607843763a14fa27c1bb08ae44212f610 false Clover report not generated.
+https://github.com/allanbank/mongodb-async-driver.git 028865c4c3886e2c659e950cc3b9c4ffaa65ce95 true
+https://github.com/AMOSTeam3/amos-ss15-proj3.git 9bdb0d1d74655e16e69e07f3420e5116cc307767 true
+https://github.com/groovy/GMavenPlus.git a21bca3b086110d770ee639737edb37b89f34eb6 true
+https://github.com/SUSE/saltstack-netapi-client-java.git a0e12e81d4a40458c3798e9caf3d5530d1a5beb2 false Maven time limit violated.
+https://github.com/nuxeo/nuxeo-chemistry.git 59f5d2ab8c85eefacfde661fc748f3d42abd665b false Clover report not generated.
+https://github.com/wattdepot/wattdepot.git 2822145c16bed772faf8bca8471a04d308542d1e false Clover report not generated.
+https://github.com/nuxeo/nuxeo-platform-forms-layout-demo.git 86b673a002c7f4afeaa0cb05d1964b2ed06d971c false Clover report not generated.
+https://github.com/deeplearning4j/nd4j.git 8f005bcecb240d1fbb83b9d390ad801d1d3b6933 true
+https://github.com/NFSdb/nfsdb.git 2882faee2c6971ed5c37f73ac3e10a71efd30ce7 false Clover report not generated.
+https://github.com/cismet/cids-server.git 6bff0ae32aa55d5825f57db655b73aed46d865b4 false Clover report not generated.
+https://github.com/sarahtattersall/PIPE.git c44b32c02d294d0256c45ea2a428b0c161099cb3 true
+https://github.com/apache/maven-shared.git 28046c02f72245d39bc2b873cc53745dc4ce872a true
+https://github.com/daisy/pipeline-mod-braille.git 4aa40ac0c1106e6b8ff03e4dbe79967c90affa2a false Clover report not generated.
+https://github.com/jenkinsci/xunit-plugin.git 64af171f474102033afc91e12af60b71be84ff89 true
+https://github.com/jclouds/jclouds-karaf.git 1ef40b575ebfda5b06bfbf9207710eec84ee7e75 false Clover report not generated.
+https://github.com/DICE-UNC/jargon.git b8a3e9d47438822bd3df3dea5468d290b9eed630 true
+https://github.com/ancoron/glassfish-main.git null false Clover report not generated.
+https://github.com/FallenMoonNetwork/CanaryLib.git 405090bda84ad4525477a26b1db8ea8646d90258 false Clover report not generated.
+https://github.com/phillipsic/SeleniumDriverFramework.git 3b7c0861a3abb9dace67352a3a2d6b2073a30942 true
+https://github.com/dekellum/iudex.git 8abf52f12f4ffd000a5cf103dd23a21f68852368 true
+https://github.com/apache/openjpa.git 6aa22031e1b4374f8d83a202ea8ed8d74c95a83f true
+https://github.com/Praqma/cool.git 7e8893d544e40b50a5f269c6ba5f334639ce20ae true
+https://github.com/SciGraph/SciGraph.git 7dae477f972cfffbf63cbe592fcc57fd1bac462e true
+https://github.com/TeamShadow/shadow.git 2d984997fc53f537fa9b6ccff0d0d7dc5674045f false Clover report not generated.
+https://github.com/cowtowncoder/ClusterMate.git a2609b2d2f7884acbf0e0a114d98226886dc41d0 true
+https://github.com/shubhcollaborator/common-csvnew.git 7d55cc3bef5f5cfbb47f3e56a4a1286e0a594860 true
+https://github.com/albfan/jmeld.git e5726a16e684ae76d053eebd2d51330de77268f3 true
+https://github.com/strongbox/strongbox.git b411c7495dd3bb5dc8f89c9cf045a28f5b909cc1 false Clover report not generated.
+https://github.com/dropwizard/metrics.git dec8e592779987ce15a05816fc2e31770389398a true
+https://github.com/Studentmediene/Momus.git 4503678b56c7ae91a35aedabad60c737ab77fd03 true
+https://github.com/apache/continuum.git 2a3bf5fc272606c8a23d2535afdb70dfc9772137 false Clover report not generated.
+https://github.com/jenkinsci/junit-plugin.git bab34bcc96154a494f8c371953efe06d45813f67 true
+https://github.com/pcpratts/rootbeer1.git null false Clover report not generated.
+https://github.com/nieshr/xjr.git 70ba60c262055d1b75f30a2b386fe67970da5e19 false Clover report not generated.
+https://github.com/LiveRamp/hank.git a1df2bcee94f58487547e56db7fb22c1c9cec897 false Clover report not generated.
+https://github.com/ralscha/extdirectspring.git 95dee4ce5e762149a953314b2f7c96ace5522bdc true
+https://github.com/sjanaud/jensoft-core.git 87eba8fd035694cebcaeeb8ae2257010c4706296 true
+https://github.com/marschraner/svm.git 04a249b4923f6194de3b352a64d9e7a2663c35a9 false Clover report not generated.
+https://github.com/LEDS/sincap-entities.git 9a1287dac5e9ecf1da1a8bf5fd08c2a6bcf54138 true
+https://github.com/AugGroup/hr-db.git da434d6a6e20a7c09478ea5265337da1a2ce89ac true
+https://github.com/MineSworn/UltimateArena.git null false Clover report not generated.
+https://github.com/benas/easy-batch.git 91618623c7b2c52b64c12ab9115b381b2a5aa747 false Maven time limit violated.
+https://github.com/ocpsoft/rewrite.git 3f60ed6abc7da48e7e9e4ac415e3cece2532ffcf true
+https://github.com/square/dagger.git 572cdd2fe97fc3c148fb3d8e1b2ce7beb4dcbcde true
+https://github.com/pgjdbc/pgjdbc.git 9a0d2b18a81c7ec5974d4caf2ff2d218312da25f false Clover report not generated.
+https://github.com/membrane/service-proxy.git 15e4780f242a0adcdc82236a251a413e70848fa6 true
+https://github.com/getsentry/raven-java.git cc4b3738e6d42d0a02eb69ae63388d0c408386a8 true
+https://github.com/jboss-javassist/javassist.git 5e3b6a8f64a291ac98f1b50cb82da4cc1cff8f90 true
+https://github.com/mybatis/mybatis-3.git e3eaef74438074bd4f9c1179333c24cc85f5f002 true
+https://github.com/opendaylight/groupbasedpolicy.git 9cb35d73911e6a0482089232c453da2a15ccf68e false Clover report not generated.
+https://github.com/Bammerbom/UltimateCore.git 35537cd4b5c4b4cc9a13295955e880ebb0b8ac37 false Clover report not generated.
+https://github.com/mrniko/netty-socketio.git c1e3d5aec46159f24cac943ac89e5c3a861fe56e true
+https://github.com/searchbox-io/Jest.git fa277faa8e196b5d79adda91571a9ad1e102cad2 true
+https://github.com/jo-pol/DiBL.git 8d83645c73e5d079443e6a96623e549bebb8c395 false Clover report not generated.
+https://github.com/sukirtigupta/slf4j.git null false Clover report not generated.
+https://github.com/immutables/immutables.git 275382c8d0f8a4c56e47e4f13c008422c41cd731 false Maven time limit violated.
+https://github.com/dumptruckman/PluginBase.git b3ca746ff60d0d585d41a037030327dff5141215 true
+https://github.com/TridentSDK/TridentSDK.git c60da34d514127551fe05213e59522fbc416fb28 true
+https://github.com/johan-martenson/settlers.git 5aa7fdc8b83d5a3075f2f7296bb1f8f7bc18a51c false Maven time limit violated.
+https://github.com/lightblue-platform/lightblue-core.git ff1b4b040967bd61f6efb15474c9a95b31b925fd false Maven time limit violated.
+https://github.com/cismet/cismet-gui-commons.git 354c89836187b227cdc6da550eeeba5501bbf642 false Clover report not generated.
+https://github.com/dakusui/jcunit.git 46b9a6fcde875adde9ad4bf3a75ef774dbf0f955 true
+https://github.com/Pi4J/pi4j.git 8a0b053fda50388bc7689761185b016acc62f80e true
+https://github.com/lutece-secteur-public/espacepublic-plugin-dansmarue.git 70cf2d80a47e282b98769bad179517fd75929d4f true
+https://github.com/lexicalscope/svm.git 0bcbd3cddf36f6ce5897b287bc11e3061a0124b2 true
+https://github.com/ucam-cl-dtg/urop-2013-questions.git e2882fc31593a3dbb698f85aec28b77b05805a55 false Clover report not generated.
+https://github.com/grzegorz2047/OpenGuild2047.git eb93dc7b6a56eeeb84837956eae4a71f10e33749 true
+https://github.com/davidsoergel/ml.git acbff993bf9adc80679f555c14bf8acb4c8bc58c true
+https://github.com/apache/sirona.git 192ba25c8951185367a5c54ffb34d4702a4e15ac true
+https://github.com/Stratio/cassandra-lucene-index.git a94a4d9af6c25d40e1108729974c35c27c54441c true
+https://github.com/jdr0887/MaPSeq-Pipeline-NCGenes-DX.git e191e25a547ae2b23be4c20a43743a8437f27173 false Clover report not generated.
+https://github.com/Azure/azure-sdk-for-java.git 196111686c001296b1fef66d47ca23e56a2329d0 false Maven time limit violated.
+https://github.com/sakai-mirror/msgcntr.git 03efae17f72a3faeee9076fef85ba1819c241879 false Clover report not generated.
+https://github.com/openmrs/openmrs-module-emrapi.git 78df236962b590734b0d3c6ff05e80ea51555542 true
+https://github.com/openmrs/openmrs-module-mdrtb.git 7780000b214e12591ab02f444f94c95d69451960 true
+https://github.com/iZettle/izettle-toolbox.git null false Clover report not generated.
+https://github.com/jmxtrans/jmxtrans.git d9ebad93e1d05d298ad159a77a832abaf65b23f3 false Clover report not generated.
+https://github.com/effektif/effektif.git b38fdd94b9547268bd9eb68a37539f71e392bb74 true
+https://github.com/DataTorrent/Apex.git d17f464fcaf19778e2f8edbe2b03419151558068 false Clover report not generated.
+https://github.com/aeshell/aesh.git 28d1e6518366e41e93385aac8462ccceb92bace7 true
+https://github.com/SophieKoonin/JavaDecaf.git cd2b47139494cfdeed7f4445ff8a79eb7bf0a003 true
+https://github.com/jitsi/jitsi-videobridge.git f7cb00bffbf0139aca0d5c575726ad5c0a53def7 true
+https://github.com/renepickhardt/generalized-language-modeling-toolkit.git 803cc43f2f870c97c3ae74d0f63e7c74c8da3280 true
+https://github.com/TeamExodus/external_gson.git 4bc2ec0628f74bc24c3820951f4ca2c91e516f7a true
+https://github.com/minnal/minnal.git 50989185555e0d8969319bb20ae8e596db4ff545 false Maven time limit violated.
+https://github.com/soi-toolkit/soi-toolkit-mule.git e891350dbf55e6307be94d193d056bdb785b37d3 true
+https://github.com/davidmoten/rtree.git ed051121eb7767329d96b73e7bb5156d93e80e18 true
+https://github.com/zendesk/maxwell.git 7b336e247a64efe821e27a7b359bf28628f87f13 true
+https://github.com/apache/commons-compress.git f41756f8024930384a60c5c57eb9eb2913ce1ae0 true
+https://github.com/hector-client/hector.git a302e68ca8d91b45d332e8c9afd7d98030b54de1 true
+https://github.com/tubav/fiteagle.git 87f6cc8b4dc5edc32ba4a28574b35790e960ae11 true
+https://github.com/AtlasOfLivingAustralia/bie-service.git f0ede53563b79300a75499d3f96ceaf7ea6f9553 false Clover report not generated.
+https://github.com/sakai-mirror/basiclti.git e10ab1f4d874361a057206e63b7dace04cdaa325 false Clover report not generated.
+https://github.com/nuodb/migration-tools.git ee9af04aae1216a4c3735e2276b1e262dbded422 true
+https://github.com/jahlborn/jackcess.git 3f75e95a21d9a9e3486519511cdd6178e3c2e3e4 false Maven time limit violated.
+https://github.com/SebastianNiemann/ArmadilloJava.git 061121e22708111a8df3a2da92f6278c3a581e26 true
+https://github.com/RuedigerMoeller/kontraktor.git a63af82c8ac4b2a32d0b8bb2eb504c83cd8723f2 true
+https://github.com/carewebframework/carewebframework-core.git fa3252d4f7541dbe151b92c3d4f6f91433cd1673 true
+https://github.com/BattleNight/BattleNight-Core.git 7e896083d1a0c04ff61364fe612ad8ed574664c5 false Clover report not generated.
+https://github.com/apache/directory-studio.git 5015d589fa6730e96df3712d0f453ac52b8c6a77 false Clover report not generated.
+https://github.com/apache/creadur-rat.git 38031d4d0e197d681760a6fe20df04b9b50d07ad true
+https://github.com/ARUP-NGS/Pipeline.git 0adfb462d3a612d939938bff22590fdaccf4c42e false Maven time limit violated.
+https://github.com/zenbones/SmallMind.git 23286495a6230e564ad3a975317cc7bea74a226b true
+https://github.com/jayway/rest-assured.git c5b41694b265a18efc8cf0a78b6e7f3ef6e6d1cd false Maven time limit violated.
+https://github.com/datanucleus/datanucleus-rdbms.git 36a39adede8d82036c6327095e7a1a7000039687 true
+https://github.com/TridentSDK/Trident.git 54a44513c60e116b37c84194e2ef9bbc77dfd291 true
+https://github.com/wildfly-security/wildfly-elytron.git df8d86cdfaca671594b56a9b7372743bb301df77 true
+https://github.com/mathieu-bellange/ourses-plumes.git 0270cf1c2d4553541797263895203194344cac7b true
+https://github.com/apache/vxquery.git 5d1175d2cb04a54ba751295f2ac67daec38bf723 true
+https://github.com/openmrs/openmrs-distro-referenceapplication.git 1a6d9cbb555ffdbe083e072521099d52aa29c99b false Maven time limit violated.
+https://github.com/apache/httpclient.git 9a967de60ec032a7ff839116d2865b00a345de94 true
+https://github.com/costamojan/xbean.git null false Clover report not generated.
+https://github.com/masatomix/repo.git 40c8cab8ff60172a75a50e1153169daf4df13aa8 false Clover report not generated.
+https://github.com/lviggiano/owner.git 1418ac87731eb91422e5e2fecb0819bed9aaa672 true
+https://github.com/apache/juddi.git c8bce39ec3efd546a2dd4e4fd5e072cc218a86a1 true
+https://github.com/seulkikims/hashtable.git null false Clover report not generated.
+https://github.com/davidkey/supertunnel.git 8779bb0d3d023d17656c405d9d3d47d9ab659cbc true
+https://github.com/irstv/H2GIS.git 370aad0c5dc9b49ca619f61abc48c92d7808e169 false Maven time limit violated.
+https://github.com/mindwind/craft-atom.git 6c72a2f1669da35bb06c184d7952e4cf2e1297f6 true
+https://github.com/relayrides/pushy.git e40a73fb604668b5af2efba8db8967d20fa2e893 true
+https://github.com/jdereg/json-io.git 2545cac2323815464524fcec2e04c71b53b73dc1 true
+https://github.com/Welchd1/resolve-lite.git null false Clover report not generated.
+https://github.com/jmacglashan/burlap.git cc3b09de81f33e6bed8154144a3183dee8595e32 true
+https://github.com/fluxroot/hadaps.git f0bdd09012445ffd117c8f580bb457f48e696dbf true
+https://github.com/matthias-mueller/movingcode.git 158408321538519cb356fe9576e720516a6396b4 true
+https://github.com/aceleradora6-tw/RegistroLivre.git 5f98de9f6ccf58cda5235b04ebd60589b0ef6d55 true
+https://github.com/st-js/st-js.git a97a611b39709477b8f6ddb3a05fa64b1976db17 false Clover report not generated.
+https://github.com/OpenHFT/HugeCollections.git fc3e8f79adf7d00120e1fc3a32d37c7bab80c557 false Clover report not generated.
+https://github.com/zycgit/hasor.git 4f25980fc9727ddd62002b2f781810d6ce51179d true
+https://github.com/sesuncedu/htmlparser.git f83450e359df70bf5e482eff938cedef8651e237 true
+https://github.com/lsds/SEEP.git 53179692897b314e4c5ab84efbf33c916ee817d3 true
+https://github.com/stephenostermiller/ostermillerutils.git fe31a35761e5be6f52edbf8eea0f887045f09b1e true
+https://github.com/FamilySearch/gedcomx-java.git 150c84cdc2a329dfee876c7cd95c0fa4a8bae1ee true
+https://github.com/apache/ddlutils.git 408ed74e935d509e87885e5acfb1b2f1acd02f9c true
+https://github.com/optimizationBenchmarking/optimizationBenchmarking.git 488f71794e9e70a572491f7082504776da318360 false Maven time limit violated.
+https://github.com/SomMeri/less4j.git bca5cb262c018f38ea8c58175df344c7d2345148 true
+https://github.com/xwiki/xwiki-rendering.git 212499852a179461b5a30cffd914981ba0a5866e false Clover report not generated.
+https://github.com/worm1k/OSS_Cauliflower.git a82f301744a88cea6f375e8da751434b11d61f7c true
+https://github.com/sakai-mirror/portal.git 25e4b9c14cee3f1d757a1ae212e31adde4481a94 false Clover report not generated.
+https://github.com/aht-group/ofx.git d0148f88b00f2286b00cfecd24ad5e209b94ac31 true
+https://github.com/apache/struts.git fbe06c0a66e0b43524fde6de7b92828404d4d21c false Clover report not generated.
+https://github.com/stapler/stapler.git 0a23a9000de1dafb6a16fa883504697443cc05e3 true
+https://github.com/cismet/cids-navigator.git 5c695046e2d7b94148f3e1bce69cd43cd10394a1 false Clover report not generated.
+https://github.com/virgo47/javasimon.git 611890c39d3db19733d5838534335e6208757e51 true
+https://github.com/xwic/appkit.git b88f46109e3a1cf239b7fd472b719456ae3c73e4 true
+https://github.com/tehbeard/BeardStat.git 9c573789aa3f0e162cd9edbeb613e774f66527ab true
+https://github.com/nuxeo/nuxeo-dam.git 51e2cf7330713770944324ec3426fffd19d1a1af false Clover report not generated.
+https://github.com/DavidAlphaFox/jetlang-core.git null false Clover report not generated.
+https://github.com/openspim/SPIMAcquisition.git e3b3a828b353b9d7c5bc5ca254227fff8e3f9ba1 true
+https://github.com/dbsoftcombr/dbsfaces.git ecc8d69f5e1dc4222b38500ecd3978332ae22623 false Clover report not generated.
+https://github.com/sualeh/DaylightChart.git b5ccda2faad42b16f4292b4f62bc86ab667bbdab true
+https://github.com/mkovatsc/Californium.git ade2681a36752bda0da2961e77c14e1aa0bfdc86 false Clover report not generated.
+https://github.com/meltmedia/cadmium.git bca585030e141803a73b58abb128d130157b6ddf true
+https://github.com/diirt/graphene.git 5c701ab25521335dbe44518085efc6b71d2509cd true
+https://github.com/martiner/gooddata-java.git 1a33b9855e94b265823737f579bc1cf989a7560f true
+https://github.com/jdr0887/MaPSeq-Pipeline-CASAVA.git c80e06e20960fdbc6180798db36015dce59dda01 false Clover report not generated.
+https://github.com/egonw/cdk.git 6acc90f3ff41c4b4fe7015387c3fd765c177b8fb true
+https://github.com/AtlasOfLivingAustralia/biocache-service.git 40bae4300efb0bc56e84ea71f81a811c2a359ca3 true
+https://github.com/ChiralBehaviors/Ultrastructure.git fdab776d82c31109932c210bd459590f7a58afc8 true
+https://github.com/lobid/lodmill.git 230e5e240ce6393c81c1851be5bcd2658b076c39 false Clover report not generated.
+https://github.com/paul-hammant/qdox.git 8a65af1285b525f33d18635e610795d20c907722 true
+https://github.com/SonarCommunity/sonar-javascript.git 3c763452de07443d4b065e7f1bab70a348d72c91 true
+https://github.com/jim618/multibit.git 21e2e9d653d291a7dc36d21b6fc14b2a0da48985 false Clover report not generated.
+https://github.com/dropwizard/dropwizard.git e6a1adb1b3c131f0044e026596b71cfa629e191c true
+https://github.com/tranzero/SoftServe_Java-105_Project.git 2af896d3095fc45560243f0e3570464f45f09db5 true
+https://github.com/tinkerpop/blueprints.git 5f352041952cf68b320ed6aee8fa9ed87a269237 true
+https://github.com/webbukkit/dynmap.git 073a277f77617e672160bab47431e177cd08a578 false Clover report not generated.
+https://github.com/bitcoinj/bitcoinj.git 7c31dcbf99e1d8b6b3d37fb14a3069037b6fc1ca false Clover report not generated.
+https://github.com/AxonFramework/AxonFramework.git e529321edd0d9e24d08184a2840ee527208270df true
+https://github.com/hawkular/hawkular-metrics.git 269e4f97e620ec45ec6813b676c3694e4ca25945 true
+https://github.com/picketlink/picketlink.git 40d02e30cd56afe2fb001fdf1951755f10141b6f true
+https://github.com/opendaylight/bgpcep.git 5a392643728c6153d4d856629519ac7724a000d9 false Clover report not generated.
+https://github.com/rage/tmc-cli.git null false Clover report not generated.
+https://github.com/openfigis/vme.git ae1ec3fdc5110a9cc4c93441a30cd737152fafeb true
+https://github.com/square/wire.git 3b5410c203c9fcd5199f5b2e0db44ada25c49ddf false Clover report not generated.
+https://github.com/Wikidata/Wikidata-Toolkit.git cde4f669e45d5037856e85fb6e92f547b86d5fc0 true
+https://github.com/itm/testbed-runtime.git 0f3fd9ccaa93410bd9ba3b007fd25d801bcdd035 true
+https://github.com/tomp2p/TomP2P.git a7b7b916534f51be5cc0790638b7d88c422d20a9 false Maven time limit violated.
+https://github.com/j256/ormlite-core.git 9d5ac1860d2a4d4be94f2ba577e71839a29c3305 true
+https://github.com/nishihatapalmer/byteseek.git 2600c05a06ea81a942f0b6b81981da1b6bf40cae true
+https://github.com/rapla/rapla.git 7b2b5bc2d0349b754d5c738a2788695b426515ee false Clover report not generated.
+https://github.com/Bombe/Sone.git 5c5bee980f9cab5792e34d1c9840f73b8b191830 false Clover report not generated.
+https://github.com/yusuke/twitter4j.git 8376fade8d557896bb9319fb46e39a55b134b166 true
+https://github.com/jhpoelen/eol-globi-data.git 2306b7994229cebb80e2444f105dfe911cd6ff26 true
+https://github.com/google/error-prone.git c619de8f9934a2f0c947c07a0a3383a318549c30 true
+https://github.com/basho/riak-java-client.git bed6cd60f360bacf1b873ab92dd74f2526651e71 true
+https://github.com/jamesagnew/hapi-fhir.git c40d15294d325ed994e41908e4c655a110f16918 true
+https://github.com/brooklyncentral/clocker.git e1ff91d4959d2238efcf78569d600f95273730d4 false Clover report not generated.
+https://github.com/spring-projects/spring-data-commons.git 80299838b3cd3d1ba9d9ba6f19da8aa8dfd4dd20 true
+https://github.com/SonarCommunity/sonar-php.git fb7eed5bf78e610a3b5c01c2d386d890811a37ca true
+https://github.com/imglib/imglib2.git b33186acc75abb8292da9865b6d100fc0787644d true
+https://github.com/h2oai/h2o.git be350f3f2c2fb6f135cc07c41f83fd0e4f521ac1 true
+https://github.com/lucmoreau/ProvToolbox.git eeea0a6c539e6c261bf722571db39cb83caa91e4 false Maven time limit violated.
+https://github.com/threerings/tripleplay.git 0a3d0c8bb4bfeea8a56c1816b2d27a2810754143 true
+https://github.com/chapmajs/shiro.git d1a3d6c88a53678504a795dc4f38568cd2dff776 false Clover report not generated.
+https://github.com/zalando-stups/fullstop.git 42f3bab557380aab0114028b58d745e3000897e8 true
+https://github.com/airlift/airlift.git 4daf8e8e7dff4d8752bf99c60c1fb0f35cef4fd2 true
+https://github.com/dcm4che/dcm4che.git f249ab645c1c5cfd7fff2a3add5af3a8c4abce71 true
+https://github.com/myui/hivemall.git eff7ee6cf45666f01a3e2daef85303b60df042c0 false Clover report not generated.
+https://github.com/cismet/cismap-commons.git b2bfdcffc82856caaab9316592a5a166b96e9b7e false Clover report not generated.
+https://github.com/suggitpe/java-sandbox.git 0abfb9282e12d40eef0d1c4e7dc925b1b39f728d false Clover report not generated.
+https://github.com/zanata/zanata-client.git 78d2c91a8b1952ef21963213c7035850d0c960e8 false Clover report not generated.
+https://github.com/dalderliesten/Scrumbledore.git e05ec7e15541a5334c10adb1bda649ccf0b458b0 true
+https://github.com/cojen/Tupl.git 86ee7fb80feca796a2aa65eca47a00c4368e5662 false Maven time limit violated.
+https://github.com/pendelhaven3/magic.git 78578c5a90d97d385d43ad92cf86610bc9b0b186 true
+https://github.com/jenkinsci/acceptance-test-harness.git a1e0665af24b08f3930328b36e0ce5203030d4b0 true
+https://github.com/gbif/occurrence.git d663c9035549c75527223241056740d80fa29336 true
+https://github.com/OpenHFT/Java-Lang.git 52ef75e01334ba1bf0b59f193ffc213b37d81af1 false Clover report not generated.
+https://github.com/doanduyhai/Achilles.git b85a7f9b5e6415000787b833cdb3aa85c01ff660 true
+https://github.com/shilad/wikibrain.git bb804edd073f6a1762efd7828bcef6d8bf4ad89b true
+https://github.com/xdoo/vaadin-demo.git b84c264e063cc3795c9327893dd2bbbc7e74cef8 false Clover report not generated.
+https://github.com/nuxeo/nuxeo-platform-document-routing.git 4e70b80ae378d62b5598d826ef1e83746a4441e5 false Clover report not generated.
+https://github.com/jitlogic/zorka.git c5d32b7a08c886835245f3e2a99348c77421a393 true
+https://github.com/UniTime/unitime.git 6a45052352afe6f3ae89464110170ccb76e85295 false Clover report not generated.
+https://github.com/anba/es6draft.git 5487e074da2f9489fa2d8c653f037c0969bb2a68 true
+https://github.com/yogendra12/Rescuefy.git null false Clover report not generated.
+https://github.com/bcdev/ceres.git 2f6e03869bdcecdedd3ee0c691002324712ed029 true
+https://github.com/OpenTreeOfLife/treemachine.git 6308d18e0993c320fd5f03248a5da8356d118e2c false Clover report not generated.
+https://github.com/Carboni/zebedee.git 2c55775f4703faa975c30190821a777458d85254 true
+https://github.com/Gigaspaces/mongo-datasource.git cdc0fb5d9801b6a55d2dd26ac1c009379f5a69c1 true
+https://github.com/mebigfatguy/fb-contrib.git 28c23d607aa5d4eee2982cf5c0ccbbce491db8db true
+https://github.com/mleduque/ide.git null false Clover report not generated.
+https://github.com/finmath/finmath-lib.git e65dafc7337aac59f4346263abc3e7dcb49c58b1 true
+https://github.com/sbwhitecap/Phex-trunk.git null false Clover report not generated.
+https://github.com/named-data/jndn.git 1b0b70ccf538a4f80f6725083b33be5055920e77 true
+https://github.com/thinkaurelius/titan.git ee226e52415b8bf43b700afac75fa5b9767993a5 true
+https://github.com/apache/accumulo.git 25a55df2309fc1891ef208e35f2268b254ffb4e8 false Maven time limit violated.
+https://github.com/Activiti/Activiti.git 691bac395ecb300bf8d7645d8d6145d868dd3371 false Clover report not generated.
+https://github.com/apache/pdfbox.git c6fdbd40fcf3cce287ed7d489fa77ba558583861 false Clover report not generated.
+https://github.com/apache/servicemix4-bundles.git 9cda9b1334f9f38d74b529e92387b18855e3e41a false Clover report not generated.
+https://github.com/deeplearning4j/deeplearning4j.git 57514dc102c1a933d7ee977e351e8f882d317641 false Clover report not generated.
+https://github.com/checkstyle/checkstyle.git 33304206fb5b2f10c832cbc2e9d5d373280f6d9d false Clover report not generated.
+https://github.com/IntroPV/vainilla.git f9804745c030731af5b633ab698ae86cfc4fce7b true
+https://github.com/korpling/ANNIS.git b317bb9b64a55284f5b5ecd4a5922ac191aa9591 false Clover report not generated.
+https://github.com/undertow-io/undertow.git 7c9c8f82ace16e39722fb6788c5023dcabc72b15 true
+https://github.com/arjovanramshorst/bubble-bobble-sem.git 479e3dfc24b7c662dcdb11b770091a8e3cd3ad6f true
+https://github.com/bcdev/coastcolour.git 83e777b1909ada25ae532de8e65bde9e5a8f2afa false Clover report not generated.
+https://github.com/nuxeo/nuxeo-platform-semantic-entities.git 4a69340656116a4b152be0d7541546db8848425b false Clover report not generated.
+https://github.com/protegeproject/swrlapi.git 27b6668558f1f24e4c85e935fc1d7541cd335866 false Clover report not generated.
+https://github.com/jenkinsci/envinject-plugin.git 876a209d973af67ab7a6cdd17f251face59621b5 true
+https://github.com/jensnerche/plantuml.git c1e68ba2cd755156b78e61fe9f6ae2e8f9d2133f true
+https://github.com/teanutella/AppEmployee.git 788e172f80fa5d19c57845e2beeff1f9078454d8 true
+https://github.com/SonarSource/sonar-python.git 816e184f6e4ed484e7c9b14aa226796959c7bdca true
+https://github.com/Atmosphere/nettosphere.git 92e2925c450c78708a9845bd259648b9a6996e6f true
+https://github.com/apache/maven-release.git d0fc1b0880d3d5724e26405d5f4979bb5fb7883b true
+https://github.com/svn2github/commons-vfs2.git 0744a310aa5c594051f231a59275b7a83710a7b6 true
+https://github.com/guibin/Knowledge.git a6d065498415b0fc951511985d367fd96313f5fb true
+https://github.com/kmbulebu/NickNack.git 548ed84eb31294d34dc61a87d6d6609c8045e668 true
+https://github.com/alecgorge/jsonapi.git 72ad3ff61130f695ca4deb97aed853d7b25e9cb2 false Clover report not generated.
+https://github.com/aaron-santos/lanterna.git 21c93921bef1c59b0d74168cd66de3591c855290 true
+https://github.com/Appendium/flatpack.git 40e652e1f2156079f34e9bd0fe96e284b1d271a8 true
+https://github.com/google/closure-templates.git f7e70c12d0132e403e9bb09f56573c15a4b07d1e true
+https://github.com/XBigTK13X/Aigilas.git 894f50d8d4250921b14e6d0e77bb7de0a5f8a0cb true
+https://github.com/greese/dasein-cloud-openstack.git ada544a30d8526f23b64687279f63ceb98cb500a true
+https://github.com/Graphity/graphity-client.git 0a6041d33bfdd3a3d9c62100471b3584d2522366 true
+https://github.com/mung3r/ecoCreature.git a750bfb8bdef4b4d7018ae06e8787521c453a9f1 false Maven time limit violated.
+https://github.com/harrifeng/java-in-action.git e9b88ecf2fd2033e1848234c770fb3967fb1ec9d true
+https://github.com/no-hope/java-toolkit.git 6fad6b93ad2efea7aae8cc876d1763a6f6e4ffbb true
+https://github.com/tinman89/tinspx-utils.git null false Clover report not generated.
+https://github.com/spring-cloud/spring-cloud-aws.git fcbb893e6c60b9df54393e78eab2ce8d1c938bf2 false Clover report not generated.
+https://github.com/DigitalPebble/storm-crawler.git bccc7eeb12e6fc1e451f124ebc55c6e2dc79f7ec true
+https://github.com/bitbar/testdroid-api.git 381f4811018838217e817ad745e409ae001b5c5f true
+https://github.com/takari/takari-lifecycle.git dac511bd700d9b113326df87e15d2948801cba73 false Maven time limit violated.
+https://github.com/EHRI/ehri-rest.git 2168b899a9b7d0e9dc2449814c44bd33c85b6999 true
+https://github.com/grisu/gricli.git d4ef30db7781502af0acd0c787a2d15543845f57 false Clover report not generated.
+https://github.com/photon-infotech/commons.git 57d588d588d62b5fe144918cacd0cf2a97ad242b false Clover report not generated.
+https://github.com/ClemsonRSRG/RESOLVE.git eaa7593c01114856b1ea7a4734d1306b0af45ca0 true
+https://github.com/Ensembl/ensj-healthcheck.git 8254ed6cae36190d8af7172ead7dc9e4195f9675 true
+https://github.com/haraldk/TwelveMonkeys.git 8f942922fdc6274f37a7f25a84fa2cb1ac103097 true
+https://github.com/lkroesen/BubbleBobble.git 816b2a452f547afb63c863be80156a0de5713b8a true
+https://github.com/sugarcrm/candybean.git 1bbe3828c3aeda5112b811b3e8daaadded47a663 false Clover report not generated.
+https://github.com/stackmob/stackmob-java-client-sdk.git null false Clover report not generated.
+https://github.com/undera/jmeter-plugins.git 2803cabf948172677a90cc15710d7098f0131a9a true
+https://github.com/ldbc/ldbc_driver.git de4578c470e0dcb27d544e9d7b4b450a81c1e64d true
+https://github.com/mojohaus/nbm-maven-plugin.git 80021ab48705a199513abdf2ad9fc339a8c000e2 false Clover report not generated.
+https://github.com/openpnp/openpnp.git 5280aa895b96b7f718bbff7eaffc07ad9e5873d1 true
+https://github.com/paulhoule/infovore.git 6672aed673fd5672b4ec7ce6bcf34913c14c9295 false Clover report not generated.
+https://github.com/simoc/csvjdbc.git 95faffad6b0a428f528858183f735664a2e5c4fc true
+https://github.com/vkostyukov/la4j.git dd1b917caf9606399a49afa6b0d738934cd3a7b3 true
+https://github.com/valis/vclang.git c49f1260fcbe9fce5f579bf56ee1030435b8d46a false Clover report not generated.
+https://github.com/objectify/objectify.git 92c2822e46ee4290c73765d4c9d7e760982de6d3 false Maven time limit violated.
+https://github.com/apache/maven-surefire.git f25618b93d25d86a0f9b3c6703e0bed90d841b3e true
+https://github.com/bpiwowar/experimaestro.git 5843a909ce1d2c3c7c826caa7f134be1de118440 false Clover report not generated.
+https://github.com/visiriCEP/VISIRI.git eea51947ebd5d18ee5682e4694d6a722cfa8e130 false Clover report not generated.
+https://github.com/Incoding/apiTest.git 11411782b7cd190e449db66c7fb5c13f633b26bb true
+https://github.com/revapi/revapi.git b41333025aa7f9f121a3da21a6127ec869509417 false Clover report not generated.
+https://github.com/jdr0887/MaPSeq-Pipeline-RNASeq.git 1cf36efcc00a9fefb2873319fd424a18aa2b0129 false Clover report not generated.
+https://github.com/jdr0887/MaPSeq-Pipeline-NCGenes-DepthOfCoverage.git b2080867305c5a14be7d2b58c240a6c13962b2da false Clover report not generated.
+https://github.com/StopBadware/dsp-core.git d3b1170acc1a88e5524f512f9b982437f1de2533 true
+https://github.com/DerPavlov/Cannons.git 9297c2b9832de8377de25304b39699d1f391faf4 false Clover report not generated.
+https://github.com/thinkofdeath/ThinkMap.git e42b2d205c1e98181d50dca32753deca57576f20 true
+https://github.com/nuxeo/nuxeo-diff.git b75020d179b715a5290ba4ec87c794097e08ec55 false Clover report not generated.
+https://github.com/apache/mina-sshd.git cfcd6d22d7976aec51f6257e7dd939b5beeba6f2 true
+https://github.com/buddycloud/buddycloud-server-java.git 11ddd92deb91142ac056b76546dc00a8e04e44c1 true
+https://github.com/jenkinsci/remoting.git 0860f222f45802f0dab0e9e7a06e93be89baf687 true
+https://github.com/PIH/mirebalais-smoke-tests.git f54926f3de39b67057493406e96d64c5971bdb2a false Clover report not generated.
+https://github.com/antoine-tran/Hedera.git 3365486a980f39f6ae918adebb8806187b71709a false Clover report not generated.
+https://github.com/carrotsearch/randomizedtesting.git 20de5f9f7f3c57e5285cd7637c522090420b8d1e true
+https://github.com/keeps/db-preservation-toolkit.git 7192a824cdea1ae6615305d91f5dc09ee4b5e19c true
+https://github.com/jbossas/jboss-ejb-client.git f70e27331d1c59a564ab45336ddc91ff89dc9a25 true
+https://github.com/hortonworks/knox.git null false Clover report not generated.
+https://github.com/jbossws/jbossws-spi.git 01b83b41c3c283dd2b3b29491b228211cae1e41b true
+https://github.com/VincSch/Photoplatform_Angular_Spring.git 3a7d9e76d9b741895c9b4c2cbaccbf6f5edf541f true
+https://github.com/eileenzheng/playground.git 88a3c550a837b5006ff99d8f22b6a0c0da643724 true
+https://github.com/selig/qea.git b80f956ad90daa24c48ad923c95388c6453d81ab true
+https://github.com/apache/commons-bcel.git 21082dc102716bd239529299c2f89e706b074ceb true
+https://github.com/apache/directory-shared.git null false Clover report not generated.
+https://github.com/triceo/splitlog.git 4e1b188e8c814119f5cf7343bbc53917843d68a2 true
+https://github.com/ovgu-ccd/jchess.git e155cb695013b6e676643f1ff1f48705e1aa4910 true
+https://github.com/jsr107/jsr107tck.git b0cf7cd7bd53c085fb1e5ed3a666e2b3e5f8cef9 false Clover report not generated.
+https://github.com/jenkinsci/matrix-project-plugin.git 38c47f216f253ac77db7795c5834c7bf814406c3 true
+https://github.com/datasalt/pangool.git bfd312dd78cba03febaf7988ae96a3d4bc585408 false Clover report not generated.
+https://github.com/exoplatform/integration.git 646d95e397c00d726311cda9ebe675816a480b33 false Clover report not generated.
+https://github.com/kovertopz/Framework-GL.git 1504f4746c80bf0667f62ecea2569f8d37a46184 true
+https://github.com/desht/ScrollingMenuSign.git ff2d8c915d3b0526e614cc0b6a886d055f1d37d6 false Clover report not generated.
+https://github.com/FluentLenium/FluentLenium.git 7f8f3e0082523f25c9818ef7f64728faaa1978dd true
+https://github.com/apache/maven-scm.git 907451834ab0b9c774875c56b435abfd3d267cb7 true
+https://github.com/KnisterPeter/Smaller.git 2bd6d3422a251fe1ed203e829fd2b1024d728bed true
+https://github.com/oboformat/oboformat.git d224c34d2ba8589fd25e8f06f7f49679f7404965 false Clover report not generated.
+https://github.com/FoxDev/FoxBot.git c99ba55fd0bee1be97c56378b5418bb054d36a6c true
+https://github.com/sonatype/nexus-maven-plugins.git f1be87efb0d476a4305b77d405bd3ddfb30ba5bf false Clover report not generated.
+https://github.com/bridgedb/BridgeDb.git e2eaaa75046d04b2703456f0a6126e5e84d8e49b false Clover report not generated.
+https://github.com/locationtech/spatial4j.git 79e5f229ab65e59b4450cfdbba666b3b5c318779 true
+https://github.com/jenkinsci/sauce-ondemand-plugin.git c705c13f61af5ad5654c67692317bec7c2b4180f true
+https://github.com/kohsuke/github-api.git 580f2537f2b6dfa73792cd488cbf7f08b532b63b true
+https://github.com/niyue/coding.git 19bf62b4a4d9afa7599706731952cbe2b948c4a1 true
+https://github.com/roundrop/facebook4j.git 7b64ebf3a80f5a3a7371dd9475d2c37df06fc3ad true
+https://github.com/sk89q/CommandBook.git 4e1c5704ead3d9a2d9db540a45213c3689ce7e92 false Clover report not generated.
+https://github.com/cylong1016/NJULily.git 455a520d2d698c3078d43e8437bfc2518b29d7c6 true
+https://github.com/vivantech/kc_fixes.git db621e1e616e859f062da00d5f0e272dc6cc8c94 true
+https://github.com/Weltraumschaf/JUberblog.git 373c5f6cce97cceb6f6febf90dd566f87b968f87 true
+https://github.com/marytts/marytts.git a75595489e1b31f436cc4a0b1ffc5141af1a6992 false Clover report not generated.
+https://github.com/richardwilly98/elasticsearch-river-mongodb.git d778375a349f70968a7fe4f6e50b461234eac06e true
+https://github.com/andsel/moquette.git 6ee013747f6bddf4ecf3050e6349b611cfcbbd93 false Clover report not generated.
+https://github.com/diorcety/maven-dependency-plugin.git 37c33c808a0bb8f8296cab7fb89878c7e960a69e true
+https://github.com/gbif/checklistbank.git 0a6feaa6f37ce695f5e6746391f1b51c66115c26 true
+https://github.com/huangyingw/blablacode.git null false Clover report not generated.
+https://github.com/reinert/requestor.git 40163a75cd17815d5089935d0dd97b8d652ad6d4 true
+https://github.com/tntim96/JSCover.git ba0eccd91e50e10be41bbc675ded9e53307270fc true
+https://github.com/xenomorpheus/heisenberg.git 63d5bbe9014dff8646444e3929ab1571b1c1aa98 true
+https://github.com/zyong2004/mybatis-spring.git 013ceece1cb23f7666b214af94ce78de793c1333 false Clover report not generated.
+https://github.com/roberth/pitest.git d665f54ceda867a7fd094fc02713c287f0a934f6 true
+https://github.com/JensBee/QueryClarity.git 6536bbbdbf9d8c4f34a29a7403a651a698bbc701 true
+https://github.com/Weltraumschaf/commons.git 9a3154b1962b43cdfb48470bec68b0fa814b1cf9 false Clover report not generated.
+https://github.com/greese/dasein-cloud-aws.git 27bf6045762e342485bea52e6d120607c07d34cd true
+https://github.com/bguerout/jongo.git 6d3c0482f5827269fec259963ed50d35bcabe99f true
+https://github.com/thomasjungblut/thomasjungblut-common.git 10ece028129a7feb49d6e2042ca1d423f86792fa true
+https://github.com/goalhub/runtime.git null false Clover report not generated.
+https://github.com/apache/directory-server.git 7b0a521ff952d3e4c0c32a68176c954b011dbf30 true
+https://github.com/clojure/clojure.git 30a36cbe0ef936e57ddba238b7fa6d58ee1cbdce true
+https://github.com/wnameless/rubycollect4j.git bdfa8a7a16f53a5a0bf43366dabc359c007b0667 true
+https://github.com/omnifaces/omnifaces.git 8934a1fdc861e9946756483977404e4b12c270ea true
+https://github.com/Razz0991/Minigames.git 4c80465ad944d3b92e74324b573fb3531badebda false Clover report not generated.
+https://github.com/apache/commons-fileupload.git d1baace2e7d4d4ec79fff0a398f70fff212dcf34 true
+https://github.com/ChandraCXC/iris.git 354f171ef253260677b93c35b5d2b105c28d2bc3 false Clover report not generated.
+https://github.com/zyyettie/LaaS.git d1d0cb52c8e841f4016f00c7eed2dbe336b7c537 true
+https://github.com/alibaba/druid.git 6b30a0eda680280997dc1055a26100b202349abf false Clover report not generated.
+https://github.com/thothbot/parallax.git 7fea812034e2920127a9ef7666f37bbe173fd6cf true
+https://github.com/msokolov/lux.git 2abbb5b59f331cf38ef3957ff683e1710a5fc7e1 true
+https://github.com/jenkinsci/git-client-plugin.git f46b2d80eaad5c8c6846ca05f3939614ee6696d0 true
+https://github.com/statsbiblioteket/newspaper-batch-event-framework.git ef9a2b7d204a70b3056ddd8d9e7a614c1c013dfc false Clover report not generated.
+https://github.com/apache/curator.git a39c8969e23c2baf775ca9715656d6f478a9fce8 true
+https://github.com/mikesname/ehri-rest.git be20622917cbb209a6582a88535f0a5d55a0c7a5 true
+https://github.com/apache/chemistry-opencmis.git 9e49c685af9044a64cde0ab111792d74e914f4f2 true
+https://github.com/Dandelion/dandelion.git 5daa05e7566a3a7753f13255ea8e5ad68be684e3 true
+https://github.com/yuchaosydney/kouchat.git null false Clover report not generated.
+https://github.com/xEssentials/xEssentials.git a62b18ab20c6c3996eb401e297082dee1b95d98f false Clover report not generated.
+https://github.com/couchbase/couchbase-java-client.git 2c17fbbcecfe5035024ac0c88e92a0fbc6d59367 false Clover report not generated.
+https://github.com/sitewhere/sitewhere.git e822d1eb98d5a3aa5b10fb79c0dfa9c847e1b55f false Clover report not generated.
+https://github.com/scriptella/scriptella-etl.git 1595dc0dcbfb7e3ff5ad246ba40677666fd92c44 false Clover report not generated.
+https://github.com/medusa-project/cantaloupe.git aab2b909fe0ed0ecc21bfbd6f2a2264ddec2a48b false Clover report not generated.
+https://github.com/charite/jannovar.git 2c90181c4e9bb25d8ca6233c939614537527fda6 false Maven time limit violated.
+https://github.com/code4craft/webmagic.git 48bc73fbfff3c9bc38493ac262a4aa61720dcd80 true
+https://github.com/tavlima/fosstrak-epcis.git c7540a0e691faf18fac7bbf605c6a7d35aa2d8f8 true
+https://github.com/IMExConsortium/dip-proxy.git 3a2d03e6a83147c80889437b04780666a7d466d3 false Clover report not generated.
+https://github.com/junit-team/junit.git bef3bcaaee3c3e433f78cb93c1dfd14eb38acd6d true
+https://github.com/twilio/twilio-java.git 965c0bff1f267d10974e895287c9b2c78b4c1d6f true
+https://github.com/sannies/mp4parser.git d3c68436f0507a23a740f262cf3259557ea9ce93 true
+https://github.com/xerial/sqlite-jdbc.git bb91612de41c4fec90a4736916c1a486b19855d5 true
+https://github.com/seges/sesam.git ff34ff4909092af456517557354e70dd6b29d7e9 false Clover report not generated.
+https://github.com/moravianlibrary/RecordManager2.git fb26cb6379c26691367ea8b2261bad077000c06f true
+https://github.com/Omertron/api-themoviedb.git 92c6de742677db120626980c0da08ce379080a66 false Maven time limit violated.
+https://github.com/KittehOrg/KittehIRCClientLib.git 7eb978a913b2f3e4b506c66a99715301419b58e1 false Clover report not generated.
+https://github.com/taverna/taverna-engine-core.git 499e30d6621faf871615a0d3b1922ab4fd8b6acc false Clover report not generated.
+https://github.com/dankurka/mgwt.git 24a999f270a8b1c396f27980f1ea65835c0e6241 true
+https://github.com/FITeagle/adapters.git cf9f8a462b697a64f207ba247466ac0b03aab86f false Clover report not generated.
+https://github.com/drnoa/schemaspy.git eba40a8404ee558dd8fd1b113221e7c4a9fba0be true
+https://github.com/carrotsearch/hppc.git 256fce8e20c00f47b3877bd88eeca839cc7c7882 true
+https://github.com/neo4j/neo4j-ogm.git 1c294c88d62b3f4f295f16407c08d61732312f51 true
+https://github.com/calrissian/accumulo-recipes.git d7b10c0a7b52ccff49a6561aba9bb7266fe222c5 true
+https://github.com/apache/maven.git 3b442badfc0a55ba577a699c27198cddde8da0f7 true
+https://github.com/GluuFederation/oxTrust.git 8b7b5fdb15dd374fd5cc2425cb1043e4da0cef5c false Maven time limit violated.
+https://github.com/sanity/quickml.git 18b60b590a323f4f6e24b40a2e143ffcfd6b7008 true
+https://github.com/davidmoten/rxjava-extras.git d4999affed7e4d77f1a915830c25bc9bb0832815 true
+https://github.com/elex-bigdata/lldaMahout.git 9ca666ce0de196877eae5cc48db1f305c13b34d2 false Clover report not generated.
+https://github.com/tengstrand/Laja.git 59e4ff66b34aead17879181d74f878a3b77fbb6f true
+https://github.com/spring-cloud/spring-cloud-config.git 2b30ca7e320b2640c1bdefb8d8bfe1f7281b1620 false Clover report not generated.
+https://github.com/trajano/doxdb.git 44f02479775841beb37b0c50bef7c714fa151f4a true
+https://github.com/yegor256/s3auth.git b03c7b013ba75756b8a9ab915bab739cddc7066c true
+https://github.com/greese/dasein-cloud-core.git fa0f02f66269ea1ae7beb84435825bb70449e32a true
+https://github.com/jdr0887/MaPSeq-Pipeline-NCGenes.git null false Clover report not generated.
+https://github.com/sesuncedu/elk-reasoner.git 5a86c2dd73c256d625125111dfa6348f5bb86cb2 true
+https://github.com/ColoradoSchoolOfMines/interface_sdk.git f7058fd11d6b1bb168d803a7a87358d5d30ed1cc false Clover report not generated.
+https://github.com/rhuss/docker-maven-plugin.git e95eb013afdd34db7bfc446e5b91c5f3f17672d8 true
+https://github.com/k-hotta/SCAnalyzer.git d65a265a95d42db98688cfd81d3ea4f43158c79d false Clover report not generated.
+https://github.com/tastybento/askyblock.git ecb9d971717fadfd2deaf135cea37bd7b06dcd40 false Clover report not generated.
+https://github.com/osiam/connector4java.git a5e6ae1e706f4889d662a069fe2f3bf8e3848d12 true
+https://github.com/juzu/juzu.git 37612ff8b031ec55523fa4654546ab4c2536fc2c true
+https://github.com/OpenHFT/Chronicle-Queue.git 158e47774a572636fda56f3927d4da12eec67928 false Maven time limit violated.
+https://github.com/junkdog/artemis-odb.git be6a5c9b580ca4782d355f2b76de97543873adc9 true
+https://github.com/apache/archiva.git 71b8409b5ddc9d941336c56cd8727d5bcf5415d9 true
+https://github.com/ESAPI/esapi-java-legacy.git b6f8808e9bc0f1db01391ae40b18237b988252d8 true
+https://github.com/motech/modules.git d99399ed045e79f45e84ecef41bb85974be9c076 false Clover report not generated.
+https://github.com/Benoker/DockingFrames.git 3db975668140de78d760ac887b4961b3bfd726bb true
+https://github.com/barchart/barchart-feed.git 3200c7406fb3110271a9cd86a1b8b3d5f7c5b099 false Clover report not generated.
+https://github.com/swagger-api/swagger-core.git e9c4d61f21804935d6a7957375507ae07530b186 false Clover report not generated.
+https://github.com/droolsjbpm/droolsjbpm-knowledge.git 946c01f9089337fb19c4fd79c55715817a3479f2 true
+https://github.com/soul2zimate/resteasy2.git 5fca9d3089069947d1085e093ed4ce93c506cb89 true
+https://github.com/konsoletyper/teavm.git 17098495f2db08f8a4bf35e9aea5c89b519582f8 true
+https://github.com/veraPDF/veraPDF-library.git 219d257325cd373f8f748f4f6aa26bb8dd784c15 true
+https://github.com/VictorBac/LO23.git ae3f4394ff1a7dbcbc52a2c8a8e09e63ecbc7d6f true
+https://github.com/europeana/corelib.git 2b06f7ec340736925b53f2c21a5a1391ba07eb90 false Clover report not generated.
+https://github.com/GoogleCloudPlatform/gcloud-java.git 3f54936bcf690947be502943cf77e333fe8faeb6 true
+https://github.com/mojohaus/jaxws-maven-plugin.git 9e0a607a3b9f682c0ef6548b92a47d499684790c true
+https://github.com/threerings/clyde.git d01dbb3c7363c747c069e6885aea830b8c41f8ee false Clover report not generated.
+https://github.com/maxymania/jxta-jxse.git 25e32c1b1e9c0a2f0657f0cb3455bdb643cc3a82 true
+https://github.com/xetorthio/jedis.git 5ca75a243e88a25736b7ab4b7e98741b4963c073 true
+https://github.com/thervh70/SEM_Team9.git 33860195d227d723d43ac4e2c4b82c568042eac9 true
+https://github.com/PerfCake/PerfCake.git af3dc49ba24134d557e43440ea205ed5b11f939c true
+https://github.com/plutext/docx4j.git 36c3787d1d858728dc48ffe8af2a59e6bdf8230c true
+https://github.com/slipcor/pvparena.git 9b74b0e5749b6ae55f33db40fe8df1cf3e799987 true
+https://github.com/barchart/barchart-feed-ddf.git 90cd56f86ebc2ac918ac80579bafb280c1834af0 false Clover report not generated.
+https://github.com/SpigotMC/BungeeCord.git fd4864d475f705b348adec3fe8f48754b5ee11e6 true
+https://github.com/forcedotcom/phoenix.git 5e49d5f940f9dbd2538fb890f0cc6697068c74ac false Maven time limit violated.
+https://github.com/eFaps/eFaps-WebApp.git 63b8645912bb9b5d05ce2db18626af4d7010e1ad false Clover report not generated.
+https://github.com/AtlasOfLivingAustralia/spatial-portal.git 0b30724d03e3ba10eb1417c9ca1f72ef5781cea8 true
+https://github.com/eugen-eugen/eugensjbehave.git null false Clover report not generated.
+https://github.com/GenomicParisCentre/aozan.git 7cf5e62969711464ccb87532eb6bf595bf7ea414 true
+https://github.com/ikasanEIP/ikasan.git 340255d7f58c20b4259e561b384921f83646aad6 false Clover report not generated.
+https://github.com/WorldCretornica/PlotMe-Core.git fcb3021e7ca004d606d05447e38fb5279ba7daf8 false Clover report not generated.
+https://github.com/marklogic/java-client-api.git aedb435906dd5ce3cc0ca591090c72a64f50756b false Clover report not generated.
+https://github.com/apache/jackrabbit.git a0accf7cea1105f315ad8e5dc82ee8a66a383bed true
+https://github.com/tfredrich/docussandra.git null false Clover report not generated.
+https://github.com/codeine-cd/codeine.git 355463b17c671925bc8bd3951dabb98a150dfe36 true
+https://github.com/Mobicents/sip-servlets.git fd7011d2803ab1d205b140768a760c8c69e0c997 true
+https://github.com/movsim/movsim.git ac311db78cab3d5d8429568261977b73269155fb true
+https://github.com/threerings/playn.git a3fdd69861ac136fdf177f08720f2aef071943c5 true
+https://github.com/jcabi/jcabi-github.git a1d22227773529b544acb2e2cf872c33775f859b true
+https://github.com/apache/wss4j.git null false Clover report not generated.
+https://github.com/galenframework/galen.git 6c7dc1f11d097e6aa49c45d6a77ee688741657a4 true
+https://github.com/marylinh/ESAPI_JAVA_ALL.git ce241df8c526b5e093eb025db5165506ae06caf6 true
+https://github.com/wso2/carbon-mediation.git 062ef813c552e5693f37b237902ddc2b0e230be5 false Clover report not generated.
+https://github.com/SINTEF-9012/ThingML.git c2d2df93062478675eba8a28b33472461973b0e5 true
+https://github.com/OhmData/hbase-public.git null false Clover report not generated.
+https://github.com/nodebox/nodebox.git 319add930e1d82d598755fb2acae2906af075f93 true
+https://github.com/jayway/powermock.git fb140f1237a9ad75f88b207971e5885d8bacf537 false Clover report not generated.
+https://github.com/julianhyde/optiq.git d44bdfb4525646027006aba95d05a6f8100afd2a true
+https://github.com/ImmobilienScout24/deadcode4j.git a9b29b237645b5ed043880d47f620380a1764ce6 true
+https://github.com/rhuss/jolokia.git 5f42532f17ffddb218abc43448fc4f6494c3a206 true
+https://github.com/taverna/taverna-ui-components.git 78899fd63f711b57119f8f2442e75e6d8ea5553c false Clover report not generated.
+https://github.com/cloudera/cdk.git null false Clover report not generated.
+https://github.com/qcadoo/qcadoo.git 95d0d189caa381a9400a74737c257f860fc46cc0 false Clover report not generated.
+https://github.com/ebean-orm/avaje-ebeanorm.git e1522a4a685e5d63dd86502b3ea93e38dc42f91e false Maven time limit violated.
+https://github.com/simon-eastwood/DependencyCheckCM.git 3dba69779158b8fb9338f7aee197c542b436f612 false Clover report not generated.
+https://github.com/spring-projects/spring-data-rest.git 9f62237dd343ec9ee645f8a00c1a4ad10da58540 true
+https://github.com/hudec/sql-processor.git 83aaf54d634673d3903abec57a91fc6b6fc8bd28 true
+https://github.com/aherbert/GDSC-SMLM.git f3542a10bcad4ff03f2696f6ad149b0b5e854614 false Clover report not generated.
+https://github.com/rovo89/public-transport-enabler-fork.git f3a59e98ca097c1585cede7f64c2e54398b6dc6a false Clover report not generated.
+https://github.com/Hidendra/LWC.git 71811e6fe9256e27787084b54158baa926b65a7a false Clover report not generated.
+https://github.com/twizmwazin/CardinalPGM.git 1607579f8b29dacf78f691371708d77b43d49c17 false Clover report not generated.
+https://github.com/mrniko/redisson.git d432936750e36fedd635ece57e04fe4cb3494f84 false Clover report not generated.
+https://github.com/bigdataops/bgpcep.git 4136c561ff2c4c4e59ff82a332b63966341dcfdc false Clover report not generated.
+https://github.com/GrizzlyNIO/grizzly-mirror.git null false Clover report not generated.
+https://github.com/adangel/pmd.git c93414d7b5a5eeceade3d4993fc9afad82f0d610 false Maven time limit violated.
+https://github.com/lrozenblyum/chess.git 3d013b1bc2cd52f3e0ebbc561223bd4730c0ac28 true
+https://github.com/nuxeo/nuxeo-drive-server.git 8bf8be711a2abf7e33ccccbee3b0f0980e61e8bf false Clover report not generated.
+https://github.com/imagej/imagej-legacy.git d2a00f7f8779a717eb632a7d59e1fe047a191a4a true
+https://github.com/tyrus-project/tyrus.git 89723e870c176a5e9a91c25ce743a9970ebd0012 true
+https://github.com/elBukkit/MagicLib.git 1867475b3ba1c24df54543bb6ba279e663553750 true
+https://github.com/libetl/soundtransform.git 359b2eb09e168c8f3692826f4fb5c46f81c4265f true
+https://github.com/yegor256/takes.git ef29898cc602dcffc7a52498b59cce7dbdea3917 true
+https://github.com/graphaware/neo4j-framework.git 40881a3855c7ff3eb91e14092937c51f9c8fece0 true
+https://github.com/sboesebeck/morphium.git 944ef020a7f5a578401d27c2c2811921464300f1 false Maven time limit violated.
+https://github.com/OpenRock/OpenIG.git 528066b1fb313efc9ce0377aec65ceb2c3fb9018 false Clover report not generated.
+https://github.com/DeveloperLiberationFront/social-screencasting-core.git 48700f5a8a3a89e7b656aac1b7d068070103ada5 true
+https://github.com/geenen124/Team1BubbleTrouble.git bbc2f2c40c07a7b38fd6fffd0076a40398526e5d true
+https://github.com/kaazing/gateway.git 06017b19273109b3b992e528e702586446168d57 true
+https://github.com/sakai-mirror/sam.git d75710d3dce9a8358f6f21dbc890054722041634 false Clover report not generated.
+https://github.com/apache/commons-configuration.git 4c59baf1ca3a5e585662509d0ff39aee041982fe true
+https://github.com/fiji/TrackMate3.git d5584759b50abe013d11ac71be20a56d9292be66 true
+https://github.com/yegor256/thindeck.git fb7e7a127152351d1ae004cade9ed65aa59eaed9 true
+https://github.com/Eluinhost/ultrahardcore.git 12713b2f2dcb23ad1729e658f2a46af8e957ea84 false Clover report not generated.
+https://github.com/caprica/vlcj.git ea0d5ce0bd933aafaf5f2e67761b331d3583328e false Clover report not generated.
+https://github.com/threerings/depot.git 6c62140bbe7cb5ed8e36b312bd6cf1625bbd2e53 true
+https://github.com/ysc/word.git 5e45607f4e97207f55d1e3bc561abda6b34f7c54 true
+https://github.com/slowenthal/classproject.git 3b38b069b8df7f2f95e38efae18946d799037129 true
+https://github.com/apache/directory-fortress-core.git 1147b229f141ff6d74738899ed66285e7b2624ed true
+https://github.com/greese/dasein-cloud-google.git ab5c4c8e28ae7bba7b2f405d2f7ba51fd35ae26e true
+https://github.com/insideo/randomcoder-website.git b4c54f6999db5254eb4977c1aba2ed384599472c true
+https://github.com/lemire/RoaringBitmap.git bf762d85221b9f79b54cf9a502d675d7611eebe8 false Clover report not generated.
+https://github.com/telefonicaid/fiware-cygnus.git 59aff05d24aace013534656ffb9145af011a0548 false Clover report not generated.
+https://github.com/hk2-project/hk2.git addaf4f84360d7932a461174ffcb6c47789582b7 true
+https://github.com/ninjaframework/ninja.git dc66bf2078bc2fd4af763a63f35ac2a7cc44d23d true
+https://github.com/Xephi/AuthMeReloaded.git 6b9d1d24227ac83eca9dd4f7b90803a23f3a46fc false Clover report not generated.
+https://github.com/droolsjbpm/jbpm-form-modeler.git fd167a6d9a3f6dc349ab69d6159323b09a7c8a1e false Clover report not generated.
+https://github.com/gwtbootstrap/gwt-bootstrap.git 5e98f5ac5a6f0e78eca0efffefb917750706aaa9 true
+https://github.com/objectos/way.git null false Clover report not generated.
+https://github.com/maxapryg/UITest.git 76704f698d132931e9eca6427259e659ae85edd7 false Clover report not generated.
+https://github.com/ghedlund/phon.git dfb6b845d74d49fd344bb3256741979c37fe9cda false Maven time limit violated.
+https://github.com/aadnk/ProtocolLib.git bfa0eee91e409ab3f1c2d8b08fcb3d41d7a88d77 true
+https://github.com/karamelchef/karamel.git 386d90fac64ba721ca186770235943453723fe1d true
+https://github.com/Hansschouten/context_health_informatics.git 496b35da1cc274c692c79b603aace24409f814ff true
+https://github.com/apache/incubator-streams.git null false Clover report not generated.
+https://github.com/kuujo/vertigo.git c5869dbc5fff89eb5262e83f7a81719b01a5ba6f true
+https://github.com/vmi/selenese-runner-java.git 21538a83a91cbbe18a99d5dec1ee15dfad966023 true
+https://github.com/spotify/docker-client.git 14c955c0524233639fe76a35edda3d620037a525 true
+https://github.com/JWebUnit/jwebunit.git 5a6a5f2df17c80075307a72797667c3b57e76afc true
+https://github.com/johncarl81/transfuse.git c610df75fe6361e0d71b85337bf1e8c8f71e0eb9 true
+https://github.com/sakai-mirror/kernel.git 8d4f39746d4ea2e398482f12657aa772e4ed68cc false Clover report not generated.
+https://github.com/CloudSlang/cloud-slang.git 53e3475b78aadf47e3dc447d2edb442f4361d9aa true
+https://github.com/datanucleus/datanucleus-core.git 3e9572d2565f72cca9fbd862ddbd92441e1739ea true
+https://github.com/eXistence/TeeTime.git f0e4355fef04920a2f065d3e7eb00418452764ce true
+https://github.com/jitsi/libjitsi.git 738e257382f595356532ba2d70239fbf2c6a6716 false Maven time limit violated.
+https://github.com/FasterXML/jackson-core.git 142e3c82d4009f3e40dfb8dfc3ff59e5d31475ec true
+https://github.com/mizdebsk/xmvn.git 81db5529a48937b9d6b9243b3f2d4bbbd48ddd8d true
+https://github.com/ATLauncher/ATLauncher.git bd5bd9c343fcda4bcd36b94997a1bbdd5baac207 false Clover report not generated.
+https://github.com/maartentbm/ContextPL1.git 984f78305489e33ef0ce1c4960dfa05d54fbb139 true
+https://github.com/apache/incubator-ambari.git bf747346312170834c6beb89a60c8624b47aa288 true
+https://github.com/spring-projects/spring-data-neo4j.git 84f346639556b0593b3ce6754d070c4395875d39 true
+https://github.com/apache/uima-uimaj.git 380170e6dc2861838cf23c0e8d0fd8f2fb52c5c7 true
+https://github.com/mongodb/morphia.git 5ad268343f3a83cecb4a4b4c45047fac0a776d91 true
+https://github.com/minusone13/InvoicingSystem.git 0dc056c794150081573ad67624bf6febb9e842b6 true
+https://github.com/jqno/equalsverifier.git 0f3e4bbf72a4dfc2b9d51f1f1f6258cd5c287b9c true
+https://github.com/sdl/Testy.git c684d5939cedb91fa0abde48d931cc7ee0860533 true
+https://github.com/fcrepo4/fcrepo4.git 3555b046a7f9b4a968f2a02bc38f6fa272025665 true
+https://github.com/GenomicParisCentre/eoulsan.git 6a75fba82a58a3059dbaee5b16da00d9db8ebf63 true
+https://github.com/te-con/ehour.git 271a7c8b243aff457db3c59fcc826b1a50439952 true
+https://github.com/ansell/owlapi.git null false Clover report not generated.
+https://github.com/opendaylight/yangtools.git 58c585425f8d3fc2cfddfd359545d02a5ab64923 true
+https://github.com/OpenRock/OpenDJ.git 86be7963f251af79f30e82e96dd85dfdc989aa53 false Clover report not generated.
+https://github.com/JolantaWojcik/biojavaOwn.git 1c8bcd867f8a0dca6a1afec7fbdce17d636a439d true
+https://github.com/DirtyUnicorns/android_external_spongycastle.git fc2a21c6321063531b273385708adc81a8e51a31 true
+https://github.com/owlcs/owlapi.git f599ad6d288d10eb2b83b8964658c78da4cd3331 true
+https://github.com/stormpath/stormpath-sdk-java.git 72d5d21afbb85815d2e10c73bc2545ca55204561 true
+https://github.com/apache/clerezza.git e9af3f50f0a065bfab7f2c849d3460d5d257aa7b false Clover report not generated.
+https://github.com/aht-group/utils.git 6452e870d4f8b68c8fffd05c9e2b89ced9242940 true
+https://github.com/webanno/webanno.git 4c7dd4951693f98490b805b0340a13efe4a05b0c true
+https://github.com/apache/mahout.git c6fabc5814fb633d5d97afdb6ca5aa28e7543336 false Maven time limit violated.
+https://github.com/hal/core.git d6d03f0bb128dc0470f5dc75fdb1ea1014400602 true
+https://github.com/playernodie/weupnp.git a2268acb9c2973988338f870f9688ba66bbcf13e true
+https://github.com/apache/servicemix-bundles.git a6b2c613f6cb754a034f38917d872f0aad481095 false Clover report not generated.
+https://github.com/robovm/robovm.git ef091902377c00dc0fb2db87e8d79c8afb5e9010 true
+https://github.com/graphhopper/graphhopper.git 75a162a2b0c9885e674693cc42d1860c7b729a79 true
+https://github.com/perfectsense/dari.git 9f28f38ab157020bc487006fa95d727ae11384c1 true
+https://github.com/svn2github/SAT4J.git 1070e36befc455dfe67377ece0cd06443c4d76e7 true
+https://github.com/jeremylong/DependencyCheck.git 96fded372ba423e2c9ac8d64bb3003b2e746738f true
+https://github.com/apache/qpid-proton.git f909e79ed1f864bf24ed4a1e126607e535170bdd false Clover report not generated.
+https://github.com/svn2github/forge.git eacaaeb46e87273049e090e9fa5d4058d195bc7b true
+https://github.com/droolsjbpm/optaplanner.git c2c75c02718ab42665cb69620d5caba1eb0e86e3 true
+https://github.com/soluvas/soluvas-framework.git 4997c176f0deaa62220240b8dc30676214b23de5 true
+https://github.com/droolsjbpm/droolsjbpm-integration.git f269e9637ac7b310ea05cc598e883509173115ec false Maven time limit violated.
+https://github.com/swagger-api/swagger-codegen.git b9a731aac54663e72570a677d2d36c7ba06126bd false Maven time limit violated.
+https://github.com/druid-io/druid.git 58f2e5116126fee868b39e268341db0e60c8425f true
+https://github.com/biojava/biojava.git eca876a7658eb3693a0131ff9a9ccd72bc50ec2b false Maven time limit violated.
+https://github.com/telefonicaid/fiware-cosmos-ambari.git a9b108dfa209c36be35f231f7aad75dd4500b837 true
+https://github.com/kyoken74/gwt-angular.git 99a6efa277dd4771d9cba976b25fdf0ac4fdeca2 true
+https://github.com/scifio/scifio.git 6286742e0aa3ac7c016b9923698e45bfbb834252 true
+https://github.com/alibaba/RocketMQ.git null false Clover report not generated.
+https://github.com/kuujo/copycat.git 842276c02541267a61bca47f82c2e9d740245fcb true
+https://github.com/jankotek/MapDB.git 1eaca4f8e8a1a6de740848ee63f3856a78a95a82 false Clover report not generated.
+https://github.com/droolsjbpm/kie-wb-distributions.git 580f5ea60a1c2cd9941339f4a094ed791dc65747 true
+https://github.com/buschmais/jqassistant.git d1638910cd306cb288636d9bfe87395dd61ede62 false Clover report not generated.
+https://github.com/PLOS/ambra.git null false Clover report not generated.
+https://github.com/spring-cloud/spring-cloud-netflix.git d72dd006ad8bb77d6f1e57fa6f0e52fa2e791b03 false Clover report not generated.
+https://github.com/OpenHFT/Chronicle-Network.git e5b01e8980f5193d99acaa1be095338e643bf352 true
+https://github.com/chocoteam/choco3.git 63b16dc8a2f7379fd19d76af4887aba1a9243bca true
+https://github.com/apache/flume.git 59ffd4f871171550e7b40d8193894549b97fe1f4 true
+https://github.com/rinde/RinSim.git 5506007f62246bbfc2cb21d136c368880fc75cac true
+https://github.com/kotcrab/VisEditor.git 645a27c4162e7e88914c9879c60e8fa5344c24d9 false Clover report not generated.
+https://github.com/void256/nifty-gui.git 69b675614d48d4b8ad94732e08335aa68ec3689a false Maven time limit violated.
+https://github.com/apache/uima-ducc.git b5cc13ab81a5da915b785fdadebef08294f482ec false Clover report not generated.
+https://github.com/windup/windup.git daedfc39b00addd8f3458ca381b42cba73794544 true
+https://github.com/heuermh/dishevelled.git 2fd44616017c5a0a010de290bea1b723dd40a1f5 false Clover report not generated.
+https://github.com/salyh/javamailspec.git 8be52caa4b7ea920d663acd9fe2a76b91fb9261a false Clover report not generated.
+https://github.com/SpoutDev/Spout.git 52f0992db0acca466e192d41e790a680a0f66b72 true
+https://github.com/antlr/antlr4.git 3d9351f61e0f60d206264959115a3d881185a08a true
+https://github.com/Flipkart/quartz.git 87dc8fa7a29581f45b86b2f4af98bf57d934f982 true
+https://github.com/rasto/lcmc.git 5983050fe5f15b58148cdaedc8e935928beb6a15 true
+https://github.com/mafagafogigante/dungeon.git e31ec2a0f780b689e783e0385b418839b82a7347 true
+https://github.com/PerfGeeks/pinpoint.git 8b35dae8e525e91c2d9b40bc5910c2b4a1008a33 true
+https://github.com/opendaylight/openflowplugin.git f3b194170d0bce0fd9ef2f9e2e00fcf505ede514 false Clover report not generated.
+https://github.com/EngineHub/CommandHelper.git f4b78d7f9a3ef35d51ce240aae7b8ab4f5099b76 true
+https://github.com/tananaev/traccar.git 63e1162d903fd06222f8e966d234f1b303aa0808 true
+https://github.com/BroadleafCommerce/BroadleafCommerce.git c238c79cf400b687a3d3ecaca7c45fd0659bcfc7 true
+https://github.com/apache/hadoop-common.git 42a61a4fbc88303913c4681f0d40ffcc737e70b5 true
+https://github.com/spring-projects/spring-boot.git 3d2f67f0be35cc528d4345d9babc30ab5b586f7a false Clover report not generated.
+https://github.com/bcdev/beam.git 7034ef7a326acdc66c9c02b57a9011022f0174b5 false Maven time limit violated.
+https://github.com/weld/core.git 2fe5d1f64c03b89cc562a14cda317098225590c7 true
+https://github.com/elki-project/elki.git a41d854e252da5ee847d910d81227c8681f87abb false Clover report not generated.
+https://github.com/belaban/JGroups.git 6d5ed2cb4095ceec65cca1776f51039b026c340c true
+https://github.com/molgenis/molgenis.git 1f4b8e4a36e964c9ed777791d2bdca262d611367 true
+https://github.com/lennartj/jaxb2-maven-plugin.git 952ea1e079623f024a12f63518a6cfaafbf49e27 false Clover report not generated.
+https://github.com/bugcy013/opennms-tmp-tools.git e7e561d185c6f0d26c1575cc08fa0470bdf48a10 true
+https://github.com/Talend/tcommon-studio-se.git 636bfa82a7c03f264f1fa95fdb3bd6298cfd2aa7 false Clover report not generated.
+https://github.com/netty/netty.git bfbeb2dec62102836e096e89cedf7b230517d786 false Maven time limit violated.
+https://github.com/openmicroscopy/bioformats.git fb6b2b548d12d542c22e590371e23b6c248428ee true
+https://github.com/droolsjbpm/guvnor.git a95f7be5765a91e368a6a2cd8c05fc122da47e56 false Clover report not generated.
+https://github.com/jetty-project/codehaus-jetty6.git 48201cad55ac68d9fed1c039167b4e0eec25503a false Clover report not generated.
+https://github.com/apache/jackrabbit-oak.git 2a9bf7fa6b9aed33c66d206c75686e3050df29b8 true
+https://github.com/deegree/deegree3.git c4ad379fae34e7314f8cbfe4dab14bd5a93b3173 true
+https://github.com/apache/sling.git 0ba22b0c0d8b2b8701bc0906eaad53b349765f8b false Clover report not generated.
+https://github.com/EriclLee/ActiveMQ-On-Azure.git c08efbe6c2e490b1c00593df8fdbf93b847b971d true
+https://github.com/amplab/tachyon.git 0aff93892aa8825a77d2d45c8f90566a01e11b9c true
+https://github.com/neo4j/neo4j.git b16d1c2a181f9d6094787282866986b4809881b1 true
+https://github.com/darranl/directory-server.git fb02141cf7c9acb37ac5c3cdfe2b3954b389cfc6 true
+https://github.com/hazelcast/hazelcast.git 44b2b6e4d3a7cdb6c3034fba4d256a47f8036ec0 true
+https://github.com/infinispan/infinispan.git 2c26143701fc37b772c1d3e6394b99596028c1f0 false Clover report not generated.
+https://github.com/DSpace/DSpace.git cc7a6c30fd83d153fcd7d5b9af5f4a5454f0c342 true
+https://github.com/mulesoft/mule.git d69783aa4cad798bc1e705c823a79c6477294d69 true
+https://github.com/imCodePartnerAB/imcms.git acfd6de531595e9e858a1737a0ff500bd6ee5da7 false Clover report not generated.
+https://github.com/backslash47/webstart-maven-plugin.git a1e5c75dbcef9cc6e9c9e3250a56a218476e2fbb false Clover report not generated.
+https://github.com/apache/hbase.git 724f0478edcf9a549508bac3848bec8972b69b12 true
+https://github.com/languagetool-org/languagetool.git c64a5ef5e81f897d3fb54a3b841765723e27fa3d true
+https://github.com/droolsjbpm/drools.git a8507fae382ec5d815cce03792aa18b0020a1915 false Maven time limit violated.
+https://github.com/SpigotMC/Spigot-API.git b3e065a2b11a6dd2590606600ae58ba08e8763f8 false Clover report not generated.
+https://github.com/irstv/orbisgis.git 3af98154ff3749568d5d996e4b2bd8ebe8eca8af true
+https://github.com/jgheerardyn/yields.git null false Clover report not generated.
+https://github.com/ning/killbill.git e3ec4ab20fa55f4fe47d05813f9965895f2eba2f true
+https://github.com/jline/jline2.git 12b98d94589e3bd6a60719c495b0ab911c571329 true
+https://github.com/altran/Whydah-UserIdentityBackend.git 8786eff4537238a910b5ffee1234157c99d0200a false Maven time limit violated.
+https://github.com/encog/encog-java-core.git 06bed745403a1a670675b606b6ae483fbf7a6b97 false Clover report not generated.
+https://github.com/highsource/jaxb2-basics.git 571cca0ce58a75d984324d33d8af453bf5862e75 true
+https://github.com/msoute/vertx-deploy-tools.git 031ffd1efff8ca621027690063e747dbf0f252a3 true
+https://github.com/apache/portals-pluto.git eb0938238ec12e4b9c72c41a2babb48b6c4686fb true
+https://github.com/antlr/stringtemplate4.git 85661f2458e4568e8a940527caa32cf1854e8203 true
+https://github.com/kongchen/swagger-maven-plugin.git e4cf3af6ed4a4987b2269a05b7037549bc4a5511 true
+https://github.com/gertvv/addis.git 9860eaf17c0449179e1ed9f1826e9cc792c58c1d true
+https://github.com/ProjectCCNx/ccnx.git 5be2b715d0cc6bb4b7c6bb7459d311bddff46834 true
+https://github.com/mulesoft/mule-common.git 350cb78cd448eae4e46f5ca9d4872e4b8bea70ca true
+https://github.com/cismet/cismap-plugin.git bd3f8a3557f9c85bbb150541eb818df1956e3679 false Clover report not generated.
+https://github.com/greese/dasein-cloud-azure.git 94f675a7b88c81258bdfd4c56711e98ae181d34c false Clover report not generated.
+https://github.com/Requinard/TeamTab.git e00c2a9fad725c9817d7c1e87a5cf9575fcaa009 true
+https://github.com/SonarSource/jenkins-sonar-plugin.git 8340b8e13e11955c5a46b23cb223b663a1b0912f true
+https://github.com/fbacchella/jrds.git 58ccad06b9aa0e3bb938c0fb5d93544cc8b6a8b0 true
+https://github.com/cdi-spec/cdi-tck.git 41311139de3326275e07e8e084877d8d927553d8 true
+https://github.com/gwtbootstrap3/gwtbootstrap3.git 66b482b4ec5db54931ff76c4a66454ea4d39637f true
+https://github.com/apache/commons-dbcp.git 318dbeb800e7090a97cb9de654e1b3dbc6156202 true
+https://github.com/timmolter/XChart.git 5a241183a5afaf245eb0938240abfb684944047b true
+https://github.com/aranega/testgen.git d49155bd99320fb25800f6fff07b8c6bca274b24 true
+https://github.com/mysticfall/pivot4j.git fc15e0e1503e966d67d49d26ca3625854e296e6a true
+https://github.com/datasift/datasift-java.git 09de124f2a1a507ff6181e59875c6f325290850e true
+https://github.com/viktor-z/fb2pdf.git dc8bf5ef1c1e1b83f841c64b0a1027070f434100 true
+https://github.com/Cas-B/Group17-BubbleBobble.git null false Clover report not generated.
+https://github.com/TheCoder4eu/BootsFaces-OSP.git 18f1d13f236026430327bf23b005e112d5eb5e77 true
+https://github.com/UnifiedViews/Plugin-DevEnv.git 6875251864142a66923c760770d6a1b7f1d4fbb3 true
+https://github.com/jidesoft/jide-oss.git 5c2fe0e6966529dbd363e05a145a8e90ebdf3cbe false Clover report not generated.
+https://github.com/codescape/bitvunit.git c69919470c4f23ad39b42a3bb28466cbff3eab82 false Clover report not generated.
+https://github.com/grandwazir/BanHammer.git 4c2214fc92cfeb9668ec14b030ca327bb3f204ee false Clover report not generated.
+https://github.com/wildfly/wildfly-arquillian.git c385ae617b99a6b64712d53fb9d5da24bfbb9852 true
+https://github.com/Eluinhost/pluginframework.git 352f1baf14fdb02af3a750c70ef411bef969639b false Clover report not generated.
+https://github.com/mtedone/podam.git 537e570cc28b0b3e90e5ae55cabf22bfe4e4c180 true
+https://github.com/Mobicents/jss7.git 47a32ba5073c62169ff4916f6474269441ae3196 true
+https://github.com/basis-technology-corp/rosette-common-java-api.git 2a90b204efbd71f4dfe096e11b3247f044f2337d true
+https://github.com/webbit/webbit.git f628a7a3ffdd8c288514784f5b0426faaee2a2e3 true
+https://github.com/GWASpi/GWASpi.git 76931425a6821050db74c0f8009b358bf756125d false Clover report not generated.
+https://github.com/jenkinsci/warnings-plugin.git b5fc8b56b6f4fc79caec111161ad48e2f8cda46d true
+https://github.com/google/auto.git b48441776bb1eefe120dd4de5711e50209f46917 false Clover report not generated.
+https://github.com/TechnicPack/LauncherV3.git a8e6e37655c57cba3c2b642b828e1defc76c17c1 true
+https://github.com/ArtificerRepo/artificer.git cfe42dfa539fb60de1b964153bc82b30d05917c2 false Clover report not generated.
+https://github.com/Jahia/external-provider.git e2435662be53716020d624d4ff539e7c6149a5f6 true
+https://github.com/ICGC-TCGA-PanCancer/SeqWare-CGP-SomaticCore.git null false Clover report not generated.
+https://github.com/PEXPlugins/PermissionsEx.git 7555d9115b84c7a6daf8b99e3e382d973cb9bf6a false Clover report not generated.

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594507624119" clover="4.4.1">
+   <project name="model 0.1.0" timestamp="1594507621492">
+      <metrics coveredelements="10" complexity="16" loc="364" methods="16" classes="11" statements="21" packages="1" coveredconditionals="0" coveredmethods="5" elements="37" ncloc="226" files="11" conditionals="0" coveredstatements="5"/>
+      <package name="model">
+         <metrics coveredelements="10" complexity="16" loc="364" methods="16" classes="11" statements="21" coveredconditionals="0" coveredmethods="5" elements="37" ncloc="226" files="11" conditionals="0" coveredstatements="5"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/model/Application.java" name="Application.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="34" coveredmethods="0" methods="1" elements="7" classes="1" ncloc="21" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="Application">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="7" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="main(String[]) : void" num="22" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/model/CustomGenProjectController.java" name="CustomGenProjectController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="20" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="10" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="CustomGenProjectController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="index() : String" num="15" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/model/DirectoryController.java" name="DirectoryController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="20" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="10" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="DirectoryController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="index() : String" num="15" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/model/FileController.java" name="FileController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="20" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="10" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="FileController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="index() : String" num="15" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/model/MyClassController.java" name="MyClassController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="20" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="10" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="MyClassController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="index() : String" num="15" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/model/VFSEntryController.java" name="VFSEntryController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="20" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="10" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="VFSEntryController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="index() : String" num="15" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/model/CustomGenProjectControllerTest.java" name="CustomGenProjectControllerTest.java">
+            <metrics coveredelements="2" coveredconditionals="0" complexity="2" loc="46" coveredmethods="1" methods="2" elements="4" classes="1" ncloc="31" statements="2" conditionals="0" coveredstatements="1"/>
+            <class name="CustomGenProjectControllerTest">
+               <metrics coveredelements="2" coveredconditionals="0" complexity="2" coveredmethods="1" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="32" count="1" type="method"/>
+            <line num="34" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHello() : void" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/model/DirectoryControllerTest.java" name="DirectoryControllerTest.java">
+            <metrics coveredelements="2" coveredconditionals="0" complexity="2" loc="46" coveredmethods="1" methods="2" elements="4" classes="1" ncloc="31" statements="2" conditionals="0" coveredstatements="1"/>
+            <class name="DirectoryControllerTest">
+               <metrics coveredelements="2" coveredconditionals="0" complexity="2" coveredmethods="1" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="32" count="1" type="method"/>
+            <line num="34" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHello() : void" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/model/FileControllerTest.java" name="FileControllerTest.java">
+            <metrics coveredelements="2" coveredconditionals="0" complexity="2" loc="46" coveredmethods="1" methods="2" elements="4" classes="1" ncloc="31" statements="2" conditionals="0" coveredstatements="1"/>
+            <class name="FileControllerTest">
+               <metrics coveredelements="2" coveredconditionals="0" complexity="2" coveredmethods="1" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="32" count="1" type="method"/>
+            <line num="34" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHello() : void" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/model/MyClassControllerTest.java" name="MyClassControllerTest.java">
+            <metrics coveredelements="2" coveredconditionals="0" complexity="2" loc="46" coveredmethods="1" methods="2" elements="4" classes="1" ncloc="31" statements="2" conditionals="0" coveredstatements="1"/>
+            <class name="MyClassControllerTest">
+               <metrics coveredelements="2" coveredconditionals="0" complexity="2" coveredmethods="1" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="32" count="1" type="method"/>
+            <line num="34" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHello() : void" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/model/VFSEntryControllerTest.java" name="VFSEntryControllerTest.java">
+            <metrics coveredelements="2" coveredconditionals="0" complexity="2" loc="46" coveredmethods="1" methods="2" elements="4" classes="1" ncloc="31" statements="2" conditionals="0" coveredstatements="1"/>
+            <class name="VFSEntryControllerTest">
+               <metrics coveredelements="2" coveredconditionals="0" complexity="2" coveredmethods="1" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="32" count="1" type="method"/>
+            <line num="34" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHello() : void" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="model 0.1.0" timestamp="1594507621492">
+      <metrics coveredelements="0" complexity="0" loc="0" methods="0" classes="0" statements="0" packages="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="0" files="0" conditionals="0" coveredstatements="0"/>
+   </testproject>
+</coverage>

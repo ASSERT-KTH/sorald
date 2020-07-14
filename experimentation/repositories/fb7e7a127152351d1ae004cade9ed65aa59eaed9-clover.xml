@@ -1,0 +1,1479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594412537329" clover="4.4.1">
+   <project name="thindeck 1.0-SNAPSHOT" timestamp="0">
+      <metrics coveredelements="0" complexity="281" loc="8252" methods="216" classes="83" statements="694" packages="8" coveredconditionals="0" coveredmethods="0" elements="1010" ncloc="3913" files="79" conditionals="100" coveredstatements="0"/>
+      <package name="com.thindeck.cockpit">
+         <metrics coveredelements="0" complexity="41" loc="1362" methods="34" classes="14" statements="68" coveredconditionals="0" coveredmethods="0" elements="114" ncloc="660" files="13" conditionals="12" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/RqUser.java" name="RqUser.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="81" coveredmethods="0" methods="2" elements="10" classes="1" ncloc="26" statements="6" conditionals="2" coveredstatements="0"/>
+            <class name="RqUser">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="2" elements="10" statements="6" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RqUser(Request,Base)" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="get() : User" num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="73" type="cond"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/RsPage.java" name="RsPage.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="122" coveredmethods="0" methods="3" elements="16" classes="1" ncloc="60" statements="11" conditionals="2" coveredstatements="0"/>
+            <class name="RsPage">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="3" elements="16" statements="11" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RsPage(String,Base,Request,XeSource)" num="71" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="make(String,Base,Request,XeSource) : Response" num="86" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="route(Request) : Opt&lt;Response&gt;" num="96" count="0" type="method"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="103" type="cond"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/TkAccount.java" name="TkAccount.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="69" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="20" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="TkAccount">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="TkAccount(Base)" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="act(Request) : Response" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/TkAddDeck.java" name="TkAddDeck.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="76" coveredmethods="0" methods="2" elements="8" classes="1" ncloc="26" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="TkAddDeck">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="8" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="TkAddDeck(Base)" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="act(Request) : Response" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/TkApp.java" name="TkApp.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="204" coveredmethods="0" methods="5" elements="14" classes="1" ncloc="130" statements="7" conditionals="2" coveredstatements="0"/>
+            <class name="TkApp">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="5" elements="14" statements="7" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="TkApp(Base)" num="88" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="make(Base) : Take" num="98" count="0" type="method"/>
+            <line num="99" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="99" type="cond"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="regex(Base) : Take" num="131" count="0" type="method"/>
+            <line num="132" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="refresh(String) : Take" num="182" count="0" type="method"/>
+            <line num="184" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="run() : void" num="188" count="0" type="method"/>
+            <line num="190" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/TkAppAuth.java" name="TkAppAuth.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="154" coveredmethods="0" methods="4" elements="21" classes="2" ncloc="95" statements="13" conditionals="4" coveredstatements="0"/>
+            <class name="TkAppAuth">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="TkAppAuth.FakePass">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="2" elements="17" statements="11" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="TkAppAuth(Take)" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="make(Take) : Take" num="86" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="enter(Request) : Opt&lt;Identity&gt;" num="126" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="129" type="cond"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="133" type="cond"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exit(Response,Identity) : Response" num="149" count="0" type="method"/>
+            <line num="151" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/TkAppFallback.java" name="TkAppFallback.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="131" coveredmethods="0" methods="5" elements="13" classes="1" ncloc="69" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="TkAppFallback">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="13" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="TkAppFallback(Take)" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="make(Take) : Take" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="route(RqFallback) : Opt&lt;Response&gt;" num="81" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="route(RqFallback) : Opt&lt;Response&gt;" num="97" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="fatal(RqFallback) : Response" num="113" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/TkDecks.java" name="TkDecks.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="114" coveredmethods="0" methods="4" elements="9" classes="1" ncloc="56" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="TkDecks">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="9" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="TkDecks(Base)" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="act(Request) : Response" num="71" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="transform(Deck) : XeSource" num="83" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="source(Deck) : XeSource" num="100" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/TkIndex.java" name="TkIndex.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="69" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="20" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="TkIndex">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="TkIndex(Base)" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="act(Request) : Response" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/XePage.java" name="XePage.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="109" coveredmethods="0" methods="2" elements="6" classes="1" ncloc="52" statements="2" conditionals="2" coveredstatements="0"/>
+            <class name="XePage">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="2" elements="6" statements="2" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="XePage(Base,Request,XeSource)" num="70" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="make(Base,Request,XeSource) : XeSource" num="83" count="0" type="method"/>
+            <line falsecount="0" truecount="0" num="85" type="cond"/>
+            <line num="86" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/cockpit/TkAppTest.java" name="TkAppTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="76" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="34" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="TkAppTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="rendersHomePage() : void" num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/cockpit/TkDecksTest.java" name="TkDecksTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="84" coveredmethods="0" methods="1" elements="5" classes="1" ncloc="41" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="TkDecksTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="5" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="rendersXmlPage() : void" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/cockpit/TkIndexTest.java" name="TkIndexTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="73" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="31" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="TkIndexTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="rendersXmlPage() : void" num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.thindeck.fakes">
+         <metrics coveredelements="0" complexity="29" loc="591" methods="29" classes="6" statements="45" coveredconditionals="0" coveredmethods="0" elements="74" ncloc="260" files="6" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/fakes/FkBase.java" name="FkBase.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="98" coveredmethods="0" methods="5" elements="12" classes="1" ncloc="37" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="FkBase">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="12" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FkBase()" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="FkBase(File)" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="user(String) : User" num="77" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="active() : Iterable&lt;Deck&gt;" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="temp() : File" num="92" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/fakes/FkDeck.java" name="FkDeck.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="128" coveredmethods="0" methods="6" elements="18" classes="1" ncloc="67" statements="12" conditionals="0" coveredstatements="0"/>
+            <class name="FkDeck">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="18" statements="12" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FkDeck()" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="FkDeck(File)" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="name() : String" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(Agent) : void" num="87" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="events() : Events" num="112" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="temp() : File" num="122" count="0" type="method"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/fakes/FkDecks.java" name="FkDecks.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="127" coveredmethods="0" methods="8" elements="20" classes="1" ncloc="65" statements="12" conditionals="0" coveredstatements="0"/>
+            <class name="FkDecks">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="8" elements="20" statements="12" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FkDecks()" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="FkDecks(File)" num="75" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="get(String) : Deck" num="79" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="add(String) : void" num="84" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="delete(String) : void" num="95" count="0" type="method"/>
+            <line num="97" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="iterate() : Iterable&lt;Deck&gt;" num="100" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="apply(File) : Deck" num="109" count="0" type="method"/>
+            <line num="111" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="temp() : File" num="122" count="0" type="method"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/fakes/FkEvents.java" name="FkEvents.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="60" coveredmethods="0" methods="2" elements="3" classes="1" ncloc="18" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="FkEvents">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="3" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="iterate(long) : Iterable&lt;String&gt;" num="50" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="create(String) : void" num="55" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/fakes/FkUser.java" name="FkUser.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="96" coveredmethods="0" methods="5" elements="12" classes="1" ncloc="35" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="FkUser">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="12" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FkUser()" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="FkUser(File)" num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="name() : String" num="75" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="decks() : Decks" num="80" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="temp() : File" num="90" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/fakes/FkDeckTest.java" name="FkDeckTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="82" coveredmethods="0" methods="3" elements="9" classes="1" ncloc="38" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="FkDeckTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="9" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="acceptsDomainDefinition() : void" num="56" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="61" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="70" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.thindeck.api">
+         <metrics coveredelements="0" complexity="6" loc="569" methods="6" classes="8" statements="9" coveredconditionals="0" coveredmethods="0" elements="15" ncloc="132" files="7" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/api/Agent.java" name="Agent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="55" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Agent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/api/Base.java" name="Base.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="75" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="11" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Base">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/api/Boss.java" name="Boss.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="52" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="7" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Boss">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/api/Deck.java" name="Deck.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="173" coveredmethods="0" methods="6" elements="15" classes="2" ncloc="71" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="Deck">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="Deck.Smart">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="15" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Smart(Deck)" num="123" count="0" type="method"/>
+            <line num="124" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="xml() : XML" num="131" count="0" type="method"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="135" count="0" type="method"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(String) : void" num="149" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(Iterable&lt;Directive&gt;) : void" num="161" count="0" type="method"/>
+            <line num="162" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="164" count="0" type="method"/>
+            <line num="166" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/api/Decks.java" name="Decks.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="90" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="13" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Decks">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/api/Events.java" name="Events.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="62" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Events">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/api/User.java" name="User.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="62" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="11" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="User">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="com.thindeck.dynamo">
+         <metrics coveredelements="0" complexity="48" loc="1116" methods="33" classes="10" statements="106" coveredconditionals="0" coveredmethods="0" elements="163" ncloc="543" files="10" conditionals="24" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/dynamo/Drain.java" name="Drain.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="108" coveredmethods="0" methods="5" elements="24" classes="1" ncloc="49" statements="17" conditionals="2" coveredstatements="0"/>
+            <class name="Drain">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="5" elements="24" statements="17" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="Drain()" num="64" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="fetch() : String" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="83" type="cond"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="close() : void" num="91" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="requiresLayout() : boolean" num="96" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="append(LoggingEvent) : void" num="101" count="0" type="method"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/dynamo/DyBase.java" name="DyBase.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="142" coveredmethods="0" methods="6" elements="30" classes="1" ncloc="81" statements="18" conditionals="6" coveredstatements="0"/>
+            <class name="DyBase">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="6" elements="30" statements="18" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="DyBase()" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="DyBase(Region)" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="user(String) : User" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="84" type="cond"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="active() : Iterable&lt;Deck&gt;" num="95" count="0" type="method"/>
+            <line num="97" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="apply(Item) : Deck" num="100" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="dynamo() : Region" num="120" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="125" type="cond"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="127" type="cond"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/dynamo/DyDeck.java" name="DyDeck.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="186" coveredmethods="0" methods="5" elements="27" classes="1" ncloc="97" statements="16" conditionals="6" coveredstatements="0"/>
+            <class name="DyDeck">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="5" elements="27" statements="16" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="DyDeck(Region,String,String)" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="name() : String" num="125" count="0" type="method"/>
+            <line num="127" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="exec(Agent) : void" num="130" count="0" type="method"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="140" type="cond"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="147" type="cond"/>
+            <line num="148" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="events() : Events" num="158" count="0" type="method"/>
+            <line num="160" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="item() : Item" num="167" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="179" type="cond"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/dynamo/DyDecks.java" name="DyDecks.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="175" coveredmethods="0" methods="6" elements="35" classes="1" ncloc="117" statements="21" conditionals="8" coveredstatements="0"/>
+            <class name="DyDecks">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="6" elements="35" statements="21" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="DyDecks(Region,String)" num="74" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="get(String) : Deck" num="79" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="88" type="cond"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="add(String) : void" num="98" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="100" type="cond"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="114" type="cond"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="delete(String) : void" num="134" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="142" type="cond"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="iterate() : Iterable&lt;Deck&gt;" num="154" count="0" type="method"/>
+            <line num="156" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="apply(Item) : Deck" num="162" count="0" type="method"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/dynamo/DyEvents.java" name="DyEvents.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="168" coveredmethods="0" methods="4" elements="16" classes="1" ncloc="89" statements="10" conditionals="2" coveredstatements="0"/>
+            <class name="DyEvents">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="4" elements="16" statements="10" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="DyEvents(Region,String)" num="111" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="iterate(long) : Iterable&lt;String&gt;" num="116" count="0" type="method"/>
+            <line num="118" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="apply(Item) : String" num="132" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="create(String) : void" num="149" count="0" type="method"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="152" type="cond"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/dynamo/DyUser.java" name="DyUser.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="81" coveredmethods="0" methods="3" elements="7" classes="1" ncloc="26" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="DyUser">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="7" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="DyUser(Region,String)" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="name() : String" num="71" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="decks() : Decks" num="76" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/dynamo/DrainTest.java" name="DrainTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="59" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="16" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="DrainTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="accumulatesLongs() : void" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/dynamo/DyBaseITCase.java" name="DyBaseITCase.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="61" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="18" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="DyBaseITCase">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="canAddCommand() : void" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/dynamo/DyDecksITCase.java" name="DyDecksITCase.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="68" coveredmethods="0" methods="1" elements="7" classes="1" ncloc="25" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="DyDecksITCase">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="7" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="canAddAndRemoveDeck() : void" num="50" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/dynamo/DyEventsITCase.java" name="DyEventsITCase.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="68" coveredmethods="0" methods="1" elements="9" classes="1" ncloc="25" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="DyEventsITCase">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="9" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="addsEvent() : void" num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.thindeck.agents">
+         <metrics coveredelements="0" complexity="85" loc="2901" methods="66" classes="31" statements="271" coveredconditionals="0" coveredmethods="0" elements="367" ncloc="1394" files="29" conditionals="30" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/BuildImage.java" name="BuildImage.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="154" coveredmethods="0" methods="4" elements="33" classes="1" ncloc="87" statements="27" conditionals="2" coveredstatements="0"/>
+            <class name="BuildImage">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="4" elements="33" statements="27" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="BuildImage()" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="BuildImage(Script)" num="82" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="86" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="build(String,XML) : String" num="118" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="128" type="cond"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/BuryContainers.java" name="BuryContainers.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="92" coveredmethods="0" methods="1" elements="18" classes="1" ncloc="52" statements="15" conditionals="2" coveredstatements="0"/>
+            <class name="BuryContainers">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="1" elements="18" statements="15" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="56" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="74" type="cond"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/CheckState.java" name="CheckState.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="134" coveredmethods="0" methods="4" elements="30" classes="1" ncloc="71" statements="22" conditionals="4" coveredstatements="0"/>
+            <class name="CheckState">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="4" elements="30" statements="22" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="CheckState()" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="CheckState(Script)" num="74" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="78" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="98" type="cond"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="state(String,int) : String" num="116" count="0" type="method"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="122" type="cond"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/DetectPorts.java" name="DetectPorts.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="149" coveredmethods="0" methods="4" elements="26" classes="1" ncloc="81" statements="20" conditionals="2" coveredstatements="0"/>
+            <class name="DetectPorts">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="4" elements="26" statements="20" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="DetectPorts()" num="75" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="DetectPorts(Script)" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="91" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="ports(String,String) : Map&lt;String, Integer&gt;" num="128" count="0" type="method"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="136" type="cond"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/FindTanks.java" name="FindTanks.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="62" coveredmethods="0" methods="1" elements="8" classes="1" ncloc="21" statements="5" conditionals="2" coveredstatements="0"/>
+            <class name="FindTanks">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="1" elements="8" statements="5" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="50" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/PingContainers.java" name="PingContainers.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="119" coveredmethods="0" methods="4" elements="23" classes="1" ncloc="56" statements="15" conditionals="4" coveredstatements="0"/>
+            <class name="PingContainers">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="4" elements="23" statements="15" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="PingContainers()" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="PingContainers(Script)" num="74" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="78" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="87" type="cond"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="exists(String,String) : boolean" num="103" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="110" type="cond"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/PingImages.java" name="PingImages.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="113" coveredmethods="0" methods="4" elements="22" classes="1" ncloc="51" statements="14" conditionals="4" coveredstatements="0"/>
+            <class name="PingImages">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="4" elements="22" statements="14" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="PingImages()" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="PingImages(Script)" num="74" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="78" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="86" type="cond"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="exists(String) : boolean" num="101" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="107" type="cond"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/Remote.java" name="Remote.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="80" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="30" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="Remote">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Remote(String)" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(String,InputStream,OutputStream,OutputStream) : int" num="63" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/RemoveImages.java" name="RemoveImages.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="116" coveredmethods="0" methods="4" elements="15" classes="1" ncloc="55" statements="11" conditionals="0" coveredstatements="0"/>
+            <class name="RemoveImages">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="15" statements="11" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RemoveImages()" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RemoveImages(Script)" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="77" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="remove(String) : void" num="105" count="0" type="method"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/Script.java" name="Script.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="153" coveredmethods="0" methods="6" elements="15" classes="3" ncloc="80" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="Script">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="Script.Default">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="11" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="Script.Fake">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Default(URL)" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Default(String)" num="88" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(String,Map&lt;String, String&gt;) : String" num="91" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="apply(Map.Entry&lt;String, String&gt;) : String" num="105" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Fake(String)" num="145" count="0" type="method"/>
+            <line num="146" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(String,Map&lt;String, String&gt;) : String" num="148" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/StartDocker.java" name="StartDocker.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="144" coveredmethods="0" methods="4" elements="21" classes="1" ncloc="76" statements="17" conditionals="0" coveredstatements="0"/>
+            <class name="StartDocker">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="21" statements="17" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="StartDocker()" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="StartDocker(Script)" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="85" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="start(String,String) : String" num="126" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/StopDocker.java" name="StopDocker.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="121" coveredmethods="0" methods="4" elements="16" classes="1" ncloc="60" statements="12" conditionals="0" coveredstatements="0"/>
+            <class name="StopDocker">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="16" statements="12" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="StopDocker()" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="StopDocker(Script)" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="77" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="stop(String,String) : void" num="109" count="0" type="method"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/Swap.java" name="Swap.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="101" coveredmethods="0" methods="1" elements="24" classes="1" ncloc="61" statements="19" conditionals="4" coveredstatements="0"/>
+            <class name="Swap">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="1" elements="24" statements="19" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="51" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="62" type="cond"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="73" type="cond"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/TerminateDocker.java" name="TerminateDocker.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="132" coveredmethods="0" methods="4" elements="23" classes="1" ncloc="71" statements="17" conditionals="2" coveredstatements="0"/>
+            <class name="TerminateDocker">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="4" elements="23" statements="17" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="TerminateDocker()" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="TerminateDocker(Script)" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="98" type="cond"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="terminate(String,String) : void" num="120" count="0" type="method"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/Today.java" name="Today.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="56" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="12" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="Today">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="iso() : String" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/UpdateNginx.java" name="UpdateNginx.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="151" coveredmethods="0" methods="5" elements="14" classes="1" ncloc="66" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="UpdateNginx">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="14" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="UpdateNginx()" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="UpdateNginx(Script)" num="95" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="update(String,XML) : void" num="113" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="apply(XML) : String" num="121" count="0" type="method"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/WasteContainers.java" name="WasteContainers.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="72" coveredmethods="0" methods="1" elements="8" classes="1" ncloc="32" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="WasteContainers">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="8" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="50" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/WasteImages.java" name="WasteImages.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="72" coveredmethods="0" methods="1" elements="8" classes="1" ncloc="32" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="WasteImages">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="8" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="50" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/agents/WipeRepo.java" name="WipeRepo.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="84" coveredmethods="0" methods="1" elements="17" classes="1" ncloc="44" statements="12" conditionals="4" coveredstatements="0"/>
+            <class name="WipeRepo">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="1" elements="17" statements="12" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="5" visibility="public" signature="exec(XML) : Iterable&lt;Directive&gt;" num="56" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="62" type="cond"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="73" type="cond"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/agents/BuildImageTest.java" name="BuildImageTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="78" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="34" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="BuildImageTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="buildsImage() : void" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/agents/BuryContainersTest.java" name="BuryContainersTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="83" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="39" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="BuryContainersTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="buriesContainers() : void" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/agents/CheckStateTest.java" name="CheckStateTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="78" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="34" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="CheckStateTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="checksState() : void" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/agents/DetectPortsTest.java" name="DetectPortsTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="83" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="39" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="DetectPortsTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="detectsPorts() : void" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/agents/FindTanksTest.java" name="FindTanksTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="66" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="22" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="FindTanksTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="findsTanksAndDocumentsInXml() : void" num="54" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/agents/SwapTest.java" name="SwapTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="91" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="47" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="SwapTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="swapsGreenAndBlueContainers() : void" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/agents/TerminateDockerTest.java" name="TerminateDockerTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="84" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="40" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="TerminateDockerTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="killsContainers() : void" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/agents/UpdateNginxTest.java" name="UpdateNginxTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="78" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="34" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="UpdateNginxTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="updatesNginx() : void" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/agents/WasteContainersTest.java" name="WasteContainersTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="83" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="39" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="WasteContainersTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="wastesContainers() : void" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/agents/WipeRepoTest.java" name="WipeRepoTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="72" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="28" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="WipeRepoTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="wipesRepo() : void" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.thindeck.cockpit.deck">
+         <metrics coveredelements="0" complexity="47" loc="1065" methods="29" classes="8" statements="131" coveredconditionals="0" coveredmethods="0" elements="192" ncloc="593" files="8" conditionals="32" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/deck/FkDeck.java" name="FkDeck.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="125" coveredmethods="0" methods="6" elements="19" classes="1" ncloc="63" statements="11" conditionals="2" coveredstatements="0"/>
+            <class name="FkDeck">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="6" elements="19" statements="11" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="FkDeck(String,Take)" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="route(Request) : Opt&lt;Response&gt;" num="65" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="route(String,Take,Request) : Opt&lt;Response&gt;" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="act(RqRegex) : Response" num="87" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="redirect(String,Take) : Take" num="104" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="act(Request) : Response" num="106" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="111" type="cond"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/deck/RqDeck.java" name="RqDeck.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="91" coveredmethods="0" methods="2" elements="9" classes="1" ncloc="36" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="RqDeck">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="2" elements="9" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RqDeck(Base,Request)" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="deck() : Deck" num="75" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/deck/TkCommand.java" name="TkCommand.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="22" loc="288" coveredmethods="0" methods="7" elements="92" classes="1" ncloc="196" statements="55" conditionals="30" coveredstatements="0"/>
+            <class name="TkCommand">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="22" coveredmethods="0" methods="7" elements="92" statements="55" conditionals="30" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="TkCommand(Base)" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="act(Request) : Response" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="answer(XML,String) : Iterable&lt;Directive&gt;" num="100" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="104" type="cond"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="110" type="cond"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="117" type="cond"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="123" type="cond"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="domain(String) : Iterable&lt;Directive&gt;" num="139" count="0" type="method"/>
+            <line num="141" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="141" type="cond"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="149" type="cond"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="151" type="cond"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="repo(XML,String) : Iterable&lt;Directive&gt;" num="177" count="0" type="method"/>
+            <line num="179" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="179" type="cond"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="187" type="cond"/>
+            <line num="188" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="188" type="cond"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="201" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="201" type="cond"/>
+            <line num="202" count="0" type="stmt"/>
+            <line num="204" count="0" type="stmt"/>
+            <line num="211" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="container(String) : Iterable&lt;Directive&gt;" num="220" count="0" type="method"/>
+            <line num="222" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="222" type="cond"/>
+            <line num="223" count="0" type="stmt"/>
+            <line num="229" count="0" type="stmt"/>
+            <line num="230" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="230" type="cond"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="234" count="0" type="stmt"/>
+            <line num="241" count="0" type="stmt"/>
+            <line num="248" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="image(String) : Iterable&lt;Directive&gt;" num="257" count="0" type="method"/>
+            <line num="259" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="259" type="cond"/>
+            <line num="260" count="0" type="stmt"/>
+            <line num="266" count="0" type="stmt"/>
+            <line num="267" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="267" type="cond"/>
+            <line num="268" count="0" type="stmt"/>
+            <line num="271" count="0" type="stmt"/>
+            <line num="278" count="0" type="stmt"/>
+            <line num="285" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/deck/TkDeck.java" name="TkDeck.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="68" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="18" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="TkDeck">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="TkDeck(Base)" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="make(Base) : Take" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/deck/TkDelete.java" name="TkDelete.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="77" coveredmethods="0" methods="2" elements="7" classes="1" ncloc="27" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="TkDelete">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="7" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="TkDelete(Base)" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="act(Request) : Response" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/deck/TkHelp.java" name="TkHelp.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="70" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="21" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="TkHelp">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="TkHelp(Base)" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="act(Request) : Response" num="61" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/cockpit/deck/TkIndex.java" name="TkIndex.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="123" coveredmethods="0" methods="3" elements="11" classes="1" ncloc="72" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="TkIndex">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="11" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="TkIndex(Base)" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="act(Request) : Response" num="77" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="transform(String) : XeSource" num="105" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/cockpit/deck/TkCommandTest.java" name="TkCommandTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="223" coveredmethods="0" methods="5" elements="46" classes="1" ncloc="160" statements="41" conditionals="0" coveredstatements="0"/>
+            <class name="TkCommandTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="46" statements="41" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="forwardsCorrectly() : void" num="61" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addsNewDomain() : void" num="95" count="0" type="method"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addsNewRepo() : void" num="125" count="0" type="method"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="wastesSelectedContainer() : void" num="156" count="0" type="method"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="wastesSelectedImage() : void" num="191" count="0" type="method"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="204" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+            <line num="206" count="0" type="stmt"/>
+            <line num="207" count="0" type="stmt"/>
+            <line num="215" count="0" type="stmt"/>
+            <line num="216" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.thindeck">
+         <metrics coveredelements="0" complexity="16" loc="333" methods="11" classes="2" statements="44" coveredconditionals="0" coveredmethods="0" elements="57" ncloc="194" files="2" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/Entrance.java" name="Entrance.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="67" coveredmethods="0" methods="2" elements="5" classes="1" ncloc="16" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="Entrance">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="5" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="Entrance()" num="52" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="main(String) : void" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/Routine.java" name="Routine.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="266" coveredmethods="0" methods="9" elements="52" classes="1" ncloc="178" statements="41" conditionals="2" coveredstatements="0"/>
+            <class name="Routine">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="9" elements="52" statements="41" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="Routine(Base)" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="run() : void" num="126" count="0" type="method"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newThread(Runnable) : Thread" num="132" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="call() : Integer" num="148" count="0" type="method"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="call() : Integer" num="166" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="decks() : Iterable&lt;Deck&gt;" num="195" count="0" type="method"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="exec(Deck) : void" num="208" count="0" type="method"/>
+            <line num="210" count="0" type="stmt"/>
+            <line num="211" count="0" type="stmt"/>
+            <line num="212" count="0" type="stmt"/>
+            <line num="213" count="0" type="stmt"/>
+            <line num="216" count="0" type="stmt"/>
+            <line num="217" count="0" type="stmt"/>
+            <line num="220" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="220" type="cond"/>
+            <line num="221" count="0" type="stmt"/>
+            <line num="223" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="allAgents() : Iterable&lt;Agent&gt;" num="232" count="0" type="method"/>
+            <line num="233" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="allBosses() : Iterable&lt;Boss&gt;" num="258" count="0" type="method"/>
+            <line num="259" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.thindeck.bosses">
+         <metrics coveredelements="0" complexity="9" loc="315" methods="8" classes="4" statements="20" coveredconditionals="0" coveredmethods="0" elements="28" ncloc="137" files="4" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/bosses/CleanNginx.java" name="CleanNginx.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="93" coveredmethods="0" methods="3" elements="12" classes="1" ncloc="54" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="CleanNginx">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="12" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="exec(Iterable&lt;Deck&gt;) : void" num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="apply(Deck) : Iterable&lt;String&gt;" num="59" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="apply(String) : String" num="67" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/bosses/SetupNginx.java" name="SetupNginx.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="82" coveredmethods="0" methods="3" elements="6" classes="1" ncloc="26" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="SetupNginx">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="SetupNginx()" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="SetupNginx(Script)" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exec(Iterable&lt;Deck&gt;) : void" num="74" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/thindeck/bosses/UploadKeys.java" name="UploadKeys.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="80" coveredmethods="0" methods="1" elements="7" classes="1" ncloc="41" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="UploadKeys">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="7" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="exec(Iterable&lt;Deck&gt;) : void" num="51" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/thindeck/bosses/SetupNginxTest.java" name="SetupNginxTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="60" coveredmethods="0" methods="1" elements="3" classes="1" ncloc="16" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="SetupNginxTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="3" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setsNginxUp() : void" num="52" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="thindeck 1.0-SNAPSHOT" timestamp="0">
+      <metrics coveredelements="0" complexity="0" loc="0" methods="0" classes="0" statements="0" packages="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="0" files="0" conditionals="0" coveredstatements="0"/>
+   </testproject>
+</coverage>

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594423746863" clover="4.4.1">
+   <project name="yangtools 5.0.4-SNAPSHOT (Aggregated)" timestamp="1594423665337">
+      <metrics coveredelements="0" complexity="27" loc="438" methods="19" classes="9" statements="38" packages="2" coveredconditionals="0" coveredmethods="0" elements="71" ncloc="167" files="9" conditionals="14" coveredstatements="0"/>
+      <package name="org.opendaylight.yangtools.testutils.mockito">
+         <metrics coveredelements="0" complexity="19" loc="328" methods="13" classes="5" statements="27" coveredconditionals="0" coveredmethods="0" elements="50" ncloc="109" files="5" conditionals="10" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/testutils/src/main/java/org/opendaylight/yangtools/testutils/mockito/CallsRealOrExceptionAnswer.java" name="CallsRealOrExceptionAnswer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="135" coveredmethods="0" methods="3" elements="9" classes="1" ncloc="24" statements="4" conditionals="2" coveredstatements="0"/>
+            <class name="CallsRealOrExceptionAnswer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="9" statements="4" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="CallsRealOrExceptionAnswer()" num="120" count="0" type="method"/>
+            <line complexity="2" visibility="public" signature="answer(InvocationOnMock) : Object" num="124" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="126" type="cond"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="readResolve() : Object" num="132" count="0" type="method"/>
+            <line num="133" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/testutils/src/main/java/org/opendaylight/yangtools/testutils/mockito/MethodExtensions.java" name="MethodExtensions.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="63" coveredmethods="0" methods="2" elements="27" classes="1" ncloc="36" statements="17" conditionals="8" coveredstatements="0"/>
+            <class name="MethodExtensions">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="2" elements="27" statements="17" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="MethodExtensions()" num="28" count="0" type="method"/>
+            <line complexity="6" visibility="public" signature="toString(Method) : String" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="40" type="cond"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="42" type="cond"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="48" type="cond"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/testutils/src/main/java/org/opendaylight/yangtools/testutils/mockito/MoreAnswers.java" name="MoreAnswers.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="48" coveredmethods="0" methods="3" elements="5" classes="1" ncloc="15" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="MoreAnswers">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="5" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="MoreAnswers()" num="24" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="realOrException() : Answer&lt;T&gt;" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exception() : Answer&lt;T&gt;" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/testutils/src/main/java/org/opendaylight/yangtools/testutils/mockito/ThrowsMethodExceptionAnswer.java" name="ThrowsMethodExceptionAnswer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="53" coveredmethods="0" methods="3" elements="5" classes="1" ncloc="21" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="ThrowsMethodExceptionAnswer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="5" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="ThrowsMethodExceptionAnswer()" num="41" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="answer(InvocationOnMock) : Void" num="45" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="readResolve() : Object" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/testutils/src/main/java/org/opendaylight/yangtools/testutils/mockito/UnstubbedMethodException.java" name="UnstubbedMethodException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="29" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="13" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="UnstubbedMethodException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="UnstubbedMethodException(Method)" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="UnstubbedMethodException(Method,Object)" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.mockito.configuration">
+         <metrics coveredelements="0" complexity="8" loc="110" methods="6" classes="4" statements="11" coveredconditionals="0" coveredmethods="0" elements="21" ncloc="58" files="4" conditionals="4" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/mockito-configuration/src/main/java/org/mockito/configuration/ArgumentsExtractorVerifier.java" name="ArgumentsExtractorVerifier.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="45" coveredmethods="0" methods="3" elements="15" classes="1" ncloc="30" statements="8" conditionals="4" coveredstatements="0"/>
+            <class name="ArgumentsExtractorVerifier">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="3" elements="15" statements="8" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="verify(VerificationData) : void" num="24" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="28" type="cond"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="description(String) : VerificationMode" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getArguments() : Object[]" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="43" type="cond"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/mockito-configuration/src/main/java/org/mockito/configuration/MockitoConfiguration.java" name="MockitoConfiguration.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="20" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="8" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="MockitoConfiguration">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getDefaultAnswer() : Answer&lt;Object&gt;" num="16" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/mockito-configuration/src/main/java/org/mockito/configuration/ThrowsUnstubbedMethodException.java" name="ThrowsUnstubbedMethodException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="26" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="13" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="ThrowsUnstubbedMethodException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="answer(InvocationOnMock) : Object" num="22" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/mockito-configuration/src/main/java/org/mockito/configuration/UnstubbedMethodException.java" name="UnstubbedMethodException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="19" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="7" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="UnstubbedMethodException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="UnstubbedMethodException(String)" num="16" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="yangtools 5.0.4-SNAPSHOT (Aggregated)" timestamp="1594423665337">
+      <metrics coveredelements="0" complexity="42" loc="467" methods="29" classes="10" statements="119" packages="3" coveredconditionals="0" coveredmethods="0" elements="160" ncloc="325" files="7" conditionals="12" coveredstatements="0"/>
+      <package name="org.opendaylight.yangtools.testutils.mockito.tests">
+         <metrics coveredelements="0" complexity="18" loc="226" methods="12" classes="7" statements="40" coveredconditionals="0" coveredmethods="0" elements="58" ncloc="139" files="4" conditionals="6" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/testutils/src/test/java/org/opendaylight/yangtools/testutils/mockito/tests/MethodExtensionsTest.java" name="MethodExtensionsTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="27" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="14" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="MethodExtensionsTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="fooBar(int,T) : void" num="18" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="betterToString() : void" num="21" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/testutils/src/test/java/org/opendaylight/yangtools/testutils/mockito/tests/MikitoTest.java" name="MikitoTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="65" coveredmethods="0" methods="3" elements="14" classes="3" ncloc="38" statements="9" conditionals="2" coveredstatements="0"/>
+            <class name="MikitoTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="2" elements="10" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="MikitoTest.SomeService">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="MikitoTest.MockSomeService">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="1" elements="4" statements="1" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="usingMikitoToCallStubbedMethod() : void" num="41" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="usingMikitoToCallUnstubbedMethodAndExpectException() : void" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="foobar(File) : int" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="62" type="cond"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/testutils/src/test/java/org/opendaylight/yangtools/testutils/mockito/tests/MockitoExampleTutorialTest.java" name="MockitoExampleTutorialTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="100" coveredmethods="0" methods="6" elements="34" classes="2" ncloc="66" statements="24" conditionals="4" coveredstatements="0"/>
+            <class name="MockitoExampleTutorialTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="6" elements="34" statements="24" conditionals="4" coveredstatements="0"/>
+            </class>
+            <class name="MockitoExampleTutorialTest.SomeService">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="usingMockitoWithoutStubbing() : void" num="46" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="usingMockitoToStubSimpleCase() : void" num="52" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="usingMockitoToStubComplexCase() : void" num="59" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="64" type="cond"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="usingMockitoExceptionException() : void" num="69" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="usingMockitoNoExceptionIfStubbed() : void" num="75" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="usingMockitoToStubComplexCaseAndExceptionIfNotStubbed() : void" num="89" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="94" type="cond"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/testutils/src/test/java/org/opendaylight/yangtools/testutils/mockito/tests/MockitoUnstubbedMethodExceptionAnswerTest.java" name="MockitoUnstubbedMethodExceptionAnswerTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="34" coveredmethods="0" methods="1" elements="6" classes="1" ncloc="21" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="MockitoUnstubbedMethodExceptionAnswerTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="1" elements="6" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="testAnswering() : void" num="22" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.opendaylight.yangtools.yang2sources.plugin.it">
+         <metrics coveredelements="0" complexity="21" loc="176" methods="15" classes="1" statements="67" coveredconditionals="0" coveredmethods="0" elements="88" ncloc="144" files="1" conditionals="6" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/yang/yang-maven-plugin-it/src/test/java/org/opendaylight/yangtools/yang2sources/plugin/it/YangToSourcesPluginTestIT.java" name="YangToSourcesPluginTestIT.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="21" loc="176" coveredmethods="0" methods="15" elements="88" classes="1" ncloc="144" statements="67" conditionals="6" coveredstatements="0"/>
+            <class name="YangToSourcesPluginTestIT">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="21" coveredmethods="0" methods="15" elements="88" statements="67" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testYangRootNotExist() : void" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testCorrect() : void" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testAdditionalConfiguration() : void" num="45" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="testMissingYangInDep() : void" num="59" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="verifyCorrectLog(Verifier) : void" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testNoGenerators() : void" num="78" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testInvalidVersion() : void" num="85" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUnknownGenerator() : void" num="92" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testNoYangFiles() : void" num="101" count="0" type="method"/>
+            <line num="103" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="assertVerificationException(VerificationException,String) : void" num="106" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line complexity="3" visibility="package" signature="setUp(String,boolean) : Verifier" num="110" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="114" type="cond"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="119" type="cond"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testNoOutputDir() : void" num="128" count="0" type="method"/>
+            <line num="130" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testFindResourceOnCp() : void" num="133" count="0" type="method"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="getMavenBuildDirectory(Verifier) : String" num="155" count="0" type="method"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getEffectiveSettingsXML() : Optional&lt;String&gt;" num="164" count="0" type="method"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="169" type="cond"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.mockito.configuration">
+         <metrics coveredelements="0" complexity="3" loc="65" methods="2" classes="2" statements="12" coveredconditionals="0" coveredmethods="0" elements="14" ncloc="42" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/mockito-configuration/src/test/java/org/mockito/configuration/ArgumentsExtractorVerifierTest.java" name="ArgumentsExtractorVerifierTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="36" coveredmethods="0" methods="1" elements="8" classes="1" ncloc="23" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="ArgumentsExtractorVerifierTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="8" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="test() : void" num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/mockito-configuration/src/test/java/org/mockito/configuration/DefaultAnswerTest.java" name="DefaultAnswerTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="29" coveredmethods="0" methods="1" elements="6" classes="1" ncloc="19" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="DefaultAnswerTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="1" elements="6" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="testAnswering() : void" num="19" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

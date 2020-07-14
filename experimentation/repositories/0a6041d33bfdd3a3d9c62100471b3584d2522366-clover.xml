@@ -1,0 +1,2560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594318878407" clover="4.4.1">
+   <project name="AtomGraph Web-Client 2.1.7-SNAPSHOT" timestamp="0">
+      <metrics coveredelements="0" complexity="822" loc="6316" methods="445" classes="41" statements="1490" packages="18" coveredconditionals="0" coveredmethods="0" elements="2573" ncloc="4158" files="40" conditionals="638" coveredstatements="0"/>
+      <package name="com.atomgraph.client.update">
+         <metrics coveredelements="0" complexity="127" loc="770" methods="96" classes="3" statements="173" coveredconditionals="0" coveredmethods="0" elements="327" ncloc="557" files="3" conditionals="58" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/update/InsertDataBuilder.java" name="InsertDataBuilder.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="22" loc="137" coveredmethods="0" methods="14" elements="60" classes="1" ncloc="89" statements="32" conditionals="14" coveredstatements="0"/>
+            <class name="InsertDataBuilder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="22" coveredmethods="0" methods="14" elements="60" statements="32" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="InsertDataBuilder(InsertData)" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromInsertData(InsertData) : InsertDataBuilder" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="fromResource(Resource) : InsertDataBuilder" num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="55" type="cond"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="58" type="cond"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newInstance() : InsertDataBuilder" num="64" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromData(Model) : InsertDataBuilder" num="70" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromData(NamedGraph,Model) : InsertDataBuilder" num="75" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromData(URI,Model) : InsertDataBuilder" num="80" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="data(RDFList) : InsertDataBuilder" num="85" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="87" type="cond"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="data(Model) : InsertDataBuilder" num="94" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getUpdate() : InsertData" num="99" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="data(NamedGraph,RDFList) : InsertDataBuilder" num="105" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="107" type="cond"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="108" type="cond"/>
+            <line num="110" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="data(NamedGraph,Model) : InsertDataBuilder" num="114" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="data(URI,RDFList) : InsertDataBuilder" num="119" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="121" type="cond"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="122" type="cond"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="data(URI,Model) : InsertDataBuilder" num="132" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/update/ModifyBuilder.java" name="ModifyBuilder.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="39" loc="211" coveredmethods="0" methods="22" elements="117" classes="1" ncloc="144" statements="63" conditionals="32" coveredstatements="0"/>
+            <class name="ModifyBuilder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="39" coveredmethods="0" methods="22" elements="117" statements="63" conditionals="32" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="ModifyBuilder(Modify)" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromModify(Modify) : ModifyBuilder" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="fromResource(Resource) : ModifyBuilder" num="54" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="56" type="cond"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="59" type="cond"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromModify(Model) : ModifyBuilder" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromUpdate(Update) : ModifyBuilder" num="71" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromUpdate(org.apache.jena.update.Update,Model) : ModifyBuilder" num="76" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="fromUpdate(org.apache.jena.update.Update,String,Model) : ModifyBuilder" num="81" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="83" type="cond"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="insertPattern(RDFList) : ModifyBuilder" num="89" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="91" type="cond"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="insertPattern(Model) : ModifyBuilder" num="98" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="insertPattern(NamedGraph,RDFList) : ModifyBuilder" num="103" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="105" type="cond"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="106" type="cond"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="insertPattern(NamedGraph,Model) : ModifyBuilder" num="112" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="insertPattern(URI,RDFList) : ModifyBuilder" num="117" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="119" type="cond"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="120" type="cond"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="insertPattern(String,RDFList) : ModifyBuilder" num="130" count="0" type="method"/>
+            <line num="132" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="insertPattern(Variable,RDFList) : ModifyBuilder" num="135" count="0" type="method"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="137" type="cond"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="138" type="cond"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="insertPattern(URI,Model) : ModifyBuilder" num="148" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="deletePattern(RDFList) : ModifyBuilder" num="153" count="0" type="method"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="155" type="cond"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deletePattern(Model) : ModifyBuilder" num="162" count="0" type="method"/>
+            <line num="164" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="where(Resource) : ModifyBuilder" num="167" count="0" type="method"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="169" type="cond"/>
+            <line num="171" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="where(Element) : ModifyBuilder" num="174" count="0" type="method"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="176" type="cond"/>
+            <line num="179" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="179" type="cond"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="where(ElementList) : ModifyBuilder" num="189" count="0" type="method"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="191" type="cond"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="192" type="cond"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUpdate() : Modify" num="199" count="0" type="method"/>
+            <line num="202" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWhere() : ElementList" num="205" count="0" type="method"/>
+            <line num="208" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/update/UpdateBuilder.java" name="UpdateBuilder.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="66" loc="422" coveredmethods="0" methods="60" elements="150" classes="1" ncloc="324" statements="78" conditionals="12" coveredstatements="0"/>
+            <class name="UpdateBuilder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="66" coveredmethods="0" methods="60" elements="150" statements="78" conditionals="12" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="protected" signature="UpdateBuilder(Update)" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getUpdate() : Update" num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromUpdate(Update) : UpdateBuilder" num="58" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="fromResource(Resource) : UpdateBuilder" num="63" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="65" type="cond"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="fromUpdate(org.apache.jena.update.Update,String,Model) : UpdateBuilder" num="70" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="72" type="cond"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromUpdate(org.apache.jena.update.Update,Model) : UpdateBuilder" num="78" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="createTripleTemplate(Statement) : Resource" num="83" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="85" type="cond"/>
+            <line num="87" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="createDataList(Model) : RDFList" num="93" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="95" type="cond"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="100" type="cond"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="build() : UpdateRequest" num="106" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getComment() : String" num="117" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="print(PrintContext) : void" num="123" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getId() : AnonId" num="129" count="0" type="method"/>
+            <line num="132" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="inModel(Model) : Resource" num="135" count="0" type="method"/>
+            <line num="138" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasURI(String) : boolean" num="141" count="0" type="method"/>
+            <line num="144" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getURI() : String" num="147" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNameSpace() : String" num="153" count="0" type="method"/>
+            <line num="156" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLocalName() : String" num="159" count="0" type="method"/>
+            <line num="162" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequiredProperty(Property) : Statement" num="165" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getProperty(Property) : Statement" num="171" count="0" type="method"/>
+            <line num="174" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="listProperties(Property) : StmtIterator" num="177" count="0" type="method"/>
+            <line num="180" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="listProperties() : StmtIterator" num="183" count="0" type="method"/>
+            <line num="186" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,boolean) : Resource" num="189" count="0" type="method"/>
+            <line num="192" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,long) : Resource" num="195" count="0" type="method"/>
+            <line num="198" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,char) : Resource" num="201" count="0" type="method"/>
+            <line num="204" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,double) : Resource" num="207" count="0" type="method"/>
+            <line num="210" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,float) : Resource" num="213" count="0" type="method"/>
+            <line num="216" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,Object) : Resource" num="219" count="0" type="method"/>
+            <line num="222" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,Literal) : Resource" num="225" count="0" type="method"/>
+            <line num="228" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addProperty(Property,String) : Resource" num="231" count="0" type="method"/>
+            <line num="234" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addProperty(Property,String,String) : Resource" num="237" count="0" type="method"/>
+            <line num="240" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addProperty(Property,String,RDFDatatype) : Resource" num="243" count="0" type="method"/>
+            <line num="246" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addProperty(Property,RDFNode) : Resource" num="249" count="0" type="method"/>
+            <line num="252" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasProperty(Property) : boolean" num="255" count="0" type="method"/>
+            <line num="258" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasLiteral(Property,boolean) : boolean" num="261" count="0" type="method"/>
+            <line num="264" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasLiteral(Property,long) : boolean" num="267" count="0" type="method"/>
+            <line num="270" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasLiteral(Property,char) : boolean" num="273" count="0" type="method"/>
+            <line num="276" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasLiteral(Property,double) : boolean" num="279" count="0" type="method"/>
+            <line num="282" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasLiteral(Property,float) : boolean" num="285" count="0" type="method"/>
+            <line num="288" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasLiteral(Property,Object) : boolean" num="291" count="0" type="method"/>
+            <line num="294" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasProperty(Property,String) : boolean" num="297" count="0" type="method"/>
+            <line num="300" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasProperty(Property,String,String) : boolean" num="303" count="0" type="method"/>
+            <line num="306" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasProperty(Property,RDFNode) : boolean" num="309" count="0" type="method"/>
+            <line num="312" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="removeProperties() : Resource" num="315" count="0" type="method"/>
+            <line num="318" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="removeAll(Property) : Resource" num="321" count="0" type="method"/>
+            <line num="324" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="begin() : Resource" num="327" count="0" type="method"/>
+            <line num="330" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="abort() : Resource" num="333" count="0" type="method"/>
+            <line num="336" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="commit() : Resource" num="339" count="0" type="method"/>
+            <line num="342" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPropertyResourceValue(Property) : Resource" num="345" count="0" type="method"/>
+            <line num="348" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAnon() : boolean" num="351" count="0" type="method"/>
+            <line num="354" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isLiteral() : boolean" num="357" count="0" type="method"/>
+            <line num="360" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isURIResource() : boolean" num="363" count="0" type="method"/>
+            <line num="366" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isResource() : boolean" num="369" count="0" type="method"/>
+            <line num="372" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="as(Class&lt;T&gt;) : T" num="375" count="0" type="method"/>
+            <line num="378" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="canAs(Class&lt;T&gt;) : boolean" num="381" count="0" type="method"/>
+            <line num="384" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getModel() : Model" num="387" count="0" type="method"/>
+            <line num="390" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="visitWith(RDFVisitor) : Object" num="393" count="0" type="method"/>
+            <line num="396" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="asResource() : Resource" num="399" count="0" type="method"/>
+            <line num="402" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="asLiteral() : Literal" num="405" count="0" type="method"/>
+            <line num="408" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="asNode() : Node" num="411" count="0" type="method"/>
+            <line num="414" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="417" count="0" type="method"/>
+            <line num="420" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.vocabulary">
+         <metrics coveredelements="0" complexity="5" loc="365" methods="5" classes="5" statements="5" coveredconditionals="0" coveredmethods="0" elements="10" ncloc="145" files="5" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/vocabulary/AC.java" name="AC.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="111" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="47" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="AC">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getURI() : String" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/vocabulary/HTTP.java" name="HTTP.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="60" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="22" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="HTTP">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getURI() : String" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/vocabulary/LDT.java" name="LDT.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="100" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="43" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="LDT">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getURI() : String" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/vocabulary/SP.java" name="SP.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="46" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="16" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="SP">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getURI() : String" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/vocabulary/SPIN.java" name="SPIN.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="48" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="17" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="SPIN">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getURI() : String" num="41" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.exception">
+         <metrics coveredelements="0" complexity="9" loc="130" methods="8" classes="3" statements="10" coveredconditionals="0" coveredmethods="0" elements="20" ncloc="54" files="3" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/exception/ClientErrorException.java" name="ClientErrorException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="54" coveredmethods="0" methods="4" elements="9" classes="1" ncloc="26" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="ClientErrorException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="9" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ClientErrorException(ClientResponse)" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="ClientErrorException(ClientResponse,Dataset)" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getClientResponse() : ClientResponse" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getModel() : Model" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/exception/OntClassNotFoundException.java" name="OntClassNotFoundException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="30" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="8" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="OntClassNotFoundException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="OntClassNotFoundException(String)" num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/exception/OntologyException.java" name="OntologyException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="46" coveredmethods="0" methods="3" elements="9" classes="1" ncloc="20" statements="4" conditionals="2" coveredstatements="0"/>
+            <class name="OntologyException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="9" statements="4" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="OntologyException(String,Resource,Property)" num="30" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="OntologyException(String,Throwable,Resource,Property)" num="35" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="37" type="cond"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRoot() : Resource" num="41" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.util.saxon">
+         <metrics coveredelements="0" complexity="7" loc="77" methods="6" classes="1" statements="12" coveredconditionals="0" coveredmethods="0" elements="20" ncloc="47" files="1" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/util/saxon/XSLTBuilder.java" name="XSLTBuilder.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="77" coveredmethods="0" methods="6" elements="20" classes="1" ncloc="47" statements="12" conditionals="2" coveredstatements="0"/>
+            <class name="XSLTBuilder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="6" elements="20" statements="12" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="XSLTBuilder(SAXTransformerFactory)" num="41" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newInstance(SAXTransformerFactory) : XSLTBuilder" num="46" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="resolver(UnparsedTextURIResolver) : XSLTBuilder" num="51" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getTransformer(Templates,Result,URIResolver,Map&lt;String, Object&gt;,Map&lt;String, String&gt;,UnparsedTextURIResolver) : Transformer" num="58" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getTransformer() : Transformer" num="66" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getUnparsedTextURIResolver() : UnparsedTextURIResolver" num="72" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.mapper.jersey">
+         <metrics coveredelements="0" complexity="2" loc="86" methods="2" classes="2" statements="2" coveredconditionals="0" coveredmethods="0" elements="4" ncloc="38" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/mapper/jersey/ClientHandlerExceptionMapper.java" name="ClientHandlerExceptionMapper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="43" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="19" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="ClientHandlerExceptionMapper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toResponse(ClientHandlerException) : Response" num="34" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/mapper/jersey/UniformInterfaceExceptionMapper.java" name="UniformInterfaceExceptionMapper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="43" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="19" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="UniformInterfaceExceptionMapper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toResponse(UniformInterfaceException) : Response" num="34" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.locator">
+         <metrics coveredelements="0" complexity="52" loc="285" methods="13" classes="1" statements="121" coveredconditionals="0" coveredmethods="0" elements="194" ncloc="222" files="1" conditionals="60" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/locator/PrefixMapper.java" name="PrefixMapper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="52" loc="285" coveredmethods="0" methods="13" elements="194" classes="1" ncloc="222" statements="121" conditionals="60" coveredstatements="0"/>
+            <class name="PrefixMapper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="52" coveredmethods="0" methods="13" elements="194" statements="121" conditionals="60" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="PrefixMapper()" num="46" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="48" type="cond"/>
+            <line complexity="1" visibility="public" signature="PrefixMapper(String)" num="51" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="PrefixMapper(LocationMapper)" num="56" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="PrefixMapper(PrefixMapper)" num="61" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="addAltPrefixEntry(String,String) : void" num="67" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="69" type="cond"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPrefixAltEntry(String) : String" num="73" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="listAltPrefixEntries() : Iterator&lt;String&gt;" num="78" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="getPrefix(String) : String" num="80" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="84" type="cond"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="88" type="cond"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="altMapping(String,String) : String" num="96" count="0" type="method"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="99" type="cond"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="102" type="cond"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="104" type="cond"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="110" type="cond"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="112" type="cond"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="toModel(Model) : void" num="119" count="0" type="method"/>
+            <line num="123" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="123" type="cond"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="135" type="cond"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="146" type="cond"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line complexity="12" visibility="public" signature="processConfig(Model) : void" num="159" count="0" type="method"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="165" type="cond"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="170" type="cond"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="179" type="cond"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="182" type="cond"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="188" type="cond"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="195" type="cond"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="200" type="cond"/>
+            <line num="203" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="203" type="cond"/>
+            <line num="205" count="0" type="stmt"/>
+            <line num="207" count="0" type="stmt"/>
+            <line num="208" count="0" type="stmt"/>
+            <line num="212" count="0" type="stmt"/>
+            <line num="212" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="212" type="cond"/>
+            <line num="213" count="0" type="stmt"/>
+            <line complexity="13" visibility="private" signature="initFromPath(String,boolean) : void" num="219" count="0" type="method"/>
+            <line num="221" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="221" type="cond"/>
+            <line num="223" count="0" type="stmt"/>
+            <line num="223" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="223" type="cond"/>
+            <line num="224" count="0" type="stmt"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="229" count="0" type="stmt"/>
+            <line num="230" count="0" type="stmt"/>
+            <line num="232" count="0" type="stmt"/>
+            <line num="233" count="0" type="stmt"/>
+            <line num="234" count="0" type="stmt"/>
+            <line num="236" count="0" type="stmt"/>
+            <line num="237" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="237" type="cond"/>
+            <line num="238" count="0" type="stmt"/>
+            <line num="239" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="239" type="cond"/>
+            <line num="240" count="0" type="stmt"/>
+            <line num="242" count="0" type="stmt"/>
+            <line num="243" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="243" type="cond"/>
+            <line num="245" count="0" type="stmt"/>
+            <line num="246" count="0" type="stmt"/>
+            <line num="250" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="250" type="cond"/>
+            <line num="252" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="252" type="cond"/>
+            <line num="253" count="0" type="stmt"/>
+            <line num="253" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="253" type="cond"/>
+            <line num="254" count="0" type="stmt"/>
+            <line num="256" count="0" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line num="258" count="0" type="stmt"/>
+            <line num="259" count="0" type="stmt"/>
+            <line num="260" count="0" type="stmt"/>
+            <line num="264" count="0" type="stmt"/>
+            <line num="267" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="toString() : String" num="271" count="0" type="method"/>
+            <line num="274" count="0" type="stmt"/>
+            <line num="276" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="276" type="cond"/>
+            <line num="278" count="0" type="stmt"/>
+            <line num="279" count="0" type="stmt"/>
+            <line num="280" count="0" type="stmt"/>
+            <line num="283" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client">
+         <metrics coveredelements="0" complexity="45" loc="440" methods="25" classes="3" statements="97" coveredconditionals="0" coveredmethods="0" elements="160" ncloc="280" files="3" conditionals="38" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/Application.java" name="Application.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="35" loc="304" coveredmethods="0" methods="15" elements="132" classes="1" ncloc="208" statements="79" conditionals="38" coveredstatements="0"/>
+            <class name="Application">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="35" coveredmethods="0" methods="15" elements="132" statements="79" conditionals="38" coveredstatements="0"/>
+            </class>
+            <line complexity="10" visibility="public" signature="Application(ServletConfig)" num="108" count="0" type="method"/>
+            <line num="110" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="111" type="cond"/>
+            <line falsecount="0" truecount="0" num="112" type="cond"/>
+            <line falsecount="0" truecount="0" num="113" type="cond"/>
+            <line falsecount="0" truecount="0" num="116" type="cond"/>
+            <line falsecount="0" truecount="0" num="117" type="cond"/>
+            <line falsecount="0" truecount="0" num="118" type="cond"/>
+            <line falsecount="0" truecount="0" num="119" type="cond"/>
+            <line falsecount="0" truecount="0" num="120" type="cond"/>
+            <line falsecount="0" truecount="0" num="121" type="cond"/>
+            <line complexity="5" visibility="public" signature="Application(MediaTypes,Client,Integer,boolean,DataManager,Source,boolean,boolean,String)" num="125" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="136" type="cond"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="139" type="cond"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="163" type="cond"/>
+            <line num="164" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="init() : void" num="176" count="0" type="method"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="197" type="cond"/>
+            <line complexity="6" visibility="public" signature="getSource(ServletContext,String) : Source" num="211" count="0" type="method"/>
+            <line num="213" count="0" type="stmt"/>
+            <line num="213" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="213" type="cond"/>
+            <line num="214" count="0" type="stmt"/>
+            <line num="214" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="214" type="cond"/>
+            <line num="216" count="0" type="stmt"/>
+            <line num="216" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="216" type="cond"/>
+            <line num="217" count="0" type="stmt"/>
+            <line num="218" count="0" type="stmt"/>
+            <line num="218" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="218" type="cond"/>
+            <line num="219" count="0" type="stmt"/>
+            <line num="220" count="0" type="stmt"/>
+            <line num="220" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="220" type="cond"/>
+            <line num="221" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getClient(ClientConfig) : Client" num="224" count="0" type="method"/>
+            <line num="226" count="0" type="stmt"/>
+            <line num="227" count="0" type="stmt"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="229" count="0" type="stmt"/>
+            <line num="230" count="0" type="stmt"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="233" count="0" type="stmt"/>
+            <line num="234" count="0" type="stmt"/>
+            <line num="234" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="234" type="cond"/>
+            <line num="236" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDataManager(LocationMapper,Client,MediaTypes,boolean,boolean) : DataManager" num="239" count="0" type="method"/>
+            <line num="241" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMediaTypes() : MediaTypes" num="244" count="0" type="method"/>
+            <line num="246" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getClient() : Client" num="249" count="0" type="method"/>
+            <line num="251" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDataManager() : DataManager" num="254" count="0" type="method"/>
+            <line num="256" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStylesheet() : Source" num="259" count="0" type="method"/>
+            <line num="261" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isCacheStylesheet() : Boolean" num="264" count="0" type="method"/>
+            <line num="266" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOntModelSpec() : OntModelSpec" num="269" count="0" type="method"/>
+            <line num="271" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTemplates() : Templates" num="274" count="0" type="method"/>
+            <line num="276" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getClasses() : Set&lt;Class&lt;?&gt;&gt;" num="286" count="0" type="method"/>
+            <line num="289" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSingletons() : Set&lt;Object&gt;" num="298" count="0" type="method"/>
+            <line num="301" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/MediaType.java" name="MediaType.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="69" coveredmethods="0" methods="7" elements="14" classes="1" ncloc="37" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="MediaType">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="7" elements="14" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="MediaType(Lang)" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="MediaType(Lang,Map&lt;String, String&gt;)" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="MediaType(ContentType)" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="MediaType(ContentType,Map&lt;String, String&gt;)" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="MediaType(String,String,Map&lt;String, String&gt;)" num="54" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="MediaType(String,String)" num="59" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="MediaType()" num="64" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/MediaTypes.java" name="MediaTypes.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="67" coveredmethods="0" methods="3" elements="14" classes="1" ncloc="35" statements="11" conditionals="0" coveredstatements="0"/>
+            <class name="MediaTypes">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="14" statements="11" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="&lt;clinit&gt;, line 38()" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="MediaTypes()" num="57" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="MediaTypes(Map&lt;Class, List&lt;javax.ws.rs.core.MediaType&gt;&gt;,Map&lt;Class, List&lt;javax.ws.rs.core.MediaType&gt;&gt;)" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.filter">
+         <metrics coveredelements="0" complexity="2" loc="47" methods="1" classes="1" statements="7" coveredconditionals="0" coveredmethods="0" elements="10" ncloc="22" files="1" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/filter/RedirectFilter.java" name="RedirectFilter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="47" coveredmethods="0" methods="1" elements="10" classes="1" ncloc="22" statements="7" conditionals="2" coveredstatements="0"/>
+            <class name="RedirectFilter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="1" elements="10" statements="7" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="handle(ClientRequest) : ClientResponse" num="34" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="40" type="cond"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.provider">
+         <metrics coveredelements="0" complexity="5" loc="78" methods="5" classes="1" statements="6" coveredconditionals="0" coveredmethods="0" elements="11" ncloc="41" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/provider/DataManagerProvider.java" name="DataManagerProvider.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="78" coveredmethods="0" methods="5" elements="11" classes="1" ncloc="41" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="DataManagerProvider">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="11" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="DataManagerProvider(DataManager)" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInjectable(ComponentContext,Context) : Injectable&lt;DataManager&gt;" num="50" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getValue() : DataManager" num="55" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getContext(Class&lt;?&gt;) : DataManager" num="63" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDataManager() : DataManager" num="73" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.riot.lang">
+         <metrics coveredelements="0" complexity="5" loc="91" methods="5" classes="2" statements="5" coveredconditionals="0" coveredmethods="0" elements="10" ncloc="40" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/riot/lang/JSONLDWriterAdapter.java" name="JSONLDWriterAdapter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="33" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="9" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="JSONLDWriterAdapter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="JSONLDWriterAdapter()" num="28" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/riot/lang/JSONLDWriterFactory.java" name="JSONLDWriterFactory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="58" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="31" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="JSONLDWriterFactory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="JSONLDWriterFactory(Source)" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="JSONLDWriterFactory(Templates)" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTemplates() : Templates" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="create(RDFFormat) : WriterGraphRIOT" num="52" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.writer">
+         <metrics coveredelements="0" complexity="103" loc="627" methods="43" classes="2" statements="198" coveredconditionals="0" coveredmethods="0" elements="337" ncloc="468" files="2" conditionals="96" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/writer/DatasetXSLTWriter.java" name="DatasetXSLTWriter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="90" loc="502" coveredmethods="0" methods="35" elements="307" classes="1" ncloc="389" statements="180" conditionals="92" coveredstatements="0"/>
+            <class name="DatasetXSLTWriter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="90" coveredmethods="0" methods="35" elements="307" statements="180" conditionals="92" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="&lt;clinit&gt;, line 90()" num="90" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="DatasetXSLTWriter(Templates,OntModelSpec)" num="112" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="114" type="cond"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="115" type="cond"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line complexity="8" visibility="public" signature="writeTo(Dataset,Class&lt;?&gt;,Type,Annotation[],MediaType,MultivaluedMap&lt;String, Object&gt;,OutputStream) : void" num="120" count="0" type="method"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="123" type="cond"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="144" type="cond"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="151" type="cond"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="163" type="cond"/>
+            <line num="164" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="write(Dataset,OutputStream) : void" num="168" count="0" type="method"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isWriteable(Class&lt;?&gt;,Type,Annotation[],MediaType) : boolean" num="181" count="0" type="method"/>
+            <line num="184" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSize(Dataset,Class&lt;?&gt;,Type,Annotation[],MediaType) : long" num="187" count="0" type="method"/>
+            <line num="190" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAbsolutePath() : URI" num="193" count="0" type="method"/>
+            <line num="195" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestURI() : URI" num="198" count="0" type="method"/>
+            <line num="200" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="getURIParam(UriInfo,String) : URI" num="203" count="0" type="method"/>
+            <line num="205" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="205" type="cond"/>
+            <line num="206" count="0" type="stmt"/>
+            <line num="206" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="206" type="cond"/>
+            <line num="208" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="208" type="cond"/>
+            <line num="209" count="0" type="stmt"/>
+            <line num="211" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getURI() : URI" num="214" count="0" type="method"/>
+            <line num="216" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEndpointURI() : URI" num="219" count="0" type="method"/>
+            <line num="221" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getQuery() : String" num="224" count="0" type="method"/>
+            <line num="226" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="226" type="cond"/>
+            <line num="227" count="0" type="stmt"/>
+            <line num="229" count="0" type="stmt"/>
+            <line complexity="6" visibility="public" signature="getSource(Model) : Source" num="232" count="0" type="method"/>
+            <line num="234" count="0" type="stmt"/>
+            <line num="234" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="234" type="cond"/>
+            <line num="235" count="0" type="stmt"/>
+            <line num="235" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="235" type="cond"/>
+            <line num="237" count="0" type="stmt"/>
+            <line num="237" count="0" type="stmt"/>
+            <line num="239" count="0" type="stmt"/>
+            <line num="241" count="0" type="stmt"/>
+            <line num="241" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="241" type="cond"/>
+            <line num="242" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="getSource(OntModel,boolean) : Source" num="246" count="0" type="method"/>
+            <line num="248" count="0" type="stmt"/>
+            <line num="248" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="248" type="cond"/>
+            <line num="249" count="0" type="stmt"/>
+            <line num="249" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="249" type="cond"/>
+            <line num="251" count="0" type="stmt"/>
+            <line num="251" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="251" type="cond"/>
+            <line num="253" count="0" type="stmt"/>
+            <line num="253" count="0" type="stmt"/>
+            <line num="255" count="0" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="257" type="cond"/>
+            <line num="258" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getContextURI() : URI" num="262" count="0" type="method"/>
+            <line num="264" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getTemplates() : Templates" num="268" count="0" type="method"/>
+            <line num="270" count="0" type="stmt"/>
+            <line num="270" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="270" type="cond"/>
+            <line num="273" count="0" type="stmt"/>
+            <line num="274" count="0" type="stmt"/>
+            <line complexity="22" visibility="public" signature="setParameters(XSLTBuilder,Dataset,MultivaluedMap&lt;String, Object&gt;) : XSLTBuilder" num="278" count="0" type="method"/>
+            <line num="280" count="0" type="stmt"/>
+            <line num="280" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="280" type="cond"/>
+            <line num="281" count="0" type="stmt"/>
+            <line num="281" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="281" type="cond"/>
+            <line num="283" count="0" type="stmt"/>
+            <line num="288" count="0" type="stmt"/>
+            <line num="290" count="0" type="stmt"/>
+            <line num="290" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="290" type="cond"/>
+            <line num="291" count="0" type="stmt"/>
+            <line num="291" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="291" type="cond"/>
+            <line num="292" count="0" type="stmt"/>
+            <line num="292" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="292" type="cond"/>
+            <line num="294" count="0" type="stmt"/>
+            <line num="296" count="0" type="stmt"/>
+            <line num="297" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="297" type="cond"/>
+            <line num="299" count="0" type="stmt"/>
+            <line num="301" count="0" type="stmt"/>
+            <line num="302" count="0" type="stmt"/>
+            <line num="304" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="304" type="cond"/>
+            <line num="306" count="0" type="stmt"/>
+            <line num="308" count="0" type="stmt"/>
+            <line num="309" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="309" type="cond"/>
+            <line num="311" count="0" type="stmt"/>
+            <line num="313" count="0" type="stmt"/>
+            <line num="313" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="313" type="cond"/>
+            <line num="314" count="0" type="stmt"/>
+            <line num="318" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="318" type="cond"/>
+            <line num="320" count="0" type="stmt"/>
+            <line num="321" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="321" type="cond"/>
+            <line num="323" count="0" type="stmt"/>
+            <line num="325" count="0" type="stmt"/>
+            <line num="326" count="0" type="stmt"/>
+            <line num="328" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="328" type="cond"/>
+            <line num="330" count="0" type="stmt"/>
+            <line num="332" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="332" type="cond"/>
+            <line num="333" count="0" type="stmt"/>
+            <line num="335" count="0" type="stmt"/>
+            <line num="340" count="0" type="stmt"/>
+            <line num="346" count="0" type="stmt"/>
+            <line num="348" count="0" type="stmt"/>
+            <line num="349" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="349" type="cond"/>
+            <line num="351" count="0" type="stmt"/>
+            <line num="351" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="351" type="cond"/>
+            <line num="352" count="0" type="stmt"/>
+            <line num="354" count="0" type="stmt"/>
+            <line num="355" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="355" type="cond"/>
+            <line num="357" count="0" type="stmt"/>
+            <line num="357" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="357" type="cond"/>
+            <line num="358" count="0" type="stmt"/>
+            <line num="361" count="0" type="stmt"/>
+            <line num="365" count="0" type="stmt"/>
+            <line num="365" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="365" type="cond"/>
+            <line num="366" count="0" type="stmt"/>
+            <line num="370" count="0" type="stmt"/>
+            <line num="370" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="370" type="cond"/>
+            <line num="371" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSupportedNamespaces() : Set&lt;String&gt;" num="375" count="0" type="method"/>
+            <line num="377" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOntDocumentManager() : OntDocumentManager" num="380" count="0" type="method"/>
+            <line num="382" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOntModel(String) : OntModel" num="385" count="0" type="method"/>
+            <line num="387" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOntModel(String,OntModelSpec) : OntModel" num="390" count="0" type="method"/>
+            <line num="392" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getModes(Set&lt;String&gt;) : List&lt;URI&gt;" num="395" count="0" type="method"/>
+            <line num="397" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="getModes(UriInfo,Set&lt;String&gt;) : List&lt;URI&gt;" num="400" count="0" type="method"/>
+            <line num="402" count="0" type="stmt"/>
+            <line num="402" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="402" type="cond"/>
+            <line num="403" count="0" type="stmt"/>
+            <line num="403" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="403" type="cond"/>
+            <line num="405" count="0" type="stmt"/>
+            <line num="407" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="407" type="cond"/>
+            <line num="410" count="0" type="stmt"/>
+            <line num="411" count="0" type="stmt"/>
+            <line num="413" count="0" type="stmt"/>
+            <line num="415" count="0" type="stmt"/>
+            <line num="415" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="415" type="cond"/>
+            <line num="419" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="checkURI(String) : IRI" num="422" count="0" type="method"/>
+            <line num="424" count="0" type="stmt"/>
+            <line num="424" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="424" type="cond"/>
+            <line num="426" count="0" type="stmt"/>
+            <line num="428" count="0" type="stmt"/>
+            <line num="430" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="getConstructedSource(URI,List&lt;URI&gt;,URI) : Source" num="433" count="0" type="method"/>
+            <line num="435" count="0" type="stmt"/>
+            <line num="435" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="435" type="cond"/>
+            <line num="436" count="0" type="stmt"/>
+            <line num="436" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="436" type="cond"/>
+            <line num="437" count="0" type="stmt"/>
+            <line num="437" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="437" type="cond"/>
+            <line num="439" count="0" type="stmt"/>
+            <line num="440" count="0" type="stmt"/>
+            <line num="442" count="0" type="stmt"/>
+            <line num="444" count="0" type="stmt"/>
+            <line num="445" count="0" type="stmt"/>
+            <line num="445" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="445" type="cond"/>
+            <line num="448" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBaseUri() : URI" num="451" count="0" type="method"/>
+            <line num="453" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTemplateURI() : URI" num="456" count="0" type="method"/>
+            <line num="458" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUriInfo() : UriInfo" num="461" count="0" type="method"/>
+            <line num="463" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequest() : Request" num="466" count="0" type="method"/>
+            <line num="468" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHttpHeaders() : HttpHeaders" num="471" count="0" type="method"/>
+            <line num="473" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHttpServletRequest() : HttpServletRequest" num="476" count="0" type="method"/>
+            <line num="478" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOntModelSpec() : OntModelSpec" num="481" count="0" type="method"/>
+            <line num="483" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getProviders() : Providers" num="486" count="0" type="method"/>
+            <line num="488" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDataManager() : DataManager" num="491" count="0" type="method"/>
+            <line num="493" count="0" type="stmt"/>
+            <line num="494" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTransformerFactory() : SAXTransformerFactory" num="497" count="0" type="method"/>
+            <line num="499" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/writer/ResultSetXSLTWriter.java" name="ResultSetXSLTWriter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="13" loc="125" coveredmethods="0" methods="8" elements="30" classes="1" ncloc="79" statements="18" conditionals="4" coveredstatements="0"/>
+            <class name="ResultSetXSLTWriter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="13" coveredmethods="0" methods="8" elements="30" statements="18" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="ResultSetXSLTWriter(Source,URIResolver)" num="64" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="66" type="cond"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="67" type="cond"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isWriteable(Class&lt;?&gt;,Type,Annotation[],MediaType) : boolean" num="72" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSize(ResultSet,Class&lt;?&gt;,Type,Annotation[],MediaType) : long" num="78" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="writeTo(ResultSet,Class&lt;?&gt;,Type,Annotation[],MediaType,MultivaluedMap&lt;String, Object&gt;,OutputStream) : void" num="84" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTransformerFactory() : SAXTransformerFactory" num="102" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getURIResolver() : URIResolver" num="107" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStylesheet() : Source" num="112" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getXSLTBuilder(InputStream,MultivaluedMap&lt;String, Object&gt;,OutputStream) : XSLTBuilder" num="117" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.query">
+         <metrics coveredelements="0" complexity="209" loc="1093" methods="123" classes="2" statements="323" coveredconditionals="0" coveredmethods="0" elements="608" ncloc="814" files="2" conditionals="162" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/query/QueryBuilder.java" name="QueryBuilder.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="153" loc="828" coveredmethods="0" methods="98" elements="440" classes="1" ncloc="629" statements="234" conditionals="108" coveredstatements="0"/>
+            <class name="QueryBuilder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="153" coveredmethods="0" methods="98" elements="440" statements="234" conditionals="108" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="visit(SubQuery) : void" num="59" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="64" type="cond"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="67" type="cond"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="QueryBuilder(org.spinrdf.model.Query)" num="79" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="81" type="cond"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getQuery() : org.spinrdf.model.Query" num="94" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromQuery(org.spinrdf.model.Query) : QueryBuilder" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="fromResource(Resource) : QueryBuilder" num="104" count="0" type="method"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="106" type="cond"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="fromQuery(Query,String,Model) : QueryBuilder" num="111" count="0" type="method"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="113" type="cond"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromQuery(Query,Model) : QueryBuilder" num="119" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromQueryString(String,Model) : QueryBuilder" num="124" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromDescribe(Model) : QueryBuilder" num="129" count="0" type="method"/>
+            <line num="131" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="fromDescribe(String,Model) : QueryBuilder" num="134" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="136" type="cond"/>
+            <line num="138" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="fromDescribe(Resource) : QueryBuilder" num="141" count="0" type="method"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="143" type="cond"/>
+            <line num="145" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="145" type="cond"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="fromDescribe(RDFList) : QueryBuilder" num="151" count="0" type="method"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="153" type="cond"/>
+            <line num="155" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="where(Resource) : QueryBuilder" num="159" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="161" type="cond"/>
+            <line num="163" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="where(Element) : QueryBuilder" num="166" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="168" type="cond"/>
+            <line num="171" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="171" type="cond"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getSubSelectBuilders() : List&lt;SelectBuilder&gt;" num="181" count="0" type="method"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="185" type="cond"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="subQuery(Select) : QueryBuilder" num="194" count="0" type="method"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="196" type="cond"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="199" type="cond"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="203" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="optional(Resource) : QueryBuilder" num="206" count="0" type="method"/>
+            <line num="208" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="optional(Optional) : QueryBuilder" num="211" count="0" type="method"/>
+            <line num="213" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="optional(TriplePattern) : QueryBuilder" num="216" count="0" type="method"/>
+            <line num="218" count="0" type="stmt"/>
+            <line num="218" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="218" type="cond"/>
+            <line num="220" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="optional(Resource,Resource,RDFNode) : QueryBuilder" num="224" count="0" type="method"/>
+            <line num="226" count="0" type="stmt"/>
+            <line num="226" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="226" type="cond"/>
+            <line num="227" count="0" type="stmt"/>
+            <line num="227" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="227" type="cond"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="228" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="228" type="cond"/>
+            <line num="230" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="filter(Filter) : QueryBuilder" num="233" count="0" type="method"/>
+            <line num="235" count="0" type="stmt"/>
+            <line num="235" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="235" type="cond"/>
+            <line num="237" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="filter(String,String) : QueryBuilder" num="240" count="0" type="method"/>
+            <line num="242" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="filter(Variable,String) : QueryBuilder" num="245" count="0" type="method"/>
+            <line num="247" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="filter(String,String,String) : QueryBuilder" num="250" count="0" type="method"/>
+            <line num="252" count="0" type="stmt"/>
+            <line complexity="6" visibility="public" signature="filter(Variable,String,String) : QueryBuilder" num="255" count="0" type="method"/>
+            <line num="257" count="0" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="257" type="cond"/>
+            <line num="258" count="0" type="stmt"/>
+            <line num="258" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="258" type="cond"/>
+            <line num="260" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="260" type="cond"/>
+            <line num="262" count="0" type="stmt"/>
+            <line num="262" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="262" type="cond"/>
+            <line num="263" count="0" type="stmt"/>
+            <line num="266" count="0" type="stmt"/>
+            <line num="266" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="266" type="cond"/>
+            <line num="268" count="0" type="stmt"/>
+            <line num="272" count="0" type="stmt"/>
+            <line num="278" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="quoteRegexMeta(String) : String" num="282" count="0" type="method"/>
+            <line num="284" count="0" type="stmt"/>
+            <line num="285" count="0" type="stmt"/>
+            <line num="286" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="286" type="cond"/>
+            <line num="287" count="0" type="stmt"/>
+            <line num="288" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="288" type="cond"/>
+            <line num="290" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="290" type="cond"/>
+            <line num="292" count="0" type="stmt"/>
+            <line num="293" count="0" type="stmt"/>
+            <line num="293" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="293" type="cond"/>
+            <line num="295" count="0" type="stmt"/>
+            <line num="296" count="0" type="stmt"/>
+            <line num="298" count="0" type="stmt"/>
+            <line num="298" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="298" type="cond"/>
+            <line num="300" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="300" type="cond"/>
+            <line complexity="4" visibility="public" signature="filter(Variable,Locale) : QueryBuilder" num="303" count="0" type="method"/>
+            <line num="305" count="0" type="stmt"/>
+            <line num="305" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="305" type="cond"/>
+            <line num="306" count="0" type="stmt"/>
+            <line num="306" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="306" type="cond"/>
+            <line num="308" count="0" type="stmt"/>
+            <line num="308" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="308" type="cond"/>
+            <line num="310" count="0" type="stmt"/>
+            <line num="314" count="0" type="stmt"/>
+            <line num="319" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="filter(String,Locale) : QueryBuilder" num="322" count="0" type="method"/>
+            <line num="324" count="0" type="stmt"/>
+            <line num="324" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="324" type="cond"/>
+            <line num="325" count="0" type="stmt"/>
+            <line num="325" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="325" type="cond"/>
+            <line num="327" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="filter(Variable,List&lt;RDFNode&gt;) : QueryBuilder" num="330" count="0" type="method"/>
+            <line num="332" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="filter(String,List&lt;RDFNode&gt;) : QueryBuilder" num="335" count="0" type="method"/>
+            <line num="337" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="createFilterExpression(Variable,List&lt;RDFNode&gt;) : Resource" num="340" count="0" type="method"/>
+            <line num="342" count="0" type="stmt"/>
+            <line num="342" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="342" type="cond"/>
+            <line num="343" count="0" type="stmt"/>
+            <line num="343" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="343" type="cond"/>
+            <line num="345" count="0" type="stmt"/>
+            <line num="349" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="349" type="cond"/>
+            <line num="350" count="0" type="stmt"/>
+            <line num="352" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="filter(Variable,RDFList) : QueryBuilder" num="355" count="0" type="method"/>
+            <line num="357" count="0" type="stmt"/>
+            <line num="357" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="357" type="cond"/>
+            <line num="358" count="0" type="stmt"/>
+            <line num="358" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="358" type="cond"/>
+            <line num="360" count="0" type="stmt"/>
+            <line num="360" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="360" type="cond"/>
+            <line num="362" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="createFilterExpression(Variable,RDFList) : Resource" num="365" count="0" type="method"/>
+            <line num="367" count="0" type="stmt"/>
+            <line num="372" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="372" type="cond"/>
+            <line num="373" count="0" type="stmt"/>
+            <line num="376" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="filter(String,RDFList) : QueryBuilder" num="382" count="0" type="method"/>
+            <line num="384" count="0" type="stmt"/>
+            <line num="384" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="384" type="cond"/>
+            <line num="386" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="replaceFilter(String,RDFList) : QueryBuilder" num="389" count="0" type="method"/>
+            <line num="391" count="0" type="stmt"/>
+            <line num="391" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="391" type="cond"/>
+            <line num="393" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="393" type="cond"/>
+            <line num="395" count="0" type="stmt"/>
+            <line num="396" count="0" type="stmt"/>
+            <line num="396" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="396" type="cond"/>
+            <line num="397" count="0" type="stmt"/>
+            <line num="400" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="findFilter(ElementList) : RDFNode" num="403" count="0" type="method"/>
+            <line num="405" count="0" type="stmt"/>
+            <line num="407" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="407" type="cond"/>
+            <line num="409" count="0" type="stmt"/>
+            <line num="411" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="411" type="cond"/>
+            <line num="412" count="0" type="stmt"/>
+            <line num="415" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="replaceVar(String,String) : QueryBuilder" num="418" count="0" type="method"/>
+            <line num="420" count="0" type="stmt"/>
+            <line num="420" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="420" type="cond"/>
+            <line num="421" count="0" type="stmt"/>
+            <line num="421" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="421" type="cond"/>
+            <line num="423" count="0" type="stmt"/>
+            <line num="423" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="423" type="cond"/>
+            <line num="425" count="0" type="stmt"/>
+            <line num="426" count="0" type="stmt"/>
+            <line num="427" count="0" type="stmt"/>
+            <line num="429" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="replaceVar(String,Resource) : QueryBuilder" num="432" count="0" type="method"/>
+            <line num="434" count="0" type="stmt"/>
+            <line num="434" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="434" type="cond"/>
+            <line num="436" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="getVarByName(String) : Resource" num="439" count="0" type="method"/>
+            <line num="441" count="0" type="stmt"/>
+            <line num="443" count="0" type="stmt"/>
+            <line num="445" count="0" type="stmt"/>
+            <line num="445" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="445" type="cond"/>
+            <line num="446" count="0" type="stmt"/>
+            <line num="450" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="build() : Query" num="454" count="0" type="method"/>
+            <line num="456" count="0" type="stmt"/>
+            <line num="459" count="0" type="stmt"/>
+            <line num="462" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="isWhereVariable(Variable) : boolean" num="472" count="0" type="method"/>
+            <line num="474" count="0" type="stmt"/>
+            <line num="477" count="0" type="stmt"/>
+            <line num="479" count="0" type="stmt"/>
+            <line num="483" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getElementVisitor() : ElementVisitor" num="487" count="0" type="method"/>
+            <line num="489" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFrom() : List&lt;String&gt;" num="492" count="0" type="method"/>
+            <line num="495" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFromNamed() : List&lt;String&gt;" num="498" count="0" type="method"/>
+            <line num="501" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWhereElements() : List&lt;Element&gt;" num="504" count="0" type="method"/>
+            <line num="507" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWhere() : ElementList" num="510" count="0" type="method"/>
+            <line num="513" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getComment() : String" num="516" count="0" type="method"/>
+            <line num="519" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="print(PrintContext) : void" num="522" count="0" type="method"/>
+            <line num="525" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getId() : AnonId" num="528" count="0" type="method"/>
+            <line num="531" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="inModel(Model) : Resource" num="534" count="0" type="method"/>
+            <line num="537" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasURI(String) : boolean" num="540" count="0" type="method"/>
+            <line num="543" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getURI() : String" num="546" count="0" type="method"/>
+            <line num="549" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNameSpace() : String" num="552" count="0" type="method"/>
+            <line num="555" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLocalName() : String" num="558" count="0" type="method"/>
+            <line num="561" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequiredProperty(Property) : Statement" num="564" count="0" type="method"/>
+            <line num="567" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getProperty(Property) : Statement" num="570" count="0" type="method"/>
+            <line num="573" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="listProperties(Property) : StmtIterator" num="576" count="0" type="method"/>
+            <line num="579" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="listProperties() : StmtIterator" num="582" count="0" type="method"/>
+            <line num="585" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,boolean) : Resource" num="588" count="0" type="method"/>
+            <line num="591" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,long) : Resource" num="594" count="0" type="method"/>
+            <line num="597" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,char) : Resource" num="600" count="0" type="method"/>
+            <line num="603" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,double) : Resource" num="606" count="0" type="method"/>
+            <line num="609" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,float) : Resource" num="612" count="0" type="method"/>
+            <line num="615" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,Object) : Resource" num="618" count="0" type="method"/>
+            <line num="621" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addLiteral(Property,Literal) : Resource" num="624" count="0" type="method"/>
+            <line num="627" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addProperty(Property,String) : Resource" num="630" count="0" type="method"/>
+            <line num="633" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addProperty(Property,String,String) : Resource" num="636" count="0" type="method"/>
+            <line num="639" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addProperty(Property,String,RDFDatatype) : Resource" num="642" count="0" type="method"/>
+            <line num="645" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addProperty(Property,RDFNode) : Resource" num="648" count="0" type="method"/>
+            <line num="651" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasProperty(Property) : boolean" num="654" count="0" type="method"/>
+            <line num="657" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasLiteral(Property,boolean) : boolean" num="660" count="0" type="method"/>
+            <line num="663" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasLiteral(Property,long) : boolean" num="666" count="0" type="method"/>
+            <line num="669" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasLiteral(Property,char) : boolean" num="672" count="0" type="method"/>
+            <line num="675" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasLiteral(Property,double) : boolean" num="678" count="0" type="method"/>
+            <line num="681" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasLiteral(Property,float) : boolean" num="684" count="0" type="method"/>
+            <line num="687" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasLiteral(Property,Object) : boolean" num="690" count="0" type="method"/>
+            <line num="693" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasProperty(Property,String) : boolean" num="696" count="0" type="method"/>
+            <line num="699" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasProperty(Property,String,String) : boolean" num="702" count="0" type="method"/>
+            <line num="705" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasProperty(Property,RDFNode) : boolean" num="708" count="0" type="method"/>
+            <line num="711" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="removeProperties() : Resource" num="714" count="0" type="method"/>
+            <line num="717" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="removeAll(Property) : Resource" num="720" count="0" type="method"/>
+            <line num="723" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="begin() : Resource" num="726" count="0" type="method"/>
+            <line num="729" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="abort() : Resource" num="732" count="0" type="method"/>
+            <line num="735" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="commit() : Resource" num="738" count="0" type="method"/>
+            <line num="741" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPropertyResourceValue(Property) : Resource" num="744" count="0" type="method"/>
+            <line num="747" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAnon() : boolean" num="750" count="0" type="method"/>
+            <line num="753" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isLiteral() : boolean" num="756" count="0" type="method"/>
+            <line num="759" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isURIResource() : boolean" num="762" count="0" type="method"/>
+            <line num="765" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isResource() : boolean" num="768" count="0" type="method"/>
+            <line num="771" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="as(Class&lt;T&gt;) : T" num="774" count="0" type="method"/>
+            <line num="777" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="canAs(Class&lt;T&gt;) : boolean" num="780" count="0" type="method"/>
+            <line num="783" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getModel() : Model" num="786" count="0" type="method"/>
+            <line num="789" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="visitWith(RDFVisitor) : Object" num="792" count="0" type="method"/>
+            <line num="795" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="asResource() : Resource" num="798" count="0" type="method"/>
+            <line num="801" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="asLiteral() : Literal" num="804" count="0" type="method"/>
+            <line num="807" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="asNode() : Node" num="810" count="0" type="method"/>
+            <line num="813" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="816" count="0" type="method"/>
+            <line num="819" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getValues() : Values" num="822" count="0" type="method"/>
+            <line num="825" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/query/SelectBuilder.java" name="SelectBuilder.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="56" loc="265" coveredmethods="0" methods="25" elements="168" classes="1" ncloc="185" statements="89" conditionals="54" coveredstatements="0"/>
+            <class name="SelectBuilder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="56" coveredmethods="0" methods="25" elements="168" statements="89" conditionals="54" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="SelectBuilder(Select)" num="54" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromSelect(Select) : SelectBuilder" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromQuery(org.spinrdf.model.Query) : SelectBuilder" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="fromResource(Resource) : SelectBuilder" num="70" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="72" type="cond"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="75" type="cond"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="fromQuery(org.apache.jena.query.Query,String,Model) : SelectBuilder" num="81" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="83" type="cond"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromQuery(org.apache.jena.query.Query,Model) : SelectBuilder" num="89" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromQueryString(String,Model) : SelectBuilder" num="94" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getQuery() : Select" num="104" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="replaceLimit(Long) : SelectBuilder" num="110" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="112" type="cond"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="115" type="cond"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="117" type="cond"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="replaceOffset(Long) : SelectBuilder" num="124" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="126" type="cond"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="129" type="cond"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="131" type="cond"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="orderBy(String) : SelectBuilder" num="138" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="orderBy(String,Boolean) : SelectBuilder" num="143" count="0" type="method"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="145" type="cond"/>
+            <line num="147" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="orderBy(Variable,Boolean) : SelectBuilder" num="150" count="0" type="method"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="152" type="cond"/>
+            <line num="154" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="orderBy(Variable) : SelectBuilder" num="157" count="0" type="method"/>
+            <line num="159" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="orderBy(Resource,Boolean) : SelectBuilder" num="162" count="0" type="method"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="164" type="cond"/>
+            <line num="166" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="166" type="cond"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="orderBy(Resource,Resource) : SelectBuilder" num="172" count="0" type="method"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="174" type="cond"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="175" type="cond"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="176" type="cond"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line complexity="10" visibility="public" signature="orderBy(Resource) : SelectBuilder" num="184" count="0" type="method"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="186" type="cond"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="188" type="cond"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="190" type="cond"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="193" type="cond"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="196" type="cond"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="198" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="198" type="cond"/>
+            <line num="200" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="200" type="cond"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="replaceOrderBy(RDFList) : SelectBuilder" num="208" count="0" type="method"/>
+            <line num="210" count="0" type="stmt"/>
+            <line num="210" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="210" type="cond"/>
+            <line num="211" count="0" type="stmt"/>
+            <line num="213" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="213" type="cond"/>
+            <line num="215" count="0" type="stmt"/>
+            <line num="215" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="215" type="cond"/>
+            <line num="216" count="0" type="stmt"/>
+            <line num="219" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getResultVariables() : List&lt;Resource&gt;" num="222" count="0" type="method"/>
+            <line num="225" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isDistinct() : boolean" num="228" count="0" type="method"/>
+            <line num="231" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isReduced() : boolean" num="234" count="0" type="method"/>
+            <line num="237" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLimit() : Long" num="240" count="0" type="method"/>
+            <line num="243" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOffset() : Long" num="246" count="0" type="method"/>
+            <line num="249" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getResultVariableNames() : List&lt;String&gt;" num="252" count="0" type="method"/>
+            <line num="255" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getOrderBy() : RDFList" num="258" count="0" type="method"/>
+            <line num="260" count="0" type="stmt"/>
+            <line num="261" count="0" type="stmt"/>
+            <line num="261" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="261" type="cond"/>
+            <line num="262" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.filter.request">
+         <metrics coveredelements="0" complexity="22" loc="251" methods="8" classes="2" statements="46" coveredconditionals="0" coveredmethods="0" elements="78" ncloc="105" files="1" conditionals="24" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/filter/request/PostReplaceFilter.java" name="PostReplaceFilter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="22" loc="251" coveredmethods="0" methods="8" elements="78" classes="2" ncloc="105" statements="46" conditionals="24" coveredstatements="0"/>
+            <class name="PostReplaceFilter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="19" coveredmethods="0" methods="5" elements="72" statements="43" conditionals="24" coveredstatements="0"/>
+            </class>
+            <class name="PostReplaceFilter.ConfigFlag">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="ConfigFlag(int)" num="128" count="0" type="method"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFlag() : int" num="136" count="0" type="method"/>
+            <line num="137" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isPresentIn(int) : boolean" num="145" count="0" type="method"/>
+            <line num="146" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="PostReplaceFilter(ResourceConfig)" num="156" count="0" type="method"/>
+            <line num="157" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="PostReplaceFilter(ConfigFlag)" num="165" count="0" type="method"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="170" type="cond"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="configStringToConfig(String) : ConfigFlag[]" num="182" count="0" type="method"/>
+            <line num="183" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="183" type="cond"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="191" type="cond"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="getParamValue(ConfigFlag,MultivaluedMap&lt;String, String&gt;,String) : String" num="210" count="0" type="method"/>
+            <line num="211" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="211" type="cond"/>
+            <line num="212" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="212" type="cond"/>
+            <line num="213" count="0" type="stmt"/>
+            <line num="215" count="0" type="stmt"/>
+            <line num="216" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="216" type="cond"/>
+            <line complexity="8" visibility="public" signature="filter(ContainerRequest) : ContainerRequest" num="219" count="0" type="method"/>
+            <line num="221" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="221" type="cond"/>
+            <line num="222" count="0" type="stmt"/>
+            <line num="225" count="0" type="stmt"/>
+            <line num="226" count="0" type="stmt"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="229" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="229" type="cond"/>
+            <line num="230" count="0" type="stmt"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="232" count="0" type="stmt"/>
+            <line num="234" count="0" type="stmt"/>
+            <line num="235" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="235" type="cond"/>
+            <line num="236" count="0" type="stmt"/>
+            <line num="239" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="239" type="cond"/>
+            <line num="240" count="0" type="stmt"/>
+            <line num="242" count="0" type="stmt"/>
+            <line num="243" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="243" type="cond"/>
+            <line num="244" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="244" type="cond"/>
+            <line num="245" count="0" type="stmt"/>
+            <line num="246" count="0" type="stmt"/>
+            <line num="249" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.riot">
+         <metrics coveredelements="0" complexity="10" loc="109" methods="7" classes="1" statements="15" coveredconditionals="0" coveredmethods="0" elements="26" ncloc="74" files="1" conditionals="4" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/riot/JSONLDWriter.java" name="JSONLDWriter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="109" coveredmethods="0" methods="7" elements="26" classes="1" ncloc="74" statements="15" conditionals="4" coveredstatements="0"/>
+            <class name="JSONLDWriter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="7" elements="26" statements="15" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="JSONLDWriter(Source)" num="54" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="JSONLDWriter(Templates)" num="59" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="61" type="cond"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="write(OutputStream,Graph,PrefixMap,String,Context) : void" num="65" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="82" type="cond"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="write(Writer,Graph,PrefixMap,String,Context) : void" num="87" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLang() : Lang" num="93" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTemplates() : Templates" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTransformerFactory() : SAXTransformerFactory" num="104" count="0" type="method"/>
+            <line num="106" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.reader">
+         <metrics coveredelements="0" complexity="27" loc="204" methods="14" classes="1" statements="46" coveredconditionals="0" coveredmethods="0" elements="78" ncloc="147" files="1" conditionals="18" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/reader/ModelXSLTReader.java" name="ModelXSLTReader.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="27" loc="204" coveredmethods="0" methods="14" elements="78" classes="1" ncloc="147" statements="46" conditionals="18" coveredstatements="0"/>
+            <class name="ModelXSLTReader">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="27" coveredmethods="0" methods="14" elements="78" statements="46" conditionals="18" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="ModelXSLTReader(Source,URIResolver)" num="72" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="74" type="cond"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="75" type="cond"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="read(Model,Reader,String) : void" num="80" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="read(Model,InputStream,URI) : void" num="86" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="97" type="cond"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="101" type="cond"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="read(Model,InputStream,String) : void" num="107" count="0" type="method"/>
+            <line num="110" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="read(Model,String) : void" num="113" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="123" type="cond"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="127" type="cond"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="134" type="cond"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="140" type="cond"/>
+            <line num="141" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setProperty(String,Object) : Object" num="145" count="0" type="method"/>
+            <line num="148" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setErrorHandler(RDFErrorHandler) : RDFErrorHandler" num="151" count="0" type="method"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="readFrom(Class&lt;Model&gt;,Type,Annotation[],javax.ws.rs.core.MediaType,MultivaluedMap&lt;String, String&gt;,InputStream) : Model" num="159" count="0" type="method"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="162" type="cond"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getURIResolver() : URIResolver" num="170" count="0" type="method"/>
+            <line num="172" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStylesheet() : Source" num="175" count="0" type="method"/>
+            <line num="177" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUriInfo() : UriInfo" num="180" count="0" type="method"/>
+            <line num="182" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHttpHeaders() : HttpHeaders" num="185" count="0" type="method"/>
+            <line num="187" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getXSLTBuilder(Source,URI,OutputStream) : XSLTBuilder" num="190" count="0" type="method"/>
+            <line num="192" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTransformerFactory() : SAXTransformerFactory" num="199" count="0" type="method"/>
+            <line num="201" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.util">
+         <metrics coveredelements="0" complexity="127" loc="992" methods="52" classes="6" statements="291" coveredconditionals="0" coveredmethods="0" elements="455" ncloc="685" files="6" conditionals="112" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/util/Constructor.java" name="Constructor.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="31" loc="208" coveredmethods="0" methods="3" elements="131" classes="1" ncloc="149" statements="80" conditionals="48" coveredstatements="0"/>
+            <class name="Constructor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="31" coveredmethods="0" methods="3" elements="131" statements="80" conditionals="48" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="construct(OntClass,Model,String) : Resource" num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="55" type="cond"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="17" visibility="public" signature="constructInstance(OntClass,Property,Resource,String,Set&lt;OntClass&gt;) : Resource" num="71" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="73" type="cond"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="74" type="cond"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="75" type="cond"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="76" type="cond"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="79" type="cond"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="84" type="cond"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="87" type="cond"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="89" type="cond"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="94" type="cond"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="96" type="cond"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="117" type="cond"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="130" type="cond"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line complexity="12" visibility="public" signature="addInstance(OntClass,Property,Resource,String,Set&lt;OntClass&gt;) : Resource" num="144" count="0" type="method"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="146" type="cond"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="147" type="cond"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="148" type="cond"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="149" type="cond"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="150" type="cond"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="160" type="cond"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="165" type="cond"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="168" type="cond"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="171" type="cond"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="173" type="cond"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="185" type="cond"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="202" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/util/DataManager.java" name="DataManager.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="44" loc="264" coveredmethods="0" methods="12" elements="143" classes="1" ncloc="188" statements="93" conditionals="38" coveredstatements="0"/>
+            <class name="DataManager">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="44" coveredmethods="0" methods="12" elements="143" statements="93" conditionals="38" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="DataManager(LocationMapper,Client,MediaTypes,boolean,boolean)" num="62" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="load(String) : ClientResponse" num="94" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isMapped(String) : boolean" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line complexity="19" visibility="public" signature="resolve(String,String) : Source" num="112" count="0" type="method"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="116" type="cond"/>
+            <line num="118" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="118" type="cond"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="122" type="cond"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="127" type="cond"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="132" type="cond"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="134" type="cond"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="139" type="cond"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="144" type="cond"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="146" type="cond"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="158" type="cond"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="163" type="cond"/>
+            <line num="167" count="0" type="stmt"/>
+            <line complexity="6" visibility="public" signature="resolve(URI,String,Configuration) : Reader" num="170" count="0" type="method"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="178" type="cond"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="183" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="183" type="cond"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="194" type="cond"/>
+            <line complexity="5" visibility="public" signature="getSource(Model,String) : Source" num="206" count="0" type="method"/>
+            <line num="208" count="0" type="stmt"/>
+            <line num="208" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="208" type="cond"/>
+            <line num="209" count="0" type="stmt"/>
+            <line num="209" count="0" type="stmt"/>
+            <line num="211" count="0" type="stmt"/>
+            <line num="212" count="0" type="stmt"/>
+            <line num="212" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="212" type="cond"/>
+            <line num="213" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="getSource(ResultSet,String) : Source" num="225" count="0" type="method"/>
+            <line num="227" count="0" type="stmt"/>
+            <line num="227" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="227" type="cond"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="230" count="0" type="stmt"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="231" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="231" type="cond"/>
+            <line num="232" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="isAcceptedMediaType(MediaType,MediaType[]) : boolean" num="236" count="0" type="method"/>
+            <line num="238" count="0" type="stmt"/>
+            <line num="239" count="0" type="stmt"/>
+            <line num="239" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="239" type="cond"/>
+            <line num="241" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAcceptedMediaTypes() : javax.ws.rs.core.MediaType[]" num="244" count="0" type="method"/>
+            <line num="246" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="resolvingUncached(String) : boolean" num="249" count="0" type="method"/>
+            <line num="251" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isResolvingMapped() : boolean" num="254" count="0" type="method"/>
+            <line num="256" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAcceptedXMLMediaTypes() : MediaType[]" num="259" count="0" type="method"/>
+            <line num="261" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/util/OntologyProvider.java" name="OntologyProvider.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="77" coveredmethods="0" methods="1" elements="26" classes="1" ncloc="39" statements="17" conditionals="8" coveredstatements="0"/>
+            <class name="OntologyProvider">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="1" elements="26" statements="17" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="5" visibility="public" signature="getOntModel(OntDocumentManager,String,OntModelSpec) : OntModel" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="46" type="cond"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="47" type="cond"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="48" type="cond"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="49" type="cond"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/util/XSLTBuilder.java" name="XSLTBuilder.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="35" loc="235" coveredmethods="0" methods="28" elements="106" classes="1" ncloc="173" statements="64" conditionals="14" coveredstatements="0"/>
+            <class name="XSLTBuilder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="35" coveredmethods="0" methods="28" elements="106" statements="64" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="protected" signature="XSLTBuilder(SAXTransformerFactory)" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="57" type="cond"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newInstance(SAXTransformerFactory) : XSLTBuilder" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="document(Source) : XSLTBuilder" num="67" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="69" type="cond"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="document(Node) : XSLTBuilder" num="74" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="document(Node,String) : XSLTBuilder" num="80" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="document(File) : XSLTBuilder" num="86" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="document(InputStream) : XSLTBuilder" num="92" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="document(InputStream,String) : XSLTBuilder" num="98" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="document(Reader) : XSLTBuilder" num="104" count="0" type="method"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="document(Reader,String) : XSLTBuilder" num="110" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="document(String) : XSLTBuilder" num="116" count="0" type="method"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="stylesheet(File) : XSLTBuilder" num="122" count="0" type="method"/>
+            <line num="124" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="stylesheet(Source) : XSLTBuilder" num="127" count="0" type="method"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="stylesheet(Templates) : XSLTBuilder" num="132" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="parameter(String,Object) : XSLTBuilder" num="138" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="140" type="cond"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="resolver(URIResolver) : XSLTBuilder" num="145" count="0" type="method"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="147" type="cond"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="outputProperty(String,String) : XSLTBuilder" num="152" count="0" type="method"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="154" type="cond"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="getTransformer(Templates,Result,URIResolver,Map&lt;String, Object&gt;,Map&lt;String, String&gt;) : Transformer" num="159" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="168" type="cond"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="175" type="cond"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getTransformer() : Transformer" num="184" count="0" type="method"/>
+            <line num="186" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="transform() : void" num="189" count="0" type="method"/>
+            <line num="191" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="result(Result) : XSLTBuilder" num="194" count="0" type="method"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getSAXTransformerFactory() : SAXTransformerFactory" num="200" count="0" type="method"/>
+            <line num="202" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getTemplates() : Templates" num="205" count="0" type="method"/>
+            <line num="207" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getResult() : Result" num="210" count="0" type="method"/>
+            <line num="212" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getURIResolver() : URIResolver" num="215" count="0" type="method"/>
+            <line num="217" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getParameters() : Map&lt;String, Object&gt;" num="220" count="0" type="method"/>
+            <line num="222" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getOutputProperties() : Map&lt;String, String&gt;" num="225" count="0" type="method"/>
+            <line num="227" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getSource() : Source" num="230" count="0" type="method"/>
+            <line num="232" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/util/ZipURIResolver.java" name="ZipURIResolver.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="67" coveredmethods="0" methods="3" elements="16" classes="1" ncloc="36" statements="9" conditionals="4" coveredstatements="0"/>
+            <class name="ZipURIResolver">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="3" elements="16" statements="9" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ZipURIResolver(ZipFile)" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getZipFile() : ZipFile" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="resolve(String,String) : Source" num="49" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="52" type="cond"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="61" type="cond"/>
+            <line num="64" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/atomgraph/client/util/ConstructorTest.java" name="ConstructorTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="141" coveredmethods="0" methods="5" elements="33" classes="1" ncloc="100" statements="28" conditionals="0" coveredstatements="0"/>
+            <class name="ConstructorTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="5" elements="33" statements="28" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="59" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testConstruct() : void" num="88" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testNoConstructorClass() : void" num="107" count="0" type="method"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testInvalidConstructorClass() : void" num="119" count="0" type="method"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="testInvalidConstructClass() : void" num="126" count="0" type="method"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.mapper">
+         <metrics coveredelements="0" complexity="20" loc="284" methods="14" classes="4" statements="30" coveredconditionals="0" coveredmethods="0" elements="56" ncloc="149" files="4" conditionals="12" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/mapper/ClientErrorExceptionMapper.java" name="ClientErrorExceptionMapper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="46" coveredmethods="0" methods="1" elements="7" classes="1" ncloc="20" statements="4" conditionals="2" coveredstatements="0"/>
+            <class name="ClientErrorExceptionMapper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="1" elements="7" statements="4" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="toResponse(ClientErrorException) : Response" num="34" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="39" type="cond"/>
+            <line num="41" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/mapper/ExceptionMapperBase.java" name="ExceptionMapperBase.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="16" loc="152" coveredmethods="0" methods="11" elements="45" classes="1" ncloc="92" statements="24" conditionals="10" coveredstatements="0"/>
+            <class name="ExceptionMapperBase">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="16" coveredmethods="0" methods="11" elements="45" statements="24" conditionals="10" coveredstatements="0"/>
+            </class>
+            <line complexity="5" visibility="public" signature="toResource(Exception,Response.Status,Resource) : Resource" num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="55" type="cond"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="56" type="cond"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="64" type="cond"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="65" type="cond"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getResponseBuilder(Dataset) : Response.ResponseBuilder" num="70" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="73" type="cond"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getResponseBuilder(Model) : Response.ResponseBuilder" num="83" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getVariants(Class) : List&lt;Variant&gt;" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getVariants(List&lt;MediaType&gt;) : List&lt;Variant&gt;" num="110" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWritableMediaTypes(Class) : List&lt;MediaType&gt;" num="121" count="0" type="method"/>
+            <line num="123" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMediaTypes() : MediaTypes" num="126" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLanguages() : List&lt;Locale&gt;" num="132" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEncodings() : List&lt;String&gt;" num="137" count="0" type="method"/>
+            <line num="139" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequest() : Request" num="142" count="0" type="method"/>
+            <line num="144" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getProviders() : Providers" num="147" count="0" type="method"/>
+            <line num="149" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/mapper/NotFoundExceptionMapper.java" name="NotFoundExceptionMapper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="45" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="19" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="NotFoundExceptionMapper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toResponse(NotFoundException) : Response" num="35" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/mapper/RiotExceptionMapper.java" name="RiotExceptionMapper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="41" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="18" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="RiotExceptionMapper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toResponse(RiotException) : Response" num="31" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.atomgraph.client.model.impl">
+         <metrics coveredelements="0" complexity="45" loc="387" methods="18" classes="1" statements="103" coveredconditionals="0" coveredmethods="0" elements="169" ncloc="270" files="1" conditionals="48" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/atomgraph/client/model/impl/ProxyResourceBase.java" name="ProxyResourceBase.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="45" loc="387" coveredmethods="0" methods="18" elements="169" classes="1" ncloc="270" statements="103" conditionals="48" coveredstatements="0"/>
+            <class name="ProxyResourceBase">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="45" coveredmethods="0" methods="18" elements="169" statements="103" conditionals="48" coveredstatements="0"/>
+            </class>
+            <line complexity="4" visibility="public" signature="ProxyResourceBase(UriInfo,Request,HttpHeaders,MediaTypes,URI,URI,MediaType,URI,Client,HttpServletRequest)" num="94" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="98" type="cond"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="109" type="cond"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getURI() : URI" num="126" count="0" type="method"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getClientResponse(WebResource,HttpHeaders) : ClientResponse" num="132" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getReadableMediaTypes() : MediaType[]" num="139" count="0" type="method"/>
+            <line num="141" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getWritableMediaTypes(Class) : List&lt;MediaType&gt;" num="144" count="0" type="method"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="147" type="cond"/>
+            <line num="149" count="0" type="stmt"/>
+            <line complexity="8" visibility="public" signature="get() : Response" num="157" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="166" type="cond"/>
+            <line num="169" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="169" type="cond"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="172" type="cond"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="182" type="cond"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="190" type="cond"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="192" type="cond"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="200" type="cond"/>
+            <line complexity="3" visibility="public" signature="getResponse(Dataset) : Response" num="210" count="0" type="method"/>
+            <line num="212" count="0" type="stmt"/>
+            <line num="218" count="0" type="stmt"/>
+            <line num="224" count="0" type="stmt"/>
+            <line num="225" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="225" type="cond"/>
+            <line num="227" count="0" type="stmt"/>
+            <line num="233" count="0" type="stmt"/>
+            <line num="240" count="0" type="stmt"/>
+            <line complexity="6" visibility="protected" signature="setLinkAttributes(List&lt;String&gt;) : void" num="249" count="0" type="method"/>
+            <line num="251" count="0" type="stmt"/>
+            <line num="253" count="0" type="stmt"/>
+            <line num="255" count="0" type="stmt"/>
+            <line num="256" count="0" type="stmt"/>
+            <line num="256" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="256" type="cond"/>
+            <line num="257" count="0" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="257" type="cond"/>
+            <line num="258" count="0" type="stmt"/>
+            <line num="258" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="258" type="cond"/>
+            <line num="262" count="0" type="stmt"/>
+            <line num="262" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="262" type="cond"/>
+            <line complexity="4" visibility="public" signature="post(Dataset) : Response" num="273" count="0" type="method"/>
+            <line num="277" count="0" type="stmt"/>
+            <line num="277" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="277" type="cond"/>
+            <line num="278" count="0" type="stmt"/>
+            <line num="279" count="0" type="stmt"/>
+            <line num="281" count="0" type="stmt"/>
+            <line num="284" count="0" type="stmt"/>
+            <line num="285" count="0" type="stmt"/>
+            <line num="285" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="285" type="cond"/>
+            <line num="286" count="0" type="stmt"/>
+            <line num="290" count="0" type="stmt"/>
+            <line num="290" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="290" type="cond"/>
+            <line complexity="4" visibility="public" signature="put(Dataset) : Response" num="300" count="0" type="method"/>
+            <line num="304" count="0" type="stmt"/>
+            <line num="304" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="304" type="cond"/>
+            <line num="305" count="0" type="stmt"/>
+            <line num="306" count="0" type="stmt"/>
+            <line num="308" count="0" type="stmt"/>
+            <line num="311" count="0" type="stmt"/>
+            <line num="312" count="0" type="stmt"/>
+            <line num="312" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="312" type="cond"/>
+            <line num="313" count="0" type="stmt"/>
+            <line num="317" count="0" type="stmt"/>
+            <line num="317" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="317" type="cond"/>
+            <line complexity="4" visibility="public" signature="delete() : Response" num="325" count="0" type="method"/>
+            <line num="329" count="0" type="stmt"/>
+            <line num="329" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="329" type="cond"/>
+            <line num="330" count="0" type="stmt"/>
+            <line num="331" count="0" type="stmt"/>
+            <line num="333" count="0" type="stmt"/>
+            <line num="336" count="0" type="stmt"/>
+            <line num="337" count="0" type="stmt"/>
+            <line num="337" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="337" type="cond"/>
+            <line num="338" count="0" type="stmt"/>
+            <line num="342" count="0" type="stmt"/>
+            <line num="342" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="342" type="cond"/>
+            <line complexity="1" visibility="public" signature="getHttpHeaders() : HttpHeaders" num="346" count="0" type="method"/>
+            <line num="348" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAcceptMediaType() : MediaType" num="357" count="0" type="method"/>
+            <line num="359" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWebResource() : WebResource" num="362" count="0" type="method"/>
+            <line num="364" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequest() : Request" num="367" count="0" type="method"/>
+            <line num="369" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMediaTypes() : MediaTypes" num="372" count="0" type="method"/>
+            <line num="374" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLinkedDataClient() : LinkedDataClient" num="377" count="0" type="method"/>
+            <line num="379" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHttpServletRequest() : HttpServletRequest" num="382" count="0" type="method"/>
+            <line num="384" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="AtomGraph Web-Client 2.1.7-SNAPSHOT" timestamp="0">
+      <metrics coveredelements="0" complexity="0" loc="0" methods="0" classes="0" statements="0" packages="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="0" files="0" conditionals="0" coveredstatements="0"/>
+   </testproject>
+</coverage>

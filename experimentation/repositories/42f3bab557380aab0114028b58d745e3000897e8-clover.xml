@@ -1,0 +1,1378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594296504848" clover="4.4.1">
+   <project name="fullstop-parent 1.3.0-SNAPSHOT (Aggregated)" timestamp="1594296501805">
+      <metrics coveredelements="0" complexity="252" loc="2602" methods="192" classes="51" statements="495" packages="14" coveredconditionals="0" coveredmethods="0" elements="755" ncloc="1750" files="47" conditionals="68" coveredstatements="0"/>
+      <package name="org.zalando.stups.fullstop.plugin">
+         <metrics coveredelements="0" complexity="9" loc="142" methods="7" classes="5" statements="21" coveredconditionals="0" coveredmethods="0" elements="30" ncloc="86" files="5" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-testing/fullstop-plugin-test/src/main/java/org/zalando/stups/fullstop/plugin/AbstractPluginTest.java" name="AbstractPluginTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="14" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="AbstractPluginTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-testing/fullstop-plugin-test/src/main/java/org/zalando/stups/fullstop/plugin/LocalPluginProcessor.java" name="LocalPluginProcessor.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="38" coveredmethods="0" methods="2" elements="9" classes="1" ncloc="25" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="LocalPluginProcessor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="9" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="LocalPluginProcessor(FullstopPlugin)" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="processEvents(InputStream) : void" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-plugin-api/src/main/java/org/zalando/stups/fullstop/plugin/AbstractFullstopPlugin.java" name="AbstractFullstopPlugin.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="18" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="8" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="AbstractFullstopPlugin">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getMetadata() : PluginMetadata" num="12" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-plugin-api/src/main/java/org/zalando/stups/fullstop/plugin/DefaultMetadataProvider.java" name="DefaultMetadataProvider.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="56" coveredmethods="0" methods="4" elements="19" classes="1" ncloc="37" statements="13" conditionals="2" coveredstatements="0"/>
+            <class name="DefaultMetadataProvider">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="4" elements="19" statements="13" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="DefaultMetadataProvider(String)" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMetadata() : PluginMetadata" num="28" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="readVersion() : String" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="41" type="cond"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getPluginDescriptorName() : String" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-plugin-api/src/main/java/org/zalando/stups/fullstop/plugin/FullstopPlugin.java" name="FullstopPlugin.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="16" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="7" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="FullstopPlugin">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="com.unknown.pkg">
+         <metrics coveredelements="0" complexity="1" loc="17" methods="1" classes="1" statements="1" coveredconditionals="0" coveredmethods="0" elements="2" ncloc="9" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-testing/fullstop-plugin-test/src/main/java/com/unknown/pkg/ExampleApplication.java" name="ExampleApplication.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="17" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="9" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="ExampleApplication">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="main(String[]) : void" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.plugin.hello">
+         <metrics coveredelements="0" complexity="2" loc="31" methods="2" classes="1" statements="2" coveredconditionals="0" coveredmethods="0" elements="4" ncloc="18" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-plugins/fullstop-hello-event-plugin/src/main/java/org/zalando/stups/fullstop/plugin/hello/HelloEventPlugin.java" name="HelloEventPlugin.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="31" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="18" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="HelloEventPlugin">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="supports(CloudTrailEvent) : boolean" num="22" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="processEvent(CloudTrailEvent) : void" num="27" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.aws">
+         <metrics coveredelements="0" complexity="16" loc="182" methods="13" classes="4" statements="46" coveredconditionals="0" coveredmethods="0" elements="65" ncloc="143" files="2" conditionals="6" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-aws-support/fullstop-aws-client-support/src/main/java/org/zalando/stups/fullstop/aws/CachingClientProvider.java" name="CachingClientProvider.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="16" loc="173" coveredmethods="0" methods="13" elements="65" classes="3" ncloc="137" statements="46" conditionals="6" coveredstatements="0"/>
+            <class name="CachingClientProvider">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="8" elements="40" statements="30" conditionals="2" coveredstatements="0"/>
+            </class>
+            <class name="CachingClientProvider.Key">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="4" elements="22" statements="14" conditionals="4" coveredstatements="0"/>
+            </class>
+            <class name="CachingClientProvider.CacheValue">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="3" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="CachingClientProvider(String)" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getClient(Class&lt;T&gt;,String,Region) : T" num="56" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="init() : void" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="66" type="cond"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="tearDown() : void" num="78" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="createCacheLoader() : CacheLoader&lt;Key&lt;?&gt;, CacheValue&gt;" num="85" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="load(Key&lt;?&gt;) : CacheValue" num="87" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="removalHook(RemovalNotification&lt;Key&lt;?&gt;, CacheValue&gt;) : void" num="109" count="0" type="method"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="buildRoleArn(String) : String" num="116" count="0" type="method"/>
+            <line num="117" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="Key(Class&lt;K&gt;,String,Region)" num="127" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="133" count="0" type="method"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="equals(Object) : boolean" num="141" count="0" type="method"/>
+            <line num="143" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="143" type="cond"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="147" type="cond"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="155" count="0" type="method"/>
+            <line num="157" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="CacheValue(AmazonWebServiceClient,STSAssumeRoleSessionCredentialsProvider)" num="167" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-aws-support/fullstop-aws-client-support/src/main/java/org/zalando/stups/fullstop/aws/ClientProvider.java" name="ClientProvider.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="9" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="6" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ClientProvider">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.s3">
+         <metrics coveredelements="0" complexity="20" loc="208" methods="7" classes="2" statements="67" coveredconditionals="0" coveredmethods="0" elements="84" ncloc="156" files="2" conditionals="10" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-aws-support/fullstop-aws-s3-support/src/main/java/org/zalando/stups/fullstop/s3/LogType.java" name="LogType.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="10" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="LogType">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-aws-support/fullstop-aws-s3-support/src/main/java/org/zalando/stups/fullstop/s3/S3Service.java" name="S3Service.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="20" loc="198" coveredmethods="0" methods="7" elements="84" classes="1" ncloc="151" statements="67" conditionals="10" coveredstatements="0"/>
+            <class name="S3Service">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="20" coveredmethods="0" methods="7" elements="84" statements="67" conditionals="10" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="S3Service(String)" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="writeToS3(String,String,Date,String,String,String) : String" num="59" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="putObjectToS3(String,String,String,ObjectMetadata,InputStream) : void" num="95" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="listCommonPrefixesS3Objects(String,String) : List&lt;String&gt;" num="108" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="125" type="cond"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="urlDecode(String) : String" num="134" count="0" type="method"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="listS3Objects(String,String) : List&lt;String&gt;" num="142" count="0" type="method"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="158" type="cond"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="165" type="cond"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="downloadObject(String,String) : String" num="174" count="0" type="method"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="186" type="cond"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.violation.reactor.config">
+         <metrics coveredelements="0" complexity="2" loc="29" methods="2" classes="1" statements="2" coveredconditionals="0" coveredmethods="0" elements="4" ncloc="21" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-violation-sink-reactor/src/main/java/org/zalando/stups/fullstop/violation/reactor/config/EventBusViolationSinkAutoConfiguration.java" name="EventBusViolationSinkAutoConfiguration.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="29" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="21" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="EventBusViolationSinkAutoConfiguration">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="eventBusViolationSink() : EventBusViolationSink" num="20" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="eventBus() : EventBus" num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.violation.reactor">
+         <metrics coveredelements="0" complexity="13" loc="128" methods="11" classes="2" statements="25" coveredconditionals="0" coveredmethods="0" elements="40" ncloc="86" files="2" conditionals="4" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-violation-sink-reactor/src/main/java/org/zalando/stups/fullstop/violation/reactor/EventBusViolationHandler.java" name="EventBusViolationHandler.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="90" coveredmethods="0" methods="9" elements="33" classes="1" ncloc="63" statements="20" conditionals="4" coveredstatements="0"/>
+            <class name="EventBusViolationHandler">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="9" elements="33" statements="20" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="EventBusViolationHandler(EventBus)" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="handleEvent(Event&lt;?&gt;) : void" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="handleUnwrappedEvent(Object) : void" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="start() : void" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="42" type="cond"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="stop() : void" num="52" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="54" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isRunning() : boolean" num="66" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPhase() : int" num="72" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAutoStartup() : boolean" num="78" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="stop(Runnable) : void" num="84" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-violation-sink-reactor/src/main/java/org/zalando/stups/fullstop/violation/reactor/EventBusViolationSink.java" name="EventBusViolationSink.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="38" coveredmethods="0" methods="2" elements="7" classes="1" ncloc="23" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="EventBusViolationSink">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="7" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="EventBusViolationSink(EventBus,CounterService)" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="put(Violation) : void" num="31" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.teams">
+         <metrics coveredelements="0" complexity="32" loc="295" methods="26" classes="6" statements="51" coveredconditionals="0" coveredmethods="0" elements="85" ncloc="235" files="5" conditionals="8" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/team-service-api/src/main/java/org/zalando/stups/fullstop/teams/Account.java" name="Account.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="13" loc="93" coveredmethods="0" methods="10" elements="34" classes="1" ncloc="79" statements="20" conditionals="4" coveredstatements="0"/>
+            <class name="Account">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="13" coveredmethods="0" methods="10" elements="34" statements="20" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Account(String,String,String,String,String,boolean)" num="18" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getId() : String" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getType() : String" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDescription() : String" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOwner() : String" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isDisabled() : boolean" num="60" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="64" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="equals(Object) : boolean" num="76" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="78" type="cond"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="80" type="cond"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="89" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/team-service-api/src/main/java/org/zalando/stups/fullstop/teams/InfrastructureAccount.java" name="InfrastructureAccount.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="52" coveredmethods="0" methods="6" elements="22" classes="1" ncloc="42" statements="12" conditionals="4" coveredstatements="0"/>
+            <class name="InfrastructureAccount">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="6" elements="22" statements="12" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="InfrastructureAccount(String,String)" num="14" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getId() : String" num="20" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getType() : String" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="28" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="equals(Object) : boolean" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="38" type="cond"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="41" type="cond"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/team-service-api/src/main/java/org/zalando/stups/fullstop/teams/TeamOperations.java" name="TeamOperations.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="18" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="12" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="TeamOperations">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/team-service-client-spring/src/main/java/org/zalando/stups/fullstop/teams/RestTemplateTeamOperations.java" name="RestTemplateTeamOperations.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="107" coveredmethods="0" methods="7" elements="23" classes="2" ncloc="87" statements="16" conditionals="0" coveredstatements="0"/>
+            <class name="RestTemplateTeamOperations">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="19" statements="14" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="RestTemplateTeamOperations.Team">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RestTemplateTeamOperations(RestOperations,String,TeamServiceProperties)" num="44" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAwsAccountsByUser(String) : List&lt;Account&gt;" num="52" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTeamIdsByUser(String) : Set&lt;String&gt;" num="67" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getTeamsByUser(String) : Set&lt;Team&gt;" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getActiveAccounts() : List&lt;Account&gt;" num="86" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getId() : String" num="99" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setId(String) : void" num="103" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/team-service-client-spring/src/main/java/org/zalando/stups/fullstop/teams/TeamServiceProperties.java" name="TeamServiceProperties.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="25" coveredmethods="0" methods="3" elements="6" classes="1" ncloc="15" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="TeamServiceProperties">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getAwsMembershipRoles() : String" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAwsMembershipRoles(String) : void" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAwsMembershipRolesAsArray() : String[]" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.events">
+         <metrics coveredelements="0" complexity="39" loc="300" methods="23" classes="3" statements="73" coveredconditionals="0" coveredmethods="0" elements="110" ncloc="215" files="3" conditionals="14" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-aws-support/fullstop-aws-cloudtrail-support/src/main/java/org/zalando/stups/fullstop/events/CloudTrailEventSupport.java" name="CloudTrailEventSupport.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="23" loc="204" coveredmethods="0" methods="16" elements="73" classes="1" ncloc="142" statements="49" conditionals="8" coveredstatements="0"/>
+            <class name="CloudTrailEventSupport">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="23" coveredmethods="0" methods="16" elements="73" statements="49" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="getInstanceIds(CloudTrailEvent) : List&lt;String&gt;" num="59" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="64" type="cond"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEventId(CloudTrailEvent) : String" num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAccountId(CloudTrailEvent) : String" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getEventData(CloudTrailEvent) : CloudTrailEventData" num="85" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="read(String,String,boolean) : List&lt;String&gt;" num="96" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="98" type="cond"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="105" type="cond"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="read(String,String) : List&lt;String&gt;" num="117" count="0" type="method"/>
+            <line num="118" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="read(CloudTrailEvent,String,boolean) : List&lt;String&gt;" num="121" count="0" type="method"/>
+            <line num="123" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInstanceLaunchTime(CloudTrailEvent) : List&lt;String&gt;" num="126" count="0" type="method"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRegion(CloudTrailEvent) : Region" num="136" count="0" type="method"/>
+            <line num="137" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRegionAsString(CloudTrailEvent) : String" num="143" count="0" type="method"/>
+            <line num="144" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="violationFor(CloudTrailEvent) : ViolationBuilder" num="147" count="0" type="method"/>
+            <line num="148" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUsernameAsString(CloudTrailEvent) : String" num="155" count="0" type="method"/>
+            <line num="157" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="getInstances(CloudTrailEvent) : List&lt;String&gt;" num="164" count="0" type="method"/>
+            <line num="165" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="169" type="cond"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRunInstanceTime(String) : DateTime" num="185" count="0" type="method"/>
+            <line num="186" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEventTime(CloudTrailEvent) : DateTime" num="189" count="0" type="method"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="readSecurityGroupIds(CloudTrailEvent) : List&lt;String&gt;" num="198" count="0" type="method"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="202" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-testing/fullstop-test-support/src/main/java/org/zalando/stups/fullstop/events/FileEventReader.java" name="FileEventReader.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="49" coveredmethods="0" methods="3" elements="24" classes="1" ncloc="39" statements="15" conditionals="6" coveredstatements="0"/>
+            <class name="FileEventReader">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="3" elements="24" statements="15" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FileEventReader(EventsProcessor)" num="20" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="readEvents(InputStream) : void" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="4" visibility="protected" signature="emitEvents(EventSerializer) : void" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="35" type="cond"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="38" type="cond"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-testing/fullstop-test-support/src/main/java/org/zalando/stups/fullstop/events/TestCloudTrailEventSerializer.java" name="TestCloudTrailEventSerializer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="47" coveredmethods="0" methods="4" elements="13" classes="1" ncloc="34" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="TestCloudTrailEventSerializer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="4" elements="13" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="TestCloudTrailEventSerializer(JsonParser)" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="createCloudTrailEvent(String) : CloudTrailEvent" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getParser(String) : JsonParser" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMetadata(int,int) : CloudTrailEventMetadata" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.violation">
+         <metrics coveredelements="0" complexity="48" loc="476" methods="47" classes="11" statements="76" coveredconditionals="0" coveredmethods="0" elements="125" ncloc="303" files="11" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-violation-api/src/main/java/org/zalando/stups/fullstop/violation/DefaultViolation.java" name="DefaultViolation.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="27" loc="175" coveredmethods="0" methods="27" elements="62" classes="1" ncloc="131" statements="35" conditionals="0" coveredstatements="0"/>
+            <class name="DefaultViolation">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="27" coveredmethods="0" methods="27" elements="62" statements="35" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="DefaultViolation(String,String,String,String,String,Object,String,Boolean,String,String,String)" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="DefaultViolation()" num="48" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getEventId() : String" num="51" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEventId(String) : void" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAccountId() : String" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAccountId(String) : void" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRegion() : String" num="69" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRegion(String) : void" num="74" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInstanceId() : String" num="78" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setInstanceId(String) : void" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMetaInfo() : Object" num="87" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setMetaInfo(Object) : void" num="92" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getComment() : String" num="96" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setComment(String) : void" num="101" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getChecked() : Boolean" num="105" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setChecked(Boolean) : void" num="110" count="0" type="method"/>
+            <line num="111" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getViolationType() : String" num="114" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setViolationType(String) : void" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPluginFullyQualifiedClassName() : String" num="123" count="0" type="method"/>
+            <line num="125" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPluginFullyQualifiedClassName(String) : void" num="128" count="0" type="method"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUsername() : String" num="132" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUsername(String) : void" num="137" count="0" type="method"/>
+            <line num="138" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getApplicationId() : String" num="141" count="0" type="method"/>
+            <line num="143" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setApplicationId(String) : String" num="146" count="0" type="method"/>
+            <line num="147" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getApplicationVersion() : String" num="150" count="0" type="method"/>
+            <line num="152" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setApplicationVersion(String) : String" num="155" count="0" type="method"/>
+            <line num="156" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="159" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-violation-api/src/main/java/org/zalando/stups/fullstop/violation/NoOpViolationHandler.java" name="NoOpViolationHandler.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="13" coveredmethods="0" methods="1" elements="1" classes="1" ncloc="6" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="NoOpViolationHandler">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="1" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="handle(Violation) : void" num="8" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-violation-api/src/main/java/org/zalando/stups/fullstop/violation/NoOpViolationSink.java" name="NoOpViolationSink.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="13" coveredmethods="0" methods="1" elements="1" classes="1" ncloc="6" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="NoOpViolationSink">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="1" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="put(Violation) : void" num="8" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-violation-api/src/main/java/org/zalando/stups/fullstop/violation/SystemOutViolationHandler.java" name="SystemOutViolationHandler.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="15" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="7" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="SystemOutViolationHandler">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="handle(Violation) : void" num="10" count="0" type="method"/>
+            <line num="12" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-violation-api/src/main/java/org/zalando/stups/fullstop/violation/SystemOutViolationSink.java" name="SystemOutViolationSink.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="13" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="7" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="SystemOutViolationSink">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="put(Violation) : void" num="8" count="0" type="method"/>
+            <line num="10" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-violation-api/src/main/java/org/zalando/stups/fullstop/violation/Violation.java" name="Violation.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="32" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="15" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Violation">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-violation-api/src/main/java/org/zalando/stups/fullstop/violation/ViolationBuilder.java" name="ViolationBuilder.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="12" loc="100" coveredmethods="0" methods="12" elements="44" classes="1" ncloc="69" statements="32" conditionals="0" coveredstatements="0"/>
+            <class name="ViolationBuilder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="12" coveredmethods="0" methods="12" elements="44" statements="32" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ViolationBuilder()" num="29" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="build() : Violation" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withEventId(String) : ViolationBuilder" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withAccountId(String) : ViolationBuilder" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withRegion(String) : ViolationBuilder" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withInstanceId(String) : ViolationBuilder" num="64" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withMetaInfo(Object) : ViolationBuilder" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withType(String) : ViolationBuilder" num="74" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withPluginFullyQualifiedClassName(Class) : ViolationBuilder" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withUsername(String) : ViolationBuilder" num="84" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withApplicationId(String) : ViolationBuilder" num="90" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withApplicationVersion(String) : ViolationBuilder" num="96" count="0" type="method"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-violation-api/src/main/java/org/zalando/stups/fullstop/violation/ViolationHandler.java" name="ViolationHandler.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="12" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="4" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ViolationHandler">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-violation-api/src/main/java/org/zalando/stups/fullstop/violation/ViolationSink.java" name="ViolationSink.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="14" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ViolationSink">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-violation-api/src/main/java/org/zalando/stups/fullstop/violation/ViolationType.java" name="ViolationType.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="56" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="27" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ViolationType">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-testing/fullstop-test-support/src/main/java/org/zalando/stups/fullstop/violation/ViolationMatchers.java" name="ViolationMatchers.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="33" coveredmethods="0" methods="4" elements="13" classes="1" ncloc="26" statements="7" conditionals="2" coveredstatements="0"/>
+            <class name="ViolationMatchers">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="4" elements="13" statements="7" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="ViolationMatchers()" num="12" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="hasType(String) : Matcher&lt;Violation&gt;" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="matchesSafely(Violation,Description) : boolean" num="16" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="19" type="cond"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="describeTo(Description) : void" num="27" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.web.api">
+         <metrics coveredelements="0" complexity="4" loc="28" methods="4" classes="3" statements="5" coveredconditionals="0" coveredmethods="0" elements="9" ncloc="23" files="3" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-web/fullstop-web-commons/src/main/java/org/zalando/stups/fullstop/web/api/ApiException.java" name="ApiException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="14" coveredmethods="0" methods="2" elements="5" classes="1" ncloc="11" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="ApiException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="5" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ApiException(int,String)" num="6" count="0" type="method"/>
+            <line num="7" count="0" type="stmt"/>
+            <line num="8" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCode() : int" num="11" count="0" type="method"/>
+            <line num="12" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-web/fullstop-web-commons/src/main/java/org/zalando/stups/fullstop/web/api/ForbiddenException.java" name="ForbiddenException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="7" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="6" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="ForbiddenException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ForbiddenException(String)" num="4" count="0" type="method"/>
+            <line num="5" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-web/fullstop-web-commons/src/main/java/org/zalando/stups/fullstop/web/api/NotFoundException.java" name="NotFoundException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="7" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="6" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="NotFoundException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="NotFoundException(String)" num="4" count="0" type="method"/>
+            <line num="5" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.web.controller">
+         <metrics coveredelements="0" complexity="1" loc="22" methods="1" classes="1" statements="2" coveredconditionals="0" coveredmethods="0" elements="3" ncloc="17" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-web/fullstop-web-commons/src/main/java/org/zalando/stups/fullstop/web/controller/ApiExceptionHandler.java" name="ApiExceptionHandler.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="22" coveredmethods="0" methods="1" elements="3" classes="1" ncloc="17" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="ApiExceptionHandler">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="3" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="handleApiException(ApiException) : ResponseEntity&lt;String&gt;" num="16" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop">
+         <metrics coveredelements="0" complexity="53" loc="607" methods="42" classes="9" statements="94" coveredconditionals="0" coveredmethods="0" elements="148" ncloc="341" files="9" conditionals="12" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-processing/src/main/java/org/zalando/stups/fullstop/AwsCloudTrailProcessingExecutorContainer.java" name="AwsCloudTrailProcessingExecutorContainer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="73" coveredmethods="0" methods="7" elements="29" classes="1" ncloc="53" statements="16" conditionals="6" coveredstatements="0"/>
+            <class name="AwsCloudTrailProcessingExecutorContainer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="7" elements="29" statements="16" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AwsCloudTrailProcessingExecutorContainer(AWSCloudTrailProcessingExecutor)" num="22" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="start() : void" num="27" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="29" type="cond"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="stop() : void" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="40" type="cond"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isRunning() : boolean" num="50" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPhase() : int" num="56" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAutoStartup() : boolean" num="61" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="stop(Runnable) : void" num="67" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-processing/src/main/java/org/zalando/stups/fullstop/CloudTrailProcessingLibraryProperties.java" name="CloudTrailProcessingLibraryProperties.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="33" coveredmethods="0" methods="3" elements="8" classes="1" ncloc="20" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="CloudTrailProcessingLibraryProperties">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="8" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getProperties() : Map&lt;String, String&gt;" num="19" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setProperties(Map&lt;String, String&gt;) : void" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAsProperties() : Properties" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-processing/src/main/java/org/zalando/stups/fullstop/ExtPropertiesFileConfiguration.java" name="ExtPropertiesFileConfiguration.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="19" loc="274" coveredmethods="0" methods="16" elements="64" classes="1" ncloc="122" statements="46" conditionals="2" coveredstatements="0"/>
+            <class name="ExtPropertiesFileConfiguration">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="19" coveredmethods="0" methods="16" elements="64" statements="46" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ExtPropertiesFileConfiguration(Properties)" num="104" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="ExtPropertiesFileConfiguration(Properties,AWSCredentialsProviderChain)" num="114" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="122" type="cond"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromClasspath(String) : ExtPropertiesFileConfiguration" num="141" count="0" type="method"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="loadProperty(String) : Properties" num="155" count="0" type="method"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAwsCredentialsProvider() : AWSCredentialsProvider" num="172" count="0" type="method"/>
+            <line num="173" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSqsUrl() : String" num="179" count="0" type="method"/>
+            <line num="180" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSqsRegion() : String" num="186" count="0" type="method"/>
+            <line num="187" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getVisibilityTimeout() : int" num="193" count="0" type="method"/>
+            <line num="194" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getS3Region() : String" num="200" count="0" type="method"/>
+            <line num="201" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getThreadCount() : int" num="207" count="0" type="method"/>
+            <line num="208" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getThreadTerminationDelaySeconds() : int" num="214" count="0" type="method"/>
+            <line num="215" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMaxEventsPerEmit() : int" num="221" count="0" type="method"/>
+            <line num="222" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isEnableRawEventInfo() : boolean" num="228" count="0" type="method"/>
+            <line num="229" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="validate() : void" num="235" count="0" type="method"/>
+            <line num="237" count="0" type="stmt"/>
+            <line num="238" count="0" type="stmt"/>
+            <line num="239" count="0" type="stmt"/>
+            <line num="240" count="0" type="stmt"/>
+            <line num="241" count="0" type="stmt"/>
+            <line num="242" count="0" type="stmt"/>
+            <line num="243" count="0" type="stmt"/>
+            <line num="246" count="0" type="stmt"/>
+            <line num="247" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getIntProperty(Properties,String) : int" num="257" count="0" type="method"/>
+            <line num="258" count="0" type="stmt"/>
+            <line num="259" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getBooleanProperty(Properties,String) : Boolean" num="269" count="0" type="method"/>
+            <line num="270" count="0" type="stmt"/>
+            <line num="271" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-processing/src/main/java/org/zalando/stups/fullstop/FullstopConfig.java" name="FullstopConfig.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="38" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="28" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="FullstopConfig">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="pluginEventsProcessor() : PluginEventsProcessor" num="22" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="awsCloudTrailProcessingExecutor() : AWSCloudTrailProcessingExecutor" num="31" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-processing/src/main/java/org/zalando/stups/fullstop/FullstopContainerProperties.java" name="FullstopContainerProperties.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="21" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="12" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="FullstopContainerProperties">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="isAutoStart() : boolean" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAutoStart(boolean) : void" num="17" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-processing/src/main/java/org/zalando/stups/fullstop/NoOpsProgressReporter.java" name="NoOpsProgressReporter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="19" coveredmethods="0" methods="2" elements="3" classes="1" ncloc="11" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="NoOpsProgressReporter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="3" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="reportStart(ProgressStatus) : Object" num="11" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="reportEnd(ProgressStatus,Object) : void" num="16" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-processing/src/main/java/org/zalando/stups/fullstop/PluginEventsProcessor.java" name="PluginEventsProcessor.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="70" coveredmethods="0" methods="5" elements="14" classes="1" ncloc="43" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="PluginEventsProcessor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="5" elements="14" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="PluginEventsProcessor(PluginRegistry&lt;FullstopPlugin, CloudTrailEvent&gt;)" num="27" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="process(List&lt;CloudTrailEvent&gt;) : void" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="doProcess(CloudTrailEvent) : void" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="doProcess(CloudTrailEvent,FullstopPlugin) : void" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getPluginsForEvent(CloudTrailEvent) : List&lt;FullstopPlugin&gt;" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-processing/src/main/java/org/zalando/stups/fullstop/RegisteredPluginLogger.java" name="RegisteredPluginLogger.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="35" coveredmethods="0" methods="2" elements="7" classes="1" ncloc="24" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="RegisteredPluginLogger">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="7" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RegisteredPluginLogger(PluginRegistry&lt;FullstopPlugin, CloudTrailEvent&gt;)" num="21" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="logRegisteredPlugins() : void" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-processing/src/main/java/org/zalando/stups/fullstop/SimplePropertiesCredentials.java" name="SimplePropertiesCredentials.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="44" coveredmethods="0" methods="3" elements="15" classes="1" ncloc="28" statements="8" conditionals="4" coveredstatements="0"/>
+            <class name="SimplePropertiesCredentials">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="3" elements="15" statements="8" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="4" visibility="public" signature="SimplePropertiesCredentials(Properties)" num="16" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="17" type="cond"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="22" type="cond"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCredentials() : AWSCredentials" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="refresh() : void" num="39" count="0" type="method"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.filereader">
+         <metrics coveredelements="0" complexity="12" loc="137" methods="6" classes="2" statements="30" coveredconditionals="0" coveredmethods="0" elements="46" ncloc="97" files="1" conditionals="10" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-processing/src/main/java/org/zalando/stups/fullstop/filereader/FileEventReader.java" name="FileEventReader.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="12" loc="137" coveredmethods="0" methods="6" elements="46" classes="2" ncloc="97" statements="30" conditionals="10" coveredstatements="0"/>
+            <class name="FileEventReader">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="5" elements="44" statements="29" conditionals="10" coveredstatements="0"/>
+            </class>
+            <class name="FileEventReader.FakeProgressInfo">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FileEventReader(EventsProcessor,EventFilter)" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="FileEventReader(EventsProcessor)" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="readEvents(File,CloudTrailLog) : void" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getEventSerializer(GZIPInputStream,CloudTrailLog) : EventSerializer" num="86" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="90" type="cond"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="emitEvents(EventSerializer) : void" num="103" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="105" type="cond"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="109" type="cond"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="112" type="cond"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="124" type="cond"/>
+            <line num="125" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isSuccess() : boolean" num="131" count="0" type="method"/>
+            <line num="133" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="fullstop-parent 1.3.0-SNAPSHOT (Aggregated)" timestamp="1594296501805">
+      <metrics coveredelements="0" complexity="44" loc="755" methods="43" classes="17" statements="149" packages="8" coveredconditionals="0" coveredmethods="0" elements="192" ncloc="545" files="15" conditionals="0" coveredstatements="0"/>
+      <package name="org.zalando.stups.fullstop.plugin">
+         <metrics coveredelements="0" complexity="6" loc="101" methods="6" classes="3" statements="30" coveredconditionals="0" coveredmethods="0" elements="36" ncloc="70" files="3" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-testing/fullstop-plugin-test/src/test/java/org/zalando/stups/fullstop/plugin/SimplePlugin.java" name="SimplePlugin.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="28" coveredmethods="0" methods="3" elements="6" classes="1" ncloc="18" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="SimplePlugin">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="SimplePlugin(ViolationSink)" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="supports(CloudTrailEvent) : boolean" num="18" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="processEvent(CloudTrailEvent) : void" num="23" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-testing/fullstop-plugin-test/src/test/java/org/zalando/stups/fullstop/plugin/SimplePluginTest.java" name="SimplePluginTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="33" coveredmethods="0" methods="1" elements="6" classes="1" ncloc="17" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="SimplePluginTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="6" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="simplePluginTest() : void" num="16" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-apis/fullstop-plugin-api/src/test/java/org/zalando/stups/fullstop/plugin/DefaultMetadataProviderTest.java" name="DefaultMetadataProviderTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="40" coveredmethods="0" methods="2" elements="24" classes="1" ncloc="35" statements="22" conditionals="0" coveredstatements="0"/>
+            <class name="DefaultMetadataProviderTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="24" statements="22" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testMetadataProvider() : void" num="11" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+            <line num="14" count="0" type="stmt"/>
+            <line num="15" count="0" type="stmt"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testMetadataProviderNotFound() : void" num="26" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.aws">
+         <metrics coveredelements="0" complexity="3" loc="90" methods="3" classes="3" statements="9" coveredconditionals="0" coveredmethods="0" elements="12" ncloc="74" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-aws-support/fullstop-aws-client-support/src/test/java/org/zalando/stups/fullstop/aws/CachingClientProviderTest.java" name="CachingClientProviderTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="66" coveredmethods="0" methods="2" elements="9" classes="2" ncloc="54" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="CachingClientProviderTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="7" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="CachingClientProviderTest.TestConfig">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testCachingClientProvider() : void" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="cachingClientProvider() : ClientProvider" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-aws-support/fullstop-aws-client-support/src/test/java/org/zalando/stups/fullstop/aws/ClientTest.java" name="ClientTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="24" coveredmethods="0" methods="1" elements="3" classes="1" ncloc="20" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="ClientTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="3" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="createClient() : void" num="14" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.s3">
+         <metrics coveredelements="0" complexity="3" loc="37" methods="3" classes="1" statements="5" coveredconditionals="0" coveredmethods="0" elements="8" ncloc="28" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-aws-support/fullstop-aws-s3-support/src/test/java/org/zalando/stups/fullstop/s3/S3ServiceTest.java" name="S3ServiceTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="37" coveredmethods="0" methods="3" elements="8" classes="1" ncloc="28" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="S3ServiceTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="8" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="19" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testS3ServiceListObject() : void" num="24" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testListObjects() : void" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.unknown">
+         <metrics coveredelements="0" complexity="3" loc="83" methods="3" classes="2" statements="14" coveredconditionals="0" coveredmethods="0" elements="17" ncloc="57" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-violation-sink-reactor/src/test/java/com/unknown/SampleApplication.java" name="SampleApplication.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="17" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="9" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="SampleApplication">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="main(String[]) : void" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-violation-sink-reactor/src/test/java/com/unknown/ViolationSinkIT.java" name="ViolationSinkIT.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="66" coveredmethods="0" methods="2" elements="15" classes="1" ncloc="48" statements="13" conditionals="0" coveredstatements="0"/>
+            <class name="ViolationSinkIT">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="15" statements="13" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="handleViolation() : void" num="49" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.unknown.comp">
+         <metrics coveredelements="0" complexity="4" loc="52" methods="4" classes="2" statements="5" coveredconditionals="0" coveredmethods="0" elements="9" ncloc="35" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-violation-sink-reactor/src/test/java/com/unknown/comp/HandlerConfig.java" name="HandlerConfig.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="19" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="14" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="HandlerConfig">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="simpleDemonstrationViolationHandler() : SimpleDemonstrationViolationHandler" num="14" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-violation-sink-reactor/src/test/java/com/unknown/comp/SimpleDemonstrationViolationHandler.java" name="SimpleDemonstrationViolationHandler.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="33" coveredmethods="0" methods="3" elements="7" classes="1" ncloc="21" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="SimpleDemonstrationViolationHandler">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="7" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="SimpleDemonstrationViolationHandler(EventBus)" num="20" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="handleViolation(Violation) : void" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCount() : int" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.teams">
+         <metrics coveredelements="0" complexity="6" loc="88" methods="6" classes="2" statements="12" coveredconditionals="0" coveredmethods="0" elements="18" ncloc="71" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/team-service-client-spring/src/test/java/org/zalando/stups/fullstop/teams/RestTemplateTeamOperationsTest.java" name="RestTemplateTeamOperationsTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="88" coveredmethods="0" methods="6" elements="18" classes="2" ncloc="71" statements="12" conditionals="0" coveredstatements="0"/>
+            <class name="RestTemplateTeamOperationsTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="12" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="RestTemplateTeamOperationsTest.TestConfig">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAwsAccountsByUser() : void" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="mockAccountsRequest(String,String,String) : void" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="restTemplate() : RestTemplate" num="71" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="mockServer(RestTemplate) : MockRestServiceServer" num="76" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="teamOperations(RestTemplate,TeamServiceProperties) : RestTemplateTeamOperations" num="81" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.events">
+         <metrics coveredelements="0" complexity="6" loc="55" methods="6" classes="1" statements="13" coveredconditionals="0" coveredmethods="0" elements="19" ncloc="41" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-aws-support/fullstop-aws-cloudtrail-support/src/test/java/org/zalando/stups/fullstop/events/CloudTrailEventSupportTest.java" name="CloudTrailEventSupportTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="55" coveredmethods="0" methods="6" elements="19" classes="1" ncloc="41" statements="13" conditionals="0" coveredstatements="0"/>
+            <class name="CloudTrailEventSupportTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="19" statements="13" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getInstanceIdsTest() : void" num="18" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInstancesTest() : void" num="24" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInstanceIdsNullEvent() : void" num="31" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInstanceIdsNullEventData() : void" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testNullResponseElementsAmis() : void" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testReadEmptySecurityGroups() : void" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.zalando.stups.fullstop.plugin.example">
+         <metrics coveredelements="0" complexity="13" loc="249" methods="12" classes="3" statements="61" coveredconditionals="0" coveredmethods="0" elements="73" ncloc="169" files="3" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-processing/src/test/java/org/zalando/stups/fullstop/plugin/example/ExamplePlugin.java" name="ExamplePlugin.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="98" coveredmethods="0" methods="5" elements="23" classes="1" ncloc="64" statements="18" conditionals="0" coveredstatements="0"/>
+            <class name="ExamplePlugin">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="23" statements="18" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="supports(CloudTrailEvent) : boolean" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="processEvent(CloudTrailEvent) : void" num="52" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getClientForAccount(String,Region) : AmazonEC2" num="75" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getFromParameters(String) : String" num="87" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMetadata() : PluginMetadata" num="93" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-processing/src/test/java/org/zalando/stups/fullstop/plugin/example/ExamplePluginRegistryTest.java" name="ExamplePluginRegistryTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="89" coveredmethods="0" methods="4" elements="27" classes="1" ncloc="63" statements="23" conditionals="0" coveredstatements="0"/>
+            <class name="ExamplePluginRegistryTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="4" elements="27" statements="23" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pluginDoesNotSupportEvent() : void" num="50" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pluginSupportsEvent() : void" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="eventsProcessor() : void" num="74" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/fullstop-core/fullstop-processing/src/test/java/org/zalando/stups/fullstop/plugin/example/ExamplePluginTest.java" name="ExamplePluginTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="62" coveredmethods="0" methods="3" elements="23" classes="1" ncloc="42" statements="20" conditionals="0" coveredstatements="0"/>
+            <class name="ExamplePluginTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="23" statements="20" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pluginDoesNotSupportEvent() : void" num="31" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pluginSupportsEvent() : void" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

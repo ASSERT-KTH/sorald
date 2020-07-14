@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594412798917" clover="4.4.1">
+   <project name="playlist 1.0-SNAPSHOT" timestamp="0">
+      <metrics coveredelements="0" complexity="150" loc="1988" methods="101" classes="25" statements="541" packages="5" coveredconditionals="0" coveredmethods="0" elements="714" ncloc="1036" files="24" conditionals="72" coveredstatements="0"/>
+      <package name="default-pkg">
+         <metrics coveredelements="0" complexity="2" loc="56" methods="1" classes="1" statements="15" coveredconditionals="0" coveredmethods="0" elements="18" ncloc="26" files="1" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/StartJetty.java" name="StartJetty.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="56" coveredmethods="0" methods="1" elements="18" classes="1" ncloc="26" statements="15" conditionals="2" coveredstatements="0"/>
+            <class name="StartJetty">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="1" elements="18" statements="15" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="main(String[]) : void" num="18" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="35" type="cond"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="playlist.controller">
+         <metrics coveredelements="0" complexity="51" loc="549" methods="18" classes="7" statements="165" coveredconditionals="0" coveredmethods="0" elements="233" ncloc="318" files="7" conditionals="50" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/controller/ArtistServlet.java" name="ArtistServlet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="40" coveredmethods="0" methods="1" elements="14" classes="1" ncloc="24" statements="11" conditionals="2" coveredstatements="0"/>
+            <class name="ArtistServlet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="1" elements="14" statements="11" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="protected" signature="doGet(HttpServletRequest,HttpServletResponse) : void" num="21" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="30" type="cond"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/controller/HomeServlet.java" name="HomeServlet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="33" coveredmethods="0" methods="1" elements="7" classes="1" ncloc="18" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="HomeServlet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="7" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="doGet(HttpServletRequest,HttpServletResponse) : void" num="21" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/controller/LoginServlet.java" name="LoginServlet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="15" loc="139" coveredmethods="0" methods="5" elements="68" classes="1" ncloc="82" statements="47" conditionals="16" coveredstatements="0"/>
+            <class name="LoginServlet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="15" coveredmethods="0" methods="5" elements="68" statements="47" conditionals="16" coveredstatements="0"/>
+            </class>
+            <line complexity="4" visibility="protected" signature="doPost(HttpServletRequest,HttpServletResponse) : void" num="24" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="29" type="cond"/>
+            <line num="31" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="31" type="cond"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="33" type="cond"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="doGet(HttpServletRequest,HttpServletResponse) : void" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="46" type="cond"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="doLogin(HttpServletRequest,HttpServletResponse) : void" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="60" type="cond"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="doCreateUser(HttpServletRequest,HttpServletResponse) : void" num="90" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="94" type="cond"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="doLogout(HttpServletRequest,HttpServletResponse) : void" num="128" count="0" type="method"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="130" type="cond"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/controller/PlaylistTracksServlet.java" name="PlaylistTracksServlet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="103" coveredmethods="0" methods="4" elements="46" classes="1" ncloc="61" statements="34" conditionals="8" coveredstatements="0"/>
+            <class name="PlaylistTracksServlet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="4" elements="46" statements="34" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="protected" signature="doPost(HttpServletRequest,HttpServletResponse) : void" num="24" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="36" type="cond"/>
+            <line num="37" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="37" type="cond"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="doGet(HttpServletRequest,HttpServletResponse) : void" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="74" type="cond"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="doAddPlaylistTrack(PlaylistDAO,UUID) : void" num="87" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="doDeleteTrack(PlaylistDAO,long) : void" num="99" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/controller/PlaylistsServlet.java" name="PlaylistsServlet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="80" coveredmethods="0" methods="4" elements="38" classes="1" ncloc="48" statements="24" conditionals="10" coveredstatements="0"/>
+            <class name="PlaylistsServlet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="4" elements="38" statements="24" conditionals="10" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="doPost(HttpServletRequest,HttpServletResponse) : void" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="doGet(HttpServletRequest,HttpServletResponse) : void" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="6" visibility="private" signature="doAction(HttpServletRequest,HttpServletResponse) : void" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="36" type="cond"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="50" type="cond"/>
+            <line num="51" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="51" type="cond"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="60" type="cond"/>
+            <line num="61" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="61" type="cond"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="doAddPlaylist(UserDAO,String) : void" num="73" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/controller/StatisticsServlet.java" name="StatisticsServlet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="30" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="15" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="StatisticsServlet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="doGet(HttpServletRequest,HttpServletResponse) : void" num="21" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/controller/TrackServlet.java" name="TrackServlet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="13" loc="124" coveredmethods="0" methods="2" elements="56" classes="1" ncloc="70" statements="40" conditionals="14" coveredstatements="0"/>
+            <class name="TrackServlet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="13" coveredmethods="0" methods="2" elements="56" statements="40" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="7" visibility="protected" signature="doPost(HttpServletRequest,HttpServletResponse) : void" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="34" type="cond"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="38" type="cond"/>
+            <line falsecount="0" truecount="0" num="39" type="cond"/>
+            <line num="41" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="41" type="cond"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="6" visibility="protected" signature="doGet(HttpServletRequest,HttpServletResponse) : void" num="83" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="91" type="cond"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="94" type="cond"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="98" type="cond"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="playlist.exceptions">
+         <metrics coveredelements="0" complexity="0" loc="22" methods="0" classes="2" statements="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="6" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/exceptions/UserExistsException.java" name="UserExistsException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="11" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="UserExistsException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/exceptions/UserLoginException.java" name="UserLoginException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="11" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="UserLoginException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="playlist.model">
+         <metrics coveredelements="0" complexity="96" loc="1334" methods="81" classes="14" statements="358" coveredconditionals="0" coveredmethods="0" elements="459" ncloc="676" files="13" conditionals="20" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/model/ArtistsDAO.java" name="ArtistsDAO.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="75" coveredmethods="0" methods="1" elements="9" classes="1" ncloc="17" statements="6" conditionals="2" coveredstatements="0"/>
+            <class name="ArtistsDAO">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="1" elements="9" statements="6" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="listArtistByLetter(String,boolean) : List&lt;String&gt;" num="36" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="47" type="cond"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/model/CassandraData.java" name="CassandraData.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="68" coveredmethods="0" methods="3" elements="10" classes="1" ncloc="18" statements="5" conditionals="2" coveredstatements="0"/>
+            <class name="CassandraData">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="10" statements="5" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CassandraData()" num="31" count="0" type="method"/>
+            <line complexity="2" visibility="public" signature="getSession() : Session" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="49" type="cond"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="createSession() : Session" num="64" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/model/CassandraInfo.java" name="CassandraInfo.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="38" coveredmethods="0" methods="3" elements="8" classes="1" ncloc="17" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="CassandraInfo">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="8" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="CassandraInfo()" num="23" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getClusterName() : String" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCassandraVersion() : String" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/model/PlaylistDAO.java" name="PlaylistDAO.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="21" loc="246" coveredmethods="0" methods="18" elements="92" classes="2" ncloc="139" statements="68" conditionals="6" coveredstatements="0"/>
+            <class name="PlaylistDAO">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="13" coveredmethods="0" methods="10" elements="66" statements="50" conditionals="6" coveredstatements="0"/>
+            </class>
+            <class name="PlaylistDAO.PlaylistTrack">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="8" elements="26" statements="18" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="PlaylistDAO(String,String)" num="28" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="PlaylistTrack(TracksDAO)" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="PlaylistTrack(Row)" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTrack_name() : String" num="64" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getArtist() : String" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTrack_length_in_seconds() : int" num="72" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSequence_no() : long" num="76" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getGenre() : String" num="80" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTrack_id() : UUID" num="84" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createPlayList(UserDAO,String) : PlaylistDAO" num="98" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deletePlayList() : void" num="120" count="0" type="method"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlaylistForUser(String,String) : PlaylistDAO" num="138" count="0" type="method"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="deleteTrackFromPlaylist(long) : void" num="168" count="0" type="method"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="177" type="cond"/>
+            <line num="180" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="180" type="cond"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="190" type="cond"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addTrackToPlaylist(PlaylistTrack) : void" num="199" count="0" type="method"/>
+            <line num="202" count="0" type="stmt"/>
+            <line num="207" count="0" type="stmt"/>
+            <line num="212" count="0" type="stmt"/>
+            <line num="213" count="0" type="stmt"/>
+            <line num="216" count="0" type="stmt"/>
+            <line num="217" count="0" type="stmt"/>
+            <line num="218" count="0" type="stmt"/>
+            <line num="219" count="0" type="stmt"/>
+            <line num="220" count="0" type="stmt"/>
+            <line num="221" count="0" type="stmt"/>
+            <line num="222" count="0" type="stmt"/>
+            <line num="223" count="0" type="stmt"/>
+            <line num="225" count="0" type="stmt"/>
+            <line num="227" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlaylist_name() : String" num="230" count="0" type="method"/>
+            <line num="231" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlaylistTrackList() : List&lt;PlaylistTrack&gt;" num="234" count="0" type="method"/>
+            <line num="235" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlaylist_length_in_seconds() : int" num="238" count="0" type="method"/>
+            <line num="239" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUsername() : String" num="242" count="0" type="method"/>
+            <line num="243" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/model/StatisticsDAO.java" name="StatisticsDAO.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="90" coveredmethods="0" methods="6" elements="20" classes="1" ncloc="36" statements="14" conditionals="0" coveredstatements="0"/>
+            <class name="StatisticsDAO">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="20" statements="14" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="StatisticsDAO(Row)" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStatistics() : List&lt;StatisticsDAO&gt;" num="41" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="increment_counter(String) : void" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="decrement_counter(String) : void" num="76" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCounter_name() : String" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCounter_value() : long" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/model/TracksDAO.java" name="TracksDAO.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="16" loc="185" coveredmethods="0" methods="14" elements="81" classes="1" ncloc="116" statements="65" conditionals="2" coveredstatements="0"/>
+            <class name="TracksDAO">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="16" coveredmethods="0" methods="14" elements="81" statements="65" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="private" signature="TracksDAO(Row)" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="TracksDAO(String,String,String,String,int)" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="listSongsByArtist(String) : List&lt;TracksDAO&gt;" num="66" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="listSongsByGenre(String,int) : List&lt;TracksDAO&gt;" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getTrackById(UUID) : TracksDAO" num="100" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="107" type="cond"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="add() : void" num="118" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="star() : void" num="145" count="0" type="method"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTrack_id() : UUID" num="158" count="0" type="method"/>
+            <line num="159" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getArtist() : String" num="162" count="0" type="method"/>
+            <line num="163" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTrack() : String" num="166" count="0" type="method"/>
+            <line num="167" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getGenre() : String" num="170" count="0" type="method"/>
+            <line num="171" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMusic_file() : String" num="174" count="0" type="method"/>
+            <line num="175" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTrack_length_in_seconds() : int" num="178" count="0" type="method"/>
+            <line num="179" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStarred() : Boolean" num="182" count="0" type="method"/>
+            <line num="183" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/playlist/model/UserDAO.java" name="UserDAO.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="15" loc="161" coveredmethods="0" methods="10" elements="54" classes="1" ncloc="75" statements="36" conditionals="8" coveredstatements="0"/>
+            <class name="UserDAO">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="15" coveredmethods="0" methods="10" elements="54" statements="36" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="UserDAO(Row)" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="UserDAO(String,String)" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="addUser(String,String) : UserDAO" num="52" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="64" type="cond"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deleteUser() : void" num="76" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getUser(String) : UserDAO" num="93" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="99" type="cond"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getUserWithQuorum(String) : UserDAO" num="112" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="121" type="cond"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="validateLogin(String,String) : UserDAO" num="138" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="141" type="cond"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUsername() : String" num="148" count="0" type="method"/>
+            <line num="149" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPassword() : String" num="152" count="0" type="method"/>
+            <line num="153" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlaylist_names() : Set&lt;String&gt;" num="156" count="0" type="method"/>
+            <line num="157" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/playlist/model/ArtistTest.java" name="ArtistTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="50" coveredmethods="0" methods="3" elements="13" classes="1" ncloc="21" statements="10" conditionals="0" coveredstatements="0"/>
+            <class name="ArtistTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="13" statements="10" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testFindArtistsStartingWithA() : void" num="16" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testFindArtistsStartingWithADesc() : void" num="29" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testFindArtistsStartingWithInvalidLetter() : void" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/playlist/model/CassandraDataTest.java" name="CassandraDataTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="44" coveredmethods="0" methods="2" elements="8" classes="1" ncloc="15" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="CassandraDataTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="8" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testCassandraConnection() : void" num="16" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testCassandraSession() : void" num="25" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/playlist/model/PlaylistDAOTest.java" name="PlaylistDAOTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="119" coveredmethods="0" methods="5" elements="58" classes="1" ncloc="72" statements="53" conditionals="0" coveredstatements="0"/>
+            <class name="PlaylistDAOTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="58" statements="53" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="setUp() : void" num="20" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testAddTrackToPlaylist() : void" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDeleteTrackFromPlaylist() : void" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDeletePlayList() : void" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testAddPlayList() : void" num="104" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/playlist/model/SongTest.java" name="SongTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="80" coveredmethods="0" methods="5" elements="31" classes="1" ncloc="43" statements="26" conditionals="0" coveredstatements="0"/>
+            <class name="SongTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="31" statements="26" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testFindTracksByArtist() : void" num="17" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testFindTracksByGenre() : void" num="30" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testFindTrackById() : void" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="cleanTestTrack() : void" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testAddSongAndArtist() : void" num="59" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/playlist/model/StatisticsDAOTest.java" name="StatisticsDAOTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="48" coveredmethods="0" methods="3" elements="18" classes="1" ncloc="28" statements="15" conditionals="0" coveredstatements="0"/>
+            <class name="StatisticsDAOTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="18" statements="15" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="setUp() : void" num="17" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testIncrement_counter() : void" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDecrement_counter() : void" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/playlist/model/UserTest.java" name="UserTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="130" coveredmethods="0" methods="8" elements="57" classes="1" ncloc="79" statements="49" conditionals="0" coveredstatements="0"/>
+            <class name="UserTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="8" elements="57" statements="49" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="setUp() : void" num="17" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testInsertUser() : void" num="28" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetUser() : void" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDeleteUser() : void" num="45" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="testAddSameUserTwice() : void" num="57" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testValidateLogin() : void" num="79" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="testValidateBadPassword() : void" num="92" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="testValidateBadUsername() : void" num="111" count="0" type="method"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="playlist.versioncheck">
+         <metrics coveredelements="0" complexity="1" loc="27" methods="1" classes="1" statements="3" coveredconditionals="0" coveredmethods="0" elements="4" ncloc="10" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/playlist/versioncheck/JavaVersionTest.java" name="JavaVersionTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="27" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="10" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="JavaVersionTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testJavaVersion() : void" num="19" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="playlist 1.0-SNAPSHOT" timestamp="0">
+      <metrics coveredelements="0" complexity="0" loc="0" methods="0" classes="0" statements="0" packages="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="0" files="0" conditionals="0" coveredstatements="0"/>
+   </testproject>
+</coverage>

@@ -1,0 +1,2125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594121180031" clover="4.4.1">
+   <project name="Android File Transfer 0.4.3-SNAPSHOT (Aggregated)" timestamp="1594121177013">
+      <metrics coveredelements="51" complexity="586" loc="7156" methods="483" classes="75" statements="924" packages="20" coveredconditionals="1" coveredmethods="23" elements="1571" ncloc="3094" files="75" conditionals="164" coveredstatements="27"/>
+      <package name="com.ricex.aft.common.response">
+         <metrics coveredelements="0" complexity="8" loc="93" methods="8" classes="2" statements="7" coveredconditionals="0" coveredmethods="0" elements="15" ncloc="31" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/response/BooleanResponse.java" name="BooleanResponse.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="49" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="16" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="BooleanResponse">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="BooleanResponse(boolean)" num="19" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="BooleanResponse()" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getValue() : boolean" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setValue(boolean) : void" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/response/LongResponse.java" name="LongResponse.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="44" coveredmethods="0" methods="4" elements="7" classes="1" ncloc="15" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="LongResponse">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="7" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="LongResponse()" num="16" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="LongResponse(Long)" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getValue() : Long" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setValue(Long) : void" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.common.data">
+         <metrics coveredelements="0" complexity="22" loc="225" methods="22" classes="2" statements="22" coveredconditionals="0" coveredmethods="0" elements="44" ncloc="86" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/data/FileInfo.java" name="FileInfo.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="132" coveredmethods="0" methods="14" elements="28" classes="1" ncloc="54" statements="14" conditionals="0" coveredstatements="0"/>
+            <class name="FileInfo">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="14" elements="28" statements="14" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getId() : long" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setId(long) : void" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileName() : String" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFileName(String) : void" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileSize() : long" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFileSize(long) : void" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileOwner() : UserInfo" num="80" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFileOwner(UserInfo) : void" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestId() : long" num="94" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestId(long) : void" num="101" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestName() : String" num="108" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestName(String) : void" num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestStatus() : RequestStatus" num="122" count="0" type="method"/>
+            <line num="123" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestStatus(RequestStatus) : void" num="129" count="0" type="method"/>
+            <line num="130" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/data/FileQuota.java" name="FileQuota.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="93" coveredmethods="0" methods="8" elements="16" classes="1" ncloc="32" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="FileQuota">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="8" elements="16" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getUser() : UserInfo" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUser(UserInfo) : void" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileStorage() : long" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFileStorage(long) : void" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileStorageUsed() : long" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFileStorageUsed(long) : void" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileCount() : int" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFileCount(int) : void" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.common.util">
+         <metrics coveredelements="0" complexity="12" loc="219" methods="10" classes="5" statements="16" coveredconditionals="0" coveredmethods="0" elements="30" ncloc="111" files="5" conditionals="4" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/util/JsonByteArrayBase64Adapter.java" name="JsonByteArrayBase64Adapter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="45" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="20" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="JsonByteArrayBase64Adapter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="deserialize(JsonElement,Type,JsonDeserializationContext) : byte[]" num="31" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="serialize(byte[],Type,JsonSerializationContext) : JsonElement" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/util/JsonDateMillisecondsEpochDeserializer.java" name="JsonDateMillisecondsEpochDeserializer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="38" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="20" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="JsonDateMillisecondsEpochDeserializer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="deserialize(JsonElement,Type,JsonDeserializationContext) : Date" num="27" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="serialize(Date,Type,JsonSerializationContext) : JsonElement" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/util/JsonRequestDirectorySerializer.java" name="JsonRequestDirectorySerializer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="49" coveredmethods="0" methods="2" elements="9" classes="1" ncloc="25" statements="5" conditionals="2" coveredstatements="0"/>
+            <class name="JsonRequestDirectorySerializer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="2" elements="9" statements="5" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="deserialize(JsonElement,Type,JsonDeserializationContext) : RequestDirectory" num="30" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="35" type="cond"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="serialize(RequestDirectory,Type,JsonSerializationContext) : JsonElement" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/util/JsonRequestStatusSerializer.java" name="JsonRequestStatusSerializer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="49" coveredmethods="0" methods="2" elements="9" classes="1" ncloc="26" statements="5" conditionals="2" coveredstatements="0"/>
+            <class name="JsonRequestStatusSerializer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="2" elements="9" statements="5" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="deserialize(JsonElement,Type,JsonDeserializationContext) : RequestStatus" num="30" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="35" type="cond"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="serialize(RequestStatus,Type,JsonSerializationContext) : JsonElement" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/util/UserInfoAdapter.java" name="UserInfoAdapter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="38" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="20" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="UserInfoAdapter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="deserialize(JsonElement,Type,JsonDeserializationContext) : UserInfo" num="25" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="serialize(UserInfo,Type,JsonSerializationContext) : JsonElement" num="31" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.common.auth">
+         <metrics coveredelements="0" complexity="12" loc="136" methods="12" classes="3" statements="12" coveredconditionals="0" coveredmethods="0" elements="24" ncloc="52" files="3" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/auth/AFTAuthentication.java" name="AFTAuthentication.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="13" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="4" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="AFTAuthentication">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/auth/AuthToken.java" name="AuthToken.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="61" coveredmethods="0" methods="6" elements="12" classes="1" ncloc="24" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="AuthToken">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="12" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AuthToken()" num="16" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="AuthToken(String,String)" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAuthenticationToken() : String" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAuthenticationToken(String) : void" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceUid() : String" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceUid(String) : void" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/auth/AuthUser.java" name="AuthUser.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="62" coveredmethods="0" methods="6" elements="12" classes="1" ncloc="24" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="AuthUser">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="12" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AuthUser()" num="20" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="AuthUser(String,String)" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUsername() : String" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUsername(String) : void" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPassword() : String" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPassword(String) : void" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.common.entity">
+         <metrics coveredelements="32" complexity="60" loc="680" methods="54" classes="9" statements="72" coveredconditionals="1" coveredmethods="15" elements="138" ncloc="260" files="9" conditionals="12" coveredstatements="16"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/entity/AbstractEntity.java" name="AbstractEntity.java">
+            <metrics coveredelements="6" coveredconditionals="0" complexity="3" loc="36" coveredmethods="3" methods="3" elements="6" classes="1" ncloc="13" statements="3" conditionals="0" coveredstatements="3"/>
+            <class name="AbstractEntity">
+               <metrics coveredelements="6" coveredconditionals="0" complexity="3" coveredmethods="3" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="3"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AbstractEntity()" num="17" count="28" type="method"/>
+            <line num="18" count="28" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getId() : long" num="24" count="21" type="method"/>
+            <line num="25" count="21" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setId(long) : void" num="31" count="29" type="method"/>
+            <line num="32" count="29" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/entity/Device.java" name="Device.java">
+            <metrics coveredelements="21" coveredconditionals="1" complexity="11" loc="109" coveredmethods="9" methods="10" elements="25" classes="1" ncloc="43" statements="13" conditionals="2" coveredstatements="11"/>
+            <class name="Device">
+               <metrics coveredelements="21" coveredconditionals="1" complexity="11" coveredmethods="9" methods="10" elements="25" statements="13" conditionals="2" coveredstatements="11"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getDeviceName() : String" num="29" count="2" type="method"/>
+            <line num="30" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceName(String) : void" num="37" count="14" type="method"/>
+            <line num="38" count="14" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceUid() : String" num="45" count="6" type="method"/>
+            <line num="46" count="6" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceUid(String) : void" num="53" count="15" type="method"/>
+            <line num="54" count="15" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceRegistrationId() : String" num="61" count="2" type="method"/>
+            <line num="62" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceRegistrationId(String) : void" num="69" count="14" type="method"/>
+            <line num="70" count="14" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceOwner() : UserInfo" num="84" count="1" type="method"/>
+            <line num="85" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceOwner(UserInfo) : void" num="92" count="14" type="method"/>
+            <line num="93" count="14" type="stmt"/>
+            <line complexity="2" visibility="public" signature="equals(Object) : boolean" num="100" count="1" type="method"/>
+            <line num="102" count="1" type="stmt"/>
+            <line falsecount="1" truecount="0" num="102" type="cond"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="105" count="1" type="stmt"/>
+            <line num="106" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/entity/Entity.java" name="Entity.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="12" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Entity">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/entity/File.java" name="File.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="104" coveredmethods="0" methods="9" elements="23" classes="1" ncloc="40" statements="12" conditionals="2" coveredstatements="0"/>
+            <class name="File">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="9" elements="23" statements="12" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getRequestId() : Long" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestId(Long) : void" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileName() : String" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFileName(String) : void" num="60" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileSize() : long" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFileSize(long) : void" num="76" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileOwner() : UserInfo" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFileOwner(UserInfo) : void" num="91" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="equals(Object) : boolean" num="95" count="0" type="method"/>
+            <line num="97" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="97" type="cond"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/entity/Request.java" name="Request.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="21" loc="209" coveredmethods="0" methods="20" elements="46" classes="1" ncloc="81" statements="24" conditionals="2" coveredstatements="0"/>
+            <class name="Request">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="21" coveredmethods="0" methods="20" elements="46" statements="24" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Request()" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestName() : String" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestName(String) : void" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestFiles() : List&lt;File&gt;" num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestFiles(List&lt;File&gt;) : void" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestFileLocation() : String" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestFileLocation(String) : void" num="95" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestDirectory() : RequestDirectory" num="103" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestDirectory(RequestDirectory) : void" num="111" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestStatus() : RequestStatus" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestStatus(RequestStatus) : void" num="127" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestStatusMessage() : String" num="135" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestStatusMessage(String) : void" num="143" count="0" type="method"/>
+            <line num="144" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestUpdated() : Date" num="151" count="0" type="method"/>
+            <line num="152" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestUpdated(Date) : void" num="159" count="0" type="method"/>
+            <line num="160" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestDevice() : Device" num="167" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestDevice(Device) : void" num="175" count="0" type="method"/>
+            <line num="176" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestOwner() : UserInfo" num="183" count="0" type="method"/>
+            <line num="184" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestOwner(UserInfo) : void" num="190" count="0" type="method"/>
+            <line num="191" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="equals(Object) : boolean" num="198" count="0" type="method"/>
+            <line num="200" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="200" type="cond"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="204" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/entity/RequestDirectory.java" name="RequestDirectory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="68" coveredmethods="0" methods="3" elements="11" classes="1" ncloc="24" statements="6" conditionals="2" coveredstatements="0"/>
+            <class name="RequestDirectory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="11" statements="6" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="fromString(String) : RequestDirectory" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="41" type="cond"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="RequestDirectory(String)" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="64" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/entity/RequestStatus.java" name="RequestStatus.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="61" coveredmethods="0" methods="3" elements="11" classes="1" ncloc="23" statements="6" conditionals="2" coveredstatements="0"/>
+            <class name="RequestStatus">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="11" statements="6" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="fromString(String) : RequestStatus" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="34" type="cond"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="RequestStatus(String)" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/entity/UserInfo.java" name="UserInfo.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="17" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="UserInfo">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/main/java/com/ricex/aft/common/entity/UserInfoImpl.java" name="UserInfoImpl.java">
+            <metrics coveredelements="5" coveredconditionals="0" complexity="7" loc="64" coveredmethods="3" methods="6" elements="16" classes="1" ncloc="26" statements="8" conditionals="2" coveredstatements="2"/>
+            <class name="UserInfoImpl">
+               <metrics coveredelements="5" coveredconditionals="0" complexity="7" coveredmethods="3" methods="6" elements="16" statements="8" conditionals="2" coveredstatements="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="UserInfoImpl()" num="18" count="14" type="method"/>
+            <line complexity="1" visibility="public" signature="getUsername() : String" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUsername(String) : void" num="33" count="14" type="method"/>
+            <line num="34" count="14" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setName(String) : void" num="49" count="14" type="method"/>
+            <line num="50" count="14" type="stmt"/>
+            <line complexity="2" visibility="public" signature="equals(Object) : boolean" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="57" type="cond"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.auth">
+         <metrics coveredelements="0" complexity="39" loc="489" methods="31" classes="5" statements="74" coveredconditionals="0" coveredmethods="0" elements="119" ncloc="216" files="5" conditionals="14" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/auth/AFTToken.java" name="AFTToken.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="119" coveredmethods="0" methods="9" elements="28" classes="1" ncloc="50" statements="17" conditionals="2" coveredstatements="0"/>
+            <class name="AFTToken">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="9" elements="28" statements="17" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AFTToken(String,String,Authentication,String)" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="AFTToken(String,String,Authentication,String,Date)" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTokenId() : String" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUsername() : String" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAuthentication() : Authentication" num="84" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getClientAddres() : String" num="91" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isExpired() : boolean" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="equals(Object) : boolean" num="104" count="0" type="method"/>
+            <line num="106" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="106" type="cond"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="113" count="0" type="method"/>
+            <line num="115" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/auth/AFTTokenAuthenticationFilter.java" name="AFTTokenAuthenticationFilter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="91" coveredmethods="0" methods="5" elements="21" classes="1" ncloc="47" statements="14" conditionals="2" coveredstatements="0"/>
+            <class name="AFTTokenAuthenticationFilter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="5" elements="21" statements="14" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AFTTokenAuthenticationFilter()" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="attemptAuthentication(HttpServletRequest,HttpServletResponse) : Authentication" num="46" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="55" type="cond"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="successfulAuthentication(HttpServletRequest,HttpServletResponse,FilterChain,Authentication) : void" num="66" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTokenManager() : TokenManager" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTokenManager(TokenManager) : void" num="85" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/auth/APIUserAuthenticator.java" name="APIUserAuthenticator.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="139" coveredmethods="0" methods="10" elements="33" classes="1" ncloc="59" statements="21" conditionals="2" coveredstatements="0"/>
+            <class name="APIUserAuthenticator">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="10" elements="33" statements="21" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="APIUserAuthenticator()" num="36" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="authenticateUser(AuthUser,String) : Token" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="authenticateUserToken(AuthToken,String) : Token" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getTokenForUser(Authentication,String) : Token" num="82" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="86" type="cond"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAuthenticationManager() : AuthenticationManager" num="97" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAuthenticationManager(AuthenticationManager) : void" num="104" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTokenManager() : TokenManager" num="111" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTokenManager(TokenManager) : void" num="118" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserAuthenticationTokenManager() : UserAuthenticationTokenManager" num="125" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUserAuthenticationTokenManager(UserAuthenticationTokenManager) : void" num="132" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/auth/Token.java" name="Token.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="32" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="8" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Token">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/auth/TokenManager.java" name="TokenManager.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="12" loc="108" coveredmethods="0" methods="7" elements="37" classes="1" ncloc="52" statements="22" conditionals="8" coveredstatements="0"/>
+            <class name="TokenManager">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="12" coveredmethods="0" methods="7" elements="37" statements="22" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="TokenManager()" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getToken(String) : Token" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line complexity="3" visibility="private" signature="isTokenValid(Token) : boolean" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="54" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="getTokenForUser(String) : Token" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="70" type="cond"/>
+            <line num="71" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="71" type="cond"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createToken(String,Authentication,String) : AFTToken" num="82" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="createTokenId() : String" num="93" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getExpirationDate() : Date" num="102" count="0" type="method"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet">
+         <metrics coveredelements="0" complexity="4" loc="57" methods="3" classes="1" statements="8" coveredconditionals="0" coveredmethods="0" elements="11" ncloc="28" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/AFTProperties.java" name="AFTProperties.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="57" coveredmethods="0" methods="3" elements="11" classes="1" ncloc="28" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="AFTProperties">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="11" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="package" signature="&lt;clinit&gt;, line 29()" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getVersion() : String" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getProperty(String) : String" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.gcm">
+         <metrics coveredelements="0" complexity="20" loc="261" methods="14" classes="3" statements="42" coveredconditionals="0" coveredmethods="0" elements="66" ncloc="118" files="3" conditionals="10" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/gcm/GCMDeviceNotifier.java" name="GCMDeviceNotifier.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="50" coveredmethods="0" methods="2" elements="6" classes="1" ncloc="21" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="GCMDeviceNotifier">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="6" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GCMDeviceNotifier(String)" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="notifyDevice(Device) : void" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/gcm/GCMSyncMessageCommand.java" name="GCMSyncMessageCommand.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="13" loc="143" coveredmethods="0" methods="7" elements="50" classes="1" ncloc="73" statements="33" conditionals="10" coveredstatements="0"/>
+            <class name="GCMSyncMessageCommand">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="13" coveredmethods="0" methods="7" elements="50" statements="33" conditionals="10" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GCMSyncMessageCommand(String,String,String)" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="run() : void" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="postMessage(SyncMessage,String) : ResponseEntity&lt;Map&gt;" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="createHttpEntity(SyncMessage) : HttpEntity&lt;SyncMessage&gt;" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="6" visibility="private" signature="parseResponse(ResponseEntity&lt;Map&gt;) : void" num="93" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="96" type="cond"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="99" type="cond"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="102" type="cond"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="105" type="cond"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="parseSuccessfulResponse(ResponseEntity&lt;Map&gt;) : void" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="123" type="cond"/>
+            <line num="124" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="createSyncMessage(String) : void" num="134" count="0" type="method"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/gcm/MessageExecutor.java" name="MessageExecutor.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="68" coveredmethods="0" methods="5" elements="10" classes="1" ncloc="24" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="MessageExecutor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="10" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="MessageExecutor()" num="24" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="executeNow(Runnable) : void" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="schedule(Runnable,long,TimeUnit) : ScheduledFuture&lt;?&gt;" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExecutor() : ScheduledExecutorService" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setExecutor(ScheduledExecutorService) : void" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.mapper">
+         <metrics coveredelements="0" complexity="0" loc="428" methods="0" classes="7" statements="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="87" files="7" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/mapper/DeviceImageMapper.java" name="DeviceImageMapper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="37" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="8" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="DeviceImageMapper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/mapper/DeviceMapper.java" name="DeviceMapper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="59" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="11" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="DeviceMapper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/mapper/FileMapper.java" name="FileMapper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="77" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="15" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="FileMapper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/mapper/RegistrationKeyMapper.java" name="RegistrationKeyMapper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="49" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RegistrationKeyMapper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/mapper/RequestMapper.java" name="RequestMapper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="93" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="19" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RequestMapper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/mapper/UserAuthenticationTokenMapper.java" name="UserAuthenticationTokenMapper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="61" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="12" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="UserAuthenticationTokenMapper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/mapper/UserMapper.java" name="UserMapper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="52" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="12" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="UserMapper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.entity.exception">
+         <metrics coveredelements="0" complexity="4" loc="61" methods="4" classes="2" statements="4" coveredconditionals="0" coveredmethods="0" elements="8" ncloc="18" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/entity/exception/AuthorizationException.java" name="AuthorizationException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="28" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="9" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="AuthorizationException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AuthorizationException(String)" num="16" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="AuthorizationException(String,Throwable)" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/entity/exception/EntityException.java" name="EntityException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="33" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="9" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="EntityException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="EntityException(String)" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="EntityException(String,Throwable)" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.controller.api">
+         <metrics coveredelements="0" complexity="78" loc="1070" methods="63" classes="5" statements="113" coveredconditionals="0" coveredmethods="0" elements="204" ncloc="453" files="5" conditionals="28" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/controller/api/ApiController.java" name="ApiController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="79" coveredmethods="0" methods="4" elements="10" classes="1" ncloc="36" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="ApiController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="10" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ApiController()" num="34" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="handleValidationException(EntityException,HttpServletResponse) : String" num="45" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="handleAuthorizationException(AuthorizationException,HttpServletResponse) : String" num="58" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="handleDisabledException(AuthenticationException,HttpServletResponse) : String" num="71" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/controller/api/DeviceController.java" name="DeviceController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="23" loc="271" coveredmethods="0" methods="15" elements="66" classes="1" ncloc="123" statements="35" conditionals="16" coveredstatements="0"/>
+            <class name="DeviceController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="23" coveredmethods="0" methods="15" elements="66" statements="35" conditionals="16" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="DeviceController()" num="54" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getDevice(String) : Device" num="64" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isDeviceRegistered(String) : BooleanResponse" num="77" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAllDevices() : List&lt;Device&gt;" num="87" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMyDevices() : List&lt;Device&gt;" num="96" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="updateDevice(Device) : void" num="114" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="116" type="cond"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createDevice(Device) : LongResponse" num="136" count="0" type="method"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="registerDevice(Device) : LongResponse" num="157" count="0" type="method"/>
+            <line num="160" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="160" type="cond"/>
+            <line num="162" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="162" type="cond"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getDeviceImage(long,HttpServletResponse) : Object" num="183" count="0" type="method"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="187" type="cond"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="createFileRaw(byte[],long) : BooleanResponse" num="205" count="0" type="method"/>
+            <line num="209" count="0" type="stmt"/>
+            <line num="210" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="210" type="cond"/>
+            <line num="211" count="0" type="stmt"/>
+            <line num="213" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="213" type="cond"/>
+            <line num="214" count="0" type="stmt"/>
+            <line num="217" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="canUserModifyDevice(Device,User) : boolean" num="229" count="0" type="method"/>
+            <line num="230" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="230" type="cond"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="233" count="0" type="stmt"/>
+            <line num="234" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="234" type="cond"/>
+            <line num="236" count="0" type="stmt"/>
+            <line num="238" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceManager() : DeviceManager" num="245" count="0" type="method"/>
+            <line num="246" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceManager(DeviceManager) : void" num="253" count="0" type="method"/>
+            <line num="254" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceImageManager() : DeviceImageManager" num="260" count="0" type="method"/>
+            <line num="261" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceImageManager(DeviceImageManager) : void" num="267" count="0" type="method"/>
+            <line num="268" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/controller/api/FileController.java" name="FileController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="206" coveredmethods="0" methods="12" elements="32" classes="1" ncloc="82" statements="18" conditionals="2" coveredstatements="0"/>
+            <class name="FileController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="12" elements="32" statements="18" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FileController()" num="56" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getFileInfo(long) : File" num="66" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileContents(long) : byte[]" num="78" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMyFiles() : List&lt;File&gt;" num="88" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMyFileQuota() : FileQuota" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="downloadFile(long,HttpServletResponse) : byte[]" num="113" count="0" type="method"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createFile(byte[],String) : LongResponse" num="132" count="0" type="method"/>
+            <line num="135" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createFileRaw(byte[],String) : LongResponse" num="150" count="0" type="method"/>
+            <line num="153" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="formUploadFile(String,MultipartFile) : LongResponse" num="165" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="168" type="cond"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="removeSpacesFromFileName(String) : String" num="186" count="0" type="method"/>
+            <line num="187" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileManager() : FileManager" num="194" count="0" type="method"/>
+            <line num="195" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFileManager(FileManager) : void" num="202" count="0" type="method"/>
+            <line num="203" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/controller/api/RequestController.java" name="RequestController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="23" loc="333" coveredmethods="0" methods="20" elements="61" classes="1" ncloc="127" statements="35" conditionals="6" coveredstatements="0"/>
+            <class name="RequestController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="23" coveredmethods="0" methods="20" elements="61" statements="35" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RequestController()" num="62" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getRequestById(long) : Request" num="77" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAllRequests() : List&lt;Request&gt;" num="92" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAllMyRequests() : List&lt;Request&gt;" num="106" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAllMyRequestsByStatus(RequestStatus[]) : List&lt;Request&gt;" num="117" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAllMyRecentRequests() : List&lt;Request&gt;" num="128" count="0" type="method"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestsForDevice(String) : List&lt;Request&gt;" num="156" count="0" type="method"/>
+            <line num="158" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNewRequestsForDevice(String) : List&lt;Request&gt;" num="179" count="0" type="method"/>
+            <line num="181" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestDirectories() : List&lt;String&gt;" num="189" count="0" type="method"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestStatuses() : List&lt;RequestStatus&gt;" num="203" count="0" type="method"/>
+            <line num="205" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="createRequest(Request) : LongResponse" num="221" count="0" type="method"/>
+            <line num="224" count="0" type="stmt"/>
+            <line num="225" count="0" type="stmt"/>
+            <line num="227" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="227" type="cond"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="230" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="updateRequest(Request) : LongResponse" num="246" count="0" type="method"/>
+            <line num="248" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="248" type="cond"/>
+            <line num="249" count="0" type="stmt"/>
+            <line num="252" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="notifyDeviceOfRequest(Request) : void" num="260" count="0" type="method"/>
+            <line num="261" count="0" type="stmt"/>
+            <line num="262" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="canUserModifyRequest(long,User) : boolean" num="271" count="0" type="method"/>
+            <line num="272" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="272" type="cond"/>
+            <line num="273" count="0" type="stmt"/>
+            <line num="276" count="0" type="stmt"/>
+            <line num="278" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceNotifier() : DeviceNotifier" num="285" count="0" type="method"/>
+            <line num="286" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceNotifier(DeviceNotifier) : void" num="293" count="0" type="method"/>
+            <line num="294" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestManager() : RequestManager" num="301" count="0" type="method"/>
+            <line num="302" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestManager(RequestManager) : void" num="309" count="0" type="method"/>
+            <line num="310" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceManager() : DeviceManager" num="317" count="0" type="method"/>
+            <line num="318" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceManager(DeviceManager) : void" num="325" count="0" type="method"/>
+            <line num="326" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/controller/api/UserController.java" name="UserController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="181" coveredmethods="0" methods="12" elements="35" classes="1" ncloc="85" statements="19" conditionals="4" coveredstatements="0"/>
+            <class name="UserController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="12" elements="35" statements="19" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="UserController()" num="53" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="isUsernameAvailable(String) : BooleanResponse" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="registerUser(UserRegistration) : BooleanResponse" num="73" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="loginPassword(AuthUser,HttpServletRequest,HttpServletResponse) : BooleanResponse" num="86" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="91" type="cond"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createAuthenticationToken(String) : String" num="109" count="0" type="method"/>
+            <line num="111" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="loginToken(AuthToken,HttpServletRequest,HttpServletResponse) : BooleanResponse" num="122" count="0" type="method"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="127" type="cond"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserManager() : UserManager" num="139" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUserManager(UserManager) : void" num="146" count="0" type="method"/>
+            <line num="147" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserAuthenticator() : APIUserAuthenticator" num="153" count="0" type="method"/>
+            <line num="154" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUserAuthenticator(APIUserAuthenticator) : void" num="160" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserAuthenticationTokenManager() : UserAuthenticationTokenManager" num="167" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUserAuthenticationTokenManager(UserAuthenticationTokenManager) : void" num="174" count="0" type="method"/>
+            <line num="176" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.controller.view">
+         <metrics coveredelements="0" complexity="11" loc="189" methods="9" classes="5" statements="19" coveredconditionals="0" coveredmethods="0" elements="32" ncloc="93" files="5" conditionals="4" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/controller/view/DeviceViewController.java" name="DeviceViewController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="40" coveredmethods="0" methods="2" elements="6" classes="1" ncloc="20" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="DeviceViewController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="6" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="deviceRoot() : ModelAndView" num="23" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deviceView(String) : ModelAndView" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/controller/view/HomeController.java" name="HomeController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="31" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="15" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="HomeController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="homePage() : ModelAndView" num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/controller/view/LoginViewController.java" name="LoginViewController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="41" coveredmethods="0" methods="2" elements="12" classes="1" ncloc="23" statements="6" conditionals="4" coveredstatements="0"/>
+            <class name="LoginViewController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="2" elements="12" statements="6" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="login() : ModelAndView" num="22" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="24" type="cond"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="register() : ModelAndView" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="36" type="cond"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/controller/view/RequestViewController.java" name="RequestViewController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="43" coveredmethods="0" methods="2" elements="7" classes="1" ncloc="23" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="RequestViewController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="7" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="requestRoot() : ModelAndView" num="24" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createRequest(String,String) : ModelAndView" num="33" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/controller/view/ViewController.java" name="ViewController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="34" coveredmethods="0" methods="2" elements="3" classes="1" ncloc="12" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="ViewController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="3" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="ViewController()" num="21" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getVersion() : String" num="29" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.notifier">
+         <metrics coveredelements="0" complexity="0" loc="21" methods="0" classes="1" statements="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="5" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/notifier/DeviceNotifier.java" name="DeviceNotifier.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="21" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="DeviceNotifier">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.controller">
+         <metrics coveredelements="0" complexity="6" loc="47" methods="3" classes="1" statements="8" coveredconditionals="0" coveredmethods="0" elements="15" ncloc="23" files="1" conditionals="4" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/controller/BaseController.java" name="BaseController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="47" coveredmethods="0" methods="3" elements="15" classes="1" ncloc="23" statements="8" conditionals="4" coveredstatements="0"/>
+            <class name="BaseController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="3" elements="15" statements="8" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="BaseController()" num="19" count="0" type="method"/>
+            <line complexity="2" visibility="public" signature="getCurrentUser() : User" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="29" type="cond"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="isAuthenticated() : boolean" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="42" type="cond"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.config">
+         <metrics coveredelements="0" complexity="49" loc="670" methods="48" classes="6" statements="142" coveredconditionals="0" coveredmethods="0" elements="190" ncloc="401" files="6" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/config/AFTServletApplicationInitializer.java" name="AFTServletApplicationInitializer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="41" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="17" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="AFTServletApplicationInitializer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="getRootConfigClasses() : Class&lt;?&gt;[]" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getServletConfigClasses() : Class&lt;?&gt;[]" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getServletMappings() : String[]" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getServletFilters() : Filter[]" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/config/AFTServletSecurityInitializer.java" name="AFTServletSecurityInitializer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="12" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="4" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="AFTServletSecurityInitializer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/config/ApplicationConfig.java" name="ApplicationConfig.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="35" loc="443" coveredmethods="0" methods="35" elements="141" classes="1" ncloc="262" statements="106" conditionals="0" coveredstatements="0"/>
+            <class name="ApplicationConfig">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="35" coveredmethods="0" methods="35" elements="141" statements="106" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="deviceController() : DeviceController" num="64" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="requestController() : RequestController" num="72" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fileController() : FileController" num="81" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="userController() : UserController" num="88" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="homeController() : HomeController" num="101" count="0" type="method"/>
+            <line num="103" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deviceViewController() : DeviceViewController" num="110" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="requestViewController() : RequestViewController" num="119" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="loginViewController() : LoginViewController" num="128" count="0" type="method"/>
+            <line num="130" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="gsonFactoryBean() : GsonFactory" num="138" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="gsonBean() : Gson" num="148" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="sqlSessionFactory() : SqlSessionFactory" num="159" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="dataSource() : DataSource" num="172" count="0" type="method"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deviceMapper() : DeviceMapper" num="186" count="0" type="method"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deviceImageMapper() : DeviceImageMapper" num="199" count="0" type="method"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="202" count="0" type="stmt"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="204" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fileMapper() : FileMapper" num="213" count="0" type="method"/>
+            <line num="215" count="0" type="stmt"/>
+            <line num="216" count="0" type="stmt"/>
+            <line num="217" count="0" type="stmt"/>
+            <line num="218" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="userMapper() : UserMapper" num="226" count="0" type="method"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="229" count="0" type="stmt"/>
+            <line num="230" count="0" type="stmt"/>
+            <line num="231" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="registrationKeyMapper() : RegistrationKeyMapper" num="239" count="0" type="method"/>
+            <line num="241" count="0" type="stmt"/>
+            <line num="242" count="0" type="stmt"/>
+            <line num="243" count="0" type="stmt"/>
+            <line num="244" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="userAuthenticationTokenMapper() : UserAuthenticationTokenMapper" num="252" count="0" type="method"/>
+            <line num="254" count="0" type="stmt"/>
+            <line num="255" count="0" type="stmt"/>
+            <line num="256" count="0" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="requestMapper() : RequestMapper" num="266" count="0" type="method"/>
+            <line num="268" count="0" type="stmt"/>
+            <line num="269" count="0" type="stmt"/>
+            <line num="270" count="0" type="stmt"/>
+            <line num="271" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deviceManager() : DeviceManager" num="280" count="0" type="method"/>
+            <line num="282" count="0" type="stmt"/>
+            <line num="283" count="0" type="stmt"/>
+            <line num="284" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deviceImageManager() : DeviceImageManager" num="292" count="0" type="method"/>
+            <line num="294" count="0" type="stmt"/>
+            <line num="295" count="0" type="stmt"/>
+            <line num="296" count="0" type="stmt"/>
+            <line num="297" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fileManager() : FileManager" num="306" count="0" type="method"/>
+            <line num="308" count="0" type="stmt"/>
+            <line num="309" count="0" type="stmt"/>
+            <line num="310" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="userManager() : UserManager" num="313" count="0" type="method"/>
+            <line num="315" count="0" type="stmt"/>
+            <line num="316" count="0" type="stmt"/>
+            <line num="317" count="0" type="stmt"/>
+            <line num="318" count="0" type="stmt"/>
+            <line num="319" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="requestManager() : RequestManager" num="328" count="0" type="method"/>
+            <line num="330" count="0" type="stmt"/>
+            <line num="331" count="0" type="stmt"/>
+            <line num="332" count="0" type="stmt"/>
+            <line num="333" count="0" type="stmt"/>
+            <line num="334" count="0" type="stmt"/>
+            <line num="335" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="registrationKeyManager() : RegistrationKeyManager" num="344" count="0" type="method"/>
+            <line num="346" count="0" type="stmt"/>
+            <line num="347" count="0" type="stmt"/>
+            <line num="348" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="userAuthenticationTokenManager() : UserAuthenticationTokenManager" num="351" count="0" type="method"/>
+            <line num="353" count="0" type="stmt"/>
+            <line num="354" count="0" type="stmt"/>
+            <line num="355" count="0" type="stmt"/>
+            <line num="356" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="gcmDeviceNotifier() : GCMDeviceNotifier" num="359" count="0" type="method"/>
+            <line num="361" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="gcmApiKey() : String" num="370" count="0" type="method"/>
+            <line num="372" count="0" type="stmt"/>
+            <line num="373" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="multipartResolver() : StandardServletMultipartResolver" num="381" count="0" type="method"/>
+            <line num="383" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="configureDefaultServletHandling(DefaultServletHandlerConfigurer) : void" num="386" count="0" type="method"/>
+            <line num="388" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt;) : void" num="394" count="0" type="method"/>
+            <line num="397" count="0" type="stmt"/>
+            <line num="398" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="jacksonConverter() : MappingJackson2HttpMessageConverter" num="406" count="0" type="method"/>
+            <line num="407" count="0" type="stmt"/>
+            <line num="408" count="0" type="stmt"/>
+            <line num="409" count="0" type="stmt"/>
+            <line num="410" count="0" type="stmt"/>
+            <line num="411" count="0" type="stmt"/>
+            <line num="412" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="gsonMessageConverter() : GsonHttpMessageConverter" num="419" count="0" type="method"/>
+            <line num="420" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addResourceHandlers(ResourceHandlerRegistry) : void" num="426" count="0" type="method"/>
+            <line num="428" count="0" type="stmt"/>
+            <line num="429" count="0" type="stmt"/>
+            <line num="430" count="0" type="stmt"/>
+            <line num="431" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="passwordEncoder() : PasswordEncoder" num="438" count="0" type="method"/>
+            <line num="440" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/config/SecurityConfig.java" name="SecurityConfig.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="108" coveredmethods="0" methods="6" elements="23" classes="1" ncloc="78" statements="17" conditionals="0" coveredstatements="0"/>
+            <class name="SecurityConfig">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="6" elements="23" statements="17" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="configureGlobal(AuthenticationManagerBuilder) : void" num="31" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="configure(HttpSecurity) : void" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="userDetailsService() : UserDetailsService" num="67" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="aftTokenAuthenticationFilter() : AFTTokenAuthenticationFilter" num="79" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="tokenManager() : TokenManager" num="90" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="userAuthenticator() : APIUserAuthenticator" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/config/ThymeleafConfig.java" name="ThymeleafConfig.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="49" coveredmethods="0" methods="3" elements="18" classes="1" ncloc="35" statements="15" conditionals="0" coveredstatements="0"/>
+            <class name="ThymeleafConfig">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="18" statements="15" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="templateResolver() : ServletContextTemplateResolver" num="21" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="templateEngine() : SpringTemplateEngine" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="viewResolver() : ThymeleafViewResolver" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/config/WebConfig.java" name="WebConfig.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="17" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="WebConfig">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.entity">
+         <metrics coveredelements="0" complexity="95" loc="846" methods="83" classes="7" statements="110" coveredconditionals="0" coveredmethods="0" elements="213" ncloc="365" files="7" conditionals="20" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/entity/DeviceImage.java" name="DeviceImage.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="81" coveredmethods="0" methods="8" elements="16" classes="1" ncloc="32" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="DeviceImage">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="8" elements="16" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getDeviceId() : long" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceId(long) : void" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceUid() : String" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceUid(String) : void" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getImageContents() : byte[]" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setImageContents(byte[]) : void" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getImageSize() : long" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setImageSize(long) : void" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/entity/FileContent.java" name="FileContent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="42" coveredmethods="0" methods="3" elements="5" classes="1" ncloc="13" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="FileContent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="5" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FileContent()" num="22" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getFileContents() : byte[]" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFileContents(byte[]) : void" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/entity/RegistrationKey.java" name="RegistrationKey.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="75" coveredmethods="0" methods="7" elements="13" classes="1" ncloc="27" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="RegistrationKey">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="7" elements="13" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RegistrationKey()" num="26" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getRegistrationKey() : String" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRegistrationKey(String) : void" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUsesRemaining() : int" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUsesRemaining(int) : void" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isActive() : boolean" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setActive(boolean) : void" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/entity/User.java" name="User.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="33" loc="297" coveredmethods="0" methods="29" elements="79" classes="1" ncloc="129" statements="42" conditionals="8" coveredstatements="0"/>
+            <class name="User">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="33" coveredmethods="0" methods="29" elements="79" statements="42" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="User()" num="48" count="0" type="method"/>
+            <line complexity="2" visibility="public" signature="isAccountExpired() : boolean" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="57" type="cond"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="isPasswordExpired() : boolean" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="69" type="cond"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="userHasRole(UserRole) : boolean" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="userHasOneOfRoles(UserRole) : boolean" num="90" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="92" type="cond"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUsername() : String" num="102" count="0" type="method"/>
+            <line num="103" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUsername(String) : void" num="110" count="0" type="method"/>
+            <line num="111" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPassword() : String" num="117" count="0" type="method"/>
+            <line num="118" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPassword(String) : void" num="125" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEmailAddress() : String" num="133" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEmailAddress(String) : void" num="141" count="0" type="method"/>
+            <line num="142" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isActive() : boolean" num="149" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setActive(boolean) : void" num="157" count="0" type="method"/>
+            <line num="158" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isLocked() : boolean" num="165" count="0" type="method"/>
+            <line num="166" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLocked(boolean) : void" num="173" count="0" type="method"/>
+            <line num="174" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExpirationDate() : Date" num="181" count="0" type="method"/>
+            <line num="182" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setExpirationDate(Date) : void" num="189" count="0" type="method"/>
+            <line num="190" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPasswordExpirationDate() : Date" num="197" count="0" type="method"/>
+            <line num="198" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPasswordExpirationDate(Date) : void" num="205" count="0" type="method"/>
+            <line num="206" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRoles() : List&lt;UserRole&gt;" num="213" count="0" type="method"/>
+            <line num="214" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRoles(List&lt;UserRole&gt;) : void" num="221" count="0" type="method"/>
+            <line num="222" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAuthorities() : Collection&lt;? extends GrantedAuthority&gt;" num="228" count="0" type="method"/>
+            <line num="230" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAccountNonExpired() : boolean" num="235" count="0" type="method"/>
+            <line num="237" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAccountNonLocked() : boolean" num="243" count="0" type="method"/>
+            <line num="245" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isCredentialsNonExpired() : boolean" num="251" count="0" type="method"/>
+            <line num="253" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isEnabled() : boolean" num="259" count="0" type="method"/>
+            <line num="261" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toUserInfo() : UserInfo" num="268" count="0" type="method"/>
+            <line num="269" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="convertToUserInfo(User) : UserInfo" num="277" count="0" type="method"/>
+            <line num="278" count="0" type="stmt"/>
+            <line num="279" count="0" type="stmt"/>
+            <line num="280" count="0" type="stmt"/>
+            <line num="281" count="0" type="stmt"/>
+            <line num="282" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="equals(Object) : boolean" num="288" count="0" type="method"/>
+            <line num="289" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="289" type="cond"/>
+            <line num="290" count="0" type="stmt"/>
+            <line num="292" count="0" type="stmt"/>
+            <line num="294" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/entity/UserAuthenticationToken.java" name="UserAuthenticationToken.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="29" loc="197" coveredmethods="0" methods="22" elements="64" classes="1" ncloc="99" statements="32" conditionals="10" coveredstatements="0"/>
+            <class name="UserAuthenticationToken">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="29" coveredmethods="0" methods="22" elements="64" statements="32" conditionals="10" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="UserAuthenticationToken()" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUser() : User" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUser(User) : void" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAuthenticationToken() : String" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAuthenticationToken(String) : void" num="76" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceUid() : String" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceUid(String) : void" num="90" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isActive() : boolean" num="97" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setActive(boolean) : void" num="104" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExpirationDate() : Date" num="111" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setExpirationDate(Date) : void" num="118" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLastLogin() : Date" num="125" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLastLogin(Date) : void" num="132" count="0" type="method"/>
+            <line num="133" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLastLoginAddress() : String" num="139" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLastLoginAddress(String) : void" num="146" count="0" type="method"/>
+            <line num="147" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="150" count="0" type="method"/>
+            <line num="151" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAuthorities() : Collection&lt;? extends GrantedAuthority&gt;" num="154" count="0" type="method"/>
+            <line num="155" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCredentials() : Object" num="158" count="0" type="method"/>
+            <line num="159" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDetails() : Object" num="162" count="0" type="method"/>
+            <line num="163" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPrincipal() : Object" num="166" count="0" type="method"/>
+            <line num="167" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAuthenticated() : boolean" num="170" count="0" type="method"/>
+            <line num="171" count="0" type="stmt"/>
+            <line complexity="8" visibility="public" signature="setAuthenticated(boolean) : void" num="174" count="0" type="method"/>
+            <line num="175" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="175" type="cond"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="178" type="cond"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="181" type="cond"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="185" type="cond"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="189" type="cond"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/entity/UserRegistration.java" name="UserRegistration.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="97" coveredmethods="0" methods="10" elements="23" classes="1" ncloc="40" statements="13" conditionals="0" coveredstatements="0"/>
+            <class name="UserRegistration">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="10" elements="23" statements="13" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="UserRegistration()" num="25" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="toUser() : User" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUsername() : String" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUsername(String) : void" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPassword() : String" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPassword(String) : void" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEmailAddress() : String" num="72" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEmailAddress(String) : void" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRegistrationKey() : String" num="86" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRegistrationKey(String) : void" num="93" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/entity/UserRole.java" name="UserRole.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="57" coveredmethods="0" methods="4" elements="13" classes="1" ncloc="25" statements="7" conditionals="2" coveredstatements="0"/>
+            <class name="UserRole">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="4" elements="13" statements="7" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="fromString(String) : UserRole" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="25" type="cond"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="UserRole(String)" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAuthority() : String" num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.gcm.entity">
+         <metrics coveredelements="0" complexity="6" loc="74" methods="6" classes="1" statements="6" coveredconditionals="0" coveredmethods="0" elements="12" ncloc="25" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/gcm/entity/SyncMessage.java" name="SyncMessage.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="74" coveredmethods="0" methods="6" elements="12" classes="1" ncloc="25" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="SyncMessage">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="12" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getRegistration_ids() : List&lt;String&gt;" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRegistration_ids(List&lt;String&gt;) : void" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNotification_key() : String" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setNotification_key(String) : void" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCollapse_key() : String" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCollapse_key(String) : void" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.manager">
+         <metrics coveredelements="19" complexity="131" loc="1310" methods="95" classes="7" statements="227" coveredconditionals="0" coveredmethods="8" elements="380" ncloc="566" files="7" conditionals="58" coveredstatements="11"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/manager/DeviceImageManager.java" name="DeviceImageManager.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="17" loc="164" coveredmethods="0" methods="12" elements="52" classes="1" ncloc="82" statements="34" conditionals="6" coveredstatements="0"/>
+            <class name="DeviceImageManager">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="17" coveredmethods="0" methods="12" elements="52" statements="34" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="DeviceImageManager()" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="loadDefaultImage() : void" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceImage(long) : DeviceImage" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getDeviceImageOrDefault(long) : DeviceImage" num="75" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="77" type="cond"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deviceHasImage(long) : boolean" num="91" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="uploadDeviceImage(long,byte[]) : boolean" num="101" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="102" type="cond"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="112" type="cond"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceImageMapper() : DeviceImageMapper" num="125" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceImageMapper(DeviceImageMapper) : void" num="132" count="0" type="method"/>
+            <line num="133" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceManager() : DeviceManager" num="139" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceManager(DeviceManager) : void" num="146" count="0" type="method"/>
+            <line num="147" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDefaultImageContents() : byte[]" num="153" count="0" type="method"/>
+            <line num="154" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDefaultImageContents(byte[]) : void" num="160" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/manager/DeviceManager.java" name="DeviceManager.java">
+            <metrics coveredelements="19" coveredconditionals="0" complexity="12" loc="147" coveredmethods="8" methods="12" elements="27" classes="1" ncloc="51" statements="15" conditionals="0" coveredstatements="11"/>
+            <class name="DeviceManager">
+               <metrics coveredelements="19" coveredconditionals="0" complexity="12" coveredmethods="8" methods="12" elements="27" statements="15" conditionals="0" coveredstatements="11"/>
+            </class>
+            <line complexity="1" visibility="private" signature="DeviceManager()" num="36" count="1" type="method"/>
+            <line complexity="1" visibility="public" signature="getAllDevices() : List&lt;Device&gt;" num="45" count="1" type="method"/>
+            <line num="46" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAllDevicesByUser(long) : List&lt;Device&gt;" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDevice(long) : Device" num="63" count="1" type="method"/>
+            <line num="64" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceByUid(String) : Device" num="72" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="updateDevice(Device) : long" num="82" count="1" type="method"/>
+            <line num="83" count="1" type="stmt"/>
+            <line num="84" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createDevice(Device) : long" num="93" count="1" type="method"/>
+            <line num="94" count="1" type="stmt"/>
+            <line num="95" count="1" type="stmt"/>
+            <line num="96" count="1" type="stmt"/>
+            <line num="97" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deviceExists(Device) : boolean" num="107" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deviceExists(String) : boolean" num="118" count="2" type="method"/>
+            <line num="119" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deviceExists(long) : boolean" num="127" count="4" type="method"/>
+            <line num="128" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceMapper() : DeviceMapper" num="135" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceMapper(DeviceMapper) : void" num="143" count="6" type="method"/>
+            <line num="144" count="6" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/manager/FileManager.java" name="FileManager.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="17" loc="215" coveredmethods="0" methods="14" elements="64" classes="1" ncloc="95" statements="44" conditionals="6" coveredstatements="0"/>
+            <class name="FileManager">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="17" coveredmethods="0" methods="14" elements="64" statements="44" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getFileInfo(long) : File" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileContents(long) : byte[]" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestFiles(long) : List&lt;File&gt;" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserFiles(long) : List&lt;File&gt;" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileQuotaForUser(User) : FileQuota" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="calculateStorageUsed(long) : long" num="92" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="calculateStorageRemaining(long) : long" num="107" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="createFile(byte[],String,User) : long" num="120" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="121" type="cond"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="canUserCreateFile(long,String,User) : boolean" num="141" count="0" type="method"/>
+            <line num="142" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="142" type="cond"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="updateFilesForRequest(Request) : boolean" num="157" count="0" type="method"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="162" type="cond"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deleteFile(File) : void" num="184" count="0" type="method"/>
+            <line num="185" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deleteFile(long) : void" num="193" count="0" type="method"/>
+            <line num="194" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileMapper() : FileMapper" num="201" count="0" type="method"/>
+            <line num="202" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFileMapper(FileMapper) : void" num="209" count="0" type="method"/>
+            <line num="210" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/manager/RegistrationKeyManager.java" name="RegistrationKeyManager.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="13" loc="121" coveredmethods="0" methods="10" elements="31" classes="1" ncloc="49" statements="17" conditionals="4" coveredstatements="0"/>
+            <class name="RegistrationKeyManager">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="13" coveredmethods="0" methods="10" elements="31" statements="17" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="RegistrationKeyManager()" num="24" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getRegistrationKey(long) : RegistrationKey" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRegistrationKey(String) : RegistrationKey" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAllRegistrationkeys() : List&lt;RegistrationKey&gt;" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="updateRegistrationKey(RegistrationKey) : void" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isRegistrationKeyValid(String) : boolean" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="consumeRegistrationKey(String) : boolean" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="80" type="cond"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="83" type="cond"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="isRegistrationKeyValid(RegistrationKey) : boolean" num="99" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRegistrationKeyMapper() : RegistrationKeyMapper" num="107" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRegistrationKeyMapper(RegistrationKeyMapper) : void" num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/manager/RequestManager.java" name="RequestManager.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="27" loc="264" coveredmethods="0" methods="19" elements="72" classes="1" ncloc="105" statements="39" conditionals="14" coveredstatements="0"/>
+            <class name="RequestManager">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="27" coveredmethods="0" methods="19" elements="72" statements="39" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="RequestManager()" num="52" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getRequestById(long) : Request" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAllRequests() : List&lt;Request&gt;" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAllRequestsByUser(long) : List&lt;Request&gt;" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAllRequestsByUserAndStatus(long,RequestStatus[]) : List&lt;Request&gt;" num="90" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestsByUserBetweenRange(long,Calendar,Calendar) : List&lt;Request&gt;" num="103" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestsForDevice(String) : List&lt;Request&gt;" num="113" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNewRequestsForDevice(String) : List&lt;Request&gt;" num="123" count="0" type="method"/>
+            <line num="124" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="createRequest(Request) : long" num="134" count="0" type="method"/>
+            <line num="135" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="135" type="cond"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="updateRequest(Request) : long" num="152" count="0" type="method"/>
+            <line num="153" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="153" type="cond"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line complexity="7" visibility="protected" signature="isValidRequest(Request) : boolean" num="174" count="0" type="method"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="177" type="cond"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="181" type="cond"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="185" type="cond"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="190" type="cond"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="195" type="cond"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequestMapper() : RequestMapper" num="206" count="0" type="method"/>
+            <line num="207" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRequestMapper(RequestMapper) : void" num="214" count="0" type="method"/>
+            <line num="215" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileManager() : FileManager" num="222" count="0" type="method"/>
+            <line num="223" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFileManager(FileManager) : void" num="230" count="0" type="method"/>
+            <line num="231" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceManager() : DeviceManager" num="238" count="0" type="method"/>
+            <line num="239" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeviceManager(DeviceManager) : void" num="246" count="0" type="method"/>
+            <line num="247" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserManager() : UserManager" num="253" count="0" type="method"/>
+            <line num="254" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUserManager(UserManager) : void" num="260" count="0" type="method"/>
+            <line num="261" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/manager/UserAuthenticationTokenManager.java" name="UserAuthenticationTokenManager.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="18" loc="182" coveredmethods="0" methods="12" elements="57" classes="1" ncloc="83" statements="35" conditionals="10" coveredstatements="0"/>
+            <class name="UserAuthenticationTokenManager">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="18" coveredmethods="0" methods="12" elements="57" statements="35" conditionals="10" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="UserAuthenticationTokenManager()" num="32" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getUserAuthenticationToken(long) : UserAuthenticationToken" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserAuthenticationTokenByToken(String) : UserAuthenticationToken" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="updateUserAuthenticationToken(UserAuthenticationToken) : void" num="60" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="deactivateAuthenticationToken(String,long) : void" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="createUserAuthenticationToken(String,String) : UserAuthenticationToken" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="83" type="cond"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="87" type="cond"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="authenticate(AuthToken,String) : Authentication" num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="117" type="cond"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="122" type="cond"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="126" type="cond"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="generateAuthenitcationToken() : String" num="146" count="0" type="method"/>
+            <line num="147" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserAuthenticationTokenMapper() : UserAuthenticationTokenMapper" num="153" count="0" type="method"/>
+            <line num="154" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUserAuthenticationTokenMapper(UserAuthenticationTokenMapper) : void" num="160" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserManager() : UserManager" num="167" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUserManager(UserManager) : void" num="174" count="0" type="method"/>
+            <line num="175" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/manager/UserManager.java" name="UserManager.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="27" loc="217" coveredmethods="0" methods="16" elements="77" classes="1" ncloc="101" statements="43" conditionals="18" coveredstatements="0"/>
+            <class name="UserManager">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="27" coveredmethods="0" methods="16" elements="77" statements="43" conditionals="18" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="UserManager()" num="37" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getUserById(long) : User" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserByUsername(String) : User" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="loadUserByUsername(String) : User" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="65" type="cond"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isUsernameAvailable(String) : boolean" num="77" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="createUser(UserRegistration) : boolean" num="88" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="90" type="cond"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="hashUserPassword(User) : void" num="111" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="assignRoleToUser(long,UserRole) : boolean" num="124" count="0" type="method"/>
+            <line num="125" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="125" type="cond"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="128" type="cond"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="userHasRole(long,UserRole) : boolean" num="142" count="0" type="method"/>
+            <line num="144" count="0" type="stmt"/>
+            <line complexity="8" visibility="protected" signature="isUserRegistrationValid(UserRegistration) : boolean" num="153" count="0" type="method"/>
+            <line num="154" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="154" type="cond"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="157" type="cond"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="160" type="cond"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="163" type="cond"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="166" type="cond"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserMapper() : UserMapper" num="175" count="0" type="method"/>
+            <line num="176" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUserMapper(UserMapper) : void" num="182" count="0" type="method"/>
+            <line num="183" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPasswordEncoder() : PasswordEncoder" num="189" count="0" type="method"/>
+            <line num="190" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPasswordEncoder(PasswordEncoder) : void" num="197" count="0" type="method"/>
+            <line num="198" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRegistrationKeyManager() : RegistrationKeyManager" num="204" count="0" type="method"/>
+            <line num="205" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRegistrationKeyManager(RegistrationKeyManager) : void" num="211" count="0" type="method"/>
+            <line num="213" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.util">
+         <metrics coveredelements="0" complexity="5" loc="97" methods="5" classes="2" statements="8" coveredconditionals="0" coveredmethods="0" elements="13" ncloc="50" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/util/GsonFactory.java" name="GsonFactory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="54" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="27" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="GsonFactory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GsonFactory()" num="32" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="constructGson() : Gson" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/com/ricex/aft/servlet/util/SimpleCORSFilter.java" name="SimpleCORSFilter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="43" coveredmethods="0" methods="3" elements="9" classes="1" ncloc="23" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="SimpleCORSFilter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="9" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="doFilter(ServletRequest,ServletResponse,FilterChain) : void" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="destroy() : void" num="39" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="init(FilterConfig) : void" num="41" count="0" type="method"/>
+         </file>
+      </package>
+      <package name="org.springframework.http.converter.json">
+         <metrics coveredelements="0" complexity="24" loc="183" methods="13" classes="1" statements="34" coveredconditionals="0" coveredmethods="0" elements="57" ncloc="106" files="1" conditionals="10" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/main/java/org/springframework/http/converter/json/GsonHttpMessageConverter.java" name="GsonHttpMessageConverter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="24" loc="183" coveredmethods="0" methods="13" elements="57" classes="1" ncloc="106" statements="34" conditionals="10" coveredstatements="0"/>
+            <class name="GsonHttpMessageConverter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="24" coveredmethods="0" methods="13" elements="57" statements="34" conditionals="10" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GsonHttpMessageConverter()" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="GsonHttpMessageConverter(boolean)" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="69" type="cond"/>
+            <line complexity="1" visibility="public" signature="GsonHttpMessageConverter(Gson)" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setGson(Gson) : void" num="90" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setType(Type) : void" num="95" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getType() : Type" num="99" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPrefixJson(boolean) : void" num="109" count="0" type="method"/>
+            <line num="110" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="canRead(Class&lt;?&gt;,MediaType) : boolean" num="113" count="0" type="method"/>
+            <line num="115" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="canWrite(Class&lt;?&gt;,MediaType) : boolean" num="118" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="supports(Class&lt;?&gt;) : boolean" num="123" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="5" visibility="protected" signature="readInternal(Class&lt;?&gt;,HttpInputMessage) : Object" num="129" count="0" type="method"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="136" type="cond"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line complexity="4" visibility="protected" signature="writeInternal(Object,HttpOutputMessage) : void" num="150" count="0" type="method"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="157" type="cond"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="161" type="cond"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="getCharset(HttpHeaders) : Charset" num="175" count="0" type="method"/>
+            <line num="176" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="176" type="cond"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="Android File Transfer 0.4.3-SNAPSHOT (Aggregated)" timestamp="1594121177013">
+      <metrics coveredelements="89" complexity="22" loc="260" methods="21" classes="3" statements="68" packages="3" coveredconditionals="2" coveredmethods="20" elements="91" ncloc="162" files="3" conditionals="2" coveredstatements="67"/>
+      <package name="com.ricex.aft.common">
+         <metrics coveredelements="6" complexity="3" loc="38" methods="3" classes="1" statements="3" coveredconditionals="0" coveredmethods="3" elements="6" ncloc="20" files="1" conditionals="0" coveredstatements="3"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-common/src/test/java/com/ricex/aft/common/AppTest.java" name="AppTest.java">
+            <metrics coveredelements="6" coveredconditionals="0" complexity="3" loc="38" coveredmethods="3" methods="3" elements="6" classes="1" ncloc="20" statements="3" conditionals="0" coveredstatements="3"/>
+            <class name="AppTest">
+               <metrics coveredelements="6" complexity="3" methods="3" testruns="1" statements="3" coveredconditionals="0" coveredmethods="3" elements="6" testfailures="0" testduration="0.005" conditionals="0" coveredstatements="3" testpasses="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AppTest(String)" num="18" count="1" type="method"/>
+            <line num="20" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="suite() : Test" num="26" count="1" type="method"/>
+            <line num="28" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testApp() : void" num="34" testsuccess="true" count="1" testduration="0.005" type="method"/>
+            <line num="36" count="1" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.mapper">
+         <metrics coveredelements="23" complexity="9" loc="81" methods="8" classes="1" statements="15" coveredconditionals="2" coveredmethods="7" elements="25" ncloc="49" files="1" conditionals="2" coveredstatements="14"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/test/java/com/ricex/aft/servlet/mapper/MockDeviceMapper.java" name="MockDeviceMapper.java">
+            <metrics coveredelements="23" coveredconditionals="2" complexity="9" loc="81" coveredmethods="7" methods="8" elements="25" classes="1" ncloc="49" statements="15" conditionals="2" coveredstatements="14"/>
+            <class name="MockDeviceMapper">
+               <metrics coveredelements="23" coveredconditionals="2" complexity="9" coveredmethods="7" methods="8" elements="25" statements="15" conditionals="2" coveredstatements="14"/>
+            </class>
+            <line complexity="1" visibility="public" signature="MockDeviceMapper()" num="29" count="6" type="method"/>
+            <line num="30" count="6" type="stmt"/>
+            <line num="31" count="6" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAllDevices() : List&lt;Device&gt;" num="34" count="4" type="method"/>
+            <line num="36" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAllDevicesByUser(long) : List&lt;Device&gt;" num="39" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeviceId(long) : Device" num="45" count="6" type="method"/>
+            <line num="47" count="6" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getDeviceUid(String) : Device" num="50" count="2" type="method"/>
+            <line num="52" count="2" type="stmt"/>
+            <line num="53" count="2" type="stmt"/>
+            <line num="54" count="4" type="stmt"/>
+            <line falsecount="3" truecount="1" num="54" type="cond"/>
+            <line num="55" count="1" type="stmt"/>
+            <line num="56" count="1" type="stmt"/>
+            <line num="59" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="updateDevice(Device) : void" num="62" count="14" type="method"/>
+            <line num="64" count="14" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createDevice(Device) : void" num="67" count="13" type="method"/>
+            <line num="69" count="13" type="stmt"/>
+            <line num="70" count="13" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getNextDeviceId() : long" num="77" count="13" type="method"/>
+            <line num="78" count="13" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.ricex.aft.servlet.manager">
+         <metrics coveredelements="60" complexity="10" loc="141" methods="10" classes="1" statements="50" coveredconditionals="0" coveredmethods="10" elements="60" ncloc="93" files="1" conditionals="0" coveredstatements="50"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/aft-servlet/src/test/java/com/ricex/aft/servlet/manager/TestDeviceManager.java" name="TestDeviceManager.java">
+            <metrics coveredelements="60" coveredconditionals="0" complexity="10" loc="141" coveredmethods="10" methods="10" elements="60" classes="1" ncloc="93" statements="50" conditionals="0" coveredstatements="50"/>
+            <class name="TestDeviceManager">
+               <metrics coveredelements="60" complexity="10" methods="10" testruns="6" statements="50" coveredconditionals="0" coveredmethods="10" elements="60" testfailures="0" testduration="0.018000000000000002" conditionals="0" coveredstatements="50" testpasses="6"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setup() : void" num="34" count="6" type="method"/>
+            <line num="36" count="6" type="stmt"/>
+            <line num="37" count="6" type="stmt"/>
+            <line num="38" count="6" type="stmt"/>
+            <line complexity="1" visibility="public" signature="TestCreatingDevice() : void" num="41" testsuccess="true" count="1" testduration="0.011" type="method"/>
+            <line num="43" count="1" type="stmt"/>
+            <line num="44" count="1" type="stmt"/>
+            <line num="45" count="1" type="stmt"/>
+            <line num="46" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="TestDeviceExistsShouldReturnFalseIfNotExists() : void" num="49" testsuccess="true" count="1" testduration="0.005" type="method"/>
+            <line num="51" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="TestDeviceExistsShouldReturnTrueIfExists() : void" num="55" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="58" count="1" type="stmt"/>
+            <line num="61" count="1" type="stmt"/>
+            <line num="62" count="1" type="stmt"/>
+            <line num="63" count="1" type="stmt"/>
+            <line num="64" count="1" type="stmt"/>
+            <line num="66" count="1" type="stmt"/>
+            <line num="67" count="1" type="stmt"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="69" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="TestUpdateDeviceShouldChangeDevice() : void" num="72" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="74" count="1" type="stmt"/>
+            <line num="75" count="1" type="stmt"/>
+            <line num="77" count="1" type="stmt"/>
+            <line num="78" count="1" type="stmt"/>
+            <line num="80" count="1" type="stmt"/>
+            <line num="82" count="1" type="stmt"/>
+            <line num="83" count="1" type="stmt"/>
+            <line num="84" count="1" type="stmt"/>
+            <line num="85" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="TestGetDeviceReturnsCorrectDevice() : void" num="88" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="90" count="1" type="stmt"/>
+            <line num="92" count="1" type="stmt"/>
+            <line num="94" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="TestGetAllDevicesReturnsCorrectDevices() : void" num="97" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="99" count="1" type="stmt"/>
+            <line num="100" count="1" type="stmt"/>
+            <line num="101" count="1" type="stmt"/>
+            <line num="102" count="1" type="stmt"/>
+            <line num="103" count="1" type="stmt"/>
+            <line num="104" count="1" type="stmt"/>
+            <line num="106" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createTestDevice() : Device" num="113" count="14" type="method"/>
+            <line num="114" count="14" type="stmt"/>
+            <line num="115" count="14" type="stmt"/>
+            <line num="116" count="14" type="stmt"/>
+            <line num="117" count="14" type="stmt"/>
+            <line num="118" count="14" type="stmt"/>
+            <line num="119" count="14" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createTestUser() : UserInfo" num="126" count="14" type="method"/>
+            <line num="127" count="14" type="stmt"/>
+            <line num="128" count="14" type="stmt"/>
+            <line num="129" count="14" type="stmt"/>
+            <line num="130" count="14" type="stmt"/>
+            <line num="131" count="14" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createRandomString() : String" num="138" count="42" type="method"/>
+            <line num="139" count="42" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

@@ -11,8 +11,12 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 public class ExplanationGenerator {
-    private static final String MAVEN_CLOVER_COMMAND = "{{maven-path}} " +
+    private static final Integer MAVEN_TIME_LIMIT = 3600;
+    private static final String MAVEN_WINDOWS_CLOVER_COMMAND = "{{maven-path}} " +
             "-f \"{{path}}\" clean clover:setup test clover:aggregate " +
+            "clover:clover -DtestFailureIgnore=true -fail-never";
+    private static final String MAVEN_CLOVER_COMMAND = "sudo timeout --signal=9 -k 0 " + MAVEN_TIME_LIMIT
+            + " {{maven-path}} " + "-f \"{{path}}\" clean clover:setup test clover:aggregate " +
             "clover:clover -DtestFailureIgnore=true -fail-never";
     private static final String PATH_PLACEHOLDER = "{{path}}";
     private static final String MAVEN_PATH_PLACEHOLDER = "{{maven-path}}";
@@ -39,7 +43,7 @@ public class ExplanationGenerator {
         return _instance;
     }
 
-    public ExplanationGenerator(String mavenPath){
+    public ExplanationGenerator(String mavenPath) {
         this.mavenPath = mavenPath;
     }
 
@@ -48,11 +52,19 @@ public class ExplanationGenerator {
                     String projectPath,
                     String outputPath
             ) throws Exception {
+        Long mavenCommandStartTime = System.currentTimeMillis();
 
         Runtime rt = Runtime.getRuntime();
 
-        String mavenCommand = MAVEN_CLOVER_COMMAND.replace(MAVEN_PATH_PLACEHOLDER, mavenPath)
-                .replace(PATH_PLACEHOLDER, projectPath);
+        String mavenCommand = null;
+
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            mavenCommand = MAVEN_WINDOWS_CLOVER_COMMAND.replace(MAVEN_PATH_PLACEHOLDER, mavenPath)
+                    .replace(PATH_PLACEHOLDER, projectPath);
+        } else {
+            mavenCommand = MAVEN_CLOVER_COMMAND.replace(MAVEN_PATH_PLACEHOLDER, mavenPath)
+                    .replace(PATH_PLACEHOLDER, projectPath);
+        }
         System.out.println("Executing: " + mavenCommand);
         Process pr = rt.exec(mavenCommand);
 
@@ -62,11 +74,17 @@ public class ExplanationGenerator {
             System.out.println(s);
         }
 
+        Long mavenSpentTime = System.currentTimeMillis() - mavenCommandStartTime;
+
         String generatedCloverReportPath = projectPath + File.separator + CLOVER_REPORT_PATH;
         File cloverReportFile = new File(generatedCloverReportPath);
 
         if (!cloverReportFile.exists()) {
-            throw new Exception("Clover report not generated.");
+            if (mavenSpentTime >= MAVEN_TIME_LIMIT * 1000) {
+                throw new Exception("Maven time limit violated.");
+            } else {
+                throw new Exception("Clover report not generated.");
+            }
         }
 
 
@@ -103,7 +121,7 @@ public class ExplanationGenerator {
 
             if (traceChanges.getNewlyUncoveredLines().contains(lineNum)) {
                 pw.println(COVERAGE_CHANGED_LINE_TEMPLATE.replace(LINE_CODE_PLACEHOLDER, line));
-            } else if(traceChanges.getLinesOnlyInSrc().contains(lineNum)) {
+            } else if (traceChanges.getLinesOnlyInSrc().contains(lineNum)) {
                 pw.println(LINE_ONLY_IN_ONE_VERSION_TEMPLATE.replace(LINE_CODE_PLACEHOLDER, line));
             } else if (traceChanges.getSrcLinesCoveredInBoth().contains(lineNum)) {
                 pw.println(COVERED_BY_BOTH_LINE_TEMPLATE.replace(LINE_CODE_PLACEHOLDER, line));
@@ -127,7 +145,7 @@ public class ExplanationGenerator {
 
             if (traceChanges.getNewlyCoveredLines().contains(lineNum)) {
                 pw.println(COVERAGE_CHANGED_LINE_TEMPLATE.replace(LINE_CODE_PLACEHOLDER, line));
-            } else if(traceChanges.getLinesOnlyInDst().contains(lineNum)) {
+            } else if (traceChanges.getLinesOnlyInDst().contains(lineNum)) {
                 pw.println(LINE_ONLY_IN_ONE_VERSION_TEMPLATE.replace(LINE_CODE_PLACEHOLDER, line));
             } else if (traceChanges.getDstLinesCoveredInBoth().contains(lineNum)) {
                 pw.println(COVERED_BY_BOTH_LINE_TEMPLATE.replace(LINE_CODE_PLACEHOLDER, line));

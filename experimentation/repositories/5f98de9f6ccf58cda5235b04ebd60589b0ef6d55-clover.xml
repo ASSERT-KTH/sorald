@@ -1,0 +1,1356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594174447125" clover="4.4.1">
+   <project name="RegistroLivre 1.0.0-SNAPSHOT" timestamp="0">
+      <metrics coveredelements="0" complexity="325" loc="2702" methods="216" classes="40" statements="776" packages="9" coveredconditionals="0" coveredmethods="0" elements="1174" ncloc="2067" files="39" conditionals="182" coveredstatements="0"/>
+      <package name="br.com.aceleradora.registrolivre.validador.validacoes">
+         <metrics coveredelements="0" complexity="33" loc="192" methods="7" classes="4" statements="73" coveredconditionals="0" coveredmethods="0" elements="126" ncloc="145" files="4" conditionals="46" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/validador/validacoes/CNPJValidador.java" name="CNPJValidador.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="80" coveredmethods="0" methods="2" elements="59" classes="1" ncloc="61" statements="33" conditionals="24" coveredstatements="0"/>
+            <class name="CNPJValidador">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="2" elements="59" statements="33" conditionals="24" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="initialize(CNPJValido) : void" num="10" count="0" type="method"/>
+            <line complexity="13" visibility="public" signature="isValid(String,ConstraintValidatorContext) : boolean" num="14" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="16" type="cond"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="22" type="cond"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="26" type="cond"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="30" type="cond"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="40" type="cond"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="50" type="cond"/>
+            <line num="52" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="52" type="cond"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="62" type="cond"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="67" type="cond"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="72" type="cond"/>
+            <line num="73" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="73" type="cond"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/validador/validacoes/CPFValidador.java" name="CPFValidador.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="12" loc="71" coveredmethods="0" methods="2" elements="46" classes="1" ncloc="52" statements="30" conditionals="14" coveredstatements="0"/>
+            <class name="CPFValidador">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="12" coveredmethods="0" methods="2" elements="46" statements="30" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="initialize(CPFValido) : void" num="10" count="0" type="method"/>
+            <line complexity="11" visibility="public" signature="isValid(String,ConstraintValidatorContext) : boolean" num="15" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="22" type="cond"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="26" type="cond"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="33" type="cond"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="41" type="cond"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="50" type="cond"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="58" type="cond"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="64" type="cond"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/validador/validacoes/NomeFantasiaValidador.java" name="NomeFantasiaValidador.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="28" coveredmethods="0" methods="2" elements="11" classes="1" ncloc="20" statements="5" conditionals="4" coveredstatements="0"/>
+            <class name="NomeFantasiaValidador">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="2" elements="11" statements="5" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="initialize(NomeFantasiaValido) : void" num="11" count="0" type="method"/>
+            <line complexity="3" visibility="public" signature="isValid(String,ConstraintValidatorContext) : boolean" num="15" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="17" type="cond"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="21" type="cond"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/validador/validacoes/ValidacoesComuns.java" name="ValidacoesComuns.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="13" coveredmethods="0" methods="1" elements="10" classes="1" ncloc="12" statements="5" conditionals="4" coveredstatements="0"/>
+            <class name="ValidacoesComuns">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="1" elements="10" statements="5" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="verificaQuantidadeNumerosIguais(String) : int" num="4" count="0" type="method"/>
+            <line num="5" count="0" type="stmt"/>
+            <line num="6" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="6" type="cond"/>
+            <line num="7" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="7" type="cond"/>
+            <line num="8" count="0" type="stmt"/>
+            <line num="11" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="br.com.aceleradora.registrolivre.util">
+         <metrics coveredelements="0" complexity="45" loc="431" methods="33" classes="8" statements="139" coveredconditionals="0" coveredmethods="0" elements="188" ncloc="332" files="8" conditionals="16" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/util/Arquivo.java" name="Arquivo.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="80" coveredmethods="0" methods="8" elements="37" classes="1" ncloc="61" statements="27" conditionals="2" coveredstatements="0"/>
+            <class name="Arquivo">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="8" elements="37" statements="27" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Arquivo(InputStream,Empresa)" num="19" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="formataNomeArquivo(Empresa) : String" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="normalizarNome(String) : String" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="inputStreamParaFile(InputStream,String) : void" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="54" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getArquivo() : File" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNomeArquivo() : String" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUrlArquivo() : String" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUrlArquivo(String) : void" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/util/CalendarTransformador.java" name="CalendarTransformador.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="31" coveredmethods="0" methods="3" elements="14" classes="1" ncloc="23" statements="7" conditionals="4" coveredstatements="0"/>
+            <class name="CalendarTransformador">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="3" elements="14" statements="7" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="CalendarTransformador(String)" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="transform(Object) : void" num="17" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="18" type="cond"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getFormatter() : SimpleDateFormat" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="26" type="cond"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/util/ClienteCloudinary.java" name="ClienteCloudinary.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="76" coveredmethods="0" methods="6" elements="30" classes="1" ncloc="58" statements="24" conditionals="0" coveredstatements="0"/>
+            <class name="ClienteCloudinary">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="6" elements="30" statements="24" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ClienteCloudinary(Arquivo)" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="upload() : boolean" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="atualiza(String) : boolean" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="excluir(String) : void" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getArquivo() : Arquivo" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="separaUrl(String) : String" num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/util/CustomMultipartConfig.java" name="CustomMultipartConfig.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="16" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="11" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="CustomMultipartConfig">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getSizeLimit() : long" num="12" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/util/DataOrdenadaTransformador.java" name="DataOrdenadaTransformador.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="48" coveredmethods="0" methods="6" elements="18" classes="1" ncloc="38" statements="10" conditionals="2" coveredstatements="0"/>
+            <class name="DataOrdenadaTransformador">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="6" elements="18" statements="10" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="DataOrdenadaTransformador(String,String,String)" num="14" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="transform(Object) : void" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="22" type="cond"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getDataFormatada(String,Object) : String" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getCalendarData(Object) : Date" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getFormatadorData(String) : SimpleDateFormat" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNomeNovo() : String" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/util/DownloadMultiploArquivo.java" name="DownloadMultiploArquivo.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="96" coveredmethods="0" methods="5" elements="49" classes="1" ncloc="74" statements="40" conditionals="4" coveredstatements="0"/>
+            <class name="DownloadMultiploArquivo">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="5" elements="49" statements="40" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="DownloadMultiploArquivo(List&lt;String&gt;)" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="geraZips() : String" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="download(String) : void" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="61" type="cond"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="delete(String) : void" num="76" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="adicionaNoZip(String,ZipOutputStream) : void" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="89" type="cond"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/util/EmissorDeEmail.java" name="EmissorDeEmail.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="65" coveredmethods="0" methods="3" elements="25" classes="1" ncloc="51" statements="22" conditionals="0" coveredstatements="0"/>
+            <class name="EmissorDeEmail">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="25" statements="22" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="EmissorDeEmail()" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getPasswordAuthentication() : PasswordAuthentication" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="enviar(Email,String) : void" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/util/EnderecoTransformador.java" name="EnderecoTransformador.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="19" coveredmethods="0" methods="1" elements="13" classes="1" ncloc="16" statements="8" conditionals="4" coveredstatements="0"/>
+            <class name="EnderecoTransformador">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="1" elements="13" statements="8" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="transform(Object) : void" num="8" count="0" type="method"/>
+            <line num="9" count="0" type="stmt"/>
+            <line num="10" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="10" type="cond"/>
+            <line num="11" count="0" type="stmt"/>
+            <line num="12" count="0" type="stmt"/>
+            <line num="13" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="13" type="cond"/>
+            <line num="14" count="0" type="stmt"/>
+            <line num="15" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="br.com.aceleradora.registrolivre.model">
+         <metrics coveredelements="0" complexity="85" loc="425" methods="54" classes="4" statements="116" coveredconditionals="0" coveredmethods="0" elements="214" ncloc="351" files="4" conditionals="44" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/model/Email.java" name="Email.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="33" coveredmethods="0" methods="5" elements="13" classes="1" ncloc="25" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="Email">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="13" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Email(String,String,String,String)" num="10" count="0" type="method"/>
+            <line num="11" count="0" type="stmt"/>
+            <line num="12" count="0" type="stmt"/>
+            <line num="13" count="0" type="stmt"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNome() : String" num="17" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRemetente() : String" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAssunto() : String" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMensagem() : String" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/model/Empresa.java" name="Empresa.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="57" loc="266" coveredmethods="0" methods="27" elements="150" classes="1" ncloc="223" statements="81" conditionals="42" coveredstatements="0"/>
+            <class name="Empresa">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="57" coveredmethods="0" methods="27" elements="150" statements="81" conditionals="42" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Empresa()" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getId() : long" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setId(long) : void" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCnpj() : String" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCnpj(String) : void" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRazaoSocial() : String" num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRazaoSocial(String) : void" num="75" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNomeFantasia() : String" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setNomeFantasia(String) : void" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDataCriacao() : Calendar" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDataCriacao(Calendar) : void" num="91" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDataEmissaoDocumento() : Calendar" num="95" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDataEmissaoDocumento(Calendar) : void" num="99" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDataRegistro() : Calendar" num="103" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDataRegistro(Calendar) : void" num="107" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUrl() : String" num="111" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUrl(String) : void" num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEndereco() : Endereco" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEndereco(Endereco) : void" num="123" count="0" type="method"/>
+            <line num="124" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSocios() : List&lt;Socio&gt;" num="127" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setSocios(List&lt;Socio&gt;) : void" num="131" count="0" type="method"/>
+            <line num="132" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="retiraPontosTracosBarrasCnpjECpf() : void" num="135" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="136" type="cond"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="143" type="cond"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="145" type="cond"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="retiraPontosTracos(String) : String" num="153" count="0" type="method"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line complexity="12" visibility="public" signature="contemDados() : boolean" num="160" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="163" type="cond"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="165" type="cond"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="171" type="cond"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="cnpjJaExistente(List&lt;String&gt;) : boolean" num="184" count="0" type="method"/>
+            <line num="185" count="0" type="stmt"/>
+            <line complexity="17" visibility="public" signature="trazDadosDaEmpresa(boolean) : String" num="188" count="0" type="method"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="193" type="cond"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="202" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="202" type="cond"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="205" type="cond"/>
+            <line num="206" count="0" type="stmt"/>
+            <line num="209" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="209" type="cond"/>
+            <line num="210" count="0" type="stmt"/>
+            <line num="213" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="213" type="cond"/>
+            <line num="214" count="0" type="stmt"/>
+            <line num="217" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="217" type="cond"/>
+            <line num="218" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="218" type="cond"/>
+            <line num="219" count="0" type="stmt"/>
+            <line num="222" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="222" type="cond"/>
+            <line num="223" count="0" type="stmt"/>
+            <line num="226" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="226" type="cond"/>
+            <line num="227" count="0" type="stmt"/>
+            <line num="230" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="230" type="cond"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="233" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="233" type="cond"/>
+            <line num="234" count="0" type="stmt"/>
+            <line num="236" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="236" type="cond"/>
+            <line num="237" count="0" type="stmt"/>
+            <line num="242" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="242" type="cond"/>
+            <line num="243" count="0" type="stmt"/>
+            <line num="244" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="244" type="cond"/>
+            <line num="245" count="0" type="stmt"/>
+            <line num="250" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="250" type="cond"/>
+            <line num="251" count="0" type="stmt"/>
+            <line num="253" count="0" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="formataData(Calendar) : String" num="260" count="0" type="method"/>
+            <line num="261" count="0" type="stmt"/>
+            <line num="263" count="0" type="stmt"/>
+            <line num="264" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/model/Endereco.java" name="Endereco.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="64" coveredmethods="0" methods="13" elements="31" classes="1" ncloc="56" statements="16" conditionals="2" coveredstatements="0"/>
+            <class name="Endereco">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="13" elements="31" statements="16" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getLogradouro() : String" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLogradouro(String) : void" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNumero() : String" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setNumero(String) : void" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getComplemento() : String" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setComplemento(String) : void" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCidade() : String" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCidade(String) : void" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUf() : String" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUf(String) : void" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCep() : String" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCep(String) : void" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="verificaCep() : boolean" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="59" type="cond"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/model/Socio.java" name="Socio.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="62" coveredmethods="0" methods="9" elements="20" classes="1" ncloc="47" statements="11" conditionals="0" coveredstatements="0"/>
+            <class name="Socio">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="9" elements="20" statements="11" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Socio()" num="25" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="Socio(String,String)" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Socio(String,String,boolean)" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getId() : long" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setId(long) : void" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNome() : String" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCpf() : String" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCpf(String) : void" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAtivo() : boolean" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="br.com.aceleradora.registrolivre.validador.annotations">
+         <metrics coveredelements="0" complexity="0" loc="61" methods="0" classes="3" statements="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="41" files="3" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/validador/annotations/CNPJValido.java" name="CNPJValido.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="22" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="15" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="CNPJValido">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/validador/annotations/CPFValido.java" name="CPFValido.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="20" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="13" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="CPFValido">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/validador/annotations/NomeFantasiaValido.java" name="NomeFantasiaValido.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="19" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="13" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="NomeFantasiaValido">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="br.com.aceleradora.registrolivre.controller">
+         <metrics coveredelements="0" complexity="44" loc="371" methods="29" classes="3" statements="112" coveredconditionals="0" coveredmethods="0" elements="169" ncloc="303" files="3" conditionals="28" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/controller/ContatoController.java" name="ContatoController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="44" coveredmethods="0" methods="4" elements="16" classes="1" ncloc="36" statements="10" conditionals="2" coveredstatements="0"/>
+            <class name="ContatoController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="4" elements="16" statements="10" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ContatoController(Result)" num="15" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="contato() : void" num="19" count="0" type="method"/>
+            <line complexity="2" visibility="public" signature="enviar(Email) : void" num="24" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="26" type="cond"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="validaCamposFormulario(Email) : boolean" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/controller/EmpresaController.java" name="EmpresaController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="33" loc="279" coveredmethods="0" methods="20" elements="136" classes="1" ncloc="232" statements="92" conditionals="24" coveredstatements="0"/>
+            <class name="EmpresaController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="33" coveredmethods="0" methods="20" elements="136" statements="92" conditionals="24" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="EmpresaController(IEmpresaDAO,Result,Validator)" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="cadastro() : void" num="44" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="cadastro(Empresa) : Empresa" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="listagem(List&lt;Empresa&gt;) : void" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="57" type="cond"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="listarTodos() : void" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="busca(String) : void" num="88" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="90" type="cond"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="buscaAvancada(Empresa) : void" num="100" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="102" type="cond"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="109" type="cond"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="visualizacao(Empresa) : Empresa" num="119" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="cadastrar(Empresa,UploadedFile) : void" num="124" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="atualizar(Empresa,UploadedFile) : void" num="134" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="136" type="cond"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="validar(Empresa) : void" num="146" count="0" type="method"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line complexity="7" visibility="private" signature="salvar(Empresa,UploadedFile,boolean) : void" num="151" count="0" type="method"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="153" type="cond"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="158" type="cond"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="161" type="cond"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="166" type="cond"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="174" type="cond"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="enviaMensagemDeAlteracao(Empresa) : void" num="182" count="0" type="method"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="criaSessaoCloudnary(Empresa,UploadedFile) : ClienteCloudinary" num="199" count="0" type="method"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="uploadArquivo(Empresa,ClienteCloudinary) : void" num="208" count="0" type="method"/>
+            <line num="210" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="210" type="cond"/>
+            <line num="211" count="0" type="stmt"/>
+            <line num="213" count="0" type="stmt"/>
+            <line num="215" count="0" type="stmt"/>
+            <line num="216" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="atualizaArquivo(Empresa,ClienteCloudinary) : void" num="220" count="0" type="method"/>
+            <line num="222" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="222" type="cond"/>
+            <line num="223" count="0" type="stmt"/>
+            <line num="225" count="0" type="stmt"/>
+            <line num="227" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="autoCompletar(String) : void" num="231" count="0" type="method"/>
+            <line num="233" count="0" type="stmt"/>
+            <line num="235" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="autoCompletarSocio(String) : void" num="238" count="0" type="method"/>
+            <line num="240" count="0" type="stmt"/>
+            <line num="243" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="download(long) : Download" num="246" count="0" type="method"/>
+            <line num="248" count="0" type="stmt"/>
+            <line num="250" count="0" type="stmt"/>
+            <line num="251" count="0" type="stmt"/>
+            <line num="254" count="0" type="stmt"/>
+            <line num="256" count="0" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line num="259" count="0" type="stmt"/>
+            <line num="260" count="0" type="stmt"/>
+            <line num="261" count="0" type="stmt"/>
+            <line num="262" count="0" type="stmt"/>
+            <line num="266" count="0" type="stmt"/>
+            <line num="268" count="0" type="stmt"/>
+            <line num="270" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="cnpjUnico(String) : void" num="273" count="0" type="method"/>
+            <line num="275" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/controller/HomeController.java" name="HomeController.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="48" coveredmethods="0" methods="5" elements="17" classes="1" ncloc="35" statements="10" conditionals="2" coveredstatements="0"/>
+            <class name="HomeController">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="5" elements="17" statements="10" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="HomeController(IEmpresaDAO,Result)" num="15" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="home() : void" num="20" count="0" type="method"/>
+            <line complexity="2" visibility="public" signature="insereEmpresas(int) : void" num="24" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="28" type="cond"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="sobre() : void" num="41" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="colabore() : void" num="45" count="0" type="method"/>
+         </file>
+      </package>
+      <package name="br.com.aceleradora.registrolivre.dao">
+         <metrics coveredelements="0" complexity="48" loc="387" methods="24" classes="5" statements="107" coveredconditionals="0" coveredmethods="0" elements="177" ncloc="282" files="5" conditionals="46" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/dao/EmpresaDAO.java" name="EmpresaDAO.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="40" loc="269" coveredmethods="0" methods="16" elements="155" classes="1" ncloc="203" statements="93" conditionals="46" coveredstatements="0"/>
+            <class name="EmpresaDAO">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="40" coveredmethods="0" methods="16" elements="155" statements="93" conditionals="46" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="EmpresaDAO(Session)" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTodas() : List&lt;Empresa&gt;" num="26" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTodosCNPJ() : List&lt;String&gt;" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getById(long) : Empresa" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="pesquisa(String) : List&lt;Empresa&gt;" num="45" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="47" type="cond"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="82" type="cond"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="contaQuantidadeDeRegistros() : Long" num="89" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="salva(Empresa) : void" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getParaAutoCompletar(String) : List&lt;String&gt;" num="106" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getParaAutoCompletarSocio(String) : List&lt;String&gt;" num="118" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="pesquisaPorNomeDosSocios(String) : List&lt;String&gt;" num="126" count="0" type="method"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="pesquisaPorCampo(String,String) : List&lt;String&gt;" num="138" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line complexity="22" visibility="private" signature="montarPesquisaAvancada(Empresa,String) : Query" num="150" count="0" type="method"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="157" type="cond"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="160" type="cond"/>
+            <line num="162" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="162" type="cond"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="166" type="cond"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="176" type="cond"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="180" type="cond"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="184" type="cond"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="188" type="cond"/>
+            <line num="189" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="189" type="cond"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="193" type="cond"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="197" type="cond"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="202" count="0" type="stmt"/>
+            <line num="204" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="204" type="cond"/>
+            <line num="205" count="0" type="stmt"/>
+            <line num="207" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="207" type="cond"/>
+            <line num="208" count="0" type="stmt"/>
+            <line num="210" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="210" type="cond"/>
+            <line num="211" count="0" type="stmt"/>
+            <line num="213" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="213" type="cond"/>
+            <line num="214" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="214" type="cond"/>
+            <line num="215" count="0" type="stmt"/>
+            <line num="217" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="217" type="cond"/>
+            <line num="218" count="0" type="stmt"/>
+            <line num="220" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="220" type="cond"/>
+            <line num="221" count="0" type="stmt"/>
+            <line num="226" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="226" type="cond"/>
+            <line num="229" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="229" type="cond"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="233" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="233" type="cond"/>
+            <line num="235" count="0" type="stmt"/>
+            <line num="240" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pesquisaAvancadaEspecifica(Empresa) : List&lt;Empresa&gt;" num="243" count="0" type="method"/>
+            <line num="245" count="0" type="stmt"/>
+            <line num="246" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pesquisaAvancadaAproximada(Empresa) : List&lt;Empresa&gt;" num="249" count="0" type="method"/>
+            <line num="251" count="0" type="stmt"/>
+            <line num="252" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="limpaSessao() : void" num="255" count="0" type="method"/>
+            <line num="257" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLinksDocumentos(Collection&lt;Long&gt;) : List&lt;String&gt;" num="260" count="0" type="method"/>
+            <line num="262" count="0" type="stmt"/>
+            <line num="266" count="0" type="stmt"/>
+            <line num="267" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/dao/IEmpresaDAO.java" name="IEmpresaDAO.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="33" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="17" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="IEmpresaDAO">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/dao/OperadoresSQL.java" name="OperadoresSQL.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="6" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="OperadoresSQL">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/dao/SessionCreator.java" name="SessionCreator.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="37" coveredmethods="0" methods="4" elements="9" classes="1" ncloc="26" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="SessionCreator">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="9" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="SessionCreator(SessionFactory)" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInstance() : Session" num="23" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="create() : void" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="destroy() : void" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/br/com/aceleradora/registrolivre/dao/SessionFactoryCreator.java" name="SessionFactoryCreator.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="42" coveredmethods="0" methods="4" elements="13" classes="1" ncloc="31" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="SessionFactoryCreator">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="13" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="SessionFactoryCreator()" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="create() : void" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="destroy() : void" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInstance() : SessionFactory" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="unitario.validador">
+         <metrics coveredelements="0" complexity="21" loc="185" methods="20" classes="5" statements="34" coveredconditionals="0" coveredmethods="0" elements="56" ncloc="135" files="4" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/unitario/validador/CNPJValidadorTest.java" name="CNPJValidadorTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="46" coveredmethods="0" methods="5" elements="14" classes="1" ncloc="33" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="CNPJValidadorTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="14" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setup() : void" num="14" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="sucessoSeOCnpjEValido() : void" num="19" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="falhaSeOCnpjForInvalido() : void" num="26" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="falhaSeOCnpjForLetras() : void" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="falhaSeOCnpjForNulo() : void" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/unitario/validador/CPFValidadorTest.java" name="CPFValidadorTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="41" coveredmethods="0" methods="4" elements="11" classes="1" ncloc="28" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="CPFValidadorTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="11" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="15" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="sucedeSeCpfEValido() : void" num="20" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="falhaSeCpfForInvalidoForLetras() : void" num="27" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="falhaSeCpfForInvalido() : void" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/unitario/validador/HibernateValidationUtils.java" name="HibernateValidationUtils.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="55" coveredmethods="0" methods="7" elements="20" classes="2" ncloc="43" statements="11" conditionals="2" coveredstatements="0"/>
+            <class name="HibernateValidationUtils">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="11" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="HibernateValidationUtils.PassaValidacao">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="2" elements="9" statements="5" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="&lt;clinit&gt;, line 18()" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="validacaoPara(Object,String) : Set&lt;ConstraintViolation&lt;Object&gt;&gt;" num="23" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="noCampo(String) : String" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="sucesso() : Matcher&lt;Set&lt;ConstraintViolation&lt;Object&gt;&gt;&gt;" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="falha() : Matcher&lt;Set&lt;ConstraintViolation&lt;Object&gt;&gt;&gt;" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="matches(Object) : boolean" num="41" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="describeTo(Description) : void" num="50" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/unitario/validador/NomeFantasiaValidadorTest.java" name="NomeFantasiaValidadorTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="43" coveredmethods="0" methods="4" elements="11" classes="1" ncloc="31" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="NomeFantasiaValidadorTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="11" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="18" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="sucedeSeONomeFantasiaTiverMaisQueUmCaracter() : void" num="23" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="falhaSeONomeFantasiaTiverMenosQueDoisCaracteres() : void" num="30" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="falhaSeONomeFantasiaForNulo() : void" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="funcional">
+         <metrics coveredelements="0" complexity="13" loc="138" methods="13" classes="3" statements="32" coveredconditionals="0" coveredmethods="0" elements="45" ncloc="92" files="3" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/funcional/PaginaDeCadastro.java" name="PaginaDeCadastro.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="12" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="8" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="PaginaDeCadastro">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getUrl() : String" num="7" count="0" type="method"/>
+            <line num="9" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/funcional/PaginaInicial.java" name="PaginaInicial.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="49" coveredmethods="0" methods="6" elements="19" classes="1" ncloc="32" statements="13" conditionals="0" coveredstatements="0"/>
+            <class name="PaginaInicial">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="19" statements="13" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getUrl() : String" num="9" count="0" type="method"/>
+            <line num="11" count="0" type="stmt"/>
+            <line num="12" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAt() : void" num="15" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="abreBuscaAvancada() : boolean" num="20" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fechaBuscaAvancada() : boolean" num="28" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="preencheInputDaBusca(String) : boolean" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clicaNoBotaoPesquisaSocio() : void" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/funcional/PaginaInicialTest.java" name="PaginaInicialTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="77" coveredmethods="0" methods="6" elements="24" classes="1" ncloc="52" statements="18" conditionals="0" coveredstatements="0"/>
+            <class name="PaginaInicialTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="24" statements="18" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="&lt;clinit&gt;, line 21()" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDefaultDriver() : WebDriver" num="30" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoOInputDaBuscaEstiverVazioOBotaoDaBuscaDeveEstarDesativado() : void" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoOInputDaBuscaEstiverPreenchidoOBotaoDeveEstarAtivado() : void" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deveAbrirEFecharOFormDeBuscaAvancada() : void" num="57" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoOUsuarioClicarEmPesquisaSocioDeveAbrirUmNovoFormDeSocio() : void" num="69" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="unitario">
+         <metrics coveredelements="0" complexity="36" loc="512" methods="36" classes="5" statements="163" coveredconditionals="0" coveredmethods="0" elements="199" ncloc="386" files="5" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/unitario/ArquivoTest.java" name="ArquivoTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="56" coveredmethods="0" methods="2" elements="17" classes="1" ncloc="41" statements="15" conditionals="0" coveredstatements="0"/>
+            <class name="ArquivoTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="17" statements="15" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="quandoChamarOMetodoFormataNomeArquivoRetornaStringComNomeFantasiaDataEHoraDaEmpresaEnviada() : void" num="24" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoChamarOMetodoNormalizarNomeRetornaStringComNomeSemTracosEBarras() : void" num="40" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/unitario/CalendarTransformerTest.java" name="CalendarTransformerTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="29" coveredmethods="0" methods="1" elements="7" classes="1" ncloc="20" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="CalendarTransformerTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="7" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="retornaUmJSonComDataFormatadaQuandoUtilizarOCalerdarTransformer() : void" num="15" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/unitario/ContatoControllerTest.java" name="ContatoControllerTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="76" coveredmethods="0" methods="5" elements="22" classes="1" ncloc="55" statements="17" conditionals="0" coveredstatements="0"/>
+            <class name="ContatoControllerTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="22" statements="17" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="29" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoUsuarioPreencheTodosOsCamposCorretamenteRetornaTrue() : void" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoUsuarioNaoPreencherNomeRetornaFalso() : void" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoUsuarioNaoPreencherEmailCorretamenteRetornaFalso() : void" num="57" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoUsuarioDeixaDoisCamposEmBrancoRetornaFalso() : void" num="66" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/unitario/EmpresaControllerTest.java" name="EmpresaControllerTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="12" loc="172" coveredmethods="0" methods="12" elements="68" classes="1" ncloc="136" statements="56" conditionals="0" coveredstatements="0"/>
+            <class name="EmpresaControllerTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="12" coveredmethods="0" methods="12" elements="68" statements="56" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setup() : void" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoChamaOMetodoVisualizacaoRetornaOMetodoGetByIdDoDAO() : void" num="40" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoChamaOMetodoCadastroRetornaOMetodoGetByIdDoDAO() : void" num="50" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoChamaOMetodtoCadastroIncluiEditarNoResult() : void" num="61" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="incluiVariavelNoReultadoSeABuscaForVazia() : void" num="73" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="buscaListaDeEmpresasNoBancoSeABuscaNaoForNula() : void" num="84" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="incluiVariavelNoReultadoSeAEmpresaDaBuscaAvancadaForVazia() : void" num="96" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="executaBuscaAvancadaEspecificaSeEmpresaTiverDados() : void" num="107" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="executaBuscaAvancadaAproximadadSeABuscaAvancadaEspecificaNaoRetornarEmpresas() : void" num="119" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="incluiVariavelQuandoListaVazia() : void" num="132" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="incluiJsonQuandoListaTemDados() : void" num="142" count="0" type="method"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="serializeEmpresas(ArrayList&lt;Empresa&gt;) : String" num="154" count="0" type="method"/>
+            <line num="155" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/unitario/EmpresaTest.java" name="EmpresaTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="16" loc="179" coveredmethods="0" methods="16" elements="85" classes="1" ncloc="134" statements="69" conditionals="0" coveredstatements="0"/>
+            <class name="EmpresaTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="16" coveredmethods="0" methods="16" elements="85" statements="69" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setup() : void" num="22" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoMandarStringComPontoEtracosBarraRetornaStringSemPontoTraco() : void" num="27" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoChamarOMetodoRetiraPontosTracosBarrasCnpjECpfVaiRetirarOsPontosTracosBarrasCnpjDaEmpresaEDoCpfDosSocios() : void" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoChamarOMetodoCnpjJaExistenteMandandoUmaListaVaiRetornarVerdadeSeOCnpjDaEmpresaExistirNaLista() : void" num="56" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoChamarOMetodoCnpjJaExistenteMandandoUmaListaVaiRetornarFalsoSeOCnpjDaEmpresaNaoExistirNaLista() : void" num="68" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="quandoChamarOMetodoTrazDadosDaEmpresaRetornaUmaStringComTodosOsDadosNaoVaziosDela() : void" num="80" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="retornaTrueSeOCnpjEstiverPreenhido() : void" num="95" count="0" type="method"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="retornaTrueSeONomeFantasiaEstiverPreenhido() : void" num="102" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="retornaTrueSeORazaoSocialEstiverPreenhido() : void" num="109" count="0" type="method"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="retornaTrueSeAUfPreenhido() : void" num="116" count="0" type="method"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="retornaTrueSeACidadePreenhido() : void" num="125" count="0" type="method"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="retornaTrueSeOLogradouroPreenhido() : void" num="134" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="retornaFalseSeAEmpresaNaoTiverNenhumDado() : void" num="143" count="0" type="method"/>
+            <line num="145" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="retornaFalseSeAEmpresaNaoTiverSociosNemDados() : void" num="148" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="retornaTrueSeAEmpresaTiverUmSocioComNomeECpf() : void" num="157" count="0" type="method"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="retornaTrueSeAEmpresaTiverUmSocioComCpf() : void" num="168" count="0" type="method"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="RegistroLivre 1.0.0-SNAPSHOT" timestamp="0">
+      <metrics coveredelements="0" complexity="0" loc="0" methods="0" classes="0" statements="0" packages="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="0" files="0" conditionals="0" coveredstatements="0"/>
+   </testproject>
+</coverage>

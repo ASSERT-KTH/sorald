@@ -1,0 +1,2035 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594060766909" clover="4.4.1">
+   <project name="Camel CDI 2.0-SNAPSHOT (Aggregated)" timestamp="1594060763624">
+      <metrics coveredelements="0" complexity="633" loc="5987" methods="428" classes="67" statements="1020" packages="3" coveredconditionals="0" coveredmethods="0" elements="1720" ncloc="3645" files="63" conditionals="272" coveredstatements="0"/>
+      <package name="org.apache.camel.cdi.xml">
+         <metrics coveredelements="0" complexity="199" loc="1735" methods="189" classes="16" statements="234" coveredconditionals="0" coveredmethods="0" elements="433" ncloc="1058" files="16" conditionals="10" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/ApplicationContextFactoryBean.java" name="ApplicationContextFactoryBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="12" loc="104" coveredmethods="0" methods="12" elements="24" classes="1" ncloc="67" statements="12" conditionals="0" coveredstatements="0"/>
+            <class name="ApplicationContextFactoryBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="12" coveredmethods="0" methods="12" elements="24" statements="12" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getContexts() : List&lt;CamelContextFactoryBean&gt;" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setContexts(List&lt;CamelContextFactoryBean&gt;) : void" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getErrorHandlers() : List&lt;ErrorHandlerDefinition&gt;" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setErrorHandlers(List&lt;ErrorHandlerDefinition&gt;) : void" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getImports() : List&lt;ImportDefinition&gt;" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setImports(List&lt;ImportDefinition&gt;) : void" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRestContexts() : List&lt;RestContextDefinition&gt;" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRestContexts(List&lt;RestContextDefinition&gt;) : void" num="85" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRouteContexts() : List&lt;RouteContextDefinition&gt;" num="89" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRouteContexts(List&lt;RouteContextDefinition&gt;) : void" num="93" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBeans() : List&lt;AbstractCamelFactoryBean&lt;?&gt;&gt;" num="97" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBeans(List&lt;AbstractCamelFactoryBean&lt;?&gt;&gt;) : void" num="101" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/BeanManagerAware.java" name="BeanManagerAware.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="25" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="BeanManagerAware">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/BeanManagerHelper.java" name="BeanManagerHelper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="38" coveredmethods="0" methods="3" elements="7" classes="1" ncloc="16" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="BeanManagerHelper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="7" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="BeanManagerHelper()" num="26" count="0" type="method"/>
+            <line complexity="1" visibility="package" signature="getCamelContextById(BeanManager,String) : CamelContext" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="getDefaultCamelContext(BeanManager) : CamelContext" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/CamelContextFactoryBean.java" name="CamelContextFactoryBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="111" loc="719" coveredmethods="0" methods="110" elements="227" classes="1" ncloc="506" statements="115" conditionals="2" coveredstatements="0"/>
+            <class name="CamelContextFactoryBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="111" coveredmethods="0" methods="110" elements="227" statements="115" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getObjectType() : Class&lt;DefaultCamelContext&gt;" num="227" count="0" type="method"/>
+            <line num="229" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBeanManager(BeanManager) : void" num="232" count="0" type="method"/>
+            <line num="234" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="getBeanForType(Class&lt;S&gt;) : S" num="237" count="0" type="method"/>
+            <line num="240" count="0" type="stmt"/>
+            <line num="241" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="241" type="cond"/>
+            <line num="242" count="0" type="stmt"/>
+            <line num="244" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="findRouteBuildersByPackageScan(String[],PackageScanFilter,List&lt;RoutesBuilder&gt;) : void" num="247" count="0" type="method"/>
+            <line num="250" count="0" type="stmt"/>
+            <line num="252" count="0" type="stmt"/>
+            <line num="253" count="0" type="stmt"/>
+            <line num="256" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="findRouteBuildersByContextScan(PackageScanFilter,boolean,List&lt;RoutesBuilder&gt;) : void" num="259" count="0" type="method"/>
+            <line num="261" count="0" type="stmt"/>
+            <line num="262" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="initBeanPostProcessor(DefaultCamelContext) : void" num="265" count="0" type="method"/>
+            <line complexity="1" visibility="protected" signature="postProcessBeforeInit(RouteBuilder) : void" num="270" count="0" type="method"/>
+            <line complexity="1" visibility="protected" signature="initCustomRegistry(DefaultCamelContext) : void" num="275" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="afterPropertiesSet() : void" num="280" count="0" type="method"/>
+            <line num="282" count="0" type="stmt"/>
+            <line num="283" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getContext() : DefaultCamelContext" num="286" count="0" type="method"/>
+            <line num="288" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setContext(DefaultCamelContext) : void" num="291" count="0" type="method"/>
+            <line num="292" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getContext(boolean) : DefaultCamelContext" num="295" count="0" type="method"/>
+            <line num="297" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBeans() : List&lt;AbstractCamelFactoryBean&lt;?&gt;&gt;" num="300" count="0" type="method"/>
+            <line num="301" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBeans(List&lt;AbstractCamelFactoryBean&lt;?&gt;&gt;) : void" num="304" count="0" type="method"/>
+            <line num="305" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRoutes() : List&lt;RouteDefinition&gt;" num="308" count="0" type="method"/>
+            <line num="309" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRoutes(List&lt;RouteDefinition&gt;) : void" num="312" count="0" type="method"/>
+            <line num="313" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRests() : List&lt;RestDefinition&gt;" num="316" count="0" type="method"/>
+            <line num="317" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRests(List&lt;RestDefinition&gt;) : void" num="320" count="0" type="method"/>
+            <line num="321" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRestConfiguration() : RestConfigurationDefinition" num="324" count="0" type="method"/>
+            <line num="325" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRestConfiguration(RestConfigurationDefinition) : void" num="328" count="0" type="method"/>
+            <line num="329" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEndpoints() : List&lt;EndpointFactoryBean&gt;" num="332" count="0" type="method"/>
+            <line num="333" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEndpoints(List&lt;EndpointFactoryBean&gt;) : void" num="336" count="0" type="method"/>
+            <line num="337" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRedeliveryPolicies() : List&lt;RedeliveryPolicyFactoryBean&gt;" num="340" count="0" type="method"/>
+            <line num="341" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRedeliveryPolicies(List&lt;RedeliveryPolicyFactoryBean&gt;) : void" num="344" count="0" type="method"/>
+            <line num="345" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getIntercepts() : List&lt;InterceptDefinition&gt;" num="348" count="0" type="method"/>
+            <line num="349" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setIntercepts(List&lt;InterceptDefinition&gt;) : void" num="352" count="0" type="method"/>
+            <line num="353" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInterceptFroms() : List&lt;InterceptFromDefinition&gt;" num="356" count="0" type="method"/>
+            <line num="357" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setInterceptFroms(List&lt;InterceptFromDefinition&gt;) : void" num="360" count="0" type="method"/>
+            <line num="361" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInterceptSendToEndpoints() : List&lt;InterceptSendToEndpointDefinition&gt;" num="364" count="0" type="method"/>
+            <line num="365" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setInterceptSendToEndpoints(List&lt;InterceptSendToEndpointDefinition&gt;) : void" num="368" count="0" type="method"/>
+            <line num="369" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getProperties() : PropertiesDefinition" num="372" count="0" type="method"/>
+            <line num="373" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setProperties(PropertiesDefinition) : void" num="376" count="0" type="method"/>
+            <line num="377" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPackages() : String[]" num="380" count="0" type="method"/>
+            <line num="381" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPackages(String[]) : void" num="395" count="0" type="method"/>
+            <line num="396" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPackageScan() : PackageScanDefinition" num="399" count="0" type="method"/>
+            <line num="400" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPackageScan(PackageScanDefinition) : void" num="410" count="0" type="method"/>
+            <line num="411" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getContextScan() : ContextScanDefinition" num="414" count="0" type="method"/>
+            <line num="415" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setContextScan(ContextScanDefinition) : void" num="425" count="0" type="method"/>
+            <line num="426" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCamelPropertyPlaceholder() : CamelPropertyPlaceholderDefinition" num="429" count="0" type="method"/>
+            <line num="430" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCamelPropertyPlaceholder(CamelPropertyPlaceholderDefinition) : void" num="433" count="0" type="method"/>
+            <line num="434" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCamelStreamCachingStrategy() : CamelStreamCachingStrategyDefinition" num="437" count="0" type="method"/>
+            <line num="438" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCamelStreamCachingStrategy(CamelStreamCachingStrategyDefinition) : void" num="441" count="0" type="method"/>
+            <line num="442" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTrace() : String" num="445" count="0" type="method"/>
+            <line num="446" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTrace(String) : void" num="449" count="0" type="method"/>
+            <line num="450" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMessageHistory() : String" num="453" count="0" type="method"/>
+            <line num="454" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setMessageHistory(String) : void" num="457" count="0" type="method"/>
+            <line num="458" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLogExhaustedMessageBody() : String" num="461" count="0" type="method"/>
+            <line num="463" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLogExhaustedMessageBody(String) : void" num="466" count="0" type="method"/>
+            <line num="467" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStreamCache() : String" num="470" count="0" type="method"/>
+            <line num="471" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStreamCache(String) : void" num="474" count="0" type="method"/>
+            <line num="475" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDelayer() : String" num="478" count="0" type="method"/>
+            <line num="479" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDelayer(String) : void" num="482" count="0" type="method"/>
+            <line num="483" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHandleFault() : String" num="486" count="0" type="method"/>
+            <line num="487" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setHandleFault(String) : void" num="490" count="0" type="method"/>
+            <line num="491" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAutoStartup() : String" num="494" count="0" type="method"/>
+            <line num="495" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAutoStartup(String) : void" num="498" count="0" type="method"/>
+            <line num="499" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getShutdownEager() : String" num="502" count="0" type="method"/>
+            <line num="503" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setShutdownEager(String) : void" num="506" count="0" type="method"/>
+            <line num="507" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUseMDCLogging() : String" num="510" count="0" type="method"/>
+            <line num="511" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUseMDCLogging(String) : void" num="514" count="0" type="method"/>
+            <line num="515" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUseBreadcrumb() : String" num="518" count="0" type="method"/>
+            <line num="519" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUseBreadcrumb(String) : void" num="522" count="0" type="method"/>
+            <line num="523" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAllowUseOriginalMessage() : String" num="526" count="0" type="method"/>
+            <line num="527" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAllowUseOriginalMessage(String) : void" num="530" count="0" type="method"/>
+            <line num="531" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRuntimeEndpointRegistryEnabled() : String" num="534" count="0" type="method"/>
+            <line num="535" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRuntimeEndpointRegistryEnabled(String) : void" num="538" count="0" type="method"/>
+            <line num="539" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getManagementNamePattern() : String" num="542" count="0" type="method"/>
+            <line num="543" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setManagementNamePattern(String) : void" num="546" count="0" type="method"/>
+            <line num="547" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getThreadNamePattern() : String" num="550" count="0" type="method"/>
+            <line num="551" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setThreadNamePattern(String) : void" num="554" count="0" type="method"/>
+            <line num="555" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLazyLoadTypeConverters() : Boolean" num="558" count="0" type="method"/>
+            <line num="560" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLazyLoadTypeConverters(Boolean) : void" num="563" count="0" type="method"/>
+            <line num="565" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTypeConverterStatisticsEnabled() : Boolean" num="568" count="0" type="method"/>
+            <line num="569" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTypeConverterStatisticsEnabled(Boolean) : void" num="572" count="0" type="method"/>
+            <line num="573" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTypeConverterExists() : TypeConverterExists" num="576" count="0" type="method"/>
+            <line num="577" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTypeConverterExists(TypeConverterExists) : void" num="580" count="0" type="method"/>
+            <line num="581" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTypeConverterExistsLoggingLevel() : LoggingLevel" num="584" count="0" type="method"/>
+            <line num="585" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTypeConverterExistsLoggingLevel(LoggingLevel) : void" num="588" count="0" type="method"/>
+            <line num="589" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCamelJMXAgent() : CamelJMXAgentDefinition" num="592" count="0" type="method"/>
+            <line num="593" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCamelJMXAgent(CamelJMXAgentDefinition) : void" num="596" count="0" type="method"/>
+            <line num="597" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBuilderRefs() : List&lt;RouteBuilderDefinition&gt;" num="600" count="0" type="method"/>
+            <line num="601" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBuilderRefs(List&lt;RouteBuilderDefinition&gt;) : void" num="604" count="0" type="method"/>
+            <line num="605" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRouteRefs() : List&lt;RouteContextRefDefinition&gt;" num="608" count="0" type="method"/>
+            <line num="609" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRouteRefs(List&lt;RouteContextRefDefinition&gt;) : void" num="612" count="0" type="method"/>
+            <line num="613" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRestRefs() : List&lt;RestContextRefDefinition&gt;" num="616" count="0" type="method"/>
+            <line num="617" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRestRefs(List&lt;RestContextRefDefinition&gt;) : void" num="620" count="0" type="method"/>
+            <line num="621" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getErrorHandlerRef() : String" num="624" count="0" type="method"/>
+            <line num="625" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setErrorHandlerRef(String) : void" num="628" count="0" type="method"/>
+            <line num="629" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDataFormats() : DataFormatsDefinition" num="632" count="0" type="method"/>
+            <line num="633" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDataFormats(DataFormatsDefinition) : void" num="636" count="0" type="method"/>
+            <line num="637" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOnExceptions() : List&lt;OnExceptionDefinition&gt;" num="640" count="0" type="method"/>
+            <line num="641" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOnExceptions(List&lt;OnExceptionDefinition&gt;) : void" num="644" count="0" type="method"/>
+            <line num="645" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOnCompletions() : List&lt;OnCompletionDefinition&gt;" num="648" count="0" type="method"/>
+            <line num="649" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOnCompletions(List&lt;OnCompletionDefinition&gt;) : void" num="652" count="0" type="method"/>
+            <line num="653" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getShutdownRoute() : ShutdownRoute" num="656" count="0" type="method"/>
+            <line num="657" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setShutdownRoute(ShutdownRoute) : void" num="660" count="0" type="method"/>
+            <line num="661" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getShutdownRunningTask() : ShutdownRunningTask" num="664" count="0" type="method"/>
+            <line num="665" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setShutdownRunningTask(ShutdownRunningTask) : void" num="668" count="0" type="method"/>
+            <line num="669" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getThreadPoolProfiles() : List&lt;ThreadPoolProfileDefinition&gt;" num="672" count="0" type="method"/>
+            <line num="673" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setThreadPoolProfiles(List&lt;ThreadPoolProfileDefinition&gt;) : void" num="676" count="0" type="method"/>
+            <line num="677" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDependsOn() : String" num="680" count="0" type="method"/>
+            <line num="681" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDependsOn(String) : void" num="684" count="0" type="method"/>
+            <line num="685" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getProxies() : List&lt;CamelProxyFactoryDefinition&gt;" num="688" count="0" type="method"/>
+            <line num="689" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setProxies(List&lt;CamelProxyFactoryDefinition&gt;) : void" num="692" count="0" type="method"/>
+            <line num="693" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExports() : List&lt;CamelServiceExporterDefinition&gt;" num="696" count="0" type="method"/>
+            <line num="697" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setExports(List&lt;CamelServiceExporterDefinition&gt;) : void" num="700" count="0" type="method"/>
+            <line num="701" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isImplicitId() : boolean" num="704" count="0" type="method"/>
+            <line num="705" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setImplicitId(boolean) : void" num="708" count="0" type="method"/>
+            <line num="709" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getErrorHandlers() : List&lt;ErrorHandlerDefinition&gt;" num="712" count="0" type="method"/>
+            <line num="713" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setErrorHandlers(List&lt;ErrorHandlerDefinition&gt;) : void" num="716" count="0" type="method"/>
+            <line num="717" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/ConsumerTemplateFactoryBean.java" name="ConsumerTemplateFactoryBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="53" coveredmethods="0" methods="3" elements="6" classes="1" ncloc="25" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="ConsumerTemplateFactoryBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setBeanManager(BeanManager) : void" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getCamelContextWithId(String) : CamelContext" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="discoverDefaultCamelContext() : CamelContext" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/ContextScanRouteBuilderFinder.java" name="ContextScanRouteBuilderFinder.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="84" coveredmethods="0" methods="4" elements="24" classes="1" ncloc="45" statements="16" conditionals="4" coveredstatements="0"/>
+            <class name="ContextScanRouteBuilderFinder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="4" elements="24" statements="16" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="ContextScanRouteBuilderFinder(BeanManager,PackageScanFilter,boolean)" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="3" visibility="package" signature="appendBuilders(List&lt;RoutesBuilder&gt;) : void" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="61" type="cond"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="66" type="cond"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="shouldIgnoreBean(Bean&lt;?&gt;) : boolean" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="isFilteredClass(Bean&lt;?&gt;) : boolean" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/EndpointFactoryBean.java" name="EndpointFactoryBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="53" coveredmethods="0" methods="3" elements="6" classes="1" ncloc="27" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="EndpointFactoryBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setBeanManager(BeanManager) : void" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getCamelContextWithId(String) : CamelContext" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="discoverDefaultCamelContext() : CamelContext" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/ErrorHandlerDefinition.java" name="ErrorHandlerDefinition.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="32" loc="210" coveredmethods="0" methods="32" elements="64" classes="1" ncloc="140" statements="32" conditionals="0" coveredstatements="0"/>
+            <class name="ErrorHandlerDefinition">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="32" coveredmethods="0" methods="32" elements="64" statements="32" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getType() : ErrorHandlerType" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setType(ErrorHandlerType) : void" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeadLetterUri() : String" num="91" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeadLetterUri(String) : void" num="95" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDeadLetterHandleNewException() : Boolean" num="99" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDeadLetterHandleNewException(Boolean) : void" num="103" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLevel() : LoggingLevel" num="107" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLevel(LoggingLevel) : void" num="111" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRollbackLoggingLevel() : LoggingLevel" num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRollbackLoggingLevel(LoggingLevel) : void" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLogName() : String" num="123" count="0" type="method"/>
+            <line num="124" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLogName(String) : void" num="127" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUseOriginalMessage() : Boolean" num="131" count="0" type="method"/>
+            <line num="132" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUseOriginalMessage(Boolean) : void" num="135" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTransactionTemplateRef() : String" num="139" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTransactionTemplateRef(String) : void" num="143" count="0" type="method"/>
+            <line num="144" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTransactionManagerRef() : String" num="147" count="0" type="method"/>
+            <line num="148" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTransactionManagerRef(String) : void" num="151" count="0" type="method"/>
+            <line num="152" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOnRedeliveryRef() : String" num="155" count="0" type="method"/>
+            <line num="156" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOnRedeliveryRef(String) : void" num="159" count="0" type="method"/>
+            <line num="160" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOnExceptionOccurredRef() : String" num="163" count="0" type="method"/>
+            <line num="164" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOnExceptionOccurredRef(String) : void" num="167" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOnPrepareFailureRef() : String" num="171" count="0" type="method"/>
+            <line num="172" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOnPrepareFailureRef(String) : void" num="175" count="0" type="method"/>
+            <line num="176" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRetryWhileRef() : String" num="179" count="0" type="method"/>
+            <line num="180" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRetryWhileRef(String) : void" num="183" count="0" type="method"/>
+            <line num="184" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRedeliveryPolicyRef() : String" num="187" count="0" type="method"/>
+            <line num="188" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRedeliveryPolicyRef(String) : void" num="191" count="0" type="method"/>
+            <line num="192" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExecutorServiceRef() : String" num="195" count="0" type="method"/>
+            <line num="196" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setExecutorServiceRef(String) : void" num="199" count="0" type="method"/>
+            <line num="200" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRedeliveryPolicy() : RedeliveryPolicyFactoryBean" num="203" count="0" type="method"/>
+            <line num="204" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRedeliveryPolicy(RedeliveryPolicyFactoryBean) : void" num="207" count="0" type="method"/>
+            <line num="208" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/ErrorHandlerType.java" name="ErrorHandlerType.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="62" coveredmethods="0" methods="1" elements="14" classes="1" ncloc="33" statements="13" conditionals="0" coveredstatements="0"/>
+            <class name="ErrorHandlerType">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="1" elements="14" statements="13" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="6" visibility="public" signature="getTypeAsClass() : Class&lt;? extends ErrorHandlerBuilder&gt;" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/ImportDefinition.java" name="ImportDefinition.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="42" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="17" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="ImportDefinition">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getResource() : String" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setResource(String) : void" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/PackageScanRouteBuilderFinder.java" name="PackageScanRouteBuilderFinder.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="92" coveredmethods="0" methods="5" elements="29" classes="1" ncloc="52" statements="20" conditionals="4" coveredstatements="0"/>
+            <class name="PackageScanRouteBuilderFinder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="5" elements="29" statements="20" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="PackageScanRouteBuilderFinder(CamelContext,String[],ClassLoader,PackageScanClassResolver)" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="3" visibility="package" signature="appendBuilders(List&lt;RoutesBuilder&gt;) : void" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="59" type="cond"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="64" type="cond"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="shouldIgnoreBean(Class&lt;?&gt;) : boolean" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="isValidClass(Class&lt;?&gt;) : boolean" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="instantiateBuilder(Class&lt;? extends RoutesBuilder&gt;) : RoutesBuilder" num="89" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/ProducerTemplateFactoryBean.java" name="ProducerTemplateFactoryBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="63" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="33" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="ProducerTemplateFactoryBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setBeanManager(BeanManager) : void" num="41" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getCamelContextWithId(String) : CamelContext" num="46" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="discoverDefaultCamelContext() : CamelContext" num="51" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getObjectType() : Class" num="56" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/RedeliveryPolicyFactoryBean.java" name="RedeliveryPolicyFactoryBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="52" coveredmethods="0" methods="3" elements="6" classes="1" ncloc="25" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="RedeliveryPolicyFactoryBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setBeanManager(BeanManager) : void" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getCamelContextWithId(String) : CamelContext" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="discoverDefaultCamelContext() : CamelContext" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/RestContextDefinition.java" name="RestContextDefinition.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="43" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="21" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="RestContextDefinition">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getRests() : List&lt;RestDefinition&gt;" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRests(List&lt;RestDefinition&gt;) : void" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/RouteContextDefinition.java" name="RouteContextDefinition.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="43" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="21" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="RouteContextDefinition">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getRoutes() : List&lt;RouteDefinition&gt;" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRoutes(List&lt;RouteDefinition&gt;) : void" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/xml/ThreadPoolFactoryBean.java" name="ThreadPoolFactoryBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="52" coveredmethods="0" methods="3" elements="6" classes="1" ncloc="25" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="ThreadPoolFactoryBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setBeanManager(BeanManager) : void" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getCamelContextWithId(String) : CamelContext" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="discoverDefaultCamelContext() : CamelContext" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.apache.camel.cdi">
+         <metrics coveredelements="0" complexity="396" loc="3904" methods="211" classes="46" statements="725" coveredconditionals="0" coveredmethods="0" elements="1182" ncloc="2379" files="42" conditionals="246" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/BeanAlternative.java" name="BeanAlternative.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="74" coveredmethods="0" methods="8" elements="19" classes="1" ncloc="45" statements="11" conditionals="0" coveredstatements="0"/>
+            <class name="BeanAlternative">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="8" elements="19" statements="11" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="BeanAlternative(BeanAttributes&lt;T&gt;,Set&lt;? extends Annotation&gt;)" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTypes() : Set&lt;Type&gt;" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getQualifiers() : Set&lt;Annotation&gt;" num="45" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getScope() : Class&lt;? extends Annotation&gt;" num="50" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStereotypes() : Set&lt;Class&lt;? extends Annotation&gt;&gt;" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAlternative() : boolean" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="70" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/BeanManagerHelper.java" name="BeanManagerHelper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="52" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="28" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="BeanManagerHelper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="getReferencesByType(BeanManager,Class&lt;T&gt;,Annotation) : Set&lt;T&gt;" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="getReferenceByName(BeanManager,String,Class&lt;T&gt;) : Optional&lt;T&gt;" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="getReferenceByType(BeanManager,Class&lt;T&gt;,Annotation) : Optional&lt;T&gt;" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="getReference(BeanManager,Class&lt;T&gt;,Bean&lt;?&gt;) : T" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CamelBeanInjectionTarget.java" name="CamelBeanInjectionTarget.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="47" coveredmethods="0" methods="2" elements="10" classes="1" ncloc="24" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="CamelBeanInjectionTarget">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="2" elements="10" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CamelBeanInjectionTarget(InjectionTarget&lt;T&gt;,BeanManager)" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="inject(T,CreationalContext&lt;T&gt;) : void" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CamelContextInjectionTarget.java" name="CamelContextInjectionTarget.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="35" coveredmethods="0" methods="2" elements="5" classes="1" ncloc="14" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="CamelContextInjectionTarget">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="5" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CamelContextInjectionTarget(InjectionTarget&lt;T&gt;,Producer&lt;T&gt;)" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="preDestroy(T) : void" num="30" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CamelContextOsgiProducer.java" name="CamelContextOsgiProducer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="60" coveredmethods="0" methods="2" elements="19" classes="1" ncloc="32" statements="13" conditionals="4" coveredstatements="0"/>
+            <class name="CamelContextOsgiProducer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="2" elements="19" statements="13" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CamelContextOsgiProducer(Producer&lt;T&gt;)" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="produce(CreationalContext&lt;T&gt;) : T" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="46" type="cond"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="55" type="cond"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CamelContextProducer.java" name="CamelContextProducer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="16" loc="130" coveredmethods="0" methods="4" elements="65" classes="1" ncloc="92" statements="39" conditionals="22" coveredstatements="0"/>
+            <class name="CamelContextProducer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="16" coveredmethods="0" methods="4" elements="65" statements="39" conditionals="22" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CamelContextProducer(Producer&lt;T&gt;,Annotated,BeanManager)" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="produce(CreationalContext&lt;T&gt;) : T" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="65" type="cond"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="69" type="cond"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="84" type="cond"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="87" type="cond"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="dispose(T) : void" num="93" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="97" type="cond"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line complexity="7" visibility="private" signature="nameStrategy(Annotated) : CamelContextNameStrategy" num="107" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="108" type="cond"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="110" type="cond"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="113" type="cond"/>
+            <line num="114" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="114" type="cond"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="116" type="cond"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="118" type="cond"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiCamelBeanPostProcessor.java" name="CdiCamelBeanPostProcessor.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="17" loc="111" coveredmethods="0" methods="7" elements="44" classes="1" ncloc="76" statements="27" conditionals="10" coveredstatements="0"/>
+            <class name="CdiCamelBeanPostProcessor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="17" coveredmethods="0" methods="7" elements="44" statements="27" conditionals="10" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CdiCamelBeanPostProcessor(BeanManager)" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="10" visibility="protected" signature="injectFields(Object,String) : void" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="54" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="63" type="cond"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="71" type="cond"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="79" type="cond"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="injectField(Field,String,String,String,String,Object,String) : void" num="88" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="injectFieldProperty(Field,String,String,String,Object,String) : void" num="92" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getPostProcessorHelper(String) : CamelPostProcessorHelper" num="96" count="0" type="method"/>
+            <line num="97" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getOrLookupCamelContext(String) : CamelContext" num="100" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="103" type="cond"/>
+            <line complexity="1" visibility="public" signature="getOrLookupCamelContext() : CamelContext" num="107" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiCamelConfiguration.java" name="CdiCamelConfiguration.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="42" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="4" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="CdiCamelConfiguration">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiCamelConfigurationEvent.java" name="CdiCamelConfigurationEvent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="47" coveredmethods="0" methods="4" elements="13" classes="1" ncloc="23" statements="7" conditionals="2" coveredstatements="0"/>
+            <class name="CdiCamelConfigurationEvent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="4" elements="13" statements="7" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="autoConfigureRoutes(boolean) : CdiCamelConfiguration" num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="autoConfigureRoutes() : boolean" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="unmodifiable() : void" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="throwsIfUnmodifiable() : void" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="42" type="cond"/>
+            <line num="43" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiCamelContextNameStrategy.java" name="CdiCamelContextNameStrategy.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="46" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="13" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="CdiCamelContextNameStrategy">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getNextName() : String" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiCamelEnvironment.java" name="CdiCamelEnvironment.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="68" coveredmethods="0" methods="6" elements="25" classes="1" ncloc="42" statements="13" conditionals="6" coveredstatements="0"/>
+            <class name="CdiCamelEnvironment">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="6" elements="25" statements="13" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CdiCamelEnvironment()" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="camelContextProducer(Producer&lt;T&gt;,Annotated,BeanManager) : Producer&lt;T&gt;" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="39" type="cond"/>
+            <line complexity="2" visibility="package" signature="camelContextInjectionTarget(InjectionTarget&lt;T&gt;,Annotated,BeanManager) : InjectionTarget&lt;T&gt;" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line complexity="2" visibility="private" signature="isCamelCoreOsgiPresent() : boolean" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="hasBundleContext(Class) : boolean" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getClassLoader(Class&lt;?&gt;) : ClassLoader" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="63" type="cond"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiCamelExtension.java" name="CdiCamelExtension.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="46" loc="406" coveredmethods="0" methods="20" elements="153" classes="1" ncloc="309" statements="99" conditionals="34" coveredstatements="0"/>
+            <class name="CdiCamelExtension">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="46" coveredmethods="0" methods="20" elements="153" statements="99" conditionals="34" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="getEventEndpoint(String) : CdiEventEndpoint&lt;?&gt;" num="111" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="getObserverEvents() : Set&lt;Annotation&gt;" num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="getContextQualifiers() : Set&lt;Annotation&gt;" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="importResources(ProcessAnnotatedType&lt;?&gt;) : void" num="123" count="0" type="method"/>
+            <line num="124" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="typeConverters(ProcessAnnotatedType&lt;?&gt;) : void" num="127" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="camelAnnotations(ProcessAnnotatedType&lt;?&gt;) : void" num="131" count="0" type="method"/>
+            <line num="133" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="consumeBeans(ProcessAnnotatedType&lt;?&gt;) : void" num="136" count="0" type="method"/>
+            <line num="137" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="camelContextBeans(ProcessInjectionTarget&lt;T&gt;,BeanManager) : void" num="140" count="0" type="method"/>
+            <line num="141" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="camelContextProducers(ProcessProducer&lt;?, T&gt;,BeanManager) : void" num="144" count="0" type="method"/>
+            <line num="145" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="camelContextAware(ProcessInjectionTarget&lt;T&gt;,BeanManager) : void" num="148" count="0" type="method"/>
+            <line num="149" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="camelBeansPostProcessor(ProcessInjectionTarget&lt;T&gt;,BeanManager) : void" num="152" count="0" type="method"/>
+            <line num="153" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="153" type="cond"/>
+            <line num="154" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="cdiEventEndpoints(ProcessInjectionPoint&lt;?, CdiEventEndpoint&gt;,BeanManager) : void" num="157" count="0" type="method"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="159" type="cond"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line complexity="6" visibility="private" signature="camelEventNotifiers(ProcessObserverMethod&lt;T, ?&gt;) : void" num="166" count="0" type="method"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="171" type="cond"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="173" type="cond"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="175" type="cond"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line complexity="11" visibility="private" signature="afterBeanDiscovery(AfterBeanDiscovery,BeanManager) : void" num="182" count="0" type="method"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="193" type="cond"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="207" count="0" type="stmt"/>
+            <line num="210" count="0" type="stmt"/>
+            <line num="217" count="0" type="stmt"/>
+            <line num="229" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="229" type="cond"/>
+            <line num="230" count="0" type="stmt"/>
+            <line num="231" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="231" type="cond"/>
+            <line num="233" count="0" type="stmt"/>
+            <line num="234" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="234" type="cond"/>
+            <line num="236" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="236" type="cond"/>
+            <line num="237" count="0" type="stmt"/>
+            <line num="242" count="0" type="stmt"/>
+            <line num="245" count="0" type="stmt"/>
+            <line num="249" count="0" type="stmt"/>
+            <line num="253" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="257" type="cond"/>
+            <line num="263" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="addCdiEventObserver(AfterBeanDiscovery,CdiEventEndpoint&lt;T&gt;) : void" num="266" count="0" type="method"/>
+            <line num="267" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="shouldDeployDefaultCamelContext(BeanManager,Set&lt;SyntheticBean&lt;?&gt;&gt;) : boolean" num="275" count="0" type="method"/>
+            <line num="277" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="camelContextBean(BeanManager,Annotation) : SyntheticBean&lt;?&gt;" num="309" count="0" type="method"/>
+            <line num="310" count="0" type="stmt"/>
+            <line num="312" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="camelProducerBean(BeanManager,AnnotatedMethod&lt;? super CdiCamelFactory&gt;,Set&lt;Annotation&gt;) : Bean&lt;?&gt;" num="318" count="0" type="method"/>
+            <line num="319" count="0" type="stmt"/>
+            <line complexity="6" visibility="private" signature="afterDeploymentValidation(AfterDeploymentValidation,BeanManager) : void" num="326" count="0" type="method"/>
+            <line num="328" count="0" type="stmt"/>
+            <line num="329" count="0" type="stmt"/>
+            <line num="331" count="0" type="stmt"/>
+            <line num="332" count="0" type="stmt"/>
+            <line num="333" count="0" type="stmt"/>
+            <line num="336" count="0" type="stmt"/>
+            <line num="337" count="0" type="stmt"/>
+            <line num="338" count="0" type="stmt"/>
+            <line num="339" count="0" type="stmt"/>
+            <line num="341" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="341" type="cond"/>
+            <line num="343" count="0" type="stmt"/>
+            <line num="344" count="0" type="stmt"/>
+            <line num="345" count="0" type="stmt"/>
+            <line num="346" count="0" type="stmt"/>
+            <line num="347" count="0" type="stmt"/>
+            <line num="348" count="0" type="stmt"/>
+            <line num="349" count="0" type="stmt"/>
+            <line num="350" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="350" type="cond"/>
+            <line num="351" count="0" type="stmt"/>
+            <line num="354" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="354" type="cond"/>
+            <line num="355" count="0" type="stmt"/>
+            <line num="362" count="0" type="stmt"/>
+            <line num="363" count="0" type="stmt"/>
+            <line num="367" count="0" type="stmt"/>
+            <line num="368" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="368" type="cond"/>
+            <line num="369" count="0" type="stmt"/>
+            <line num="370" count="0" type="stmt"/>
+            <line num="371" count="0" type="stmt"/>
+            <line num="372" count="0" type="stmt"/>
+            <line num="374" count="0" type="stmt"/>
+            <line num="379" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="addRouteToContext(Bean&lt;?&gt;,Bean&lt;?&gt;,BeanManager,AfterDeploymentValidation) : boolean" num="382" count="0" type="method"/>
+            <line num="383" count="0" type="stmt"/>
+            <line num="384" count="0" type="stmt"/>
+            <line num="385" count="0" type="stmt"/>
+            <line num="386" count="0" type="stmt"/>
+            <line num="387" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="387" type="cond"/>
+            <line num="388" count="0" type="stmt"/>
+            <line num="389" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="389" type="cond"/>
+            <line num="390" count="0" type="stmt"/>
+            <line num="392" count="0" type="stmt"/>
+            <line num="395" count="0" type="stmt"/>
+            <line num="397" count="0" type="stmt"/>
+            <line num="402" count="0" type="stmt"/>
+            <line num="404" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiCamelFactory.java" name="CdiCamelFactory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="18" loc="154" coveredmethods="0" methods="14" elements="56" classes="1" ncloc="113" statements="36" conditionals="6" coveredstatements="0"/>
+            <class name="CdiCamelFactory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="18" coveredmethods="0" methods="14" elements="56" statements="36" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="typeConverter(InjectionPoint,Instance&lt;CamelContext&gt;,CdiCamelExtension) : TypeConverter" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="consumerTemplate(InjectionPoint,Instance&lt;CamelContext&gt;,CdiCamelExtension) : ConsumerTemplate" num="53" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="producerTemplate(InjectionPoint,Instance&lt;CamelContext&gt;,CdiCamelExtension) : ProducerTemplate" num="59" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="producerTemplateFromUri(InjectionPoint,Instance&lt;CamelContext&gt;,CdiCamelExtension,Uri) : ProducerTemplate" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="defaultProducerTemplate(InjectionPoint,Instance&lt;CamelContext&gt;,CdiCamelExtension) : ProducerTemplate" num="76" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="fluentProducerTemplate(InjectionPoint,Instance&lt;CamelContext&gt;,CdiCamelExtension) : FluentProducerTemplate" num="80" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="fluentProducerTemplateFromUri(InjectionPoint,Instance&lt;CamelContext&gt;,CdiCamelExtension,Uri) : FluentProducerTemplate" num="89" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="defaultFluentProducerTemplate(InjectionPoint,Instance&lt;CamelContext&gt;,CdiCamelExtension) : FluentProducerTemplate" num="97" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="mockEndpointFromMember(InjectionPoint,Instance&lt;CamelContext&gt;,CdiCamelExtension) : MockEndpoint" num="101" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="mockEndpointFromUri(InjectionPoint,Instance&lt;CamelContext&gt;,CdiCamelExtension) : MockEndpoint" num="109" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="endpoint(InjectionPoint,Instance&lt;CamelContext&gt;,CdiCamelExtension) : Endpoint" num="118" count="0" type="method"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="cdiEventEndpoint(InjectionPoint,Instance&lt;CamelContext&gt;,CdiCamelExtension) : CdiEventEndpoint&lt;T&gt;" num="126" count="0" type="method"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="132" type="cond"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="135" type="cond"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="selectContext(InjectionPoint,Instance&lt;T&gt;,CdiCamelExtension) : T" num="140" count="0" type="method"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="143" type="cond"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getQualifierByType(InjectionPoint,Class&lt;T&gt;) : Optional&lt;T&gt;" num="148" count="0" type="method"/>
+            <line num="149" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiCamelInjector.java" name="CdiCamelInjector.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="46" coveredmethods="0" methods="3" elements="7" classes="1" ncloc="21" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="CdiCamelInjector">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="7" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CdiCamelInjector(Injector,BeanManager)" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newInstance(Class&lt;T&gt;) : T" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newInstance(Class&lt;T&gt;,Object) : T" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiCamelRegistry.java" name="CdiCamelRegistry.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="96" coveredmethods="0" methods="8" elements="25" classes="1" ncloc="63" statements="17" conditionals="0" coveredstatements="0"/>
+            <class name="CdiCamelRegistry">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="8" elements="25" statements="17" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CdiCamelRegistry(BeanManager)" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="lookupByName(String) : Object" num="51" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="lookupByNameAndType(String,Class&lt;T&gt;) : T" num="58" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="findByTypeWithName(Class&lt;T&gt;) : Map&lt;String, T&gt;" num="66" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="findByType(Class&lt;T&gt;) : Set&lt;T&gt;" num="75" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="lookup(String) : Object" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="lookup(String,Class&lt;T&gt;) : T" num="87" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="lookupByType(Class&lt;T&gt;) : Map&lt;String, T&gt;" num="92" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiEventComponent.java" name="CdiEventComponent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="48" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="14" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="CdiEventComponent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="createEndpoint(String,String,Map&lt;String, Object&gt;) : Endpoint" num="30" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiEventConsumer.java" name="CdiEventConsumer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="70" coveredmethods="0" methods="4" elements="24" classes="1" ncloc="41" statements="16" conditionals="4" coveredstatements="0"/>
+            <class name="CdiEventConsumer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="4" elements="24" statements="16" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CdiEventConsumer(CdiEventEndpoint&lt;T&gt;,Processor)" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="doStart() : void" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="doStop() : void" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="4" visibility="package" signature="notify(T) : void" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="58" type="cond"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="66" type="cond"/>
+            <line num="67" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiEventEndpoint.java" name="CdiEventEndpoint.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="16" loc="195" coveredmethods="0" methods="11" elements="50" classes="2" ncloc="99" statements="29" conditionals="10" coveredstatements="0"/>
+            <class name="CdiEventEndpoint">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="16" coveredmethods="0" methods="11" elements="50" statements="29" conditionals="10" coveredstatements="0"/>
+            </class>
+            <class name="CdiEventEndpoint.AnyEvent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CdiEventEndpoint(String,Type,Set&lt;Annotation&gt;,BeanManager)" num="106" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="eventEndpointUri(Type,Set&lt;Annotation&gt;) : String" num="113" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="116" type="cond"/>
+            <line complexity="4" visibility="private" signature="authorityFromType(Type) : String" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="120" type="cond"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="123" type="cond"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="128" type="cond"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="getQualifiers() : Set&lt;Annotation&gt;" num="134" count="0" type="method"/>
+            <line num="135" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="getType() : Type" num="138" count="0" type="method"/>
+            <line num="139" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createConsumer(Processor) : Consumer" num="142" count="0" type="method"/>
+            <line num="144" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="createProducer() : Producer" num="147" count="0" type="method"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="153" type="cond"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isSingleton() : boolean" num="173" count="0" type="method"/>
+            <line num="175" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="addConsumer(CdiEventConsumer&lt;T&gt;) : void" num="178" count="0" type="method"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="removeConsumer(CdiEventConsumer&lt;T&gt;) : void" num="184" count="0" type="method"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="notify(T) : void" num="190" count="0" type="method"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiEventNotifier.java" name="CdiEventNotifier.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="76" coveredmethods="0" methods="3" elements="31" classes="1" ncloc="48" statements="18" conditionals="10" coveredstatements="0"/>
+            <class name="CdiEventNotifier">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="3" elements="31" statements="18" conditionals="10" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CdiEventNotifier(BeanManager,Collection&lt;Annotation&gt;)" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="6" visibility="public" signature="notify(EventObject) : void" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="52" type="cond"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="54" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="56" type="cond"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="58" type="cond"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="62" type="cond"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isEnabled(EventObject) : boolean" num="72" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiEventProducer.java" name="CdiEventProducer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="44" coveredmethods="0" methods="2" elements="6" classes="1" ncloc="19" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="CdiEventProducer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="6" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CdiEventProducer(CdiEventEndpoint&lt;T&gt;,Event&lt;T&gt;)" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="process(Exchange) : void" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiSpiHelper.java" name="CdiSpiHelper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="22" loc="165" coveredmethods="0" methods="9" elements="72" classes="1" ncloc="115" statements="39" conditionals="24" coveredstatements="0"/>
+            <class name="CdiSpiHelper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="22" coveredmethods="0" methods="9" elements="72" statements="39" conditionals="24" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="hasType(Type) : Predicate&lt;Bean&gt;" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="isAnnotationType(Class&lt;? extends Annotation&gt;) : Predicate&lt;Annotation&gt;" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="7" visibility="package" signature="getRawType(Type) : Class&lt;?&gt;" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="58" type="cond"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="61" type="cond"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="64" type="cond"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="67" type="cond"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="70" type="cond"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="72" type="cond"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getBound(Type[]) : Class&lt;?&gt;" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="79" type="cond"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="createBeanAttributesId(BeanAttributes&lt;?&gt;) : String" num="88" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="createTypeCollectionId(Collection&lt;Type&gt;) : String" num="100" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="createTypeId(Type) : String" num="110" count="0" type="method"/>
+            <line num="111" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="111" type="cond"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="114" type="cond"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="120" type="cond"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="123" type="cond"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="createAnnotationCollectionId(Collection&lt;Annotation&gt;) : String" num="132" count="0" type="method"/>
+            <line num="133" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="133" type="cond"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="createAnnotationId(Annotation) : String" num="145" count="0" type="method"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/CdiTypeConverterLoader.java" name="CdiTypeConverterLoader.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="35" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="14" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="CdiTypeConverterLoader">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CdiTypeConverterLoader()" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="loadConverterMethods(TypeConverterRegistry,Class&lt;?&gt;) : void" num="31" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/ContextName.java" name="ContextName.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="97" coveredmethods="0" methods="3" elements="6" classes="2" ncloc="29" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="ContextName">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="ContextName.Literal">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="Literal(String)" num="84" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="of(String) : ContextName" num="88" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="value() : String" num="92" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/ContextNames.java" name="ContextNames.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="28" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ContextNames">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/DelegateInjectionTarget.java" name="DelegateInjectionTarget.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="51" coveredmethods="0" methods="5" elements="12" classes="1" ncloc="27" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="DelegateInjectionTarget">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="12" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="DelegateInjectionTarget(InjectionTarget&lt;T&gt;)" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="DelegateInjectionTarget(InjectionTarget&lt;T&gt;,Producer&lt;T&gt;)" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="inject(T,CreationalContext&lt;T&gt;) : void" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="postConstruct(T) : void" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="preDestroy(T) : void" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/DelegateProducer.java" name="DelegateProducer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="51" coveredmethods="0" methods="5" elements="10" classes="1" ncloc="27" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="DelegateProducer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="10" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="DelegateProducer(Producer&lt;T&gt;)" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="produce(CreationalContext&lt;T&gt;) : T" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="dispose(T) : void" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInjectionPoints() : Set&lt;InjectionPoint&gt;" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/ImportResource.java" name="ImportResource.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="94" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ImportResource">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/Main.java" name="Main.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="105" coveredmethods="0" methods="7" elements="27" classes="1" ncloc="62" statements="16" conditionals="4" coveredstatements="0"/>
+            <class name="Main">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="7" elements="27" statements="16" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="main(String) : void" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInstance() : Main" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="findOrCreateCamelTemplate() : ProducerTemplate" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getCamelContextMap() : Map&lt;String, CamelContext&gt;" num="71" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="doStart() : void" num="79" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="warnIfNoCamelFound() : void" num="93" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="95" type="cond"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="doStop() : void" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="102" type="cond"/>
+            <line num="103" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/ResourceHelper.java" name="ResourceHelper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="37" coveredmethods="0" methods="2" elements="12" classes="1" ncloc="16" statements="6" conditionals="4" coveredstatements="0"/>
+            <class name="ResourceHelper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="2" elements="12" statements="6" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="ResourceHelper()" num="25" count="0" type="method"/>
+            <line complexity="3" visibility="package" signature="getResource(String) : URL" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="30" type="cond"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="32" type="cond"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/Startup.java" name="Startup.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="40" coveredmethods="0" methods="1" elements="1" classes="2" ncloc="19" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Startup">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="Startup.Literal">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="1" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="Literal()" num="35" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/SyntheticAnnotated.java" name="SyntheticAnnotated.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="91" coveredmethods="0" methods="9" elements="20" classes="1" ncloc="60" statements="11" conditionals="0" coveredstatements="0"/>
+            <class name="SyntheticAnnotated">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="9" elements="20" statements="11" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="SyntheticAnnotated(Class&lt;?&gt;,Set&lt;Type&gt;,Annotation)" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="SyntheticAnnotated(Class&lt;?&gt;,Set&lt;Type&gt;,Collection&lt;Annotation&gt;)" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="addAnnotation(A) : void" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBaseType() : Type" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTypeClosure() : Set&lt;Type&gt;" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAnnotations() : Set&lt;Annotation&gt;" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAnnotation(Class&lt;T&gt;) : T" num="70" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAnnotations(Class&lt;T&gt;) : Set&lt;T&gt;" num="79" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAnnotationPresent(Class&lt;? extends Annotation&gt;) : boolean" num="87" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/SyntheticBean.java" name="SyntheticBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="102" coveredmethods="0" methods="8" elements="28" classes="1" ncloc="72" statements="20" conditionals="0" coveredstatements="0"/>
+            <class name="SyntheticBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="8" elements="28" statements="20" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="SyntheticBean(BeanManager,SyntheticAnnotated,Class&lt;?&gt;,InjectionTarget&lt;T&gt;,Function&lt;Bean&lt;T&gt;, String&gt;)" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBeanClass() : Class&lt;?&gt;" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="create(CreationalContext&lt;T&gt;) : T" num="54" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="destroy(T,CreationalContext&lt;T&gt;) : void" num="66" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInjectionPoints() : Set&lt;InjectionPoint&gt;" num="78" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isNullable() : boolean" num="83" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="88" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getId() : String" num="93" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/SyntheticBeanAttributes.java" name="SyntheticBeanAttributes.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="86" coveredmethods="0" methods="8" elements="17" classes="1" ncloc="57" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="SyntheticBeanAttributes">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="8" elements="17" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="SyntheticBeanAttributes(BeanManager,SyntheticAnnotated)" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="addQualifier(A) : void" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getScope() : Class&lt;? extends Annotation&gt;" num="46" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getQualifiers() : Set&lt;Annotation&gt;" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStereotypes() : Set&lt;Class&lt;? extends Annotation&gt;&gt;" num="72" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTypes() : Set&lt;Type&gt;" num="77" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAlternative() : boolean" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/SyntheticInjectionTarget.java" name="SyntheticInjectionTarget.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="80" coveredmethods="0" methods="9" elements="18" classes="1" ncloc="48" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="SyntheticInjectionTarget">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="9" elements="18" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="SyntheticInjectionTarget(Supplier&lt;T&gt;)" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="SyntheticInjectionTarget(Supplier&lt;T&gt;,Consumer&lt;T&gt;)" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="SyntheticInjectionTarget(Supplier&lt;T&gt;,Consumer&lt;T&gt;,Consumer&lt;T&gt;)" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="inject(T,CreationalContext&lt;T&gt;) : void" num="51" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="postConstruct(T) : void" num="56" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="preDestroy(T) : void" num="61" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="produce(CreationalContext&lt;T&gt;) : T" num="66" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="dispose(T) : void" num="71" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getInjectionPoints() : Set&lt;InjectionPoint&gt;" num="76" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/UnaryParameterizedType.java" name="UnaryParameterizedType.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="48" coveredmethods="0" methods="4" elements="9" classes="1" ncloc="23" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="UnaryParameterizedType">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="9" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="UnaryParameterizedType(Type,Type)" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getActualTypeArguments() : Type[]" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRawType() : Type" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOwnerType() : Type" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/Uri.java" name="Uri.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="70" coveredmethods="0" methods="3" elements="6" classes="2" ncloc="28" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="Uri">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="Uri.Literal">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="Literal(String)" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="of(String) : Literal" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="value() : String" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/XmlCdiBeanFactory.java" name="XmlCdiBeanFactory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="79" loc="456" coveredmethods="0" methods="16" elements="231" classes="1" ncloc="372" statements="141" conditionals="74" coveredstatements="0"/>
+            <class name="XmlCdiBeanFactory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="79" coveredmethods="0" methods="16" elements="231" statements="141" conditionals="74" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="XmlCdiBeanFactory(BeanManager,CdiCamelEnvironment)" num="82" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="with(BeanManager,CdiCamelEnvironment) : XmlCdiBeanFactory" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="beansFrom(String) : Set&lt;SyntheticBean&lt;?&gt;&gt;" num="91" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="93" type="cond"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line complexity="9" visibility="package" signature="beansFrom(URL) : Set&lt;SyntheticBean&lt;?&gt;&gt;" num="100" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="105" type="cond"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="108" type="cond"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="132" type="cond"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="136" type="cond"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="143" type="cond"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="146" type="cond"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="camelContextBean(CamelContextFactoryBean,URL) : SyntheticBean&lt;?&gt;" num="154" count="0" type="method"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="157" type="cond"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="186" type="cond"/>
+            <line complexity="7" visibility="private" signature="camelContextBeans(CamelContextFactoryBean,Bean&lt;?&gt;,URL) : Set&lt;SyntheticBean&lt;?&gt;&gt;" num="192" count="0" type="method"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="196" type="cond"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="203" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="203" type="cond"/>
+            <line num="204" count="0" type="stmt"/>
+            <line num="209" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="209" type="cond"/>
+            <line num="210" count="0" type="stmt"/>
+            <line num="215" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="215" type="cond"/>
+            <line num="216" count="0" type="stmt"/>
+            <line num="220" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="220" type="cond"/>
+            <line num="221" count="0" type="stmt"/>
+            <line num="227" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="227" type="cond"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="233" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="camelContextBean(Bean&lt;?&gt;,AbstractCamelFactoryBean&lt;?&gt;,URL) : SyntheticBean&lt;?&gt;" num="236" count="0" type="method"/>
+            <line num="237" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="237" type="cond"/>
+            <line num="238" count="0" type="stmt"/>
+            <line num="240" count="0" type="stmt"/>
+            <line num="241" count="0" type="stmt"/>
+            <line num="243" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="243" type="cond"/>
+            <line num="246" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="246" type="cond"/>
+            <line num="247" count="0" type="stmt"/>
+            <line num="249" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="proxyFactoryBean(Bean&lt;?&gt;,CamelProxyFactoryDefinition,URL) : SyntheticBean&lt;?&gt;" num="260" count="0" type="method"/>
+            <line num="261" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="261" type="cond"/>
+            <line num="262" count="0" type="stmt"/>
+            <line num="266" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="serviceExporterBean(Bean&lt;?&gt;,CamelServiceExporterDefinition,URL) : SyntheticBean&lt;?&gt;" num="277" count="0" type="method"/>
+            <line num="279" count="0" type="stmt"/>
+            <line num="283" count="0" type="stmt"/>
+            <line num="284" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="284" type="cond"/>
+            <line num="285" count="0" type="stmt"/>
+            <line num="287" count="0" type="stmt"/>
+            <line num="288" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="288" type="cond"/>
+            <line num="289" count="0" type="stmt"/>
+            <line num="291" count="0" type="stmt"/>
+            <line num="294" count="0" type="stmt"/>
+            <line num="298" count="0" type="stmt"/>
+            <line num="302" count="0" type="stmt"/>
+            <line num="304" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="306" type="cond"/>
+            <line complexity="1" visibility="private" signature="restContextBean(RestContextDefinition,URL) : SyntheticBean&lt;?&gt;" num="314" count="0" type="method"/>
+            <line num="315" count="0" type="stmt"/>
+            <line num="319" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="routeContextBean(RouteContextDefinition,URL) : SyntheticBean&lt;?&gt;" num="332" count="0" type="method"/>
+            <line num="333" count="0" type="stmt"/>
+            <line num="337" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="routesDefinitionBean(RoutesDefinition,URL) : SyntheticBean&lt;?&gt;" num="350" count="0" type="method"/>
+            <line num="351" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="359" type="cond"/>
+            <line complexity="37" visibility="private" signature="errorHandlerBean(ErrorHandlerDefinition,URL) : SyntheticBean&lt;?&gt;" num="363" count="0" type="method"/>
+            <line num="364" count="0" type="stmt"/>
+            <line num="367" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="367" type="cond"/>
+            <line num="369" count="0" type="stmt"/>
+            <line num="371" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="371" type="cond"/>
+            <line num="373" count="0" type="stmt"/>
+            <line num="375" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="375" type="cond"/>
+            <line num="377" count="0" type="stmt"/>
+            <line num="379" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="379" type="cond"/>
+            <line num="381" count="0" type="stmt"/>
+            <line num="383" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="383" type="cond"/>
+            <line num="385" count="0" type="stmt"/>
+            <line num="387" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="387" type="cond"/>
+            <line num="390" count="0" type="stmt"/>
+            <line num="392" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="392" type="cond"/>
+            <line num="395" count="0" type="stmt"/>
+            <line num="397" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="397" type="cond"/>
+            <line num="400" count="0" type="stmt"/>
+            <line num="402" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="402" type="cond"/>
+            <line num="406" count="0" type="stmt"/>
+            <line num="408" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="408" type="cond"/>
+            <line num="411" count="0" type="stmt"/>
+            <line num="413" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="413" type="cond"/>
+            <line num="416" count="0" type="stmt"/>
+            <line num="418" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="418" type="cond"/>
+            <line num="421" count="0" type="stmt"/>
+            <line num="423" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="423" type="cond"/>
+            <line num="425" count="0" type="stmt"/>
+            <line num="427" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="427" type="cond"/>
+            <line num="429" count="0" type="stmt"/>
+            <line num="431" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="attributeNotSupported(String,ErrorHandlerType,String) : DefinitionException" num="443" count="0" type="method"/>
+            <line num="444" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="hasId(T) : boolean" num="449" count="0" type="method"/>
+            <line num="450" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="hasId(T) : boolean" num="453" count="0" type="method"/>
+            <line num="454" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/XmlCdiJaxbContexts.java" name="XmlCdiJaxbContexts.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="43" coveredmethods="0" methods="2" elements="6" classes="1" ncloc="20" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="XmlCdiJaxbContexts">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="2" elements="6" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="package" signature="XmlCdiJaxbContexts(String)" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="instance() : JAXBContext" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/XmlErrorHandlerFactoryBean.java" name="XmlErrorHandlerFactoryBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="18" loc="134" coveredmethods="0" methods="5" elements="63" classes="1" ncloc="97" statements="44" conditionals="14" coveredstatements="0"/>
+            <class name="XmlErrorHandlerFactoryBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="18" coveredmethods="0" methods="5" elements="63" statements="44" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="XmlErrorHandlerFactoryBean(BeanManager,SyntheticAnnotated,Class&lt;?&gt;,Function&lt;Bean&lt;ErrorHandlerBuilder&gt;, String&gt;,ErrorHandlerDefinition)" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="create(CreationalContext&lt;ErrorHandlerBuilder&gt;) : ErrorHandlerBuilder" num="51" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="destroy(ErrorHandlerBuilder,CreationalContext&lt;ErrorHandlerBuilder&gt;) : void" num="77" count="0" type="method"/>
+            <line complexity="8" visibility="private" signature="setProperties(DefaultErrorHandlerBuilder) : void" num="82" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="83" type="cond"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="88" type="cond"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="91" type="cond"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="99" type="cond"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="107" type="cond"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="115" type="cond"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="121" type="cond"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="setProperties(LoggingErrorHandlerBuilder) : void" num="130" count="0" type="method"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/XmlFactoryBeanInjectionTarget.java" name="XmlFactoryBeanInjectionTarget.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="54" coveredmethods="0" methods="1" elements="13" classes="1" ncloc="33" statements="10" conditionals="2" coveredstatements="0"/>
+            <class name="XmlFactoryBeanInjectionTarget">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="1" elements="13" statements="10" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="5" visibility="package" signature="XmlFactoryBeanInjectionTarget(BeanManager,AbstractCamelFactoryBean&lt;T&gt;,Bean&lt;?&gt;)" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="36" type="cond"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/XmlProxyFactoryBean.java" name="XmlProxyFactoryBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="97" coveredmethods="0" methods="3" elements="37" classes="1" ncloc="62" statements="22" conditionals="12" coveredstatements="0"/>
+            <class name="XmlProxyFactoryBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="3" elements="37" statements="22" conditionals="12" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="XmlProxyFactoryBean(BeanManager,SyntheticAnnotated,Class&lt;?&gt;,Function&lt;Bean&lt;T&gt;, String&gt;,Bean&lt;?&gt;,CamelProxyFactoryDefinition)" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="9" visibility="public" signature="create(CreationalContext&lt;T&gt;) : T" num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="56" type="cond"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="61" type="cond"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="63" type="cond"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="68" type="cond"/>
+            <line num="69" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="70" type="cond"/>
+            <line num="75" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="75" type="cond"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="destroy(T,CreationalContext&lt;T&gt;) : void" num="92" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/main/java/org/apache/camel/cdi/XmlServiceExporterBean.java" name="XmlServiceExporterBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="93" coveredmethods="0" methods="3" elements="26" classes="1" ncloc="58" statements="19" conditionals="4" coveredstatements="0"/>
+            <class name="XmlServiceExporterBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="3" elements="26" statements="19" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="XmlServiceExporterBean(BeanManager,SyntheticAnnotated,Class&lt;?&gt;,Function&lt;Bean&lt;T&gt;, String&gt;,Bean&lt;?&gt;,CamelServiceExporterDefinition)" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="create(CreationalContext&lt;T&gt;) : T" num="57" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="60" type="cond"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="65" type="cond"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="destroy(T,CreationalContext&lt;T&gt;) : void" num="88" count="0" type="method"/>
+         </file>
+      </package>
+      <package name="org.apache.camel.cdi.test">
+         <metrics coveredelements="0" complexity="38" loc="348" methods="28" classes="5" statements="61" coveredconditionals="0" coveredmethods="0" elements="105" ncloc="208" files="5" conditionals="16" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/test/src/main/java/org/apache/camel/cdi/test/ExpectedDeploymentException.java" name="ExpectedDeploymentException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="99" coveredmethods="0" methods="8" elements="28" classes="1" ncloc="64" statements="18" conditionals="2" coveredstatements="0"/>
+            <class name="ExpectedDeploymentException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="8" elements="28" statements="18" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="ExpectedDeploymentException()" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="evaluate() : void" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="none() : ExpectedDeploymentException" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="expect(Class&lt;? extends Throwable&gt;) : ExpectedDeploymentException" num="72" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="expectMessage(Matcher&lt;String&gt;) : ExpectedDeploymentException" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="pecs(List&lt;Matcher&lt;T&gt;&gt;) : List&lt;Matcher&lt;? super T&gt;&gt;" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="hasItems(List&lt;Matcher&lt;T&gt;&gt;) : Matcher&lt;Iterable&lt;? super T&gt;&gt;[]" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="90" type="cond"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="apply(Statement,Description) : Statement" num="95" count="0" type="method"/>
+            <line num="97" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/test/src/main/java/org/apache/camel/cdi/test/LogEvent.java" name="LogEvent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="44" coveredmethods="0" methods="4" elements="10" classes="1" ncloc="20" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="LogEvent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="10" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="LogEvent(String,String,String)" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLevel() : String" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLogger() : String" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMessage() : String" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/test/src/main/java/org/apache/camel/cdi/test/LogEventMatcher.java" name="LogEventMatcher.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="15" loc="92" coveredmethods="0" methods="8" elements="45" classes="1" ncloc="58" statements="23" conditionals="14" coveredstatements="0"/>
+            <class name="LogEventMatcher">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="15" coveredmethods="0" methods="8" elements="45" statements="23" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="logEvent() : LogEventMatcher" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="LogEventMatcher()" num="37" count="0" type="method"/>
+            <line complexity="2" visibility="public" signature="matches(Object,Description) : boolean" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="describeTo(Description) : void" num="54" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withLevel(String) : LogEventMatcher" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withLogger(String) : LogEventMatcher" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withMessage(Matcher&lt;String&gt;) : LogEventMatcher" num="72" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="7" visibility="private" signature="match(LogEvent) : boolean" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="78" type="cond"/>
+            <line num="79" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="79" type="cond"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="82" type="cond"/>
+            <line num="83" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="83" type="cond"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="86" type="cond"/>
+            <line num="87" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="87" type="cond"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/test/src/main/java/org/apache/camel/cdi/test/LogEventVerifier.java" name="LogEventVerifier.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="37" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="16" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="LogEventVerifier">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="append(org.apache.logging.log4j.core.LogEvent) : void" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEvents() : List&lt;LogEvent&gt;" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/test/src/main/java/org/apache/camel/cdi/test/LogVerifier.java" name="LogVerifier.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="76" coveredmethods="0" methods="6" elements="18" classes="1" ncloc="50" statements="12" conditionals="0" coveredstatements="0"/>
+            <class name="LogVerifier">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="18" statements="12" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="LogVerifier()" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="append(LogEvent) : void" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="append(LogEvent) : void" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMessages() : List&lt;String&gt;" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="apply(Statement,Description) : Statement" num="59" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="evaluate() : void" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="Camel CDI 2.0-SNAPSHOT (Aggregated)" timestamp="1594060763624">
+      <metrics coveredelements="0" complexity="2" loc="108" methods="2" classes="4" statements="14" packages="1" coveredconditionals="0" coveredmethods="0" elements="16" ncloc="56" files="4" conditionals="0" coveredstatements="0"/>
+      <package name="org.apache.camel.cdi">
+         <metrics coveredelements="0" complexity="2" loc="108" methods="2" classes="4" statements="14" coveredconditionals="0" coveredmethods="0" elements="16" ncloc="56" files="4" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/test/java/org/apache/camel/cdi/DefaultCamelContextBean.java" name="DefaultCamelContextBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="11" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="8" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="DefaultCamelContextBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/test/java/org/apache/camel/cdi/FooCamelContextBean.java" name="FooCamelContextBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="10" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="7" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="FooCamelContextBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/test/java/org/apache/camel/cdi/MainTest.java" name="MainTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="60" coveredmethods="0" methods="1" elements="14" classes="1" ncloc="33" statements="13" conditionals="0" coveredstatements="0"/>
+            <class name="MainTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="14" statements="13" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testMainSupport() : void" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/impl/src/test/java/org/apache/camel/cdi/RouteBuilderBean.java" name="RouteBuilderBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="27" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="8" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="RouteBuilderBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="configure() : void" num="23" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

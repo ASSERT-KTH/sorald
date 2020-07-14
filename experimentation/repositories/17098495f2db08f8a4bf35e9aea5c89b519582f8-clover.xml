@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594387127398" clover="4.4.1">
+   <project name="TeaVM 0.7.0-SNAPSHOT (Aggregated)" timestamp="1594387124635">
+      <metrics coveredelements="0" complexity="36" loc="1781" methods="33" classes="51" statements="50" packages="5" coveredconditionals="0" coveredmethods="0" elements="89" ncloc="591" files="51" conditionals="6" coveredstatements="0"/>
+      <package name="org.teavm.interop.c">
+         <metrics coveredelements="0" complexity="0" loc="161" methods="0" classes="6" statements="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="58" files="6" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/c/Char16.java" name="Char16.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Char16">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/c/Include.java" name="Include.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="29" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="11" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Include">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/c/Name.java" name="Name.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="27" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Name">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/c/Native.java" name="Native.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="27" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Native">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/c/PlatformInt.java" name="PlatformInt.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="PlatformInt">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/c/Variable.java" name="Variable.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Variable">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="org.teavm.interop">
+         <metrics coveredelements="0" complexity="3" loc="645" methods="3" classes="22" statements="1" coveredconditionals="0" coveredmethods="0" elements="4" ncloc="226" files="22" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/Address.java" name="Address.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="96" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="44" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="Address">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="diff(Address) : long" num="93" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/Async.java" name="Async.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Async">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/AsyncCallback.java" name="AsyncCallback.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="22" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="AsyncCallback">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/DelegateTo.java" name="DelegateTo.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="27" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="DelegateTo">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/Export.java" name="Export.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="27" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Export">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/Function.java" name="Function.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="20" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="4" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Function">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/Import.java" name="Import.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="29" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="11" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Import">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/NoGcRoot.java" name="NoGcRoot.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="NoGcRoot">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/NoSideEffects.java" name="NoSideEffects.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="NoSideEffects">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/PlatformMarker.java" name="PlatformMarker.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="27" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="PlatformMarker">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/Platforms.java" name="Platforms.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="26" coveredmethods="0" methods="1" elements="1" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Platforms">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="1" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="Platforms()" num="19" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/Remove.java" name="Remove.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Remove">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/Rename.java" name="Rename.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="24" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="7" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Rename">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/StaticInit.java" name="StaticInit.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="StaticInit">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/Strings.java" name="Strings.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="29" coveredmethods="0" methods="1" elements="1" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Strings">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="1" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="Strings()" num="19" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/Structure.java" name="Structure.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="27" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="8" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Structure">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/Superclass.java" name="Superclass.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="27" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Superclass">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/SupportedOn.java" name="SupportedOn.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="27" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="SupportedOn">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/SuppressSyncErrors.java" name="SuppressSyncErrors.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="29" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="7" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="SuppressSyncErrors">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/Sync.java" name="Sync.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="25" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="8" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Sync">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/Unmanaged.java" name="Unmanaged.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Unmanaged">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/interop/core/src/main/java/org/teavm/interop/UnsupportedOn.java" name="UnsupportedOn.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="27" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="UnsupportedOn">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="org.teavm.metaprogramming">
+         <metrics coveredelements="0" complexity="31" loc="443" methods="28" classes="11" statements="48" coveredconditionals="0" coveredmethods="0" elements="82" ncloc="205" files="11" conditionals="6" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/Action.java" name="Action.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="21" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Action">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/CompileTime.java" name="CompileTime.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="CompileTime">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/Computation.java" name="Computation.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="20" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="4" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Computation">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/Diagnostics.java" name="Diagnostics.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="22" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Diagnostics">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/InvocationHandler.java" name="InvocationHandler.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="22" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="InvocationHandler">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/LazyComputation.java" name="LazyComputation.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="21" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="LazyComputation">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/Meta.java" name="Meta.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Meta">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/Metaprogramming.java" name="Metaprogramming.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="20" loc="110" coveredmethods="0" methods="20" elements="50" classes="1" ncloc="75" statements="30" conditionals="0" coveredstatements="0"/>
+            <class name="Metaprogramming">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="20" coveredmethods="0" methods="20" elements="50" statements="30" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="Metaprogramming()" num="20" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="emit(Computation&lt;T&gt;) : Value&lt;T&gt;" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="emit(Action) : void" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="lazyFragment(LazyComputation&lt;T&gt;) : Value&lt;T&gt;" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="lazy(Computation&lt;T&gt;) : Value&lt;T&gt;" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exit(Computation&lt;?&gt;) : void" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="exit() : void" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="location(String,int) : void" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="defaultLocation() : void" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLocation() : SourceLocation" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="findClass(String) : ReflectClass&lt;?&gt;" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="findClass(Class&lt;T&gt;) : ReflectClass&lt;T&gt;" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getClassLoader() : ClassLoader" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="arrayClass(ReflectClass&lt;T&gt;) : ReflectClass&lt;T[]&gt;" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createClass(byte[]) : ReflectClass&lt;?&gt;" num="82" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="proxy(Class&lt;T&gt;,InvocationHandler&lt;T&gt;) : Value&lt;T&gt;" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="proxy(ReflectClass&lt;T&gt;,InvocationHandler&lt;T&gt;) : Value&lt;T&gt;" num="92" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDiagnostics() : Diagnostics" num="97" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="unsupportedCase() : void" num="102" count="0" type="method"/>
+            <line num="103" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="unsupported() : void" num="106" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/ReflectClass.java" name="ReflectClass.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="82" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="36" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ReflectClass">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/SourceLocation.java" name="SourceLocation.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="72" coveredmethods="0" methods="8" elements="32" classes="1" ncloc="47" statements="18" conditionals="6" coveredstatements="0"/>
+            <class name="SourceLocation">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="8" elements="32" statements="18" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="SourceLocation(ReflectMethod,String,int)" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="SourceLocation(ReflectMethod)" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMethod() : ReflectMethod" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFileName() : String" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLineNumber() : int" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="equals(Object) : boolean" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="50" type="cond"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="toString() : String" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="69" type="cond"/>
+            <line num="70" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/Value.java" name="Value.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="21" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Value">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="org.teavm.metaprogramming.reflect">
+         <metrics coveredelements="0" complexity="0" loc="112" methods="0" classes="4" statements="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="32" files="4" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/reflect/ReflectAnnotatedElement.java" name="ReflectAnnotatedElement.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="22" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ReflectAnnotatedElement">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/reflect/ReflectField.java" name="ReflectField.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="28" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="8" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ReflectField">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/reflect/ReflectMember.java" name="ReflectMember.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="7" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ReflectMember">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/metaprogramming/api/src/main/java/org/teavm/metaprogramming/reflect/ReflectMethod.java" name="ReflectMethod.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="36" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="12" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ReflectMethod">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="org.teavm.jso">
+         <metrics coveredelements="0" complexity="2" loc="420" methods="2" classes="8" statements="1" coveredconditionals="0" coveredmethods="0" elements="3" ncloc="70" files="8" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jso/core/src/main/java/org/teavm/jso/JSBody.java" name="JSBody.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="136" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="11" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="JSBody">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jso/core/src/main/java/org/teavm/jso/JSByRef.java" name="JSByRef.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="31" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="JSByRef">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jso/core/src/main/java/org/teavm/jso/JSExceptions.java" name="JSExceptions.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="25" coveredmethods="0" methods="1" elements="1" classes="1" ncloc="7" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="JSExceptions">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="1" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="JSExceptions()" num="19" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jso/core/src/main/java/org/teavm/jso/JSFunctor.java" name="JSFunctor.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="24" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="7" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="JSFunctor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jso/core/src/main/java/org/teavm/jso/JSIndexer.java" name="JSIndexer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="45" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="JSIndexer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jso/core/src/main/java/org/teavm/jso/JSMethod.java" name="JSMethod.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="42" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="JSMethod">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jso/core/src/main/java/org/teavm/jso/JSObject.java" name="JSObject.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="66" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="7" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="JSObject">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="cast() : T" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/jso/core/src/main/java/org/teavm/jso/JSProperty.java" name="JSProperty.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="51" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="JSProperty">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+   </project>
+   <testproject name="TeaVM 0.7.0-SNAPSHOT (Aggregated)" timestamp="1594387124635">
+      <metrics coveredelements="0" complexity="0" loc="0" methods="0" classes="0" statements="0" packages="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="0" files="0" conditionals="0" coveredstatements="0"/>
+   </testproject>
+</coverage>

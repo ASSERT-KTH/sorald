@@ -1,0 +1,2250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594317596826" clover="4.4.1">
+   <project name="Main Parent 1.0-SNAPSHOT (Aggregated)" timestamp="1594317593596">
+      <metrics coveredelements="820" complexity="369" loc="3169" methods="211" classes="39" statements="707" packages="6" coveredconditionals="138" coveredmethods="165" elements="1128" ncloc="1677" files="36" conditionals="210" coveredstatements="517"/>
+      <package name="sem.group15.bubblebobble.core">
+         <metrics coveredelements="243" complexity="103" loc="1020" methods="74" classes="7" statements="208" coveredconditionals="22" coveredmethods="64" elements="312" ncloc="501" files="7" conditionals="30" coveredstatements="157"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/Assets.java" name="Assets.java">
+            <metrics coveredelements="55" coveredconditionals="2" complexity="28" loc="335" coveredmethods="23" methods="24" elements="80" classes="1" ncloc="133" statements="52" conditionals="4" coveredstatements="30"/>
+            <class name="Assets">
+               <metrics coveredelements="55" coveredconditionals="2" complexity="28" coveredmethods="23" methods="24" elements="80" statements="52" conditionals="4" coveredstatements="30"/>
+            </class>
+            <line complexity="1" visibility="private" signature="Assets()" num="100" count="1" type="method"/>
+            <line num="101" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getAssets() : Assets" num="109" count="90" type="method"/>
+            <line num="110" count="90" type="stmt"/>
+            <line falsecount="89" truecount="1" num="110" type="cond"/>
+            <line num="111" count="1" type="stmt"/>
+            <line num="113" count="90" type="stmt"/>
+            <line complexity="1" visibility="private" signature="loadTexture(String) : Texture" num="122" count="1" type="method"/>
+            <line num="123" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBubble() : Texture" num="126" count="1" type="method"/>
+            <line num="127" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSimpleEnemyLeft() : Texture" num="135" count="13" type="method"/>
+            <line num="136" count="13" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSimpleEnemyRight() : Texture" num="144" count="13" type="method"/>
+            <line num="145" count="13" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSimpleAngryEnemyRight() : Texture" num="153" count="13" type="method"/>
+            <line num="154" count="13" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSimpleAngryEnemyLeft() : Texture" num="162" count="13" type="method"/>
+            <line num="163" count="13" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStrongEnemyLeft() : Texture" num="171" count="20" type="method"/>
+            <line num="172" count="20" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStrongEnemyRight() : Texture" num="180" count="20" type="method"/>
+            <line num="181" count="20" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFilledBubble() : Texture" num="189" count="1" type="method"/>
+            <line num="190" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlayerLeft() : Texture" num="198" count="4" type="method"/>
+            <line num="199" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlayerRight() : Texture" num="207" count="1" type="method"/>
+            <line num="208" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlayerDead() : Texture" num="216" count="1" type="method"/>
+            <line num="217" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWall() : Texture" num="225" count="3" type="method"/>
+            <line num="226" count="3" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPowerup() : Texture" num="234" count="1" type="method"/>
+            <line num="235" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBanana() : Texture" num="243" count="1" type="method"/>
+            <line num="244" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCherry() : Texture" num="252" count="1" type="method"/>
+            <line num="253" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlayerDeathSound() : Sound" num="261" count="6" type="method"/>
+            <line num="262" count="6" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlayerJumpSound() : Sound" num="270" count="2" type="method"/>
+            <line num="271" count="2" type="stmt"/>
+            <line complexity="3" visibility="private" signature="initialize() : void" num="277" count="1" type="method"/>
+            <line num="278" count="1" type="stmt"/>
+            <line num="279" count="1" type="stmt"/>
+            <line num="280" count="0" type="stmt"/>
+            <line num="281" count="0" type="stmt"/>
+            <line num="282" count="0" type="stmt"/>
+            <line num="283" count="0" type="stmt"/>
+            <line num="284" count="0" type="stmt"/>
+            <line num="285" count="0" type="stmt"/>
+            <line num="286" count="0" type="stmt"/>
+            <line num="287" count="0" type="stmt"/>
+            <line num="288" count="0" type="stmt"/>
+            <line num="289" count="0" type="stmt"/>
+            <line num="290" count="0" type="stmt"/>
+            <line num="291" count="0" type="stmt"/>
+            <line num="292" count="0" type="stmt"/>
+            <line num="293" count="0" type="stmt"/>
+            <line num="294" count="0" type="stmt"/>
+            <line num="295" count="0" type="stmt"/>
+            <line num="296" count="0" type="stmt"/>
+            <line num="297" count="0" type="stmt"/>
+            <line num="298" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="298" type="cond"/>
+            <line num="299" count="0" type="stmt"/>
+            <line num="303" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setHighScore(int) : void" num="311" count="0" type="method"/>
+            <line num="312" count="0" type="stmt"/>
+            <line num="313" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getHighScore() : int" num="319" count="3" type="method"/>
+            <line num="320" count="3" type="stmt"/>
+            <line num="321" count="3" type="stmt"/>
+            <line num="323" count="3" type="stmt"/>
+            <line num="325" count="3" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFilledBubbleStrong() : Texture" num="332" count="1" type="method"/>
+            <line num="333" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/BubbleBobble.java" name="BubbleBobble.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="69" coveredmethods="0" methods="6" elements="9" classes="1" ncloc="28" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="BubbleBobble">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="9" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="create() : void" num="23" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="resize(int,int) : void" num="36" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="render() : void" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pause() : void" num="51" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="resume() : void" num="58" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="dispose() : void" num="66" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/GameController.java" name="GameController.java">
+            <metrics coveredelements="29" coveredconditionals="0" complexity="14" loc="176" coveredmethods="12" methods="13" elements="36" classes="1" ncloc="67" statements="23" conditionals="0" coveredstatements="17"/>
+            <class name="GameController">
+               <metrics coveredelements="29" coveredconditionals="0" complexity="14" coveredmethods="12" methods="13" elements="36" statements="23" conditionals="0" coveredstatements="17"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GameController()" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="run(float) : void" num="64" count="1" type="method"/>
+            <line num="65" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getLevel(int) : Level" num="73" count="1" type="method"/>
+            <line num="74" count="1" type="stmt"/>
+            <line num="75" count="1" type="stmt"/>
+            <line num="76" count="1" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="startLevel(Level) : void" num="86" count="1" type="method"/>
+            <line num="87" count="1" type="stmt"/>
+            <line num="88" count="1" type="stmt"/>
+            <line num="89" count="1" type="stmt"/>
+            <line num="90" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="checkForStartKey() : boolean" num="98" count="1" type="method"/>
+            <line num="99" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlayer() : Player" num="107" count="1" type="method"/>
+            <line num="108" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPlayer(Player) : void" num="116" count="5" type="method"/>
+            <line num="117" count="5" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCurrentLevelNumber() : int" num="125" count="1" type="method"/>
+            <line num="126" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCurrentLevelNumber(int) : void" num="134" count="1" type="method"/>
+            <line num="135" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCurrentLevel() : Level" num="143" count="1" type="method"/>
+            <line num="144" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLevelRenderer() : LevelRenderer" num="152" count="1" type="method"/>
+            <line num="153" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLevelRenderer(LevelRenderer) : void" num="162" count="1" type="method"/>
+            <line num="163" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setGameState(GameState) : void" num="172" count="1" type="method"/>
+            <line num="173" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/Level.java" name="Level.java">
+            <metrics coveredelements="49" coveredconditionals="13" complexity="21" loc="125" coveredmethods="10" methods="10" elements="53" classes="1" ncloc="69" statements="27" conditionals="16" coveredstatements="26"/>
+            <class name="Level">
+               <metrics coveredelements="49" coveredconditionals="13" complexity="21" coveredmethods="10" methods="10" elements="53" statements="27" conditionals="16" coveredstatements="26"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Level(List&lt;GameObject&gt;)" num="25" count="21" type="method"/>
+            <line num="26" count="21" type="stmt"/>
+            <line complexity="1" visibility="public" signature="run(float) : void" num="33" count="1" type="method"/>
+            <line num="34" count="1" type="stmt"/>
+            <line num="35" count="1" type="stmt"/>
+            <line num="36" count="1" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="update(float) : void" num="44" count="2" type="method"/>
+            <line num="45" count="2" type="stmt"/>
+            <line num="46" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="46" type="cond"/>
+            <line num="47" count="1" type="stmt"/>
+            <line complexity="5" visibility="protected" signature="checkCollisions() : void" num="55" count="2" type="method"/>
+            <line num="56" count="2" type="stmt"/>
+            <line falsecount="2" truecount="2" num="56" type="cond"/>
+            <line num="57" count="2" type="stmt"/>
+            <line falsecount="2" truecount="1" num="57" type="cond"/>
+            <line num="58" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="58" type="cond"/>
+            <line num="59" count="1" type="stmt"/>
+            <line num="60" count="1" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="handleNewObjects() : void" num="69" count="1" type="method"/>
+            <line num="70" count="1" type="stmt"/>
+            <line falsecount="1" truecount="0" num="70" type="cond"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="removeObjects() : void" num="79" count="3" type="method"/>
+            <line num="80" count="3" type="stmt"/>
+            <line num="81" count="3" type="stmt"/>
+            <line falsecount="3" truecount="4" num="81" type="cond"/>
+            <line num="82" count="4" type="stmt"/>
+            <line falsecount="3" truecount="1" num="82" type="cond"/>
+            <line num="83" count="1" type="stmt"/>
+            <line complexity="4" visibility="public" signature="levelFinished() : boolean" num="92" count="4" type="method"/>
+            <line num="93" count="4" type="stmt"/>
+            <line num="94" count="9" type="stmt"/>
+            <line falsecount="7" truecount="2" num="94" type="cond"/>
+            <line num="95" count="2" type="stmt"/>
+            <line num="98" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getObjects() : List&lt;GameObject&gt;" num="105" count="7" type="method"/>
+            <line num="106" count="7" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlayer() : Player" num="113" count="8" type="method"/>
+            <line num="114" count="8" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPlayer(Player) : void" num="121" count="4" type="method"/>
+            <line num="122" count="4" type="stmt"/>
+            <line num="123" count="4" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/LevelParser.java" name="LevelParser.java">
+            <metrics coveredelements="24" coveredconditionals="1" complexity="11" loc="94" coveredmethods="2" methods="3" elements="41" classes="1" ncloc="61" statements="34" conditionals="4" coveredstatements="21"/>
+            <class name="LevelParser">
+               <metrics coveredelements="24" coveredconditionals="1" complexity="11" coveredmethods="2" methods="3" elements="41" statements="34" conditionals="4" coveredstatements="21"/>
+            </class>
+            <line complexity="1" visibility="private" signature="LevelParser()" num="33" count="0" type="method"/>
+            <line complexity="5" visibility="public" signature="parse(FileHandle) : Level" num="43" count="1" type="method"/>
+            <line num="44" count="1" type="stmt"/>
+            <line num="45" count="1" type="stmt"/>
+            <line num="46" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="46" type="cond"/>
+            <line num="47" count="1" type="stmt"/>
+            <line num="48" count="1" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="1" type="stmt"/>
+            <line num="56" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="61" type="cond"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="getObject(String) : GameObject" num="74" count="4" type="method"/>
+            <line num="75" count="4" type="stmt"/>
+            <line num="76" count="4" type="stmt"/>
+            <line num="77" count="4" type="stmt"/>
+            <line num="78" count="4" type="stmt"/>
+            <line num="80" count="4" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="1" type="stmt"/>
+            <line num="84" count="1" type="stmt"/>
+            <line num="85" count="1" type="stmt"/>
+            <line num="86" count="1" type="stmt"/>
+            <line num="87" count="1" type="stmt"/>
+            <line num="88" count="1" type="stmt"/>
+            <line num="89" count="1" type="stmt"/>
+            <line num="90" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/LevelRenderer.java" name="LevelRenderer.java">
+            <metrics coveredelements="62" coveredconditionals="2" complexity="16" loc="159" coveredmethods="14" methods="15" elements="66" classes="1" ncloc="99" statements="49" conditionals="2" coveredstatements="46"/>
+            <class name="LevelRenderer">
+               <metrics coveredelements="62" coveredconditionals="2" complexity="16" coveredmethods="14" methods="15" elements="66" statements="49" conditionals="2" coveredstatements="46"/>
+            </class>
+            <line complexity="1" visibility="public" signature="LevelRenderer()" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLevel(Level) : void" num="32" count="12" type="method"/>
+            <line num="33" count="12" type="stmt"/>
+            <line complexity="1" visibility="public" signature="render() : void" num="39" count="1" type="method"/>
+            <line num="40" count="1" type="stmt"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="42" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="renderWorld(Level) : void" num="49" count="2" type="method"/>
+            <line num="50" count="2" type="stmt"/>
+            <line num="51" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="renderScore() : void" num="58" count="1" type="method"/>
+            <line num="59" count="1" type="stmt"/>
+            <line num="60" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="renderLives() : void" num="66" count="1" type="method"/>
+            <line num="67" count="1" type="stmt"/>
+            <line falsecount="1" truecount="3" num="67" type="cond"/>
+            <line num="68" count="3" type="stmt"/>
+            <line complexity="1" visibility="public" signature="renderNew() : void" num="77" count="1" type="method"/>
+            <line num="78" count="1" type="stmt"/>
+            <line num="79" count="1" type="stmt"/>
+            <line num="80" count="1" type="stmt"/>
+            <line num="81" count="1" type="stmt"/>
+            <line num="82" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="renderPause() : void" num="88" count="1" type="method"/>
+            <line num="89" count="1" type="stmt"/>
+            <line num="90" count="1" type="stmt"/>
+            <line num="91" count="1" type="stmt"/>
+            <line num="92" count="1" type="stmt"/>
+            <line num="93" count="1" type="stmt"/>
+            <line num="94" count="1" type="stmt"/>
+            <line num="95" count="1" type="stmt"/>
+            <line num="96" count="1" type="stmt"/>
+            <line num="97" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="renderLost(int) : void" num="105" count="1" type="method"/>
+            <line num="106" count="1" type="stmt"/>
+            <line num="107" count="1" type="stmt"/>
+            <line num="108" count="1" type="stmt"/>
+            <line num="109" count="1" type="stmt"/>
+            <line num="110" count="1" type="stmt"/>
+            <line num="111" count="1" type="stmt"/>
+            <line num="115" count="1" type="stmt"/>
+            <line num="116" count="1" type="stmt"/>
+            <line complexity="1" visibility="private" signature="draw() : void" num="119" count="3" type="method"/>
+            <line num="120" count="3" type="stmt"/>
+            <line complexity="1" visibility="public" signature="draw(float) : void" num="123" count="4" type="method"/>
+            <line num="124" count="4" type="stmt"/>
+            <line num="125" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBatch(SpriteBatch) : void" num="132" count="8" type="method"/>
+            <line num="133" count="8" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFont(BitmapFont) : void" num="140" count="8" type="method"/>
+            <line num="141" count="8" type="stmt"/>
+            <line complexity="1" visibility="public" signature="renderTransition(Level,float) : void" num="144" count="1" type="method"/>
+            <line num="145" count="1" type="stmt"/>
+            <line num="146" count="1" type="stmt"/>
+            <line num="147" count="1" type="stmt"/>
+            <line num="148" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="render(Level,float) : void" num="151" count="3" type="method"/>
+            <line num="152" count="3" type="stmt"/>
+            <line num="153" count="3" type="stmt"/>
+            <line num="154" count="3" type="stmt"/>
+            <line num="155" count="3" type="stmt"/>
+            <line num="156" count="3" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/Logger.java" name="Logger.java">
+            <metrics coveredelements="24" coveredconditionals="4" complexity="7" loc="62" coveredmethods="3" methods="3" elements="27" classes="1" ncloc="44" statements="20" conditionals="4" coveredstatements="17"/>
+            <class name="Logger">
+               <metrics coveredelements="24" coveredconditionals="4" complexity="7" coveredmethods="3" methods="3" elements="27" statements="20" conditionals="4" coveredstatements="17"/>
+            </class>
+            <line complexity="3" visibility="private" signature="Logger(String)" num="20" count="13" type="method"/>
+            <line num="21" count="13" type="stmt"/>
+            <line num="22" count="13" type="stmt"/>
+            <line num="23" count="13" type="stmt"/>
+            <line num="24" count="13" type="stmt"/>
+            <line falsecount="12" truecount="1" num="24" type="cond"/>
+            <line num="25" count="1" type="stmt"/>
+            <line num="27" count="13" type="stmt"/>
+            <line num="28" count="13" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getLogger(String) : Logger" num="38" count="92" type="method"/>
+            <line num="39" count="92" type="stmt"/>
+            <line falsecount="79" truecount="13" num="39" type="cond"/>
+            <line num="40" count="13" type="stmt"/>
+            <line num="42" count="92" type="stmt"/>
+            <line complexity="2" visibility="public" signature="log(String) : void" num="49" count="12" type="method"/>
+            <line num="50" count="12" type="stmt"/>
+            <line num="51" count="12" type="stmt"/>
+            <line num="52" count="12" type="stmt"/>
+            <line num="53" count="12" type="stmt"/>
+            <line num="54" count="12" type="stmt"/>
+            <line num="55" count="12" type="stmt"/>
+            <line num="56" count="12" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="sem.group15.bubblebobble.core.objects">
+         <metrics coveredelements="550" complexity="196" loc="1635" methods="95" classes="18" statements="358" coveredconditionals="113" coveredmethods="93" elements="581" ncloc="818" files="16" conditionals="128" coveredstatements="344"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/Banana.java" name="Banana.java">
+            <metrics coveredelements="5" coveredconditionals="0" complexity="2" loc="26" coveredmethods="2" methods="2" elements="5" classes="1" ncloc="14" statements="3" conditionals="0" coveredstatements="3"/>
+            <class name="Banana">
+               <metrics coveredelements="5" coveredconditionals="0" complexity="2" coveredmethods="2" methods="2" elements="5" statements="3" conditionals="0" coveredstatements="3"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Banana(float,float)" num="17" count="4" type="method"/>
+            <line num="18" count="4" type="stmt"/>
+            <line num="19" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="draw(SpriteBatch) : void" num="22" count="1" type="method"/>
+            <line num="24" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/Bubble.java" name="Bubble.java">
+            <metrics coveredelements="45" coveredconditionals="10" complexity="16" loc="141" coveredmethods="6" methods="6" elements="50" classes="1" ncloc="65" statements="32" conditionals="12" coveredstatements="29"/>
+            <class name="Bubble">
+               <metrics coveredelements="45" coveredconditionals="10" complexity="16" coveredmethods="6" methods="6" elements="50" statements="32" conditionals="12" coveredstatements="29"/>
+            </class>
+            <line complexity="3" visibility="public" signature="Bubble(float,float,Direction)" num="46" count="9" type="method"/>
+            <line num="47" count="9" type="stmt"/>
+            <line num="49" count="9" type="stmt"/>
+            <line num="50" count="6" type="stmt"/>
+            <line num="51" count="6" type="stmt"/>
+            <line num="52" count="6" type="stmt"/>
+            <line num="53" count="3" type="stmt"/>
+            <line num="54" count="3" type="stmt"/>
+            <line num="55" count="3" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="59" count="9" type="stmt"/>
+            <line num="60" count="9" type="stmt"/>
+            <line complexity="3" visibility="public" signature="update(float) : void" num="70" count="5" type="method"/>
+            <line num="73" count="5" type="stmt"/>
+            <line falsecount="3" truecount="2" num="73" type="cond"/>
+            <line num="74" count="2" type="stmt"/>
+            <line num="76" count="3" type="stmt"/>
+            <line num="79" count="5" type="stmt"/>
+            <line num="80" count="5" type="stmt"/>
+            <line num="82" count="5" type="stmt"/>
+            <line num="83" count="5" type="stmt"/>
+            <line falsecount="4" truecount="1" num="83" type="cond"/>
+            <line num="84" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getOutOfGame() : void" num="92" count="2" type="method"/>
+            <line num="93" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="93" type="cond"/>
+            <line num="94" count="1" type="stmt"/>
+            <line num="95" count="1" type="stmt"/>
+            <line complexity="6" visibility="public" signature="handleCollision(GameObject) : void" num="109" count="2" type="method"/>
+            <line num="110" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="110" type="cond"/>
+            <line num="111" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="111" type="cond"/>
+            <line num="113" count="1" type="stmt"/>
+            <line num="114" count="1" type="stmt"/>
+            <line num="115" count="1" type="stmt"/>
+            <line num="118" count="1" type="stmt"/>
+            <line falsecount="1" truecount="0" num="118" type="cond"/>
+            <line num="119" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="makeFilledBubble(Enemy) : void" num="128" count="1" type="method"/>
+            <line num="129" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="draw(SpriteBatch) : void" num="137" count="1" type="method"/>
+            <line num="138" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/Cherry.java" name="Cherry.java">
+            <metrics coveredelements="5" coveredconditionals="0" complexity="2" loc="26" coveredmethods="2" methods="2" elements="5" classes="1" ncloc="14" statements="3" conditionals="0" coveredstatements="3"/>
+            <class name="Cherry">
+               <metrics coveredelements="5" coveredconditionals="0" complexity="2" coveredmethods="2" methods="2" elements="5" statements="3" conditionals="0" coveredstatements="3"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Cherry(float,float)" num="17" count="3" type="method"/>
+            <line num="18" count="3" type="stmt"/>
+            <line num="19" count="3" type="stmt"/>
+            <line complexity="1" visibility="public" signature="draw(SpriteBatch) : void" num="22" count="1" type="method"/>
+            <line num="24" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/Enemy.java" name="Enemy.java">
+            <metrics coveredelements="65" coveredconditionals="18" complexity="22" loc="188" coveredmethods="6" methods="6" elements="67" classes="2" ncloc="96" statements="43" conditionals="18" coveredstatements="41"/>
+            <class name="Enemy">
+               <metrics coveredelements="65" coveredconditionals="18" complexity="22" coveredmethods="6" methods="6" elements="67" statements="43" conditionals="18" coveredstatements="41"/>
+            </class>
+            <class name="Enemy.State">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Enemy(float,float)" num="63" count="23" type="method"/>
+            <line num="64" count="23" type="stmt"/>
+            <line num="65" count="23" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setState(State) : void" num="73" count="11" type="method"/>
+            <line num="74" count="11" type="stmt"/>
+            <line complexity="1" visibility="public" signature="jump() : void" num="78" count="15" type="method"/>
+            <line num="79" count="15" type="stmt"/>
+            <line complexity="9" visibility="public" signature="handleCollision(GameObject) : void" num="88" count="11" type="method"/>
+            <line num="90" count="11" type="stmt"/>
+            <line num="92" count="11" type="stmt"/>
+            <line falsecount="1" truecount="10" num="92" type="cond"/>
+            <line num="94" count="10" type="stmt"/>
+            <line falsecount="2" truecount="8" num="94" type="cond"/>
+            <line num="95" count="8" type="stmt"/>
+            <line falsecount="4" truecount="4" num="95" type="cond"/>
+            <line num="96" count="4" type="stmt"/>
+            <line num="97" count="4" type="stmt"/>
+            <line num="99" count="8" type="stmt"/>
+            <line falsecount="4" truecount="4" num="99" type="cond"/>
+            <line num="100" count="4" type="stmt"/>
+            <line num="101" count="4" type="stmt"/>
+            <line num="104" count="10" type="stmt"/>
+            <line falsecount="9" truecount="1" num="104" type="cond"/>
+            <line num="106" count="1" type="stmt"/>
+            <line complexity="3" visibility="public" signature="update(float) : void" num="117" count="6" type="method"/>
+            <line num="119" count="6" type="stmt"/>
+            <line num="120" count="6" type="stmt"/>
+            <line num="121" count="6" type="stmt"/>
+            <line falsecount="3" truecount="3" num="121" type="cond"/>
+            <line num="122" count="3" type="stmt"/>
+            <line num="124" count="6" type="stmt"/>
+            <line num="125" count="6" type="stmt"/>
+            <line num="126" count="6" type="stmt"/>
+            <line num="127" count="6" type="stmt"/>
+            <line falsecount="5" truecount="1" num="127" type="cond"/>
+            <line num="128" count="1" type="stmt"/>
+            <line num="129" count="1" type="stmt"/>
+            <line complexity="7" visibility="public" signature="draw(SpriteBatch) : void" num="161" count="6" type="method"/>
+            <line num="163" count="6" type="stmt"/>
+            <line falsecount="2" truecount="4" num="163" type="cond"/>
+            <line num="164" count="4" type="stmt"/>
+            <line num="165" count="2" type="stmt"/>
+            <line num="166" count="2" type="stmt"/>
+            <line num="167" count="2" type="stmt"/>
+            <line num="168" count="2" type="stmt"/>
+            <line num="169" count="2" type="stmt"/>
+            <line num="170" count="2" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="175" count="6" type="stmt"/>
+            <line falsecount="4" truecount="2" num="175" type="cond"/>
+            <line num="176" count="2" type="stmt"/>
+            <line num="177" count="1" type="stmt"/>
+            <line num="178" count="1" type="stmt"/>
+            <line num="179" count="1" type="stmt"/>
+            <line num="180" count="1" type="stmt"/>
+            <line num="181" count="1" type="stmt"/>
+            <line num="182" count="1" type="stmt"/>
+            <line num="183" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/FilledBubble.java" name="FilledBubble.java">
+            <metrics coveredelements="46" coveredconditionals="13" complexity="13" loc="125" coveredmethods="6" methods="6" elements="47" classes="1" ncloc="60" statements="27" conditionals="14" coveredstatements="27"/>
+            <class name="FilledBubble">
+               <metrics coveredelements="46" coveredconditionals="13" complexity="13" coveredmethods="6" methods="6" elements="47" statements="27" conditionals="14" coveredstatements="27"/>
+            </class>
+            <line complexity="3" visibility="public" signature="FilledBubble(float,float,Enemy)" num="36" count="11" type="method"/>
+            <line num="37" count="11" type="stmt"/>
+            <line num="38" count="11" type="stmt"/>
+            <line falsecount="10" truecount="1" num="38" type="cond"/>
+            <line num="39" count="1" type="stmt"/>
+            <line num="40" count="1" type="stmt"/>
+            <line num="41" count="10" type="stmt"/>
+            <line falsecount="9" truecount="1" num="41" type="cond"/>
+            <line num="42" count="1" type="stmt"/>
+            <line num="43" count="1" type="stmt"/>
+            <line num="46" count="11" type="stmt"/>
+            <line num="47" count="11" type="stmt"/>
+            <line complexity="2" visibility="public" signature="update(float) : void" num="57" count="3" type="method"/>
+            <line num="58" count="3" type="stmt"/>
+            <line num="59" count="3" type="stmt"/>
+            <line num="60" count="3" type="stmt"/>
+            <line num="61" count="3" type="stmt"/>
+            <line falsecount="2" truecount="1" num="61" type="cond"/>
+            <line num="62" count="1" type="stmt"/>
+            <line num="63" count="1" type="stmt"/>
+            <line num="65" count="1" type="stmt"/>
+            <line complexity="5" visibility="public" signature="handleCollision(GameObject) : void" num="81" count="3" type="method"/>
+            <line num="82" count="3" type="stmt"/>
+            <line falsecount="0" truecount="3" num="82" type="cond"/>
+            <line num="83" count="3" type="stmt"/>
+            <line falsecount="2" truecount="1" num="83" type="cond"/>
+            <line num="85" count="1" type="stmt"/>
+            <line num="88" count="3" type="stmt"/>
+            <line falsecount="1" truecount="2" num="88" type="cond"/>
+            <line num="89" count="2" type="stmt"/>
+            <line num="90" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="90" type="cond"/>
+            <line num="91" count="1" type="stmt"/>
+            <line num="93" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="draw(SpriteBatch) : void" num="104" count="1" type="method"/>
+            <line num="105" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFactory(EnemyFactory) : void" num="112" count="1" type="method"/>
+            <line num="113" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFactory() : EnemyFactory" num="120" count="2" type="method"/>
+            <line num="121" count="2" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/Floating.java" name="Floating.java">
+            <metrics coveredelements="4" coveredconditionals="0" complexity="2" loc="33" coveredmethods="2" methods="2" elements="4" classes="1" ncloc="11" statements="2" conditionals="0" coveredstatements="2"/>
+            <class name="Floating">
+               <metrics coveredelements="4" coveredconditionals="0" complexity="2" coveredmethods="2" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="2"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="Floating(Rectangle)" num="21" count="20" type="method"/>
+            <line num="22" count="20" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(float) : void" num="29" count="4" type="method"/>
+            <line num="30" count="4" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/Floor.java" name="Floor.java">
+            <metrics coveredelements="5" coveredconditionals="0" complexity="4" loc="36" coveredmethods="3" methods="4" elements="6" classes="1" ncloc="19" statements="2" conditionals="0" coveredstatements="2"/>
+            <class name="Floor">
+               <metrics coveredelements="5" coveredconditionals="0" complexity="4" coveredmethods="3" methods="4" elements="6" statements="2" conditionals="0" coveredstatements="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Floor(float,float)" num="18" count="3" type="method"/>
+            <line num="19" count="3" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(float) : void" num="22" count="1" type="method"/>
+            <line complexity="1" visibility="public" signature="handleCollision(GameObject) : void" num="27" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="draw(SpriteBatch) : void" num="32" count="1" type="method"/>
+            <line num="34" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/Fruit.java" name="Fruit.java">
+            <metrics coveredelements="21" coveredconditionals="4" complexity="8" loc="61" coveredmethods="4" methods="4" elements="23" classes="1" ncloc="33" statements="13" conditionals="6" coveredstatements="13"/>
+            <class name="Fruit">
+               <metrics coveredelements="21" coveredconditionals="4" complexity="8" coveredmethods="4" methods="4" elements="23" statements="13" conditionals="6" coveredstatements="13"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Fruit(Rectangle)" num="27" count="7" type="method"/>
+            <line num="28" count="7" type="stmt"/>
+            <line num="29" count="7" type="stmt"/>
+            <line num="30" count="7" type="stmt"/>
+            <line complexity="2" visibility="public" signature="update(float) : void" num="33" count="6" type="method"/>
+            <line num="35" count="6" type="stmt"/>
+            <line num="36" count="6" type="stmt"/>
+            <line num="37" count="6" type="stmt"/>
+            <line num="38" count="6" type="stmt"/>
+            <line falsecount="5" truecount="1" num="38" type="cond"/>
+            <line num="39" count="1" type="stmt"/>
+            <line complexity="4" visibility="public" signature="handleCollision(GameObject) : void" num="43" count="1" type="method"/>
+            <line num="45" count="1" type="stmt"/>
+            <line num="46" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="46" type="cond"/>
+            <line num="47" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="47" type="cond"/>
+            <line num="48" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAliveTime() : float" num="57" count="6" type="method"/>
+            <line num="58" count="6" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/GameObject.java" name="GameObject.java">
+            <metrics coveredelements="74" coveredconditionals="10" complexity="31" loc="316" coveredmethods="21" methods="21" elements="77" classes="2" ncloc="117" statements="44" conditionals="12" coveredstatements="43"/>
+            <class name="GameObject">
+               <metrics coveredelements="74" coveredconditionals="10" complexity="31" coveredmethods="21" methods="21" elements="77" statements="44" conditionals="12" coveredstatements="43"/>
+            </class>
+            <class name="GameObject.Direction">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setLogger(Logger) : void" num="43" count="1" type="method"/>
+            <line num="44" count="1" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="GameObject(Rectangle)" num="72" count="87" type="method"/>
+            <line num="73" count="87" type="stmt"/>
+            <line num="74" count="87" type="stmt"/>
+            <line num="75" count="87" type="stmt"/>
+            <line num="76" count="87" type="stmt"/>
+            <line num="77" count="87" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBody() : Rectangle" num="111" count="118" type="method"/>
+            <line num="112" count="118" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLeft() : float" num="120" count="73" type="method"/>
+            <line num="121" count="73" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRight() : float" num="129" count="47" type="method"/>
+            <line num="130" count="47" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTop() : float" num="138" count="50" type="method"/>
+            <line num="139" count="50" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBottom() : float" num="147" count="46" type="method"/>
+            <line num="148" count="46" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLeft(float) : void" num="156" count="7" type="method"/>
+            <line num="157" count="7" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRight(float) : void" num="165" count="6" type="method"/>
+            <line num="166" count="6" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTop(float) : void" num="174" count="1" type="method"/>
+            <line num="175" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBottom(float) : void" num="183" count="4" type="method"/>
+            <line num="184" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="collidesWith(GameObject) : boolean" num="193" count="43" type="method"/>
+            <line num="194" count="43" type="stmt"/>
+            <line complexity="3" visibility="public" signature="overlapLeft(GameObject) : float" num="203" count="14" type="method"/>
+            <line num="204" count="14" type="stmt"/>
+            <line num="205" count="14" type="stmt"/>
+            <line falsecount="5" truecount="9" num="205" type="cond"/>
+            <line num="206" count="9" type="stmt"/>
+            <line num="208" count="14" type="stmt"/>
+            <line complexity="3" visibility="public" signature="overlapRight(GameObject) : float" num="217" count="14" type="method"/>
+            <line num="218" count="14" type="stmt"/>
+            <line num="219" count="14" type="stmt"/>
+            <line falsecount="5" truecount="9" num="219" type="cond"/>
+            <line num="220" count="9" type="stmt"/>
+            <line num="222" count="14" type="stmt"/>
+            <line complexity="3" visibility="public" signature="overlapTop(GameObject) : float" num="231" count="7" type="method"/>
+            <line num="232" count="7" type="stmt"/>
+            <line num="233" count="7" type="stmt"/>
+            <line falsecount="2" truecount="5" num="233" type="cond"/>
+            <line num="234" count="5" type="stmt"/>
+            <line num="236" count="7" type="stmt"/>
+            <line complexity="3" visibility="public" signature="overlapBottom(GameObject) : float" num="245" count="8" type="method"/>
+            <line num="246" count="8" type="stmt"/>
+            <line num="247" count="8" type="stmt"/>
+            <line falsecount="5" truecount="3" num="247" type="cond"/>
+            <line num="248" count="3" type="stmt"/>
+            <line num="250" count="8" type="stmt"/>
+            <line complexity="1" visibility="public" signature="between(float,float,float) : boolean" num="261" count="23" type="method"/>
+            <line num="262" count="23" type="stmt"/>
+            <line complexity="3" visibility="public" signature="addNewObjectsTo(List&lt;GameObject&gt;) : void" num="270" count="1" type="method"/>
+            <line num="271" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="271" type="cond"/>
+            <line num="272" count="1" type="stmt"/>
+            <line num="273" count="1" type="stmt"/>
+            <line falsecount="1" truecount="0" num="273" type="cond"/>
+            <line num="274" count="0" type="stmt"/>
+            <line num="276" count="1" type="stmt"/>
+            <line num="279" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="overlapPercentage(GameObject) : float" num="289" count="3" type="method"/>
+            <line num="290" count="3" type="stmt"/>
+            <line num="291" count="3" type="stmt"/>
+            <line num="292" count="3" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRemove(boolean) : void" num="300" count="1" type="method"/>
+            <line num="301" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="remove() : boolean" num="304" count="21" type="method"/>
+            <line num="305" count="21" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/Gravity.java" name="Gravity.java">
+            <metrics coveredelements="24" coveredconditionals="6" complexity="8" loc="61" coveredmethods="3" methods="3" elements="24" classes="1" ncloc="37" statements="15" conditionals="6" coveredstatements="15"/>
+            <class name="Gravity">
+               <metrics coveredelements="24" coveredconditionals="6" complexity="8" coveredmethods="3" methods="3" elements="24" statements="15" conditionals="6" coveredstatements="15"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="Gravity(Rectangle)" num="19" count="52" type="method"/>
+            <line num="20" count="52" type="stmt"/>
+            <line num="21" count="52" type="stmt"/>
+            <line num="22" count="52" type="stmt"/>
+            <line num="23" count="52" type="stmt"/>
+            <line num="24" count="52" type="stmt"/>
+            <line complexity="2" visibility="public" signature="update(float) : void" num="34" count="27" type="method"/>
+            <line num="35" count="27" type="stmt"/>
+            <line num="36" count="27" type="stmt"/>
+            <line num="39" count="27" type="stmt"/>
+            <line falsecount="25" truecount="2" num="39" type="cond"/>
+            <line num="40" count="2" type="stmt"/>
+            <line complexity="5" visibility="public" signature="handleCollision(GameObject) : void" num="50" count="26" type="method"/>
+            <line num="51" count="26" type="stmt"/>
+            <line falsecount="24" truecount="2" num="51" type="cond"/>
+            <line num="52" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="52" type="cond"/>
+            <line num="54" count="1" type="stmt"/>
+            <line num="55" count="1" type="stmt"/>
+            <line num="56" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/Immutable.java" name="Immutable.java">
+            <metrics coveredelements="4" coveredconditionals="0" complexity="1" loc="19" coveredmethods="1" methods="1" elements="4" classes="1" ncloc="9" statements="3" conditionals="0" coveredstatements="3"/>
+            <class name="Immutable">
+               <metrics coveredelements="4" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="3"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="Immutable(Rectangle)" num="14" count="7" type="method"/>
+            <line num="15" count="7" type="stmt"/>
+            <line num="16" count="7" type="stmt"/>
+            <line num="17" count="7" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/Player.java" name="Player.java">
+            <metrics coveredelements="167" coveredconditionals="42" complexity="56" loc="333" coveredmethods="18" methods="18" elements="179" classes="1" ncloc="204" statements="113" conditionals="48" coveredstatements="107"/>
+            <class name="Player">
+               <metrics coveredelements="167" coveredconditionals="42" complexity="56" coveredmethods="18" methods="18" elements="179" statements="113" conditionals="48" coveredstatements="107"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Player(float,float)" num="43" count="22" type="method"/>
+            <line num="44" count="22" type="stmt"/>
+            <line num="47" count="22" type="stmt"/>
+            <line num="48" count="22" type="stmt"/>
+            <line num="49" count="22" type="stmt"/>
+            <line num="50" count="22" type="stmt"/>
+            <line num="51" count="22" type="stmt"/>
+            <line num="52" count="22" type="stmt"/>
+            <line num="53" count="22" type="stmt"/>
+            <line num="54" count="22" type="stmt"/>
+            <line complexity="8" visibility="public" signature="checkForKeys() : void" num="60" count="12" type="method"/>
+            <line num="61" count="12" type="stmt"/>
+            <line falsecount="11" truecount="1" num="61" type="cond"/>
+            <line num="62" count="1" type="stmt"/>
+            <line num="63" count="1" type="stmt"/>
+            <line num="64" count="11" type="stmt"/>
+            <line falsecount="10" truecount="1" num="64" type="cond"/>
+            <line num="65" count="1" type="stmt"/>
+            <line num="66" count="1" type="stmt"/>
+            <line num="68" count="10" type="stmt"/>
+            <line num="71" count="12" type="stmt"/>
+            <line falsecount="12" truecount="0" num="71" type="cond"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="12" type="stmt"/>
+            <line falsecount="11" truecount="1" num="73" type="cond"/>
+            <line num="74" count="1" type="stmt"/>
+            <line num="75" count="1" type="stmt"/>
+            <line num="78" count="12" type="stmt"/>
+            <line falsecount="10" truecount="2" num="78" type="cond"/>
+            <line num="79" count="2" type="stmt"/>
+            <line num="80" count="2" type="stmt"/>
+            <line num="81" count="2" type="stmt"/>
+            <line num="82" count="2" type="stmt"/>
+            <line complexity="4" visibility="public" signature="update(float) : void" num="93" count="15" type="method"/>
+            <line num="95" count="15" type="stmt"/>
+            <line num="96" count="15" type="stmt"/>
+            <line falsecount="3" truecount="12" num="96" type="cond"/>
+            <line num="98" count="12" type="stmt"/>
+            <line num="100" count="12" type="stmt"/>
+            <line falsecount="11" truecount="1" num="100" type="cond"/>
+            <line num="101" count="1" type="stmt"/>
+            <line num="103" count="12" type="stmt"/>
+            <line falsecount="12" truecount="0" num="103" type="cond"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="106" count="12" type="stmt"/>
+            <line num="110" count="3" type="stmt"/>
+            <line num="112" count="15" type="stmt"/>
+            <line num="113" count="15" type="stmt"/>
+            <line complexity="1" visibility="private" signature="handleDeath() : void" num="121" count="3" type="method"/>
+            <line num="122" count="3" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="fireBubble() : void" num="128" count="3" type="method"/>
+            <line num="129" count="3" type="stmt"/>
+            <line num="130" count="3" type="stmt"/>
+            <line num="131" count="1" type="stmt"/>
+            <line num="132" count="1" type="stmt"/>
+            <line num="133" count="1" type="stmt"/>
+            <line num="134" count="2" type="stmt"/>
+            <line num="135" count="2" type="stmt"/>
+            <line num="136" count="2" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="140" count="3" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleEnemyCollision() : void" num="146" count="6" type="method"/>
+            <line num="147" count="6" type="stmt"/>
+            <line num="148" count="6" type="stmt"/>
+            <line num="149" count="6" type="stmt"/>
+            <line num="150" count="6" type="stmt"/>
+            <line num="152" count="6" type="stmt"/>
+            <line falsecount="4" truecount="2" num="152" type="cond"/>
+            <line num="153" count="2" type="stmt"/>
+            <line num="154" count="2" type="stmt"/>
+            <line num="156" count="4" type="stmt"/>
+            <line complexity="3" visibility="public" signature="handleWallCollision(GameObject) : void" num="164" count="2" type="method"/>
+            <line num="166" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="166" type="cond"/>
+            <line num="167" count="1" type="stmt"/>
+            <line num="168" count="1" type="stmt"/>
+            <line num="170" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="170" type="cond"/>
+            <line num="171" count="1" type="stmt"/>
+            <line num="172" count="1" type="stmt"/>
+            <line complexity="4" visibility="public" signature="handleBubbleCollision(GameObject) : void" num="180" count="2" type="method"/>
+            <line num="181" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="181" type="cond"/>
+            <line num="182" count="1" type="stmt"/>
+            <line num="183" count="1" type="stmt"/>
+            <line num="185" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="185" type="cond"/>
+            <line num="186" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="186" type="cond"/>
+            <line num="187" count="1" type="stmt"/>
+            <line num="188" count="1" type="stmt"/>
+            <line complexity="11" visibility="public" signature="handleCollision(GameObject) : void" num="200" count="14" type="method"/>
+            <line num="202" count="14" type="stmt"/>
+            <line num="204" count="14" type="stmt"/>
+            <line falsecount="1" truecount="13" num="204" type="cond"/>
+            <line num="206" count="13" type="stmt"/>
+            <line falsecount="7" truecount="6" num="206" type="cond"/>
+            <line num="207" count="6" type="stmt"/>
+            <line num="208" count="7" type="stmt"/>
+            <line falsecount="5" truecount="2" num="208" type="cond"/>
+            <line num="209" count="2" type="stmt"/>
+            <line num="210" count="5" type="stmt"/>
+            <line falsecount="3" truecount="2" num="210" type="cond"/>
+            <line num="211" count="2" type="stmt"/>
+            <line num="212" count="3" type="stmt"/>
+            <line falsecount="2" truecount="1" num="212" type="cond"/>
+            <line num="213" count="1" type="stmt"/>
+            <line num="214" count="1" type="stmt"/>
+            <line num="215" count="1" type="stmt"/>
+            <line num="216" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="216" type="cond"/>
+            <line num="217" count="1" type="stmt"/>
+            <line num="218" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="218" type="cond"/>
+            <line num="219" count="1" type="stmt"/>
+            <line num="220" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="respawn() : void" num="229" count="5" type="method"/>
+            <line num="230" count="5" type="stmt"/>
+            <line num="231" count="5" type="stmt"/>
+            <line complexity="7" visibility="public" signature="draw(SpriteBatch) : void" num="239" count="3" type="method"/>
+            <line num="241" count="3" type="stmt"/>
+            <line falsecount="1" truecount="2" num="241" type="cond"/>
+            <line num="242" count="2" type="stmt"/>
+            <line num="243" count="1" type="stmt"/>
+            <line num="244" count="1" type="stmt"/>
+            <line num="245" count="1" type="stmt"/>
+            <line num="246" count="1" type="stmt"/>
+            <line num="247" count="1" type="stmt"/>
+            <line num="248" count="1" type="stmt"/>
+            <line num="249" count="0" type="stmt"/>
+            <line num="252" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="252" type="cond"/>
+            <line num="253" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="playDeadSound() : void" num="261" count="6" type="method"/>
+            <line num="262" count="6" type="stmt"/>
+            <line num="263" count="6" type="stmt"/>
+            <line num="265" count="6" type="stmt"/>
+            <line complexity="2" visibility="public" signature="playJumpSound() : void" num="272" count="2" type="method"/>
+            <line num="273" count="2" type="stmt"/>
+            <line num="274" count="2" type="stmt"/>
+            <line num="276" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAlive() : boolean" num="285" count="4" type="method"/>
+            <line num="286" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDirection() : Direction" num="294" count="2" type="method"/>
+            <line num="295" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDirection(Direction) : void" num="303" count="4" type="method"/>
+            <line num="304" count="4" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="updateHighScore() : void" num="310" count="2" type="method"/>
+            <line num="311" count="2" type="stmt"/>
+            <line num="312" count="2" type="stmt"/>
+            <line falsecount="2" truecount="0" num="312" type="cond"/>
+            <line num="313" count="0" type="stmt"/>
+            <line num="316" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFired() : boolean" num="325" count="2" type="method"/>
+            <line num="326" count="2" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/Powerup.java" name="Powerup.java">
+            <metrics coveredelements="28" coveredconditionals="6" complexity="11" loc="69" coveredmethods="7" methods="7" elements="30" classes="1" ncloc="44" statements="15" conditionals="8" coveredstatements="15"/>
+            <class name="Powerup">
+               <metrics coveredelements="28" coveredconditionals="6" complexity="11" coveredmethods="7" methods="7" elements="30" statements="15" conditionals="8" coveredstatements="15"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Powerup(float,float)" num="16" count="8" type="method"/>
+            <line num="17" count="8" type="stmt"/>
+            <line num="18" count="8" type="stmt"/>
+            <line num="19" count="8" type="stmt"/>
+            <line complexity="2" visibility="public" signature="update(float) : void" num="22" count="2" type="method"/>
+            <line num="24" count="2" type="stmt"/>
+            <line num="25" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="25" type="cond"/>
+            <line num="26" count="1" type="stmt"/>
+            <line complexity="4" visibility="public" signature="handleCollision(GameObject) : void" num="30" count="2" type="method"/>
+            <line num="32" count="2" type="stmt"/>
+            <line falsecount="0" truecount="2" num="32" type="cond"/>
+            <line num="33" count="2" type="stmt"/>
+            <line falsecount="1" truecount="1" num="33" type="cond"/>
+            <line num="34" count="1" type="stmt"/>
+            <line num="35" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="35" type="cond"/>
+            <line num="36" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="draw(SpriteBatch) : void" num="41" count="1" type="method"/>
+            <line num="43" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getActiveTime() : float" num="50" count="2" type="method"/>
+            <line num="51" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSpeedBoost() : float" num="58" count="3" type="method"/>
+            <line num="59" count="3" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAliveTime() : float" num="66" count="2" type="method"/>
+            <line num="67" count="2" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/SimpleEnemy.java" name="SimpleEnemy.java">
+            <metrics coveredelements="18" coveredconditionals="0" complexity="5" loc="54" coveredmethods="3" methods="3" elements="19" classes="1" ncloc="28" statements="16" conditionals="0" coveredstatements="15"/>
+            <class name="SimpleEnemy">
+               <metrics coveredelements="18" coveredconditionals="0" complexity="5" coveredmethods="3" methods="3" elements="19" statements="16" conditionals="0" coveredstatements="15"/>
+            </class>
+            <line complexity="1" visibility="public" signature="SimpleEnemy(float,float)" num="17" count="13" type="method"/>
+            <line num="18" count="13" type="stmt"/>
+            <line num="19" count="13" type="stmt"/>
+            <line complexity="3" visibility="public" signature="setDirection(Direction) : void" num="28" count="12" type="method"/>
+            <line num="29" count="12" type="stmt"/>
+            <line num="30" count="6" type="stmt"/>
+            <line num="31" count="6" type="stmt"/>
+            <line num="32" count="6" type="stmt"/>
+            <line num="33" count="6" type="stmt"/>
+            <line num="34" count="6" type="stmt"/>
+            <line num="35" count="6" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="39" count="12" type="stmt"/>
+            <line num="40" count="12" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTextures() : void" num="46" count="13" type="method"/>
+            <line num="48" count="13" type="stmt"/>
+            <line num="49" count="13" type="stmt"/>
+            <line num="50" count="13" type="stmt"/>
+            <line num="51" count="13" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/StrongEnemy.java" name="StrongEnemy.java">
+            <metrics coveredelements="34" coveredconditionals="4" complexity="11" loc="96" coveredmethods="6" methods="6" elements="35" classes="1" ncloc="49" statements="25" conditionals="4" coveredstatements="24"/>
+            <class name="StrongEnemy">
+               <metrics coveredelements="34" coveredconditionals="4" complexity="11" coveredmethods="6" methods="6" elements="35" statements="25" conditionals="4" coveredstatements="24"/>
+            </class>
+            <line complexity="1" visibility="public" signature="StrongEnemy(float,float)" num="21" count="10" type="method"/>
+            <line num="22" count="10" type="stmt"/>
+            <line num="23" count="10" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(float) : void" num="27" count="1" type="method"/>
+            <line num="29" count="1" type="stmt"/>
+            <line num="30" count="1" type="stmt"/>
+            <line complexity="3" visibility="public" signature="setDirection(Direction) : void" num="38" count="12" type="method"/>
+            <line num="39" count="12" type="stmt"/>
+            <line num="40" count="6" type="stmt"/>
+            <line num="41" count="6" type="stmt"/>
+            <line num="42" count="6" type="stmt"/>
+            <line num="43" count="6" type="stmt"/>
+            <line num="44" count="6" type="stmt"/>
+            <line num="45" count="6" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="49" count="12" type="stmt"/>
+            <line num="50" count="12" type="stmt"/>
+            <line complexity="2" visibility="public" signature="updatePath(float) : void" num="58" count="3" type="method"/>
+            <line num="59" count="3" type="stmt"/>
+            <line falsecount="1" truecount="2" num="59" type="cond"/>
+            <line num="60" count="2" type="stmt"/>
+            <line num="62" count="1" type="stmt"/>
+            <line num="65" count="3" type="stmt"/>
+            <line complexity="3" visibility="public" signature="handleCollision(GameObject) : void" num="75" count="5" type="method"/>
+            <line num="77" count="5" type="stmt"/>
+            <line num="79" count="5" type="stmt"/>
+            <line falsecount="4" truecount="1" num="79" type="cond"/>
+            <line num="80" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTextures() : void" num="88" count="10" type="method"/>
+            <line num="90" count="10" type="stmt"/>
+            <line num="91" count="10" type="stmt"/>
+            <line num="92" count="10" type="stmt"/>
+            <line num="93" count="10" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/objects/Wall.java" name="Wall.java">
+            <metrics coveredelements="5" coveredconditionals="0" complexity="4" loc="51" coveredmethods="3" methods="4" elements="6" classes="1" ncloc="18" statements="2" conditionals="0" coveredstatements="2"/>
+            <class name="Wall">
+               <metrics coveredelements="5" coveredconditionals="0" complexity="4" coveredmethods="3" methods="4" elements="6" statements="2" conditionals="0" coveredstatements="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Wall(float,float)" num="19" count="4" type="method"/>
+            <line num="20" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(float) : void" num="30" count="1" type="method"/>
+            <line complexity="1" visibility="public" signature="handleCollision(GameObject) : void" num="39" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="draw(SpriteBatch) : void" num="47" count="2" type="method"/>
+            <line num="48" count="2" type="stmt"/>
+         </file>
+      </package>
+      <package name="sem.group15.bubblebobble.core.editor">
+         <metrics coveredelements="0" complexity="32" loc="176" methods="14" classes="2" statements="67" coveredconditionals="0" coveredmethods="0" elements="115" ncloc="145" files="1" conditionals="34" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/editor/LevelEditor.java" name="LevelEditor.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="32" loc="176" coveredmethods="0" methods="14" elements="115" classes="2" ncloc="145" statements="67" conditionals="34" coveredstatements="0"/>
+            <class name="LevelEditor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="32" coveredmethods="0" methods="14" elements="115" statements="67" conditionals="34" coveredstatements="0"/>
+            </class>
+            <class name="LevelEditor.Selected">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="create() : void" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="resize(int,int) : void" num="52" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="render() : void" num="57" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="checkKeyboardInput() : void" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="70" type="cond"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="72" type="cond"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="74" type="cond"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="76" type="cond"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="save() : void" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="84" type="cond"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="writeLineToFile(BufferedWriter,GameObject) : void" num="98" count="0" type="method"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="100" type="cond"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="102" type="cond"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="renderObjects() : void" num="110" count="0" type="method"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="checkMouseInput() : void" num="116" count="0" type="method"/>
+            <line num="117" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="117" type="cond"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line complexity="6" visibility="private" signature="checkUIClick(int,int) : void" num="123" count="0" type="method"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="127" type="cond"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="129" type="cond"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="131" type="cond"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="135" type="cond"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="138" type="cond"/>
+            <line num="139" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="addSprites() : void" num="143" count="0" type="method"/>
+            <line num="144" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="144" type="cond"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="146" type="cond"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="148" type="cond"/>
+            <line num="149" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pause() : void" num="153" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="resume() : void" num="158" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="dispose() : void" num="163" count="0" type="method"/>
+            <line complexity="2" visibility="private" signature="checkCollision(GameObject) : GameObject" num="168" count="0" type="method"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="170" type="cond"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="sem.group15.bubblebobble.core.gamestates">
+         <metrics coveredelements="0" complexity="27" loc="222" methods="20" classes="6" statements="58" coveredconditionals="0" coveredmethods="0" elements="92" ncloc="149" files="6" conditionals="14" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/gamestates/GameState.java" name="GameState.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="18" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="9" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="GameState">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GameState(GameController)" num="12" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/gamestates/LostState.java" name="LostState.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="38" coveredmethods="0" methods="4" elements="16" classes="1" ncloc="25" statements="10" conditionals="2" coveredstatements="0"/>
+            <class name="LostState">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="4" elements="16" statements="10" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="LostState(GameController)" num="11" count="0" type="method"/>
+            <line num="12" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleState(float) : GameState" num="15" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="18" type="cond"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="render() : void" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="resetController(GameController) : void" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/gamestates/NewState.java" name="NewState.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="28" coveredmethods="0" methods="3" elements="12" classes="1" ncloc="19" statements="7" conditionals="2" coveredstatements="0"/>
+            <class name="NewState">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="12" statements="7" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="NewState(GameController)" num="10" count="0" type="method"/>
+            <line num="11" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleState(float) : GameState" num="14" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="17" type="cond"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="render() : void" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/gamestates/PauseState.java" name="PauseState.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="26" coveredmethods="0" methods="3" elements="11" classes="1" ncloc="18" statements="6" conditionals="2" coveredstatements="0"/>
+            <class name="PauseState">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="11" statements="6" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="PauseState(GameController)" num="10" count="0" type="method"/>
+            <line num="11" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleState(float) : GameState" num="14" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="17" type="cond"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="render() : void" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/gamestates/PlayState.java" name="PlayState.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="56" coveredmethods="0" methods="5" elements="26" classes="1" ncloc="36" statements="15" conditionals="6" coveredstatements="0"/>
+            <class name="PlayState">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="5" elements="26" statements="15" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="PlayState(GameController)" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="handleState(float) : GameState" num="17" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="22" type="cond"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="26" type="cond"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="31" type="cond"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="render() : void" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="checkForLose(Player) : boolean" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="checkForPauseKey() : boolean" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/gamestates/TransitionState.java" name="TransitionState.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="56" coveredmethods="0" methods="4" elements="25" classes="1" ncloc="42" statements="19" conditionals="2" coveredstatements="0"/>
+            <class name="TransitionState">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="4" elements="25" statements="19" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="TransitionState(GameController,GameState)" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleState(float) : GameState" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="41" type="cond"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="render(float) : void" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="updatePlayerPosition(float,float) : void" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="sem.group15.bubblebobble.core.enemybehaviour">
+         <metrics coveredelements="8" complexity="4" loc="45" methods="4" classes="3" statements="4" coveredconditionals="0" coveredmethods="4" elements="8" ncloc="23" files="3" conditionals="0" coveredstatements="4"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/enemybehaviour/JumpBehaviour.java" name="JumpBehaviour.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="14" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="4" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="JumpBehaviour">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/enemybehaviour/JumpHigh.java" name="JumpHigh.java">
+            <metrics coveredelements="4" coveredconditionals="0" complexity="2" loc="15" coveredmethods="2" methods="2" elements="4" classes="1" ncloc="9" statements="2" conditionals="0" coveredstatements="2"/>
+            <class name="JumpHigh">
+               <metrics coveredelements="4" coveredconditionals="0" complexity="2" coveredmethods="2" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="JumpHigh()" num="8" count="10" type="method"/>
+            <line complexity="1" visibility="public" signature="jump() : float" num="11" count="3" type="method"/>
+            <line num="12" count="3" type="stmt"/>
+            <line num="13" count="3" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/enemybehaviour/JumpRandom.java" name="JumpRandom.java">
+            <metrics coveredelements="4" coveredconditionals="0" complexity="2" loc="16" coveredmethods="2" methods="2" elements="4" classes="1" ncloc="10" statements="2" conditionals="0" coveredstatements="2"/>
+            <class name="JumpRandom">
+               <metrics coveredelements="4" coveredconditionals="0" complexity="2" coveredmethods="2" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="JumpRandom()" num="9" count="13" type="method"/>
+            <line complexity="1" visibility="public" signature="jump() : float" num="12" count="12" type="method"/>
+            <line num="13" count="12" type="stmt"/>
+            <line num="14" count="12" type="stmt"/>
+         </file>
+      </package>
+      <package name="sem.group15.bubblebobble.core.factories">
+         <metrics coveredelements="19" complexity="7" loc="71" methods="4" classes="3" statements="12" coveredconditionals="3" coveredmethods="4" elements="20" ncloc="41" files="3" conditionals="4" coveredstatements="12"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/factories/EnemyFactory.java" name="EnemyFactory.java">
+            <metrics coveredelements="11" coveredconditionals="3" complexity="5" loc="37" coveredmethods="2" methods="2" elements="12" classes="1" ncloc="19" statements="6" conditionals="4" coveredstatements="6"/>
+            <class name="EnemyFactory">
+               <metrics coveredelements="11" coveredconditionals="3" complexity="5" coveredmethods="2" methods="2" elements="12" statements="6" conditionals="4" coveredstatements="6"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="instantiateEnemy(Enemy,Enemy.State) : void" num="18" count="2" type="method"/>
+            <line num="19" count="2" type="stmt"/>
+            <line num="20" count="2" type="stmt"/>
+            <line complexity="4" visibility="protected" signature="setRandomDirection(Enemy) : void" num="27" count="102" type="method"/>
+            <line num="29" count="102" type="stmt"/>
+            <line falsecount="0" truecount="102" num="30" type="cond"/>
+            <line num="31" count="102" type="stmt"/>
+            <line falsecount="45" truecount="57" num="31" type="cond"/>
+            <line num="32" count="57" type="stmt"/>
+            <line num="34" count="45" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/factories/SimpleEnemyFactory.java" name="SimpleEnemyFactory.java">
+            <metrics coveredelements="4" coveredconditionals="0" complexity="1" loc="17" coveredmethods="1" methods="1" elements="4" classes="1" ncloc="11" statements="3" conditionals="0" coveredstatements="3"/>
+            <class name="SimpleEnemyFactory">
+               <metrics coveredelements="4" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="3"/>
+            </class>
+            <line complexity="1" visibility="public" signature="createObject(float,float,Enemy.State) : Enemy" num="11" count="1" type="method"/>
+            <line num="13" count="1" type="stmt"/>
+            <line num="14" count="1" type="stmt"/>
+            <line num="15" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/main/java/sem/group15/bubblebobble/core/factories/StrongEnemyFactory.java" name="StrongEnemyFactory.java">
+            <metrics coveredelements="4" coveredconditionals="0" complexity="1" loc="17" coveredmethods="1" methods="1" elements="4" classes="1" ncloc="11" statements="3" conditionals="0" coveredstatements="3"/>
+            <class name="StrongEnemyFactory">
+               <metrics coveredelements="4" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="3"/>
+            </class>
+            <line complexity="1" visibility="public" signature="createObject(float,float,Enemy.State) : Enemy" num="11" count="1" type="method"/>
+            <line num="13" count="1" type="stmt"/>
+            <line num="14" count="1" type="stmt"/>
+            <line num="15" count="1" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="Main Parent 1.0-SNAPSHOT (Aggregated)" timestamp="1594317593596">
+      <metrics coveredelements="830" complexity="138" loc="2078" methods="133" classes="22" statements="700" packages="3" coveredconditionals="2" coveredmethods="133" elements="835" ncloc="1416" files="22" conditionals="2" coveredstatements="695"/>
+      <package name="sem.group15.bubblebobble.core">
+         <metrics coveredelements="233" complexity="34" loc="495" methods="30" classes="5" statements="208" coveredconditionals="0" coveredmethods="30" elements="238" ncloc="382" files="5" conditionals="0" coveredstatements="203"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/GameControllerTest.java" name="GameControllerTest.java">
+            <metrics coveredelements="28" coveredconditionals="0" complexity="5" loc="69" coveredmethods="5" methods="5" elements="28" classes="1" ncloc="52" statements="23" conditionals="0" coveredstatements="23"/>
+            <class name="GameControllerTest">
+               <metrics coveredelements="28" complexity="5" methods="5" testruns="4" statements="23" coveredconditionals="0" coveredmethods="5" elements="28" testfailures="0" testduration="0.053" conditionals="0" coveredstatements="23" testpasses="4"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="24" count="4" type="method"/>
+            <line num="26" count="4" type="stmt"/>
+            <line num="27" count="4" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testCheckForStartKey() : void" num="30" testsuccess="true" count="1" testduration="0.014" type="method"/>
+            <line num="32" count="1" type="stmt"/>
+            <line num="33" count="1" type="stmt"/>
+            <line num="34" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testStartLevel() : void" num="37" testsuccess="true" count="1" testduration="0.026" type="method"/>
+            <line num="39" count="1" type="stmt"/>
+            <line num="40" count="1" type="stmt"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="42" count="1" type="stmt"/>
+            <line num="43" count="1" type="stmt"/>
+            <line num="44" count="1" type="stmt"/>
+            <line num="45" count="1" type="stmt"/>
+            <line num="47" count="1" type="stmt"/>
+            <line num="49" count="1" type="stmt"/>
+            <line num="50" count="1" type="stmt"/>
+            <line num="51" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="53" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetLevel() : void" num="56" testsuccess="true" count="1" testduration="0.004" type="method"/>
+            <line num="58" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRun() : void" num="61" testsuccess="true" count="1" testduration="0.009" type="method"/>
+            <line num="63" count="1" type="stmt"/>
+            <line num="64" count="1" type="stmt"/>
+            <line num="65" count="1" type="stmt"/>
+            <line num="66" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/LevelParserTest.java" name="LevelParserTest.java">
+            <metrics coveredelements="26" coveredconditionals="0" complexity="9" loc="80" coveredmethods="5" methods="5" elements="31" classes="1" ncloc="66" statements="26" conditionals="0" coveredstatements="21"/>
+            <class name="LevelParserTest">
+               <metrics coveredelements="26" complexity="9" methods="5" testruns="4" statements="26" coveredconditionals="0" coveredmethods="5" elements="31" testfailures="0" testduration="0.006" conditionals="0" coveredstatements="21" testpasses="4"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="23" count="4" type="method"/>
+            <line num="25" count="4" type="stmt"/>
+            <line complexity="2" visibility="public" signature="testIOExceptionIsThrownFailingInput() : void" num="28" testsuccess="true" count="1" testduration="0.004" type="method"/>
+            <line num="30" count="1" type="stmt"/>
+            <line num="31" count="1" type="stmt"/>
+            <line num="32" count="1" type="stmt"/>
+            <line num="33" count="1" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="parseWall() : void" num="42" testsuccess="true" count="1" testduration="0.002" type="method"/>
+            <line num="44" count="1" type="stmt"/>
+            <line num="45" count="1" type="stmt"/>
+            <line num="46" count="1" type="stmt"/>
+            <line num="47" count="1" type="stmt"/>
+            <line num="48" count="1" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="parseFloor() : void" num="55" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="58" count="1" type="stmt"/>
+            <line num="59" count="1" type="stmt"/>
+            <line num="60" count="1" type="stmt"/>
+            <line num="61" count="1" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="parsePowerup() : void" num="68" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line num="72" count="1" type="stmt"/>
+            <line num="73" count="1" type="stmt"/>
+            <line num="74" count="1" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/LevelRendererTest.java" name="LevelRendererTest.java">
+            <metrics coveredelements="94" coveredconditionals="0" complexity="9" loc="169" coveredmethods="9" methods="9" elements="94" classes="1" ncloc="143" statements="85" conditionals="0" coveredstatements="85"/>
+            <class name="LevelRendererTest">
+               <metrics coveredelements="94" complexity="9" methods="9" testruns="8" statements="85" coveredconditionals="0" coveredmethods="9" elements="94" testfailures="0" testduration="0.023" conditionals="0" coveredstatements="85" testpasses="8"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="34" count="8" type="method"/>
+            <line num="36" count="8" type="stmt"/>
+            <line num="37" count="8" type="stmt"/>
+            <line num="38" count="8" type="stmt"/>
+            <line num="39" count="8" type="stmt"/>
+            <line num="40" count="8" type="stmt"/>
+            <line num="41" count="8" type="stmt"/>
+            <line num="42" count="8" type="stmt"/>
+            <line num="43" count="8" type="stmt"/>
+            <line num="44" count="8" type="stmt"/>
+            <line num="45" count="8" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRender() : void" num="51" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="53" count="1" type="stmt"/>
+            <line num="54" count="1" type="stmt"/>
+            <line num="55" count="1" type="stmt"/>
+            <line num="56" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="58" count="1" type="stmt"/>
+            <line num="59" count="1" type="stmt"/>
+            <line num="60" count="1" type="stmt"/>
+            <line num="61" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRenderWorld() : void" num="67" testsuccess="true" count="1" testduration="0.009" type="method"/>
+            <line num="69" count="1" type="stmt"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line num="72" count="1" type="stmt"/>
+            <line num="73" count="1" type="stmt"/>
+            <line num="74" count="1" type="stmt"/>
+            <line num="75" count="1" type="stmt"/>
+            <line num="76" count="1" type="stmt"/>
+            <line num="77" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRenderScore() : void" num="82" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="84" count="1" type="stmt"/>
+            <line num="85" count="1" type="stmt"/>
+            <line num="86" count="1" type="stmt"/>
+            <line num="87" count="1" type="stmt"/>
+            <line num="88" count="1" type="stmt"/>
+            <line num="89" count="1" type="stmt"/>
+            <line num="91" count="1" type="stmt"/>
+            <line num="92" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRenderLives() : void" num="95" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="97" count="1" type="stmt"/>
+            <line num="98" count="1" type="stmt"/>
+            <line num="99" count="1" type="stmt"/>
+            <line num="100" count="1" type="stmt"/>
+            <line num="101" count="1" type="stmt"/>
+            <line num="102" count="1" type="stmt"/>
+            <line num="103" count="1" type="stmt"/>
+            <line num="104" count="1" type="stmt"/>
+            <line num="105" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRenderNew() : void" num="108" testsuccess="true" count="1" testduration="0.004" type="method"/>
+            <line num="110" count="1" type="stmt"/>
+            <line num="111" count="1" type="stmt"/>
+            <line num="112" count="1" type="stmt"/>
+            <line num="113" count="1" type="stmt"/>
+            <line num="114" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRenderPause() : void" num="117" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="119" count="1" type="stmt"/>
+            <line num="120" count="1" type="stmt"/>
+            <line num="121" count="1" type="stmt"/>
+            <line num="122" count="1" type="stmt"/>
+            <line num="123" count="1" type="stmt"/>
+            <line num="124" count="1" type="stmt"/>
+            <line num="125" count="1" type="stmt"/>
+            <line num="126" count="1" type="stmt"/>
+            <line num="127" count="1" type="stmt"/>
+            <line num="128" count="1" type="stmt"/>
+            <line num="129" count="1" type="stmt"/>
+            <line num="130" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRenderLost() : void" num="133" testsuccess="true" count="1" testduration="0.007" type="method"/>
+            <line num="135" count="1" type="stmt"/>
+            <line num="136" count="1" type="stmt"/>
+            <line num="137" count="1" type="stmt"/>
+            <line num="138" count="1" type="stmt"/>
+            <line num="139" count="1" type="stmt"/>
+            <line num="140" count="1" type="stmt"/>
+            <line num="142" count="1" type="stmt"/>
+            <line num="143" count="1" type="stmt"/>
+            <line num="144" count="1" type="stmt"/>
+            <line num="145" count="1" type="stmt"/>
+            <line num="146" count="1" type="stmt"/>
+            <line num="147" count="1" type="stmt"/>
+            <line num="152" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRenderTransition() : void" num="155" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="157" count="1" type="stmt"/>
+            <line num="158" count="1" type="stmt"/>
+            <line num="159" count="1" type="stmt"/>
+            <line num="160" count="1" type="stmt"/>
+            <line num="161" count="1" type="stmt"/>
+            <line num="162" count="1" type="stmt"/>
+            <line num="163" count="1" type="stmt"/>
+            <line num="164" count="1" type="stmt"/>
+            <line num="165" count="1" type="stmt"/>
+            <line num="166" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/LevelTest.java" name="LevelTest.java">
+            <metrics coveredelements="77" coveredconditionals="0" complexity="9" loc="148" coveredmethods="9" methods="9" elements="77" classes="1" ncloc="105" statements="68" conditionals="0" coveredstatements="68"/>
+            <class name="LevelTest">
+               <metrics coveredelements="77" complexity="9" methods="9" testruns="9" statements="68" coveredconditionals="0" coveredmethods="9" elements="77" testfailures="0" testduration="0.011" conditionals="0" coveredstatements="68" testpasses="9"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testLevelFinishedEmptyList() : void" num="18" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="20" count="1" type="stmt"/>
+            <line num="21" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testLevelNotFinished() : void" num="24" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="26" count="1" type="stmt"/>
+            <line num="27" count="1" type="stmt"/>
+            <line num="28" count="1" type="stmt"/>
+            <line num="29" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testLevelNotFinishedMultipleObjects() : void" num="32" testsuccess="true" count="1" testduration="0.004" type="method"/>
+            <line num="34" count="1" type="stmt"/>
+            <line num="36" count="1" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line num="38" count="1" type="stmt"/>
+            <line num="39" count="1" type="stmt"/>
+            <line num="40" count="1" type="stmt"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="42" count="1" type="stmt"/>
+            <line num="43" count="1" type="stmt"/>
+            <line num="45" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testLevelFinishedMultipleObjects() : void" num="48" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="50" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="53" count="1" type="stmt"/>
+            <line num="54" count="1" type="stmt"/>
+            <line num="55" count="1" type="stmt"/>
+            <line num="56" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="58" count="1" type="stmt"/>
+            <line num="59" count="1" type="stmt"/>
+            <line num="61" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testCheckCollisions() : void" num="64" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="66" count="1" type="stmt"/>
+            <line num="67" count="1" type="stmt"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="69" count="1" type="stmt"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line num="73" count="1" type="stmt"/>
+            <line num="74" count="1" type="stmt"/>
+            <line num="75" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRemoveObjects() : void" num="78" testsuccess="true" count="1" testduration="0.005" type="method"/>
+            <line num="80" count="1" type="stmt"/>
+            <line num="81" count="1" type="stmt"/>
+            <line num="82" count="1" type="stmt"/>
+            <line num="83" count="1" type="stmt"/>
+            <line num="84" count="1" type="stmt"/>
+            <line num="85" count="1" type="stmt"/>
+            <line num="87" count="1" type="stmt"/>
+            <line num="88" count="1" type="stmt"/>
+            <line num="89" count="1" type="stmt"/>
+            <line num="90" count="1" type="stmt"/>
+            <line num="91" count="1" type="stmt"/>
+            <line num="92" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdate() : void" num="95" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="97" count="1" type="stmt"/>
+            <line num="98" count="1" type="stmt"/>
+            <line num="99" count="1" type="stmt"/>
+            <line num="100" count="1" type="stmt"/>
+            <line num="101" count="1" type="stmt"/>
+            <line num="102" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRun() : void" num="122" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="124" count="1" type="stmt"/>
+            <line num="125" count="1" type="stmt"/>
+            <line num="126" count="1" type="stmt"/>
+            <line num="127" count="1" type="stmt"/>
+            <line num="130" count="1" type="stmt"/>
+            <line num="131" count="1" type="stmt"/>
+            <line num="132" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testSetPlayer() : void" num="135" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="137" count="1" type="stmt"/>
+            <line num="138" count="1" type="stmt"/>
+            <line num="140" count="1" type="stmt"/>
+            <line num="141" count="1" type="stmt"/>
+            <line num="142" count="1" type="stmt"/>
+            <line num="143" count="1" type="stmt"/>
+            <line num="144" count="1" type="stmt"/>
+            <line num="145" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/LoggerTest.java" name="LoggerTest.java">
+            <metrics coveredelements="8" coveredconditionals="0" complexity="2" loc="29" coveredmethods="2" methods="2" elements="8" classes="1" ncloc="16" statements="6" conditionals="0" coveredstatements="6"/>
+            <class name="LoggerTest">
+               <metrics coveredelements="8" complexity="2" methods="2" testruns="2" statements="6" coveredconditionals="0" coveredmethods="2" elements="8" testfailures="0" testduration="0.001" conditionals="0" coveredstatements="6" testpasses="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getLoggerTest() : void" num="12" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="14" count="1" type="stmt"/>
+            <line num="15" count="1" type="stmt"/>
+            <line num="16" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDifferentLoggerTest() : void" num="22" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="24" count="1" type="stmt"/>
+            <line num="25" count="1" type="stmt"/>
+            <line num="26" count="1" type="stmt"/>
+         </file>
+      </package>
+      <package name="sem.group15.bubblebobble.core.objects">
+         <metrics coveredelements="573" complexity="98" loc="1501" methods="98" classes="14" statements="475" coveredconditionals="0" coveredmethods="98" elements="573" ncloc="977" files="14" conditionals="0" coveredstatements="475"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/BananaTest.java" name="BananaTest.java">
+            <metrics coveredelements="10" coveredconditionals="0" complexity="3" loc="42" coveredmethods="3" methods="3" elements="10" classes="1" ncloc="26" statements="7" conditionals="0" coveredstatements="7"/>
+            <class name="BananaTest">
+               <metrics coveredelements="10" complexity="3" methods="3" testruns="2" statements="7" coveredconditionals="0" coveredmethods="3" elements="10" testfailures="0" testduration="0.001" conditionals="0" coveredstatements="7" testpasses="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="18" count="2" type="method"/>
+            <line num="20" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testConstructor() : void" num="26" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="28" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDraw() : void" num="34" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="36" count="1" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line num="38" count="1" type="stmt"/>
+            <line num="39" count="1" type="stmt"/>
+            <line num="40" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/BubbleTest.java" name="BubbleTest.java">
+            <metrics coveredelements="29" coveredconditionals="0" complexity="6" loc="91" coveredmethods="6" methods="6" elements="29" classes="1" ncloc="57" statements="23" conditionals="0" coveredstatements="23"/>
+            <class name="BubbleTest">
+               <metrics coveredelements="29" complexity="6" methods="6" testruns="5" statements="23" coveredconditionals="0" coveredmethods="6" elements="29" testfailures="0" testduration="0.0" conditionals="0" coveredstatements="23" testpasses="5"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="29" count="5" type="method"/>
+            <line num="31" count="5" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testConstructorDirection() : void" num="37" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="39" count="1" type="stmt"/>
+            <line num="40" count="1" type="stmt"/>
+            <line num="41" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdateSpeed() : void" num="47" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="49" count="1" type="stmt"/>
+            <line num="50" count="1" type="stmt"/>
+            <line num="51" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="53" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdateLifespan() : void" num="60" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="62" count="1" type="stmt"/>
+            <line num="63" count="1" type="stmt"/>
+            <line num="64" count="1" type="stmt"/>
+            <line num="65" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testMakeFilledBubble() : void" num="71" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="73" count="1" type="stmt"/>
+            <line num="74" count="1" type="stmt"/>
+            <line num="75" count="1" type="stmt"/>
+            <line num="76" count="1" type="stmt"/>
+            <line num="77" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDraw() : void" num="83" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="85" count="1" type="stmt"/>
+            <line num="86" count="1" type="stmt"/>
+            <line num="87" count="1" type="stmt"/>
+            <line num="88" count="1" type="stmt"/>
+            <line num="89" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/CherryTest.java" name="CherryTest.java">
+            <metrics coveredelements="10" coveredconditionals="0" complexity="3" loc="42" coveredmethods="3" methods="3" elements="10" classes="1" ncloc="26" statements="7" conditionals="0" coveredstatements="7"/>
+            <class name="CherryTest">
+               <metrics coveredelements="10" complexity="3" methods="3" testruns="2" statements="7" coveredconditionals="0" coveredmethods="3" elements="10" testfailures="0" testduration="0.0" conditionals="0" coveredstatements="7" testpasses="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="18" count="2" type="method"/>
+            <line num="20" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testConstructor() : void" num="26" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="28" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDraw() : void" num="34" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="36" count="1" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line num="38" count="1" type="stmt"/>
+            <line num="39" count="1" type="stmt"/>
+            <line num="40" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/FilledBubbleTest.java" name="FilledBubbleTest.java">
+            <metrics coveredelements="55" coveredconditionals="0" complexity="9" loc="132" coveredmethods="9" methods="9" elements="55" classes="1" ncloc="95" statements="46" conditionals="0" coveredstatements="46"/>
+            <class name="FilledBubbleTest">
+               <metrics coveredelements="55" complexity="9" methods="9" testruns="8" statements="46" coveredconditionals="0" coveredmethods="9" elements="55" testfailures="0" testduration="0.021" conditionals="0" coveredstatements="46" testpasses="8"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="28" count="8" type="method"/>
+            <line num="30" count="8" type="stmt"/>
+            <line num="31" count="8" type="stmt"/>
+            <line num="32" count="8" type="stmt"/>
+            <line num="33" count="8" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testConstructorSimpleEnemy() : void" num="39" testsuccess="true" count="1" testduration="0.003" type="method"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="42" count="1" type="stmt"/>
+            <line num="43" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testConstructorStrongEnemy() : void" num="49" testsuccess="true" count="1" testduration="0.002" type="method"/>
+            <line num="51" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="53" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdate() : void" num="59" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="61" count="1" type="stmt"/>
+            <line num="62" count="1" type="stmt"/>
+            <line num="63" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdateTimeFromFired() : void" num="66" testsuccess="true" count="1" testduration="0.006" type="method"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="69" count="1" type="stmt"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="73" count="1" type="stmt"/>
+            <line num="74" count="1" type="stmt"/>
+            <line num="75" count="1" type="stmt"/>
+            <line num="76" count="1" type="stmt"/>
+            <line num="77" count="1" type="stmt"/>
+            <line num="78" count="1" type="stmt"/>
+            <line num="79" count="1" type="stmt"/>
+            <line num="80" count="1" type="stmt"/>
+            <line num="81" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionImmutable() : void" num="87" testsuccess="true" count="1" testduration="0.007" type="method"/>
+            <line num="89" count="1" type="stmt"/>
+            <line num="90" count="1" type="stmt"/>
+            <line num="91" count="1" type="stmt"/>
+            <line num="92" count="1" type="stmt"/>
+            <line num="93" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionPlayerFast() : void" num="99" testsuccess="true" count="1" testduration="0.002" type="method"/>
+            <line num="101" count="1" type="stmt"/>
+            <line num="102" count="1" type="stmt"/>
+            <line num="103" count="1" type="stmt"/>
+            <line num="104" count="1" type="stmt"/>
+            <line num="105" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionPlayerSlow() : void" num="111" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="113" count="1" type="stmt"/>
+            <line num="114" count="1" type="stmt"/>
+            <line num="115" count="1" type="stmt"/>
+            <line num="116" count="1" type="stmt"/>
+            <line num="117" count="1" type="stmt"/>
+            <line num="118" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDraw() : void" num="124" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="126" count="1" type="stmt"/>
+            <line num="127" count="1" type="stmt"/>
+            <line num="128" count="1" type="stmt"/>
+            <line num="129" count="1" type="stmt"/>
+            <line num="130" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/FloatingTest.java" name="FloatingTest.java">
+            <metrics coveredelements="7" coveredconditionals="0" complexity="2" loc="38" coveredmethods="2" methods="2" elements="7" classes="1" ncloc="25" statements="5" conditionals="0" coveredstatements="5"/>
+            <class name="FloatingTest">
+               <metrics coveredelements="7" complexity="2" methods="2" testruns="1" statements="5" coveredconditionals="0" coveredmethods="2" elements="7" testfailures="0" testduration="0.004" conditionals="0" coveredstatements="5" testpasses="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="22" count="1" type="method"/>
+            <line num="24" count="1" type="stmt"/>
+            <line num="25" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdate() : void" num="31" testsuccess="true" count="1" testduration="0.004" type="method"/>
+            <line num="33" count="1" type="stmt"/>
+            <line num="34" count="1" type="stmt"/>
+            <line num="35" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/FloorTest.java" name="FloorTest.java">
+            <metrics coveredelements="14" coveredconditionals="0" complexity="3" loc="57" coveredmethods="3" methods="3" elements="14" classes="1" ncloc="37" statements="11" conditionals="0" coveredstatements="11"/>
+            <class name="FloorTest">
+               <metrics coveredelements="14" complexity="3" methods="3" testruns="2" statements="11" coveredconditionals="0" coveredmethods="3" elements="14" testfailures="0" testduration="0.0" conditionals="0" coveredstatements="11" testpasses="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="28" count="2" type="method"/>
+            <line num="30" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdate() : void" num="36" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="38" count="1" type="stmt"/>
+            <line num="39" count="1" type="stmt"/>
+            <line num="40" count="1" type="stmt"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="42" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDraw() : void" num="48" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="50" count="1" type="stmt"/>
+            <line num="51" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="53" count="1" type="stmt"/>
+            <line num="54" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/FruitTest.java" name="FruitTest.java">
+            <metrics coveredelements="26" coveredconditionals="0" complexity="6" loc="75" coveredmethods="6" methods="6" elements="26" classes="1" ncloc="46" statements="20" conditionals="0" coveredstatements="20"/>
+            <class name="FruitTest">
+               <metrics coveredelements="26" complexity="6" methods="6" testruns="5" statements="20" coveredconditionals="0" coveredmethods="6" elements="26" testfailures="0" testduration="0.005" conditionals="0" coveredstatements="20" testpasses="5"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="13" count="5" type="method"/>
+            <line num="15" count="5" type="stmt"/>
+            <line num="16" count="5" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdateLocation() : void" num="22" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="24" count="1" type="stmt"/>
+            <line num="25" count="1" type="stmt"/>
+            <line num="26" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdateAliveTime() : void" num="32" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="34" count="1" type="stmt"/>
+            <line num="35" count="1" type="stmt"/>
+            <line num="36" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdateRemoveAfter5s() : void" num="42" testsuccess="true" count="1" testduration="0.004" type="method"/>
+            <line num="44" count="1" type="stmt"/>
+            <line num="45" count="1" type="stmt"/>
+            <line num="46" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionWithPlayer() : void" num="53" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="55" count="1" type="stmt"/>
+            <line num="56" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="59" count="1" type="stmt"/>
+            <line num="60" count="1" type="stmt"/>
+            <line num="61" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetAliveTime() : void" num="68" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line num="72" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/GameObjectTest.java" name="GameObjectTest.java">
+            <metrics coveredelements="35" coveredconditionals="0" complexity="6" loc="90" coveredmethods="6" methods="6" elements="35" classes="1" ncloc="55" statements="29" conditionals="0" coveredstatements="29"/>
+            <class name="GameObjectTest">
+               <metrics coveredelements="35" complexity="6" methods="6" testruns="5" statements="29" coveredconditionals="0" coveredmethods="6" elements="35" testfailures="0" testduration="0.002" conditionals="0" coveredstatements="29" testpasses="5"/>
+            </class>
+            <line complexity="1" visibility="private" signature="create(float,float) : GameObject" num="23" count="8" type="method"/>
+            <line num="24" count="8" type="stmt"/>
+            <line num="25" count="8" type="stmt"/>
+            <line num="26" count="8" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHorizontalOverlap() : void" num="33" testsuccess="true" count="1" testduration="0.002" type="method"/>
+            <line num="35" count="1" type="stmt"/>
+            <line num="36" count="1" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line num="38" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testVerticalOverlap() : void" num="45" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="47" count="1" type="stmt"/>
+            <line num="48" count="1" type="stmt"/>
+            <line num="49" count="1" type="stmt"/>
+            <line num="50" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testVerticalOverlapWhenNotTouching() : void" num="53" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="55" count="1" type="stmt"/>
+            <line num="56" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="58" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testOverlapPercentage() : void" num="65" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="67" count="1" type="stmt"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="69" count="1" type="stmt"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testAddNewObjectsTo() : void" num="77" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="79" count="1" type="stmt"/>
+            <line num="80" count="1" type="stmt"/>
+            <line num="81" count="1" type="stmt"/>
+            <line num="82" count="1" type="stmt"/>
+            <line num="83" count="1" type="stmt"/>
+            <line num="84" count="1" type="stmt"/>
+            <line num="85" count="1" type="stmt"/>
+            <line num="86" count="1" type="stmt"/>
+            <line num="87" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/GravityTest.java" name="GravityTest.java">
+            <metrics coveredelements="23" coveredconditionals="0" complexity="4" loc="74" coveredmethods="4" methods="4" elements="23" classes="1" ncloc="46" statements="19" conditionals="0" coveredstatements="19"/>
+            <class name="GravityTest">
+               <metrics coveredelements="23" complexity="4" methods="4" testruns="3" statements="19" coveredconditionals="0" coveredmethods="4" elements="23" testfailures="0" testduration="0.0" conditionals="0" coveredstatements="19" testpasses="3"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="31" count="3" type="method"/>
+            <line num="33" count="3" type="stmt"/>
+            <line num="34" count="3" type="stmt"/>
+            <line num="35" count="3" type="stmt"/>
+            <line num="36" count="3" type="stmt"/>
+            <line num="37" count="3" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollision() : void" num="45" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="47" count="1" type="stmt"/>
+            <line num="48" count="1" type="stmt"/>
+            <line num="49" count="1" type="stmt"/>
+            <line num="50" count="1" type="stmt"/>
+            <line num="51" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionNoCollision() : void" num="59" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="61" count="1" type="stmt"/>
+            <line num="62" count="1" type="stmt"/>
+            <line num="63" count="1" type="stmt"/>
+            <line num="64" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testWarping() : void" num="67" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="69" count="1" type="stmt"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line num="72" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/PlayerObjectTest.java" name="PlayerObjectTest.java">
+            <metrics coveredelements="174" coveredconditionals="0" complexity="23" loc="351" coveredmethods="23" methods="23" elements="174" classes="1" ncloc="239" statements="151" conditionals="0" coveredstatements="151"/>
+            <class name="PlayerObjectTest">
+               <metrics coveredelements="174" complexity="23" methods="23" testruns="22" statements="151" coveredconditionals="0" coveredmethods="23" elements="174" testfailures="0" testduration="0.06699999999999999" conditionals="0" coveredstatements="151" testpasses="22"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="39" count="22" type="method"/>
+            <line num="41" count="22" type="stmt"/>
+            <line num="42" count="22" type="stmt"/>
+            <line complexity="1" visibility="public" signature="collisionEnemyNoLives() : void" num="48" testsuccess="true" count="1" testduration="0.007" type="method"/>
+            <line num="50" count="1" type="stmt"/>
+            <line num="51" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="53" count="1" type="stmt"/>
+            <line num="54" count="1" type="stmt"/>
+            <line num="56" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="58" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="collisionEnemyMultipleLives() : void" num="64" testsuccess="true" count="1" testduration="0.004" type="method"/>
+            <line num="66" count="1" type="stmt"/>
+            <line num="67" count="1" type="stmt"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="69" count="1" type="stmt"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line num="72" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRespawned() : void" num="79" testsuccess="true" count="1" testduration="0.005" type="method"/>
+            <line num="81" count="1" type="stmt"/>
+            <line num="82" count="1" type="stmt"/>
+            <line num="83" count="1" type="stmt"/>
+            <line num="84" count="1" type="stmt"/>
+            <line num="85" count="1" type="stmt"/>
+            <line num="86" count="1" type="stmt"/>
+            <line num="88" count="1" type="stmt"/>
+            <line num="89" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionEnemy() : void" num="95" testsuccess="true" count="1" testduration="0.013" type="method"/>
+            <line num="97" count="1" type="stmt"/>
+            <line num="98" count="1" type="stmt"/>
+            <line num="99" count="1" type="stmt"/>
+            <line num="100" count="1" type="stmt"/>
+            <line num="102" count="1" type="stmt"/>
+            <line num="103" count="1" type="stmt"/>
+            <line num="104" count="1" type="stmt"/>
+            <line num="105" count="1" type="stmt"/>
+            <line num="106" count="1" type="stmt"/>
+            <line num="107" count="1" type="stmt"/>
+            <line num="109" count="1" type="stmt"/>
+            <line num="110" count="1" type="stmt"/>
+            <line num="111" count="1" type="stmt"/>
+            <line num="112" count="1" type="stmt"/>
+            <line num="113" count="1" type="stmt"/>
+            <line num="114" count="1" type="stmt"/>
+            <line num="115" count="1" type="stmt"/>
+            <line num="116" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRespawn() : void" num="122" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="124" count="1" type="stmt"/>
+            <line num="125" count="1" type="stmt"/>
+            <line num="126" count="1" type="stmt"/>
+            <line num="127" count="1" type="stmt"/>
+            <line num="128" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionFilledBubble() : void" num="135" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="137" count="1" type="stmt"/>
+            <line num="138" count="1" type="stmt"/>
+            <line num="139" count="1" type="stmt"/>
+            <line num="140" count="1" type="stmt"/>
+            <line num="141" count="1" type="stmt"/>
+            <line num="142" count="1" type="stmt"/>
+            <line num="143" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionBubble() : void" num="150" testsuccess="true" count="1" testduration="0.005" type="method"/>
+            <line num="152" count="1" type="stmt"/>
+            <line num="153" count="1" type="stmt"/>
+            <line num="154" count="1" type="stmt"/>
+            <line num="155" count="1" type="stmt"/>
+            <line num="156" count="1" type="stmt"/>
+            <line num="157" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionWall() : void" num="163" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="165" count="1" type="stmt"/>
+            <line num="166" count="1" type="stmt"/>
+            <line num="167" count="1" type="stmt"/>
+            <line num="168" count="1" type="stmt"/>
+            <line num="169" count="1" type="stmt"/>
+            <line num="170" count="1" type="stmt"/>
+            <line num="171" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionWallLeft() : void" num="176" testsuccess="true" count="1" testduration="0.011" type="method"/>
+            <line num="178" count="1" type="stmt"/>
+            <line num="179" count="1" type="stmt"/>
+            <line num="180" count="1" type="stmt"/>
+            <line num="181" count="1" type="stmt"/>
+            <line num="182" count="1" type="stmt"/>
+            <line num="183" count="1" type="stmt"/>
+            <line num="184" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testMovementLeft() : void" num="189" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="191" count="1" type="stmt"/>
+            <line num="192" count="1" type="stmt"/>
+            <line num="193" count="1" type="stmt"/>
+            <line num="194" count="1" type="stmt"/>
+            <line num="195" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testMovementRight() : void" num="200" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="202" count="1" type="stmt"/>
+            <line num="203" count="1" type="stmt"/>
+            <line num="204" count="1" type="stmt"/>
+            <line num="205" count="1" type="stmt"/>
+            <line num="206" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testJump1() : void" num="212" testsuccess="true" count="1" testduration="0.003" type="method"/>
+            <line num="214" count="1" type="stmt"/>
+            <line num="215" count="1" type="stmt"/>
+            <line num="216" count="1" type="stmt"/>
+            <line num="217" count="1" type="stmt"/>
+            <line num="218" count="1" type="stmt"/>
+            <line num="219" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testJump2() : void" num="224" testsuccess="true" count="1" testduration="0.004" type="method"/>
+            <line num="226" count="1" type="stmt"/>
+            <line num="227" count="1" type="stmt"/>
+            <line num="228" count="1" type="stmt"/>
+            <line num="229" count="1" type="stmt"/>
+            <line num="230" count="1" type="stmt"/>
+            <line num="231" count="1" type="stmt"/>
+            <line num="232" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testJump3() : void" num="237" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="239" count="1" type="stmt"/>
+            <line num="240" count="1" type="stmt"/>
+            <line num="241" count="1" type="stmt"/>
+            <line num="242" count="1" type="stmt"/>
+            <line num="243" count="1" type="stmt"/>
+            <line num="244" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDrawRight() : void" num="250" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="252" count="1" type="stmt"/>
+            <line num="253" count="1" type="stmt"/>
+            <line num="254" count="1" type="stmt"/>
+            <line num="255" count="1" type="stmt"/>
+            <line num="256" count="1" type="stmt"/>
+            <line num="257" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDrawLeft() : void" num="263" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="265" count="1" type="stmt"/>
+            <line num="266" count="1" type="stmt"/>
+            <line num="267" count="1" type="stmt"/>
+            <line num="268" count="1" type="stmt"/>
+            <line num="269" count="1" type="stmt"/>
+            <line num="270" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDrawDead() : void" num="276" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="278" count="1" type="stmt"/>
+            <line num="279" count="1" type="stmt"/>
+            <line num="280" count="1" type="stmt"/>
+            <line num="281" count="1" type="stmt"/>
+            <line num="282" count="1" type="stmt"/>
+            <line num="283" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandlecollisionFruit() : void" num="289" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="291" count="1" type="stmt"/>
+            <line num="292" count="1" type="stmt"/>
+            <line num="293" count="1" type="stmt"/>
+            <line num="294" count="1" type="stmt"/>
+            <line num="295" count="1" type="stmt"/>
+            <line num="296" count="1" type="stmt"/>
+            <line num="298" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionPowerup() : void" num="304" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="306" count="1" type="stmt"/>
+            <line num="307" count="1" type="stmt"/>
+            <line num="308" count="1" type="stmt"/>
+            <line num="309" count="1" type="stmt"/>
+            <line num="310" count="1" type="stmt"/>
+            <line num="311" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testFireBubbleRight() : void" num="317" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="319" count="1" type="stmt"/>
+            <line num="320" count="1" type="stmt"/>
+            <line num="321" count="1" type="stmt"/>
+            <line num="322" count="1" type="stmt"/>
+            <line num="323" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testFireBubbleLeft() : void" num="329" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="331" count="1" type="stmt"/>
+            <line num="332" count="1" type="stmt"/>
+            <line num="333" count="1" type="stmt"/>
+            <line num="334" count="1" type="stmt"/>
+            <line num="335" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testShootBubble() : void" num="341" testsuccess="true" count="1" testduration="0.008" type="method"/>
+            <line num="343" count="1" type="stmt"/>
+            <line num="344" count="1" type="stmt"/>
+            <line num="345" count="1" type="stmt"/>
+            <line num="346" count="1" type="stmt"/>
+            <line num="347" count="1" type="stmt"/>
+            <line num="348" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/PowerupTest.java" name="PowerupTest.java">
+            <metrics coveredelements="31" coveredconditionals="0" complexity="7" loc="90" coveredmethods="7" methods="7" elements="31" classes="1" ncloc="61" statements="24" conditionals="0" coveredstatements="24"/>
+            <class name="PowerupTest">
+               <metrics coveredelements="31" complexity="7" methods="7" testruns="6" statements="24" coveredconditionals="0" coveredmethods="7" elements="31" testfailures="0" testduration="0.0" conditionals="0" coveredstatements="24" testpasses="6"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setup() : void" num="24" count="6" type="method"/>
+            <line num="26" count="6" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdate() : void" num="32" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="34" count="1" type="stmt"/>
+            <line num="35" count="1" type="stmt"/>
+            <line num="36" count="1" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRemove() : void" num="43" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="45" count="1" type="stmt"/>
+            <line num="46" count="1" type="stmt"/>
+            <line num="47" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testhandleCollisionPlayer() : void" num="53" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="55" count="1" type="stmt"/>
+            <line num="56" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="58" count="1" type="stmt"/>
+            <line num="59" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testhandleCollisionImmutable() : void" num="65" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="67" count="1" type="stmt"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="69" count="1" type="stmt"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetters() : void" num="74" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="76" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDraw() : void" num="82" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="84" count="1" type="stmt"/>
+            <line num="85" count="1" type="stmt"/>
+            <line num="86" count="1" type="stmt"/>
+            <line num="87" count="1" type="stmt"/>
+            <line num="88" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/SimpleEnemyTest.java" name="SimpleEnemyTest.java">
+            <metrics coveredelements="94" coveredconditionals="0" complexity="13" loc="208" coveredmethods="13" methods="13" elements="94" classes="1" ncloc="138" statements="81" conditionals="0" coveredstatements="81"/>
+            <class name="SimpleEnemyTest">
+               <metrics coveredelements="94" complexity="13" methods="13" testruns="12" statements="81" coveredconditionals="0" coveredmethods="13" elements="94" testfailures="0" testduration="0.011" conditionals="0" coveredstatements="81" testpasses="12"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="31" count="12" type="method"/>
+            <line num="33" count="12" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdateAngryState() : void" num="39" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="42" count="1" type="stmt"/>
+            <line num="43" count="1" type="stmt"/>
+            <line num="44" count="1" type="stmt"/>
+            <line num="45" count="1" type="stmt"/>
+            <line num="46" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdateTimeAngry() : void" num="52" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="59" count="1" type="stmt"/>
+            <line num="60" count="1" type="stmt"/>
+            <line num="61" count="1" type="stmt"/>
+            <line num="62" count="1" type="stmt"/>
+            <line num="63" count="1" type="stmt"/>
+            <line num="64" count="1" type="stmt"/>
+            <line num="65" count="1" type="stmt"/>
+            <line num="66" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionWallLeftFacingLeft() : void" num="72" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="74" count="1" type="stmt"/>
+            <line num="75" count="1" type="stmt"/>
+            <line num="76" count="1" type="stmt"/>
+            <line num="77" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionWallLeftFacingRight() : void" num="83" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="85" count="1" type="stmt"/>
+            <line num="86" count="1" type="stmt"/>
+            <line num="87" count="1" type="stmt"/>
+            <line num="88" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionWallRightFacingLeft() : void" num="94" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="96" count="1" type="stmt"/>
+            <line num="97" count="1" type="stmt"/>
+            <line num="98" count="1" type="stmt"/>
+            <line num="99" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionWallRightFacingRight() : void" num="105" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="107" count="1" type="stmt"/>
+            <line num="108" count="1" type="stmt"/>
+            <line num="109" count="1" type="stmt"/>
+            <line num="110" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleDoubleCollisionBubble() : void" num="127" testsuccess="true" count="1" testduration="0.009" type="method"/>
+            <line num="129" count="1" type="stmt"/>
+            <line num="130" count="1" type="stmt"/>
+            <line num="131" count="1" type="stmt"/>
+            <line num="132" count="1" type="stmt"/>
+            <line num="133" count="1" type="stmt"/>
+            <line num="134" count="1" type="stmt"/>
+            <line num="135" count="1" type="stmt"/>
+            <line num="136" count="1" type="stmt"/>
+            <line num="137" count="1" type="stmt"/>
+            <line num="138" count="1" type="stmt"/>
+            <line num="139" count="1" type="stmt"/>
+            <line num="140" count="1" type="stmt"/>
+            <line num="141" count="1" type="stmt"/>
+            <line num="142" count="1" type="stmt"/>
+            <line num="143" count="1" type="stmt"/>
+            <line num="144" count="1" type="stmt"/>
+            <line num="145" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDirectionAndSpeedIsSetAccordingly() : void" num="148" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="150" count="1" type="stmt"/>
+            <line num="151" count="1" type="stmt"/>
+            <line num="152" count="1" type="stmt"/>
+            <line num="153" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDrawRight() : void" num="159" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="161" count="1" type="stmt"/>
+            <line num="162" count="1" type="stmt"/>
+            <line num="164" count="1" type="stmt"/>
+            <line num="165" count="1" type="stmt"/>
+            <line num="166" count="1" type="stmt"/>
+            <line num="167" count="1" type="stmt"/>
+            <line num="168" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDrawLeft() : void" num="174" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="176" count="1" type="stmt"/>
+            <line num="177" count="1" type="stmt"/>
+            <line num="178" count="1" type="stmt"/>
+            <line num="179" count="1" type="stmt"/>
+            <line num="180" count="1" type="stmt"/>
+            <line num="181" count="1" type="stmt"/>
+            <line num="182" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDrawLeftAngry() : void" num="185" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="187" count="1" type="stmt"/>
+            <line num="188" count="1" type="stmt"/>
+            <line num="189" count="1" type="stmt"/>
+            <line num="190" count="1" type="stmt"/>
+            <line num="191" count="1" type="stmt"/>
+            <line num="192" count="1" type="stmt"/>
+            <line num="193" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDrawRightAngry() : void" num="196" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="198" count="1" type="stmt"/>
+            <line num="199" count="1" type="stmt"/>
+            <line num="200" count="1" type="stmt"/>
+            <line num="201" count="1" type="stmt"/>
+            <line num="202" count="1" type="stmt"/>
+            <line num="203" count="1" type="stmt"/>
+            <line num="204" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/StrongEnemyTest.java" name="StrongEnemyTest.java">
+            <metrics coveredelements="51" coveredconditionals="0" complexity="10" loc="152" coveredmethods="10" methods="10" elements="51" classes="1" ncloc="88" statements="41" conditionals="0" coveredstatements="41"/>
+            <class name="StrongEnemyTest">
+               <metrics coveredelements="51" complexity="10" methods="10" testruns="9" statements="41" coveredconditionals="0" coveredmethods="10" elements="51" testfailures="0" testduration="0.001" conditionals="0" coveredstatements="41" testpasses="9"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="26" count="9" type="method"/>
+            <line num="28" count="9" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionWallLeftFacingLeft() : void" num="34" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="36" count="1" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line num="38" count="1" type="stmt"/>
+            <line num="39" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionWallLeftFacingRight() : void" num="45" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="47" count="1" type="stmt"/>
+            <line num="48" count="1" type="stmt"/>
+            <line num="49" count="1" type="stmt"/>
+            <line num="50" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionWallRightFacingLeft() : void" num="56" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="58" count="1" type="stmt"/>
+            <line num="59" count="1" type="stmt"/>
+            <line num="60" count="1" type="stmt"/>
+            <line num="61" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionWallRightFacingRight() : void" num="67" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="69" count="1" type="stmt"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line num="72" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testHandleCollisionPlayer() : void" num="92" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="94" count="1" type="stmt"/>
+            <line num="95" count="1" type="stmt"/>
+            <line num="96" count="1" type="stmt"/>
+            <line num="97" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdatePathPlayerToLeft() : void" num="105" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="107" count="1" type="stmt"/>
+            <line num="108" count="1" type="stmt"/>
+            <line num="109" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdatePathPlayerToRight() : void" num="116" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="118" count="1" type="stmt"/>
+            <line num="119" count="1" type="stmt"/>
+            <line num="120" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDrawRight() : void" num="126" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="128" count="1" type="stmt"/>
+            <line num="129" count="1" type="stmt"/>
+            <line num="131" count="1" type="stmt"/>
+            <line num="132" count="1" type="stmt"/>
+            <line num="133" count="1" type="stmt"/>
+            <line num="134" count="1" type="stmt"/>
+            <line num="135" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDrawLeft() : void" num="141" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="143" count="1" type="stmt"/>
+            <line num="144" count="1" type="stmt"/>
+            <line num="146" count="1" type="stmt"/>
+            <line num="147" count="1" type="stmt"/>
+            <line num="148" count="1" type="stmt"/>
+            <line num="149" count="1" type="stmt"/>
+            <line num="150" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/objects/WallObjectTest.java" name="WallObjectTest.java">
+            <metrics coveredelements="14" coveredconditionals="0" complexity="3" loc="59" coveredmethods="3" methods="3" elements="14" classes="1" ncloc="38" statements="11" conditionals="0" coveredstatements="11"/>
+            <class name="WallObjectTest">
+               <metrics coveredelements="14" complexity="3" methods="3" testruns="2" statements="11" coveredconditionals="0" coveredmethods="3" elements="14" testfailures="0" testduration="0.001" conditionals="0" coveredstatements="11" testpasses="2"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="29" count="2" type="method"/>
+            <line num="31" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testUpdate() : void" num="37" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="39" count="1" type="stmt"/>
+            <line num="40" count="1" type="stmt"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="42" count="1" type="stmt"/>
+            <line num="43" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDraw() : void" num="49" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="51" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="53" count="1" type="stmt"/>
+            <line num="54" count="1" type="stmt"/>
+            <line num="55" count="1" type="stmt"/>
+         </file>
+      </package>
+      <package name="sem.group15.bubblebobble.core.factories">
+         <metrics coveredelements="24" complexity="6" loc="82" methods="5" classes="3" statements="17" coveredconditionals="2" coveredmethods="5" elements="24" ncloc="57" files="3" conditionals="2" coveredstatements="17"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/factories/EnemyFactoryTest.java" name="EnemyFactoryTest.java">
+            <metrics coveredelements="8" coveredconditionals="2" complexity="2" loc="25" coveredmethods="1" methods="1" elements="8" classes="1" ncloc="16" statements="5" conditionals="2" coveredstatements="5"/>
+            <class name="EnemyFactoryTest">
+               <metrics coveredelements="8" complexity="2" methods="1" testruns="1" statements="5" coveredconditionals="2" coveredmethods="1" elements="8" testfailures="0" testduration="0.029" conditionals="2" coveredstatements="5" testpasses="1"/>
+            </class>
+            <line complexity="2" visibility="public" signature="testSetRandomDirection() : void" num="15" testsuccess="true" count="1" testduration="0.029" type="method"/>
+            <line num="17" count="1" type="stmt"/>
+            <line num="18" count="1" type="stmt"/>
+            <line num="19" count="1" type="stmt"/>
+            <line falsecount="1" truecount="100" num="19" type="cond"/>
+            <line num="20" count="100" type="stmt"/>
+            <line num="21" count="100" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/factories/SimpleEnemyFactoryTest.java" name="SimpleEnemyFactoryTest.java">
+            <metrics coveredelements="8" coveredconditionals="0" complexity="2" loc="29" coveredmethods="2" methods="2" elements="8" classes="1" ncloc="21" statements="6" conditionals="0" coveredstatements="6"/>
+            <class name="SimpleEnemyFactoryTest">
+               <metrics coveredelements="8" complexity="2" methods="2" testruns="1" statements="6" coveredconditionals="0" coveredmethods="2" elements="8" testfailures="0" testduration="0.009" conditionals="0" coveredstatements="6" testpasses="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="15" count="1" type="method"/>
+            <line num="17" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testCreateObject() : void" num="21" testsuccess="true" count="1" testduration="0.009" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="24" count="1" type="stmt"/>
+            <line num="25" count="1" type="stmt"/>
+            <line num="26" count="1" type="stmt"/>
+            <line num="27" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core/src/test/java/sem/group15/bubblebobble/core/factories/StrongEnemyFactoryTest.java" name="StrongEnemyFactoryTest.java">
+            <metrics coveredelements="8" coveredconditionals="0" complexity="2" loc="28" coveredmethods="2" methods="2" elements="8" classes="1" ncloc="20" statements="6" conditionals="0" coveredstatements="6"/>
+            <class name="StrongEnemyFactoryTest">
+               <metrics coveredelements="8" complexity="2" methods="2" testruns="1" statements="6" coveredconditionals="0" coveredmethods="2" elements="8" testfailures="0" testduration="0.001" conditionals="0" coveredstatements="6" testpasses="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="14" count="1" type="method"/>
+            <line num="16" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testCreateObject() : void" num="19" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="21" count="1" type="stmt"/>
+            <line num="22" count="1" type="stmt"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="24" count="1" type="stmt"/>
+            <line num="25" count="1" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

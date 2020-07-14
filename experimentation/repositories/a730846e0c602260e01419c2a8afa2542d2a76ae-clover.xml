@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594120367361" clover="4.4.1">
+   <project name="relaxfactory 1.0.3 (Aggregated)" timestamp="1594120364815">
+      <metrics coveredelements="0" complexity="42" loc="671" methods="32" classes="18" statements="67" packages="3" coveredconditionals="0" coveredmethods="0" elements="119" ncloc="305" files="7" conditionals="20" coveredstatements="0"/>
+      <package name="rxf.shared">
+         <metrics coveredelements="0" complexity="23" loc="173" methods="22" classes="5" statements="27" coveredconditionals="0" coveredmethods="0" elements="51" ncloc="124" files="5" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/rxf-shared/src/main/java/rxf/shared/CompressionTypes.java" name="CompressionTypes.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="13" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="8" statements="1" conditionals="2" coveredstatements="0"/>
+            <class name="CompressionTypes">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="1" elements="4" statements="1" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="package" signature="CompressionTypes(String)" num="10" count="0" type="method"/>
+            <line num="11" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="11" type="cond"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/rxf-shared/src/main/java/rxf/shared/CouchTx.java" name="CouchTx.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="21" loc="111" coveredmethods="0" methods="21" elements="47" classes="1" ncloc="87" statements="26" conditionals="0" coveredstatements="0"/>
+            <class name="CouchTx">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="21" coveredmethods="0" methods="21" elements="47" statements="26" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="toString() : String" num="10" count="0" type="method"/>
+            <line num="11" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="ok() : Boolean" num="15" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="id() : String" num="19" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="rev() : String" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="error() : String" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="reason() : String" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="ok(Boolean) : KouchTx" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="id(String) : KouchTx" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="rev(String) : KouchTx" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="error(String) : KouchTx" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="reason(String) : KouchTx" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOk() : Boolean" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOk(Boolean) : void" num="67" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getId() : String" num="72" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setId(String) : void" num="77" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRev() : String" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRev(String) : void" num="87" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getError() : String" num="92" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setError(String) : void" num="97" count="0" type="method"/>
+            <line num="99" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getReason() : String" num="102" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setReason(String) : void" num="107" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/rxf-shared/src/main/java/rxf/shared/KeepMatcher.java" name="KeepMatcher.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="10" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="8" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="KeepMatcher">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/rxf-shared/src/main/java/rxf/shared/KouchTx.java" name="KouchTx.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="13" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="KouchTx">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/rxf-shared/src/main/java/rxf/shared/PreRead.java" name="PreRead.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="13" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="8" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="PreRead">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="rxf">
+         <metrics coveredelements="0" complexity="0" loc="8" methods="0" classes="1" statements="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="4" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/rxf-shared/src/main/java/rxf/Seo.java" name="Seo.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="8" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="4" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Seo">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="rxf.pouch">
+         <metrics coveredelements="0" complexity="19" loc="490" methods="10" classes="12" statements="40" coveredconditionals="0" coveredmethods="0" elements="68" ncloc="177" files="1" conditionals="18" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/rxf-pouch/src/main/java/rxf/pouch/PouchProxy.java" name="PouchProxy.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="19" loc="490" coveredmethods="0" methods="10" elements="68" classes="12" ncloc="177" statements="40" conditionals="18" coveredstatements="0"/>
+            <class name="PouchProxy">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="18" coveredmethods="0" methods="9" elements="66" statements="39" conditionals="18" coveredstatements="0"/>
+            </class>
+            <class name="PouchProxy.PouchAutobeanFactory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="PouchProxy.FetchOptions">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="PouchProxy.PutOptions">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="PouchProxy.ReplicateOptions">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="PouchProxy.ReplicateOptions.ReplicateCall">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="PouchProxy.AllDocOptions">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="PouchProxy.ViewResults">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="PouchProxy.ViewResults.Response">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="PouchProxy.ViewResults.Results">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="PouchProxy.ViewResults.Results.Record">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="PouchProxy.AllAllDocOptions">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="PouchProxy()" num="68" count="0" type="method"/>
+            <line complexity="5" visibility="public" signature="replicate(String,String,ReplicateOptions.ReplicateCall&lt;T&gt;) : void" num="86" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="88" type="cond"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="94" type="cond"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="97" type="cond"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="100" type="cond"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="delete(String) : Void" num="116" count="0" type="method"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="fetchDoc(String,AsyncCallback&lt;Splittable&gt;,FetchOptions) : void" num="152" count="0" type="method"/>
+            <line num="155" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="155" type="cond"/>
+            <line complexity="2" visibility="public" signature="put(AutoBean&lt;T&gt;,AsyncCallback&lt;String&gt;) : PouchProxy" num="177" count="0" type="method"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="179" type="cond"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="post(AutoBean&lt;T&gt;,AsyncCallback&lt;String&gt;) : PouchProxy" num="195" count="0" type="method"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="197" type="cond"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="202" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="allDocs(AllDocOptions,AsyncCallback&lt;ViewResults.Results&gt;) : PouchProxy" num="231" count="0" type="method"/>
+            <line num="233" count="0" type="stmt"/>
+            <line num="234" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="235" type="cond"/>
+            <line num="236" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="onFailure(Throwable) : void" num="238" count="0" type="method"/>
+            <line num="239" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="onSuccess(JavaScriptObject) : void" num="242" count="0" type="method"/>
+            <line num="244" count="0" type="stmt"/>
+            <line num="245" count="0" type="stmt"/>
+            <line num="246" count="0" type="stmt"/>
+            <line num="248" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="248" type="cond"/>
+            <line num="250" count="0" type="stmt"/>
+            <line num="252" count="0" type="stmt"/>
+            <line num="254" count="0" type="stmt"/>
+            <line num="256" count="0" type="stmt"/>
+            <line num="259" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isInclude_docs() : boolean" num="486" count="0" type="method"/>
+            <line num="487" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="relaxfactory 1.0.3 (Aggregated)" timestamp="1594120364815">
+      <metrics coveredelements="0" complexity="0" loc="0" methods="0" classes="0" statements="0" packages="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="0" files="0" conditionals="0" coveredstatements="0"/>
+   </testproject>
+</coverage>

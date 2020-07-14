@@ -1,0 +1,1934 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594455233669" clover="4.4.1">
+   <project name="Windup Parent 5.0.0-SNAPSHOT (Aggregated)" timestamp="1594455229665">
+      <metrics coveredelements="0" complexity="514" loc="3992" methods="210" classes="48" statements="1109" packages="10" coveredconditionals="0" coveredmethods="0" elements="1763" ncloc="2714" files="42" conditionals="444" coveredstatements="0"/>
+      <package name="org.eclipse.jdt.internal.compiler">
+         <metrics coveredelements="0" complexity="160" loc="1121" methods="32" classes="2" statements="392" coveredconditionals="0" coveredmethods="0" elements="614" ncloc="716" files="1" conditionals="190" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/forks/jdt/src/main/java/org/eclipse/jdt/internal/compiler/Compiler.java" name="Compiler.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="160" loc="1121" coveredmethods="0" methods="32" elements="614" classes="2" ncloc="716" statements="392" conditionals="190" coveredstatements="0"/>
+            <class name="Compiler">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="159" coveredmethods="0" methods="31" elements="611" statements="390" conditionals="190" coveredstatements="0"/>
+            </class>
+            <class name="Compiler.APTProblem">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="3" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Compiler(INameEnvironment,IErrorHandlingPolicy,Map&lt;String, String&gt;,ICompilerRequestor,IProblemFactory)" num="110" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Compiler(INameEnvironment,IErrorHandlingPolicy,Map,ICompilerRequestor,IProblemFactory,boolean)" num="161" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Compiler(INameEnvironment,IErrorHandlingPolicy,CompilerOptions,ICompilerRequestor,IProblemFactory)" num="207" count="0" type="method"/>
+            <line num="213" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Compiler(INameEnvironment,IErrorHandlingPolicy,CompilerOptions,ICompilerRequestor,IProblemFactory,PrintWriter)" num="253" count="0" type="method"/>
+            <line num="260" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="Compiler(INameEnvironment,IErrorHandlingPolicy,CompilerOptions,ICompilerRequestor,IProblemFactory,PrintWriter,CompilationProgress)" num="263" count="0" type="method"/>
+            <line num="272" count="0" type="stmt"/>
+            <line num="273" count="0" type="stmt"/>
+            <line num="276" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="276" type="cond"/>
+            <line num="277" count="0" type="stmt"/>
+            <line num="279" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="acceptResult(CompilationResult) : void" num="280" count="0" type="method"/>
+            <line num="282" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="282" type="cond"/>
+            <line num="283" count="0" type="stmt"/>
+            <line num="285" count="0" type="stmt"/>
+            <line num="289" count="0" type="stmt"/>
+            <line num="290" count="0" type="stmt"/>
+            <line num="300" count="0" type="stmt"/>
+            <line num="305" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="305" type="cond"/>
+            <line num="306" count="0" type="stmt"/>
+            <line num="307" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="accept(IBinaryType,PackageBinding,AccessRestriction) : void" num="313" count="0" type="method"/>
+            <line num="315" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="315" type="cond"/>
+            <line num="316" count="0" type="stmt"/>
+            <line num="321" count="0" type="stmt"/>
+            <line num="322" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="accept(ICompilationUnit,AccessRestriction) : void" num="329" count="0" type="method"/>
+            <line num="332" count="0" type="stmt"/>
+            <line num="334" count="0" type="stmt"/>
+            <line num="335" count="0" type="stmt"/>
+            <line num="336" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="336" type="cond"/>
+            <line num="337" count="0" type="stmt"/>
+            <line num="338" count="0" type="stmt"/>
+            <line num="347" count="0" type="stmt"/>
+            <line num="348" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="348" type="cond"/>
+            <line num="349" count="0" type="stmt"/>
+            <line num="351" count="0" type="stmt"/>
+            <line num="354" count="0" type="stmt"/>
+            <line num="355" count="0" type="stmt"/>
+            <line num="358" count="0" type="stmt"/>
+            <line num="362" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="362" type="cond"/>
+            <line num="363" count="0" type="stmt"/>
+            <line num="365" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="accept(ISourceType[],PackageBinding,AccessRestriction) : void" num="373" count="0" type="method"/>
+            <line num="375" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="addCompilationUnit(ICompilationUnit,CompilationUnitDeclaration) : void" num="379" count="0" type="method"/>
+            <line num="383" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="383" type="cond"/>
+            <line num="384" count="0" type="stmt"/>
+            <line num="387" count="0" type="stmt"/>
+            <line num="388" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="388" type="cond"/>
+            <line num="390" count="0" type="stmt"/>
+            <line num="396" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="beginToCompile(ICompilationUnit[]) : void" num="403" count="0" type="method"/>
+            <line num="404" count="0" type="stmt"/>
+            <line num="405" count="0" type="stmt"/>
+            <line num="406" count="0" type="stmt"/>
+            <line num="408" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="reportProgress(String) : void" num="414" count="0" type="method"/>
+            <line num="415" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="415" type="cond"/>
+            <line num="416" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="416" type="cond"/>
+            <line num="419" count="0" type="stmt"/>
+            <line num="421" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="reportWorked(int,int) : void" num="428" count="0" type="method"/>
+            <line num="429" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="429" type="cond"/>
+            <line num="430" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="430" type="cond"/>
+            <line num="433" count="0" type="stmt"/>
+            <line num="435" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="compile(ICompilationUnit[]) : void" num="439" count="0" type="method"/>
+            <line num="440" count="0" type="stmt"/>
+            <line complexity="9" visibility="private" signature="compile(ICompilationUnit[],boolean) : void" num="447" count="0" type="method"/>
+            <line num="448" count="0" type="stmt"/>
+            <line num="449" count="0" type="stmt"/>
+            <line num="451" count="0" type="stmt"/>
+            <line num="453" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="453" type="cond"/>
+            <line num="455" count="0" type="stmt"/>
+            <line num="457" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="457" type="cond"/>
+            <line num="458" count="0" type="stmt"/>
+            <line num="460" count="0" type="stmt"/>
+            <line num="461" count="0" type="stmt"/>
+            <line num="462" count="0" type="stmt"/>
+            <line num="463" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="463" type="cond"/>
+            <line num="464" count="0" type="stmt"/>
+            <line num="466" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="466" type="cond"/>
+            <line num="468" count="0" type="stmt"/>
+            <line num="471" count="0" type="stmt"/>
+            <line num="472" count="0" type="stmt"/>
+            <line num="477" count="0" type="stmt"/>
+            <line num="478" count="0" type="stmt"/>
+            <line num="479" count="0" type="stmt"/>
+            <line num="480" count="0" type="stmt"/>
+            <line num="481" count="0" type="stmt"/>
+            <line num="482" count="0" type="stmt"/>
+            <line num="483" count="0" type="stmt"/>
+            <line num="484" count="0" type="stmt"/>
+            <line num="488" count="0" type="stmt"/>
+            <line num="489" count="0" type="stmt"/>
+            <line num="491" count="0" type="stmt"/>
+            <line num="493" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="493" type="cond"/>
+            <line num="494" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="494" type="cond"/>
+            <line num="495" count="0" type="stmt"/>
+            <line num="498" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="sortModuleDeclarationsFirst(ICompilationUnit[]) : void" num="504" count="0" type="method"/>
+            <line num="505" count="0" type="stmt"/>
+            <line num="506" count="0" type="stmt"/>
+            <line num="507" count="0" type="stmt"/>
+            <line num="508" count="0" type="stmt"/>
+            <line num="509" count="0" type="stmt"/>
+            <line num="510" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="510" type="cond"/>
+            <line num="511" count="0" type="stmt"/>
+            <line num="512" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="512" type="cond"/>
+            <line complexity="1" visibility="package" signature="APTProblem(CategorizedProblem,ReferenceContext)" num="519" count="0" type="method"/>
+            <line num="520" count="0" type="stmt"/>
+            <line num="521" count="0" type="stmt"/>
+            <line complexity="8" visibility="protected" signature="backupAptProblems() : void" num="525" count="0" type="method"/>
+            <line num="526" count="0" type="stmt"/>
+            <line num="526" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="526" type="cond"/>
+            <line num="527" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="527" type="cond"/>
+            <line num="528" count="0" type="stmt"/>
+            <line num="529" count="0" type="stmt"/>
+            <line num="530" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="530" type="cond"/>
+            <line num="531" count="0" type="stmt"/>
+            <line num="532" count="0" type="stmt"/>
+            <line num="533" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="533" type="cond"/>
+            <line num="534" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="534" type="cond"/>
+            <line num="535" count="0" type="stmt"/>
+            <line num="537" count="0" type="stmt"/>
+            <line num="538" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="538" type="cond"/>
+            <line num="539" count="0" type="stmt"/>
+            <line num="543" count="0" type="stmt"/>
+            <line num="544" count="0" type="stmt"/>
+            <line num="545" count="0" type="stmt"/>
+            <line num="546" count="0" type="stmt"/>
+            <line complexity="5" visibility="protected" signature="restoreAptProblems() : void" num="554" count="0" type="method"/>
+            <line num="555" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="555" type="cond"/>
+            <line num="556" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="556" type="cond"/>
+            <line num="557" count="0" type="stmt"/>
+            <line num="558" count="0" type="stmt"/>
+            <line num="559" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="559" type="cond"/>
+            <line num="560" count="0" type="stmt"/>
+            <line num="561" count="0" type="stmt"/>
+            <line num="566" count="0" type="stmt"/>
+            <line complexity="22" visibility="protected" signature="processCompiledUnits(int,boolean) : void" num="569" count="0" type="method"/>
+            <line num="570" count="0" type="stmt"/>
+            <line num="571" count="0" type="stmt"/>
+            <line num="572" count="0" type="stmt"/>
+            <line num="573" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="573" type="cond"/>
+            <line num="575" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="575" type="cond"/>
+            <line num="576" count="0" type="stmt"/>
+            <line num="577" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="577" type="cond"/>
+            <line num="578" count="0" type="stmt"/>
+            <line num="579" count="0" type="stmt"/>
+            <line num="580" count="0" type="stmt"/>
+            <line num="581" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="581" type="cond"/>
+            <line num="582" count="0" type="stmt"/>
+            <line num="589" count="0" type="stmt"/>
+            <line num="592" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="592" type="cond"/>
+            <line num="593" count="0" type="stmt"/>
+            <line num="595" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="595" type="cond"/>
+            <line num="596" count="0" type="stmt"/>
+            <line num="599" count="0" type="stmt"/>
+            <line num="600" count="0" type="stmt"/>
+            <line num="601" count="0" type="stmt"/>
+            <line num="602" count="0" type="stmt"/>
+            <line num="603" count="0" type="stmt"/>
+            <line num="604" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="604" type="cond"/>
+            <line num="605" count="0" type="stmt"/>
+            <line num="614" count="0" type="stmt"/>
+            <line num="615" count="0" type="stmt"/>
+            <line num="619" count="0" type="stmt"/>
+            <line num="620" count="0" type="stmt"/>
+            <line num="621" count="0" type="stmt"/>
+            <line num="623" count="0" type="stmt"/>
+            <line num="624" count="0" type="stmt"/>
+            <line num="626" count="0" type="stmt"/>
+            <line num="627" count="0" type="stmt"/>
+            <line num="629" count="0" type="stmt"/>
+            <line num="629" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="629" type="cond"/>
+            <line num="630" count="0" type="stmt"/>
+            <line num="631" count="0" type="stmt"/>
+            <line num="632" count="0" type="stmt"/>
+            <line num="633" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="633" type="cond"/>
+            <line num="634" count="0" type="stmt"/>
+            <line num="643" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="643" type="cond"/>
+            <line num="644" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="644" type="cond"/>
+            <line num="645" count="0" type="stmt"/>
+            <line num="646" count="0" type="stmt"/>
+            <line num="647" count="0" type="stmt"/>
+            <line num="649" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="649" type="cond"/>
+            <line num="650" count="0" type="stmt"/>
+            <line num="652" count="0" type="stmt"/>
+            <line num="656" count="0" type="stmt"/>
+            <line num="658" count="0" type="stmt"/>
+            <line num="659" count="0" type="stmt"/>
+            <line num="661" count="0" type="stmt"/>
+            <line num="662" count="0" type="stmt"/>
+            <line num="664" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="664" type="cond"/>
+            <line num="665" count="0" type="stmt"/>
+            <line num="666" count="0" type="stmt"/>
+            <line num="668" count="0" type="stmt"/>
+            <line num="669" count="0" type="stmt"/>
+            <line num="670" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="getUnitToProcess(int) : CompilationUnitDeclaration" num="674" count="0" type="method"/>
+            <line num="675" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="675" type="cond"/>
+            <line num="676" count="0" type="stmt"/>
+            <line num="677" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="677" type="cond"/>
+            <line num="678" count="0" type="stmt"/>
+            <line num="680" count="0" type="stmt"/>
+            <line num="682" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="shouldCleanup(int) : boolean" num="690" count="0" type="method"/>
+            <line num="691" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBinaryTypes(ReferenceBinding[]) : void" num="694" count="0" type="method"/>
+            <line num="695" count="0" type="stmt"/>
+            <line complexity="11" visibility="protected" signature="handleInternalException(Throwable,CompilationUnitDeclaration,CompilationResult) : void" num="700" count="0" type="method"/>
+            <line num="705" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="705" type="cond"/>
+            <line num="706" count="0" type="stmt"/>
+            <line num="709" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="709" type="cond"/>
+            <line num="710" count="0" type="stmt"/>
+            <line num="712" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="712" type="cond"/>
+            <line num="713" count="0" type="stmt"/>
+            <line num="714" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="714" type="cond"/>
+            <line num="715" count="0" type="stmt"/>
+            <line num="720" count="0" type="stmt"/>
+            <line num="721" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="721" type="cond"/>
+            <line num="724" count="0" type="stmt"/>
+            <line num="728" count="0" type="stmt"/>
+            <line num="744" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="744" type="cond"/>
+            <line num="745" count="0" type="stmt"/>
+            <line num="746" count="0" type="stmt"/>
+            <line num="749" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="749" type="cond"/>
+            <line num="751" count="0" type="stmt"/>
+            <line complexity="18" visibility="protected" signature="handleInternalException(AbortCompilation,CompilationUnitDeclaration) : void" num="758" count="0" type="method"/>
+            <line num="763" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="763" type="cond"/>
+            <line num="764" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="764" type="cond"/>
+            <line num="765" count="0" type="stmt"/>
+            <line num="767" count="0" type="stmt"/>
+            <line num="774" count="0" type="stmt"/>
+            <line num="775" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="775" type="cond"/>
+            <line num="776" count="0" type="stmt"/>
+            <line num="779" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="779" type="cond"/>
+            <line num="780" count="0" type="stmt"/>
+            <line num="782" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="782" type="cond"/>
+            <line num="783" count="0" type="stmt"/>
+            <line num="784" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="784" type="cond"/>
+            <line num="785" count="0" type="stmt"/>
+            <line num="789" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="789" type="cond"/>
+            <line num="791" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="791" type="cond"/>
+            <line num="792" count="0" type="stmt"/>
+            <line num="793" count="0" type="stmt"/>
+            <line num="794" count="0" type="stmt"/>
+            <line num="795" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="795" type="cond"/>
+            <line num="796" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="796" type="cond"/>
+            <line num="797" count="0" type="stmt"/>
+            <line num="800" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="800" type="cond"/>
+            <line num="801" count="0" type="stmt"/>
+            <line num="803" count="0" type="stmt"/>
+            <line num="807" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="807" type="cond"/>
+            <line num="808" count="0" type="stmt"/>
+            <line num="809" count="0" type="stmt"/>
+            <line num="813" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="813" type="cond"/>
+            <line num="814" count="0" type="stmt"/>
+            <line num="817" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="initializeParser() : void" num="821" count="0" type="method"/>
+            <line num="823" count="0" type="stmt"/>
+            <line complexity="10" visibility="protected" signature="internalBeginToCompile(ICompilationUnit[],int) : void" num="830" count="0" type="method"/>
+            <line num="831" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="831" type="cond"/>
+            <line num="832" count="0" type="stmt"/>
+            <line num="835" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="835" type="cond"/>
+            <line num="836" count="0" type="stmt"/>
+            <line num="837" count="0" type="stmt"/>
+            <line num="838" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="838" type="cond"/>
+            <line num="839" count="0" type="stmt"/>
+            <line num="848" count="0" type="stmt"/>
+            <line num="849" count="0" type="stmt"/>
+            <line num="850" count="0" type="stmt"/>
+            <line num="851" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="851" type="cond"/>
+            <line num="852" count="0" type="stmt"/>
+            <line num="854" count="0" type="stmt"/>
+            <line num="856" count="0" type="stmt"/>
+            <line num="857" count="0" type="stmt"/>
+            <line num="859" count="0" type="stmt"/>
+            <line num="860" count="0" type="stmt"/>
+            <line num="861" count="0" type="stmt"/>
+            <line num="862" count="0" type="stmt"/>
+            <line num="863" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="863" type="cond"/>
+            <line num="864" count="0" type="stmt"/>
+            <line num="870" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="870" type="cond"/>
+            <line num="871" count="0" type="stmt"/>
+            <line num="872" count="0" type="stmt"/>
+            <line num="874" count="0" type="stmt"/>
+            <line num="877" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="877" type="cond"/>
+            <line num="878" count="0" type="stmt"/>
+            <line num="879" count="0" type="stmt"/>
+            <line num="882" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="process(CompilationUnitDeclaration,int) : void" num="888" count="0" type="method"/>
+            <line num="889" count="0" type="stmt"/>
+            <line num="890" count="0" type="stmt"/>
+            <line num="892" count="0" type="stmt"/>
+            <line num="894" count="0" type="stmt"/>
+            <line num="895" count="0" type="stmt"/>
+            <line num="898" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="898" type="cond"/>
+            <line num="899" count="0" type="stmt"/>
+            <line num="902" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="902" type="cond"/>
+            <line num="903" count="0" type="stmt"/>
+            <line num="906" count="0" type="stmt"/>
+            <line num="908" count="0" type="stmt"/>
+            <line num="909" count="0" type="stmt"/>
+            <line num="912" count="0" type="stmt"/>
+            <line num="912" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="912" type="cond"/>
+            <line num="914" count="0" type="stmt"/>
+            <line num="915" count="0" type="stmt"/>
+            <line num="917" count="0" type="stmt"/>
+            <line num="917" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="917" type="cond"/>
+            <line num="920" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="920" type="cond"/>
+            <line num="921" count="0" type="stmt"/>
+            <line num="924" count="0" type="stmt"/>
+            <line num="926" count="0" type="stmt"/>
+            <line num="929" count="0" type="stmt"/>
+            <line num="931" count="0" type="stmt"/>
+            <line complexity="12" visibility="protected" signature="processAnnotations() : void" num="934" count="0" type="method"/>
+            <line num="935" count="0" type="stmt"/>
+            <line num="936" count="0" type="stmt"/>
+            <line num="937" count="0" type="stmt"/>
+            <line num="938" count="0" type="stmt"/>
+            <line num="939" count="0" type="stmt"/>
+            <line num="940" count="0" type="stmt"/>
+            <line num="940" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="940" type="cond"/>
+            <line num="941" count="0" type="stmt"/>
+            <line num="942" count="0" type="stmt"/>
+            <line num="944" count="0" type="stmt"/>
+            <line num="945" count="0" type="stmt"/>
+            <line num="946" count="0" type="stmt"/>
+            <line num="947" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="947" type="cond"/>
+            <line num="948" count="0" type="stmt"/>
+            <line num="949" count="0" type="stmt"/>
+            <line num="951" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="951" type="cond"/>
+            <line num="952" count="0" type="stmt"/>
+            <line num="954" count="0" type="stmt"/>
+            <line num="959" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="959" type="cond"/>
+            <line num="960" count="0" type="stmt"/>
+            <line num="961" count="0" type="stmt"/>
+            <line num="962" count="0" type="stmt"/>
+            <line num="963" count="0" type="stmt"/>
+            <line num="965" count="0" type="stmt"/>
+            <line num="966" count="0" type="stmt"/>
+            <line num="967" count="0" type="stmt"/>
+            <line num="968" count="0" type="stmt"/>
+            <line num="969" count="0" type="stmt"/>
+            <line num="970" count="0" type="stmt"/>
+            <line num="971" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="971" type="cond"/>
+            <line num="972" count="0" type="stmt"/>
+            <line num="973" count="0" type="stmt"/>
+            <line num="974" count="0" type="stmt"/>
+            <line num="975" count="0" type="stmt"/>
+            <line num="977" count="0" type="stmt"/>
+            <line num="978" count="0" type="stmt"/>
+            <line num="980" count="0" type="stmt"/>
+            <line num="981" count="0" type="stmt"/>
+            <line num="983" count="0" type="stmt"/>
+            <line num="984" count="0" type="stmt"/>
+            <line num="985" count="0" type="stmt"/>
+            <line num="987" count="0" type="stmt"/>
+            <line num="988" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="990" type="cond"/>
+            <line num="992" count="0" type="stmt"/>
+            <line num="994" count="0" type="stmt"/>
+            <line num="995" count="0" type="stmt"/>
+            <line num="996" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="996" type="cond"/>
+            <line num="997" count="0" type="stmt"/>
+            <line num="998" count="0" type="stmt"/>
+            <line num="999" count="0" type="stmt"/>
+            <line num="1000" count="0" type="stmt"/>
+            <line num="1002" count="0" type="stmt"/>
+            <line num="1003" count="0" type="stmt"/>
+            <line num="1004" count="0" type="stmt"/>
+            <line num="1006" count="0" type="stmt"/>
+            <line num="1007" count="0" type="stmt"/>
+            <line num="1010" count="0" type="stmt"/>
+            <line num="1013" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="reset() : void" num="1016" count="0" type="method"/>
+            <line num="1017" count="0" type="stmt"/>
+            <line num="1018" count="0" type="stmt"/>
+            <line num="1019" count="0" type="stmt"/>
+            <line num="1020" count="0" type="stmt"/>
+            <line num="1020" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="1020" type="cond"/>
+            <line num="1021" count="0" type="stmt"/>
+            <line complexity="16" visibility="public" signature="resolve(CompilationUnitDeclaration,ICompilationUnit,boolean,boolean,boolean) : CompilationUnitDeclaration" num="1027" count="0" type="method"/>
+            <line num="1034" count="0" type="stmt"/>
+            <line num="1035" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="1035" type="cond"/>
+            <line num="1037" count="0" type="stmt"/>
+            <line num="1038" count="0" type="stmt"/>
+            <line num="1040" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="1040" type="cond"/>
+            <line num="1041" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="1041" type="cond"/>
+            <line num="1044" count="0" type="stmt"/>
+            <line num="1045" count="0" type="stmt"/>
+            <line num="1048" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="1048" type="cond"/>
+            <line num="1049" count="0" type="stmt"/>
+            <line num="1053" count="0" type="stmt"/>
+            <line num="1056" count="0" type="stmt"/>
+            <line num="1058" count="0" type="stmt"/>
+            <line num="1059" count="0" type="stmt"/>
+            <line num="1060" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="1060" type="cond"/>
+            <line num="1062" count="0" type="stmt"/>
+            <line num="1063" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="1063" type="cond"/>
+            <line num="1066" count="0" type="stmt"/>
+            <line num="1069" count="0" type="stmt"/>
+            <line num="1072" count="0" type="stmt"/>
+            <line num="1072" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="1072" type="cond"/>
+            <line num="1075" count="0" type="stmt"/>
+            <line num="1075" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="1075" type="cond"/>
+            <line num="1078" count="0" type="stmt"/>
+            <line num="1080" count="0" type="stmt"/>
+            <line num="1080" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="1080" type="cond"/>
+            <line num="1081" count="0" type="stmt"/>
+            <line num="1082" count="0" type="stmt"/>
+            <line num="1084" count="0" type="stmt"/>
+            <line num="1085" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="1085" type="cond"/>
+            <line num="1087" count="0" type="stmt"/>
+            <line num="1088" count="0" type="stmt"/>
+            <line num="1090" count="0" type="stmt"/>
+            <line num="1091" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="resolve(ICompilationUnit,boolean,boolean,boolean) : CompilationUnitDeclaration" num="1108" count="0" type="method"/>
+            <line num="1114" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.jboss.windup.util.threading">
+         <metrics coveredelements="0" complexity="8" loc="73" methods="7" classes="3" statements="11" coveredconditionals="0" coveredmethods="0" elements="20" ncloc="49" files="3" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/threading/WindupChildThread.java" name="WindupChildThread.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="20" coveredmethods="0" methods="2" elements="5" classes="1" ncloc="13" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="WindupChildThread">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="5" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="WindupChildThread(Thread,Runnable)" num="12" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getParentThread() : Thread" num="16" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/threading/WindupChildThreadFactory.java" name="WindupChildThreadFactory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="25" coveredmethods="0" methods="2" elements="6" classes="1" ncloc="17" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="WindupChildThreadFactory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="6" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="WindupChildThreadFactory()" num="13" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newThread(Runnable) : Thread" num="18" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/threading/WindupExecutors.java" name="WindupExecutors.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="28" coveredmethods="0" methods="3" elements="9" classes="1" ncloc="19" statements="4" conditionals="2" coveredstatements="0"/>
+            <class name="WindupExecutors">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="9" statements="4" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="getDefaultThreadCount() : int" num="12" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line num="15" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="15" type="cond"/>
+            <line complexity="1" visibility="public" signature="newFixedThreadPool(int) : ExecutorService" num="18" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newSingleThreadExecutor() : ExecutorService" num="23" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.jboss.windup.util.xml">
+         <metrics coveredelements="0" complexity="83" loc="703" methods="48" classes="9" statements="172" coveredconditionals="0" coveredmethods="0" elements="272" ncloc="487" files="8" conditionals="52" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/xml/DoctypeUtils.java" name="DoctypeUtils.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="36" coveredmethods="0" methods="1" elements="20" classes="1" ncloc="24" statements="11" conditionals="8" coveredstatements="0"/>
+            <class name="DoctypeUtils">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="1" elements="20" statements="11" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="5" visibility="public" signature="extractVersion(String,String) : String" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="17" type="cond"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="19" type="cond"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="24" type="cond"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="26" type="cond"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/xml/LocationAwareContentHandler.java" name="LocationAwareContentHandler.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="30" loc="194" coveredmethods="0" methods="17" elements="97" classes="2" ncloc="150" statements="58" conditionals="22" coveredstatements="0"/>
+            <class name="LocationAwareContentHandler">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="20" coveredmethods="0" methods="7" elements="74" statements="45" conditionals="22" coveredstatements="0"/>
+            </class>
+            <class name="LocationAwareContentHandler.Doctype">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="10" elements="23" statements="13" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="resolveEntity(String,String,String,String) : InputSource" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="LocationAwareContentHandler(Document)" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDocumentLocator(Locator) : void" num="59" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="11" visibility="public" signature="startElement(String,String,String,Attributes) : void" num="64" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="67" type="cond"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="69" type="cond"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="77" type="cond"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="81" type="cond"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="85" type="cond"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="93" type="cond"/>
+            <line num="94" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="94" type="cond"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="96" type="cond"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="endElement(String,String,String) : void" num="112" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="114" type="cond"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="120" type="cond"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="storeLineInformation(Node) : void" num="129" count="0" type="method"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="characters(char[],int,int) : void" num="134" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="136" type="cond"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Doctype(String,String,String,String)" num="149" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="156" count="0" type="method"/>
+            <line num="157" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setName(String) : void" num="160" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPublicId() : String" num="164" count="0" type="method"/>
+            <line num="165" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPublicId(String) : void" num="168" count="0" type="method"/>
+            <line num="169" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSystemId() : String" num="172" count="0" type="method"/>
+            <line num="173" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setSystemId(String) : void" num="176" count="0" type="method"/>
+            <line num="177" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBaseURI() : String" num="180" count="0" type="method"/>
+            <line num="181" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBaseURI(String) : void" num="184" count="0" type="method"/>
+            <line num="185" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="188" count="0" type="method"/>
+            <line num="190" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/xml/LocationAwareXmlReader.java" name="LocationAwareXmlReader.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="74" coveredmethods="0" methods="4" elements="19" classes="1" ncloc="50" statements="15" conditionals="0" coveredstatements="0"/>
+            <class name="LocationAwareXmlReader">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="4" elements="19" statements="15" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="&lt;clinit&gt;, line 37()" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="readXML(InputStream) : Document" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLineNumber(Node) : Integer" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNamespaces(Document) : Set&lt;String&gt;" num="70" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/xml/NamespaceEntry.java" name="NamespaceEntry.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="28" coveredmethods="0" methods="4" elements="9" classes="1" ncloc="19" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="NamespaceEntry">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="9" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="NamespaceEntry(String,String)" num="11" count="0" type="method"/>
+            <line num="12" count="0" type="stmt"/>
+            <line num="13" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPrefix() : String" num="16" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNamespaceURI() : String" num="20" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="24" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/xml/NamespaceMapContext.java" name="NamespaceMapContext.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="13" loc="83" coveredmethods="0" methods="9" elements="31" classes="1" ncloc="52" statements="16" conditionals="6" coveredstatements="0"/>
+            <class name="NamespaceMapContext">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="13" coveredmethods="0" methods="9" elements="31" statements="16" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="NamespaceMapContext()" num="31" count="0" type="method"/>
+            <line complexity="3" visibility="public" signature="NamespaceMapContext(Map&lt;String, String&gt;)" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="36" type="cond"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addNamespaceEntry(NamespaceEntry) : void" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addPrefix(String,String) : void" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNamespaceURIs() : Set&lt;String&gt;" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNamespaceURI(String) : String" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getPrefix(String) : String" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="60" type="cond"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getPrefixes(String) : Iterator&lt;String&gt;" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="71" type="cond"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="79" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/xml/NamespaceUtils.java" name="NamespaceUtils.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="29" coveredmethods="0" methods="1" elements="16" classes="1" ncloc="21" statements="11" conditionals="4" coveredstatements="0"/>
+            <class name="NamespaceUtils">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="1" elements="16" statements="11" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="extractVersion(String) : String" num="10" count="0" type="method"/>
+            <line num="11" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="11" type="cond"/>
+            <line num="12" count="0" type="stmt"/>
+            <line num="15" count="0" type="stmt"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="17" type="cond"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/xml/XmlCDataAdapter.java" name="XmlCDataAdapter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="49" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="12" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="XmlCDataAdapter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="marshal(String) : String" num="32" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="unmarshal(String) : String" num="44" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/xml/XmlUtil.java" name="XmlUtil.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="21" loc="210" coveredmethods="0" methods="10" elements="76" classes="1" ncloc="159" statements="54" conditionals="12" coveredstatements="0"/>
+            <class name="XmlUtil">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="21" coveredmethods="0" methods="10" elements="76" statements="54" conditionals="12" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="&lt;clinit&gt;, line 40()" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="nodeListToString(NodeList) : String" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="52" type="cond"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="nodeToString(Node) : String" num="63" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="66" type="cond"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="6" visibility="public" signature="getSchemaLocations(Document) : Map&lt;String, String&gt;" num="88" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="104" type="cond"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="108" type="cond"/>
+            <line num="110" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="110" type="cond"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="123" type="cond"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="xpathExists(Node,String,Map&lt;String, String&gt;) : boolean" num="137" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="xpathExtract(Node,String,Map&lt;String, String&gt;) : String" num="147" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="xpathNodeList(Node,String,Map&lt;String, String&gt;) : NodeList" num="156" count="0" type="method"/>
+            <line num="159" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="xpathNodeList(Node,XPathExpression) : NodeList" num="165" count="0" type="method"/>
+            <line num="167" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="executeXPath(Node,String,Map&lt;String, String&gt;,QName) : Object" num="173" count="0" type="method"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="executeXPath(Node,XPathExpression,QName) : Object" num="199" count="0" type="method"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="207" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.jboss.windup.util.file">
+         <metrics coveredelements="0" complexity="10" loc="95" methods="5" classes="2" statements="16" coveredconditionals="0" coveredmethods="0" elements="27" ncloc="69" files="2" conditionals="6" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/file/FileSuffixPredicate.java" name="FileSuffixPredicate.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="30" coveredmethods="0" methods="2" elements="5" classes="1" ncloc="17" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="FileSuffixPredicate">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="5" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FileSuffixPredicate(String)" num="19" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="accept(File) : boolean" num="25" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/file/FileVisit.java" name="FileVisit.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="65" coveredmethods="0" methods="3" elements="22" classes="1" ncloc="52" statements="13" conditionals="6" coveredstatements="0"/>
+            <class name="FileVisit">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="3" elements="22" statements="13" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="visit(File,Predicate&lt;File&gt;,Visitor&lt;File&gt;) : void" num="27" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="29" type="cond"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="visit(File,Predicate&lt;File&gt;) : List&lt;File&gt;" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="visitFile(Path,BasicFileAttributes) : FileVisitResult" num="48" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="51" type="cond"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.jboss.windup.util.furnace">
+         <metrics coveredelements="0" complexity="24" loc="228" methods="12" classes="2" statements="59" coveredconditionals="0" coveredmethods="0" elements="85" ncloc="166" files="2" conditionals="14" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/furnace/FileExtensionFilter.java" name="FileExtensionFilter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="27" coveredmethods="0" methods="2" elements="5" classes="1" ncloc="16" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="FileExtensionFilter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="5" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FileExtensionFilter(String)" num="16" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="accept(String) : boolean" num="22" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/furnace/FurnaceClasspathScanner.java" name="FurnaceClasspathScanner.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="22" loc="201" coveredmethods="0" methods="10" elements="80" classes="1" ncloc="150" statements="56" conditionals="14" coveredstatements="0"/>
+            <class name="FurnaceClasspathScanner">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="22" coveredmethods="0" methods="10" elements="80" statements="56" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FurnaceClasspathScanner()" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="scan(String) : List&lt;URL&gt;" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="scanForAddonMap(Predicate&lt;String&gt;) : Map&lt;Addon, List&lt;URL&gt;&gt;" num="51" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="64" type="cond"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="67" type="cond"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="scan(Predicate&lt;String&gt;) : List&lt;URL&gt;" num="76" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="87" type="cond"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="scanClasses(Predicate&lt;String&gt;) : List&lt;Class&lt;?&gt;&gt;" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="filterAddonResources(Addon,Predicate&lt;String&gt;) : List&lt;String&gt;" num="129" count="0" type="method"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="135" type="cond"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="6" visibility="private" signature="handleArchiveByFile(Predicate&lt;String&gt;,File,List&lt;String&gt;) : void" num="146" count="0" type="method"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="154" type="cond"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="158" type="cond"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="handleDirectory(Predicate&lt;String&gt;,File,List&lt;String&gt;) : void" num="172" count="0" type="method"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="walk() : void" num="180" count="0" type="method"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="183" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="handleFile(File,int,Collection&lt;String&gt;) : void" num="186" count="0" type="method"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="190" type="cond"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="198" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.jboss.windup.util">
+         <metrics coveredelements="0" complexity="202" loc="1495" methods="88" classes="21" statements="416" coveredconditionals="0" coveredmethods="0" elements="668" ncloc="1060" files="17" conditionals="164" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/Checks.java" name="Checks.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="20" loc="68" coveredmethods="0" methods="5" elements="57" classes="1" ncloc="47" statements="26" conditionals="26" coveredstatements="0"/>
+            <class name="Checks">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="20" coveredmethods="0" methods="5" elements="57" statements="26" conditionals="26" coveredstatements="0"/>
+            </class>
+            <line complexity="4" visibility="public" signature="checkFileToBeRead(File,String) : void" num="14" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="16" type="cond"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="18" type="cond"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="20" type="cond"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="checkDirectoryToBeFilled(File,String) : void" num="24" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="26" type="cond"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="28" type="cond"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="checkDirectoryToBeRead(File,String) : void" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="34" type="cond"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="36" type="cond"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="38" type="cond"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="checkFileOrDirectoryToBeRead(File,String) : void" num="45" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="47" type="cond"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="49" type="cond"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="51" type="cond"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="55" type="cond"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="checkNotEmpty(Iterable&lt;?&gt;) : boolean" num="63" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/ClassNameUtil.java" name="ClassNameUtil.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="15" coveredmethods="0" methods="1" elements="7" classes="1" ncloc="11" statements="4" conditionals="2" coveredstatements="0"/>
+            <class name="ClassNameUtil">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="1" elements="7" statements="4" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="getPackageName(String) : String" num="8" count="0" type="method"/>
+            <line num="10" count="0" type="stmt"/>
+            <line num="11" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="11" type="cond"/>
+            <line num="12" count="0" type="stmt"/>
+            <line num="13" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/ExecutionStatistics.java" name="ExecutionStatistics.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="29" loc="225" coveredmethods="0" methods="15" elements="92" classes="2" ncloc="156" statements="59" conditionals="18" coveredstatements="0"/>
+            <class name="ExecutionStatistics">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="23" coveredmethods="0" methods="10" elements="74" statements="48" conditionals="16" coveredstatements="0"/>
+            </class>
+            <class name="ExecutionStatistics.TimingData">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="5" elements="18" statements="11" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="ExecutionStatistics()" num="40" count="0" type="method"/>
+            <line complexity="2" visibility="public" signature="get() : ExecutionStatistics" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="51" type="cond"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExecutionInfo() : Map&lt;String, TimingData&gt;" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="merge() : void" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="68" type="cond"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="75" type="cond"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="merge(ExecutionStatistics) : void" num="85" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="90" type="cond"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="reset() : void" num="102" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="serializeTimingData(Path) : void" num="111" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="performBenchmarked(String,Task&lt;T&gt;) : T" num="136" count="0" type="method"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="begin(String) : void" num="153" count="0" type="method"/>
+            <line num="155" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="155" type="cond"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="160" type="cond"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="end(String) : void" num="172" count="0" type="method"/>
+            <line num="174" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="174" type="cond"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="179" type="cond"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="TimingData(String)" num="194" count="0" type="method"/>
+            <line num="196" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="begin() : void" num="199" count="0" type="method"/>
+            <line num="201" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="end() : void" num="204" count="0" type="method"/>
+            <line num="206" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="206" type="cond"/>
+            <line num="208" count="0" type="stmt"/>
+            <line num="209" count="0" type="stmt"/>
+            <line num="211" count="0" type="stmt"/>
+            <line num="212" count="0" type="stmt"/>
+            <line num="213" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="merge(TimingData) : void" num="216" count="0" type="method"/>
+            <line num="217" count="0" type="stmt"/>
+            <line num="218" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTotal() : long" num="221" count="0" type="method"/>
+            <line num="222" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/FilteredIterator.java" name="FilteredIterator.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="73" coveredmethods="0" methods="6" elements="30" classes="3" ncloc="53" statements="18" conditionals="6" coveredstatements="0"/>
+            <class name="FilteredIterator">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="5" elements="28" statements="17" conditionals="6" coveredstatements="0"/>
+            </class>
+            <class name="FilteredIterator.AcceptAllFilter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="FilteredIterator.Filter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FilteredIterator(Iterator&lt;? extends E&gt;,Filter&lt;E&gt;)" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasNext() : boolean" num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="next() : E" num="30" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="32" type="cond"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="iterateToNextMatch() : E" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="42" type="cond"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="remove() : void" num="56" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="accept(T) : boolean" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/FurnaceCompositeClassLoader.java" name="FurnaceCompositeClassLoader.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="100" coveredmethods="0" methods="5" elements="39" classes="1" ncloc="83" statements="26" conditionals="8" coveredstatements="0"/>
+            <class name="FurnaceCompositeClassLoader">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="5" elements="39" statements="26" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FurnaceCompositeClassLoader(List&lt;ClassLoader&gt;)" num="20" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="FurnaceCompositeClassLoader(ClassLoader,List&lt;ClassLoader&gt;)" num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="findClass(String) : Class&lt;?&gt;" num="31" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="47" type="cond"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="getResource(String) : URL" num="57" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="63" type="cond"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="70" type="cond"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getResources(String) : Enumeration&lt;URL&gt;" num="80" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="90" type="cond"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/IterableConverter.java" name="IterableConverter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="61" coveredmethods="0" methods="6" elements="12" classes="2" ncloc="39" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="IterableConverter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="IterableConverter.IteratorBacked">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="IterableConverter(Iterable&lt;TFrom&gt;)" num="18" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="iterator() : Iterator&lt;TTo&gt;" num="28" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="IteratorBacked(Iterator&lt;TFrom&gt;)" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasNext() : boolean" num="43" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="next() : TTo" num="49" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="remove() : void" num="55" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/Logging.java" name="Logging.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="38" coveredmethods="0" methods="2" elements="15" classes="1" ncloc="23" statements="9" conditionals="4" coveredstatements="0"/>
+            <class name="Logging">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="2" elements="15" statements="9" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="get(Class&lt;?&gt;) : Logger" num="16" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="printMap(Map&lt;? extends Object, ? extends Object&gt;,boolean) : String" num="24" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="30" type="cond"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="32" type="cond"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/PackageComparator.java" name="PackageComparator.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="15" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="10" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="PackageComparator">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="compare(String,String) : int" num="10" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/PackageFrequencyTrie.java" name="PackageFrequencyTrie.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="13" loc="103" coveredmethods="0" methods="8" elements="53" classes="1" ncloc="83" statements="35" conditionals="10" coveredstatements="0"/>
+            <class name="PackageFrequencyTrie">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="13" coveredmethods="0" methods="8" elements="53" statements="35" conditionals="10" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="visit(PackageFrequencyTrieVisitor) : void" num="19" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="visit(PackageFrequencyTrieVisitor,int) : void" num="24" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="PackageFrequencyTrie()" num="35" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="PackageFrequencyTrie(PackageFrequencyTrie,String)" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="getPackageName() : String" num="45" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="51" type="cond"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getClassCount(boolean) : int" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="68" type="cond"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addClass(String) : PackageFrequencyTrie" num="76" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="getSubTrie(String) : PackageFrequencyTrie" num="85" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="90" type="cond"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="94" type="cond"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/PackageFrequencyTrieVisitor.java" name="PackageFrequencyTrieVisitor.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="9" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="PackageFrequencyTrieVisitor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/PathUtil.java" name="PathUtil.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="47" loc="321" coveredmethods="0" methods="20" elements="159" classes="1" ncloc="211" statements="91" conditionals="48" coveredstatements="0"/>
+            <class name="PathUtil">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="47" coveredmethods="0" methods="20" elements="159" statements="91" conditionals="48" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="getWindupUserDir() : Path" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="43" type="cond"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getWindupHome() : Path" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="58" type="cond"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setWindupHome(Path) : void" num="67" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserCacheDir() : Path" num="75" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWindupCacheDir() : Path" num="83" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserIgnoreDir() : Path" num="91" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWindupIgnoreDir() : Path" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWindupAddonsDir() : Path" num="107" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserRulesDir() : Path" num="115" count="0" type="method"/>
+            <line num="117" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserLabelsDir() : Path" num="123" count="0" type="method"/>
+            <line num="125" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="getWindupRulesDir() : Path" num="131" count="0" type="method"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="134" type="cond"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="137" type="cond"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="getWindupLabelsDir() : Path" num="148" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="151" type="cond"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="154" type="cond"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="cleanFileName(String) : String" num="167" count="0" type="method"/>
+            <line num="169" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="169" type="cond"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="173" type="cond"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="176" type="cond"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line complexity="10" visibility="public" signature="classFilePathToClassname(String) : String" num="188" count="0" type="method"/>
+            <line num="190" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="190" type="cond"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="194" type="cond"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="199" type="cond"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="204" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="204" type="cond"/>
+            <line num="206" count="0" type="stmt"/>
+            <line num="209" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="209" type="cond"/>
+            <line num="211" count="0" type="stmt"/>
+            <line num="214" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="214" type="cond"/>
+            <line num="216" count="0" type="stmt"/>
+            <line num="219" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="219" type="cond"/>
+            <line num="221" count="0" type="stmt"/>
+            <line num="223" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="223" type="cond"/>
+            <line num="225" count="0" type="stmt"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="229" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="getRootFolderForSource(Path,String) : Path" num="240" count="0" type="method"/>
+            <line num="242" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="242" type="cond"/>
+            <line num="244" count="0" type="stmt"/>
+            <line num="246" count="0" type="stmt"/>
+            <line num="247" count="0" type="stmt"/>
+            <line num="248" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="248" type="cond"/>
+            <line num="250" count="0" type="stmt"/>
+            <line num="251" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="251" type="cond"/>
+            <line num="253" count="0" type="stmt"/>
+            <line num="255" count="0" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="isInSubDirectory(File,File) : boolean" num="268" count="0" type="method"/>
+            <line num="270" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="270" type="cond"/>
+            <line num="271" count="0" type="stmt"/>
+            <line num="273" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="273" type="cond"/>
+            <line num="274" count="0" type="stmt"/>
+            <line num="276" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pathToPackageName(String) : String" num="282" count="0" type="method"/>
+            <line num="284" count="0" type="stmt"/>
+            <line num="285" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="createDirectory(Path,String) : void" num="291" count="0" type="method"/>
+            <line num="293" count="0" type="stmt"/>
+            <line num="295" count="0" type="stmt"/>
+            <line num="299" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getUserSubdirectory(String) : Path" num="306" count="0" type="method"/>
+            <line num="308" count="0" type="stmt"/>
+            <line num="309" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="309" type="cond"/>
+            <line num="310" count="0" type="stmt"/>
+            <line num="311" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getWindupSubdirectory(String) : Path" num="314" count="0" type="method"/>
+            <line num="316" count="0" type="stmt"/>
+            <line num="317" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="317" type="cond"/>
+            <line num="318" count="0" type="stmt"/>
+            <line num="319" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/ProgressEstimate.java" name="ProgressEstimate.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="61" coveredmethods="0" methods="5" elements="13" classes="1" ncloc="31" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="ProgressEstimate">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="13" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ProgressEstimate(int)" num="19" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addWork(int) : void" num="28" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWorked() : int" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTotal() : int" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTimeRemainingInMillis() : long" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/ServiceLogger.java" name="ServiceLogger.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="42" coveredmethods="0" methods="2" elements="12" classes="1" ncloc="28" statements="8" conditionals="2" coveredstatements="0"/>
+            <class name="ServiceLogger">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="2" elements="12" statements="8" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="logLoadedServices(Logger,Class&lt;?&gt;,List&lt;?&gt;) : void" num="21" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="joinTypeNames(List&lt;?&gt;) : String" num="27" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="34" type="cond"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/TarUtil.java" name="TarUtil.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="18" loc="121" coveredmethods="0" methods="4" elements="64" classes="1" ncloc="95" statements="46" conditionals="14" coveredstatements="0"/>
+            <class name="TarUtil">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="18" coveredmethods="0" methods="4" elements="64" statements="46" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="tarDirectory(Path,Path) : void" num="29" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="8" visibility="public" signature="tarDirectory(Path,Path,List&lt;String&gt;) : void" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="50" type="cond"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="54" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="60" type="cond"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="68" type="cond"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="untar(Path,Path) : void" num="85" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="6" visibility="public" signature="untar(Path,InputStream) : void" num="94" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="100" type="cond"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="105" type="cond"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="111" type="cond"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/Task.java" name="Task.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="18" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Task">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/Util.java" name="Util.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="36" coveredmethods="0" methods="1" elements="12" classes="1" ncloc="18" statements="7" conditionals="4" coveredstatements="0"/>
+            <class name="Util">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="1" elements="12" statements="7" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="getSingle(Iterable&lt;T&gt;) : T" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="25" type="cond"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="30" type="cond"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/ZipUtil.java" name="ZipUtil.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="32" loc="189" coveredmethods="0" methods="7" elements="101" classes="1" ncloc="162" statements="72" conditionals="22" coveredstatements="0"/>
+            <class name="ZipUtil">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="32" coveredmethods="0" methods="7" elements="101" statements="72" conditionals="22" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="unzipFromClassResource(Class&lt;?&gt;,String,File) : void" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="13" visibility="public" signature="unzipToFolder(File,File) : void" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="62" type="cond"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="64" type="cond"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="70" type="cond"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="75" type="cond"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="78" type="cond"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getEndsWithZipRegularExpression() : String" num="94" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="98" type="cond"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="endsWithZipExtension(String) : boolean" num="117" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="121" type="cond"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getZipExtensions() : Set&lt;String&gt;" num="129" count="0" type="method"/>
+            <line num="131" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="131" type="cond"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="scanZipFile(Path,boolean) : List&lt;String&gt;" num="147" count="0" type="method"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line complexity="6" visibility="public" signature="scanZipFile(String,InputStream,boolean) : List&lt;String&gt;" num="164" count="0" type="method"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="171" type="cond"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="174" type="cond"/>
+            <line num="175" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="175" type="cond"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.jboss.windup.util.exception">
+         <metrics coveredelements="0" complexity="14" loc="143" methods="13" classes="6" statements="21" coveredconditionals="0" coveredmethods="0" elements="36" ncloc="93" files="6" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/exception/MarshallingException.java" name="MarshallingException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="11" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="9" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="MarshallingException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="MarshallingException(String,Throwable)" num="7" count="0" type="method"/>
+            <line num="9" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/exception/WindupException.java" name="WindupException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="30" coveredmethods="0" methods="4" elements="7" classes="1" ncloc="19" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="WindupException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="7" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="WindupException()" num="12" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="WindupException(String)" num="16" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="WindupException(String,Throwable)" num="21" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="WindupException(Throwable)" num="26" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/exception/WindupMultiException.java" name="WindupMultiException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="32" coveredmethods="0" methods="2" elements="12" classes="1" ncloc="22" statements="8" conditionals="2" coveredstatements="0"/>
+            <class name="WindupMultiException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="2" elements="12" statements="8" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="WindupMultiException(String,List&lt;Exception&gt;)" num="14" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="formatMessage(String,List&lt;Exception&gt;,boolean) : String" num="19" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="25" type="cond"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/exception/WindupMultiStringException.java" name="WindupMultiStringException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="29" coveredmethods="0" methods="2" elements="7" classes="1" ncloc="19" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="WindupMultiStringException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="7" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="WindupMultiStringException(String,List&lt;String&gt;)" num="14" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="formatMessage(String,List&lt;String&gt;) : String" num="19" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/exception/WindupStopException.java" name="WindupStopException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="29" coveredmethods="0" methods="3" elements="6" classes="1" ncloc="15" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="WindupStopException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="WindupStopException(String)" num="10" count="0" type="method"/>
+            <line num="12" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="WindupStopException(String,Exception)" num="18" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="WindupStopException(Exception)" num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/main/java/org/jboss/windup/util/exception/XPathException.java" name="XPathException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="12" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="9" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="XPathException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="XPathException(String,Throwable)" num="8" count="0" type="method"/>
+            <line num="10" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.jboss.windup.arquillian">
+         <metrics coveredelements="0" complexity="10" loc="71" methods="2" classes="1" statements="18" coveredconditionals="0" coveredmethods="0" elements="34" ncloc="44" files="1" conditionals="14" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/windup-test-harness/src/main/java/org/jboss/windup/arquillian/WindupFurnaceAddonDeploymentEnhancer.java" name="WindupFurnaceAddonDeploymentEnhancer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="71" coveredmethods="0" methods="2" elements="34" classes="1" ncloc="44" statements="18" conditionals="14" coveredstatements="0"/>
+            <class name="WindupFurnaceAddonDeploymentEnhancer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="2" elements="34" statements="18" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="enhance(TestClass,List&lt;DeploymentDescription&gt;) : List&lt;DeploymentDescription&gt;" num="18" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="20" type="cond"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="22" type="cond"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="7" visibility="private" signature="getWindupVersion(List&lt;DeploymentDescription&gt;) : String" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="47" type="cond"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="50" type="cond"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="63" type="cond"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="68" type="cond"/>
+         </file>
+      </package>
+      <package name="org.jboss.windup.server">
+         <metrics coveredelements="0" complexity="0" loc="24" methods="0" classes="1" statements="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="5" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/server-provider-spi/addon/src/main/java/org/jboss/windup/server/WindupServerProvider.java" name="WindupServerProvider.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="24" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="WindupServerProvider">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="org.jboss.windup.modulespec">
+         <metrics coveredelements="0" complexity="3" loc="39" methods="3" classes="1" statements="4" coveredconditionals="0" coveredmethods="0" elements="7" ncloc="25" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/module-spec/src/main/java/org/jboss/windup/modulespec/JavaGraphDependenciesClasspathSpec.java" name="JavaGraphDependenciesClasspathSpec.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="39" coveredmethods="0" methods="3" elements="7" classes="1" ncloc="25" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="JavaGraphDependenciesClasspathSpec">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="7" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="&lt;clinit&gt;, line 18()" num="18" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getId() : ModuleIdentifier" num="27" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getPaths() : Set&lt;String&gt;" num="33" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="Windup Parent 5.0.0-SNAPSHOT (Aggregated)" timestamp="1594455229665">
+      <metrics coveredelements="0" complexity="17" loc="175" methods="15" classes="3" statements="46" packages="1" coveredconditionals="0" coveredmethods="0" elements="65" ncloc="139" files="3" conditionals="4" coveredstatements="0"/>
+      <package name="org.jboss.windup.util">
+         <metrics coveredelements="0" complexity="17" loc="175" methods="15" classes="3" statements="46" coveredconditionals="0" coveredmethods="0" elements="65" ncloc="139" files="3" conditionals="4" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/test/java/org/jboss/windup/util/ExecutionStatisticsTest.java" name="ExecutionStatisticsTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="60" coveredmethods="0" methods="5" elements="24" classes="1" ncloc="48" statements="19" conditionals="0" coveredstatements="0"/>
+            <class name="ExecutionStatisticsTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="24" statements="19" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testMultiThreadedStatistics() : void" num="20" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testSingleThreadedStatistics() : void" num="27" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="testExecutorService(ExecutorService,int) : void" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="call() : Void" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="nanoToMili(long) : long" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/test/java/org/jboss/windup/util/LocationAwareContentHandlerTest.java" name="LocationAwareContentHandlerTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="31" coveredmethods="0" methods="1" elements="5" classes="1" ncloc="23" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="LocationAwareContentHandlerTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="5" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="doctypeInformationTest() : void" num="21" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/utils/src/test/java/org/jboss/windup/util/PathUtilTest.java" name="PathUtilTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="84" coveredmethods="0" methods="9" elements="36" classes="1" ncloc="68" statements="23" conditionals="4" coveredstatements="0"/>
+            <class name="PathUtilTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="9" elements="36" statements="23" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="before() : void" num="15" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="after() : void" num="22" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="25" type="cond"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="27" type="cond"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="setWindupHome(String) : String" num="31" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="setUserHome(String) : String" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testWindupHome() : void" num="45" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testWindupHomeRules() : void" num="53" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testWindupHomeIgnoreListDir() : void" num="61" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testWindupUserDir() : void" num="69" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testWindupIgnoreDir() : void" num="77" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

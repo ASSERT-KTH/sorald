@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594423059351" clover="4.4.1">
+   <project name="Morphia 2.1.0-SNAPSHOT (Aggregated)" timestamp="1594423056700">
+      <metrics coveredelements="0" complexity="51" loc="571" methods="42" classes="10" statements="95" packages="2" coveredconditionals="0" coveredmethods="0" elements="153" ncloc="354" files="10" conditionals="16" coveredstatements="0"/>
+      <package name="taglets">
+         <metrics coveredelements="0" complexity="49" loc="511" methods="41" classes="9" statements="80" coveredconditionals="0" coveredmethods="0" elements="137" ncloc="303" files="9" conditionals="16" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/util/src/main/java/taglets/AggregationExpressionTaglet.java" name="AggregationExpressionTaglet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="61" coveredmethods="0" methods="4" elements="16" classes="1" ncloc="30" statements="10" conditionals="2" coveredstatements="0"/>
+            <class name="AggregationExpressionTaglet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="4" elements="16" statements="10" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getName() : String" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getBaseDocURI() : String" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="toString(List&lt;? extends DocTree&gt;,Element) : String" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="genLink(String) : String" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/util/src/main/java/taglets/DocTaglet.java" name="DocTaglet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="78" coveredmethods="0" methods="4" elements="24" classes="1" ncloc="49" statements="16" conditionals="4" coveredstatements="0"/>
+            <class name="DocTaglet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="4" elements="24" statements="16" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getAllowedLocations() : Set&lt;Location&gt;" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isInlineTag() : boolean" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="toString(List&lt;? extends DocTree&gt;,Element) : String" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="50" type="cond"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="genLink(String) : String" num="64" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="69" type="cond"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/util/src/main/java/taglets/ExperimentalTaglet.java" name="ExperimentalTaglet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="46" coveredmethods="0" methods="6" elements="17" classes="1" ncloc="37" statements="9" conditionals="2" coveredstatements="0"/>
+            <class name="ExperimentalTaglet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="6" elements="17" statements="9" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getAllowedLocations() : Set&lt;Location&gt;" num="11" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="16" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="toString(List&lt;? extends DocTree&gt;,Element) : String" num="21" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="23" type="cond"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getMessage() : String" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getHeader() : String" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getBaseDocURI() : String" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/util/src/main/java/taglets/InlineTaglet.java" name="InlineTaglet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="48" coveredmethods="0" methods="6" elements="17" classes="1" ncloc="36" statements="9" conditionals="2" coveredstatements="0"/>
+            <class name="InlineTaglet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="6" elements="17" statements="9" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getAllowedLocations() : Set&lt;Location&gt;" num="13" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="18" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="toString(List&lt;? extends DocTree&gt;,Element) : String" num="23" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="25" type="cond"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getMessage() : String" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getHeader() : String" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getBaseDocURI() : String" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/util/src/main/java/taglets/InternalTaglet.java" name="InternalTaglet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="52" coveredmethods="0" methods="6" elements="17" classes="1" ncloc="41" statements="9" conditionals="2" coveredstatements="0"/>
+            <class name="InternalTaglet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="6" elements="17" statements="9" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getAllowedLocations() : Set&lt;Location&gt;" num="16" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="21" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="toString(List&lt;? extends DocTree&gt;,Element) : String" num="26" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="28" type="cond"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getMessage() : String" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getHeader() : String" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getBaseDocURI() : String" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/util/src/main/java/taglets/ManualTaglet.java" name="ManualTaglet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="66" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="35" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="ManualTaglet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getAllowedLocations() : Set&lt;Location&gt;" num="45" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="50" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getHeader() : String" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getBaseDocURI() : String" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/util/src/main/java/taglets/QueryFilterTaglet.java" name="QueryFilterTaglet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="61" coveredmethods="0" methods="4" elements="16" classes="1" ncloc="30" statements="10" conditionals="2" coveredstatements="0"/>
+            <class name="QueryFilterTaglet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="4" elements="16" statements="10" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getName() : String" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getBaseDocURI() : String" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="toString(List&lt;? extends DocTree&gt;,Element) : String" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="genLink(String) : String" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/util/src/main/java/taglets/ServerReleaseTaglet.java" name="ServerReleaseTaglet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="38" coveredmethods="0" methods="3" elements="6" classes="1" ncloc="15" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="ServerReleaseTaglet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getName() : String" num="24" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getHeader() : String" num="29" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getBaseDocURI() : String" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/util/src/main/java/taglets/UpdateOperatorTaglet.java" name="UpdateOperatorTaglet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="61" coveredmethods="0" methods="4" elements="16" classes="1" ncloc="30" statements="10" conditionals="2" coveredstatements="0"/>
+            <class name="UpdateOperatorTaglet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="4" elements="16" statements="10" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getName() : String" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getBaseDocURI() : String" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="toString(List&lt;? extends DocTree&gt;,Element) : String" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="genLink(String) : String" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="util">
+         <metrics coveredelements="0" complexity="2" loc="60" methods="1" classes="1" statements="15" coveredconditionals="0" coveredmethods="0" elements="16" ncloc="51" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/build-plugins/src/main/java/util/RevApiConfig.java" name="RevApiConfig.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="60" coveredmethods="0" methods="1" elements="16" classes="1" ncloc="51" statements="15" conditionals="0" coveredstatements="0"/>
+            <class name="RevApiConfig">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="1" elements="16" statements="15" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="execute() : void" num="28" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="Morphia 2.1.0-SNAPSHOT (Aggregated)" timestamp="1594423056700">
+      <metrics coveredelements="0" complexity="13" loc="138" methods="13" classes="2" statements="33" packages="1" coveredconditionals="0" coveredmethods="0" elements="46" ncloc="102" files="1" conditionals="0" coveredstatements="0"/>
+      <package name="dev.morphia.example">
+         <metrics coveredelements="0" complexity="13" loc="138" methods="13" classes="2" statements="33" coveredconditionals="0" coveredmethods="0" elements="46" ncloc="102" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/examples/src/test/java/dev/morphia/example/QuickTour.java" name="QuickTour.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="13" loc="138" coveredmethods="0" methods="13" elements="46" classes="2" ncloc="102" statements="33" conditionals="0" coveredstatements="0"/>
+            <class name="QuickTour">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="24" statements="22" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="Employee">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="11" elements="22" statements="11" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="QuickTour()" num="30" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="main(String[]) : void" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="Employee()" num="95" count="0" type="method"/>
+            <line complexity="1" visibility="package" signature="Employee(String,Double)" num="98" count="0" type="method"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDirectReports() : List&lt;Employee&gt;" num="103" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDirectReports(List&lt;Employee&gt;) : void" num="107" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getId() : ObjectId" num="111" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getManager() : Employee" num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setManager(Employee) : void" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="123" count="0" type="method"/>
+            <line num="124" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setName(String) : void" num="127" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSalary() : Double" num="131" count="0" type="method"/>
+            <line num="132" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setSalary(Double) : void" num="135" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

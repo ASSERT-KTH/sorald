@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594473153812" clover="4.4.1">
+   <project name="ApacheDS 2.0.0-M18-SNAPSHOT (Aggregated)" timestamp="1594473151129">
+      <metrics coveredelements="0" complexity="13" loc="1212" methods="8" classes="5" statements="24" packages="2" coveredconditionals="0" coveredmethods="0" elements="36" ncloc="843" files="5" conditionals="4" coveredstatements="0"/>
+      <package name="org.apache.directory.server.constants">
+         <metrics coveredelements="0" complexity="4" loc="315" methods="4" classes="4" statements="0" coveredconditionals="0" coveredmethods="0" elements="4" ncloc="99" files="4" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core-constants/src/main/java/org/apache/directory/server/constants/ApacheSchemaConstants.java" name="ApacheSchemaConstants.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="151" coveredmethods="0" methods="1" elements="1" classes="1" ncloc="62" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ApacheSchemaConstants">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="1" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="ApacheSchemaConstants()" num="37" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core-constants/src/main/java/org/apache/directory/server/constants/CoreSchemaConstants.java" name="CoreSchemaConstants.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="42" coveredmethods="0" methods="1" elements="1" classes="1" ncloc="8" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="CoreSchemaConstants">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="1" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="CoreSchemaConstants()" num="37" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core-constants/src/main/java/org/apache/directory/server/constants/ServerDNConstants.java" name="ServerDNConstants.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="81" coveredmethods="0" methods="1" elements="1" classes="1" ncloc="21" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ServerDNConstants">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="1" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="ServerDNConstants()" num="36" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/core-constants/src/main/java/org/apache/directory/server/constants/SystemSchemaConstants.java" name="SystemSchemaConstants.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="41" coveredmethods="0" methods="1" elements="1" classes="1" ncloc="8" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="SystemSchemaConstants">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="1" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="SystemSchemaConstants()" num="36" count="0" type="method"/>
+         </file>
+      </package>
+      <package name="org.apache.directory.server.i18n">
+         <metrics coveredelements="0" complexity="9" loc="897" methods="4" classes="1" statements="24" coveredconditionals="0" coveredmethods="0" elements="32" ncloc="744" files="1" conditionals="4" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/i18n/src/main/java/org/apache/directory/server/i18n/I18n.java" name="I18n.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="897" coveredmethods="0" methods="4" elements="32" classes="1" ncloc="744" statements="24" conditionals="4" coveredstatements="0"/>
+            <class name="I18n">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="4" elements="32" statements="24" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="I18n(String)" num="801" count="0" type="method"/>
+            <line num="803" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getErrorCode() : String" num="810" count="0" type="method"/>
+            <line num="812" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="err(I18n,Object) : String" num="824" count="0" type="method"/>
+            <line num="826" count="0" type="stmt"/>
+            <line num="828" count="0" type="stmt"/>
+            <line num="832" count="0" type="stmt"/>
+            <line num="833" count="0" type="stmt"/>
+            <line num="835" count="0" type="stmt"/>
+            <line num="837" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="837" type="cond"/>
+            <line num="839" count="0" type="stmt"/>
+            <line num="843" count="0" type="stmt"/>
+            <line num="846" count="0" type="stmt"/>
+            <line num="849" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="msg(String,Object) : String" num="862" count="0" type="method"/>
+            <line num="864" count="0" type="stmt"/>
+            <line num="866" count="0" type="stmt"/>
+            <line num="870" count="0" type="stmt"/>
+            <line num="872" count="0" type="stmt"/>
+            <line num="876" count="0" type="stmt"/>
+            <line num="877" count="0" type="stmt"/>
+            <line num="879" count="0" type="stmt"/>
+            <line num="881" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="881" type="cond"/>
+            <line num="883" count="0" type="stmt"/>
+            <line num="887" count="0" type="stmt"/>
+            <line num="890" count="0" type="stmt"/>
+            <line num="893" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="ApacheDS 2.0.0-M18-SNAPSHOT (Aggregated)" timestamp="1594473151129">
+      <metrics coveredelements="0" complexity="0" loc="0" methods="0" classes="0" statements="0" packages="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="0" files="0" conditionals="0" coveredstatements="0"/>
+   </testproject>
+</coverage>

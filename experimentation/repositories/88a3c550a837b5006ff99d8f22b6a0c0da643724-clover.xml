@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594334515475" clover="4.4.1">
+   <project name="eileen-test 1.0-SNAPSHOT" timestamp="0">
+      <metrics coveredelements="0" complexity="96" loc="647" methods="43" classes="10" statements="228" packages="4" coveredconditionals="0" coveredmethods="0" elements="351" ncloc="482" files="10" conditionals="80" coveredstatements="0"/>
+      <package name="pages">
+         <metrics coveredelements="0" complexity="14" loc="83" methods="12" classes="2" statements="20" coveredconditionals="0" coveredmethods="0" elements="34" ncloc="62" files="2" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/pages/BasePage.java" name="BasePage.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="13" loc="72" coveredmethods="0" methods="11" elements="32" classes="1" ncloc="54" statements="19" conditionals="2" coveredstatements="0"/>
+            <class name="BasePage">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="13" coveredmethods="0" methods="11" elements="32" statements="19" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="BasePage()" num="15" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="webDriver() : WebDriver" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="get(String) : void" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTitle() : String" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCurrentUrl() : String" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="setWindowSize(int,int) : void" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="40" type="cond"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setImplicitWait(int) : void" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="waitUntilInvisible(By,Integer) : void" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="waitUntilVisible(WebElement,Integer) : void" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deleteCookies() : void" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="acceptAlertIfPresent() : void" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/pages/TestPage.java" name="TestPage.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="11" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="8" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="TestPage">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="luckyButton() : WebElement" num="8" count="0" type="method"/>
+            <line num="9" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="helper">
+         <metrics coveredelements="0" complexity="0" loc="8" methods="0" classes="1" statements="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="5" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/helper/Constants.java" name="Constants.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="8" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Constants">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="listener">
+         <metrics coveredelements="0" complexity="77" loc="499" methods="26" classes="5" statements="193" coveredconditionals="0" coveredmethods="0" elements="297" ncloc="367" files="5" conditionals="78" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/listener/DriverFactory.java" name="DriverFactory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="21" loc="145" coveredmethods="0" methods="3" elements="101" classes="1" ncloc="116" statements="74" conditionals="24" coveredstatements="0"/>
+            <class name="DriverFactory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="21" coveredmethods="0" methods="3" elements="101" statements="74" conditionals="24" coveredstatements="0"/>
+            </class>
+            <line complexity="7" visibility="public" signature="createGridlasticInstance(String,String) : WebDriver" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="33" type="cond"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="40" type="cond"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="67" type="cond"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="createRemoteInstance(String,String,URL) : WebDriver" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="82" type="cond"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="92" type="cond"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="101" type="cond"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="107" type="cond"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="createLocalInstance(String,String) : WebDriver" num="120" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="122" type="cond"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="126" type="cond"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="135" type="cond"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="139" type="cond"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/listener/DriverManager.java" name="DriverManager.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="26" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="19" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="DriverManager">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getDriver() : WebDriver" num="10" count="0" type="method"/>
+            <line num="11" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setWebDriver(WebDriver) : void" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAugmentedDriver() : WebDriver" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAugmentedWebDriver(WebDriver) : void" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/listener/RetryAnalyzer.java" name="RetryAnalyzer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="32" coveredmethods="0" methods="2" elements="23" classes="1" ncloc="25" statements="13" conditionals="8" coveredstatements="0"/>
+            <class name="RetryAnalyzer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="2" elements="23" statements="13" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="retry(ITestResult) : boolean" num="12" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="13" type="cond"/>
+            <line num="14" count="0" type="stmt"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="getResultStatusName(int) : String" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="24" type="cond"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="26" type="cond"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="28" type="cond"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/listener/RetryListener.java" name="RetryListener.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="21" coveredmethods="0" methods="1" elements="6" classes="1" ncloc="15" statements="3" conditionals="2" coveredstatements="0"/>
+            <class name="RetryListener">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="1" elements="6" statements="3" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="transform(ITestAnnotation,Class,Constructor,Method) : void" num="11" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line num="16" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="16" type="cond"/>
+            <line num="17" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/listener/WebDriverListener.java" name="WebDriverListener.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="44" loc="275" coveredmethods="0" methods="16" elements="159" classes="1" ncloc="192" statements="99" conditionals="44" coveredstatements="0"/>
+            <class name="WebDriverListener">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="44" coveredmethods="0" methods="16" elements="159" statements="99" conditionals="44" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="onStart(ITestContext) : void" num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="onTestStart(ITestResult) : void" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="onTestSuccess(ITestResult) : void" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="onTestFailure(ITestResult) : void" num="45" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="onTestSkipped(ITestResult) : void" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="onFinish(ITestContext) : void" num="68" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="73" type="cond"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="76" type="cond"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="setParams(ITestContext) : void" num="84" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="85" type="cond"/>
+            <line num="89" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="89" type="cond"/>
+            <line num="93" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="93" type="cond"/>
+            <line num="97" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="97" type="cond"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="startDriver(ITestResult) : void" num="111" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="112" type="cond"/>
+            <line num="113" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="isDriverRunning() : boolean" num="117" count="0" type="method"/>
+            <line num="118" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="118" type="cond"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line complexity="7" visibility="private" signature="initializeDriver() : void" num="130" count="0" type="method"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="132" type="cond"/>
+            <line num="134" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="134" type="cond"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="137" type="cond"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="141" type="cond"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="148" type="cond"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="getRemoteServerURL() : URL" num="160" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="165" type="cond"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="quitDriver() : void" num="185" count="0" type="method"/>
+            <line num="186" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="186" type="cond"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="187" type="cond"/>
+            <line complexity="5" visibility="private" signature="endDriver(ITestResult) : void" num="197" count="0" type="method"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="202" count="0" type="stmt"/>
+            <line num="203" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="203" type="cond"/>
+            <line num="204" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+            <line num="206" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="206" type="cond"/>
+            <line num="207" count="0" type="stmt"/>
+            <line num="208" count="0" type="stmt"/>
+            <line num="213" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="213" type="cond"/>
+            <line num="214" count="0" type="stmt"/>
+            <line num="218" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="218" type="cond"/>
+            <line num="219" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="setClassListMap(ITestContext) : void" num="224" count="0" type="method"/>
+            <line num="226" count="0" type="stmt"/>
+            <line num="229" count="0" type="stmt"/>
+            <line num="230" count="0" type="stmt"/>
+            <line num="232" count="0" type="stmt"/>
+            <line num="233" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="233" type="cond"/>
+            <line num="234" count="0" type="stmt"/>
+            <line num="236" count="0" type="stmt"/>
+            <line num="237" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="takeScreenshot(ITestResult,WebDriver) : void" num="242" count="0" type="method"/>
+            <line num="244" count="0" type="stmt"/>
+            <line num="244" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="244" type="cond"/>
+            <line num="246" count="0" type="stmt"/>
+            <line num="249" count="0" type="stmt"/>
+            <line num="250" count="0" type="stmt"/>
+            <line num="252" count="0" type="stmt"/>
+            <line num="254" count="0" type="stmt"/>
+            <line num="255" count="0" type="stmt"/>
+            <line num="256" count="0" type="stmt"/>
+            <line num="261" count="0" type="stmt"/>
+            <line num="262" count="0" type="stmt"/>
+            <line num="264" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="reportLogScreenshot(File,String,String,String) : void" num="267" count="0" type="method"/>
+            <line num="268" count="0" type="stmt"/>
+            <line num="270" count="0" type="stmt"/>
+            <line num="271" count="0" type="stmt"/>
+            <line num="272" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="default-pkg">
+         <metrics coveredelements="0" complexity="5" loc="57" methods="5" classes="2" statements="15" coveredconditionals="0" coveredmethods="0" elements="20" ncloc="48" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/Test1.java" name="Test1.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="33" coveredmethods="0" methods="3" elements="12" classes="1" ncloc="28" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="Test1">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="12" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setup(String) : void" num="12" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="test1() : void" num="18" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="google() : void" num="27" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/Test2.java" name="Test2.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="24" coveredmethods="0" methods="2" elements="8" classes="1" ncloc="20" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="Test2">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="8" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setup(String) : void" num="10" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="test2() : void" num="16" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="eileen-test 1.0-SNAPSHOT" timestamp="0">
+      <metrics coveredelements="0" complexity="0" loc="0" methods="0" classes="0" statements="0" packages="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="0" files="0" conditionals="0" coveredstatements="0"/>
+   </testproject>
+</coverage>

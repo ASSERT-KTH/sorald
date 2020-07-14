@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594347806665" clover="4.4.1">
+   <project name="Accumulo Recipes - Parent 2.1.0-SNAPSHOT (Aggregated)" timestamp="1594347804139">
+      <metrics coveredelements="0" complexity="36" loc="213" methods="18" classes="1" statements="66" packages="1" coveredconditionals="0" coveredmethods="0" elements="102" ncloc="168" files="1" conditionals="18" coveredstatements="0"/>
+      <package name="org.calrissian.accumulorecipes.test">
+         <metrics coveredelements="0" complexity="36" loc="213" methods="18" classes="1" statements="66" coveredconditionals="0" coveredmethods="0" elements="102" ncloc="168" files="1" conditionals="18" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/minicluster-test-driver/src/main/java/org/calrissian/accumulorecipes/test/AccumuloMiniClusterDriver.java" name="AccumuloMiniClusterDriver.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="36" loc="213" coveredmethods="0" methods="18" elements="102" classes="1" ncloc="168" statements="66" conditionals="18" coveredstatements="0"/>
+            <class name="AccumuloMiniClusterDriver">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="36" coveredmethods="0" methods="18" elements="102" statements="66" conditionals="18" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AccumuloMiniClusterDriver()" num="54" count="0" type="method"/>
+            <line complexity="1" visibility="protected" signature="before() : void" num="56" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="after() : void" num="61" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="deleteAllTables() : void" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="72" type="cond"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="start() : void" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="isZookeeperRunning(String,int) : Boolean" num="95" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="process(WatchedEvent) : void" num="100" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="101" type="cond"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="initConfig() : void" num="112" count="0" type="method"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="initInstanceAndConnector(Integer) : void" num="120" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="125" type="cond"/>
+            <line num="126" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="126" type="cond"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getClientConfiguration() : ClientConfiguration" num="136" count="0" type="method"/>
+            <line num="137" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInstance() : Instance" num="140" count="0" type="method"/>
+            <line num="141" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getConnector() : Connector" num="144" count="0" type="method"/>
+            <line num="145" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="findFreePort() : int" num="148" count="0" type="method"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="162" type="cond"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="close() : void" num="173" count="0" type="method"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="176" type="cond"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="186" type="cond"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRootPassword() : String" num="192" count="0" type="method"/>
+            <line num="193" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRootAuths(Authorizations) : void" num="196" count="0" type="method"/>
+            <line num="197" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getZooKeepers() : String" num="200" count="0" type="method"/>
+            <line num="201" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="201" type="cond"/>
+            <line num="202" count="0" type="stmt"/>
+            <line num="204" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getInstanceName() : String" num="207" count="0" type="method"/>
+            <line num="208" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="208" type="cond"/>
+            <line num="209" count="0" type="stmt"/>
+            <line num="211" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="Accumulo Recipes - Parent 2.1.0-SNAPSHOT (Aggregated)" timestamp="1594347804139">
+      <metrics coveredelements="0" complexity="0" loc="0" methods="0" classes="0" statements="0" packages="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="0" files="0" conditionals="0" coveredstatements="0"/>
+   </testproject>
+</coverage>

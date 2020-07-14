@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594336280300" clover="4.4.1">
+   <project name="Smaller 0.8.9-SNAPSHOT (Aggregated)" timestamp="1594336277465">
+      <metrics coveredelements="0" complexity="84" loc="771" methods="54" classes="9" statements="166" packages="1" coveredconditionals="0" coveredmethods="0" elements="272" ncloc="430" files="7" conditionals="52" coveredstatements="0"/>
+      <package name="de.matrixweb.smaller.common">
+         <metrics coveredelements="0" complexity="84" loc="771" methods="54" classes="9" statements="166" coveredconditionals="0" coveredmethods="0" elements="272" ncloc="430" files="7" conditionals="52" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/src/main/java/de/matrixweb/smaller/common/GlobalOptions.java" name="GlobalOptions.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="70" coveredmethods="0" methods="5" elements="24" classes="1" ncloc="25" statements="9" conditionals="10" coveredstatements="0"/>
+            <class name="GlobalOptions">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="5" elements="24" statements="9" conditionals="10" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="package" signature="isGenerateSourceMaps(Object) : boolean" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="19" type="cond"/>
+            <line complexity="2" visibility="public" signature="isOutOnly(Task) : boolean" num="29" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="32" type="cond"/>
+            <line complexity="2" visibility="public" signature="isSourceOnce(Task) : boolean" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line complexity="2" visibility="public" signature="isOutOnly(Manifest) : boolean" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="56" type="cond"/>
+            <line complexity="2" visibility="public" signature="isSourceOnce(Manifest) : boolean" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="67" type="cond"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/src/main/java/de/matrixweb/smaller/common/Manifest.java" name="Manifest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="17" loc="144" coveredmethods="0" methods="10" elements="57" classes="1" ncloc="89" statements="33" conditionals="14" coveredstatements="0"/>
+            <class name="Manifest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="17" coveredmethods="0" methods="10" elements="57" statements="33" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="5" visibility="public" signature="fromConfigFile(ConfigFile) : Manifest" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="38" type="cond"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="42" type="cond"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="50" type="cond"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Manifest()" num="67" count="0" type="method"/>
+            <line complexity="2" visibility="public" signature="getProcessDescriptions() : List&lt;ProcessDescription&gt;" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="74" type="cond"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOptions() : Map&lt;String, Object&gt;" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Manifest(Task[])" num="90" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Manifest(Task)" num="98" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getTasks() : Task[]" num="106" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="108" type="cond"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTasks(Task[]) : void" num="118" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCurrent() : Task" num="126" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getNext() : Task" num="134" count="0" type="method"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="138" type="cond"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/src/main/java/de/matrixweb/smaller/common/ProcessDescription.java" name="ProcessDescription.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="12" loc="93" coveredmethods="0" methods="8" elements="24" classes="2" ncloc="44" statements="12" conditionals="4" coveredstatements="0"/>
+            <class name="ProcessDescription">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="5" elements="18" statements="9" conditionals="4" coveredstatements="0"/>
+            </class>
+            <class name="ProcessDescription.Processor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getProcessors() : List&lt;Processor&gt;" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getInputFile() : String" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="setInputFile(String) : void" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="39" type="cond"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOutputFile() : String" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="setOutputFile(String) : void" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="57" type="cond"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="72" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setName(String) : void" num="80" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOptions() : Map&lt;String, Object&gt;" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/src/main/java/de/matrixweb/smaller/common/SmallerException.java" name="SmallerException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="25" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="10" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="SmallerException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="SmallerException(String,Throwable)" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="SmallerException(String)" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/src/main/java/de/matrixweb/smaller/common/Task.java" name="Task.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="27" loc="231" coveredmethods="0" methods="18" elements="85" classes="2" ncloc="123" statements="51" conditionals="16" coveredstatements="0"/>
+            <class name="Task">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="27" coveredmethods="0" methods="18" elements="85" statements="51" conditionals="16" coveredstatements="0"/>
+            </class>
+            <class name="Task.Options">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Task()" num="37" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="Task(String,String[],String[])" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="Task(String,String,String)" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="58" type="cond"/>
+            <line num="59" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="59" type="cond"/>
+            <line complexity="1" visibility="public" signature="Task(String,String,String,Set&lt;Task.Options&gt;)" num="69" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Task(String,String,String,String)" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getProcessor() : String" num="91" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setProcessor(String) : void" num="99" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getIn() : String[]" num="106" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getIn(String) : String[]" num="117" count="0" type="method"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="121" type="cond"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setIn(String[]) : void" num="133" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOut() : String[]" num="141" count="0" type="method"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOut(String[]) : void" num="151" count="0" type="method"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOptions() : Set&lt;Task.Options&gt;" num="160" count="0" type="method"/>
+            <line num="162" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="setOptions(Set&lt;Task.Options&gt;) : void" num="171" count="0" type="method"/>
+            <line num="173" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="173" type="cond"/>
+            <line num="174" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOptionsDefinition() : String" num="181" count="0" type="method"/>
+            <line num="182" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="getOptionsFor(String) : Map&lt;String, Object&gt;" num="190" count="0" type="method"/>
+            <line num="191" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="191" type="cond"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="193" type="cond"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="206" count="0" type="stmt"/>
+            <line num="207" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="207" type="cond"/>
+            <line num="208" count="0" type="stmt"/>
+            <line num="212" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getProcessOrOptions(String) : Map&lt;String, Object&gt;" num="215" count="0" type="method"/>
+            <line num="216" count="0" type="stmt"/>
+            <line num="217" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="217" type="cond"/>
+            <line num="218" count="0" type="stmt"/>
+            <line num="220" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOptionsDefinition(String) : void" num="227" count="0" type="method"/>
+            <line num="228" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/src/main/java/de/matrixweb/smaller/common/Version.java" name="Version.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="75" coveredmethods="0" methods="5" elements="17" classes="1" ncloc="36" statements="12" conditionals="0" coveredstatements="0"/>
+            <class name="Version">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="5" elements="17" statements="12" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="Version(int,int,int)" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCurrentVersion() : Version" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getVersion(String) : Version" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAtLeast(Version) : boolean" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="70" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/src/main/java/de/matrixweb/smaller/common/Zip.java" name="Zip.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="133" coveredmethods="0" methods="6" elements="61" classes="1" ncloc="103" statements="47" conditionals="8" coveredstatements="0"/>
+            <class name="Zip">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="6" elements="61" statements="47" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="Zip()" num="26" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="zip(OutputStream,File) : void" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="recursiveZip(ZipOutputStream,File,File) : void" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="48" type="cond"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="writeDeflate(File,FileInputStream,ZipOutputStream,File) : void" num="66" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="writeStored(File,FileInputStream,ZipOutputStream,File) : void" num="76" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="unzip(File,File) : void" num="103" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="108" type="cond"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="110" type="cond"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="Smaller 0.8.9-SNAPSHOT (Aggregated)" timestamp="1594336277465">
+      <metrics coveredelements="0" complexity="2" loc="73" methods="2" classes="2" statements="23" packages="1" coveredconditionals="0" coveredmethods="0" elements="25" ncloc="51" files="2" conditionals="0" coveredstatements="0"/>
+      <package name="de.matrixweb.smaller.common">
+         <metrics coveredelements="0" complexity="2" loc="73" methods="2" classes="2" statements="23" coveredconditionals="0" coveredmethods="0" elements="25" ncloc="51" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/src/test/java/de/matrixweb/smaller/common/TaskTest.java" name="TaskTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="27" coveredmethods="0" methods="1" elements="10" classes="1" ncloc="18" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="TaskTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="10" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testInAndOut() : void" num="14" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/common/src/test/java/de/matrixweb/smaller/common/ZipTest.java" name="ZipTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="46" coveredmethods="0" methods="1" elements="15" classes="1" ncloc="33" statements="14" conditionals="0" coveredstatements="0"/>
+            <class name="ZipTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="15" statements="14" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="zipUnzipTest() : void" num="23" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

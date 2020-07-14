@@ -1,0 +1,1260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594472995421" clover="4.4.1">
+   <project name="Neo4j 4.2.0-SNAPSHOT (Aggregated)" timestamp="1594472991380">
+      <metrics coveredelements="0" complexity="326" loc="3177" methods="201" classes="30" statements="578" packages="6" coveredconditionals="0" coveredmethods="0" elements="943" ncloc="2070" files="23" conditionals="164" coveredstatements="0"/>
+      <package name="org.neo4j.cypher.internal.util">
+         <metrics coveredelements="0" complexity="13" loc="151" methods="5" classes="2" statements="36" coveredconditionals="0" coveredmethods="0" elements="49" ncloc="79" files="2" conditionals="8" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/cypher/front-end/util/src/main/java/org/neo4j/cypher/internal/util/AssertionRunner.java" name="AssertionRunner.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="48" coveredmethods="0" methods="2" elements="7" classes="1" ncloc="16" statements="3" conditionals="2" coveredstatements="0"/>
+            <class name="AssertionRunner">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="2" elements="7" statements="3" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="AssertionRunner()" num="29" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="isAssertionsEnabled() : boolean" num="41" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/cypher/front-end/util/src/main/java/org/neo4j/cypher/internal/util/DumpUtils.java" name="DumpUtils.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="103" coveredmethods="0" methods="3" elements="42" classes="1" ncloc="63" statements="33" conditionals="6" coveredstatements="0"/>
+            <class name="DumpUtils">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="3" elements="42" statements="33" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="DumpUtils()" num="27" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="threadDump() : String" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="8" visibility="public" signature="threadDump(ThreadMXBean,Properties) : String" num="51" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="68" type="cond"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="74" type="cond"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="93" type="cond"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.annotations.service">
+         <metrics coveredelements="0" complexity="26" loc="322" methods="13" classes="3" statements="69" coveredconditionals="0" coveredmethods="0" elements="96" ncloc="217" files="3" conditionals="14" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/main/java/org/neo4j/annotations/service/Service.java" name="Service.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="39" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Service">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/main/java/org/neo4j/annotations/service/ServiceAnnotationProcessor.java" name="ServiceAnnotationProcessor.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="26" loc="244" coveredmethods="0" methods="13" elements="96" classes="1" ncloc="197" statements="69" conditionals="14" coveredstatements="0"/>
+            <class name="ServiceAnnotationProcessor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="26" coveredmethods="0" methods="13" elements="96" statements="69" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="init(ProcessingEnvironment) : void" num="70" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSupportedAnnotationTypes() : Set&lt;String&gt;" num="78" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSupportedSourceVersion() : SourceVersion" num="84" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="process(Set&lt;? extends TypeElement&gt;,RoundEnvironment) : boolean" num="90" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="95" type="cond"/>
+            <line num="97" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="97" type="cond"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="scan(RoundEnvironment) : void" num="114" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="getImplementedService(TypeElement) : Optional&lt;TypeElement&gt;" num="128" count="0" type="method"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="133" type="cond"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="139" type="cond"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="isService(TypeMirror) : boolean" num="148" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getTypeWithSupertypes(TypeMirror) : Set&lt;TypeMirror&gt;" num="153" count="0" type="method"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="generateConfigs() : void" num="162" count="0" type="method"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="178" type="cond"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="loadIfExists(String) : SortedSet&lt;String&gt;" num="198" count="0" type="method"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="204" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+            <line num="207" count="0" type="stmt"/>
+            <line num="208" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="208" type="cond"/>
+            <line num="210" count="0" type="stmt"/>
+            <line num="213" count="0" type="stmt"/>
+            <line num="218" count="0" type="stmt"/>
+            <line num="222" count="0" type="stmt"/>
+            <line num="224" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="info(String) : void" num="227" count="0" type="method"/>
+            <line num="229" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="229" type="cond"/>
+            <line num="231" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="error(String,Exception) : void" num="235" count="0" type="method"/>
+            <line num="237" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="error(String,Element) : void" num="240" count="0" type="method"/>
+            <line num="242" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/main/java/org/neo4j/annotations/service/ServiceProvider.java" name="ServiceProvider.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="39" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ServiceProvider">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="org.neo4j.annotations.documented">
+         <metrics coveredelements="0" complexity="10" loc="211" methods="8" classes="6" statements="14" coveredconditionals="0" coveredmethods="0" elements="24" ncloc="88" files="5" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/main/java/org/neo4j/annotations/documented/Documented.java" name="Documented.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="37" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="11" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Documented">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/main/java/org/neo4j/annotations/documented/DocumentedUtils.java" name="DocumentedUtils.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="53" coveredmethods="0" methods="3" elements="13" classes="1" ncloc="27" statements="8" conditionals="2" coveredstatements="0"/>
+            <class name="DocumentedUtils">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="3" elements="13" statements="8" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="DocumentedUtils()" num="29" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="extractMessage(Method) : String" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="38" type="cond"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="extractFormattedMessage(Method,Object[]) : String" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/main/java/org/neo4j/annotations/documented/ReporterFactories.java" name="ReporterFactories.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="48" coveredmethods="0" methods="3" elements="6" classes="2" ncloc="24" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="ReporterFactories">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="ReporterFactories.ThrowingInvocationHandler">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="throwingReporterFactory() : ReporterFactory" num="30" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="noopReporterFactory() : ReporterFactory" num="35" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="invoke(Object,Method,Object[]) : Object" num="42" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/main/java/org/neo4j/annotations/documented/ReporterFactory.java" name="ReporterFactory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="42" coveredmethods="0" methods="2" elements="5" classes="1" ncloc="16" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="ReporterFactory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="5" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ReporterFactory(InvocationHandler)" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getClass(Class&lt;T&gt;) : T" num="37" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/main/java/org/neo4j/annotations/documented/Warning.java" name="Warning.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="31" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Warning">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="org.neo4j.annotations.api">
+         <metrics coveredelements="0" complexity="114" loc="870" methods="45" classes="5" statements="264" coveredconditionals="0" coveredmethods="0" elements="407" ncloc="647" files="4" conditionals="98" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/main/java/org/neo4j/annotations/api/IgnoreApiCheck.java" name="IgnoreApiCheck.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="32" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="7" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="IgnoreApiCheck">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/main/java/org/neo4j/annotations/api/PublicApi.java" name="PublicApi.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="38" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="PublicApi">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/main/java/org/neo4j/annotations/api/PublicApiAnnotationProcessor.java" name="PublicApiAnnotationProcessor.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="99" loc="670" coveredmethods="0" methods="37" elements="360" classes="1" ncloc="543" statements="237" conditionals="86" coveredstatements="0"/>
+            <class name="PublicApiAnnotationProcessor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="99" coveredmethods="0" methods="37" elements="360" statements="237" conditionals="86" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="PublicApiAnnotationProcessor()" num="91" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="PublicApiAnnotationProcessor(boolean)" num="101" count="0" type="method"/>
+            <line num="103" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="init(ProcessingEnvironment) : void" num="106" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSupportedAnnotationTypes() : Set&lt;String&gt;" num="113" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSupportedSourceVersion() : SourceVersion" num="119" count="0" type="method"/>
+            <line num="122" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="process(Set&lt;? extends TypeElement&gt;,RoundEnvironment) : boolean" num="125" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="130" type="cond"/>
+            <line num="132" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="132" type="cond"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line complexity="10" visibility="private" signature="generateSignature() : void" num="149" count="0" type="method"/>
+            <line num="152" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="152" type="cond"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="157" type="cond"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="173" type="cond"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="183" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="183" type="cond"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="189" type="cond"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="196" type="cond"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="200" type="cond"/>
+            <line num="202" count="0" type="stmt"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="210" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="diff(Path) : StringBuilder" num="216" count="0" type="method"/>
+            <line num="218" count="0" type="stmt"/>
+            <line num="219" count="0" type="stmt"/>
+            <line num="219" count="0" type="stmt"/>
+            <line num="221" count="0" type="stmt"/>
+            <line num="223" count="0" type="stmt"/>
+            <line num="224" count="0" type="stmt"/>
+            <line num="225" count="0" type="stmt"/>
+            <line num="226" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="diffSide(StringBuilder,Set&lt;String&gt;,Set&lt;String&gt;,char) : void" num="229" count="0" type="method"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="233" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="233" type="cond"/>
+            <line num="235" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getAndAssertParent(Path,String) : Path" num="240" count="0" type="method"/>
+            <line num="242" count="0" type="stmt"/>
+            <line num="243" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="243" type="cond"/>
+            <line num="245" count="0" type="stmt"/>
+            <line num="247" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="process(RoundEnvironment) : void" num="250" count="0" type="method"/>
+            <line num="252" count="0" type="stmt"/>
+            <line num="253" count="0" type="stmt"/>
+            <line num="255" count="0" type="stmt"/>
+            <line num="256" count="0" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line complexity="11" visibility="private" signature="processType(TypeElement) : void" num="264" count="0" type="method"/>
+            <line num="267" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="267" type="cond"/>
+            <line num="269" count="0" type="stmt"/>
+            <line num="273" count="0" type="stmt"/>
+            <line num="274" count="0" type="stmt"/>
+            <line num="275" count="0" type="stmt"/>
+            <line num="276" count="0" type="stmt"/>
+            <line num="277" count="0" type="stmt"/>
+            <line num="278" count="0" type="stmt"/>
+            <line num="280" count="0" type="stmt"/>
+            <line num="283" count="0" type="stmt"/>
+            <line num="285" count="0" type="stmt"/>
+            <line num="286" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="286" type="cond"/>
+            <line num="288" count="0" type="stmt"/>
+            <line num="289" count="0" type="stmt"/>
+            <line num="291" count="0" type="stmt"/>
+            <line num="292" count="0" type="stmt"/>
+            <line num="293" count="0" type="stmt"/>
+            <line num="294" count="0" type="stmt"/>
+            <line num="295" count="0" type="stmt"/>
+            <line num="296" count="0" type="stmt"/>
+            <line num="297" count="0" type="stmt"/>
+            <line num="298" count="0" type="stmt"/>
+            <line num="299" count="0" type="stmt"/>
+            <line num="300" count="0" type="stmt"/>
+            <line num="301" count="0" type="stmt"/>
+            <line num="302" count="0" type="stmt"/>
+            <line num="303" count="0" type="stmt"/>
+            <line num="304" count="0" type="stmt"/>
+            <line num="305" count="0" type="stmt"/>
+            <line num="306" count="0" type="stmt"/>
+            <line num="307" count="0" type="stmt"/>
+            <line num="308" count="0" type="stmt"/>
+            <line num="310" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="processField(VariableElement) : void" num="318" count="0" type="method"/>
+            <line num="320" count="0" type="stmt"/>
+            <line num="321" count="0" type="stmt"/>
+            <line num="322" count="0" type="stmt"/>
+            <line num="323" count="0" type="stmt"/>
+            <line num="324" count="0" type="stmt"/>
+            <line num="325" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="processMethod(ExecutableElement) : void" num="331" count="0" type="method"/>
+            <line num="333" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="333" type="cond"/>
+            <line num="335" count="0" type="stmt"/>
+            <line num="338" count="0" type="stmt"/>
+            <line num="339" count="0" type="stmt"/>
+            <line num="340" count="0" type="stmt"/>
+            <line num="341" count="0" type="stmt"/>
+            <line num="342" count="0" type="stmt"/>
+            <line num="343" count="0" type="stmt"/>
+            <line num="345" count="0" type="stmt"/>
+            <line num="347" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="addInterfaces(StringBuilder,TypeElement) : void" num="353" count="0" type="method"/>
+            <line num="355" count="0" type="stmt"/>
+            <line num="356" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="356" type="cond"/>
+            <line num="358" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="addSuperClass(StringBuilder,TypeElement) : void" num="366" count="0" type="method"/>
+            <line num="368" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="368" type="cond"/>
+            <line num="370" count="0" type="stmt"/>
+            <line num="371" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="addKindIdentifier(StringBuilder,TypeElement) : void" num="375" count="0" type="method"/>
+            <line num="377" count="0" type="stmt"/>
+            <line num="378" count="0" type="stmt"/>
+            <line num="380" count="0" type="stmt"/>
+            <line num="381" count="0" type="stmt"/>
+            <line num="382" count="0" type="stmt"/>
+            <line num="383" count="0" type="stmt"/>
+            <line num="384" count="0" type="stmt"/>
+            <line num="385" count="0" type="stmt"/>
+            <line num="386" count="0" type="stmt"/>
+            <line num="387" count="0" type="stmt"/>
+            <line num="388" count="0" type="stmt"/>
+            <line num="389" count="0" type="stmt"/>
+            <line num="390" count="0" type="stmt"/>
+            <line num="391" count="0" type="stmt"/>
+            <line num="392" count="0" type="stmt"/>
+            <line num="393" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="addTypeName(StringBuilder,TypeElement) : void" num="397" count="0" type="method"/>
+            <line num="399" count="0" type="stmt"/>
+            <line num="400" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="addTypeParameter(StringBuilder,List&lt;? extends TypeParameterElement&gt;) : void" num="406" count="0" type="method"/>
+            <line num="408" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="408" type="cond"/>
+            <line num="410" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getGetBounds(TypeParameterElement) : String" num="414" count="0" type="method"/>
+            <line num="416" count="0" type="stmt"/>
+            <line num="419" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="419" type="cond"/>
+            <line num="421" count="0" type="stmt"/>
+            <line num="423" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="addFieldName(StringBuilder,VariableElement) : void" num="426" count="0" type="method"/>
+            <line num="428" count="0" type="stmt"/>
+            <line num="429" count="0" type="stmt"/>
+            <line num="430" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="addParameters(StringBuilder,ExecutableElement) : void" num="433" count="0" type="method"/>
+            <line num="435" count="0" type="stmt"/>
+            <line num="436" count="0" type="stmt"/>
+            <line num="437" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="437" type="cond"/>
+            <line num="439" count="0" type="stmt"/>
+            <line num="440" count="0" type="stmt"/>
+            <line num="441" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="441" type="cond"/>
+            <line num="443" count="0" type="stmt"/>
+            <line num="447" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="447" type="cond"/>
+            <line num="449" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="449" type="cond"/>
+            <line num="451" count="0" type="stmt"/>
+            <line num="453" count="0" type="stmt"/>
+            <line num="457" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="addReturn(StringBuilder,TypeMirror) : void" num="460" count="0" type="method"/>
+            <line num="462" count="0" type="stmt"/>
+            <line num="463" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="addMethodName(StringBuilder,ExecutableElement) : void" num="466" count="0" type="method"/>
+            <line num="468" count="0" type="stmt"/>
+            <line num="469" count="0" type="stmt"/>
+            <line num="470" count="0" type="stmt"/>
+            <line num="472" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="472" type="cond"/>
+            <line num="474" count="0" type="stmt"/>
+            <line num="478" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="addModifiers(StringBuilder,Element) : void" num="482" count="0" type="method"/>
+            <line num="484" count="0" type="stmt"/>
+            <line num="486" count="0" type="stmt"/>
+            <line num="487" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="addExceptions(StringBuilder,ExecutableElement) : void" num="491" count="0" type="method"/>
+            <line num="493" count="0" type="stmt"/>
+            <line num="494" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="494" type="cond"/>
+            <line num="496" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="addConstantValue(StringBuilder,VariableElement) : void" num="500" count="0" type="method"/>
+            <line num="502" count="0" type="stmt"/>
+            <line num="503" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="503" type="cond"/>
+            <line num="505" count="0" type="stmt"/>
+            <line num="506" count="0" type="stmt"/>
+            <line complexity="6" visibility="private" signature="encodeType(TypeMirror) : String" num="510" count="0" type="method"/>
+            <line num="512" count="0" type="stmt"/>
+            <line num="513" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="513" type="cond"/>
+            <line num="515" count="0" type="stmt"/>
+            <line num="517" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="517" type="cond"/>
+            <line num="519" count="0" type="stmt"/>
+            <line num="520" count="0" type="stmt"/>
+            <line num="522" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="522" type="cond"/>
+            <line num="524" count="0" type="stmt"/>
+            <line num="525" count="0" type="stmt"/>
+            <line num="527" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="527" type="cond"/>
+            <line num="529" count="0" type="stmt"/>
+            <line num="530" count="0" type="stmt"/>
+            <line num="531" count="0" type="stmt"/>
+            <line num="533" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="533" type="cond"/>
+            <line num="535" count="0" type="stmt"/>
+            <line num="538" count="0" type="stmt"/>
+            <line num="539" count="0" type="stmt"/>
+            <line complexity="9" visibility="private" signature="validatePublicVisibility(DeclaredType) : void" num="546" count="0" type="method"/>
+            <line num="548" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="548" type="cond"/>
+            <line num="550" count="0" type="stmt"/>
+            <line num="553" count="0" type="stmt"/>
+            <line num="554" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="554" type="cond"/>
+            <line num="556" count="0" type="stmt"/>
+            <line num="560" count="0" type="stmt"/>
+            <line num="562" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="562" type="cond"/>
+            <line num="564" count="0" type="stmt"/>
+            <line num="566" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="566" type="cond"/>
+            <line num="568" count="0" type="stmt"/>
+            <line num="573" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="573" type="cond"/>
+            <line num="576" count="0" type="stmt"/>
+            <line num="579" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="579" type="cond"/>
+            <line num="581" count="0" type="stmt"/>
+            <line num="582" count="0" type="stmt"/>
+            <line num="584" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="586" type="cond"/>
+            <line num="588" count="0" type="stmt"/>
+            <line num="593" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="validateWildcard(WildcardType) : void" num="597" count="0" type="method"/>
+            <line num="599" count="0" type="stmt"/>
+            <line num="600" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="filterWildcard(TypeMirror) : void" num="603" count="0" type="method"/>
+            <line num="605" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="605" type="cond"/>
+            <line num="607" count="0" type="stmt"/>
+            <line num="608" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="608" type="cond"/>
+            <line num="610" count="0" type="stmt"/>
+            <line num="612" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="612" type="cond"/>
+            <line num="614" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="assertAnnotated(TypeElement,TypeElement,String) : void" num="619" count="0" type="method"/>
+            <line num="621" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="621" type="cond"/>
+            <line num="623" count="0" type="stmt"/>
+            <line num="626" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="626" type="cond"/>
+            <line num="628" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="628" type="cond"/>
+            <line num="630" count="0" type="stmt"/>
+            <line num="635" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="pushScope(String) : void" num="640" count="0" type="method"/>
+            <line num="642" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="popScope() : void" num="645" count="0" type="method"/>
+            <line num="647" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="info(String) : void" num="650" count="0" type="method"/>
+            <line num="652" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="error(String) : void" num="655" count="0" type="method"/>
+            <line num="657" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="error(String,Element) : void" num="660" count="0" type="method"/>
+            <line num="662" count="0" type="stmt"/>
+            <line num="663" count="0" type="stmt"/>
+            <line num="664" count="0" type="stmt"/>
+            <line num="665" count="0" type="stmt"/>
+            <line num="666" count="0" type="stmt"/>
+            <line num="667" count="0" type="stmt"/>
+            <line num="668" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/main/java/org/neo4j/annotations/api/PublicApiDoclet.java" name="PublicApiDoclet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="15" loc="130" coveredmethods="0" methods="8" elements="47" classes="2" ncloc="87" statements="27" conditionals="12" coveredstatements="0"/>
+            <class name="PublicApiDoclet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="5" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="PublicApiDoclet.FilteringDocletEnvironment">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="13" coveredmethods="0" methods="6" elements="42" statements="24" conditionals="12" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getName() : String" num="48" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="run(DocletEnvironment) : boolean" num="54" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="FilteringDocletEnvironment(DocletEnvironment)" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getIncludedElements() : Set&lt;? extends Element&gt;" num="71" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="isIncluded(Element) : boolean" num="79" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="82" type="cond"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="isSelected(Element) : boolean" num="89" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="92" type="cond"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="includeElement(Element) : boolean" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="101" type="cond"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="106" type="cond"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="110" type="cond"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="includePackage(PackageElement) : boolean" num="117" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="122" type="cond"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.cypher.internal.ast.factory">
+         <metrics coveredelements="0" complexity="119" loc="1111" methods="106" classes="7" statements="127" coveredconditionals="0" coveredmethods="0" elements="247" ncloc="771" files="4" conditionals="14" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/cypher/ast-factory/src/main/java/org/neo4j/cypher/internal/ast/factory/ASTExceptionFactory.java" name="ASTExceptionFactory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="29" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="7" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ASTExceptionFactory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/cypher/ast-factory/src/main/java/org/neo4j/cypher/internal/ast/factory/ASTExpressionFactory.java" name="ASTExpressionFactory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="171" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="76" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ASTExpressionFactory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/cypher/ast-factory/src/main/java/org/neo4j/cypher/internal/ast/factory/ASTFactory.java" name="ASTFactory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="197" coveredmethods="0" methods="2" elements="5" classes="4" ncloc="104" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="ASTFactory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="ASTFactory.NULL">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="ASTFactory.StringPos">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="3" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="ASTFactory.MergeActionType">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="NULL()" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="StringPos(String,POS)" num="73" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/cypher/ast-factory/src/main/java/org/neo4j/cypher/internal/ast/factory/LiteralInterpreter.java" name="LiteralInterpreter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="117" loc="714" coveredmethods="0" methods="104" elements="242" classes="1" ncloc="584" statements="124" conditionals="14" coveredstatements="0"/>
+            <class name="LiteralInterpreter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="117" coveredmethods="0" methods="104" elements="242" statements="124" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="newSingleQuery(List&lt;NULL&gt;) : NULL" num="38" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newUnion(NULL,NULL,NULL,boolean) : NULL" num="44" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="periodicCommitQuery(NULL,String,NULL,List&lt;NULL&gt;) : NULL" num="50" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromClause(NULL,Object) : NULL" num="56" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="useClause(NULL,Object) : NULL" num="62" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newReturnClause(NULL,boolean,boolean,List&lt;NULL&gt;,List&lt;NULL&gt;,Object,Object) : NULL" num="68" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newReturnGraphClause(NULL) : NULL" num="74" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newReturnItem(NULL,Object,Object) : NULL" num="80" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newReturnItem(NULL,Object,int,int) : NULL" num="86" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="orderDesc(Object) : NULL" num="92" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="orderAsc(Object) : NULL" num="98" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withClause(NULL,NULL,Object) : NULL" num="104" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="matchClause(NULL,boolean,List&lt;NULL&gt;,List&lt;NULL&gt;,Object) : NULL" num="110" count="0" type="method"/>
+            <line num="113" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="usingIndexHint(NULL,Object,String,List&lt;String&gt;,boolean) : NULL" num="116" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="usingJoin(NULL,List&lt;Object&gt;) : NULL" num="122" count="0" type="method"/>
+            <line num="125" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="usingScan(NULL,Object,String) : NULL" num="128" count="0" type="method"/>
+            <line num="131" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createClause(NULL,List&lt;NULL&gt;) : NULL" num="134" count="0" type="method"/>
+            <line num="137" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setClause(NULL,List&lt;NULL&gt;) : NULL" num="140" count="0" type="method"/>
+            <line num="143" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setProperty(Object,Object) : NULL" num="146" count="0" type="method"/>
+            <line num="149" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setVariable(Object,Object) : NULL" num="152" count="0" type="method"/>
+            <line num="155" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addAndSetVariable(Object,Object) : NULL" num="158" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLabels(Object,List&lt;StringPos&lt;NULL&gt;&gt;) : NULL" num="164" count="0" type="method"/>
+            <line num="167" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="removeClause(NULL,List&lt;NULL&gt;) : NULL" num="170" count="0" type="method"/>
+            <line num="173" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="removeProperty(Object) : NULL" num="176" count="0" type="method"/>
+            <line num="179" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="removeLabels(Object,List&lt;StringPos&lt;NULL&gt;&gt;) : NULL" num="182" count="0" type="method"/>
+            <line num="185" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deleteClause(NULL,boolean,List&lt;Object&gt;) : NULL" num="188" count="0" type="method"/>
+            <line num="191" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="unwindClause(NULL,Object,Object) : NULL" num="194" count="0" type="method"/>
+            <line num="197" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mergeClause(NULL,NULL,List&lt;NULL&gt;,List&lt;MergeActionType&gt;) : NULL" num="200" count="0" type="method"/>
+            <line num="203" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="callClause(NULL,List&lt;String&gt;,String,List&lt;Object&gt;,List&lt;NULL&gt;,Object) : NULL" num="206" count="0" type="method"/>
+            <line num="209" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="callResultItem(NULL,String,Object) : NULL" num="212" count="0" type="method"/>
+            <line num="215" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="namedPattern(Object,NULL) : NULL" num="218" count="0" type="method"/>
+            <line num="221" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="shortestPathPattern(NULL,NULL) : NULL" num="224" count="0" type="method"/>
+            <line num="227" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="allShortestPathsPattern(NULL,NULL) : NULL" num="230" count="0" type="method"/>
+            <line num="233" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="everyPathPattern(List&lt;NULL&gt;,List&lt;NULL&gt;) : NULL" num="236" count="0" type="method"/>
+            <line num="239" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="nodePattern(NULL,Object,List&lt;StringPos&lt;NULL&gt;&gt;,Object) : NULL" num="242" count="0" type="method"/>
+            <line num="245" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="relationshipPattern(NULL,boolean,boolean,Object,List&lt;StringPos&lt;NULL&gt;&gt;,NULL,Object,boolean) : NULL" num="248" count="0" type="method"/>
+            <line num="252" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pathLength(NULL,String,String) : NULL" num="255" count="0" type="method"/>
+            <line num="258" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="loadCsvClause(NULL,boolean,Object,Object,String) : NULL" num="261" count="0" type="method"/>
+            <line num="264" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="foreachClause(NULL,Object,Object,List&lt;NULL&gt;) : NULL" num="267" count="0" type="method"/>
+            <line num="270" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="subqueryClause(NULL,NULL) : NULL" num="273" count="0" type="method"/>
+            <line num="276" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newVariable(NULL,String) : Object" num="279" count="0" type="method"/>
+            <line num="282" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newParameter(NULL,Object) : Object" num="285" count="0" type="method"/>
+            <line num="288" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newParameter(NULL,String) : Object" num="291" count="0" type="method"/>
+            <line num="294" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="oldParameter(NULL,Object) : Object" num="297" count="0" type="method"/>
+            <line num="300" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newDouble(NULL,String) : Object" num="303" count="0" type="method"/>
+            <line num="306" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="newDecimalInteger(NULL,String,boolean) : Object" num="309" count="0" type="method"/>
+            <line num="312" count="0" type="stmt"/>
+            <line num="314" count="0" type="stmt"/>
+            <line num="315" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="315" type="cond"/>
+            <line num="319" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="319" type="cond"/>
+            <line num="321" count="0" type="stmt"/>
+            <line num="325" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="newHexInteger(NULL,String,boolean) : Object" num="330" count="0" type="method"/>
+            <line num="333" count="0" type="stmt"/>
+            <line num="335" count="0" type="stmt"/>
+            <line num="336" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="336" type="cond"/>
+            <line num="340" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="340" type="cond"/>
+            <line num="342" count="0" type="stmt"/>
+            <line num="346" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="newOctalInteger(NULL,String,boolean) : Object" num="351" count="0" type="method"/>
+            <line num="354" count="0" type="stmt"/>
+            <line num="356" count="0" type="stmt"/>
+            <line num="357" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="357" type="cond"/>
+            <line num="361" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="361" type="cond"/>
+            <line num="363" count="0" type="stmt"/>
+            <line num="367" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newString(NULL,String) : Object" num="372" count="0" type="method"/>
+            <line num="375" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newTrueLiteral(NULL) : Object" num="378" count="0" type="method"/>
+            <line num="381" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newFalseLiteral(NULL) : Object" num="384" count="0" type="method"/>
+            <line num="387" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newNullLiteral(NULL) : Object" num="390" count="0" type="method"/>
+            <line num="393" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="listLiteral(NULL,List&lt;Object&gt;) : Object" num="396" count="0" type="method"/>
+            <line num="399" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="mapLiteral(NULL,List&lt;StringPos&lt;NULL&gt;&gt;,List&lt;Object&gt;) : Object" num="402" count="0" type="method"/>
+            <line num="405" count="0" type="stmt"/>
+            <line num="406" count="0" type="stmt"/>
+            <line num="407" count="0" type="stmt"/>
+            <line num="408" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="408" type="cond"/>
+            <line num="410" count="0" type="stmt"/>
+            <line num="412" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasLabels(Object,List&lt;StringPos&lt;NULL&gt;&gt;) : Object" num="415" count="0" type="method"/>
+            <line num="418" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="property(Object,StringPos&lt;NULL&gt;) : Object" num="421" count="0" type="method"/>
+            <line num="424" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="or(NULL,Object,Object) : Object" num="427" count="0" type="method"/>
+            <line num="430" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="xor(NULL,Object,Object) : Object" num="433" count="0" type="method"/>
+            <line num="436" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="and(NULL,Object,Object) : Object" num="439" count="0" type="method"/>
+            <line num="442" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="ands(List&lt;Object&gt;) : Object" num="445" count="0" type="method"/>
+            <line num="448" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="not(Object) : Object" num="451" count="0" type="method"/>
+            <line num="454" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="plus(NULL,Object,Object) : Object" num="457" count="0" type="method"/>
+            <line num="460" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="minus(NULL,Object,Object) : Object" num="463" count="0" type="method"/>
+            <line num="466" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="multiply(NULL,Object,Object) : Object" num="469" count="0" type="method"/>
+            <line num="472" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="divide(NULL,Object,Object) : Object" num="475" count="0" type="method"/>
+            <line num="478" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="modulo(NULL,Object,Object) : Object" num="481" count="0" type="method"/>
+            <line num="484" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pow(NULL,Object,Object) : Object" num="487" count="0" type="method"/>
+            <line num="490" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="unaryPlus(Object) : Object" num="493" count="0" type="method"/>
+            <line num="496" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="unaryMinus(Object) : Object" num="499" count="0" type="method"/>
+            <line num="502" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="eq(NULL,Object,Object) : Object" num="505" count="0" type="method"/>
+            <line num="508" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="neq(NULL,Object,Object) : Object" num="511" count="0" type="method"/>
+            <line num="514" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="neq2(NULL,Object,Object) : Object" num="517" count="0" type="method"/>
+            <line num="520" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="lte(NULL,Object,Object) : Object" num="523" count="0" type="method"/>
+            <line num="526" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="gte(NULL,Object,Object) : Object" num="529" count="0" type="method"/>
+            <line num="532" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="lt(NULL,Object,Object) : Object" num="535" count="0" type="method"/>
+            <line num="538" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="gt(NULL,Object,Object) : Object" num="541" count="0" type="method"/>
+            <line num="544" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="regeq(NULL,Object,Object) : Object" num="547" count="0" type="method"/>
+            <line num="550" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="startsWith(NULL,Object,Object) : Object" num="553" count="0" type="method"/>
+            <line num="556" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="endsWith(NULL,Object,Object) : Object" num="559" count="0" type="method"/>
+            <line num="562" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="contains(NULL,Object,Object) : Object" num="565" count="0" type="method"/>
+            <line num="568" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="in(NULL,Object,Object) : Object" num="571" count="0" type="method"/>
+            <line num="574" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isNull(Object) : Object" num="577" count="0" type="method"/>
+            <line num="580" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="listLookup(Object,Object) : Object" num="583" count="0" type="method"/>
+            <line num="586" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="listSlice(NULL,Object,Object,Object) : Object" num="589" count="0" type="method"/>
+            <line num="592" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="newCountStar(NULL) : Object" num="595" count="0" type="method"/>
+            <line num="598" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="functionInvocation(NULL,List&lt;String&gt;,String,boolean,List&lt;Object&gt;) : Object" num="601" count="0" type="method"/>
+            <line num="604" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="listComprehension(NULL,Object,Object,Object,Object) : Object" num="607" count="0" type="method"/>
+            <line num="610" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="patternComprehension(NULL,Object,NULL,Object,Object) : Object" num="613" count="0" type="method"/>
+            <line num="616" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="filterExpression(NULL,Object,Object,Object) : Object" num="619" count="0" type="method"/>
+            <line num="622" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="extractExpression(NULL,Object,Object,Object,Object) : Object" num="625" count="0" type="method"/>
+            <line num="628" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="reduceExpression(NULL,Object,Object,Object,Object,Object) : Object" num="631" count="0" type="method"/>
+            <line num="634" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="allExpression(NULL,Object,Object,Object) : Object" num="637" count="0" type="method"/>
+            <line num="640" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="anyExpression(NULL,Object,Object,Object) : Object" num="643" count="0" type="method"/>
+            <line num="646" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="noneExpression(NULL,Object,Object,Object) : Object" num="649" count="0" type="method"/>
+            <line num="652" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="singleExpression(NULL,Object,Object,Object) : Object" num="655" count="0" type="method"/>
+            <line num="658" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="patternExpression(NULL,NULL) : Object" num="661" count="0" type="method"/>
+            <line num="664" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="existsSubQuery(NULL,List&lt;NULL&gt;,Object) : Object" num="667" count="0" type="method"/>
+            <line num="670" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mapProjection(NULL,Object,List&lt;NULL&gt;) : Object" num="673" count="0" type="method"/>
+            <line num="676" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mapProjectionLiteralEntry(StringPos&lt;NULL&gt;,Object) : NULL" num="679" count="0" type="method"/>
+            <line num="682" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mapProjectionProperty(StringPos&lt;NULL&gt;) : NULL" num="685" count="0" type="method"/>
+            <line num="688" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mapProjectionVariable(Object) : NULL" num="691" count="0" type="method"/>
+            <line num="694" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mapProjectionAll(NULL) : NULL" num="697" count="0" type="method"/>
+            <line num="700" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="caseExpression(NULL,Object,List&lt;Object&gt;,List&lt;Object&gt;,Object) : Object" num="703" count="0" type="method"/>
+            <line num="706" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="inputPosition(int,int,int) : NULL" num="709" count="0" type="method"/>
+            <line num="712" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.internal.nativeimpl">
+         <metrics coveredelements="0" complexity="44" loc="512" methods="24" classes="7" statements="68" coveredconditionals="0" coveredmethods="0" elements="120" ncloc="268" files="5" conditionals="28" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/native/src/main/java/org/neo4j/internal/nativeimpl/AbsentNativeAccess.java" name="AbsentNativeAccess.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="59" coveredmethods="0" methods="6" elements="12" classes="1" ncloc="34" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="AbsentNativeAccess">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="12" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="isAvailable() : boolean" num="24" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="tryEvictFromCache(int) : NativeCallResult" num="30" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="tryAdviseSequentialAccess(int) : NativeCallResult" num="36" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="tryAdviseToKeepInCache(int) : NativeCallResult" num="42" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="tryPreallocateSpace(int,long) : NativeCallResult" num="48" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="describe() : String" num="54" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/native/src/main/java/org/neo4j/internal/nativeimpl/LinuxNativeAccess.java" name="LinuxNativeAccess.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="26" loc="250" coveredmethods="0" methods="9" elements="81" classes="2" ncloc="150" statements="48" conditionals="24" coveredstatements="0"/>
+            <class name="LinuxNativeAccess">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="26" coveredmethods="0" methods="9" elements="81" statements="48" conditionals="24" coveredstatements="0"/>
+            </class>
+            <class name="LinuxNativeAccess.NativeCall">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="package" signature="&lt;clinit&gt;, line 56()" num="56" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="62" type="cond"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isAvailable() : boolean" num="109" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="tryEvictFromCache(int) : NativeCallResult" num="115" count="0" type="method"/>
+            <line num="118" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="118" type="cond"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="tryAdviseSequentialAccess(int) : NativeCallResult" num="125" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="128" type="cond"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="tryAdviseToKeepInCache(int) : NativeCallResult" num="135" count="0" type="method"/>
+            <line num="138" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="138" type="cond"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="tryPreallocateSpace(int,long) : NativeCallResult" num="145" count="0" type="method"/>
+            <line num="148" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="148" type="cond"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="152" type="cond"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="describe() : String" num="159" count="0" type="method"/>
+            <line num="162" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="162" type="cond"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="167" type="cond"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="wrapResult(NativeCall) : NativeCallResult" num="175" count="0" type="method"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="180" type="cond"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line complexity="7" visibility="private" signature="tryExtractError(int) : String" num="195" count="0" type="method"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="201" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="201" type="cond"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="211" count="0" type="stmt"/>
+            <line num="223" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="223" type="cond"/>
+            <line num="225" count="0" type="stmt"/>
+            <line num="228" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="228" type="cond"/>
+            <line num="230" count="0" type="stmt"/>
+            <line num="239" count="0" type="stmt"/>
+            <line num="242" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/native/src/main/java/org/neo4j/internal/nativeimpl/NativeAccess.java" name="NativeAccess.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="77" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="12" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="NativeAccess">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/native/src/main/java/org/neo4j/internal/nativeimpl/NativeAccessProvider.java" name="NativeAccessProvider.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="65" coveredmethods="0" methods="3" elements="14" classes="2" ncloc="38" statements="7" conditionals="4" coveredstatements="0"/>
+            <class name="NativeAccessProvider">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="3" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="NativeAccessProvider.AccessHolder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="1" elements="11" statements="6" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="NativeAccessProvider()" num="31" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getNativeAccess() : NativeAccess" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="4" visibility="package" signature="AccessHolder()" num="45" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="47" type="cond"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="54" type="cond"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/native/src/main/java/org/neo4j/internal/nativeimpl/NativeCallResult.java" name="NativeCallResult.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="61" coveredmethods="0" methods="6" elements="13" classes="1" ncloc="34" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="NativeCallResult">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="13" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="private" signature="NativeCallResult()" num="30" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="NativeCallResult(int,String)" num="35" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isError() : boolean" num="41" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getErrorCode() : int" num="46" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getErrorMessage() : String" num="51" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="56" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="Neo4j 4.2.0-SNAPSHOT (Aggregated)" timestamp="1594472991380">
+      <metrics coveredelements="0" complexity="44" loc="625" methods="36" classes="7" statements="126" packages="4" coveredconditionals="0" coveredmethods="0" elements="162" ncloc="441" files="6" conditionals="0" coveredstatements="0"/>
+      <package name="org.neo4j.annotations.service">
+         <metrics coveredelements="0" complexity="5" loc="97" methods="5" classes="1" statements="5" coveredconditionals="0" coveredmethods="0" elements="10" ncloc="71" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/test/java/org/neo4j/annotations/service/ServiceAnnotationProcessorTest.java" name="ServiceAnnotationProcessorTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="97" coveredmethods="0" methods="5" elements="10" classes="1" ncloc="71" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="ServiceAnnotationProcessorTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="10" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="providersWithDistinctServiceKeys() : void" num="30" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="classIsBothServiceAndProvider() : void" num="48" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="nestedTypes() : void" num="63" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="failMultipleServiceAscendants() : void" num="78" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="failProviderDoesntImplementService() : void" num="88" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.annotations.api">
+         <metrics coveredelements="0" complexity="7" loc="122" methods="7" classes="1" statements="7" coveredconditionals="0" coveredmethods="0" elements="14" ncloc="94" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/annotations/src/test/java/org/neo4j/annotations/api/PublicApiAnnotationProcessorTest.java" name="PublicApiAnnotationProcessorTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="122" coveredmethods="0" methods="7" elements="14" classes="1" ncloc="94" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="PublicApiAnnotationProcessorTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="7" elements="14" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="setUp() : void" num="33" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="printPublicSignature() : void" num="39" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="printAnnotationSignature() : void" num="54" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="failClassIsNotPublic() : void" num="69" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="failClassIsNotMarkedPublic() : void" num="79" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="failNestedClassIsNotMarkedPublic() : void" num="91" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="successDeprecatedClassIsNotMarkedPublic() : void" num="105" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.cypher.internal.ast.factory">
+         <metrics coveredelements="0" complexity="7" loc="114" methods="7" classes="1" statements="36" coveredconditionals="0" coveredmethods="0" elements="43" ncloc="75" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/cypher/ast-factory/src/test/java/org/neo4j/cypher/internal/ast/factory/LiteralInterpreterTest.java" name="LiteralInterpreterTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="114" coveredmethods="0" methods="7" elements="43" classes="1" ncloc="75" statements="36" conditionals="0" coveredstatements="0"/>
+            <class name="LiteralInterpreterTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="7" elements="43" statements="36" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="shouldInterpretNumbers() : void" num="35" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="shouldInterpretString() : void" num="63" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="shouldInterpretNull() : void" num="74" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="shouldInterpretBoolean() : void" num="82" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="shouldInterpretList() : void" num="91" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="shouldInterpretMap() : void" num="99" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="stringPos(String) : ASTFactory.StringPos&lt;ASTFactory.NULL&gt;" num="110" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.internal.nativeimpl">
+         <metrics coveredelements="0" complexity="25" loc="292" methods="17" classes="4" statements="78" coveredconditionals="0" coveredmethods="0" elements="95" ncloc="201" files="3" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/native/src/test/java/org/neo4j/internal/nativeimpl/AbsentNativeAccessTest.java" name="AbsentNativeAccessTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="53" coveredmethods="0" methods="3" elements="10" classes="1" ncloc="28" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="AbsentNativeAccessTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="10" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="absentNativeAccessIsNotAvailable() : void" num="32" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="absentNativeAccessSkipCacheAlwaysFinishSuccessfully() : void" num="38" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="absentNativeAccessPreallocationsAlwaysFinishSuccessfully() : void" num="46" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/native/src/test/java/org/neo4j/internal/nativeimpl/LinuxNativeAccessTest.java" name="LinuxNativeAccessTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="20" loc="189" coveredmethods="0" methods="12" elements="77" classes="2" ncloc="146" statements="65" conditionals="0" coveredstatements="0"/>
+            <class name="LinuxNativeAccessTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="4" elements="14" statements="10" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="LinuxNativeAccessTest.AccessLinuxMethodsTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="12" coveredmethods="0" methods="8" elements="63" statements="55" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="disabledOnNonLinux() : void" num="48" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="availableOnLinux() : void" num="62" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="accessErrorMessageOnError() : void" num="68" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="failToPreallocateOnLinuxForIncorrectDescriptor() : void" num="78" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="preallocateCacheOnLinuxForCorrectDescriptor() : void" num="94" count="0" type="method"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="failToAdviseSequentialOnLinuxForIncorrectDescriptor() : void" num="115" count="0" type="method"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line complexity="3" visibility="package" signature="adviseSequentialAccessOnLinuxForCorrectDescriptor() : void" num="131" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="failToSkipCacheOnLinuxForIncorrectDescriptor() : void" num="144" count="0" type="method"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line complexity="3" visibility="package" signature="skipCacheOnLinuxForCorrectDescriptor() : void" num="155" count="0" type="method"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="preallocate(File,long) : void" num="167" count="0" type="method"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="getClosedDescriptor(File) : int" num="176" count="0" type="method"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getDescriptor(RandomAccessFile) : int" num="184" count="0" type="method"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/community/native/src/test/java/org/neo4j/internal/nativeimpl/NativeAccessProviderTest.java" name="NativeAccessProviderTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="50" coveredmethods="0" methods="2" elements="8" classes="1" ncloc="27" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="NativeAccessProviderTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="8" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="linuxNativeAccessSelectedOnLinux() : void" num="33" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="absentNativeAccessSelectedOnNonLinux() : void" num="42" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

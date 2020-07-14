@@ -1,0 +1,1375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594317325163" clover="4.4.1">
+   <project name="vainilla 0.0.4" timestamp="0">
+      <metrics coveredelements="0" complexity="410" loc="3155" methods="351" classes="44" statements="678" packages="8" coveredconditionals="0" coveredmethods="0" elements="1127" ncloc="1959" files="44" conditionals="98" coveredstatements="0"/>
+      <package name="com.uqbar.vainilla.exceptions">
+         <metrics coveredelements="0" complexity="4" loc="33" methods="4" classes="1" statements="4" coveredconditionals="0" coveredmethods="0" elements="8" ncloc="15" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/exceptions/GameException.java" name="GameException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="33" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="15" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="GameException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GameException()" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="GameException(String,Throwable)" num="20" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="GameException(Throwable)" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="GameException(String)" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.uqbar.vainilla.appearances">
+         <metrics coveredelements="0" complexity="121" loc="910" methods="111" classes="10" statements="186" coveredconditionals="0" coveredmethods="0" elements="313" ncloc="577" files="10" conditionals="16" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/appearances/Animation.java" name="Animation.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="24" loc="137" coveredmethods="0" methods="21" elements="60" classes="1" ncloc="93" statements="33" conditionals="6" coveredstatements="0"/>
+            <class name="Animation">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="24" coveredmethods="0" methods="21" elements="60" statements="33" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Animation(double,Sprite)" num="16" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWidth() : double" num="26" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHeight() : double" num="31" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDuration() : double" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="reset() : void" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getCurrentSprite() : Sprite" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="update(double) : void" num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="57" type="cond"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="render(GameComponent&lt;?&gt;,Graphics2D) : void" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="renderAt(int,int,Graphics2D) : void" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="copy() : Animation" num="71" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="advance() : void" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="80" type="cond"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getMeantime() : double" num="91" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setMeantime(double) : void" num="95" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getSprites() : Sprite[]" num="99" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setSprites(Sprite) : void" num="103" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getCurrentIndex() : int" num="107" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setCurrentIndex(int) : void" num="111" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getRemainingTime() : double" num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setRemainingTime(double) : void" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="copyProgressFrom(Animation) : void" num="123" count="0" type="method"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="flipHorizontally() : Animation" num="128" count="0" type="method"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="131" type="cond"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/appearances/Appearance.java" name="Appearance.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Appearance">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/appearances/Circle.java" name="Circle.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="55" coveredmethods="0" methods="6" elements="13" classes="1" ncloc="32" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="Circle">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="13" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Circle(Color,int)" num="17" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWidth() : double" num="26" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHeight() : double" num="31" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="copy() : Circle" num="36" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(double) : void" num="46" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="render(GameComponent&lt;?&gt;,Graphics2D) : void" num="50" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/appearances/FilledArc.java" name="FilledArc.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="64" coveredmethods="0" methods="6" elements="17" classes="1" ncloc="39" statements="11" conditionals="0" coveredstatements="0"/>
+            <class name="FilledArc">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="17" statements="11" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FilledArc(Color,int,double,double)" num="20" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWidth() : double" num="31" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHeight() : double" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="copy() : FilledArc" num="41" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(double) : void" num="51" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="render(GameComponent&lt;?&gt;,Graphics2D) : void" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/appearances/Invisible.java" name="Invisible.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="40" coveredmethods="0" methods="5" elements="8" classes="1" ncloc="23" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="Invisible">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="8" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getWidth() : double" num="13" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHeight() : double" num="18" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="copy() : Invisible" num="23" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(double) : void" num="33" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="render(GameComponent&lt;?&gt;,Graphics2D) : void" num="37" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/appearances/Label.java" name="Label.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="24" loc="162" coveredmethods="0" methods="23" elements="62" classes="1" ncloc="109" statements="37" conditionals="2" coveredstatements="0"/>
+            <class name="Label">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="24" coveredmethods="0" methods="23" elements="62" statements="37" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Label(Font,Color,String)" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Label(Font,Color,String)" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="Label(Font,Color,List&lt;String&gt;)" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWidth() : double" num="41" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHeight() : double" num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="copy() : Appearance" num="58" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getLinesCount() : int" num="64" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getLineHeight() : double" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setText(String) : void" num="76" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(double) : void" num="84" count="0" type="method"/>
+            <line complexity="2" visibility="public" signature="render(GameComponent&lt;?&gt;,Graphics2D) : void" num="88" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="95" type="cond"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFont() : Font" num="107" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFont(Font) : void" num="111" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getColor() : Color" num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setColor(Color) : void" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getTextLines() : List&lt;String&gt;" num="123" count="0" type="method"/>
+            <line num="124" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setTextLines(List&lt;String&gt;) : void" num="127" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOffsetX() : double" num="134" count="0" type="method"/>
+            <line num="135" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOffsetX(double) : void" num="138" count="0" type="method"/>
+            <line num="139" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOffsetY() : double" num="142" count="0" type="method"/>
+            <line num="143" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOffsetY(double) : void" num="146" count="0" type="method"/>
+            <line num="147" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="center() : Label" num="150" count="0" type="method"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="centerBottom() : Label" num="156" count="0" type="method"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/appearances/Rectangle.java" name="Rectangle.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="56" coveredmethods="0" methods="6" elements="14" classes="1" ncloc="34" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="Rectangle">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="14" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Rectangle(Color,int,int)" num="15" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWidth() : double" num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHeight() : double" num="30" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="copy() : Rectangle" num="35" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(double) : void" num="45" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="render(GameComponent&lt;?&gt;,Graphics2D) : void" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/appearances/Shape.java" name="Shape.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="44" coveredmethods="0" methods="7" elements="18" classes="1" ncloc="32" statements="11" conditionals="0" coveredstatements="0"/>
+            <class name="Shape">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="7" elements="18" statements="11" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Shape()" num="12" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOffsetX() : double" num="16" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOffsetX(double) : void" num="20" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOffsetY() : double" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOffsetY(double) : void" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="center() : T" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="centerBottom() : T" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/appearances/SimpleAppearance.java" name="SimpleAppearance.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="18" loc="115" coveredmethods="0" methods="15" elements="44" classes="1" ncloc="71" statements="25" conditionals="4" coveredstatements="0"/>
+            <class name="SimpleAppearance">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="18" coveredmethods="0" methods="15" elements="44" statements="25" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="copy() : T" num="15" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="scale(double) : T" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="scaleHorizontally(double) : T" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="scaleVertically(double) : T" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="scaleTo(double,double) : T" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="scaleHorizontallyTo(double,boolean) : T" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="52" type="cond"/>
+            <line complexity="2" visibility="public" signature="scaleVerticallyTo(int,boolean) : T" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="58" type="cond"/>
+            <line complexity="1" visibility="public" signature="render(GameComponent&lt;?&gt;,Graphics2D) : void" num="67" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="renderAt(int,int,Graphics2D) : void" num="72" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getX() : double" num="82" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setX(double) : void" num="86" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getY() : double" num="90" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setY(double) : void" num="94" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="center() : T" num="102" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="centerBottom() : T" num="109" count="0" type="method"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/appearances/Sprite.java" name="Sprite.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="25" loc="211" coveredmethods="0" methods="22" elements="77" classes="1" ncloc="135" statements="51" conditionals="4" coveredstatements="0"/>
+            <class name="Sprite">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="25" coveredmethods="0" methods="22" elements="77" statements="51" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="fromImage(String) : Sprite" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="fromImage(String,ResourceProvider) : Sprite" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Sprite(BufferedImage)" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWidth() : double" num="56" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHeight() : double" num="61" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getTransformedImage(AffineTransform) : BufferedImage" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="scale(double,double) : Sprite" num="82" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="rotate(double) : Sprite" num="88" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="flipHorizontally() : Sprite" num="104" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="flipVertically() : Sprite" num="116" count="0" type="method"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="crop(int,int) : Sprite" num="132" count="0" type="method"/>
+            <line num="133" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="crop(int,int,int,int) : Sprite" num="136" count="0" type="method"/>
+            <line num="137" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="repeat(double,double) : Sprite" num="144" count="0" type="method"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="155" type="cond"/>
+            <line num="156" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="156" type="cond"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="repeatHorizontally(double) : Sprite" num="167" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="repeatVertically(double) : Sprite" num="171" count="0" type="method"/>
+            <line num="172" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="repeatHorizontallyToCover(double) : Sprite" num="175" count="0" type="method"/>
+            <line num="176" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="repeatVerticallyToCover(double) : Sprite" num="179" count="0" type="method"/>
+            <line num="180" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="repeatToCover(double,double) : Sprite" num="183" count="0" type="method"/>
+            <line num="184" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(double) : void" num="191" count="0" type="method"/>
+            <line complexity="1" visibility="protected" signature="doRenderAt(int,int,Graphics2D) : void" num="195" count="0" type="method"/>
+            <line num="197" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getImage() : BufferedImage" num="204" count="0" type="method"/>
+            <line num="205" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setImage(BufferedImage) : void" num="208" count="0" type="method"/>
+            <line num="209" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.uqbar.vainilla.sound">
+         <metrics coveredelements="0" complexity="59" loc="515" methods="38" classes="6" statements="116" coveredconditionals="0" coveredmethods="0" elements="188" ncloc="296" files="6" conditionals="34" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/sound/MonoSound.java" name="MonoSound.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="56" coveredmethods="0" methods="4" elements="24" classes="1" ncloc="33" statements="14" conditionals="6" coveredstatements="0"/>
+            <class name="MonoSound">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="4" elements="24" statements="14" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="MonoSound(byte[],AudioFormat)" num="12" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="collectableSamples(int) : int" num="20" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="renderSamples(float[],float,int,int) : int" num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="30" type="cond"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="collectSamples(float[],ShortBuffer,int,float) : void" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="47" type="cond"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/sound/Sound.java" name="Sound.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="12" loc="95" coveredmethods="0" methods="10" elements="32" classes="1" ncloc="53" statements="18" conditionals="4" coveredstatements="0"/>
+            <class name="Sound">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="12" coveredmethods="0" methods="10" elements="32" statements="18" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="toFloatSample(short) : float" num="17" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="Sound()" num="25" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="Sound(byte[],AudioFormat)" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="resample(byte[],AudioFormat) : float[]" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="46" type="cond"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="play() : SoundPlay" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="play(float) : SoundPlay" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getSamples() : float[]" num="80" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setSamples(float[]) : void" num="84" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getFormat() : AudioFormat" num="88" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setFormat(AudioFormat) : void" num="92" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/sound/SoundBuilder.java" name="SoundBuilder.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="74" coveredmethods="0" methods="4" elements="26" classes="1" ncloc="51" statements="18" conditionals="4" coveredstatements="0"/>
+            <class name="SoundBuilder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="4" elements="26" statements="18" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="toNormalizedReadableFormat(AudioFormat) : AudioFormat" num="19" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="readInput(AudioInputStream) : byte[]" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="37" type="cond"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="buildSound(String) : Sound" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="buildSound(InputStream) : Sound" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="62" type="cond"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/sound/SoundPlay.java" name="SoundPlay.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="74" coveredmethods="0" methods="10" elements="27" classes="1" ncloc="44" statements="17" conditionals="0" coveredstatements="0"/>
+            <class name="SoundPlay">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="10" elements="27" statements="17" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="SoundPlay(Sound,float)" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="writeSamples(int,float[]) : boolean" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="shouldStopPlaying() : boolean" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="stop() : void" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getSound() : Sound" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setSound(Sound) : void" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getWrittenSamples() : int" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setWrittenSamples(int) : void" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getVolume() : float" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setVolume(float) : void" num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/sound/SoundPlayer.java" name="SoundPlayer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="155" coveredmethods="0" methods="6" elements="51" classes="1" ncloc="79" statements="33" conditionals="12" coveredstatements="0"/>
+            <class name="SoundPlayer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="6" elements="51" statements="33" conditionals="12" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="protected" signature="initialValue() : SourceDataLine" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="toShortSample(float) : short" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="48" type="cond"/>
+            <line falsecount="0" truecount="0" num="48" type="cond"/>
+            <line complexity="1" visibility="public" signature="normalizeFormat(AudioFormat) : AudioFormat" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="enqueueSound(Sound,float) : SoundPlay" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="run() : void" num="73" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="5" visibility="protected" signature="playSound(SoundPlay,float) : void" num="88" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="95" type="cond"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="98" type="cond"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="105" type="cond"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="115" type="cond"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/sound/StereoSound.java" name="StereoSound.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="61" coveredmethods="0" methods="4" elements="28" classes="1" ncloc="36" statements="16" conditionals="8" coveredstatements="0"/>
+            <class name="StereoSound">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="4" elements="28" statements="16" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="StereoSound(byte[],AudioFormat)" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="collectableSamples(int) : int" num="22" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="24" type="cond"/>
+            <line complexity="2" visibility="protected" signature="renderSamples(float[],float,int,int) : int" num="27" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="32" type="cond"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="collectSamples(float[],ShortBuffer,int,float) : void" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="46" type="cond"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="51" type="cond"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.uqbar.vainilla.utils">
+         <metrics coveredelements="0" complexity="5" loc="50" methods="5" classes="3" statements="5" coveredconditionals="0" coveredmethods="0" elements="10" ncloc="33" files="3" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/utils/AppletResourceProvider.java" name="AppletResourceProvider.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="21" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="13" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="AppletResourceProvider">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AppletResourceProvider(Applet)" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getResource(String) : URL" num="16" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/utils/ClassLoaderResourcesProvider.java" name="ClassLoaderResourcesProvider.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="22" coveredmethods="0" methods="3" elements="6" classes="1" ncloc="15" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="ClassLoaderResourcesProvider">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ClassLoaderResourcesProvider()" num="9" count="0" type="method"/>
+            <line num="10" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="ClassLoaderResourcesProvider(ClassLoader)" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getResource(String) : URL" num="17" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/utils/ResourceProvider.java" name="ResourceProvider.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="7" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ResourceProvider">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="com.uqbar.vainilla">
+         <metrics coveredelements="0" complexity="141" loc="962" methods="122" classes="8" statements="246" coveredconditionals="0" coveredmethods="0" elements="398" ncloc="642" files="8" conditionals="30" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/ConcreteDeltaState.java" name="ConcreteDeltaState.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="32" loc="191" coveredmethods="0" methods="32" elements="80" classes="1" ncloc="138" statements="48" conditionals="0" coveredstatements="0"/>
+            <class name="ConcreteDeltaState">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="32" coveredmethods="0" methods="32" elements="80" statements="48" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ConcreteDeltaState()" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isKeyPressed(Key) : boolean" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isKeyReleased(Key) : boolean" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isKeyBeingHold(Key) : boolean" num="52" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasMouseMoved() : boolean" num="57" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isMouseButtonPressed(MouseButton) : boolean" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isMouseButtonReleased(MouseButton) : boolean" num="67" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isMouseButtonBeingHold(MouseButton) : boolean" num="72" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="reset() : void" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setKeyPressed(Key) : void" num="89" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setKeyReleased(Key) : void" num="94" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setMousePosition(Point2D.Double) : void" num="99" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setMouseButtonPressed(MouseButton) : void" num="103" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setMouseButtonReleased(MouseButton) : void" num="108" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDelta() : double" num="117" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDelta(double) : void" num="122" count="0" type="method"/>
+            <line num="123" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getPressedKeys() : Set&lt;Key&gt;" num="126" count="0" type="method"/>
+            <line num="127" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setPressedKeys(Set&lt;Key&gt;) : void" num="130" count="0" type="method"/>
+            <line num="131" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getReleasedKeys() : Set&lt;Key&gt;" num="134" count="0" type="method"/>
+            <line num="135" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setReleasedKeys(Set&lt;Key&gt;) : void" num="138" count="0" type="method"/>
+            <line num="139" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getHoldedKeys() : Set&lt;Key&gt;" num="142" count="0" type="method"/>
+            <line num="143" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setHoldedKeys(Set&lt;Key&gt;) : void" num="146" count="0" type="method"/>
+            <line num="147" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLastMousePosition() : Point2D.Double" num="150" count="0" type="method"/>
+            <line num="152" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setLastMousePosition(Point2D.Double) : void" num="155" count="0" type="method"/>
+            <line num="156" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCurrentMousePosition() : Point2D.Double" num="159" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setCurrentMousePosition(Point2D.Double) : void" num="164" count="0" type="method"/>
+            <line num="165" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getPressedMouseButtons() : Set&lt;MouseButton&gt;" num="168" count="0" type="method"/>
+            <line num="169" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setPressedMouseButtons(Set&lt;MouseButton&gt;) : void" num="172" count="0" type="method"/>
+            <line num="173" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getReleasedMouseButtons() : Set&lt;MouseButton&gt;" num="176" count="0" type="method"/>
+            <line num="177" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setReleasedMouseButtons(Set&lt;MouseButton&gt;) : void" num="180" count="0" type="method"/>
+            <line num="181" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getHoldedMouseButtons() : Set&lt;MouseButton&gt;" num="184" count="0" type="method"/>
+            <line num="185" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setHoldedMouseButtons(Set&lt;MouseButton&gt;) : void" num="188" count="0" type="method"/>
+            <line num="189" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/DeltaState.java" name="DeltaState.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="29" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="15" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="DeltaState">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/DesktopGameLauncher.java" name="DesktopGameLauncher.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="94" coveredmethods="0" methods="13" elements="34" classes="1" ncloc="61" statements="19" conditionals="2" coveredstatements="0"/>
+            <class name="DesktopGameLauncher">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="13" elements="34" statements="19" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="&lt;clinit&gt;, line 18()" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="DesktopGameLauncher(Game)" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="windowActivated(WindowEvent) : void" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="windowDeactivated(WindowEvent) : void" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="windowOpened(WindowEvent) : void" num="44" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="windowIconified(WindowEvent) : void" num="48" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="windowDeiconified(WindowEvent) : void" num="52" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="windowClosing(WindowEvent) : void" num="56" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="windowClosed(WindowEvent) : void" num="60" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="launch() : void" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getPlayer() : GamePlayer" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setPlayer(GamePlayer) : void" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="main(String[]) : void" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="88" type="cond"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/Game.java" name="Game.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="83" coveredmethods="0" methods="8" elements="23" classes="1" ncloc="40" statements="13" conditionals="2" coveredstatements="0"/>
+            <class name="Game">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="8" elements="23" statements="13" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Game()" num="16" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDisplayWidth() : int" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDisplayHeight() : int" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="takeStep(Graphics2D) : void" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pause() : void" num="55" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="pushEvent(GameEvent) : void" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCurrentScene() : GameScene" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="setCurrentScene(GameScene) : void" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="71" type="cond"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/GameApplet.java" name="GameApplet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="67" coveredmethods="0" methods="5" elements="28" classes="1" ncloc="51" statements="23" conditionals="0" coveredstatements="0"/>
+            <class name="GameApplet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="5" elements="28" statements="23" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="protected" signature="buildGame() : Game" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="init() : void" num="29" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="focusLost(FocusEvent) : void" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="focusGained(FocusEvent) : void" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="logStart() : void" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/GameComponent.java" name="GameComponent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="32" loc="186" coveredmethods="0" methods="28" elements="85" classes="1" ncloc="124" statements="49" conditionals="8" coveredstatements="0"/>
+            <class name="GameComponent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="32" coveredmethods="0" methods="28" elements="85" statements="49" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GameComponent()" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="GameComponent(double,double)" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="GameComponent(Appearance,double,double)" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getGame() : Game" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="onSceneActivated() : void" num="48" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="move(double,double) : void" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="destroy() : void" num="60" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="alignTopTo(double) : void" num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="alignLeftTo(double) : void" num="72" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="alignBottomTo(double) : void" num="76" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="alignRightTo(double) : void" num="80" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="alignHorizontalCenterTo(double) : void" num="84" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="alignVerticalCenterTo(double) : void" num="88" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="alignCloserBoundTo(GameComponent&lt;?&gt;) : void" num="92" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="103" type="cond"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="106" type="cond"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="109" type="cond"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="render(Graphics2D) : void" num="121" count="0" type="method"/>
+            <line num="122" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="update(DeltaState) : void" num="125" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getScene() : SceneType" num="133" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setScene(SceneType) : void" num="137" count="0" type="method"/>
+            <line num="138" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAppearance() : Appearance" num="141" count="0" type="method"/>
+            <line num="142" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAppearance(Appearance) : void" num="145" count="0" type="method"/>
+            <line num="146" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getX() : double" num="149" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setX(double) : void" num="153" count="0" type="method"/>
+            <line num="154" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getY() : double" num="157" count="0" type="method"/>
+            <line num="158" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setY(double) : void" num="161" count="0" type="method"/>
+            <line num="162" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getZ() : int" num="165" count="0" type="method"/>
+            <line num="166" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="setZ(int) : void" num="169" count="0" type="method"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="172" type="cond"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isDestroyPending() : boolean" num="178" count="0" type="method"/>
+            <line num="179" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setDestroyPending(boolean) : void" num="182" count="0" type="method"/>
+            <line num="183" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/GamePlayer.java" name="GamePlayer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="15" loc="121" coveredmethods="0" methods="13" elements="52" classes="1" ncloc="80" statements="37" conditionals="2" coveredstatements="0"/>
+            <class name="GamePlayer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="15" coveredmethods="0" methods="13" elements="52" statements="37" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GamePlayer(Game)" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="isPaused() : boolean" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="run() : void" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="resume() : void" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pause() : void" num="64" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="takeStep() : void" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEventListener(EventAdapter) : void" num="82" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="2" visibility="protected" signature="sleep() : void" num="88" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="hideMouse() : void" num="97" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getGame() : Game" num="106" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setGame(Game) : void" num="110" count="0" type="method"/>
+            <line num="111" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getPlayerThread() : Thread" num="114" count="0" type="method"/>
+            <line num="115" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setPlayerThread(Thread) : void" num="118" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/GameScene.java" name="GameScene.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="32" loc="191" coveredmethods="0" methods="23" elements="96" classes="1" ncloc="133" statements="57" conditionals="16" coveredstatements="0"/>
+            <class name="GameScene">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="32" coveredmethods="0" methods="23" elements="96" statements="57" conditionals="16" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GameScene()" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="GameScene(GameComponent&lt;? extends GameScene&gt;)" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="GameScene(Collection&lt;? extends GameComponent&lt;? extends GameScene&gt;&gt;)" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getComponentCount() : int" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getZFromComponentAt(int) : int" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="7" visibility="protected" signature="indexToInsert(GameComponent&lt;?&gt;) : int" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="56" type="cond"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="60" type="cond"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="64" type="cond"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="68" type="cond"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="71" type="cond"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="onSetAsCurrent() : void" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pushEvent(GameEvent) : void" num="89" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="takeStep(Graphics2D) : void" num="93" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="95" type="cond"/>
+            <line num="96" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="96" type="cond"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="104" type="cond"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addComponent(GameComponent) : void" num="118" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addComponents(GameComponent&lt;?&gt;) : void" num="125" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addComponents(Collection&lt;? extends GameComponent&lt;?&gt;&gt;) : void" num="131" count="0" type="method"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="removeComponent(GameComponent&lt;?&gt;) : void" num="137" count="0" type="method"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="removeComponents(GameComponent&lt;?&gt;) : void" num="143" count="0" type="method"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="removeComponents(Collection&lt;? extends GameComponent&lt;?&gt;&gt;) : void" num="149" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getGame() : Game" num="159" count="0" type="method"/>
+            <line num="160" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setGame(Game) : void" num="163" count="0" type="method"/>
+            <line num="164" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getComponents() : List&lt;GameComponent&lt;?&gt;&gt;" num="167" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setComponents(List&lt;GameComponent&lt;?&gt;&gt;) : void" num="171" count="0" type="method"/>
+            <line num="172" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getEventQueue() : EventQueue" num="175" count="0" type="method"/>
+            <line num="176" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setEventQueue(EventQueue) : void" num="179" count="0" type="method"/>
+            <line num="180" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getLastUpdateTime() : double" num="183" count="0" type="method"/>
+            <line num="184" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLastUpdateTime(double) : void" num="187" count="0" type="method"/>
+            <line num="188" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.uqbar.vainilla.colissions">
+         <metrics coveredelements="0" complexity="29" loc="209" methods="23" classes="2" statements="64" coveredconditionals="0" coveredmethods="0" elements="99" ncloc="135" files="2" conditionals="12" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/colissions/Bounds.java" name="Bounds.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="17" loc="97" coveredmethods="0" methods="17" elements="37" classes="1" ncloc="64" statements="20" conditionals="0" coveredstatements="0"/>
+            <class name="Bounds">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="17" coveredmethods="0" methods="17" elements="37" statements="20" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Bounds(double,double,double,double)" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTop() : double" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRight() : double" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBottom() : double" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLeft() : double" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCenterX() : double" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCenterY() : double" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="contains(double,double) : boolean" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="contains(Bounds) : boolean" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getX() : double" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setX(double) : void" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getY() : double" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setY(double) : void" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setWidth(double) : void" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWidth() : double" num="85" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setHeight(double) : void" num="89" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHeight() : double" num="93" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/colissions/CollisionDetector.java" name="CollisionDetector.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="12" loc="112" coveredmethods="0" methods="6" elements="62" classes="1" ncloc="71" statements="44" conditionals="12" coveredstatements="0"/>
+            <class name="CollisionDetector">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="12" coveredmethods="0" methods="6" elements="62" statements="44" conditionals="12" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="CollisionDetector()" num="9" count="0" type="method"/>
+            <line complexity="7" visibility="public" signature="collidesCircleAgainstRect(double,double,double,double,double,double,double) : boolean" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="49" type="cond"/>
+            <line num="50" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="50" type="cond"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="54" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="54" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="62" type="cond"/>
+            <line num="63" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="63" type="cond"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="collidesRectAgainstRect(double,double,int,int,double,double,int,int) : boolean" num="72" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="collidesCircleAgainstCircle(double,double,int,double,double,int) : boolean" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="collidesPointAgainstTriangle(double,double,double,double,double,double,double,double) : boolean" num="90" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="triangleArea(double,double,double,double,double,double) : double" num="102" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.uqbar.vainilla.events">
+         <metrics coveredelements="0" complexity="43" loc="393" methods="41" classes="12" statements="47" coveredconditionals="0" coveredmethods="0" elements="92" ncloc="212" files="12" conditionals="4" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/EventAdapter.java" name="EventAdapter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="15" loc="96" coveredmethods="0" methods="13" elements="28" classes="1" ncloc="65" statements="11" conditionals="4" coveredstatements="0"/>
+            <class name="EventAdapter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="15" coveredmethods="0" methods="13" elements="28" statements="11" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="EventAdapter(Game)" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mouseDragged(MouseEvent) : void" num="29" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mouseMoved(MouseEvent) : void" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mouseClicked(MouseEvent) : void" num="39" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="mouseEntered(MouseEvent) : void" num="43" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="mouseExited(MouseEvent) : void" num="47" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="mousePressed(MouseEvent) : void" num="51" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mouseReleased(MouseEvent) : void" num="59" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="keyPressed(KeyEvent) : void" num="67" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="69" type="cond"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="keyReleased(KeyEvent) : void" num="74" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="76" type="cond"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="keyTyped(KeyEvent) : void" num="81" count="0" type="method"/>
+            <line complexity="1" visibility="protected" signature="getGame() : Game" num="89" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setGame(Game) : void" num="93" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/EventQueue.java" name="EventQueue.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="74" coveredmethods="0" methods="9" elements="25" classes="1" ncloc="43" statements="16" conditionals="0" coveredstatements="0"/>
+            <class name="EventQueue">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="9" elements="25" statements="16" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="EventQueue()" num="17" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pushEvent(GameEvent) : void" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="takeState(double) : DeltaState" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="takePendingEvents() : Collection&lt;GameEvent&gt;" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="resetEvents() : void" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getEvents() : Collection&lt;GameEvent&gt;" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setEvents(Collection&lt;GameEvent&gt;) : void" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="getDeltaState() : ConcreteDeltaState" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setDeltaState(ConcreteDeltaState) : void" num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/GameEvent.java" name="GameEvent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="8" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="4" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="GameEvent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/KeyEvent.java" name="KeyEvent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="28" coveredmethods="0" methods="3" elements="6" classes="1" ncloc="13" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="KeyEvent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="KeyEvent(Key)" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getKey() : Key" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setKey(Key) : void" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/KeyPressedEvent.java" name="KeyPressedEvent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="24" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="11" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="KeyPressedEvent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="KeyPressedEvent(Key)" num="12" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="applyOn(ConcreteDeltaState) : void" num="20" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/KeyReleasedEvent.java" name="KeyReleasedEvent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="24" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="11" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="KeyReleasedEvent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="KeyReleasedEvent(Key)" num="12" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="applyOn(ConcreteDeltaState) : void" num="20" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/MouseButtonEvent.java" name="MouseButtonEvent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="31" coveredmethods="0" methods="3" elements="7" classes="1" ncloc="15" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="MouseButtonEvent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="7" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="MouseButtonEvent(Point2D.Double,MouseButton)" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getButton() : MouseButton" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setButton(MouseButton) : void" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/MouseEvent.java" name="MouseEvent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="28" coveredmethods="0" methods="3" elements="6" classes="1" ncloc="13" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="MouseEvent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="MouseEvent(Point2D.Double)" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPosition() : Point2D.Double" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="setPosition(Point2D.Double) : void" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/MouseMovedEvent.java" name="MouseMovedEvent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="24" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="11" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="MouseMovedEvent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="MouseMovedEvent(Point2D.Double)" num="12" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="applyOn(ConcreteDeltaState) : void" num="20" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/MousePressedEvent.java" name="MousePressedEvent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="25" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="12" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="MousePressedEvent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="MousePressedEvent(Point2D.Double,MouseButton)" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="applyOn(ConcreteDeltaState) : void" num="21" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/MouseReleasedEvent.java" name="MouseReleasedEvent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="25" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="12" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="MouseReleasedEvent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="MouseReleasedEvent(Point2D.Double,MouseButton)" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="applyOn(ConcreteDeltaState) : void" num="21" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/SimpleEvent.java" name="SimpleEvent.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="6" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="2" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="SimpleEvent">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="com.uqbar.vainilla.events.constants">
+         <metrics coveredelements="0" complexity="8" loc="83" methods="7" classes="2" statements="10" coveredconditionals="0" coveredmethods="0" elements="19" ncloc="49" files="2" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/constants/Key.java" name="Key.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="58" coveredmethods="0" methods="5" elements="13" classes="1" ncloc="33" statements="6" conditionals="2" coveredstatements="0"/>
+            <class name="Key">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="5" elements="13" statements="6" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="&lt;init&gt;, line 22()" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="fromKeyCode(int) : Key" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="36" type="cond"/>
+            <line complexity="1" visibility="private" signature="Key(int)" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getKeyCode() : int" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="setKeyCode(int) : void" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/uqbar/vainilla/events/constants/MouseButton.java" name="MouseButton.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="25" coveredmethods="0" methods="2" elements="6" classes="1" ncloc="16" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="MouseButton">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="6" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="&lt;init&gt;, line 11()" num="11" count="0" type="method"/>
+            <line num="12" count="0" type="stmt"/>
+            <line num="13" count="0" type="stmt"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fromMouseButtonCode(int) : MouseButton" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="vainilla 0.0.4" timestamp="0">
+      <metrics coveredelements="0" complexity="0" loc="0" methods="0" classes="0" statements="0" packages="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="0" files="0" conditionals="0" coveredstatements="0"/>
+   </testproject>
+</coverage>

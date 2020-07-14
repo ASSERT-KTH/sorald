@@ -1,0 +1,1920 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594347773446" clover="4.4.1">
+   <project name="Neo4j-OGM 4.0.0-SNAPSHOT (Aggregated)" timestamp="1594347770382">
+      <metrics coveredelements="0" complexity="497" loc="5924" methods="323" classes="94" statements="842" packages="14" coveredconditionals="0" coveredmethods="0" elements="1401" ncloc="2608" files="82" conditionals="236" coveredstatements="0"/>
+      <package name="org.neo4j.ogm.request">
+         <metrics coveredelements="0" complexity="6" loc="337" methods="6" classes="10" statements="8" coveredconditionals="0" coveredmethods="0" elements="14" ncloc="77" files="10" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/request/DefaultRequest.java" name="DefaultRequest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="29" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="DefaultRequest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/request/GraphModelRequest.java" name="GraphModelRequest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="GraphModelRequest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/request/GraphRowListModelRequest.java" name="GraphRowListModelRequest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="GraphRowListModelRequest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/request/OptimisticLockingConfig.java" name="OptimisticLockingConfig.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="47" coveredmethods="0" methods="4" elements="10" classes="1" ncloc="20" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="OptimisticLockingConfig">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="10" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="OptimisticLockingConfig(int,String[],String)" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getExpectedResultsCount() : int" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTypes() : String[]" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getVersionProperty() : String" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/request/Request.java" name="Request.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="42" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="13" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Request">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/request/RestModelRequest.java" name="RestModelRequest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RestModelRequest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/request/RowModelRequest.java" name="RowModelRequest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RowModelRequest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/request/Statement.java" name="Statement.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="44" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Statement">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/request/StatementFactory.java" name="StatementFactory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="34" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="6" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="StatementFactory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/request/Statements.java" name="Statements.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="37" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="11" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="Statements">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Statements(List&lt;Statement&gt;)" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStatements() : List&lt;Statement&gt;" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.spi">
+         <metrics coveredelements="0" complexity="1" loc="73" methods="1" classes="1" statements="1" coveredconditionals="0" coveredmethods="0" elements="2" ncloc="9" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/spi/CypherModificationProvider.java" name="CypherModificationProvider.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="73" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="9" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="CypherModificationProvider">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="getOrder() : int" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.driver">
+         <metrics coveredelements="0" complexity="55" loc="800" methods="33" classes="12" statements="98" coveredconditionals="0" coveredmethods="0" elements="163" ncloc="308" files="10" conditionals="32" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/driver/AbstractConfigurableDriver.java" name="AbstractConfigurableDriver.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="18" loc="221" coveredmethods="0" methods="10" elements="53" classes="1" ncloc="110" statements="35" conditionals="8" coveredstatements="0"/>
+            <class name="AbstractConfigurableDriver">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="18" coveredmethods="0" methods="10" elements="53" statements="35" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AbstractConfigurableDriver()" num="97" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="AbstractConfigurableDriver(Supplier&lt;Map&lt;String, Object&gt;&gt;)" num="107" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="configure(Configuration) : void" num="117" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getConfiguration() : Configuration" num="124" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="getCypherModification() : Function&lt;String, String&gt;" num="129" count="0" type="method"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="133" type="cond"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="136" type="cond"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="loadNativeTypes(String) : TypeSystem" num="153" count="0" type="method"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="initializeTypeSystem() : void" num="173" count="0" type="method"/>
+            <line num="175" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="175" type="cond"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTypeSystem() : TypeSystem" num="190" count="0" type="method"/>
+            <line num="192" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getConfigurationProperties() : Map&lt;String, Object&gt;" num="201" count="0" type="method"/>
+            <line num="203" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="203" type="cond"/>
+            <line num="204" count="0" type="stmt"/>
+            <line num="207" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="loadCypherModifications() : Function&lt;String, String&gt;" num="210" count="0" type="method"/>
+            <line num="212" count="0" type="stmt"/>
+            <line num="213" count="0" type="stmt"/>
+            <line num="214" count="0" type="stmt"/>
+            <line num="216" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/driver/Driver.java" name="Driver.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="108" coveredmethods="0" methods="5" elements="13" classes="1" ncloc="31" statements="6" conditionals="2" coveredstatements="0"/>
+            <class name="Driver">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="5" elements="13" statements="6" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="getCypherModification() : Function&lt;String, String&gt;" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="requiresTransaction() : boolean" num="64" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="getTypeSystem() : TypeSystem" num="75" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="getExceptionTranslator() : ExceptionTranslator" num="85" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="86" type="cond"/>
+            <line complexity="1" visibility="package" signature="unwrap(Class&lt;T&gt;) : T" num="103" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/driver/ExceptionTranslator.java" name="ExceptionTranslator.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="48" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ExceptionTranslator">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/driver/NativeTypesException.java" name="NativeTypesException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="42" coveredmethods="0" methods="2" elements="5" classes="1" ncloc="11" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="NativeTypesException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="5" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="NativeTypesException(String,String)" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDriverClassName() : String" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/driver/NativeTypesNotAvailableException.java" name="NativeTypesNotAvailableException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="53" coveredmethods="0" methods="2" elements="13" classes="1" ncloc="20" statements="11" conditionals="0" coveredstatements="0"/>
+            <class name="NativeTypesNotAvailableException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="2" elements="13" statements="11" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="package" signature="NativeTypesNotAvailableException(String)" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRequiredModule() : String" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/driver/NativeTypesNotSupportedException.java" name="NativeTypesNotSupportedException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="32" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="6" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="NativeTypesNotSupportedException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="NativeTypesNotSupportedException(String)" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/driver/ParameterConversion.java" name="ParameterConversion.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="55" coveredmethods="0" methods="1" elements="2" classes="2" ncloc="19" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="ParameterConversion">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="ParameterConversion.DefaultParameterConversion">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="convertParameters(Map&lt;String, Object&gt;) : Map&lt;String, Object&gt;" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/driver/TypeAdapterLookupDelegate.java" name="TypeAdapterLookupDelegate.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="70" coveredmethods="0" methods="4" elements="19" classes="1" ncloc="30" statements="9" conditionals="6" coveredstatements="0"/>
+            <class name="TypeAdapterLookupDelegate">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="4" elements="19" statements="9" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="TypeAdapterLookupDelegate(Map&lt;Class&lt;?&gt;, Function&gt;)" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getAdapterFor(Class&lt;?&gt;) : Function&lt;Object, Object&gt;" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="50" type="cond"/>
+            <line complexity="1" visibility="public" signature="hasAdapterFor(Class&lt;?&gt;) : boolean" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="findAdapterFor(Class&lt;?&gt;) : Optional&lt;Function&lt;Object, Object&gt;&gt;" num="57" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="59" type="cond"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="61" type="cond"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/driver/TypeSystem.java" name="TypeSystem.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="68" coveredmethods="0" methods="3" elements="8" classes="2" ncloc="17" statements="3" conditionals="2" coveredstatements="0"/>
+            <class name="TypeSystem">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="8" statements="3" conditionals="2" coveredstatements="0"/>
+            </class>
+            <class name="TypeSystem.NoNativeTypes">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="package" signature="supportsAsNativeType(Class&lt;?&gt;) : boolean" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="42" type="cond"/>
+            <line complexity="1" visibility="package" signature="getNativeToMappedTypeAdapter(Class&lt;?&gt;) : Function&lt;Object, Object&gt;" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="getMappedToNativeTypeAdapter(Class&lt;?&gt;) : Function&lt;Object, Object&gt;" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/driver/TypeSystemBasedParameterConversion.java" name="TypeSystemBasedParameterConversion.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="12" loc="103" coveredmethods="0" methods="5" elements="48" classes="1" ncloc="59" statements="29" conditionals="14" coveredstatements="0"/>
+            <class name="TypeSystemBasedParameterConversion">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="12" coveredmethods="0" methods="5" elements="48" statements="29" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="TypeSystemBasedParameterConversion(TypeSystem)" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="6" visibility="public" signature="convertParameters(Map&lt;String, Object&gt;) : Map&lt;String, Object&gt;" num="47" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="55" type="cond"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="57" type="cond"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="59" type="cond"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="61" type="cond"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="63" type="cond"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="convertListItems(List&lt;?&gt;) : List&lt;?&gt;" num="76" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="convertArrayItems(Object) : Object[]" num="81" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="86" type="cond"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="convertSingle(Object) : Object" num="93" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="96" type="cond"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.response">
+         <metrics coveredelements="0" complexity="6" loc="101" methods="5" classes="2" statements="8" coveredconditionals="0" coveredmethods="0" elements="15" ncloc="35" files="2" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/response/EmptyResponse.java" name="EmptyResponse.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="39" coveredmethods="0" methods="3" elements="5" classes="1" ncloc="14" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="EmptyResponse">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="5" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="next() : T" num="26" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="close() : void" num="31" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="columns() : String[]" num="35" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/response/Response.java" name="Response.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="62" coveredmethods="0" methods="2" elements="10" classes="1" ncloc="21" statements="6" conditionals="2" coveredstatements="0"/>
+            <class name="Response">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="2" elements="10" statements="6" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="package" signature="toList() : List&lt;T&gt;" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="43" type="cond"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="getStatistics() : Optional&lt;QueryStatistics&gt;" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.config">
+         <metrics coveredelements="0" complexity="149" loc="1320" methods="81" classes="17" statements="267" coveredconditionals="0" coveredmethods="0" elements="414" ncloc="719" files="10" conditionals="66" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/config/AutoIndexMode.java" name="AutoIndexMode.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="87" coveredmethods="0" methods="3" elements="14" classes="1" ncloc="25" statements="7" conditionals="4" coveredstatements="0"/>
+            <class name="AutoIndexMode">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="3" elements="14" statements="7" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="fromString(String) : AutoIndexMode" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="67" type="cond"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="69" type="cond"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="AutoIndexMode(String)" num="79" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="84" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/config/ClasspathConfigurationSource.java" name="ClasspathConfigurationSource.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="48" coveredmethods="0" methods="2" elements="7" classes="1" ncloc="18" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="ClasspathConfigurationSource">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="2" elements="7" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="4" visibility="public" signature="ClasspathConfigurationSource(String)" num="35" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="properties() : Properties" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/config/Configuration.java" name="Configuration.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="104" loc="730" coveredmethods="0" methods="53" elements="307" classes="3" ncloc="470" statements="206" conditionals="48" coveredstatements="0"/>
+            <class name="Configuration">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="53" coveredmethods="0" methods="28" elements="158" statements="92" conditionals="38" coveredstatements="0"/>
+            </class>
+            <class name="Configuration.ClassLoaderPrecedence">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="Configuration.Builder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="51" coveredmethods="0" methods="25" elements="149" statements="114" conditionals="10" coveredstatements="0"/>
+            </class>
+            <line complexity="7" visibility="public" signature="getDefaultClassLoader() : ClassLoader" num="74" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="80" type="cond"/>
+            <line num="83" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="83" type="cond"/>
+            <line num="84" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="84" type="cond"/>
+            <line num="85" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="85" type="cond"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="10" visibility="package" signature="Configuration(Builder)" num="136" count="0" type="method"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="139" type="cond"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="144" type="cond"/>
+            <line num="145" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="145" type="cond"/>
+            <line num="146" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="147" type="cond"/>
+            <line num="148" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="148" type="cond"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="160" type="cond"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="166" type="cond"/>
+            <line num="167" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="167" type="cond"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="parseAndSetParametersFromURI(URI) : void" num="174" count="0" type="method"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="176" type="cond"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="181" type="cond"/>
+            <line num="182" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="getSingleURI() : URI" num="186" count="0" type="method"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="189" type="cond"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="192" type="cond"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="198" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAutoIndex() : AutoIndexMode" num="201" count="0" type="method"/>
+            <line num="202" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDumpDir() : String" num="205" count="0" type="method"/>
+            <line num="206" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDumpFilename() : String" num="209" count="0" type="method"/>
+            <line num="210" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getURI() : String" num="213" count="0" type="method"/>
+            <line num="214" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getURIS() : String[]" num="217" count="0" type="method"/>
+            <line num="218" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDriverClassName() : String" num="221" count="0" type="method"/>
+            <line num="222" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getConnectionPoolSize() : int" num="225" count="0" type="method"/>
+            <line num="226" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEncryptionLevel() : String" num="229" count="0" type="method"/>
+            <line num="230" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTrustStrategy() : String" num="233" count="0" type="method"/>
+            <line num="234" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTrustCertFile() : String" num="237" count="0" type="method"/>
+            <line num="238" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getConnectionLivenessCheckTimeout() : Integer" num="241" count="0" type="method"/>
+            <line num="242" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getVerifyConnection() : Boolean" num="245" count="0" type="method"/>
+            <line num="246" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNeo4jConfLocation() : String" num="249" count="0" type="method"/>
+            <line num="250" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDatabase() : String" num="253" count="0" type="method"/>
+            <line num="254" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="isEmbeddedHA() : boolean" num="260" count="0" type="method"/>
+            <line num="262" count="0" type="stmt"/>
+            <line num="263" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="263" type="cond"/>
+            <line num="264" count="0" type="stmt"/>
+            <line num="265" count="0" type="stmt"/>
+            <line num="267" count="0" type="stmt"/>
+            <line num="268" count="0" type="stmt"/>
+            <line num="270" count="0" type="stmt"/>
+            <line num="272" count="0" type="stmt"/>
+            <line num="276" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getResourceUrl(String) : URL" num="279" count="0" type="method"/>
+            <line num="281" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCredentials() : Credentials" num="284" count="0" type="method"/>
+            <line num="285" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCustomProperties() : Map&lt;String, Object&gt;" num="288" count="0" type="method"/>
+            <line num="289" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUseNativeTypes() : Boolean" num="292" count="0" type="method"/>
+            <line num="293" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUseStrictQuerying() : Boolean" num="296" count="0" type="method"/>
+            <line num="297" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBasePackages() : String[]" num="300" count="0" type="method"/>
+            <line num="301" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mergeBasePackagesWith(String) : String[]" num="304" count="0" type="method"/>
+            <line num="305" count="0" type="stmt"/>
+            <line num="306" count="0" type="stmt"/>
+            <line num="308" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="equals(Object) : boolean" num="314" count="0" type="method"/>
+            <line num="316" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="316" type="cond"/>
+            <line num="317" count="0" type="stmt"/>
+            <line num="319" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="319" type="cond"/>
+            <line num="320" count="0" type="stmt"/>
+            <line num="322" count="0" type="stmt"/>
+            <line num="323" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="342" count="0" type="method"/>
+            <line num="344" count="0" type="stmt"/>
+            <line num="347" count="0" type="stmt"/>
+            <line num="348" count="0" type="stmt"/>
+            <line num="349" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Builder()" num="401" count="0" type="method"/>
+            <line complexity="23" visibility="public" signature="Builder(ConfigurationSource)" num="409" count="0" type="method"/>
+            <line num="410" count="0" type="stmt"/>
+            <line num="411" count="0" type="stmt"/>
+            <line num="412" count="0" type="stmt"/>
+            <line num="413" count="0" type="stmt"/>
+            <line num="414" count="0" type="stmt"/>
+            <line num="415" count="0" type="stmt"/>
+            <line num="416" count="0" type="stmt"/>
+            <line num="417" count="0" type="stmt"/>
+            <line num="418" count="0" type="stmt"/>
+            <line num="419" count="0" type="stmt"/>
+            <line num="420" count="0" type="stmt"/>
+            <line num="421" count="0" type="stmt"/>
+            <line num="422" count="0" type="stmt"/>
+            <line num="423" count="0" type="stmt"/>
+            <line num="424" count="0" type="stmt"/>
+            <line num="425" count="0" type="stmt"/>
+            <line num="426" count="0" type="stmt"/>
+            <line num="427" count="0" type="stmt"/>
+            <line num="428" count="0" type="stmt"/>
+            <line num="429" count="0" type="stmt"/>
+            <line num="430" count="0" type="stmt"/>
+            <line num="431" count="0" type="stmt"/>
+            <line num="432" count="0" type="stmt"/>
+            <line num="433" count="0" type="stmt"/>
+            <line num="434" count="0" type="stmt"/>
+            <line num="435" count="0" type="stmt"/>
+            <line num="436" count="0" type="stmt"/>
+            <line num="437" count="0" type="stmt"/>
+            <line num="438" count="0" type="stmt"/>
+            <line num="439" count="0" type="stmt"/>
+            <line num="440" count="0" type="stmt"/>
+            <line num="441" count="0" type="stmt"/>
+            <line num="442" count="0" type="stmt"/>
+            <line num="443" count="0" type="stmt"/>
+            <line num="444" count="0" type="stmt"/>
+            <line num="445" count="0" type="stmt"/>
+            <line num="446" count="0" type="stmt"/>
+            <line num="447" count="0" type="stmt"/>
+            <line num="448" count="0" type="stmt"/>
+            <line num="449" count="0" type="stmt"/>
+            <line num="450" count="0" type="stmt"/>
+            <line num="451" count="0" type="stmt"/>
+            <line num="452" count="0" type="stmt"/>
+            <line num="453" count="0" type="stmt"/>
+            <line num="454" count="0" type="stmt"/>
+            <line num="455" count="0" type="stmt"/>
+            <line num="456" count="0" type="stmt"/>
+            <line num="457" count="0" type="stmt"/>
+            <line num="458" count="0" type="stmt"/>
+            <line num="459" count="0" type="stmt"/>
+            <line num="460" count="0" type="stmt"/>
+            <line num="461" count="0" type="stmt"/>
+            <line num="462" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="462" type="cond"/>
+            <line num="463" count="0" type="stmt"/>
+            <line num="465" count="0" type="stmt"/>
+            <line num="466" count="0" type="stmt"/>
+            <line num="467" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="467" type="cond"/>
+            <line num="468" count="0" type="stmt"/>
+            <line num="470" count="0" type="stmt"/>
+            <line num="471" count="0" type="stmt"/>
+            <line num="472" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="copy(Builder) : Builder" num="477" count="0" type="method"/>
+            <line num="478" count="0" type="stmt"/>
+            <line num="494" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="494" type="cond"/>
+            <line num="495" count="0" type="stmt"/>
+            <line num="497" count="0" type="stmt"/>
+            <line num="499" count="0" type="stmt"/>
+            <line complexity="4" visibility="private" signature="splitValue(Object) : String[]" num="502" count="0" type="method"/>
+            <line num="504" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="504" type="cond"/>
+            <line num="505" count="0" type="stmt"/>
+            <line num="509" count="0" type="stmt"/>
+            <line num="510" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="510" type="cond"/>
+            <line num="511" count="0" type="stmt"/>
+            <line num="514" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="uri(String) : Builder" num="527" count="0" type="method"/>
+            <line num="528" count="0" type="stmt"/>
+            <line num="529" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="uris(String[]) : Builder" num="539" count="0" type="method"/>
+            <line num="540" count="0" type="stmt"/>
+            <line num="541" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="connectionPoolSize(Integer) : Builder" num="551" count="0" type="method"/>
+            <line num="552" count="0" type="stmt"/>
+            <line num="553" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="encryptionLevel(String) : Builder" num="563" count="0" type="method"/>
+            <line num="564" count="0" type="stmt"/>
+            <line num="565" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="trustStrategy(String) : Builder" num="568" count="0" type="method"/>
+            <line num="569" count="0" type="stmt"/>
+            <line num="570" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="trustCertFile(String) : Builder" num="573" count="0" type="method"/>
+            <line num="574" count="0" type="stmt"/>
+            <line num="575" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="connectionLivenessCheckTimeout(Integer) : Builder" num="578" count="0" type="method"/>
+            <line num="579" count="0" type="stmt"/>
+            <line num="580" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="verifyConnection(Boolean) : Builder" num="594" count="0" type="method"/>
+            <line num="595" count="0" type="stmt"/>
+            <line num="596" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="autoIndex(String) : Builder" num="605" count="0" type="method"/>
+            <line num="606" count="0" type="stmt"/>
+            <line num="607" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="generatedIndexesOutputDir(String) : Builder" num="610" count="0" type="method"/>
+            <line num="611" count="0" type="stmt"/>
+            <line num="612" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="generatedIndexesOutputFilename(String) : Builder" num="615" count="0" type="method"/>
+            <line num="616" count="0" type="stmt"/>
+            <line num="617" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="neo4jConfLocation(String) : Builder" num="620" count="0" type="method"/>
+            <line num="621" count="0" type="stmt"/>
+            <line num="622" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="customProperties(Map&lt;String, Object&gt;) : Builder" num="625" count="0" type="method"/>
+            <line num="626" count="0" type="stmt"/>
+            <line num="627" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withCustomProperty(String,Object) : Builder" num="630" count="0" type="method"/>
+            <line num="631" count="0" type="stmt"/>
+            <line num="632" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="useNativeTypes() : Builder" num="650" count="0" type="method"/>
+            <line num="651" count="0" type="stmt"/>
+            <line num="652" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="strictQuerying() : Builder" num="668" count="0" type="method"/>
+            <line num="669" count="0" type="stmt"/>
+            <line num="670" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="relaxedQuerying() : Builder" num="682" count="0" type="method"/>
+            <line num="683" count="0" type="stmt"/>
+            <line num="684" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="withBasePackages(String) : Builder" num="694" count="0" type="method"/>
+            <line num="695" count="0" type="stmt"/>
+            <line num="696" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="database(String) : Builder" num="708" count="0" type="method"/>
+            <line num="709" count="0" type="stmt"/>
+            <line num="710" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="build() : Configuration" num="713" count="0" type="method"/>
+            <line num="714" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="credentials(String,String) : Builder" num="724" count="0" type="method"/>
+            <line num="725" count="0" type="stmt"/>
+            <line num="726" count="0" type="stmt"/>
+            <line num="727" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/config/ConfigurationSource.java" name="ConfigurationSource.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="37" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ConfigurationSource">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/config/ConfigurationUtils.java" name="ConfigurationUtils.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="100" coveredmethods="0" methods="5" elements="32" classes="1" ncloc="45" statements="19" conditionals="8" coveredstatements="0"/>
+            <class name="ConfigurationUtils">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="5" elements="32" statements="19" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="package" signature="getResourceAsStream(String) : InputStream" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="46" type="cond"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="3" visibility="package" signature="getResourceUrl(String) : URL" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="67" type="cond"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getClasspathResourceUrl(String) : URL" num="80" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="85" type="cond"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="createRelativePathIfNecessary(String) : String" num="93" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="95" type="cond"/>
+            <line complexity="1" visibility="private" signature="ConfigurationUtils()" num="98" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/config/Credentials.java" name="Credentials.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="27" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="4" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Credentials">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/config/Drivers.java" name="Drivers.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="58" coveredmethods="0" methods="3" elements="13" classes="1" ncloc="32" statements="8" conditionals="2" coveredstatements="0"/>
+            <class name="Drivers">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="13" statements="8" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="Drivers(String,String)" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="getDriverFor(String) : Drivers" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="47" type="cond"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="driverClassName() : String" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/config/FileConfigurationSource.java" name="FileConfigurationSource.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="66" coveredmethods="0" methods="3" elements="14" classes="1" ncloc="31" statements="9" conditionals="2" coveredstatements="0"/>
+            <class name="FileConfigurationSource">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="3" elements="14" statements="9" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="4" visibility="public" signature="FileConfigurationSource(String)" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="createFile(String) : File" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="54" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="properties() : Properties" num="61" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/config/ObjectMapperFactory.java" name="ObjectMapperFactory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="108" coveredmethods="0" methods="8" elements="13" classes="6" ncloc="62" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="ObjectMapperFactory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="3" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="ObjectMapperFactory.NodeModelMixin">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="1" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="ObjectMapperFactory.DefaultGraphModelMixin">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="2" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="ObjectMapperFactory.DefaultGraphRowModelMixin">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="1" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="ObjectMapperFactory.IgnoreUnknownPropertiesMixin">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="ObjectMapperFactory.Neo4jOgmJacksonModule">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="6" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="objectMapper() : ObjectMapper" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="NodeModelMixin(Long)" num="61" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="addNodes(NodeModel[]) : void" num="72" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="addRelationships(RelationshipModel[]) : void" num="76" count="0" type="method"/>
+            <line complexity="1" visibility="package" signature="DefaultGraphRowModelMixin(DefaultGraphModel,Object[])" num="83" count="0" type="method"/>
+            <line complexity="1" visibility="package" signature="Neo4jOgmJacksonModule()" num="94" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="setupModule(SetupContext) : void" num="97" count="0" type="method"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="ObjectMapperFactory()" num="106" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/config/UsernamePasswordCredentials.java" name="UsernamePasswordCredentials.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="59" coveredmethods="0" methods="4" elements="14" classes="1" ncloc="27" statements="8" conditionals="2" coveredstatements="0"/>
+            <class name="UsernamePasswordCredentials">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="4" elements="14" statements="8" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="UsernamePasswordCredentials(String,String)" num="35" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="37" type="cond"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="credentials() : String" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUsername() : String" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPassword() : String" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.result.adapter">
+         <metrics coveredelements="0" complexity="49" loc="600" methods="21" classes="6" statements="136" coveredconditionals="0" coveredmethods="0" elements="205" ncloc="306" files="6" conditionals="48" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/result/adapter/BaseAdapter.java" name="BaseAdapter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="47" coveredmethods="0" methods="2" elements="9" classes="1" ncloc="18" statements="5" conditionals="2" coveredstatements="0"/>
+            <class name="BaseAdapter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="2" elements="9" statements="5" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="convertArrayPropertiesToCollection(Map&lt;String, Object&gt;) : Map&lt;String, Object&gt;" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="convertOrReturnSelf(Map.Entry&lt;String, Object&gt;) : Object" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="41" type="cond"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/result/adapter/GraphModelAdapter.java" name="GraphModelAdapter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="13" loc="160" coveredmethods="0" methods="5" elements="66" classes="1" ncloc="89" statements="45" conditionals="16" coveredstatements="0"/>
+            <class name="GraphModelAdapter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="13" coveredmethods="0" methods="5" elements="66" statements="45" conditionals="16" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="adapt(Map&lt;String, Object&gt;) : GraphModel" num="47" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="adaptInternal(Set&lt;Long&gt;,Set&lt;Long&gt;,DefaultGraphModel,Object,boolean) : void" num="69" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="71" type="cond"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="73" type="cond"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="75" type="cond"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="77" type="cond"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="3" visibility="package" signature="buildPath(Object,DefaultGraphModel,Set,Set,boolean) : void" num="85" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="91" type="cond"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="95" type="cond"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="buildNode(Object,DefaultGraphModel,Set&lt;Long&gt;,boolean) : void" num="100" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="103" type="cond"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="buildRelationship(Object,DefaultGraphModel,Set&lt;Long&gt;) : void" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="120" type="cond"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/result/adapter/GraphRowModelAdapter.java" name="GraphRowModelAdapter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="121" coveredmethods="0" methods="5" elements="48" classes="1" ncloc="69" statements="31" conditionals="12" coveredstatements="0"/>
+            <class name="GraphRowModelAdapter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="5" elements="48" statements="31" conditionals="12" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="GraphRowModelAdapter(GraphModelAdapter)" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="adapt(Map&lt;String, Object&gt;) : GraphRowModel" num="58" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="60" type="cond"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="adapt(Iterator&lt;String&gt;,Map&lt;String, Object&gt;,DefaultGraphModel,List&lt;String&gt;,List&lt;Object&gt;,Set&lt;Long&gt;,Set&lt;Long&gt;) : void" num="83" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="86" type="cond"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line complexity="5" visibility="private" signature="adapt(Object,DefaultGraphModel,List&lt;Object&gt;,Set&lt;Long&gt;,Set&lt;Long&gt;,boolean) : void" num="100" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="102" type="cond"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="104" type="cond"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="106" type="cond"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="108" type="cond"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setColumns(List&lt;String&gt;) : void" num="118" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/result/adapter/RestModelAdapter.java" name="RestModelAdapter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="138" coveredmethods="0" methods="6" elements="54" classes="1" ncloc="82" statements="38" conditionals="10" coveredstatements="0"/>
+            <class name="RestModelAdapter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="6" elements="54" statements="38" conditionals="10" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="adapt(Map&lt;String, Object&gt;) : Map&lt;String, Object&gt;" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handleAdaptedValue(Collection&lt;Object&gt;,Object) : void" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="67" type="cond"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="handlePossibleCollections(Object,Function&lt;Object, Object&gt;) : Object" num="80" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="82" type="cond"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="processData(Object) : Object" num="93" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="94" type="cond"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="97" type="cond"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="buildNode(Object) : NodeModel" num="103" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="buildRelationship(Object) : RelationshipModel" num="111" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/result/adapter/ResultAdapter.java" name="ResultAdapter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="45" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="9" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="ResultAdapter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="describesGeneratedNode(String) : boolean" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/result/adapter/RowModelAdapter.java" name="RowModelAdapter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="89" coveredmethods="0" methods="2" elements="26" classes="1" ncloc="39" statements="16" conditionals="8" coveredstatements="0"/>
+            <class name="RowModelAdapter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="2" elements="26" statements="16" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="8" visibility="public" signature="adapt(Map&lt;String, Object&gt;) : RowModel" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="49" type="cond"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="60" type="cond"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="65" type="cond"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="70" type="cond"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setColumns(List&lt;String&gt;) : void" num="80" count="0" type="method"/>
+            <line num="81" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.transaction">
+         <metrics coveredelements="0" complexity="24" loc="328" methods="12" classes="5" statements="47" coveredconditionals="0" coveredmethods="0" elements="81" ncloc="130" files="3" conditionals="22" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/transaction/AbstractTransaction.java" name="AbstractTransaction.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="24" loc="169" coveredmethods="0" methods="12" elements="81" classes="1" ncloc="103" statements="47" conditionals="22" coveredstatements="0"/>
+            <class name="AbstractTransaction">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="24" coveredmethods="0" methods="12" elements="81" statements="47" conditionals="22" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="AbstractTransaction(TransactionManager)" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="rollback() : void" num="61" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="67" type="cond"/>
+            <line num="69" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="69" type="cond"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="commit() : void" num="80" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="85" type="cond"/>
+            <line num="86" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="86" type="cond"/>
+            <line num="87" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="87" type="cond"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="96" type="cond"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="canCommit() : boolean" num="105" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="extend(Type) : void" num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="116" type="cond"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="status() : Status" num="124" count="0" type="method"/>
+            <line num="125" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isReadOnly() : boolean" num="128" count="0" type="method"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="type() : Type" num="132" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line complexity="6" visibility="public" signature="close() : void" num="137" count="0" type="method"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="141" type="cond"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="144" type="cond"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="146" type="cond"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="148" type="cond"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="extensions() : long" num="158" count="0" type="method"/>
+            <line num="159" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="registerNew(Object) : void" num="162" count="0" type="method"/>
+            <line num="163" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="registeredNew() : List&lt;Object&gt;" num="166" count="0" type="method"/>
+            <line num="167" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/transaction/Transaction.java" name="Transaction.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="78" coveredmethods="0" methods="0" elements="0" classes="3" ncloc="16" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Transaction">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="Transaction.Status">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+            <class name="Transaction.Type">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/transaction/TransactionManager.java" name="TransactionManager.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="81" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="11" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="TransactionManager">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.model">
+         <metrics coveredelements="0" complexity="3" loc="462" methods="1" classes="12" statements="11" coveredconditionals="0" coveredmethods="0" elements="16" ncloc="105" files="12" conditionals="4" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/model/Edge.java" name="Edge.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="46" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Edge">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/model/GraphModel.java" name="GraphModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="31" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="6" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="GraphModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/model/GraphRowListModel.java" name="GraphRowListModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="29" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="GraphRowListModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/model/GraphRowModel.java" name="GraphRowModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="29" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="GraphRowModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/model/Node.java" name="Node.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="82" coveredmethods="0" methods="1" elements="16" classes="1" ncloc="30" statements="11" conditionals="4" coveredstatements="0"/>
+            <class name="Node">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="1" elements="16" statements="11" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="package" signature="toRow(String) : Map&lt;String, Object&gt;" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="71" type="cond"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="76" type="cond"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/model/Property.java" name="Property.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="31" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="6" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Property">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/model/PropertyContainer.java" name="PropertyContainer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="50" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="PropertyContainer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/model/Query.java" name="Query.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="27" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="4" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Query">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/model/QueryStatistics.java" name="QueryStatistics.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="49" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="15" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="QueryStatistics">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/model/RestModel.java" name="RestModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="30" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RestModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/model/Result.java" name="Result.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="29" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Result">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/model/RowModel.java" name="RowModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="29" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RowModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.exception">
+         <metrics coveredelements="0" complexity="10" loc="202" methods="10" classes="5" statements="12" coveredconditionals="0" coveredmethods="0" elements="22" ncloc="49" files="5" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/exception/ConnectionException.java" name="ConnectionException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="31" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="6" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="ConnectionException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ConnectionException(String,Throwable)" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/exception/CypherException.java" name="CypherException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="70" coveredmethods="0" methods="4" elements="10" classes="1" ncloc="19" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="CypherException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="10" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="CypherException(String,String)" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="CypherException(String,String,Throwable)" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCode() : String" num="58" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDescription() : String" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/exception/OptimisticLockingException.java" name="OptimisticLockingException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="35" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="6" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="OptimisticLockingException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="OptimisticLockingException(String)" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/exception/ResultProcessingException.java" name="ResultProcessingException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="33" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="9" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="ResultProcessingException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ResultProcessingException(String,Exception)" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="ResultProcessingException(String)" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/exception/TransactionException.java" name="TransactionException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="33" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="9" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="TransactionException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="TransactionException(String)" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="TransactionException(String,Throwable)" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.response.model">
+         <metrics coveredelements="0" complexity="113" loc="934" methods="97" classes="11" statements="143" coveredconditionals="0" coveredmethods="0" elements="262" ncloc="506" files="11" conditionals="22" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/response/model/AbstractPropertyContainer.java" name="AbstractPropertyContainer.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="69" coveredmethods="0" methods="3" elements="12" classes="1" ncloc="30" statements="7" conditionals="2" coveredstatements="0"/>
+            <class name="AbstractPropertyContainer">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="12" statements="7" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="addCurrentDynamicCompositeProperties(Set&lt;String&gt;) : void" num="45" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPreviousDynamicCompositeProperties(Set&lt;String&gt;) : void" num="50" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="createPropertyRemovalFragment(String) : String" num="55" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="61" type="cond"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/response/model/DefaultGraphModel.java" name="DefaultGraphModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="75" coveredmethods="0" methods="7" elements="16" classes="1" ncloc="37" statements="9" conditionals="0" coveredstatements="0"/>
+            <class name="DefaultGraphModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="7" elements="16" statements="9" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getNodes() : Collection&lt;Node&gt;" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addNode(NodeModel) : void" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addRelationship(RelationshipModel) : void" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addNodes(NodeModel[]) : void" num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRelationships() : Collection&lt;Edge&gt;" num="60" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addRelationships(RelationshipModel[]) : void" num="64" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="findNode(Long) : Optional&lt;Node&gt;" num="71" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/response/model/DefaultGraphRowListModel.java" name="DefaultGraphRowListModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="46" coveredmethods="0" methods="3" elements="6" classes="1" ncloc="18" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="DefaultGraphRowListModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="6" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="model() : List&lt;GraphRowModel&gt;" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="add(GraphRowModel) : void" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addAll(List&lt;DefaultGraphRowModel&gt;) : void" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/response/model/DefaultGraphRowModel.java" name="DefaultGraphRowModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="46" coveredmethods="0" methods="3" elements="7" classes="1" ncloc="16" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="DefaultGraphRowModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="7" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="DefaultGraphRowModel(DefaultGraphModel,Object[])" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getGraph() : DefaultGraphModel" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRow() : Object[]" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/response/model/DefaultRestModel.java" name="DefaultRestModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="61" coveredmethods="0" methods="3" elements="11" classes="1" ncloc="21" statements="6" conditionals="2" coveredstatements="0"/>
+            <class name="DefaultRestModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="3" elements="11" statements="6" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="basedOn(Map&lt;String, Object&gt;) : Optional&lt;DefaultRestModel&gt;" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="DefaultRestModel(Map&lt;String, Object&gt;)" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRow() : Map&lt;String, Object&gt;" num="57" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/response/model/DefaultRowModel.java" name="DefaultRowModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="45" coveredmethods="0" methods="3" elements="7" classes="1" ncloc="16" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="DefaultRowModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="7" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="DefaultRowModel(Object[],String[])" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getValues() : Object[]" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="variables() : String[]" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/response/model/NodeModel.java" name="NodeModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="22" loc="160" coveredmethods="0" methods="19" elements="55" classes="1" ncloc="108" statements="30" conditionals="6" coveredstatements="0"/>
+            <class name="NodeModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="22" coveredmethods="0" methods="19" elements="55" statements="30" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="NodeModel(Long)" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isGeneratedNode() : boolean" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setGeneratedNode(boolean) : void" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPropertyList() : List&lt;Property&lt;String, Object&gt;&gt;" num="69" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPrimaryIndex() : String" num="74" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPrimaryIndex(String) : void" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setProperties(Map&lt;String, Object&gt;) : void" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getId() : Long" num="90" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getVersion() : Property&lt;String, Long&gt;" num="95" count="0" type="method"/>
+            <line num="97" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLabels() : String[]" num="100" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setVersion(Property&lt;String, Long&gt;) : void" num="104" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasVersionProperty() : boolean" num="108" count="0" type="method"/>
+            <line num="110" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPreviousDynamicLabels() : Set&lt;String&gt;" num="113" count="0" type="method"/>
+            <line num="115" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPreviousDynamicLabels(Set&lt;String&gt;) : void" num="118" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLabels(String[]) : void" num="122" count="0" type="method"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="property(String) : Object" num="127" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="129" type="cond"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="labelSignature() : String" num="136" count="0" type="method"/>
+            <line num="138" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="equals(Object) : boolean" num="144" count="0" type="method"/>
+            <line num="146" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="146" type="cond"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="149" type="cond"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="156" count="0" type="method"/>
+            <line num="158" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/response/model/PropertyModel.java" name="PropertyModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="15" loc="97" coveredmethods="0" methods="8" elements="40" classes="1" ncloc="56" statements="24" conditionals="8" coveredstatements="0"/>
+            <class name="PropertyModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="15" coveredmethods="0" methods="8" elements="40" statements="24" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="with(K,V) : PropertyModel&lt;K, V&gt;" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="PropertyModel(K,V)" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getKey() : K" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getValue() : V" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="asParameter() : Object" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="60" type="cond"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="63" type="cond"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="equals(Object) : boolean" num="77" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="79" type="cond"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="82" type="cond"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="91" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/response/model/QueryResultModel.java" name="QueryResultModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="54" coveredmethods="0" methods="4" elements="9" classes="1" ncloc="25" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="QueryResultModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="9" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="QueryResultModel(Iterable&lt;Map&lt;String, Object&gt;&gt;,QueryStatistics)" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="iterator() : Iterator&lt;Map&lt;String, Object&gt;&gt;" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="queryResults() : Iterable&lt;Map&lt;String, Object&gt;&gt;" num="45" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="queryStatistics() : QueryStatistics" num="50" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/response/model/QueryStatisticsModel.java" name="QueryStatisticsModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="26" loc="151" coveredmethods="0" methods="26" elements="52" classes="1" ncloc="95" statements="26" conditionals="0" coveredstatements="0"/>
+            <class name="QueryStatisticsModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="26" coveredmethods="0" methods="26" elements="52" statements="26" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="containsUpdates() : boolean" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNodesCreated() : int" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNodesDeleted() : int" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPropertiesSet() : int" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRelationshipsCreated() : int" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRelationshipsDeleted() : int" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLabelsAdded() : int" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLabelsRemoved() : int" num="74" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getIndexesAdded() : int" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getIndexesRemoved() : int" num="82" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getConstraintsAdded() : int" num="86" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getConstraintsRemoved() : int" num="90" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setContains_updates(boolean) : void" num="94" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setNodes_created(int) : void" num="98" count="0" type="method"/>
+            <line num="99" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setNodes_deleted(int) : void" num="102" count="0" type="method"/>
+            <line num="103" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setProperties_set(int) : void" num="106" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRelationships_created(int) : void" num="110" count="0" type="method"/>
+            <line num="111" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRelationships_deleted(int) : void" num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLabels_added(int) : void" num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLabels_removed(int) : void" num="123" count="0" type="method"/>
+            <line num="124" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setIndexes_added(int) : void" num="127" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setIndexes_removed(int) : void" num="131" count="0" type="method"/>
+            <line num="132" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setConstraints_added(int) : void" num="135" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setConstraints_removed(int) : void" num="139" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRelationship_deleted() : int" num="143" count="0" type="method"/>
+            <line num="144" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRelationship_deleted(int) : void" num="148" count="0" type="method"/>
+            <line num="149" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/response/model/RelationshipModel.java" name="RelationshipModel.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="21" loc="130" coveredmethods="0" methods="18" elements="47" classes="1" ncloc="84" statements="25" conditionals="4" coveredstatements="0"/>
+            <class name="RelationshipModel">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="21" coveredmethods="0" methods="18" elements="47" statements="25" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getId() : Long" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setId(Long) : void" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getVersion() : Property&lt;String, Long&gt;" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setVersion(Property&lt;String, Long&gt;) : void" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasVersionProperty() : boolean" num="58" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getType() : String" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setType(String) : void" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getStartNode() : Long" num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setStartNode(Long) : void" num="75" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getEndNode() : Long" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setEndNode(Long) : void" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPropertyList() : List&lt;Property&lt;String, Object&gt;&gt;" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPrimaryIdName() : String" num="91" count="0" type="method"/>
+            <line num="93" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setProperties(Map&lt;String, Object&gt;) : void" num="96" count="0" type="method"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPrimaryIdName(String) : void" num="103" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="107" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="equals(Object) : boolean" num="112" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="114" type="cond"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="117" type="cond"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="126" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.compiler">
+         <metrics coveredelements="0" complexity="8" loc="66" methods="3" classes="1" statements="16" coveredconditionals="0" coveredmethods="0" elements="27" ncloc="34" files="1" conditionals="8" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/compiler/SrcTargetKey.java" name="SrcTargetKey.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="66" coveredmethods="0" methods="3" elements="27" classes="1" ncloc="34" statements="16" conditionals="8" coveredstatements="0"/>
+            <class name="SrcTargetKey">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="3" elements="27" statements="16" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="SrcTargetKey(long,long)" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="33" type="cond"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="equals(Object) : boolean" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="47" type="cond"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="59" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.support">
+         <metrics coveredelements="0" complexity="19" loc="206" methods="13" classes="4" statements="25" coveredconditionals="0" coveredmethods="0" elements="48" ncloc="86" files="3" conditionals="10" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/support/ClassUtils.java" name="ClassUtils.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="54" coveredmethods="0" methods="3" elements="9" classes="1" ncloc="14" statements="4" conditionals="2" coveredstatements="0"/>
+            <class name="ClassUtils">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="9" statements="4" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="isEnum(Class&lt;?&gt;) : boolean" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="isEnum(Object) : boolean" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="ClassUtils()" num="52" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/support/CollectionUtils.java" name="CollectionUtils.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="94" coveredmethods="0" methods="6" elements="30" classes="2" ncloc="47" statements="16" conditionals="8" coveredstatements="0"/>
+            <class name="CollectionUtils">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="3" elements="23" statements="12" conditionals="8" coveredstatements="0"/>
+            </class>
+            <class name="CollectionUtils.ArrayIterator">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="3" elements="7" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="4" visibility="public" signature="iterableOf(Object) : Iterable" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="47" type="cond"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="49" type="cond"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="materializeIterableIf(Object) : Object" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="62" type="cond"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="CollectionUtils()" num="70" count="0" type="method"/>
+            <line complexity="1" visibility="private" signature="ArrayIterator(Object)" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hasNext() : boolean" num="84" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="next() : Object" num="89" count="0" type="method"/>
+            <line num="91" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/support/FileUtils.java" name="FileUtils.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="58" coveredmethods="0" methods="4" elements="9" classes="1" ncloc="25" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="FileUtils">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="9" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="deleteDirectory(Path) : void" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="visitFile(Path,BasicFileAttributes) : FileVisitResult" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="postVisitDirectory(Path,IOException) : FileVisitResult" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="FileUtils()" num="56" count="0" type="method"/>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.types.adapter">
+         <metrics coveredelements="0" complexity="9" loc="101" methods="3" classes="1" statements="17" coveredconditionals="0" coveredmethods="0" elements="28" ncloc="54" files="1" conditionals="8" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/types/adapter/TemporalAmountAdapter.java" name="TemporalAmountAdapter.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="101" coveredmethods="0" methods="3" elements="28" classes="1" ncloc="54" statements="17" conditionals="8" coveredstatements="0"/>
+            <class name="TemporalAmountAdapter">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="3" elements="28" statements="17" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="apply(TemporalAmount) : TemporalAmount" num="72" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="77" type="cond"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="79" type="cond"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="85" type="cond"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="87" type="cond"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="couldBePeriod(int) : boolean" num="94" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="couldBeDuration(int) : boolean" num="98" count="0" type="method"/>
+            <line num="99" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.types.spatial">
+         <metrics coveredelements="0" complexity="45" loc="394" methods="37" classes="7" statements="53" coveredconditionals="0" coveredmethods="0" elements="104" ncloc="190" files="7" conditionals="14" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/types/spatial/AbstractPoint.java" name="AbstractPoint.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="64" coveredmethods="0" methods="5" elements="20" classes="1" ncloc="32" statements="11" conditionals="4" coveredstatements="0"/>
+            <class name="AbstractPoint">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="5" elements="20" statements="11" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="AbstractPoint(Coordinate,Integer)" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="getCoordinate() : Coordinate" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSrid() : Integer" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="equals(Object) : boolean" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="49" type="cond"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="52" type="cond"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="60" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/types/spatial/CartesianPoint2d.java" name="CartesianPoint2d.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="50" coveredmethods="0" methods="5" elements="10" classes="1" ncloc="22" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="CartesianPoint2d">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="10" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CartesianPoint2d(Coordinate)" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="CartesianPoint2d(double,double)" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getX() : double" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getY() : double" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/types/spatial/CartesianPoint3d.java" name="CartesianPoint3d.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="56" coveredmethods="0" methods="6" elements="12" classes="1" ncloc="27" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="CartesianPoint3d">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="12" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="CartesianPoint3d(Coordinate)" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="CartesianPoint3d(double,double,double)" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getX() : double" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getY() : double" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getZ() : Double" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/types/spatial/Coordinate.java" name="Coordinate.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="73" coveredmethods="0" methods="7" elements="25" classes="1" ncloc="41" statements="14" conditionals="4" coveredstatements="0"/>
+            <class name="Coordinate">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="7" elements="25" statements="14" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Coordinate(double,double)" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Coordinate(double,double,Double)" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getX() : double" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getY() : double" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getZ() : Double" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="equals(Object) : boolean" num="55" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="57" type="cond"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="60" type="cond"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="69" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/types/spatial/GeographicPoint2d.java" name="GeographicPoint2d.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="50" coveredmethods="0" methods="5" elements="10" classes="1" ncloc="23" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="GeographicPoint2d">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="10" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="GeographicPoint2d(Coordinate,Integer)" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="GeographicPoint2d(double,double)" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLongitude() : double" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLatitude() : double" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/types/spatial/GeographicPoint3d.java" name="GeographicPoint3d.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="55" coveredmethods="0" methods="6" elements="12" classes="1" ncloc="27" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="GeographicPoint3d">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="12" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="GeographicPoint3d(Coordinate,Integer)" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="GeographicPoint3d(double,double,double)" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLongitude() : double" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLatitude() : double" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHeight() : double" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="46" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/org/neo4j/ogm/types/spatial/PointBuilder.java" name="PointBuilder.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="46" coveredmethods="0" methods="3" elements="15" classes="1" ncloc="18" statements="6" conditionals="6" coveredstatements="0"/>
+            <class name="PointBuilder">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="3" elements="15" statements="6" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="withSrid(int) : PointBuilder" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="PointBuilder(int)" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="build(Coordinate) : AbstractPoint" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="40" type="cond"/>
+            <line num="41" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="41" type="cond"/>
+            <line num="43" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="43" type="cond"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="Neo4j-OGM 4.0.0-SNAPSHOT (Aggregated)" timestamp="1594347770382">
+      <metrics coveredelements="0" complexity="9" loc="163" methods="9" classes="3" statements="25" packages="2" coveredconditionals="0" coveredmethods="0" elements="34" ncloc="76" files="3" conditionals="0" coveredstatements="0"/>
+      <package name="org.neo4j.ogm.config">
+         <metrics coveredelements="0" complexity="7" loc="81" methods="7" classes="1" statements="13" coveredconditionals="0" coveredmethods="0" elements="20" ncloc="46" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/test/java/org/neo4j/ogm/config/ConfigurationUtilsTest.java" name="ConfigurationUtilsTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="81" coveredmethods="0" methods="7" elements="20" classes="1" ncloc="46" statements="13" conditionals="0" coveredstatements="0"/>
+            <class name="ConfigurationUtilsTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="7" elements="20" statements="13" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="protocollessUrlsShouldBeTreatedAsClasspathUrls() : void" num="36" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="absoluteUrlsShouldWorkWith() : void" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="classpathUrlsShouldWork() : void" num="48" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="absoluteUrlsShouldWorkWithProtocol() : void" num="54" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="fileUrlsShouldWork() : void" num="60" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="shouldThrowFileNotFoundOnInvalidUrls() : void" num="68" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="shouldThrowFileNotFoundOnInvalidResources() : void" num="75" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.neo4j.ogm.types">
+         <metrics coveredelements="0" complexity="2" loc="82" methods="2" classes="2" statements="12" coveredconditionals="0" coveredmethods="0" elements="14" ncloc="30" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/test/java/org/neo4j/ogm/types/GeographicPoint2dTest.java" name="GeographicPoint2dTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="40" coveredmethods="0" methods="1" elements="6" classes="1" ncloc="14" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="GeographicPoint2dTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="6" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="constructorShouldSetCorrectFields() : void" num="30" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/test/java/org/neo4j/ogm/types/GeographicPoint3dTest.java" name="GeographicPoint3dTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="42" coveredmethods="0" methods="1" elements="8" classes="1" ncloc="16" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="GeographicPoint3dTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="8" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="constructorShouldSetCorrectFields() : void" num="30" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

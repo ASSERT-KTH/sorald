@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594417816758" clover="4.4.1">
+   <project name="io.cloudslang.lang:cloudslang 1.0.151-SNAPSHOT (Aggregated)" timestamp="1594417814202">
+      <metrics coveredelements="0" complexity="58" loc="483" methods="21" classes="6" statements="97" packages="4" coveredconditionals="0" coveredmethods="0" elements="178" ncloc="298" files="5" conditionals="60" coveredstatements="0"/>
+      <package name="io.cloudslang.utils">
+         <metrics coveredelements="0" complexity="3" loc="22" methods="1" classes="1" statements="2" coveredconditionals="0" coveredmethods="0" elements="5" ncloc="10" files="1" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cloudslang-commons/src/main/java/io/cloudslang/utils/ValidationUtils.java" name="ValidationUtils.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="3" loc="22" coveredmethods="0" methods="1" elements="5" classes="1" ncloc="10" statements="2" conditionals="2" coveredstatements="0"/>
+            <class name="ValidationUtils">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="3" coveredmethods="0" methods="1" elements="5" statements="2" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="validateStringValue(String,Serializable) : void" num="16" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="17" type="cond"/>
+            <line num="18" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="io.cloudslang.lang.logging">
+         <metrics coveredelements="0" complexity="38" loc="205" methods="12" classes="3" statements="59" coveredconditionals="0" coveredmethods="0" elements="115" ncloc="155" files="2" conditionals="44" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cloudslang-commons/src/main/java/io/cloudslang/lang/logging/LoggingService.java" name="LoggingService.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="24" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="8" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="LoggingService">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cloudslang-commons/src/main/java/io/cloudslang/lang/logging/LoggingServiceImpl.java" name="LoggingServiceImpl.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="38" loc="181" coveredmethods="0" methods="12" elements="115" classes="2" ncloc="147" statements="59" conditionals="44" coveredstatements="0"/>
+            <class name="LoggingServiceImpl">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="7" elements="23" statements="14" conditionals="2" coveredstatements="0"/>
+            </class>
+            <class name="LoggingServiceImpl.LoggingDetailsRunnable">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="27" coveredmethods="0" methods="5" elements="92" statements="45" conditionals="42" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="initialize() : void" num="42" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="logEvent(Level,String) : Future&lt;?&gt;" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="logEvent(Level,String,Throwable) : Future&lt;?&gt;" num="52" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="destroy() : void" num="57" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="doLogEvent(Level,String,Throwable) : Future&lt;?&gt;" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="doSubmit(Level,String,Throwable) : Future&lt;?&gt;" num="76" count="0" type="method"/>
+            <line num="77" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="77" type="cond"/>
+            <line complexity="2" visibility="public" signature="waitForAllLogTasksToFinish() : void" num="81" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="LoggingDetailsRunnable(Level,String,Throwable)" num="95" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="LoggingDetailsRunnable(Level,String)" num="101" count="0" type="method"/>
+            <line num="102" count="0" type="stmt"/>
+            <line complexity="20" visibility="public" signature="run() : void" num="105" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="108" type="cond"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="110" type="cond"/>
+            <line num="111" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="111" type="cond"/>
+            <line num="112" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="112" type="cond"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="115" type="cond"/>
+            <line num="116" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="116" type="cond"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="119" type="cond"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="121" type="cond"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="123" type="cond"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="125" type="cond"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="129" type="cond"/>
+            <line num="130" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="130" type="cond"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="133" type="cond"/>
+            <line num="134" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="134" type="cond"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="137" type="cond"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="139" type="cond"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="141" type="cond"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="143" type="cond"/>
+            <line num="144" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="equals(Object) : boolean" num="152" count="0" type="method"/>
+            <line num="154" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="154" type="cond"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="157" type="cond"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="160" type="cond"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="171" count="0" type="method"/>
+            <line num="173" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="io.cloudslang.lang.spi.encryption">
+         <metrics coveredelements="0" complexity="0" loc="58" methods="0" classes="1" statements="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="8" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cloudslang-spi/src/main/java/io/cloudslang/lang/spi/encryption/Encryption.java" name="Encryption.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="58" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="8" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="Encryption">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+      <package name="io.cloudslang.lang.enforcer">
+         <metrics coveredelements="0" complexity="17" loc="198" methods="8" classes="1" statements="36" coveredconditionals="0" coveredmethods="0" elements="58" ncloc="125" files="1" conditionals="14" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cloudslang-enforcer/src/main/java/io/cloudslang/lang/enforcer/SpringCleansingRule.java" name="SpringCleansingRule.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="17" loc="198" coveredmethods="0" methods="8" elements="58" classes="1" ncloc="125" statements="36" conditionals="14" coveredstatements="0"/>
+            <class name="SpringCleansingRule">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="17" coveredmethods="0" methods="8" elements="58" statements="36" conditionals="14" coveredstatements="0"/>
+            </class>
+            <line complexity="2" visibility="public" signature="execute(EnforcerRuleHelper) : void" num="85" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCacheId() : String" num="117" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isCacheable() : boolean" num="128" count="0" type="method"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isResultValid(EnforcerRule) : boolean" num="139" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="isSpringConfigurationAnnotatedClass(String) : boolean" num="143" count="0" type="method"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line complexity="7" visibility="private" signature="applyForJavaSourcesInRoot(String,Log) : void" num="148" count="0" type="method"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="150" type="cond"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="153" type="cond"/>
+            <line num="154" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="154" type="cond"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="159" type="cond"/>
+            <line num="160" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="174" type="cond"/>
+            <line num="175" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="findMatchesUsingPattern(File,Log,String,Pattern,String) : void" num="181" count="0" type="method"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="184" type="cond"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="187" type="cond"/>
+            <line num="188" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="findLineNumber(String) : int" num="194" count="0" type="method"/>
+            <line num="195" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="io.cloudslang.lang:cloudslang 1.0.151-SNAPSHOT (Aggregated)" timestamp="1594417814202">
+      <metrics coveredelements="0" complexity="9" loc="180" methods="7" classes="2" statements="63" packages="2" coveredconditionals="0" coveredmethods="0" elements="74" ncloc="127" files="2" conditionals="4" coveredstatements="0"/>
+      <package name="io.cloudslang.utils">
+         <metrics coveredelements="0" complexity="1" loc="23" methods="1" classes="1" statements="1" coveredconditionals="0" coveredmethods="0" elements="2" ncloc="11" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cloudslang-commons/src/test/java/io/cloudslang/utils/PythonScriptGeneratorUtils.java" name="PythonScriptGeneratorUtils.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="23" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="11" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="PythonScriptGeneratorUtils">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="generateScript(Collection&lt;String&gt;) : String" num="20" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="io.cloudslang.lang.logging">
+         <metrics coveredelements="0" complexity="8" loc="157" methods="6" classes="1" statements="62" coveredconditionals="0" coveredmethods="0" elements="72" ncloc="116" files="1" conditionals="4" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/cloudslang-commons/src/test/java/io/cloudslang/lang/logging/LoggingServiceImplTest.java" name="LoggingServiceImplTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="157" coveredmethods="0" methods="6" elements="72" classes="1" ncloc="116" statements="62" conditionals="4" coveredstatements="0"/>
+            <class name="LoggingServiceImplTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="6" elements="72" statements="62" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testInitialize() : void" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testDestroy() : void" num="66" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testLogEventWithTwoParams() : void" num="85" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="answer(InvocationOnMock) : Object" num="90" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="95" type="cond"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="97" type="cond"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testLogEventWithThreeParams() : void" num="118" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="answer(InvocationOnMock) : Object" num="122" count="0" type="method"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

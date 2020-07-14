@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594509574678" clover="4.4.1">
+   <project name="rosette-common-api 37.0.2-SNAPSHOT (Aggregated)" timestamp="1594509571815">
+      <metrics coveredelements="0" complexity="113" loc="1532" methods="82" classes="27" statements="143" packages="3" coveredconditionals="0" coveredmethods="0" elements="281" ncloc="537" files="27" conditionals="56" coveredstatements="0"/>
+      <package name="com.basistech.util">
+         <metrics coveredelements="0" complexity="66" loc="739" methods="38" classes="11" statements="90" coveredconditionals="0" coveredmethods="0" elements="178" ncloc="259" files="11" conditionals="50" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/util/BasisInternalException.java" name="BasisInternalException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="44" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="10" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="BasisInternalException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="BasisInternalException()" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="BasisInternalException(String)" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/util/BasisRootBean.java" name="BasisRootBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="91" coveredmethods="0" methods="5" elements="14" classes="1" ncloc="23" statements="7" conditionals="2" coveredstatements="0"/>
+            <class name="BasisRootBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="5" elements="14" statements="7" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="BasisRootBean()" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="initialize() : void" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="57" type="cond"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRootDirectory() : String" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRootDirectory(String) : void" num="78" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPathnames() : Pathnames" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/util/ByNameTextDomain.java" name="ByNameTextDomain.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="39" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="7" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="ByNameTextDomain">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ByNameTextDomain(String,String,String)" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/util/ISO15924Editor.java" name="ISO15924Editor.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="36" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="8" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="ISO15924Editor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setAsText(String) : void" num="32" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/util/InvalidNamedEntityTypeNameException.java" name="InvalidNamedEntityTypeNameException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="45" coveredmethods="0" methods="2" elements="4" classes="1" ncloc="10" statements="2" conditionals="0" coveredstatements="0"/>
+            <class name="InvalidNamedEntityTypeNameException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="4" statements="2" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="InvalidNamedEntityTypeNameException()" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="InvalidNamedEntityTypeNameException(String)" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/util/LanguageCodeEditor.java" name="LanguageCodeEditor.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="50" coveredmethods="0" methods="2" elements="5" classes="1" ncloc="13" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="LanguageCodeEditor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="5" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setAsText(String) : void" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAsText() : String" num="44" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/util/NoRootDirectoryException.java" name="NoRootDirectoryException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="34" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="8" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="NoRootDirectoryException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="NoRootDirectoryException()" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/util/PartOfSpeechTagSet.java" name="PartOfSpeechTagSet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="28" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="5" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="PartOfSpeechTagSet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/util/Pathnames.java" name="Pathnames.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="21" loc="134" coveredmethods="0" methods="10" elements="56" classes="1" ncloc="68" statements="28" conditionals="18" coveredstatements="0"/>
+            <class name="Pathnames">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="21" coveredmethods="0" methods="10" elements="56" statements="28" conditionals="18" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Pathnames()" num="33" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="setBTRootDirectory(String) : void" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="reset() : void" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="binOrLib() : String" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="53" type="cond"/>
+            <line complexity="2" visibility="package" signature="debugSuffix() : String" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="57" type="cond"/>
+            <line complexity="1" visibility="package" signature="getLibraryParentDir() : String" num="60" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="7" visibility="package" signature="getPlatform() : String" num="72" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="74" type="cond"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="accept(File) : boolean" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="81" type="cond"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="85" type="cond"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="92" type="cond"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="97" type="cond"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="getBTRootDirectory() : String" num="113" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="114" type="cond"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="118" type="cond"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getJNIModuleDirectory() : String" num="130" count="0" type="method"/>
+            <line num="131" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/util/TextDomain.java" name="TextDomain.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="29" loc="200" coveredmethods="0" methods="13" elements="87" classes="1" ncloc="99" statements="44" conditionals="30" coveredstatements="0"/>
+            <class name="TextDomain">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="29" coveredmethods="0" methods="13" elements="87" statements="44" conditionals="30" coveredstatements="0"/>
+            </class>
+            <line complexity="4" visibility="public" signature="TextDomain(ISO15924,LanguageCode,TransliterationScheme)" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="42" type="cond"/>
+            <line num="43" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="43" type="cond"/>
+            <line num="44" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="44" type="cond"/>
+            <line complexity="2" visibility="public" signature="TextDomain(LanguageCode)" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="55" type="cond"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="package" signature="TextDomain()" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="equals(Object) : boolean" num="73" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="75" type="cond"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="78" type="cond"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="hashCode() : int" num="87" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getScript() : ISO15924" num="97" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="setScript(ISO15924) : void" num="107" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="109" type="cond"/>
+            <line complexity="1" visibility="public" signature="getLanguage() : LanguageCode" num="117" count="0" type="method"/>
+            <line num="118" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="setLanguage(LanguageCode) : void" num="128" count="0" type="method"/>
+            <line num="130" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="130" type="cond"/>
+            <line complexity="1" visibility="public" signature="getTransliterationScheme() : TransliterationScheme" num="138" count="0" type="method"/>
+            <line num="139" count="0" type="stmt"/>
+            <line complexity="2" visibility="package" signature="setTransliterationScheme(TransliterationScheme) : void" num="148" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="150" type="cond"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="158" count="0" type="method"/>
+            <line num="160" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="compareTo(TextDomain) : int" num="169" count="0" type="method"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="174" type="cond"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="176" type="cond"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="183" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="183" type="cond"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="185" type="cond"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="192" type="cond"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="194" type="cond"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="198" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/util/TransliterationSchemeEditor.java" name="TransliterationSchemeEditor.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="38" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="8" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="TransliterationSchemeEditor">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setAsText(String) : void" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.basistech.rosette">
+         <metrics coveredelements="0" complexity="38" loc="641" methods="37" classes="15" statements="38" coveredconditionals="0" coveredmethods="0" elements="77" ncloc="186" files="15" conditionals="2" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteAnnotatorConfiguration.java" name="RosetteAnnotatorConfiguration.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="24" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteAnnotatorConfiguration">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteConfiguration.java" name="RosetteConfiguration.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteConfiguration">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteConfigurationKey.java" name="RosetteConfigurationKey.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="25" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteConfigurationKey">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteConfigurationProperty.java" name="RosetteConfigurationProperty.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="46" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="12" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteConfigurationProperty">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteConfigurationType.java" name="RosetteConfigurationType.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="26" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="6" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteConfigurationType">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteCorruptLicenseException.java" name="RosetteCorruptLicenseException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="39" coveredmethods="0" methods="4" elements="7" classes="1" ncloc="15" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteCorruptLicenseException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="7" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RosetteCorruptLicenseException()" num="25" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="RosetteCorruptLicenseException(String)" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteCorruptLicenseException(Throwable)" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteCorruptLicenseException(String,Throwable)" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteException.java" name="RosetteException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="43" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="16" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RosetteException(String,Throwable)" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteException(String)" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteException(Throwable)" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteException()" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteExpiredLicenseException.java" name="RosetteExpiredLicenseException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="42" coveredmethods="0" methods="4" elements="7" classes="1" ncloc="15" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteExpiredLicenseException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="7" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RosetteExpiredLicenseException()" num="28" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="RosetteExpiredLicenseException(String)" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteExpiredLicenseException(Throwable)" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteExpiredLicenseException(String,Throwable)" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteFactoryConfiguration.java" name="RosetteFactoryConfiguration.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="24" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="3" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteFactoryConfiguration">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteIllegalArgumentException.java" name="RosetteIllegalArgumentException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="69" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="15" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteIllegalArgumentException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RosetteIllegalArgumentException()" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteIllegalArgumentException(String)" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteIllegalArgumentException(String,Throwable)" num="56" count="0" type="method"/>
+            <line num="57" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteIllegalArgumentException(Throwable)" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteInterruptedException.java" name="RosetteInterruptedException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="42" coveredmethods="0" methods="4" elements="7" classes="1" ncloc="14" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteInterruptedException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="7" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RosetteInterruptedException()" num="28" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="RosetteInterruptedException(String)" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteInterruptedException(String,Throwable)" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteInterruptedException(Throwable)" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteNoLicenseException.java" name="RosetteNoLicenseException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="42" coveredmethods="0" methods="4" elements="7" classes="1" ncloc="15" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteNoLicenseException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="7" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RosetteNoLicenseException()" num="28" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="RosetteNoLicenseException(String)" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteNoLicenseException(Throwable)" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteNoLicenseException(String,Throwable)" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteRuntimeException.java" name="RosetteRuntimeException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="39" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="15" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteRuntimeException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RosetteRuntimeException()" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteRuntimeException(String,Throwable)" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteRuntimeException(String)" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteRuntimeException(Throwable)" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteSystemBundlePackage.java" name="RosetteSystemBundlePackage.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="31" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="9" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="RosetteSystemBundlePackage">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/RosetteUnsupportedLanguageException.java" name="RosetteUnsupportedLanguageException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="10" loc="123" coveredmethods="0" methods="9" elements="25" classes="1" ncloc="42" statements="14" conditionals="2" coveredstatements="0"/>
+            <class name="RosetteUnsupportedLanguageException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="10" coveredmethods="0" methods="9" elements="25" statements="14" conditionals="2" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RosetteUnsupportedLanguageException()" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteUnsupportedLanguageException(String,Throwable)" num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteUnsupportedLanguageException(String)" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteUnsupportedLanguageException(Throwable)" num="58" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteUnsupportedLanguageException(LanguageCode)" num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteUnsupportedLanguageException(LanguageCode,String)" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="RosetteUnsupportedLanguageException(LanguageCode,Throwable)" num="95" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="RosetteUnsupportedLanguageException(LanguageCode,String,Throwable)" num="108" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="110" type="cond"/>
+            <line num="111" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLanguage() : LanguageCode" num="120" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.basistech.rosette.util">
+         <metrics coveredelements="0" complexity="9" loc="152" methods="7" classes="1" statements="15" coveredconditionals="0" coveredmethods="0" elements="26" ncloc="92" files="1" conditionals="4" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/main/java/com/basistech/rosette/util/EncodingCode.java" name="EncodingCode.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="152" coveredmethods="0" methods="7" elements="26" classes="1" ncloc="92" statements="15" conditionals="4" coveredstatements="0"/>
+            <class name="EncodingCode">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="7" elements="26" statements="15" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="package" signature="EncodingCode(String,String,String)" num="86" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMimeName() : String" num="97" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTypeName() : String" num="106" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDemotionTypeName() : String" num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="lookupByMimeName(String) : EncodingCode" num="125" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="127" type="cond"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="lookupByTypeName(String) : EncodingCode" num="140" count="0" type="method"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="142" type="cond"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCount() : int" num="149" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+         </file>
+      </package>
+   </project>
+   <testproject name="rosette-common-api 37.0.2-SNAPSHOT (Aggregated)" timestamp="1594509571815">
+      <metrics coveredelements="0" complexity="63" loc="794" methods="48" classes="10" statements="205" packages="3" coveredconditionals="0" coveredmethods="0" elements="265" ncloc="481" files="10" conditionals="12" coveredstatements="0"/>
+      <package name="com.basistech.util">
+         <metrics coveredelements="0" complexity="48" loc="584" methods="35" classes="8" statements="126" coveredconditionals="0" coveredmethods="0" elements="173" ncloc="347" files="8" conditionals="12" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/test/java/com/basistech/util/LanguageCodeTest.java" name="LanguageCodeTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="20" loc="208" coveredmethods="0" methods="10" elements="86" classes="1" ncloc="147" statements="64" conditionals="12" coveredstatements="0"/>
+            <class name="LanguageCodeTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="20" coveredmethods="0" methods="10" elements="86" statements="64" conditionals="12" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="testValidLookups() : void" num="28" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="31" type="cond"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="47" type="cond"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="6" visibility="public" signature="testInvalidLookups() : void" num="56" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="84" type="cond"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="testDataSpotCheck() : void" num="110" count="0" type="method"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="149" type="cond"/>
+            <line num="150" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="150" type="cond"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="155" type="cond"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testLanguageID() : void" num="162" count="0" type="method"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testISO639() : void" num="168" count="0" type="method"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetDefaultScript() : void" num="175" count="0" type="method"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testLanguageName() : void" num="182" count="0" type="method"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetNativeCode() : void" num="189" count="0" type="method"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testLookupByLanguageID() : void" num="195" count="0" type="method"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testLookupByISO639() : void" num="202" count="0" type="method"/>
+            <line num="204" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/test/java/com/basistech/util/NEConstantsTest.java" name="NEConstantsTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="49" coveredmethods="0" methods="3" elements="10" classes="1" ncloc="24" statements="7" conditionals="0" coveredstatements="0"/>
+            <class name="NEConstantsTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="3" elements="10" statements="7" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testParseBuiltInType() : void" num="26" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testParseBuiltInTypeWrongCase() : void" num="31" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="testParseCustomType() : void" num="37" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/test/java/com/basistech/util/OsgiIT.java" name="OsgiIT.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="75" coveredmethods="0" methods="3" elements="16" classes="1" ncloc="46" statements="13" conditionals="0" coveredstatements="0"/>
+            <class name="OsgiIT">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="3" elements="16" statements="13" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="3" visibility="public" signature="beforeClass() : void" num="48" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="configuration() : Option[]" num="59" count="0" type="method"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="osgiExportsWorked() : void" num="67" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/test/java/com/basistech/util/PropertyEditorTest.java" name="PropertyEditorTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="35" coveredmethods="0" methods="2" elements="7" classes="1" ncloc="17" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="PropertyEditorTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="7" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="getConfigLocations() : String[]" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testProperties() : void" num="28" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/test/java/com/basistech/util/TestISO15924.java" name="TestISO15924.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="44" coveredmethods="0" methods="4" elements="8" classes="1" ncloc="21" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="TestISO15924">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="8" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testNumeric() : void" num="24" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testEnglishName() : void" num="29" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testLookupByNumeric() : void" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testLookupByCode4() : void" num="39" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/test/java/com/basistech/util/TextDomainTest.java" name="TextDomainTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="88" coveredmethods="0" methods="5" elements="28" classes="1" ncloc="53" statements="23" conditionals="0" coveredstatements="0"/>
+            <class name="TextDomainTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="28" statements="23" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testequals() : void" num="41" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testNativeDomainConstructor() : void" num="55" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testhashCode() : void" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testToString() : void" num="72" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/test/java/com/basistech/util/TransliterationSchemeTest.java" name="TransliterationSchemeTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="2" loc="38" coveredmethods="0" methods="2" elements="6" classes="1" ncloc="15" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="TransliterationSchemeTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="2" coveredmethods="0" methods="2" elements="6" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testGetObjByName() : void" num="27" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetObjById() : void" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/test/java/com/basistech/util/UtilEnumPropertiesBean.java" name="UtilEnumPropertiesBean.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="6" loc="47" coveredmethods="0" methods="6" elements="12" classes="1" ncloc="24" statements="6" conditionals="0" coveredstatements="0"/>
+            <class name="UtilEnumPropertiesBean">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="6" coveredmethods="0" methods="6" elements="12" statements="6" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getScript() : ISO15924" num="24" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setScript(ISO15924) : void" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLanguage() : LanguageCode" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLanguage(LanguageCode) : void" num="36" count="0" type="method"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getScheme() : TransliterationScheme" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setScheme(TransliterationScheme) : void" num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.basistech.rosette">
+         <metrics coveredelements="0" complexity="8" loc="150" methods="8" classes="1" statements="66" coveredconditionals="0" coveredmethods="0" elements="74" ncloc="97" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/test/java/com/basistech/rosette/RLPExceptionsTest.java" name="RLPExceptionsTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="150" coveredmethods="0" methods="8" elements="74" classes="1" ncloc="97" statements="66" conditionals="0" coveredstatements="0"/>
+            <class name="RLPExceptionsTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="8" elements="74" statements="66" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testRosetteException() : void" num="29" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRosetteRuntimeException() : void" num="43" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRosetteNoLicenseException() : void" num="57" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRosetteCorruptLicenseException() : void" num="71" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRosetteExpiredLicenseException() : void" num="85" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRosetteUnsupportedLanguageExceptionDeprecated() : void" num="99" count="0" type="method"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRosetteUnsupportedLanguageException() : void" num="113" count="0" type="method"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="131" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testRosetteIllegalArgumentException() : void" num="134" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.basistech.rosette.util">
+         <metrics coveredelements="0" complexity="7" loc="60" methods="5" classes="1" statements="13" coveredconditionals="0" coveredmethods="0" elements="18" ncloc="37" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/repo/api/src/test/java/com/basistech/rosette/util/EncodingCodeTest.java" name="EncodingCodeTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="7" loc="60" coveredmethods="0" methods="5" elements="18" classes="1" ncloc="37" statements="13" conditionals="0" coveredstatements="0"/>
+            <class name="EncodingCodeTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="7" coveredmethods="0" methods="5" elements="18" statements="13" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="testGetMimeName() : void" num="23" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetTypeName() : void" num="28" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testGetDemotionTypeName() : void" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="testLookupByMimeName() : void" num="38" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="testLookupByTypeName() : void" num="49" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

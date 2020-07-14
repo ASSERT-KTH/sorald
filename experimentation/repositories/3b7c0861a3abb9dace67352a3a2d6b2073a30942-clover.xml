@@ -1,0 +1,2464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1594126975645" clover="4.4.1">
+   <project name="SLN_MVN 1.0-SNAPSHOT" timestamp="1594126972655">
+      <metrics coveredelements="6" complexity="683" loc="5417" methods="468" classes="35" statements="1606" packages="8" coveredconditionals="0" coveredmethods="3" elements="2374" ncloc="3411" files="34" conditionals="300" coveredstatements="3"/>
+      <package name="com.company.eg.users">
+         <metrics coveredelements="0" complexity="2" loc="24" methods="2" classes="2" statements="6" coveredconditionals="0" coveredmethods="0" elements="8" ncloc="18" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/company/eg/users/AdminUser.java" name="AdminUser.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="12" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="9" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="AdminUser">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AdminUser()" num="7" count="0" type="method"/>
+            <line num="8" count="0" type="stmt"/>
+            <line num="9" count="0" type="stmt"/>
+            <line num="10" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/company/eg/users/NormalUser.java" name="NormalUser.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="12" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="9" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="NormalUser">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="NormalUser()" num="7" count="0" type="method"/>
+            <line num="8" count="0" type="stmt"/>
+            <line num="9" count="0" type="stmt"/>
+            <line num="10" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.company.mercurytours.pages">
+         <metrics coveredelements="0" complexity="19" loc="181" methods="19" classes="5" statements="53" coveredconditionals="0" coveredmethods="0" elements="72" ncloc="125" files="5" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/company/mercurytours/pages/FindAFlightMercuryTours.java" name="FindAFlightMercuryTours.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="21" coveredmethods="0" methods="1" elements="5" classes="1" ncloc="12" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="FindAFlightMercuryTours">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="5" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="FindAFlightMercuryTours(AutomationTool,TestDetails,User)" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/company/mercurytours/pages/MercuryToursMenu.java" name="MercuryToursMenu.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="45" coveredmethods="0" methods="5" elements="20" classes="1" ncloc="33" statements="15" conditionals="0" coveredstatements="0"/>
+            <class name="MercuryToursMenu">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="5" elements="20" statements="15" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="MercuryToursMenu(AutomationTool,TestDetails,User)" num="15" count="0" type="method"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickHomeLink() : WelcomeMercuryTours" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickRegisterLink() : RegisterMercuryTours" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickSignOnLink() : SignOnMercuryTours" num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickSignOffLink() : SignOnMercuryTours" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/company/mercurytours/pages/RegisterMercuryTours.java" name="RegisterMercuryTours.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="8" loc="57" coveredmethods="0" methods="8" elements="27" classes="1" ncloc="42" statements="19" conditionals="0" coveredstatements="0"/>
+            <class name="RegisterMercuryTours">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="8" coveredmethods="0" methods="8" elements="27" statements="19" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="RegisterMercuryTours(AutomationTool,TestDetails,User)" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="enterFirstName(String) : void" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="enterLastName(String) : void" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="enterUserName(String) : void" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="enterPassword(String) : void" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="enterConfirmPassword(String) : void" num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickSubmit() : void" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickSignIn() : SignOnMercuryTours" num="52" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/company/mercurytours/pages/SignOnMercuryTours.java" name="SignOnMercuryTours.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="4" loc="37" coveredmethods="0" methods="4" elements="15" classes="1" ncloc="26" statements="11" conditionals="0" coveredstatements="0"/>
+            <class name="SignOnMercuryTours">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="4" coveredmethods="0" methods="4" elements="15" statements="11" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="SignOnMercuryTours(AutomationTool,TestDetails,User)" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="enterUserName(String) : void" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="enterPassword(String) : void" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickSubmit() : FindAFlightMercuryTours" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/company/mercurytours/pages/WelcomeMercuryTours.java" name="WelcomeMercuryTours.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="21" coveredmethods="0" methods="1" elements="5" classes="1" ncloc="12" statements="4" conditionals="0" coveredstatements="0"/>
+            <class name="WelcomeMercuryTours">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="5" statements="4" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="WelcomeMercuryTours(AutomationTool,TestDetails,User)" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.framework.data">
+         <metrics coveredelements="0" complexity="34" loc="171" methods="34" classes="3" statements="37" coveredconditionals="0" coveredmethods="0" elements="71" ncloc="130" files="3" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/data/Accessory.java" name="Accessory.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="50" coveredmethods="0" methods="11" elements="26" classes="1" ncloc="45" statements="15" conditionals="0" coveredstatements="0"/>
+            <class name="Accessory">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="11" elements="26" statements="15" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="protected" signature="Accessory()" num="11" count="0" type="method"/>
+            <line num="12" count="0" type="stmt"/>
+            <line num="13" count="0" type="stmt"/>
+            <line num="14" count="0" type="stmt"/>
+            <line num="15" count="0" type="stmt"/>
+            <line num="16" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAccessoryName(String) : void" num="19" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAccessoryPriceinDollar(String) : void" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAccessoryPriceinEuro(String) : void" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAccessoryManufacturer(String) : void" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAccessoryStock(String) : void" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAccessoryName() : String" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAccessoryPriceinDollar() : String" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAccessoryPriceinEuro() : String" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAccessoryManufacturer() : String" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAccessoryStock() : String" num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/data/ExcelFile.java" name="ExcelFile.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="9" loc="50" coveredmethods="0" methods="9" elements="17" classes="1" ncloc="33" statements="8" conditionals="0" coveredstatements="0"/>
+            <class name="ExcelFile">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="9" coveredmethods="0" methods="9" elements="17" statements="8" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getFilename() : String" num="10" count="0" type="method"/>
+            <line num="11" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFilename(String) : void" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSheetname() : String" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setSheetname(String) : void" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFirstDateRow() : int" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFirstDateRow(int) : void" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNumberOfRows() : int" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setNumberOfRows(int) : void" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="protected" signature="ExcelFile()" num="44" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/data/GoogleSheetConnectionDetails.java" name="GoogleSheetConnectionDetails.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="14" loc="71" coveredmethods="0" methods="14" elements="28" classes="1" ncloc="52" statements="14" conditionals="0" coveredstatements="0"/>
+            <class name="GoogleSheetConnectionDetails">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="14" coveredmethods="0" methods="14" elements="28" statements="14" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getAddonURL() : String" num="13" count="0" type="method"/>
+            <line num="14" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAddonURL(String) : void" num="17" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWorkSheetName() : String" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setWorkSheetName(String) : void" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSpreadSheetName() : String" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setSpreadSheetName(String) : void" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getClient_id() : String" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setClient_id(String) : void" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getClient_secret() : String" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setClient_secret(String) : void" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAccessToken() : String" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAccessToken(String) : void" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRefreshToken() : String" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRefreshToken(String) : void" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.framework.common">
+         <metrics coveredelements="0" complexity="607" loc="4678" methods="398" classes="17" statements="1415" coveredconditionals="0" coveredmethods="0" elements="2113" ncloc="2913" files="16" conditionals="300" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/AlreadyRunException.java" name="AlreadyRunException.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="21" coveredmethods="0" methods="1" elements="2" classes="1" ncloc="7" statements="1" conditionals="0" coveredstatements="0"/>
+            <class name="AlreadyRunException">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AlreadyRunException()" num="17" count="0" type="method"/>
+            <line num="18" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/AppTest.java" name="AppTest.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="36" loc="210" coveredmethods="0" methods="6" elements="157" classes="1" ncloc="177" statements="101" conditionals="50" coveredstatements="0"/>
+            <class name="AppTest">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="36" coveredmethods="0" methods="6" elements="157" statements="101" conditionals="50" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="11" count="0" type="method"/>
+            <line num="13" count="0" type="stmt"/>
+            <line num="14" count="0" type="stmt"/>
+            <line num="15" count="0" type="stmt"/>
+            <line num="16" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="launchMainApplication() : void" num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="38" type="cond"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="42" type="cond"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="launchAnotherApplication(Application) : void" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="launchGoogleApplication(GoogleSheetConnectionDetails,GoogleSheets) : void" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="60" type="cond"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="logIterationResultInDB(String) : void" num="65" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line complexity="26" visibility="public" signature="logResultsInDB(String) : void" num="72" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="75" type="cond"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="80" type="cond"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="88" type="cond"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="92" type="cond"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="96" type="cond"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="99" type="cond"/>
+            <line num="100" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="100" type="cond"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="104" type="cond"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="109" type="cond"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="113" type="cond"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="119" type="cond"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="124" type="cond"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="130" type="cond"/>
+            <line num="131" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="135" type="cond"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="141" type="cond"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="147" type="cond"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="152" type="cond"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="158" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="158" type="cond"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="161" type="cond"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="180" type="cond"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="185" type="cond"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="198" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="198" type="cond"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="204" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/Application.java" name="Application.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="17" loc="194" coveredmethods="0" methods="15" elements="51" classes="1" ncloc="78" statements="32" conditionals="4" coveredstatements="0"/>
+            <class name="Application">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="17" coveredmethods="0" methods="15" elements="51" statements="32" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getMainURLKey() : String" num="19" count="0" type="method"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Application()" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="29" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="37" count="0" type="method"/>
+            <line num="38" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCommonName() : String" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setName(String) : void" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCommonName(String) : void" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setMainURLKey(String) : void" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDirectURLKey(String) : void" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDirectURLKey() : String" num="85" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="appURL() : String" num="97" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="103" type="cond"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="proxyURL() : String" num="131" count="0" type="method"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getVersion() : String" num="140" count="0" type="method"/>
+            <line num="141" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="setVersion(AutomationTool,TestDetails) : void" num="150" count="0" type="method"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="156" type="cond"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setVersion(String) : void" num="178" count="0" type="method"/>
+            <line num="179" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="appFullURL() : String" num="186" count="0" type="method"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/AutomationTool.java" name="AutomationTool.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="86" loc="317" coveredmethods="0" methods="86" elements="121" classes="1" ncloc="214" statements="35" conditionals="0" coveredstatements="0"/>
+            <class name="AutomationTool">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="86" coveredmethods="0" methods="86" elements="121" statements="35" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AutomationTool()" num="11" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="checkDisplayedUsingXpath(String) : boolean" num="14" count="0" type="method"/>
+            <line num="15" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="checkDisplayedUsingId(String) : boolean" num="18" count="0" type="method"/>
+            <line num="19" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="checkEnabledUsingXpath(String) : boolean" num="22" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="checkEnabledUsingId(String) : boolean" num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="checkSelectedUsingXpath(String) : boolean" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="checkSelectedUsingId(String) : boolean" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clearStringUsingCssSelector(String) : void" num="38" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="clearStringUsingId(String) : void" num="41" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="clearStringUsingXPath(String) : void" num="44" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="clearStringUsingName(String) : void" num="47" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="closeCurrentWindow() : void" num="50" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="pressTABWithID(String) : void" num="54" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="pressTABWithXPath(String) : void" num="58" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="pressENTERWithXPath(String) : void" num="62" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="pressENTERWithID(String) : void" num="66" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="clickListUsingName(String) : void" num="70" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="clickPerformUsingXPath(String) : void" num="73" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="clickUsingCssSelector(String) : void" num="76" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="clickUsingID(String) : void" num="79" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="clickUsingLinkText(String) : void" num="82" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="clickUsingName(String) : void" num="85" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="clickUsingPartialLinkText(String) : void" num="88" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="clickUsingTagName(String) : void" num="91" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="clickUsingXPath(String) : void" num="94" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="deselectVisibleTextByID(String,String) : void" num="97" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="enterStringUsingCssSelector(String,String) : void" num="100" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="enterStringUsingId(String,String) : void" num="103" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="enterStringNotTextFieldUsingId(String,String) : void" num="106" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="enterStringUsingName(String,String) : void" num="109" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="enterStringIntoFileUsingName(String,String) : void" num="112" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="enterStringUsingXPath(String,String) : void" num="115" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="get(String) : void" num="118" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getAttributeUsingId(String,String) : String" num="121" count="0" type="method"/>
+            <line num="122" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAttributeUsingXpath(String,String) : String" num="125" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCurrentUrl() : String" num="129" count="0" type="method"/>
+            <line num="130" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPageSource() : String" num="133" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSelectedTextByID(String) : String" num="137" count="0" type="method"/>
+            <line num="138" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSelectedTextByXpath(String) : String" num="141" count="0" type="method"/>
+            <line num="142" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTextUsingClassName(String) : String" num="145" count="0" type="method"/>
+            <line num="146" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTextUsingCssSelector(String) : String" num="149" count="0" type="method"/>
+            <line num="150" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTextUsingId(String) : String" num="153" count="0" type="method"/>
+            <line num="154" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTextUsingName(String) : String" num="157" count="0" type="method"/>
+            <line num="158" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTextUsingXPath(String) : String" num="161" count="0" type="method"/>
+            <line num="162" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTitle() : String" num="165" count="0" type="method"/>
+            <line num="166" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWindowHandle() : String" num="169" count="0" type="method"/>
+            <line num="170" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWindowHandles() : Set&lt;String&gt;" num="173" count="0" type="method"/>
+            <line num="174" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="instanciateDriver(AutomationTool,TestDetails) : String" num="177" count="0" type="method"/>
+            <line num="178" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isElementPresentByID(String) : boolean" num="181" count="0" type="method"/>
+            <line num="182" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isElementPresentByLinkText(String) : boolean" num="185" count="0" type="method"/>
+            <line num="186" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isElementPresentByXPath(String) : boolean" num="189" count="0" type="method"/>
+            <line num="190" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="navigateBack() : void" num="193" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="navigateRefresh() : void" num="196" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="parseUserAgent(AutomationTool,TestDetails,String) : void" num="199" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="updateAttributeById(AutomationTool,TestDetails,String,String,String) : void" num="202" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="updateAttributeByXpath(AutomationTool,TestDetails,String,String,String) : void" num="206" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="performDragAndDrop(WebElement,WebElement) : void" num="210" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="performMoveUsingXPath(String) : void" num="213" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="quit() : void" num="216" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="searchListUsingLinkTextIsEmpty(String) : boolean" num="219" count="0" type="method"/>
+            <line num="220" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchListUsingTagName(String) : List&lt;WebElement&gt;" num="223" count="0" type="method"/>
+            <line num="224" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchListUsingXPath(String) : List&lt;WebElement&gt;" num="227" count="0" type="method"/>
+            <line num="228" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchUsingCssSelector(String) : WebElement" num="231" count="0" type="method"/>
+            <line num="232" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchUsingID(String) : WebElement" num="235" count="0" type="method"/>
+            <line num="236" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchUsingIDandGetTextUsingXpath(String,String) : String" num="239" count="0" type="method"/>
+            <line num="240" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchUsingName(String) : WebElement" num="243" count="0" type="method"/>
+            <line num="244" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchUsingXpath(String) : WebElement" num="247" count="0" type="method"/>
+            <line num="248" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="selectByIndexByID(String,int) : void" num="251" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="selectVisibleTextByID(String,String) : void" num="254" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="selectVisibleTextByName(String,String) : void" num="257" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="selectVisibleTextByXPath(String,String) : void" num="260" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="selectImage(String,String) : void" num="263" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="switchToDefaultContent() : void" num="266" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="switchToFrame(String) : void" num="269" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="switchToFrameUsingXpath(String) : void" num="272" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="switchToWindow(String) : void" num="276" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="switchToAlertAndAccept() : void" num="279" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="switchToAlertAndGetText() : String" num="282" count="0" type="method"/>
+            <line num="283" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="waitForVisibilityOfElementUsingXpath(String,int) : void" num="286" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="waitForVisibilityOfElementUsingId(String,int) : void" num="290" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="waitForElementToBeClickableUsingId(String,int) : void" num="294" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="waitForElementToBeClickableUsingXpath(String,int) : void" num="298" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="takeScreenShot(String) : String" num="302" count="0" type="method"/>
+            <line num="303" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="moveCursorSomewhereElse(String) : void" num="306" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="countRowsInTableUsingClass(String) : int" num="309" count="0" type="method"/>
+            <line num="310" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="scrollDownUsingClassName(String) : void" num="313" count="0" type="method"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/Common.java" name="Common.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="53" loc="750" coveredmethods="0" methods="41" elements="264" classes="1" ncloc="328" statements="201" conditionals="22" coveredstatements="0"/>
+            <class name="Common">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="53" coveredmethods="0" methods="41" elements="264" statements="201" conditionals="22" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Common()" num="29" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="sleepForNumberOfSeconds(long) : void" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isTextOnPage(AutomationTool,String) : Boolean" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isCheckBoxSelected(AutomationTool,String) : Boolean" num="64" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="removeHTMLTags(String) : String" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="returnCleanPageSource(AutomationTool) : String" num="97" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isTextOnPageWithRegex(AutomationTool,String) : Boolean" num="113" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="isTextNotOnPage(AutomationTool,String) : Boolean" num="127" count="0" type="method"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="cleanStringOfIllegalChars(String) : String" num="139" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="replaceAmpCodeWithCharacter(String) : String" num="154" count="0" type="method"/>
+            <line num="155" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="cleanStringOfAllNonDigits(String) : String" num="165" count="0" type="method"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="generateTimeStamp() : String" num="176" count="0" type="method"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="insertPropertyInDB(String,String,String) : void" num="182" count="0" type="method"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="202" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+            <line num="206" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="updatePropertyInDB(String,String,String) : void" num="211" count="0" type="method"/>
+            <line num="213" count="0" type="stmt"/>
+            <line num="214" count="0" type="stmt"/>
+            <line num="216" count="0" type="stmt"/>
+            <line num="217" count="0" type="stmt"/>
+            <line num="219" count="0" type="stmt"/>
+            <line num="220" count="0" type="stmt"/>
+            <line num="221" count="0" type="stmt"/>
+            <line num="223" count="0" type="stmt"/>
+            <line num="226" count="0" type="stmt"/>
+            <line num="227" count="0" type="stmt"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="229" count="0" type="stmt"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="234" count="0" type="stmt"/>
+            <line num="235" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="deletePropertyFromDB(String,String) : void" num="239" count="0" type="method"/>
+            <line num="241" count="0" type="stmt"/>
+            <line num="242" count="0" type="stmt"/>
+            <line num="244" count="0" type="stmt"/>
+            <line num="245" count="0" type="stmt"/>
+            <line num="247" count="0" type="stmt"/>
+            <line num="248" count="0" type="stmt"/>
+            <line num="249" count="0" type="stmt"/>
+            <line num="251" count="0" type="stmt"/>
+            <line num="252" count="0" type="stmt"/>
+            <line num="253" count="0" type="stmt"/>
+            <line num="254" count="0" type="stmt"/>
+            <line num="256" count="0" type="stmt"/>
+            <line num="259" count="0" type="stmt"/>
+            <line num="260" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="checkPropertyExistsInDB(String) : boolean" num="264" count="0" type="method"/>
+            <line num="266" count="0" type="stmt"/>
+            <line num="268" count="0" type="stmt"/>
+            <line num="270" count="0" type="stmt"/>
+            <line num="271" count="0" type="stmt"/>
+            <line num="272" count="0" type="stmt"/>
+            <line num="273" count="0" type="stmt"/>
+            <line num="274" count="0" type="stmt"/>
+            <line num="275" count="0" type="stmt"/>
+            <line num="277" count="0" type="stmt"/>
+            <line num="278" count="0" type="stmt"/>
+            <line num="280" count="0" type="stmt"/>
+            <line num="281" count="0" type="stmt"/>
+            <line num="283" count="0" type="stmt"/>
+            <line num="284" count="0" type="stmt"/>
+            <line num="285" count="0" type="stmt"/>
+            <line num="286" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="286" type="cond"/>
+            <line num="287" count="0" type="stmt"/>
+            <line num="291" count="0" type="stmt"/>
+            <line num="292" count="0" type="stmt"/>
+            <line num="293" count="0" type="stmt"/>
+            <line num="296" count="0" type="stmt"/>
+            <line complexity="2" visibility="private" signature="getPropertyValueFromDB(String) : String" num="300" count="0" type="method"/>
+            <line num="302" count="0" type="stmt"/>
+            <line num="304" count="0" type="stmt"/>
+            <line num="306" count="0" type="stmt"/>
+            <line num="307" count="0" type="stmt"/>
+            <line num="308" count="0" type="stmt"/>
+            <line num="309" count="0" type="stmt"/>
+            <line num="310" count="0" type="stmt"/>
+            <line num="311" count="0" type="stmt"/>
+            <line num="313" count="0" type="stmt"/>
+            <line num="314" count="0" type="stmt"/>
+            <line num="316" count="0" type="stmt"/>
+            <line num="317" count="0" type="stmt"/>
+            <line num="319" count="0" type="stmt"/>
+            <line num="320" count="0" type="stmt"/>
+            <line num="321" count="0" type="stmt"/>
+            <line num="323" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="323" type="cond"/>
+            <line num="324" count="0" type="stmt"/>
+            <line num="328" count="0" type="stmt"/>
+            <line num="329" count="0" type="stmt"/>
+            <line num="330" count="0" type="stmt"/>
+            <line num="333" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="storePropertyInDB(String,String,String) : void" num="381" count="0" type="method"/>
+            <line num="382" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="382" type="cond"/>
+            <line num="383" count="0" type="stmt"/>
+            <line num="385" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="storeProperty(String,String,String) : void" num="389" count="0" type="method"/>
+            <line num="391" count="0" type="stmt"/>
+            <line num="393" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="393" type="cond"/>
+            <line num="394" count="0" type="stmt"/>
+            <line num="396" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="storeMultiplePropertiesInDB(String,String,String) : void" num="413" count="0" type="method"/>
+            <line num="415" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDisposablePropertyFromDatabase(String) : String" num="427" count="0" type="method"/>
+            <line num="429" count="0" type="stmt"/>
+            <line num="430" count="0" type="stmt"/>
+            <line num="431" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPropertyFromDatabase(String) : String" num="442" count="0" type="method"/>
+            <line num="443" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getStoredProperty(String) : String" num="446" count="0" type="method"/>
+            <line num="447" count="0" type="stmt"/>
+            <line num="449" count="0" type="stmt"/>
+            <line num="451" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="451" type="cond"/>
+            <line num="452" count="0" type="stmt"/>
+            <line num="455" count="0" type="stmt"/>
+            <line num="457" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="getPropertyFromIniFile(String) : String" num="470" count="0" type="method"/>
+            <line num="472" count="0" type="stmt"/>
+            <line num="473" count="0" type="stmt"/>
+            <line num="474" count="0" type="stmt"/>
+            <line complexity="1" visibility="private" signature="storePropertyInIniFile(String,String,String) : void" num="486" count="0" type="method"/>
+            <line num="488" count="0" type="stmt"/>
+            <line num="489" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCurrentWindowHandle(AutomationTool) : String" num="499" count="0" type="method"/>
+            <line num="500" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="switchToThisWindow(AutomationTool,String) : void" num="510" count="0" type="method"/>
+            <line num="511" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="switchToNewWindow(AutomationTool,String) : void" num="523" count="0" type="method"/>
+            <line num="524" count="0" type="stmt"/>
+            <line num="525" count="0" type="stmt"/>
+            <line num="526" count="0" type="stmt"/>
+            <line num="527" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="527" type="cond"/>
+            <line num="528" count="0" type="stmt"/>
+            <line num="529" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="sftpFile(String,String,String,String,String) : void" num="549" count="0" type="method"/>
+            <line num="550" count="0" type="stmt"/>
+            <line num="551" count="0" type="stmt"/>
+            <line num="553" count="0" type="stmt"/>
+            <line num="555" count="0" type="stmt"/>
+            <line num="557" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="557" type="cond"/>
+            <line num="558" count="0" type="stmt"/>
+            <line num="561" count="0" type="stmt"/>
+            <line num="562" count="0" type="stmt"/>
+            <line num="563" count="0" type="stmt"/>
+            <line num="564" count="0" type="stmt"/>
+            <line num="565" count="0" type="stmt"/>
+            <line num="567" count="0" type="stmt"/>
+            <line num="568" count="0" type="stmt"/>
+            <line num="570" count="0" type="stmt"/>
+            <line num="571" count="0" type="stmt"/>
+            <line num="574" count="0" type="stmt"/>
+            <line num="575" count="0" type="stmt"/>
+            <line num="579" count="0" type="stmt"/>
+            <line num="580" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="580" type="cond"/>
+            <line num="581" count="0" type="stmt"/>
+            <line num="584" count="0" type="stmt"/>
+            <line num="586" count="0" type="stmt"/>
+            <line num="587" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="removeCurrencyAndConvertToDouble(String,String) : double" num="599" count="0" type="method"/>
+            <line num="600" count="0" type="stmt"/>
+            <line num="601" count="0" type="stmt"/>
+            <line num="603" count="0" type="stmt"/>
+            <line num="604" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCurrentDayOfMonth() : String" num="612" count="0" type="method"/>
+            <line num="613" count="0" type="stmt"/>
+            <line num="614" count="0" type="stmt"/>
+            <line num="615" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCurrentMonth() : int" num="623" count="0" type="method"/>
+            <line num="624" count="0" type="stmt"/>
+            <line num="625" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCurrentYear() : int" num="633" count="0" type="method"/>
+            <line num="634" count="0" type="stmt"/>
+            <line num="635" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="todaysDatePlusDays(int,String) : String" num="638" count="0" type="method"/>
+            <line num="639" count="0" type="stmt"/>
+            <line num="640" count="0" type="stmt"/>
+            <line num="642" count="0" type="stmt"/>
+            <line num="643" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSysdateDDMMYYYYWithSeparater(String) : String" num="653" count="0" type="method"/>
+            <line num="654" count="0" type="stmt"/>
+            <line num="655" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSysdateYYYYMMDDWithSeparater(String) : String" num="658" count="0" type="method"/>
+            <line num="659" count="0" type="stmt"/>
+            <line num="660" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="formatToHHmmss(String) : String" num="672" count="0" type="method"/>
+            <line num="673" count="0" type="stmt"/>
+            <line num="674" count="0" type="stmt"/>
+            <line num="675" count="0" type="stmt"/>
+            <line num="676" count="0" type="stmt"/>
+            <line num="677" count="0" type="stmt"/>
+            <line num="679" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="679" type="cond"/>
+            <line falsecount="0" truecount="0" num="679" type="cond"/>
+            <line falsecount="0" truecount="0" num="679" type="cond"/>
+            <line num="681" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMethodName() : String" num="690" count="0" type="method"/>
+            <line num="691" count="0" type="stmt"/>
+            <line num="693" count="0" type="stmt"/>
+            <line num="694" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickOKOnAlertPopup(AutomationTool) : void" num="697" count="0" type="method"/>
+            <line num="698" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBaseURLFromPropertyFile(Application) : String" num="701" count="0" type="method"/>
+            <line num="702" count="0" type="stmt"/>
+            <line num="703" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAlertPopupText(AutomationTool) : String" num="706" count="0" type="method"/>
+            <line num="707" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/DB.java" name="DB.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="20" loc="116" coveredmethods="0" methods="17" elements="63" classes="1" ncloc="92" statements="42" conditionals="4" coveredstatements="0"/>
+            <class name="DB">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="20" coveredmethods="0" methods="17" elements="63" statements="42" conditionals="4" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="DB(String)" num="16" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="18" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getIp() : String" num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setIp(String) : void" num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getService_name() : String" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setService_name(String) : void" num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLogin() : String" num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLogin(String) : void" num="43" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPassword() : String" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPassword(String) : void" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="oracleDBStatement() : Statement" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="oracleDBCnx() : Connection" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="mysqlDBStatement() : Statement" num="66" count="0" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="mysqlDBCnx() : Connection" num="70" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="execSQLSelect(Statement,String,int) : String" num="82" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="86" type="cond"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="execSQLSelectWithParam(Connection,String,int,String) : String" num="94" count="0" type="method"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="99" type="cond"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="execSQLUpdate(Statement,String) : void" num="107" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="execSQLUpdateWithParam(Statement,String,String) : void" num="112" count="0" type="method"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/EmailHost.java" name="EmailHost.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="25" loc="214" coveredmethods="0" methods="17" elements="102" classes="1" ncloc="143" statements="77" conditionals="8" coveredstatements="0"/>
+            <class name="EmailHost">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="25" coveredmethods="0" methods="17" elements="102" statements="77" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="EmailHost()" num="34" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getProvider() : String" num="50" count="0" type="method"/>
+            <line num="51" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setProvider(String) : void" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getHost() : String" num="58" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setHost() : void" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPort() : String" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPort() : void" num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getProtocol() : String" num="75" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setProtocol() : void" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFolder() : String" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFolder() : void" num="87" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUsername() : String" num="91" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUsername() : void" num="95" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPassword() : String" num="99" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPassword() : void" num="103" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="retrieveCountEmailMessageBySubject(String) : String" num="107" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="132" type="cond"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="140" type="cond"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="retrieveEmailMessageBySubject(String) : String" num="160" count="0" type="method"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="185" type="cond"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="193" type="cond"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+            <line num="206" count="0" type="stmt"/>
+            <line num="208" count="0" type="stmt"/>
+            <line num="210" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/ExcelSpreadsheet.java" name="ExcelSpreadsheet.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="13" loc="122" coveredmethods="0" methods="4" elements="55" classes="1" ncloc="75" statements="39" conditionals="12" coveredstatements="0"/>
+            <class name="ExcelSpreadsheet">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="13" coveredmethods="0" methods="4" elements="55" statements="39" conditionals="12" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="ExcelSpreadsheet(ExcelFile)" num="35" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getNumberOfExcelRows() : int" num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="49" type="cond"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getNumberOfExcelColumns() : int" num="57" count="0" type="method"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="64" type="cond"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="8" visibility="public" signature="getSpreadSheetAsArray() : List&lt;String&gt;" num="73" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="79" type="cond"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="84" type="cond"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="91" type="cond"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="101" type="cond"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/GoogleSheets.java" name="GoogleSheets.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="28" loc="342" coveredmethods="0" methods="17" elements="142" classes="1" ncloc="205" statements="107" conditionals="18" coveredstatements="0"/>
+            <class name="GoogleSheets">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="28" coveredmethods="0" methods="17" elements="142" statements="107" conditionals="18" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getSheetName() : String" num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setSheetName(String) : void" num="59" count="0" type="method"/>
+            <line num="60" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWorkSheetName() : String" num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setWorkSheetName(String) : void" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWorkSheetHREF() : String" num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setWorkSheetHREF(String) : void" num="75" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTotalSheets() : int" num="79" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setTotalSheets(int) : void" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="GoogleSheets(GoogleSheetConnectionDetails)" num="87" count="0" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="113" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="128" type="cond"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="134" type="cond"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="144" type="cond"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="153" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="157" type="cond"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="165" type="cond"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="addNewSheet() : String" num="178" count="0" type="method"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getCellValue(String) : String" num="193" count="0" type="method"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="202" count="0" type="stmt"/>
+            <line num="215" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="215" type="cond"/>
+            <line num="217" count="0" type="stmt"/>
+            <line num="222" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getCellInputValue(String) : String" num="225" count="0" type="method"/>
+            <line num="227" count="0" type="stmt"/>
+            <line num="230" count="0" type="stmt"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="234" count="0" type="stmt"/>
+            <line num="247" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="247" type="cond"/>
+            <line num="249" count="0" type="stmt"/>
+            <line num="254" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="updateCellValue(String,String) : void" num="257" count="0" type="method"/>
+            <line num="262" count="0" type="stmt"/>
+            <line num="263" count="0" type="stmt"/>
+            <line num="266" count="0" type="stmt"/>
+            <line num="269" count="0" type="stmt"/>
+            <line num="271" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="271" type="cond"/>
+            <line num="275" count="0" type="stmt"/>
+            <line num="276" count="0" type="stmt"/>
+            <line num="277" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNumberOfRows() : int" num="285" count="0" type="method"/>
+            <line num="286" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getNumberOfColumns() : int" num="289" count="0" type="method"/>
+            <line num="290" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="getSpreadSheetAsArray() : List&lt;String&gt;" num="293" count="0" type="method"/>
+            <line num="295" count="0" type="stmt"/>
+            <line num="298" count="0" type="stmt"/>
+            <line num="299" count="0" type="stmt"/>
+            <line num="303" count="0" type="stmt"/>
+            <line num="305" count="0" type="stmt"/>
+            <line num="307" count="0" type="stmt"/>
+            <line num="309" count="0" type="stmt"/>
+            <line num="312" count="0" type="stmt"/>
+            <line num="314" count="0" type="stmt"/>
+            <line num="316" count="0" type="stmt"/>
+            <line num="318" count="0" type="stmt"/>
+            <line num="319" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="319" type="cond"/>
+            <line num="321" count="0" type="stmt"/>
+            <line num="325" count="0" type="stmt"/>
+            <line num="329" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="createSpreadSheet() : void" num="332" count="0" type="method"/>
+            <line num="336" count="0" type="stmt"/>
+            <line num="337" count="0" type="stmt"/>
+            <line num="338" count="0" type="stmt"/>
+            <line num="339" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/Main.java" name="Main.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="60" loc="324" coveredmethods="0" methods="7" elements="218" classes="2" ncloc="267" statements="141" conditionals="70" coveredstatements="0"/>
+            <class name="Main">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="3" elements="60" statements="43" conditionals="14" coveredstatements="0"/>
+            </class>
+            <class name="Main.LogResults">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="49" coveredmethods="0" methods="4" elements="158" statements="98" conditionals="56" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Main()" num="37" count="0" type="method"/>
+            <line complexity="3" visibility="protected" signature="failed(Throwable,Description) : void" num="43" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="59" type="cond"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="3" visibility="protected" signature="succeeded(Description) : void" num="67" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="76" type="cond"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="18" visibility="public" signature="checkForBadData() : void" num="84" count="0" type="method"/>
+            <line num="85" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="85" type="cond"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="89" type="cond"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="94" type="cond"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="96" count="0" type="stmt"/>
+            <line num="98" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="98" type="cond"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="102" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="102" type="cond"/>
+            <line num="104" count="0" type="stmt"/>
+            <line num="105" count="0" type="stmt"/>
+            <line complexity="25" visibility="public" signature="logResultsInDB(String) : void" num="110" count="0" type="method"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="116" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="116" type="cond"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="124" type="cond"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="128" type="cond"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="132" type="cond"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="135" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="135" type="cond"/>
+            <line num="136" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="136" type="cond"/>
+            <line num="137" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="140" type="cond"/>
+            <line num="141" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="145" type="cond"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="149" type="cond"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="155" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="155" type="cond"/>
+            <line num="156" count="0" type="stmt"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="160" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="160" type="cond"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="166" type="cond"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="171" type="cond"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="177" type="cond"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="183" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="183" type="cond"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="188" type="cond"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="194" type="cond"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="197" type="cond"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="216" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="216" type="cond"/>
+            <line num="217" count="0" type="stmt"/>
+            <line num="219" count="0" type="stmt"/>
+            <line num="220" count="0" type="stmt"/>
+            <line num="221" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="221" type="cond"/>
+            <line num="222" count="0" type="stmt"/>
+            <line num="223" count="0" type="stmt"/>
+            <line num="224" count="0" type="stmt"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="230" count="0" type="stmt"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="234" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="234" type="cond"/>
+            <line num="235" count="0" type="stmt"/>
+            <line num="238" count="0" type="stmt"/>
+            <line complexity="8" visibility="public" signature="checkForPassAndAbort(String) : void" num="247" count="0" type="method"/>
+            <line num="249" count="0" type="stmt"/>
+            <line num="250" count="0" type="stmt"/>
+            <line num="252" count="0" type="stmt"/>
+            <line num="254" count="0" type="stmt"/>
+            <line num="255" count="0" type="stmt"/>
+            <line num="256" count="0" type="stmt"/>
+            <line num="258" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="258" type="cond"/>
+            <line num="259" count="0" type="stmt"/>
+            <line num="261" count="0" type="stmt"/>
+            <line num="262" count="0" type="stmt"/>
+            <line num="264" count="0" type="stmt"/>
+            <line num="267" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="267" type="cond"/>
+            <line num="268" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="268" type="cond"/>
+            <line num="269" count="0" type="stmt"/>
+            <line num="272" count="0" type="stmt"/>
+            <line num="275" count="0" type="stmt"/>
+            <line num="279" count="0" type="stmt"/>
+            <line num="281" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="281" type="cond"/>
+            <line num="282" count="0" type="stmt"/>
+            <line num="283" count="0" type="stmt"/>
+            <line num="284" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="284" type="cond"/>
+            <line num="285" count="0" type="stmt"/>
+            <line num="286" count="0" type="stmt"/>
+            <line num="290" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="290" type="cond"/>
+            <line num="291" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="tearDown() : void" num="297" count="0" type="method"/>
+            <line num="300" count="0" type="stmt"/>
+            <line num="301" count="0" type="stmt"/>
+            <line num="302" count="0" type="stmt"/>
+            <line num="303" count="0" type="stmt"/>
+            <line num="304" count="0" type="stmt"/>
+            <line num="305" count="0" type="stmt"/>
+            <line num="306" count="0" type="stmt"/>
+            <line num="308" count="0" type="stmt"/>
+            <line num="310" count="0" type="stmt"/>
+            <line num="311" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="311" type="cond"/>
+            <line num="312" count="0" type="stmt"/>
+            <line num="315" count="0" type="stmt"/>
+            <line num="316" count="0" type="stmt"/>
+            <line num="317" count="0" type="stmt"/>
+            <line num="318" count="0" type="stmt"/>
+            <line num="319" count="0" type="stmt"/>
+            <line num="320" count="0" type="stmt"/>
+            <line num="321" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/Platform.java" name="Platform.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="26" loc="151" coveredmethods="0" methods="22" elements="77" classes="1" ncloc="112" statements="47" conditionals="8" coveredstatements="0"/>
+            <class name="Platform">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="26" coveredmethods="0" methods="22" elements="77" statements="47" conditionals="8" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getBrowserstaacksessionid() : String" num="21" count="0" type="method"/>
+            <line num="22" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBrowserstaacksessionid(String) : void" num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPlatformOs(String) : void" num="30" count="0" type="method"/>
+            <line num="31" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPlatformOs() : String" num="34" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="Platform()" num="38" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getComputerName() : String" num="41" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setComputerName(String) : void" num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOS() : String" num="49" count="0" type="method"/>
+            <line num="50" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOS(String) : void" num="53" count="0" type="method"/>
+            <line num="54" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOSFullNameAndVersion() : String" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOSFullNameAndVersion(String) : void" num="61" count="0" type="method"/>
+            <line num="62" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBrowser() : String" num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBrowser(String) : void" num="69" count="0" type="method"/>
+            <line num="70" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBrowserFullNameAndVersion() : String" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBrowserFullNameAndVersion(String) : void" num="77" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getOsOfTestPlatform() : String" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setOsOfTestPlatform() : void" num="85" count="0" type="method"/>
+            <line num="87" count="0" type="stmt"/>
+            <line complexity="3" visibility="private" signature="getCurrentPlatformOs() : String" num="90" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="94" type="cond"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="97" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="97" type="cond"/>
+            <line num="98" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="IE(DesiredCapabilities) : void" num="104" count="0" type="method"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="106" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line num="111" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="BS(DesiredCapabilities) : void" num="114" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="FF(DesiredCapabilities) : FirefoxProfile" num="125" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="130" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="CH(DesiredCapabilities) : void" num="133" count="0" type="method"/>
+            <line num="135" count="0" type="stmt"/>
+            <line num="136" count="0" type="stmt"/>
+            <line num="138" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="138" type="cond"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="143" type="cond"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/Prep.java" name="Prep.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="11" loc="76" coveredmethods="0" methods="5" elements="33" classes="1" ncloc="42" statements="22" conditionals="6" coveredstatements="0"/>
+            <class name="Prep">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="11" coveredmethods="0" methods="5" elements="33" statements="22" conditionals="6" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Prep()" num="13" count="0" type="method"/>
+            <line complexity="3" visibility="public" signature="readUsersPasswordFromIniFile(String) : String" num="16" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="20" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="22" type="cond"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="readUsersUserNameFromIniFile(String) : String" num="28" count="0" type="method"/>
+            <line num="29" count="0" type="stmt"/>
+            <line num="31" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="34" type="cond"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="readPropertyFromAccountPropertyFile(String) : String" num="40" count="0" type="method"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="45" type="cond"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="readProperties(String) : Properties" num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/PropertyHelper.java" name="PropertyHelper.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="40" loc="418" coveredmethods="0" methods="15" elements="182" classes="1" ncloc="231" statements="149" conditionals="18" coveredstatements="0"/>
+            <class name="PropertyHelper">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="40" coveredmethods="0" methods="15" elements="182" statements="149" conditionals="18" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="readProperties(String) : Properties" num="20" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="22" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="getInitProperties(String) : String" num="33" count="0" type="method"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="47" type="cond"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="readInitProperties(String) : String" num="62" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="4" visibility="public" signature="getPasswordProperties(String) : String" num="86" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="104" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="104" type="cond"/>
+            <line num="105" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="110" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="110" type="cond"/>
+            <line num="111" count="0" type="stmt"/>
+            <line num="114" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getInitPropertiesInt(String) : int" num="117" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="127" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getAccountProperties(String) : String" num="137" count="0" type="method"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="147" count="0" type="stmt"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="setProperties(String,String) : void" num="160" count="0" type="method"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="175" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="175" type="cond"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="180" type="cond"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="203" count="0" type="stmt"/>
+            <line complexity="5" visibility="public" signature="savePropertyToTestIniFile(String,String,String) : void" num="221" count="0" type="method"/>
+            <line num="222" count="0" type="stmt"/>
+            <line num="224" count="0" type="stmt"/>
+            <line num="225" count="0" type="stmt"/>
+            <line num="227" count="0" type="stmt"/>
+            <line num="229" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="229" type="cond"/>
+            <line num="230" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="230" type="cond"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="235" count="0" type="stmt"/>
+            <line num="237" count="0" type="stmt"/>
+            <line num="239" count="0" type="stmt"/>
+            <line num="241" count="0" type="stmt"/>
+            <line num="243" count="0" type="stmt"/>
+            <line num="247" count="0" type="stmt"/>
+            <line num="249" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="readPropertyFromTestIniFile(String) : String" num="253" count="0" type="method"/>
+            <line num="255" count="0" type="stmt"/>
+            <line num="256" count="0" type="stmt"/>
+            <line num="258" count="0" type="stmt"/>
+            <line num="260" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="readPropertyFromEmailPropertyFile(String,String) : String" num="263" count="0" type="method"/>
+            <line num="265" count="0" type="stmt"/>
+            <line num="266" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="readPropertyFromFile(String) : String" num="297" count="0" type="method"/>
+            <line num="298" count="0" type="stmt"/>
+            <line num="300" count="0" type="stmt"/>
+            <line num="301" count="0" type="stmt"/>
+            <line num="303" count="0" type="stmt"/>
+            <line num="304" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="304" type="cond"/>
+            <line num="306" count="0" type="stmt"/>
+            <line num="307" count="0" type="stmt"/>
+            <line num="309" count="0" type="stmt"/>
+            <line num="313" count="0" type="stmt"/>
+            <line num="314" count="0" type="stmt"/>
+            <line num="317" count="0" type="stmt"/>
+            <line num="319" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="main(String[]) : void" num="350" count="0" type="method"/>
+            <line num="351" count="0" type="stmt"/>
+            <line num="352" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getDBProperties(String) : String" num="356" count="0" type="method"/>
+            <line num="357" count="0" type="stmt"/>
+            <line num="359" count="0" type="stmt"/>
+            <line num="360" count="0" type="stmt"/>
+            <line num="362" count="0" type="stmt"/>
+            <line num="363" count="0" type="stmt"/>
+            <line num="365" count="0" type="stmt"/>
+            <line num="367" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="getENV() : String" num="370" count="0" type="method"/>
+            <line num="371" count="0" type="stmt"/>
+            <line num="372" count="0" type="stmt"/>
+            <line num="374" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="374" type="cond"/>
+            <line num="375" count="0" type="stmt"/>
+            <line num="376" count="0" type="stmt"/>
+            <line num="378" count="0" type="stmt"/>
+            <line num="379" count="0" type="stmt"/>
+            <line num="381" count="0" type="stmt"/>
+            <line num="384" count="0" type="stmt"/>
+            <line num="387" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="getSQLPrepProperties(String) : String" num="404" count="0" type="method"/>
+            <line num="405" count="0" type="stmt"/>
+            <line num="406" count="0" type="stmt"/>
+            <line num="408" count="0" type="stmt"/>
+            <line num="409" count="0" type="stmt"/>
+            <line num="411" count="0" type="stmt"/>
+            <line num="412" count="0" type="stmt"/>
+            <line num="414" count="0" type="stmt"/>
+            <line num="416" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/Selenium.java" name="Selenium.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="125" loc="825" coveredmethods="0" methods="88" elements="448" classes="1" ncloc="637" statements="292" conditionals="68" coveredstatements="0"/>
+            <class name="Selenium">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="125" coveredmethods="0" methods="88" elements="448" statements="292" conditionals="68" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Selenium()" num="48" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="checkDisplayedUsingXpath(String) : boolean" num="51" count="0" type="method"/>
+            <line num="53" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="checkDisplayedUsingId(String) : boolean" num="56" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="checkSelectedUsingXpath(String) : boolean" num="61" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="checkSelectedUsingId(String) : boolean" num="66" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="checkEnabledUsingXpath(String) : boolean" num="71" count="0" type="method"/>
+            <line num="73" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="checkEnabledUsingId(String) : boolean" num="76" count="0" type="method"/>
+            <line num="78" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickListUsingName(String) : void" num="81" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickPerformUsingXPath(String) : void" num="86" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickUsingCssSelector(String) : void" num="92" count="0" type="method"/>
+            <line num="94" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickUsingID(String) : void" num="97" count="0" type="method"/>
+            <line num="99" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickUsingLinkText(String) : void" num="102" count="0" type="method"/>
+            <line num="104" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickUsingName(String) : void" num="107" count="0" type="method"/>
+            <line num="109" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickUsingPartialLinkText(String) : void" num="112" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickUsingTagName(String) : void" num="117" count="0" type="method"/>
+            <line num="119" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clickUsingXPath(String) : void" num="122" count="0" type="method"/>
+            <line num="124" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="closeCurrentWindow() : void" num="127" count="0" type="method"/>
+            <line num="129" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="deselectVisibleTextByID(String,String) : void" num="132" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="enterStringUsingCssSelector(String,String) : void" num="137" count="0" type="method"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="enterStringUsingId(String,String) : void" num="143" count="0" type="method"/>
+            <line num="145" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clearStringUsingCssSelector(String) : void" num="149" count="0" type="method"/>
+            <line num="151" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clearStringUsingId(String) : void" num="155" count="0" type="method"/>
+            <line num="157" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clearStringUsingXPath(String) : void" num="161" count="0" type="method"/>
+            <line num="163" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="clearStringUsingName(String) : void" num="166" count="0" type="method"/>
+            <line num="168" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="enterStringNotTextFieldUsingId(String,String) : void" num="172" count="0" type="method"/>
+            <line num="174" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="enterStringUsingName(String,String) : void" num="177" count="0" type="method"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="180" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="enterStringIntoFileUsingName(String,String) : void" num="183" count="0" type="method"/>
+            <line num="186" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="enterStringUsingXPath(String,String) : void" num="189" count="0" type="method"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="get(String) : void" num="195" count="0" type="method"/>
+            <line num="197" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAttributeUsingId(String,String) : String" num="200" count="0" type="method"/>
+            <line num="202" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAttributeUsingXpath(String,String) : String" num="205" count="0" type="method"/>
+            <line num="207" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCurrentUrl() : String" num="210" count="0" type="method"/>
+            <line num="212" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDriver() : WebDriver" num="215" count="0" type="method"/>
+            <line num="216" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPageSource() : String" num="219" count="0" type="method"/>
+            <line num="221" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSelectedTextByID(String) : String" num="224" count="0" type="method"/>
+            <line num="226" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getSelectedTextByXpath(String) : String" num="229" count="0" type="method"/>
+            <line num="231" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTextUsingClassName(String) : String" num="234" count="0" type="method"/>
+            <line num="236" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTextUsingCssSelector(String) : String" num="239" count="0" type="method"/>
+            <line num="241" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTextUsingId(String) : String" num="244" count="0" type="method"/>
+            <line num="246" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTextUsingName(String) : String" num="249" count="0" type="method"/>
+            <line num="251" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTextUsingXPath(String) : String" num="254" count="0" type="method"/>
+            <line num="256" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getTitle() : String" num="259" count="0" type="method"/>
+            <line num="261" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWindowHandle() : String" num="264" count="0" type="method"/>
+            <line num="266" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getWindowHandles() : Set&lt;String&gt;" num="269" count="0" type="method"/>
+            <line num="271" count="0" type="stmt"/>
+            <line complexity="27" visibility="public" signature="instanciateDriver(AutomationTool,TestDetails) : String" num="274" count="0" type="method"/>
+            <line num="276" count="0" type="stmt"/>
+            <line num="278" count="0" type="stmt"/>
+            <line num="280" count="0" type="stmt"/>
+            <line num="281" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="281" type="cond"/>
+            <line num="282" count="0" type="stmt"/>
+            <line num="284" count="0" type="stmt"/>
+            <line num="286" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="286" type="cond"/>
+            <line num="287" count="0" type="stmt"/>
+            <line num="288" count="0" type="stmt"/>
+            <line num="290" count="0" type="stmt"/>
+            <line num="291" count="0" type="stmt"/>
+            <line num="294" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="294" type="cond"/>
+            <line num="295" count="0" type="stmt"/>
+            <line num="296" count="0" type="stmt"/>
+            <line num="299" count="0" type="stmt"/>
+            <line num="300" count="0" type="stmt"/>
+            <line num="301" count="0" type="stmt"/>
+            <line num="302" count="0" type="stmt"/>
+            <line num="303" count="0" type="stmt"/>
+            <line num="305" count="0" type="stmt"/>
+            <line num="307" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="307" type="cond"/>
+            <line num="308" count="0" type="stmt"/>
+            <line num="310" count="0" type="stmt"/>
+            <line num="312" count="0" type="stmt"/>
+            <line num="314" count="0" type="stmt"/>
+            <line num="316" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="316" type="cond"/>
+            <line num="318" count="0" type="stmt"/>
+            <line num="319" count="0" type="stmt"/>
+            <line num="321" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="321" type="cond"/>
+            <line num="325" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="325" type="cond"/>
+            <line num="326" count="0" type="stmt"/>
+            <line num="329" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="329" type="cond"/>
+            <line num="330" count="0" type="stmt"/>
+            <line num="333" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="333" type="cond"/>
+            <line num="334" count="0" type="stmt"/>
+            <line num="337" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="337" type="cond"/>
+            <line num="339" count="0" type="stmt"/>
+            <line num="343" count="0" type="stmt"/>
+            <line num="345" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="345" type="cond"/>
+            <line num="346" count="0" type="stmt"/>
+            <line num="348" count="0" type="stmt"/>
+            <line num="351" count="0" type="stmt"/>
+            <line num="353" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="353" type="cond"/>
+            <line num="354" count="0" type="stmt"/>
+            <line num="356" count="0" type="stmt"/>
+            <line num="359" count="0" type="stmt"/>
+            <line num="360" count="0" type="stmt"/>
+            <line num="361" count="0" type="stmt"/>
+            <line num="363" count="0" type="stmt"/>
+            <line num="367" count="0" type="stmt"/>
+            <line num="368" count="0" type="stmt"/>
+            <line num="370" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="370" type="cond"/>
+            <line num="371" count="0" type="stmt"/>
+            <line num="373" count="0" type="stmt"/>
+            <line num="374" count="0" type="stmt"/>
+            <line num="375" count="0" type="stmt"/>
+            <line num="377" count="0" type="stmt"/>
+            <line num="379" count="0" type="stmt"/>
+            <line num="380" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="380" type="cond"/>
+            <line num="382" count="0" type="stmt"/>
+            <line num="383" count="0" type="stmt"/>
+            <line num="384" count="0" type="stmt"/>
+            <line num="386" count="0" type="stmt"/>
+            <line num="387" count="0" type="stmt"/>
+            <line num="388" count="0" type="stmt"/>
+            <line num="390" count="0" type="stmt"/>
+            <line num="392" count="0" type="stmt"/>
+            <line num="393" count="0" type="stmt"/>
+            <line num="395" count="0" type="stmt"/>
+            <line num="396" count="0" type="stmt"/>
+            <line num="397" count="0" type="stmt"/>
+            <line num="398" count="0" type="stmt"/>
+            <line num="399" count="0" type="stmt"/>
+            <line num="401" count="0" type="stmt"/>
+            <line num="402" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="402" type="cond"/>
+            <line num="404" count="0" type="stmt"/>
+            <line num="405" count="0" type="stmt"/>
+            <line num="407" count="0" type="stmt"/>
+            <line num="410" count="0" type="stmt"/>
+            <line num="411" count="0" type="stmt"/>
+            <line num="419" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="419" type="cond"/>
+            <line num="420" count="0" type="stmt"/>
+            <line num="423" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="423" type="cond"/>
+            <line num="424" count="0" type="stmt"/>
+            <line num="427" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="427" type="cond"/>
+            <line num="428" count="0" type="stmt"/>
+            <line num="431" count="0" type="stmt"/>
+            <line num="432" count="0" type="stmt"/>
+            <line num="434" count="0" type="stmt"/>
+            <line num="436" count="0" type="stmt"/>
+            <line num="437" count="0" type="stmt"/>
+            <line num="443" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="443" type="cond"/>
+            <line num="446" count="0" type="stmt"/>
+            <line num="449" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="449" type="cond"/>
+            <line num="450" count="0" type="stmt"/>
+            <line num="451" count="0" type="stmt"/>
+            <line num="454" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="454" type="cond"/>
+            <line num="455" count="0" type="stmt"/>
+            <line num="456" count="0" type="stmt"/>
+            <line num="457" count="0" type="stmt"/>
+            <line num="458" count="0" type="stmt"/>
+            <line num="459" count="0" type="stmt"/>
+            <line num="463" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="463" type="cond"/>
+            <line num="465" count="0" type="stmt"/>
+            <line num="466" count="0" type="stmt"/>
+            <line num="467" count="0" type="stmt"/>
+            <line num="468" count="0" type="stmt"/>
+            <line num="469" count="0" type="stmt"/>
+            <line num="470" count="0" type="stmt"/>
+            <line num="472" count="0" type="stmt"/>
+            <line num="474" count="0" type="stmt"/>
+            <line num="475" count="0" type="stmt"/>
+            <line num="477" count="0" type="stmt"/>
+            <line num="478" count="0" type="stmt"/>
+            <line num="479" count="0" type="stmt"/>
+            <line num="480" count="0" type="stmt"/>
+            <line num="481" count="0" type="stmt"/>
+            <line num="483" count="0" type="stmt"/>
+            <line num="484" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="484" type="cond"/>
+            <line num="486" count="0" type="stmt"/>
+            <line num="487" count="0" type="stmt"/>
+            <line num="489" count="0" type="stmt"/>
+            <line num="492" count="0" type="stmt"/>
+            <line num="493" count="0" type="stmt"/>
+            <line num="494" count="0" type="stmt"/>
+            <line num="497" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="497" type="cond"/>
+            <line num="499" count="0" type="stmt"/>
+            <line num="502" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="502" type="cond"/>
+            <line num="503" count="0" type="stmt"/>
+            <line num="506" count="0" type="stmt"/>
+            <line num="507" count="0" type="stmt"/>
+            <line num="509" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="ping(String,int) : boolean" num="512" count="0" type="method"/>
+            <line num="514" count="0" type="stmt"/>
+            <line num="516" count="0" type="stmt"/>
+            <line num="517" count="0" type="stmt"/>
+            <line num="518" count="0" type="stmt"/>
+            <line num="519" count="0" type="stmt"/>
+            <line num="520" count="0" type="stmt"/>
+            <line num="521" count="0" type="stmt"/>
+            <line num="522" count="0" type="stmt"/>
+            <line num="524" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="isElementPresentByID(String) : boolean" num="528" count="0" type="method"/>
+            <line num="530" count="0" type="stmt"/>
+            <line num="531" count="0" type="stmt"/>
+            <line num="532" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="532" type="cond"/>
+            <line num="533" count="0" type="stmt"/>
+            <line num="535" count="0" type="stmt"/>
+            <line num="536" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="isElementPresentByLinkText(String) : boolean" num="539" count="0" type="method"/>
+            <line num="541" count="0" type="stmt"/>
+            <line num="542" count="0" type="stmt"/>
+            <line num="543" count="0" type="stmt"/>
+            <line num="544" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="544" type="cond"/>
+            <line num="545" count="0" type="stmt"/>
+            <line num="547" count="0" type="stmt"/>
+            <line num="548" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="isElementPresentByXPath(String) : boolean" num="552" count="0" type="method"/>
+            <line num="554" count="0" type="stmt"/>
+            <line num="555" count="0" type="stmt"/>
+            <line num="556" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="556" type="cond"/>
+            <line num="557" count="0" type="stmt"/>
+            <line num="559" count="0" type="stmt"/>
+            <line num="560" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="navigateBack() : void" num="563" count="0" type="method"/>
+            <line num="565" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="navigateRefresh() : void" num="568" count="0" type="method"/>
+            <line num="570" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="updateAttributeById(AutomationTool,TestDetails,String,String,String) : void" num="573" count="0" type="method"/>
+            <line num="575" count="0" type="stmt"/>
+            <line num="576" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="updateAttributeByXpath(AutomationTool,TestDetails,String,String,String) : void" num="579" count="0" type="method"/>
+            <line num="581" count="0" type="stmt"/>
+            <line num="582" count="0" type="stmt"/>
+            <line complexity="7" visibility="public" signature="parseUserAgent(AutomationTool,TestDetails,String) : void" num="585" count="0" type="method"/>
+            <line num="587" count="0" type="stmt"/>
+            <line num="589" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="589" type="cond"/>
+            <line num="590" count="0" type="stmt"/>
+            <line num="593" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="593" type="cond"/>
+            <line num="594" count="0" type="stmt"/>
+            <line num="595" count="0" type="stmt"/>
+            <line num="596" count="0" type="stmt"/>
+            <line num="597" count="0" type="stmt"/>
+            <line num="600" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="600" type="cond"/>
+            <line num="601" count="0" type="stmt"/>
+            <line num="602" count="0" type="stmt"/>
+            <line num="603" count="0" type="stmt"/>
+            <line num="604" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="604" type="cond"/>
+            <line num="605" count="0" type="stmt"/>
+            <line num="607" count="0" type="stmt"/>
+            <line num="609" count="0" type="stmt"/>
+            <line num="610" count="0" type="stmt"/>
+            <line num="613" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="613" type="cond"/>
+            <line num="614" count="0" type="stmt"/>
+            <line num="615" count="0" type="stmt"/>
+            <line num="616" count="0" type="stmt"/>
+            <line num="617" count="0" type="stmt"/>
+            <line num="618" count="0" type="stmt"/>
+            <line num="621" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="621" type="cond"/>
+            <line num="622" count="0" type="stmt"/>
+            <line num="623" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="performDragAndDrop(WebElement,WebElement) : void" num="627" count="0" type="method"/>
+            <line num="629" count="0" type="stmt"/>
+            <line num="630" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="performMoveUsingXPath(String) : void" num="633" count="0" type="method"/>
+            <line num="635" count="0" type="stmt"/>
+            <line num="636" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="quit() : void" num="639" count="0" type="method"/>
+            <line num="642" count="0" type="stmt"/>
+            <line num="643" count="0" type="stmt"/>
+            <line num="647" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchListUsingLinkTextIsEmpty(String) : boolean" num="651" count="0" type="method"/>
+            <line num="653" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchListUsingTagName(String) : List&lt;WebElement&gt;" num="656" count="0" type="method"/>
+            <line num="658" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchListUsingXPath(String) : List&lt;WebElement&gt;" num="661" count="0" type="method"/>
+            <line num="663" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchUsingCssSelector(String) : WebElement" num="666" count="0" type="method"/>
+            <line num="668" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchUsingID(String) : WebElement" num="671" count="0" type="method"/>
+            <line num="673" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchUsingIDandGetTextUsingXpath(String,String) : String" num="676" count="0" type="method"/>
+            <line num="678" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchUsingName(String) : WebElement" num="681" count="0" type="method"/>
+            <line num="683" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="searchUsingXpath(String) : WebElement" num="686" count="0" type="method"/>
+            <line num="688" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="selectByIndexByID(String,int) : void" num="691" count="0" type="method"/>
+            <line num="693" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="selectVisibleTextByID(String,String) : void" num="696" count="0" type="method"/>
+            <line num="698" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="selectVisibleTextByName(String,String) : void" num="701" count="0" type="method"/>
+            <line num="703" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="selectVisibleTextByXPath(String,String) : void" num="706" count="0" type="method"/>
+            <line num="708" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="selectImage(String,String) : void" num="711" count="0" type="method"/>
+            <line num="713" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pressTABWithID(String) : void" num="716" count="0" type="method"/>
+            <line num="718" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pressTABWithXPath(String) : void" num="721" count="0" type="method"/>
+            <line num="723" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pressENTERWithXPath(String) : void" num="726" count="0" type="method"/>
+            <line num="728" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="pressENTERWithID(String) : void" num="731" count="0" type="method"/>
+            <line num="733" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="switchToDefaultContent() : void" num="736" count="0" type="method"/>
+            <line num="738" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="switchToFrame(String) : void" num="741" count="0" type="method"/>
+            <line num="743" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="switchToFrameUsingXpath(String) : void" num="746" count="0" type="method"/>
+            <line num="748" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="switchToWindow(String) : void" num="751" count="0" type="method"/>
+            <line num="753" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="switchToAlertAndAccept() : void" num="757" count="0" type="method"/>
+            <line num="760" count="0" type="stmt"/>
+            <line num="761" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="switchToAlertAndGetText() : String" num="764" count="0" type="method"/>
+            <line num="767" count="0" type="stmt"/>
+            <line num="768" count="0" type="stmt"/>
+            <line num="770" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="waitForVisibilityOfElementUsingXpath(String,int) : void" num="773" count="0" type="method"/>
+            <line num="775" count="0" type="stmt"/>
+            <line num="776" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="waitForVisibilityOfElementUsingId(String,int) : void" num="779" count="0" type="method"/>
+            <line num="781" count="0" type="stmt"/>
+            <line num="782" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="waitForElementToBeClickableUsingId(String,int) : void" num="785" count="0" type="method"/>
+            <line num="787" count="0" type="stmt"/>
+            <line num="788" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="waitForElementToBeClickableUsingXpath(String,int) : void" num="791" count="0" type="method"/>
+            <line num="793" count="0" type="stmt"/>
+            <line num="794" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="takeScreenShot(String) : String" num="797" count="0" type="method"/>
+            <line num="799" count="0" type="stmt"/>
+            <line num="800" count="0" type="stmt"/>
+            <line num="801" count="0" type="stmt"/>
+            <line num="802" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="moveCursorSomewhereElse(String) : void" num="805" count="0" type="method"/>
+            <line num="808" count="0" type="stmt"/>
+            <line num="809" count="0" type="stmt"/>
+            <line num="810" count="0" type="stmt"/>
+            <line num="811" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="countRowsInTableUsingClass(String) : int" num="814" count="0" type="method"/>
+            <line num="816" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="scrollDownUsingClassName(String) : void" num="819" count="0" type="method"/>
+            <line num="821" count="0" type="stmt"/>
+            <line num="822" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/TestDetails.java" name="TestDetails.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="51" loc="465" coveredmethods="0" methods="42" elements="169" classes="1" ncloc="251" statements="115" conditionals="12" coveredstatements="0"/>
+            <class name="TestDetails">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="51" coveredmethods="0" methods="42" elements="169" statements="115" conditionals="12" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="TestDetails()" num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setName(String) : void" num="75" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getMessage() : String" num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setMessage(String) : void" num="91" count="0" type="method"/>
+            <line num="92" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getResult() : String" num="99" count="0" type="method"/>
+            <line num="100" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setResult(String) : void" num="107" count="0" type="method"/>
+            <line num="108" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBugId() : String" num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBugIdNoBug() : void" num="124" count="0" type="method"/>
+            <line num="125" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBugId(String) : void" num="137" count="0" type="method"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="139" count="0" type="stmt"/>
+            <line num="140" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDebug() : Boolean" num="148" count="0" type="method"/>
+            <line num="149" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDebug(Boolean) : void" num="157" count="0" type="method"/>
+            <line num="158" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getDBReporting() : Boolean" num="168" count="0" type="method"/>
+            <line num="169" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setDBReporting(Boolean) : void" num="178" count="0" type="method"/>
+            <line num="179" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLOG_FILE() : String" num="186" count="0" type="method"/>
+            <line num="187" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="setLOG_FILE() : void" num="194" count="0" type="method"/>
+            <line num="195" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="195" type="cond"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="startResultLogger() : void" num="203" count="0" type="method"/>
+            <line num="204" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="writeResultLoggerFail(String) : void" num="208" count="0" type="method"/>
+            <line num="209" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="writeResultLoggerPass(String) : void" num="212" count="0" type="method"/>
+            <line num="213" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="writeResultLoggerInfo(String) : void" num="216" count="0" type="method"/>
+            <line num="217" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="assertVerifyTrue(AutomationTool,Boolean,String) : void" num="220" count="0" type="method"/>
+            <line num="222" count="0" type="stmt"/>
+            <line num="223" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="assertTextEquals(Object,Object) : void" num="226" count="0" type="method"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="229" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="assertTextContains(TestDetails,String,String) : void" num="232" count="0" type="method"/>
+            <line num="234" count="0" type="stmt"/>
+            <line num="235" count="0" type="stmt"/>
+            <line num="236" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="assertTextOnPage(AutomationTool,String) : void" num="244" count="0" type="method"/>
+            <line num="245" count="0" type="stmt"/>
+            <line num="246" count="0" type="stmt"/>
+            <line num="247" count="0" type="stmt"/>
+            <line num="248" count="0" type="stmt"/>
+            <line num="249" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="checkTextEqual(TestDetails,String,String) : void" num="253" count="0" type="method"/>
+            <line num="255" count="0" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="257" type="cond"/>
+            <line num="258" count="0" type="stmt"/>
+            <line num="260" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="checkTextContains(TestDetails,String,String) : void" num="264" count="0" type="method"/>
+            <line num="266" count="0" type="stmt"/>
+            <line num="268" count="0" type="stmt"/>
+            <line num="269" count="0" type="stmt"/>
+            <line num="271" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="271" type="cond"/>
+            <line num="272" count="0" type="stmt"/>
+            <line num="274" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="assertTextNotOnPage(AutomationTool,String) : void" num="286" count="0" type="method"/>
+            <line num="287" count="0" type="stmt"/>
+            <line num="288" count="0" type="stmt"/>
+            <line num="289" count="0" type="stmt"/>
+            <line num="290" count="0" type="stmt"/>
+            <line num="291" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="assertElementPresentByLinkText(AutomationTool,String) : void" num="294" count="0" type="method"/>
+            <line num="296" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="assertElementPresentByXpath(AutomationTool,String) : void" num="299" count="0" type="method"/>
+            <line num="301" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="assertVerifyFalse(AutomationTool,Boolean,String) : void" num="312" count="0" type="method"/>
+            <line num="313" count="0" type="stmt"/>
+            <line num="314" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="assertTextNotEquals(Object,Object) : void" num="317" count="0" type="method"/>
+            <line num="318" count="0" type="stmt"/>
+            <line num="319" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="captureScreenShotToResultLogger(AutomationTool) : void" num="323" count="0" type="method"/>
+            <line num="324" count="0" type="stmt"/>
+            <line num="325" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="assertCorrectPageTitle(AutomationTool,String) : void" num="336" count="0" type="method"/>
+            <line num="337" count="0" type="stmt"/>
+            <line num="339" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="339" type="cond"/>
+            <line num="340" count="0" type="stmt"/>
+            <line num="342" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="assertTextFieldIsReadOnlyUsingID(AutomationTool,String) : boolean" num="345" count="0" type="method"/>
+            <line num="347" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="closeResultLogger() : void" num="350" count="0" type="method"/>
+            <line num="351" count="0" type="stmt"/>
+            <line num="353" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="openLogFile() : void" num="360" count="0" type="method"/>
+            <line num="361" count="0" type="stmt"/>
+            <line num="362" count="0" type="stmt"/>
+            <line num="363" count="0" type="stmt"/>
+            <line num="364" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="writeInLogFile(String) : void" num="372" count="0" type="method"/>
+            <line num="373" count="0" type="stmt"/>
+            <line num="374" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="writeInLogFile(String,String) : void" num="384" count="0" type="method"/>
+            <line num="385" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="385" type="cond"/>
+            <line num="386" count="0" type="stmt"/>
+            <line num="387" count="0" type="stmt"/>
+            <line num="388" count="0" type="stmt"/>
+            <line num="390" count="0" type="stmt"/>
+            <line complexity="2" visibility="public" signature="closeLogFile() : void" num="399" count="0" type="method"/>
+            <line num="400" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="400" type="cond"/>
+            <line num="401" count="0" type="stmt"/>
+            <line num="402" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="openExcelFile() : void" num="407" count="0" type="method"/>
+            <line num="408" count="0" type="stmt"/>
+            <line num="410" count="0" type="stmt"/>
+            <line num="411" count="0" type="stmt"/>
+            <line num="412" count="0" type="stmt"/>
+            <line num="413" count="0" type="stmt"/>
+            <line num="415" count="0" type="stmt"/>
+            <line num="417" count="0" type="stmt"/>
+            <line num="418" count="0" type="stmt"/>
+            <line num="420" count="0" type="stmt"/>
+            <line num="421" count="0" type="stmt"/>
+            <line num="423" count="0" type="stmt"/>
+            <line num="424" count="0" type="stmt"/>
+            <line num="426" count="0" type="stmt"/>
+            <line num="427" count="0" type="stmt"/>
+            <line num="429" count="0" type="stmt"/>
+            <line num="431" count="0" type="stmt"/>
+            <line num="433" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="writeToExcelFile(String,String,String,String) : void" num="438" count="0" type="method"/>
+            <line num="440" count="0" type="stmt"/>
+            <line num="441" count="0" type="stmt"/>
+            <line num="443" count="0" type="stmt"/>
+            <line num="444" count="0" type="stmt"/>
+            <line num="446" count="0" type="stmt"/>
+            <line num="447" count="0" type="stmt"/>
+            <line num="449" count="0" type="stmt"/>
+            <line num="450" count="0" type="stmt"/>
+            <line num="452" count="0" type="stmt"/>
+            <line num="453" count="0" type="stmt"/>
+            <line num="454" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="closeExcelFile() : void" num="458" count="0" type="method"/>
+            <line num="460" count="0" type="stmt"/>
+            <line num="461" count="0" type="stmt"/>
+            <line num="462" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/framework/common/User.java" name="User.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="15" loc="133" coveredmethods="0" methods="15" elements="29" classes="1" ncloc="54" statements="14" conditionals="0" coveredstatements="0"/>
+            <class name="User">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="15" coveredmethods="0" methods="15" elements="29" statements="14" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="User()" num="23" count="0" type="method"/>
+            <line complexity="1" visibility="public" signature="getLogin() : String" num="31" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLogin() : void" num="38" count="0" type="method"/>
+            <line num="39" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPassword() : String" num="47" count="0" type="method"/>
+            <line num="48" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPassword() : void" num="54" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setNewPassword(String) : void" num="64" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setNewLogin(String) : void" num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getRole() : String" num="81" count="0" type="method"/>
+            <line num="82" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setRole(String) : void" num="89" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setFirstName(String) : void" num="97" count="0" type="method"/>
+            <line num="98" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getFirstName() : String" num="105" count="0" type="method"/>
+            <line num="106" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getLastName() : String" num="113" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setLastName(String) : void" num="121" count="0" type="method"/>
+            <line num="122" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getUserID() : String" num="125" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setUserID(String) : void" num="129" count="0" type="method"/>
+            <line num="130" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.company.mercurytours.users">
+         <metrics coveredelements="0" complexity="1" loc="31" methods="1" classes="1" statements="5" coveredconditionals="0" coveredmethods="0" elements="6" ncloc="11" files="1" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/company/mercurytours/users/JoeBloggs.java" name="JoeBloggs.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="31" coveredmethods="0" methods="1" elements="6" classes="1" ncloc="11" statements="5" conditionals="0" coveredstatements="0"/>
+            <class name="JoeBloggs">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="6" statements="5" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="JoeBloggs()" num="9" count="0" type="method"/>
+            <line num="11" count="0" type="stmt"/>
+            <line num="12" count="0" type="stmt"/>
+            <line num="19" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.company.mercurytours.app">
+         <metrics coveredelements="0" complexity="2" loc="39" methods="2" classes="2" statements="6" coveredconditionals="0" coveredmethods="0" elements="8" ncloc="18" files="2" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/company/mercurytours/app/Google.java" name="Google.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="19" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="9" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="Google">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="Google()" num="7" count="0" type="method"/>
+            <line num="8" count="0" type="stmt"/>
+            <line num="9" count="0" type="stmt"/>
+            <line num="10" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/main/java/com/company/mercurytours/app/MercuryTours.java" name="MercuryTours.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="1" loc="20" coveredmethods="0" methods="1" elements="4" classes="1" ncloc="9" statements="3" conditionals="0" coveredstatements="0"/>
+            <class name="MercuryTours">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="1" coveredmethods="0" methods="1" elements="4" statements="3" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="MercuryTours()" num="7" count="0" type="method"/>
+            <line num="8" count="0" type="stmt"/>
+            <line num="10" count="0" type="stmt"/>
+            <line num="11" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.company.mercurytours">
+         <metrics coveredelements="0" complexity="15" loc="243" methods="9" classes="3" statements="81" coveredconditionals="0" coveredmethods="0" elements="90" ncloc="167" files="3" conditionals="0" coveredstatements="0"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/company/mercurytours/CHK001_RegisterUser.java" name="CHK001_RegisterUser.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="82" coveredmethods="0" methods="3" elements="31" classes="1" ncloc="56" statements="28" conditionals="0" coveredstatements="0"/>
+            <class name="CHK001_RegisterUser">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="3" elements="31" statements="28" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="20" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="testCHK001_RegisterUser() : void" num="29" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="tearDown() : void" num="77" count="0" type="method"/>
+            <line num="80" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/company/mercurytours/CHK002_LaunchSecondApplication.java" name="CHK002_LaunchSecondApplication.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="71" coveredmethods="0" methods="3" elements="26" classes="1" ncloc="53" statements="23" conditionals="0" coveredstatements="0"/>
+            <class name="CHK002_LaunchSecondApplication">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="3" elements="26" statements="23" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="22" count="0" type="method"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="28" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="testCHK001_RegisterUser() : void" num="31" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="38" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="tearDown() : void" num="66" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/company/mercurytours/CHK003_RegisterUserBugIdExample.java" name="CHK003_RegisterUserBugIdExample.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="5" loc="90" coveredmethods="0" methods="3" elements="33" classes="1" ncloc="58" statements="30" conditionals="0" coveredstatements="0"/>
+            <class name="CHK003_RegisterUserBugIdExample">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="5" coveredmethods="0" methods="3" elements="33" statements="30" conditionals="0" coveredstatements="0"/>
+            </class>
+            <line complexity="1" visibility="public" signature="setUp() : void" num="20" count="0" type="method"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="3" visibility="public" signature="testCHK003_RegisterUserBugIdExample() : void" num="29" count="0" type="method"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="39" count="0" type="stmt"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="tearDown() : void" num="85" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="com.company.egTestSuite">
+         <metrics coveredelements="6" complexity="3" loc="50" methods="3" classes="2" statements="3" coveredconditionals="0" coveredmethods="3" elements="6" ncloc="29" files="2" conditionals="0" coveredstatements="3"/>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/company/egTestSuite/AppTest.java" name="AppTest.java">
+            <metrics coveredelements="6" coveredconditionals="0" complexity="3" loc="34" coveredmethods="3" methods="3" elements="6" classes="1" ncloc="15" statements="3" conditionals="0" coveredstatements="3"/>
+            <class name="AppTest">
+               <metrics coveredelements="6" complexity="3" methods="3" testruns="1" statements="3" coveredconditionals="0" coveredmethods="3" elements="6" testfailures="0" testduration="0.006" conditionals="0" coveredstatements="3" testpasses="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AppTest(String)" num="17" count="1" type="method"/>
+            <line num="18" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="suite() : Test" num="24" count="1" type="method"/>
+            <line num="25" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="testApp() : void" num="31" testsuccess="true" count="1" testduration="0.006" type="method"/>
+            <line num="32" count="1" type="stmt"/>
+         </file>
+         <file path="/data/sorald-explanation/compilation-stats/./repo/src/test/java/com/company/egTestSuite/MercuryTours_TS.java" name="MercuryTours_TS.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="16" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="14" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="MercuryTours_TS">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+   </project>
+   <testproject name="SLN_MVN 1.0-SNAPSHOT" timestamp="1594126972655">
+      <metrics coveredelements="0" complexity="0" loc="0" methods="0" classes="0" statements="0" packages="0" coveredconditionals="0" coveredmethods="0" elements="0" ncloc="0" files="0" conditionals="0" coveredstatements="0"/>
+   </testproject>
+</coverage>
