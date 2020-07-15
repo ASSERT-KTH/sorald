@@ -34,21 +34,24 @@ public class CloverHelper {
         documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
     }
 
-    public boolean isAnythingCovered(File inputPomFile) throws IOException, SAXException {
+    public double getTotalCoverage(File inputPomFile) throws IOException, SAXException {
         Document doc = documentBuilder.parse(inputPomFile);
         doc.normalize();
 
         NodeList projectNodes = doc.getElementsByTagName("project").item(0).getChildNodes();
-        for(int i = 0; i < projectNodes.getLength(); i++){
-            if(projectNodes.item(i).getNodeName().equals("metrics")){
-                if(Integer.parseInt(projectNodes.item(i).getAttributes()
-                        .getNamedItem("coveredstatements").getNodeValue()) > 0){
-                    return true;
+        for (int i = 0; i < projectNodes.getLength(); i++) {
+            if (projectNodes.item(i).getNodeName().equals("metrics")) {
+                Integer coveredStatements = Integer.parseInt(projectNodes.item(i).getAttributes()
+                        .getNamedItem("coveredstatements").getNodeValue());
+                if (coveredStatements > 0) {
+                    Integer allStatements = Integer.parseInt(projectNodes.item(i).getAttributes()
+                            .getNamedItem("statements").getNodeValue());
+                    return (double) coveredStatements / (double) allStatements;
                 }
             }
         }
 
-        return false;
+        return -1;
     }
 
     public void addCloverPluginToPom(File inputPomFile, File outputPomFile)
@@ -85,21 +88,21 @@ public class CloverHelper {
 
         boolean cloverPluginExists = false;
         NodeList pluginsChildNodes = pluginsNode.getChildNodes();
-        for(int i = 0; i < pluginsChildNodes.getLength(); i++){
-            if(pluginsChildNodes.item(i).getNodeName().equals("plugin")){
+        for (int i = 0; i < pluginsChildNodes.getLength(); i++) {
+            if (pluginsChildNodes.item(i).getNodeName().equals("plugin")) {
                 NodeList pluginChildNodes = pluginsChildNodes.item(i).getChildNodes();
-                for(int j = 0; j < pluginChildNodes.getLength(); j++){
-                    if(pluginChildNodes.item(j).getNodeName().equals("artifactId")
-                        && pluginChildNodes.item(j).getTextContent().equals("clover-maven-plugin")){
+                for (int j = 0; j < pluginChildNodes.getLength(); j++) {
+                    if (pluginChildNodes.item(j).getNodeName().equals("artifactId")
+                            && pluginChildNodes.item(j).getTextContent().equals("clover-maven-plugin")) {
                         cloverPluginExists = true;
                         break;
                     }
                 }
-                if(cloverPluginExists)
+                if (cloverPluginExists)
                     break;
             }
         }
-        if(cloverPluginExists)
+        if (cloverPluginExists)
             return;
 
         File cloverPluginFile =

@@ -26,16 +26,15 @@ public class RepoCompilationAnalyzerMain {
     }
 
     private static void summarizeResults() throws IOException, ParserConfigurationException, SAXException {
-        File resultsDir = new File("experimentation/repositories");
+        File resultsDir = new File("experimentation/compilable-repos");
 
         File[] files = resultsDir.listFiles();
 
-        Set<String> coveredCommitIds = new HashSet<>();
+        Map<String, Double> coveragePerCommitId = new HashMap<>();
         for (File file : files) {
             if (!file.getName().startsWith("partial-result") && !file.getName().startsWith("results")) {
-                if(CloverHelper.getInstance().isAnythingCovered(file)){
-                    coveredCommitIds.add(file.getName().split("-")[0]);
-                }
+                coveragePerCommitId.put(file.getName().split("-")[0],
+                        CloverHelper.getInstance().getTotalCoverage(file));
             }
         }
 
@@ -44,11 +43,16 @@ public class RepoCompilationAnalyzerMain {
             if (file.getName().startsWith("partial-result")) {
                 Scanner sc = new Scanner(file);
 
-                while(sc.hasNextLine()){
+                while (sc.hasNextLine()) {
                     String line = sc.nextLine();
-                    results.put(line.split(" ")[0] + ":::" + line.split(" ")[1] + ":::"
-                                    + coveredCommitIds.contains(line.split(" ")[1]),
-                            Boolean.parseBoolean(line.split(" ")[2]));
+                    String projectAddress = line.split(" ")[0];
+                    String commitId = line.split(" ")[1];
+                    String isCloverGenerated = line.split(" ")[2];
+
+                    double coverage = coveragePerCommitId.containsKey(commitId) ? coveragePerCommitId.get(commitId) : -1;
+
+                    results.put(projectAddress + ":::" + commitId + ":::" + coverage,
+                            Boolean.parseBoolean(isCloverGenerated));
                 }
 
                 sc.close();
@@ -57,7 +61,7 @@ public class RepoCompilationAnalyzerMain {
             }
         }
 
-        printResults("experimentation/repositories/results.json", results);
+        printResults("experimentation/compilable-repos/results.json", results);
     }
 
     private static void analyzeRepos
@@ -131,9 +135,9 @@ public class RepoCompilationAnalyzerMain {
             JsonObject repoResult = new JsonObject();
             repoResult.addProperty("project-addr", entry.getKey().split(":::")[0]);
             repoResult.addProperty("commit-id", entry.getKey().split(":::")[1]);
-            if(entry.getKey().split(":::").length > 2){
-                repoResult.addProperty("has-covered-code",
-                        Boolean.parseBoolean(entry.getKey().split(":::")[2]));
+            if (entry.getKey().split(":::").length > 2) {
+                repoResult.addProperty("statement-coverage",
+                        Double.parseDouble(entry.getKey().split(":::")[2]));
             }
             repoResult.addProperty("is-clover-generated", entry.getValue());
             results.add(repoResult);
