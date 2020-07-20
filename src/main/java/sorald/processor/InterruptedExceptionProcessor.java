@@ -1,6 +1,7 @@
 package sorald.processor;
 
 import org.sonar.java.checks.InterruptedExceptionCheck;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.CtCatch;
 import spoon.reflect.code.CtInvocation;
@@ -13,7 +14,12 @@ import spoon.reflect.factory.Factory;
 public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCatch> {
 
 	public InterruptedExceptionProcessor(String originalFilesPath) {
-		super(originalFilesPath, new InterruptedExceptionCheck());
+		super(originalFilesPath);
+	}
+
+	@Override
+	public JavaFileScanner getSonarCheck() {
+		return new InterruptedExceptionCheck();
 	}
 
 	@Override
