@@ -1,6 +1,7 @@
 package sorald.processor;
 
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.CtExpression;
@@ -16,7 +17,12 @@ import java.util.Arrays;
 public class ArrayHashCodeAndToStringProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
 
 	public ArrayHashCodeAndToStringProcessor(String originalFilesPath) {
-		super(originalFilesPath, new ArrayHashCodeAndToStringCheck());
+		super(originalFilesPath);
+	}
+
+	@Override
+	public JavaFileScanner getSonarCheck() {
+		return new ArrayHashCodeAndToStringCheck();
 	}
 
 	@Override
