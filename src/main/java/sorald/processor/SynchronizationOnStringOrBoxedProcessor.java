@@ -1,6 +1,7 @@
 package sorald.processor;
 
 import org.sonar.java.checks.SynchronizationOnStringOrBoxedCheck;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.declaration.CtExecutable;
 import spoon.reflect.declaration.CtType;
@@ -27,9 +28,14 @@ public class SynchronizationOnStringOrBoxedProcessor extends SoraldAbstractProce
     private Map<Integer,CtExecutableReference> old2NewMethods;
 
     public SynchronizationOnStringOrBoxedProcessor(String originalFilesPath) {
-        super(originalFilesPath, new SynchronizationOnStringOrBoxedCheck());
+        super(originalFilesPath);
         this.old2NewFields = new HashMap<>();
         this.old2NewMethods = new HashMap<>();
+    }
+
+    @Override
+    public JavaFileScanner getSonarCheck() {
+        return new SynchronizationOnStringOrBoxedCheck();
     }
 
     @Override

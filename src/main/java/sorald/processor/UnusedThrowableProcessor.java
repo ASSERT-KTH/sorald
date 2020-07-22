@@ -1,6 +1,7 @@
 package sorald.processor;
 
 import org.sonar.java.checks.unused.UnusedThrowableCheck;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.CtConstructorCall;
 import spoon.reflect.code.CtThrow;
@@ -9,7 +10,12 @@ import spoon.reflect.code.CtThrow;
 public class UnusedThrowableProcessor extends SoraldAbstractProcessor<CtConstructorCall> {
 
 	public UnusedThrowableProcessor(String originalFilesPath) {
-		super(originalFilesPath, new UnusedThrowableCheck());
+		super(originalFilesPath);
+	}
+
+	@Override
+	public JavaFileScanner getSonarCheck() {
+		return new UnusedThrowableCheck();
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package sorald.processor;
 
 import org.sonar.java.checks.CompareToReturnValueCheck;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.declaration.CtMethod;
@@ -11,7 +12,12 @@ import spoon.reflect.code.CtLiteral;
 public class CompareToReturnValueProcessor extends SoraldAbstractProcessor<CtReturn<?>> {
 
 	public CompareToReturnValueProcessor(String originalFilesPath) {
-		super(originalFilesPath, new CompareToReturnValueCheck());
+		super(originalFilesPath);
+	}
+
+	@Override
+	public JavaFileScanner getSonarCheck() {
+		return new CompareToReturnValueCheck();
 	}
 
 	@Override

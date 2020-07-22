@@ -1,6 +1,7 @@
 package sorald.processor;
 
 import org.sonar.java.checks.CastArithmeticOperandCheck;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.*;
@@ -19,7 +20,12 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
     private CtTypeReference typeToBeUsedToCast;
 
     public CastArithmeticOperandProcessor(String originalFilesPath) {
-        super(originalFilesPath, new CastArithmeticOperandCheck());
+        super(originalFilesPath);
+    }
+
+    @Override
+    public JavaFileScanner getSonarCheck() {
+        return new CastArithmeticOperandCheck();
     }
 
     @Override
