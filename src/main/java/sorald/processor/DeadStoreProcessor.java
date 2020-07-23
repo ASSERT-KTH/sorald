@@ -22,8 +22,8 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 		return new DeadStoreCheck();
 	}
 
-	public DeadStoreProcessor(List<Node> segment) {
-        super(segment, new DeadStoreCheck());
+	public DeadStoreProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
 	@Override

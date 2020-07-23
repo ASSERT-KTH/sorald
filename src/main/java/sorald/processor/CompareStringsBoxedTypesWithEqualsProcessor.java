@@ -25,8 +25,8 @@ public class CompareStringsBoxedTypesWithEqualsProcessor extends SoraldAbstractP
 		return new CompareStringsBoxedTypesWithEqualsCheck();
 	}
 
-	public CompareStringsBoxedTypesWithEqualsProcessor(List<Node> segment) {
-        super(segment, new CompareStringsBoxedTypesWithEqualsCheck());
+	public CompareStringsBoxedTypesWithEqualsProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
 	@Override

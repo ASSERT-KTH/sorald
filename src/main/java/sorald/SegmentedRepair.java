@@ -111,7 +111,7 @@ public class SegmentedRepair implements IRepair {
 		if (this.config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER) {
 			launcher.getEnvironment().setPrettyPrinterCreator(() -> {
 						SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
-						sniper.setIgnoreImplicit(false);
+						sniper.setIgnoreImplicit(true);
 						return sniper;
 					}
 			);
@@ -123,19 +123,15 @@ public class SegmentedRepair implements IRepair {
 		return launcher;
 	}
 
-	private Processor createProcessor(Integer ruleKey, List<Node> segment, int cachedNbFixes) {
-		try {
-			Class<?> processor = Processors.getProcessor(ruleKey);
-			if (processor != null) {
-				Constructor<?> cons = processor.getConstructor(List.class);
-				SoraldAbstractProcessor object = ((SoraldAbstractProcessor)cons.newInstance(segment)).setMaxFixes(this.config.getMaxFixesPerRule()).setNbFixes(cachedNbFixes);
-				if (!this.processorNbsRepaired.containsKey(object.getClass().getSimpleName())) {
-					this.processorNbsRepaired.put(object.getClass().getSimpleName(),cachedNbFixes);
-				}
-				return object;
+	private Processor createProcessor(Integer ruleKey, List<Node> segment, int cachedNbFixes) throws Exception {
+		Class<?> processor = Processors.getProcessor(ruleKey);
+		if (processor != null) {
+			Constructor<?> cons = processor.getConstructor(List.class);
+			SoraldAbstractProcessor object = ((SoraldAbstractProcessor)cons.newInstance(segment)).setMaxFixes(this.config.getMaxFixesPerRule()).setNbFixes(cachedNbFixes);
+			if (!this.processorNbsRepaired.containsKey(object.getClass().getSimpleName())) {
+				this.processorNbsRepaired.put(object.getClass().getSimpleName(),cachedNbFixes);
 			}
-		} catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-			e.printStackTrace();
+			return object;
 		}
 		return null;
 	}

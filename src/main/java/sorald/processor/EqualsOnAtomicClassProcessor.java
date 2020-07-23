@@ -29,8 +29,8 @@ public class EqualsOnAtomicClassProcessor extends SoraldAbstractProcessor<CtInvo
 		return new EqualsOnAtomicClassCheck();
 	}
 
-	public EqualsOnAtomicClassProcessor(List<Node> segment) {
-        super(segment, new EqualsOnAtomicClassCheck());
+	public EqualsOnAtomicClassProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
 	@Override

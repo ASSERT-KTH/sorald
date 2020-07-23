@@ -25,8 +25,8 @@ public class BigDecimalDoubleConstructorProcessor extends SoraldAbstractProcesso
 		return new BigDecimalDoubleConstructorCheck();
 	}
 
-	public BigDecimalDoubleConstructorProcessor(List<Node> segment) {
-        super(segment, new BigDecimalDoubleConstructorCheck());
+	public BigDecimalDoubleConstructorProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
 	@Override

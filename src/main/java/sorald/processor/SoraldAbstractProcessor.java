@@ -54,6 +54,30 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
 	public abstract JavaFileScanner getSonarCheck();
 
+	SoraldAbstractProcessor(List<Node> segment) throws Exception {
+		JavaFileScanner sonarCheck = getSonarCheck();
+		List<String> filesToScan = new ArrayList<>();
+		for (Node node : segment) {
+			if (node.isFileNode()) {
+				filesToScan.addAll(node.getJavaFiles());
+			} else {
+				try (Stream<Path> walk = Files.walk(Paths.get(node.getRootPath()))) {
+					filesToScan.addAll(walk.map(x -> x.toFile().getAbsolutePath())
+									.filter(f -> f.endsWith(Constants.JAVA_EXT)).collect(Collectors.toList()));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}	
+			}
+		}
+
+		Set<AnalyzerMessage> issues = MultipleFilesJavaCheckVerifier.verify(filesToScan, sonarCheck, false);
+		bugs = new HashSet<>();
+		for (AnalyzerMessage message : issues) {
+			Bug BugOffline = new Bug(message);
+			bugs.add(BugOffline);
+		}
+	}
+
 	public SoraldAbstractProcessor setMaxFixes(int maxFixes) {
 		this.maxFixes = maxFixes;
 		return this;

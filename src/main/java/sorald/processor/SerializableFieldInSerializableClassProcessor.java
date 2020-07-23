@@ -21,8 +21,8 @@ public class SerializableFieldInSerializableClassProcessor extends SoraldAbstrac
 		return new SerializableFieldInSerializableClassCheck();
 	}
 
-	public SerializableFieldInSerializableClassProcessor(List<Node> segment) {
-        super(segment, new SerializableFieldInSerializableClassCheck());
+	public SerializableFieldInSerializableClassProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
 	@Override

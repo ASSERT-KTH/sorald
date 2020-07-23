@@ -25,8 +25,8 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
 		return new InterruptedExceptionCheck();
 	}
 
-	public InterruptedExceptionProcessor(List<Node> segment) {
-        super(segment, new InterruptedExceptionCheck());
+	public InterruptedExceptionProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
 	@Override

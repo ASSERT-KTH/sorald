@@ -27,8 +27,8 @@ public class ArrayHashCodeAndToStringProcessor extends SoraldAbstractProcessor<C
 		return new ArrayHashCodeAndToStringCheck();
 	}
 
-	public ArrayHashCodeAndToStringProcessor(List<Node> segment) {
-		super(segment, new ArrayHashCodeAndToStringCheck());
+	public ArrayHashCodeAndToStringProcessor(List<Node> segments) throws Exception {
+		super(segments);
 	}
 
 	@Override

@@ -25,8 +25,8 @@ public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperat
         return new MathOnFloatCheck();
     }
 
-    public MathOnFloatProcessor(List<Node> segment) {
-        super(segment, new MathOnFloatCheck());
+    public MathOnFloatProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
     @Override

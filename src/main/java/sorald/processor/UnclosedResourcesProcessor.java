@@ -31,8 +31,8 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
 		return new UnclosedResourcesCheck();
 	}
 
-	public UnclosedResourcesProcessor(List<Node> segment) {
-        super(segment, new UnclosedResourcesCheck());
+	public UnclosedResourcesProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
 	@Override

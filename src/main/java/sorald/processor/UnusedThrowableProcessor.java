@@ -21,8 +21,8 @@ public class UnusedThrowableProcessor extends SoraldAbstractProcessor<CtConstruc
 		return new UnusedThrowableCheck();
 	}
 
-	public UnusedThrowableProcessor(List<Node> segment) {
-        super(segment, new UnusedThrowableCheck());
+	public UnusedThrowableProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
 	@Override

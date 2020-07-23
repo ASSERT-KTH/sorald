@@ -35,8 +35,8 @@ public class SynchronizationOnStringOrBoxedProcessor extends SoraldAbstractProce
         this.old2NewMethods = new HashMap<>();
     }
 
-    public SynchronizationOnStringOrBoxedProcessor(List<Node> segment) {
-        super(segment, new SynchronizationOnStringOrBoxedCheck());
+    public SynchronizationOnStringOrBoxedProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
     @Override

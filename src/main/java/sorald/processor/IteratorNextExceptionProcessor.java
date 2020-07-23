@@ -30,8 +30,8 @@ public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMe
 		return new IteratorNextExceptionCheck();
 	}
 
-	public IteratorNextExceptionProcessor(List<Node> segment) {
-        super(segment, new IteratorNextExceptionCheck());
+	public IteratorNextExceptionProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
 	/**

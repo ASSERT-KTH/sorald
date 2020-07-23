@@ -75,18 +75,18 @@ The arguments are the following:
   [--maxFixesPerRule <maxFixesPerRule>]
         Max number of fixes per rule. Default: Integer.MAX_VALUE (or all)
         (default: 2147483647)
-
-  [--maxFilesPerSegment <maxFilesPerSegment>]
-        Max number of files per loaded segment for segmented repair. It should
-        be >= 3000 files per segment. Default: 6500 (256mb Jvm) .  (default:
-        6500)
-
+  
   [--repairStrategy <repairStrategy>]
         Type of repair strategy. DEFAULT - load everything without splitting up
         the folder in segments, SEGMENT - splitting the folder into smaller
         segments and repair one segment at a time (need to specify
-        --maxFilesPerSegment if not default). Default: DEFAULT (default:
+        --maxFilesPerSegment if not default). (default:
         DEFAULT)
+        
+  [--maxFilesPerSegment <maxFilesPerSegment>]
+        Max number of files per loaded segment for segmented repair. It should
+        be >= 3000 files per segment. Default: 6500 (256mb Jvm) .  (default:
+        6500)
 
   [-h|--help]
 ```

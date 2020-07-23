@@ -29,8 +29,8 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
         return new CastArithmeticOperandCheck();
     }
 
-    public CastArithmeticOperandProcessor(List<Node> segment) {
-        super(segment, new CastArithmeticOperandCheck());
+    public CastArithmeticOperandProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
     @Override

@@ -93,7 +93,13 @@ public class Main {
 		opt.setHelp("Type of repair strategy. DEFAULT - load everything without splitting up the folder in segments, SEGMENT - splitting the folder into smaller segments and repair one segment at a time (need to specify --maxFilesPerSegment if not default). (default: DEFAULT)");
 		jsap.registerParameter(opt);
 
-		Switch sw = new Switch("help");
+		Switch sw = new Switch("measureTime");
+		sw.setShortFlag('m');
+		sw.setLongFlag("measureTime");
+		sw.setDefault("false");
+		jsap.registerParameter(sw);
+
+		sw = new Switch("help");
 		sw.setShortFlag('h');
 		sw.setLongFlag("help");
 		sw.setDefault("false");
@@ -145,6 +151,7 @@ public class Main {
 		this.getConfig().setMaxFixesPerRule(arguments.getInt(Constants.ARG_MAX_FIXES_PER_RULE));
 		this.getConfig().setMaxFilesPerSegment(arguments.getInt(Constants.ARG_MAX_FILES_PER_SEGMENT));
 		this.getConfig().setRepairStrategy(RepairStrategy.valueOf(arguments.getString(Constants.ARG_REPAIR_STRATEGY)));
+		this.getConfig().setMeasureTime(arguments.getBoolean(Constants.ARG_MEASURE_TIME));
 	}
 
 
@@ -152,28 +159,44 @@ public class Main {
 		IRepair repair;
 		switch (this.getConfig().getRepairStrategy()) {
 			case SEGMENT: {
+				System.out.println("[Repair Mode] : SEGMENT");
+				long startTime = System.currentTimeMillis();
 				Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(this.getConfig().getOriginalFilesPath());
 				LinkedList<LinkedList<Node>> segments = FirstFitSegmentationAlgorithm.segment(rootNode,this.getConfig().getMaxFilesPerSegment());
+				long estimatedTime = System.currentTimeMillis() - startTime;
+				if (this.getConfig().getMeasureTime()) {
+					System.out.println("[File Tree build time] : " + estimatedTime + " ms");
+				}
 				this.getConfig().setSegments(segments);
 				repair = new SegmentedRepair(this.config);
 				break;
 			}
 			default:
+				System.out.println("[Repair Mode] : DEFAULT");
 				repair = new DefaultRepair(this.config);
 		}
 		return repair;
 	}
 
-	public void start(String[] args) throws Exception {
-		JSAP jsap = this.defineArgs();
-		JSAPResult arguments = jsap.parse(args);
-		this.checkArguments(jsap, arguments);
-		this.initConfig(arguments);
+	public void start(String[] args) {
+		try {
+			JSAP jsap = this.defineArgs();
+			JSAPResult arguments = jsap.parse(args);
+			this.checkArguments(jsap, arguments);
+			this.initConfig(arguments);
+		} catch(JSAPException e) {
+			throw new RuntimeException(e);
+		}
+		long startTime = System.currentTimeMillis();
 		this.getRepairProcess().repair();
+		long estimatedTime = System.currentTimeMillis() - startTime;
+		if (this.getConfig().getMeasureTime()) {
+			System.out.println("[Total repair time] : " + estimatedTime + " ms");
+		}
 		System.out.println("done");
 	}
 
-	public static void main(String[] args) throws Exception{
+	public static void main(String[] args) {
 		Main main = new Main();
 		main.start(args);
 	}

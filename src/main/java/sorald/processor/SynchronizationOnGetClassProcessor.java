@@ -28,8 +28,8 @@ public class SynchronizationOnGetClassProcessor extends SoraldAbstractProcessor<
 		return new SynchronizationOnGetClassCheck();
 	}
 
-	public SynchronizationOnGetClassProcessor(List<Node> segment) {
-        super(segment, new SynchronizationOnGetClassCheck());
+	public SynchronizationOnGetClassProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
 	@Override

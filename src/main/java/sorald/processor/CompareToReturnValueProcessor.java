@@ -23,8 +23,8 @@ public class CompareToReturnValueProcessor extends SoraldAbstractProcessor<CtRet
 		return new CompareToReturnValueCheck();
 	}
 
-	public CompareToReturnValueProcessor(List<Node> segment) {
-        super(segment, new CompareToReturnValueCheck());
+	public CompareToReturnValueProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
 	@Override

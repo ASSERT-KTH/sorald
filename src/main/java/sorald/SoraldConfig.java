@@ -17,6 +17,7 @@ public class SoraldConfig {
 	private String gitRepoPath;
 	private int maxFixesPerRule;
 	private int maxFilesPerSegment;
+	private boolean measureTime;
 	public SoraldConfig() {}
 
 	public void addRuleKeys(List<Integer> ruleKeys) {
@@ -102,5 +103,13 @@ public class SoraldConfig {
 
 	public LinkedList<LinkedList<Node>> getSegments() {
 		return this.segments;
+	}
+
+	public void setMeasureTime(boolean measureTime) {
+		this.measureTime = measureTime;
+	}
+
+	public boolean getMeasureTime() {
+		return this.measureTime;
 	}
 }

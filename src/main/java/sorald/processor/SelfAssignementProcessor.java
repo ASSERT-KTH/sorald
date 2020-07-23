@@ -32,8 +32,8 @@ public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignme
 		return new SelfAssignementCheck();
 	}
 
-	public SelfAssignementProcessor(List<Node> segment) {
-        super(segment, new SelfAssignementCheck());
+	public SelfAssignementProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
 	@Override

@@ -30,8 +30,8 @@ public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocatio
 		return new GetClassLoaderCheck();
 	}
 
-	public GetClassLoaderProcessor(List<Node> segment) {
-        super(segment, new GetClassLoaderCheck());
+	public GetClassLoaderProcessor(List<Node> segments) throws Exception {
+        super(segments);
     }
 
 	@Override
