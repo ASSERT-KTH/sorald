@@ -4,7 +4,6 @@ import org.sonar.java.checks.CastArithmeticOperandCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.ProcessorAnnotation;
-import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtField;

@@ -3,7 +3,6 @@ package sorald.processor;
 import org.sonar.java.checks.BigDecimalDoubleConstructorCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
-import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;

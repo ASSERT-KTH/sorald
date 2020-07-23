@@ -4,7 +4,6 @@ import org.sonar.java.checks.GetClassLoaderCheck;
 
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
-import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.declaration.CtMethod;
@@ -15,7 +14,6 @@ import spoon.reflect.visitor.ImportScannerImpl;
 import spoon.reflect.declaration.CtImport;
 
 import java.util.HashMap;
-import java.util.List;
 
 @ProcessorAnnotation(key = 3032, description = "JEE applications should not \"getClassLoader\"")
 public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {

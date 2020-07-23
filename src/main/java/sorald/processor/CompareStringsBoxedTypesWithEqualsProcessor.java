@@ -3,15 +3,12 @@ package sorald.processor;
 import org.sonar.java.checks.CompareStringsBoxedTypesWithEqualsCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
-import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.reference.CtTypeReference;
-
-import java.util.List;
 
 @ProcessorAnnotation(key = 4973, description = "Strings and Boxed types should be compared using \"equals()\"")
 public class CompareStringsBoxedTypesWithEqualsProcessor extends SoraldAbstractProcessor<CtElement> {

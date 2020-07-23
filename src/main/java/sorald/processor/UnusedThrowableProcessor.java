@@ -3,11 +3,8 @@ package sorald.processor;
 import org.sonar.java.checks.unused.UnusedThrowableCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
-import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.CtConstructorCall;
 import spoon.reflect.code.CtThrow;
-
-import java.util.List;
 
 @ProcessorAnnotation(key = 3984, description = "Exception should not be created without being thrown")
 public class UnusedThrowableProcessor extends SoraldAbstractProcessor<CtConstructorCall> {

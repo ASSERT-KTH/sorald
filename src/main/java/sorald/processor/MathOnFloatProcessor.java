@@ -4,7 +4,6 @@ import org.sonar.java.checks.MathOnFloatCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.ProcessorAnnotation;
-import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.code.CtCodeSnippetExpression;
@@ -16,13 +15,14 @@ import java.util.List;
 @ProcessorAnnotation(key = 2164, description = "Math should not be performed on floats")
 public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 
-    public MathOnFloatProcessor(){}
+    public MathOnFloatProcessor() {
+    }
 
     @Override
     public JavaFileScanner getSonarCheck() {
         return new MathOnFloatCheck();
     }
-    
+
     @Override
     public boolean isToBeProcessed(CtBinaryOperator candidate) {
         if (!super.isToBeProcessedAccordingToStandards(candidate)) {

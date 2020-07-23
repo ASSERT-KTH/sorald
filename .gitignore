@@ -14,7 +14,3 @@ script.sh
 sorald-workspace/
 FileOutputStrategyTest/
 sonar-java/
-Repo4Analyze/
-Repo4Repair/
-cache-info
-model

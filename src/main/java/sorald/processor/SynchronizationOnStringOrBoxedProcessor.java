@@ -3,31 +3,20 @@ package sorald.processor;
 import org.sonar.java.checks.SynchronizationOnStringOrBoxedCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
-import sorald.FileTreeAlgorithm.Node;
-import spoon.reflect.declaration.CtExecutable;
-import spoon.reflect.declaration.CtType;
-import spoon.reflect.declaration.ModifierKind;
-import spoon.reflect.code.CtReturn;
+import spoon.reflect.code.*;
+import spoon.reflect.declaration.*;
 import spoon.reflect.factory.Factory;
-import spoon.reflect.visitor.filter.TypeFilter;
-import spoon.reflect.code.CtSynchronized;
-import spoon.reflect.code.CtExpression;
-import spoon.reflect.code.CtFieldRead;
-import spoon.reflect.code.CtInvocation;
-import spoon.reflect.declaration.CtField;
 import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtVariableReference;
-import spoon.reflect.declaration.CtVariable;
-import spoon.reflect.declaration.CtMethod;
+import spoon.reflect.visitor.filter.TypeFilter;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.List;
 
 @ProcessorAnnotation(key = 1860, description = "Synchronization should not be based on Strings or boxed primitives")
 public class SynchronizationOnStringOrBoxedProcessor extends SoraldAbstractProcessor<CtSynchronized> {
-    private Map<Integer,CtVariableReference> old2NewFields;
-    private Map<Integer,CtExecutableReference> old2NewMethods;
+    private Map<Integer, CtVariableReference> old2NewFields;
+    private Map<Integer, CtExecutableReference> old2NewMethods;
 
     public SynchronizationOnStringOrBoxedProcessor() {
         this.old2NewFields = new HashMap<>();
@@ -53,27 +42,27 @@ public class SynchronizationOnStringOrBoxedProcessor extends SoraldAbstractProce
         if (expression instanceof CtFieldRead) {
             fieldRead = (CtFieldRead) expression;
         } else if (expression instanceof CtInvocation) {
-            CtExecutable<?> method = ((CtInvocation)expression).getExecutable().getDeclaration();
-            CtExpression<?> returnExpression = ((CtReturn)method.getElements(new TypeFilter(CtReturn.class)).get(0)).getReturnedExpression();
+            CtExecutable<?> method = ((CtInvocation) expression).getExecutable().getDeclaration();
+            CtExpression<?> returnExpression = ((CtReturn) method.getElements(new TypeFilter(CtReturn.class)).get(0)).getReturnedExpression();
             if (returnExpression instanceof CtFieldRead) {
                 fieldRead = (CtFieldRead) returnExpression;
             } else {
                 /* don't support multiple recursive call */
-                return false; 
+                return false;
             }
         } else {
             return false;
         }
 
         CtField<?> field = fieldRead.getVariable().getDeclaration();
-        if(field != null) {
+        if (field != null) {
             return true;
         }
 
         return false;
     }
 
-    @Override   
+    @Override
     public void process(CtSynchronized element) {
         super.process(element);
         CtExpression<?> expression = element.getExpression();
@@ -82,44 +71,44 @@ public class SynchronizationOnStringOrBoxedProcessor extends SoraldAbstractProce
         if (expression instanceof CtFieldRead) {
             fieldRead4Update = (CtFieldRead) expression;
         } else {
-            CtExecutable<?> method = ((CtInvocation)expression).getExecutable().getDeclaration();
-            CtExpression<?> oldReturnExpression =  ((CtReturn)method.getElements(new TypeFilter(CtReturn.class)).get(0)).getReturnedExpression();
+            CtExecutable<?> method = ((CtInvocation) expression).getExecutable().getDeclaration();
+            CtExpression<?> oldReturnExpression = ((CtReturn) method.getElements(new TypeFilter(CtReturn.class)).get(0)).getReturnedExpression();
             CtFieldRead<?> oldFieldRead = (CtFieldRead) oldReturnExpression;
-            CtType<?> c = (CtType)oldFieldRead.getParent(CtType.class);
-            CtMethod<?> newMethod = (CtMethod)method.clone();
+            CtType<?> c = (CtType) oldFieldRead.getParent(CtType.class);
+            CtMethod<?> newMethod = (CtMethod) method.clone();
 
             if (!old2NewMethods.containsKey(method.hashCode())) {
                 newMethod.setSimpleName(method.getSimpleName() + "Legal");
-                newMethod.setType((((CtType)factory.Class().get(Object.class)).getReference()));
+                newMethod.setType((((CtType) factory.Class().get(Object.class)).getReference()));
                 c.addMethod(newMethod);
-                ((CtInvocation)expression).setExecutable(((CtExecutable)newMethod).getReference());
+                ((CtInvocation) expression).setExecutable(((CtExecutable) newMethod).getReference());
             } else {
-                ((CtInvocation)expression).setExecutable(old2NewMethods.get(method.hashCode()));
+                ((CtInvocation) expression).setExecutable(old2NewMethods.get(method.hashCode()));
             }
 
-            CtExpression<?> returnExpression = ((CtReturn)newMethod.getElements(new TypeFilter(CtReturn.class)).get(0)).getReturnedExpression();
+            CtExpression<?> returnExpression = ((CtReturn) newMethod.getElements(new TypeFilter(CtReturn.class)).get(0)).getReturnedExpression();
             fieldRead4Update = (CtFieldRead) returnExpression;
 
-        } 
+        }
         this.updateFieldRead(fieldRead4Update);
     }
 
     private void updateFieldRead(CtFieldRead<?> fieldRead) {
         if (!this.old2NewFields.containsKey(fieldRead.getVariable().hashCode())) {
             CtField<?> field = fieldRead.getVariable().getDeclaration();
-            CtType<?> c = (CtType)field.getParent(CtType.class);
+            CtType<?> c = (CtType) field.getParent(CtType.class);
 
             Factory factory = fieldRead.getFactory();
 
             ModifierKind[] modArr = new ModifierKind[field.getModifiers().size()];
             CtField<?> newField = factory.Code().createCtField(field.getSimpleName() + "Legal",
-                                                        factory.Class().get(Object.class).getReference(),
-                                                        "new Object()",
-                                                        field.getModifiers().toArray(modArr));
+                    factory.Class().get(Object.class).getReference(),
+                    "new Object()",
+                    field.getModifiers().toArray(modArr));
 
             c.addFieldAtTop(newField);
-            old2NewFields.put(fieldRead.getVariable().hashCode(),((CtVariable)newField).getReference());
-            fieldRead.setVariable(((CtVariable)newField).getReference());
+            old2NewFields.put(fieldRead.getVariable().hashCode(), ((CtVariable) newField).getReference());
+            fieldRead.setVariable(((CtVariable) newField).getReference());
         } else {
             fieldRead.setVariable(old2NewFields.get(fieldRead.getVariable().hashCode()));
         }

@@ -4,12 +4,9 @@ import org.sonar.java.checks.CompareToReturnValueCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.ProcessorAnnotation;
-import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.code.CtReturn;
 import spoon.reflect.code.CtLiteral;
-
-import java.util.List;
 
 @ProcessorAnnotation(key = 2167, description = "\"compareTo\" should not return \"Integer.MIN_VALUE\"")
 public class CompareToReturnValueProcessor extends SoraldAbstractProcessor<CtReturn<?>> {
