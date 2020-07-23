@@ -4,6 +4,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import org.sonar.java.checks.EqualsOnAtomicClassCheck;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.BinaryOperatorKind;
@@ -20,7 +21,12 @@ import java.util.List;
 public class EqualsOnAtomicClassProcessor extends SoraldAbstractProcessor<CtInvocation> {
 
 	public EqualsOnAtomicClassProcessor(String originalFilesPath) {
-		super(originalFilesPath, new EqualsOnAtomicClassCheck());
+		super(originalFilesPath);
+	}
+
+	@Override
+	public JavaFileScanner getSonarCheck() {
+		return new EqualsOnAtomicClassCheck();
 	}
 
 	public EqualsOnAtomicClassProcessor(List<Node> segment) {

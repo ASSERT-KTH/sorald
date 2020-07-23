@@ -26,7 +26,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 	private int maxFixes = Integer.MAX_VALUE;
 	private int nbFixes = 0;
 
-	SoraldAbstractProcessor(String originalFilesPath, JavaFileScanner check) {
+	SoraldAbstractProcessor(String originalFilesPath) {
+		JavaFileScanner sonarCheck = getSonarCheck();
 		try {
 			List<String> filesToScan = new ArrayList<>();
 			File file = new File(originalFilesPath);
@@ -40,7 +41,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 					e.printStackTrace();
 				}
 			}
-			Set<AnalyzerMessage> issues = MultipleFilesJavaCheckVerifier.verify(filesToScan, check, false);
+			Set<AnalyzerMessage> issues = MultipleFilesJavaCheckVerifier.verify(filesToScan, sonarCheck, false);
 			bugs = new HashSet<>();
 			for (AnalyzerMessage message : issues) {
 				Bug BugOffline = new Bug(message);
@@ -51,32 +52,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 		}
 	}
 
-	SoraldAbstractProcessor(List<Node> segment, JavaFileScanner check) {
-		try {
-			List<String> filesToScan = new ArrayList<>();
-			for (Node node : segment) {
-				if (node.isFileNode()) {
-					filesToScan.addAll(node.getJavaFiles());
-				} else {
-					try (Stream<Path> walk = Files.walk(Paths.get(node.getRootPath()))) {
-						filesToScan.addAll(walk.map(x -> x.toFile().getAbsolutePath())
-										.filter(f -> f.endsWith(Constants.JAVA_EXT)).collect(Collectors.toList()));
-					} catch (IOException e) {
-						e.printStackTrace();
-					}	
-				}
-			}
-
-			Set<AnalyzerMessage> issues = MultipleFilesJavaCheckVerifier.verify(filesToScan, check, false);
-			bugs = new HashSet<>();
-			for (AnalyzerMessage message : issues) {
-				Bug BugOffline = new Bug(message);
-				bugs.add(BugOffline);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	public abstract JavaFileScanner getSonarCheck();
 
 	public SoraldAbstractProcessor setMaxFixes(int maxFixes) {
 		this.maxFixes = maxFixes;

@@ -2,6 +2,7 @@ package sorald.processor;
 
 import org.sonar.java.checks.SelfAssignementCheck;
 
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.factory.Factory;
@@ -23,7 +24,12 @@ import java.util.List;
 public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignment<?,?>> {
 
 	public SelfAssignementProcessor(String originalFilesPath) {
-		super(originalFilesPath, new SelfAssignementCheck());
+		super(originalFilesPath);
+	}
+
+	@Override
+	public JavaFileScanner getSonarCheck() {
+		return new SelfAssignementCheck();
 	}
 
 	public SelfAssignementProcessor(List<Node> segment) {

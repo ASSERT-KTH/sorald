@@ -2,6 +2,7 @@ package sorald.processor;
 
 import org.sonar.java.checks.GetClassLoaderCheck;
 
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.declaration.CtClass;
@@ -21,7 +22,12 @@ public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocatio
 	private HashMap<Integer,Boolean> hashCodesOfTypesUsingJEE = new HashMap<Integer,Boolean>();
 
 	public GetClassLoaderProcessor(String originalFilesPath) {
-		super(originalFilesPath, new GetClassLoaderCheck());
+		super(originalFilesPath);
+	}
+
+	@Override
+	public JavaFileScanner getSonarCheck() {
+		return new GetClassLoaderCheck();
 	}
 
 	public GetClassLoaderProcessor(List<Node> segment) {

@@ -1,6 +1,7 @@
 package sorald.processor;
 
 import org.sonar.java.checks.DeadStoreCheck;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.CtAssignment;
@@ -13,7 +14,12 @@ import java.util.List;
 public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 
 	public DeadStoreProcessor(String originalFilesPath) {
-		super(originalFilesPath, new DeadStoreCheck());
+		super(originalFilesPath);
+	}
+
+	@Override
+	public JavaFileScanner getSonarCheck() {
+		return new DeadStoreCheck();
 	}
 
 	public DeadStoreProcessor(List<Node> segment) {

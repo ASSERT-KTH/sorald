@@ -1,6 +1,7 @@
 package sorald.processor;
 
 import org.sonar.java.checks.IteratorNextExceptionCheck;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import sorald.FileTreeAlgorithm.Node;
 import spoon.reflect.code.CtBlock;
@@ -21,7 +22,12 @@ import java.util.List;
 public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMethod> {
 
 	public IteratorNextExceptionProcessor(String originalFilesPath) {
-		super(originalFilesPath, new IteratorNextExceptionCheck());
+		super(originalFilesPath);
+	}
+
+	@Override
+	public JavaFileScanner getSonarCheck() {
+		return new IteratorNextExceptionCheck();
 	}
 
 	public IteratorNextExceptionProcessor(List<Node> segment) {
