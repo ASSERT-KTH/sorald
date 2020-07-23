@@ -12,18 +12,12 @@ import java.util.List;
 @ProcessorAnnotation(key = 1948, description = "Fields in a \"Serializable\" class should either be transient or serializable")
 public class SerializableFieldInSerializableClassProcessor extends SoraldAbstractProcessor<CtField> {
 
-	public SerializableFieldInSerializableClassProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public SerializableFieldInSerializableClassProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {
 		return new SerializableFieldInSerializableClassCheck();
 	}
-
-	public SerializableFieldInSerializableClassProcessor(List<Node> segments) throws Exception {
-        super(segments);
-    }
 
 	@Override
 	public boolean isToBeProcessed(CtField element) {

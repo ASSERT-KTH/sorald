@@ -2,9 +2,7 @@ package sorald;
 
 import sorald.processor.SoraldAbstractProcessor;
 
-import java.lang.reflect.Constructor;
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -18,17 +16,11 @@ import spoon.support.QueueProcessingManager;
 import spoon.processing.ProcessingManager;
 import spoon.reflect.factory.Factory;
 
-public class DefaultRepair implements IRepair {
-	private final GitPatchGenerator generator = new GitPatchGenerator();
-	private SoraldConfig config;
-	private int patchedFileCounter = 0;
+public class DefaultRepair extends SoraldAbstractRepair {
 	private List<SoraldAbstractProcessor> addedProcessors = new ArrayList();
 
 	public DefaultRepair(SoraldConfig config) {
-		this.config = config;
-		if (this.config.getGitRepoPath() != null) {
-			this.generator.setGitProjectRootDir(this.config.getGitRepoPath());
-		}
+		super(config);
 	}
 
 	public void repair() {
@@ -60,6 +52,7 @@ public class DefaultRepair implements IRepair {
 			Launcher launcher = createLauncher(inputDirPath, outputDirPath);
 
 			Processor processor = createProcessor(ruleKey, inputDirPath);
+			this.addedProcessors.add((SoraldAbstractProcessor)processor);
 			Factory factory = launcher.getFactory();
 			ProcessingManager processingManager = new QueueProcessingManager(factory);
 			processingManager.addProcessor(processor);
@@ -95,65 +88,18 @@ public class DefaultRepair implements IRepair {
 		System.out.println("-----End of report------");
 	}
 
-	// FIXME: this method was copied from TestHelper.java. We should extract it to a FileHelper to be visible for both main code and test code.
-	public static boolean deleteDirectory(File directoryToBeDeleted) {
-		File[] allContents = directoryToBeDeleted.listFiles();
-		if (allContents != null) {
-			for (File file : allContents) {
-				deleteDirectory(file);
-			}
-		}
-		return directoryToBeDeleted.delete();
-	}
-
 	private Launcher createLauncher(String inputDirPath, String outputDirPath) {
 		Launcher launcher = new Launcher();
-
 		launcher.addInputResource(inputDirPath);
-		launcher.setSourceOutputDirectory(outputDirPath);
-		launcher.getEnvironment().setAutoImports(true);
-		launcher.getEnvironment().setIgnoreDuplicateDeclarations(true);
-		if (this.config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER) {
-			launcher.getEnvironment().setPrettyPrinterCreator(() -> {
-						SniperJavaPrettyPrinter sniper = new SniperJavaPrettyPrinter(launcher.getEnvironment());
-						sniper.setIgnoreImplicit(false);
-						return sniper;
-					}
-			);
-			launcher.getEnvironment().setCommentEnabled(true);
-			launcher.getEnvironment().useTabulations(true);
-			launcher.getEnvironment().setTabulationSize(4);
-		}
-		launcher.buildModel();
-		return launcher;
+		return initLauncher(launcher, outputDirPath);
 	}
 
 	private Processor createProcessor(Integer ruleKey, String inputDirPath) {
-		try {
-			Class<?> processor = Processors.getProcessor(ruleKey);
-			if (processor != null) {
-				Constructor<?> cons = processor.getConstructor(String.class);
-				SoraldAbstractProcessor object = ((SoraldAbstractProcessor)cons.newInstance(inputDirPath)).setMaxFixes(this.config.getMaxFixesPerRule());
-				this.addedProcessors.add(object);
-				return object;
-			}
-		} catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-			e.printStackTrace();
+		SoraldAbstractProcessor processor = createBaseProcessor(ruleKey);
+		if (processor != null) {
+			return processor.initResource(inputDirPath)
+							.setMaxFixes(this.config.getMaxFixesPerRule());
 		}
 		return null;
-	}
-
-	private void createPatches(String patchedFilePath, JavaOutputProcessor javaOutputProcessor) {
-		File patchDir = new File(this.config.getWorkspace() + File.separator + Constants.PATCHES);
-
-		if (!patchDir.exists()) {
-			patchDir.mkdirs();
-		}
-		List<File> list = javaOutputProcessor.getCreatedFiles();
-		if (!list.isEmpty()) {
-			String outputPath = list.get(list.size() - 1).getAbsolutePath();
-			generator.generate(patchedFilePath,outputPath, patchDir.getAbsolutePath() + File.separator + Constants.PATCH_FILE_PREFIX + this.patchedFileCounter);
-			this.patchedFileCounter++;
-		}
 	}
 }

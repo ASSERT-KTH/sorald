@@ -16,19 +16,13 @@ import java.util.List;
 @ProcessorAnnotation(key = 2164, description = "Math should not be performed on floats")
 public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 
-    public MathOnFloatProcessor(String originalFilesPath) {
-        super(originalFilesPath);
-    }
+    public MathOnFloatProcessor(){}
 
     @Override
     public JavaFileScanner getSonarCheck() {
         return new MathOnFloatCheck();
     }
-
-    public MathOnFloatProcessor(List<Node> segments) throws Exception {
-        super(segments);
-    }
-
+    
     @Override
     public boolean isToBeProcessed(CtBinaryOperator candidate) {
         if (!super.isToBeProcessedAccordingToStandards(candidate)) {

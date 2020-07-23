@@ -29,14 +29,9 @@ public class SynchronizationOnStringOrBoxedProcessor extends SoraldAbstractProce
     private Map<Integer,CtVariableReference> old2NewFields;
     private Map<Integer,CtExecutableReference> old2NewMethods;
 
-    public SynchronizationOnStringOrBoxedProcessor(String originalFilesPath) {
-        super(originalFilesPath);
+    public SynchronizationOnStringOrBoxedProcessor() {
         this.old2NewFields = new HashMap<>();
         this.old2NewMethods = new HashMap<>();
-    }
-
-    public SynchronizationOnStringOrBoxedProcessor(List<Node> segments) throws Exception {
-        super(segments);
     }
 
     @Override

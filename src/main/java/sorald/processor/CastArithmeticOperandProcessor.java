@@ -20,17 +20,11 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
 
     private CtTypeReference typeToBeUsedToCast;
 
-    public CastArithmeticOperandProcessor(String originalFilesPath) {
-        super(originalFilesPath);
-    }
+    public CastArithmeticOperandProcessor(){}
 
     @Override
     public JavaFileScanner getSonarCheck() {
         return new CastArithmeticOperandCheck();
-    }
-
-    public CastArithmeticOperandProcessor(List<Node> segments) throws Exception {
-        super(segments);
     }
 
     @Override

@@ -21,18 +21,12 @@ import java.util.List;
 public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
 	private HashMap<Integer,Boolean> hashCodesOfTypesUsingJEE = new HashMap<Integer,Boolean>();
 
-	public GetClassLoaderProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public GetClassLoaderProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {
 		return new GetClassLoaderCheck();
 	}
-
-	public GetClassLoaderProcessor(List<Node> segments) throws Exception {
-        super(segments);
-    }
 
 	@Override
 	public boolean isToBeProcessed(CtInvocation<?> invocation) {

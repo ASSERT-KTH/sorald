@@ -14,18 +14,12 @@ import java.util.List;
 @ProcessorAnnotation(key = 2167, description = "\"compareTo\" should not return \"Integer.MIN_VALUE\"")
 public class CompareToReturnValueProcessor extends SoraldAbstractProcessor<CtReturn<?>> {
 
-	public CompareToReturnValueProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public CompareToReturnValueProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {
 		return new CompareToReturnValueCheck();
 	}
-
-	public CompareToReturnValueProcessor(List<Node> segments) throws Exception {
-        super(segments);
-    }
 
 	@Override
 	public boolean isToBeProcessed(CtReturn<?> ctReturn) {

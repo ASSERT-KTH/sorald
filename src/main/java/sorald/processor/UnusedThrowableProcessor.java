@@ -12,18 +12,12 @@ import java.util.List;
 @ProcessorAnnotation(key = 3984, description = "Exception should not be created without being thrown")
 public class UnusedThrowableProcessor extends SoraldAbstractProcessor<CtConstructorCall> {
 
-	public UnusedThrowableProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public UnusedThrowableProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {
 		return new UnusedThrowableCheck();
 	}
-
-	public UnusedThrowableProcessor(List<Node> segments) throws Exception {
-        super(segments);
-    }
 
 	@Override
 	public boolean isToBeProcessed(CtConstructorCall element) {

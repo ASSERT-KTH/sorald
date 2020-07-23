@@ -16,18 +16,12 @@ import java.util.List;
 @ProcessorAnnotation(key = 2142, description = "\"InterruptedException\" should not be ignored")
 public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCatch> {
 
-	public InterruptedExceptionProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public InterruptedExceptionProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {
 		return new InterruptedExceptionCheck();
 	}
-
-	public InterruptedExceptionProcessor(List<Node> segments) throws Exception {
-        super(segments);
-    }
 
 	@Override
 	public boolean isToBeProcessed(CtCatch candidate) {

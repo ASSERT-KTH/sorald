@@ -22,18 +22,12 @@ import java.util.List;
 @ProcessorAnnotation(key = 2095, description = "Resources should be closed")
 public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstructorCall> {
 
-	public UnclosedResourcesProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public UnclosedResourcesProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {
 		return new UnclosedResourcesCheck();
 	}
-
-	public UnclosedResourcesProcessor(List<Node> segments) throws Exception {
-        super(segments);
-    }
 
 	@Override
 	public boolean isToBeProcessed(CtConstructorCall element) {

@@ -23,19 +23,13 @@ import java.util.List;
 @ProcessorAnnotation(key = 1656, description = "Variables should not be self-assigned")
 public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignment<?,?>> {
 
-	public SelfAssignementProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public SelfAssignementProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {
 		return new SelfAssignementCheck();
 	}
-
-	public SelfAssignementProcessor(List<Node> segments) throws Exception {
-        super(segments);
-    }
-
+	
 	@Override
 	public boolean isToBeProcessed(CtAssignment<?,?> candidate) {
 		if (!super.isToBeProcessedAccordingToStandards(candidate)) {

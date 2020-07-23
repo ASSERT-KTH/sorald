@@ -13,18 +13,12 @@ import java.util.List;
 @ProcessorAnnotation(key = 1854, description = "Unused assignments should be removed")
 public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 
-	public DeadStoreProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public DeadStoreProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {
 		return new DeadStoreCheck();
 	}
-
-	public DeadStoreProcessor(List<Node> segments) throws Exception {
-        super(segments);
-    }
 
 	@Override
 	public boolean isToBeProcessed(CtStatement element) {

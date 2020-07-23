@@ -20,18 +20,12 @@ import java.util.List;
 @ProcessorAnnotation(key = 2204, description = "\".equals()\" should not be used to test the values of \"Atomic\" classes")
 public class EqualsOnAtomicClassProcessor extends SoraldAbstractProcessor<CtInvocation> {
 
-	public EqualsOnAtomicClassProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public EqualsOnAtomicClassProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {
 		return new EqualsOnAtomicClassCheck();
 	}
-
-	public EqualsOnAtomicClassProcessor(List<Node> segments) throws Exception {
-        super(segments);
-    }
 
 	@Override
 	public boolean isToBeProcessed(CtInvocation candidate) {

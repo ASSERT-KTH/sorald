@@ -155,8 +155,8 @@ public class Main {
 	}
 
 
-	public IRepair getRepairProcess() {
-		IRepair repair;
+	public SoraldAbstractRepair getRepairProcess() {
+		SoraldAbstractRepair repair;
 		switch (this.getConfig().getRepairStrategy()) {
 			case SEGMENT: {
 				System.out.println("[Repair Mode] : SEGMENT");
