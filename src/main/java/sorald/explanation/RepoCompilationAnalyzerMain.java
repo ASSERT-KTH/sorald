@@ -33,8 +33,8 @@ public class RepoCompilationAnalyzerMain {
         Map<String, Double> coveragePerCommitId = new HashMap<>();
         for (File file : files) {
             if (!file.getName().startsWith("partial-result") && !file.getName().startsWith("results")) {
-                coveragePerCommitId.put(file.getName().split("-")[0],
-                        CloverHelper.getInstance().getTotalCoverage(file));
+                double coverage = CloverHelper.getInstance().getTotalCoverage(file);
+                coveragePerCommitId.put(file.getName().split("-")[0], coverage);
             }
         }
 
