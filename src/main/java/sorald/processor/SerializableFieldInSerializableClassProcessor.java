@@ -1,6 +1,7 @@
 package sorald.processor;
 
 import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
@@ -9,7 +10,12 @@ import spoon.reflect.declaration.ModifierKind;
 public class SerializableFieldInSerializableClassProcessor extends SoraldAbstractProcessor<CtField> {
 
 	public SerializableFieldInSerializableClassProcessor(String originalFilesPath) {
-		super(originalFilesPath, new SerializableFieldInSerializableClassCheck());
+		super(originalFilesPath);
+	}
+
+	@Override
+	public JavaFileScanner getSonarCheck() {
+		return new SerializableFieldInSerializableClassCheck();
 	}
 
 	@Override

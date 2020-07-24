@@ -1,6 +1,7 @@
 package sorald.processor;
 
 import org.sonar.java.se.checks.UnclosedResourcesCheck;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtBlock;
@@ -19,7 +20,12 @@ import spoon.reflect.reference.CtVariableReference;
 public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstructorCall> {
 
 	public UnclosedResourcesProcessor(String originalFilesPath) {
-		super(originalFilesPath, new UnclosedResourcesCheck());
+		super(originalFilesPath);
+	}
+
+	@Override
+	public JavaFileScanner getSonarCheck() {
+		return new UnclosedResourcesCheck();
 	}
 
 	@Override

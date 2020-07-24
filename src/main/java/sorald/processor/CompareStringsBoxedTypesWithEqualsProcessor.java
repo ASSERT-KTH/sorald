@@ -1,6 +1,7 @@
 package sorald.processor;
 
 import org.sonar.java.checks.CompareStringsBoxedTypesWithEqualsCheck;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
@@ -13,7 +14,12 @@ import spoon.reflect.reference.CtTypeReference;
 public class CompareStringsBoxedTypesWithEqualsProcessor extends SoraldAbstractProcessor<CtElement> {
 
 	public CompareStringsBoxedTypesWithEqualsProcessor(String originalFilesPath) {
-		super(originalFilesPath, new CompareStringsBoxedTypesWithEqualsCheck());
+		super(originalFilesPath);
+	}
+
+	@Override
+	public JavaFileScanner getSonarCheck() {
+		return new CompareStringsBoxedTypesWithEqualsCheck();
 	}
 
 	@Override
