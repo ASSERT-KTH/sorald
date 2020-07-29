@@ -22,7 +22,7 @@ public class RepoCompilationAnalyzerMain {
 //
 //        analyzeRepos(reposPath, cloneDir, outputDir, resultsPath, mavenPath);
 
-        summarizeResults();
+//        summarizeResults();
     }
 
     private static void summarizeResults() throws IOException, ParserConfigurationException, SAXException {
