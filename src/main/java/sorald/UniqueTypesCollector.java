@@ -54,6 +54,8 @@ public class UniqueTypesCollector {
 		Object topLevelTypeToBeRemoved = null;
 		for (Map.Entry topLevelType : this.topLevelTypes4Output.entrySet()) {
 			int index = filePath.indexOf(Constants.SPOONED_INTERMEDIATE);
+			if(index < 0)
+				continue;
 			filePath = ".*" + filePath.substring(index + Constants.SPOONED_INTERMEDIATE.length(), filePath.length());
 			if (topLevelType.getKey().toString().matches(filePath)) {
 				topLevelTypeToBeRemoved = topLevelType.getKey();
