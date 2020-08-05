@@ -19,9 +19,7 @@ import java.util.HashMap;
 public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
 	private HashMap<Integer,Boolean> hashCodesOfTypesUsingJEE = new HashMap<Integer,Boolean>();
 
-	public GetClassLoaderProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public GetClassLoaderProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {

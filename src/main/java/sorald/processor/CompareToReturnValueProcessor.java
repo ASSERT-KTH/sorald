@@ -11,9 +11,7 @@ import spoon.reflect.code.CtLiteral;
 @ProcessorAnnotation(key = 2167, description = "\"compareTo\" should not return \"Integer.MIN_VALUE\"")
 public class CompareToReturnValueProcessor extends SoraldAbstractProcessor<CtReturn<?>> {
 
-	public CompareToReturnValueProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public CompareToReturnValueProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {

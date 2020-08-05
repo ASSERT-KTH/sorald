@@ -17,9 +17,7 @@ import spoon.reflect.reference.CtExecutableReference;
 @ProcessorAnnotation(key = 2204, description = "\".equals()\" should not be used to test the values of \"Atomic\" classes")
 public class EqualsOnAtomicClassProcessor extends SoraldAbstractProcessor<CtInvocation> {
 
-	public EqualsOnAtomicClassProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public EqualsOnAtomicClassProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {

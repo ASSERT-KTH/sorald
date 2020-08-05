@@ -15,9 +15,7 @@ import java.util.List;
 @ProcessorAnnotation(key = 2111, description = "\"BigDecimal(double)\" should not be used")
 public class BigDecimalDoubleConstructorProcessor extends SoraldAbstractProcessor<CtConstructorCall> {
 
-	public BigDecimalDoubleConstructorProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public BigDecimalDoubleConstructorProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {
