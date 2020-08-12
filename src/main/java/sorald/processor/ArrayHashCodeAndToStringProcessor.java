@@ -16,9 +16,7 @@ import java.util.Arrays;
 @ProcessorAnnotation(key = 2116, description = "\"hashCode\" and \"toString\" should not be called on array instances")
 public class ArrayHashCodeAndToStringProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
 
-	public ArrayHashCodeAndToStringProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public ArrayHashCodeAndToStringProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {

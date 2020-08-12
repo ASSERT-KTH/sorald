@@ -13,9 +13,7 @@ import spoon.reflect.reference.CtTypeReference;
 @ProcessorAnnotation(key = 4973, description = "Strings and Boxed types should be compared using \"equals()\"")
 public class CompareStringsBoxedTypesWithEqualsProcessor extends SoraldAbstractProcessor<CtElement> {
 
-	public CompareStringsBoxedTypesWithEqualsProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public CompareStringsBoxedTypesWithEqualsProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {

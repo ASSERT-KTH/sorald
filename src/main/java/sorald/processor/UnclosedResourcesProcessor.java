@@ -19,9 +19,7 @@ import spoon.reflect.reference.CtVariableReference;
 @ProcessorAnnotation(key = 2095, description = "Resources should be closed")
 public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstructorCall> {
 
-	public UnclosedResourcesProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public UnclosedResourcesProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {

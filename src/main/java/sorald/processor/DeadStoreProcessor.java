@@ -10,9 +10,7 @@ import spoon.reflect.code.CtStatement;
 @ProcessorAnnotation(key = 1854, description = "Unused assignments should be removed")
 public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 
-	public DeadStoreProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public DeadStoreProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {

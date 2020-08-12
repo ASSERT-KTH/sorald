@@ -16,6 +16,7 @@ import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.UniqueTypesCollector;
+import sorald.segment.Node;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
 
@@ -25,7 +26,11 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 	private int maxFixes = Integer.MAX_VALUE;
 	private int nbFixes = 0;
 
-	SoraldAbstractProcessor(String originalFilesPath) {
+	public SoraldAbstractProcessor() {}
+
+	public abstract JavaFileScanner getSonarCheck();
+
+	public SoraldAbstractProcessor initResource(String originalFilesPath) {
 		JavaFileScanner sonarCheck = getSonarCheck();
 		try {
 			List<String> filesToScan = new ArrayList<>();
@@ -49,12 +54,42 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return this;
 	}
 
-	public abstract JavaFileScanner getSonarCheck();
+	public SoraldAbstractProcessor initResource(List<Node> segment) throws Exception{
+		JavaFileScanner sonarCheck = getSonarCheck();
+		List<String> filesToScan = new ArrayList<>();
+		for (Node node : segment) {
+			if (node.isFileNode()) {
+				filesToScan.addAll(node.getJavaFiles());
+			} else {
+				try (Stream<Path> walk = Files.walk(Paths.get(node.getRootPath()))) {
+					filesToScan.addAll(walk.map(x -> x.toFile().getAbsolutePath())
+									.filter(f -> f.endsWith(Constants.JAVA_EXT)).collect(Collectors.toList()));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}	
+			}
+		}
+
+		Set<AnalyzerMessage> issues = MultipleFilesJavaCheckVerifier.verify(filesToScan, sonarCheck, false);
+		bugs = new HashSet<>();
+		for (AnalyzerMessage message : issues) {
+			Bug BugOffline = new Bug(message);
+			bugs.add(BugOffline);
+		}
+
+		return this;
+	}
 
 	public SoraldAbstractProcessor setMaxFixes(int maxFixes) {
 		this.maxFixes = maxFixes;
+		return this;
+	}
+
+	public SoraldAbstractProcessor setNbFixes(int nbFixes) {
+		this.nbFixes = nbFixes;
 		return this;
 	}
 

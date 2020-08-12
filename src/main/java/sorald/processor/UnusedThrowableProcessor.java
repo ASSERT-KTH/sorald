@@ -9,9 +9,7 @@ import spoon.reflect.code.CtThrow;
 @ProcessorAnnotation(key = 3984, description = "Exception should not be created without being thrown")
 public class UnusedThrowableProcessor extends SoraldAbstractProcessor<CtConstructorCall> {
 
-	public UnusedThrowableProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public UnusedThrowableProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {

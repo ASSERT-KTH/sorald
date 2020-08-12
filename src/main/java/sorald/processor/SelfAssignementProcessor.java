@@ -20,9 +20,7 @@ import spoon.reflect.declaration.CtType;
 @ProcessorAnnotation(key = 1656, description = "Variables should not be self-assigned")
 public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignment<?,?>> {
 
-	public SelfAssignementProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public SelfAssignementProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {
@@ -49,7 +47,7 @@ public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignme
 		return true;
 	}
 
-	@Override	
+	@Override
 	public void process(CtAssignment<?,?> element) {
 		super.process(element);
 

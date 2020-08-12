@@ -19,9 +19,7 @@ import java.util.NoSuchElementException;
 @ProcessorAnnotation(key = 2272, description = "\"Iterator.next()\" methods should throw \"NoSuchElementException\"")
 public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMethod> {
 
-	public IteratorNextExceptionProcessor(String originalFilesPath) {
-		super(originalFilesPath);
-	}
+	public IteratorNextExceptionProcessor(){}
 
 	@Override
 	public JavaFileScanner getSonarCheck() {
