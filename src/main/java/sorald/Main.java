@@ -73,21 +73,21 @@ public class Main {
 		opt.setLongFlag(Constants.ARG_MAX_FIXES_PER_RULE);
 		opt.setStringParser(JSAP.INTEGER_PARSER);
 		opt.setDefault("" + Integer.MAX_VALUE);
-		opt.setHelp("Max number of fixes per rule. Default: Integer.MAX_VALUE (or all)");
-		jsap.registerParameter(opt);
-
-		opt = new FlaggedOption(Constants.ARG_MAX_FILES_PER_SEGMENT);
-		opt.setLongFlag(Constants.ARG_MAX_FILES_PER_SEGMENT);
-		opt.setStringParser(JSAP.INTEGER_PARSER);
-		opt.setDefault("" + 6500);
-		opt.setHelp("Max number of files per loaded segment for segmented repair. It should be >= 3000 files per segment. Default: 6500 (256mb Jvm) . ");
+		opt.setHelp("Max number of fixes per rule.");
 		jsap.registerParameter(opt);
 
 		opt = new FlaggedOption(Constants.ARG_REPAIR_STRATEGY);
 		opt.setLongFlag(Constants.ARG_REPAIR_STRATEGY);
 		opt.setStringParser(JSAP.STRING_PARSER);
 		opt.setDefault(RepairStrategy.DEFAULT.name());
-		opt.setHelp("Type of repair strategy. DEFAULT - load everything without splitting up the folder in segments, SEGMENT - splitting the folder into smaller segments and repair one segment at a time (need to specify --maxFilesPerSegment if not default). (default: DEFAULT)");
+		opt.setHelp("Type of repair strategy. DEFAULT - load everything without splitting up the folder in segments, SEGMENT - splitting the folder into smaller segments and repair one segment at a time (need to specify --maxFilesPerSegment if not default)");
+		jsap.registerParameter(opt);
+
+		opt = new FlaggedOption(Constants.ARG_MAX_FILES_PER_SEGMENT);
+		opt.setLongFlag(Constants.ARG_MAX_FILES_PER_SEGMENT);
+		opt.setStringParser(JSAP.INTEGER_PARSER);
+		opt.setDefault("" + 6500);
+		opt.setHelp("Max number of files per loaded segment for segmented repair. It should be >= 3000 files per segment.");
 		jsap.registerParameter(opt);
 
 		Switch sw = new Switch("help");
