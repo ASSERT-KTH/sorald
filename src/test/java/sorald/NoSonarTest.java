@@ -5,7 +5,6 @@ import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import sorald.Constants;
 import sorald.Main;
-import sorald.PrettyPrintingStrategy;
 import sorald.TestHelper;
 
 public class NoSonarTest {
