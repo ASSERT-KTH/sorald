@@ -110,6 +110,13 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 		}
 		int line = element.getPosition().getLine();
 		String file = element.getPosition().getFile().getAbsolutePath();
+
+		try (Stream<String> lines = Files.lines(Paths.get(file))) {
+		    if (lines.skip(line - 1).findFirst().get().contains("NOSONAR")) {
+		    	return false;
+		    }
+		} catch(IOException e) {}
+
 		for (Bug bug : bugs) {
 			if (bug.getLineNumber() == line && bug.getFileName().equals(file)) {
 				return true;
