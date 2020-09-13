@@ -39,7 +39,6 @@ public class SoraldTreeBuilderAlgorithmTest {
         File file2 = new File(subDirFileNode.getJavaFiles().get(0));
         File file3 = new File(subDirFileNode.getJavaFiles().get(1));
         List<String> dummyFileNames = subDirFileNode.getJavaFiles().stream().map(absolutPath -> new File(absolutPath).getName()).collect(Collectors.toList());
-
         Assert.assertThat(dummyFileNames, containsInAnyOrder("DummyTwo.java","DummyThree.java"));
     }
 }

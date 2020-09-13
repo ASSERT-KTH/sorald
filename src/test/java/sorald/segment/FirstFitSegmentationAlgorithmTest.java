@@ -43,7 +43,6 @@ public class FirstFitSegmentationAlgorithmTest {
         Assert.assertEquals(1, dirNode.getChildren().size());
         Assert.assertEquals(2, fileNodeOne.getJavaFiles().size());
         Assert.assertEquals("DummySubFolder", subDirFolder.getName());
-
         List<String> dummyFileNames = fileNodeOne.getJavaFiles().stream().map(absolutePath -> new File(absolutePath).getName()).collect(Collectors.toList());
         Assert.assertThat(dummyFileNames, containsInAnyOrder("DummyTwo.java","DummyThree.java"));
 
@@ -55,5 +54,4 @@ public class FirstFitSegmentationAlgorithmTest {
         Assert.assertEquals(1, fileNodeTwo.getJavaFiles().size());
         Assert.assertEquals("DummyOne.java", dummyOne.getName());
     }
-
 }
