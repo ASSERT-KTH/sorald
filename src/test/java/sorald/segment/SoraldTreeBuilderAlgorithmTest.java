@@ -6,6 +6,11 @@ import sorald.Constants;
 
 import java.io.File;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
+
 public class SoraldTreeBuilderAlgorithmTest {
 
     @Test
@@ -33,7 +38,7 @@ public class SoraldTreeBuilderAlgorithmTest {
         Node subDirFileNode = subDirNode.getChildren().get(0);
         File file2 = new File(subDirFileNode.getJavaFiles().get(0));
         File file3 = new File(subDirFileNode.getJavaFiles().get(1));
-        Assert.assertEquals("DummyTwo.java", file2.getName());
-        Assert.assertEquals("DummyThree.java", file3.getName());
+        List<String> dummyFileNames = subDirFileNode.getJavaFiles().stream().map(absolutPath -> new File(absolutPath).getName()).collect(Collectors.toList());
+        Assert.assertThat(dummyFileNames, containsInAnyOrder("DummyTwo.java","DummyThree.java"));
     }
 }

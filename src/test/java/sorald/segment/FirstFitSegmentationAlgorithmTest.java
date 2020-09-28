@@ -8,6 +8,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 
 public class FirstFitSegmentationAlgorithmTest {
 
@@ -40,10 +43,8 @@ public class FirstFitSegmentationAlgorithmTest {
         Assert.assertEquals(1, dirNode.getChildren().size());
         Assert.assertEquals(2, fileNodeOne.getJavaFiles().size());
         Assert.assertEquals("DummySubFolder", subDirFolder.getName());
-        File dummyTwo = new File(fileNodeOne.getJavaFiles().get(0));
-        File dummyThree = new File(fileNodeOne.getJavaFiles().get(1));
-        Assert.assertEquals("DummyTwo.java", dummyTwo.getName());
-        Assert.assertEquals("DummyThree.java", dummyThree.getName());
+        List<String> dummyFileNames = fileNodeOne.getJavaFiles().stream().map(absolutePath -> new File(absolutePath).getName()).collect(Collectors.toList());
+        Assert.assertThat(dummyFileNames, containsInAnyOrder("DummyTwo.java","DummyThree.java"));
 
         LinkedList<Node> segmentTwo = segments.get(1);
         Node fileNodeTwo = segmentTwo.get(0);
