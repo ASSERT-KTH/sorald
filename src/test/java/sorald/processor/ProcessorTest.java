@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.sonar.check.Rule;
-import org.sonar.java.checks.MathOnFloatCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
@@ -14,6 +13,7 @@ import sorald.Main;
 import sorald.TestHelper;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -21,36 +21,37 @@ import java.util.stream.Stream;
 
 public class ProcessorTest {
 
-	private static final Path PATH_TO_TEST_FILES = Paths.get(Constants.PATH_TO_RESOURCES_FOLDER).resolve("processor_test_files");
+	private static final Path TEST_FILES_ROOT = Paths.get(Constants.PATH_TO_RESOURCES_FOLDER).resolve("processor_test_files");
 
 	@ParameterizedTest
 	@ArgumentsSource(NonCompliantJavaFileProvider.class)
 	void testParameterized(ProcessorTestCase testCase) throws Exception {
 		// filename should be on the form RuleName_Key.java
-		String ruleName = testCase.ruleName;
-		String ruleKey = testCase.ruleKey;
-		Class<JavaFileScanner> checkClass = testCase.checkClass;
-
-		System.out.println(MathOnFloatCheck.class.getAnnotations()[0] instanceof org.sonar.check.Rule);
-
-		String pathToRepairedFile = Constants.SORALD_WORKSPACE + "/" + Constants.SPOONED + "/" + ruleName + ".java";
+		String pathToRepairedFile = Paths.get(Constants.SORALD_WORKSPACE)
+				.resolve(Constants.SPOONED)
+				.resolve(testCase.nonCompliantFile.getName())
+				.toString();
 		String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
 
-		JavaCheckVerifier.verify(originalFileAbspath, checkClass.getConstructor().newInstance());
+		JavaCheckVerifier.verify(originalFileAbspath, testCase.checkClass.getConstructor().newInstance());
 		Main.main(new String[]{
 				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH, originalFileAbspath,
-				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS, ruleKey,
+				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS, testCase.ruleKey,
 				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE, Constants.SORALD_WORKSPACE});
 
 		TestHelper.removeComplianceComments(pathToRepairedFile);
-		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, checkClass.getConstructor().newInstance());
+		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, testCase.createCheckInstance());
 	}
 
+	/**
+	 * Provider class that provides test cases based on the buggy/non-compliant Java source files in the test
+	 * files directory.
+	 */
 	public static class NonCompliantJavaFileProvider implements ArgumentsProvider {
 
 		@Override
 		public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
-			return Arrays.stream(PATH_TO_TEST_FILES.toFile().listFiles())
+			return Arrays.stream(TEST_FILES_ROOT.toFile().listFiles())
 					.filter(File::isDirectory)
 					.flatMap(dir -> Arrays.stream(dir.listFiles())
 							.filter(file -> file.getName().endsWith(".java"))
@@ -101,7 +102,12 @@ public class ProcessorTest {
 		public String toString() {
 			return "ruleKey=" + ruleKey +
 					" ruleName=" + ruleName +
-					" source=" + PATH_TO_TEST_FILES.relativize(nonCompliantFile.toPath());
+					" source=" + TEST_FILES_ROOT.relativize(nonCompliantFile.toPath());
+		}
+
+		JavaFileScanner createCheckInstance() throws
+				NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+			return checkClass.getConstructor().newInstance();
 		}
 	}
 }
