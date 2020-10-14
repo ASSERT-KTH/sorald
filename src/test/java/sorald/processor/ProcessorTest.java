@@ -25,7 +25,7 @@ public class ProcessorTest {
 
 	@ParameterizedTest
 	@ArgumentsSource(NonCompliantJavaFileProvider.class)
-	void testParameterized(ProcessorTestCase testCase) throws Exception {
+	void testProcessSingleFile(ProcessorTestCase testCase) throws Exception {
 		// filename should be on the form RuleName_Key.java
 		String pathToRepairedFile = Paths.get(Constants.SORALD_WORKSPACE)
 				.resolve(Constants.SPOONED)
