@@ -46,8 +46,10 @@ public class ProcessorTestHelper {
         return new ProcessorTestCase(ruleName, getRuleKey(checkClass), nonCompliantFile, checkClass, outfileRelpath);
     }
 
-    // adapted from https://github.com/slarse/pkgextractor/blob/b478f4415d47bddea1ef0abfb50e73460ddd3d29/src/main/java/se/slar/pkgextractor/Main.java#L42-L52
-    // by the copyright holder, so no need for license statment
+    /**
+     * Parse the package for a single Java source file. If there is no package statement in the file, or the file
+     * cannot be read for any reason, an empty string is returned instead.
+     */
     private static String parseSourceFilePackage(Path sourceFile) {
         List<String> lines;
         try {
