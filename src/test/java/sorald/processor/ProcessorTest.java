@@ -43,7 +43,7 @@ public class ProcessorTest {
 	 *             |
 	 *             ---- OtherTestCaseFile.java
 	 */
-	private static ProcessorTestCase toTestCase(File nonCompliantFile) {
+	private static ProcessorTestCase toProcessorTestCase(File nonCompliantFile) {
 		File directory = nonCompliantFile.getParentFile();
 		assert directory.isDirectory();
 		String ruleName = directory.getName();
@@ -126,7 +126,7 @@ public class ProcessorTest {
 					.filter(File::isDirectory)
 					.flatMap(dir -> Arrays.stream(dir.listFiles())
 							.filter(file -> file.getName().endsWith(".java"))
-							.map(ProcessorTest::toTestCase)
+							.map(ProcessorTest::toProcessorTestCase)
 					).map(Arguments::of);
 		}
 	}
