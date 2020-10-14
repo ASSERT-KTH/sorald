@@ -17,7 +17,6 @@ import java.util.stream.Stream;
 
 public class ProcessorTest {
 
-
 	@ParameterizedTest
 	@ArgumentsSource(NonCompliantJavaFileProvider.class)
 	public void testProcessSingleFile(ProcessorTestHelper.ProcessorTestCase testCase) throws Exception {
@@ -53,5 +52,4 @@ public class ProcessorTest {
 					).map(Arguments::of);
 		}
 	}
-
 }
