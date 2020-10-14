@@ -10,6 +10,7 @@ import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.Main;
+import sorald.PrettyPrintingStrategy;
 import sorald.TestHelper;
 
 import java.io.File;
