@@ -10,55 +10,23 @@ import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.Main;
-import sorald.PrettyPrintingStrategy;
 import sorald.TestHelper;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class ProcessorTest {
 
 	private static final Path TEST_FILES_ROOT = Paths.get(Constants.PATH_TO_RESOURCES_FOLDER).resolve("processor_test_files");
-
-	@ParameterizedTest
-	@ArgumentsSource(NonCompliantJavaFileProvider.class)
-	void testProcessSingleFile(ProcessorTestCase testCase) throws Exception {
-		String pathToRepairedFile = Paths.get(Constants.SORALD_WORKSPACE)
-				.resolve(Constants.SPOONED)
-				.resolve(testCase.nonCompliantFile.getName())
-				.toString();
-		String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
-
-		JavaCheckVerifier.verify(originalFileAbspath, testCase.checkClass.getConstructor().newInstance());
-		Main.main(new String[]{
-				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH, originalFileAbspath,
-				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS, testCase.ruleKey,
-				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE, Constants.SORALD_WORKSPACE});
-
-		TestHelper.removeComplianceComments(pathToRepairedFile);
-		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, testCase.createCheckInstance());
-	}
-
-	/**
-	 * Provider class that provides test cases based on the buggy/non-compliant Java source files in the test
-	 * files directory.
-	 */
-	public static class NonCompliantJavaFileProvider implements ArgumentsProvider {
-
-		@Override
-		public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
-			return Arrays.stream(TEST_FILES_ROOT.toFile().listFiles())
-					.filter(File::isDirectory)
-					.flatMap(dir -> Arrays.stream(dir.listFiles())
-							.filter(file -> file.getName().endsWith(".java"))
-							.map(ProcessorTest::toTestCase)
-					).map(Arguments::of);
-		}
-	}
 
 	/**
 	 *  Create a {@link ProcessorTestCase} from a non-compliant Java source file.
@@ -80,7 +48,48 @@ public class ProcessorTest {
 		assert directory.isDirectory();
 		String ruleName = directory.getName();
 		Class<JavaFileScanner> checkClass = loadCheckClass(ruleName);
-		return new ProcessorTestCase(ruleName, getRuleKey(checkClass), nonCompliantFile, checkClass);
+		String outfileDirRelpath = parseSourceFilePackage(nonCompliantFile.toPath()).replace(".", File.separator);
+		Path outfileRelpath = Paths.get(outfileDirRelpath).resolve(nonCompliantFile.getName());
+		return new ProcessorTestCase(ruleName, getRuleKey(checkClass), nonCompliantFile, checkClass, outfileRelpath);
+	}
+
+
+	// adapted from https://github.com/slarse/pkgextractor/blob/b478f4415d47bddea1ef0abfb50e73460ddd3d29/src/main/java/se/slar/pkgextractor/Main.java#L42-L52
+	// by the copyright holder, so no need for license statment
+	private static String parseSourceFilePackage(Path sourceFile) {
+		List<String> lines;
+		try {
+			lines = Files.readAllLines(sourceFile);
+		} catch (IOException e) {
+			return "";
+		}
+		Pattern pattern = Pattern.compile("\\s*package\\s+?(\\S+)\\s*;");
+		for (String line : lines) {
+			Matcher matcher = pattern.matcher(line);
+			if (matcher.matches()) {
+				return matcher.group(1);
+			}
+		}
+		return "";
+	}
+
+	@ParameterizedTest
+	@ArgumentsSource(NonCompliantJavaFileProvider.class)
+	void testProcessSingleFile(ProcessorTestCase testCase) throws Exception {
+		String pathToRepairedFile = Paths.get(Constants.SORALD_WORKSPACE)
+				.resolve(Constants.SPOONED)
+				.resolve(testCase.outfileRelpath)
+				.toString();
+		String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
+
+		JavaCheckVerifier.verify(originalFileAbspath, testCase.checkClass.getConstructor().newInstance());
+		Main.main(new String[]{
+				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH, originalFileAbspath,
+				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS, testCase.ruleKey,
+				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE, Constants.SORALD_WORKSPACE});
+
+		TestHelper.removeComplianceComments(pathToRepairedFile);
+		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, testCase.createCheckInstance());
 	}
 
 	private static Class<JavaFileScanner> loadCheckClass(String ruleName) {
@@ -106,6 +115,23 @@ public class ProcessorTest {
 	}
 
 	/**
+	 * Provider class that provides test cases based on the buggy/non-compliant Java source files in the test
+	 * files directory.
+	 */
+	public static class NonCompliantJavaFileProvider implements ArgumentsProvider {
+
+		@Override
+		public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
+			return Arrays.stream(TEST_FILES_ROOT.toFile().listFiles())
+					.filter(File::isDirectory)
+					.flatMap(dir -> Arrays.stream(dir.listFiles())
+							.filter(file -> file.getName().endsWith(".java"))
+							.map(ProcessorTest::toTestCase)
+					).map(Arguments::of);
+		}
+	}
+
+	/**
 	 * A wrapper class to hold the information required to execute a test case for a single file and rule with the
 	 * associated processor.
 	 */
@@ -114,12 +140,20 @@ public class ProcessorTest {
 		final String ruleKey;
 		final File nonCompliantFile;
 		final Class<JavaFileScanner> checkClass;
+		final Path outfileRelpath;
 
-		ProcessorTestCase(String ruleName, String ruleKey, File nonCompliantFile, Class<JavaFileScanner> checkClass) {
+		ProcessorTestCase(
+				String ruleName,
+				String ruleKey,
+				File nonCompliantFile,
+				Class<JavaFileScanner> checkClass,
+				Path outfileRelpath
+		) {
 			this.ruleName = ruleName;
 			this.ruleKey = ruleKey;
 			this.nonCompliantFile = nonCompliantFile;
 			this.checkClass = checkClass;
+			this.outfileRelpath = outfileRelpath;
 		}
 
 		@Override
