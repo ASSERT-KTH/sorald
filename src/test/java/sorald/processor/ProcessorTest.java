@@ -59,21 +59,22 @@ public class ProcessorTest {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private static ProcessorTestCase toTestCase(File nonCompliantFile) {
 		File directory = nonCompliantFile.getParentFile();
 		assert directory.isDirectory();
-
 		String ruleName = directory.getName();
+		Class<JavaFileScanner> checkClass = loadCheckClass(ruleName);
+		return new ProcessorTestCase(ruleName, getRuleKey(checkClass), nonCompliantFile, checkClass);
+	}
+
+	private static Class<JavaFileScanner> loadCheckClass(String ruleName) {
+		// FIXME This is a ridiculously insecure way to load the class. Should probably use a lookup table instead.
 		String checkQualname = "org.sonar.java.checks." + ruleName + "Check";
-		Class<JavaFileScanner> checkClass;
 		try {
-			checkClass = (Class<JavaFileScanner>) Class.forName(checkQualname);
+			return (Class<JavaFileScanner>) Class.forName(checkQualname);
 		} catch (ClassNotFoundException e) {
 			throw new IllegalArgumentException(checkQualname + " is not a valid class");
 		}
-
-		return new ProcessorTestCase(ruleName, getRuleKey(checkClass), nonCompliantFile, checkClass);
 	}
 
 	/**
