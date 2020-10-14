@@ -76,6 +76,10 @@ public class ProcessorTest {
 		return new ProcessorTestCase(ruleName, getRuleKey(checkClass), nonCompliantFile, checkClass);
 	}
 
+	/**
+	 * Retrieve the numeric identifier of the rule related to the given check class. Non-digits are stripped, so
+	 * e.g. S1234 becomes 1234.
+	 */
 	private static String getRuleKey(Class<JavaFileScanner> checkClass) {
 		return Arrays.stream(checkClass.getAnnotationsByType(Rule.class))
 				.findFirst()
@@ -84,6 +88,10 @@ public class ProcessorTest {
 				.replaceAll("[^\\d]+", "");
 	}
 
+	/**
+	 * A wrapper class to hold the information required to execute a test case for a single file and rule with the
+	 * associated processor.
+	 */
 	private static class ProcessorTestCase {
 		final String ruleName;
 		final String ruleKey;
