@@ -26,7 +26,7 @@ public class ProcessorTest {
 				.toString();
 		String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
 
-		JavaCheckVerifier.verify(originalFileAbspath, testCase.checkClass.getConstructor().newInstance());
+		JavaCheckVerifier.verify(originalFileAbspath, testCase.createCheckInstance());
 		Main.main(new String[]{
 				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH, originalFileAbspath,
 				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS, testCase.ruleKey,
