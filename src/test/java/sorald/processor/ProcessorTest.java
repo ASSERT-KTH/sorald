@@ -59,6 +59,21 @@ public class ProcessorTest {
 		}
 	}
 
+	/**
+	 *  Create a {@link ProcessorTestCase} from a non-compliant Java source file.
+	 *
+	 *  For this to work out, the directory that the Java file file is located in must carry the same name as a sonar
+	 *  check class, minus the "Check" suffix. For example, if the test file is for the rule related to
+	 *  {@link org.sonar.java.checks.MathOnFloatCheck}, the directory must be called "MathOnFloat". The test
+	 *  file itself can be called anything. Here's an example of a compliant directory structure, where the Java
+	 *  files are test files for {@link org.sonar.java.checks.MathOnFloatCheck}.
+	 *
+	 *      MathOnFloat
+	 *             |
+	 *             ---- TestCaseFile.java
+	 *             |
+	 *             ---- OtherTestCaseFile.java
+	 */
 	private static ProcessorTestCase toTestCase(File nonCompliantFile) {
 		File directory = nonCompliantFile.getParentFile();
 		assert directory.isDirectory();
