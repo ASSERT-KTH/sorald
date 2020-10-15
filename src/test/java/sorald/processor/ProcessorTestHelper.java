@@ -24,13 +24,14 @@ public class ProcessorTestHelper {
     /**
      *  Create a {@link ProcessorTestCase} from a non-compliant Java source file.
      *
-     *  For this to work out, the directory that the Java file file is located in must carry the same name as a sonar
-     *  check class, minus the "Check" suffix. For example, if the test file is for the rule related to
-     *  {@link org.sonar.java.checks.MathOnFloatCheck}, the directory must be called "MathOnFloat". The test
-     *  file itself can be called anything. Here's an example of a compliant directory structure, where the Java
-     *  files are test files for {@link org.sonar.java.checks.MathOnFloatCheck}.
+     *  For this to work out, the directory that the Java file is located in must be prefixed with "RULE_KEY_". For
+     *  example, if the test file is for the rule S2164 (which is related to the check
+     *  {@link org.sonar.java.checks.MathOnFloatCheck}), the directory name must start with "S2164_" or "2164_".
+     *  The rest of the directory name doesn't matter, and th the testfile itself can be called anything. Here's an
+     *  example of a compliant directory structure, where the Java files are test files for
+     *  {@link org.sonar.java.checks.MathOnFloatCheck}.
      *
-     *      MathOnFloat
+     *      S2164_MathOnFloat
      *             |
      *             ---- TestCaseFile.java
      *             |
@@ -39,11 +40,12 @@ public class ProcessorTestHelper {
     static <T extends JavaFileScanner> ProcessorTestCase<T> toProcessorTestCase(File nonCompliantFile) {
         File directory = nonCompliantFile.getParentFile();
         assert directory.isDirectory();
-        String ruleName = directory.getName();
-        Class<T> checkClass = getCheckClass(ruleName);
+        String ruleKey = removeDigits(directory.getName().split("_")[0]);
+        Class<T> checkClass = getCheckClassByKey(ruleKey);
+        String ruleName = checkClass.getSimpleName().replaceFirst("Check$", "");
         String outfileDirRelpath = parseSourceFilePackage(nonCompliantFile.toPath()).replace(".", File.separator);
         Path outfileRelpath = Paths.get(outfileDirRelpath).resolve(nonCompliantFile.getName());
-        return new ProcessorTestCase<T>(ruleName, getRuleKey(checkClass), nonCompliantFile, checkClass, outfileRelpath);
+        return new ProcessorTestCase<T>(ruleName, ruleKey, nonCompliantFile, checkClass, outfileRelpath);
     }
 
     /**
@@ -67,17 +69,18 @@ public class ProcessorTestHelper {
         return "";
     }
 
-    private static <T extends JavaFileScanner> void testSend(List<T> send) {
-
+    private static String removeDigits(String s) {
+        return s.replaceAll("[^\\d]+", "");
     }
 
     @SuppressWarnings("unchecked")
-    private static <T extends JavaFileScanner> Class<T> getCheckClass(String ruleName) {
+    private static <T extends JavaFileScanner> Class<T> getCheckClassByKey(String ruleKey) {
         // could use a static lookup table here for efficiency, but the list is so small at this point that it
         // won't make a meaningful difference
-        return (Class<T>) Constants.SONAR_CHECK_CLASSES.stream().filter(cls -> cls.getSimpleName().equals(ruleName + "Check"))
+        return (Class<T>) Constants.SONAR_CHECK_CLASSES.stream()
+                .filter(checkClass -> ruleKey.equals(getRuleKey(checkClass)))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Could not find check class for rule " + ruleName));
+                .orElseThrow(() -> new IllegalArgumentException("Could not find check class for key " + ruleKey));
     }
 
     /**
@@ -86,10 +89,10 @@ public class ProcessorTestHelper {
      */
     private static String getRuleKey(Class<? extends JavaFileScanner> checkClass) {
         return Arrays.stream(checkClass.getAnnotationsByType(Rule.class))
+                .map(Rule::key)
+                .map(ProcessorTestHelper::removeDigits)
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException(checkClass.getName() + " does not have a key"))
-                .key()
-                .replaceAll("[^\\d]+", "");
+                .orElseThrow(() -> new IllegalStateException(checkClass.getName() + " does not have a key"));
     }
 
     /**
