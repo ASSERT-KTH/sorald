@@ -68,7 +68,7 @@ public class Constants {
 
 	public static final String PATH_TO_STATS_OUTPUT = "experimentation/stats/warnings";
 
-	public static final List<Class<? extends JavaFileScanner>> SONAR_CHECKS;
+	public static final List<Class<? extends JavaFileScanner>> SONAR_CHECK_CLASSES;
 
 	static {
 		List<Class<? extends JavaFileScanner>> sonarChecks = new ArrayList<>();
@@ -197,7 +197,7 @@ public class Constants {
 //        TEMP_SONAR_CHECKS.add(new DefaultMessageListenerContainerCheck());
 //        TEMP_SONAR_CHECKS.add(new SingleConnectionFactoryCheck());
 //        TEMP_SONAR_CHECKS.add(new DependencyWithSystemScopeCheck());
-		SONAR_CHECKS = Collections.unmodifiableList(sonarChecks);
+		SONAR_CHECK_CLASSES = Collections.unmodifiableList(sonarChecks);
 	}
 
 }

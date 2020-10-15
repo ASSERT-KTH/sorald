@@ -30,7 +30,7 @@ public class MineSonarWarnings {
 
 
     private static List init() {
-        return Constants.SONAR_CHECKS.stream().map(cls -> {
+        return Constants.SONAR_CHECK_CLASSES.stream().map(cls -> {
             try {
                 return cls.getConstructor().newInstance();
             } catch (Exception e) {
