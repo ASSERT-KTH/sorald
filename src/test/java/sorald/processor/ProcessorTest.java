@@ -5,18 +5,28 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
+import org.sonar.java.checks.InterruptedExceptionCheck;
+import org.sonar.java.checks.SynchronizationOnStringOrBoxedCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.Main;
+import sorald.PrettyPrintingStrategy;
 import sorald.TestHelper;
 
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class ProcessorTest {
+
+    // The processors related to these checks currently cause problems with the sniper printer
+	private static final List<Class<?>> BROKEN_WITH_SNIPER = Arrays.asList(
+			SynchronizationOnStringOrBoxedCheck.class,
+			InterruptedExceptionCheck.class);
 
 	@ParameterizedTest
 	@ArgumentsSource(NonCompliantJavaFileProvider.class)
@@ -26,12 +36,16 @@ public class ProcessorTest {
 				.resolve(testCase.outfileRelpath)
 				.toString();
 		String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
+		boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(testCase.checkClass);
 
 		JavaCheckVerifier.verify(originalFileAbspath, testCase.createCheckInstance());
 		Main.main(new String[]{
 				Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH, originalFileAbspath,
 				Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS, testCase.ruleKey,
-				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE, Constants.SORALD_WORKSPACE});
+				Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE, Constants.SORALD_WORKSPACE,
+				Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
+				brokenWithSniper ? PrettyPrintingStrategy.NORMAL.name() : PrettyPrintingStrategy.SNIPER.name()}
+		);
 
 		TestHelper.removeComplianceComments(pathToRepairedFile);
 		JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, testCase.createCheckInstance());
