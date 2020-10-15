@@ -5,6 +5,7 @@ import org.sonar.java.checks.naming.MethodNamedEqualsCheck;
 import org.sonar.java.checks.naming.MethodNamedHashcodeOrEqualCheck;
 import org.sonar.java.checks.serialization.CustomSerializationMethodCheck;
 import org.sonar.java.checks.serialization.ExternalizableClassConstructorCheck;
+import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
 import org.sonar.java.checks.serialization.SerializableObjectInSessionCheck;
 import org.sonar.java.checks.serialization.SerializableSuperConstructorCheck;
 import org.sonar.java.checks.spring.ControllerWithSessionAttributesCheck;
@@ -193,6 +194,8 @@ public class Constants {
 		sonarChecks.add(NullDereferenceCheck.class);
 		sonarChecks.add(NonNullSetToNullCheck.class);
 		sonarChecks.add(CustomUnclosedResourcesCheck.class);
+		sonarChecks.add(DeadStoreCheck.class);
+		sonarChecks.add(SerializableFieldInSerializableClassCheck.class);
 
 //        sonarsChecks.add(DefaultMessageListenerContainerCheck.class);
 //        sonarsChecks.add(SingleConnectionFactoryCheck.class);
