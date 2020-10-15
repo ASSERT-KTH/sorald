@@ -36,14 +36,14 @@ public class ProcessorTestHelper {
      *             |
      *             ---- OtherTestCaseFile.java
      */
-    static ProcessorTestCase toProcessorTestCase(File nonCompliantFile) {
+    static <T extends JavaFileScanner> ProcessorTestCase<T> toProcessorTestCase(File nonCompliantFile) {
         File directory = nonCompliantFile.getParentFile();
         assert directory.isDirectory();
         String ruleName = directory.getName();
-        Class<JavaFileScanner> checkClass = loadCheckClass(ruleName);
+        Class<T> checkClass = getCheckClass(ruleName);
         String outfileDirRelpath = parseSourceFilePackage(nonCompliantFile.toPath()).replace(".", File.separator);
         Path outfileRelpath = Paths.get(outfileDirRelpath).resolve(nonCompliantFile.getName());
-        return new ProcessorTestCase(ruleName, getRuleKey(checkClass), nonCompliantFile, checkClass, outfileRelpath);
+        return new ProcessorTestCase<T>(ruleName, getRuleKey(checkClass), nonCompliantFile, checkClass, outfileRelpath);
     }
 
     /**
@@ -67,21 +67,24 @@ public class ProcessorTestHelper {
         return "";
     }
 
-    private static Class<JavaFileScanner> loadCheckClass(String ruleName) {
-        // FIXME This is a ridiculously insecure way to load the class. Should probably use a lookup table instead.
-        String checkQualname = "org.sonar.java.checks." + ruleName + "Check";
-        try {
-            return (Class<JavaFileScanner>) Class.forName(checkQualname);
-        } catch (ClassNotFoundException e) {
-            throw new IllegalArgumentException(checkQualname + " is not a valid class");
-        }
+    private static <T extends JavaFileScanner> void testSend(List<T> send) {
+
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T extends JavaFileScanner> Class<T> getCheckClass(String ruleName) {
+        // could use a static lookup table here for efficiency, but the list is so small at this point that it
+        // won't make a meaningful difference
+        return (Class<T>) Constants.SONAR_CHECK_CLASSES.stream().filter(cls -> cls.getSimpleName().equals(ruleName + "Check"))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Could not find check class for rule " + ruleName));
     }
 
     /**
      * Retrieve the numeric identifier of the rule related to the given check class. Non-digits are stripped, so
      * e.g. S1234 becomes 1234.
      */
-    private static String getRuleKey(Class<JavaFileScanner> checkClass) {
+    private static String getRuleKey(Class<? extends JavaFileScanner> checkClass) {
         return Arrays.stream(checkClass.getAnnotationsByType(Rule.class))
                 .findFirst()
                 .orElseThrow(() -> new IllegalStateException(checkClass.getName() + " does not have a key"))
@@ -93,18 +96,18 @@ public class ProcessorTestHelper {
      * A wrapper class to hold the information required to execute a test case for a single file and rule with the
      * associated processor.
      */
-    static class ProcessorTestCase {
+    static class ProcessorTestCase<T extends JavaFileScanner> {
         public final String ruleName;
         public final String ruleKey;
         public final File nonCompliantFile;
-        public final Class<JavaFileScanner> checkClass;
+        public final Class<T> checkClass;
         public final Path outfileRelpath;
 
         ProcessorTestCase(
                 String ruleName,
                 String ruleKey,
                 File nonCompliantFile,
-                Class<JavaFileScanner> checkClass,
+                Class<T> checkClass,
                 Path outfileRelpath
         ) {
             this.ruleName = ruleName;
@@ -121,7 +124,7 @@ public class ProcessorTestHelper {
                     " source=" + TEST_FILES_ROOT.relativize(nonCompliantFile.toPath());
         }
 
-        public JavaFileScanner createCheckInstance() throws
+        public T createCheckInstance() throws
                 NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
             return checkClass.getConstructor().newInstance();
         }

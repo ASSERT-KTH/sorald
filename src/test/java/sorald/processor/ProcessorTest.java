@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.Main;
 import sorald.TestHelper;
@@ -19,7 +20,7 @@ public class ProcessorTest {
 
 	@ParameterizedTest
 	@ArgumentsSource(NonCompliantJavaFileProvider.class)
-	public void testProcessSingleFile(ProcessorTestHelper.ProcessorTestCase testCase) throws Exception {
+	public void testProcessSingleFile(ProcessorTestHelper.ProcessorTestCase<? extends JavaFileScanner> testCase) throws Exception {
 		String pathToRepairedFile = Paths.get(Constants.SORALD_WORKSPACE)
 				.resolve(Constants.SPOONED)
 				.resolve(testCase.outfileRelpath)
