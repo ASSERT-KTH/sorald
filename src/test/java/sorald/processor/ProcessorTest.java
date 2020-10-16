@@ -34,10 +34,10 @@ public class ProcessorTest {
 	/**
 	 * Parameterized test that processes a single Java file at a time with a single processor.
 	 *
-	 * See {@link ProcessorTestHelper#toProcessorTestCase(File)} for instructions on how to add a new test.
-	 *
-	 * @param testCase
-	 * @throws Exception
+     * To add a new test for a rule with existing tests, add a new file to an existing test directory in
+	 * {@link ProcessorTestHelper#TEST_FILES_ROOT}. To add a new test for a rule without existing tests, add a new
+	 * directory+Java file in {@link ProcessorTestHelper#TEST_FILES_ROOT} as described in the docs for
+	 * {@link ProcessorTestHelper#toProcessorTestCase(File)}.
 	 */
 	@ParameterizedTest
 	@ArgumentsSource(NonCompliantJavaFileProvider.class)
