@@ -49,6 +49,7 @@ public class WarningMinerTest {
         return Files.readAllLines(minerResults).stream()
                 .filter(s -> s.matches(".*=\\d+$"))
                 .filter(s -> !s.matches("=0$"))
+                .sorted()
                 .collect(Collectors.toList());
     }
 }
