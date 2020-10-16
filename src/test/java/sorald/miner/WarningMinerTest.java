@@ -47,8 +47,8 @@ public class WarningMinerTest {
      */
     private static List<String> extractSortedNonZeroChecks(Path minerResults) throws IOException {
         return Files.readAllLines(minerResults).stream()
-                .filter(s -> s.matches(".*=\\d+$"))
-                .filter(s -> !s.matches("=0$"))
+                .filter(s -> s.matches("^.*=\\d+$"))
+                .filter(s -> !s.matches("^.*=0\\s*$"))
                 .sorted()
                 .collect(Collectors.toList());
     }
