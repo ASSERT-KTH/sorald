@@ -22,20 +22,24 @@ public class ProcessorTestHelper {
     static final Path TEST_FILES_ROOT = Paths.get(Constants.PATH_TO_RESOURCES_FOLDER).resolve("processor_test_files");
 
     /**
-     *  Create a {@link ProcessorTestCase} from a non-compliant Java source file.
+     * Create a {@link ProcessorTestCase} from a non-compliant (according to SonarQube rules) Java source file.
      *
-     *  For this to work out, the directory that the Java file is located in must be prefixed with "RULE_KEY_". For
-     *  example, if the test file is for the rule S2164 (which is related to the check
-     *  {@link org.sonar.java.checks.MathOnFloatCheck}), the directory name must start with "S2164_" or "2164_".
-     *  The rest of the directory name doesn't matter, and th the testfile itself can be called anything. Here's an
-     *  example of a compliant directory structure, where the Java files are test files for
-     *  {@link org.sonar.java.checks.MathOnFloatCheck}.
+     * For this to work out, the directory that the Java file is located in must be prefixed with "RULE_KEY_". For
+     * example, if the test file is for the rule S2164 (which is related to the check
+     * {@link org.sonar.java.checks.MathOnFloatCheck}), the directory name must start with "S2164_" or "2164_".
+     * The rest of the directory name doesn't matter, and the testfile itself can be called anything. Here's an
+     * example of a compliant directory structure, where the Java files are test files for
+     * {@link org.sonar.java.checks.MathOnFloatCheck}.
      *
-     *      S2164_MathOnFloat
-     *             |
-     *             ---- TestCaseFile.java
-     *             |
-     *             ---- OtherTestCaseFile.java
+     *     S2164_MathOnFloat
+     *            |
+     *            ---- TestCaseFile.java
+     *            |
+     *            ---- OtherTestCaseFile.java
+     *
+     *
+     * @param nonCompliantFile Path to a non-compliant Java file that violates precisely one SonarQube rule.
+     * @return A {@link ProcessorTestCase} for the given Java file.
      */
     static <T extends JavaFileScanner> ProcessorTestCase<T> toProcessorTestCase(File nonCompliantFile) {
         File directory = nonCompliantFile.getParentFile();

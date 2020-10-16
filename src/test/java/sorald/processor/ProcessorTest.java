@@ -31,6 +31,14 @@ public class ProcessorTest {
 			SerializableFieldInSerializableClassCheck.class
 	);
 
+	/**
+	 * Parameterized test that processes a single Java file at a time with a single processor.
+	 *
+	 * See {@link ProcessorTestHelper#toProcessorTestCase(File)} for instructions on how to add a new test.
+	 *
+	 * @param testCase
+	 * @throws Exception
+	 */
 	@ParameterizedTest
 	@ArgumentsSource(NonCompliantJavaFileProvider.class)
 	public void testProcessSingleFile(ProcessorTestHelper.ProcessorTestCase<? extends JavaFileScanner> testCase) throws Exception {
