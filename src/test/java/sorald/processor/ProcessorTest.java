@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.sonar.java.checks.InterruptedExceptionCheck;
 import org.sonar.java.checks.SynchronizationOnStringOrBoxedCheck;
+import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.JavaFileScanner;
@@ -26,7 +27,9 @@ public class ProcessorTest {
     // The processors related to these checks currently cause problems with the sniper printer
 	private static final List<Class<?>> BROKEN_WITH_SNIPER = Arrays.asList(
 			SynchronizationOnStringOrBoxedCheck.class,
-			InterruptedExceptionCheck.class);
+			InterruptedExceptionCheck.class,
+			SerializableFieldInSerializableClassCheck.class
+	);
 
 	@ParameterizedTest
 	@ArgumentsSource(NonCompliantJavaFileProvider.class)
