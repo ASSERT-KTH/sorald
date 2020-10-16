@@ -194,9 +194,9 @@ public class Constants {
 		sonarChecks.add(NonNullSetToNullCheck.class);
 		sonarChecks.add(CustomUnclosedResourcesCheck.class);
 
-//        TEMP_SONAR_CHECKS.add(new DefaultMessageListenerContainerCheck());
-//        TEMP_SONAR_CHECKS.add(new SingleConnectionFactoryCheck());
-//        TEMP_SONAR_CHECKS.add(new DependencyWithSystemScopeCheck());
+//        sonarsChecks.add(DefaultMessageListenerContainerCheck.class);
+//        sonarsChecks.add(SingleConnectionFactoryCheck.class);
+//        sonarsChecks.add(DependencyWithSystemScopeCheck.class);
 		SONAR_CHECK_CLASSES = Collections.unmodifiableList(sonarChecks);
 	}
 
