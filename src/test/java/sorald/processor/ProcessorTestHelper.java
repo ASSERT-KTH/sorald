@@ -27,9 +27,9 @@ public class ProcessorTestHelper {
 	 * For this to work out, the directory that the Java file is located in must be prefixed with "RULE_KEY_". For
 	 * example, if the test file is for the rule S2164 (which is related to the check
 	 * {@link org.sonar.java.checks.MathOnFloatCheck}), the directory name must start with "S2164_" or "2164_".
-	 * The rest of the directory name doesn't matter, and the testfile itself can be called anything. Here's an
-	 * example of a compliant directory structure, where the Java files are test files for
-	 * {@link org.sonar.java.checks.MathOnFloatCheck}.
+	 * The rest of the directory name doesn't matter, and the test file itself can have any name as long as it ends
+	 * with the .java file extension. Here's an example of a compliant directory structure, where the Java files are
+	 * test files for {@link org.sonar.java.checks.MathOnFloatCheck}.
 	 *
 	 *     2164_MathOnFloat
 	 *            |
