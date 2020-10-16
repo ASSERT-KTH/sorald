@@ -24,7 +24,7 @@ import java.util.stream.Stream;
 
 public class ProcessorTest {
 
-    // The processors related to these checks currently cause problems with the sniper printer
+	// The processors related to these checks currently cause problems with the sniper printer
 	private static final List<Class<?>> BROKEN_WITH_SNIPER = Arrays.asList(
 			SynchronizationOnStringOrBoxedCheck.class,
 			InterruptedExceptionCheck.class,
@@ -34,7 +34,7 @@ public class ProcessorTest {
 	/**
 	 * Parameterized test that processes a single Java file at a time with a single processor.
 	 *
-     * To add a new test for a rule with existing tests, add a new file to an existing test directory in
+	 * To add a new test for a rule with existing tests, add a new file to an existing test directory in
 	 * {@link ProcessorTestHelper#TEST_FILES_ROOT}. To add a new test for a rule without existing tests, add a new
 	 * directory+Java file in {@link ProcessorTestHelper#TEST_FILES_ROOT} as described in the docs for
 	 * {@link ProcessorTestHelper#toProcessorTestCase(File)}.
