@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.*;
 
 public class WarningMinerTest {
 
@@ -34,6 +35,8 @@ public class WarningMinerTest {
 
         List<String> expectedLines = extractSortedNonZeroChecks(correctResults.toPath());
         List<String> actualLines = extractSortedNonZeroChecks(outputFile.toPath());
+
+        assertFalse("sanity check failure, expected output is empty", expectedLines.isEmpty());
         assertThat(actualLines, equalTo(expectedLines));
     }
 
@@ -43,11 +46,9 @@ public class WarningMinerTest {
      * non-negative integer.
      */
     private static List<String> extractSortedNonZeroChecks(Path minerResults) throws IOException {
-        List<String> lines = Files.readAllLines(minerResults).stream()
+        return Files.readAllLines(minerResults).stream()
                 .filter(s -> s.matches(".*=\\d+$"))
                 .filter(s -> !s.matches("=0$"))
                 .collect(Collectors.toList());
-        assert !lines.isEmpty();
-        return lines;
     }
 }
