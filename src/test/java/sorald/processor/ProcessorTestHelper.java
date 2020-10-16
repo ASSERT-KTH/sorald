@@ -31,7 +31,7 @@ public class ProcessorTestHelper {
 	 * example of a compliant directory structure, where the Java files are test files for
 	 * {@link org.sonar.java.checks.MathOnFloatCheck}.
 	 *
-	 *     S2164_MathOnFloat
+	 *     2164_MathOnFloat
 	 *            |
 	 *            ---- TestCaseFile.java
 	 *            |
