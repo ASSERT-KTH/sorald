@@ -1,6 +1,6 @@
 package sorald;
 
 public enum FileOutputStrategy {
-	ALL,
-	CHANGED_ONLY
+  ALL,
+  CHANGED_ONLY
 }

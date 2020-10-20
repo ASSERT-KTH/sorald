@@ -10,28 +10,27 @@ import spoon.reflect.code.CtStatement;
 @ProcessorAnnotation(key = 1854, description = "Unused assignments should be removed")
 public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 
-	public DeadStoreProcessor(){}
+  public DeadStoreProcessor() {}
 
-	@Override
-	public JavaFileScanner getSonarCheck() {
-		return new DeadStoreCheck();
-	}
+  @Override
+  public JavaFileScanner getSonarCheck() {
+    return new DeadStoreCheck();
+  }
 
-	@Override
-	public boolean isToBeProcessed(CtStatement element) {
-		if (!super.isToBeProcessedAccordingToStandards(element)) {
-			return false;
-		}
-		if (element instanceof CtLocalVariable || element instanceof CtAssignment) {
-			return true;
-		}
-		return false;
-	}
+  @Override
+  public boolean isToBeProcessed(CtStatement element) {
+    if (!super.isToBeProcessedAccordingToStandards(element)) {
+      return false;
+    }
+    if (element instanceof CtLocalVariable || element instanceof CtAssignment) {
+      return true;
+    }
+    return false;
+  }
 
-	@Override
-	public void process(CtStatement element) {
-		super.process(element);
-		element.delete();
-	}
-
+  @Override
+  public void process(CtStatement element) {
+    super.process(element);
+    element.delete();
+  }
 }
