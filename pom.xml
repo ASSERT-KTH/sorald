@@ -207,29 +207,24 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- adapted from https://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html -->
+            <!-- adapted from https://github.com/diffplug/spotless/blob/main/plugin-maven/README.md -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.1.1</version>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.4.2</version>
                 <configuration>
-                    <violationSeverity>warning</violationSeverity>
-                    <configLocation>google_checks.xml</configLocation>
-                    <encoding>UTF-8</encoding>
-                    <consoleOutput>true</consoleOutput>
-                    <failsOnError>true</failsOnError>
-                    <failOnViolation>true</failOnViolation>
-                    <linkXRef>false</linkXRef>
+                    <!-- optional: limit format enforcement to just the files changed by this feature branch -->
+                    <ratchetFrom>origin/master</ratchetFrom>
+                    <java>
+                        <includes>
+                            <include>src/main/java/**/*.java</include>
+                            <include>src/test/java/**/*.java</include>
+                        </includes>
+                        <googleJavaFormat>
+                            <version>1.9</version>
+                        </googleJavaFormat>
+                    </java>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>verify</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
