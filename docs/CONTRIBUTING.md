@@ -27,14 +27,27 @@ So the name of your new processor is `CastArithmeticOperandCheck` replacing "Che
 Once you have the name for the new processor, you can create a class using that name in `src/main/java/sorald/processor`.
 This new class must extend `SQRAbstractProcessor` and implement the methods `isToBeProcessed` and `process` (check out real examples of processors [here](/src/main/java/sorald/processor)).
 
-3) Create a test class for the processor
+3) Add at least one test file for your processor
 
-Your processor is done, so now it's time to test it.
-For that, you should first to create a test class, with the same name as your processor plus the word "Test", and place it in [here](/src/test/java/sorald/processor).
-See in this same folder how the tests usually are.
-Then, you should create a java file in the [testing resources](/src/test/resources), which is the file you will use in your test class.
-Such a resource should contain at least the examples that SonarSource provides, because your processor should at least work on them. 
-You can find the examples provided by SonarSource in its [rules' webpage](https://rules.sonarsource.com/java) and in its own [testing resources](https://github.com/SonarSource/sonar-java/tree/master/java-checks-test-sources/src/main/java/checks) (note that different testing cases might exist in both locations, thus both ones should be checked).
+Tests for the processors are automatically generated based on a set of test
+files in
+[src/test/resources/processor_test_files](/src/test/resources/processor_test_files).
+To add test files for your new processor, you must first add a new subdirectory
+called `<RULE_KEY>_<RULE_NAME>`, were you substitute `<RULE_KEY>` for the key
+of the rule your processor is related to, and `<RULE_NAME>` for the name of the
+processor without to `Processor` suffix. Then, you put at least one Java file
+that violates the rule you're working on into the new directory. **For each
+line with a violation, put an inline comment `// Noncompliant` at the end**.
+The name of the Java source files do not matter, but try to name them something
+informative.
+
+As an example, the Java test files for `CastArithmeticOperandProcessor` are
+located in
+[src/test/resources/processor_test_files/2184_CastArithmeticOperand](/src/test/resources/processor_test_files/2184_CastArithmeticOperand]).
+
+> See
+> [src/test/java/sorald/processor/ProcessorTest.java](/src/test/java/sorald/processor/ProcessorTest.java)
+> if you are curious as to how tests are generated from the test files.
 
 4) Update documentation
 
