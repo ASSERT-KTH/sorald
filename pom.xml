@@ -95,11 +95,6 @@
     </properties>
     <repositories>
         <repository>
-            <id>maven.inria.fr-snapshot</id>
-            <name>Maven Repository for Spoon Snapshots</name>
-            <url>http://maven.inria.fr/artifactory/spoon-public-snapshot</url>
-        </repository>
-        <repository>
             <id>fermadeiral-maven-repository-snapshots</id>
             <name>fermadeiral's Maven Repository</name>
             <url>https://fermadeiral.github.io/maven-repository/snapshots/</url>
