@@ -36,13 +36,17 @@ To add test files for your new processor, you must first add a new subdirectory
 called `<RULE_KEY>_<RULE_NAME>`, were you substitute `<RULE_KEY>` for the key
 of the rule your processor is related to, and `<RULE_NAME>` for the name of the
 processor without to `Processor` suffix. Then, you put at least one Java file
-that violates the rule you're working on into the new directory. **For each
-line with a violation, put an inline comment `// Noncompliant` at the end**.
-The name of the Java source files do not matter, but try to name them something
-informative.
+with at least one violation of the rule you're working on into the new
+directory. For each line in the file that violates the considered rule, put an
+inline comment saying `Noncompliant` at the end of the line like so:
 
-As an example, the Java test files for `CastArithmeticOperandProcessor` are
-located in
+```java
+"a" == "b" // Noncompliant
+```
+
+The name of the Java source files do not matter, but try to name them something
+informative. As an example, the Java test files for
+`CastArithmeticOperandProcessor` are located in
 [src/test/resources/processor_test_files/2184_CastArithmeticOperand](/src/test/resources/processor_test_files/2184_CastArithmeticOperand]).
 
 > See
