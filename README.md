@@ -99,17 +99,7 @@ To run Sorald on projects towards proposing fixes in the form of PRs, look at [t
  
 ## Academic bibliographic references
 
-"[A template-based approach to automatic program repair of Sonarqube static warnings](http://kth.diva-portal.org/smash/get/diva2:1433710/FULLTEXT01.pdf)", by Haris Adzemovic, Master's thesis, KTH, School of Electrical Engineering and Computer Science (EECS), 2020. 
-
-```
-@mastersthesis{Adzemovic2020,
-    title = {A template-based approach to automatic program repair of Sonarqube static warnings},
-    author = {Adzemovic, Haris},
-    year = {2020},
-    school = {KTH, School of Electrical Engineering and Computer Science (EECS)},    
-    url = {kth.diva-portal.org/smash/get/diva2:1433710/FULLTEXT01.pdf}
-}
-```
+"[A template-based approach to automatic program repair of Sonarqube static warnings](http://kth.diva-portal.org/smash/get/diva2:1433710/FULLTEXT01.pdf)", by Haris Adzemovic, Master's thesis, KTH, School of Electrical Engineering and Computer Science (EECS), 2020. [(bibtex)](http://www.diva-portal.org/smash/references?referenceFormat=BIBTEX&pids=[diva2:1433710]&fileName=export.txt)
  
 ## Contributing
 
