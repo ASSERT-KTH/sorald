@@ -18,7 +18,8 @@ public class SegmentStrategyTest {
         JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
         Main.main(new String[]{
                 Constants.ARG_SYMBOL + Constants.ARG_REPAIR_STRATEGY, "SEGMENT",
-                Constants.ARG_SYMBOL + Constants.ARG_MAX_FILES_PER_SEGMENT, "3",
+                // FIXME MAX_FILES_PER_SEGMENT is set to 1 as a temporary fix to https://github.com/SpoonLabs/sorald/issues/154
+                Constants.ARG_SYMBOL + Constants.ARG_MAX_FILES_PER_SEGMENT, "1",
                 Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH, Constants.PATH_TO_RESOURCES_FOLDER,
                 Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS, "2116",
                 Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY, PrettyPrintingStrategy.NORMAL.name(),
