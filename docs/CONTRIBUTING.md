@@ -44,10 +44,10 @@ inline comment saying `Noncompliant` at the end of the line like so:
 "a" == "b" // Noncompliant
 ```
 
-The name of the Java source files do not matter, but try to name them something
-informative. As an example, the Java test files for
-`CastArithmeticOperandProcessor` are located in
-[src/test/resources/processor_test_files/2184_CastArithmeticOperand](/src/test/resources/processor_test_files/2184_CastArithmeticOperand]).
+The names of the Java source files do not matter, but try to name them
+something informative about the violation(s) contained in them. For examples,
+see the test file directories and files in
+[src/test/resources/processor_test_files](/src/test/resources/processor_test_files).
 
 > See
 > [src/test/java/sorald/processor/ProcessorTest.java](/src/test/java/sorald/processor/ProcessorTest.java)
