@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
-import sorald.SonarVerifierAdapter;
+import sorald.sonar.SonarVerifierAdapter;
 import sorald.UniqueTypesCollector;
 import sorald.segment.Node;
 import spoon.processing.AbstractProcessor;

@@ -17,7 +17,7 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.Main;
 import sorald.PrettyPrintingStrategy;
-import sorald.SonarVerifierAdapter;
+import sorald.sonar.SonarVerifierAdapter;
 import sorald.TestHelper;
 
 public class ProcessorTest {

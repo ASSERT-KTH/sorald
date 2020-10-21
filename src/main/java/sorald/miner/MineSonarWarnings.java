@@ -20,7 +20,7 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
-import sorald.SonarVerifierAdapter;
+import sorald.sonar.SonarVerifierAdapter;
 
 public class MineSonarWarnings {
 

@@ -1,4 +1,4 @@
-package sorald;
+package sorald.sonar;
 
 import java.util.Arrays;
 import java.util.List;
