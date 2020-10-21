@@ -13,11 +13,11 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.sonar.java.checks.InterruptedExceptionCheck;
 import org.sonar.java.checks.SynchronizationOnStringOrBoxedCheck;
 import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
-import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.Main;
 import sorald.PrettyPrintingStrategy;
+import sorald.SonarVerifierAdapter;
 import sorald.TestHelper;
 
 public class ProcessorTest {
@@ -51,7 +51,7 @@ public class ProcessorTest {
         String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
         boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(testCase.checkClass);
 
-        JavaCheckVerifier.verify(originalFileAbspath, testCase.createCheckInstance());
+        SonarVerifierAdapter.verifyHasIssue(originalFileAbspath, testCase.createCheckInstance());
         Main.main(
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
@@ -67,7 +67,7 @@ public class ProcessorTest {
                 });
 
         TestHelper.removeComplianceComments(pathToRepairedFile);
-        JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, testCase.createCheckInstance());
+        SonarVerifierAdapter.verifyNoIssue(pathToRepairedFile, testCase.createCheckInstance());
     }
 
     /**

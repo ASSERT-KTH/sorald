@@ -18,9 +18,9 @@ import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.sonar.java.AnalyzerMessage;
-import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.SonarVerifierAdapter;
 
 public class MineSonarWarnings {
 
@@ -204,7 +204,7 @@ public class MineSonarWarnings {
             }
             for (JavaFileScanner javaFileScanner : SONAR_CHECK_INSTANCES) {
                 Set<AnalyzerMessage> issues =
-                        MultipleFilesJavaCheckVerifier.verify(filesToScan, javaFileScanner, false);
+                        SonarVerifierAdapter.analyze(filesToScan, javaFileScanner);
                 warnings.putIfAbsent(javaFileScanner.getClass().getSimpleName(), issues.size());
             }
         } catch (Exception e) {

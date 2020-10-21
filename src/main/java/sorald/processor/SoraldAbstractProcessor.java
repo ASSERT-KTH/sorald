@@ -12,9 +12,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.sonar.java.AnalyzerMessage;
-import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.SonarVerifierAdapter;
 import sorald.UniqueTypesCollector;
 import sorald.segment.Node;
 import spoon.processing.AbstractProcessor;
@@ -47,8 +47,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                     e.printStackTrace();
                 }
             }
-            Set<AnalyzerMessage> issues =
-                    MultipleFilesJavaCheckVerifier.verify(filesToScan, sonarCheck, false);
+            Set<AnalyzerMessage> issues = SonarVerifierAdapter.analyze(filesToScan, sonarCheck);
             bugs = new HashSet<>();
             for (AnalyzerMessage message : issues) {
                 Bug BugOffline = new Bug(message);
@@ -78,8 +77,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
             }
         }
 
-        Set<AnalyzerMessage> issues =
-                MultipleFilesJavaCheckVerifier.verify(filesToScan, sonarCheck, false);
+        Set<AnalyzerMessage> issues = SonarVerifierAdapter.analyze(filesToScan, sonarCheck);
         bugs = new HashSet<>();
         for (AnalyzerMessage message : issues) {
             Bug BugOffline = new Bug(message);
@@ -125,7 +123,12 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         }
 
         for (Bug bug : bugs) {
-            if (bug.getLineNumber() == line && bug.getFileName().equals(file)) {
+            boolean equalPaths =
+                    Paths.get(bug.getFileName())
+                            .toAbsolutePath()
+                            .normalize()
+                            .equals(Paths.get(file).toAbsolutePath().normalize());
+            if (bug.getLineNumber() == line && equalPaths) {
                 return true;
             }
         }
