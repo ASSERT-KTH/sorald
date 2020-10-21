@@ -33,18 +33,6 @@ public class RuleVerifier {
     }
 
     /**
-     * Analyze the file with respect to check.
-     *
-     * @param filename Path to a file.
-     * @param check A Sonar check.
-     * @return All messages produced by the analyzer.
-     */
-    @SuppressWarnings("UnstableApiUsage")
-    public static Set<AnalyzerMessage> analyze(String filename, JavaFileScanner check) {
-        return analyze(Arrays.asList(filename), check);
-    }
-
-    /**
      * Analyze the files with respect to check.
      *
      * @param filesToScan A list of paths to files.
