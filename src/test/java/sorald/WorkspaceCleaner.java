@@ -1,10 +1,9 @@
 package sorald;
 
-import org.junit.platform.launcher.TestExecutionListener;
-import org.junit.platform.launcher.TestIdentifier;
-
 import java.io.File;
 import java.nio.file.Paths;
+import org.junit.platform.launcher.TestExecutionListener;
+import org.junit.platform.launcher.TestIdentifier;
 
 /**
  * Helper class the cleans up the default sorald workspace, if it exists, before each test executes.
@@ -14,7 +13,8 @@ public class WorkspaceCleaner implements TestExecutionListener {
 
     @Override
     public void executionStarted(TestIdentifier testIdentifier) {
-        File workspace = Paths.get(Constants.SORALD_WORKSPACE).toAbsolutePath().normalize().toFile();
+        File workspace =
+                Paths.get(Constants.SORALD_WORKSPACE).toAbsolutePath().normalize().toFile();
         if (workspace.exists()) {
             TestHelper.deleteDirectory(workspace);
         }
