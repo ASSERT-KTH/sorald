@@ -5,8 +5,8 @@ import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import sorald.Constants;
 import sorald.Main;
 import sorald.PrettyPrintingStrategy;
-import sorald.sonar.Verifier;
 import sorald.TestHelper;
+import sorald.sonar.Verifier;
 
 public class SegmentStrategyTest {
     @Test

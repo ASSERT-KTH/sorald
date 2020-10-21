@@ -203,8 +203,7 @@ public class MineSonarWarnings {
                 }
             }
             for (JavaFileScanner javaFileScanner : SONAR_CHECK_INSTANCES) {
-                Set<AnalyzerMessage> issues =
-                        Verifier.analyze(filesToScan, javaFileScanner);
+                Set<AnalyzerMessage> issues = Verifier.analyze(filesToScan, javaFileScanner);
                 warnings.putIfAbsent(javaFileScanner.getClass().getSimpleName(), issues.size());
             }
         } catch (Exception e) {
