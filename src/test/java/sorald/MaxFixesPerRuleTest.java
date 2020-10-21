@@ -2,10 +2,10 @@ package sorald.processor;
 
 import org.junit.Test;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
-import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import sorald.Constants;
 import sorald.Main;
 import sorald.TestHelper;
+import sorald.sonar.RuleVerifier;
 
 public class MaxFixesPerRuleTest {
     @Test
@@ -15,7 +15,7 @@ public class MaxFixesPerRuleTest {
         String pathToRepairedFile =
                 Constants.SORALD_WORKSPACE + "/" + Constants.SPOONED + "/" + fileName;
 
-        JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+        RuleVerifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
         Main.main(
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
@@ -28,7 +28,7 @@ public class MaxFixesPerRuleTest {
                     "3"
                 });
         TestHelper.removeComplianceComments(pathToRepairedFile);
-        JavaCheckVerifier.verify(
+        RuleVerifier.verifyHasIssue(
                 pathToBuggyFile, new ArrayHashCodeAndToStringCheck()); // one bug left
     }
 }
