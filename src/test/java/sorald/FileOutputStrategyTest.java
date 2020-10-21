@@ -1,15 +1,15 @@
 package sorald;
 
 import java.io.File;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class FileOutputStrategyTest {
 
     private String fileOutputStrategyTestWorkspace = "FileOutputStrategyTest";
 
-    @After
+    @AfterEach
     public void tearDown() {
         TestHelper.deleteDirectory(new File(fileOutputStrategyTestWorkspace));
     }
@@ -32,11 +32,11 @@ public class FileOutputStrategyTest {
 
         File spooned =
                 new File(fileOutputStrategyTestWorkspace + File.separator + Constants.SPOONED);
-        Assert.assertEquals(spooned.list().length, 1);
+        Assertions.assertEquals(spooned.list().length, 1);
 
         File patches =
                 new File(fileOutputStrategyTestWorkspace + File.separator + Constants.PATCHES);
-        Assert.assertEquals(patches.list().length, 1);
+        Assertions.assertEquals(patches.list().length, 1);
     }
 
     @Test
@@ -55,11 +55,11 @@ public class FileOutputStrategyTest {
 
         File spooned =
                 new File(fileOutputStrategyTestWorkspace + File.separator + Constants.SPOONED);
-        Assert.assertEquals(spooned.list().length, 1);
+        Assertions.assertEquals(spooned.list().length, 1);
 
         File patches =
                 new File(fileOutputStrategyTestWorkspace + File.separator + Constants.PATCHES);
-        Assert.assertNull(patches.list());
+        Assertions.assertNull(patches.list());
     }
 
     @Test
@@ -80,10 +80,10 @@ public class FileOutputStrategyTest {
 
         File spooned =
                 new File(fileOutputStrategyTestWorkspace + File.separator + Constants.SPOONED);
-        Assert.assertTrue(spooned.list().length > 1);
+        Assertions.assertTrue(spooned.list().length > 1);
 
         File patches =
                 new File(fileOutputStrategyTestWorkspace + File.separator + Constants.PATCHES);
-        Assert.assertNull(patches.list());
+        Assertions.assertNull(patches.list());
     }
 }

@@ -2,8 +2,8 @@ package sorald;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class SoraldConfigTest {
 
@@ -17,6 +17,6 @@ public class SoraldConfigTest {
         ruleKeys.add(2116);
         ruleKeys.add(2184);
         config.addRuleKeys(ruleKeys);
-        Assert.assertEquals(2, config.getRuleKeys().size());
+        Assertions.assertEquals(2, config.getRuleKeys().size());
     }
 }
