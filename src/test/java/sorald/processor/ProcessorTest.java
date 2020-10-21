@@ -18,7 +18,7 @@ import sorald.Constants;
 import sorald.Main;
 import sorald.PrettyPrintingStrategy;
 import sorald.TestHelper;
-import sorald.sonar.Verifier;
+import sorald.sonar.RuleVerifier;
 
 public class ProcessorTest {
 
@@ -51,7 +51,7 @@ public class ProcessorTest {
         String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
         boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(testCase.checkClass);
 
-        Verifier.verifyHasIssue(originalFileAbspath, testCase.createCheckInstance());
+        RuleVerifier.verifyHasIssue(originalFileAbspath, testCase.createCheckInstance());
         Main.main(
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
@@ -67,7 +67,7 @@ public class ProcessorTest {
                 });
 
         TestHelper.removeComplianceComments(pathToRepairedFile);
-        Verifier.verifyNoIssue(pathToRepairedFile, testCase.createCheckInstance());
+        RuleVerifier.verifyNoIssue(pathToRepairedFile, testCase.createCheckInstance());
     }
 
     /**

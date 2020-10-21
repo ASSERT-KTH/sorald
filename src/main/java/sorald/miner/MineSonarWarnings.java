@@ -20,7 +20,7 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
-import sorald.sonar.Verifier;
+import sorald.sonar.RuleVerifier;
 
 public class MineSonarWarnings {
 
@@ -203,7 +203,7 @@ public class MineSonarWarnings {
                 }
             }
             for (JavaFileScanner javaFileScanner : SONAR_CHECK_INSTANCES) {
-                Set<AnalyzerMessage> issues = Verifier.analyze(filesToScan, javaFileScanner);
+                Set<AnalyzerMessage> issues = RuleVerifier.analyze(filesToScan, javaFileScanner);
                 warnings.putIfAbsent(javaFileScanner.getClass().getSimpleName(), issues.size());
             }
         } catch (Exception e) {
