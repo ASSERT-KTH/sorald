@@ -53,13 +53,22 @@ see the test file directories and files in
 > [src/test/java/sorald/processor/ProcessorTest.java](/src/test/java/sorald/processor/ProcessorTest.java)
 > if you are curious as to how tests are generated from the test files.
 
-4) Update documentation
+4) Ensure compliance with code style
+
+We have an automatically enforced code style in sorald, and your code will not
+pass CI if it does not adhere to it. To ensure that your code does adhere to it,
+run `mvn spotless:apply`, and then commit any changes the formatter makes.
+
+> **Note:** This step requires you to have the Maven build system installed, as
+> well as JDK11+.
+
+5) Update documentation
 
 Your processor is done, it's passing the minimum tests, so now you can update the documentation.
 In the `HANDLED_RULES.md` file, you should add the new handled rule in the table of contents, and then a summary of its processor with an example.
 You should do it following the same way as the existing handled rules are documented (note that the table of contents and summaries are alphabetically ordered).
 
-5) Open a PR
+6) Open a PR
 
 The processor, the tests, and the documentation being ready, your contribution is also ready to be used in a PR.
 Open a PR, with the title "Add <PROCESSOR_NAME> (SonarSource rule <RULE_KEY_NUMBER>)".

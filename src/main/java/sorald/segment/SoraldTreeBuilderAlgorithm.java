@@ -1,8 +1,7 @@
 package sorald.segment;
 
-import sorald.Constants;
-
 import java.io.File;
+import sorald.Constants;
 
 public class SoraldTreeBuilderAlgorithm {
 
@@ -41,5 +40,4 @@ public class SoraldTreeBuilderAlgorithm {
             construct4CurrentNode(child);
         }
     }
-
 }

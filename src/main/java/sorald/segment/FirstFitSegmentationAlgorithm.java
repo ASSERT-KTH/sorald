@@ -17,7 +17,8 @@ public class FirstFitSegmentationAlgorithm {
         return segmentHelper(resources4Repair, maxFiles);
     }
 
-    private static LinkedList<LinkedList<Node>> segmentHelper(LinkedList<Node> resources4Repair, int maxFiles) {
+    private static LinkedList<LinkedList<Node>> segmentHelper(
+            LinkedList<Node> resources4Repair, int maxFiles) {
         LinkedList<LinkedList<Node>> segments = new LinkedList<LinkedList<Node>>();
         LinkedList<Node> segment = new LinkedList<Node>();
         int currentAddedFiles = 0;
@@ -52,7 +53,8 @@ public class FirstFitSegmentationAlgorithm {
 
     public static Pair<Node, Node> splitFileNode(Node fileNode, int index) {
         if (!(index > 0 || index < fileNode.getJavaFiles().size())) {
-            System.out.println("Invalid index: " + index + " Files: " + fileNode.getJavaFiles().size());
+            System.out.println(
+                    "Invalid index: " + index + " Files: " + fileNode.getJavaFiles().size());
             return null;
         }
 
@@ -61,7 +63,8 @@ public class FirstFitSegmentationAlgorithm {
         }
 
         List<String> subliOne = fileNode.getJavaFiles().subList(0, index);
-        List<String> subliTwo = fileNode.getJavaFiles().subList(index, fileNode.getJavaFiles().size());
+        List<String> subliTwo =
+                fileNode.getJavaFiles().subList(index, fileNode.getJavaFiles().size());
 
         Node n1 = null;
         if (!subliOne.isEmpty()) {
@@ -74,5 +77,4 @@ public class FirstFitSegmentationAlgorithm {
         }
         return new Pair<Node, Node>(n1, n2);
     }
-
 }

@@ -7,7 +7,6 @@ import com.martiansoftware.jsap.JSAPResult;
 import com.martiansoftware.jsap.Switch;
 import com.martiansoftware.jsap.stringparsers.BooleanStringParser;
 import com.martiansoftware.jsap.stringparsers.FileStringParser;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,7 +14,6 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -28,15 +26,18 @@ public class MineSonarWarnings {
 
     private static final List<JavaFileScanner> SONAR_CHECK_INSTANCES = init();
 
-
     private static List init() {
-        return Constants.SONAR_CHECK_CLASSES.stream().map(cls -> {
-            try {
-                return cls.getConstructor().newInstance();
-            } catch (Exception e) {
-                throw new RuntimeException("could not instantiate class " + cls.getName());
-            }
-        }).collect(Collectors.toList());
+        return Constants.SONAR_CHECK_CLASSES.stream()
+                .map(
+                        cls -> {
+                            try {
+                                return cls.getConstructor().newInstance();
+                            } catch (Exception e) {
+                                throw new RuntimeException(
+                                        "could not instantiate class " + cls.getName());
+                            }
+                        })
+                .collect(Collectors.toList());
     }
 
     public static JSAP defineArgs() throws JSAPException {
@@ -88,7 +89,8 @@ public class MineSonarWarnings {
 
     public static void checkArguments(JSAP jsap, JSAPResult arguments) {
         if (!arguments.success()) {
-            for (java.util.Iterator<?> errors = arguments.getErrorMessageIterator(); errors.hasNext(); ) {
+            for (java.util.Iterator<?> errors = arguments.getErrorMessageIterator();
+                    errors.hasNext(); ) {
                 System.err.println("Error: " + errors.next());
             }
             printUsage(jsap);
@@ -113,7 +115,8 @@ public class MineSonarWarnings {
 
         if (arguments.contains(Constants.ARG_STATS_ON_GIT_REPOS)) {
             // stats on a list of git repos
-            String outputPath = arguments.getFile(Constants.ARG_STATS_OUTPUT_FILE).getAbsolutePath();
+            String outputPath =
+                    arguments.getFile(Constants.ARG_STATS_OUTPUT_FILE).getAbsolutePath();
             String reposListFilePath =
                     arguments.getFile(Constants.ARG_GIT_REPOS_LIST).getAbsolutePath();
             File repoDir = new File(arguments.getFile(Constants.ARG_TEMP_DIR).getAbsolutePath());
@@ -128,10 +131,7 @@ public class MineSonarWarnings {
                 boolean isCloned = false;
 
                 try {
-                    Git git = Git.cloneRepository()
-                            .setURI(repo)
-                            .setDirectory(repoDir)
-                            .call();
+                    Git git = Git.cloneRepository().setURI(repo).setDirectory(repoDir).call();
                     git.close();
                     isCloned = true;
                 } catch (Exception e) {
@@ -158,18 +158,19 @@ public class MineSonarWarnings {
 
         } else { // default mode
 
-            String projectPath = arguments.getFile(Constants.ARG_ORIGINAL_FILES_PATH).getAbsolutePath();
+            String projectPath =
+                    arguments.getFile(Constants.ARG_ORIGINAL_FILES_PATH).getAbsolutePath();
 
             Map<String, Integer> warnings = extractWarnings(projectPath);
 
             warnings.entrySet().stream()
                     .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
                     .forEach(System.out::println);
-
         }
     }
 
-    private static List<String> getReposList(String reposListFilePath) throws FileNotFoundException {
+    private static List<String> getReposList(String reposListFilePath)
+            throws FileNotFoundException {
         List<String> res = new ArrayList<>();
 
         Scanner sc = new Scanner(new File(reposListFilePath));
@@ -193,14 +194,17 @@ public class MineSonarWarnings {
                 filesToScan.add(file.getAbsolutePath());
             } else {
                 try (Stream<Path> walk = Files.walk(Paths.get(file.getAbsolutePath()))) {
-                    filesToScan = walk.map(x -> x.toFile().getAbsolutePath())
-                            .filter(f -> f.endsWith(Constants.JAVA_EXT)).collect(Collectors.toList());
+                    filesToScan =
+                            walk.map(x -> x.toFile().getAbsolutePath())
+                                    .filter(f -> f.endsWith(Constants.JAVA_EXT))
+                                    .collect(Collectors.toList());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
             for (JavaFileScanner javaFileScanner : SONAR_CHECK_INSTANCES) {
-                Set<AnalyzerMessage> issues = MultipleFilesJavaCheckVerifier.verify(filesToScan, javaFileScanner, false);
+                Set<AnalyzerMessage> issues =
+                        MultipleFilesJavaCheckVerifier.verify(filesToScan, javaFileScanner, false);
                 warnings.putIfAbsent(javaFileScanner.getClass().getSimpleName(), issues.size());
             }
         } catch (Exception e) {
@@ -209,5 +213,4 @@ public class MineSonarWarnings {
 
         return warnings;
     }
-
 }

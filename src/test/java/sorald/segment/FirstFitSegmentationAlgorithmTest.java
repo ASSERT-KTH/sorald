@@ -1,16 +1,15 @@
 package sorald.segment;
 
-import org.junit.Assert;
-import org.junit.Test;
-import sorald.Constants;
+import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
+import org.junit.Assert;
+import org.junit.Test;
+import sorald.Constants;
 
 public class FirstFitSegmentationAlgorithmTest {
 
@@ -43,8 +42,11 @@ public class FirstFitSegmentationAlgorithmTest {
         Assert.assertEquals(1, dirNode.getChildren().size());
         Assert.assertEquals(2, fileNodeOne.getJavaFiles().size());
         Assert.assertEquals("DummySubFolder", subDirFolder.getName());
-        List<String> dummyFileNames = fileNodeOne.getJavaFiles().stream().map(absolutePath -> new File(absolutePath).getName()).collect(Collectors.toList());
-        Assert.assertThat(dummyFileNames, containsInAnyOrder("DummyTwo.java","DummyThree.java"));
+        List<String> dummyFileNames =
+                fileNodeOne.getJavaFiles().stream()
+                        .map(absolutePath -> new File(absolutePath).getName())
+                        .collect(Collectors.toList());
+        Assert.assertThat(dummyFileNames, containsInAnyOrder("DummyTwo.java", "DummyThree.java"));
 
         LinkedList<Node> segmentTwo = segments.get(1);
         Node fileNodeTwo = segmentTwo.get(0);

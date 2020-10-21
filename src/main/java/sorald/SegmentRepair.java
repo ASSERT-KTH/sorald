@@ -1,20 +1,18 @@
 package sorald;
 
-import sorald.segment.Node;
-import sorald.SoraldConfig;
+import java.io.File;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import sorald.processor.SoraldAbstractProcessor;
+import sorald.segment.Node;
 import spoon.Launcher;
 import spoon.processing.ProcessingManager;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.factory.Factory;
 import spoon.support.JavaOutputProcessor;
 import spoon.support.QueueProcessingManager;
-
-import java.io.File;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 public class SegmentRepair extends SoraldAbstractRepair {
     private HashMap<String, Integer> processorNbsRepaired = new HashMap<String, Integer>();
@@ -25,7 +23,8 @@ public class SegmentRepair extends SoraldAbstractRepair {
 
     public void repair() {
         LinkedList<LinkedList<Node>> segments = this.config.getSegments();
-        final String outputDirPath = this.config.getWorkspace() + File.separator + Constants.SPOONED;
+        final String outputDirPath =
+                this.config.getWorkspace() + File.separator + Constants.SPOONED;
 
         List<Integer> ruleKeys = this.config.getRuleKeys();
         int ruleKey = ruleKeys.get(0);
@@ -46,7 +45,10 @@ public class SegmentRepair extends SoraldAbstractRepair {
                 processingManager.process(factory.Class().getAll());
 
                 if (this.config.getFileOutputStrategy() == FileOutputStrategy.CHANGED_ONLY) {
-                    for (Map.Entry<String, CtType> patchedFile : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().entrySet()) {
+                    for (Map.Entry<String, CtType> patchedFile :
+                            UniqueTypesCollector.getInstance()
+                                    .getTopLevelTypes4Output()
+                                    .entrySet()) {
                         javaOutputProcessor.process(patchedFile.getValue());
                         if (this.config.getGitRepoPath() != null) {
                             createPatches(patchedFile.getKey(), javaOutputProcessor);
@@ -86,10 +88,12 @@ public class SegmentRepair extends SoraldAbstractRepair {
         return initLauncher(launcher, outputDirPath);
     }
 
-    private SoraldAbstractProcessor createProcessor(Integer ruleKey, List<Node> segment, int cachedNbFixes) throws Exception {
+    private SoraldAbstractProcessor createProcessor(
+            Integer ruleKey, List<Node> segment, int cachedNbFixes) throws Exception {
         SoraldAbstractProcessor processor = createBaseProcessor(ruleKey);
         if (processor != null) {
-            return processor.initResource(segment)
+            return processor
+                    .initResource(segment)
                     .setMaxFixes(this.config.getMaxFixesPerRule())
                     .setNbFixes(cachedNbFixes);
         }

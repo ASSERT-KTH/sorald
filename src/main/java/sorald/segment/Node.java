@@ -7,13 +7,17 @@ import java.util.List;
 public class Node {
     private Node parent;
 
-    private int javaFilesNbs; // the number of java files in the current directory and all subdirectories.
+    private int javaFilesNbs; // the number of java files in the current directory and all
+    // subdirectories.
 
     private String rootPath;
 
     private LinkedList<Node> children;
 
-    private List<String> javaFiles; // if its not a dir then it should contains a collection of java files, should be immutable after constructed by treealgorithm.
+    private List<String>
+            javaFiles; // if its not a dir then it should contains a collection of java files,
+    // should be
+    // immutable after constructed by treealgorithm.
 
     private Node() {
         this.children = new LinkedList<Node>();
@@ -89,9 +93,17 @@ public class Node {
             Node node = nodes4Traverse.pop();
             if (node.getJavaFilesNbs() != 0) {
                 if (node.isFileNode()) {
-                    System.out.println("Files path: " + node.getParent().getRootPath() + " FilesNbs: " + node.getJavaFilesNbs());
+                    System.out.println(
+                            "Files path: "
+                                    + node.getParent().getRootPath()
+                                    + " FilesNbs: "
+                                    + node.getJavaFilesNbs());
                 } else {
-                    System.out.println("Dir path: " + node.getRootPath() + " FilesNbs: " + node.getJavaFilesNbs());
+                    System.out.println(
+                            "Dir path: "
+                                    + node.getRootPath()
+                                    + " FilesNbs: "
+                                    + node.getJavaFilesNbs());
                 }
             }
             nodes4Traverse.addAll(node.getChildren());

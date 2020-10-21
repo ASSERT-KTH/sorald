@@ -1,6 +1,6 @@
 package sorald;
 
 public enum PrettyPrintingStrategy {
-	NORMAL,
-	SNIPER
+    NORMAL,
+    SNIPER
 }
