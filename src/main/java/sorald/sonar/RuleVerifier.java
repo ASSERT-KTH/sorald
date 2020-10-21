@@ -3,7 +3,7 @@ package sorald.sonar;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import org.sonar.java.AnalyzerMessage;
+import java.util.stream.Collectors;
 import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
 import org.sonar.plugins.java.api.JavaFileScanner;
 
@@ -40,8 +40,10 @@ public class RuleVerifier {
      * @return All messages produced by the analyzer, for all files.
      */
     @SuppressWarnings("UnstableApiUsage")
-    public static Set<AnalyzerMessage> analyze(List<String> filesToScan, JavaFileScanner check) {
-        return MultipleFilesJavaCheckVerifier.verify(filesToScan, check, false);
+    public static Set<RuleViolation> analyze(List<String> filesToScan, JavaFileScanner check) {
+        return MultipleFilesJavaCheckVerifier.verify(filesToScan, check, false).stream()
+                .map(RuleViolation::new)
+                .collect(Collectors.toSet());
     }
 
     /**

@@ -17,10 +17,10 @@ import java.util.stream.Stream;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.sonar.java.AnalyzerMessage;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.sonar.RuleVerifier;
+import sorald.sonar.RuleViolation;
 
 public class MineSonarWarnings {
 
@@ -203,8 +203,10 @@ public class MineSonarWarnings {
                 }
             }
             for (JavaFileScanner javaFileScanner : SONAR_CHECK_INSTANCES) {
-                Set<AnalyzerMessage> issues = RuleVerifier.analyze(filesToScan, javaFileScanner);
-                warnings.putIfAbsent(javaFileScanner.getClass().getSimpleName(), issues.size());
+                Set<RuleViolation> ruleViolations =
+                        RuleVerifier.analyze(filesToScan, javaFileScanner);
+                warnings.putIfAbsent(
+                        javaFileScanner.getClass().getSimpleName(), ruleViolations.size());
             }
         } catch (Exception e) {
             e.printStackTrace();
