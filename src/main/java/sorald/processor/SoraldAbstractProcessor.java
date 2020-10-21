@@ -6,16 +6,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.sonar.java.AnalyzerMessage;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.UniqueTypesCollector;
 import sorald.segment.Node;
+import sorald.sonar.Bug;
 import sorald.sonar.RuleVerifier;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
@@ -47,12 +46,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                     e.printStackTrace();
                 }
             }
-            Set<AnalyzerMessage> issues = RuleVerifier.analyze(filesToScan, sonarCheck);
-            bugs = new HashSet<>();
-            for (AnalyzerMessage message : issues) {
-                Bug BugOffline = new Bug(message);
-                bugs.add(BugOffline);
-            }
+            bugs = RuleVerifier.analyze(filesToScan, sonarCheck);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -77,13 +71,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
             }
         }
 
-        Set<AnalyzerMessage> issues = RuleVerifier.analyze(filesToScan, sonarCheck);
-        bugs = new HashSet<>();
-        for (AnalyzerMessage message : issues) {
-            Bug BugOffline = new Bug(message);
-            bugs.add(BugOffline);
-        }
-
+        bugs = RuleVerifier.analyze(filesToScan, sonarCheck);
         return this;
     }
 
@@ -134,23 +122,5 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     public void process(E element) {
         UniqueTypesCollector.getInstance().collect(element);
         this.nbFixes++;
-    }
-
-    class Bug {
-        private int lineNumber;
-        private String fileName;
-
-        public Bug(AnalyzerMessage message) {
-            this.lineNumber = message.getLine();
-            this.fileName = message.getInputComponent().key().replace(":", "");
-        }
-
-        public int getLineNumber() {
-            return lineNumber;
-        }
-
-        public String getFileName() {
-            return fileName;
-        }
     }
 }
