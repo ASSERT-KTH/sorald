@@ -15,89 +15,91 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
 
 @ProcessorAnnotation(
-    key = 2204,
-    description = "\".equals()\" should not be used to test the values of \"Atomic\" classes")
+        key = 2204,
+        description = "\".equals()\" should not be used to test the values of \"Atomic\" classes")
 public class EqualsOnAtomicClassProcessor extends SoraldAbstractProcessor<CtInvocation> {
 
-  public EqualsOnAtomicClassProcessor() {}
+    public EqualsOnAtomicClassProcessor() {}
 
-  @Override
-  public JavaFileScanner getSonarCheck() {
-    return new EqualsOnAtomicClassCheck();
-  }
-
-  @Override
-  public boolean isToBeProcessed(CtInvocation candidate) {
-    if (!super.isToBeProcessedAccordingToStandards(candidate)) {
-      return false;
-    }
-    if (candidate.getExecutable().getSignature().equals("equals(java.lang.Object)")
-        && isAtomicClassRef(candidate.getTarget())) {
-      return true;
-    }
-    return false;
-  }
-
-  @Override
-  public void process(CtInvocation element) {
-    super.process(element);
-
-    CtType atomicClass;
-    if (isAtomicInteger(element.getTarget())) {
-      atomicClass = getFactory().Class().get(AtomicInteger.class);
-    } else if (isAtomicLong(element.getTarget())) {
-      atomicClass = getFactory().Class().get(AtomicLong.class);
-    } else {
-      atomicClass = getFactory().Class().get(AtomicBoolean.class);
+    @Override
+    public JavaFileScanner getSonarCheck() {
+        return new EqualsOnAtomicClassCheck();
     }
 
-    CtMethod ctMethodToBeCalled = (CtMethod) atomicClass.getMethodsByName("get").get(0);
-    CtExecutableReference ctExecutableReferenceToMethodToBeCalled =
-        getFactory().Executable().createReference(ctMethodToBeCalled);
+    @Override
+    public boolean isToBeProcessed(CtInvocation candidate) {
+        if (!super.isToBeProcessedAccordingToStandards(candidate)) {
+            return false;
+        }
+        if (candidate.getExecutable().getSignature().equals("equals(java.lang.Object)")
+                && isAtomicClassRef(candidate.getTarget())) {
+            return true;
+        }
+        return false;
+    }
 
-    CtInvocation leftInvocation =
-        getFactory()
-            .Code()
-            .createInvocation(element.getTarget(), ctExecutableReferenceToMethodToBeCalled);
-    CtInvocation rightInvocation =
-        getFactory()
-            .Code()
-            .createInvocation(
-                (CtExpression) element.getArguments().get(0),
-                ctExecutableReferenceToMethodToBeCalled);
+    @Override
+    public void process(CtInvocation element) {
+        super.process(element);
 
-    CtBinaryOperator newCtBinaryOperator =
-        getFactory()
-            .Code()
-            .createBinaryOperator(leftInvocation, rightInvocation, BinaryOperatorKind.EQ);
+        CtType atomicClass;
+        if (isAtomicInteger(element.getTarget())) {
+            atomicClass = getFactory().Class().get(AtomicInteger.class);
+        } else if (isAtomicLong(element.getTarget())) {
+            atomicClass = getFactory().Class().get(AtomicLong.class);
+        } else {
+            atomicClass = getFactory().Class().get(AtomicBoolean.class);
+        }
 
-    element.replace(newCtBinaryOperator);
-  }
+        CtMethod ctMethodToBeCalled = (CtMethod) atomicClass.getMethodsByName("get").get(0);
+        CtExecutableReference ctExecutableReferenceToMethodToBeCalled =
+                getFactory().Executable().createReference(ctMethodToBeCalled);
 
-  private boolean isAtomicClassRef(CtExpression ctExpression) {
-    return isAtomicInteger(ctExpression)
-        || isAtomicLong(ctExpression)
-        || isAtomicBoolean(ctExpression);
-  }
+        CtInvocation leftInvocation =
+                getFactory()
+                        .Code()
+                        .createInvocation(
+                                element.getTarget(), ctExecutableReferenceToMethodToBeCalled);
+        CtInvocation rightInvocation =
+                getFactory()
+                        .Code()
+                        .createInvocation(
+                                (CtExpression) element.getArguments().get(0),
+                                ctExecutableReferenceToMethodToBeCalled);
 
-  private boolean isAtomicInteger(CtExpression ctExpression) {
-    return ctExpression
-        .getType()
-        .getQualifiedName()
-        .equals("java.util.concurrent.atomic.AtomicInteger");
-  }
+        CtBinaryOperator newCtBinaryOperator =
+                getFactory()
+                        .Code()
+                        .createBinaryOperator(
+                                leftInvocation, rightInvocation, BinaryOperatorKind.EQ);
 
-  private boolean isAtomicLong(CtExpression ctExpression) {
-    return ctExpression
-        .getType()
-        .getQualifiedName()
-        .equals("java.util.concurrent.atomic.AtomicLong");
-  }
+        element.replace(newCtBinaryOperator);
+    }
 
-  private boolean isAtomicBoolean(CtExpression ctExpression) {
-    return ctExpression
-        .getType()
-        .getQualifiedName()
-        .equals("java.util.concurrent.atomic.AtomicBoolean");
-  }
+    private boolean isAtomicClassRef(CtExpression ctExpression) {
+        return isAtomicInteger(ctExpression)
+                || isAtomicLong(ctExpression)
+                || isAtomicBoolean(ctExpression);
+    }
+
+    private boolean isAtomicInteger(CtExpression ctExpression) {
+        return ctExpression
+                .getType()
+                .getQualifiedName()
+                .equals("java.util.concurrent.atomic.AtomicInteger");
+    }
+
+    private boolean isAtomicLong(CtExpression ctExpression) {
+        return ctExpression
+                .getType()
+                .getQualifiedName()
+                .equals("java.util.concurrent.atomic.AtomicLong");
+    }
+
+    private boolean isAtomicBoolean(CtExpression ctExpression) {
+        return ctExpression
+                .getType()
+                .getQualifiedName()
+                .equals("java.util.concurrent.atomic.AtomicBoolean");
+    }
 }

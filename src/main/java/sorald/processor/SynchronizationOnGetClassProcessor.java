@@ -14,74 +14,74 @@ import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtTypeReference;
 
 @ProcessorAnnotation(
-    key = 3067,
-    description = "\"getClass\" should not be used for synchronization")
+        key = 3067,
+        description = "\"getClass\" should not be used for synchronization")
 public class SynchronizationOnGetClassProcessor extends SoraldAbstractProcessor<CtSynchronized> {
 
-  public SynchronizationOnGetClassProcessor() {}
+    public SynchronizationOnGetClassProcessor() {}
 
-  @Override
-  public JavaFileScanner getSonarCheck() {
-    return new SynchronizationOnGetClassCheck();
-  }
-
-  @Override
-  public boolean isToBeProcessed(CtSynchronized element) {
-    if (!super.isToBeProcessedAccordingToStandards(element)) {
-      return false;
+    @Override
+    public JavaFileScanner getSonarCheck() {
+        return new SynchronizationOnGetClassCheck();
     }
 
-    CtExpression<?> expression = element.getExpression();
-    if (expression.toString().endsWith("getClass()")) {
-      CtExpression target = ((CtInvocation) expression).getTarget();
-      if (target != null) {
-        CtType<?> type = target.getType().getDeclaration();
-        if (type == null) {
-          /* not in class path, but still fail according to SonarQube */
-          return true;
+    @Override
+    public boolean isToBeProcessed(CtSynchronized element) {
+        if (!super.isToBeProcessedAccordingToStandards(element)) {
+            return false;
         }
-        if (this.enclosingTypeIsFinalOrEnum(type)) {
-          return false;
+
+        CtExpression<?> expression = element.getExpression();
+        if (expression.toString().endsWith("getClass()")) {
+            CtExpression target = ((CtInvocation) expression).getTarget();
+            if (target != null) {
+                CtType<?> type = target.getType().getDeclaration();
+                if (type == null) {
+                    /* not in class path, but still fail according to SonarQube */
+                    return true;
+                }
+                if (this.enclosingTypeIsFinalOrEnum(type)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                /* implicit this */
+                CtType<?> type = ((CtType) element.getParent(CtType.class));
+                if (this.enclosingTypeIsFinalOrEnum(type)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void process(CtSynchronized element) {
+        super.process(element);
+        CtExpression<?> expression = element.getExpression();
+        CtTypeReference<?> typeRef;
+        if (expression.toString().equals("getClass()")) {
+            /* implicit this case */
+            typeRef = ((CtType) expression.getParent(CtType.class)).getReference();
         } else {
-          return true;
+            typeRef = ((CtInvocation) expression).getTarget().getType();
         }
-      } else {
-        /* implicit this */
-        CtType<?> type = ((CtType) element.getParent(CtType.class));
-        if (this.enclosingTypeIsFinalOrEnum(type)) {
-          return false;
+
+        Factory factory = element.getFactory();
+        CtFieldAccess<?> classAccess = factory.Code().createClassAccess(typeRef);
+
+        expression.replace(classAccess);
+    }
+
+    private boolean enclosingTypeIsFinalOrEnum(CtType<?> type) {
+        Set<ModifierKind> modifiers = type.getModifiers();
+        if (modifiers.contains(ModifierKind.valueOf("FINAL")) || type.isEnum()) {
+            return true;
         } else {
-          return true;
+            return false;
         }
-      }
     }
-    return false;
-  }
-
-  @Override
-  public void process(CtSynchronized element) {
-    super.process(element);
-    CtExpression<?> expression = element.getExpression();
-    CtTypeReference<?> typeRef;
-    if (expression.toString().equals("getClass()")) {
-      /* implicit this case */
-      typeRef = ((CtType) expression.getParent(CtType.class)).getReference();
-    } else {
-      typeRef = ((CtInvocation) expression).getTarget().getType();
-    }
-
-    Factory factory = element.getFactory();
-    CtFieldAccess<?> classAccess = factory.Code().createClassAccess(typeRef);
-
-    expression.replace(classAccess);
-  }
-
-  private boolean enclosingTypeIsFinalOrEnum(CtType<?> type) {
-    Set<ModifierKind> modifiers = type.getModifiers();
-    if (modifiers.contains(ModifierKind.valueOf("FINAL")) || type.isEnum()) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 }

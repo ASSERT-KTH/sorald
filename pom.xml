@@ -222,6 +222,7 @@
                         </includes>
                         <googleJavaFormat>
                             <version>1.9</version>
+                            <style>AOSP</style>
                         </googleJavaFormat>
                     </java>
                 </configuration>

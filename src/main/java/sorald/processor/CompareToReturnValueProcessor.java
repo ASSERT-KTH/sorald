@@ -9,37 +9,37 @@ import spoon.reflect.code.CtReturn;
 import spoon.reflect.declaration.CtMethod;
 
 @ProcessorAnnotation(
-    key = 2167,
-    description = "\"compareTo\" should not return \"Integer.MIN_VALUE\"")
+        key = 2167,
+        description = "\"compareTo\" should not return \"Integer.MIN_VALUE\"")
 public class CompareToReturnValueProcessor extends SoraldAbstractProcessor<CtReturn<?>> {
 
-  public CompareToReturnValueProcessor() {}
+    public CompareToReturnValueProcessor() {}
 
-  @Override
-  public JavaFileScanner getSonarCheck() {
-    return new CompareToReturnValueCheck();
-  }
-
-  @Override
-  public boolean isToBeProcessed(CtReturn<?> ctReturn) {
-    if (!super.isToBeProcessedAccordingToStandards(ctReturn)) {
-      return false;
+    @Override
+    public JavaFileScanner getSonarCheck() {
+        return new CompareToReturnValueCheck();
     }
-    CtMethod ctMethod = ctReturn.getParent(CtMethod.class);
-    String returnTypeName = ctMethod.getType().getSimpleName();
-    if (ctMethod.getSimpleName().equals("compareTo")
-        && (returnTypeName.equals(Constants.INT) || returnTypeName.equals("Integer"))
-        && ctReturn.getReturnedExpression().toString().indexOf("Integer.MIN_VALUE") != -1) {
-      return true;
+
+    @Override
+    public boolean isToBeProcessed(CtReturn<?> ctReturn) {
+        if (!super.isToBeProcessedAccordingToStandards(ctReturn)) {
+            return false;
+        }
+        CtMethod ctMethod = ctReturn.getParent(CtMethod.class);
+        String returnTypeName = ctMethod.getType().getSimpleName();
+        if (ctMethod.getSimpleName().equals("compareTo")
+                && (returnTypeName.equals(Constants.INT) || returnTypeName.equals("Integer"))
+                && ctReturn.getReturnedExpression().toString().indexOf("Integer.MIN_VALUE") != -1) {
+            return true;
+        }
+        return false;
     }
-    return false;
-  }
 
-  @Override
-  public void process(CtReturn<?> ctReturn) {
-    super.process(ctReturn);
+    @Override
+    public void process(CtReturn<?> ctReturn) {
+        super.process(ctReturn);
 
-    CtLiteral<?> elem2Replace = ctReturn.getFactory().createLiteral(-1);
-    ctReturn.getReturnedExpression().replace(elem2Replace);
-  }
+        CtLiteral<?> elem2Replace = ctReturn.getFactory().createLiteral(-1);
+        ctReturn.getReturnedExpression().replace(elem2Replace);
+    }
 }

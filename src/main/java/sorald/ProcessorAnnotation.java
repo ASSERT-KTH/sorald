@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface ProcessorAnnotation {
-  public int key();
+    public int key();
 
-  public String description();
+    public String description();
 }

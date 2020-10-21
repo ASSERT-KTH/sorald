@@ -22,137 +22,137 @@ import spoon.reflect.declaration.CtElement;
 
 /** superclass for all processors */
 public abstract class SoraldAbstractProcessor<E extends CtElement> extends AbstractProcessor<E> {
-  private Set<Bug> bugs;
-  private int maxFixes = Integer.MAX_VALUE;
-  private int nbFixes = 0;
+    private Set<Bug> bugs;
+    private int maxFixes = Integer.MAX_VALUE;
+    private int nbFixes = 0;
 
-  public SoraldAbstractProcessor() {}
+    public SoraldAbstractProcessor() {}
 
-  public abstract JavaFileScanner getSonarCheck();
+    public abstract JavaFileScanner getSonarCheck();
 
-  public SoraldAbstractProcessor initResource(String originalFilesPath) {
-    JavaFileScanner sonarCheck = getSonarCheck();
-    try {
-      List<String> filesToScan = new ArrayList<>();
-      File file = new File(originalFilesPath);
-      if (file.isFile()) {
-        filesToScan.add(file.getAbsolutePath());
-      } else {
-        try (Stream<Path> walk = Files.walk(Paths.get(file.getAbsolutePath()))) {
-          filesToScan =
-              walk.map(x -> x.toFile().getAbsolutePath())
-                  .filter(f -> f.endsWith(Constants.JAVA_EXT))
-                  .collect(Collectors.toList());
-        } catch (IOException e) {
-          e.printStackTrace();
+    public SoraldAbstractProcessor initResource(String originalFilesPath) {
+        JavaFileScanner sonarCheck = getSonarCheck();
+        try {
+            List<String> filesToScan = new ArrayList<>();
+            File file = new File(originalFilesPath);
+            if (file.isFile()) {
+                filesToScan.add(file.getAbsolutePath());
+            } else {
+                try (Stream<Path> walk = Files.walk(Paths.get(file.getAbsolutePath()))) {
+                    filesToScan =
+                            walk.map(x -> x.toFile().getAbsolutePath())
+                                    .filter(f -> f.endsWith(Constants.JAVA_EXT))
+                                    .collect(Collectors.toList());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            Set<AnalyzerMessage> issues =
+                    MultipleFilesJavaCheckVerifier.verify(filesToScan, sonarCheck, false);
+            bugs = new HashSet<>();
+            for (AnalyzerMessage message : issues) {
+                Bug BugOffline = new Bug(message);
+                bugs.add(BugOffline);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-      }
-      Set<AnalyzerMessage> issues =
-          MultipleFilesJavaCheckVerifier.verify(filesToScan, sonarCheck, false);
-      bugs = new HashSet<>();
-      for (AnalyzerMessage message : issues) {
-        Bug BugOffline = new Bug(message);
-        bugs.add(BugOffline);
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+        return this;
     }
-    return this;
-  }
 
-  public SoraldAbstractProcessor initResource(List<Node> segment) throws Exception {
-    JavaFileScanner sonarCheck = getSonarCheck();
-    List<String> filesToScan = new ArrayList<>();
-    for (Node node : segment) {
-      if (node.isFileNode()) {
-        filesToScan.addAll(node.getJavaFiles());
-      } else {
-        try (Stream<Path> walk = Files.walk(Paths.get(node.getRootPath()))) {
-          filesToScan.addAll(
-              walk.map(x -> x.toFile().getAbsolutePath())
-                  .filter(f -> f.endsWith(Constants.JAVA_EXT))
-                  .collect(Collectors.toList()));
-        } catch (IOException e) {
-          e.printStackTrace();
+    public SoraldAbstractProcessor initResource(List<Node> segment) throws Exception {
+        JavaFileScanner sonarCheck = getSonarCheck();
+        List<String> filesToScan = new ArrayList<>();
+        for (Node node : segment) {
+            if (node.isFileNode()) {
+                filesToScan.addAll(node.getJavaFiles());
+            } else {
+                try (Stream<Path> walk = Files.walk(Paths.get(node.getRootPath()))) {
+                    filesToScan.addAll(
+                            walk.map(x -> x.toFile().getAbsolutePath())
+                                    .filter(f -> f.endsWith(Constants.JAVA_EXT))
+                                    .collect(Collectors.toList()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-      }
+
+        Set<AnalyzerMessage> issues =
+                MultipleFilesJavaCheckVerifier.verify(filesToScan, sonarCheck, false);
+        bugs = new HashSet<>();
+        for (AnalyzerMessage message : issues) {
+            Bug BugOffline = new Bug(message);
+            bugs.add(BugOffline);
+        }
+
+        return this;
     }
 
-    Set<AnalyzerMessage> issues =
-        MultipleFilesJavaCheckVerifier.verify(filesToScan, sonarCheck, false);
-    bugs = new HashSet<>();
-    for (AnalyzerMessage message : issues) {
-      Bug BugOffline = new Bug(message);
-      bugs.add(BugOffline);
+    public SoraldAbstractProcessor setMaxFixes(int maxFixes) {
+        this.maxFixes = maxFixes;
+        return this;
     }
 
-    return this;
-  }
-
-  public SoraldAbstractProcessor setMaxFixes(int maxFixes) {
-    this.maxFixes = maxFixes;
-    return this;
-  }
-
-  public SoraldAbstractProcessor setNbFixes(int nbFixes) {
-    this.nbFixes = nbFixes;
-    return this;
-  }
-
-  public int getNbFixes() {
-    return this.nbFixes;
-  }
-
-  public boolean isToBeProcessedAccordingToStandards(CtElement element) {
-    return (this.nbFixes < this.maxFixes) && this.isToBeProcessedAccordingToSonar(element);
-  }
-
-  public boolean isToBeProcessedAccordingToSonar(CtElement element) {
-    if (element == null) {
-      return false;
+    public SoraldAbstractProcessor setNbFixes(int nbFixes) {
+        this.nbFixes = nbFixes;
+        return this;
     }
-    if (!element.getPosition().isValidPosition()) {
-      return false;
-    }
-    int line = element.getPosition().getLine();
-    String file = element.getPosition().getFile().getAbsolutePath();
 
-    try (Stream<String> lines = Files.lines(Paths.get(file))) {
-      if (lines.skip(line - 1).findFirst().get().contains("NOSONAR")) {
+    public int getNbFixes() {
+        return this.nbFixes;
+    }
+
+    public boolean isToBeProcessedAccordingToStandards(CtElement element) {
+        return (this.nbFixes < this.maxFixes) && this.isToBeProcessedAccordingToSonar(element);
+    }
+
+    public boolean isToBeProcessedAccordingToSonar(CtElement element) {
+        if (element == null) {
+            return false;
+        }
+        if (!element.getPosition().isValidPosition()) {
+            return false;
+        }
+        int line = element.getPosition().getLine();
+        String file = element.getPosition().getFile().getAbsolutePath();
+
+        try (Stream<String> lines = Files.lines(Paths.get(file))) {
+            if (lines.skip(line - 1).findFirst().get().contains("NOSONAR")) {
+                return false;
+            }
+        } catch (IOException e) {
+        }
+
+        for (Bug bug : bugs) {
+            if (bug.getLineNumber() == line && bug.getFileName().equals(file)) {
+                return true;
+            }
+        }
         return false;
-      }
-    } catch (IOException e) {
     }
 
-    for (Bug bug : bugs) {
-      if (bug.getLineNumber() == line && bug.getFileName().equals(file)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @Override
-  public void process(E element) {
-    UniqueTypesCollector.getInstance().collect(element);
-    this.nbFixes++;
-  }
-
-  class Bug {
-    private int lineNumber;
-    private String fileName;
-
-    public Bug(AnalyzerMessage message) {
-      this.lineNumber = message.getLine();
-      this.fileName = message.getInputComponent().key().replace(":", "");
+    @Override
+    public void process(E element) {
+        UniqueTypesCollector.getInstance().collect(element);
+        this.nbFixes++;
     }
 
-    public int getLineNumber() {
-      return lineNumber;
-    }
+    class Bug {
+        private int lineNumber;
+        private String fileName;
 
-    public String getFileName() {
-      return fileName;
+        public Bug(AnalyzerMessage message) {
+            this.lineNumber = message.getLine();
+            this.fileName = message.getInputComponent().key().replace(":", "");
+        }
+
+        public int getLineNumber() {
+            return lineNumber;
+        }
+
+        public String getFileName() {
+            return fileName;
+        }
     }
-  }
 }
