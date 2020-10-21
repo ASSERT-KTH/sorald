@@ -17,7 +17,7 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.Main;
 import sorald.PrettyPrintingStrategy;
-import sorald.sonar.SonarVerifierAdapter;
+import sorald.sonar.Verifier;
 import sorald.TestHelper;
 
 public class ProcessorTest {
@@ -51,7 +51,7 @@ public class ProcessorTest {
         String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
         boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(testCase.checkClass);
 
-        SonarVerifierAdapter.verifyHasIssue(originalFileAbspath, testCase.createCheckInstance());
+        Verifier.verifyHasIssue(originalFileAbspath, testCase.createCheckInstance());
         Main.main(
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
@@ -67,7 +67,7 @@ public class ProcessorTest {
                 });
 
         TestHelper.removeComplianceComments(pathToRepairedFile);
-        SonarVerifierAdapter.verifyNoIssue(pathToRepairedFile, testCase.createCheckInstance());
+        Verifier.verifyNoIssue(pathToRepairedFile, testCase.createCheckInstance());
     }
 
     /**

@@ -5,7 +5,7 @@ import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import sorald.Constants;
 import sorald.Main;
 import sorald.PrettyPrintingStrategy;
-import sorald.sonar.SonarVerifierAdapter;
+import sorald.sonar.Verifier;
 import sorald.TestHelper;
 
 public class SegmentStrategyTest {
@@ -16,7 +16,7 @@ public class SegmentStrategyTest {
         String pathToRepairedFile =
                 Constants.SORALD_WORKSPACE + "/SEGMENT/" + Constants.SPOONED + "/" + fileName;
 
-        SonarVerifierAdapter.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+        Verifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
         Main.main(
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_REPAIR_STRATEGY,
@@ -35,7 +35,7 @@ public class SegmentStrategyTest {
                     Constants.SORALD_WORKSPACE + "/SEGMENT/"
                 });
         TestHelper.removeComplianceComments(pathToRepairedFile);
-        SonarVerifierAdapter.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
+        Verifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
     }
 
     @Test(expected = RuntimeException.class)
@@ -45,7 +45,7 @@ public class SegmentStrategyTest {
         String pathToRepairedFile =
                 Constants.SORALD_WORKSPACE + "/SEGMENT/" + Constants.SPOONED + "/" + fileName;
 
-        SonarVerifierAdapter.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+        Verifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
         Main.main(
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_REPAIR_STRATEGY,
@@ -62,6 +62,6 @@ public class SegmentStrategyTest {
                     Constants.SORALD_WORKSPACE + "/SEGMENT/"
                 });
         TestHelper.removeComplianceComments(pathToRepairedFile);
-        SonarVerifierAdapter.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
+        Verifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
     }
 }

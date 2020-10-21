@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
-import sorald.sonar.SonarVerifierAdapter;
+import sorald.sonar.Verifier;
 import sorald.UniqueTypesCollector;
 import sorald.segment.Node;
 import spoon.processing.AbstractProcessor;
@@ -47,7 +47,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                     e.printStackTrace();
                 }
             }
-            Set<AnalyzerMessage> issues = SonarVerifierAdapter.analyze(filesToScan, sonarCheck);
+            Set<AnalyzerMessage> issues = Verifier.analyze(filesToScan, sonarCheck);
             bugs = new HashSet<>();
             for (AnalyzerMessage message : issues) {
                 Bug BugOffline = new Bug(message);
@@ -77,7 +77,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
             }
         }
 
-        Set<AnalyzerMessage> issues = SonarVerifierAdapter.analyze(filesToScan, sonarCheck);
+        Set<AnalyzerMessage> issues = Verifier.analyze(filesToScan, sonarCheck);
         bugs = new HashSet<>();
         for (AnalyzerMessage message : issues) {
             Bug BugOffline = new Bug(message);

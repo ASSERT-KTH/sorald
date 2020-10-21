@@ -8,7 +8,7 @@ import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
 import org.sonar.plugins.java.api.JavaFileScanner;
 
 /** Adapter class for interfacing with sonar-java's verification and analysis facilities. */
-public class SonarVerifierAdapter {
+public class Verifier {
 
     /**
      * Verify that the given file has at least one issue according to check.
