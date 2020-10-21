@@ -123,12 +123,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         }
 
         for (Bug bug : bugs) {
-            boolean equalPaths =
-                    Paths.get(bug.getFileName())
-                            .toAbsolutePath()
-                            .normalize()
-                            .equals(Paths.get(file).toAbsolutePath().normalize());
-            if (bug.getLineNumber() == line && equalPaths) {
+            if (bug.getLineNumber() == line && bug.getFileName().equals(file)) {
                 return true;
             }
         }
