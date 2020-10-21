@@ -40,9 +40,9 @@ public class RuleVerifier {
      * @return All messages produced by the analyzer, for all files.
      */
     @SuppressWarnings("UnstableApiUsage")
-    public static Set<Bug> analyze(List<String> filesToScan, JavaFileScanner check) {
+    public static Set<RuleViolation> analyze(List<String> filesToScan, JavaFileScanner check) {
         return MultipleFilesJavaCheckVerifier.verify(filesToScan, check, false).stream()
-                .map(Bug::new)
+                .map(RuleViolation::new)
                 .collect(Collectors.toSet());
     }
 

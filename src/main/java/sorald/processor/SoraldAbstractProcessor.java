@@ -14,14 +14,14 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.UniqueTypesCollector;
 import sorald.segment.Node;
-import sorald.sonar.Bug;
 import sorald.sonar.RuleVerifier;
+import sorald.sonar.RuleViolation;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
 
 /** superclass for all processors */
 public abstract class SoraldAbstractProcessor<E extends CtElement> extends AbstractProcessor<E> {
-    private Set<Bug> bugs;
+    private Set<RuleViolation> ruleViolations;
     private int maxFixes = Integer.MAX_VALUE;
     private int nbFixes = 0;
 
@@ -46,7 +46,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                     e.printStackTrace();
                 }
             }
-            bugs = RuleVerifier.analyze(filesToScan, sonarCheck);
+            ruleViolations = RuleVerifier.analyze(filesToScan, sonarCheck);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,7 +71,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
             }
         }
 
-        bugs = RuleVerifier.analyze(filesToScan, sonarCheck);
+        ruleViolations = RuleVerifier.analyze(filesToScan, sonarCheck);
         return this;
     }
 
@@ -110,8 +110,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         } catch (IOException e) {
         }
 
-        for (Bug bug : bugs) {
-            if (bug.getLineNumber() == line && bug.getFileName().equals(file)) {
+        for (RuleViolation ruleViolation : ruleViolations) {
+            if (ruleViolation.getLineNumber() == line && ruleViolation.getFileName().equals(file)) {
                 return true;
             }
         }

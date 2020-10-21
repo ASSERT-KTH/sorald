@@ -19,8 +19,8 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
-import sorald.sonar.Bug;
 import sorald.sonar.RuleVerifier;
+import sorald.sonar.RuleViolation;
 
 public class MineSonarWarnings {
 
@@ -203,8 +203,10 @@ public class MineSonarWarnings {
                 }
             }
             for (JavaFileScanner javaFileScanner : SONAR_CHECK_INSTANCES) {
-                Set<Bug> bugs = RuleVerifier.analyze(filesToScan, javaFileScanner);
-                warnings.putIfAbsent(javaFileScanner.getClass().getSimpleName(), bugs.size());
+                Set<RuleViolation> ruleViolations =
+                        RuleVerifier.analyze(filesToScan, javaFileScanner);
+                warnings.putIfAbsent(
+                        javaFileScanner.getClass().getSimpleName(), ruleViolations.size());
             }
         } catch (Exception e) {
             e.printStackTrace();
