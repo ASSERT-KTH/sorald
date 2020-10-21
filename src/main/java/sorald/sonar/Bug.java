@@ -2,21 +2,21 @@ package sorald.sonar;
 
 import org.sonar.java.AnalyzerMessage;
 
+import java.util.Objects;
+
 /** Facade around {@link org.sonar.java.AnalyzerMessage} */
 public class Bug {
-    private final int lineNumber;
-    private final String fileName;
+    private final AnalyzerMessage message;
 
     Bug(AnalyzerMessage message) {
-        this.lineNumber = message.getLine();
-        this.fileName = message.getInputComponent().key().replace(":", "");
+        this.message = message;
     }
 
     public int getLineNumber() {
-        return lineNumber;
+        return Objects.requireNonNull(message.getLine());
     }
 
     public String getFileName() {
-        return fileName;
+        return message.getInputComponent().key().replace(":", "");
     }
 }
