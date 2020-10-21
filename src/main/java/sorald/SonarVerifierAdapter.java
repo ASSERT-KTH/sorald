@@ -11,7 +11,7 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 public class SonarVerifierAdapter {
 
     /**
-     * Verify that the given file has at least one issue.
+     * Verify that the given file has at least one issue according to check.
      *
      * @param filename Path to a file.
      * @param check A Sonar check.
@@ -33,7 +33,7 @@ public class SonarVerifierAdapter {
     }
 
     /**
-     * Analyze the file with respect to the given checker.
+     * Analyze the file with respect to check.
      *
      * @param filename Path to a file.
      * @param check A Sonar check.
@@ -45,8 +45,7 @@ public class SonarVerifierAdapter {
     }
 
     /**
-     * Same as {@link SonarVerifierAdapter#analyze(String, JavaFileScanner)}, but for multiple
-     * files.
+     * Analyze the files with respect to check.
      *
      * @param filesToScan A list of paths to files.
      * @param check A Sonar check.
