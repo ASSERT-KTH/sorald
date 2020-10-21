@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.sonar.java.checks.BigDecimalDoubleConstructorCheck;
 import org.sonar.java.checks.CastArithmeticOperandCheck;
 import org.sonar.java.checks.EqualsOnAtomicClassCheck;
-import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import sorald.sonar.RuleVerifier;
 
 public class MultipleProcessorsTest {
 
@@ -25,8 +25,8 @@ public class MultipleProcessorsTest {
                     Constants.SORALD_WORKSPACE
                 });
         TestHelper.removeComplianceComments(pathToRepairedFile);
-        JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new BigDecimalDoubleConstructorCheck());
-        JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new CastArithmeticOperandCheck());
-        JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new EqualsOnAtomicClassCheck());
+        RuleVerifier.verifyNoIssue(pathToRepairedFile, new BigDecimalDoubleConstructorCheck());
+        RuleVerifier.verifyNoIssue(pathToRepairedFile, new CastArithmeticOperandCheck());
+        RuleVerifier.verifyNoIssue(pathToRepairedFile, new EqualsOnAtomicClassCheck());
     }
 }

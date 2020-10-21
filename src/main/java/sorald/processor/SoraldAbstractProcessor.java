@@ -12,11 +12,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.sonar.java.AnalyzerMessage;
-import org.sonar.java.checks.verifier.MultipleFilesJavaCheckVerifier;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.UniqueTypesCollector;
 import sorald.segment.Node;
+import sorald.sonar.RuleVerifier;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
 
@@ -47,8 +47,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                     e.printStackTrace();
                 }
             }
-            Set<AnalyzerMessage> issues =
-                    MultipleFilesJavaCheckVerifier.verify(filesToScan, sonarCheck, false);
+            Set<AnalyzerMessage> issues = RuleVerifier.analyze(filesToScan, sonarCheck);
             bugs = new HashSet<>();
             for (AnalyzerMessage message : issues) {
                 Bug BugOffline = new Bug(message);
@@ -78,8 +77,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
             }
         }
 
-        Set<AnalyzerMessage> issues =
-                MultipleFilesJavaCheckVerifier.verify(filesToScan, sonarCheck, false);
+        Set<AnalyzerMessage> issues = RuleVerifier.analyze(filesToScan, sonarCheck);
         bugs = new HashSet<>();
         for (AnalyzerMessage message : issues) {
             Bug BugOffline = new Bug(message);

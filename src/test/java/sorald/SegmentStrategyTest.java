@@ -2,11 +2,11 @@ package sorald.processor;
 
 import org.junit.Test;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
-import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import sorald.Constants;
 import sorald.Main;
 import sorald.PrettyPrintingStrategy;
 import sorald.TestHelper;
+import sorald.sonar.RuleVerifier;
 
 public class SegmentStrategyTest {
     @Test
@@ -16,7 +16,7 @@ public class SegmentStrategyTest {
         String pathToRepairedFile =
                 Constants.SORALD_WORKSPACE + "/SEGMENT/" + Constants.SPOONED + "/" + fileName;
 
-        JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+        RuleVerifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
         Main.main(
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_REPAIR_STRATEGY,
@@ -35,7 +35,7 @@ public class SegmentStrategyTest {
                     Constants.SORALD_WORKSPACE + "/SEGMENT/"
                 });
         TestHelper.removeComplianceComments(pathToRepairedFile);
-        JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
+        RuleVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
     }
 
     @Test(expected = RuntimeException.class)
@@ -45,7 +45,7 @@ public class SegmentStrategyTest {
         String pathToRepairedFile =
                 Constants.SORALD_WORKSPACE + "/SEGMENT/" + Constants.SPOONED + "/" + fileName;
 
-        JavaCheckVerifier.verify(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+        RuleVerifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
         Main.main(
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_REPAIR_STRATEGY,
@@ -62,6 +62,6 @@ public class SegmentStrategyTest {
                     Constants.SORALD_WORKSPACE + "/SEGMENT/"
                 });
         TestHelper.removeComplianceComments(pathToRepairedFile);
-        JavaCheckVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
+        RuleVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
     }
 }
