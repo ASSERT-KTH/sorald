@@ -1,6 +1,8 @@
 package sorald.processor;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import sorald.Constants;
 import sorald.Main;
@@ -38,15 +40,13 @@ public class SegmentStrategyTest {
         RuleVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void arrayToStringProcessor_fail_Test() throws Exception {
         String fileName = "ArrayHashCodeAndToString.java";
         String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
-        String pathToRepairedFile =
-                Constants.SORALD_WORKSPACE + "/SEGMENT/" + Constants.SPOONED + "/" + fileName;
 
         RuleVerifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
-        Main.main(
+        String[] args =
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_REPAIR_STRATEGY,
                     "SEGMENT",
@@ -60,8 +60,7 @@ public class SegmentStrategyTest {
                     PrettyPrintingStrategy.NORMAL.name(),
                     Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
                     Constants.SORALD_WORKSPACE + "/SEGMENT/"
-                });
-        TestHelper.removeComplianceComments(pathToRepairedFile);
-        RuleVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
+                };
+        assertThrows(RuntimeException.class, () -> Main.main(args));
     }
 }

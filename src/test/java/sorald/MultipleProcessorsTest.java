@@ -1,6 +1,6 @@
 package sorald;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.BigDecimalDoubleConstructorCheck;
 import org.sonar.java.checks.CastArithmeticOperandCheck;
 import org.sonar.java.checks.EqualsOnAtomicClassCheck;

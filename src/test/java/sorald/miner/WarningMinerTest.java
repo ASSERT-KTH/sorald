@@ -2,7 +2,7 @@ package sorald.miner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import sorald.Constants;
 
 public class WarningMinerTest {
@@ -40,7 +40,7 @@ public class WarningMinerTest {
         List<String> expectedLines = extractSortedNonZeroChecks(correctResults.toPath());
         List<String> actualLines = extractSortedNonZeroChecks(outputFile.toPath());
 
-        assertFalse("sanity check failure, expected output is empty", expectedLines.isEmpty());
+        assertFalse(expectedLines.isEmpty(), "sanity check failure, expected output is empty");
         assertThat(actualLines, equalTo(expectedLines));
     }
 

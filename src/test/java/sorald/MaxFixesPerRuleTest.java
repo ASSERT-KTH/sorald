@@ -1,6 +1,6 @@
 package sorald.processor;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import sorald.Constants;
 import sorald.Main;
