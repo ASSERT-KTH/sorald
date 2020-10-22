@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.FileUtils;
 import sorald.UniqueTypesCollector;
 import sorald.segment.Node;
 import sorald.sonar.RuleVerifier;
@@ -111,7 +112,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         }
 
         for (RuleViolation ruleViolation : ruleViolations) {
-            if (ruleViolation.getLineNumber() == line && ruleViolation.getFileName().equals(file)) {
+            if (ruleViolation.getLineNumber() == line
+                    && FileUtils.pathAbsNormEqual(ruleViolation.getFileName(), file)) {
                 return true;
             }
         }
