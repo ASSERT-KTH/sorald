@@ -1,5 +1,7 @@
 package sorald.processor;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -43,6 +45,9 @@ public class ProcessorTest {
     public void testProcessSingleFile(
             ProcessorTestHelper.ProcessorTestCase<? extends JavaFileScanner> testCase)
             throws Exception {
+        assertFalse(
+                new File(Constants.SORALD_WORKSPACE).exists(),
+                "workspace should must be clean before test");
         String pathToRepairedFile =
                 Paths.get(Constants.SORALD_WORKSPACE)
                         .resolve(Constants.SPOONED)
