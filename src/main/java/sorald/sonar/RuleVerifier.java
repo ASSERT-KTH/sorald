@@ -113,8 +113,8 @@ public class RuleVerifier {
                         sonarComponents,
                         SymbolicExecutionMode.ENABLED);
         // TODO we may want to set the version of the visitors bridge, as without setting it the
-        // implementation
-        //      defaults to the highest version supported by the parser (currently Java 14)
+        //      implementation defaults to the highest version supported by the parser (currently
+        //      Java 14)
         //      visitorsBridge.setJavaVersion(new JavaVersionImpl(8));
         scanner.setVisitorBridge(visitorsBridge);
         return scanner;
