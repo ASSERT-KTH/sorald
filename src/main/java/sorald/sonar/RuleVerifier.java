@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -59,22 +59,13 @@ public class RuleVerifier {
      */
     @SuppressWarnings("UnstableApiUsage")
     public static Set<RuleViolation> analyze(List<String> filesToScan, File baseDir, JavaFileScanner check) {
-        // must append a separator to the basedir string as Sonar appends the filenames directly to it ...
-        String baseDirStr = baseDir.toString() + File.separator;
         List<InputFile> inputFiles =
                 filesToScan.stream()
-                        .map(filename -> toInputFile(baseDirStr, filename))
+                        .map(filename -> toInputFile(baseDir, filename))
                         .collect(Collectors.toList());
 
         SoraldSonarComponents sonarComponents = createSonarComponents(baseDir);
-        JavaAstScanner scanner = new JavaAstScanner(sonarComponents);
-        VisitorsBridge visitorsBridge =
-                new VisitorsBridge(
-                        Collections.singletonList(check),
-                        Collections.emptyList(),
-                        sonarComponents,
-                        SymbolicExecutionMode.ENABLED);
-        scanner.setVisitorBridge(visitorsBridge);
+        JavaAstScanner scanner = createAstScanner(sonarComponents, Collections.singletonList(check));
 
         scanner.scan(inputFiles);
 
@@ -94,9 +85,11 @@ public class RuleVerifier {
         JavaCheckVerifier.newVerifier().onFile(filename).withCheck(check).verifyNoIssues();
     }
 
-    private static InputFile toInputFile(String baseDir, String filename) {
+    private static InputFile toInputFile(File baseDir, String filename) {
+        // must append a separator to the basedir string as Sonar appends the filenames directly to it
+        final String baseDirStr = baseDir.toString() + File.separator;
         try {
-            return new TestInputFileBuilder(baseDir, filename)
+            return new TestInputFileBuilder(baseDirStr, filename)
                     .setContents(new String(Files.readAllBytes(Paths.get(filename)), UTF_8))
                     .setCharset(UTF_8)
                     .setLanguage("java")
@@ -106,19 +99,44 @@ public class RuleVerifier {
         }
     }
 
+    @SuppressWarnings("UnstableApiUsage")
+    private static JavaAstScanner createAstScanner(SonarComponents sonarComponents, List<JavaFileScanner> checks) {
+        JavaAstScanner scanner = new JavaAstScanner(sonarComponents);
+        VisitorsBridge visitorsBridge =
+                new VisitorsBridge(
+                        checks,
+                        // TODO set the classpath to something reasonable
+                        Collections.emptyList(),
+                        sonarComponents,
+                        SymbolicExecutionMode.ENABLED);
+        scanner.setVisitorBridge(visitorsBridge);
+        return scanner;
+    }
+
     private static SoraldSonarComponents createSonarComponents(File baseDir) {
+        // FIXME The SensorContextTester is an internal and unstable component in sonar,
+        //       we should implement our own SensorContext
         SensorContextTester context = SensorContextTester.create(baseDir);
         SoraldSonarComponents sonarComponents = new SoraldSonarComponents(context.fileSystem());
         sonarComponents.setSensorContext(context);
         return sonarComponents;
     }
 
+    /**
+     * A simple subclass of SonarComponents that stores all analyzer messages. These are by default
+     * stored in a storage container, but it seems easier for our use case to just intercept them.
+     *
+     * This IS a bit of a hack, so it wouldn't be unreasonable to try to do this the "proper way".
+     */
     private static class SoraldSonarComponents extends SonarComponents {
-        private final Set<AnalyzerMessage> messages;
+        private final List<AnalyzerMessage> messages;
 
         public SoraldSonarComponents(DefaultFileSystem fs) {
+            // FIXME I'm very unsure about supplying null for all of these constructor values.
+            //       They should not be null, but at this time I don't know that to put there, and
+            //       with our current usage this hack appears to work.
             super(null, fs, null, null, null, null);
-            messages = new HashSet<>();
+            messages = new ArrayList<>();
         }
 
         @Override
@@ -127,12 +145,8 @@ public class RuleVerifier {
             messages.add(analyzerMessage);
         }
 
-        public Set<AnalyzerMessage> getMessages() {
-            return Collections.unmodifiableSet(messages);
+        public List<AnalyzerMessage> getMessages() {
+            return Collections.unmodifiableList(messages);
         }
-
-        /*
-         * The following methods simply override methods that use fields that we have not set values for
-         */
     }
 }
