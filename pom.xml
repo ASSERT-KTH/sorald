@@ -51,8 +51,8 @@
             <artifactId>spoon-core</artifactId>
             <version>8.3.0-beta-13</version>
             <exclusions>
-                <!-- must be excluded as it is signed, which causes problems with unsigned version from sonar -->
                 <exclusion>
+                    <!-- must be excluded as it is signed, which causes problems with unsigned version from sonar -->
                     <groupId>org.eclipse.jdt</groupId>
                     <artifactId>org.eclipse.jdt.core</artifactId>
                 </exclusion>
