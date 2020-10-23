@@ -89,6 +89,7 @@ public class ProcessorTest {
                             dir ->
                                     Arrays.stream(dir.listFiles())
                                             .filter(file -> file.getName().endsWith(".java"))
+                                            .filter(file -> !file.getName().startsWith("IGNORE"))
                                             .map(ProcessorTestHelper::toProcessorTestCase))
                     .map(Arguments::of);
         }

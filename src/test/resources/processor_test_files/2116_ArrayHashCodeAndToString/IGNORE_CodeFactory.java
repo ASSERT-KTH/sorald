@@ -18,7 +18,8 @@ public class CodeFactory {
 
 	public void createNewClass(CtExpression<?>...parameters) {
 		Arrays.stream(parameters).map(x -> x.getType());
-		
+
+		// This was recognized as noncompliant by sonar-java 5.14, but not anymore with 6.9.0
 		parameters.toString(); // Noncompliant
 	}
 
