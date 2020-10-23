@@ -1,5 +1,6 @@
 package sorald;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -25,5 +26,13 @@ public class FileUtils {
      */
     public static boolean pathAbsNormEqual(Path lhs, Path rhs) {
         return lhs.toAbsolutePath().normalize().equals(rhs.toAbsolutePath().normalize());
+    }
+
+    /**
+     * @param file A file.
+     * @return The given file if it is a directory, or its parent directory if it is not a directory.
+     */
+    public static File getClosestDirectory(File file) {
+        return file.isDirectory() ? file : file.getParentFile();
     }
 }

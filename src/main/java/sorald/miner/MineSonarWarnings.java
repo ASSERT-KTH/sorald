@@ -204,7 +204,7 @@ public class MineSonarWarnings {
             }
             for (JavaFileScanner javaFileScanner : SONAR_CHECK_INSTANCES) {
                 Set<RuleViolation> ruleViolations =
-                        RuleVerifier.analyze(filesToScan, javaFileScanner);
+                        RuleVerifier.analyze(filesToScan, file, javaFileScanner);
                 warnings.putIfAbsent(
                         javaFileScanner.getClass().getSimpleName(), ruleViolations.size());
             }

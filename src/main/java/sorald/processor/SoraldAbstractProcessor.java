@@ -30,7 +30,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     public abstract JavaFileScanner getSonarCheck();
 
-    public SoraldAbstractProcessor initResource(String originalFilesPath) {
+    public SoraldAbstractProcessor initResource(String originalFilesPath, File baseDir) {
         JavaFileScanner sonarCheck = getSonarCheck();
         try {
             List<String> filesToScan = new ArrayList<>();
@@ -47,14 +47,14 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                     e.printStackTrace();
                 }
             }
-            ruleViolations = RuleVerifier.analyze(filesToScan, sonarCheck);
+            ruleViolations = RuleVerifier.analyze(filesToScan, baseDir, sonarCheck);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return this;
     }
 
-    public SoraldAbstractProcessor initResource(List<Node> segment) throws Exception {
+    public SoraldAbstractProcessor initResource(List<Node> segment, File baseDir) {
         JavaFileScanner sonarCheck = getSonarCheck();
         List<String> filesToScan = new ArrayList<>();
         for (Node node : segment) {
@@ -72,7 +72,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
             }
         }
 
-        ruleViolations = RuleVerifier.analyze(filesToScan, sonarCheck);
+        ruleViolations = RuleVerifier.analyze(filesToScan, baseDir, sonarCheck);
         return this;
     }
 

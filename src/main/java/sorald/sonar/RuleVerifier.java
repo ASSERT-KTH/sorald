@@ -53,18 +53,20 @@ public class RuleVerifier {
      * Analyze the files with respect to check.
      *
      * @param filesToScan A list of paths to files.
+     * @param baseDir The base directory of the current project.
      * @param check A Sonar check.
      * @return All messages produced by the analyzer, for all files.
      */
     @SuppressWarnings("UnstableApiUsage")
-    public static Set<RuleViolation> analyze(List<String> filesToScan, JavaFileScanner check) {
-        final String basedir = Paths.get(filesToScan.get(0)).getParent().normalize().toString() + "/";
+    public static Set<RuleViolation> analyze(List<String> filesToScan, File baseDir, JavaFileScanner check) {
+        // must append a separator to the basedir string as Sonar appends the filenames directly to it ...
+        String baseDirStr = baseDir.toString() + File.separator;
         List<InputFile> inputFiles =
                 filesToScan.stream()
-                        .map(filename -> toInputFile(basedir, filename))
+                        .map(filename -> toInputFile(baseDirStr, filename))
                         .collect(Collectors.toList());
 
-        SoraldSonarComponents sonarComponents = sonarComponents();
+        SoraldSonarComponents sonarComponents = createSonarComponents(baseDir);
         JavaAstScanner scanner = new JavaAstScanner(sonarComponents);
         VisitorsBridge visitorsBridge =
                 new VisitorsBridge(
@@ -92,9 +94,9 @@ public class RuleVerifier {
         JavaCheckVerifier.newVerifier().onFile(filename).withCheck(check).verifyNoIssues();
     }
 
-    private static InputFile toInputFile(String basedir, String filename) {
+    private static InputFile toInputFile(String baseDir, String filename) {
         try {
-            return new TestInputFileBuilder(basedir, filename)
+            return new TestInputFileBuilder(baseDir, filename)
                     .setContents(new String(Files.readAllBytes(Paths.get(filename)), UTF_8))
                     .setCharset(UTF_8)
                     .setLanguage("java")
@@ -104,8 +106,8 @@ public class RuleVerifier {
         }
     }
 
-    private static SoraldSonarComponents sonarComponents() {
-        SensorContextTester context = SensorContextTester.create(new File(""));
+    private static SoraldSonarComponents createSonarComponents(File baseDir) {
+        SensorContextTester context = SensorContextTester.create(baseDir);
         SoraldSonarComponents sonarComponents = new SoraldSonarComponents(context.fileSystem());
         sonarComponents.setSensorContext(context);
         return sonarComponents;
@@ -128,5 +130,9 @@ public class RuleVerifier {
         public Set<AnalyzerMessage> getMessages() {
             return Collections.unmodifiableSet(messages);
         }
+
+        /*
+         * The following methods simply override methods that use fields that we have not set values for
+         */
     }
 }
