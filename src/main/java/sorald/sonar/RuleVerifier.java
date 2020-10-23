@@ -1,5 +1,7 @@
 package sorald.sonar;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,7 +11,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.internal.DefaultFileSystem;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
@@ -21,8 +22,6 @@ import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.java.model.VisitorsBridge;
 import org.sonar.java.se.SymbolicExecutionMode;
 import org.sonar.plugins.java.api.JavaFileScanner;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 /** Adapter class for interfacing with sonar-java's verification and analysis facilities. */
 public class RuleVerifier {
@@ -58,14 +57,16 @@ public class RuleVerifier {
      * @return All messages produced by the analyzer, for all files.
      */
     @SuppressWarnings("UnstableApiUsage")
-    public static Set<RuleViolation> analyze(List<String> filesToScan, File baseDir, JavaFileScanner check) {
+    public static Set<RuleViolation> analyze(
+            List<String> filesToScan, File baseDir, JavaFileScanner check) {
         List<InputFile> inputFiles =
                 filesToScan.stream()
                         .map(filename -> toInputFile(baseDir, filename))
                         .collect(Collectors.toList());
 
         SoraldSonarComponents sonarComponents = createSonarComponents(baseDir);
-        JavaAstScanner scanner = createAstScanner(sonarComponents, Collections.singletonList(check));
+        JavaAstScanner scanner =
+                createAstScanner(sonarComponents, Collections.singletonList(check));
 
         scanner.scan(inputFiles);
 
@@ -86,7 +87,8 @@ public class RuleVerifier {
     }
 
     private static InputFile toInputFile(File baseDir, String filename) {
-        // must append a separator to the basedir string as Sonar appends the filenames directly to it
+        // must append a separator to the basedir string as Sonar appends the filenames directly to
+        // it
         final String baseDirStr = baseDir.toString() + File.separator;
         try {
             return new TestInputFileBuilder(baseDirStr, filename)
@@ -100,7 +102,8 @@ public class RuleVerifier {
     }
 
     @SuppressWarnings("UnstableApiUsage")
-    private static JavaAstScanner createAstScanner(SonarComponents sonarComponents, List<JavaFileScanner> checks) {
+    private static JavaAstScanner createAstScanner(
+            SonarComponents sonarComponents, List<JavaFileScanner> checks) {
         JavaAstScanner scanner = new JavaAstScanner(sonarComponents);
         VisitorsBridge visitorsBridge =
                 new VisitorsBridge(
@@ -109,7 +112,8 @@ public class RuleVerifier {
                         Collections.emptyList(),
                         sonarComponents,
                         SymbolicExecutionMode.ENABLED);
-        // TODO we may want to set the version of the visitors bridge, as without setting it the implementation
+        // TODO we may want to set the version of the visitors bridge, as without setting it the
+        // implementation
         //      defaults to the highest version supported by the parser (currently Java 14)
         //      visitorsBridge.setJavaVersion(new JavaVersionImpl(8));
         scanner.setVisitorBridge(visitorsBridge);
@@ -129,7 +133,8 @@ public class RuleVerifier {
      * A simple subclass of SonarComponents that stores all analyzer messages. These are by default
      * stored in a storage container, but it seems easier for our use case to just intercept them.
      *
-     * This IS a bit of a hack, so it wouldn't be unreasonable to try to do this the "proper way".
+     * <p>This IS a bit of a hack, so it wouldn't be unreasonable to try to do this the "proper
+     * way".
      */
     private static class SoraldSonarComponents extends SonarComponents {
         private final List<AnalyzerMessage> messages;

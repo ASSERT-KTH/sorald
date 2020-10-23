@@ -1,6 +1,5 @@
 package sorald;
 
-import java.io.File;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -60,7 +59,8 @@ public class SoraldConfig {
     }
 
     public void setOriginalFilesPath(String originalFilesPath) {
-        this.originalFilesPath = Paths.get(originalFilesPath).normalize().toAbsolutePath().toString();
+        this.originalFilesPath =
+                Paths.get(originalFilesPath).normalize().toAbsolutePath().toString();
     }
 
     public String getOriginalFilesPath() {

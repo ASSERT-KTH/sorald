@@ -30,7 +30,8 @@ public class FileUtils {
 
     /**
      * @param file A file.
-     * @return The given file if it is a directory, or its parent directory if it is not a directory.
+     * @return The given file if it is a directory, or its parent directory if it is not a
+     *     directory.
      */
     public static File getClosestDirectory(File file) {
         return file.isDirectory() ? file : file.getParentFile();
