@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,8 +18,6 @@ import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
-import sorald.Main;
-import sorald.PrettyPrintingStrategy;
 import sorald.TestHelper;
 import sorald.sonar.RuleVerifier;
 import spoon.Launcher;
@@ -89,8 +86,11 @@ public class ProcessorTest {
         // Spoon does not like parsing files that don't end in .java, so we must copy the .expected
         // files to end with .java
         Path expectedOutput = tempdir.toPath().resolve(testCase.nonCompliantFile.getName());
-        Files.copy(testCase.expectedOutfile().orElseThrow(IllegalStateException::new).toPath(), expectedOutput);
-        RuleVerifier.verifyNoIssue(expectedOutput.toAbsolutePath().toString(), testCase.createCheckInstance());
+        Files.copy(
+                testCase.expectedOutfile().orElseThrow(IllegalStateException::new).toPath(),
+                expectedOutput);
+        RuleVerifier.verifyNoIssue(
+                expectedOutput.toAbsolutePath().toString(), testCase.createCheckInstance());
 
         // act
         ProcessorTestHelper.runSorald(testCase);

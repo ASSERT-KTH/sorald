@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
-
 import org.sonar.check.Rule;
 import org.sonar.java.checks.InterruptedExceptionCheck;
 import org.sonar.java.checks.SynchronizationOnStringOrBoxedCheck;
@@ -136,9 +135,7 @@ public class ProcessorTestHelper {
                 .map(ProcessorTestHelper::toProcessorTestCase);
     }
 
-    /**
-     * Run sorald on the given test case.
-     */
+    /** Run sorald on the given test case. */
     static void runSorald(ProcessorTestCase<?> testCase) throws Exception {
         String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
         RuleVerifier.verifyHasIssue(originalFileAbspath, testCase.createCheckInstance());
@@ -146,16 +143,16 @@ public class ProcessorTestHelper {
         boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(testCase.checkClass);
         Main.main(
                 new String[] {
-                        Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
-                        originalFileAbspath,
-                        Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
-                        testCase.ruleKey,
-                        Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
-                        Constants.SORALD_WORKSPACE,
-                        Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
-                        brokenWithSniper
-                                ? PrettyPrintingStrategy.NORMAL.name()
-                                : PrettyPrintingStrategy.SNIPER.name()
+                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    originalFileAbspath,
+                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
+                    testCase.ruleKey,
+                    Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
+                    Constants.SORALD_WORKSPACE,
+                    Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
+                    brokenWithSniper
+                            ? PrettyPrintingStrategy.NORMAL.name()
+                            : PrettyPrintingStrategy.SNIPER.name()
                 });
     }
 
