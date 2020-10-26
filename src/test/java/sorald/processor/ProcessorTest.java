@@ -7,7 +7,6 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,9 +17,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
-import org.sonar.java.checks.InterruptedExceptionCheck;
-import org.sonar.java.checks.SynchronizationOnStringOrBoxedCheck;
-import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.Main;
@@ -33,13 +29,6 @@ import spoon.reflect.declaration.CtImport;
 import spoon.reflect.declaration.CtType;
 
 public class ProcessorTest {
-
-    // The processors related to these checks currently cause problems with the sniper printer
-    private static final List<Class<?>> BROKEN_WITH_SNIPER =
-            Arrays.asList(
-                    SynchronizationOnStringOrBoxedCheck.class,
-                    InterruptedExceptionCheck.class,
-                    SerializableFieldInSerializableClassCheck.class);
 
     /**
      * Parameterized test that processes a single Java file at a time with a single processor.
@@ -58,29 +47,10 @@ public class ProcessorTest {
         assertFalse(
                 new File(Constants.SORALD_WORKSPACE).exists(),
                 "workspace should must be clean before test");
-        String pathToRepairedFile =
-                Paths.get(Constants.SORALD_WORKSPACE)
-                        .resolve(Constants.SPOONED)
-                        .resolve(testCase.outfileRelpath)
-                        .toString();
-        String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
-        boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(testCase.checkClass);
 
-        RuleVerifier.verifyHasIssue(originalFileAbspath, testCase.createCheckInstance());
-        Main.main(
-                new String[] {
-                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
-                    originalFileAbspath,
-                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
-                    testCase.ruleKey,
-                    Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
-                    Constants.SORALD_WORKSPACE,
-                    Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
-                    brokenWithSniper
-                            ? PrettyPrintingStrategy.NORMAL.name()
-                            : PrettyPrintingStrategy.SNIPER.name()
-                });
+        ProcessorTestHelper.runSorald(testCase);
 
+        String pathToRepairedFile = testCase.repairedFilePath().toString();
         TestHelper.removeComplianceComments(pathToRepairedFile);
         RuleVerifier.verifyNoIssue(pathToRepairedFile, testCase.createCheckInstance());
     }
@@ -111,6 +81,7 @@ public class ProcessorTest {
             ProcessorTestHelper.ProcessorTestCase<? extends JavaFileScanner> testCase,
             @TempDir File tempdir)
             throws Exception {
+        // arrange
         assertFalse(
                 new File(Constants.SORALD_WORKSPACE).exists(),
                 "workspace should must be clean before test");
@@ -121,28 +92,11 @@ public class ProcessorTest {
         Files.copy(testCase.expectedOutfile().orElseThrow(IllegalStateException::new).toPath(), expectedOutput);
         RuleVerifier.verifyNoIssue(expectedOutput.toAbsolutePath().toString(), testCase.createCheckInstance());
 
-        Path pathToRepairedFile =
-                Paths.get(Constants.SORALD_WORKSPACE)
-                        .resolve(Constants.SPOONED)
-                        .resolve(testCase.outfileRelpath);
-        String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
-        boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(testCase.checkClass);
+        // act
+        ProcessorTestHelper.runSorald(testCase);
 
-        RuleVerifier.verifyHasIssue(originalFileAbspath, testCase.createCheckInstance());
-        Main.main(
-                new String[] {
-                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
-                    originalFileAbspath,
-                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
-                    testCase.ruleKey,
-                    Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
-                    Constants.SORALD_WORKSPACE,
-                    Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
-                    brokenWithSniper
-                            ? PrettyPrintingStrategy.NORMAL.name()
-                            : PrettyPrintingStrategy.SNIPER.name()
-                });
-
+        // assert
+        Path pathToRepairedFile = testCase.repairedFilePath();
         CtModel repairedModel = parseNoComments(pathToRepairedFile);
         CtModel expectedModel = parseNoComments(expectedOutput);
 

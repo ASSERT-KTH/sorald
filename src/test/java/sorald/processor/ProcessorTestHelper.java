@@ -14,14 +14,26 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 import org.sonar.check.Rule;
+import org.sonar.java.checks.InterruptedExceptionCheck;
+import org.sonar.java.checks.SynchronizationOnStringOrBoxedCheck;
+import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.Main;
+import sorald.PrettyPrintingStrategy;
+import sorald.sonar.RuleVerifier;
 
 /** Helper functions for {@link ProcessorTest}. */
 public class ProcessorTestHelper {
     static final Path TEST_FILES_ROOT =
             Paths.get(Constants.PATH_TO_RESOURCES_FOLDER).resolve("processor_test_files");
     static final String EXPECTED_FILE_SUFFIX = ".expected";
+    // The processors related to these checks currently cause problems with the sniper printer
+    static final List<Class<?>> BROKEN_WITH_SNIPER =
+            Arrays.asList(
+                    SynchronizationOnStringOrBoxedCheck.class,
+                    InterruptedExceptionCheck.class,
+                    SerializableFieldInSerializableClassCheck.class);
 
     /**
      * Create a {@link ProcessorTestCase} from a non-compliant (according to SonarQube rules) Java
@@ -125,6 +137,29 @@ public class ProcessorTestHelper {
     }
 
     /**
+     * Run sorald on the given test case.
+     */
+    static void runSorald(ProcessorTestCase<?> testCase) throws Exception {
+        String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
+        RuleVerifier.verifyHasIssue(originalFileAbspath, testCase.createCheckInstance());
+
+        boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(testCase.checkClass);
+        Main.main(
+                new String[] {
+                        Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                        originalFileAbspath,
+                        Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
+                        testCase.ruleKey,
+                        Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
+                        Constants.SORALD_WORKSPACE,
+                        Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
+                        brokenWithSniper
+                                ? PrettyPrintingStrategy.NORMAL.name()
+                                : PrettyPrintingStrategy.SNIPER.name()
+                });
+    }
+
+    /**
      * A wrapper class to hold the information required to execute a test case for a single file and
      * rule with the associated processor.
      */
@@ -171,6 +206,12 @@ public class ProcessorTestHelper {
                             .resolveSibling(nonCompliantFile.getName() + EXPECTED_FILE_SUFFIX)
                             .toFile();
             return Optional.ofNullable(expectedOutfile.isFile() ? expectedOutfile : null);
+        }
+
+        public Path repairedFilePath() {
+            return Paths.get(Constants.SORALD_WORKSPACE)
+                    .resolve(Constants.SPOONED)
+                    .resolve(outfileRelpath);
         }
     }
 }
