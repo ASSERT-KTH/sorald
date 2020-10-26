@@ -119,6 +119,7 @@ public class ProcessorTest {
         // files to end with .java
         Path expectedOutput = tempdir.toPath().resolve(testCase.nonCompliantFile.getName());
         Files.copy(testCase.expectedOutfile().orElseThrow(IllegalStateException::new).toPath(), expectedOutput);
+        RuleVerifier.verifyNoIssue(expectedOutput.toAbsolutePath().toString(), testCase.createCheckInstance());
 
         Path pathToRepairedFile =
                 Paths.get(Constants.SORALD_WORKSPACE)
