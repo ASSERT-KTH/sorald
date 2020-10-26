@@ -8,8 +8,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
+
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
@@ -18,6 +21,7 @@ import sorald.Constants;
 public class ProcessorTestHelper {
     static final Path TEST_FILES_ROOT =
             Paths.get(Constants.PATH_TO_RESOURCES_FOLDER).resolve("processor_test_files");
+    static final String EXPECTED_FILE_SUFFIX = ".expected";
 
     /**
      * Create a {@link ProcessorTestCase} from a non-compliant (according to SonarQube rules) Java
@@ -108,6 +112,19 @@ public class ProcessorTestHelper {
     }
 
     /**
+     * Return a stream of all valid test cases, based on the tests files in {@link
+     * ProcessorTestHelper#TEST_FILES_ROOT}.
+     */
+    static Stream<ProcessorTestCase<?>> getTestCaseStream() {
+        return Arrays.stream(ProcessorTestHelper.TEST_FILES_ROOT.toFile().listFiles())
+                .filter(File::isDirectory)
+                .map(File::listFiles)
+                .flatMap(Arrays::stream)
+                .filter(file -> file.getName().endsWith(".java"))
+                .map(ProcessorTestHelper::toProcessorTestCase);
+    }
+
+    /**
      * A wrapper class to hold the information required to execute a test case for a single file and
      * rule with the associated processor.
      */
@@ -145,6 +162,15 @@ public class ProcessorTestHelper {
                 throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
                         InstantiationException {
             return checkClass.getConstructor().newInstance();
+        }
+
+        public Optional<File> expectedOutfile() {
+            File expectedOutfile =
+                    nonCompliantFile
+                            .toPath()
+                            .resolveSibling(nonCompliantFile.getName() + EXPECTED_FILE_SUFFIX)
+                            .toFile();
+            return Optional.ofNullable(expectedOutfile.isFile() ? expectedOutfile : null);
         }
     }
 }

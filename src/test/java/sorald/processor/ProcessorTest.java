@@ -10,7 +10,6 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -94,14 +93,7 @@ public class ProcessorTest {
 
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
-            return Arrays.stream(ProcessorTestHelper.TEST_FILES_ROOT.toFile().listFiles())
-                    .filter(File::isDirectory)
-                    .flatMap(
-                            dir ->
-                                    Arrays.stream(dir.listFiles())
-                                            .filter(file -> file.getName().endsWith(".java"))
-                                            .map(ProcessorTestHelper::toProcessorTestCase))
-                    .map(Arguments::of);
+            return ProcessorTestHelper.getTestCaseStream().map(Arguments::of);
         }
     }
 
@@ -123,11 +115,10 @@ public class ProcessorTest {
                 new File(Constants.SORALD_WORKSPACE).exists(),
                 "workspace should must be clean before test");
 
-        File source = testCase.nonCompliantFile;
         // Spoon does not like parsing files that don't end in .java, so we must copy the .expected
         // files to end with .java
-        Path expectedOutput = tempdir.toPath().resolve(source.getName());
-        Files.copy(source.toPath().resolveSibling(source.getName() + ".expected"), expectedOutput);
+        Path expectedOutput = tempdir.toPath().resolve(testCase.nonCompliantFile.getName());
+        Files.copy(testCase.expectedOutfile().orElseThrow(IllegalStateException::new).toPath(), expectedOutput);
 
         Path pathToRepairedFile =
                 Paths.get(Constants.SORALD_WORKSPACE)
@@ -172,16 +163,8 @@ public class ProcessorTest {
 
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
-            Predicate<File> hasExpectedSibling =
-                    (f -> f.toPath().resolveSibling(f.getName() + ".expected").toFile().isFile());
-            return Arrays.stream(ProcessorTestHelper.TEST_FILES_ROOT.toFile().listFiles())
-                    .filter(File::isDirectory)
-                    .flatMap(
-                            dir ->
-                                    Arrays.stream(dir.listFiles())
-                                            .filter(file -> file.getName().endsWith(".java"))
-                                            .filter(hasExpectedSibling)
-                                            .map(ProcessorTestHelper::toProcessorTestCase))
+            return ProcessorTestHelper.getTestCaseStream()
+                    .filter(testCase -> testCase.expectedOutfile().isPresent())
                     .map(Arguments::of);
         }
     }
