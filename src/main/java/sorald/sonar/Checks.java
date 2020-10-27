@@ -54,6 +54,21 @@ public class Checks {
         return new ArrayList<>(CHECKS_BY_TYPE.get(checkType).values());
     }
 
+    /**
+     * Get a specific check by key.
+     *
+     * @param key The key of the check.
+     * @return The check class corresponding to the key.
+     */
+    public static Class<? extends JavaFileScanner> getCheck(String key) {
+        final String strippedKey = stripDigits(key);
+        return CHECKS_BY_TYPE.values().stream()
+                .map(checks -> checks.get(strippedKey))
+                .filter(Objects::nonNull)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("no rule with key " + strippedKey));
+    }
+
     /** @return All Sonar-Java checks that Sorald currently keeps track of. */
     public static List<Class<? extends JavaFileScanner>> getAllChecks() {
         return CHECKS_BY_TYPE.values().stream()
@@ -78,11 +93,7 @@ public class Checks {
                                         checkClass.getName() + " does not have a key"));
     }
 
-    /**
-     * @param s A string.
-     * @return The given string, with any non-digits stripped out.
-     */
-    public static String stripDigits(String s) {
+    private static String stripDigits(String s) {
         return s.replaceAll("[^\\d]+", "");
     }
 

@@ -37,17 +37,18 @@ public class ProcessorTestHelper {
      *     SonarQube rule.
      * @return A {@link ProcessorTestCase} for the given Java file.
      */
+    @SuppressWarnings("unchecked")
     static <T extends JavaFileScanner> ProcessorTestCase<T> toProcessorTestCase(
             File nonCompliantFile) {
         File directory = nonCompliantFile.getParentFile();
         assert directory.isDirectory();
-        String ruleKey = Checks.stripDigits(directory.getName().split("_")[0]);
-        Class<T> checkClass = getCheckClassByKey(ruleKey);
+        String ruleKey = directory.getName().split("_")[0];
+        Class<T> checkClass = (Class<T>) Checks.getCheck(ruleKey);
         String ruleName = checkClass.getSimpleName().replaceFirst("Check$", "");
         String outfileDirRelpath =
                 parseSourceFilePackage(nonCompliantFile.toPath()).replace(".", File.separator);
         Path outfileRelpath = Paths.get(outfileDirRelpath).resolve(nonCompliantFile.getName());
-        return new ProcessorTestCase<T>(
+        return new ProcessorTestCase<>(
                 ruleName, ruleKey, nonCompliantFile, checkClass, outfileRelpath);
     }
 
@@ -70,22 +71,6 @@ public class ProcessorTestHelper {
             }
         }
         return "";
-    }
-
-    @SuppressWarnings("unchecked")
-    private static <T extends JavaFileScanner> Class<T> getCheckClassByKey(String ruleKey) {
-        // could use a static lookup table here for efficiency, but the list is so small at this
-        // point
-        // that it
-        // won't make a meaningful difference
-        return (Class<T>)
-                Constants.SONAR_CHECK_CLASSES.stream()
-                        .filter(checkClass -> ruleKey.equals(Checks.getRuleKey(checkClass)))
-                        .findFirst()
-                        .orElseThrow(
-                                () ->
-                                        new IllegalArgumentException(
-                                                "Could not find check class for key " + ruleKey));
     }
 
     /**
