@@ -25,6 +25,7 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
@@ -103,13 +104,13 @@ public class Checks {
         for (Class<? extends JavaFileScanner> check : checksToAdd) {
             keyToCheck.put(getRuleKey(check), check);
         }
-        return keyToCheck;
+        return Collections.unmodifiableMap(keyToCheck);
     }
 
     static {
-        CHECKS_BY_TYPE = new EnumMap<>(CheckType.class);
+        Map<CheckType, Map<String, Class<? extends JavaFileScanner>>> typeToChecks = new EnumMap<>(CheckType.class);
 
-        CHECKS_BY_TYPE.put(
+        typeToChecks.put(
                 CheckType.BUG,
                 createKeyToCheckMap(
                         ControllerWithSessionAttributesCheck.class,
@@ -233,22 +234,24 @@ public class Checks {
                         NonNullSetToNullCheck.class,
                         CustomUnclosedResourcesCheck.class));
 
-        CHECKS_BY_TYPE.put(
+        typeToChecks.put(
                 CheckType.VULNERABILITY,
                 createKeyToCheckMap(
                         // , add vulnerability checks here
                         ));
 
-        CHECKS_BY_TYPE.put(
+        typeToChecks.put(
                 CheckType.SECURITY_HOTSPOT,
                 createKeyToCheckMap(
                         // , add sec hotspot checks here
                         ));
 
-        CHECKS_BY_TYPE.put(
+        typeToChecks.put(
                 CheckType.CODE_SMELL,
                 createKeyToCheckMap(
                         DeadStoreCheck.class, SerializableFieldInSerializableClassCheck.class));
+
+        CHECKS_BY_TYPE = Collections.unmodifiableMap(typeToChecks);
 
         // sanity check: all CheckType values should be accounted for
         for (CheckType type : CheckType.values()) {
