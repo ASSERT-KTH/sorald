@@ -38,7 +38,7 @@ import java.util.stream.Collectors;
 public class Checks {
 
     private static final Map<CheckType, Map<String, Class<? extends JavaFileScanner>>>
-            CHECKS_BY_TYPE;
+            TYPE_TO_CHECKS;
 
     public enum CheckType {
         BUG,
@@ -52,7 +52,7 @@ public class Checks {
      * @return All checks of the given type.
      */
     public static List<Class<? extends JavaFileScanner>> getChecksByType(CheckType checkType) {
-        return new ArrayList<>(CHECKS_BY_TYPE.get(checkType).values());
+        return new ArrayList<>(TYPE_TO_CHECKS.get(checkType).values());
     }
 
     /**
@@ -63,7 +63,7 @@ public class Checks {
      */
     public static Class<? extends JavaFileScanner> getCheck(String key) {
         final String strippedKey = stripDigits(key);
-        return CHECKS_BY_TYPE.values().stream()
+        return TYPE_TO_CHECKS.values().stream()
                 .map(checks -> checks.get(strippedKey))
                 .filter(Objects::nonNull)
                 .findFirst()
@@ -72,7 +72,7 @@ public class Checks {
 
     /** @return All Sonar-Java checks that Sorald currently keeps track of. */
     public static List<Class<? extends JavaFileScanner>> getAllChecks() {
-        return CHECKS_BY_TYPE.values().stream()
+        return TYPE_TO_CHECKS.values().stream()
                 .map(Map::values)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
@@ -251,11 +251,11 @@ public class Checks {
                 createKeyToCheckMap(
                         DeadStoreCheck.class, SerializableFieldInSerializableClassCheck.class));
 
-        CHECKS_BY_TYPE = Collections.unmodifiableMap(typeToChecks);
+        TYPE_TO_CHECKS = Collections.unmodifiableMap(typeToChecks);
 
         // sanity check: all CheckType values should be accounted for
         for (CheckType type : CheckType.values()) {
-            assert CHECKS_BY_TYPE.containsKey(type);
+            assert TYPE_TO_CHECKS.containsKey(type);
         }
 
     }
