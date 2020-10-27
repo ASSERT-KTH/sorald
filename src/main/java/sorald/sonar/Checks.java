@@ -257,6 +257,5 @@ public class Checks {
         for (CheckType type : CheckType.values()) {
             assert TYPE_TO_CHECKS.containsKey(type);
         }
-
     }
 }
