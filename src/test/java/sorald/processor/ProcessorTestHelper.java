@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.sonar.Checks;

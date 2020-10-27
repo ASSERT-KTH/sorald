@@ -1,27 +1,9 @@
 package sorald;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import org.sonar.java.checks.*;
-import org.sonar.java.checks.naming.MethodNamedEqualsCheck;
-import org.sonar.java.checks.naming.MethodNamedHashcodeOrEqualCheck;
-import org.sonar.java.checks.serialization.CustomSerializationMethodCheck;
-import org.sonar.java.checks.serialization.ExternalizableClassConstructorCheck;
-import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
-import org.sonar.java.checks.serialization.SerializableObjectInSessionCheck;
-import org.sonar.java.checks.serialization.SerializableSuperConstructorCheck;
-import org.sonar.java.checks.spring.ControllerWithSessionAttributesCheck;
-import org.sonar.java.checks.spring.SpringComponentWithWrongScopeCheck;
-import org.sonar.java.checks.spring.SpringIncompatibleTransactionalCheck;
-import org.sonar.java.checks.spring.SpringScanDefaultPackageCheck;
-import org.sonar.java.checks.synchronization.DoubleCheckedLockingCheck;
-import org.sonar.java.checks.synchronization.SynchronizationOnGetClassCheck;
-import org.sonar.java.checks.synchronization.TwoLocksWaitCheck;
-import org.sonar.java.checks.synchronization.ValueBasedObjectUsedForLockCheck;
-import org.sonar.java.checks.unused.UnusedReturnedDataCheck;
-import org.sonar.java.checks.unused.UnusedThrowableCheck;
 import org.sonar.java.se.checks.*;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.sonar.Checks;

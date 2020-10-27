@@ -1,5 +1,15 @@
 package sorald.sonar;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import org.sonar.check.Rule;
 import org.sonar.java.checks.*;
 import org.sonar.java.checks.naming.MethodNamedEqualsCheck;
@@ -21,17 +31,6 @@ import org.sonar.java.checks.unused.UnusedReturnedDataCheck;
 import org.sonar.java.checks.unused.UnusedThrowableCheck;
 import org.sonar.java.se.checks.*;
 import org.sonar.plugins.java.api.JavaFileScanner;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 /** Class for easily accessing Sonar check classes. */
 @SuppressWarnings({"unchecked", "UnstableApiUsage"})
@@ -108,7 +107,8 @@ public class Checks {
     }
 
     static {
-        Map<CheckType, Map<String, Class<? extends JavaFileScanner>>> typeToChecks = new EnumMap<>(CheckType.class);
+        Map<CheckType, Map<String, Class<? extends JavaFileScanner>>> typeToChecks =
+                new EnumMap<>(CheckType.class);
 
         typeToChecks.put(
                 CheckType.BUG,

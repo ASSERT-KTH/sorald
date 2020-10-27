@@ -1,5 +1,9 @@
 package sorald.sonar;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.CompareStringsBoxedTypesWithEqualsCheck;
 import org.sonar.java.checks.DeadStoreCheck;
@@ -8,11 +12,6 @@ import org.sonar.java.checks.NullShouldNotBeUsedWithOptionalCheck;
 import org.sonar.java.checks.ObjectFinalizeCheck;
 import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
-
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ChecksTest {
 
