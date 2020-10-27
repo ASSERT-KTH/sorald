@@ -6,13 +6,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.sonar.check.Rule;
+
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.sonar.Checks;
 
 /** Helper functions for {@link ProcessorTest}. */
 public class ProcessorTestHelper {
@@ -41,7 +41,7 @@ public class ProcessorTestHelper {
             File nonCompliantFile) {
         File directory = nonCompliantFile.getParentFile();
         assert directory.isDirectory();
-        String ruleKey = removeDigits(directory.getName().split("_")[0]);
+        String ruleKey = Checks.stripDigits(directory.getName().split("_")[0]);
         Class<T> checkClass = getCheckClassByKey(ruleKey);
         String ruleName = checkClass.getSimpleName().replaceFirst("Check$", "");
         String outfileDirRelpath =
@@ -72,10 +72,6 @@ public class ProcessorTestHelper {
         return "";
     }
 
-    private static String removeDigits(String s) {
-        return s.replaceAll("[^\\d]+", "");
-    }
-
     @SuppressWarnings("unchecked")
     private static <T extends JavaFileScanner> Class<T> getCheckClassByKey(String ruleKey) {
         // could use a static lookup table here for efficiency, but the list is so small at this
@@ -84,27 +80,12 @@ public class ProcessorTestHelper {
         // won't make a meaningful difference
         return (Class<T>)
                 Constants.SONAR_CHECK_CLASSES.stream()
-                        .filter(checkClass -> ruleKey.equals(getRuleKey(checkClass)))
+                        .filter(checkClass -> ruleKey.equals(Checks.getRuleKey(checkClass)))
                         .findFirst()
                         .orElseThrow(
                                 () ->
                                         new IllegalArgumentException(
                                                 "Could not find check class for key " + ruleKey));
-    }
-
-    /**
-     * Retrieve the numeric identifier of the rule related to the given check class. Non-digits are
-     * stripped, so e.g. S1234 becomes 1234.
-     */
-    private static String getRuleKey(Class<? extends JavaFileScanner> checkClass) {
-        return Arrays.stream(checkClass.getAnnotationsByType(Rule.class))
-                .map(Rule::key)
-                .map(ProcessorTestHelper::removeDigits)
-                .findFirst()
-                .orElseThrow(
-                        () ->
-                                new IllegalStateException(
-                                        checkClass.getName() + " does not have a key"));
     }
 
     /**
