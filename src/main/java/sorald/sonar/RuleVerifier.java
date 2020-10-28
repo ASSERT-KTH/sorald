@@ -111,7 +111,7 @@ public class RuleVerifier {
                         // TODO set the classpath to something reasonable
                         Collections.emptyList(),
                         sonarComponents,
-                        SymbolicExecutionMode.ENABLED);
+                        SymbolicExecutionMode.getMode(checks.toArray(new JavaFileScanner[0])));
         // TODO we may want to set the version of the visitors bridge, as without setting it the
         //      implementation defaults to the highest version supported by the parser (currently
         //      Java 14)
