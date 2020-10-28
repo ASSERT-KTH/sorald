@@ -1,0 +1,39 @@
+// Test for rule s2111
+
+import java.math.BigDecimal;
+import java.math.MathContext;
+
+public class BigDecimalDoubleConstructor {
+
+    // Tests from https://rules.sonarsource.com/java/type/Bug/RSPEC-2111
+    public void main(String[] args) {
+        double d = 1.1;
+        BigDecimal bd1 = BigDecimal.valueOf(d);
+        BigDecimal bd2 = BigDecimal.valueOf(1.1);
+    }
+
+    // Tests from https://github.com/SonarSource/sonar-java/blob/master/java-checks-test-sources/src/main/java/checks/BigDecimalDoubleConstructorCheck.java
+    public void main2(String[] args) {
+        MathContext mc;
+        BigDecimal bd1 = new BigDecimal("1");
+        BigDecimal bd2 = BigDecimal.valueOf(2.0);
+        BigDecimal bd4 = new BigDecimal("2.0", mc);
+        BigDecimal bd5 = BigDecimal.valueOf(2.0f);
+        BigDecimal bd6 = new BigDecimal("2.0", mc);
+        BigDecimal bd3 = BigDecimal.valueOf(2.0);
+    }
+
+    // Aditional tests
+    public void foo(String[] args) {
+        double d = 1.1;
+        float f = 2.2;
+        float f1 = 2f;
+        BigDecimal bd3 = BigDecimal.valueOf(f);
+        BigDecimal bd4 = BigDecimal.valueOf(f1);
+        BigDecimal bd5 = BigDecimal.valueOf(d);
+        BigDecimal bd6 = new BigDecimal("1.1");
+        BigDecimal bd7 = BigDecimal.valueOf(f);
+        BigDecimal bd8 = BigDecimal.valueOf(f1);
+    }
+
+}

@@ -8,16 +8,31 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.sonar.check.Rule;
+import java.util.stream.Stream;
+import org.sonar.java.checks.InterruptedExceptionCheck;
+import org.sonar.java.checks.SynchronizationOnStringOrBoxedCheck;
+import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.Main;
+import sorald.PrettyPrintingStrategy;
+import sorald.sonar.Checks;
+import sorald.sonar.RuleVerifier;
 
 /** Helper functions for {@link ProcessorTest}. */
 public class ProcessorTestHelper {
     static final Path TEST_FILES_ROOT =
             Paths.get(Constants.PATH_TO_RESOURCES_FOLDER).resolve("processor_test_files");
+    static final String EXPECTED_FILE_SUFFIX = ".expected";
+    // The processors related to these checks currently cause problems with the sniper printer
+    static final List<Class<?>> BROKEN_WITH_SNIPER =
+            Arrays.asList(
+                    SynchronizationOnStringOrBoxedCheck.class,
+                    InterruptedExceptionCheck.class,
+                    SerializableFieldInSerializableClassCheck.class);
 
     /**
      * Create a {@link ProcessorTestCase} from a non-compliant (according to SonarQube rules) Java
@@ -37,17 +52,18 @@ public class ProcessorTestHelper {
      *     SonarQube rule.
      * @return A {@link ProcessorTestCase} for the given Java file.
      */
+    @SuppressWarnings("unchecked")
     static <T extends JavaFileScanner> ProcessorTestCase<T> toProcessorTestCase(
             File nonCompliantFile) {
         File directory = nonCompliantFile.getParentFile();
         assert directory.isDirectory();
-        String ruleKey = removeDigits(directory.getName().split("_")[0]);
-        Class<T> checkClass = getCheckClassByKey(ruleKey);
+        String ruleKey = directory.getName().split("_")[0];
+        Class<T> checkClass = (Class<T>) Checks.getCheck(ruleKey);
         String ruleName = checkClass.getSimpleName().replaceFirst("Check$", "");
         String outfileDirRelpath =
                 parseSourceFilePackage(nonCompliantFile.toPath()).replace(".", File.separator);
         Path outfileRelpath = Paths.get(outfileDirRelpath).resolve(nonCompliantFile.getName());
-        return new ProcessorTestCase<T>(
+        return new ProcessorTestCase<>(
                 ruleName, ruleKey, nonCompliantFile, checkClass, outfileRelpath);
     }
 
@@ -72,39 +88,39 @@ public class ProcessorTestHelper {
         return "";
     }
 
-    private static String removeDigits(String s) {
-        return s.replaceAll("[^\\d]+", "");
-    }
-
-    @SuppressWarnings("unchecked")
-    private static <T extends JavaFileScanner> Class<T> getCheckClassByKey(String ruleKey) {
-        // could use a static lookup table here for efficiency, but the list is so small at this
-        // point
-        // that it
-        // won't make a meaningful difference
-        return (Class<T>)
-                Constants.SONAR_CHECK_CLASSES.stream()
-                        .filter(checkClass -> ruleKey.equals(getRuleKey(checkClass)))
-                        .findFirst()
-                        .orElseThrow(
-                                () ->
-                                        new IllegalArgumentException(
-                                                "Could not find check class for key " + ruleKey));
-    }
-
     /**
-     * Retrieve the numeric identifier of the rule related to the given check class. Non-digits are
-     * stripped, so e.g. S1234 becomes 1234.
+     * Return a stream of all valid test cases, based on the tests files in {@link
+     * ProcessorTestHelper#TEST_FILES_ROOT}.
      */
-    private static String getRuleKey(Class<? extends JavaFileScanner> checkClass) {
-        return Arrays.stream(checkClass.getAnnotationsByType(Rule.class))
-                .map(Rule::key)
-                .map(ProcessorTestHelper::removeDigits)
-                .findFirst()
-                .orElseThrow(
-                        () ->
-                                new IllegalStateException(
-                                        checkClass.getName() + " does not have a key"));
+    static Stream<ProcessorTestCase<?>> getTestCaseStream() {
+        return Arrays.stream(ProcessorTestHelper.TEST_FILES_ROOT.toFile().listFiles())
+                .filter(File::isDirectory)
+                .map(File::listFiles)
+                .flatMap(Arrays::stream)
+                .filter(file -> file.getName().endsWith(".java"))
+                .filter(file -> !file.getName().startsWith("IGNORE"))
+                .map(ProcessorTestHelper::toProcessorTestCase);
+    }
+
+    /** Run sorald on the given test case. */
+    static void runSorald(ProcessorTestCase<?> testCase) throws Exception {
+        String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
+        RuleVerifier.verifyHasIssue(originalFileAbspath, testCase.createCheckInstance());
+
+        boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(testCase.checkClass);
+        Main.main(
+                new String[] {
+                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    originalFileAbspath,
+                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
+                    testCase.ruleKey,
+                    Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
+                    Constants.SORALD_WORKSPACE,
+                    Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
+                    brokenWithSniper
+                            ? PrettyPrintingStrategy.NORMAL.name()
+                            : PrettyPrintingStrategy.SNIPER.name()
+                });
     }
 
     /**
@@ -145,6 +161,21 @@ public class ProcessorTestHelper {
                 throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
                         InstantiationException {
             return checkClass.getConstructor().newInstance();
+        }
+
+        public Optional<File> expectedOutfile() {
+            File expectedOutfile =
+                    nonCompliantFile
+                            .toPath()
+                            .resolveSibling(nonCompliantFile.getName() + EXPECTED_FILE_SUFFIX)
+                            .toFile();
+            return Optional.ofNullable(expectedOutfile.isFile() ? expectedOutfile : null);
+        }
+
+        public Path repairedFilePath() {
+            return Paths.get(Constants.SORALD_WORKSPACE)
+                    .resolve(Constants.SPOONED)
+                    .resolve(outfileRelpath);
         }
     }
 }
