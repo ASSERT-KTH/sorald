@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
+import org.sonar.java.checks.BigDecimalDoubleConstructorCheck;
+import org.sonar.java.checks.CastArithmeticOperandCheck;
+import org.sonar.java.checks.EqualsOnAtomicClassCheck;
 import sorald.Constants;
 import sorald.Main;
 import sorald.PrettyPrintingStrategy;
@@ -62,5 +65,30 @@ public class SegmentStrategyTest {
                     Constants.SORALD_WORKSPACE + "/SEGMENT/"
                 };
         assertThrows(RuntimeException.class, () -> Main.main(args));
+    }
+
+    @Test
+    public void segmentStrategy_repairsAllIssues_whenMultipleRulesAreViolated() throws Exception {
+        String fileName = "MultipleProcessors.java";
+        String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+        String pathToRepairedFile =
+                Constants.SORALD_WORKSPACE + "/" + Constants.SPOONED + "/" + fileName;
+
+        Main.main(
+                new String[] {
+                    Constants.ARG_SYMBOL + Constants.ARG_REPAIR_STRATEGY,
+                    "SEGMENT",
+                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    pathToBuggyFile,
+                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
+                    "2111,2184,2204",
+                    Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
+                    Constants.SORALD_WORKSPACE
+                });
+
+        TestHelper.removeComplianceComments(pathToRepairedFile);
+        RuleVerifier.verifyNoIssue(pathToRepairedFile, new BigDecimalDoubleConstructorCheck());
+        RuleVerifier.verifyNoIssue(pathToRepairedFile, new CastArithmeticOperandCheck());
+        RuleVerifier.verifyNoIssue(pathToRepairedFile, new EqualsOnAtomicClassCheck());
     }
 }
