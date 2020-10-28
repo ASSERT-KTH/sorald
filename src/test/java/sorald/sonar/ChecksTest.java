@@ -12,6 +12,7 @@ import org.sonar.java.checks.NullShouldNotBeUsedWithOptionalCheck;
 import org.sonar.java.checks.ObjectFinalizeCheck;
 import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
+import org.sonar.plugins.java.api.JavaFileScannerContext;
 
 class ChecksTest {
 
@@ -38,5 +39,23 @@ class ChecksTest {
                         DeadStoreCheck.class, SerializableFieldInSerializableClassCheck.class);
 
         assertTrue(codeSmellChecks.containsAll(expectedCodeSmellChecksSubset));
+    }
+
+    @Test
+    void test_getCheck_whenKeyDoesNotExist_throws() {
+        assertThrows(IllegalArgumentException.class, () -> Checks.getCheck("12345678"));
+    }
+
+    @Test
+    @SuppressWarnings("UnstableApiUsage")
+    void test_getRuleKey_whenCheckHasNoKey_throws() {
+        JavaFileScanner scannerWithoutKey =
+                j -> {
+                    return;
+                };
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> Checks.getRuleKey(scannerWithoutKey.getClass()));
     }
 }

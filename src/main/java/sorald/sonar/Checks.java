@@ -89,7 +89,7 @@ public class Checks {
                 .findFirst()
                 .orElseThrow(
                         () ->
-                                new IllegalStateException(
+                                new IllegalArgumentException(
                                         checkClass.getName() + " does not have a key"));
     }
 
