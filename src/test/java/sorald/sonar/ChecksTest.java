@@ -12,7 +12,6 @@ import org.sonar.java.checks.NullShouldNotBeUsedWithOptionalCheck;
 import org.sonar.java.checks.ObjectFinalizeCheck;
 import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
-import org.sonar.plugins.java.api.JavaFileScannerContext;
 
 class ChecksTest {
 
