@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
-import org.sonar.check.Rule;
 import org.sonar.java.checks.InterruptedExceptionCheck;
 import org.sonar.java.checks.SynchronizationOnStringOrBoxedCheck;
 import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
@@ -20,6 +19,7 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.Main;
 import sorald.PrettyPrintingStrategy;
+import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
 
 /** Helper functions for {@link ProcessorTest}. */
@@ -52,17 +52,18 @@ public class ProcessorTestHelper {
      *     SonarQube rule.
      * @return A {@link ProcessorTestCase} for the given Java file.
      */
+    @SuppressWarnings("unchecked")
     static <T extends JavaFileScanner> ProcessorTestCase<T> toProcessorTestCase(
             File nonCompliantFile) {
         File directory = nonCompliantFile.getParentFile();
         assert directory.isDirectory();
-        String ruleKey = removeDigits(directory.getName().split("_")[0]);
-        Class<T> checkClass = getCheckClassByKey(ruleKey);
+        String ruleKey = directory.getName().split("_")[0];
+        Class<T> checkClass = (Class<T>) Checks.getCheck(ruleKey);
         String ruleName = checkClass.getSimpleName().replaceFirst("Check$", "");
         String outfileDirRelpath =
                 parseSourceFilePackage(nonCompliantFile.toPath()).replace(".", File.separator);
         Path outfileRelpath = Paths.get(outfileDirRelpath).resolve(nonCompliantFile.getName());
-        return new ProcessorTestCase<T>(
+        return new ProcessorTestCase<>(
                 ruleName, ruleKey, nonCompliantFile, checkClass, outfileRelpath);
     }
 
@@ -85,41 +86,6 @@ public class ProcessorTestHelper {
             }
         }
         return "";
-    }
-
-    private static String removeDigits(String s) {
-        return s.replaceAll("[^\\d]+", "");
-    }
-
-    @SuppressWarnings("unchecked")
-    private static <T extends JavaFileScanner> Class<T> getCheckClassByKey(String ruleKey) {
-        // could use a static lookup table here for efficiency, but the list is so small at this
-        // point
-        // that it
-        // won't make a meaningful difference
-        return (Class<T>)
-                Constants.SONAR_CHECK_CLASSES.stream()
-                        .filter(checkClass -> ruleKey.equals(getRuleKey(checkClass)))
-                        .findFirst()
-                        .orElseThrow(
-                                () ->
-                                        new IllegalArgumentException(
-                                                "Could not find check class for key " + ruleKey));
-    }
-
-    /**
-     * Retrieve the numeric identifier of the rule related to the given check class. Non-digits are
-     * stripped, so e.g. S1234 becomes 1234.
-     */
-    private static String getRuleKey(Class<? extends JavaFileScanner> checkClass) {
-        return Arrays.stream(checkClass.getAnnotationsByType(Rule.class))
-                .map(Rule::key)
-                .map(ProcessorTestHelper::removeDigits)
-                .findFirst()
-                .orElseThrow(
-                        () ->
-                                new IllegalStateException(
-                                        checkClass.getName() + " does not have a key"));
     }
 
     /**
