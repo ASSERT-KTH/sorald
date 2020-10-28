@@ -78,6 +78,8 @@ public class SegmentStrategyTest {
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_REPAIR_STRATEGY,
                     "SEGMENT",
+                    Constants.ARG_SYMBOL + Constants.ARG_MAX_FILES_PER_SEGMENT,
+                    "1",
                     Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
                     pathToBuggyFile,
                     Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
