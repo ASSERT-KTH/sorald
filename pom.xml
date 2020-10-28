@@ -49,7 +49,7 @@
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>8.3.0-beta-13</version>
+            <version>8.3.0</version>
             <exclusions>
                 <exclusion>
                     <!-- must be excluded as it is signed, which causes problems with unsigned version from sonar -->
