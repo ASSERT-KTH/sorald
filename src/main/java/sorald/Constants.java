@@ -3,8 +3,6 @@ package sorald;
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
-import org.sonar.java.checks.*;
-import org.sonar.java.se.checks.*;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.sonar.Checks;
 
