@@ -20,4 +20,9 @@ public class RuleViolation {
     public String getFileName() {
         return message.getInputComponent().key().replace(":", "");
     }
+
+    /** @return The name of the check class that generated this warning. */
+    public String getCheckName() {
+        return message.getCheck().getClass().getSimpleName();
+    }
 }

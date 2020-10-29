@@ -59,6 +59,20 @@ public class RuleVerifier {
     @SuppressWarnings("UnstableApiUsage")
     public static Set<RuleViolation> analyze(
             List<String> filesToScan, File baseDir, JavaFileScanner check) {
+        return analyze(filesToScan, baseDir, Collections.singletonList(check));
+    }
+
+    /**
+     * Analyze the files with respect to check.
+     *
+     * @param filesToScan A list of paths to files.
+     * @param baseDir The base directory of the current project.
+     * @param checks Sonar checks to use.
+     * @return All messages produced by the analyzer, for all files.
+     */
+    @SuppressWarnings("UnstableApiUsage")
+    public static Set<RuleViolation> analyze(
+            List<String> filesToScan, File baseDir, List<JavaFileScanner> checks) {
         List<InputFile> inputFiles =
                 filesToScan.stream()
                         .map(filename -> toInputFile(baseDir, filename))
@@ -66,7 +80,7 @@ public class RuleVerifier {
 
         SoraldSonarComponents sonarComponents = createSonarComponents(baseDir);
         JavaAstScanner scanner =
-                createAstScanner(sonarComponents, Collections.singletonList(check));
+                createAstScanner(sonarComponents, checks);
 
         scanner.scan(inputFiles);
 

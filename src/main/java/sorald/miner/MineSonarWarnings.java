@@ -202,11 +202,14 @@ public class MineSonarWarnings {
                     e.printStackTrace();
                 }
             }
-            for (JavaFileScanner javaFileScanner : SONAR_CHECK_INSTANCES) {
-                Set<RuleViolation> ruleViolations =
-                        RuleVerifier.analyze(filesToScan, file, javaFileScanner);
-                warnings.putIfAbsent(
-                        javaFileScanner.getClass().getSimpleName(), ruleViolations.size());
+            SONAR_CHECK_INSTANCES.stream()
+                    .map(Object::getClass)
+                    .map(Class::getSimpleName)
+                    .forEach(name -> warnings.put(name, 0));
+            for (RuleViolation violation :
+                    RuleVerifier.analyze(filesToScan, file, SONAR_CHECK_INSTANCES)) {
+                String key = violation.getCheckName();
+                warnings.put(key, warnings.get(key) + 1);
             }
         } catch (Exception e) {
             e.printStackTrace();
