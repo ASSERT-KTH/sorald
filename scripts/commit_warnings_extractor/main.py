@@ -57,25 +57,26 @@ def extract_warning_stats_from_remote_repo(
 ) -> Mapping[str, Mapping[str, int]]:
     with tempfile.TemporaryDirectory() as tmpdir:
         workdir = pathlib.Path(tmpdir)
-        repo_root = workdir / "repo"
+        repo_root = workdir / pathlib.Path(repo_url).stem
         repo = git.Repo.clone_from(repo_url, to_path=repo_root)
-        commits = list(repo.iter_commits())
-        return extract_warnings_stats_from_local_repo(repo, commits)
+        commits = [commit.hexsha for commit in repo.iter_commits()]
+        return extract_warnings_stats_from_local_repo(repo_root, commits)
 
 
 def extract_warnings_stats_from_local_repo(
-    repo: git.Repo, commits: List[git.Commit]
+    repo_root: pathlib.Path, commits: List[str]
 ) -> Mapping[str, Mapping[str, int]]:
-    with multiprocessing.Pool(1) as pool:
-        extract = functools.partial(extract_commit_warning_stats, repo=repo)
-        warnings_extraction_iter = map(extract, commits)
+    # assuming 2 threads per core
+    num_cpus = multiprocessing.cpu_count() // 4
+    with multiprocessing.Pool(num_cpus) as pool:
+        extract = functools.partial(extract_commit_warning_stats, repo_root=repo_root)
+        warnings_extraction_iter = pool.imap(extract, commits)
 
-        remote_url = next(repo.remote().urls)
         warnings_extraction_progress = tqdm(
             warnings_extraction_iter,
             total=len(commits),
             unit="commit",
-            desc=f"Processing {remote_url}",
+            desc=f"Processing {repo_root.name}",
         )
 
         return {
@@ -86,15 +87,15 @@ def extract_warnings_stats_from_local_repo(
 
 
 def extract_commit_warning_stats(
-    commit: git.Commit, repo: git.Repo
+    commit_sha: str, repo_root: pathlib.Path
 ) -> Tuple[str, Mapping[str, int]]:
-    return commit.hexsha, _extract_commit_warning_stats(commit, repo)
+    return commit_sha, _extract_commit_warning_stats(commit_sha, repo_root)
 
 
 def _extract_commit_warning_stats(
-    commit: git.Commit, repo: git.Repo
+    commit_sha: str, repo_root: pathlib.Path
 ) -> Mapping[str, int]:
-    with temporary_checkout(repo, commit.hexsha) as checkout_path:
+    with temporary_checkout(repo_root, commit_sha) as checkout_path:
         proc = subprocess.run(
             [
                 "java",
@@ -131,7 +132,8 @@ def find_source_main(project_root: pathlib.Path) -> pathlib.Path:
 
 
 @contextlib.contextmanager
-def temporary_checkout(repo: git.Repo, ref: str):
+def temporary_checkout(repo_root: pathlib.Path, ref: str):
+    repo = git.Repo(repo_root)
     with tempfile.TemporaryDirectory() as tmpdir:
         workdir = pathlib.Path(tmpdir)
         path_hash = hashlib.sha1(str(workdir).encode("utf8")).hexdigest()
