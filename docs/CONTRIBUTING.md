@@ -27,6 +27,13 @@ So the name of your new processor is `CastArithmeticOperandCheck` replacing "Che
 Once you have the name for the new processor, you can create a class using that name in `src/main/java/sorald/processor`.
 This new class must extend `SoraldAbstractProcessor` and implement the methods `isToBeProcessed` and `process` (check out real examples of processors [here](/src/main/java/sorald/processor)).
 
+When you have created your processor, you must also add the check class to one
+of the four categories of check classes in the static code block in
+[Checks.java](/src/main/java/sorald/sonar/Checks.java), if it is not already
+present. To find out which category to add your check to, look it up on the
+[SonarSource website](https://rules.sonarsource.com/java), the category is
+listed just below the rule title.
+
 3) Add at least one test file with expected output for your processor
 
 Tests for the processors are automatically generated based on a set of test
@@ -44,10 +51,10 @@ inline comment saying `Noncompliant` at the end of the line like so:
 "a" == "b" // Noncompliant
 ```
 
-For each noncompliant input file `SomeFile.java`, you should also add an expected
-output file called `SomeFile.java.expected` in the same directory. Each such
-"expected" file should contain the expected output from processing its
-corresponding noncompliant file with your new processor. For a concrete
+For each noncompliant input file `SomeFile.java`, you should also add an
+expected output file called `SomeFile.java.expected` in the same directory.
+Each such "expected" file should contain the expected output from processing
+its corresponding noncompliant file with your new processor. For a concrete
 excample, see the noncompliant file
 [ArrayHashCodeAndToString.java](/src/test/resources/processor_test_files/2116_ArrayHashCodeAndToString/ArrayHashCodeAndToString.java)
 and its expected output
