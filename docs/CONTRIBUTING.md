@@ -27,7 +27,7 @@ So the name of your new processor is `CastArithmeticOperandCheck` replacing "Che
 Once you have the name for the new processor, you can create a class using that name in `src/main/java/sorald/processor`.
 This new class must extend `SoraldAbstractProcessor` and implement the methods `isToBeProcessed` and `process` (check out real examples of processors [here](/src/main/java/sorald/processor)).
 
-3) Add at least one test file for your processor
+3) Add at least one test file with expected output for your processor
 
 Tests for the processors are automatically generated based on a set of test
 files in
@@ -44,9 +44,19 @@ inline comment saying `Noncompliant` at the end of the line like so:
 "a" == "b" // Noncompliant
 ```
 
-The names of the Java source files do not matter, but try to name them
-something informative about the violation(s) contained in them. For examples,
-see the test file directories and files in
+For each noncompliant input file `SomeFile.java`, you should also add an expected
+output file called `SomeFile.java.expected` in the same directory. Each such
+"expected" file should contain the expected output from processing its
+corresponding noncompliant file with your new processor. For a concrete
+excample, see the noncompliant file
+[ArrayHashCodeAndToString.java](/src/test/resources/processor_test_files/2116_ArrayHashCodeAndToString/ArrayHashCodeAndToString.java)
+and its expected output
+[ArrayHashCodeAndToString.java.expected](/src/test/resources/processor_test_files/2116_ArrayHashCodeAndToString/ArrayHashCodeAndToString.java.expected).
+
+The precise names of the Java source files do not matter, as long as the
+noncompliant files are suffixed with `.java` and each expected file
+is suffixed with `.expected` and has a matching noncompliant file.
+For more examples, see
 [src/test/resources/processor_test_files](/src/test/resources/processor_test_files).
 
 > See
