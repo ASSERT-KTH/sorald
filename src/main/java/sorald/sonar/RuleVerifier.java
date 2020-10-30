@@ -63,12 +63,12 @@ public class RuleVerifier {
     }
 
     /**
-     * Analyze the files with respect to check.
+     * Analyze the files with all of the provided checks.
      *
      * @param filesToScan A list of paths to files.
      * @param baseDir The base directory of the current project.
      * @param checks Sonar checks to use.
-     * @return All messages produced by the analyzer, for all files.
+     * @return All messages produced by the analyzer, for all files and all checks.
      */
     @SuppressWarnings("UnstableApiUsage")
     public static Set<RuleViolation> analyze(
