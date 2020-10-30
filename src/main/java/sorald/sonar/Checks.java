@@ -14,6 +14,13 @@ import org.sonar.check.Rule;
 import org.sonar.java.checks.*;
 import org.sonar.java.checks.naming.MethodNamedEqualsCheck;
 import org.sonar.java.checks.naming.MethodNamedHashcodeOrEqualCheck;
+import org.sonar.java.checks.security.AESAlgorithmCheck;
+import org.sonar.java.checks.security.CryptographicKeySizeCheck;
+import org.sonar.java.checks.security.EncryptionAlgorithmCheck;
+import org.sonar.java.checks.security.LDAPDeserializationCheck;
+import org.sonar.java.checks.security.OpenSAML2AuthenticationBypassCheck;
+import org.sonar.java.checks.security.SMTPSSLServerIdentityCheck;
+import org.sonar.java.checks.security.SecureXmlTransformerCheck;
 import org.sonar.java.checks.serialization.CustomSerializationMethodCheck;
 import org.sonar.java.checks.serialization.ExternalizableClassConstructorCheck;
 import org.sonar.java.checks.serialization.NonSerializableWriteCheck;
@@ -21,6 +28,8 @@ import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassC
 import org.sonar.java.checks.serialization.SerializableObjectInSessionCheck;
 import org.sonar.java.checks.serialization.SerializableSuperConstructorCheck;
 import org.sonar.java.checks.spring.ControllerWithSessionAttributesCheck;
+import org.sonar.java.checks.spring.RequestMappingMethodPublicCheck;
+import org.sonar.java.checks.spring.SpringAntMatcherOrderCheck;
 import org.sonar.java.checks.spring.SpringComponentWithWrongScopeCheck;
 import org.sonar.java.checks.spring.SpringIncompatibleTransactionalCheck;
 import org.sonar.java.checks.spring.SpringScanDefaultPackageCheck;
@@ -238,8 +247,24 @@ public class Checks {
         typeToChecks.put(
                 CheckType.VULNERABILITY,
                 createKeyToCheckMap(
-                        // , add vulnerability checks here
-                        ));
+                        EncryptionAlgorithmCheck.class,
+                        StrongCipherAlgorithmCheck.class,
+                        AESAlgorithmCheck.class,
+                        RSAUsesOAEPCheck.class,
+                        DeprecatedHashAlgorithmCheck.class,
+                        LDAPDeserializationCheck.class,
+                        CryptographicKeySizeCheck.class,
+                        RequestMappingMethodPublicCheck.class,
+                        SpringAntMatcherOrderCheck.class,
+                        PredictableSeedCheck.class,
+                        MainInServletCheck.class,
+                        OpenSAML2AuthenticationBypassCheck.class,
+                        WeakSSLContextCheck.class,
+                        AvoidDESCheck.class,
+                        SMTPSSLServerIdentityCheck.class,
+                        ServletMethodsExceptionsThrownCheck.class,
+                        SecureXmlTransformerCheck.class,
+                        MutableMembersUsageCheck.class));
 
         typeToChecks.put(
                 CheckType.SECURITY_HOTSPOT,
