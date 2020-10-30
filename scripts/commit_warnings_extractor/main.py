@@ -57,15 +57,6 @@ def extract_warnings(repo_urls: List[str], output_dir: pathlib.Path) -> None:
     print(f"Results written to {output_dir}")
 
 
-def compute_deltas(stats_per_commit: Mapping[str, Mapping[str, int]]) -> pd.DataFrame:
-    """Compute deltas between the commits for each warning, in order. A
-    negative delta indicates removal of warnings, and positive delta indicates
-    warnings added with the commit. In other words, a negative delta is good,
-    a positive delta is bad, and a 0-delta is neither.
-    """
-    frame = pd.DataFrame.from_dict(stats_per_commit)
-
-
 def extract_warning_stats_from_remote_repo(
     repo_url: str,
 ) -> Mapping[str, Mapping[str, int]]:
