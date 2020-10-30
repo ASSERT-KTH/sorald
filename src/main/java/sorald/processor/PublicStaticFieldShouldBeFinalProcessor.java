@@ -1,6 +1,5 @@
 package sorald.processor;
 
-import java.util.Set;
 import org.sonar.java.checks.PublicStaticFieldShouldBeFinalCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
@@ -16,11 +15,7 @@ public class PublicStaticFieldShouldBeFinalProcessor extends SoraldAbstractProce
 
     @Override
     public boolean isToBeProcessed(CtField<?> candidate) {
-        if (!super.isToBeProcessedAccordingToStandards(candidate)) {
-            return false;
-        }
-        Set<ModifierKind> modifiers = candidate.getModifiers();
-        return modifiers.contains(ModifierKind.PUBLIC) && !modifiers.contains(ModifierKind.FINAL);
+        return super.isToBeProcessedAccordingToStandards(candidate);
     }
 
     @Override
