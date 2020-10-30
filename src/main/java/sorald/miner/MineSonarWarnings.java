@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.apache.commons.io.FileUtils;
@@ -185,7 +186,11 @@ public class MineSonarWarnings {
     }
 
     private static Map<String, Integer> extractWarnings(String projectPath) {
-        Map<String, Integer> warnings = new HashMap<>();
+        final Map<String, Integer> warnings = new HashMap<>();
+        SONAR_CHECK_INSTANCES.stream()
+                .map(Object::getClass)
+                .map(Class::getSimpleName)
+                .forEach(checkName -> warnings.put(checkName, 0));
 
         try {
             List<String> filesToScan = new ArrayList<>();
@@ -202,15 +207,11 @@ public class MineSonarWarnings {
                     e.printStackTrace();
                 }
             }
-            SONAR_CHECK_INSTANCES.stream()
-                    .map(Object::getClass)
-                    .map(Class::getSimpleName)
-                    .forEach(name -> warnings.put(name, 0));
-            for (RuleViolation violation :
-                    RuleVerifier.analyze(filesToScan, file, SONAR_CHECK_INSTANCES)) {
-                String key = violation.getCheckName();
-                warnings.put(key, warnings.get(key) + 1);
-            }
+            Consumer<String> incrementWarningCount =
+                    (checkName) -> warnings.put(checkName, warnings.get(checkName) + 1);
+            RuleVerifier.analyze(filesToScan, file, SONAR_CHECK_INSTANCES).stream()
+                    .map(RuleViolation::getCheckName)
+                    .forEach(incrementWarningCount);
         } catch (Exception e) {
             e.printStackTrace();
         }
