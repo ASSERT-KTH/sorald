@@ -25,7 +25,7 @@ So the name of your new processor is `CastArithmeticOperandCheck` replacing "Che
 2) Create the processor
 
 Once you have the name for the new processor, you can create a class using that name in `src/main/java/sorald/processor`.
-This new class must extend `SQRAbstractProcessor` and implement the methods `isToBeProcessed` and `process` (check out real examples of processors [here](/src/main/java/sorald/processor)).
+This new class must extend `SoraldAbstractProcessor` and implement the methods `isToBeProcessed` and `process` (check out real examples of processors [here](/src/main/java/sorald/processor)).
 
 3) Add at least one test file for your processor
 
