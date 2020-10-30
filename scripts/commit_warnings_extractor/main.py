@@ -46,8 +46,13 @@ def extract_warnings(repo_urls: List[str], output_dir: pathlib.Path) -> None:
     for repo_url in repo_url_iter:
         warning_stats = extract_warning_stats_from_remote_repo(repo_url)
         frame = pd.DataFrame.from_dict(warning_stats)
-        raw_data_dst = WARNING_STATS_OUTPUT_DIR / repo_url.replace("/", "_")
+        raw_data_dst = WARNING_STATS_OUTPUT_DIR / (
+            repo_url.replace("/", "_").replace(":", "_") + ".csv"
+        )
         raw_data_dst.write_text(frame.to_csv())
+
+        deltas_dst = WARNING_STATS_OUTPUT_DIR / (raw_data_dst.stem + ".deltas.csv")
+        deltas_dst.write_text(frame.diff(axis=1).fillna(frame.iloc[0]).to_csv())
 
     print(f"Results written to {output_dir}")
 
@@ -151,6 +156,7 @@ def temporary_checkout(repo_root: pathlib.Path, ref: str):
             yield repo_copy_dir
         finally:
             repo.git.worktree("remove", str(repo_copy_dir))
+
 
 if __name__ == "__main__":
     main()
