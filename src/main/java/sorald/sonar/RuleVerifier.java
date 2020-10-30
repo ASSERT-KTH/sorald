@@ -79,8 +79,7 @@ public class RuleVerifier {
                         .collect(Collectors.toList());
 
         SoraldSonarComponents sonarComponents = createSonarComponents(baseDir);
-        JavaAstScanner scanner =
-                createAstScanner(sonarComponents, checks);
+        JavaAstScanner scanner = createAstScanner(sonarComponents, checks);
 
         scanner.scan(inputFiles);
 
