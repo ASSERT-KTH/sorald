@@ -15,6 +15,7 @@ import csv
 
 import git
 from tqdm import tqdm
+import pandas as pd
 
 from typing import Tuple, List, Mapping
 
@@ -26,7 +27,7 @@ SORALD_JAR_PATH = (
 ).resolve(strict=True)
 
 REPOS = (
-    "https://github.com/inria/spoon",
+    # "https://github.com/inria/spoon",
     "https://github.com/mayurkadampro/Tic-Tac-Toe",
     "https://github.com/slarse/pkgextractor",
 )
@@ -44,12 +45,20 @@ def extract_warnings(repo_urls: List[str], output_dir: pathlib.Path) -> None:
 
     for repo_url in repo_url_iter:
         warning_stats = extract_warning_stats_from_remote_repo(repo_url)
-        write_warning_stats(
-            dst=WARNING_STATS_OUTPUT_DIR / repo_url.replace("/", "_"),
-            stats_per_commit=warning_stats,
-        )
+        frame = pd.DataFrame.from_dict(warning_stats)
+        raw_data_dst = WARNING_STATS_OUTPUT_DIR / repo_url.replace("/", "_")
+        raw_data_dst.write_text(frame.to_csv())
 
     print(f"Results written to {output_dir}")
+
+
+def compute_deltas(stats_per_commit: Mapping[str, Mapping[str, int]]) -> pd.DataFrame:
+    """Compute deltas between the commits for each warning, in order. A
+    negative delta indicates removal of warnings, and positive delta indicates
+    warnings added with the commit. In other words, a negative delta is good,
+    a positive delta is bad, and a 0-delta is neither.
+    """
+    frame = pd.DataFrame.from_dict(stats_per_commit)
 
 
 def extract_warning_stats_from_remote_repo(
@@ -79,11 +88,9 @@ def extract_warnings_stats_from_local_repo(
             desc=f"Processing {repo_root.name}",
         )
 
-        return {
-            hexsha: stats_dict
-            for hexsha, stats_dict in warnings_extraction_progress
-            if stats_dict
-        }
+        # reverse such that most recent commit ends up last in collection
+        results = reversed(list(warnings_extraction_progress))
+        return {hexsha: stats_dict for hexsha, stats_dict in results if stats_dict}
 
 
 def extract_commit_warning_stats(
@@ -113,7 +120,7 @@ def _extract_commit_warning_stats(
 
     output = proc.stdout.decode(encoding=sys.getdefaultencoding())
 
-    stat_lines = (
+    stat_lines = sorted(
         stripped_line
         for line in output.split("\n")
         if (stripped_line := line.strip()) and not stripped_line.startswith("INFO ")
@@ -144,23 +151,6 @@ def temporary_checkout(repo_root: pathlib.Path, ref: str):
             yield repo_copy_dir
         finally:
             repo.git.worktree("remove", str(repo_copy_dir))
-
-
-def write_warning_stats(
-    dst: pathlib.Path, stats_per_commit: Mapping[str, Mapping[str, int]]
-) -> None:
-    if not stats_per_commit:
-        raise ValueError("stats is empty")
-
-    sorted_rule_names = sorted(list(stats_per_commit.values())[0].keys())
-    with open(dst, mode="w", encoding="utf8") as file:
-        writer = csv.writer(file)
-        writer.writerow(["commit", *sorted_rule_names])
-        for commit_sha, commit_stats in stats_per_commit.items():
-            row_stats = [commit_stats[header] for header in sorted_rule_names]
-            row = [commit_sha, *row_stats]
-            writer.writerow(row)
-
 
 if __name__ == "__main__":
     main()
