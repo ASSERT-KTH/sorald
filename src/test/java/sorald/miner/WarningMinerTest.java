@@ -9,9 +9,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import sorald.Constants;
+import sorald.sonar.Checks;
 
 public class WarningMinerTest {
 
@@ -25,6 +28,44 @@ public class WarningMinerTest {
         fileName = "warning_miner/test_results.txt";
         File correctResults = new File(Constants.PATH_TO_RESOURCES_FOLDER + fileName);
 
+        runMiner(pathToRepos, outputFile.getPath(), temp.getPath());
+
+        List<String> expectedLines = extractSortedNonZeroChecks(correctResults.toPath());
+        List<String> actualLines = extractSortedNonZeroChecks(outputFile.toPath());
+
+        assertFalse(expectedLines.isEmpty(), "sanity check failure, expected output is empty");
+        assertThat(actualLines, equalTo(expectedLines));
+    }
+
+    /** Test that extracting warnings gives results even for rules that are not violated. */
+    @Test
+    public void extractWarnings_accountsForAllRules_whenManyAreNotViolated() throws Exception {
+        File outputFile = File.createTempFile("warnings", null),
+                temp = Files.createTempDirectory("tempDir").toFile();
+        String fileName = "warning_miner/test_repos.txt";
+        String pathToRepos = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+
+        runMiner(pathToRepos, outputFile.getPath(), temp.getPath());
+
+        List<String> expectedChecks =
+                Checks.getAllChecks().stream()
+                        .map(Class::getSimpleName)
+                        .sorted()
+                        .collect(Collectors.toList());
+        Pattern checkNamePattern = Pattern.compile("^(.*)=\\d+$");
+        List<String> actualChecks =
+                Files.readAllLines(outputFile.toPath()).stream()
+                        .map(checkNamePattern::matcher)
+                        .filter(Matcher::matches)
+                        .map(m -> m.group(1))
+                        .sorted()
+                        .collect(Collectors.toList());
+
+        assertThat(actualChecks, equalTo(expectedChecks));
+    }
+
+    private static void runMiner(String pathToRepos, String pathToOutput, String pathToTempDir)
+            throws Exception {
         MineSonarWarnings.main(
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_STATS_ON_GIT_REPOS,
@@ -32,16 +73,10 @@ public class WarningMinerTest {
                     Constants.ARG_SYMBOL + Constants.ARG_GIT_REPOS_LIST,
                     pathToRepos,
                     Constants.ARG_SYMBOL + Constants.ARG_STATS_OUTPUT_FILE,
-                    outputFile.getPath(),
+                    pathToOutput,
                     Constants.ARG_SYMBOL + Constants.ARG_TEMP_DIR,
-                    temp.getPath()
+                    pathToTempDir
                 });
-
-        List<String> expectedLines = extractSortedNonZeroChecks(correctResults.toPath());
-        List<String> actualLines = extractSortedNonZeroChecks(outputFile.toPath());
-
-        assertFalse(expectedLines.isEmpty(), "sanity check failure, expected output is empty");
-        assertThat(actualLines, equalTo(expectedLines));
     }
 
     /**
