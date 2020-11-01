@@ -250,7 +250,9 @@ public class Checks {
         typeToChecks.put(
                 CheckType.CODE_SMELL,
                 createKeyToCheckMap(
-                        DeadStoreCheck.class, SerializableFieldInSerializableClassCheck.class));
+                        DeadStoreCheck.class,
+                        SerializableFieldInSerializableClassCheck.class,
+                        PublicStaticFieldShouldBeFinalCheck.class));
 
         TYPE_TO_CHECKS = Collections.unmodifiableMap(typeToChecks);
 

@@ -21,6 +21,7 @@ Sorald can currently repair violations of the following rules:
 * [Code Smell](#code-smell)
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
+    * ["public static" fields should be constant](#public-static-fields-should-be-constant-sonar-rule-1444) ([Sonar Rule 1444](https://rules.sonarsource.com/java/RSPEC-1444))
 
 ### *Bug*
 
@@ -378,3 +379,18 @@ Example:
 ```
 
 Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/2265) that repairs one DeadStore violation.
+
+#### "public static" fields should be constant ([Sonar Rule 1444](https://rules.sonarsource.com/java/RSPEC-1444))
+
+The repair consists of making public static fields final.
+
+Example:
+```diff
+ public class NonFinalPublicStaticField {
+-    public static Integer meaningOfLife = 42;
++    public static final Integer meaningOfLife = 42;
+     private static Integer CATCH = 22; // Compliant
+     protected static Integer order = 66; // Compliant
+     static Integer roadToHill = 30; // Compliant
+ }
+```
