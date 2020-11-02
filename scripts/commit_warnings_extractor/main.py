@@ -27,24 +27,40 @@ SORALD_JAR_PATH = (
 ).resolve(strict=True)
 
 REPOS = (
-    # "https://github.com/inria/spoon",
-    "https://github.com/mayurkadampro/Tic-Tac-Toe",
-    "https://github.com/slarse/pkgextractor",
+    "https://github.com/inria/spoon",
+    "https://github.com/apache/struts",
 )
 
 WARNING_STATS_OUTPUT_DIR = pathlib.Path(__file__).parent / "warning_stats_output"
 
+NUM_COMMITS_PER_REPO = 20
+COMMIT_STEP_SIZE = 20
+
 
 def main():
-    extract_warnings(repo_urls=REPOS, output_dir=WARNING_STATS_OUTPUT_DIR)
+    extract_warnings(
+        repo_urls=REPOS,
+        output_dir=WARNING_STATS_OUTPUT_DIR,
+        num_commits_per_repo=NUM_COMMITS_PER_REPO,
+        commit_step_size=COMMIT_STEP_SIZE,
+    )
 
 
-def extract_warnings(repo_urls: List[str], output_dir: pathlib.Path) -> None:
+def extract_warnings(
+    repo_urls: List[str],
+    output_dir: pathlib.Path,
+    num_commits_per_repo: int,
+    commit_step_size: int,
+) -> None:
     repo_url_iter = tqdm(repo_urls, desc="Overall progress", unit="repo")
     output_dir.mkdir(exist_ok=True, parents=True)
 
     for repo_url in repo_url_iter:
-        warning_stats = extract_warning_stats_from_remote_repo(repo_url)
+        warning_stats = extract_warning_stats_from_remote_repo(
+            repo_url,
+            num_commits=num_commits_per_repo,
+            commit_step_size=commit_step_size,
+        )
         frame = pd.DataFrame.from_dict(warning_stats)
         raw_data_dst = WARNING_STATS_OUTPUT_DIR / (
             repo_url.replace("/", "_").replace(":", "_") + ".csv"
@@ -58,13 +74,15 @@ def extract_warnings(repo_urls: List[str], output_dir: pathlib.Path) -> None:
 
 
 def extract_warning_stats_from_remote_repo(
-    repo_url: str,
+    repo_url: str, num_commits: int, commit_step_size: int
 ) -> Mapping[str, Mapping[str, int]]:
     with tempfile.TemporaryDirectory() as tmpdir:
         workdir = pathlib.Path(tmpdir)
         repo_root = workdir / pathlib.Path(repo_url).stem
         repo = git.Repo.clone_from(repo_url, to_path=repo_root)
-        commits = [commit.hexsha for commit in repo.iter_commits()]
+        commits = [commit.hexsha for commit in repo.iter_commits()][::commit_step_size][
+            :num_commits
+        ]
         return extract_warnings_stats_from_local_repo(repo_root, commits)
 
 
