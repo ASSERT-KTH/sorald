@@ -22,6 +22,7 @@ public class Constants {
     public static final String ARG_MAX_FIXES_PER_RULE = "maxFixesPerRule";
     public static final String ARG_REPAIR_STRATEGY = "repairStrategy";
     public static final String ARG_MAX_FILES_PER_SEGMENT = "maxFilesPerSegment";
+    public static final String ARG_RULE_TYPES = "ruleTypes";
 
     public static final String PROCESSOR_PACKAGE = "sorald.processor";
 

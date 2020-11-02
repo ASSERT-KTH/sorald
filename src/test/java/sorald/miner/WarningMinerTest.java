@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
 import org.sonar.java.AnalysisException;
 import org.sonar.plugins.java.api.JavaFileScanner;
@@ -40,6 +42,40 @@ public class WarningMinerTest {
         assertThat(actualLines, equalTo(expectedLines));
     }
 
+    /**
+     * Test that the warnings miner respects the --ruleTypes option, and only uses checks of that
+     * type when given.
+     */
+    @Test
+    public void warningsMiner_onlyScansForGivenTypes_whenRuleTypesGiven() throws Exception {
+        List<Checks.CheckType> checkTypes =
+                Arrays.asList(Checks.CheckType.VULNERABILITY, Checks.CheckType.CODE_SMELL);
+        String checkTypesArg =
+                Constants.ARG_SYMBOL
+                        + Constants.ARG_RULE_TYPES
+                        + " "
+                        + checkTypes.stream()
+                                .map(Checks.CheckType::getLabel)
+                                .collect(Collectors.joining(" "));
+
+        String fileName = "warning_miner/test_repos.txt";
+        String pathToRepos = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+        File outputFile = File.createTempFile("warnings", null);
+
+        runMiner(pathToRepos, outputFile.getPath(), checkTypesArg);
+
+        List<String> expectedChecks =
+                checkTypes.stream()
+                        .map(Checks::getChecksByType)
+                        .flatMap(List::stream)
+                        .map(Class::getSimpleName)
+                        .sorted()
+                        .collect(Collectors.toList());
+        List<String> actualChecks = extractSortedCheckNames(outputFile.toPath());
+
+        assertThat(actualChecks, equalTo(expectedChecks));
+    }
+
     /** Test that extracting warnings gives results even for rules that are not violated. */
     @Test
     public void extractWarnings_accountsForAllRules_whenManyAreNotViolated() throws Exception {
@@ -55,14 +91,7 @@ public class WarningMinerTest {
                         .map(Class::getSimpleName)
                         .sorted()
                         .collect(Collectors.toList());
-        Pattern checkNamePattern = Pattern.compile("^(.*)=\\d+$");
-        List<String> actualChecks =
-                Files.readAllLines(outputFile.toPath()).stream()
-                        .map(checkNamePattern::matcher)
-                        .filter(Matcher::matches)
-                        .map(m -> m.group(1))
-                        .sorted()
-                        .collect(Collectors.toList());
+        List<String> actualChecks = extractSortedCheckNames(outputFile.toPath());
 
         assertThat(actualChecks, equalTo(expectedChecks));
     }
@@ -82,9 +111,10 @@ public class WarningMinerTest {
                                 Constants.PATH_TO_RESOURCES_FOLDER, Arrays.asList(crashyCheck)));
     }
 
-    private static void runMiner(String pathToRepos, String pathToOutput, String pathToTempDir)
+    private static void runMiner(
+            String pathToRepos, String pathToOutput, String pathToTempDir, String... extraArgs)
             throws Exception {
-        MineSonarWarnings.main(
+        String[] baseArgs =
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_STATS_ON_GIT_REPOS,
                     "true",
@@ -94,7 +124,21 @@ public class WarningMinerTest {
                     pathToOutput,
                     Constants.ARG_SYMBOL + Constants.ARG_TEMP_DIR,
                     pathToTempDir
-                });
+                };
+        String[] fullArgs =
+                Stream.of(baseArgs, extraArgs).flatMap(Arrays::stream).toArray(String[]::new);
+        MineSonarWarnings.main(fullArgs);
+    }
+
+    /** Extract check names from the warnings miner output file, sorted lexicographically. */
+    private static List<String> extractSortedCheckNames(Path outputFile) throws IOException {
+        Pattern checkNamePattern = Pattern.compile("^(.*)=\\d+$");
+        return Files.readAllLines(outputFile).stream()
+                .map(checkNamePattern::matcher)
+                .filter(Matcher::matches)
+                .map(m -> m.group(1))
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     /**
