@@ -50,19 +50,21 @@ public class WarningMinerTest {
     public void warningsMiner_onlyScansForGivenTypes_whenRuleTypesGiven() throws Exception {
         List<Checks.CheckType> checkTypes =
                 Arrays.asList(Checks.CheckType.VULNERABILITY, Checks.CheckType.CODE_SMELL);
-        String checkTypesArg =
-                Constants.ARG_SYMBOL
-                        + Constants.ARG_RULE_TYPES
-                        + " "
-                        + checkTypes.stream()
-                                .map(Checks.CheckType::getLabel)
-                                .collect(Collectors.joining(" "));
+
 
         String fileName = "warning_miner/test_repos.txt";
         String pathToRepos = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
         File outputFile = File.createTempFile("warnings", null);
+        File temp = Files.createTempDirectory("tempDir").toFile();
 
-        runMiner(pathToRepos, outputFile.getPath(), checkTypesArg);
+        runMiner(
+                pathToRepos,
+                outputFile.getPath(),
+                temp.getPath(),
+                Constants.ARG_SYMBOL + Constants.ARG_RULE_TYPES,
+                checkTypes.stream()
+                        .map(Checks.CheckType::getLabel)
+                        .collect(Collectors.joining(":")));
 
         List<String> expectedChecks =
                 checkTypes.stream()

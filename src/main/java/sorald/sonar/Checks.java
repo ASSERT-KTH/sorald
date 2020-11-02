@@ -69,6 +69,15 @@ public class Checks {
         return new ArrayList<>(TYPE_TO_CHECKS.get(checkType).values());
     }
 
+    public static JavaFileScanner instantiateCheck(Class<? extends JavaFileScanner> checkClass) {
+        try {
+            return checkClass.getConstructor().newInstance();
+        } catch (Exception e) {
+            throw new IllegalStateException(
+                    "Could not instantiate class " + checkClass.getName());
+        }
+    }
+
     /**
      * Get a specific check by key.
      *

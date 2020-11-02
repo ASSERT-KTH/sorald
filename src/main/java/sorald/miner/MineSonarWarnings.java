@@ -20,26 +20,11 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
 import sorald.sonar.RuleViolation;
 
 public class MineSonarWarnings {
-
-    private static final List<JavaFileScanner> SONAR_CHECK_INSTANCES = init();
-
-    private static List init() {
-        return Constants.SONAR_CHECK_CLASSES.stream()
-                .map(
-                        cls -> {
-                            try {
-                                return cls.getConstructor().newInstance();
-                            } catch (Exception e) {
-                                throw new RuntimeException(
-                                        "could not instantiate class " + cls.getName());
-                            }
-                        })
-                .collect(Collectors.toList());
-    }
 
     public static JSAP defineArgs() throws JSAPException {
         JSAP jsap = new JSAP();
@@ -79,6 +64,15 @@ public class MineSonarWarnings {
         opt.setHelp("The path to the temp directory.");
         jsap.registerParameter(opt);
 
+        // TODO don't reuse the opt variable, declare one variable per option
+        opt = new FlaggedOption(Constants.ARG_RULE_TYPES);
+        opt.setLongFlag(Constants.ARG_RULE_TYPES);
+        opt.setList(true);
+        opt.setRequired(false);
+        String ruleTypes = String.join(", ", Constants.SONAR_RULE_TYPES);
+        opt.setHelp("One or more types of rules to check for. Choices: " + ruleTypes);
+        jsap.registerParameter(opt);
+
         Switch sw = new Switch("help");
         sw.setShortFlag('h');
         sw.setLongFlag("help");
@@ -113,6 +107,7 @@ public class MineSonarWarnings {
         JSAP jsap = defineArgs();
         JSAPResult arguments = jsap.parse(args);
         checkArguments(jsap, arguments);
+        List<? extends JavaFileScanner> checks = inferCheckInstances(arguments);
 
         if (arguments.contains(Constants.ARG_STATS_ON_GIT_REPOS)) {
             // stats on a list of git repos
@@ -139,7 +134,7 @@ public class MineSonarWarnings {
                     e.printStackTrace();
                 }
 
-                Map<String, Integer> warnings = extractWarnings(repoDir.getAbsolutePath());
+                Map<String, Integer> warnings = extractWarnings(repoDir.getAbsolutePath(), checks);
 
                 PrintWriter pw = new PrintWriter(new FileWriter(outputPath, true));
 
@@ -162,7 +157,7 @@ public class MineSonarWarnings {
             String projectPath =
                     arguments.getFile(Constants.ARG_ORIGINAL_FILES_PATH).getAbsolutePath();
 
-            Map<String, Integer> warnings = extractWarnings(projectPath);
+            Map<String, Integer> warnings = extractWarnings(projectPath, checks);
 
             warnings.entrySet().stream()
                     .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
@@ -190,7 +185,8 @@ public class MineSonarWarnings {
      * @param checks Checks to run on the Java files in the project
      * @return A mapping (checkClassName -> numViolations)
      */
-    static Map<String, Integer> extractWarnings(String projectPath, List<JavaFileScanner> checks) {
+    static Map<String, Integer> extractWarnings(
+            String projectPath, List<? extends JavaFileScanner> checks) {
         List<String> filesToScan = new ArrayList<>();
         File file = new File(projectPath);
         if (file.isFile()) {
@@ -220,7 +216,33 @@ public class MineSonarWarnings {
         return warnings;
     }
 
-    private static Map<String, Integer> extractWarnings(String projectPath) {
-        return extractWarnings(projectPath, SONAR_CHECK_INSTANCES);
+    private static List<? extends JavaFileScanner> inferCheckInstances(JSAPResult arguments) {
+        List<Checks.CheckType> checkTypes =
+                Arrays.stream(
+                        arguments.contains(Constants.ARG_RULE_TYPES)
+                                ? arguments.getStringArray(Constants.ARG_RULE_TYPES)
+                                : new String[0])
+                        .map(
+                                type ->
+                                        Checks.CheckType.valueOf(
+                                                Checks.CheckType.class, type.toUpperCase()))
+                        .collect(Collectors.toList());
+        return checkTypes.isEmpty() ? getAllCheckInstances() : getChecksByTypes(checkTypes);
+
+    }
+
+    private static List<? extends JavaFileScanner> getChecksByTypes(
+            List<Checks.CheckType> checkTypes) {
+        return checkTypes.stream()
+                .map(Checks::getChecksByType)
+                .flatMap(Collection::stream)
+                .map(Checks::instantiateCheck)
+                .collect(Collectors.toList());
+    }
+
+    private static List<? extends JavaFileScanner> getAllCheckInstances() {
+        return Checks.getAllChecks().stream()
+                .map(Checks::instantiateCheck)
+                .collect(Collectors.toList());
     }
 }
