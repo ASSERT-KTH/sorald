@@ -1,5 +1,6 @@
 package sorald.sonar;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -77,6 +78,22 @@ public class Checks {
                 .filter(Objects::nonNull)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("no rule with key " + strippedKey));
+    }
+
+    /**
+     * Get an instance of the check specified by key.
+     *
+     * @param key The key of the check.
+     * @return An instance of the related check class.
+     */
+    public static JavaFileScanner getCheckInstance(String key) {
+        Class<? extends JavaFileScanner> checkClass = getCheck(key);
+
+        try {
+            return checkClass.getConstructor().newInstance();
+        } catch (Exception e) {
+            throw new IllegalStateException("Unable to instantiate " + checkClass.getName());
+        }
     }
 
     /** @return All Sonar-Java checks that Sorald currently keeps track of. */
