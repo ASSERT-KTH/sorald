@@ -89,7 +89,7 @@ public class DefaultRepair extends SoraldAbstractRepair {
         }
 
         this.printEndProcess();
-        deleteDirectory(new File(intermediateSpoonedPath));
+        FileUtils.deleteDirectory(new File(intermediateSpoonedPath));
         UniqueTypesCollector.getInstance().reset();
     }
 

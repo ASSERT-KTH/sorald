@@ -36,4 +36,20 @@ public class FileUtils {
     public static File getClosestDirectory(File file) {
         return file.isDirectory() ? file : file.getParentFile();
     }
+
+    /**
+     * Delete a directory.
+     *
+     * @param directoryToBeDeleted The directory to delete
+     * @return true if the directory was successfully deleted
+     */
+    public static boolean deleteDirectory(File directoryToBeDeleted) {
+        File[] allContents = directoryToBeDeleted.listFiles();
+        if (allContents != null) {
+            for (File file : allContents) {
+                deleteDirectory(file);
+            }
+        }
+        return directoryToBeDeleted.delete();
+    }
 }

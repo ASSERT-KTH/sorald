@@ -16,7 +16,7 @@ public class WorkspaceCleaner implements TestExecutionListener {
         File workspace =
                 Paths.get(Constants.SORALD_WORKSPACE).toAbsolutePath().normalize().toFile();
         if (workspace.exists()) {
-            TestHelper.deleteDirectory(workspace);
+            FileUtils.deleteDirectory(workspace);
         }
     }
 }
