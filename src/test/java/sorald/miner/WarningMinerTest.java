@@ -14,7 +14,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.junit.jupiter.api.Test;
 import org.sonar.java.AnalysisException;
 import org.sonar.plugins.java.api.JavaFileScanner;
@@ -50,7 +49,6 @@ public class WarningMinerTest {
     public void warningsMiner_onlyScansForGivenTypes_whenRuleTypesGiven() throws Exception {
         List<Checks.CheckType> checkTypes =
                 Arrays.asList(Checks.CheckType.VULNERABILITY, Checks.CheckType.CODE_SMELL);
-
 
         String fileName = "warning_miner/test_repos.txt";
         String pathToRepos = Constants.PATH_TO_RESOURCES_FOLDER + fileName;

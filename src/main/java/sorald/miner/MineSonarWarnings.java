@@ -107,7 +107,8 @@ public class MineSonarWarnings {
         JSAP jsap = defineArgs();
         JSAPResult arguments = jsap.parse(args);
         checkArguments(jsap, arguments);
-        List<? extends JavaFileScanner> checks = inferCheckInstances(arguments);
+        List<? extends JavaFileScanner> checks =
+                inferCheckInstances(arguments.getStringArray(Constants.ARG_RULE_TYPES));
 
         if (arguments.contains(Constants.ARG_STATS_ON_GIT_REPOS)) {
             // stats on a list of git repos
@@ -216,22 +217,19 @@ public class MineSonarWarnings {
         return warnings;
     }
 
-    private static List<? extends JavaFileScanner> inferCheckInstances(JSAPResult arguments) {
+    /**
+     * Infer which check instances to use based on rule types specified (or left unspecified) on the
+     * command line.
+     */
+    private static List<? extends JavaFileScanner> inferCheckInstances(String[] ruleTypes) {
         List<Checks.CheckType> checkTypes =
-                Arrays.stream(
-                        arguments.contains(Constants.ARG_RULE_TYPES)
-                                ? arguments.getStringArray(Constants.ARG_RULE_TYPES)
-                                : new String[0])
-                        .map(
-                                type ->
-                                        Checks.CheckType.valueOf(
-                                                Checks.CheckType.class, type.toUpperCase()))
+                Arrays.stream(ruleTypes)
+                        .map(Checks.CheckType::fromLabel)
                         .collect(Collectors.toList());
-        return checkTypes.isEmpty() ? getAllCheckInstances() : getChecksByTypes(checkTypes);
-
+        return checkTypes.isEmpty() ? getAllCheckInstances() : getCheckInstancesByTypes(checkTypes);
     }
 
-    private static List<? extends JavaFileScanner> getChecksByTypes(
+    private static List<? extends JavaFileScanner> getCheckInstancesByTypes(
             List<Checks.CheckType> checkTypes) {
         return checkTypes.stream()
                 .map(Checks::getChecksByType)
