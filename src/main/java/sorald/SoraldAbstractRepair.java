@@ -21,19 +21,6 @@ public abstract class SoraldAbstractRepair {
         }
     }
 
-    // FIXME: this method was copied from TestHelper.java. We should extract it to a FileHelper to
-    // be
-    // visible for both main code and test code.
-    public static boolean deleteDirectory(File directoryToBeDeleted) {
-        File[] allContents = directoryToBeDeleted.listFiles();
-        if (allContents != null) {
-            for (File file : allContents) {
-                deleteDirectory(file);
-            }
-        }
-        return directoryToBeDeleted.delete();
-    }
-
     public abstract void repair();
 
     protected void createPatches(String patchedFilePath, JavaOutputProcessor javaOutputProcessor) {
