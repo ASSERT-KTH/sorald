@@ -79,6 +79,22 @@ public class Checks {
                 .orElseThrow(() -> new IllegalArgumentException("no rule with key " + strippedKey));
     }
 
+    /**
+     * Get an instance of the check specified by key.
+     *
+     * @param key The key of the check.
+     * @return An instance of the related check class.
+     */
+    public static JavaFileScanner getCheckInstance(String key) {
+        Class<? extends JavaFileScanner> checkClass = getCheck(key);
+
+        try {
+            return checkClass.getConstructor().newInstance();
+        } catch (Exception e) {
+            throw new IllegalStateException("Unable to instantiate " + checkClass.getName());
+        }
+    }
+
     /** @return All Sonar-Java checks that Sorald currently keeps track of. */
     public static List<Class<? extends JavaFileScanner>> getAllChecks() {
         return TYPE_TO_CHECKS.values().stream()
