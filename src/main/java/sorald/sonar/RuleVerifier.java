@@ -128,7 +128,8 @@ public class RuleVerifier {
                         sonarComponents,
                         SymbolicExecutionMode.getMode(checks.toArray(new JavaFileScanner[0])));
         // TODO set the version number to something appropriate for the current context
-        //      setting it too high may yield false positives (fixes that aren't applicable to lower versions)
+        //      setting it too high may yield false positives (fixes that aren't applicable to lower
+        // versions)
         //      setting it too low may yield false negatives and parsing issues
         visitorsBridge.setJavaVersion(new JavaVersionImpl(14));
         scanner.setVisitorBridge(visitorsBridge);
@@ -139,7 +140,8 @@ public class RuleVerifier {
         // FIXME The SensorContextTester is an internal and unstable component in sonar,
         //       we should implement our own SensorContext
         SensorContextTester context = SensorContextTester.create(baseDir);
-        context.setSettings(new MapSettings().setProperty(SonarComponents.FAIL_ON_EXCEPTION_KEY, true));
+        context.setSettings(
+                new MapSettings().setProperty(SonarComponents.FAIL_ON_EXCEPTION_KEY, true));
         SoraldSonarComponents sonarComponents = new SoraldSonarComponents(context.fileSystem());
         sonarComponents.setSensorContext(context);
         return sonarComponents;

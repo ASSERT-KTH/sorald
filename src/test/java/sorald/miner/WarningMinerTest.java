@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.sonar.java.AnalysisException;
 import org.sonar.plugins.java.api.JavaFileScanner;
-import org.sonar.plugins.java.api.JavaFileScannerContext;
 import sorald.Constants;
 import sorald.sonar.Checks;
 
