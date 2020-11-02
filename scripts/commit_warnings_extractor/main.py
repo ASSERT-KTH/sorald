@@ -116,20 +116,30 @@ def extract_commit_warning_stats(
 def _extract_commit_warning_stats(
     commit_sha: str, repo_root: pathlib.Path
 ) -> Mapping[str, int]:
+    all_warnings = collections.defaultdict(int)
     with temporary_checkout(repo_root, commit_sha) as checkout_path:
-        proc = subprocess.run(
-            [
-                "java",
-                "-cp",
-                str(SORALD_JAR_PATH),
-                "sorald.miner.MineSonarWarnings",
-                "--originalFilesPath",
-                str(find_source_main(checkout_path)),
-                "--ruleTypes",
-                "vulnerability",
-            ],
-            capture_output=True,
-        )
+        for src_main in find_main_sources(checkout_path):
+            warnings = extract_warning_stats_from_dir(src_main)
+            for key, value in warnings.items():
+                all_warnings[key] += value
+
+    return all_warnings
+
+
+def extract_warning_stats_from_dir(root_path: pathlib.Path) -> Mapping[str, int]:
+    proc = subprocess.run(
+        [
+            "java",
+            "-cp",
+            str(SORALD_JAR_PATH),
+            "sorald.miner.MineSonarWarnings",
+            "--originalFilesPath",
+            str(root_path),
+            "--ruleTypes",
+            "vulnerability",
+        ],
+        capture_output=True,
+    )
 
     if proc.returncode != 0:
         return {}
@@ -147,11 +157,14 @@ def _extract_commit_warning_stats(
     return stats_dict
 
 
-def find_source_main(project_root: pathlib.Path) -> pathlib.Path:
-    conventional_source_main = project_root / "src" / "main"
-    return (
-        conventional_source_main if conventional_source_main.is_dir() else project_root
-    )
+def find_main_sources(project_root: pathlib.Path) -> List[pathlib.Path]:
+    pom_files = project_root.rglob("pom.xml")
+    return [
+        src_main
+        for pom_file in pom_files
+        if (src_main := pom_file.parent / "src" / "main").is_dir()
+        and (src_main / "java").exists()
+    ]
 
 
 @contextlib.contextmanager
