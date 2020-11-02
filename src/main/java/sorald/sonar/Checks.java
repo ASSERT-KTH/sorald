@@ -54,6 +54,11 @@ public class Checks {
         VULNERABILITY,
         CODE_SMELL,
         SECURITY_HOTSPOT;
+
+        /** @return A label for this check type, useful for example for CLI arguments */
+        public String getLabel() {
+            return name().toLowerCase();
+        }
     }
 
     /**
