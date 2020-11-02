@@ -8,11 +8,15 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
+import org.sonar.java.AnalysisException;
+import org.sonar.plugins.java.api.JavaFileScanner;
+import org.sonar.plugins.java.api.JavaFileScannerContext;
 import sorald.Constants;
 import sorald.sonar.Checks;
 
@@ -62,6 +66,21 @@ public class WarningMinerTest {
                         .collect(Collectors.toList());
 
         assertThat(actualChecks, equalTo(expectedChecks));
+    }
+
+    @Test
+    @SuppressWarnings("UnstableApiUsage")
+    public void extractWarnings_throwsException_whenCheckCrashes() {
+        JavaFileScanner crashyCheck =
+                context -> {
+                    throw new IllegalStateException();
+                };
+
+        assertThrows(
+                AnalysisException.class,
+                () ->
+                        MineSonarWarnings.extractWarnings(
+                                Constants.PATH_TO_RESOURCES_FOLDER, Arrays.asList(crashyCheck)));
     }
 
     private static void runMiner(String pathToRepos, String pathToOutput, String pathToTempDir)

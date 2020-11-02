@@ -185,37 +185,42 @@ public class MineSonarWarnings {
         return res;
     }
 
-    private static Map<String, Integer> extractWarnings(String projectPath) {
+    /**
+     * @param projectPath The root path to a Java project
+     * @param checks Checks to run on the Java files in the project
+     * @return A mapping (checkClassName -> numViolations)
+     */
+    static Map<String, Integer> extractWarnings(String projectPath, List<JavaFileScanner> checks) {
+        List<String> filesToScan = new ArrayList<>();
+        File file = new File(projectPath);
+        if (file.isFile()) {
+            filesToScan.add(file.getAbsolutePath());
+        } else {
+            try (Stream<Path> walk = Files.walk(Paths.get(file.getAbsolutePath()))) {
+                filesToScan =
+                        walk.map(x -> x.toFile().getAbsolutePath())
+                                .filter(f -> f.endsWith(Constants.JAVA_EXT))
+                                .collect(Collectors.toList());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         final Map<String, Integer> warnings = new HashMap<>();
-        SONAR_CHECK_INSTANCES.stream()
+        checks.stream()
                 .map(Object::getClass)
                 .map(Class::getSimpleName)
                 .forEach(checkName -> warnings.put(checkName, 0));
 
-        try {
-            List<String> filesToScan = new ArrayList<>();
-            File file = new File(projectPath);
-            if (file.isFile()) {
-                filesToScan.add(file.getAbsolutePath());
-            } else {
-                try (Stream<Path> walk = Files.walk(Paths.get(file.getAbsolutePath()))) {
-                    filesToScan =
-                            walk.map(x -> x.toFile().getAbsolutePath())
-                                    .filter(f -> f.endsWith(Constants.JAVA_EXT))
-                                    .collect(Collectors.toList());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            Consumer<String> incrementWarningCount =
-                    (checkName) -> warnings.put(checkName, warnings.get(checkName) + 1);
-            RuleVerifier.analyze(filesToScan, file, SONAR_CHECK_INSTANCES).stream()
-                    .map(RuleViolation::getCheckName)
-                    .forEach(incrementWarningCount);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        Consumer<String> incrementWarningCount =
+                (checkName) -> warnings.put(checkName, warnings.get(checkName) + 1);
+        RuleVerifier.analyze(filesToScan, file, checks).stream()
+                .map(RuleViolation::getCheckName)
+                .forEach(incrementWarningCount);
         return warnings;
+    }
+
+    private static Map<String, Integer> extractWarnings(String projectPath) {
+        return extractWarnings(projectPath, SONAR_CHECK_INSTANCES);
     }
 }
