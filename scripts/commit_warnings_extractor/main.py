@@ -125,6 +125,8 @@ def _extract_commit_warning_stats(
                 "sorald.miner.MineSonarWarnings",
                 "--originalFilesPath",
                 str(find_source_main(checkout_path)),
+                "--ruleTypes",
+                "vulnerability",
             ],
             capture_output=True,
         )
