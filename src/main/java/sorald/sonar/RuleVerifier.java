@@ -15,6 +15,7 @@ import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.internal.DefaultFileSystem;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
+import org.sonar.api.config.internal.MapSettings;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.java.SonarComponents;
 import org.sonar.java.ast.JavaAstScanner;
@@ -137,6 +138,7 @@ public class RuleVerifier {
         // FIXME The SensorContextTester is an internal and unstable component in sonar,
         //       we should implement our own SensorContext
         SensorContextTester context = SensorContextTester.create(baseDir);
+        context.setSettings(new MapSettings().setProperty(SonarComponents.FAIL_ON_EXCEPTION_KEY, true));
         SoraldSonarComponents sonarComponents = new SoraldSonarComponents(context.fileSystem());
         sonarComponents.setSensorContext(context);
         return sonarComponents;
