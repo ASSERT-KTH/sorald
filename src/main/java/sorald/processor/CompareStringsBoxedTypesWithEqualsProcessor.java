@@ -1,7 +1,5 @@
 package sorald.processor;
 
-import org.sonar.java.checks.CompareStringsBoxedTypesWithEqualsCheck;
-import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
@@ -19,11 +17,6 @@ public class CompareStringsBoxedTypesWithEqualsProcessor
         extends SoraldAbstractProcessor<CtBinaryOperator<?>> {
 
     public CompareStringsBoxedTypesWithEqualsProcessor() {}
-
-    @Override
-    public JavaFileScanner getSonarCheck() {
-        return new CompareStringsBoxedTypesWithEqualsCheck();
-    }
 
     @Override
     public boolean isToBeProcessed(CtBinaryOperator<?> candidate) {

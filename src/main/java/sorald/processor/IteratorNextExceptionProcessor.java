@@ -2,8 +2,6 @@ package sorald.processor;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import org.sonar.java.checks.IteratorNextExceptionCheck;
-import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCodeSnippetExpression;
@@ -21,11 +19,6 @@ import spoon.reflect.reference.CtTypeReference;
 public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMethod> {
 
     public IteratorNextExceptionProcessor() {}
-
-    @Override
-    public JavaFileScanner getSonarCheck() {
-        return new IteratorNextExceptionCheck();
-    }
 
     /**
      * @param candidate - Every method of the scanned file

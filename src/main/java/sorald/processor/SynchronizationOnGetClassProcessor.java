@@ -1,8 +1,6 @@
 package sorald.processor;
 
 import java.util.Set;
-import org.sonar.java.checks.synchronization.SynchronizationOnGetClassCheck;
-import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtFieldAccess;
@@ -19,11 +17,6 @@ import spoon.reflect.reference.CtTypeReference;
 public class SynchronizationOnGetClassProcessor extends SoraldAbstractProcessor<CtSynchronized> {
 
     public SynchronizationOnGetClassProcessor() {}
-
-    @Override
-    public JavaFileScanner getSonarCheck() {
-        return new SynchronizationOnGetClassCheck();
-    }
 
     @Override
     public boolean isToBeProcessed(CtSynchronized element) {

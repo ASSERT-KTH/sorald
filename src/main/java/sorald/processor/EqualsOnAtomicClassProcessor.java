@@ -3,8 +3,6 @@ package sorald.processor;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import org.sonar.java.checks.EqualsOnAtomicClassCheck;
-import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
@@ -20,11 +18,6 @@ import spoon.reflect.reference.CtExecutableReference;
 public class EqualsOnAtomicClassProcessor extends SoraldAbstractProcessor<CtInvocation> {
 
     public EqualsOnAtomicClassProcessor() {}
-
-    @Override
-    public JavaFileScanner getSonarCheck() {
-        return new EqualsOnAtomicClassCheck();
-    }
 
     @Override
     public boolean isToBeProcessed(CtInvocation candidate) {
