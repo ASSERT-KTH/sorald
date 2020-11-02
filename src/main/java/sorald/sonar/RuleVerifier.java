@@ -20,6 +20,7 @@ import org.sonar.java.AnalyzerMessage;
 import org.sonar.java.SonarComponents;
 import org.sonar.java.ast.JavaAstScanner;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.java.model.JavaVersionImpl;
 import org.sonar.java.model.VisitorsBridge;
 import org.sonar.java.se.SymbolicExecutionMode;
 import org.sonar.plugins.java.api.JavaFileScanner;
@@ -126,10 +127,10 @@ public class RuleVerifier {
                         Collections.emptyList(),
                         sonarComponents,
                         SymbolicExecutionMode.getMode(checks.toArray(new JavaFileScanner[0])));
-        // TODO we may want to set the version of the visitors bridge, as without setting it the
-        //      implementation defaults to the highest version supported by the parser (currently
-        //      Java 14)
-        //      visitorsBridge.setJavaVersion(new JavaVersionImpl(8));
+        // TODO set the version number to something appropriate for the current context
+        //      setting it too high may yield false positives (fixes that aren't applicable to lower versions)
+        //      setting it too low may yield false negatives and parsing issues
+        visitorsBridge.setJavaVersion(new JavaVersionImpl(14));
         scanner.setVisitorBridge(visitorsBridge);
         return scanner;
     }
