@@ -62,7 +62,7 @@ public class WarningMinerTest {
                 Constants.ARG_SYMBOL + Constants.ARG_RULE_TYPES,
                 checkTypes.stream()
                         .map(Checks.CheckType::getLabel)
-                        .collect(Collectors.joining(":")));
+                        .collect(Collectors.joining(",")));
 
         List<String> expectedChecks =
                 checkTypes.stream()

@@ -68,6 +68,7 @@ public class MineSonarWarnings {
         opt = new FlaggedOption(Constants.ARG_RULE_TYPES);
         opt.setLongFlag(Constants.ARG_RULE_TYPES);
         opt.setList(true);
+        opt.setListSeparator(',');
         opt.setRequired(false);
         String ruleTypes = String.join(", ", Constants.SONAR_RULE_TYPES);
         opt.setHelp("One or more types of rules to check for. Choices: " + ruleTypes);
