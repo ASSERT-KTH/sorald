@@ -1,17 +1,17 @@
 package sorald.processor;
 
 import sorald.ProcessorAnnotation;
-import spoon.reflect.declaration.CtField;
-import spoon.reflect.declaration.ModifierKind;
+import spoon.reflect.code.CtInvocation;
 
 @ProcessorAnnotation(key = 2755, description = "XML parsers should not be vulnerable to XXE attacks")
-public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtField<?>> {
+public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
     @Override
-    public boolean isToBeProcessed(CtField<?> candidate) {
-        return true;
+    public boolean isToBeProcessed(CtInvocation<?> candidate) {
+        return super.isToBeProcessedAccordingToStandards(candidate);
     }
 
     @Override
-    public void process(CtField<?> element) {
+    public void process(CtInvocation<?> element) {
+        super.process(element);
     }
 }
