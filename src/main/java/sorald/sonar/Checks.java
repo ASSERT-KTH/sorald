@@ -280,7 +280,8 @@ public class Checks {
                         SMTPSSLServerIdentityCheck.class,
                         ServletMethodsExceptionsThrownCheck.class,
                         SecureXmlTransformerCheck.class,
-                        MutableMembersUsageCheck.class));
+                        MutableMembersUsageCheck.class,
+                        XxeProcessingCheck.class));
 
         typeToChecks.put(
                 CheckType.SECURITY_HOTSPOT,
