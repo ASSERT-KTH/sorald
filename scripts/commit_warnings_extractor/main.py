@@ -12,12 +12,13 @@ import hashlib
 import multiprocessing
 import collections
 import csv
+import itertools
 
 import git
 from tqdm import tqdm
 import pandas as pd
 
-from typing import Tuple, List, Mapping
+from typing import Tuple, List, Mapping, Iterable
 
 
 SORALD_JAR_PATH = (
@@ -157,13 +158,22 @@ def extract_warning_stats_from_dir(root_path: pathlib.Path) -> Mapping[str, int]
     return stats_dict
 
 
-def find_main_sources(project_root: pathlib.Path) -> List[pathlib.Path]:
+def find_main_sources(project_root: pathlib.Path) -> Iterable[pathlib.Path]:
     pom_files = project_root.rglob("pom.xml")
+    return itertools.chain.from_iterable(
+        find_main_sources_relative_to_pom(pom_file) for pom_file in pom_files
+    )
+
+
+def find_main_sources_relative_to_pom(pom_file: pathlib.Path) -> List[pathlib.Path]:
+    pom_dir = pom_file.parent
+    src_main = pom_dir / "src" / "main"
+    if src_main.is_dir():
+        return [src_main]
+
+    # conventional source main wasn't there, try to find other source directories
     return [
-        src_main
-        for pom_file in pom_files
-        if (src_main := pom_file.parent / "src" / "main").is_dir()
-        and (src_main / "java").exists()
+        src for src in pom_file.parent.iterdir() if src.name not in {"test", "tests"}
     ]
 
 
