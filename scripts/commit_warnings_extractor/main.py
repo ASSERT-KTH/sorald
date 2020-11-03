@@ -27,10 +27,41 @@ SORALD_JAR_PATH = (
     / "sorald-1.1-SNAPSHOT-jar-with-dependencies.jar"
 ).resolve(strict=True)
 
-REPOS = (
-    "https://github.com/inria/spoon",
-    "https://github.com/apache/struts",
-)
+REPOS = [
+    f"https://github.com/{repo}"
+    for repo in (
+        "ontop/ontop",
+        "opendatalab-de/geojson-jackson",
+        "apache/commons-imaging",
+        "SpigotMC/BungeeCord",
+        "Pardot/Rhombus",
+        "kpelykh/docker-java",
+        "stanfordnlp/CoreNLP",
+        "NGDATA/hbase-indexer",
+        "spotify/hdfs2cass",
+        "octo-technology/sonar-objective-c",
+        "ppat/storm-rabbitmq",
+        "dkunzler/esperandro",
+        "ParallelAI/SpyGlass",
+        "FellowTraveler/otapij",
+        "gwtd3/gwt-d3",
+        "OpenHFT/Java-Lang",
+        "rcarz/jira-client",
+        "jitsi/jitsi-videobridge",
+        "RisingOak/jenkins-client",
+        "Beh01der/EasyFlow",
+        "jitsi/libjitsi",
+        "videlalvaro/clochure",
+        "lookfirst/sardine",
+        "rackerlabs/atom-hopper",
+        "Esri/geometry-api-java",
+        "rschreijer/lutung",
+        "eXist-db/exist",
+        "joel-costigliola/assertj-core",
+        "alibaba/druid",
+        "alibaba/fastjson",
+    )
+]
 
 WARNING_STATS_OUTPUT_DIR = pathlib.Path(__file__).parent / "warning_stats_output"
 
@@ -158,11 +189,18 @@ def extract_warning_stats_from_dir(root_path: pathlib.Path) -> Mapping[str, int]
     return stats_dict
 
 
-def find_main_sources(project_root: pathlib.Path) -> Iterable[pathlib.Path]:
+def find_main_sources(project_root: pathlib.Path) -> List[pathlib.Path]:
     pom_files = project_root.rglob("pom.xml")
-    return itertools.chain.from_iterable(
-        find_main_sources_relative_to_pom(pom_file) for pom_file in pom_files
+    files = list(
+        itertools.chain.from_iterable(
+            find_main_sources_relative_to_pom(pom_file)
+            for pom_file in pom_files
+            if "test"
+            not in (parent_names := {parent.name for parent in pom_file.parents})
+            and "tests" not in parent_names
+        )
     )
+    return files
 
 
 def find_main_sources_relative_to_pom(pom_file: pathlib.Path) -> List[pathlib.Path]:
@@ -173,7 +211,9 @@ def find_main_sources_relative_to_pom(pom_file: pathlib.Path) -> List[pathlib.Pa
 
     # conventional source main wasn't there, try to find other source directories
     return [
-        src for src in pom_file.parent.iterdir() if src.name not in {"test", "tests"}
+        src
+        for src in pom_dir.iterdir()
+        if src.name not in {"test", "tests"} and src.is_dir()
     ]
 
 
