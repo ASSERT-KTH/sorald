@@ -107,13 +107,7 @@ public class Checks {
      * @return An instance of the related check class.
      */
     public static JavaFileScanner getCheckInstance(String key) {
-        Class<? extends JavaFileScanner> checkClass = getCheck(key);
-
-        try {
-            return checkClass.getConstructor().newInstance();
-        } catch (Exception e) {
-            throw new IllegalStateException("Unable to instantiate " + checkClass.getName());
-        }
+        return instantiateCheck(getCheck(key));
     }
 
     /** @return All Sonar-Java checks that Sorald currently keeps track of. */
