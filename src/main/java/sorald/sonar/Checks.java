@@ -77,6 +77,10 @@ public class Checks {
         return new ArrayList<>(TYPE_TO_CHECKS.get(checkType).values());
     }
 
+    /**
+     * @param checkClass A Sonar check class
+     * @return An instance of the passed Sonar check class
+     */
     public static JavaFileScanner instantiateCheck(Class<? extends JavaFileScanner> checkClass) {
         try {
             return checkClass.getConstructor().newInstance();
