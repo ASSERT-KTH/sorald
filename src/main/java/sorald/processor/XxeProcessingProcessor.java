@@ -25,7 +25,8 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     @Override
     public boolean isToBeProcessed(CtInvocation<?> candidate) {
         return super.isToBeProcessedAccordingToStandards(candidate)
-                && candidate.getParent().getParent() instanceof CtBlock<?>;
+                && candidate.getType().getSimpleName().equals("DocumentBuilderFactory")
+                && candidate.getParent() instanceof CtLocalVariable<?>;
     }
 
     @Override
