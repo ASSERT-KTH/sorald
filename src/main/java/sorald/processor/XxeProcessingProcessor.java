@@ -1,5 +1,6 @@
 package sorald.processor;
 
+import javax.xml.XMLConstants;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtExpression;
@@ -16,8 +17,6 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtFieldReference;
 import spoon.reflect.reference.CtTypeReference;
-
-import javax.xml.XMLConstants;
 
 @ProcessorAnnotation(
         key = 2755,
@@ -84,9 +83,7 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         return fieldRead;
     }
 
-    /**
-     * @return An invocation localVar.setAttribute(key, value).
-     */
+    /** @return An invocation localVar.setAttribute(key, value). */
     private <T> CtInvocation<T> createSetAttributeInvocation(
             CtLocalVariable<T> localVar, CtExpression<String> key, CtExpression<Object> value) {
         CtType<T> builderFactory = localVar.getType().getTypeDeclaration();
