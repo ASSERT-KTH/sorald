@@ -22,34 +22,55 @@ import spoon.reflect.reference.CtTypeReference;
         key = 2755,
         description = "XML parsers should not be vulnerable to XXE attacks")
 public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
+    private static final String DOCUMENT_BUILDER_FACTORY = "DocumentBuilderFactory";
+    private static final String DOCUMENT_BUILDER = "DocumentBuilder";
+
     @Override
     public boolean isToBeProcessed(CtInvocation<?> candidate) {
         return super.isToBeProcessedAccordingToStandards(candidate)
-                && candidate.getType().getSimpleName().equals("DocumentBuilderFactory")
+                && candidate.getType().getSimpleName().equals(DOCUMENT_BUILDER_FACTORY)
                 && candidate.getParent() instanceof CtLocalVariable<?>;
     }
 
     @Override
     public void process(CtInvocation<?> element) {
-        CtLocalVariable<?> builderFactoryVar = (CtLocalVariable<?>) element.getParent();
-        CtBlock<?> block = (CtBlock<?>) builderFactoryVar.getParent();
+        super.process(element);
+
+        CtLocalVariable<?> localVar = (CtLocalVariable<?>) element.getParent();
+
+        if (localVar.getType().getSimpleName().equals(DOCUMENT_BUILDER_FACTORY)) {
+            processLocalVariableDocumentBuilderFactory(localVar);
+        }
+    }
+
+    /**
+     * Processing for the case where the factory is declared separately from the document builder.
+     * Example:
+     *
+     * <code>
+     *     DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();
+     *     DocumentBuilder = df.newDocumentBuilder();
+     * </code>
+     *
+     * @param localVar The variable declaration "DocumentBuilderFactory df;"
+     */
+    private void processLocalVariableDocumentBuilderFactory(CtLocalVariable<?> localVar) {
+        CtBlock<?> block = localVar.getParent(CtBlock.class);
 
         CtFieldRead<String> accessExternalDtd = readXmlConstant("ACCESS_EXTERNAL_DTD");
         CtFieldRead<String> accessExternalSchema = readXmlConstant("ACCESS_EXTERNAL_SCHEMA");
 
         CtLiteral<Object> emptyString = getFactory().createLiteral("");
         CtInvocation<?> setExternalDtd =
-                createSetAttributeInvocation(builderFactoryVar, accessExternalDtd, emptyString);
+                createSetAttributeInvocation(localVar, accessExternalDtd, emptyString);
         CtInvocation<?> setExternalSchema =
-                createSetAttributeInvocation(builderFactoryVar, accessExternalSchema, emptyString);
+                createSetAttributeInvocation(localVar, accessExternalSchema, emptyString);
 
-        int statementIdx = block.getStatements().indexOf(builderFactoryVar);
+        int statementIdx = block.getStatements().indexOf(localVar);
         block.addStatement(statementIdx + 1, setExternalSchema);
         block.addStatement(statementIdx + 1, setExternalDtd);
 
-        ensureTypeImported(element, getFactory().Type().get(XMLConstants.class));
-
-        super.process(element);
+        ensureTypeImported(localVar, getFactory().Type().get(XMLConstants.class));
     }
 
     /**
