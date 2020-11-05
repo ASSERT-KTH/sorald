@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtCompilationUnit;
@@ -35,23 +37,6 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
                         || candidate.getParent().getParent() instanceof CtLocalVariable);
     }
 
-    /**
-     * Processing only for the case where the factory is declared separately from the document
-     * builder. Example: <br>
-     * <code>
-     *     // Input
-     *     DocumentBuilderFactory df = DocumentBuilderFactory.newInstance(); // Noncompliant
-     *     DocumentBuilder = df.newDocumentBuilder();
-     *
-     *     // Transform
-     *     DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();
-     *     df.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-     *     df.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
-     *     DocumentBuilder = df.newDocumentBuilder();
-     * </code>
-     *
-     * @param element The variable declaration "DocumentBuilderFactory df;"
-     */
     @Override
     public void process(CtInvocation<?> element) {
         super.process(element);
@@ -67,9 +52,17 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     }
 
     /**
-     * Processing for the case where the factory is declared separately from the document builder.
-     * Example: <code>
+     * Processing only for the case where the factory is declared separately from the document
+     * builder. Example: <br>
+     * <code>
+     *     // Input
+     *     DocumentBuilderFactory df = DocumentBuilderFactory.newInstance(); // Noncompliant
+     *     DocumentBuilder = df.newDocumentBuilder();
+     *
+     *     // Transform
      *     DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();
+     *     df.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+     *     df.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
      *     DocumentBuilder = df.newDocumentBuilder();
      * </code>
      *
@@ -94,6 +87,22 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         ensureTypeImported(localVar, getFactory().Type().get(XMLConstants.class));
     }
 
+    /**
+     * Processing only for the case where the creation of the builder is chained with the creation
+     * of the factory, i.e. something like so: <code>
+     * DocumentBuilderFactory.newInstance().createDocumentBuilder()</code> All of that is replaced
+     * with a method invocation to <code>createDocumentBuilder</code> defined like so: <br>
+     * <code>
+     * private static javax.xml.parsers.DocumentBuilder createDocumentBuilder() {
+     *     DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();
+     *     df.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+     *     df.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+     *     return df.newDocumentBuilder();
+     * }
+     * </code>
+     *
+     * @param newInstanceInvocation An invocation to {@link DocumentBuilderFactory#newInstance()}
+     */
     private <T> void processChainedBuilderFactory(CtInvocation<T> newInstanceInvocation) {
         assert newInstanceInvocation.getParent() instanceof CtInvocation;
         CtInvocation<?> newBuilderInvocation = (CtInvocation<?>) newInstanceInvocation.getParent();
