@@ -2,7 +2,7 @@ package sorald.processor;
 
 import java.util.HashMap;
 import java.util.Map;
-import sorald.ProcessorAnnotation;
+import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtFieldRead;
 import spoon.reflect.code.CtInvocation;

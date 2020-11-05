@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import org.reflections.Reflections;
+import sorald.annotations.ProcessorAnnotation;
 import sorald.processor.SoraldAbstractProcessor;
 
 public class Processors {

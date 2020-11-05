@@ -2,7 +2,7 @@ package sorald.processor;
 
 import java.util.Arrays;
 import sorald.Constants;
-import sorald.ProcessorAnnotation;
+import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtTypeAccess;
