@@ -1,7 +1,10 @@
 package sorald.processor;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import javax.xml.XMLConstants;
-
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtCompilationUnit;
@@ -12,11 +15,6 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.reference.CtFieldReference;
 import spoon.reflect.reference.CtTypeReference;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 
 @ProcessorAnnotation(
         key = 2755,
@@ -37,6 +35,23 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
                         || candidate.getParent().getParent() instanceof CtLocalVariable);
     }
 
+    /**
+     * Processing only for the case where the factory is declared separately from the document
+     * builder. Example: <br>
+     * <code>
+     *     // Input
+     *     DocumentBuilderFactory df = DocumentBuilderFactory.newInstance(); // Noncompliant
+     *     DocumentBuilder = df.newDocumentBuilder();
+     *
+     *     // Transform
+     *     DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();
+     *     df.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+     *     df.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+     *     DocumentBuilder = df.newDocumentBuilder();
+     * </code>
+     *
+     * @param element The variable declaration "DocumentBuilderFactory df;"
+     */
     @Override
     public void process(CtInvocation<?> element) {
         super.process(element);
