@@ -31,6 +31,8 @@ The arguments are the following:
         2272: "Iterator.next()" methods should throw "NoSuchElementException"
         2116: "hashCode" and "toString" should not be called on array instances
         1860: Synchronization should not be based on Strings or boxed primitives
+        1444: "public static" fields should be constant
+                (incomplete: does not fix variable naming)
         2184: Math operands should be cast before assignment
         4973: Strings and Boxed types should be compared using "equals()"
         2095: Resources should be closed
@@ -44,15 +46,16 @@ The arguments are the following:
         serializable
         2204: ".equals()" should not be used to test the values of "Atomic"
         classes
+        2142: "InterruptedException" should not be ignored
         1854: Unused assignments should be removed
-        2111: "BigDecimal(double)" should not be used (default: 2116)
+        2111: "BigDecimal(double)" should not be used
 
   --originalFilesPath <originalFilesPath>
         The path to the file or folder to be analyzed and possibly repaired.
 
   [--workspace <workspace>]
-        The path to a folder that will be used as workspace by Sorald,
-        i.e. the path for the output. (default: ./sorald-workspace)
+        The path to a folder that will be used as workspace by Sorald, i.e. the
+        path for the output. (default: ./sorald-workspace)
 
   [--gitRepoPath <gitRepoPath>]
         The path to a git repository directory.
@@ -61,7 +64,7 @@ The arguments are the following:
         Mode for pretty printing the source code: 'NORMAL', which means that all
         source code will be printed and its formatting might change (such as
         indentation), and 'SNIPER', which means that only statements changed
-        towards the repair of sonar rule violations will be printed. (default:
+        towards the repair of Sonar rule violations will be printed. (default:
         SNIPER)
 
   [--fileOutputStrategy <fileOutputStrategy>]
@@ -71,8 +74,7 @@ The arguments are the following:
         (default: CHANGED_ONLY)
 
   [--maxFixesPerRule <maxFixesPerRule>]
-        Max number of fixes per rule. Default: Integer.MAX_VALUE (or all)
-        (default: 2147483647)
+        Max number of fixes per rule. (default: 2147483647)
 
   [--repairStrategy <repairStrategy>]
         Type of repair strategy. DEFAULT - load everything without splitting up
@@ -86,6 +88,10 @@ The arguments are the following:
 
   [-h|--help]
 ```
+
+> **Note:** Some rules (e.g. 1444) are marked as "incomplete". This means that
+> Sorald's repair for a violation of said rule is either partial or
+> situational.
 
 Example of a concrete call to Sorald, in which multiple rule keys are given as input:
 
