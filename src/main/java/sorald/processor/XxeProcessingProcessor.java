@@ -22,8 +22,9 @@ import spoon.reflect.reference.CtTypeReference;
         key = 2755,
         description = "XML parsers should not be vulnerable to XXE attacks")
 public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
+    private static final String ACCESS_EXTERNAL_DTD = "ACCESS_EXTERNAL_DTD";
+    private static final String ACCESS_EXTERNAL_SCHEMA = "ACCESS_EXTERNAL_SCHEMA";
     private static final String DOCUMENT_BUILDER_FACTORY = "DocumentBuilderFactory";
-    private static final String DOCUMENT_BUILDER = "DocumentBuilder";
 
     @Override
     public boolean isToBeProcessed(CtInvocation<?> candidate) {
@@ -70,10 +71,18 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
      */
     private void processLocalVariableDocumentBuilderFactory(CtLocalVariable<?> localVar) {
         CtBlock<?> block = localVar.getParent(CtBlock.class);
+        setSafeBuilderFactoryAttributes(localVar, block);
+    }
 
-        CtFieldRead<String> accessExternalDtd = readXmlConstant("ACCESS_EXTERNAL_DTD");
-        CtFieldRead<String> accessExternalSchema = readXmlConstant("ACCESS_EXTERNAL_SCHEMA");
-
+    /**
+     * Add the following two statements to block: <code>
+     *     localVar.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD);
+     *     localVar.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA);
+     * </code>
+     */
+    private void setSafeBuilderFactoryAttributes(CtLocalVariable<?> localVar, CtBlock<?> block) {
+        CtFieldRead<String> accessExternalDtd = readXmlConstant(ACCESS_EXTERNAL_DTD);
+        CtFieldRead<String> accessExternalSchema = readXmlConstant(ACCESS_EXTERNAL_SCHEMA);
         CtLiteral<Object> emptyString = getFactory().createLiteral("");
         CtInvocation<?> setExternalDtd =
                 createSetAttributeInvocation(localVar, accessExternalDtd, emptyString);
@@ -83,7 +92,6 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         int statementIdx = block.getStatements().indexOf(localVar);
         block.addStatement(statementIdx + 1, setExternalSchema);
         block.addStatement(statementIdx + 1, setExternalDtd);
-
         ensureTypeImported(localVar, getFactory().Type().get(XMLConstants.class));
     }
 
@@ -106,23 +114,12 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     private <T> void processChainedBuilderFactory(CtInvocation<T> newInstanceInvocation) {
         assert newInstanceInvocation.getParent() instanceof CtInvocation;
         CtInvocation<?> newBuilderInvocation = (CtInvocation<?>) newInstanceInvocation.getParent();
-
         CtType<?> type = newInstanceInvocation.getParent(CtType.class);
 
-        CtLocalVariable<T> builderFactoryVariable = asLocalVariable(newInstanceInvocation, "df");
+        CtLocalVariable<T> builderFactoryVariable = asLocalVariable("df", newInstanceInvocation);
         CtVariableAccess<T> varRead =
                 getFactory().createVariableRead(builderFactoryVariable.getReference(), false);
 
-        ensureTypeImported(newInstanceInvocation, getFactory().Type().get(XMLConstants.class));
-        CtFieldRead<String> accessExternalDtd = readXmlConstant("ACCESS_EXTERNAL_DTD");
-        CtFieldRead<String> accessExternalSchema = readXmlConstant("ACCESS_EXTERNAL_SCHEMA");
-        CtLiteral<Object> emptyString = getFactory().createLiteral("");
-        CtInvocation<?> setExternalDtd =
-                createSetAttributeInvocation(
-                        builderFactoryVariable, accessExternalDtd, emptyString);
-        CtInvocation<?> setExternalSchema =
-                createSetAttributeInvocation(
-                        builderFactoryVariable, accessExternalSchema, emptyString);
         CtInvocation<?> newBuilderReturnExpr = newBuilderInvocation.clone();
         newBuilderReturnExpr.setTarget(varRead);
 
@@ -131,9 +128,9 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
                         "createDocumentBuilder",
                         type,
                         newBuilderReturnExpr,
-                        builderFactoryVariable,
-                        setExternalDtd,
-                        setExternalSchema);
+                        builderFactoryVariable);
+        setSafeBuilderFactoryAttributes(builderFactoryVariable, method.getBody());
+
         newBuilderInvocation.replace(
                 getFactory()
                         .createInvocation(
@@ -165,11 +162,9 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         return method;
     }
 
-    private <T> CtLocalVariable<T> asLocalVariable(
-            CtInvocation<T> invocation, String variableName) {
-        return getFactory()
-                .createLocalVariable(
-                        invocation.getType().clone(), variableName, invocation.clone());
+    /** @return A local variable initialized to the given expression. */
+    private <T> CtLocalVariable<T> asLocalVariable(String variableName, CtExpression<T> expr) {
+        return getFactory().createLocalVariable(expr.getType().clone(), variableName, expr.clone());
     }
 
     /**
