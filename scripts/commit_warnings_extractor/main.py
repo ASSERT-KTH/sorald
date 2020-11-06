@@ -38,7 +38,7 @@ COMMIT_STEP_SIZE = 20
 
 def main():
     parsed = parse_args(sys.argv[1:])
-    repo_urls = parse_repo_urls(parsed.repos_list)
+    repo_urls = parse_repo_urls(parsed.repo_list)
     extract_warnings(
         repo_urls=repo_urls,
         output_dir=parsed.output_dir.resolve(strict=False),
@@ -55,9 +55,9 @@ def parse_args(args: List[str]) -> argparse.Namespace:
     )
 
     parser.add_argument(
-        "repo-list",
         help="path to a file with names of GitHub repos, with one repo per line on "
         "the form <OWNER_NAME>/<REPO_NAME> (e.g. spoonlabs/sorald)",
+        dest="repo_list",
         type=pathlib.Path,
     )
     parser.add_argument(
@@ -89,7 +89,17 @@ def parse_args(args: List[str]) -> argparse.Namespace:
         type=pathlib.Path,
         default=SORALD_JAR_PATH,
     )
-    return parser.parse_args(args)
+    parsed_args = parser.parse_args(args)
+
+    if not parsed_args.sorald_jar.exists():
+        print(f"no such file: {parsed_args.sorald_jar}", file=sys.stderr)
+        print(
+            f"please specify path to Sorald jarfile with --sorald-jar", file=sys.stderr
+        )
+        parser.print_usage()
+        sys.exit(1)
+
+    return parsed_args
 
 
 def parse_repo_urls(repos_list: pathlib.Path) -> List[str]:
@@ -118,12 +128,12 @@ def extract_warnings(
             commit_step_size=commit_step_size,
         )
         frame = pd.DataFrame.from_dict(warning_stats)
-        raw_data_dst = WARNING_STATS_OUTPUT_DIR / (
+        raw_data_dst = output_dir / (
             repo_url.replace("/", "_").replace(":", "_") + ".csv"
         )
         raw_data_dst.write_text(frame.to_csv())
 
-        deltas_dst = WARNING_STATS_OUTPUT_DIR / (raw_data_dst.stem + ".deltas.csv")
+        deltas_dst = output_dir / (raw_data_dst.stem + ".deltas.csv")
         deltas_dst.write_text(frame.diff(axis=1).fillna(frame.iloc[0]).to_csv())
 
     print(f"Results written to {output_dir}")
@@ -145,7 +155,7 @@ def extract_warning_stats_from_remote_repo(
 def extract_warnings_stats_from_local_repo(
     repo_root: pathlib.Path, commits: List[str]
 ) -> Mapping[str, Mapping[str, int]]:
-    # assuming 2 threads per core
+    # assuming 2 threads per core, and Sorald appears to saturate ~4 threads per process
     num_cpus = multiprocessing.cpu_count() // 4
     with multiprocessing.Pool(num_cpus) as pool:
         extract = functools.partial(extract_commit_warning_stats, repo_root=repo_root)
