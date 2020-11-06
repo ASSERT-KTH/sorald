@@ -1,6 +1,11 @@
 package sorald.processor;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilderFactory;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtCompilationUnit;
@@ -8,6 +13,7 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtImport;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
+import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.reference.CtFieldReference;
 import spoon.reflect.reference.CtTypeReference;
 
@@ -27,7 +33,8 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
                         .getType()
                         .getSimpleName()
                         .equals(DOCUMENT_BUILDER_FACTORY)
-                && candidate.getParent() instanceof CtLocalVariable;
+                && (candidate.getParent() instanceof CtLocalVariable
+                        || candidate.getParent().getParent() instanceof CtLocalVariable);
     }
 
     @Override
@@ -37,6 +44,9 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         if (element.getParent() instanceof CtLocalVariable) {
             CtLocalVariable<?> localVar = (CtLocalVariable<?>) element.getParent();
             processLocalVariableDocumentBuilderFactory(localVar);
+        } else if (element.getParent() instanceof CtInvocation
+                && element.getParent().getParent() instanceof CtLocalVariable) {
+            processChainedBuilderFactory(element);
         } else {
             throw new IllegalArgumentException("Unexpected element " + element);
         }
@@ -66,6 +76,50 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     }
 
     /**
+     * Processing only for the case where the creation of the builder is chained with the creation
+     * of the factory, i.e. something like so: <code>
+     * DocumentBuilderFactory.newInstance().createDocumentBuilder()</code> All of that is replaced
+     * with a method invocation to <code>createDocumentBuilder</code> defined like so: <br>
+     * <code>
+     * private static javax.xml.parsers.DocumentBuilder createDocumentBuilder() {
+     *     DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();
+     *     df.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+     *     df.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+     *     return df.newDocumentBuilder();
+     * }
+     * </code>
+     *
+     * @param newInstanceInvocation An invocation to {@link DocumentBuilderFactory#newInstance()}
+     */
+    private <T> void processChainedBuilderFactory(CtInvocation<T> newInstanceInvocation) {
+        assert newInstanceInvocation.getParent() instanceof CtInvocation;
+        CtInvocation<?> newBuilderInvocation = (CtInvocation<?>) newInstanceInvocation.getParent();
+        CtType<?> type = newInstanceInvocation.getParent(CtType.class);
+
+        CtLocalVariable<T> builderFactoryVariable =
+                createLocalVariable("df", newInstanceInvocation);
+        CtVariableAccess<T> varRead =
+                getFactory().createVariableRead(builderFactoryVariable.getReference(), false);
+
+        CtInvocation<?> newBuilderReturnExpr = newBuilderInvocation.clone();
+        newBuilderReturnExpr.setTarget(varRead);
+
+        CtMethod<?> method =
+                createPrivateStaticMethod(
+                        "createDocumentBuilder",
+                        type,
+                        newBuilderReturnExpr,
+                        builderFactoryVariable);
+        setSafeBuilderFactoryAttributes(builderFactoryVariable, method.getBody());
+
+        newBuilderInvocation.replace(
+                getFactory()
+                        .createInvocation(
+                                getFactory().createThisAccess(type.getReference(), true),
+                                method.getReference()));
+    }
+
+    /**
      * Add the following two statements to block: <br>
      * <code>
      *     localVar.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD);
@@ -85,6 +139,39 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         block.addStatement(statementIdx + 1, setExternalSchema);
         block.addStatement(statementIdx + 1, setExternalDtd);
         ensureTypeImported(localVar, getFactory().Type().get(XMLConstants.class));
+    }
+
+    /**
+     * @return A private static method with the given name, receiver type, return expression and
+     *     statements in the body.
+     */
+    private <T> CtMethod<T> createPrivateStaticMethod(
+            String name, CtType<?> receiver, CtExpression<T> returnExp, CtStatement... statements) {
+        CtReturn<T> returnStatement = getFactory().createReturn();
+        returnStatement.setReturnedExpression(returnExp);
+
+        CtBlock<T> body = getFactory().createBlock();
+        Arrays.stream(statements).forEach(body::addStatement);
+        body.addStatement(returnStatement);
+
+        Set<ModifierKind> modifiers =
+                new HashSet<>(Arrays.asList(ModifierKind.PRIVATE, ModifierKind.STATIC));
+        CtMethod<T> method =
+                getFactory()
+                        .createMethod(
+                                receiver,
+                                modifiers,
+                                returnExp.getType().getTypeDeclaration().getReference(),
+                                name,
+                                Collections.emptyList(),
+                                Collections.emptySet());
+        method.setBody(body);
+        return method;
+    }
+
+    /** @return A local variable initialized to the given expression. */
+    private <T> CtLocalVariable<T> createLocalVariable(String variableName, CtExpression<T> expr) {
+        return getFactory().createLocalVariable(expr.getType().clone(), variableName, expr.clone());
     }
 
     /**
