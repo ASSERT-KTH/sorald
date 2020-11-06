@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilderFactory;
-
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtCompilationUnit;
