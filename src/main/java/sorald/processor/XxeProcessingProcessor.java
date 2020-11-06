@@ -44,7 +44,6 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
 
         if (element.getParent() instanceof CtLocalVariable) {
             CtLocalVariable<?> localVar = (CtLocalVariable<?>) element.getParent();
-            assert localVar.getType().getSimpleName().equals(DOCUMENT_BUILDER_FACTORY);
             processLocalVariableDocumentBuilderFactory(localVar);
         } else if (element.getParent() instanceof CtInvocation
                 && element.getParent().getParent() instanceof CtLocalVariable) {
@@ -72,6 +71,7 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
      * @param localVar The variable declaration "DocumentBuilderFactory df;"
      */
     private void processLocalVariableDocumentBuilderFactory(CtLocalVariable<?> localVar) {
+        assert localVar.getType().getSimpleName().equals(DOCUMENT_BUILDER_FACTORY);
         CtBlock<?> block = localVar.getParent(CtBlock.class);
         setSafeBuilderFactoryAttributes(localVar, block);
     }
