@@ -41,7 +41,8 @@ public class Processors {
                     processorClass.getAnnotation(ProcessorAnnotation.class);
             descriptions += "\n" + ruleKeyToProcessor.getKey() + ": " + annotation.description();
 
-            IncompleteProcessor incomplete = processorClass.getAnnotation(IncompleteProcessor.class);
+            IncompleteProcessor incomplete =
+                    processorClass.getAnnotation(IncompleteProcessor.class);
             if (incomplete != null) {
                 descriptions += "\n\t(incomplete: " + incomplete.description() + ")";
             }
