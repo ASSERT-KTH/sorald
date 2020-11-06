@@ -2,6 +2,7 @@
 of remote repositories.
 """
 
+import argparse
 import sys
 import subprocess
 import pathlib
@@ -25,57 +26,80 @@ SORALD_JAR_PATH = (
     pathlib.Path(__file__).absolute().parent.parent.parent
     / "target"
     / "sorald-1.1-SNAPSHOT-jar-with-dependencies.jar"
-).resolve(strict=True)
+).resolve(strict=False)
 
-REPOS = [
-    f"https://github.com/{repo}"
-    for repo in (
-        "ontop/ontop",
-        "opendatalab-de/geojson-jackson",
-        "apache/commons-imaging",
-        "SpigotMC/BungeeCord",
-        "Pardot/Rhombus",
-        "kpelykh/docker-java",
-        "stanfordnlp/CoreNLP",
-        "NGDATA/hbase-indexer",
-        "spotify/hdfs2cass",
-        "octo-technology/sonar-objective-c",
-        "ppat/storm-rabbitmq",
-        "dkunzler/esperandro",
-        "ParallelAI/SpyGlass",
-        "FellowTraveler/otapij",
-        "gwtd3/gwt-d3",
-        "OpenHFT/Java-Lang",
-        "rcarz/jira-client",
-        "jitsi/jitsi-videobridge",
-        "RisingOak/jenkins-client",
-        "Beh01der/EasyFlow",
-        "jitsi/libjitsi",
-        "videlalvaro/clochure",
-        "lookfirst/sardine",
-        "rackerlabs/atom-hopper",
-        "Esri/geometry-api-java",
-        "rschreijer/lutung",
-        "eXist-db/exist",
-        "joel-costigliola/assertj-core",
-        "alibaba/druid",
-        "alibaba/fastjson",
-    )
-]
-
-WARNING_STATS_OUTPUT_DIR = pathlib.Path(__file__).parent / "warning_stats_output"
+WARNING_STATS_OUTPUT_DIR = (
+    pathlib.Path(__file__).parent / "warning_stats_output"
+).resolve(strict=False)
 
 NUM_COMMITS_PER_REPO = 20
 COMMIT_STEP_SIZE = 20
 
 
 def main():
+    parsed = parse_args(sys.argv[1:])
+    repo_urls = parse_repo_urls(parsed.repos_list)
     extract_warnings(
-        repo_urls=REPOS,
-        output_dir=WARNING_STATS_OUTPUT_DIR,
-        num_commits_per_repo=NUM_COMMITS_PER_REPO,
-        commit_step_size=COMMIT_STEP_SIZE,
+        repo_urls=repo_urls,
+        output_dir=parsed.output_dir.resolve(strict=False),
+        num_commits_per_repo=parsed.num_commits_per_repo,
+        commit_step_size=parsed.step_size,
     )
+
+
+def parse_args(args: List[str]) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Script for mining Sonar warnings on a per-commit basis, "
+        "using Sorald's warnings miner.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+
+    parser.add_argument(
+        "repo-list",
+        help="path to a file with names of GitHub repos, with one repo per line on "
+        "the form <OWNER_NAME>/<REPO_NAME> (e.g. spoonlabs/sorald)",
+        type=pathlib.Path,
+    )
+    parser.add_argument(
+        "-o",
+        "--output-dir",
+        help="path to the output directory",
+        type=pathlib.Path,
+        default=WARNING_STATS_OUTPUT_DIR,
+    )
+    parser.add_argument(
+        "-n",
+        "--num-commits-per-repo",
+        help="total amount of commits to sample from a repository, starting with the latest",
+        type=int,
+        default=sys.maxsize,
+    )
+    parser.add_argument(
+        "-s",
+        "--step-size",
+        help="how large a step to take when sampling commits (e.g. step size 1 means "
+        "sample every commit, step size of 3 means sample commits N, N-3, N-6 ..., "
+        "where N is the total amount of commits)",
+        type=int,
+        default=1,
+    )
+    parser.add_argument(
+        "--sorald-jar",
+        help="path to the Sorald jarfile with dependencies",
+        type=pathlib.Path,
+        default=SORALD_JAR_PATH,
+    )
+    return parser.parse_args(args)
+
+
+def parse_repo_urls(repos_list: pathlib.Path) -> List[str]:
+    return [
+        f"https://github.com/{repo}"
+        for raw_repo in repos_list.read_text(encoding=sys.getdefaultencoding()).split(
+            "\n"
+        )
+        if (repo := raw_repo.strip())
+    ]
 
 
 def extract_warnings(
