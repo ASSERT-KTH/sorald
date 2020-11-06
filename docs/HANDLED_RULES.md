@@ -403,9 +403,11 @@ Example:
 #### XML parsers should not be vulnerable to XXE attacks ([Sonar Rule 2755](https://rules.sonarsource.com/java/type/Vulnerability/RSPEC-2755))
 
 This repair is a work in progress. On a high level, it aims to make XML parsing
-safe by disabling features such as external schema and DTD support. There are
-many variations to the rule, and currently, the following is the only supported
-transformation.
+safe by disabling features such as external schema and DTD support.
+
+Currently, we target the `DocumentBuilderFactory` with the following transformations:
+
+##### DocumentBuilderFactory as a local variable
 
 ```diff
 +import javax.xml.XMLConstants;
@@ -424,4 +426,21 @@ transformation.
          return builder.parse(new InputSource(xmlFile));
      }
  }
+```
+
+##### Chained call to DocumentBuilderFactory.newInstance().createDocumentBuilder()
+
+```diff
+         // somewhere in a method body
+-        DocumentBuilder builder = DocumentBuilderFactory.newInstance().createDocumentBuilder();
++        DocumentBuilder builder = createDocumentBuilder();
+         [...]
+     }
+
++    private static javax.xml.parsers.DocumentBuilder createDocumentBuilder() {
++         DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();
++         df.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
++         df.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
++         return df.newDocumentBuilder();
++     }
 ```
