@@ -49,6 +49,8 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         } else if (element.getParent() instanceof CtInvocation
                 && element.getParent().getParent() instanceof CtLocalVariable) {
             processChainedBuilderFactory(element);
+        } else {
+            throw new IllegalArgumentException("Unexpected element " + element);
         }
     }
 
