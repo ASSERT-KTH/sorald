@@ -42,3 +42,7 @@ kth/spork
 
 > **Note:** Currently, the commit extractor is optimized for projects using
 > Maven. It will not find sources for any other build tools.
+
+> **Taking too long?** Try limiting either a) the amount of commits you extract
+> (`--num-comits-per-repo`), or b) the step size between commits
+> (`--step-size`), or c) both of those.
