@@ -75,27 +75,6 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     }
 
     /**
-     * Add the following two statements to block: <code>
-     *     localVar.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD);
-     *     localVar.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA);
-     * </code>
-     */
-    private void setSafeBuilderFactoryAttributes(CtLocalVariable<?> localVar, CtBlock<?> block) {
-        CtFieldRead<String> accessExternalDtd = readXmlConstant(ACCESS_EXTERNAL_DTD);
-        CtFieldRead<String> accessExternalSchema = readXmlConstant(ACCESS_EXTERNAL_SCHEMA);
-        CtLiteral<Object> emptyString = getFactory().createLiteral("");
-        CtInvocation<?> setExternalDtd =
-                createSetAttributeInvocation(localVar, accessExternalDtd, emptyString);
-        CtInvocation<?> setExternalSchema =
-                createSetAttributeInvocation(localVar, accessExternalSchema, emptyString);
-
-        int statementIdx = block.getStatements().indexOf(localVar);
-        block.addStatement(statementIdx + 1, setExternalSchema);
-        block.addStatement(statementIdx + 1, setExternalDtd);
-        ensureTypeImported(localVar, getFactory().Type().get(XMLConstants.class));
-    }
-
-    /**
      * Processing only for the case where the creation of the builder is chained with the creation
      * of the factory, i.e. something like so: <code>
      * DocumentBuilderFactory.newInstance().createDocumentBuilder()</code> All of that is replaced
@@ -116,7 +95,8 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         CtInvocation<?> newBuilderInvocation = (CtInvocation<?>) newInstanceInvocation.getParent();
         CtType<?> type = newInstanceInvocation.getParent(CtType.class);
 
-        CtLocalVariable<T> builderFactoryVariable = asLocalVariable("df", newInstanceInvocation);
+        CtLocalVariable<T> builderFactoryVariable =
+                createLocalVariable("df", newInstanceInvocation);
         CtVariableAccess<T> varRead =
                 getFactory().createVariableRead(builderFactoryVariable.getReference(), false);
 
@@ -138,6 +118,32 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
                                 method.getReference()));
     }
 
+    /**
+     * Add the following two statements to block: <br>
+     * <code>
+     *     localVar.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD);
+     *     localVar.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA);
+     * </code>
+     */
+    private void setSafeBuilderFactoryAttributes(CtLocalVariable<?> localVar, CtBlock<?> block) {
+        CtFieldRead<String> accessExternalDtd = readXmlConstant(ACCESS_EXTERNAL_DTD);
+        CtFieldRead<String> accessExternalSchema = readXmlConstant(ACCESS_EXTERNAL_SCHEMA);
+        CtLiteral<Object> emptyString = getFactory().createLiteral("");
+        CtInvocation<?> setExternalDtd =
+                createSetAttributeInvocation(read(localVar), accessExternalDtd, emptyString);
+        CtInvocation<?> setExternalSchema =
+                createSetAttributeInvocation(read(localVar), accessExternalSchema, emptyString);
+
+        int statementIdx = block.getStatements().indexOf(localVar);
+        block.addStatement(statementIdx + 1, setExternalSchema);
+        block.addStatement(statementIdx + 1, setExternalDtd);
+        ensureTypeImported(localVar, getFactory().Type().get(XMLConstants.class));
+    }
+
+    /**
+     * @return A private static method with the given name, receiver type, return expression and
+     *     statements in the body.
+     */
     private <T> CtMethod<T> createPrivateStaticMethod(
             String name, CtType<?> receiver, CtExpression<T> returnExp, CtStatement... statements) {
         CtReturn<T> returnStatement = getFactory().createReturn();
@@ -163,7 +169,7 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     }
 
     /** @return A local variable initialized to the given expression. */
-    private <T> CtLocalVariable<T> asLocalVariable(String variableName, CtExpression<T> expr) {
+    private <T> CtLocalVariable<T> createLocalVariable(String variableName, CtExpression<T> expr) {
         return getFactory().createLocalVariable(expr.getType().clone(), variableName, expr.clone());
     }
 
@@ -199,15 +205,14 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         return fieldRead;
     }
 
-    /** @return An invocation localVar.setAttribute(key, value). */
+    /** @return An invocation receiver.setAttribute(key, value). */
     private <T> CtInvocation<T> createSetAttributeInvocation(
-            CtLocalVariable<T> localVar, CtExpression<String> key, CtExpression<Object> value) {
-        CtType<T> builderFactory = localVar.getType().getTypeDeclaration();
+            CtExpression<T> receiver, CtExpression<String> key, CtExpression<Object> value) {
+        CtType<T> builderFactory = receiver.getType().getTypeDeclaration();
         CtMethod<T> setAttribute =
                 builderFactory.getMethod(
                         "setAttribute", getFactory().Type().STRING, getFactory().Type().OBJECT);
-        return getFactory()
-                .createInvocation(read(localVar), setAttribute.getReference(), key, value);
+        return getFactory().createInvocation(receiver, setAttribute.getReference(), key, value);
     }
 
     private <T> CtVariableAccess<T> read(CtLocalVariable<T> localVar) {
