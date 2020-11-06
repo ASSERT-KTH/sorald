@@ -219,11 +219,6 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         return getFactory().createVariableRead(localVar.getReference(), localVar.isStatic());
     }
 
-    private <T> CtTypeReference<T> getReferenceWithImplicitPackage(Class<T> cls) {
-        CtType<T> type = getFactory().Type().get(cls);
-        return getReferenceWithImplicitPackage(type);
-    }
-
     private <T> CtTypeReference<T> getReferenceWithImplicitPackage(CtType<T> type) {
         CtTypeReference<T> ref = type.getReference();
         ref.getPackage().setImplicit(true);
