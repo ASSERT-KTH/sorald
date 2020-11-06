@@ -1,6 +1,5 @@
 package sorald;
 
-import java.lang.annotation.Annotation;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -41,6 +40,11 @@ public class Processors {
             ProcessorAnnotation annotation =
                     processorClass.getAnnotation(ProcessorAnnotation.class);
             descriptions += "\n" + ruleKeyToProcessor.getKey() + ": " + annotation.description();
+
+            IncompleteProcessor incomplete = processorClass.getAnnotation(IncompleteProcessor.class);
+            if (incomplete != null) {
+                descriptions += "\n\t(incomplete: " + incomplete.description() + ")";
+            }
         }
         return descriptions;
     }
