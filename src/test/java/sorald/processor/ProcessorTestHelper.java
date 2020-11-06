@@ -98,6 +98,7 @@ public class ProcessorTestHelper {
                 .map(File::listFiles)
                 .flatMap(Arrays::stream)
                 .filter(file -> file.getName().endsWith(".java"))
+                .filter(file -> !file.getName().startsWith("IGNORE"))
                 .map(ProcessorTestHelper::toProcessorTestCase);
     }
 

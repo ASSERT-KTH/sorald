@@ -2,8 +2,6 @@ package sorald.processor;
 
 import java.math.BigDecimal;
 import java.util.List;
-import org.sonar.java.checks.BigDecimalDoubleConstructorCheck;
-import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
@@ -16,11 +14,6 @@ public class BigDecimalDoubleConstructorProcessor
         extends SoraldAbstractProcessor<CtConstructorCall> {
 
     public BigDecimalDoubleConstructorProcessor() {}
-
-    @Override
-    public JavaFileScanner getSonarCheck() {
-        return new BigDecimalDoubleConstructorCheck();
-    }
 
     @Override
     public boolean isToBeProcessed(CtConstructorCall cons) {

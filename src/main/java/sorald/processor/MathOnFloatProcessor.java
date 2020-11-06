@@ -1,8 +1,6 @@
 package sorald.processor;
 
 import java.util.List;
-import org.sonar.java.checks.MathOnFloatCheck;
-import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.BinaryOperatorKind;
@@ -15,11 +13,6 @@ import spoon.reflect.visitor.filter.TypeFilter;
 public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 
     public MathOnFloatProcessor() {}
-
-    @Override
-    public JavaFileScanner getSonarCheck() {
-        return new MathOnFloatCheck();
-    }
 
     @Override
     public boolean isToBeProcessed(CtBinaryOperator candidate) {

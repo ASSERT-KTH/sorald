@@ -34,7 +34,10 @@ public class SegmentRepair extends SoraldAbstractRepair {
             try {
                 Launcher launcher = createLauncher(segment, outputDirPath);
 
-                SoraldAbstractProcessor processor = createProcessor(ruleKey, segment, nbFixes);
+                File inputBaseDir =
+                        FileUtils.getClosestDirectory(new File(config.getOriginalFilesPath()));
+                SoraldAbstractProcessor processor =
+                        createProcessor(ruleKey, segment, nbFixes, inputBaseDir);
                 if (!this.processorNbsRepaired.containsKey(processor.getClass().getSimpleName())) {
                     this.processorNbsRepaired.put(processor.getClass().getSimpleName(), nbFixes);
                 }
@@ -89,11 +92,11 @@ public class SegmentRepair extends SoraldAbstractRepair {
     }
 
     private SoraldAbstractProcessor createProcessor(
-            Integer ruleKey, List<Node> segment, int cachedNbFixes) throws Exception {
+            Integer ruleKey, List<Node> segment, int cachedNbFixes, File baseDir) {
         SoraldAbstractProcessor processor = createBaseProcessor(ruleKey);
         if (processor != null) {
             return processor
-                    .initResource(segment)
+                    .initResource(segment, baseDir)
                     .setMaxFixes(this.config.getMaxFixesPerRule())
                     .setNbFixes(cachedNbFixes);
         }

@@ -1,0 +1,6 @@
+public class NonFinalPublicStaticField {
+    public static final Integer meaningOfLife = 42;
+    private static Integer CATCH = 22; // Compliant
+    protected static Integer order = 66; // Compliant
+    static Integer roadToHill = 30; // Compliant
+}

@@ -1,8 +1,6 @@
 package sorald.processor;
 
 import java.util.HashMap;
-import org.sonar.java.checks.GetClassLoaderCheck;
-import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtTypeAccess;
@@ -18,11 +16,6 @@ public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocatio
     private HashMap<Integer, Boolean> hashCodesOfTypesUsingJEE = new HashMap<Integer, Boolean>();
 
     public GetClassLoaderProcessor() {}
-
-    @Override
-    public JavaFileScanner getSonarCheck() {
-        return new GetClassLoaderCheck();
-    }
 
     @Override
     public boolean isToBeProcessed(CtInvocation<?> invocation) {

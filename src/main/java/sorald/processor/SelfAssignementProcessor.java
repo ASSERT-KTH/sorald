@@ -1,7 +1,5 @@
 package sorald.processor;
 
-import org.sonar.java.checks.SelfAssignementCheck;
-import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.CtArrayAccess;
 import spoon.reflect.code.CtAssignment;
@@ -19,11 +17,6 @@ import spoon.reflect.factory.Factory;
 public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignment<?, ?>> {
 
     public SelfAssignementProcessor() {}
-
-    @Override
-    public JavaFileScanner getSonarCheck() {
-        return new SelfAssignementCheck();
-    }
 
     @Override
     public boolean isToBeProcessed(CtAssignment<?, ?> candidate) {

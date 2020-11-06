@@ -1,10 +1,10 @@
 package sorald;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import org.sonar.java.checks.*;
-import org.sonar.java.se.checks.*;
+import java.util.stream.Collectors;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.sonar.Checks;
 
@@ -24,8 +24,14 @@ public class Constants {
     public static final String ARG_MAX_FIXES_PER_RULE = "maxFixesPerRule";
     public static final String ARG_REPAIR_STRATEGY = "repairStrategy";
     public static final String ARG_MAX_FILES_PER_SEGMENT = "maxFilesPerSegment";
+    public static final String ARG_RULE_TYPES = "ruleTypes";
 
     public static final String PROCESSOR_PACKAGE = "sorald.processor";
+    public static final List<String> SONAR_RULE_TYPES =
+            Collections.unmodifiableList(
+                    Arrays.stream(Checks.CheckType.values())
+                            .map(Checks.CheckType::getLabel)
+                            .collect(Collectors.toList()));
 
     public static final String SORALD_WORKSPACE = "sorald-workspace";
     public static final String PATCHES = "SoraldGitPatches";

@@ -61,8 +61,9 @@ public class DefaultRepair extends SoraldAbstractRepair {
             }
 
             Launcher launcher = createLauncher(inputDirPath, outputDirPath);
+            File inputBaseDir = FileUtils.getClosestDirectory(new File(inputDirPath));
 
-            Processor processor = createProcessor(ruleKey, inputDirPath);
+            Processor processor = createProcessor(ruleKey, inputDirPath, inputBaseDir);
             this.addedProcessors.add((SoraldAbstractProcessor) processor);
             Factory factory = launcher.getFactory();
             ProcessingManager processingManager = new QueueProcessingManager(factory);
@@ -88,7 +89,7 @@ public class DefaultRepair extends SoraldAbstractRepair {
         }
 
         this.printEndProcess();
-        deleteDirectory(new File(intermediateSpoonedPath));
+        FileUtils.deleteDirectory(new File(intermediateSpoonedPath));
         UniqueTypesCollector.getInstance().reset();
     }
 
@@ -108,11 +109,11 @@ public class DefaultRepair extends SoraldAbstractRepair {
         return initLauncher(launcher, outputDirPath);
     }
 
-    private Processor createProcessor(Integer ruleKey, String inputDirPath) {
+    private Processor createProcessor(Integer ruleKey, String inputDirPath, File inputBaseDir) {
         SoraldAbstractProcessor processor = createBaseProcessor(ruleKey);
         if (processor != null) {
             return processor
-                    .initResource(inputDirPath)
+                    .initResource(inputDirPath, inputBaseDir)
                     .setMaxFixes(this.config.getMaxFixesPerRule());
         }
         return null;

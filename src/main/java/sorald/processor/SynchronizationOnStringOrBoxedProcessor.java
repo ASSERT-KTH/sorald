@@ -2,8 +2,6 @@ package sorald.processor;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.sonar.java.checks.SynchronizationOnStringOrBoxedCheck;
-import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.ProcessorAnnotation;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtFieldRead;
@@ -32,11 +30,6 @@ public class SynchronizationOnStringOrBoxedProcessor
     public SynchronizationOnStringOrBoxedProcessor() {
         this.old2NewFields = new HashMap<>();
         this.old2NewMethods = new HashMap<>();
-    }
-
-    @Override
-    public JavaFileScanner getSonarCheck() {
-        return new SynchronizationOnStringOrBoxedCheck();
     }
 
     @Override

@@ -6,14 +6,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.FileUtils;
+import sorald.ProcessorAnnotation;
 import sorald.UniqueTypesCollector;
 import sorald.segment.Node;
+import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
 import sorald.sonar.RuleViolation;
 import spoon.processing.AbstractProcessor;
@@ -27,10 +31,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     public SoraldAbstractProcessor() {}
 
-    public abstract JavaFileScanner getSonarCheck();
-
-    public SoraldAbstractProcessor initResource(String originalFilesPath) {
-        JavaFileScanner sonarCheck = getSonarCheck();
+    public SoraldAbstractProcessor initResource(String originalFilesPath, File baseDir) {
+        JavaFileScanner sonarCheck = Checks.getCheckInstance(getRuleKey());
         try {
             List<String> filesToScan = new ArrayList<>();
             File file = new File(originalFilesPath);
@@ -46,15 +48,15 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                     e.printStackTrace();
                 }
             }
-            ruleViolations = RuleVerifier.analyze(filesToScan, sonarCheck);
+            ruleViolations = RuleVerifier.analyze(filesToScan, baseDir, sonarCheck);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return this;
     }
 
-    public SoraldAbstractProcessor initResource(List<Node> segment) throws Exception {
-        JavaFileScanner sonarCheck = getSonarCheck();
+    public SoraldAbstractProcessor initResource(List<Node> segment, File baseDir) {
+        JavaFileScanner sonarCheck = Checks.getCheckInstance(getRuleKey());
         List<String> filesToScan = new ArrayList<>();
         for (Node node : segment) {
             if (node.isFileNode()) {
@@ -71,7 +73,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
             }
         }
 
-        ruleViolations = RuleVerifier.analyze(filesToScan, sonarCheck);
+        ruleViolations = RuleVerifier.analyze(filesToScan, baseDir, sonarCheck);
         return this;
     }
 
@@ -111,7 +113,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         }
 
         for (RuleViolation ruleViolation : ruleViolations) {
-            if (ruleViolation.getLineNumber() == line && ruleViolation.getFileName().equals(file)) {
+            if (ruleViolation.getLineNumber() == line
+                    && FileUtils.pathAbsNormEqual(ruleViolation.getFileName(), file)) {
                 return true;
             }
         }
@@ -122,5 +125,17 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     public void process(E element) {
         UniqueTypesCollector.getInstance().collect(element);
         this.nbFixes++;
+    }
+
+    /** @return The numerical identifier of the rule this processor is related to */
+    public String getRuleKey() {
+        return Arrays.stream(getClass().getAnnotationsByType(ProcessorAnnotation.class))
+                .map(ProcessorAnnotation::key)
+                .findFirst()
+                .orElseThrow(
+                        () ->
+                                new IllegalStateException(
+                                        getClass().getName() + " does not have a key"))
+                .toString();
     }
 }
