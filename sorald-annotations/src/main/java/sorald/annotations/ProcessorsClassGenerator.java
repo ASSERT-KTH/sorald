@@ -84,6 +84,14 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
         return true;
     }
 
+    private CtType<?> createProcessorsClass(Set<? extends Element> elements) {
+        CtType<?> processorsClass = factory.createClass(PROCESSORS_CLASS_QUALNAME);
+        CtField<String> ruleKeyToProcessor = addRuleKeyToProcessorField(processorsClass, elements);
+        addGetProcessorMethod(processorsClass, ruleKeyToProcessor);
+        addRuleDescriptionsField(processorsClass, elements);
+        return processorsClass;
+    }
+
     private void writeType(CtType<?> type) throws IOException {
         JavaFileObject processorsFile =
                 processingEnv.getFiler().createSourceFile(type.getQualifiedName());
@@ -91,14 +99,6 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
         try (PrintWriter out = new PrintWriter(processorsFile.openWriter())) {
             out.println(type.toStringWithImports());
         }
-    }
-
-    private CtType<?> createProcessorsClass(Set<? extends Element> elements) {
-        CtType<?> processorsClass = factory.createClass(PROCESSORS_CLASS_QUALNAME);
-        CtField<String> ruleKeyToProcessor = addRuleKeyToProcessorField(processorsClass, elements);
-        addGetProcessorMethod(processorsClass, ruleKeyToProcessor);
-        addRuleDescriptionsField(processorsClass, elements);
-        return processorsClass;
     }
 
     private void addRuleDescriptionsField(CtType<?> type, Set<? extends Element> elements) {
@@ -112,16 +112,11 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
     }
 
     private void addGetProcessorMethod(CtType<?> type, CtField<String> ruleKeyToProcessor) {
-        Set<ModifierKind> publicStaticFinal =
-                new HashSet<>(
-                        Arrays.asList(
-                                ModifierKind.PUBLIC, ModifierKind.STATIC, ModifierKind.FINAL));
-
         CtTypeReference<?> cls = factory.createCtTypeReference(Class.class);
         CtMethod<String> getProcessor =
                 factory.createMethod(
                         type,
-                        publicStaticFinal,
+                        PUBLIC_STATIC_FINAL,
                         cls,
                         "getProcessor",
                         Collections.emptyList(),
