@@ -45,6 +45,7 @@ def main():
         num_commits_per_repo=parsed.num_commits_per_repo,
         commit_step_size=parsed.step_size,
         num_cpus=parsed.num_cpus,
+        sorald_jar=parsed.sorald_jar,
     )
 
 
@@ -125,6 +126,7 @@ def extract_warnings(
     num_commits_per_repo: int,
     commit_step_size: int,
     num_cpus: int,
+    sorald_jar: pathlib.Path,
 ) -> None:
     repo_url_iter = tqdm(repo_urls, desc="Overall progress", unit="repo")
     output_dir.mkdir(exist_ok=True, parents=True)
@@ -135,6 +137,7 @@ def extract_warnings(
             num_commits=num_commits_per_repo,
             commit_step_size=commit_step_size,
             num_cpus=num_cpus,
+            sorald_jar=sorald_jar,
         )
         frame = pd.DataFrame.from_dict(warning_stats)
         raw_data_dst = output_dir / (
@@ -149,7 +152,11 @@ def extract_warnings(
 
 
 def extract_warning_stats_from_remote_repo(
-    repo_url: str, num_commits: int, commit_step_size: int, num_cpus: int
+    repo_url: str,
+    num_commits: int,
+    commit_step_size: int,
+    num_cpus: int,
+    sorald_jar: pathlib.Path,
 ) -> Mapping[str, Mapping[str, int]]:
     with tempfile.TemporaryDirectory() as tmpdir:
         workdir = pathlib.Path(tmpdir)
@@ -158,14 +165,23 @@ def extract_warning_stats_from_remote_repo(
         commits = [commit.hexsha for commit in repo.iter_commits()][::commit_step_size][
             :num_commits
         ]
-        return extract_warnings_stats_from_local_repo(repo_root, commits, num_cpus)
+        return extract_warnings_stats_from_local_repo(
+            repo_root, commits, num_cpus, sorald_jar
+        )
 
 
 def extract_warnings_stats_from_local_repo(
-    repo_root: pathlib.Path, commits: List[str], num_cpus: int
+    repo_root: pathlib.Path,
+    commits: List[str],
+    num_cpus: int,
+    sorald_jar: pathlib.Path,
 ) -> Mapping[str, Mapping[str, int]]:
     with multiprocessing.Pool(num_cpus) as pool:
-        extract = functools.partial(extract_commit_warning_stats, repo_root=repo_root)
+        extract = functools.partial(
+            extract_commit_warning_stats,
+            repo_root=repo_root,
+            sorald_jar=sorald_jar,
+        )
         warnings_extraction_iter = pool.imap(extract, commits)
 
         warnings_extraction_progress = tqdm(
@@ -181,30 +197,32 @@ def extract_warnings_stats_from_local_repo(
 
 
 def extract_commit_warning_stats(
-    commit_sha: str, repo_root: pathlib.Path
+    commit_sha: str, repo_root: pathlib.Path, sorald_jar: pathlib.Path
 ) -> Tuple[str, Mapping[str, int]]:
-    return commit_sha, _extract_commit_warning_stats(commit_sha, repo_root)
+    return commit_sha, _extract_commit_warning_stats(commit_sha, repo_root, sorald_jar)
 
 
 def _extract_commit_warning_stats(
-    commit_sha: str, repo_root: pathlib.Path
+    commit_sha: str, repo_root: pathlib.Path, sorald_jar: pathlib.Path
 ) -> Mapping[str, int]:
     all_warnings = collections.defaultdict(int)
     with temporary_checkout(repo_root, commit_sha) as checkout_path:
         for src_main in find_main_sources(checkout_path):
-            warnings = extract_warning_stats_from_dir(src_main)
+            warnings = extract_warning_stats_from_dir(src_main, sorald_jar)
             for key, value in warnings.items():
                 all_warnings[key] += value
 
     return all_warnings
 
 
-def extract_warning_stats_from_dir(root_path: pathlib.Path) -> Mapping[str, int]:
+def extract_warning_stats_from_dir(
+    root_path: pathlib.Path, sorald_jar: pathlib.Path
+) -> Mapping[str, int]:
     proc = subprocess.run(
         [
             "java",
             "-cp",
-            str(SORALD_JAR_PATH),
+            str(sorald_jar),
             "sorald.miner.MineSonarWarnings",
             "--originalFilesPath",
             str(root_path),
@@ -215,6 +233,7 @@ def extract_warning_stats_from_dir(root_path: pathlib.Path) -> Mapping[str, int]
     )
 
     if proc.returncode != 0:
+        print(proc.stderr.decode(sys.getdefaultencoding()), file=sys.stderr)
         return {}
 
     output = proc.stdout.decode(encoding=sys.getdefaultencoding())
