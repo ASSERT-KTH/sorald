@@ -196,7 +196,7 @@
                     <generatedSourcesDirectory>${project.build.directory}/generated-sources</generatedSourcesDirectory>
                     <annotationProcessors>
                         <annotationProcessor>
-                            sorald.annotations.AnnotationProcessor
+                            sorald.annotations.ProcessorsClassGenerator
                         </annotationProcessor>
                     </annotationProcessors>
                 </configuration>

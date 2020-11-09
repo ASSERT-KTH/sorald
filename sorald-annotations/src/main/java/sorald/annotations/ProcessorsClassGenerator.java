@@ -26,7 +26,7 @@ import javax.lang.model.element.TypeElement;
 import javax.tools.JavaFileObject;
 
 @SupportedAnnotationTypes("sorald.annotations.ProcessorAnnotation")
-public class AnnotationProcessor extends AbstractProcessor {
+public class ProcessorsClassGenerator extends AbstractProcessor {
     private static final Set<ModifierKind> PUBLIC_STATIC_FINAL =
             new HashSet<>(
                     Arrays.asList(ModifierKind.PUBLIC, ModifierKind.STATIC, ModifierKind.FINAL));
@@ -40,7 +40,7 @@ public class AnnotationProcessor extends AbstractProcessor {
     private final Launcher launcher;
     private final Factory factory;
 
-    public AnnotationProcessor() {
+    public ProcessorsClassGenerator() {
         launcher = new Launcher();
         launcher.getEnvironment().setNoClasspath(true);
         factory = launcher.getFactory();
