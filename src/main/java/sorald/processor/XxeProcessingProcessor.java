@@ -103,12 +103,12 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     }
 
     /**
-     * @return A private static method with the given name, receiver type, return expression and
+     * @return A private static method with the given name, target type, return expression and
      *     statements in the body.
      */
     private <T> CtMethod<T> createPrivateStaticMethod(
             String name,
-            CtType<?> receiver,
+            CtType<?> target,
             List<? extends CtStatement> statements,
             CtExpression<T> returnExp) {
         CtReturn<T> returnStatement = getFactory().createReturn();
@@ -125,7 +125,7 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         CtMethod<T> method =
                 getFactory()
                         .createMethod(
-                                receiver,
+                                target,
                                 modifiers,
                                 returnType,
                                 name,
@@ -173,14 +173,14 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         return fieldRead;
     }
 
-    /** @return An invocation receiver.setAttribute(key, value). */
+    /** @return An invocation target.setAttribute(key, value). */
     private <T> CtInvocation<T> createSetAttributeInvocation(
-            CtExpression<T> receiver, CtExpression<String> key, CtExpression<Object> value) {
-        CtType<T> builderFactory = receiver.getType().getTypeDeclaration();
+            CtExpression<T> target, CtExpression<String> key, CtExpression<Object> value) {
+        CtType<T> builderFactory = target.getType().getTypeDeclaration();
         CtMethod<T> setAttribute =
                 builderFactory.getMethod(
                         "setAttribute", getFactory().Type().STRING, getFactory().Type().OBJECT);
-        return getFactory().createInvocation(receiver, setAttribute.getReference(), key, value);
+        return getFactory().createInvocation(target, setAttribute.getReference(), key, value);
     }
 
     private <T> CtVariableAccess<T> read(CtLocalVariable<T> localVar) {
