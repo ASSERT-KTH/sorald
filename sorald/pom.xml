@@ -187,34 +187,13 @@
                 <version>2.22.2</version>
             </plugin>
             <plugin>
-                <groupId>fr.inria.gforge.spoon</groupId>
-                <artifactId>spoon-maven-plugin</artifactId>
-                <version>3.4.2</version>
-                <configuration>
-                    <processors>
-                        <processor>
-                            sorald.annotations.SpoonAnnotationProcessor
-                        </processor>
-                    </processors>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
                     <compilerArgs>
                     </compilerArgs>
-                    <generatedSourcesDirectory>${project.build.directory}
-                        /generated-sources/</generatedSourcesDirectory>
+                    <generatedSourcesDirectory>${project.build.directory}/generated-sources</generatedSourcesDirectory>
                     <annotationProcessors>
                         <annotationProcessor>
                             sorald.annotations.AnnotationProcessor
