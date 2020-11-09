@@ -4,7 +4,7 @@ jdk:
   - openjdk11
 
 script:
-  - java -jar /home/travis/build/SpoonLabs/sorald/target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar --originalFilesPath /home/travis/build/SpoonLabs/sorald/src/test/resources/ArrayHashCodeAndToString.java --ruleKeys 2184
+  - java -jar "$TRAVIS_BUILD_DIR"/sorald/target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar --originalFilesPath /home/travis/build/SpoonLabs/sorald/src/test/resources/ArrayHashCodeAndToString.java --ruleKeys 2184
   - mvn spotless:check test
 
 after_success: bash <(curl -s https://codecov.io/bash)
