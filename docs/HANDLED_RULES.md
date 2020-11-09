@@ -417,7 +417,7 @@ Currently, we target the `DocumentBuilderFactory` with the following transformat
  import javax.xml.parsers.DocumentBuilder;
  import javax.xml.parsers.DocumentBuilderFactory;
 
- public class DocumentBuilderNoSecurity {
+ public class DocumentBuilderLocalVariable {
      public static Document parse(String xmlFile) throws Exception {
          DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();
 +        df.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");

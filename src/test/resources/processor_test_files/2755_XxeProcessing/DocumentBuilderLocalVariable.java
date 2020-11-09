@@ -4,7 +4,7 @@ import org.xml.sax.InputSource;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-public class DocumentBuilderNoSecurity {
+public class DocumentBuilderLocalVariable {
     public static Document parse(String xmlFile) throws Exception {
         DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();  // Noncompliant
         DocumentBuilder builder = df.newDocumentBuilder();
