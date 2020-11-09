@@ -5,10 +5,9 @@ import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-public class DocumentBuilderChainedLocalVariable {
+public class DocumentBuilderFullyChainedParse {
     public static Document parse(String xmlFile) throws Exception {
-        DocumentBuilder builder = createDocumentBuilderFactory().newDocumentBuilder();
-        return builder.parse(new InputSource(xmlFile));
+        return createDocumentBuilderFactory().newDocumentBuilder().parse(new InputSource(xmlFile));
     }
 
     private static DocumentBuilderFactory createDocumentBuilderFactory() {
