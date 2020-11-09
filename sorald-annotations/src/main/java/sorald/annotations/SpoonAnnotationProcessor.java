@@ -27,6 +27,7 @@ public class SpoonAnnotationProcessor<T>
     private CtClass<?> processorsClass = null;
     private CtType<?> soraldAbstractProcessor = null;
     private Map<Integer, CtClass<?>> processorMap = new HashMap<>();
+    private String ruleDescriptions = "";
 
     private static final Set<ModifierKind> PUBLIC_STATIC_FINAL =
             new HashSet<>(
@@ -41,6 +42,7 @@ public class SpoonAnnotationProcessor<T>
 
         processorMap.put(annotation.key(), element);
         updateProcessorMapField();
+        updateRuleDescriptions(annotation);
 
         cu.getImports().add(getFactory().createImport(element.getReference()));
     }
@@ -48,6 +50,12 @@ public class SpoonAnnotationProcessor<T>
     private void updateProcessorMapField() {
         CtField procMapField = processorsClass.getField("RULE_KEY_TO_PROCESSOR");
         procMapField.setDefaultExpression(generateProductionProcessorMapInitializer());
+    }
+
+    private void updateRuleDescriptions(ProcessorAnnotation annotation) {
+        ruleDescriptions += "\n" + annotation.key() + ": " + annotation.description();
+        CtField field = processorsClass.getField("RULE_DESCRIPTIONS");
+        field.setDefaultExpression(getFactory().createLiteral(ruleDescriptions));
     }
 
     private CtExpression<?> generateProductionProcessorMapInitializer() {
