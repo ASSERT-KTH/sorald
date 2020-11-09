@@ -44,6 +44,7 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         CtMethod<?> docBuilderFactoryMethod =
                 createDocumentBuilderFactoryMethod(element, declaringType);
         ensureTypeImported(declaringType, getFactory().Type().get(XMLConstants.class));
+        ensureTypeImported(declaringType, element.getType().getTypeDeclaration());
 
         CtInvocation<?> safeCreateDocBuilderFactory = invoke(docBuilderFactoryMethod);
         element.replace(safeCreateDocBuilderFactory);
@@ -119,12 +120,14 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
 
         Set<ModifierKind> modifiers =
                 new HashSet<>(Arrays.asList(ModifierKind.PRIVATE, ModifierKind.STATIC));
+        CtTypeReference<?> returnType = returnExp.getType().getTypeDeclaration().getReference();
+        returnType.getPackage().setImplicit(true);
         CtMethod<T> method =
                 getFactory()
                         .createMethod(
                                 receiver,
                                 modifiers,
-                                returnExp.getType().getTypeDeclaration().getReference(),
+                                returnType,
                                 name,
                                 Collections.emptyList(),
                                 Collections.emptySet());
