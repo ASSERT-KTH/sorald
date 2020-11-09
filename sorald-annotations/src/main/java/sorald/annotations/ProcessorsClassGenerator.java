@@ -27,6 +27,10 @@ import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
 
+/**
+ * Annotation processor that generates the class sorald.Processors, which contains utility methods
+ * for fetching Sorald processors and their descriptions.
+ */
 @SupportedAnnotationTypes("sorald.annotations.ProcessorAnnotation")
 public class ProcessorsClassGenerator extends AbstractProcessor {
     private static final Set<ModifierKind> PUBLIC_STATIC_FINAL =
