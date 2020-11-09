@@ -3,6 +3,7 @@ package sorald.annotations;
 import spoon.Launcher;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtReturn;
+import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.declaration.ModifierKind;
@@ -36,7 +37,9 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
             new HashSet<>(
                     Arrays.asList(ModifierKind.PRIVATE, ModifierKind.STATIC, ModifierKind.FINAL));
 
-    private static final String PROCESSORS_QUALNAME = "sorald.Processors";
+    private static final String PROCESSORS_CLASS_QUALNAME = "sorald.Processors";
+    private static final String SORALD_ABSTRACT_PROCESSOR_QUALNAME =
+            "sorald.processor.SoraldAbstractProcessor";
 
     private final Factory factory;
 
@@ -69,7 +72,7 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
                         .printMessage(
                                 Diagnostic.Kind.ERROR,
                                 "Something went wrong generating the "
-                                        + PROCESSORS_QUALNAME
+                                        + PROCESSORS_CLASS_QUALNAME
                                         + " class");
                 e.printStackTrace();
                 return false;
@@ -88,10 +91,10 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
     }
 
     private CtType<?> createProcessorsClass(Set<? extends Element> elements) {
-        CtType<?> processorsClass = factory.createClass(PROCESSORS_QUALNAME);
-        addGetProcessorMethod(processorsClass);
+        CtType<?> processorsClass = factory.createClass(PROCESSORS_CLASS_QUALNAME);
+        CtField<String> ruleKeyToProcessor = addRuleKeyToProcessorField(processorsClass, elements);
+        addGetProcessorMethod(processorsClass, ruleKeyToProcessor);
         addRuleDescriptionsField(processorsClass, elements);
-        addRuleKeyToProcessorField(processorsClass, elements);
         return processorsClass;
     }
 
@@ -105,7 +108,7 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
                 factory.createLiteral(ruleDescriptions));
     }
 
-    private void addGetProcessorMethod(CtType<?> type) {
+    private void addGetProcessorMethod(CtType<?> type, CtField<String> ruleKeyToProcessor) {
         Set<ModifierKind> publicStaticFinal =
                 new HashSet<>(
                         Arrays.asList(
@@ -124,34 +127,27 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
 
         CtReturn<String> retStatement = factory.createReturn();
         retStatement.setReturnedExpression(
-                factory.createCodeSnippetExpression("RULE_KEY_TO_PROCESSOR.get(key)"));
+                factory.createCodeSnippetExpression(
+                        ruleKeyToProcessor.getSimpleName() + ".get(key)"));
         getProcessor.setBody(factory.createCtBlock(retStatement));
     }
 
-    private void addRuleKeyToProcessorField(
-            CtType<?> processorsClass, Set<? extends Element> elements) {
+    private CtField<String> addRuleKeyToProcessorField(
+            CtType<?> type, Set<? extends Element> elements) {
         CtTypeReference<?> mapTypeRef = factory.createCtTypeReference(Map.class);
         mapTypeRef.addActualTypeArgument(factory.Type().INTEGER);
         mapTypeRef.addActualTypeArgument(
                 createClassTypeRefWithUpperBound(
-                        factory.createReference("sorald.processor.SoraldAbstractProcessor")));
-        factory.createField(
-                processorsClass,
+                        factory.createReference(SORALD_ABSTRACT_PROCESSOR_QUALNAME)));
+        return factory.createField(
+                type,
                 PRIVATE_STATIC_FINAL,
                 mapTypeRef,
                 "RULE_KEY_TO_PROCESSOR",
                 generateRuleKeyToProcessorInitializer(elements));
     }
 
-    private CtTypeReference<?> createClassTypeRefWithUpperBound(CtTypeReference<?> upperBound) {
-        CtTypeReference<?> clsWithBound = factory.Type().get(Class.class).getReference();
-        CtWildcardReference wildcard = factory.createWildcardReference();
-        wildcard.setBoundingType(upperBound);
-        wildcard.setUpper(true);
-        clsWithBound.addActualTypeArgument(wildcard);
-        return clsWithBound;
-    }
-
+    /** Generate the CLI descriptions of rules based on ProcessorAnotations. */
     private String generateRuleDescriptions(Set<? extends Element> elements) {
         return elements.stream()
                 .map(type -> type.getAnnotation(ProcessorAnnotation.class))
@@ -159,6 +155,10 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
                 .collect(Collectors.joining("\n"));
     }
 
+    /**
+     * Generate a static initializer for a Map<Integer, ? extends SoraldAbstractProcessor> that maps
+     * a rule key to its corresponding processor.
+     */
     private CtExpression<?> generateRuleKeyToProcessorInitializer(Set<? extends Element> elements) {
         String mapInitializer =
                 "new java.util.HashMap() {{\n"
@@ -175,5 +175,15 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
                                 .collect(Collectors.joining("\n"))
                         + "\n}}\n";
         return factory.createCodeSnippetExpression(mapInitializer);
+    }
+
+    /** Create a type reference to Class<? extends upperBound> */
+    private CtTypeReference<?> createClassTypeRefWithUpperBound(CtTypeReference<?> upperBound) {
+        CtTypeReference<?> clsWithBound = factory.Type().get(Class.class).getReference();
+        CtWildcardReference wildcard = factory.createWildcardReference();
+        wildcard.setBoundingType(upperBound);
+        wildcard.setUpper(true);
+        clsWithBound.addActualTypeArgument(wildcard);
+        return clsWithBound;
     }
 }
