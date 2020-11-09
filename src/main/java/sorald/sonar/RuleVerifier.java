@@ -74,7 +74,7 @@ public class RuleVerifier {
      */
     @SuppressWarnings("UnstableApiUsage")
     public static Set<RuleViolation> analyze(
-            List<String> filesToScan, File baseDir, List<JavaFileScanner> checks) {
+            List<String> filesToScan, File baseDir, List<? extends JavaFileScanner> checks) {
         List<InputFile> inputFiles =
                 filesToScan.stream()
                         .map(filename -> toInputFile(baseDir, filename))
@@ -118,7 +118,7 @@ public class RuleVerifier {
 
     @SuppressWarnings("UnstableApiUsage")
     private static JavaAstScanner createAstScanner(
-            SonarComponents sonarComponents, List<JavaFileScanner> checks) {
+            SonarComponents sonarComponents, List<? extends JavaFileScanner> checks) {
         JavaAstScanner scanner = new JavaAstScanner(sonarComponents);
         VisitorsBridge visitorsBridge =
                 new VisitorsBridge(
