@@ -23,6 +23,7 @@ import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
+import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
 
 @SupportedAnnotationTypes("sorald.annotations.ProcessorAnnotation")
@@ -37,61 +38,74 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
 
     private static final String PROCESSORS_QUALNAME = "sorald.Processors";
 
-    private final Launcher launcher;
     private final Factory factory;
 
     public ProcessorsClassGenerator() {
-        launcher = new Launcher();
+        Launcher launcher = new Launcher();
         launcher.getEnvironment().setNoClasspath(true);
         factory = launcher.getFactory();
     }
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+        if (annotations.size() > 1) {
+            processingEnv
+                    .getMessager()
+                    .printMessage(
+                            Diagnostic.Kind.ERROR,
+                            "Unexpected amount of annotations " + annotations);
+            return false;
+        }
+
         for (TypeElement annotation : annotations) {
             Set<? extends Element> annotatedElements =
                     roundEnv.getElementsAnnotatedWith(annotation);
-            CtType<?> processorsClass = createProcessorsClass(annotatedElements);
             try {
-                writeProcessorsClass(processorsClass);
-            } catch (IOException e) {
+                CtType<?> processorsClass = createProcessorsClass(annotatedElements);
+                writeType(processorsClass);
+            } catch (Exception e) {
+                processingEnv
+                        .getMessager()
+                        .printMessage(
+                                Diagnostic.Kind.ERROR,
+                                "Something went wrong generating the "
+                                        + PROCESSORS_QUALNAME
+                                        + " class");
                 e.printStackTrace();
+                return false;
             }
         }
         return true;
     }
 
-    private void writeProcessorsClass(CtType<?> processorsClass) throws IOException {
-        JavaFileObject processorsFile = processingEnv.getFiler().createSourceFile(PROCESSORS_QUALNAME);
+    private void writeType(CtType<?> type) throws IOException {
+        JavaFileObject processorsFile =
+                processingEnv.getFiler().createSourceFile(type.getQualifiedName());
 
         try (PrintWriter out = new PrintWriter(processorsFile.openWriter())) {
-            out.println(processorsClass.toStringWithImports());
+            out.println(type.toStringWithImports());
         }
     }
 
-    private CtType<?> createProcessorsClass(Set<? extends Element> types) {
+    private CtType<?> createProcessorsClass(Set<? extends Element> elements) {
         CtType<?> processorsClass = factory.createClass(PROCESSORS_QUALNAME);
-        addGetProcessor(processorsClass);
-        addGetRuleDescriptions(processorsClass, types);
-        addRuleKeyToProcessorField(processorsClass, types);
+        addGetProcessorMethod(processorsClass);
+        addRuleDescriptionsField(processorsClass, elements);
+        addRuleKeyToProcessorField(processorsClass, elements);
         return processorsClass;
     }
 
-    private void addGetRuleDescriptions(CtType<?> type, Set<? extends Element> types) {
-        CtMethod<String> getRuleDescriptions =
-                factory.createMethod(
-                        type,
-                        PUBLIC_STATIC_FINAL,
-                        factory.Type().STRING,
-                        "getRuleDescriptions",
-                        Collections.emptyList(),
-                        Collections.emptySet());
-        CtReturn<String> retStatement = factory.createReturn();
-        retStatement.setReturnedExpression(factory.createLiteral(generateRuleDescriptions(types)));
-        getRuleDescriptions.setBody(factory.createCtBlock(retStatement));
+    private void addRuleDescriptionsField(CtType<?> type, Set<? extends Element> elements) {
+        String ruleDescriptions = generateRuleDescriptions(elements);
+        factory.createField(
+                type,
+                PUBLIC_STATIC_FINAL,
+                factory.Type().STRING,
+                "RULE_DESCRIPTIONS",
+                factory.createLiteral(ruleDescriptions));
     }
 
-    private void addGetProcessor(CtType<?> type) {
+    private void addGetProcessorMethod(CtType<?> type) {
         Set<ModifierKind> publicStaticFinal =
                 new HashSet<>(
                         Arrays.asList(
@@ -115,7 +129,7 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
     }
 
     private void addRuleKeyToProcessorField(
-            CtType<?> processorsClass, Set<? extends Element> types) {
+            CtType<?> processorsClass, Set<? extends Element> elements) {
         CtTypeReference<?> mapTypeRef = factory.createCtTypeReference(Map.class);
         mapTypeRef.addActualTypeArgument(factory.Type().INTEGER);
         mapTypeRef.addActualTypeArgument(
@@ -126,7 +140,7 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
                 PRIVATE_STATIC_FINAL,
                 mapTypeRef,
                 "RULE_KEY_TO_PROCESSOR",
-                generateRuleKeyToProcessorInitializer(types));
+                generateRuleKeyToProcessorInitializer(elements));
     }
 
     private CtTypeReference<?> createClassTypeRefWithUpperBound(CtTypeReference<?> upperBound) {
@@ -138,17 +152,17 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
         return clsWithBound;
     }
 
-    private String generateRuleDescriptions(Set<? extends Element> types) {
-        return types.stream()
+    private String generateRuleDescriptions(Set<? extends Element> elements) {
+        return elements.stream()
                 .map(type -> type.getAnnotation(ProcessorAnnotation.class))
                 .map(annotation -> annotation.key() + ": " + annotation.description())
                 .collect(Collectors.joining("\n"));
     }
 
-    private CtExpression<?> generateRuleKeyToProcessorInitializer(Set<? extends Element> types) {
+    private CtExpression<?> generateRuleKeyToProcessorInitializer(Set<? extends Element> elements) {
         String mapInitializer =
                 "new java.util.HashMap() {{\n"
-                        + types.stream()
+                        + elements.stream()
                                 .map(
                                         type ->
                                                 "put("
