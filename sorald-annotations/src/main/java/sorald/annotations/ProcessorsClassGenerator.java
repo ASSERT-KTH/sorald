@@ -1,16 +1,5 @@
 package sorald.annotations;
 
-import spoon.Launcher;
-import spoon.reflect.code.CtExpression;
-import spoon.reflect.code.CtReturn;
-import spoon.reflect.declaration.CtField;
-import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.declaration.CtType;
-import spoon.reflect.declaration.ModifierKind;
-import spoon.reflect.factory.Factory;
-import spoon.reflect.reference.CtTypeReference;
-import spoon.reflect.reference.CtWildcardReference;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -26,6 +15,16 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
+import spoon.Launcher;
+import spoon.reflect.code.CtExpression;
+import spoon.reflect.code.CtReturn;
+import spoon.reflect.declaration.CtField;
+import spoon.reflect.declaration.CtMethod;
+import spoon.reflect.declaration.CtType;
+import spoon.reflect.declaration.ModifierKind;
+import spoon.reflect.factory.Factory;
+import spoon.reflect.reference.CtTypeReference;
+import spoon.reflect.reference.CtWildcardReference;
 
 /**
  * Annotation processor that generates the class sorald.Processors, which contains utility methods
