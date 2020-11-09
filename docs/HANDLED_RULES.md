@@ -403,44 +403,32 @@ Example:
 #### XML parsers should not be vulnerable to XXE attacks ([Sonar Rule 2755](https://rules.sonarsource.com/java/type/Vulnerability/RSPEC-2755))
 
 This repair is a work in progress. On a high level, it aims to make XML parsing
-safe by disabling features such as external schema and DTD support.
+safe against XXE attacks by disabling features such as external schema and DTD
+support.
 
-Currently, we target the `DocumentBuilderFactory` with the following transformations:
-
-##### DocumentBuilderFactory as a local variable
-
-```diff
-+import javax.xml.XMLConstants;
- import org.w3c.dom.Document;
- import org.xml.sax.InputSource;
-
- import javax.xml.parsers.DocumentBuilder;
- import javax.xml.parsers.DocumentBuilderFactory;
-
- public class DocumentBuilderLocalVariable {
-     public static Document parse(String xmlFile) throws Exception {
-         DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();
-+        df.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-+        df.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
-         DocumentBuilder builder = df.newDocumentBuilder();
-         return builder.parse(new InputSource(xmlFile));
-     }
- }
-```
-
-##### Chained call to DocumentBuilderFactory.newInstance().createDocumentBuilder()
+Currently, we target the `DocumentBuilderFactory` with the following
+transformation by replacing invocations to `DocumentBuilderFactory.newInstance`
+like so.
 
 ```diff
          // somewhere in a method body
 -        DocumentBuilder builder = DocumentBuilderFactory.newInstance().createDocumentBuilder();
-+        DocumentBuilder builder = createDocumentBuilder();
++        DocumentBuilder builder = createDocumentBuilderFactory().createDocumentBuilder();
          [...]
-     }
 
-+    private static javax.xml.parsers.DocumentBuilder createDocumentBuilder() {
+         // somewhere in a method body
+-        DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();
++        DocumentBuilderFactory df = createDocumentBuilderFactory();
+         [...]
+
++    private static javax.xml.parsers.DocumentBuilder createDocumentBuilderFactory() {
 +         DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();
 +         df.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
 +         df.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
 +         return df.newDocumentBuilder();
 +     }
 ```
+
+This is just a small part of rule 2755, and we are working on adding support
+for other cases. The repair currently cannot handle builders and factories in
+fields, as Sonar does not appear to issue warnings for them.
