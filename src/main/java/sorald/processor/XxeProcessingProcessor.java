@@ -3,9 +3,13 @@ package sorald.processor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilderFactory;
 import sorald.ProcessorAnnotation;
@@ -24,16 +28,29 @@ import spoon.reflect.reference.CtTypeReference;
 public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
     private static final String ACCESS_EXTERNAL_DTD = "ACCESS_EXTERNAL_DTD";
     private static final String ACCESS_EXTERNAL_SCHEMA = "ACCESS_EXTERNAL_SCHEMA";
+    private static final String ACCESS_EXTERNAL_STYLESHEET = "ACCESS_EXTERNAL_STYLESHEET";
+
     private static final String DOCUMENT_BUILDER_FACTORY = "DocumentBuilderFactory";
+    private static final String TRANSFORMER_FACTORY = "TransformerFactory";
+
+    private static final Map<String, List<String>> FACTORY_XML_ATTRIBUTES =
+            new HashMap<String, List<String>>() {
+                {
+                    put(
+                            DOCUMENT_BUILDER_FACTORY,
+                            Arrays.asList(ACCESS_EXTERNAL_DTD, ACCESS_EXTERNAL_SCHEMA));
+                    put(
+                            TRANSFORMER_FACTORY,
+                            Arrays.asList(ACCESS_EXTERNAL_DTD, ACCESS_EXTERNAL_STYLESHEET));
+                }
+            };
 
     @Override
     public boolean isToBeProcessed(CtInvocation<?> candidate) {
+        String typeName = candidate.getExecutable().getType().getSimpleName();
+        List<String> supportedNames = Arrays.asList(DOCUMENT_BUILDER_FACTORY, TRANSFORMER_FACTORY);
         return super.isToBeProcessedAccordingToStandards(candidate)
-                && candidate
-                        .getExecutable()
-                        .getType()
-                        .getSimpleName()
-                        .equals(DOCUMENT_BUILDER_FACTORY);
+                && supportedNames.contains(typeName);
     }
 
     @Override
@@ -41,12 +58,11 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         super.process(element);
         CtType<?> declaringType = element.getParent(CtType.class);
 
-        CtMethod<?> docBuilderFactoryMethod =
-                createDocumentBuilderFactoryMethod(element, declaringType);
+        CtMethod<?> factoryMethod = createFactoryMethod(element, declaringType);
         ensureTypeImported(declaringType, getFactory().Type().get(XMLConstants.class));
         ensureTypeImported(declaringType, element.getType().getTypeDeclaration());
 
-        CtInvocation<?> safeCreateDocBuilderFactory = invoke(docBuilderFactoryMethod);
+        CtInvocation<?> safeCreateDocBuilderFactory = invoke(factoryMethod);
         element.replace(safeCreateDocBuilderFactory);
     }
 
@@ -56,10 +72,15 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
      * <code>
      *     private static FACTORYTYPE createFACTORYTYPE() {
      *         FACTORYTYPE factory = newInstanceInvocation();
-     *         factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD);
-     *         factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA);
+     *         // set safe attributes
      *         return factory;
      *     }
+     * </code><br>
+     * The "safe attributes" vary from factory to factory. For example, for the {@link
+     * DocumentBuilderFactory}, it would look like so: <br>
+     * <code>
+     *         factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+     *         factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
      * </code>
      *
      * @param newInstanceInvocation An invocation to a factory class' "newInstance" method, such as
@@ -67,14 +88,18 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
      * @param declaringType The type in which the invocation exists.
      * @return A method to create a safe factory, declared on the given type
      */
-    private CtMethod<?> createDocumentBuilderFactoryMethod(
+    private CtMethod<?> createFactoryMethod(
             CtInvocation<?> newInstanceInvocation, CtType<?> declaringType) {
         CtLocalVariable<?> builderFactoryVariable =
                 createLocalVariable("factory", newInstanceInvocation);
 
         List<CtStatement> statements = new ArrayList<>();
         statements.add(builderFactoryVariable);
-        statements.addAll(setSafeBuilderFactoryAttributes(builderFactoryVariable));
+        statements.addAll(
+                setXMLConstantsAttributesToEmptyString(
+                        builderFactoryVariable,
+                        FACTORY_XML_ATTRIBUTES.get(
+                                newInstanceInvocation.getType().getSimpleName())));
 
         return createPrivateStaticMethod(
                 "create" + newInstanceInvocation.getType().getSimpleName(),
@@ -84,22 +109,21 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     }
 
     /**
-     * Return the following statements: <br>
+     * Return one of the following statements for each attribute passed in: <br>
      * <code>
-     *     localVar.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD);
-     *     localVar.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA);
+     *     localVar.setAttribute(XMLConstants.ATTR, "");
      * </code>
      */
-    private List<? extends CtInvocation<?>> setSafeBuilderFactoryAttributes(
-            CtLocalVariable<?> localVar) {
-        CtFieldRead<String> accessExternalDtd = readXmlConstant(ACCESS_EXTERNAL_DTD);
-        CtFieldRead<String> accessExternalSchema = readXmlConstant(ACCESS_EXTERNAL_SCHEMA);
+    private List<? extends CtInvocation<?>> setXMLConstantsAttributesToEmptyString(
+            CtLocalVariable<?> localVar, List<String> xmlConstantsAttrs) {
         CtLiteral<Object> emptyString = getFactory().createLiteral("");
-        CtInvocation<?> setExternalDtd =
-                createSetAttributeInvocation(read(localVar), accessExternalDtd, emptyString);
-        CtInvocation<?> setExternalSchema =
-                createSetAttributeInvocation(read(localVar), accessExternalSchema, emptyString);
-        return Arrays.asList(setExternalDtd, setExternalSchema);
+        Function<CtFieldRead<String>, ? extends CtInvocation<?>> setAttrToEmptyString =
+                (xmlAttrRead) ->
+                        createSetAttributeInvocation(read(localVar), xmlAttrRead, emptyString);
+        return xmlConstantsAttrs.stream()
+                .map(this::readXmlConstant)
+                .map(setAttrToEmptyString)
+                .collect(Collectors.toList());
     }
 
     /**
