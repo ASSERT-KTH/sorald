@@ -406,9 +406,14 @@ This repair is a work in progress. On a high level, it aims to make XML parsing
 safe against XXE attacks by disabling features such as external schema and DTD
 support.
 
-Currently, we target the `DocumentBuilderFactory` with the following
-transformation by replacing invocations to `DocumentBuilderFactory.newInstance`
-like so.
+Currently, we target the following types:
+
+* `DocumentBuilderFactory`
+* `TransformerFactory`
+
+The transformation is highly similar regardless of type, and consists of replacing
+factory creation with a call to a helper method that creates a "safe" factory. For
+`DocumentBuilderFactory`, it looks like the following:
 
 ```diff
          // somewhere in a method body
@@ -428,6 +433,10 @@ like so.
 +         return factory;
 +     }
 ```
+
+The precise attributes set in `createTYPEFACTORY` depends on the particular
+factory used. For example, with `TransformerFactory`, `ACCESS_EXTERNAL_SCHEMA`
+is replaced with `ACCESS_EXTERNAL_STYLESHEET`.
 
 This is just a small part of rule 2755, and we are working on adding support
 for other cases. The repair currently cannot handle builders and factories in
