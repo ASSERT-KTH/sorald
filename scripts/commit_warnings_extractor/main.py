@@ -15,12 +15,13 @@ import collections
 import csv
 import itertools
 import dataclasses
+import re
 
 import git
 from tqdm import tqdm
 import pandas as pd
 
-from typing import Tuple, List, Mapping, Iterable
+from typing import Tuple, List, Mapping, Iterable, Optional
 
 
 SORALD_JAR_PATH = (
@@ -34,6 +35,10 @@ WARNING_STATS_OUTPUT_DIR = (
 ).resolve(strict=False)
 
 
+NUM_COMMITS_PER_REPO = 20
+COMMIT_STEP_SIZE = 20
+
+
 @dataclasses.dataclass
 class Config:
     output_dir: pathlib.Path
@@ -41,10 +46,20 @@ class Config:
     commit_step_size: int
     num_cpus: int
     sorald_jar: pathlib.Path
+    miner_options: List[str]
 
 
-NUM_COMMITS_PER_REPO = 20
-COMMIT_STEP_SIZE = 20
+@dataclasses.dataclass(frozen=True)
+class MinerOption:
+    name: str
+    value: str
+
+    @staticmethod
+    def parse(raw_miner_option: str) -> "MinerOption":
+        match = re.match("(.*?)=(.*)", raw_miner_option)
+        if not match:
+            raise ValueError(f"invalid miner option: {raw_miner_option}")
+        return MinerOption(*match.groups())
 
 
 def main():
@@ -56,6 +71,7 @@ def main():
         commit_step_size=parsed.step_size,
         num_cpus=parsed.num_cpus,
         sorald_jar=parsed.sorald_jar,
+        miner_options=parse_miner_options(parsed.miner_option),
     )
     extract_warnings(repo_urls=repo_urls, config=config)
 
@@ -108,6 +124,15 @@ def parse_args(args: List[str]) -> argparse.Namespace:
         type=int,
         default=max(multiprocessing.cpu_count() // 4, 1),
     )
+    parser.add_argument(
+        "--mo",
+        "--miner-option",
+        dest="miner_option",
+        help="option to pass directly to the miner, without leading `--`. "
+        "Can be repeated for more options. "
+        "Example: --miner-option 'ruleTypes=vulnerability'",
+        action="append",
+    )
     parsed_args = parser.parse_args(args)
 
     if not parsed_args.sorald_jar.exists():
@@ -129,6 +154,10 @@ def parse_repo_urls(repos_list: pathlib.Path) -> List[str]:
         )
         if (repo := raw_repo.strip())
     ]
+
+
+def parse_miner_options(raw_miner_options: Optional[List[str]]) -> List[MinerOption]:
+    return list(map(MinerOption.parse, raw_miner_options or []))
 
 
 def extract_warnings(repo_urls: List[str], config: Config) -> None:
@@ -213,6 +242,11 @@ def _extract_commit_warning_stats(
 def extract_warning_stats_from_dir(
     root_path: pathlib.Path, config: Config
 ) -> Mapping[str, int]:
+    extra_args = list(
+        itertools.chain.from_iterable(
+            (f"--{opt.name}", opt.value) for opt in config.miner_options
+        )
+    )
     proc = subprocess.run(
         [
             "java",
@@ -221,8 +255,7 @@ def extract_warning_stats_from_dir(
             "sorald.miner.MineSonarWarnings",
             "--originalFilesPath",
             str(root_path),
-            "--ruleTypes",
-            "vulnerability",
+            *extra_args,
         ],
         capture_output=True,
     )

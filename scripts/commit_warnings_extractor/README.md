@@ -43,6 +43,20 @@ kth/spork
 > **Note:** Currently, the commit extractor is optimized for projects using
 > Maven. It will not find sources for any other build tools.
 
-> **Taking too long?** Try limiting either a) the amount of commits you extract
-> (`--num-comits-per-repo`), or b) the step size between commits
-> (`--step-size`), or c) both of those.
+### Limiting running time
+If the experiment is taking too long, try limiting either a) the amount of
+commits you extract (`--num-commits-per-repo`), or b) the step size between
+commits (`--step-size`), or c) both of those.
+
+### Passing options to the miner
+It's sometimes useful to pass options to the miner itself. This can be done
+with the `--miner-option|--mo` argument. For example, to specify the
+`--ruleTypes vulnerability` option for the miner, simply pass it as a miner
+option.
+
+```bash
+$ python main.py path/to/repos_list.txt --miner-option 'ruleTypes=vulnerability'
+```
+
+Note the absence of leading `--` in front of `ruleTypes`, and the connecting
+`=` between the name of the option, and its value.
