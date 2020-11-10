@@ -14,6 +14,7 @@ import multiprocessing
 import collections
 import csv
 import itertools
+import dataclasses
 
 import git
 from tqdm import tqdm
@@ -32,6 +33,16 @@ WARNING_STATS_OUTPUT_DIR = (
     pathlib.Path(__file__).parent / "warning_stats_output"
 ).resolve(strict=False)
 
+
+@dataclasses.dataclass
+class Config:
+    output_dir: pathlib.Path
+    num_commits_per_repo: int
+    commit_step_size: int
+    num_cpus: int
+    sorald_jar: pathlib.Path
+
+
 NUM_COMMITS_PER_REPO = 20
 COMMIT_STEP_SIZE = 20
 
@@ -39,14 +50,14 @@ COMMIT_STEP_SIZE = 20
 def main():
     parsed = parse_args(sys.argv[1:])
     repo_urls = parse_repo_urls(parsed.repo_list)
-    extract_warnings(
-        repo_urls=repo_urls,
+    config = Config(
         output_dir=parsed.output_dir.resolve(strict=False),
         num_commits_per_repo=parsed.num_commits_per_repo,
         commit_step_size=parsed.step_size,
         num_cpus=parsed.num_cpus,
         sorald_jar=parsed.sorald_jar,
     )
+    extract_warnings(repo_urls=repo_urls, config=config)
 
 
 def parse_args(args: List[str]) -> argparse.Namespace:
@@ -120,67 +131,51 @@ def parse_repo_urls(repos_list: pathlib.Path) -> List[str]:
     ]
 
 
-def extract_warnings(
-    repo_urls: List[str],
-    output_dir: pathlib.Path,
-    num_commits_per_repo: int,
-    commit_step_size: int,
-    num_cpus: int,
-    sorald_jar: pathlib.Path,
-) -> None:
+def extract_warnings(repo_urls: List[str], config: Config) -> None:
     repo_url_iter = tqdm(repo_urls, desc="Overall progress", unit="repo")
-    output_dir.mkdir(exist_ok=True, parents=True)
+    config.output_dir.mkdir(exist_ok=True, parents=True)
 
     for repo_url in repo_url_iter:
         warning_stats = extract_warning_stats_from_remote_repo(
             repo_url,
-            num_commits=num_commits_per_repo,
-            commit_step_size=commit_step_size,
-            num_cpus=num_cpus,
-            sorald_jar=sorald_jar,
+            config=config,
         )
         frame = pd.DataFrame.from_dict(warning_stats)
-        raw_data_dst = output_dir / (
+        raw_data_dst = config.output_dir / (
             repo_url.replace("/", "_").replace(":", "_") + ".csv"
         )
         raw_data_dst.write_text(frame.to_csv())
 
-        deltas_dst = output_dir / (raw_data_dst.stem + ".deltas.csv")
+        deltas_dst = config.output_dir / (raw_data_dst.stem + ".deltas.csv")
         deltas_dst.write_text(frame.diff(axis=1).fillna(frame.iloc[0]).to_csv())
 
-    print(f"Results written to {output_dir}")
+    print(f"Results written to {config.output_dir}")
 
 
 def extract_warning_stats_from_remote_repo(
     repo_url: str,
-    num_commits: int,
-    commit_step_size: int,
-    num_cpus: int,
-    sorald_jar: pathlib.Path,
+    config: Config,
 ) -> Mapping[str, Mapping[str, int]]:
     with tempfile.TemporaryDirectory() as tmpdir:
         workdir = pathlib.Path(tmpdir)
         repo_root = workdir / pathlib.Path(repo_url).stem
         repo = git.Repo.clone_from(repo_url, to_path=repo_root)
-        commits = [commit.hexsha for commit in repo.iter_commits()][::commit_step_size][
-            :num_commits
-        ]
-        return extract_warnings_stats_from_local_repo(
-            repo_root, commits, num_cpus, sorald_jar
-        )
+        commits = [commit.hexsha for commit in repo.iter_commits()][
+            :: config.commit_step_size
+        ][: config.num_commits_per_repo]
+        return extract_warnings_stats_from_local_repo(repo_root, commits, config)
 
 
 def extract_warnings_stats_from_local_repo(
     repo_root: pathlib.Path,
     commits: List[str],
-    num_cpus: int,
-    sorald_jar: pathlib.Path,
+    config: Config,
 ) -> Mapping[str, Mapping[str, int]]:
-    with multiprocessing.Pool(num_cpus) as pool:
+    with multiprocessing.Pool(config.num_cpus) as pool:
         extract = functools.partial(
             extract_commit_warning_stats,
             repo_root=repo_root,
-            sorald_jar=sorald_jar,
+            config=config,
         )
         warnings_extraction_iter = pool.imap(extract, commits)
 
@@ -197,18 +192,18 @@ def extract_warnings_stats_from_local_repo(
 
 
 def extract_commit_warning_stats(
-    commit_sha: str, repo_root: pathlib.Path, sorald_jar: pathlib.Path
+    commit_sha: str, repo_root: pathlib.Path, config: Config
 ) -> Tuple[str, Mapping[str, int]]:
-    return commit_sha, _extract_commit_warning_stats(commit_sha, repo_root, sorald_jar)
+    return commit_sha, _extract_commit_warning_stats(commit_sha, repo_root, config)
 
 
 def _extract_commit_warning_stats(
-    commit_sha: str, repo_root: pathlib.Path, sorald_jar: pathlib.Path
+    commit_sha: str, repo_root: pathlib.Path, config: Config
 ) -> Mapping[str, int]:
     all_warnings = collections.defaultdict(int)
     with temporary_checkout(repo_root, commit_sha) as checkout_path:
         for src_main in find_main_sources(checkout_path):
-            warnings = extract_warning_stats_from_dir(src_main, sorald_jar)
+            warnings = extract_warning_stats_from_dir(src_main, config)
             for key, value in warnings.items():
                 all_warnings[key] += value
 
@@ -216,13 +211,13 @@ def _extract_commit_warning_stats(
 
 
 def extract_warning_stats_from_dir(
-    root_path: pathlib.Path, sorald_jar: pathlib.Path
+    root_path: pathlib.Path, config: Config
 ) -> Mapping[str, int]:
     proc = subprocess.run(
         [
             "java",
             "-cp",
-            str(sorald_jar),
+            str(config.sorald_jar),
             "sorald.miner.MineSonarWarnings",
             "--originalFilesPath",
             str(root_path),
