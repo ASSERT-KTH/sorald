@@ -421,11 +421,11 @@ like so.
 +        DocumentBuilderFactory df = createDocumentBuilderFactory();
          [...]
 
-+    private static javax.xml.parsers.DocumentBuilder createDocumentBuilderFactory() {
-+         DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();
-+         df.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-+         df.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
-+         return df.newDocumentBuilder();
++    private static DocumentBuilderFactory createDocumentBuilderFactory() {
++         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
++         factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
++         factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
++         return factory;
 +     }
 ```
 
