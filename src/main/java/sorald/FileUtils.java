@@ -83,6 +83,6 @@ public class FileUtils {
      */
     public static String getExtension(File file) {
         String[] parts = file.getName().split("\\.");
-        return parts.length <= 1 ? "" : parts[parts.length - 1];
+        return parts.length <= 1 ? "" : "." + parts[parts.length - 1];
     }
 }

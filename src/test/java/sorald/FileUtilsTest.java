@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -21,11 +23,18 @@ public class FileUtilsTest {
         // arrange
         org.apache.commons.io.FileUtils.copyDirectory(
                 new File(Constants.PATH_TO_RESOURCES_FOLDER), workdir);
+        Path javaExtDirpath = workdir.toPath().resolve("randomdir.java");
+        Path javaFileInJavaExtDirpath = javaExtDirpath.resolve("SomeClass.java");
+        Files.createDirectory(workdir.toPath().resolve("randomdir.java"));
+        Files.createFile(javaFileInJavaExtDirpath);
+
 
         // act
         List<File> files = FileUtils.findFilesByExtension(workdir, Constants.JAVA_EXT);
 
         // assert
+        assertTrue(files.stream().anyMatch(f -> f.toPath().equals(javaFileInJavaExtDirpath)));
+        assertFalse(files.stream().anyMatch(f -> f.toPath().equals(javaExtDirpath)));
         assertFalse(files.stream().anyMatch(f -> !f.isFile()));
     }
 
