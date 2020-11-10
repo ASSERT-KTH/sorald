@@ -3,10 +3,8 @@ package sorald.processor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -32,18 +30,6 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
 
     private static final String DOCUMENT_BUILDER_FACTORY = "DocumentBuilderFactory";
     private static final String TRANSFORMER_FACTORY = "TransformerFactory";
-
-    private static final Map<String, List<String>> FACTORY_XML_ATTRIBUTES =
-            new HashMap<String, List<String>>() {
-                {
-                    put(
-                            DOCUMENT_BUILDER_FACTORY,
-                            Arrays.asList(ACCESS_EXTERNAL_DTD, ACCESS_EXTERNAL_SCHEMA));
-                    put(
-                            TRANSFORMER_FACTORY,
-                            Arrays.asList(ACCESS_EXTERNAL_DTD, ACCESS_EXTERNAL_STYLESHEET));
-                }
-            };
 
     @Override
     public boolean isToBeProcessed(CtInvocation<?> candidate) {
@@ -98,8 +84,7 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         statements.addAll(
                 setXMLConstantsAttributesToEmptyString(
                         builderFactoryVariable,
-                        FACTORY_XML_ATTRIBUTES.get(
-                                newInstanceInvocation.getType().getSimpleName())));
+                        getXMLConstantNamesFor(newInstanceInvocation.getType())));
 
         return createPrivateStaticMethod(
                 "create" + newInstanceInvocation.getType().getSimpleName(),
@@ -222,5 +207,11 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         CtTypeReference<T> ref = type.getReference();
         ref.getPackage().setImplicit(true);
         return ref;
+    }
+
+    private static List<String> getXMLConstantNamesFor(CtTypeReference<?> type) {
+        return type.getSimpleName().equals(TRANSFORMER_FACTORY)
+                ? Arrays.asList(ACCESS_EXTERNAL_DTD, ACCESS_EXTERNAL_STYLESHEET)
+                : Arrays.asList(ACCESS_EXTERNAL_DTD, ACCESS_EXTERNAL_SCHEMA);
     }
 }
