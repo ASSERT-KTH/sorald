@@ -1,8 +1,5 @@
 package sorald;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -14,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Predicate;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 public class FileUtilsTest {
 
@@ -27,7 +26,6 @@ public class FileUtilsTest {
         Path javaFileInJavaExtDirpath = javaExtDirpath.resolve("SomeClass.java");
         Files.createDirectory(workdir.toPath().resolve("randomdir.java"));
         Files.createFile(javaFileInJavaExtDirpath);
-
 
         // act
         List<File> files = FileUtils.findFilesByExtension(workdir, Constants.JAVA_EXT);

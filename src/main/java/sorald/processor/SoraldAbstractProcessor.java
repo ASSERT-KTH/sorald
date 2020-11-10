@@ -39,10 +39,10 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
             if (file.isFile()) {
                 filesToScan.add(file.getAbsolutePath());
             } else {
-                try (Stream<Path> walk = Files.walk(Paths.get(file.getAbsolutePath()))) {
+                try {
                     filesToScan =
-                            walk.map(x -> x.toFile().getAbsolutePath())
-                                    .filter(f -> f.endsWith(Constants.JAVA_EXT))
+                            FileUtils.findFilesByExtension(file, Constants.JAVA_EXT).stream()
+                                    .map(File::getAbsolutePath)
                                     .collect(Collectors.toList());
                 } catch (IOException e) {
                     e.printStackTrace();

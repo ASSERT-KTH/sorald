@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FileUtils {
 
@@ -69,17 +70,18 @@ public class FileUtils {
         if (!directory.isDirectory()) {
             throw new IllegalArgumentException(directory.toString() + " is not a directory");
         }
-        return Files.walk(directory.toPath())
-                .map(Path::toFile)
-                .filter(File::isFile)
-                .filter(f -> getExtension(f).equals(ext))
-                .collect(Collectors.toList());
+        try (Stream<Path> files = Files.walk(directory.toPath())) {
+            return files.map(Path::toFile)
+                    .filter(File::isFile)
+                    .filter(f -> getExtension(f).equals(ext))
+                    .collect(Collectors.toList());
+        }
     }
 
     /**
      * @param file A file
-     * @return The file extension of the given file including the dot, or the empty string if it
-     *     has no extension
+     * @return The file extension of the given file including the dot, or the empty string if it has
+     *     no extension
      */
     public static String getExtension(File file) {
         String[] parts = file.getName().split("\\.");
