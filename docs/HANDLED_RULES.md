@@ -22,6 +22,9 @@ Sorald can currently repair violations of the following rules:
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
     * ["public static" fields should be constant](#public-static-fields-should-be-constant-sonar-rule-1444) ([Sonar Rule 1444](https://rules.sonarsource.com/java/RSPEC-1444))
+* [Vulnerability](#vulnerability)
+    * [XML parsers should not be vulnerable to XXE attacks](#xml-parsers-should-not-be-vulnerable-to-xxe-attacks-sonar-rule-2755) ([Sonar Rule 2755](https://rules.sonarsource.com/java/type/Vulnerability/RSPEC-2755))
+        - **Note:** This processor is a work in progress!
 
 ### *Bug*
 
@@ -394,3 +397,38 @@ Example:
      static Integer roadToHill = 30; // Compliant
  }
 ```
+
+### *Vulnerability*
+
+#### XML parsers should not be vulnerable to XXE attacks ([Sonar Rule 2755](https://rules.sonarsource.com/java/type/Vulnerability/RSPEC-2755))
+
+This repair is a work in progress. On a high level, it aims to make XML parsing
+safe against XXE attacks by disabling features such as external schema and DTD
+support.
+
+Currently, we target the `DocumentBuilderFactory` with the following
+transformation by replacing invocations to `DocumentBuilderFactory.newInstance`
+like so.
+
+```diff
+         // somewhere in a method body
+-        DocumentBuilder builder = DocumentBuilderFactory.newInstance().createDocumentBuilder();
++        DocumentBuilder builder = createDocumentBuilderFactory().createDocumentBuilder();
+         [...]
+
+         // somewhere in a method body
+-        DocumentBuilderFactory df = DocumentBuilderFactory.newInstance();
++        DocumentBuilderFactory df = createDocumentBuilderFactory();
+         [...]
+
++    private static DocumentBuilderFactory createDocumentBuilderFactory() {
++         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
++         factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
++         factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
++         return factory;
++     }
+```
+
+This is just a small part of rule 2755, and we are working on adding support
+for other cases. The repair currently cannot handle builders and factories in
+fields, as Sonar does not appear to issue warnings for them.
