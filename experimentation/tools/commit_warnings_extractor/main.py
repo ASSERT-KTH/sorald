@@ -25,7 +25,7 @@ from typing import Tuple, List, Mapping, Iterable, Optional
 
 
 SORALD_JAR_PATH = (
-    pathlib.Path(__file__).absolute().parent.parent.parent
+    pathlib.Path(__file__).absolute().parent.parent.parent.parent
     / "target"
     / "sorald-1.1-SNAPSHOT-jar-with-dependencies.jar"
 ).resolve(strict=False)
