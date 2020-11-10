@@ -288,7 +288,7 @@ def find_main_sources(project_root: pathlib.Path) -> List[pathlib.Path]:
             and "tests" not in parent_names
         )
     )
-    return files
+    return files or [project_root]
 
 
 def find_main_sources_relative_to_pom(pom_file: pathlib.Path) -> List[pathlib.Path]:
