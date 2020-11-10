@@ -1,8 +1,12 @@
 package sorald;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class FileUtils {
 
@@ -51,5 +55,34 @@ public class FileUtils {
             }
         }
         return directoryToBeDeleted.delete();
+    }
+
+    /**
+     * Search for files with the given file extension in the given directory, as well as recursively
+     * in subdirectories.
+     *
+     * @param directory A directory
+     * @param ext A file extension including the leading dot
+     * @return All files in the given directory or any subdirectory with a matching extension
+     */
+    public static List<File> findFilesByExtension(File directory, String ext) throws IOException {
+        if (!directory.isDirectory()) {
+            throw new IllegalArgumentException(directory.toString() + " is not a directory");
+        }
+        return Files.walk(directory.toPath())
+                .map(Path::toFile)
+                .filter(File::isFile)
+                .filter(f -> getExtension(f).equals(ext))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * @param file A file
+     * @return The file extension of the given file including the dot, or the empty string if it
+     *     has no extension
+     */
+    public static String getExtension(File file) {
+        String[] parts = file.getName().split("\\.");
+        return parts.length <= 1 ? "" : parts[parts.length - 1];
     }
 }
