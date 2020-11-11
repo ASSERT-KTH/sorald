@@ -2,6 +2,7 @@ package sorald.processor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -10,12 +11,14 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
+import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.TestHelper;
@@ -107,6 +110,31 @@ public class ProcessorTest {
 
         assertEquals(expectedTypes, repairedTypes);
         assertEquals(repairedImports, expectedImports);
+    }
+
+    /**
+     * As described in https://github.com/SpoonLabs/sorald/issues/204, Sorald would crash in the
+     * presence of directories ending in `.java`
+     */
+    @Test
+    public void sorald_canProcessProject_whenDirectoryHasJavaFileExtension(@TempDir File workdir)
+            throws Exception {
+        // arrange
+        org.apache.commons.io.FileUtils.copyDirectory(
+                new File(Constants.PATH_TO_RESOURCES_FOLDER), workdir);
+        File dirWithJavaExtension = workdir.listFiles(File::isDirectory)[0];
+        org.apache.commons.io.FileUtils.moveDirectory(
+                dirWithJavaExtension,
+                dirWithJavaExtension
+                        .toPath()
+                        .resolveSibling(dirWithJavaExtension.getName() + Constants.JAVA_EXT)
+                        .toFile());
+
+        // act
+        ProcessorTestHelper.runSorald(workdir, ArrayHashCodeAndToStringCheck.class);
+
+        // assert
+        assertTrue(new File(Constants.SORALD_WORKSPACE).exists());
     }
 
     /**

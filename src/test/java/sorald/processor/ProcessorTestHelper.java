@@ -104,16 +104,23 @@ public class ProcessorTestHelper {
 
     /** Run sorald on the given test case. */
     static void runSorald(ProcessorTestCase<?> testCase) throws Exception {
-        String originalFileAbspath = testCase.nonCompliantFile.toPath().toAbsolutePath().toString();
-        RuleVerifier.verifyHasIssue(originalFileAbspath, testCase.createCheckInstance());
+        RuleVerifier.verifyHasIssue(
+                testCase.nonCompliantFile.getAbsolutePath(), testCase.createCheckInstance());
+        runSorald(testCase.nonCompliantFile, testCase.checkClass);
+    }
 
-        boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(testCase.checkClass);
+    /** Run sorald on the given file with the given checkClass * */
+    static void runSorald(File originaFilesPath, Class<? extends JavaFileScanner> checkClass)
+            throws Exception {
+        String originalFileAbspath = originaFilesPath.getAbsolutePath();
+
+        boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(checkClass);
         Main.main(
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
                     originalFileAbspath,
                     Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
-                    testCase.ruleKey,
+                    Checks.getRuleKey(checkClass),
                     Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
                     Constants.SORALD_WORKSPACE,
                     Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
