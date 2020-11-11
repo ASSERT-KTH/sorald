@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilderFactory;
 import sorald.ProcessorAnnotation;
+import sorald.sonar.IncompleteProcessor;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtCompilationUnit;
 import spoon.reflect.declaration.CtImport;
@@ -18,6 +19,10 @@ import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.reference.CtFieldReference;
 import spoon.reflect.reference.CtTypeReference;
 
+@IncompleteProcessor(
+        description =
+                "This processor is a WIP and currently supports a subset of rule 2755. "
+                        + "See Sorald's documentation for details.")
 @ProcessorAnnotation(
         key = 2755,
         description = "XML parsers should not be vulnerable to XXE attacks")
