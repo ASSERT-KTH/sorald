@@ -38,9 +38,8 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
 
     /** Check if the target of the invocation is of a type currently supported by this processor */
     private static boolean isSupported(CtInvocation<?> candidate) {
-        String typeName = candidate.getType() == null ? "" : candidate.getType().getSimpleName();
         List<String> supportedNames = Arrays.asList(DOCUMENT_BUILDER_FACTORY, TRANSFORMER_FACTORY);
-        return supportedNames.contains(typeName);
+        return supportedNames.contains(candidate.getType().getSimpleName());
     }
 
     @Override
