@@ -119,12 +119,14 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
     }
 
     private void addGetProcessorMethod(CtType<?> type, CtField<String> ruleKeyToProcessor) {
-        CtTypeReference<?> cls = factory.createCtTypeReference(Class.class);
+        CtTypeReference<?> returnType =
+                createClassTypeRefWithUpperBound(
+                        factory.createReference(SORALD_ABSTRACT_PROCESSOR_QUALNAME));
         CtMethod<String> getProcessor =
                 factory.createMethod(
                         type,
                         PUBLIC_STATIC_FINAL,
-                        cls,
+                        returnType,
                         "getProcessor",
                         Collections.emptyList(),
                         Collections.emptySet());
