@@ -32,7 +32,7 @@ public class Main {
         opt.setListSeparator(',');
         opt.setHelp(
                 "Choose one or more of the following rule keys (use ',' to separate multiple keys):"
-                        + Processors.getRuleDescriptions());
+                        + Processors.RULE_DESCRIPTIONS);
         jsap.registerParameter(opt);
 
         opt = new FlaggedOption(Constants.ARG_ORIGINAL_FILES_PATH);

@@ -180,7 +180,32 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <!-- The annotation processor(s) must be available at compile time,
+                        so we must compile them before the normal compile phase -->
+                        <id>precompile-annotation-processor</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <!-- setting proc to none is very important,
+                            or Maven will try to run annotation processors during this execution! -->
+                            <proc>none</proc>
+                            <includes>
+                                <include>sorald/annotations/*.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
                 <configuration>
+                    <generatedSourcesDirectory>${project.build.directory}/generated-sources</generatedSourcesDirectory>
+                    <annotationProcessors>
+                        <annotationProcessor>
+                            sorald.annotations.ProcessorsClassGenerator
+                        </annotationProcessor>
+                    </annotationProcessors>
                     <compilerArgs>
                     </compilerArgs>
                 </configuration>
