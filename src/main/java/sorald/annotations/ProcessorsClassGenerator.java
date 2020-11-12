@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
+import javax.annotation.processing.SupportedSourceVersion;
+import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
@@ -30,7 +32,10 @@ import spoon.reflect.reference.CtWildcardReference;
  * Annotation processor that generates the class sorald.Processors, which contains utility methods
  * for fetching Sorald processors and their descriptions.
  */
-@SupportedAnnotationTypes("sorald.annotations.ProcessorAnnotation")
+@SupportedAnnotationTypes({
+    "sorald.annotations.ProcessorAnnotation",
+})
+@SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class ProcessorsClassGenerator extends AbstractProcessor {
     private static final Set<ModifierKind> PUBLIC_STATIC_FINAL =
             new HashSet<>(
@@ -54,7 +59,9 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        if (annotations.size() > 1) {
+        if (annotations.isEmpty()) {
+            return false;
+        } else if (annotations.size() > 1) {
             processingEnv
                     .getMessager()
                     .printMessage(
@@ -63,32 +70,31 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
             return false;
         }
 
-        for (TypeElement annotation : annotations) {
-            Set<? extends Element> annotatedElements =
-                    roundEnv.getElementsAnnotatedWith(annotation);
-            try {
-                CtType<?> processorsClass = createProcessorsClass(annotatedElements);
-                writeType(processorsClass);
-            } catch (Exception e) {
-                processingEnv
-                        .getMessager()
-                        .printMessage(
-                                Diagnostic.Kind.ERROR,
-                                "Something went wrong generating the "
-                                        + PROCESSORS_CLASS_QUALNAME
-                                        + " class");
-                e.printStackTrace();
-                return false;
-            }
+        TypeElement processorAnnotation = getAnnotationFrom(ProcessorAnnotation.class, annotations);
+        Set<? extends Element> processors = roundEnv.getElementsAnnotatedWith(processorAnnotation);
+        try {
+            CtType<?> processorsClass = createProcessorsClass(processors);
+            writeType(processorsClass);
+        } catch (Exception e) {
+            processingEnv
+                    .getMessager()
+                    .printMessage(
+                            Diagnostic.Kind.ERROR,
+                            "Something went wrong generating the "
+                                    + PROCESSORS_CLASS_QUALNAME
+                                    + " class");
+            e.printStackTrace();
+            return false;
         }
         return true;
     }
 
-    private CtType<?> createProcessorsClass(Set<? extends Element> elements) {
+    private CtType<?> createProcessorsClass(Set<? extends Element> processors) {
         CtType<?> processorsClass = factory.createClass(PROCESSORS_CLASS_QUALNAME);
-        CtField<String> ruleKeyToProcessor = addRuleKeyToProcessorField(processorsClass, elements);
+        CtField<String> ruleKeyToProcessor =
+                addRuleKeyToProcessorField(processorsClass, processors);
         addGetProcessorMethod(processorsClass, ruleKeyToProcessor);
-        addRuleDescriptionsField(processorsClass, elements);
+        addRuleDescriptionsField(processorsClass, processors);
         return processorsClass;
     }
 
@@ -148,9 +154,21 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
     /** Generate the CLI descriptions of rules based on ProcessorAnotations. */
     private String generateRuleDescriptions(Set<? extends Element> elements) {
         return elements.stream()
-                .map(type -> type.getAnnotation(ProcessorAnnotation.class))
-                .map(annotation -> annotation.key() + ": " + annotation.description())
+                .map(this::generateRuleDescription)
                 .collect(Collectors.joining("\n"));
+    }
+
+    private String generateRuleDescription(Element processor) {
+        ProcessorAnnotation processorAnnotation =
+                processor.getAnnotation(ProcessorAnnotation.class);
+        IncompleteProcessor incompleteAnnotation =
+                processor.getAnnotation(IncompleteProcessor.class);
+        return processorAnnotation.key()
+                + ": "
+                + processorAnnotation.description()
+                + (incompleteAnnotation == null
+                        ? ""
+                        : "\n\t(incomplete: " + incompleteAnnotation.description() + ")");
     }
 
     /**
@@ -183,5 +201,14 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
         wildcard.setUpper(true);
         clsWithBound.addActualTypeArgument(wildcard);
         return clsWithBound;
+    }
+
+    /** Get a specific annotation from a set of annotations */
+    private static TypeElement getAnnotationFrom(
+            Class<?> annotation, Set<? extends TypeElement> annotations) {
+        return annotations.stream()
+                .filter(te -> te.getQualifiedName().toString().equals(annotation.getName()))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 }
