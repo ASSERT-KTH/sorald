@@ -1,7 +1,7 @@
 package sorald.processor;
 
-import sorald.ProcessorAnnotation;
-import sorald.sonar.IncompleteProcessor;
+import sorald.annotations.IncompleteProcessor;
+import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
 
