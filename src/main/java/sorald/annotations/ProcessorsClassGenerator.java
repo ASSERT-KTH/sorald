@@ -91,6 +91,7 @@ public class ProcessorsClassGenerator extends AbstractProcessor {
 
     private CtType<?> createProcessorsClass(Set<? extends Element> processors) {
         CtType<?> processorsClass = factory.createClass(PROCESSORS_CLASS_QUALNAME);
+        processorsClass.setModifiers(new HashSet<>(Arrays.asList(ModifierKind.PUBLIC)));
         CtField<String> ruleKeyToProcessor =
                 addRuleKeyToProcessorField(processorsClass, processors);
         addGetProcessorMethod(processorsClass, ruleKeyToProcessor);
