@@ -6,7 +6,7 @@ It can currently repair violations of [15+ rules](/docs/HANDLED_RULES.md).
 
 ### Prerequisites 
 
-A JDK (java 1.8)
+A JDK (Java 11+)
 
 ### Usage
 

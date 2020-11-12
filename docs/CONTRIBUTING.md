@@ -76,9 +76,6 @@ We have an automatically enforced code style in sorald, and your code will not
 pass CI if it does not adhere to it. To ensure that your code does adhere to it,
 run `mvn spotless:apply`, and then commit any changes the formatter makes.
 
-> **Note:** This step requires you to have the Maven build system installed, as
-> well as JDK11+.
-
 5) Update documentation
 
 Your processor is done, it's passing the minimum tests, so now you can update the documentation.
