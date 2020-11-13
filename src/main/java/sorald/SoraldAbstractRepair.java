@@ -3,9 +3,21 @@ package sorald;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 import java.util.List;
+import java.util.function.Supplier;
 import sorald.processor.SoraldAbstractProcessor;
 import spoon.Launcher;
+import spoon.compiler.Environment;
+import spoon.processing.Processor;
+import spoon.reflect.CtModel;
+import spoon.reflect.declaration.CtElement;
+import spoon.reflect.reference.CtTypeReference;
+import spoon.reflect.visitor.DefaultImportComparator;
+import spoon.reflect.visitor.DefaultJavaPrettyPrinter;
+import spoon.reflect.visitor.ImportCleaner;
+import spoon.reflect.visitor.ImportConflictDetector;
+import spoon.reflect.visitor.PrettyPrinter;
 import spoon.support.JavaOutputProcessor;
 import spoon.support.sniper.SniperJavaPrettyPrinter;
 
@@ -45,23 +57,59 @@ public abstract class SoraldAbstractRepair {
 
     protected Launcher initLauncher(Launcher launcher, String outputDirPath) {
         launcher.setSourceOutputDirectory(outputDirPath);
-        launcher.getEnvironment().setAutoImports(true);
-        launcher.getEnvironment().setIgnoreDuplicateDeclarations(true);
-        if (this.config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER) {
-            launcher.getEnvironment()
-                    .setPrettyPrinterCreator(
-                            () -> {
-                                SniperJavaPrettyPrinter sniper =
-                                        new SniperJavaPrettyPrinter(launcher.getEnvironment());
-                                sniper.setIgnoreImplicit(false);
-                                return sniper;
-                            });
-            launcher.getEnvironment().setCommentEnabled(true);
-            launcher.getEnvironment().useTabulations(true);
-            launcher.getEnvironment().setTabulationSize(4);
+        Environment env = launcher.getEnvironment();
+        env.setIgnoreDuplicateDeclarations(true);
+
+        // this is a workaround for https://github.com/INRIA/spoon/issues/3693
+        if (config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER) {
+            env.setPrettyPrinterCreator(() -> new SniperJavaPrettyPrinter(env));
         }
-        launcher.buildModel();
+
+        // need to build the model before setting the pretty-printer as the preprocessors need
+        // data from the model
+        CtModel model = launcher.buildModel();
+
+        setPrettyPrinter(env, model);
         return launcher;
+    }
+
+    private void setPrettyPrinter(Environment env, CtModel model) {
+        Supplier<? extends DefaultJavaPrettyPrinter> basePrinterCreator =
+                config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER
+                        ? createSniperPrinter(env)
+                        : createDefaultPrinter(env);
+        Supplier<PrettyPrinter> configuredPrinterCreator =
+                applyCommonPrinterOptions(basePrinterCreator, model);
+        env.setPrettyPrinterCreator(configuredPrinterCreator);
+    }
+
+    private static Supplier<PrettyPrinter> applyCommonPrinterOptions(
+            Supplier<? extends DefaultJavaPrettyPrinter> prettyPrinterCreator, CtModel model) {
+        Collection<CtTypeReference<?>> existingReferences = model.getElements(e -> true);
+        List<Processor<CtElement>> preprocessors =
+                List.of(
+                        new SelectiveForceImport(existingReferences),
+                        new ImportConflictDetector(),
+                        new ImportCleaner().setImportComparator(new DefaultImportComparator()));
+        return () -> {
+            DefaultJavaPrettyPrinter printer = prettyPrinterCreator.get();
+            printer.setIgnoreImplicit(false);
+            printer.setPreprocessors(preprocessors);
+            return printer;
+        };
+    }
+
+    private static Supplier<? extends DefaultJavaPrettyPrinter> createSniperPrinter(
+            Environment env) {
+        env.setCommentEnabled(true);
+        env.useTabulations(true);
+        env.setTabulationSize(4);
+        return () -> new SniperJavaPrettyPrinter(env);
+    }
+
+    private static Supplier<? extends DefaultJavaPrettyPrinter> createDefaultPrinter(
+            Environment env) {
+        return () -> new DefaultJavaPrettyPrinter(env);
     }
 
     protected SoraldAbstractProcessor createBaseProcessor(Integer ruleKey) {

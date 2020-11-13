@@ -109,7 +109,7 @@ public class ProcessorTest {
         List<CtImport> expectedImports = getSortedImports(expectedModel);
 
         assertEquals(expectedTypes, repairedTypes);
-        assertEquals(repairedImports, expectedImports);
+        assertEquals(expectedImports, repairedImports);
     }
 
     /**
