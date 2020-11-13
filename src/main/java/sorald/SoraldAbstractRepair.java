@@ -58,11 +58,6 @@ public abstract class SoraldAbstractRepair {
 
     protected Launcher initLauncher(Launcher launcher, String outputDirPath) {
         launcher.setSourceOutputDirectory(outputDirPath);
-        setPrettyPrinter(launcher);
-        return launcher;
-    }
-
-    private void setPrettyPrinter(Launcher launcher) {
         Environment env = launcher.getEnvironment();
         env.setIgnoreDuplicateDeclarations(true);
 
@@ -71,28 +66,32 @@ public abstract class SoraldAbstractRepair {
             env.setPrettyPrinterCreator(() -> new SniperJavaPrettyPrinter(env));
         }
 
+        // need to build the model before setting the pretty-printer as the preprocessors need
+        // data from the model
+        CtModel model = launcher.buildModel();
+
+        setPrettyPrinter(env, model);
+        return launcher;
+    }
+
+    private void setPrettyPrinter(Environment env, CtModel model) {
         Supplier<? extends DefaultJavaPrettyPrinter> basePrinterCreator =
                 config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER
-                        ? createSniperPrinter(launcher.getEnvironment())
-                        : createDefaultPrinter(launcher.getEnvironment());
-
-        // we must build the model before setting the printer to gather data for the
-        // printer preprocessors
-        launcher.buildModel();
+                        ? createSniperPrinter(env)
+                        : createDefaultPrinter(env);
         Supplier<PrettyPrinter> configuredPrinterCreator =
-                applyCommonPrinterOptions(basePrinterCreator, launcher.getModel());
-        launcher.getEnvironment().setPrettyPrinterCreator(configuredPrinterCreator);
+                applyCommonPrinterOptions(basePrinterCreator, model);
+        env.setPrettyPrinterCreator(configuredPrinterCreator);
     }
 
     private static Supplier<PrettyPrinter> applyCommonPrinterOptions(
             Supplier<? extends DefaultJavaPrettyPrinter> prettyPrinterCreator, CtModel model) {
-        Collection<CtTypeReference<?>> existingTypeReferences =
-                model.getElements(e -> true);
-        List<Processor<CtElement>> preprocessors = List.of(
-                new SelectiveForceImport(existingTypeReferences),
-                new ImportConflictDetector(),
-                new ImportCleaner()
-                        .setImportComparator(new DefaultImportComparator()));
+        Collection<CtTypeReference<?>> existingReferences = model.getElements(e -> true);
+        List<Processor<CtElement>> preprocessors =
+                List.of(
+                        new SelectiveForceImport(existingReferences),
+                        new ImportConflictDetector(),
+                        new ImportCleaner().setImportComparator(new DefaultImportComparator()));
         return () -> {
             DefaultJavaPrettyPrinter printer = prettyPrinterCreator.get();
             printer.setIgnoreImplicit(false);
