@@ -1,6 +1,9 @@
 package sorald.cli;
 
-import com.martiansoftware.jsap.JSAPResult;
+import java.io.File;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.Callable;
 import picocli.CommandLine;
 import sorald.Constants;
 import sorald.DefaultRepair;
@@ -14,11 +17,6 @@ import sorald.SoraldConfig;
 import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
 import sorald.segment.SoraldTreeBuilderAlgorithm;
-
-import java.io.File;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.Callable;
 
 public class Cli {
 
