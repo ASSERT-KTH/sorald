@@ -1,11 +1,14 @@
 package sorald.miner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -15,6 +18,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.sonar.java.AnalysisException;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
@@ -74,6 +78,34 @@ public class WarningMinerTest {
         List<String> actualChecks = extractSortedCheckNames(outputFile.toPath());
 
         assertThat(actualChecks, equalTo(expectedChecks));
+    }
+
+    /**
+     * Tests that the warnings miner can handle searching a project in which a directory name ends
+     * with ".java". See https://github.com/SpoonLabs/sorald/issues/207 for context.
+     */
+    @Test
+    public void warningsMiner_canAnalyzeFile_inDirectoryWithJavaExtension(@TempDir File workdir)
+            throws Exception {
+        File dirWithJavaExtension =
+                workdir.toPath().resolve("project" + Constants.JAVA_EXT).toFile();
+        assertTrue(dirWithJavaExtension.mkdir(), "failed to create test directory");
+        Files.writeString(
+                dirWithJavaExtension.toPath().resolve("Main.java"), "public class Main {}");
+
+        final ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        MineSonarWarnings.main(
+                new String[] {
+                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH, workdir.toString(),
+                });
+
+        assertThat(
+                out.toString(),
+                containsString(
+                        "INFO  1 source files to be analyzed\n"
+                                + "INFO  1/1 source files have been analyzed"));
     }
 
     /** Test that extracting warnings gives results even for rules that are not violated. */

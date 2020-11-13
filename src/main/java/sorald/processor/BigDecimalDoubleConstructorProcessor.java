@@ -2,7 +2,7 @@ package sorald.processor;
 
 import java.math.BigDecimal;
 import java.util.List;
-import sorald.ProcessorAnnotation;
+import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;

@@ -1,6 +1,6 @@
 package sorald.processor;
 
-import sorald.ProcessorAnnotation;
+import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtConstructorCall;

@@ -8,14 +8,9 @@ import com.martiansoftware.jsap.Switch;
 import com.martiansoftware.jsap.stringparsers.BooleanStringParser;
 import com.martiansoftware.jsap.stringparsers.FileStringParser;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.sonar.plugins.java.api.JavaFileScanner;
@@ -124,7 +119,7 @@ public class MineSonarWarnings {
             for (String repo : reposList) {
                 String repoName = repo.substring(repo.lastIndexOf('/') + 1, repo.lastIndexOf("."));
 
-                FileUtils.cleanDirectory(repoDir);
+                org.apache.commons.io.FileUtils.cleanDirectory(repoDir);
 
                 boolean isCloned = false;
 
@@ -194,10 +189,10 @@ public class MineSonarWarnings {
         if (file.isFile()) {
             filesToScan.add(file.getAbsolutePath());
         } else {
-            try (Stream<Path> walk = Files.walk(Paths.get(file.getAbsolutePath()))) {
+            try {
                 filesToScan =
-                        walk.map(x -> x.toFile().getAbsolutePath())
-                                .filter(f -> f.endsWith(Constants.JAVA_EXT))
+                        sorald.FileUtils.findFilesByExtension(file, Constants.JAVA_EXT).stream()
+                                .map(File::toString)
                                 .collect(Collectors.toList());
             } catch (IOException e) {
                 e.printStackTrace();

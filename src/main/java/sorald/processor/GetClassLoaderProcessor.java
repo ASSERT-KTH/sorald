@@ -1,7 +1,7 @@
 package sorald.processor;
 
 import java.util.HashMap;
-import sorald.ProcessorAnnotation;
+import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtTypeAccess;
 import spoon.reflect.declaration.CtClass;

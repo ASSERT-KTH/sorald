@@ -10,8 +10,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilderFactory;
-import sorald.ProcessorAnnotation;
-import sorald.sonar.IncompleteProcessor;
+import sorald.annotations.IncompleteProcessor;
+import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
@@ -33,6 +33,7 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
 
     private static final String DOCUMENT_BUILDER_FACTORY = "DocumentBuilderFactory";
     private static final String TRANSFORMER_FACTORY = "TransformerFactory";
+    private static final String XML_INPUT_FACTORY = "XMLInputFactory";
 
     @Override
     public boolean isToBeProcessed(CtInvocation<?> candidate) {
@@ -41,7 +42,8 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
 
     /** Check if the target of the invocation is of a type currently supported by this processor */
     private static boolean isSupported(CtInvocation<?> candidate) {
-        List<String> supportedNames = Arrays.asList(DOCUMENT_BUILDER_FACTORY, TRANSFORMER_FACTORY);
+        List<String> supportedNames =
+                Arrays.asList(DOCUMENT_BUILDER_FACTORY, TRANSFORMER_FACTORY, XML_INPUT_FACTORY);
         return supportedNames.contains(candidate.getType().getSimpleName());
     }
 
@@ -85,10 +87,7 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
 
         List<CtStatement> statements = new ArrayList<>();
         statements.add(builderFactoryVariable);
-        statements.addAll(
-                setXMLConstantsAttributesToEmptyString(
-                        builderFactoryVariable,
-                        getXMLConstantNamesFor(newInstanceInvocation.getType())));
+        statements.addAll(setXMLConstantsAttributesToEmptyString(builderFactoryVariable));
 
         return createPrivateStaticMethod(
                 "create" + newInstanceInvocation.getType().getSimpleName(),
@@ -104,12 +103,12 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
      * </code>
      */
     private List<? extends CtInvocation<?>> setXMLConstantsAttributesToEmptyString(
-            CtLocalVariable<?> localVar, List<String> xmlConstantsAttrs) {
+            CtLocalVariable<?> localVar) {
         CtLiteral<Object> emptyString = getFactory().createLiteral("");
         Function<CtFieldRead<String>, ? extends CtInvocation<?>> setAttrToEmptyString =
                 (xmlAttrRead) ->
                         createSetAttributeInvocation(read(localVar), xmlAttrRead, emptyString);
-        return xmlConstantsAttrs.stream()
+        return getXMLConstantNamesFor(localVar.getType()).stream()
                 .map(this::readXmlConstant)
                 .map(setAttrToEmptyString)
                 .collect(Collectors.toList());
@@ -167,13 +166,17 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         return fieldRead;
     }
 
-    /** @return An invocation target.setAttribute(key, value). */
+    /**
+     * @return An invocation target.SET_ATTRIBUTE(key, value), where the exact name of SET_ATTRIBUTE
+     *     depends on the target type.
+     */
     private <T> CtInvocation<T> createSetAttributeInvocation(
             CtExpression<T> target, CtExpression<String> key, CtExpression<Object> value) {
         CtType<T> builderFactory = target.getType().getTypeDeclaration();
+        String setAttrMethodName = getAttributeSetterMethodName(target.getType());
         CtMethod<T> setAttribute =
                 builderFactory.getMethod(
-                        "setAttribute", getFactory().Type().STRING, getFactory().Type().OBJECT);
+                        setAttrMethodName, getFactory().Type().STRING, getFactory().Type().OBJECT);
         return getFactory().createInvocation(target, setAttribute.getReference(), key, value);
     }
 
@@ -192,5 +195,18 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         return type.getSimpleName().equals(TRANSFORMER_FACTORY)
                 ? Arrays.asList(ACCESS_EXTERNAL_DTD, ACCESS_EXTERNAL_STYLESHEET)
                 : Arrays.asList(ACCESS_EXTERNAL_DTD, ACCESS_EXTERNAL_SCHEMA);
+    }
+
+    private static String getAttributeSetterMethodName(CtTypeReference<?> type) {
+        switch (type.getSimpleName()) {
+            case DOCUMENT_BUILDER_FACTORY:
+            case TRANSFORMER_FACTORY:
+                return "setAttribute";
+            case XML_INPUT_FACTORY:
+                return "setProperty";
+            default:
+                throw new IllegalArgumentException(
+                        "Missing method name for " + type.getSimpleName());
+        }
     }
 }
