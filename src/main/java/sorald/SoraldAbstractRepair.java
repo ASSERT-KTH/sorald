@@ -6,7 +6,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
-
 import sorald.processor.SoraldAbstractProcessor;
 import spoon.Launcher;
 import spoon.compiler.Environment;
