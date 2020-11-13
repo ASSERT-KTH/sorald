@@ -43,7 +43,7 @@ public class Cli {
                 names = {Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS},
                 description =
                         "Choose one or more of the following rule keys "
-                                + "(use ',' to separate multiple keys):"
+                                + "(use ',' to separate multiple keys):\n"
                                 + Processors.RULE_DESCRIPTIONS,
                 required = true,
                 split = ",")
