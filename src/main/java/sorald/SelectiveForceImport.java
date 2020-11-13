@@ -16,9 +16,7 @@ public class SelectiveForceImport extends ForceImportProcessor {
     // for originals
     private final IdentityHashMap<CtTypeReference<?>, Boolean> excludedReferences;
 
-    /**
-     * @param referencesToIgnore A collection of references to ignore when force-importing.
-     */
+    /** @param referencesToIgnore A collection of references to ignore when force-importing. */
     public SelectiveForceImport(Collection<CtTypeReference<?>> referencesToIgnore) {
         excludedReferences = new IdentityHashMap<>();
         referencesToIgnore.forEach(ref -> excludedReferences.put(ref, true));
