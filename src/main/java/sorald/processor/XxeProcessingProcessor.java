@@ -13,8 +13,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import sorald.ProcessorAnnotation;
 import sorald.sonar.IncompleteProcessor;
 import spoon.reflect.code.*;
-import spoon.reflect.declaration.CtCompilationUnit;
-import spoon.reflect.declaration.CtImport;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.declaration.ModifierKind;
@@ -53,8 +51,6 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         CtType<?> declaringType = element.getParent(CtType.class);
 
         CtMethod<?> factoryMethod = createFactoryMethod(element, declaringType);
-        ensureTypeImported(declaringType, getFactory().Type().get(XMLConstants.class));
-        ensureTypeImported(declaringType, element.getType().getTypeDeclaration());
 
         CtInvocation<?> safeCreateDocBuilderFactory = invoke(factoryMethod);
         element.replace(safeCreateDocBuilderFactory);
@@ -138,7 +134,6 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         Set<ModifierKind> modifiers =
                 new HashSet<>(Arrays.asList(ModifierKind.PRIVATE, ModifierKind.STATIC));
         CtTypeReference<?> returnType = returnExp.getType().getTypeDeclaration().getReference();
-        returnType.getPackage().setImplicit(true);
         CtMethod<T> method =
                 getFactory()
                         .createMethod(
@@ -158,31 +153,13 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     }
 
     /**
-     * Ensure that the given type is imported in the compilation unit in which element is defined.
-     */
-    private void ensureTypeImported(CtType<?> element, CtType<?> mustBeImported) {
-        CtType<?> declaringType =
-                element.isTopLevel() ? element : element.getParent(CtType::isTopLevel);
-        CtCompilationUnit cu = getFactory().CompilationUnit().getOrCreate(declaringType);
-        CtImport requiredImport = getFactory().createImport(mustBeImported.getReference());
-
-        for (CtImport imp : cu.getImports()) {
-            if (imp.toString().equals(requiredImport.toString())) {
-                return;
-            }
-        }
-
-        cu.getImports().add(requiredImport);
-    }
-
-    /**
      * @param constantName The name of an XMLConstants static variable
      * @return A field read of XMLConstants.[constantName]
      */
     private CtFieldRead<String> readXmlConstant(String constantName) {
         CtType<XMLConstants> xmlConstants = getFactory().Type().get(XMLConstants.class);
         CtTypeAccess<?> xmlConstantsAccess =
-                getFactory().createTypeAccess(getReferenceWithImplicitPackage(xmlConstants));
+                getFactory().createTypeAccess(xmlConstants.getReference());
         CtFieldRead<String> fieldRead = getFactory().createFieldRead();
         fieldRead.setTarget(xmlConstantsAccess);
         CtFieldReference fieldRef = xmlConstants.getDeclaredField(constantName);
@@ -209,12 +186,6 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         CtThisAccess<?> thisAccess =
                 getFactory().createThisAccess(declaringType.getReference(), true);
         return getFactory().createInvocation(thisAccess, method.getReference());
-    }
-
-    private <T> CtTypeReference<T> getReferenceWithImplicitPackage(CtType<T> type) {
-        CtTypeReference<T> ref = type.getReference();
-        ref.getPackage().setImplicit(true);
-        return ref;
     }
 
     private static List<String> getXMLConstantNamesFor(CtTypeReference<?> type) {
