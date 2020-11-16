@@ -20,11 +20,6 @@ import sorald.segment.SoraldTreeBuilderAlgorithm;
 
 public class Cli {
 
-    public static void main(String[] args) {
-        new CommandLine(new RepairCommand())
-                .execute("--ruleKeys", "2755", "--originalFilesPath", "/path/to/file", "--help");
-    }
-
     public static CommandLine createCli() {
         return new CommandLine(new RepairCommand());
     }
