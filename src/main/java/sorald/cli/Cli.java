@@ -18,12 +18,15 @@ import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
 import sorald.segment.SoraldTreeBuilderAlgorithm;
 
+/** Class containing the CLI for Sorald. */
 public class Cli {
 
+    /** @return Sorald's command line interface. */
     public static CommandLine createCli() {
         return new CommandLine(new RepairCommand());
     }
 
+    /** The CLI command for the primary repair application. */
     @CommandLine.Command(
             mixinStandardHelpOptions = true,
             description = "Sorald automatic repair tool.")
@@ -102,7 +105,7 @@ public class Cli {
         int maxFilesPerSegment = 6500;
 
         @Override
-        public Integer call() throws Exception {
+        public Integer call() {
             validateArgs();
             SoraldConfig config = createConfig();
             getRepairProcess(config).repair();
