@@ -13,11 +13,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.*;
+import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.reference.CtFieldReference;
 import spoon.reflect.reference.CtTypeReference;
+import spoon.reflect.visitor.Filter;
 
 @IncompleteProcessor(
         description =
@@ -30,6 +32,7 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     private static final String ACCESS_EXTERNAL_DTD = "ACCESS_EXTERNAL_DTD";
     private static final String ACCESS_EXTERNAL_SCHEMA = "ACCESS_EXTERNAL_SCHEMA";
     private static final String ACCESS_EXTERNAL_STYLESHEET = "ACCESS_EXTERNAL_STYLESHEET";
+    private static final String FEATURE_SECURE_PROCESSING = "FEATURE_SECURE_PROCESSING";
 
     private static final String DOCUMENT_BUILDER_FACTORY = "DocumentBuilderFactory";
     private static final String TRANSFORMER_FACTORY = "TransformerFactory";
@@ -55,7 +58,47 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         CtMethod<?> factoryMethod = createFactoryMethod(element, declaringType);
 
         CtInvocation<?> safeCreateDocBuilderFactory = invoke(factoryMethod);
+        removeSetSecureProcessingCalls(element);
         element.replace(safeCreateDocBuilderFactory);
+    }
+
+    /**
+     * Remove any invocation on the form
+     * <code>someFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true)</code>, as it is
+     * unreliable.
+     */
+    private void removeSetSecureProcessingCalls(CtInvocation<?> element) {
+        final CtLocalVariable<?> variable = element.getParent(e -> true);
+        if (variable == null) {
+            return;
+        }
+
+        Filter<CtElement> isInvocationOnVariable =
+                e -> {
+                    if (e instanceof CtInvocation
+                            && ((CtInvocation<?>) e).getTarget() instanceof CtVariableAccess) {
+                        CtVariableAccess<?> varAccess =
+                                (CtVariableAccess<?>) ((CtInvocation<?>) e).getTarget();
+                        return variable.equals(varAccess.getVariable().getDeclaration());
+                    } else {
+                        return false;
+                    }
+                };
+
+        CtBlock<?> enclosingBlock = variable.getParent(e -> true);
+        List<CtInvocation<?>> invocations =
+                enclosingBlock.filterChildren(isInvocationOnVariable).list();
+
+        List<CtExpression<?>> expectedArguments =
+                List.of(
+                        readXmlConstant(FEATURE_SECURE_PROCESSING),
+                        getFactory().createLiteral(true));
+        for (CtInvocation<?> invocation : invocations) {
+            if (invocation.getExecutable().getSimpleName().equals("setFeature")
+                    && expectedArguments.equals(invocation.getArguments())) {
+                invocation.delete();
+            }
+        }
     }
 
     /**
