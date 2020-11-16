@@ -63,8 +63,8 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     }
 
     /**
-     * Remove any invocation on the form
-     * <code>someFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true)</code>, as it is
+     * Remove any invocation on the form <code>
+     * someFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true)</code>, as it is
      * unreliable.
      */
     private void removeSetSecureProcessingCalls(CtInvocation<?> element) {
