@@ -29,13 +29,12 @@ import spoon.reflect.visitor.DefaultJavaPrettyPrinter;
 import spoon.reflect.visitor.ImportCleaner;
 import spoon.reflect.visitor.ImportConflictDetector;
 import spoon.reflect.visitor.PrettyPrinter;
+import spoon.support.DefaultOutputDestinationHandler;
 import spoon.support.JavaOutputProcessor;
 import spoon.support.QueueProcessingManager;
 import spoon.support.sniper.SniperJavaPrettyPrinter;
 
-/**
- * Class for repairing projects.
- */
+/** Class for repairing projects. */
 public class Repair {
     private final GitPatchGenerator generator = new GitPatchGenerator();
     private final String intermediateSpoonedPath;
@@ -52,9 +51,7 @@ public class Repair {
         intermediateSpoonedPath = spoonedPath + File.separator + Constants.INTERMEDIATE;
     }
 
-    /**
-     * Execute a repair according to the config.
-     */
+    /** Execute a repair according to the config. */
     public void repair() {
         List<Integer> ruleKeys = config.getRuleKeys();
         List<SoraldAbstractProcessor<?>> addedProcessors = new ArrayList<>();
@@ -69,7 +66,7 @@ public class Repair {
 
             SoraldAbstractProcessor<?> processor = createProcessor(ruleKey);
             addedProcessors.add(processor);
-            Stream<CtModel> models = repair(inputDirPath, outputDirPath, processor);
+            Stream<CtModel> models = repair(inputDirPath, processor);
 
             models.forEach(model -> writeModel(model, outputDirPath));
         }
@@ -79,22 +76,20 @@ public class Repair {
         UniqueTypesCollector.getInstance().reset();
     }
 
-    public Stream<CtModel> repair(
-            String inputDirPath, String outputDirPath, SoraldAbstractProcessor<?> processor) {
+    public Stream<CtModel> repair(String inputDirPath, SoraldAbstractProcessor<?> processor) {
         if (config.getRepairStrategy() == RepairStrategy.DEFAULT) {
-            CtModel model = defaultRepair(inputDirPath, outputDirPath, processor);
+            CtModel model = defaultRepair(inputDirPath, processor);
             return Stream.of(model);
         } else {
             assert config.getRepairStrategy() == RepairStrategy.SEGMENT;
-            return segmentRepair(inputDirPath, outputDirPath, processor);
+            return segmentRepair(inputDirPath, processor);
         }
     }
 
-    public CtModel defaultRepair(
-            String inputDirPath, String outputDirPath, SoraldAbstractProcessor<?> processor) {
+    public CtModel defaultRepair(String inputDirPath, SoraldAbstractProcessor<?> processor) {
         Launcher launcher = new Launcher();
         launcher.addInputResource(inputDirPath);
-        CtModel model = initLauncher(launcher, outputDirPath).getModel();
+        CtModel model = initLauncher(launcher).getModel();
 
         File inputBaseDir = FileUtils.getClosestDirectory(new File(inputDirPath));
         processor.initResource(inputDirPath, inputBaseDir);
@@ -104,7 +99,7 @@ public class Repair {
     }
 
     public Stream<CtModel> segmentRepair(
-            String inputDirPath, String outputDirPath, SoraldAbstractProcessor<?> processor) {
+            String inputDirPath, SoraldAbstractProcessor<?> processor) {
         Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(inputDirPath);
         LinkedList<LinkedList<Node>> segments =
                 FirstFitSegmentationAlgorithm.segment(rootNode, config.getMaxFilesPerSegment());
@@ -114,7 +109,7 @@ public class Repair {
                 .map(
                         segment -> {
                             processor.initResource(segment, inputBaseDir);
-                            Launcher launcher = createSegmentLauncher(segment, outputDirPath);
+                            Launcher launcher = createSegmentLauncher(segment);
                             CtModel model = launcher.getModel();
                             repairModelWithInitializedProcessor(model, processor);
                             return model;
@@ -156,7 +151,7 @@ public class Repair {
         processingManager.process(factory.Class().getAll());
     }
 
-    private Launcher createSegmentLauncher(List<Node> segment, String outputDirPath) {
+    private Launcher createSegmentLauncher(List<Node> segment) {
         Launcher launcher = new Launcher();
 
         for (Node node : segment) {
@@ -168,14 +163,18 @@ public class Repair {
                 }
             }
         }
-        return initLauncher(launcher, outputDirPath);
+        return initLauncher(launcher);
     }
 
     private void writeModel(CtModel model, String outputDirPath) {
+        Factory factory = model.getUnnamedModule().getFactory();
+        Environment env = factory.getEnvironment();
+        env.setOutputDestinationHandler(
+                new DefaultOutputDestinationHandler(new File(outputDirPath), env));
+
         JavaOutputProcessor javaOutputProcessor = new JavaOutputProcessor();
-        javaOutputProcessor.setFactory(model.getUnnamedModule().getFactory());
-        QueueProcessingManager processingManager =
-                new QueueProcessingManager(model.getUnnamedModule().getFactory());
+        javaOutputProcessor.setFactory(factory);
+        QueueProcessingManager processingManager = new QueueProcessingManager(factory);
         processingManager.addProcessor(javaOutputProcessor);
 
         if (config.getFileOutputStrategy() == FileOutputStrategy.ALL
@@ -224,8 +223,7 @@ public class Repair {
         }
     }
 
-    private Launcher initLauncher(Launcher launcher, String outputDirPath) {
-        launcher.setSourceOutputDirectory(outputDirPath);
+    private Launcher initLauncher(Launcher launcher) {
         Environment env = launcher.getEnvironment();
         env.setIgnoreDuplicateDeclarations(true);
 
