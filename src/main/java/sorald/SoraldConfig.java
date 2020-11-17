@@ -9,7 +9,6 @@ import sorald.segment.Node;
 /* All config settings of Sorald should be gathered here */
 public class SoraldConfig {
     private final List<Integer> ruleKeys = new ArrayList<>();
-    private LinkedList<LinkedList<Node>> segments;
     private PrettyPrintingStrategy prettyPrintingStrategy;
     private FileOutputStrategy fileOutputStrategy;
     private RepairStrategy repairStrategy;
@@ -97,13 +96,5 @@ public class SoraldConfig {
 
     public int getMaxFilesPerSegment() {
         return this.maxFilesPerSegment;
-    }
-
-    public void setSegments(LinkedList<LinkedList<Node>> segments) {
-        this.segments = segments;
-    }
-
-    public LinkedList<LinkedList<Node>> getSegments() {
-        return this.segments;
     }
 }
