@@ -76,7 +76,7 @@ public class Repair {
         UniqueTypesCollector.getInstance().reset();
     }
 
-    public Stream<CtModel> repair(String inputDirPath, SoraldAbstractProcessor<?> processor) {
+    Stream<CtModel> repair(String inputDirPath, SoraldAbstractProcessor<?> processor) {
         if (config.getRepairStrategy() == RepairStrategy.DEFAULT) {
             CtModel model = defaultRepair(inputDirPath, processor);
             return Stream.of(model);
@@ -86,7 +86,7 @@ public class Repair {
         }
     }
 
-    public CtModel defaultRepair(String inputDirPath, SoraldAbstractProcessor<?> processor) {
+    CtModel defaultRepair(String inputDirPath, SoraldAbstractProcessor<?> processor) {
         Launcher launcher = new Launcher();
         launcher.addInputResource(inputDirPath);
         CtModel model = initLauncher(launcher).getModel();
@@ -98,7 +98,7 @@ public class Repair {
         return model;
     }
 
-    public Stream<CtModel> segmentRepair(
+    Stream<CtModel> segmentRepair(
             String inputDirPath, SoraldAbstractProcessor<?> processor) {
         Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(inputDirPath);
         LinkedList<LinkedList<Node>> segments =
