@@ -91,7 +91,8 @@ public class Repair {
 
                 JavaOutputProcessor javaOutputProcessor = new JavaOutputProcessor();
                 javaOutputProcessor.setFactory(model.getUnnamedModule().getFactory());
-                QueueProcessingManager processingManager = new QueueProcessingManager(model.getUnnamedModule().getFactory());
+                QueueProcessingManager processingManager =
+                        new QueueProcessingManager(model.getUnnamedModule().getFactory());
                 processingManager.addProcessor(javaOutputProcessor);
 
                 if (this.config.getFileOutputStrategy() == FileOutputStrategy.ALL
@@ -102,7 +103,9 @@ public class Repair {
                 if (this.config.getFileOutputStrategy() == FileOutputStrategy.CHANGED_ONLY
                         && !outputDirPath.contains(intermediateSpoonedPath)) {
                     for (Map.Entry<String, CtType> patchedFile :
-                            UniqueTypesCollector.getInstance().getTopLevelTypes4Output().entrySet()) {
+                            UniqueTypesCollector.getInstance()
+                                    .getTopLevelTypes4Output()
+                                    .entrySet()) {
                         javaOutputProcessor.process(patchedFile.getValue());
                         if (this.config.getGitRepoPath() != null) {
                             createPatches(patchedFile.getKey(), javaOutputProcessor);
@@ -113,7 +116,6 @@ public class Repair {
                 assert config.getRepairStrategy() == RepairStrategy.SEGMENT;
                 segmentRepair(inputDirPath, outputDirPath, processor);
             }
-
         }
 
         printEndProcess();
@@ -121,10 +123,9 @@ public class Repair {
         UniqueTypesCollector.getInstance().reset();
     }
 
-
-    public CtModel defaultRepair(String inputDirPath, String outputDirPath, SoraldAbstractProcessor<?> processor) {
-        File inputBaseDir =
-                FileUtils.getClosestDirectory(new File(inputDirPath));
+    public CtModel defaultRepair(
+            String inputDirPath, String outputDirPath, SoraldAbstractProcessor<?> processor) {
+        File inputBaseDir = FileUtils.getClosestDirectory(new File(inputDirPath));
         processor.initResource(inputDirPath, inputBaseDir);
 
         Launcher launcher = new Launcher();
@@ -138,7 +139,8 @@ public class Repair {
         return launcher.getModel();
     }
 
-    public void segmentRepair(String inputDirPath, String outputDirPath, SoraldAbstractProcessor<?> processor) {
+    public void segmentRepair(
+            String inputDirPath, String outputDirPath, SoraldAbstractProcessor<?> processor) {
         Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(inputDirPath);
         LinkedList<LinkedList<Node>> segments =
                 FirstFitSegmentationAlgorithm.segment(rootNode, config.getMaxFilesPerSegment());
@@ -146,8 +148,7 @@ public class Repair {
         int nbFixes = 0;
         while (!segments.isEmpty() && nbFixes != this.config.getMaxFixesPerRule()) {
             List<Node> segment = segments.pop();
-            File inputBaseDir =
-                    FileUtils.getClosestDirectory(new File(inputDirPath));
+            File inputBaseDir = FileUtils.getClosestDirectory(new File(inputDirPath));
             processor.initResource(segment, inputBaseDir);
             try {
                 Launcher launcher = createSegmentLauncher(segment, outputDirPath);
@@ -201,7 +202,6 @@ public class Repair {
         }
         System.out.println("-----End of report------");
     }
-
 
     protected void createPatches(String patchedFilePath, JavaOutputProcessor javaOutputProcessor) {
         File patchDir = new File(this.config.getWorkspace() + File.separator + Constants.PATCHES);
