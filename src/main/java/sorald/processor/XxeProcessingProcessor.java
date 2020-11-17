@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -56,10 +57,30 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         CtType<?> declaringType = element.getParent(CtType.class);
 
         CtMethod<?> factoryMethod = createFactoryMethod(element, declaringType);
+        moveSetSecureProcessingCall(element, factoryMethod);
 
-        CtInvocation<?> safeCreateDocBuilderFactory = invoke(factoryMethod);
-        removeSetSecureProcessingCalls(element);
-        element.replace(safeCreateDocBuilderFactory);
+        element.replace(invoke(factoryMethod));
+    }
+
+    /**
+     * Move any calls to <code>setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true)</code> to
+     * the factory creator method.
+     *
+     * @param element The original invocation
+     * @param factoryMethod The factory creator method
+     */
+    private void moveSetSecureProcessingCall(CtInvocation<?> element, CtMethod<?> factoryMethod) {
+        findSetSecureProcessingCall(element)
+                .ifPresent(
+                        call -> {
+                            call.delete();
+                            CtBlock<?> body = factoryMethod.getBody();
+                            CtLocalVariable<?> factoryVariable =
+                                    body.filterChildren(e -> true).first(CtLocalVariable.class);
+                            CtInvocation<?> newCall = call.clone();
+                            newCall.setTarget(read(factoryVariable));
+                            body.addStatement(body.getStatements().size() - 1, newCall);
+                        });
     }
 
     /**
@@ -67,10 +88,10 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
      * someFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true)</code>, as it is
      * unreliable.
      */
-    private void removeSetSecureProcessingCalls(CtInvocation<?> element) {
+    private Optional<CtInvocation<?>> findSetSecureProcessingCall(CtInvocation<?> element) {
         final CtLocalVariable<?> variable = element.getParent(e -> true);
         if (variable == null) {
-            return;
+            return Optional.empty();
         }
 
         Filter<CtElement> isInvocationOnVariable =
@@ -96,9 +117,10 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         for (CtInvocation<?> invocation : invocations) {
             if (invocation.getExecutable().getSimpleName().equals("setFeature")
                     && expectedArguments.equals(invocation.getArguments())) {
-                invocation.delete();
+                return Optional.of(invocation);
             }
         }
+        return Optional.empty();
     }
 
     /**
