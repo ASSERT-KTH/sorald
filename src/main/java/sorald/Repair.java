@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
-
 import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
