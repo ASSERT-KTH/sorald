@@ -33,12 +33,14 @@ import spoon.support.JavaOutputProcessor;
 import spoon.support.QueueProcessingManager;
 import spoon.support.sniper.SniperJavaPrettyPrinter;
 
+/**
+ * Class for repairing projects.
+ */
 public class Repair {
     private final GitPatchGenerator generator = new GitPatchGenerator();
     private final String intermediateSpoonedPath;
     private final String spoonedPath;
-    private SoraldConfig config;
-    private List<SoraldAbstractProcessor> addedProcessors = new ArrayList();
+    private final SoraldConfig config;
     private int patchedFileCounter = 0;
 
     public Repair(SoraldConfig config) {
@@ -50,8 +52,12 @@ public class Repair {
         intermediateSpoonedPath = spoonedPath + File.separator + Constants.INTERMEDIATE;
     }
 
+    /**
+     * Execute a repair according to the config.
+     */
     public void repair() {
         List<Integer> ruleKeys = config.getRuleKeys();
+        List<SoraldAbstractProcessor<?>> addedProcessors = new ArrayList<>();
 
         for (int i = 0; i < ruleKeys.size(); i++) {
             int ruleKey = ruleKeys.get(i);
@@ -62,14 +68,58 @@ public class Repair {
             final String outputDirPath = inOutPaths.getRight();
 
             SoraldAbstractProcessor<?> processor = createProcessor(ruleKey);
+            addedProcessors.add(processor);
             Stream<CtModel> models = repair(inputDirPath, outputDirPath, processor);
 
-            models.forEach(model -> processOutput(model, outputDirPath));
+            models.forEach(model -> writeModel(model, outputDirPath));
         }
 
-        printEndProcess();
+        printEndProcess(addedProcessors);
         FileUtils.deleteDirectory(new File(intermediateSpoonedPath));
         UniqueTypesCollector.getInstance().reset();
+    }
+
+    public Stream<CtModel> repair(
+            String inputDirPath, String outputDirPath, SoraldAbstractProcessor<?> processor) {
+        if (config.getRepairStrategy() == RepairStrategy.DEFAULT) {
+            CtModel model = defaultRepair(inputDirPath, outputDirPath, processor);
+            return Stream.of(model);
+        } else {
+            assert config.getRepairStrategy() == RepairStrategy.SEGMENT;
+            return segmentRepair(inputDirPath, outputDirPath, processor);
+        }
+    }
+
+    public CtModel defaultRepair(
+            String inputDirPath, String outputDirPath, SoraldAbstractProcessor<?> processor) {
+        Launcher launcher = new Launcher();
+        launcher.addInputResource(inputDirPath);
+        CtModel model = initLauncher(launcher, outputDirPath).getModel();
+
+        File inputBaseDir = FileUtils.getClosestDirectory(new File(inputDirPath));
+        processor.initResource(inputDirPath, inputBaseDir);
+        repairModelWithInitializedProcessor(model, processor);
+
+        return model;
+    }
+
+    public Stream<CtModel> segmentRepair(
+            String inputDirPath, String outputDirPath, SoraldAbstractProcessor<?> processor) {
+        Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(inputDirPath);
+        LinkedList<LinkedList<Node>> segments =
+                FirstFitSegmentationAlgorithm.segment(rootNode, config.getMaxFilesPerSegment());
+        File inputBaseDir = FileUtils.getClosestDirectory(new File(inputDirPath));
+
+        return segments.stream()
+                .map(
+                        segment -> {
+                            processor.initResource(segment, inputBaseDir);
+                            Launcher launcher = createSegmentLauncher(segment, outputDirPath);
+                            CtModel model = launcher.getModel();
+                            repairModelWithInitializedProcessor(model, processor);
+                            return model;
+                        })
+                .takeWhile(model -> processor.getNbFixes() < config.getMaxFixesPerRule());
     }
 
     private Pair<String, String> computeInOutPaths(boolean isFirstRule, boolean isLastRule) {
@@ -98,50 +148,8 @@ public class Repair {
         }
     }
 
-    private Stream<CtModel> repair(
-            String inputDirPath, String outputDirPath, SoraldAbstractProcessor<?> processor) {
-        if (config.getRepairStrategy() == RepairStrategy.DEFAULT) {
-            CtModel model = defaultRepair(inputDirPath, outputDirPath, processor);
-            return Stream.of(model);
-        } else {
-            assert config.getRepairStrategy() == RepairStrategy.SEGMENT;
-            return segmentRepair(inputDirPath, outputDirPath, processor);
-        }
-    }
-
-    private CtModel defaultRepair(
-            String inputDirPath, String outputDirPath, SoraldAbstractProcessor<?> processor) {
-        File inputBaseDir = FileUtils.getClosestDirectory(new File(inputDirPath));
-        processor.initResource(inputDirPath, inputBaseDir);
-
-        Launcher launcher = new Launcher();
-        launcher.addInputResource(inputDirPath);
-        CtModel model = initLauncher(launcher, outputDirPath).getModel();
-        repairModel(model, processor);
-
-        return model;
-    }
-
-    private Stream<CtModel> segmentRepair(
-            String inputDirPath, String outputDirPath, SoraldAbstractProcessor<?> processor) {
-        Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(inputDirPath);
-        LinkedList<LinkedList<Node>> segments =
-                FirstFitSegmentationAlgorithm.segment(rootNode, config.getMaxFilesPerSegment());
-        File inputBaseDir = FileUtils.getClosestDirectory(new File(inputDirPath));
-
-        return segments.stream()
-                .map(
-                        segment -> {
-                            processor.initResource(segment, inputBaseDir);
-                            Launcher launcher = createSegmentLauncher(segment, outputDirPath);
-                            CtModel model = launcher.getModel();
-                            repairModel(model, processor);
-                            return model;
-                        })
-                .takeWhile(model -> processor.getNbFixes() < config.getMaxFixesPerRule());
-    }
-
-    private static void repairModel(CtModel model, SoraldAbstractProcessor<?> processor) {
+    private static void repairModelWithInitializedProcessor(
+            CtModel model, SoraldAbstractProcessor<?> processor) {
         Factory factory = model.getUnnamedModule().getFactory();
         ProcessingManager processingManager = new QueueProcessingManager(factory);
         processingManager.addProcessor(processor);
@@ -163,8 +171,7 @@ public class Repair {
         return initLauncher(launcher, outputDirPath);
     }
 
-    /** print the given model into the output directory */
-    private void processOutput(CtModel model, String outputDirPath) {
+    private void writeModel(CtModel model, String outputDirPath) {
         JavaOutputProcessor javaOutputProcessor = new JavaOutputProcessor();
         javaOutputProcessor.setFactory(model.getUnnamedModule().getFactory());
         QueueProcessingManager processingManager =
@@ -188,9 +195,9 @@ public class Repair {
         }
     }
 
-    private void printEndProcess() {
+    private void printEndProcess(List<SoraldAbstractProcessor<?>> processors) {
         System.out.println("-----Number of fixes------");
-        for (SoraldAbstractProcessor processor : addedProcessors) {
+        for (SoraldAbstractProcessor<?> processor : processors) {
             System.out.println(
                     processor.getClass().getSimpleName() + ": " + processor.getNbFixes());
         }
@@ -274,13 +281,12 @@ public class Repair {
         return () -> new DefaultJavaPrettyPrinter(env);
     }
 
-    private SoraldAbstractProcessor createBaseProcessor(Integer ruleKey) {
+    private SoraldAbstractProcessor<?> createBaseProcessor(Integer ruleKey) {
         try {
             Class<?> processor = Processors.getProcessor(ruleKey);
             if (processor != null) {
                 Constructor<?> cons = processor.getConstructor();
-                SoraldAbstractProcessor object = (SoraldAbstractProcessor) cons.newInstance();
-                return object;
+                return (SoraldAbstractProcessor<?>) cons.newInstance();
             }
         } catch (InstantiationException
                 | IllegalAccessException
