@@ -3,6 +3,8 @@ package sorald;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -37,8 +39,8 @@ import spoon.support.sniper.SniperJavaPrettyPrinter;
 /** Class for repairing projects. */
 public class Repair {
     private final GitPatchGenerator generator = new GitPatchGenerator();
-    private final String intermediateSpoonedPath;
-    private final String spoonedPath;
+    private final Path intermediateSpoonedPath;
+    private final Path spoonedPath;
     private final SoraldConfig config;
     private int patchedFileCounter = 0;
 
@@ -47,8 +49,8 @@ public class Repair {
         if (this.config.getGitRepoPath() != null) {
             generator.setGitProjectRootDir(this.config.getGitRepoPath());
         }
-        spoonedPath = config.getWorkspace() + File.separator + Constants.SPOONED;
-        intermediateSpoonedPath = spoonedPath + File.separator + Constants.INTERMEDIATE;
+        spoonedPath = Paths.get(config.getWorkspace()).resolve(Constants.SPOONED);
+        intermediateSpoonedPath = spoonedPath.resolve(Constants.INTERMEDIATE);
     }
 
     /** Execute a repair according to the config. */
@@ -59,50 +61,49 @@ public class Repair {
         for (int i = 0; i < ruleKeys.size(); i++) {
             int ruleKey = ruleKeys.get(i);
 
-            Pair<String, String> inOutPaths = computeInOutPaths(i == 0, i == ruleKeys.size() - 1);
-
-            final String inputDirPath = inOutPaths.getLeft();
-            final String outputDirPath = inOutPaths.getRight();
+            Pair<Path, Path> inOutPaths = computeInOutPaths(i == 0, i == ruleKeys.size() - 1);
+            final Path inputDir = inOutPaths.getLeft();
+            final Path outputDir = inOutPaths.getRight();
 
             SoraldAbstractProcessor<?> processor = createProcessor(ruleKey);
             addedProcessors.add(processor);
-            Stream<CtModel> models = repair(inputDirPath, processor);
+            Stream<CtModel> models = repair(inputDir, processor);
 
-            models.forEach(model -> writeModel(model, outputDirPath));
+            models.forEach(model -> writeModel(model, outputDir));
         }
 
         printEndProcess(addedProcessors);
-        FileUtils.deleteDirectory(new File(intermediateSpoonedPath));
+        FileUtils.deleteDirectory(intermediateSpoonedPath.toFile());
         UniqueTypesCollector.getInstance().reset();
     }
 
-    Stream<CtModel> repair(String inputDirPath, SoraldAbstractProcessor<?> processor) {
+    Stream<CtModel> repair(Path inputDir, SoraldAbstractProcessor<?> processor) {
         if (config.getRepairStrategy() == RepairStrategy.DEFAULT) {
-            CtModel model = defaultRepair(inputDirPath, processor);
+            CtModel model = defaultRepair(inputDir, processor);
             return Stream.of(model);
         } else {
             assert config.getRepairStrategy() == RepairStrategy.SEGMENT;
-            return segmentRepair(inputDirPath, processor);
+            return segmentRepair(inputDir, processor);
         }
     }
 
-    CtModel defaultRepair(String inputDirPath, SoraldAbstractProcessor<?> processor) {
+    CtModel defaultRepair(Path inputDir, SoraldAbstractProcessor<?> processor) {
         Launcher launcher = new Launcher();
-        launcher.addInputResource(inputDirPath);
+        launcher.addInputResource(inputDir.toString());
         CtModel model = initLauncher(launcher).getModel();
 
-        File inputBaseDir = FileUtils.getClosestDirectory(new File(inputDirPath));
-        processor.initResource(inputDirPath, inputBaseDir);
+        File inputBaseDir = FileUtils.getClosestDirectory(inputDir.toFile());
+        processor.initResource(inputDir.toString(), inputBaseDir);
         repairModelWithInitializedProcessor(model, processor);
 
         return model;
     }
 
-    Stream<CtModel> segmentRepair(String inputDirPath, SoraldAbstractProcessor<?> processor) {
-        Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(inputDirPath);
+    Stream<CtModel> segmentRepair(Path inputDir, SoraldAbstractProcessor<?> processor) {
+        Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(inputDir.toString());
         LinkedList<LinkedList<Node>> segments =
                 FirstFitSegmentationAlgorithm.segment(rootNode, config.getMaxFilesPerSegment());
-        File inputBaseDir = FileUtils.getClosestDirectory(new File(inputDirPath));
+        File inputBaseDir = FileUtils.getClosestDirectory(inputDir.toFile());
 
         return segments.stream()
                 .map(
@@ -116,12 +117,12 @@ public class Repair {
                 .takeWhile(model -> processor.getNbFixes() < config.getMaxFixesPerRule());
     }
 
-    private Pair<String, String> computeInOutPaths(boolean isFirstRule, boolean isLastRule) {
+    private Pair<Path, Path> computeInOutPaths(boolean isFirstRule, boolean isLastRule) {
         if (isFirstRule && isLastRule) {
             // one processor, straightforward repair: we use the given input file dir, run one
             // processor, directly output files (independently of the FileOutputStrategy) in
             // the final output dir
-            return Pair.of(config.getOriginalFilesPath(), spoonedPath);
+            return Pair.of(Paths.get(config.getOriginalFilesPath()), spoonedPath);
         } else {
             // more than one processor, thus we need an intermediate dir, which will always
             // contain all files (the changed and non-changed ones), because other processors
@@ -129,7 +130,7 @@ public class Repair {
             if (isFirstRule) {
                 // the first processor will run, thus we use the given input file
                 // dir and output *all* files in the intermediate dir
-                return Pair.of(config.getOriginalFilesPath(), intermediateSpoonedPath);
+                return Pair.of(Paths.get(config.getOriginalFilesPath()), intermediateSpoonedPath);
             } else if (isLastRule) {
                 // the last processor will run, thus we use as input files the ones in
                 // the intermediate dir and output files in the final output dir
@@ -165,23 +166,24 @@ public class Repair {
         return initLauncher(launcher);
     }
 
-    private void writeModel(CtModel model, String outputDirPath) {
+    private void writeModel(CtModel model, Path outputDir) {
         Factory factory = model.getUnnamedModule().getFactory();
         Environment env = factory.getEnvironment();
         env.setOutputDestinationHandler(
-                new DefaultOutputDestinationHandler(new File(outputDirPath), env));
+                new DefaultOutputDestinationHandler(outputDir.toFile(), env));
 
         JavaOutputProcessor javaOutputProcessor = new JavaOutputProcessor();
         javaOutputProcessor.setFactory(factory);
         QueueProcessingManager processingManager = new QueueProcessingManager(factory);
         processingManager.addProcessor(javaOutputProcessor);
 
-        if (config.getFileOutputStrategy() == FileOutputStrategy.ALL
-                || outputDirPath.contains(intermediateSpoonedPath)) {
+        boolean isIntermediateOutputDir =
+                outputDir.toString().contains(intermediateSpoonedPath.toString());
+        if (config.getFileOutputStrategy() == FileOutputStrategy.ALL || isIntermediateOutputDir) {
             processingManager.process(model.getUnnamedModule().getFactory().Class().getAll());
         } else {
             assert (config.getFileOutputStrategy() == FileOutputStrategy.CHANGED_ONLY
-                    && !outputDirPath.contains(intermediateSpoonedPath));
+                    && !isIntermediateOutputDir);
 
             for (Map.Entry<String, CtType> patchedFile :
                     UniqueTypesCollector.getInstance().getTopLevelTypes4Output().entrySet()) {
