@@ -98,8 +98,7 @@ public class Repair {
         return model;
     }
 
-    Stream<CtModel> segmentRepair(
-            String inputDirPath, SoraldAbstractProcessor<?> processor) {
+    Stream<CtModel> segmentRepair(String inputDirPath, SoraldAbstractProcessor<?> processor) {
         Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(inputDirPath);
         LinkedList<LinkedList<Node>> segments =
                 FirstFitSegmentationAlgorithm.segment(rootNode, config.getMaxFilesPerSegment());

@@ -2,9 +2,7 @@ package sorald;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import sorald.segment.Node;
 
 /* All config settings of Sorald should be gathered here */
 public class SoraldConfig {
