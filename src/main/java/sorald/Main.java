@@ -8,12 +8,8 @@ import com.martiansoftware.jsap.Switch;
 import com.martiansoftware.jsap.stringparsers.FileStringParser;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-import sorald.segment.FirstFitSegmentationAlgorithm;
-import sorald.segment.Node;
-import sorald.segment.SoraldTreeBuilderAlgorithm;
 
 public class Main {
     private final SoraldConfig config = new SoraldConfig();
@@ -171,35 +167,12 @@ public class Main {
                         RepairStrategy.valueOf(arguments.getString(Constants.ARG_REPAIR_STRATEGY)));
     }
 
-    public SoraldAbstractRepair getRepairProcess() {
-        SoraldAbstractRepair repair;
-        switch (this.getConfig().getRepairStrategy()) {
-            case SEGMENT:
-                {
-                    System.out.println("[Repair Mode] : SEGMENT");
-                    Node rootNode =
-                            SoraldTreeBuilderAlgorithm.buildTree(
-                                    this.getConfig().getOriginalFilesPath());
-                    LinkedList<LinkedList<Node>> segments =
-                            FirstFitSegmentationAlgorithm.segment(
-                                    rootNode, this.getConfig().getMaxFilesPerSegment());
-                    this.getConfig().setSegments(segments);
-                    repair = new SegmentRepair(this.config);
-                    break;
-                }
-            default:
-                System.out.println("[Repair Mode] : DEFAULT");
-                repair = new DefaultRepair(this.config);
-        }
-        return repair;
-    }
-
     public void start(String[] args) throws Exception {
         JSAP jsap = this.defineArgs();
         JSAPResult arguments = jsap.parse(args);
         this.checkArguments(jsap, arguments);
         this.initConfig(arguments);
-        this.getRepairProcess().repair();
+        new Repair(config).repair();
         System.out.println("done");
     }
 
