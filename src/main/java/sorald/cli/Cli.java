@@ -49,11 +49,14 @@ public class Cli {
         }
     }
 
-    /**
-     * Abstract command base class with the options that are in common for both the miner and repair
-     * tool
-     */
-    private abstract static class CommandBase {
+    /** The CLI command for the primary repair application. */
+    @CommandLine.Command(
+            name = Constants.REPAIR_COMMAND_NAME,
+            mixinStandardHelpOptions = true,
+            description = "Repair Sonar rule violations in a targeted project.")
+    private static class RepairCommand implements Callable<Integer> {
+        private List<Integer> ruleKeys;
+
         @CommandLine.Spec CommandLine.Model.CommandSpec spec;
 
         @CommandLine.Option(
@@ -62,15 +65,6 @@ public class Cli {
                         "The path to the file or folder to be analyzed and possibly repaired.",
                 required = true)
         File originalFilesPath;
-    }
-
-    /** The CLI command for the primary repair application. */
-    @CommandLine.Command(
-            name = Constants.REPAIR_COMMAND_NAME,
-            mixinStandardHelpOptions = true,
-            description = "Repair Sonar rule violations in a targeted project.")
-    private static class RepairCommand extends CommandBase implements Callable<Integer> {
-        private List<Integer> ruleKeys;
 
         @CommandLine.Option(
                 names = {Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS},
@@ -191,7 +185,15 @@ public class Cli {
             name = Constants.MINE_COMMAND_NAME,
             mixinStandardHelpOptions = true,
             description = "Mine a project for Sonar warnings.")
-    private static class MineCommand extends CommandBase implements Callable<Integer> {
+    private static class MineCommand implements Callable<Integer> {
+
+        @CommandLine.Spec CommandLine.Model.CommandSpec spec;
+
+        @CommandLine.Option(
+                names = {Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH},
+                description =
+                        "The path to the file or folder to be analyzed and possibly repaired.")
+        File originalFilesPath;
 
         @CommandLine.Option(
                 names = Constants.ARG_SYMBOL + Constants.ARG_STATS_ON_GIT_REPOS,
