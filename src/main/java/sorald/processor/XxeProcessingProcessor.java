@@ -79,7 +79,8 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
                                     body.filterChildren(e -> true).first(CtLocalVariable.class);
                             CtInvocation<?> newCall = call.clone();
                             newCall.setTarget(read(factoryVariable));
-                            body.addStatement(body.getStatements().size() - 1, newCall);
+                            body.addStatement(
+                                    body.getStatements().indexOf(factoryVariable) + 1, newCall);
                         });
     }
 
