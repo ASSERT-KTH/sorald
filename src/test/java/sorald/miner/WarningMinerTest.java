@@ -64,9 +64,7 @@ public class WarningMinerTest {
                 outputFile.getPath(),
                 temp.getPath(),
                 Constants.ARG_SYMBOL + Constants.ARG_RULE_TYPES,
-                checkTypes.stream()
-                        .map(Checks.CheckType::getLabel)
-                        .collect(Collectors.joining(",")));
+                checkTypes.stream().map(Checks.CheckType::name).collect(Collectors.joining(",")));
 
         List<String> expectedChecks =
                 checkTypes.stream()
@@ -144,12 +142,10 @@ public class WarningMinerTest {
     }
 
     private static void runMiner(
-            String pathToRepos, String pathToOutput, String pathToTempDir, String... extraArgs)
-            throws Exception {
+            String pathToRepos, String pathToOutput, String pathToTempDir, String... extraArgs) {
         String[] baseArgs =
                 new String[] {
                     Constants.ARG_SYMBOL + Constants.ARG_STATS_ON_GIT_REPOS,
-                    "true",
                     Constants.ARG_SYMBOL + Constants.ARG_GIT_REPOS_LIST,
                     pathToRepos,
                     Constants.ARG_SYMBOL + Constants.ARG_STATS_OUTPUT_FILE,
