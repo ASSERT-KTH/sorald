@@ -12,13 +12,6 @@ import sorald.sonar.RuleViolation;
 
 public class MineSonarWarnings {
 
-    public static void printUsage(JSAP jsap) {
-        System.err.println("Arguments: ");
-        System.err.println();
-        System.err.println(jsap.getHelp());
-        System.exit(-1);
-    }
-
     public static void mineGitRepos(
             List<? extends JavaFileScanner> checks,
             String outputPath,
