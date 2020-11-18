@@ -52,7 +52,7 @@ with keys 2111, 2184 and 2204 in a project located at `some/project/path`, one
 can invoke Sorald like so.
 
 ```bash
-$ java -jar sorald.jar repair --originalFilesPath some/project/path --ruleKeys 2111,2184,2204
+$ sorald repair --originalFilesPath some/project/path --ruleKeys 2111,2184,2204
 ```
 
 The full list of options is as follows (and can also be found by running
