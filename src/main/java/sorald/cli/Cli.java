@@ -30,7 +30,22 @@ public class Cli {
 
     /** @return Sorald's command line interface. */
     public static CommandLine createCli() {
-        return new CommandLine(new RepairCommand());
+        return new CommandLine(new SoraldCLI());
+    }
+
+    @CommandLine.Command(
+            mixinStandardHelpOptions = true,
+            subcommands = {RepairCommand.class, MineCommand.class},
+            description =
+                    "The Sorald command line application for automatic repair of Sonar rule violations.",
+            synopsisSubcommandLabel = "<COMMAND>")
+    static class SoraldCLI implements Callable<Integer> {
+
+        @Override
+        public Integer call() {
+            new CommandLine(this).usage(System.out);
+            return 1;
+        }
     }
 
     /** The CLI command for the primary repair application. */
@@ -167,7 +182,7 @@ public class Cli {
     @CommandLine.Command(
             mixinStandardHelpOptions = true,
             description = "Mine a project for Sonar warnings.")
-    public static class MineCommand implements Callable<Integer> {
+    private static class MineCommand implements Callable<Integer> {
 
         @CommandLine.Spec CommandLine.Model.CommandSpec spec;
 
