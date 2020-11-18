@@ -65,9 +65,7 @@ public class WarningMinerTest {
                 outputFile.getPath(),
                 temp.getPath(),
                 Constants.ARG_SYMBOL + Constants.ARG_RULE_TYPES,
-                checkTypes.stream()
-                        .map(Checks.CheckType::name)
-                        .collect(Collectors.joining(",")));
+                checkTypes.stream().map(Checks.CheckType::name).collect(Collectors.joining(",")));
 
         List<String> expectedChecks =
                 checkTypes.stream()

@@ -1,16 +1,11 @@
 package sorald.miner;
 
 import com.martiansoftware.jsap.JSAP;
-import com.martiansoftware.jsap.JSAPException;
-
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.errors.GitAPIException;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.sonar.RuleVerifier;
@@ -25,7 +20,12 @@ public class MineSonarWarnings {
         System.exit(-1);
     }
 
-    public static void mineGitRepos(List<? extends JavaFileScanner> checks, String outputPath, List<String> reposList, File repoDir) throws IOException {
+    public static void mineGitRepos(
+            List<? extends JavaFileScanner> checks,
+            String outputPath,
+            List<String> reposList,
+            File repoDir)
+            throws IOException {
         // stats on a list of git repos
         for (String repo : reposList) {
             String repoName = repo.substring(repo.lastIndexOf('/') + 1, repo.lastIndexOf("."));
@@ -61,7 +61,8 @@ public class MineSonarWarnings {
         }
     }
 
-    public static void mineLocalProject(List<? extends JavaFileScanner> checks, String projectPath) {
+    public static void mineLocalProject(
+            List<? extends JavaFileScanner> checks, String projectPath) {
         Map<String, Integer> warnings = extractWarnings(projectPath, checks);
 
         warnings.entrySet().stream()

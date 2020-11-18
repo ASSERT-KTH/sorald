@@ -8,7 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
-
 import org.sonar.plugins.java.api.JavaFileScanner;
 import picocli.CommandLine;
 import sorald.Constants;
