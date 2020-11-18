@@ -22,6 +22,7 @@ import org.junit.jupiter.api.io.TempDir;
 import org.sonar.java.AnalysisException;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.Main;
 import sorald.sonar.Checks;
 
 public class WarningMinerTest {
@@ -96,9 +97,11 @@ public class WarningMinerTest {
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        MineSonarWarnings.main(
+        Main.main(
                 new String[] {
-                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH, workdir.toString(),
+                    Constants.MINE_COMMAND_NAME,
+                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    workdir.toString()
                 });
 
         assertThat(
@@ -148,6 +151,7 @@ public class WarningMinerTest {
             throws Exception {
         String[] baseArgs =
                 new String[] {
+                    Constants.MINE_COMMAND_NAME,
                     Constants.ARG_SYMBOL + Constants.ARG_STATS_ON_GIT_REPOS,
                     "true",
                     Constants.ARG_SYMBOL + Constants.ARG_GIT_REPOS_LIST,
@@ -159,7 +163,7 @@ public class WarningMinerTest {
                 };
         String[] fullArgs =
                 Stream.of(baseArgs, extraArgs).flatMap(Arrays::stream).toArray(String[]::new);
-        MineSonarWarnings.main(fullArgs);
+        Main.main(fullArgs);
     }
 
     /** Extract check names from the warnings miner output file, sorted lexicographically. */
