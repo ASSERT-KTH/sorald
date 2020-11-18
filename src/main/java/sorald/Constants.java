@@ -30,11 +30,6 @@ public class Constants {
     public static final String ARG_RULE_TYPES = "ruleTypes";
 
     public static final String PROCESSOR_PACKAGE = "sorald.processor";
-    public static final List<String> SONAR_RULE_TYPES =
-            Collections.unmodifiableList(
-                    Arrays.stream(Checks.CheckType.values())
-                            .map(Checks.CheckType::getLabel)
-                            .collect(Collectors.toList()));
 
     public static final String SORALD_WORKSPACE = "sorald-workspace";
     public static final String PATCHES = "SoraldGitPatches";

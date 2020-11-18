@@ -66,7 +66,7 @@ public class WarningMinerTest {
                 temp.getPath(),
                 Constants.ARG_SYMBOL + Constants.ARG_RULE_TYPES,
                 checkTypes.stream()
-                        .map(Checks.CheckType::getLabel)
+                        .map(Checks.CheckType::name)
                         .collect(Collectors.joining(",")));
 
         List<String> expectedChecks =
@@ -153,7 +153,6 @@ public class WarningMinerTest {
                 new String[] {
                     Constants.MINE_COMMAND_NAME,
                     Constants.ARG_SYMBOL + Constants.ARG_STATS_ON_GIT_REPOS,
-                    "true",
                     Constants.ARG_SYMBOL + Constants.ARG_GIT_REPOS_LIST,
                     pathToRepos,
                     Constants.ARG_SYMBOL + Constants.ARG_STATS_OUTPUT_FILE,
