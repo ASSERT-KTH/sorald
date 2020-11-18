@@ -8,21 +8,55 @@ It can currently repair violations of [15+ rules](/docs/HANDLED_RULES.md).
 
 A JDK (Java 11+)
 
-### Usage
-
-##### If you want to run it from source code
+### Build
 
 1) Clone this repository: `git clone https://github.com/SpoonLabs/sorald.git`
 
-2) Build and run the tool:
+2) Build:
 
  ```bash
 $ cd sorald
 $ mvn package -DskipTests
-$ java -jar target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar <arguments>
  ```
 
-The arguments are the following:
+The Sorald application can now be found in
+`target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar`.
+
+### Usage
+
+Sorald can do two things: automatically repair violations of Sonar rules in a
+project, or mine projects for rule violations. These two modes of operations
+are available as the two commands `repair` and `mine`, respectively.
+
+For the remainder of this section, assume that we have defined the following
+alias:
+
+```bash
+alias sorald='java -jar /abs/path/to/target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar'
+```
+
+#### Repairing rule violations (the `repair` command)
+
+To repair rule violations, use the `repair` command. Assuming that the Sorald
+jar-file pointed out in [the build instructions](#build) is located at
+`sorald.jar`, the command can be invoked like so.
+
+```bash
+$ sorald repair <arguments ...>
+```
+
+Basic usage consists of specifying a project to repair, as well as one or more
+rules to target. The available rules [can be found here](docs/HANDLED_RULES.md),
+and are specified by their key. For example, to repair violations of the rules
+with keys 2111, 2184 and 2204 in a project located at `some/project/path`, one
+can invoke Sorald like so.
+
+```bash
+$ java -jar sorald.jar repair --originalFilesPath some/project/path --ruleKeys 2111,2184,2204
+```
+
+The full list of options is as follows (and can also be found by running
+`sorald repair --help`):
 
 ```bash
       --fileOutputStrategy=<fileOutputStrategy>
@@ -94,13 +128,52 @@ The arguments are the following:
 > Sorald's repair for a violation of said rule is either partial or
 > situational.
 
-Example of a concrete call to Sorald, in which multiple rule keys are given as input:
+#### Mining Sonar warnings (the `mine` command)
+
+To mine projects for Sonar warnings, use the `mine` command. Its most basic
+usage consists of simply pointing it to a project directory.
 
 ```bash
-$ java -jar target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar --originalFilesPath src/test/resources/MultipleProcessors.java --workspace /tmp/ --ruleKeys 2111,2184,2204
+$ sorald mine --originalFilesPath path/to/project
 ```
- 
-##### If you want to run it on GitHub projects to propose PRs with fixes
+
+It will then output statistics for that project with the Sonar checks available
+in Sorald.
+
+Another option is to execute the miner on a list of remote Git repositories,
+which can be done like so.
+
+```bash
+$ sorald mine --statsOnGitRepos --gitReposList repos.txt --statsOutputFile output.txt --tempDir /tmp
+```
+
+The `--gitReposList` should be a plain text file with one remote repository url
+(e.g. `https://github.com/SpoonLabs/sorald.git`) per line. Sorald clones each
+repository and runs Sonar checks on the head of the default branch.
+
+The full list of options is as follows (and can also be found by running `sorald
+mine --help`).
+
+```bash
+Mine a project for Sonar warnings.
+      --gitReposList=<reposList>
+                            The path to the repos list.
+  -h, --help                Show this help message and exit.
+      --originalFilesPath=<originalFilesPath>
+                            The path to the file or folder to be analyzed and
+                              possibly repaired.
+      --ruleTypes=<ruleTypes>[,<ruleTypes>...]
+                            One or more types of rules to check for (use ',' to
+                              separate multiple types). Choices: BUG,
+                              VULNERABILITY, CODE_SMELL, SECURITY_HOTSPOT
+      --statsOnGitRepos     If the stats should be computed on git repos.
+      --statsOutputFile=<statsOutputFile>
+                            The path to the output file.
+      --tempDir=<tempDir>   The path to the temp directory.
+  -V, --version             Print version information and exit.
+```
+
+#### Running Sorald on GitHub projects to propose PRs with fixes
 
 To run Sorald on projects towards proposing fixes in the form of PRs, look at [this Git repository](https://github.com/HarisAdzemovic/SQ-Repair-CI-Integration) for an example. In it, Sorald is ran on the three Apache projects defined in the *projects_for_model_1.txt* file.
  
