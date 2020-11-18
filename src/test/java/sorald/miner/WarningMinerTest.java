@@ -22,7 +22,6 @@ import org.junit.jupiter.api.io.TempDir;
 import org.sonar.java.AnalysisException;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
-import sorald.Main;
 import sorald.sonar.Checks;
 
 public class WarningMinerTest {
@@ -65,7 +64,9 @@ public class WarningMinerTest {
                 outputFile.getPath(),
                 temp.getPath(),
                 Constants.ARG_SYMBOL + Constants.ARG_RULE_TYPES,
-                checkTypes.stream().map(Checks.CheckType::name).collect(Collectors.joining(",")));
+                checkTypes.stream()
+                        .map(Checks.CheckType::getLabel)
+                        .collect(Collectors.joining(",")));
 
         List<String> expectedChecks =
                 checkTypes.stream()
@@ -95,11 +96,9 @@ public class WarningMinerTest {
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        Main.main(
+        MineSonarWarnings.main(
                 new String[] {
-                    Constants.MINE_COMMAND_NAME,
-                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
-                    workdir.toString()
+                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH, workdir.toString(),
                 });
 
         assertThat(
@@ -149,8 +148,8 @@ public class WarningMinerTest {
             throws Exception {
         String[] baseArgs =
                 new String[] {
-                    Constants.MINE_COMMAND_NAME,
                     Constants.ARG_SYMBOL + Constants.ARG_STATS_ON_GIT_REPOS,
+                    "true",
                     Constants.ARG_SYMBOL + Constants.ARG_GIT_REPOS_LIST,
                     pathToRepos,
                     Constants.ARG_SYMBOL + Constants.ARG_STATS_OUTPUT_FILE,
@@ -160,7 +159,7 @@ public class WarningMinerTest {
                 };
         String[] fullArgs =
                 Stream.of(baseArgs, extraArgs).flatMap(Arrays::stream).toArray(String[]::new);
-        Main.main(fullArgs);
+        MineSonarWarnings.main(fullArgs);
     }
 
     /** Extract check names from the warnings miner output file, sorted lexicographically. */

@@ -18,7 +18,6 @@ public class MaxFixesPerRuleTest {
         RuleVerifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
         Main.main(
                 new String[] {
-                    Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
                     pathToBuggyFile,
                     Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,

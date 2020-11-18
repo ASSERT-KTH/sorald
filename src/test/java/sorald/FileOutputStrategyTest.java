@@ -10,7 +10,6 @@ public class FileOutputStrategyTest {
     public void test_onlyChangedFilesAndPatchOutput() throws Exception {
         Main.main(
                 new String[] {
-                    Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
                     Constants.PATH_TO_RESOURCES_FOLDER,
                     Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
@@ -34,7 +33,6 @@ public class FileOutputStrategyTest {
     public void test_onlyChangedFilesAndNoPatchOutput() throws Exception {
         Main.main(
                 new String[] {
-                    Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
                     Constants.PATH_TO_RESOURCES_FOLDER,
                     Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
@@ -56,7 +54,6 @@ public class FileOutputStrategyTest {
     public void test_allFilesAndNoPatchOutput() throws Exception {
         Main.main(
                 new String[] {
-                    Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
                     Constants.PATH_TO_RESOURCES_FOLDER,
                     Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,

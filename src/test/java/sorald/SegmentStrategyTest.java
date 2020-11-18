@@ -21,7 +21,6 @@ public class SegmentStrategyTest {
         RuleVerifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
         Main.main(
                 new String[] {
-                    Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_SYMBOL + Constants.ARG_REPAIR_STRATEGY,
                     "SEGMENT",
                     // FIXME MAX_FILES_PER_SEGMENT is set to 1 as a temporary fix to
@@ -49,7 +48,6 @@ public class SegmentStrategyTest {
         RuleVerifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
         String[] args =
                 new String[] {
-                    Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_SYMBOL + Constants.ARG_REPAIR_STRATEGY,
                     "SEGMENT",
                     Constants.ARG_SYMBOL + Constants.ARG_MAX_FILES_PER_SEGMENT,
