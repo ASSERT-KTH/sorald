@@ -145,7 +145,8 @@ public class WarningMinerTest {
     }
 
     private static void runMiner(
-            String pathToRepos, String pathToOutput, String pathToTempDir, String... extraArgs) {
+            String pathToRepos, String pathToOutput, String pathToTempDir, String... extraArgs)
+            throws Exception {
         String[] baseArgs =
                 new String[] {
                     Constants.MINE_COMMAND_NAME,
