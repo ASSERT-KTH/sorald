@@ -10,6 +10,9 @@ import sorald.sonar.Checks;
 
 public class Constants {
 
+    public static final String REPAIR_COMMAND_NAME = "repair";
+    public static final String MINE_COMMAND_NAME = "mine";
+
     public static final String ARG_SYMBOL = "--";
     public static final String ARG_RULE_KEYS = "ruleKeys";
     public static final String ARG_ORIGINAL_FILES_PATH = "originalFilesPath";
