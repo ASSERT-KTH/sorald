@@ -1,6 +1,5 @@
 package sorald.miner;
 
-import com.martiansoftware.jsap.JSAP;
 import java.io.*;
 import java.util.*;
 import java.util.function.Consumer;
