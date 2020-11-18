@@ -44,7 +44,7 @@ public class Cli {
         @Override
         public Integer call() {
             new CommandLine(this).usage(System.out);
-            return 1;
+            return -1;
         }
     }
 
