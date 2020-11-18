@@ -50,6 +50,7 @@ public class Cli {
 
     /** The CLI command for the primary repair application. */
     @CommandLine.Command(
+            name = Constants.REPAIR_COMMAND_NAME,
             mixinStandardHelpOptions = true,
             description = "Repair Sonar rule violations in a targeted project.")
     private static class RepairCommand implements Callable<Integer> {
@@ -180,6 +181,7 @@ public class Cli {
     }
 
     @CommandLine.Command(
+            name = Constants.MINE_COMMAND_NAME,
             mixinStandardHelpOptions = true,
             description = "Mine a project for Sonar warnings.")
     private static class MineCommand implements Callable<Integer> {
