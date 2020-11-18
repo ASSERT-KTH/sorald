@@ -34,6 +34,7 @@ public class Cli {
     }
 
     @CommandLine.Command(
+            name = "sorald",
             mixinStandardHelpOptions = true,
             subcommands = {RepairCommand.class, MineCommand.class},
             description =
