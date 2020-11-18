@@ -2,9 +2,7 @@ package sorald.cli;
 
 import org.junit.jupiter.api.Test;
 
-/**
- * General tests of the CLI functionality.
- */
+/** General tests of the CLI functionality. */
 public class CliTest {
 
     @Test
