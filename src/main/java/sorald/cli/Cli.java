@@ -4,25 +4,19 @@ import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import picocli.CommandLine;
 import sorald.Constants;
-import sorald.DefaultRepair;
 import sorald.FileOutputStrategy;
 import sorald.PrettyPrintingStrategy;
 import sorald.Processors;
+import sorald.Repair;
 import sorald.RepairStrategy;
-import sorald.SegmentRepair;
-import sorald.SoraldAbstractRepair;
 import sorald.SoraldConfig;
 import sorald.miner.MineSonarWarnings;
-import sorald.segment.FirstFitSegmentationAlgorithm;
-import sorald.segment.Node;
-import sorald.segment.SoraldTreeBuilderAlgorithm;
 import sorald.sonar.Checks;
 
 /** Class containing the CLI for Sorald. */
@@ -115,7 +109,7 @@ public class Cli {
         public Integer call() {
             validateArgs();
             SoraldConfig config = createConfig();
-            getRepairProcess(config).repair();
+            new Repair(config).repair();
             return 0;
         }
 
@@ -143,24 +137,6 @@ public class Cli {
             config.setMaxFilesPerSegment(maxFilesPerSegment);
             config.setRepairStrategy(repairStrategy);
             return config;
-        }
-
-        private static SoraldAbstractRepair getRepairProcess(SoraldConfig config) {
-            SoraldAbstractRepair repair;
-            if (config.getRepairStrategy() == RepairStrategy.SEGMENT) {
-                System.out.println("[Repair Mode] : SEGMENT");
-                Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(config.getOriginalFilesPath());
-                LinkedList<LinkedList<Node>> segments =
-                        FirstFitSegmentationAlgorithm.segment(
-                                rootNode, config.getMaxFilesPerSegment());
-                config.setSegments(segments);
-                repair = new SegmentRepair(config);
-            } else {
-                assert config.getRepairStrategy() == RepairStrategy.DEFAULT;
-                System.out.println("[Repair Mode] : DEFAULT");
-                repair = new DefaultRepair(config);
-            }
-            return repair;
         }
     }
 
