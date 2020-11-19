@@ -2,6 +2,22 @@
 
 Pull requests are very welcome by the Sorald team!
 
+### A note on using an IDE to develop Sorald
+
+Due to a somewhat unconventional annotation processor setup that includes a
+precompile step to compile the processor, IDEs sometimes have trouble building
+Sorald. There are currently two workarounds for this.
+
+1. If your IDE supports it, you may delegate building of the project to Maven
+2. Simply build with Maven from the command line
+    - `mvn test-compile`
+    - You can then run the tests with the IDE as per usual
+
+In addition, you must ensure that `target/generated-sources` is marked as a
+source root within your IDE. Otherwise, it may complain about the `Processors`
+class not existing. The IDE should pick this up from `pom.xml`, but it has
+happened that it doesn't do so correctly.
+
 ### Guidelines for all pull-requests
 
 A PR will be accepted and merged when:
