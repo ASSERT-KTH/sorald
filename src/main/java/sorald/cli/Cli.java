@@ -19,6 +19,7 @@ import sorald.Repair;
 import sorald.RepairStrategy;
 import sorald.SoraldConfig;
 import sorald.event.SoraldEventHandler;
+import sorald.event.StatisticsCollector;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
 
@@ -124,10 +125,7 @@ public class Cli {
 
             if (statsOutputFile != null) {
                 assert !eventHandlers.isEmpty();
-                for (var handler : eventHandlers) {
-                    handler.close();
-                }
-                Files.writeString(statsOutputFile.toPath(), "hello", StandardOpenOption.CREATE_NEW);
+                writeStatistics(statsOutputFile, eventHandlers);
             }
 
             return 0;
@@ -144,7 +142,15 @@ public class Cli {
         }
 
         private List<? extends SoraldEventHandler> createEventHandlers() {
-            return List.of()
+            return List.of(new StatisticsCollector());
+        }
+
+        private static void writeStatistics(
+                File statsOutputFile, List<? extends SoraldEventHandler> eventHandlers) throws IOException {
+            for (var handler : eventHandlers) {
+                handler.close();
+            }
+            Files.writeString(statsOutputFile.toPath(), "hello", StandardOpenOption.CREATE_NEW);
         }
 
         private SoraldConfig createConfig() {
