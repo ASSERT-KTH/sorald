@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
 import java.util.List;
@@ -63,5 +64,23 @@ public class GatherStatsTest {
                 jo.getJSONArray(StatsMetadataKeys.ORIGINAL_ARGS).toList().size(), greaterThan(0));
         assertThat(jo.getLong(StatsMetadataKeys.PARSE_TIME_NS), greaterThan(0L));
         assertThat(jo.getLong(StatsMetadataKeys.REPAIR_TIME_NS), greaterThan(0L));
+    }
+
+    @Test
+    public void segmentRepair_doesNotSupportStatsCollection(@TempDir File tempDir) {
+        File statsFile = tempDir.toPath().resolve("stats.json").toFile();
+        String[] cliArgs =
+                new String[] {
+                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    ProcessorTestHelper.TEST_FILES_ROOT.toString(),
+                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
+                    "2755",
+                    Constants.ARG_SYMBOL + Constants.ARG_REPAIR_STRATEGY,
+                    RepairStrategy.SEGMENT.name(),
+                    Constants.ARG_SYMBOL + Constants.ARG_STATS_OUTPUT_FILE,
+                    statsFile.getAbsolutePath()
+                };
+
+        assertThrows(IllegalStateException.class, () -> Main.main(cliArgs));
     }
 }

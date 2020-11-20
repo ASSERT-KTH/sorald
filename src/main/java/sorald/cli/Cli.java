@@ -141,6 +141,13 @@ public class Cli {
                                 + Constants.ARG_MAX_FILES_PER_SEGMENT
                                 + " must be greater than 0");
             }
+
+            if (statsOutputFile != null && repairStrategy == RepairStrategy.SEGMENT) {
+                throw new CommandLine.ParameterException(
+                        spec.commandLine(),
+                        RepairStrategy.SEGMENT.name()
+                                + " repair does not currently support statistics collection");
+            }
         }
 
         private SoraldConfig createConfig() {
