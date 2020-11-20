@@ -1,9 +1,5 @@
 package sorald.event;
 
-import sorald.event.EventMetadata;
-import sorald.event.EventType;
-import sorald.event.SoraldEventHandler;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
@@ -47,32 +43,24 @@ public class StatisticsCollector implements SoraldEventHandler {
         allMetadata.putIfAbsent(type, eventTypeMetadata);
     }
 
-    /**
-     * @return True iff at least one event was registered by this handler
-     */
+    /** @return True iff at least one event was registered by this handler */
     public boolean isEventRegistered() {
         return eventRegistered;
     }
 
-    /**
-     * @return The total amount of time spent parsing
-     */
+    /** @return The total amount of time spent parsing */
     public long getParseTimeNs() {
         assert parseEnd > parseStart;
         return parseEnd - parseStart;
     }
 
-    /**
-     * @return The total amount of time spent repairing
-     */
+    /** @return The total amount of time spent repairing */
     public long getRepairTimeNs() {
         assert repairEnd > repairStart;
         return repairEnd - repairStart;
     }
 
-    /**
-     * @return All repair event data
-     */
+    /** @return All repair event data */
     public List<EventMetadata> getRepairs() {
         return Collections.unmodifiableList(allMetadata.getOrDefault(EventType.REPAIR, List.of()));
     }
