@@ -2,6 +2,7 @@ package sorald;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.greaterThan;
 
 import java.io.File;
@@ -48,7 +49,17 @@ public class GatherStatsTest {
                 statsFile.getAbsolutePath());
 
         JSONObject jo = FileUtils.readJSON(statsFile.toPath());
-        assertThat(jo.getJSONArray(StatsMetadataKeys.REPAIRS).toList().size(), greaterThan(0));
+        JSONArray repairs = jo.getJSONArray(StatsMetadataKeys.REPAIRS);
+        assertThat(repairs.length(), greaterThan(0));
+
+        for (int i = 0; i < repairs.length(); i++) {
+            assertThat(
+                    repairs.getJSONObject(i).keySet(),
+                    containsInAnyOrder(
+                            StatsMetadataKeys.REPAIR_RULE_KEY,
+                            StatsMetadataKeys.REPAIR_RULE_VIOLATION_POSITION));
+        }
+
         assertThat(
                 jo.getJSONArray(StatsMetadataKeys.ORIGINAL_ARGS).toList().size(), greaterThan(0));
         assertThat(jo.getLong(StatsMetadataKeys.PARSE_TIME_NS), greaterThan(0L));
