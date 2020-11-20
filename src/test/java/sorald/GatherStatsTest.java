@@ -17,8 +17,7 @@ import sorald.processor.ProcessorTestHelper;
 public class GatherStatsTest {
     @Test
     public void statisticsFile_containsOriginalArgs(@TempDir File tempDir) throws Exception {
-        File statsFile =
-                new File(Constants.SORALD_WORKSPACE).toPath().resolve("stats.json").toFile();
+        File statsFile = tempDir.toPath().resolve("stats.json").toFile();
         List<String> cliArgs =
                 List.of(
                         Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
