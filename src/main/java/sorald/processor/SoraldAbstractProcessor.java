@@ -20,6 +20,7 @@ import sorald.event.EventHelper;
 import sorald.event.EventMetadata;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
+import sorald.event.StatsMetadataKeys;
 import sorald.segment.Node;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
@@ -136,8 +137,10 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         EventHelper.fireEvent(
                 EventType.REPAIR,
                 new EventMetadata(element.getPosition().toString())
-                        .put("key", getRuleKey())
-                        .put("position", element.getPosition().toString()),
+                        .put(StatsMetadataKeys.REPAIR_RULE_KEY, getRuleKey())
+                        .put(
+                                StatsMetadataKeys.REPAIR_RULE_VIOLATION_POSITION,
+                                element.getPosition().toString()),
                 eventHandlers);
         UniqueTypesCollector.getInstance().collect(element);
         this.nbFixes++;
