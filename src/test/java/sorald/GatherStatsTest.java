@@ -7,13 +7,12 @@ import static org.hamcrest.Matchers.greaterThan;
 import java.io.File;
 import java.util.List;
 
-import org.eclipse.jgit.util.Stats;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import sorald.processor.ProcessorTestHelper;
-import sorald.stats.StatsMetadataKeys;
+import sorald.event.StatsMetadataKeys;
 
 public class GatherStatsTest {
     @Test

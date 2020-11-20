@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.json.JSONObject;
-import sorald.stats.StatisticsCollector;
-import sorald.stats.StatsMetadataKeys;
+import sorald.event.StatisticsCollector;
+import sorald.event.StatsMetadataKeys;
 
 public class FileUtils {
 

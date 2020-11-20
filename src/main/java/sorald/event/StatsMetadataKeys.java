@@ -1,4 +1,4 @@
-package sorald.stats;
+package sorald.event;
 
 /** Metadata keys used for the stats JSON file. */
 public class StatsMetadataKeys {

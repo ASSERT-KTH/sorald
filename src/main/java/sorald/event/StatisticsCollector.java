@@ -1,4 +1,4 @@
-package sorald.stats;
+package sorald.event;
 
 import sorald.event.EventMetadata;
 import sorald.event.EventType;
