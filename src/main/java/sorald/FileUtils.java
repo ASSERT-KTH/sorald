@@ -1,10 +1,15 @@
 package sorald;
 
+import org.json.JSONObject;
+import sorald.event.SoraldEventHandler;
+import sorald.event.StatisticsCollector;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -86,5 +91,20 @@ public class FileUtils {
     public static String getExtension(File file) {
         String[] parts = file.getName().split("\\.");
         return parts.length <= 1 ? "" : "." + parts[parts.length - 1];
+    }
+
+    public static void writeStatistics(
+            File statsOutputFile, StatisticsCollector statsCollector, List<String> originalArgs)
+            throws IOException {
+        assert statsCollector.isEventRegistered();
+        statsCollector.close();
+        JSONObject jo = new JSONObject(statsCollector);
+        jo.put("args", originalArgs);
+        Files.writeString(statsOutputFile.toPath(), jo.toString(4), StandardOpenOption.CREATE_NEW);
+    }
+
+    public static JSONObject readJSON(Path jsonFile) throws IOException {
+        String content = Files.readString(jsonFile);
+        return new JSONObject(content);
     }
 }

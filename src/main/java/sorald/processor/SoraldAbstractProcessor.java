@@ -134,11 +134,11 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     @Override
     public void process(E element) {
         EventHelper.fireEvent(
-                eventHandlers,
                 EventType.REPAIR,
                 new EventMetadata(element.getPosition().toString())
                         .put("key", getRuleKey())
-                        .put("position", element.getPosition()));
+                        .put("position", element.getPosition().toString()),
+                eventHandlers);
         UniqueTypesCollector.getInstance().collect(element);
         this.nbFixes++;
     }

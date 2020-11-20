@@ -3,7 +3,6 @@ package sorald.cli;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -13,12 +12,12 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 import picocli.CommandLine;
 import sorald.Constants;
 import sorald.FileOutputStrategy;
+import sorald.FileUtils;
 import sorald.PrettyPrintingStrategy;
 import sorald.Processors;
 import sorald.Repair;
 import sorald.RepairStrategy;
 import sorald.SoraldConfig;
-import sorald.event.SoraldEventHandler;
 import sorald.event.StatisticsCollector;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
@@ -119,13 +118,16 @@ public class Cli {
         public Integer call() throws IOException {
             validateArgs();
             SoraldConfig config = createConfig();
-            List<? extends SoraldEventHandler> eventHandlers =
-                    statsOutputFile == null ? List.of() : createEventHandlers();
-            new Repair(config, eventHandlers).repair();
+
+            var statsCollector = new StatisticsCollector();
+            new Repair(config, statsOutputFile == null ? List.of() : List.of(statsCollector))
+                    .repair();
 
             if (statsOutputFile != null) {
-                assert !eventHandlers.isEmpty();
-                writeStatistics(statsOutputFile, eventHandlers);
+                FileUtils.writeStatistics(
+                        statsOutputFile,
+                        statsCollector,
+                        spec.commandLine().getParseResult().originalArgs());
             }
 
             return 0;
@@ -139,18 +141,6 @@ public class Cli {
                                 + Constants.ARG_MAX_FILES_PER_SEGMENT
                                 + " must be greater than 0");
             }
-        }
-
-        private List<? extends SoraldEventHandler> createEventHandlers() {
-            return List.of(new StatisticsCollector());
-        }
-
-        private static void writeStatistics(
-                File statsOutputFile, List<? extends SoraldEventHandler> eventHandlers) throws IOException {
-            for (var handler : eventHandlers) {
-                handler.close();
-            }
-            Files.writeString(statsOutputFile.toPath(), "hello", StandardOpenOption.CREATE_NEW);
         }
 
         private SoraldConfig createConfig() {

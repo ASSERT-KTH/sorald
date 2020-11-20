@@ -1,10 +1,12 @@
 package sorald.event;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
 
 public class StatisticsCollector implements SoraldEventHandler {
+    private boolean eventRegistered = false;
     private long parseStart = -1;
     private long parseEnd = -1;
     private long repairStart = -1;
@@ -14,6 +16,7 @@ public class StatisticsCollector implements SoraldEventHandler {
 
     @Override
     public void registerEvent(EventType eventType) {
+        eventRegistered = true;
         switch (eventType) {
             case PARSE_START:
                 parseStart = System.nanoTime();
@@ -34,7 +37,7 @@ public class StatisticsCollector implements SoraldEventHandler {
 
     @Override
     public void registerEvent(EventType type, EventMetadata metadata) {
-        registerEvent(type);
+        eventRegistered = true;
         List<EventMetadata> eventTypeMetadata =
                 allMetadata.getOrDefault(type, new ArrayList<>());
         eventTypeMetadata.add(metadata);
@@ -52,5 +55,23 @@ public class StatisticsCollector implements SoraldEventHandler {
                         + (repairEnd - repairStart) / 1_000_000
                         + " ms");
         System.out.println(allMetadata);
+    }
+
+    public boolean isEventRegistered() {
+        return eventRegistered;
+    }
+
+    public long getParseTimeNs() {
+        assert parseEnd > parseStart;
+        return parseEnd - parseStart;
+    }
+
+    public long getRepairTimeNs() {
+        assert repairEnd > repairStart;
+        return repairEnd - repairStart;
+    }
+
+    public List<EventMetadata> getRepairs() {
+        return Collections.unmodifiableList(allMetadata.getOrDefault(EventType.REPAIR, List.of()));
     }
 }

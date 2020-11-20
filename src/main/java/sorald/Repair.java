@@ -50,7 +50,7 @@ public class Repair {
     private final SoraldConfig config;
     private int patchedFileCounter = 0;
 
-    final List<? extends SoraldEventHandler> eventHandlers;
+    final List<SoraldEventHandler> eventHandlers;
 
     public Repair(SoraldConfig config, List<? extends SoraldEventHandler> eventHandlers) {
         this.config = config;
@@ -99,17 +99,17 @@ public class Repair {
     }
 
     CtModel defaultRepair(Path inputDir, SoraldAbstractProcessor<?> processor) {
-        EventHelper.fireEvent(eventHandlers, EventType.PARSE_START);
+        EventHelper.fireEvent(EventType.PARSE_START, eventHandlers);
         Launcher launcher = new Launcher();
         launcher.addInputResource(inputDir.toString());
         CtModel model = initLauncher(launcher).getModel();
-        EventHelper.fireEvent(eventHandlers, EventType.PARSE_END);
+        EventHelper.fireEvent(EventType.PARSE_END, eventHandlers);
 
-        EventHelper.fireEvent(eventHandlers, EventType.REPAIR_START);
+        EventHelper.fireEvent(EventType.REPAIR_START, eventHandlers);
         File inputBaseDir = FileUtils.getClosestDirectory(inputDir.toFile());
         processor.initResource(inputDir.toString(), inputBaseDir);
         repairModelWithInitializedProcessor(model, processor);
-        EventHelper.fireEvent(eventHandlers, EventType.REPAIR_END);
+        EventHelper.fireEvent(EventType.REPAIR_END, eventHandlers);
 
         return model;
     }
