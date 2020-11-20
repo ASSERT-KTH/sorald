@@ -103,6 +103,7 @@ public class FileUtils {
     public static void writeStatistics(
             File statsOutputFile, StatisticsCollector statsCollector, List<String> originalArgs)
             throws IOException {
+        // JSONObject's constructor recursively uses getter methods to produce a JSON object
         JSONObject jo = new JSONObject(statsCollector);
         jo.put(StatsMetadataKeys.ORIGINAL_ARGS, originalArgs);
         Files.writeString(
