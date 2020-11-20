@@ -8,13 +8,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 import org.apache.commons.lang3.tuple.Pair;
+import sorald.event.EventHelper;
 import sorald.event.EventMetadata;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
@@ -64,6 +64,8 @@ public class Repair {
                         new SoraldEventHandler() {
                             private long parseStart = -1;
                             private long parseEnd = -1;
+                            private long repairStart = -1;
+                            private long repairEnd = -1;
                             private EnumMap<EventType, List<EventMetadata>> allMetadata =
                                     new EnumMap<>(EventType.class);
 
@@ -76,6 +78,14 @@ public class Repair {
                                     case PARSE_END:
                                         parseEnd = System.nanoTime();
                                         break;
+                                    case REPAIR_START:
+                                        repairStart = System.nanoTime();
+                                        break;
+                                    case REPAIR_END:
+                                        repairEnd = System.nanoTime();
+                                        break;
+                                    default:
+                                        // do nothing
                                 }
                             }
 
@@ -93,6 +103,10 @@ public class Repair {
                                 System.out.println(
                                         "Time to parse: "
                                                 + (parseEnd - parseStart) / 1_000_000
+                                                + " ms");
+                                System.out.println(
+                                        "Time to repair: "
+                                                + (repairEnd - repairStart) / 1_000_000
                                                 + " ms");
                                 System.out.println(allMetadata);
                             }
@@ -136,17 +150,17 @@ public class Repair {
     }
 
     CtModel defaultRepair(Path inputDir, SoraldAbstractProcessor<?> processor) {
-        fireEvent(EventType.PARSE_START);
-
+        EventHelper.fireEvent(eventHandlers, EventType.PARSE_START);
         Launcher launcher = new Launcher();
         launcher.addInputResource(inputDir.toString());
         CtModel model = initLauncher(launcher).getModel();
+        EventHelper.fireEvent(eventHandlers, EventType.PARSE_END);
 
-        fireEvent(EventType.PARSE_END);
-
+        EventHelper.fireEvent(eventHandlers, EventType.REPAIR_START);
         File inputBaseDir = FileUtils.getClosestDirectory(inputDir.toFile());
         processor.initResource(inputDir.toString(), inputBaseDir);
         repairModelWithInitializedProcessor(model, processor);
+        EventHelper.fireEvent(eventHandlers, EventType.REPAIR_END);
 
         return model;
     }
@@ -167,10 +181,6 @@ public class Repair {
                             return model;
                         })
                 .takeWhile(model -> processor.getNbFixes() < config.getMaxFixesPerRule());
-    }
-
-    private void fireEvent(EventType type) {
-        eventHandlers.forEach(handler -> handler.registerEvent(type));
     }
 
     private Pair<Path, Path> computeInOutPaths(boolean isFirstRule, boolean isLastRule) {

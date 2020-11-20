@@ -137,7 +137,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                 eventHandlers,
                 EventType.REPAIR,
                 new EventMetadata(element.getPosition().toString())
-                        .put("key", getRuleKey()).put("position", element.getPosition()));
+                        .put("key", getRuleKey())
+                        .put("position", element.getPosition()));
         UniqueTypesCollector.getInstance().collect(element);
         this.nbFixes++;
     }

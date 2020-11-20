@@ -28,9 +28,6 @@ public class EventMetadata {
 
     @Override
     public String toString() {
-        return "EventMetadata{" +
-                "id='" + id + '\'' +
-                ", rawMetadata=" + rawMetadata +
-                '}';
+        return "EventMetadata{" + "id='" + id + '\'' + ", rawMetadata=" + rawMetadata + '}';
     }
 }
