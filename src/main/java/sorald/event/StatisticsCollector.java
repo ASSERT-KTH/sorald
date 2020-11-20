@@ -7,7 +7,6 @@ import java.util.List;
 
 /** Event handler for Sorald that collects runtime statistics */
 public class StatisticsCollector implements SoraldEventHandler {
-    private boolean eventRegistered = false;
     private long parseStart = -1;
     private long parseEnd = -1;
     private long repairStart = -1;
@@ -16,7 +15,6 @@ public class StatisticsCollector implements SoraldEventHandler {
 
     @Override
     public void registerEvent(EventType eventType) {
-        eventRegistered = true;
         switch (eventType) {
             case PARSE_START:
                 parseStart = System.nanoTime();
@@ -37,15 +35,9 @@ public class StatisticsCollector implements SoraldEventHandler {
 
     @Override
     public void registerEvent(EventType type, EventMetadata metadata) {
-        eventRegistered = true;
         List<EventMetadata> eventTypeMetadata = allMetadata.getOrDefault(type, new ArrayList<>());
         eventTypeMetadata.add(metadata);
         allMetadata.putIfAbsent(type, eventTypeMetadata);
-    }
-
-    /** @return True iff at least one event was registered by this handler */
-    public boolean isEventRegistered() {
-        return eventRegistered;
     }
 
     /** @return The total amount of time spent parsing */
