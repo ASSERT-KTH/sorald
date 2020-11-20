@@ -93,14 +93,14 @@ public class FileUtils {
     }
 
     /**
-     * Write the statistics output file.
+     * Write the statistics JSON file.
      *
      * @param statsOutputFile The file to write to.
      * @param statsCollector A {@link StatisticsCollector} containing stats.
      * @param originalArgs The original arguments passed to the command line.
      * @throws IOException If the file can't be written to.
      */
-    public static void writeStatistics(
+    public static void writeStatisticsJSON(
             File statsOutputFile, StatisticsCollector statsCollector, List<String> originalArgs)
             throws IOException {
         // JSONObject's constructor recursively uses getter methods to produce a JSON object

@@ -124,7 +124,7 @@ public class Cli {
                     .repair();
 
             if (statsOutputFile != null) {
-                FileUtils.writeStatistics(
+                FileUtils.writeStatisticsJSON(
                         statsOutputFile,
                         statsCollector,
                         spec.commandLine().getParseResult().originalArgs());
