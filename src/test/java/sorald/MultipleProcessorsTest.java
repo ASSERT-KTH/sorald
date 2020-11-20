@@ -11,7 +11,8 @@ public class MultipleProcessorsTest {
 
     @ParameterizedTest
     @EnumSource(RepairStrategy.class)
-    public void allStrategies_canApplyMultipleProcessors(RepairStrategy repairStrategy) throws Exception {
+    public void allStrategies_canApplyMultipleProcessors(RepairStrategy repairStrategy)
+            throws Exception {
         String fileName = "MultipleProcessors.java";
         String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
         String pathToRepairedFile =
