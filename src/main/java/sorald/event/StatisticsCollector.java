@@ -2,7 +2,6 @@ package sorald.event;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.EnumMap;
 import java.util.List;
 
 /** Event handler for Sorald that collects runtime statistics */
@@ -11,11 +10,11 @@ public class StatisticsCollector implements SoraldEventHandler {
     private long parseEnd = -1;
     private long repairStart = -1;
     private long repairEnd = -1;
-    private EnumMap<EventType, List<EventMetadata>> allMetadata = new EnumMap<>(EventType.class);
+    private final List<SoraldEvent> repairs = new ArrayList<>();
 
     @Override
-    public void registerEvent(EventType eventType) {
-        switch (eventType) {
+    public void registerEvent(SoraldEvent event) {
+        switch (event.type()) {
             case PARSE_START:
                 parseStart = System.nanoTime();
                 break;
@@ -28,16 +27,12 @@ public class StatisticsCollector implements SoraldEventHandler {
             case REPAIR_END:
                 repairEnd = System.nanoTime();
                 break;
+            case REPAIR:
+                repairs.add(event);
+                break;
             default:
                 // do nothing
         }
-    }
-
-    @Override
-    public void registerEvent(EventType type, EventMetadata metadata) {
-        List<EventMetadata> eventTypeMetadata = allMetadata.getOrDefault(type, new ArrayList<>());
-        eventTypeMetadata.add(metadata);
-        allMetadata.putIfAbsent(type, eventTypeMetadata);
     }
 
     /** @return The total amount of time spent parsing */
@@ -53,7 +48,7 @@ public class StatisticsCollector implements SoraldEventHandler {
     }
 
     /** @return All repair event data */
-    public List<EventMetadata> getRepairs() {
-        return Collections.unmodifiableList(allMetadata.getOrDefault(EventType.REPAIR, List.of()));
+    public List<SoraldEvent> getRepairs() {
+        return Collections.unmodifiableList(repairs);
     }
 }

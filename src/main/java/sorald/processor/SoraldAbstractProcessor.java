@@ -17,10 +17,9 @@ import sorald.FileUtils;
 import sorald.UniqueTypesCollector;
 import sorald.annotations.ProcessorAnnotation;
 import sorald.event.EventHelper;
-import sorald.event.EventMetadata;
 import sorald.event.EventType;
+import sorald.event.SoraldEvent;
 import sorald.event.SoraldEventHandler;
-import sorald.event.StatsMetadataKeys;
 import sorald.segment.Node;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
@@ -134,14 +133,10 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     @Override
     public void process(E element) {
-        EventHelper.fireEvent(
-                EventType.REPAIR,
-                new EventMetadata(element.getPosition().toString())
-                        .put(StatsMetadataKeys.REPAIR_RULE_KEY, getRuleKey())
-                        .put(
-                                StatsMetadataKeys.REPAIR_RULE_VIOLATION_POSITION,
-                                element.getPosition().toString()),
-                eventHandlers);
+        final String ruleKey = getRuleKey();
+        final String elementPosition = element.getPosition().toString();
+
+        EventHelper.fireEvent(new RepairEvent(ruleKey, elementPosition), eventHandlers);
         UniqueTypesCollector.getInstance().collect(element);
         this.nbFixes++;
     }
@@ -156,5 +151,32 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                                 new IllegalStateException(
                                         getClass().getName() + " does not have a key"))
                 .toString();
+    }
+
+    /**
+     * Event representing a repair. This must be public for the json.org to be able to introspect it
+     * and produce the nice JSON output.
+     */
+    public static class RepairEvent implements SoraldEvent {
+        private final String ruleKey;
+        private final String ruleViolationPosition;
+
+        public RepairEvent(String ruleKey, String ruleViolationPosition) {
+            this.ruleKey = ruleKey;
+            this.ruleViolationPosition = ruleViolationPosition;
+        }
+
+        @Override
+        public EventType type() {
+            return EventType.REPAIR;
+        }
+
+        public String getRuleKey() {
+            return ruleKey;
+        }
+
+        public String getRuleViolationPosition() {
+            return ruleViolationPosition;
+        }
     }
 }
