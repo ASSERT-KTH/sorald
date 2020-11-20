@@ -18,7 +18,7 @@ import sorald.Processors;
 import sorald.Repair;
 import sorald.RepairStrategy;
 import sorald.SoraldConfig;
-import sorald.event.StatisticsCollector;
+import sorald.stats.StatisticsCollector;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
 

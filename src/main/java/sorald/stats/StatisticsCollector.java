@@ -1,4 +1,8 @@
-package sorald.event;
+package sorald.stats;
+
+import sorald.event.EventMetadata;
+import sorald.event.EventType;
+import sorald.event.SoraldEventHandler;
 
 import java.util.ArrayList;
 import java.util.Collections;
