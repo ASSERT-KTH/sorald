@@ -92,7 +92,7 @@ public class ProcessorTestHelper {
      * Return a stream of all valid test cases, based on the tests files in {@link
      * ProcessorTestHelper#TEST_FILES_ROOT}.
      */
-    static Stream<ProcessorTestCase<?>> getTestCaseStream() {
+    public static Stream<ProcessorTestCase<?>> getTestCaseStream() {
         return Arrays.stream(ProcessorTestHelper.TEST_FILES_ROOT.toFile().listFiles())
                 .filter(File::isDirectory)
                 .map(File::listFiles)
@@ -103,38 +103,40 @@ public class ProcessorTestHelper {
     }
 
     /** Run sorald on the given test case. */
-    static void runSorald(ProcessorTestCase<?> testCase) throws Exception {
+    public static void runSorald(ProcessorTestCase<?> testCase, String... extraArgs) throws Exception {
         RuleVerifier.verifyHasIssue(
                 testCase.nonCompliantFile.getAbsolutePath(), testCase.createCheckInstance());
-        runSorald(testCase.nonCompliantFile, testCase.checkClass);
+        runSorald(testCase.nonCompliantFile, testCase.checkClass, extraArgs);
     }
 
     /** Run sorald on the given file with the given checkClass * */
-    static void runSorald(File originaFilesPath, Class<? extends JavaFileScanner> checkClass)
+    public static void runSorald(
+            File originaFilesPath, Class<? extends JavaFileScanner> checkClass, String... extraArgs)
             throws Exception {
         String originalFileAbspath = originaFilesPath.getAbsolutePath();
 
         boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(checkClass);
-        Main.main(
-                new String[] {
-                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
-                    originalFileAbspath,
-                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
-                    Checks.getRuleKey(checkClass),
-                    Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
-                    Constants.SORALD_WORKSPACE,
-                    Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
-                    brokenWithSniper
-                            ? PrettyPrintingStrategy.NORMAL.name()
-                            : PrettyPrintingStrategy.SNIPER.name()
-                });
+        var coreArgs = new String[] {
+                Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                originalFileAbspath,
+                Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
+                Checks.getRuleKey(checkClass),
+                Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
+                Constants.SORALD_WORKSPACE,
+                Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
+                brokenWithSniper
+                        ? PrettyPrintingStrategy.NORMAL.name()
+                        : PrettyPrintingStrategy.SNIPER.name()
+        };
+        String[] allArgs = Stream.of(coreArgs, extraArgs).flatMap(Arrays::stream).toArray(String[]::new);
+        Main.main(allArgs);
     }
 
     /**
      * A wrapper class to hold the information required to execute a test case for a single file and
      * rule with the associated processor.
      */
-    static class ProcessorTestCase<T extends JavaFileScanner> {
+    public static class ProcessorTestCase<T extends JavaFileScanner> {
         public final String ruleName;
         public final String ruleKey;
         public final File nonCompliantFile;
