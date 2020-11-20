@@ -1,7 +1,9 @@
 package sorald.cli;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -16,6 +18,7 @@ import sorald.Processors;
 import sorald.Repair;
 import sorald.RepairStrategy;
 import sorald.SoraldConfig;
+import sorald.event.SoraldEventHandler;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
 
@@ -105,11 +108,28 @@ public class Cli {
                         "Max number of files per loaded segment for segmented repair. It should be >= 3000 files per segment.")
         int maxFilesPerSegment = 6500;
 
+        @CommandLine.Option(
+                names = Constants.ARG_SYMBOL + Constants.ARG_STATS_OUTPUT_FILE,
+                description =
+                        "Path to a file to store execution statistics in (in JSON format). If left unspecified, Sorald does not gather statistics.")
+        File statsOutputFile;
+
         @Override
-        public Integer call() {
+        public Integer call() throws IOException {
             validateArgs();
             SoraldConfig config = createConfig();
-            new Repair(config).repair();
+            List<? extends SoraldEventHandler> eventHandlers =
+                    statsOutputFile == null ? List.of() : createEventHandlers();
+            new Repair(config, eventHandlers).repair();
+
+            if (statsOutputFile != null) {
+                assert !eventHandlers.isEmpty();
+                for (var handler : eventHandlers) {
+                    handler.close();
+                }
+                Files.writeString(statsOutputFile.toPath(), "hello", StandardOpenOption.CREATE_NEW);
+            }
+
             return 0;
         }
 
@@ -121,6 +141,10 @@ public class Cli {
                                 + Constants.ARG_MAX_FILES_PER_SEGMENT
                                 + " must be greater than 0");
             }
+        }
+
+        private List<? extends SoraldEventHandler> createEventHandlers() {
+            return List.of()
         }
 
         private SoraldConfig createConfig() {
@@ -136,6 +160,7 @@ public class Cli {
             config.setMaxFixesPerRule(maxFixesPerRule);
             config.setMaxFilesPerSegment(maxFilesPerSegment);
             config.setRepairStrategy(repairStrategy);
+            config.setStatsOutputFile(statsOutputFile);
             return config;
         }
     }
