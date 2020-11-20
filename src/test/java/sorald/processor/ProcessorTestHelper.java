@@ -103,7 +103,8 @@ public class ProcessorTestHelper {
     }
 
     /** Run sorald on the given test case. */
-    public static void runSorald(ProcessorTestCase<?> testCase, String... extraArgs) throws Exception {
+    public static void runSorald(ProcessorTestCase<?> testCase, String... extraArgs)
+            throws Exception {
         RuleVerifier.verifyHasIssue(
                 testCase.nonCompliantFile.getAbsolutePath(), testCase.createCheckInstance());
         runSorald(testCase.nonCompliantFile, testCase.checkClass, extraArgs);
@@ -116,19 +117,21 @@ public class ProcessorTestHelper {
         String originalFileAbspath = originaFilesPath.getAbsolutePath();
 
         boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(checkClass);
-        var coreArgs = new String[] {
-                Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
-                originalFileAbspath,
-                Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
-                Checks.getRuleKey(checkClass),
-                Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
-                Constants.SORALD_WORKSPACE,
-                Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
-                brokenWithSniper
-                        ? PrettyPrintingStrategy.NORMAL.name()
-                        : PrettyPrintingStrategy.SNIPER.name()
-        };
-        String[] allArgs = Stream.of(coreArgs, extraArgs).flatMap(Arrays::stream).toArray(String[]::new);
+        var coreArgs =
+                new String[] {
+                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    originalFileAbspath,
+                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
+                    Checks.getRuleKey(checkClass),
+                    Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
+                    Constants.SORALD_WORKSPACE,
+                    Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
+                    brokenWithSniper
+                            ? PrettyPrintingStrategy.NORMAL.name()
+                            : PrettyPrintingStrategy.SNIPER.name()
+                };
+        String[] allArgs =
+                Stream.of(coreArgs, extraArgs).flatMap(Arrays::stream).toArray(String[]::new);
         Main.main(allArgs);
     }
 

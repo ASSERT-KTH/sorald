@@ -1,9 +1,5 @@
 package sorald;
 
-import org.json.JSONObject;
-import sorald.event.SoraldEventHandler;
-import sorald.event.StatisticsCollector;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,6 +9,8 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.json.JSONObject;
+import sorald.event.StatisticsCollector;
 
 public class FileUtils {
 

@@ -11,8 +11,7 @@ public class StatisticsCollector implements SoraldEventHandler {
     private long parseEnd = -1;
     private long repairStart = -1;
     private long repairEnd = -1;
-    private EnumMap<EventType, List<EventMetadata>> allMetadata =
-            new EnumMap<>(EventType.class);
+    private EnumMap<EventType, List<EventMetadata>> allMetadata = new EnumMap<>(EventType.class);
 
     @Override
     public void registerEvent(EventType eventType) {
@@ -38,8 +37,7 @@ public class StatisticsCollector implements SoraldEventHandler {
     @Override
     public void registerEvent(EventType type, EventMetadata metadata) {
         eventRegistered = true;
-        List<EventMetadata> eventTypeMetadata =
-                allMetadata.getOrDefault(type, new ArrayList<>());
+        List<EventMetadata> eventTypeMetadata = allMetadata.getOrDefault(type, new ArrayList<>());
         eventTypeMetadata.add(metadata);
         allMetadata.putIfAbsent(type, eventTypeMetadata);
     }
