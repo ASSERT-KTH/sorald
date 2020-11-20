@@ -30,20 +30,16 @@ public class StatisticsCollector implements SoraldEventHandler {
             case REPAIR:
                 repairs.add(event);
                 break;
-            default:
-                // do nothing
         }
     }
 
     /** @return The total amount of time spent parsing */
     public long getParseTimeNs() {
-        assert parseEnd > parseStart;
         return parseEnd - parseStart;
     }
 
     /** @return The total amount of time spent repairing */
     public long getRepairTimeNs() {
-        assert repairEnd > repairStart;
         return repairEnd - repairStart;
     }
 
