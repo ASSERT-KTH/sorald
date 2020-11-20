@@ -79,8 +79,6 @@ public class Repair {
             Stream<CtModel> models = repair(inputDir, processor);
 
             models.forEach(model -> writeModel(model, outputDir));
-
-            eventHandlers.forEach(SoraldEventHandler::close);
         }
 
         printEndProcess(addedProcessors);

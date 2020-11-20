@@ -104,7 +104,6 @@ public class FileUtils {
     public static void writeStatistics(
             File statsOutputFile, StatisticsCollector statsCollector, List<String> originalArgs)
             throws IOException {
-        statsCollector.close();
         JSONObject jo = new JSONObject(statsCollector);
         jo.put("args", originalArgs);
         Files.writeString(

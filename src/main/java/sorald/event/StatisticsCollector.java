@@ -44,19 +44,6 @@ public class StatisticsCollector implements SoraldEventHandler {
         allMetadata.putIfAbsent(type, eventTypeMetadata);
     }
 
-    @Override
-    public void close() {
-        System.out.println(
-                "Time to parse: "
-                        + (parseEnd - parseStart) / 1_000_000
-                        + " ms");
-        System.out.println(
-                "Time to repair: "
-                        + (repairEnd - repairStart) / 1_000_000
-                        + " ms");
-        System.out.println(allMetadata);
-    }
-
     public boolean isEventRegistered() {
         return eventRegistered;
     }
