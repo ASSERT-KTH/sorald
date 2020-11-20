@@ -93,16 +93,32 @@ public class FileUtils {
         return parts.length <= 1 ? "" : "." + parts[parts.length - 1];
     }
 
+    /**
+     * Write the statistics output file.
+     *
+     * @param statsOutputFile The file to write to.
+     * @param statsCollector A {@link StatisticsCollector} containing stats.
+     * @param originalArgs The original arguments passed to the command line.
+     * @throws IOException If the file can't be written to.
+     */
     public static void writeStatistics(
             File statsOutputFile, StatisticsCollector statsCollector, List<String> originalArgs)
             throws IOException {
-        assert statsCollector.isEventRegistered();
         statsCollector.close();
         JSONObject jo = new JSONObject(statsCollector);
         jo.put("args", originalArgs);
-        Files.writeString(statsOutputFile.toPath(), jo.toString(4), StandardOpenOption.CREATE_NEW);
+        Files.writeString(
+                statsOutputFile.toPath(),
+                jo.toString(4),
+                StandardOpenOption.CREATE,
+                StandardOpenOption.TRUNCATE_EXISTING);
     }
 
+    /**
+     * @param jsonFile Path to a JSON file to read.
+     * @return A parsed JSON object.
+     * @throws IOException If the file can't be read.
+     */
     public static JSONObject readJSON(Path jsonFile) throws IOException {
         String content = Files.readString(jsonFile);
         return new JSONObject(content);
