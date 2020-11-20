@@ -16,6 +16,10 @@ import sorald.Constants;
 import sorald.FileUtils;
 import sorald.UniqueTypesCollector;
 import sorald.annotations.ProcessorAnnotation;
+import sorald.event.EventHelper;
+import sorald.event.EventMetadata;
+import sorald.event.EventType;
+import sorald.event.SoraldEventHandler;
 import sorald.segment.Node;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
@@ -28,6 +32,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     private Set<RuleViolation> ruleViolations;
     private int maxFixes = Integer.MAX_VALUE;
     private int nbFixes = 0;
+    private List<SoraldEventHandler> eventHandlers;
 
     public SoraldAbstractProcessor() {}
 
@@ -87,6 +92,11 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         return this;
     }
 
+    public SoraldAbstractProcessor<?> setEventHandlers(List<SoraldEventHandler> eventHandlers) {
+        this.eventHandlers = eventHandlers;
+        return this;
+    }
+
     public int getNbFixes() {
         return this.nbFixes;
     }
@@ -123,6 +133,11 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     @Override
     public void process(E element) {
+        EventHelper.fireEvent(
+                eventHandlers,
+                EventType.REPAIR,
+                new EventMetadata(element.getPosition().toString())
+                        .put("key", getRuleKey()).put("position", element.getPosition()));
         UniqueTypesCollector.getInstance().collect(element);
         this.nbFixes++;
     }

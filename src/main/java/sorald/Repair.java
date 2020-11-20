@@ -7,12 +7,17 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 import org.apache.commons.lang3.tuple.Pair;
+import sorald.event.EventMetadata;
+import sorald.event.EventType;
+import sorald.event.SoraldEventHandler;
 import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
@@ -44,6 +49,8 @@ public class Repair {
     private final SoraldConfig config;
     private int patchedFileCounter = 0;
 
+    List<? extends SoraldEventHandler> eventHandlers;
+
     public Repair(SoraldConfig config) {
         this.config = config;
         if (this.config.getGitRepoPath() != null) {
@@ -51,6 +58,45 @@ public class Repair {
         }
         spoonedPath = Paths.get(config.getWorkspace()).resolve(Constants.SPOONED);
         intermediateSpoonedPath = spoonedPath.resolve(Constants.INTERMEDIATE);
+
+        eventHandlers =
+                List.of(
+                        new SoraldEventHandler() {
+                            private long parseStart = -1;
+                            private long parseEnd = -1;
+                            private EnumMap<EventType, List<EventMetadata>> allMetadata =
+                                    new EnumMap<>(EventType.class);
+
+                            @Override
+                            public void registerEvent(EventType eventType) {
+                                switch (eventType) {
+                                    case PARSE_START:
+                                        parseStart = System.nanoTime();
+                                        break;
+                                    case PARSE_END:
+                                        parseEnd = System.nanoTime();
+                                        break;
+                                }
+                            }
+
+                            @Override
+                            public void registerEvent(EventType type, EventMetadata metadata) {
+                                registerEvent(type);
+                                List<EventMetadata> eventTypeMetadata =
+                                        allMetadata.getOrDefault(type, new ArrayList<>());
+                                eventTypeMetadata.add(metadata);
+                                allMetadata.putIfAbsent(type, eventTypeMetadata);
+                            }
+
+                            @Override
+                            public void close() {
+                                System.out.println(
+                                        "Time to parse: "
+                                                + (parseEnd - parseStart) / 1_000_000
+                                                + " ms");
+                                System.out.println(allMetadata);
+                            }
+                        });
     }
 
     /** Execute a repair according to the config. */
@@ -70,6 +116,8 @@ public class Repair {
             Stream<CtModel> models = repair(inputDir, processor);
 
             models.forEach(model -> writeModel(model, outputDir));
+
+            eventHandlers.forEach(SoraldEventHandler::close);
         }
 
         printEndProcess(addedProcessors);
@@ -88,9 +136,13 @@ public class Repair {
     }
 
     CtModel defaultRepair(Path inputDir, SoraldAbstractProcessor<?> processor) {
+        fireEvent(EventType.PARSE_START);
+
         Launcher launcher = new Launcher();
         launcher.addInputResource(inputDir.toString());
         CtModel model = initLauncher(launcher).getModel();
+
+        fireEvent(EventType.PARSE_END);
 
         File inputBaseDir = FileUtils.getClosestDirectory(inputDir.toFile());
         processor.initResource(inputDir.toString(), inputBaseDir);
@@ -115,6 +167,10 @@ public class Repair {
                             return model;
                         })
                 .takeWhile(model -> processor.getNbFixes() < config.getMaxFixesPerRule());
+    }
+
+    private void fireEvent(EventType type) {
+        eventHandlers.forEach(handler -> handler.registerEvent(type));
     }
 
     private Pair<Path, Path> computeInOutPaths(boolean isFirstRule, boolean isLastRule) {
@@ -299,7 +355,9 @@ public class Repair {
     private SoraldAbstractProcessor<?> createProcessor(Integer ruleKey) {
         SoraldAbstractProcessor<?> processor = createBaseProcessor(ruleKey);
         if (processor != null) {
-            return processor.setMaxFixes(config.getMaxFixesPerRule());
+            return processor
+                    .setMaxFixes(config.getMaxFixesPerRule())
+                    .setEventHandlers(eventHandlers);
         }
         return null;
     }
