@@ -6,11 +6,14 @@ import static org.hamcrest.Matchers.greaterThan;
 
 import java.io.File;
 import java.util.List;
+
+import org.eclipse.jgit.util.Stats;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import sorald.processor.ProcessorTestHelper;
+import sorald.stats.StatsMetadataKeys;
 
 public class GatherStatsTest {
     @Test
@@ -26,7 +29,7 @@ public class GatherStatsTest {
         Main.main(cliArgs.toArray(String[]::new));
 
         JSONObject jo = FileUtils.readJSON(statsFile.toPath());
-        JSONArray args = jo.getJSONArray("args");
+        JSONArray args = jo.getJSONArray(StatsMetadataKeys.ORIGINAL_ARGS);
 
         assertThat(args.toList(), equalTo(cliArgs));
     }
@@ -46,9 +49,10 @@ public class GatherStatsTest {
                 statsFile.getAbsolutePath());
 
         JSONObject jo = FileUtils.readJSON(statsFile.toPath());
-        assertThat(jo.getJSONArray("repairs").toList().size(), greaterThan(0));
-        assertThat(jo.getJSONArray("args").toList().size(), greaterThan(0));
-        assertThat(jo.getLong("repairTimeNs"), greaterThan(0L));
-        assertThat(jo.getLong("parseTimeNs"), greaterThan(0L));
+        assertThat(jo.getJSONArray(StatsMetadataKeys.REPAIRS).toList().size(), greaterThan(0));
+        assertThat(
+                jo.getJSONArray(StatsMetadataKeys.ORIGINAL_ARGS).toList().size(), greaterThan(0));
+        assertThat(jo.getLong(StatsMetadataKeys.PARSE_TIME_NS), greaterThan(0L));
+        assertThat(jo.getLong(StatsMetadataKeys.REPAIR_TIME_NS), greaterThan(0L));
     }
 }

@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.json.JSONObject;
 import sorald.stats.StatisticsCollector;
+import sorald.stats.StatsMetadataKeys;
 
 public class FileUtils {
 
@@ -103,7 +104,7 @@ public class FileUtils {
             File statsOutputFile, StatisticsCollector statsCollector, List<String> originalArgs)
             throws IOException {
         JSONObject jo = new JSONObject(statsCollector);
-        jo.put("args", originalArgs);
+        jo.put(StatsMetadataKeys.ORIGINAL_ARGS, originalArgs);
         Files.writeString(
                 statsOutputFile.toPath(),
                 jo.toString(4),
