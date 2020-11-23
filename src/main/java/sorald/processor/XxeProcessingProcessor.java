@@ -57,71 +57,8 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         CtType<?> declaringType = element.getParent(CtType.class);
 
         CtMethod<?> factoryMethod = createFactoryMethod(element, declaringType);
-        moveSetSecureProcessingCall(element, factoryMethod);
 
         element.replace(invoke(factoryMethod));
-    }
-
-    /**
-     * Move any calls to <code>setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true)</code> to
-     * the factory creator method.
-     *
-     * @param element The original invocation
-     * @param factoryMethod The factory creator method
-     */
-    private void moveSetSecureProcessingCall(CtInvocation<?> element, CtMethod<?> factoryMethod) {
-        findSetSecureProcessingCall(element)
-                .ifPresent(
-                        call -> {
-                            call.delete();
-                            CtBlock<?> body = factoryMethod.getBody();
-                            CtLocalVariable<?> factoryVariable =
-                                    body.filterChildren(e -> true).first(CtLocalVariable.class);
-                            CtInvocation<?> newCall = call.clone();
-                            newCall.setTarget(read(factoryVariable));
-                            body.addStatement(
-                                    body.getStatements().indexOf(factoryVariable) + 1, newCall);
-                        });
-    }
-
-    /**
-     * Remove any invocation on the form <code>
-     * someFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true)</code>, as it is
-     * unreliable.
-     */
-    private Optional<CtInvocation<?>> findSetSecureProcessingCall(CtInvocation<?> element) {
-        final CtLocalVariable<?> variable = element.getParent(e -> true);
-        if (variable == null) {
-            return Optional.empty();
-        }
-
-        Filter<CtElement> isInvocationOnVariable =
-                e -> {
-                    if (e instanceof CtInvocation
-                            && ((CtInvocation<?>) e).getTarget() instanceof CtVariableAccess) {
-                        CtVariableAccess<?> varAccess =
-                                (CtVariableAccess<?>) ((CtInvocation<?>) e).getTarget();
-                        return variable.equals(varAccess.getVariable().getDeclaration());
-                    } else {
-                        return false;
-                    }
-                };
-
-        CtBlock<?> enclosingBlock = variable.getParent(e -> true);
-        List<CtInvocation<?>> invocations =
-                enclosingBlock.filterChildren(isInvocationOnVariable).list();
-
-        List<CtExpression<?>> expectedArguments =
-                List.of(
-                        readXmlConstant(FEATURE_SECURE_PROCESSING),
-                        getFactory().createLiteral(true));
-        for (CtInvocation<?> invocation : invocations) {
-            if (invocation.getExecutable().getSimpleName().equals("setFeature")
-                    && expectedArguments.equals(invocation.getArguments())) {
-                return Optional.of(invocation);
-            }
-        }
-        return Optional.empty();
     }
 
     /**
