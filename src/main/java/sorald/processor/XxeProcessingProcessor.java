@@ -30,7 +30,6 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     private static final String ACCESS_EXTERNAL_DTD = "ACCESS_EXTERNAL_DTD";
     private static final String ACCESS_EXTERNAL_SCHEMA = "ACCESS_EXTERNAL_SCHEMA";
     private static final String ACCESS_EXTERNAL_STYLESHEET = "ACCESS_EXTERNAL_STYLESHEET";
-    private static final String FEATURE_SECURE_PROCESSING = "FEATURE_SECURE_PROCESSING";
 
     private static final String DOCUMENT_BUILDER_FACTORY = "DocumentBuilderFactory";
     private static final String TRANSFORMER_FACTORY = "TransformerFactory";
