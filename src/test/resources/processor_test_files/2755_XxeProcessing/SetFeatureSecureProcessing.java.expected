@@ -1,12 +1,5 @@
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
-
 import javax.xml.XMLConstants;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
@@ -23,25 +16,11 @@ public class SetFeatureSecureProcessing {
         return writer.toString();
     }
 
-    public static Document parse(String xmlFile) throws Exception {
-        DocumentBuilderFactory df = createDocumentBuilderFactory();  // Noncompliant
-        DocumentBuilder builder = df.newDocumentBuilder();
-        return builder.parse(new InputSource(xmlFile));
-    }
-
-    private static TransformerFactory createTransformerFactory() throws TransformerConfigurationException {
+    private static TransformerFactory createTransformerFactory() {
         TransformerFactory factory = TransformerFactory.newInstance();
         factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
         factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
         factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
-        return factory;
-    }
-
-    private static DocumentBuilderFactory createDocumentBuilderFactory() throws ParserConfigurationException {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
-        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
         return factory;
     }
 }
