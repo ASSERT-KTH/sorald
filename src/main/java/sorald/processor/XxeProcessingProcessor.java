@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -14,13 +13,11 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.*;
-import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.reference.CtFieldReference;
 import spoon.reflect.reference.CtTypeReference;
-import spoon.reflect.visitor.Filter;
 
 @IncompleteProcessor(
         description =
