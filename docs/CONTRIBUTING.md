@@ -20,11 +20,24 @@ happened that it doesn't do so correctly.
 
 ### Guidelines for all pull-requests
 
-A PR will be accepted and merged when:
+You may open a PR at any time when working on something. Prefix the title of
+the PR with `wip:` if it is not ready to be merged. A PR will be accepted and
+merged when:
 
+- The title of the PR is prefixed with `<CATEGORY>:`, where `<CATEGORY>` is the
+  most applicable of:
+    - `feat`: A change to user-facing features
+    - `refactor`: A refactoring
+    - `fix`: A bugfix
+    - `chore`: A change to the CI setup or other supporting files (e.g. `pom.xml`)
+    - `test`: A change to the test suite
+    - `doc`: A change to the documentation
 - It is minimal in the sense of doing a single thing (for example, an addition of a single new processor and a single bug fix).
 - It has a clear explanation of its goal and what was changed.
 - It passes in the continuous integration service being used in the project.
+
+> **Note:** _Change_ in this context means any of _addition_, _removal_ or
+> _modification_.
 
 ### Guidelines for new-processor pull-requests
 
@@ -101,7 +114,7 @@ You should do it following the same way as the existing handled rules are docume
 6) Open a PR
 
 The processor, the tests, and the documentation being ready, your contribution is also ready to be used in a PR.
-Open a PR, with the title "Add <PROCESSOR_NAME> (SonarSource rule <RULE_KEY_NUMBER>)".
+Open a PR, with the title "feat: Add <PROCESSOR_NAME> (SonarSource rule <RULE_KEY_NUMBER>)".
 For the description of the PR, use the following template:  
 
 This PR adds a processor for the rule [<RULE_DESCRIPTION, which should be the title of the rule in the https://rules.sonarsource.com/java webpage>](LINK TO THE RULE IN THE https://rules.sonarsource.com/java WEBPAGE).
