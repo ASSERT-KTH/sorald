@@ -1,28 +1,14 @@
 package sorald.sonar;
 
-import java.util.Objects;
-import org.sonar.java.AnalyzerMessage;
-
-/** Facade around {@link org.sonar.java.AnalyzerMessage} */
-public class RuleViolation {
-    private final AnalyzerMessage message;
-
-    RuleViolation(AnalyzerMessage message) {
-        this.message = message;
-    }
+/** Representation of a violation of some Sonar rule */
+public interface RuleViolation {
 
     /** @return The line number related to the rule violation. */
-    public int getLineNumber() {
-        return Objects.requireNonNull(message.getLine());
-    }
+    int getLineNumber();
 
     /** @return The name of the file that was analyzed. */
-    public String getFileName() {
-        return message.getInputComponent().key().replace(":", "");
-    }
+    String getFileName();
 
     /** @return The name of the check class that generated this warning. */
-    public String getCheckName() {
-        return message.getCheck().getClass().getSimpleName();
-    }
+    String getCheckName();
 }
