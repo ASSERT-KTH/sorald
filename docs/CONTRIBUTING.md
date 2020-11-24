@@ -32,6 +32,7 @@ merged when:
     - `chore`: A change to the CI setup or other supporting files (e.g. `pom.xml`)
     - `test`: A change to the test suite
     - `doc`: A change to the documentation
+    - Having trouble picking a category? Open your PR anyway and a maintainer will help you!
 - It is minimal in the sense of doing a single thing (for example, an addition of a single new processor and a single bug fix).
 - It has a clear explanation of its goal and what was changed.
 - It passes in the continuous integration service being used in the project.
@@ -39,9 +40,9 @@ merged when:
 > **Note:** _Change_ in this context means any of _addition_, _removal_ or
 > _modification_.
 
-### Guidelines for integrators
+### Guidelines for maintainers
 
-When merging a PR, integrators should take care to:
+When merging a PR, maintainers should take care to:
 
 * Squash the merge
 * Ensure that the squash message starts with the `<CATEGORY>:` prefix
