@@ -39,6 +39,14 @@ merged when:
 > **Note:** _Change_ in this context means any of _addition_, _removal_ or
 > _modification_.
 
+### Guidelines for integrators
+
+When merging a PR, integrators should take care to:
+
+* Squash the merge
+* Ensure that the squash message starts with the `<CATEGORY>:` prefix
+* Ensure that the squash message ends with `(#<PR_NUMBER>)`
+
 ### Guidelines for new-processor pull-requests
 
 For adding a new processor in Sorald, please, follow the instructions described below.
