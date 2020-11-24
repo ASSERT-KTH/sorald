@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 import org.apache.commons.lang3.tuple.Pair;
@@ -17,6 +18,9 @@ import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
 import sorald.segment.SoraldTreeBuilderAlgorithm;
+import sorald.sonar.Checks;
+import sorald.sonar.ProjectScanner;
+import sorald.sonar.RuleViolation;
 import spoon.Launcher;
 import spoon.compiler.Environment;
 import spoon.processing.ProcessingManager;
@@ -65,7 +69,13 @@ public class Repair {
             final Path inputDir = inOutPaths.getLeft();
             final Path outputDir = inOutPaths.getRight();
 
-            SoraldAbstractProcessor<?> processor = createProcessor(ruleKey);
+            Set<RuleViolation> ruleViolations =
+                    ProjectScanner.scanProject(
+                            inputDir.toFile(),
+                            FileUtils.getClosestDirectory(inputDir.toFile()),
+                            Checks.getCheckInstance(Integer.toString(ruleKey)));
+            SoraldAbstractProcessor<?> processor =
+                    createProcessor(ruleKey).setRuleViolations(ruleViolations);
             addedProcessors.add(processor);
             Stream<CtModel> models = repair(inputDir, processor);
 
@@ -92,8 +102,6 @@ public class Repair {
         launcher.addInputResource(inputDir.toString());
         CtModel model = initLauncher(launcher).getModel();
 
-        File inputBaseDir = FileUtils.getClosestDirectory(inputDir.toFile());
-        processor.initResource(inputDir.toString(), inputBaseDir);
         repairModelWithInitializedProcessor(model, processor);
 
         return model;
@@ -103,12 +111,10 @@ public class Repair {
         Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(inputDir.toString());
         LinkedList<LinkedList<Node>> segments =
                 FirstFitSegmentationAlgorithm.segment(rootNode, config.getMaxFilesPerSegment());
-        File inputBaseDir = FileUtils.getClosestDirectory(inputDir.toFile());
 
         return segments.stream()
                 .map(
                         segment -> {
-                            processor.initResource(segment, inputBaseDir);
                             Launcher launcher = createSegmentLauncher(segment);
                             CtModel model = launcher.getModel();
                             repairModelWithInitializedProcessor(model, processor);

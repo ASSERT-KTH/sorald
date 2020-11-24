@@ -1,24 +1,15 @@
 package sorald.processor;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.sonar.plugins.java.api.JavaFileScanner;
-import sorald.Constants;
 import sorald.FileUtils;
 import sorald.UniqueTypesCollector;
 import sorald.annotations.ProcessorAnnotation;
-import sorald.segment.Node;
-import sorald.sonar.Checks;
-import sorald.sonar.RuleVerifier;
 import sorald.sonar.RuleViolation;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
@@ -31,49 +22,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     public SoraldAbstractProcessor() {}
 
-    public SoraldAbstractProcessor initResource(String originalFilesPath, File baseDir) {
-        JavaFileScanner sonarCheck = Checks.getCheckInstance(getRuleKey());
-        try {
-            List<String> filesToScan = new ArrayList<>();
-            File file = new File(originalFilesPath);
-            if (file.isFile()) {
-                filesToScan.add(file.getAbsolutePath());
-            } else {
-                try {
-                    filesToScan =
-                            FileUtils.findFilesByExtension(file, Constants.JAVA_EXT).stream()
-                                    .map(File::getAbsolutePath)
-                                    .collect(Collectors.toList());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            ruleViolations = RuleVerifier.analyze(filesToScan, baseDir, sonarCheck);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return this;
-    }
-
-    public SoraldAbstractProcessor initResource(List<Node> segment, File baseDir) {
-        JavaFileScanner sonarCheck = Checks.getCheckInstance(getRuleKey());
-        List<String> filesToScan = new ArrayList<>();
-        for (Node node : segment) {
-            if (node.isFileNode()) {
-                filesToScan.addAll(node.getJavaFiles());
-            } else {
-                try (Stream<Path> walk = Files.walk(Paths.get(node.getRootPath()))) {
-                    filesToScan.addAll(
-                            walk.map(x -> x.toFile().getAbsolutePath())
-                                    .filter(f -> f.endsWith(Constants.JAVA_EXT))
-                                    .collect(Collectors.toList()));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        ruleViolations = RuleVerifier.analyze(filesToScan, baseDir, sonarCheck);
+    public SoraldAbstractProcessor<E> setRuleViolations(Set<RuleViolation> ruleViolations) {
+        this.ruleViolations = new HashSet<>(ruleViolations);
         return this;
     }
 
