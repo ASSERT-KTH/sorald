@@ -24,7 +24,7 @@ The Sorald application can now be found in
 
 ### Usage
 
-Sorald can do two things: automatically repair violations of Sonar rules in a
+Sorald can perform two different tasks: automatically repair violations of Sonar rules in a
 project, or mine projects for rule violations. These two modes of operations
 are available as the two commands `repair` and `mine`, respectively.
 
