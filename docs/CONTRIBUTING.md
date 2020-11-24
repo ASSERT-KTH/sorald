@@ -37,6 +37,12 @@ merged when:
 - It is minimal in the sense of doing a single thing (for example, an addition of a single new processor and a single bug fix).
 - It has a clear explanation of its goal and what was changed.
 - It passes in the continuous integration service being used in the project.
+- If the PR relates to an issue, the first line in the body says `Fix
+  #<ISSUE_NUMBER>` if it resolves the issue, or just `#<ISSUE_NUMBER>` if it is
+  related but does not resolve the issue.
+    - See the [PR that introduced this very line](https://github.com/SpoonLabs/sorald/pull/239) for an example
+    - Contributions such as touch-ups to documentation, new test cases and pure
+      refactorings do not need to be related to an issue
 
 > **Note:** _Change_ in this context means any of _addition_, _removal_ or
 > _modification_.
@@ -48,6 +54,7 @@ When merging a PR, maintainers should take care to:
 * Squash the merge
 * Ensure that the squash message starts with the `<CATEGORY>:` prefix
 * Ensure that the squash message ends with `(#<PR_NUMBER>)`
+* Ensure that any related issue is properly referenced in the PR body
 
 ### Guidelines for new-processor pull-requests
 
