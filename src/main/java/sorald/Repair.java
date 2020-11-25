@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,9 @@ import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 import org.apache.commons.lang3.tuple.Pair;
+import sorald.event.EventHelper;
+import sorald.event.EventType;
+import sorald.event.SoraldEventHandler;
 import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
@@ -48,13 +52,16 @@ public class Repair {
     private final SoraldConfig config;
     private int patchedFileCounter = 0;
 
-    public Repair(SoraldConfig config) {
+    final List<SoraldEventHandler> eventHandlers;
+
+    public Repair(SoraldConfig config, List<? extends SoraldEventHandler> eventHandlers) {
         this.config = config;
         if (this.config.getGitRepoPath() != null) {
             generator.setGitProjectRootDir(this.config.getGitRepoPath());
         }
         spoonedPath = Paths.get(config.getWorkspace()).resolve(Constants.SPOONED);
         intermediateSpoonedPath = spoonedPath.resolve(Constants.INTERMEDIATE);
+        this.eventHandlers = Collections.unmodifiableList(eventHandlers);
     }
 
     /** Execute a repair according to the config. */
@@ -98,11 +105,15 @@ public class Repair {
     }
 
     CtModel defaultRepair(Path inputDir, SoraldAbstractProcessor<?> processor) {
+        EventHelper.fireEvent(EventType.PARSE_START, eventHandlers);
         Launcher launcher = new Launcher();
         launcher.addInputResource(inputDir.toString());
         CtModel model = initLauncher(launcher).getModel();
+        EventHelper.fireEvent(EventType.PARSE_END, eventHandlers);
 
+        EventHelper.fireEvent(EventType.REPAIR_START, eventHandlers);
         repairModelWithInitializedProcessor(model, processor);
+        EventHelper.fireEvent(EventType.REPAIR_END, eventHandlers);
 
         return model;
     }
@@ -305,7 +316,9 @@ public class Repair {
     private SoraldAbstractProcessor<?> createProcessor(Integer ruleKey) {
         SoraldAbstractProcessor<?> processor = createBaseProcessor(ruleKey);
         if (processor != null) {
-            return processor.setMaxFixes(config.getMaxFixesPerRule());
+            return processor
+                    .setMaxFixes(config.getMaxFixesPerRule())
+                    .setEventHandlers(eventHandlers);
         }
         return null;
     }

@@ -5,11 +5,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 import sorald.FileUtils;
 import sorald.UniqueTypesCollector;
 import sorald.annotations.ProcessorAnnotation;
+import sorald.event.EventHelper;
+import sorald.event.EventType;
+import sorald.event.SoraldEvent;
+import sorald.event.SoraldEventHandler;
 import sorald.sonar.RuleViolation;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
@@ -19,6 +24,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     private Set<RuleViolation> ruleViolations;
     private int maxFixes = Integer.MAX_VALUE;
     private int nbFixes = 0;
+    private List<SoraldEventHandler> eventHandlers;
 
     public SoraldAbstractProcessor() {}
 
@@ -34,6 +40,11 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     public SoraldAbstractProcessor setNbFixes(int nbFixes) {
         this.nbFixes = nbFixes;
+        return this;
+    }
+
+    public SoraldAbstractProcessor<?> setEventHandlers(List<SoraldEventHandler> eventHandlers) {
+        this.eventHandlers = eventHandlers;
         return this;
     }
 
@@ -94,6 +105,10 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     @Override
     public void process(E element) {
+        final String ruleKey = getRuleKey();
+        final String elementPosition = element.getPosition().toString();
+
+        EventHelper.fireEvent(new RepairEvent(ruleKey, elementPosition), eventHandlers);
         UniqueTypesCollector.getInstance().collect(element);
         this.nbFixes++;
     }
@@ -108,5 +123,32 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                                 new IllegalStateException(
                                         getClass().getName() + " does not have a key"))
                 .toString();
+    }
+
+    /**
+     * Event representing a repair. This must be public for the json.org to be able to introspect it
+     * and produce the nice JSON output.
+     */
+    public static class RepairEvent implements SoraldEvent {
+        private final String ruleKey;
+        private final String ruleViolationPosition;
+
+        public RepairEvent(String ruleKey, String ruleViolationPosition) {
+            this.ruleKey = ruleKey;
+            this.ruleViolationPosition = ruleViolationPosition;
+        }
+
+        @Override
+        public EventType type() {
+            return EventType.REPAIR;
+        }
+
+        public String getRuleKey() {
+            return ruleKey;
+        }
+
+        public String getRuleViolationPosition() {
+            return ruleViolationPosition;
+        }
     }
 }
