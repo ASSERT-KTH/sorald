@@ -250,9 +250,9 @@ def extract_warning_stats_from_dir(
     proc = subprocess.run(
         [
             "java",
-            "-cp",
+            "-jar",
             str(config.sorald_jar),
-            "sorald.miner.MineSonarWarnings",
+            "mine",
             "--originalFilesPath",
             str(root_path),
             *extra_args,

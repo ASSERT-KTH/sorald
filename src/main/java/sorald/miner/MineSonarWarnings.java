@@ -6,17 +6,11 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import org.eclipse.jgit.api.Git;
 import org.sonar.plugins.java.api.JavaFileScanner;
-import picocli.CommandLine;
 import sorald.Constants;
-import sorald.cli.Cli;
 import sorald.sonar.RuleVerifier;
 import sorald.sonar.RuleViolation;
 
 public class MineSonarWarnings {
-
-    public static void main(String[] args) {
-        new CommandLine(new Cli.MineCommand()).execute(args);
-    }
 
     public static void mineGitRepos(
             List<? extends JavaFileScanner> checks,

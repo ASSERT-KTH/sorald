@@ -119,6 +119,7 @@ public class ProcessorTestHelper {
         boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(checkClass);
         var coreArgs =
                 new String[] {
+                    Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
                     originalFileAbspath,
                     Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
