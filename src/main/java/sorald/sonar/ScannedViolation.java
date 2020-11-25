@@ -1,8 +1,7 @@
 package sorald.sonar;
 
-import org.sonar.java.AnalyzerMessage;
-
 import java.util.Objects;
+import org.sonar.java.AnalyzerMessage;
 
 /** Facade around {@link org.sonar.java.AnalyzerMessage} */
 public class ScannedViolation extends RuleViolation {
