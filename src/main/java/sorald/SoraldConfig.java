@@ -1,11 +1,10 @@
 package sorald;
 
-import sorald.sonar.RuleViolation;
-
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import sorald.sonar.RuleViolation;
 
 /* All config settings of Sorald should be gathered here */
 public class SoraldConfig {
