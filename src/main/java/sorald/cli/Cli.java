@@ -1,6 +1,7 @@
 package sorald.cli;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,11 +12,13 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 import picocli.CommandLine;
 import sorald.Constants;
 import sorald.FileOutputStrategy;
+import sorald.FileUtils;
 import sorald.PrettyPrintingStrategy;
 import sorald.Processors;
 import sorald.Repair;
 import sorald.RepairStrategy;
 import sorald.SoraldConfig;
+import sorald.event.StatisticsCollector;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
 
@@ -122,11 +125,28 @@ public class Cli {
                         "Max number of files per loaded segment for segmented repair. It should be >= 3000 files per segment.")
         int maxFilesPerSegment = 6500;
 
+        @CommandLine.Option(
+                names = Constants.ARG_SYMBOL + Constants.ARG_STATS_OUTPUT_FILE,
+                description =
+                        "Path to a file to store execution statistics in (in JSON format). If left unspecified, Sorald does not gather statistics.")
+        File statsOutputFile;
+
         @Override
-        public Integer call() {
+        public Integer call() throws IOException {
             validateArgs();
             SoraldConfig config = createConfig();
-            new Repair(config).repair();
+
+            var statsCollector = new StatisticsCollector();
+            new Repair(config, statsOutputFile == null ? List.of() : List.of(statsCollector))
+                    .repair();
+
+            if (statsOutputFile != null) {
+                FileUtils.writeStatisticsJSON(
+                        statsOutputFile,
+                        statsCollector,
+                        spec.commandLine().getParseResult().originalArgs());
+            }
+
             return 0;
         }
 
@@ -137,6 +157,13 @@ public class Cli {
                         Constants.ARG_SYMBOL
                                 + Constants.ARG_MAX_FILES_PER_SEGMENT
                                 + " must be greater than 0");
+            }
+
+            if (statsOutputFile != null && repairStrategy == RepairStrategy.SEGMENT) {
+                throw new CommandLine.ParameterException(
+                        spec.commandLine(),
+                        RepairStrategy.SEGMENT.name()
+                                + " repair does not currently support statistics collection");
             }
         }
 
@@ -153,6 +180,7 @@ public class Cli {
             config.setMaxFixesPerRule(maxFixesPerRule);
             config.setMaxFilesPerSegment(maxFilesPerSegment);
             config.setRepairStrategy(repairStrategy);
+            config.setStatsOutputFile(statsOutputFile);
             return config;
         }
     }

@@ -5,9 +5,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.json.JSONObject;
+import sorald.event.StatisticsCollector;
+import sorald.event.StatsMetadataKeys;
 
 public class FileUtils {
 
@@ -86,5 +90,36 @@ public class FileUtils {
     public static String getExtension(File file) {
         String[] parts = file.getName().split("\\.");
         return parts.length <= 1 ? "" : "." + parts[parts.length - 1];
+    }
+
+    /**
+     * Write the statistics JSON file.
+     *
+     * @param statsOutputFile The file to write to.
+     * @param statsCollector A {@link StatisticsCollector} containing stats.
+     * @param originalArgs The original arguments passed to the command line.
+     * @throws IOException If the file can't be written to.
+     */
+    public static void writeStatisticsJSON(
+            File statsOutputFile, StatisticsCollector statsCollector, List<String> originalArgs)
+            throws IOException {
+        // JSONObject's constructor recursively uses getter methods to produce a JSON object
+        JSONObject jo = new JSONObject(statsCollector);
+        jo.put(StatsMetadataKeys.ORIGINAL_ARGS, originalArgs);
+        Files.writeString(
+                statsOutputFile.toPath(),
+                jo.toString(4),
+                StandardOpenOption.CREATE,
+                StandardOpenOption.TRUNCATE_EXISTING);
+    }
+
+    /**
+     * @param jsonFile Path to a JSON file to read.
+     * @return A parsed JSON object.
+     * @throws IOException If the file can't be read.
+     */
+    public static JSONObject readJSON(Path jsonFile) throws IOException {
+        String content = Files.readString(jsonFile);
+        return new JSONObject(content);
     }
 }
