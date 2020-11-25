@@ -21,6 +21,7 @@ import sorald.SoraldConfig;
 import sorald.event.StatisticsCollector;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
+import sorald.sonar.RuleViolation;
 
 /** Class containing the CLI for Sorald. */
 public class Cli {
@@ -53,6 +54,7 @@ public class Cli {
             description = "Repair Sonar rule violations in a targeted project.")
     private static class RepairCommand implements Callable<Integer> {
         private List<Integer> ruleKeys;
+        List<RuleViolation> ruleViolations = List.of();
 
         @CommandLine.Spec CommandLine.Model.CommandSpec spec;
 
@@ -69,7 +71,7 @@ public class Cli {
                         "Choose one or more of the following rule keys "
                                 + "(use ',' to separate multiple keys):\n"
                                 + Processors.RULE_DESCRIPTIONS,
-                required = true,
+                // required = true,
                 split = ",")
         private void setRuleKeys(List<Integer> value) {
             for (Integer ruleKey : value) {
@@ -82,6 +84,91 @@ public class Cli {
                 }
             }
             ruleKeys = value;
+        }
+
+        @CommandLine.Option(
+                names = Constants.ARG_SYMBOL + Constants.ARG_RULE_VIOLATIONS,
+                description = "One or more specific rule violations",
+                split = ",")
+        private void setRuleViolations(List<String> value) {
+            List<RuleViolation> parsedViolations = new ArrayList<>();
+            List<Integer> keys = new ArrayList<>();
+            for (String specifier : value) {
+                String[] parts = specifier.split(":");
+                String key = parts[0];
+                keys.add(Integer.parseInt(key));
+                String fileName = parts[1];
+                int startLine = Integer.parseInt(parts[2]);
+                int endLine = Integer.parseInt(parts[3]);
+                int startCol = Integer.parseInt(parts[4]);
+                int endCol = Integer.parseInt(parts[5]);
+                parsedViolations.add(
+                        new SpecifiedRuleViolation(
+                                key, fileName, startLine, endLine, startCol, endCol));
+            }
+            ruleViolations = parsedViolations;
+            ruleKeys = keys;
+        }
+
+        private static class SpecifiedRuleViolation extends RuleViolation {
+            private final String ruleKey;
+            private final String checkName;
+            private final String fileName;
+            private final int startLine;
+            private final int endLine;
+            private final int startCol;
+            private final int endCol;
+
+            SpecifiedRuleViolation(
+                    String ruleKey,
+                    String fileName,
+                    int startLine,
+                    int endLine,
+                    int startCol,
+                    int endCol) {
+                this.ruleKey = ruleKey;
+                checkName = Checks.getCheck(ruleKey).getSimpleName();
+                this.fileName = fileName;
+                this.startLine = startLine;
+                this.endLine = endLine;
+                this.startCol = startCol;
+                this.endCol = endCol;
+            }
+
+            @Override
+            public int getStartLine() {
+                return startLine;
+            }
+
+            @Override
+            public int getEndLine() {
+                return endLine;
+            }
+
+            @Override
+            public int getStartCol() {
+                return startCol;
+            }
+
+            @Override
+            public int getEndCol() {
+                return endCol;
+            }
+
+            @Override
+            public String getFileName() {
+                return fileName;
+            }
+
+            @Override
+            public String getCheckName() {
+                return checkName;
+            }
+
+            @Override
+            public String getRuleKey() {
+                return ruleKey;
+            }
         }
 
         @CommandLine.Option(
@@ -170,6 +257,7 @@ public class Cli {
         private SoraldConfig createConfig() {
             SoraldConfig config = new SoraldConfig();
             config.addRuleKeys(ruleKeys);
+            config.addRuleViolations(ruleViolations);
             config.setOriginalFilesPath(originalFilesPath.getAbsolutePath());
             config.setWorkspace(soraldWorkspace.getAbsolutePath());
             if (gitRepoPath != null) {
