@@ -14,6 +14,9 @@ public abstract class RuleViolation {
     /** @return The name of the check class that generated this warning. */
     public abstract String getCheckName();
 
+    /** @return The key of the rule that is violated. */
+    public abstract String getRuleKey();
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof RuleViolation)) {

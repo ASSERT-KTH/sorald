@@ -26,4 +26,9 @@ public class ScannedViolation extends RuleViolation {
     public String getCheckName() {
         return message.getCheck().getClass().getSimpleName();
     }
+
+    /** @return The key of the rule that is violated. */
+    public String getRuleKey() {
+        return Checks.getRuleKey(message.getCheck().getClass());
+    }
 }

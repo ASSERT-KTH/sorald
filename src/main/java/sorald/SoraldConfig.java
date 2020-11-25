@@ -1,12 +1,16 @@
 package sorald;
 
+import sorald.sonar.RuleViolation;
+
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /* All config settings of Sorald should be gathered here */
 public class SoraldConfig {
     private final List<Integer> ruleKeys = new ArrayList<>();
+    private final List<RuleViolation> ruleViolations = new ArrayList<>();
     private PrettyPrintingStrategy prettyPrintingStrategy;
     private FileOutputStrategy fileOutputStrategy;
     private RepairStrategy repairStrategy;
@@ -29,6 +33,14 @@ public class SoraldConfig {
 
     public List<Integer> getRuleKeys() {
         return this.ruleKeys;
+    }
+
+    public void addRuleViolations(List<RuleViolation> ruleViolations) {
+        ruleViolations.stream().distinct().forEach(this.ruleViolations::add);
+    }
+
+    public List<RuleViolation> getRuleViolations() {
+        return Collections.unmodifiableList(ruleViolations);
     }
 
     public void setPrettyPrintingStrategy(PrettyPrintingStrategy prettyPrintingStrategy) {

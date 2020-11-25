@@ -7,11 +7,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.apache.commons.lang3.tuple.Pair;
 import sorald.processor.SoraldAbstractProcessor;
@@ -69,11 +71,7 @@ public class Repair {
             final Path inputDir = inOutPaths.getLeft();
             final Path outputDir = inOutPaths.getRight();
 
-            Set<RuleViolation> ruleViolations =
-                    ProjectScanner.scanProject(
-                            inputDir.toFile(),
-                            FileUtils.getClosestDirectory(inputDir.toFile()),
-                            Checks.getCheckInstance(Integer.toString(ruleKey)));
+            Set<RuleViolation> ruleViolations = getRuleViolations(inputDir.toFile(), ruleKey);
             SoraldAbstractProcessor<?> processor =
                     createProcessor(ruleKey).setRuleViolations(ruleViolations);
             addedProcessors.add(processor);
@@ -85,6 +83,19 @@ public class Repair {
         printEndProcess(addedProcessors);
         FileUtils.deleteDirectory(intermediateSpoonedPath.toFile());
         UniqueTypesCollector.getInstance().reset();
+    }
+
+    private Set<RuleViolation> getRuleViolations(File target, int ruleKey) {
+        if (!config.getRuleViolations().isEmpty()) {
+            return config.getRuleViolations().stream()
+                    .filter(violation -> violation.getRuleKey().equals(Integer.toString(ruleKey)))
+                    .collect(Collectors.toSet());
+        } else {
+            return ProjectScanner.scanProject(
+                    target,
+                    FileUtils.getClosestDirectory(target),
+                    Checks.getCheckInstance(Integer.toString(ruleKey)));
+        }
     }
 
     Stream<CtModel> repair(Path inputDir, SoraldAbstractProcessor<?> processor) {
