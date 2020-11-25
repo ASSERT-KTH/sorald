@@ -5,7 +5,7 @@ import org.sonar.java.AnalyzerMessage;
 import java.util.Objects;
 
 /** Facade around {@link org.sonar.java.AnalyzerMessage} */
-public class ScannedViolation implements RuleViolation {
+public class ScannedViolation extends RuleViolation {
     private final AnalyzerMessage message;
 
     ScannedViolation(AnalyzerMessage message) {
