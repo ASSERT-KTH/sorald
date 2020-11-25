@@ -21,11 +21,13 @@ public class GatherStatsTest {
         File statsFile = tempDir.toPath().resolve("stats.json").toFile();
         List<String> cliArgs =
                 List.of(
+                        Constants.REPAIR_COMMAND_NAME,
                         Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
-                                ProcessorTestHelper.TEST_FILES_ROOT.toString(),
-                        Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS, "2755",
+                        ProcessorTestHelper.TEST_FILES_ROOT.toString(),
+                        Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
+                        "2755",
                         Constants.ARG_SYMBOL + Constants.ARG_STATS_OUTPUT_FILE,
-                                statsFile.getAbsolutePath());
+                        statsFile.getAbsolutePath());
         Main.main(cliArgs.toArray(String[]::new));
 
         JSONObject jo = FileUtils.readJSON(statsFile.toPath());
@@ -71,6 +73,7 @@ public class GatherStatsTest {
         File statsFile = tempDir.toPath().resolve("stats.json").toFile();
         String[] cliArgs =
                 new String[] {
+                    Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
                     ProcessorTestHelper.TEST_FILES_ROOT.toString(),
                     Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
