@@ -89,7 +89,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     }
 
     @Override
-    public void process(E element) {
+    public final void process(E element) {
         final String ruleKey = getRuleKey();
         final String elementPosition = element.getPosition().toString();
 
