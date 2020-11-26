@@ -57,7 +57,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     /**
      * Repair a violating element. An element is only passed to this method after having been
-     * accepted by {@link SoraldAbstractProcessor#repair(CtElement)}.
+     * accepted by {@link SoraldAbstractProcessor#canRepair(CtElement)}.
      *
      * @param element An element to repair.
      */
