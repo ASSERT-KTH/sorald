@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.internal.DefaultFileSystem;
@@ -58,7 +59,7 @@ public class RuleVerifier {
      * @return All messages produced by the analyzer, for all files.
      */
     @SuppressWarnings("UnstableApiUsage")
-    public static List<RuleViolation> analyze(
+    public static Set<RuleViolation> analyze(
             List<String> filesToScan, File baseDir, JavaFileScanner check) {
         return analyze(filesToScan, baseDir, Collections.singletonList(check));
     }
@@ -72,7 +73,7 @@ public class RuleVerifier {
      * @return All messages produced by the analyzer, for all files and all checks.
      */
     @SuppressWarnings("UnstableApiUsage")
-    public static List<RuleViolation> analyze(
+    public static Set<RuleViolation> analyze(
             List<String> filesToScan, File baseDir, List<? extends JavaFileScanner> checks) {
         List<InputFile> inputFiles =
                 filesToScan.stream()
@@ -86,7 +87,7 @@ public class RuleVerifier {
 
         return sonarComponents.getMessages().stream()
                 .map(RuleViolation::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     /**

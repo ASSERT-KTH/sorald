@@ -1,11 +1,12 @@
 package sorald.processor;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import sorald.FileUtils;
 import sorald.UniqueTypesCollector;
 import sorald.annotations.ProcessorAnnotation;
@@ -19,8 +20,8 @@ import spoon.reflect.declaration.CtElement;
 
 /** superclass for all processors */
 public abstract class SoraldAbstractProcessor<E extends CtElement> extends AbstractProcessor<E> {
-    private List<RuleViolation> ruleViolations;
-    private List<RuleViolation> unprocessedViolations;
+    private Set<RuleViolation> ruleViolations;
+    private Set<RuleViolation> unprocessedViolations;
     private int maxFixes = Integer.MAX_VALUE;
     private List<SoraldEventHandler> eventHandlers;
 
@@ -63,9 +64,9 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      */
     public abstract void repair(E element);
 
-    public SoraldAbstractProcessor<E> setRuleViolations(List<RuleViolation> ruleViolations) {
-        this.ruleViolations = Collections.unmodifiableList(ruleViolations);
-        unprocessedViolations = new ArrayList<>(ruleViolations);
+    public SoraldAbstractProcessor<E> setRuleViolations(Set<RuleViolation> ruleViolations) {
+        this.ruleViolations = Collections.unmodifiableSet(ruleViolations);
+        unprocessedViolations = new HashSet<>(ruleViolations);
         return this;
     }
 
