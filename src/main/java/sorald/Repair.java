@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 import org.apache.commons.lang3.tuple.Pair;
@@ -76,7 +75,7 @@ public class Repair {
             final Path inputDir = inOutPaths.getLeft();
             final Path outputDir = inOutPaths.getRight();
 
-            Set<RuleViolation> ruleViolations =
+            List<RuleViolation> ruleViolations =
                     ProjectScanner.scanProject(
                             inputDir.toFile(),
                             FileUtils.getClosestDirectory(inputDir.toFile()),

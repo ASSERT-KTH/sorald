@@ -4,9 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Stream;
 import sorald.FileUtils;
 import sorald.UniqueTypesCollector;
@@ -21,15 +20,15 @@ import spoon.reflect.declaration.CtElement;
 
 /** superclass for all processors */
 public abstract class SoraldAbstractProcessor<E extends CtElement> extends AbstractProcessor<E> {
-    private Set<RuleViolation> ruleViolations;
+    private List<RuleViolation> ruleViolations;
     private int maxFixes = Integer.MAX_VALUE;
     private int nbFixes = 0;
     private List<SoraldEventHandler> eventHandlers;
 
     public SoraldAbstractProcessor() {}
 
-    public SoraldAbstractProcessor<E> setRuleViolations(Set<RuleViolation> ruleViolations) {
-        this.ruleViolations = new HashSet<>(ruleViolations);
+    public SoraldAbstractProcessor<E> setRuleViolations(List<RuleViolation> ruleViolations) {
+        this.ruleViolations = Collections.unmodifiableList(ruleViolations);
         return this;
     }
 
