@@ -37,11 +37,6 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         return this;
     }
 
-    public SoraldAbstractProcessor setNbFixes(int nbFixes) {
-        this.nbFixes = nbFixes;
-        return this;
-    }
-
     public SoraldAbstractProcessor<?> setEventHandlers(List<SoraldEventHandler> eventHandlers) {
         this.eventHandlers = eventHandlers;
         return this;
