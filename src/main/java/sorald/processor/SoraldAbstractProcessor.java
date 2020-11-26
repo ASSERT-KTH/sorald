@@ -40,8 +40,27 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                 .forEach(this::addProcessedElementType);
     }
 
-    public abstract boolean canRepair(E element);
+    /**
+     * Pass a candidate element that appears in the vicinity of a violation for the processor to
+     * inspect. This may or may not always be the exact element that should be repaired. For
+     * example, when repairing something involving a method call, there may be nested calls that are
+     * not actually the violating parties, but still appear in the correct vicinity.
+     *
+     * <p>Note that a processor gets ONE chance to repair a violation. If it returns true, the
+     * violating element is passed to the {@link SoraldAbstractProcessor#repair(CtElement)} method,
+     * and the violation is consumed.
+     *
+     * @param candidate A candidate element to inspect.
+     * @return true if the processor can repair the violation based on this element.
+     */
+    public abstract boolean canRepair(E candidate);
 
+    /**
+     * Repair a violating element. An element is only passed to this method after having been
+     * accepted by {@link SoraldAbstractProcessor#repair(CtElement)}.
+     *
+     * @param element An element to repair.
+     */
     public abstract void repair(E element);
 
     public SoraldAbstractProcessor<E> setRuleViolations(List<RuleViolation> ruleViolations) {
