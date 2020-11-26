@@ -11,7 +11,6 @@ import spoon.reflect.code.CtTry;
 import spoon.reflect.code.CtTryWithResource;
 import spoon.reflect.code.CtVariableWrite;
 import spoon.reflect.declaration.CtElement;
-import spoon.reflect.path.CtRole;
 import spoon.reflect.reference.CtVariableReference;
 
 @ProcessorAnnotation(key = 2095, description = "Resources should be closed")
@@ -19,12 +18,7 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
 
     @Override
     public boolean canRepair(CtConstructorCall element) {
-        CtElement parent =
-                element.getParent(e -> e instanceof CtAssignment || e instanceof CtLocalVariable);
-        if (parent != null && parent.getRoleInParent() == CtRole.TRY_RESOURCE) {
-            return false;
-        }
-        return true;
+        return element.getParent(e -> e instanceof CtConstructorCall) == null;
     }
 
     @Override
