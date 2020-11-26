@@ -25,9 +25,4 @@ public class RuleViolation {
     public String getCheckName() {
         return message.getCheck().getClass().getSimpleName();
     }
-
-    /** @return The key of the violated rule. */
-    public String getRuleKey() {
-        return Checks.getRuleKey(message.getCheck().getClass());
-    }
 }

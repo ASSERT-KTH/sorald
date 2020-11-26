@@ -40,7 +40,6 @@ import org.sonar.java.checks.synchronization.ValueBasedObjectUsedForLockCheck;
 import org.sonar.java.checks.unused.UnusedReturnedDataCheck;
 import org.sonar.java.checks.unused.UnusedThrowableCheck;
 import org.sonar.java.se.checks.*;
-import org.sonar.plugins.java.api.JavaCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 
 /** Class for easily accessing Sonar check classes. */
@@ -115,7 +114,7 @@ public class Checks {
      * @return the numeric identifier of the rule related to the given check class. Non-digits are
      *     stripped, so e.g. S1234 becomes 1234.
      */
-    public static String getRuleKey(Class<? extends JavaCheck> checkClass) {
+    public static String getRuleKey(Class<? extends JavaFileScanner> checkClass) {
         return Arrays.stream(checkClass.getAnnotationsByType(Rule.class))
                 .map(Rule::key)
                 .map(Checks::stripDigits)
