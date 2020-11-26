@@ -28,7 +28,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     public SoraldAbstractProcessor() {
         super();
         // we must override the processed element types as they depend on the concrete type of
-        // the process method, which with type erasure will always be CtElement
+        // the process method, which with type erasure will always be CtElement for
+        // SoraldAbstractProcessor::process
         clearProcessedElementType();
         Arrays.stream(getClass().getMethods())
                 .filter(meth -> meth.getName().equals("repair") && meth.getParameterCount() == 1)
