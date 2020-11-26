@@ -17,13 +17,8 @@ import spoon.reflect.reference.CtVariableReference;
 @ProcessorAnnotation(key = 2095, description = "Resources should be closed")
 public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstructorCall> {
 
-    public UnclosedResourcesProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtConstructorCall element) {
-        if (!super.isToBeProcessedAccordingToStandards(element)) {
-            return false;
-        }
+    public boolean canRepair(CtConstructorCall element) {
         CtElement parent =
                 element.getParent(e -> e instanceof CtAssignment || e instanceof CtLocalVariable);
         if (parent != null && parent.getRoleInParent() == CtRole.TRY_RESOURCE) {
@@ -33,9 +28,7 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
     }
 
     @Override
-    public void process(CtConstructorCall element) {
-        super.process(element);
-
+    public void repair(CtConstructorCall element) {
         CtElement parent =
                 element.getParent(e -> e instanceof CtAssignment || e instanceof CtLocalVariable);
 

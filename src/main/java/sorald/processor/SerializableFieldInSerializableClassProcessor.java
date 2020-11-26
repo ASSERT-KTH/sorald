@@ -11,19 +11,13 @@ import spoon.reflect.declaration.ModifierKind;
 public class SerializableFieldInSerializableClassProcessor
         extends SoraldAbstractProcessor<CtField> {
 
-    public SerializableFieldInSerializableClassProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtField element) {
-        if (!super.isToBeProcessedAccordingToStandards(element)) {
-            return false;
-        }
+    public boolean canRepair(CtField element) {
         return true;
     }
 
     @Override
-    public void process(CtField element) {
-        super.process(element);
+    public void repair(CtField element) {
         element.addModifier(ModifierKind.TRANSIENT);
     }
 }

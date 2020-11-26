@@ -8,13 +8,8 @@ import spoon.reflect.code.CtStatement;
 @ProcessorAnnotation(key = 1854, description = "Unused assignments should be removed")
 public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 
-    public DeadStoreProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtStatement element) {
-        if (!super.isToBeProcessedAccordingToStandards(element)) {
-            return false;
-        }
+    public boolean canRepair(CtStatement element) {
         if (element instanceof CtLocalVariable || element instanceof CtAssignment) {
             return true;
         }
@@ -22,8 +17,7 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
     }
 
     @Override
-    public void process(CtStatement element) {
-        super.process(element);
+    public void repair(CtStatement element) {
         element.delete();
     }
 }

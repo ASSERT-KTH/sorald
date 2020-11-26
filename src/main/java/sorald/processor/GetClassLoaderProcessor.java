@@ -15,13 +15,8 @@ import spoon.reflect.visitor.ImportScannerImpl;
 public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
     private HashMap<Integer, Boolean> hashCodesOfTypesUsingJEE = new HashMap<Integer, Boolean>();
 
-    public GetClassLoaderProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtInvocation<?> invocation) {
-        if (!super.isToBeProcessedAccordingToStandards(invocation)) {
-            return false;
-        }
+    public boolean canRepair(CtInvocation<?> invocation) {
         String invocationStr = invocation.toString();
         if (invocationStr.contains("getClass().getClassLoader()")
                 || invocationStr.contains(".class.getClassLoader()")) {
@@ -45,8 +40,7 @@ public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocatio
     }
 
     @Override
-    public void process(CtInvocation<?> element) {
-        super.process(element);
+    public void repair(CtInvocation<?> element) {
         Factory factory = element.getFactory();
         CtClass<?> c = factory.Class().get(Thread.class);
         CtTypeAccess<?> access = factory.createTypeAccess(c.getReference());

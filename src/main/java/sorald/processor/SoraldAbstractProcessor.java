@@ -1,12 +1,11 @@
 package sorald.processor;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
 import sorald.FileUtils;
 import sorald.UniqueTypesCollector;
 import sorald.annotations.ProcessorAnnotation;
@@ -21,14 +20,32 @@ import spoon.reflect.declaration.CtElement;
 /** superclass for all processors */
 public abstract class SoraldAbstractProcessor<E extends CtElement> extends AbstractProcessor<E> {
     private List<RuleViolation> ruleViolations;
+    private List<RuleViolation> unprocessedViolations;
     private int maxFixes = Integer.MAX_VALUE;
-    private int nbFixes = 0;
     private List<SoraldEventHandler> eventHandlers;
 
-    public SoraldAbstractProcessor() {}
+    @SuppressWarnings("unchecked")
+    public SoraldAbstractProcessor() {
+        super();
+        // we must override the processed element types as they depend on the concrete type of
+        // the process method, which with type erasure will always be CtElement
+        clearProcessedElementType();
+        Arrays.stream(getClass().getMethods())
+                .filter(meth -> meth.getName().equals("repair") && meth.getParameterCount() == 1)
+                .map(Method::getParameterTypes)
+                .flatMap(Arrays::stream)
+                .filter(CtElement.class::isAssignableFrom)
+                .map(paramType -> (Class<CtElement>) paramType)
+                .forEach(this::addProcessedElementType);
+    }
+
+    public abstract boolean canRepair(E element);
+
+    public abstract void repair(E element);
 
     public SoraldAbstractProcessor<E> setRuleViolations(List<RuleViolation> ruleViolations) {
         this.ruleViolations = Collections.unmodifiableList(ruleViolations);
+        unprocessedViolations = new ArrayList<>(ruleViolations);
         return this;
     }
 
@@ -43,14 +60,15 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     }
 
     public int getNbFixes() {
-        return this.nbFixes;
+        return ruleViolations.size() - unprocessedViolations.size();
     }
 
-    public boolean isToBeProcessedAccordingToStandards(CtElement element) {
-        return (this.nbFixes < this.maxFixes) && this.isToBeProcessedAccordingToSonar(element);
+    public boolean isToBeProcessedAccordingToStandards(E element, RuleViolation violation) {
+        return (getNbFixes() < this.maxFixes)
+                && this.isToBeProcessedAccordingToSonar(element, violation);
     }
 
-    public boolean isToBeProcessedAccordingToSonar(CtElement element) {
+    public boolean isToBeProcessedAccordingToSonar(E element, RuleViolation violation) {
         if (element == null) {
             return false;
         }
@@ -59,13 +77,6 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         }
         int line = element.getPosition().getLine();
         String file = element.getPosition().getFile().getAbsolutePath();
-
-        try (Stream<String> lines = Files.lines(Paths.get(file))) {
-            if (lines.skip(line - 1).findFirst().get().contains("NOSONAR")) {
-                return false;
-            }
-        } catch (IOException e) {
-        }
 
         for (RuleViolation ruleViolation : ruleViolations) {
             if (ruleViolation.getLineNumber() == line
@@ -81,9 +92,31 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         final String ruleKey = getRuleKey();
         final String elementPosition = element.getPosition().toString();
 
+        repair(element);
+
         EventHelper.fireEvent(new RepairEvent(ruleKey, elementPosition), eventHandlers);
         UniqueTypesCollector.getInstance().collect(element);
-        this.nbFixes++;
+    }
+
+    @Override
+    public final boolean isToBeProcessed(E element) {
+        if (!canRepair(element)) {
+            return false;
+        }
+
+        Optional<RuleViolation> applicableViolation =
+                unprocessedViolations.stream()
+                        .filter(
+                                violation ->
+                                        isToBeProcessedAccordingToStandards(element, violation))
+                        .findFirst();
+
+        if (applicableViolation.isPresent()) {
+            unprocessedViolations.remove(applicableViolation.get());
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /** @return The numerical identifier of the rule this processor is related to */

@@ -28,16 +28,13 @@ public class SynchronizationOnStringOrBoxedProcessor
     private Map<Integer, CtExecutableReference> old2NewMethods;
 
     public SynchronizationOnStringOrBoxedProcessor() {
+        super();
         this.old2NewFields = new HashMap<>();
         this.old2NewMethods = new HashMap<>();
     }
 
     @Override
-    public boolean isToBeProcessed(CtSynchronized element) {
-        if (!super.isToBeProcessedAccordingToStandards(element)) {
-            return false;
-        }
-
+    public boolean canRepair(CtSynchronized element) {
         CtExpression<?> expression = element.getExpression();
         if (!expression.getType().toString().equals("String")
                 && !expression.getType().unbox().isPrimitive()) {
@@ -70,8 +67,7 @@ public class SynchronizationOnStringOrBoxedProcessor
     }
 
     @Override
-    public void process(CtSynchronized element) {
-        super.process(element);
+    public void repair(CtSynchronized element) {
         CtExpression<?> expression = element.getExpression();
         Factory factory = element.getFactory();
         CtFieldRead<?> fieldRead4Update;

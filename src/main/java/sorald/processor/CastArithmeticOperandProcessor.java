@@ -16,14 +16,8 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
 
     private CtTypeReference typeToBeUsedToCast;
 
-    public CastArithmeticOperandProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtBinaryOperator candidate) {
-        if (!super.isToBeProcessedAccordingToStandards(candidate)) {
-            return false;
-        }
-
+    public boolean canRepair(CtBinaryOperator candidate) {
         List<CtBinaryOperator> binaryOperatorChildren =
                 candidate.getElements(new TypeFilter<>(CtBinaryOperator.class));
         if (binaryOperatorChildren.size()
@@ -47,9 +41,7 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
     }
 
     @Override
-    public void process(CtBinaryOperator element) {
-        super.process(element);
-
+    public void repair(CtBinaryOperator element) {
         CtCodeSnippetExpression newBinaryOperator =
                 element.getFactory()
                         .createCodeSnippetExpression(

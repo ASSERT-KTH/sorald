@@ -11,13 +11,8 @@ import spoon.reflect.declaration.CtMethod;
         description = "\"compareTo\" should not return \"Integer.MIN_VALUE\"")
 public class CompareToReturnValueProcessor extends SoraldAbstractProcessor<CtReturn<?>> {
 
-    public CompareToReturnValueProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtReturn<?> ctReturn) {
-        if (!super.isToBeProcessedAccordingToStandards(ctReturn)) {
-            return false;
-        }
+    public boolean canRepair(CtReturn<?> ctReturn) {
         CtMethod ctMethod = ctReturn.getParent(CtMethod.class);
         String returnTypeName = ctMethod.getType().getSimpleName();
         if (ctMethod.getSimpleName().equals("compareTo")
@@ -29,9 +24,7 @@ public class CompareToReturnValueProcessor extends SoraldAbstractProcessor<CtRet
     }
 
     @Override
-    public void process(CtReturn<?> ctReturn) {
-        super.process(ctReturn);
-
+    public void repair(CtReturn<?> ctReturn) {
         CtLiteral<?> elem2Replace = ctReturn.getFactory().createLiteral(-1);
         ctReturn.getReturnedExpression().replace(elem2Replace);
     }

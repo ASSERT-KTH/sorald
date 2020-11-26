@@ -36,8 +36,8 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     private static final String XML_INPUT_FACTORY = "XMLInputFactory";
 
     @Override
-    public boolean isToBeProcessed(CtInvocation<?> candidate) {
-        return super.isToBeProcessedAccordingToStandards(candidate) && isSupported(candidate);
+    public boolean canRepair(CtInvocation<?> candidate) {
+        return isSupported(candidate);
     }
 
     /** Check if the target of the invocation is of a type currently supported by this processor */
@@ -48,8 +48,7 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     }
 
     @Override
-    public void process(CtInvocation<?> element) {
-        super.process(element);
+    public void repair(CtInvocation<?> element) {
         CtType<?> declaringType = element.getParent(CtType.class);
 
         CtMethod<?> factoryMethod = createFactoryMethod(element, declaringType);

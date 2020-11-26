@@ -16,14 +16,8 @@ import spoon.reflect.factory.Factory;
 @ProcessorAnnotation(key = 1656, description = "Variables should not be self-assigned")
 public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignment<?, ?>> {
 
-    public SelfAssignementProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtAssignment<?, ?> candidate) {
-        if (!super.isToBeProcessedAccordingToStandards(candidate)) {
-            return false;
-        }
-
+    public boolean canRepair(CtAssignment<?, ?> candidate) {
         CtExpression<?> leftExpression = candidate.getAssigned();
         CtExpression<?> rightExpression = candidate.getAssignment();
         if (rightExpression == null || candidate.getParent(CtAssignment.class) != null) {
@@ -39,9 +33,7 @@ public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignme
     }
 
     @Override
-    public void process(CtAssignment<?, ?> element) {
-        super.process(element);
-
+    public void repair(CtAssignment<?, ?> element) {
         Factory factory = element.getFactory();
         CtType<?> type = element.getParent(CtType.class);
 

@@ -18,8 +18,6 @@ import spoon.reflect.reference.CtTypeReference;
         description = "\"Iterator.next()\" methods should throw \"NoSuchElementException\"")
 public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMethod> {
 
-    public IteratorNextExceptionProcessor() {}
-
     /**
      * @param candidate - Every method of the scanned file
      * @return Whether the method should have the transformation applied to it.
@@ -27,10 +25,7 @@ public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMe
      *     already throw the correct error.
      */
     @Override
-    public boolean isToBeProcessed(CtMethod candidate) {
-        if (!super.isToBeProcessedAccordingToStandards(candidate)) {
-            return false;
-        }
+    public boolean canRepair(CtMethod candidate) {
         CtType iteratorInterface = getFactory().Interface().get(Iterator.class);
         CtMethod next = (CtMethod) iteratorInterface.getMethodsByName("next").get(0);
         if (candidate.isOverriding(next)) {
@@ -57,9 +52,7 @@ public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMe
     }
 
     @Override
-    public void process(CtMethod method) {
-        super.process(method);
-
+    public void repair(CtMethod method) {
         CtIf anIf = getFactory().Core().createIf();
         CtCodeSnippetExpression expr = getFactory().Core().createCodeSnippetExpression();
         expr.setValue("!hasNext()");
