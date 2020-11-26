@@ -69,6 +69,7 @@ public class FileUtils {
      * @param directory A directory
      * @param ext A file extension including the leading dot
      * @return All files in the given directory or any subdirectory with a matching extension
+     * @throws IOException If there is an error traversing the directory
      */
     public static List<File> findFilesByExtension(File directory, String ext) throws IOException {
         if (!directory.isDirectory()) {
