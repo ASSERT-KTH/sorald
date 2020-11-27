@@ -6,6 +6,7 @@ import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
+import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtTypeReference;
 
@@ -15,9 +16,10 @@ public class BigDecimalDoubleConstructorProcessor
 
     @Override
     public boolean canRepair(CtConstructorCall cons) {
-        CtTypeReference bigDecimalTypeRef = getFactory().createCtTypeReference(BigDecimal.class);
-        CtTypeReference doubleTypeRef = getFactory().createCtTypeReference(double.class);
-        CtTypeReference floatTypeRef = getFactory().createCtTypeReference(float.class);
+        Factory factory = cons.getFactory();
+        CtTypeReference bigDecimalTypeRef = factory.createCtTypeReference(BigDecimal.class);
+        CtTypeReference doubleTypeRef = factory.createCtTypeReference(double.class);
+        CtTypeReference floatTypeRef = factory.createCtTypeReference(float.class);
 
         if (cons.getType().equals(bigDecimalTypeRef)) {
             List<CtExpression> expr = cons.getArguments();

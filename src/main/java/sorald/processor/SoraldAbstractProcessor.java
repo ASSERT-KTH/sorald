@@ -1,12 +1,11 @@
 package sorald.processor;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.Map;
 import sorald.FileUtils;
 import sorald.UniqueTypesCollector;
 import sorald.annotations.ProcessorAnnotation;
@@ -20,10 +19,11 @@ import spoon.reflect.declaration.CtElement;
 
 /** superclass for all processors */
 public abstract class SoraldAbstractProcessor<E extends CtElement> extends AbstractProcessor<E> {
-    private Set<RuleViolation> ruleViolations;
-    private Set<RuleViolation> unprocessedViolations;
     private int maxFixes = Integer.MAX_VALUE;
     private List<SoraldEventHandler> eventHandlers;
+    private final List<RuleViolation> processedViolations;
+
+    private Map<CtElement, RuleViolation> bestFits;
 
     @SuppressWarnings("unchecked")
     public SoraldAbstractProcessor() {
@@ -37,8 +37,15 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                 .map(Method::getParameterTypes)
                 .flatMap(Arrays::stream)
                 .filter(CtElement.class::isAssignableFrom)
+                .filter(cls -> !cls.equals(CtElement.class))
                 .map(paramType -> (Class<CtElement>) paramType)
                 .forEach(this::addProcessedElementType);
+
+        if (getProcessedElementTypes().isEmpty()) {
+            addProcessedElementType(CtElement.class);
+        }
+
+        processedViolations = new ArrayList<>();
     }
 
     /**
@@ -64,9 +71,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      */
     public abstract void repair(E element);
 
-    public SoraldAbstractProcessor<E> setRuleViolations(Set<RuleViolation> ruleViolations) {
-        this.ruleViolations = Collections.unmodifiableSet(ruleViolations);
-        unprocessedViolations = new HashSet<>(ruleViolations);
+    public SoraldAbstractProcessor<E> setBestFits(Map<CtElement, RuleViolation> bestFits) {
+        this.bestFits = Collections.unmodifiableMap(bestFits);
         return this;
     }
 
@@ -81,7 +87,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     }
 
     public int getNbFixes() {
-        return ruleViolations.size() - unprocessedViolations.size();
+        return processedViolations.size();
     }
 
     public boolean isToBeProcessedAccordingToStandards(E element, RuleViolation violation) {
@@ -124,6 +130,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     @Override
     public final void process(E element) {
+        assert !processedViolations.contains(bestFits.get(element));
+
         final String ruleKey = getRuleKey();
         final String elementPosition = element.getPosition().toString();
 
@@ -131,27 +139,13 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
         EventHelper.fireEvent(new RepairEvent(ruleKey, elementPosition), eventHandlers);
         UniqueTypesCollector.getInstance().collect(element);
+
+        processedViolations.add(bestFits.get(element));
     }
 
     @Override
     public final boolean isToBeProcessed(E element) {
-        if (!canRepair(element)) {
-            return false;
-        }
-
-        Optional<RuleViolation> applicableViolation =
-                unprocessedViolations.stream()
-                        .filter(
-                                violation ->
-                                        isToBeProcessedAccordingToStandards(element, violation))
-                        .findFirst();
-
-        if (applicableViolation.isPresent()) {
-            unprocessedViolations.remove(applicableViolation.get());
-            return true;
-        } else {
-            return false;
-        }
+        return bestFits.containsKey(element);
     }
 
     /** @return The numerical identifier of the rule this processor is related to */
@@ -164,6 +158,13 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                                 new IllegalStateException(
                                         getClass().getName() + " does not have a key"))
                 .toString();
+    }
+
+    /** @return The concrete type that this processor accepts. */
+    @SuppressWarnings("unchecked")
+    public Class<E> getTargetType() {
+        assert getProcessedElementTypes().size() == 1;
+        return (Class<E>) getProcessedElementTypes().iterator().next();
     }
 
     /**

@@ -18,6 +18,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
+import sorald.processor.BestFitScanner;
 import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
@@ -81,10 +82,9 @@ public class Repair {
                             inputDir.toFile(),
                             FileUtils.getClosestDirectory(inputDir.toFile()),
                             Checks.getCheckInstance(Integer.toString(ruleKey)));
-            SoraldAbstractProcessor<?> processor =
-                    createProcessor(ruleKey).setRuleViolations(ruleViolations);
+            SoraldAbstractProcessor<?> processor = createProcessor(ruleKey);
             addedProcessors.add(processor);
-            Stream<CtModel> models = repair(inputDir, processor);
+            Stream<CtModel> models = repair(inputDir, processor, ruleViolations);
 
             models.forEach(model -> writeModel(model, outputDir));
         }
@@ -94,17 +94,19 @@ public class Repair {
         UniqueTypesCollector.getInstance().reset();
     }
 
-    Stream<CtModel> repair(Path inputDir, SoraldAbstractProcessor<?> processor) {
+    Stream<CtModel> repair(
+            Path inputDir, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
         if (config.getRepairStrategy() == RepairStrategy.DEFAULT) {
-            CtModel model = defaultRepair(inputDir, processor);
+            CtModel model = defaultRepair(inputDir, processor, violations);
             return Stream.of(model);
         } else {
             assert config.getRepairStrategy() == RepairStrategy.SEGMENT;
-            return segmentRepair(inputDir, processor);
+            return segmentRepair(inputDir, processor, violations);
         }
     }
 
-    CtModel defaultRepair(Path inputDir, SoraldAbstractProcessor<?> processor) {
+    CtModel defaultRepair(
+            Path inputDir, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
         EventHelper.fireEvent(EventType.PARSE_START, eventHandlers);
         Launcher launcher = new Launcher();
         launcher.addInputResource(inputDir.toString());
@@ -112,23 +114,25 @@ public class Repair {
         EventHelper.fireEvent(EventType.PARSE_END, eventHandlers);
 
         EventHelper.fireEvent(EventType.REPAIR_START, eventHandlers);
-        repairModelWithInitializedProcessor(model, processor);
+        repairModelWithInitializedProcessor(model, processor, violations);
         EventHelper.fireEvent(EventType.REPAIR_END, eventHandlers);
 
         return model;
     }
 
-    Stream<CtModel> segmentRepair(Path inputDir, SoraldAbstractProcessor<?> processor) {
+    Stream<CtModel> segmentRepair(
+            Path inputDir, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
         Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(inputDir.toString());
         LinkedList<LinkedList<Node>> segments =
                 FirstFitSegmentationAlgorithm.segment(rootNode, config.getMaxFilesPerSegment());
 
         return segments.stream()
+                .filter(segment -> segment.stream().anyMatch(Node::isFileNode))
                 .map(
                         segment -> {
                             Launcher launcher = createSegmentLauncher(segment);
                             CtModel model = launcher.getModel();
-                            repairModelWithInitializedProcessor(model, processor);
+                            repairModelWithInitializedProcessor(model, processor, violations);
                             return model;
                         })
                 .takeWhile(model -> processor.getNbFixes() < config.getMaxFixesPerRule());
@@ -161,7 +165,11 @@ public class Repair {
     }
 
     private static void repairModelWithInitializedProcessor(
-            CtModel model, SoraldAbstractProcessor<?> processor) {
+            CtModel model, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
+        var bestFits =
+                BestFitScanner.calculateBestFits(model.getUnnamedModule(), violations, processor);
+        processor.setBestFits(bestFits);
+
         Factory factory = model.getUnnamedModule().getFactory();
         ProcessingManager processingManager = new QueueProcessingManager(factory);
         processingManager.addProcessor(processor);

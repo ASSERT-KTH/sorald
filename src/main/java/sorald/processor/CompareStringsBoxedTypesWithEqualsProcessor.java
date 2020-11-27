@@ -29,7 +29,7 @@ public class CompareStringsBoxedTypesWithEqualsProcessor
             the boxed type to primitive, making the == check fine. See JLS #5.6.2:
             https://docs.oracle.com/javase/specs/jls/se8/html/jls-5.html#jls-5.6.2
             */
-            CtTypeReference<?> stringType = getFactory().Type().STRING;
+            CtTypeReference<?> stringType = candidate.getFactory().Type().STRING;
 
             /*
             Case 1: Both variables are strings.
