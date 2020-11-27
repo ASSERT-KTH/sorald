@@ -96,11 +96,30 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         if (!element.getPosition().isValidPosition()) {
             return false;
         }
-        int line = element.getPosition().getLine();
         String file = element.getPosition().getFile().getAbsolutePath();
+        return FileUtils.pathAbsNormEqual(violation.getFileName(), file)
+                && elementIntersectsViolation(element, violation);
+    }
 
-        return violation.getLineNumber() == line
-                && FileUtils.pathAbsNormEqual(violation.getFileName(), file);
+    private static boolean elementIntersectsViolation(CtElement element, RuleViolation violation) {
+        int[] lineSeps = element.getPosition().getCompilationUnit().getLineSeparatorPositions();
+
+        int vStartLine = violation.getStartLine();
+        int vEndLine = violation.getEndLine();
+        int violationSourceStart =
+                (vStartLine == 1 ? 0 : lineSeps[vStartLine - 2]) + violation.getStartCol();
+        int violationSourceEnd =
+                (vEndLine == 1 ? 0 : lineSeps[vEndLine - 2]) + violation.getEndCol();
+
+        int elemSourceStart = element.getPosition().getSourceStart();
+        int elemSourceEnd = element.getPosition().getSourceEnd();
+
+        return pointsIntersect(
+                violationSourceStart, violationSourceEnd, elemSourceStart, elemSourceEnd);
+    }
+
+    private static boolean pointsIntersect(int startLhs, int endLhs, int startRhs, int endRhs) {
+        return startRhs <= endLhs && endRhs >= startLhs;
     }
 
     @Override
