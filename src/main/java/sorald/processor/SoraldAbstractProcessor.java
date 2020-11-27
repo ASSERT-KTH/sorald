@@ -99,13 +99,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         int line = element.getPosition().getLine();
         String file = element.getPosition().getFile().getAbsolutePath();
 
-        for (RuleViolation ruleViolation : ruleViolations) {
-            if (ruleViolation.getLineNumber() == line
-                    && FileUtils.pathAbsNormEqual(ruleViolation.getFileName(), file)) {
-                return true;
-            }
-        }
-        return false;
+        return violation.getLineNumber() == line
+                && FileUtils.pathAbsNormEqual(violation.getFileName(), file);
     }
 
     @Override
