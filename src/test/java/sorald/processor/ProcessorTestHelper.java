@@ -89,17 +89,25 @@ public class ProcessorTestHelper {
     }
 
     /**
-     * Return a stream of all valid test cases, based on the tests files in {@link
-     * ProcessorTestHelper#TEST_FILES_ROOT}.
+     * @param testFilesRoot Root of a test files directory.
+     * @return A stream of {@link ProcessorTestCase}
      */
-    public static Stream<ProcessorTestCase<?>> getTestCaseStream() {
-        return Arrays.stream(ProcessorTestHelper.TEST_FILES_ROOT.toFile().listFiles())
+    public static Stream<ProcessorTestCase<?>> getTestCaseStream(File testFilesRoot) {
+        return Arrays.stream(testFilesRoot.listFiles())
                 .filter(File::isDirectory)
                 .map(File::listFiles)
                 .flatMap(Arrays::stream)
                 .filter(file -> file.getName().endsWith(".java"))
                 .filter(file -> !file.getName().startsWith("IGNORE"))
                 .map(ProcessorTestHelper::toProcessorTestCase);
+    }
+
+    /**
+     * Return a stream of all valid test cases, based on the tests files in {@link
+     * ProcessorTestHelper#TEST_FILES_ROOT}.
+     */
+    public static Stream<ProcessorTestCase<?>> getTestCaseStream() {
+        return getTestCaseStream(TEST_FILES_ROOT.toFile());
     }
 
     /** Run sorald on the given test case. */
