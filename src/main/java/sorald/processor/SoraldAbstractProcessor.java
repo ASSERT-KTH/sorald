@@ -145,7 +145,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     @Override
     public final boolean isToBeProcessed(E element) {
-        return bestFits.containsKey(element);
+        return element != null && getNbFixes() < maxFixes && bestFits.containsKey(element);
     }
 
     /** @return The numerical identifier of the rule this processor is related to */
