@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import sorald.FileUtils;
 import sorald.UniqueTypesCollector;
 import sorald.annotations.ProcessorAnnotation;
 import sorald.event.EventHelper;
@@ -93,44 +92,6 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         return processedViolations.size();
     }
 
-    public boolean isToBeProcessedAccordingToStandards(E element, RuleViolation violation) {
-        return (getNbFixes() < this.maxFixes)
-                && this.isToBeProcessedAccordingToSonar(element, violation);
-    }
-
-    public boolean isToBeProcessedAccordingToSonar(E element, RuleViolation violation) {
-        if (element == null) {
-            return false;
-        }
-        if (!element.getPosition().isValidPosition()) {
-            return false;
-        }
-        String file = element.getPosition().getFile().getAbsolutePath();
-        return FileUtils.pathAbsNormEqual(violation.getFileName(), file)
-                && elementIntersectsViolation(element, violation);
-    }
-
-    private static boolean elementIntersectsViolation(CtElement element, RuleViolation violation) {
-        int[] lineSeps = element.getPosition().getCompilationUnit().getLineSeparatorPositions();
-
-        int vStartLine = violation.getStartLine();
-        int vEndLine = violation.getEndLine();
-        int violationSourceStart =
-                (vStartLine == 1 ? 0 : lineSeps[vStartLine - 2]) + violation.getStartCol();
-        int violationSourceEnd =
-                (vEndLine == 1 ? 0 : lineSeps[vEndLine - 2]) + violation.getEndCol();
-
-        int elemSourceStart = element.getPosition().getSourceStart();
-        int elemSourceEnd = element.getPosition().getSourceEnd();
-
-        return pointsIntersect(
-                violationSourceStart, violationSourceEnd, elemSourceStart, elemSourceEnd);
-    }
-
-    private static boolean pointsIntersect(int startLhs, int endLhs, int startRhs, int endRhs) {
-        return startRhs <= endLhs && endRhs >= startLhs;
-    }
-
     @Override
     public final void process(E element) {
         assert !processedViolations.contains(bestFits.get(element));
@@ -148,7 +109,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     @Override
     public final boolean isToBeProcessed(E element) {
-        return element != null && getNbFixes() < maxFixes && bestFits.containsKey(element);
+        return getNbFixes() < maxFixes && bestFits.containsKey(element);
     }
 
     /** @return The numerical identifier of the rule this processor is related to */
