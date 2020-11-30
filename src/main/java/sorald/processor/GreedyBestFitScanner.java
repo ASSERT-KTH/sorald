@@ -13,6 +13,7 @@ import sorald.sonar.RuleViolation;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.visitor.CtScanner;
 
+/** Scanner for greedily matching rule violations against Spoon elements. */
 public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
     private final Set<RuleViolation> violations;
     private final SoraldAbstractProcessor<E> processor;
@@ -20,6 +21,21 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
     private final Map<RuleViolation, List<E>> onSameLine;
     private final Map<RuleViolation, List<E>> intersecting;
 
+    /**
+     * Calculate a best fits mapping between Spoon elements and rule violations.
+     *
+     * <p>First it tries to find a Spoon element that intersects the rule violation's position. If
+     * that fails, it searches all Spoon elements that start on the same line that the rule
+     * violation starts on. Only elements that return true for {@link
+     * SoraldAbstractProcessor#canRepair(CtElement)} are considered as potential best fits.
+     *
+     * @param element The root element to scan. This is typically the unnamed module.
+     * @param violations The rule violations to find matching elements for. Must be violations of a
+     *     single rule.
+     * @param processor The processor for which to calculate best matches. Must be the processor for
+     *     the single rule that the violations violate.
+     * @return A mapping from Spoon element to an associated rule violation.
+     */
     public static <E extends CtElement> Map<CtElement, RuleViolation> calculateBestFits(
             CtElement element,
             Set<RuleViolation> violations,
