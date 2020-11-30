@@ -50,6 +50,10 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
         E candidate = processor.getTargetType().cast(e);
 
         for (RuleViolation violation : violations) {
+            if (!inSameFile(e, violation)) {
+                continue;
+            }
+
             if (startOnSameLine(candidate, violation)) {
                 var elementsOnSameLine = onSameLine.getOrDefault(violation, new ArrayList<>());
                 elementsOnSameLine.add(candidate);
@@ -72,10 +76,6 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
     }
 
     private static boolean elementIntersectsViolation(CtElement element, RuleViolation violation) {
-        if (!FileUtils.pathAbsNormEqual(
-                violation.getFileName(), element.getPosition().getFile().getAbsolutePath())) {
-            return false;
-        }
         int[] lineSeps = element.getPosition().getCompilationUnit().getLineSeparatorPositions();
 
         int vStartLine = violation.getStartLine();
@@ -98,5 +98,10 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
 
     private static boolean startOnSameLine(CtElement element, RuleViolation violation) {
         return element.getPosition().getLine() == violation.getStartLine();
+    }
+
+    private static boolean inSameFile(CtElement element, RuleViolation violation) {
+        return FileUtils.pathAbsNormEqual(
+                violation.getFileName(), element.getPosition().getFile().getAbsolutePath());
     }
 }
