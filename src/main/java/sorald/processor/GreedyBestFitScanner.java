@@ -63,32 +63,33 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
 
     @Override
     protected void enter(CtElement e) {
-        if (!processor.getTargetType().isAssignableFrom(e.getClass())
-                || !processor.canRepair(processor.getTargetType().cast(e))) {
-            return;
-        }
-
         final Factory originalFactory = processor.getFactory();
         processor.setFactory(e.getFactory());
-        E candidate = processor.getTargetType().cast(e);
 
-        for (RuleViolation violation : violations) {
-            if (!inSameFile(e, violation)) {
-                continue;
-            }
+        if (processor.getTargetType().isAssignableFrom(e.getClass())
+                && processor.canRepair(processor.getTargetType().cast(e))) {
 
-            if (startOnSameLine(candidate, violation)) {
-                var elementsOnSameLine = onSameLine.getOrDefault(violation, new ArrayList<>());
-                elementsOnSameLine.add(candidate);
-                onSameLine.putIfAbsent(violation, elementsOnSameLine);
-            }
+            E candidate = processor.getTargetType().cast(e);
+            for (RuleViolation violation : violations) {
+                if (!inSameFile(e, violation)) {
+                    continue;
+                }
 
-            if (elementIntersectsViolation(candidate, violation)) {
-                var intersectingElements = intersecting.getOrDefault(violation, new ArrayList<>());
-                intersectingElements.add(candidate);
-                intersecting.putIfAbsent(violation, intersectingElements);
+                if (startOnSameLine(candidate, violation)) {
+                    var elementsOnSameLine = onSameLine.getOrDefault(violation, new ArrayList<>());
+                    elementsOnSameLine.add(candidate);
+                    onSameLine.putIfAbsent(violation, elementsOnSameLine);
+                }
+
+                if (elementIntersectsViolation(candidate, violation)) {
+                    var intersectingElements =
+                            intersecting.getOrDefault(violation, new ArrayList<>());
+                    intersectingElements.add(candidate);
+                    intersecting.putIfAbsent(violation, intersectingElements);
+                }
             }
         }
+
         processor.setFactory(originalFactory);
     }
 
