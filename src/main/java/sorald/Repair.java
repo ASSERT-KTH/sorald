@@ -127,7 +127,6 @@ public class Repair {
                 FirstFitSegmentationAlgorithm.segment(rootNode, config.getMaxFilesPerSegment());
 
         return segments.stream()
-                .filter(segment -> segment.stream().anyMatch(Node::isFileNode))
                 .map(
                         segment -> {
                             Launcher launcher = createSegmentLauncher(segment);
