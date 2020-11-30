@@ -11,6 +11,7 @@ import java.util.Set;
 import sorald.FileUtils;
 import sorald.sonar.RuleViolation;
 import spoon.reflect.declaration.CtElement;
+import spoon.reflect.factory.Factory;
 import spoon.reflect.visitor.CtScanner;
 
 /** Scanner for greedily matching rule violations against Spoon elements. */
@@ -60,11 +61,13 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
 
     @Override
     protected void enter(CtElement e) {
-        processor.setFactory(e.getFactory());
         if (!processor.getTargetType().isAssignableFrom(e.getClass())
                 || !processor.canRepair(processor.getTargetType().cast(e))) {
             return;
         }
+
+        final Factory originalFactory = processor.getFactory();
+        processor.setFactory(e.getFactory());
         E candidate = processor.getTargetType().cast(e);
 
         for (RuleViolation violation : violations) {
@@ -84,7 +87,7 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
                 intersecting.putIfAbsent(violation, intersectingElements);
             }
         }
-        processor.setFactory(null);
+        processor.setFactory(originalFactory);
     }
 
     private Optional<E> getBestFit(RuleViolation violation) {
