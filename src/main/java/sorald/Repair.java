@@ -66,6 +66,7 @@ public class Repair {
 
     /** Execute a repair according to the config. */
     public void repair() {
+        UniqueTypesCollector.getInstance().reset();
         List<Integer> ruleKeys = config.getRuleKeys();
         List<SoraldAbstractProcessor<?>> addedProcessors = new ArrayList<>();
 
@@ -91,7 +92,6 @@ public class Repair {
 
         printEndProcess(addedProcessors);
         FileUtils.deleteDirectory(intermediateSpoonedPath.toFile());
-        UniqueTypesCollector.getInstance().reset();
     }
 
     Stream<CtModel> repair(Path inputDir, SoraldAbstractProcessor<?> processor) {
