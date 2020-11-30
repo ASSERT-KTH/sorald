@@ -41,6 +41,8 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
             CtElement element,
             Set<RuleViolation> violations,
             SoraldAbstractProcessor<E> processor) {
+        checkRuleViolationsConcernProcessorRule(violations, processor);
+
         var scanner = new GreedyBestFitScanner<>(violations, processor);
         scanner.scan(element);
 
@@ -126,5 +128,20 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
         return element.getPosition().isValidPosition()
                 && FileUtils.pathAbsNormEqual(
                         violation.getFileName(), element.getPosition().getFile().getAbsolutePath());
+    }
+
+    /** All rule violations must concern the same rule as the processor. */
+    private static void checkRuleViolationsConcernProcessorRule(
+            Set<RuleViolation> ruleViolations, SoraldAbstractProcessor<?> processor) {
+        String procKey = processor.getRuleKey();
+        for (var violation : ruleViolations) {
+            String violationKey = violation.getRuleKey();
+            if (!procKey.equals(violationKey)) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "rule key mismatch, processor for rule %s but violation for %s",
+                                procKey, violationKey));
+            }
+        }
     }
 }
