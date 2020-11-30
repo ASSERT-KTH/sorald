@@ -101,7 +101,8 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
     }
 
     private static boolean inSameFile(CtElement element, RuleViolation violation) {
-        return FileUtils.pathAbsNormEqual(
-                violation.getFileName(), element.getPosition().getFile().getAbsolutePath());
+        return element.getPosition().isValidPosition()
+                && FileUtils.pathAbsNormEqual(
+                        violation.getFileName(), element.getPosition().getFile().getAbsolutePath());
     }
 }
