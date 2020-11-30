@@ -18,7 +18,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
-import sorald.processor.BestFitScanner;
+import sorald.processor.GreedyBestFitScanner;
 import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
@@ -166,7 +166,8 @@ public class Repair {
     private static void repairModelWithInitializedProcessor(
             CtModel model, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
         var bestFits =
-                BestFitScanner.calculateBestFits(model.getUnnamedModule(), violations, processor);
+                GreedyBestFitScanner.calculateBestFits(
+                        model.getUnnamedModule(), violations, processor);
         processor.setBestFits(bestFits);
 
         Factory factory = model.getUnnamedModule().getFactory();

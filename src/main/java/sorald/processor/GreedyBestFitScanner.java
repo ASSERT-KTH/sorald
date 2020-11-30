@@ -13,7 +13,7 @@ import sorald.sonar.RuleViolation;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.visitor.CtScanner;
 
-public class BestFitScanner<E extends CtElement> extends CtScanner {
+public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
     private final Set<RuleViolation> violations;
     private final SoraldAbstractProcessor<E> processor;
 
@@ -24,7 +24,7 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
             CtElement element,
             Set<RuleViolation> violations,
             SoraldAbstractProcessor<E> processor) {
-        var scanner = new BestFitScanner<>(violations, processor);
+        var scanner = new GreedyBestFitScanner<>(violations, processor);
         scanner.scan(element);
 
         Map<CtElement, RuleViolation> bestFitsMap = new IdentityHashMap<>();
@@ -34,7 +34,8 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
         return bestFitsMap;
     }
 
-    private BestFitScanner(Set<RuleViolation> violations, SoraldAbstractProcessor<E> processor) {
+    private GreedyBestFitScanner(
+            Set<RuleViolation> violations, SoraldAbstractProcessor<E> processor) {
         this.violations = Collections.unmodifiableSet(violations);
         this.processor = processor;
         onSameLine = new HashMap<>();
