@@ -26,14 +26,13 @@ public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMe
      */
     @Override
     public boolean canRepair(CtMethod candidate) {
-        CtType iteratorInterface = candidate.getFactory().Interface().get(Iterator.class);
+        CtType iteratorInterface = getFactory().Interface().get(Iterator.class);
         CtMethod next = (CtMethod) iteratorInterface.getMethodsByName("next").get(0);
         if (candidate.isOverriding(next)) {
             // If next() in the Iterator class is overridden, check if the correct error is thrown.
             Iterator<CtElement> statements = candidate.getBody().descendantIterator();
             CtTypeReference<?> noSuchElementTypeRef =
-                    candidate
-                            .getFactory()
+                    getFactory()
                             .Code()
                             .createCtTypeReference(java.util.NoSuchElementException.class);
             while (statements.hasNext()) {

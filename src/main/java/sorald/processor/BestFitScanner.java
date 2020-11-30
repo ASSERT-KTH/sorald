@@ -43,6 +43,7 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
 
     @Override
     protected void enter(CtElement e) {
+        processor.setFactory(e.getFactory());
         if (!processor.getTargetType().isAssignableFrom(e.getClass())
                 || !processor.canRepair(processor.getTargetType().cast(e))) {
             return;
@@ -66,6 +67,7 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
                 intersecting.putIfAbsent(violation, intersectingElements);
             }
         }
+        processor.setFactory(null);
     }
 
     private Optional<E> getBestFit(RuleViolation violation) {
