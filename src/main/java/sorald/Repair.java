@@ -222,17 +222,23 @@ public class Repair {
                                     .getEnvironment()
                                     .createPrettyPrinter()
                                     .printTypes(type);
-                    try {
-                        Files.writeString(Paths.get(patchedFile.getKey()), output);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    writeString(Paths.get(patchedFile.getKey()), output);
                 }
 
                 if (config.getGitRepoPath() != null) {
                     createPatches(patchedFile.getKey(), javaOutputProcessor);
                 }
             }
+        }
+    }
+
+    private static void writeString(Path filepath, String output) {
+        try {
+            Files.writeString(filepath, output);
+        } catch (IOException e) {
+            // most convert to a runtime exception as this is used in writeModel, which in turn
+            // is used in a stream (that can't have checked exceptions)
+            throw new RuntimeException(e);
         }
     }
 
