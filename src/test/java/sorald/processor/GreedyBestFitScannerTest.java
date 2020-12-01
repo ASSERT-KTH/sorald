@@ -7,6 +7,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 import sorald.Constants;
 import sorald.sonar.Checks;
+import sorald.sonar.GreedyBestFitScanner;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleViolation;
 import spoon.Launcher;

@@ -1,4 +1,4 @@
-package sorald.processor;
+package sorald.sonar;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import sorald.FileUtils;
-import sorald.sonar.RuleViolation;
+import sorald.processor.SoraldAbstractProcessor;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.visitor.CtScanner;
