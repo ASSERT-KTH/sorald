@@ -1,5 +1,7 @@
 package sorald;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.io.File;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -85,15 +87,7 @@ public class FileOutputStrategyTest {
         // arrange
         org.apache.commons.io.FileUtils.copyDirectory(
                 ProcessorTestHelper.TEST_FILES_ROOT.toFile(), tempDir);
-        ProcessorTestHelper.ProcessorTestCase<?> testCase =
-                ProcessorTestHelper.getTestCaseStream(tempDir)
-                        .filter(
-                                tc ->
-                                        tc.nonCompliantFile
-                                                .getName()
-                                                .equals("DocumentBuilderLocalVariable.java"))
-                        .findFirst()
-                        .get();
+        ProcessorTestHelper.ProcessorTestCase<?> testCase = getSingleTestCase(tempDir);
 
         // act
         ProcessorTestHelper.runSorald(
@@ -105,5 +99,35 @@ public class FileOutputStrategyTest {
         RuleVerifier.verifyNoIssue(
                 testCase.nonCompliantFile.getAbsolutePath(),
                 Checks.getCheckInstance(testCase.ruleKey));
+    }
+
+    @Test
+    public void inPlaceRepair_throws_whenFileIsNotWritable(@TempDir File tempDir) throws Exception {
+        // arrange
+        org.apache.commons.io.FileUtils.copyDirectory(
+                ProcessorTestHelper.TEST_FILES_ROOT.toFile(), tempDir);
+        ProcessorTestHelper.ProcessorTestCase<?> testCase = getSingleTestCase(tempDir);
+        testCase.nonCompliantFile.setWritable(false);
+
+        // act/assert
+        assertThrows(
+                RuntimeException.class,
+                () ->
+                        ProcessorTestHelper.runSorald(
+                                testCase,
+                                Constants.ARG_SYMBOL + Constants.ARG_FILE_OUTPUT_STRATEGY,
+                                FileOutputStrategy.IN_PLACE.name()));
+    }
+
+    /** Return a pre-determined test case */
+    private static ProcessorTestHelper.ProcessorTestCase<?> getSingleTestCase(File testFilesRoot) {
+        return ProcessorTestHelper.getTestCaseStream(testFilesRoot)
+                .filter(
+                        tc ->
+                                tc.nonCompliantFile
+                                        .getName()
+                                        .equals("DocumentBuilderLocalVariable.java"))
+                .findFirst()
+                .get();
     }
 }
