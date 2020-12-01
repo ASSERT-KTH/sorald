@@ -16,14 +16,8 @@ import spoon.reflect.reference.CtTypeReference;
         description = "\"getClass\" should not be used for synchronization")
 public class SynchronizationOnGetClassProcessor extends SoraldAbstractProcessor<CtSynchronized> {
 
-    public SynchronizationOnGetClassProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtSynchronized element) {
-        if (!super.isToBeProcessedAccordingToStandards(element)) {
-            return false;
-        }
-
+    public boolean canRepair(CtSynchronized element) {
         CtExpression<?> expression = element.getExpression();
         if (expression.toString().endsWith("getClass()")) {
             CtExpression target = ((CtInvocation) expression).getTarget();
@@ -52,8 +46,7 @@ public class SynchronizationOnGetClassProcessor extends SoraldAbstractProcessor<
     }
 
     @Override
-    public void process(CtSynchronized element) {
-        super.process(element);
+    public void repair(CtSynchronized element) {
         CtExpression<?> expression = element.getExpression();
         CtTypeReference<?> typeRef;
         if (expression.toString().equals("getClass()")) {

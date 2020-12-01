@@ -13,14 +13,8 @@ import spoon.reflect.reference.CtTypeReference;
 public class BigDecimalDoubleConstructorProcessor
         extends SoraldAbstractProcessor<CtConstructorCall> {
 
-    public BigDecimalDoubleConstructorProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtConstructorCall cons) {
-        if (!super.isToBeProcessedAccordingToStandards(cons)) {
-            return false;
-        }
-
+    public boolean canRepair(CtConstructorCall cons) {
         CtTypeReference bigDecimalTypeRef = getFactory().createCtTypeReference(BigDecimal.class);
         CtTypeReference doubleTypeRef = getFactory().createCtTypeReference(double.class);
         CtTypeReference floatTypeRef = getFactory().createCtTypeReference(float.class);
@@ -37,9 +31,7 @@ public class BigDecimalDoubleConstructorProcessor
     }
 
     @Override
-    public void process(CtConstructorCall cons) {
-        super.process(cons);
-
+    public void repair(CtConstructorCall cons) {
         if (cons.getArguments().size() == 1) {
             CtType bigDecimalClass = getFactory().Class().get(BigDecimal.class);
             CtCodeSnippetExpression invoker =

@@ -11,20 +11,13 @@ import spoon.reflect.factory.Factory;
 @ProcessorAnnotation(key = 2142, description = "\"InterruptedException\" should not be ignored")
 public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCatch> {
 
-    public InterruptedExceptionProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtCatch candidate) {
-        if (!super.isToBeProcessedAccordingToStandards(candidate)) {
-            return false;
-        }
+    public boolean canRepair(CtCatch candidate) {
         return true;
     }
 
     @Override
-    public void process(CtCatch element) {
-        super.process(element);
-
+    public void repair(CtCatch element) {
         Factory factory = element.getFactory();
         CtClass<?> threadClass = factory.Class().get(Thread.class);
         CtTypeAccess<?> threadClassAccess = factory.createTypeAccess(threadClass.getReference());

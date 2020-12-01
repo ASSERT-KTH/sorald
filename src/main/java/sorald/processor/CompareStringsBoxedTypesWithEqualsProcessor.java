@@ -16,13 +16,8 @@ import spoon.reflect.reference.CtTypeReference;
 public class CompareStringsBoxedTypesWithEqualsProcessor
         extends SoraldAbstractProcessor<CtBinaryOperator<?>> {
 
-    public CompareStringsBoxedTypesWithEqualsProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtBinaryOperator<?> candidate) {
-        if (!super.isToBeProcessedAccordingToStandards(candidate)) {
-            return false;
-        }
+    public boolean canRepair(CtBinaryOperator<?> candidate) {
         BinaryOperatorKind opKind = candidate.getKind();
         if (opKind == BinaryOperatorKind.EQ || opKind == BinaryOperatorKind.NE) {
             CtExpression<?> left = candidate.getLeftHandOperand();
@@ -53,9 +48,7 @@ public class CompareStringsBoxedTypesWithEqualsProcessor
     }
 
     @Override
-    public void process(CtBinaryOperator<?> element) {
-        super.process(element);
-
+    public void repair(CtBinaryOperator<?> element) {
         CtExpression<?> lhs = element.getLeftHandOperand();
         CtExpression<?> rhs = element.getRightHandOperand();
 

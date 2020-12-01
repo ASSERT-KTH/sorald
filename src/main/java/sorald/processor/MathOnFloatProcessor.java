@@ -12,13 +12,8 @@ import spoon.reflect.visitor.filter.TypeFilter;
 @ProcessorAnnotation(key = 2164, description = "Math should not be performed on floats")
 public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 
-    public MathOnFloatProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtBinaryOperator candidate) {
-        if (!super.isToBeProcessedAccordingToStandards(candidate)) {
-            return false;
-        }
+    public boolean canRepair(CtBinaryOperator candidate) {
         List<CtBinaryOperator> binaryOperatorChildren =
                 candidate.getElements(new TypeFilter<>(CtBinaryOperator.class));
         if (binaryOperatorChildren.size()
@@ -33,9 +28,7 @@ public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperat
     }
 
     @Override
-    public void process(CtBinaryOperator element) {
-        super.process(element);
-
+    public void repair(CtBinaryOperator element) {
         CtCodeSnippetExpression newLeftHandOperand =
                 element.getFactory()
                         .createCodeSnippetExpression("(double) " + element.getLeftHandOperand());

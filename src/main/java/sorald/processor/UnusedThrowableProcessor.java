@@ -9,20 +9,13 @@ import spoon.reflect.code.CtThrow;
         description = "Exception should not be created without being thrown")
 public class UnusedThrowableProcessor extends SoraldAbstractProcessor<CtConstructorCall> {
 
-    public UnusedThrowableProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtConstructorCall element) {
-        if (!super.isToBeProcessedAccordingToStandards(element)) {
-            return false;
-        }
+    public boolean canRepair(CtConstructorCall element) {
         return true;
     }
 
     @Override
-    public void process(CtConstructorCall element) {
-        super.process(element);
-
+    public void repair(CtConstructorCall element) {
         CtThrow ctThrow = getFactory().createCtThrow(element.toString());
         element.replace(ctThrow);
     }

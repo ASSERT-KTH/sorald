@@ -15,13 +15,8 @@ import spoon.reflect.reference.CtExecutableReference;
         description = "\"hashCode\" and \"toString\" should not be called on array instances")
 public class ArrayHashCodeAndToStringProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
 
-    public ArrayHashCodeAndToStringProcessor() {}
-
     @Override
-    public boolean isToBeProcessed(CtInvocation<?> candidate) {
-        if (!super.isToBeProcessedAccordingToStandards(candidate)) {
-            return false;
-        }
+    public boolean canRepair(CtInvocation<?> candidate) {
         if (candidate.getTarget() == null) {
             return false;
         }
@@ -41,9 +36,7 @@ public class ArrayHashCodeAndToStringProcessor extends SoraldAbstractProcessor<C
     }
 
     @Override
-    public void process(CtInvocation<?> element) {
-        super.process(element);
-
+    public void repair(CtInvocation<?> element) {
         CtExpression prevTarget = element.getTarget();
         CtClass arraysClass = getFactory().Class().get(Arrays.class);
         CtTypeAccess<?> newTarget = getFactory().createTypeAccess(arraysClass.getReference());

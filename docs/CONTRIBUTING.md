@@ -71,7 +71,12 @@ So the name of your new processor is `CastArithmeticOperandCheck` replacing "Che
 2) Create the processor
 
 Once you have the name for the new processor, you can create a class using that name in `src/main/java/sorald/processor`.
-This new class must extend `SoraldAbstractProcessor` and implement the methods `isToBeProcessed` and `process` (check out real examples of processors [here](/src/main/java/sorald/processor)).
+This new class must extend `SoraldAbstractProcessor` and implement the methods `canRepair` and `repair`.
+
+> See the documentation for the `canRepair` and `repair` methods in
+> [SoraldAbstractProcessor](src/main/java/sorald/processor/SoraldAbstractProcessor.java),
+> and check out [the existing implementations here](/src/main/java/sorald/processor)
+> for guidance.
 
 When you have created your processor, you must also add the check class to one
 of the four categories of check classes in the static code block in
