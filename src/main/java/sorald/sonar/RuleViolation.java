@@ -1,7 +1,7 @@
 package sorald.sonar;
 
-import java.util.List;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 /** Representation of a violation of some Sonar rule */
 public abstract class RuleViolation implements Comparable<RuleViolation> {
@@ -63,12 +63,9 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
         int endLineCmp = Integer.compare(getEndCol(), violation.getEndCol());
         int endColCmp = Integer.compare(getEndCol(), violation.getEndCol());
 
-        for (int cmp :
-                List.of(fileCmp, ruleCmp, startLineCmp, startColCmp, endLineCmp, endColCmp)) {
-            if (cmp != 0) {
-                return cmp;
-            }
-        }
-        return 0;
+        return Stream.of(fileCmp, ruleCmp, startLineCmp, startColCmp, endLineCmp, endColCmp)
+                .filter(i -> i != 0)
+                .findFirst()
+                .orElse(0);
     }
 }
