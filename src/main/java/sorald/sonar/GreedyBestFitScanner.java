@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 import sorald.FileUtils;
 import sorald.processor.SoraldAbstractProcessor;
 import spoon.reflect.declaration.CtElement;
@@ -30,6 +31,9 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
      * violation starts on. Only elements that return true for {@link
      * SoraldAbstractProcessor#canRepair(CtElement)} are considered as potential best fits.
      *
+     * <p>The matching is 1:1, but there is no guarantee that all violations appear in the value
+     * set.
+     *
      * @param element The root element to scan. This is typically the unnamed module.
      * @param violations The rule violations to find matching elements for. Must be violations of a
      *     single rule.
@@ -48,7 +52,8 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
 
         Map<CtElement, RuleViolation> bestFitsMap = new IdentityHashMap<>();
         for (var violation : violations) {
-            scanner.getBestFit(violation).ifPresent(e -> bestFitsMap.put(e, violation));
+            scanner.getBestFit(violation, bestFitsMap)
+                    .ifPresent(e -> bestFitsMap.put(e, violation));
         }
         return bestFitsMap;
     }
@@ -93,11 +98,18 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
         processor.setFactory(originalFactory);
     }
 
-    private Optional<E> getBestFit(RuleViolation violation) {
-        List<E> elements =
-                intersecting.getOrDefault(
-                        violation, onSameLine.getOrDefault(violation, Collections.emptyList()));
-        return Optional.ofNullable(elements.isEmpty() ? null : elements.get(0));
+    /**
+     * Get the best fit Spoon element for the given violation s.t. the element does not already
+     * appear in the best fits map. Intersections are prioritized over same-line elements.
+     */
+    private Optional<E> getBestFit(
+            RuleViolation violation, Map<CtElement, RuleViolation> bestFitsMap) {
+        List<E> intersectingCandidates =
+                intersecting.getOrDefault(violation, Collections.emptyList());
+        List<E> sameLineCandidates = onSameLine.getOrDefault(violation, Collections.emptyList());
+        Stream<E> candidates =
+                Stream.concat(intersectingCandidates.stream(), sameLineCandidates.stream());
+        return candidates.filter(e -> !bestFitsMap.containsKey(e)).findFirst();
     }
 
     private static boolean elementIntersectsViolation(CtElement element, RuleViolation violation) {
