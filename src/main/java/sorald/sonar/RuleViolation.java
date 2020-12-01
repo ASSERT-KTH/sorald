@@ -1,9 +1,10 @@
 package sorald.sonar;
 
+import java.util.List;
 import java.util.Objects;
 
 /** Representation of a violation of some Sonar rule */
-public abstract class RuleViolation {
+public abstract class RuleViolation implements Comparable<RuleViolation> {
 
     /** @return The line the element that violates the rule starts on. */
     public abstract int getStartLine();
@@ -51,5 +52,23 @@ public abstract class RuleViolation {
                 getEndLine(),
                 getStartCol(),
                 getEndCol());
+    }
+
+    @Override
+    public int compareTo(RuleViolation violation) {
+        int fileCmp = getFileName().compareTo(violation.getFileName());
+        int ruleCmp = getRuleKey().compareTo(violation.getRuleKey());
+        int startLineCmp = Integer.compare(getStartLine(), violation.getStartLine());
+        int startColCmp = Integer.compare(getStartCol(), violation.getStartCol());
+        int endLineCmp = Integer.compare(getEndCol(), violation.getEndCol());
+        int endColCmp = Integer.compare(getEndCol(), violation.getEndCol());
+
+        for (int cmp :
+                List.of(fileCmp, ruleCmp, startLineCmp, startColCmp, endLineCmp, endColCmp)) {
+            if (cmp != 0) {
+                return cmp;
+            }
+        }
+        return 0;
     }
 }

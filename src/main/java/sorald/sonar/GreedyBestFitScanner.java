@@ -17,7 +17,7 @@ import spoon.reflect.visitor.CtScanner;
 
 /** Scanner for greedily matching rule violations against Spoon elements. */
 public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
-    private final Set<RuleViolation> violations;
+    private final List<RuleViolation> violations;
     private final SoraldAbstractProcessor<E> processor;
 
     private final Map<RuleViolation, List<E>> onSameLine;
@@ -60,7 +60,9 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
 
     private GreedyBestFitScanner(
             Set<RuleViolation> violations, SoraldAbstractProcessor<E> processor) {
-        this.violations = Collections.unmodifiableSet(violations);
+        var tmpViolations = new ArrayList<>(violations);
+        Collections.sort(tmpViolations);
+        this.violations = Collections.unmodifiableList(tmpViolations);
         this.processor = processor;
         onSameLine = new HashMap<>();
         intersecting = new HashMap<>();
