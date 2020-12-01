@@ -61,9 +61,10 @@ The full list of options is as follows (and can also be found by running
 ```bash
       --fileOutputStrategy=<fileOutputStrategy>
                   Mode for outputting files: 'CHANGED_ONLY', which means that
-                    only changed files will be created in the workspace, and
-                    'ALL', which means that all files, including the unchanged
-                    ones, will be created in the workspace.
+                    only changed files will be created in the workspace. 'ALL',
+                    which means that all files, including the unchanged ones,
+                    will be created in the workspace. 'IN_PLACE', which means
+                    that results are written directly to source files.
       --gitRepoPath=<gitRepoPath>
                   The path to a git repository directory.
   -h, --help      Show this help message and exit.
