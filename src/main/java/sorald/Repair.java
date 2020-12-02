@@ -1,8 +1,10 @@
 package sorald;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -135,10 +137,14 @@ public class Repair {
     }
 
     private Pair<Path, Path> computeInOutPaths(boolean isFirstRule, boolean isLastRule) {
-        if (isFirstRule && isLastRule) {
+        final Path originalPath = Paths.get(config.getOriginalFilesPath());
+
+        if (config.getFileOutputStrategy() == FileOutputStrategy.IN_PLACE) {
+            // always write to the input files
+            return Pair.of(originalPath, originalPath);
+        } else if (isFirstRule && isLastRule) {
             // one processor, straightforward repair: we use the given input file dir, run one
-            // processor, directly output files (independently of the FileOutputStrategy) in
-            // the final output dir
+            // processor, directly output files the spooned output dir
             return Pair.of(Paths.get(config.getOriginalFilesPath()), spoonedPath);
         } else {
             // more than one processor, thus we need an intermediate dir, which will always
@@ -147,7 +153,7 @@ public class Repair {
             if (isFirstRule) {
                 // the first processor will run, thus we use the given input file
                 // dir and output *all* files in the intermediate dir
-                return Pair.of(Paths.get(config.getOriginalFilesPath()), intermediateSpoonedPath);
+                return Pair.of(originalPath, intermediateSpoonedPath);
             } else if (isLastRule) {
                 // the last processor will run, thus we use as input files the ones in
                 // the intermediate dir and output files in the final output dir
@@ -196,19 +202,43 @@ public class Repair {
 
         boolean isIntermediateOutputDir =
                 outputDir.toString().contains(intermediateSpoonedPath.toString());
-        if (config.getFileOutputStrategy() == FileOutputStrategy.ALL || isIntermediateOutputDir) {
+        FileOutputStrategy outputStrategy = config.getFileOutputStrategy();
+        if (outputStrategy == FileOutputStrategy.ALL || isIntermediateOutputDir) {
             processingManager.process(model.getUnnamedModule().getFactory().Class().getAll());
         } else {
-            assert (config.getFileOutputStrategy() == FileOutputStrategy.CHANGED_ONLY
-                    && !isIntermediateOutputDir);
+            assert outputStrategy == FileOutputStrategy.CHANGED_ONLY
+                    || outputStrategy == FileOutputStrategy.IN_PLACE;
 
             for (Map.Entry<String, CtType> patchedFile :
                     UniqueTypesCollector.getInstance().getTopLevelTypes4Output().entrySet()) {
-                javaOutputProcessor.process(patchedFile.getValue());
+
+                if (outputStrategy == FileOutputStrategy.CHANGED_ONLY) {
+                    javaOutputProcessor.process(patchedFile.getValue());
+                } else {
+                    assert outputStrategy == FileOutputStrategy.IN_PLACE;
+                    CtType<?> type = patchedFile.getValue();
+                    String output =
+                            type.getFactory()
+                                    .getEnvironment()
+                                    .createPrettyPrinter()
+                                    .printTypes(type);
+                    writeString(Paths.get(patchedFile.getKey()), output);
+                }
+
                 if (config.getGitRepoPath() != null) {
                     createPatches(patchedFile.getKey(), javaOutputProcessor);
                 }
             }
+        }
+    }
+
+    private static void writeString(Path filepath, String output) {
+        try {
+            Files.writeString(filepath, output);
+        } catch (IOException e) {
+            // must convert to a runtime exception as this is used in writeModel, which in turn
+            // is used in a stream (that can't have checked exceptions)
+            throw new RuntimeException(e);
         }
     }
 
