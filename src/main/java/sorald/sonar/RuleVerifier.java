@@ -86,7 +86,7 @@ public class RuleVerifier {
         scanner.scan(inputFiles);
 
         return sonarComponents.getMessages().stream()
-                .map(RuleViolation::new)
+                .map(ScannedViolation::new)
                 .collect(Collectors.toSet());
     }
 

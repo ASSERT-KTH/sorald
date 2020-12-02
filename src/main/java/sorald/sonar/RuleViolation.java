@@ -2,50 +2,30 @@ package sorald.sonar;
 
 import java.util.Objects;
 import java.util.stream.Stream;
-import org.sonar.java.AnalyzerMessage;
 
 /** Representation of a violation of some Sonar rule */
-public class RuleViolation implements Comparable<RuleViolation> {
-    private final AnalyzerMessage message;
-
-    public RuleViolation(AnalyzerMessage message) {
-        this.message = message;
-    }
+public abstract class RuleViolation implements Comparable<RuleViolation> {
 
     /** @return The line the element that violates the rule starts on. */
-    public int getStartLine() {
-        return message.primaryLocation().startLine;
-    }
+    public abstract int getStartLine();
 
     /** @return The line the element that violates the rule ends on. */
-    public int getEndLine() {
-        return message.primaryLocation().endLine;
-    }
+    public abstract int getEndLine();
 
     /** @return The column the element that violates the rule starts on. */
-    public int getStartCol() {
-        return message.primaryLocation().startCharacter;
-    }
+    public abstract int getStartCol();
 
     /** @return The column the element that violates the rule ends on. */
-    public int getEndCol() {
-        return message.primaryLocation().endCharacter;
-    }
+    public abstract int getEndCol();
 
     /** @return The name of the file that was analyzed. */
-    public String getFileName() {
-        return message.getInputComponent().key().replace(":", "");
-    }
+    public abstract String getFileName();
 
     /** @return The name of the check class that generated this warning. */
-    public String getCheckName() {
-        return message.getCheck().getClass().getSimpleName();
-    }
+    public abstract String getCheckName();
 
     /** @return The key of the violated rule. */
-    public String getRuleKey() {
-        return Checks.getRuleKey(message.getCheck().getClass());
-    }
+    public abstract String getRuleKey();
 
     @Override
     public boolean equals(Object obj) {
