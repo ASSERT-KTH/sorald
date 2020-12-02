@@ -57,8 +57,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      * violating element is passed to the {@link SoraldAbstractProcessor#repair(CtElement)} method,
      * and the violation is consumed.
      *
-     * <p>This method is not allowed to access dynamic state in the processor. Only static state is
-     * allowed to be accessed.
+     * <p><b>This method should not mutate the state of the processor</b>.
      *
      * @param candidate A candidate element to inspect.
      * @return true if the processor can repair the violation based on this element.
