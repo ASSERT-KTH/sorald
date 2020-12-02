@@ -40,9 +40,9 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                 .map(paramType -> (Class<CtElement>) paramType)
                 .forEach(this::addProcessedElementType);
 
-        if (getProcessedElementTypes().isEmpty()) {
-            addProcessedElementType(CtElement.class);
-        }
+        // This might become false if we ever add a processor for CtElement. Which we probably
+        // should not, it seems to always make sense to target a more specific type.
+        assert !getProcessedElementTypes().isEmpty();
 
         processedViolations = new ArrayList<>();
     }
