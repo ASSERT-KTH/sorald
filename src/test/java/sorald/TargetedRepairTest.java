@@ -49,8 +49,8 @@ public class TargetedRepairTest {
                         ruleKey,
                         violation.getFileName(),
                         violation.getStartLine(),
-                        violation.getEndLine(),
                         violation.getStartCol(),
+                        violation.getEndLine(),
                         violation.getEndCol());
 
         // act

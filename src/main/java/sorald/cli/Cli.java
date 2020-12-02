@@ -99,8 +99,8 @@ public class Cli {
                 keys.add(Integer.parseInt(key));
                 String fileName = parts[1];
                 int startLine = Integer.parseInt(parts[2]);
-                int endLine = Integer.parseInt(parts[3]);
-                int startCol = Integer.parseInt(parts[4]);
+                int startCol = Integer.parseInt(parts[3]);
+                int endLine = Integer.parseInt(parts[4]);
                 int endCol = Integer.parseInt(parts[5]);
                 parsedViolations.add(
                         new SpecifiedRuleViolation(
@@ -115,16 +115,16 @@ public class Cli {
             private final String checkName;
             private final String fileName;
             private final int startLine;
-            private final int endLine;
             private final int startCol;
+            private final int endLine;
             private final int endCol;
 
             SpecifiedRuleViolation(
                     String ruleKey,
                     String fileName,
                     int startLine,
-                    int endLine,
                     int startCol,
+                    int endLine,
                     int endCol) {
                 this.ruleKey = ruleKey;
                 checkName = Checks.getCheck(ruleKey).getSimpleName();
