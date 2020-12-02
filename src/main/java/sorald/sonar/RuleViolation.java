@@ -4,11 +4,11 @@ import java.util.Objects;
 import java.util.stream.Stream;
 import org.sonar.java.AnalyzerMessage;
 
-/** Representation of a violation of some Sonar rule */
+/** Facade around {@link org.sonar.java.AnalyzerMessage} */
 public class RuleViolation implements Comparable<RuleViolation> {
     private final AnalyzerMessage message;
 
-    public RuleViolation(AnalyzerMessage message) {
+    RuleViolation(AnalyzerMessage message) {
         this.message = message;
     }
 
