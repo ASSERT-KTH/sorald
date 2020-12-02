@@ -149,14 +149,16 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
     private static void checkRuleViolationsConcernProcessorRule(
             Set<RuleViolation> ruleViolations, SoraldAbstractProcessor<?> processor) {
         String procKey = processor.getRuleKey();
-        for (var violation : ruleViolations) {
-            String violationKey = violation.getRuleKey();
-            if (!procKey.equals(violationKey)) {
-                throw new IllegalArgumentException(
-                        String.format(
-                                "rule key mismatch, processor for rule %s but violation for %s",
-                                procKey, violationKey));
-            }
-        }
+        ruleViolations.stream()
+                .map(RuleViolation::getRuleKey)
+                .filter(vKey -> !procKey.equals(vKey))
+                .findFirst()
+                .ifPresent(
+                        vKey -> {
+                            throw new IllegalArgumentException(
+                                    String.format(
+                                            "rule key mismatch, processor for rule %s but violation for %s",
+                                            procKey, vKey));
+                        });
     }
 }
