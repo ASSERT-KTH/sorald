@@ -14,8 +14,6 @@ import spoon.reflect.visitor.filter.TypeFilter;
 @ProcessorAnnotation(key = 2184, description = "Math operands should be cast before assignment")
 public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 
-    private CtTypeReference typeToBeUsedToCast;
-
     @Override
     public boolean canRepair(CtBinaryOperator candidate) {
         List<CtBinaryOperator> binaryOperatorChildren =
@@ -31,7 +29,6 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
                                     && isExpFullyInt(candidate)
                                     && isTypeLong(ctType))
                             && !checkDivisionInParents(candidate)) {
-                        typeToBeUsedToCast = ctType;
                         return true;
                     }
                 }
@@ -42,6 +39,7 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
 
     @Override
     public void repair(CtBinaryOperator element) {
+        CtTypeReference<?> typeToBeUsedToCast = getExpectedType(element);
         CtCodeSnippetExpression newBinaryOperator =
                 element.getFactory()
                         .createCodeSnippetExpression(

@@ -1,13 +1,11 @@
 package sorald.processor;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import sorald.FileUtils;
+import java.util.Map;
 import sorald.UniqueTypesCollector;
 import sorald.annotations.ProcessorAnnotation;
 import sorald.event.EventHelper;
@@ -20,10 +18,11 @@ import spoon.reflect.declaration.CtElement;
 
 /** superclass for all processors */
 public abstract class SoraldAbstractProcessor<E extends CtElement> extends AbstractProcessor<E> {
-    private Set<RuleViolation> ruleViolations;
-    private Set<RuleViolation> unprocessedViolations;
     private int maxFixes = Integer.MAX_VALUE;
     private List<SoraldEventHandler> eventHandlers;
+    private final List<RuleViolation> processedViolations;
+
+    private Map<CtElement, RuleViolation> bestFits;
 
     @SuppressWarnings("unchecked")
     public SoraldAbstractProcessor() {
@@ -37,8 +36,15 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                 .map(Method::getParameterTypes)
                 .flatMap(Arrays::stream)
                 .filter(CtElement.class::isAssignableFrom)
+                .filter(cls -> !cls.equals(CtElement.class))
                 .map(paramType -> (Class<CtElement>) paramType)
                 .forEach(this::addProcessedElementType);
+
+        // This might become false if we ever add a processor for CtElement. Which we probably
+        // should not, it seems to always make sense to target a more specific type.
+        assert !getProcessedElementTypes().isEmpty();
+
+        processedViolations = new ArrayList<>();
     }
 
     /**
@@ -50,6 +56,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      * <p>Note that a processor gets ONE chance to repair a violation. If it returns true, the
      * violating element is passed to the {@link SoraldAbstractProcessor#repair(CtElement)} method,
      * and the violation is consumed.
+     *
+     * <p><b>This method should not mutate the state of the processor</b>.
      *
      * @param candidate A candidate element to inspect.
      * @return true if the processor can repair the violation based on this element.
@@ -64,9 +72,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      */
     public abstract void repair(E element);
 
-    public SoraldAbstractProcessor<E> setRuleViolations(Set<RuleViolation> ruleViolations) {
-        this.ruleViolations = Collections.unmodifiableSet(ruleViolations);
-        unprocessedViolations = new HashSet<>(ruleViolations);
+    public SoraldAbstractProcessor<E> setBestFits(Map<CtElement, RuleViolation> bestFits) {
+        this.bestFits = Collections.unmodifiableMap(bestFits);
         return this;
     }
 
@@ -81,30 +88,13 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     }
 
     public int getNbFixes() {
-        return ruleViolations.size() - unprocessedViolations.size();
-    }
-
-    public boolean isToBeProcessedAccordingToStandards(E element, RuleViolation violation) {
-        return (getNbFixes() < this.maxFixes)
-                && this.isToBeProcessedAccordingToSonar(element, violation);
-    }
-
-    public boolean isToBeProcessedAccordingToSonar(E element, RuleViolation violation) {
-        if (element == null) {
-            return false;
-        }
-        if (!element.getPosition().isValidPosition()) {
-            return false;
-        }
-        int line = element.getPosition().getLine();
-        String file = element.getPosition().getFile().getAbsolutePath();
-
-        return violation.getLineNumber() == line
-                && FileUtils.pathAbsNormEqual(violation.getFileName(), file);
+        return processedViolations.size();
     }
 
     @Override
     public final void process(E element) {
+        assert !processedViolations.contains(bestFits.get(element));
+
         final String ruleKey = getRuleKey();
         final String elementPosition = element.getPosition().toString();
 
@@ -112,27 +102,13 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
         EventHelper.fireEvent(new RepairEvent(ruleKey, elementPosition), eventHandlers);
         UniqueTypesCollector.getInstance().collect(element);
+
+        processedViolations.add(bestFits.get(element));
     }
 
     @Override
     public final boolean isToBeProcessed(E element) {
-        if (!canRepair(element)) {
-            return false;
-        }
-
-        Optional<RuleViolation> applicableViolation =
-                unprocessedViolations.stream()
-                        .filter(
-                                violation ->
-                                        isToBeProcessedAccordingToStandards(element, violation))
-                        .findFirst();
-
-        if (applicableViolation.isPresent()) {
-            unprocessedViolations.remove(applicableViolation.get());
-            return true;
-        } else {
-            return false;
-        }
+        return getNbFixes() < maxFixes && bestFits.containsKey(element);
     }
 
     /** @return The numerical identifier of the rule this processor is related to */
@@ -145,6 +121,13 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                                 new IllegalStateException(
                                         getClass().getName() + " does not have a key"))
                 .toString();
+    }
+
+    /** @return The concrete type that this processor accepts. */
+    @SuppressWarnings("unchecked")
+    public Class<E> getTargetType() {
+        assert getProcessedElementTypes().size() == 1;
+        return (Class<E>) getProcessedElementTypes().iterator().next();
     }
 
     /**
