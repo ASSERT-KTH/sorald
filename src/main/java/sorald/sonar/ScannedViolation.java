@@ -3,7 +3,7 @@ package sorald.sonar;
 import org.sonar.java.AnalyzerMessage;
 
 /** Facade around {@link org.sonar.java.AnalyzerMessage} */
-public class ScannedViolation extends RuleViolation {
+class ScannedViolation extends RuleViolation {
     private final AnalyzerMessage message;
 
     ScannedViolation(AnalyzerMessage message) {
