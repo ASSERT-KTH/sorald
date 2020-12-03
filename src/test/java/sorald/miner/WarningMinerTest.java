@@ -64,7 +64,7 @@ public class WarningMinerTest {
                 pathToRepos,
                 outputFile.getPath(),
                 temp.getPath(),
-                Constants.ARG_SYMBOL + Constants.ARG_RULE_TYPES,
+                Constants.ARG_RULE_TYPES,
                 checkTypes.stream().map(Checks.CheckType::name).collect(Collectors.joining(",")));
 
         List<String> expectedChecks =
@@ -98,7 +98,7 @@ public class WarningMinerTest {
         Main.main(
                 new String[] {
                     Constants.MINE_COMMAND_NAME,
-                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_ORIGINAL_FILES_PATH,
                     workdir.toString()
                 });
 
@@ -150,12 +150,12 @@ public class WarningMinerTest {
         String[] baseArgs =
                 new String[] {
                     Constants.MINE_COMMAND_NAME,
-                    Constants.ARG_SYMBOL + Constants.ARG_STATS_ON_GIT_REPOS,
-                    Constants.ARG_SYMBOL + Constants.ARG_GIT_REPOS_LIST,
+                    Constants.ARG_STATS_ON_GIT_REPOS,
+                    Constants.ARG_GIT_REPOS_LIST,
                     pathToRepos,
-                    Constants.ARG_SYMBOL + Constants.ARG_STATS_OUTPUT_FILE,
+                    Constants.ARG_STATS_OUTPUT_FILE,
                     pathToOutput,
-                    Constants.ARG_SYMBOL + Constants.ARG_TEMP_DIR,
+                    Constants.ARG_TEMP_DIR,
                     pathToTempDir
                 };
         String[] fullArgs =

@@ -19,13 +19,13 @@ public class MaxFixesPerRuleTest {
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_ORIGINAL_FILES_PATH,
                     pathToBuggyFile,
-                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
+                    Constants.ARG_RULE_KEYS,
                     "2116",
-                    Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
+                    Constants.ARG_WORKSPACE,
                     Constants.SORALD_WORKSPACE,
-                    Constants.ARG_SYMBOL + Constants.ARG_MAX_FIXES_PER_RULE,
+                    Constants.ARG_MAX_FIXES_PER_RULE,
                     "3"
                 });
         TestHelper.removeComplianceComments(pathToRepairedFile);
