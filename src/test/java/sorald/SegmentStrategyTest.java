@@ -4,10 +4,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import sorald.processor.ArrayHashCodeAndToStringProcessor;
+import sorald.processor.ProcessorTestHelper;
 import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.Node;
 import sorald.sonar.Checks;
@@ -98,16 +99,14 @@ public class SegmentStrategyTest {
                 ProjectScanner.scanProject(
                         tempDir, tempDir, Checks.getCheckInstance(processor.getRuleKey()));
 
-        String crashClassName = "ArrayHashCodeAndToString";
-        assertTrue(
-                FileUtils.findFilesByExtension(tempDir, Constants.JAVA_EXT).stream()
-                        .map(File::getName)
-                        .anyMatch(s -> s.equals(crashClassName + Constants.JAVA_EXT)));
+        // we decide that parsing this class causes crashes
+        String crashingClass = "DeadStores";
+        Path crashingFile = getProcessorTestJavaFilePath(tempDir, crashingClass);
 
         Repair repair = new Repair(config, List.of());
         Function<LinkedList<Node>, CtModel> selectivelyCrashySegmentParser =
                 segment ->
-                        segmentContainsFile(segment, crashClassName + Constants.JAVA_EXT)
+                        segmentContainsFile(segment, crashingFile.toString())
                                 ? throwIllegalStateException()
                                 : repair.createSegmentLauncher(segment).getModel();
 
@@ -121,13 +120,28 @@ public class SegmentStrategyTest {
                         .collect(Collectors.toList());
 
         // assert
+        assertThat(processor.getNbFixes(), greaterThan(1));
         assertThat(models.size(), greaterThan(1));
         assertFalse(
                 models.stream()
                         .map(CtModel::getAllTypes)
                         .flatMap(Collection::stream)
                         .map(CtType::getSimpleName)
-                        .anyMatch(typeName -> typeName.equals(crashClassName)));
+                        .anyMatch(typeName -> typeName.equals(crashingClass)));
+    }
+
+    /**
+     * @return the absolute path to a Java file in the given directory with the given class name.
+     */
+    private static Path getProcessorTestJavaFilePath(File root, String className) {
+        return ProcessorTestHelper.getTestCaseStream(
+                        root.toPath().resolve("processor_test_files").toFile())
+                .map(tc -> tc.nonCompliantFile)
+                .map(File::toPath)
+                .map(Path::toAbsolutePath)
+                .filter(p -> p.endsWith(className + Constants.JAVA_EXT))
+                .findFirst()
+                .get();
     }
 
     private static SoraldConfig createSegmentConfig(String originalFilesPath) {
