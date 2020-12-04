@@ -17,15 +17,15 @@ public class FileOutputStrategyTest {
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_ORIGINAL_FILES_PATH,
                     Constants.PATH_TO_RESOURCES_FOLDER,
-                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
+                    Constants.ARG_RULE_KEYS,
                     "4973",
-                    Constants.ARG_SYMBOL + Constants.ARG_FILE_OUTPUT_STRATEGY,
+                    Constants.ARG_FILE_OUTPUT_STRATEGY,
                     FileOutputStrategy.CHANGED_ONLY.name(),
-                    Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
+                    Constants.ARG_WORKSPACE,
                     Constants.SORALD_WORKSPACE,
-                    Constants.ARG_SYMBOL + Constants.ARG_GIT_REPO_PATH,
+                    Constants.ARG_GIT_REPO_PATH,
                     "."
                 });
 
@@ -41,13 +41,13 @@ public class FileOutputStrategyTest {
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_ORIGINAL_FILES_PATH,
                     Constants.PATH_TO_RESOURCES_FOLDER,
-                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
+                    Constants.ARG_RULE_KEYS,
                     "4973",
-                    Constants.ARG_SYMBOL + Constants.ARG_FILE_OUTPUT_STRATEGY,
+                    Constants.ARG_FILE_OUTPUT_STRATEGY,
                     FileOutputStrategy.CHANGED_ONLY.name(),
-                    Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
+                    Constants.ARG_WORKSPACE,
                     Constants.SORALD_WORKSPACE
                 });
 
@@ -63,15 +63,15 @@ public class FileOutputStrategyTest {
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_ORIGINAL_FILES_PATH,
                     Constants.PATH_TO_RESOURCES_FOLDER,
-                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
+                    Constants.ARG_RULE_KEYS,
                     "4973",
-                    Constants.ARG_SYMBOL + Constants.ARG_FILE_OUTPUT_STRATEGY,
+                    Constants.ARG_FILE_OUTPUT_STRATEGY,
                     FileOutputStrategy.ALL.name(),
-                    Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
+                    Constants.ARG_PRETTY_PRINTING_STRATEGY,
                     PrettyPrintingStrategy.NORMAL.name(),
-                    Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
+                    Constants.ARG_WORKSPACE,
                     Constants.SORALD_WORKSPACE
                 });
 
@@ -91,9 +91,7 @@ public class FileOutputStrategyTest {
 
         // act
         ProcessorTestHelper.runSorald(
-                testCase,
-                Constants.ARG_SYMBOL + Constants.ARG_FILE_OUTPUT_STRATEGY,
-                FileOutputStrategy.IN_PLACE.name());
+                testCase, Constants.ARG_FILE_OUTPUT_STRATEGY, FileOutputStrategy.IN_PLACE.name());
 
         // assert
         RuleVerifier.verifyNoIssue(
@@ -115,7 +113,7 @@ public class FileOutputStrategyTest {
                 () ->
                         ProcessorTestHelper.runSorald(
                                 testCase,
-                                Constants.ARG_SYMBOL + Constants.ARG_FILE_OUTPUT_STRATEGY,
+                                Constants.ARG_FILE_OUTPUT_STRATEGY,
                                 FileOutputStrategy.IN_PLACE.name()));
     }
 
