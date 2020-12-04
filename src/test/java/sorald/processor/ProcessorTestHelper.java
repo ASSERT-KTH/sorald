@@ -128,13 +128,13 @@ public class ProcessorTestHelper {
         var coreArgs =
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
                     originalFileAbspath,
-                    Constants.ARG_RULE_KEYS,
+                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
                     Checks.getRuleKey(checkClass),
-                    Constants.ARG_WORKSPACE,
+                    Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
                     Constants.SORALD_WORKSPACE,
-                    Constants.ARG_PRETTY_PRINTING_STRATEGY,
+                    Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY,
                     brokenWithSniper
                             ? PrettyPrintingStrategy.NORMAL.name()
                             : PrettyPrintingStrategy.SNIPER.name()

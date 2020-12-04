@@ -21,13 +21,13 @@ public class MultipleProcessorsTest {
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
                     pathToBuggyFile,
-                    Constants.ARG_RULE_KEYS,
+                    Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS,
                     "2111,2184,2204",
-                    Constants.ARG_WORKSPACE,
+                    Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE,
                     Constants.SORALD_WORKSPACE,
-                    Constants.ARG_REPAIR_STRATEGY,
+                    Constants.ARG_SYMBOL + Constants.ARG_REPAIR_STRATEGY,
                     repairStrategy.name()
                 });
         TestHelper.removeComplianceComments(pathToRepairedFile);
