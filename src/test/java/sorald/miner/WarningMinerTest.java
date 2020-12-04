@@ -90,7 +90,8 @@ public class WarningMinerTest {
                 workdir.toPath().resolve("project" + Constants.JAVA_EXT).toFile();
         assertTrue(dirWithJavaExtension.mkdir(), "failed to create test directory");
         Files.writeString(
-                dirWithJavaExtension.toPath().resolve("Main.java"), "public class Main {}");
+                dirWithJavaExtension.toPath().resolve("Main.java"),
+                "public class Main { double a = 1f / 2f; }");
 
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -102,11 +103,7 @@ public class WarningMinerTest {
                     workdir.toString()
                 });
 
-        assertThat(
-                out.toString(),
-                containsString(
-                        "INFO  1 source files to be analyzed\n"
-                                + "INFO  1/1 source files have been analyzed"));
+        assertThat(out.toString(), containsString("MathOnFloatCheck=1"));
     }
 
     /** Test that extracting warnings gives results even for rules that are not violated. */
