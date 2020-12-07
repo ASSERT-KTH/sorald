@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 import org.sonar.plugins.java.api.JavaFileScanner;
@@ -19,6 +20,7 @@ import sorald.Repair;
 import sorald.RepairStrategy;
 import sorald.SoraldConfig;
 import sorald.event.StatisticsCollector;
+import sorald.event.StatsMetadataKeys;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleViolation;
@@ -229,10 +231,12 @@ public class Cli {
                     .repair();
 
             if (statsOutputFile != null) {
-                FileUtils.writeStatisticsJSON(
+                FileUtils.writeJSON(
                         statsOutputFile,
                         statsCollector,
-                        spec.commandLine().getParseResult().originalArgs());
+                        Map.of(
+                                StatsMetadataKeys.ORIGINAL_ARGS,
+                                spec.commandLine().getParseResult().originalArgs()));
             }
 
             return 0;
