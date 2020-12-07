@@ -8,13 +8,8 @@ public class ExecutionInfo {
     private final String javaVersion;
     private final String target;
 
-    public ExecutionInfo
-            (
-                    List<String> originalArgs,
-                    String soraldVersion,
-                    String javaVersion,
-                    String target
-            ) {
+    public ExecutionInfo(
+            List<String> originalArgs, String soraldVersion, String javaVersion, String target) {
         this.originalArgs = originalArgs;
         this.soraldVersion = soraldVersion;
         this.javaVersion = javaVersion;

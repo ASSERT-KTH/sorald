@@ -3,10 +3,7 @@ package sorald.cli;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 import org.sonar.plugins.java.api.JavaFileScanner;
@@ -30,9 +27,8 @@ import sorald.sonar.Checks;
 public class Cli {
     private static String javaVersion;
 
-    static{
+    static {
         javaVersion = System.getProperty(Constants.JAVA_VERSION_SYSTEM_PROPERTY);
-
     }
 
     /** @return Sorald's command line interface. */
@@ -243,7 +239,8 @@ public class Cli {
 
         @CommandLine.Option(
                 names = Constants.ARG_TARGET,
-                description = "The target of this execution (ex. sorald/92d377). This will be included in the json report.")
+                description =
+                        "The target of this execution (ex. sorald/92d377). This will be included in the json report.")
         String target;
 
         @Override
@@ -256,18 +253,24 @@ public class Cli {
                 List<String> reposList = Files.readAllLines(this.reposList.toPath());
 
                 new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
-                        .mineGitRepos(checks, minerOutputFile.getAbsolutePath(), reposList, tempDir);
+                        .mineGitRepos(
+                                checks, minerOutputFile.getAbsolutePath(), reposList, tempDir);
             } else {
                 new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
                         .mineLocalProject(checks, originalFilesPath.getAbsolutePath());
             }
 
             if (statsOutputFile != null) {
-                FileUtils.writeStatisticsJSON(
-                        statsOutputFile,
-                        statsCollector,
-                        new ExecutionInfo(spec.commandLine().getParseResult().originalArgs(),
-                                Constants.SORALD_VERSION, javaVersion, target));
+                Map<String, Object> additionalStatData = new HashMap<>();
+                additionalStatData.put(
+                        StatsMetadataKeys.EXECUTION_INFO_ARGS,
+                        new ExecutionInfo(
+                                spec.commandLine().getParseResult().originalArgs(),
+                                Constants.SORALD_VERSION,
+                                javaVersion,
+                                target));
+
+                FileUtils.writeJSON(statsOutputFile, statsCollector, additionalStatData);
             }
 
             return 0;

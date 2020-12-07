@@ -138,8 +138,10 @@ public class WarningMinerTest {
         assertThrows(
                 AnalysisException.class,
                 () ->
-                        new MineSonarWarnings(new ArrayList<>()).extractWarnings(
-                                Constants.PATH_TO_RESOURCES_FOLDER, Arrays.asList(crashyCheck)));
+                        new MineSonarWarnings(new ArrayList<>())
+                                .extractWarnings(
+                                        Constants.PATH_TO_RESOURCES_FOLDER,
+                                        Arrays.asList(crashyCheck)));
     }
 
     private static void runMiner(

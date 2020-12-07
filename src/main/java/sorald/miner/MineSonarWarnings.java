@@ -17,7 +17,7 @@ import sorald.sonar.RuleViolation;
 public class MineSonarWarnings {
     final List<SoraldEventHandler> eventHandlers;
 
-    public MineSonarWarnings(List<? extends SoraldEventHandler> eventHandlers){
+    public MineSonarWarnings(List<? extends SoraldEventHandler> eventHandlers) {
         this.eventHandlers = Collections.unmodifiableList(eventHandlers);
     }
 
@@ -62,8 +62,7 @@ public class MineSonarWarnings {
         }
     }
 
-    public void mineLocalProject(
-            List<? extends JavaFileScanner> checks, String projectPath) {
+    public void mineLocalProject(List<? extends JavaFileScanner> checks, String projectPath) {
         Map<String, Integer> warnings = extractWarnings(projectPath, checks);
 
         warnings.entrySet().stream()
@@ -106,11 +105,10 @@ public class MineSonarWarnings {
         Set<RuleViolation> analyzeMessages = RuleVerifier.analyze(filesToScan, file, checks);
         EventHelper.fireEvent(EventType.MINING_END, eventHandlers);
 
-        analyzeMessages.stream()
-                .map(RuleViolation::getCheckName)
-                .forEach(incrementWarningCount);
+        analyzeMessages.stream().map(RuleViolation::getCheckName).forEach(incrementWarningCount);
 
-        analyzeMessages.stream().forEach(v -> EventHelper.fireEvent(new MinedRuleEvent(v), eventHandlers));
+        analyzeMessages.stream()
+                .forEach(v -> EventHelper.fireEvent(new MinedRuleEvent(v), eventHandlers));
 
         return warnings;
     }

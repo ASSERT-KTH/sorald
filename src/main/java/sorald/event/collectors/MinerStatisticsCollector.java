@@ -1,25 +1,16 @@
 package sorald.event.collectors;
 
+import java.util.*;
 import sorald.event.SoraldEvent;
 import sorald.event.SoraldEventHandler;
 import sorald.event.models.miner.MinedRuleEvent;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-/**
- * Event handler for recording the miner mode statistics.
- */
+/** Event handler for recording the miner mode statistics. */
 public class MinerStatisticsCollector implements SoraldEventHandler {
-    /**
-     * start of mining determined by currentTimeMillis
-     */
+    /** start of mining determined by currentTimeMillis */
     private long miningStartTime;
 
-    /**
-     * start of mining determined by currentTimeMillis
-     */
+    /** start of mining determined by currentTimeMillis */
     private long miningEndTime;
 
     private List<MinedRuleEvent> minedRules = new ArrayList<>();
@@ -36,7 +27,8 @@ public class MinerStatisticsCollector implements SoraldEventHandler {
             case MINED:
                 MinedRuleEvent minedRuleEvent = (MinedRuleEvent) event;
                 Optional<MinedRuleEvent> existingEvent =
-                        minedRules.stream().filter(x -> x.getRuleKey().equals(minedRuleEvent.getRuleKey()))
+                        minedRules.stream()
+                                .filter(x -> x.getRuleKey().equals(minedRuleEvent.getRuleKey()))
                                 .findFirst();
 
                 if (!existingEvent.isEmpty()) {
@@ -49,30 +41,22 @@ public class MinerStatisticsCollector implements SoraldEventHandler {
         }
     }
 
-    /**
-     * @return The start time of mining
-     */
+    /** @return The start time of mining */
     public Date getMiningStartTime() {
         return new Date(miningStartTime);
     }
 
-    /**
-     * @return The end time of mining
-     */
+    /** @return The end time of mining */
     public Date getMiningEndTime() {
         return new Date(miningEndTime);
     }
 
-    /**
-     * @return The duration of mining in millis
-     */
+    /** @return The duration of mining in millis */
     public long getTotalMiningTime() {
         return miningEndTime - miningStartTime;
     }
 
-    /**
-     * @return All mined rules data
-     */
+    /** @return All mined rules data */
     public List<MinedRuleEvent> getMinedRules() {
         return Collections.unmodifiableList(minedRules);
     }

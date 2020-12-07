@@ -1,12 +1,11 @@
 package sorald.event.models.miner;
 
+import java.util.ArrayList;
+import java.util.List;
 import sorald.event.EventType;
 import sorald.event.SoraldEvent;
 import sorald.event.models.WarningLocation;
 import sorald.sonar.RuleViolation;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /** Event representing a mined rule information */
 public class MinedRuleEvent implements SoraldEvent {
@@ -15,7 +14,7 @@ public class MinedRuleEvent implements SoraldEvent {
     private final Integer nbFoundWarnings;
     private final List<WarningLocation> warningLocations;
 
-    public MinedRuleEvent(String ruleKey, String ruleName, Integer nbFoundWarnings){
+    public MinedRuleEvent(String ruleKey, String ruleName, Integer nbFoundWarnings) {
         this.ruleName = ruleName;
         this.ruleKey = ruleKey;
         this.nbFoundWarnings = nbFoundWarnings;
@@ -23,7 +22,7 @@ public class MinedRuleEvent implements SoraldEvent {
     }
 
     /** Wrapping just one violation inside a mined-rule event */
-    public MinedRuleEvent(RuleViolation violation){
+    public MinedRuleEvent(RuleViolation violation) {
         this.ruleKey = violation.getRuleKey();
         this.ruleName = violation.getCheckName();
         this.nbFoundWarnings = 1;
@@ -31,19 +30,19 @@ public class MinedRuleEvent implements SoraldEvent {
         this.warningLocations.add(new WarningLocation(violation));
     }
 
-    public void addWarningLocations(List<WarningLocation> newLocations){
+    public void addWarningLocations(List<WarningLocation> newLocations) {
         warningLocations.addAll(newLocations);
     }
 
-    public String getRuleKey(){
+    public String getRuleKey() {
         return ruleKey;
     }
 
-    public String getRuleName(){
+    public String getRuleName() {
         return ruleName;
     }
 
-    public Integer getNbFoundWarnings(){
+    public Integer getNbFoundWarnings() {
         return nbFoundWarnings;
     }
 

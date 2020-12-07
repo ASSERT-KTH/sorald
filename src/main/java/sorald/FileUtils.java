@@ -12,9 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.json.JSONObject;
 import sorald.event.SoraldEventHandler;
-import sorald.event.StatisticsCollector;
 import sorald.event.StatsMetadataKeys;
-import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
 
 public class FileUtils {

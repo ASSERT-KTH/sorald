@@ -18,10 +18,18 @@ public class WarningLocation {
         this.startColumn = violation.getStartCol();
         this.endColumn = violation.getEndCol();
 
-        this.usableLocation = violation.getRuleKey() + Constants.VIOLATION_USABLE_PATH_SEPARATOR +
-                filePath + Constants.VIOLATION_USABLE_PATH_SEPARATOR + startLine +
-                Constants.VIOLATION_USABLE_PATH_SEPARATOR + endLine + Constants.VIOLATION_USABLE_PATH_SEPARATOR +
-                startColumn + Constants.VIOLATION_USABLE_PATH_SEPARATOR + endColumn;
+        this.usableLocation =
+                violation.getRuleKey()
+                        + Constants.VIOLATION_USABLE_PATH_SEPARATOR
+                        + filePath
+                        + Constants.VIOLATION_USABLE_PATH_SEPARATOR
+                        + startLine
+                        + Constants.VIOLATION_USABLE_PATH_SEPARATOR
+                        + endLine
+                        + Constants.VIOLATION_USABLE_PATH_SEPARATOR
+                        + startColumn
+                        + Constants.VIOLATION_USABLE_PATH_SEPARATOR
+                        + endColumn;
     }
 
     public String getFilePath() {
