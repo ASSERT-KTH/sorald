@@ -55,7 +55,7 @@ public class Cli {
             mixinStandardHelpOptions = true,
             description = "Repair Sonar rule violations in a targeted project.")
     private static class RepairCommand implements Callable<Integer> {
-        private List<Integer> ruleKeys;
+        List<Integer> ruleKeys;
         List<RuleViolation> ruleViolations = List.of();
 
         @CommandLine.Spec CommandLine.Model.CommandSpec spec;
@@ -67,15 +67,29 @@ public class Cli {
                 required = true)
         File originalFilesPath;
 
-        @CommandLine.Option(
-                names = {Constants.ARG_RULE_KEYS},
-                description =
-                        "Choose one or more of the following rule keys "
-                                + "(use ',' to separate multiple keys):\n"
-                                + Processors.RULE_DESCRIPTIONS,
-                // required = true,
-                split = ",")
-        private void setRuleKeys(List<Integer> value) {
+        @CommandLine.ArgGroup(multiplicity = "1")
+        Rules rules;
+
+        static class Rules {
+            @CommandLine.Option(
+                    names = {Constants.ARG_RULE_KEYS},
+                    description =
+                            "Choose one or more of the following rule keys "
+                                    + "(use ',' to separate multiple keys):\n"
+                                    + Processors.RULE_DESCRIPTIONS,
+                    required = true,
+                    split = ",")
+            List<Integer> ruleKeys;
+
+            @CommandLine.Option(
+                    names = Constants.ARG_RULE_VIOLATIONS,
+                    description = "One or more specific rule violations",
+                    required = true,
+                    split = ",")
+            List<String> ruleViolations = List.of();
+        }
+
+        private void parseRuleKeys(List<Integer> value) {
             for (Integer ruleKey : value) {
                 if (Processors.getProcessor(ruleKey) == null) {
                     throw new CommandLine.ParameterException(
@@ -88,11 +102,7 @@ public class Cli {
             ruleKeys = value;
         }
 
-        @CommandLine.Option(
-                names = Constants.ARG_RULE_VIOLATIONS,
-                description = "One or more specific rule violations",
-                split = ",")
-        private void setRuleViolations(List<String> value) {
+        private void parseRuleViolations(List<String> value) {
             List<RuleViolation> parsedViolations = new ArrayList<>();
             List<Integer> keys = new ArrayList<>();
             for (String specifier : value) {
@@ -224,6 +234,13 @@ public class Cli {
         @Override
         public Integer call() throws IOException {
             validateArgs();
+
+            if (rules.ruleKeys != null) {
+                parseRuleKeys(rules.ruleKeys);
+            } else {
+                parseRuleViolations(rules.ruleViolations);
+            }
+
             SoraldConfig config = createConfig();
 
             var statsCollector = new StatisticsCollector();

@@ -4,6 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,6 +47,26 @@ public class TargetedRepairTest {
         assertFalse(violationsAfter.contains(workdirInfo.targetViolation));
         assertThat(repairedFiles.size(), equalTo(1));
         assertThat(repairedFiles.get(0).getName(), equalTo(workdirInfo.targetFile.getName()));
+    }
+
+    /** It should not be possible to specify both rule keys and specific rule violations. */
+    @Test
+    public void targetedRepair_cannotBeUsedWithRuleKeys(@TempDir File workdir) throws Exception {
+        // arrange
+        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir(workdir);
+        var args =
+                new String[] {
+                    Constants.REPAIR_COMMAND_NAME,
+                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    workdir.getAbsolutePath(),
+                    Constants.ARG_RULE_VIOLATIONS,
+                    workdirInfo.targetViolation.violationId(workdir.toPath()),
+                    Constants.ARG_RULE_KEYS,
+                    "2755"
+                };
+
+        // act/assert
+        assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
     }
 
     /** Setup the workdir with a specific target violation. */
