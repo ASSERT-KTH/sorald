@@ -64,7 +64,7 @@ public class WarningMinerTest {
                 pathToRepos,
                 outputFile.getPath(),
                 temp.getPath(),
-                Constants.ARG_SYMBOL + Constants.ARG_RULE_TYPES,
+                Constants.ARG_RULE_TYPES,
                 checkTypes.stream().map(Checks.CheckType::name).collect(Collectors.joining(",")));
 
         List<String> expectedChecks =
@@ -90,7 +90,8 @@ public class WarningMinerTest {
                 workdir.toPath().resolve("project" + Constants.JAVA_EXT).toFile();
         assertTrue(dirWithJavaExtension.mkdir(), "failed to create test directory");
         Files.writeString(
-                dirWithJavaExtension.toPath().resolve("Main.java"), "public class Main {}");
+                dirWithJavaExtension.toPath().resolve("Main.java"),
+                "public class Main { double a = 1f / 2f; }");
 
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -98,15 +99,11 @@ public class WarningMinerTest {
         Main.main(
                 new String[] {
                     Constants.MINE_COMMAND_NAME,
-                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_ORIGINAL_FILES_PATH,
                     workdir.toString()
                 });
 
-        assertThat(
-                out.toString(),
-                containsString(
-                        "INFO  1 source files to be analyzed\n"
-                                + "INFO  1/1 source files have been analyzed"));
+        assertThat(out.toString(), containsString("MathOnFloatCheck=1"));
     }
 
     /** Test that extracting warnings gives results even for rules that are not violated. */
@@ -150,12 +147,12 @@ public class WarningMinerTest {
         String[] baseArgs =
                 new String[] {
                     Constants.MINE_COMMAND_NAME,
-                    Constants.ARG_SYMBOL + Constants.ARG_STATS_ON_GIT_REPOS,
-                    Constants.ARG_SYMBOL + Constants.ARG_GIT_REPOS_LIST,
+                    Constants.ARG_STATS_ON_GIT_REPOS,
+                    Constants.ARG_GIT_REPOS_LIST,
                     pathToRepos,
-                    Constants.ARG_SYMBOL + Constants.ARG_STATS_OUTPUT_FILE,
+                    Constants.ARG_STATS_OUTPUT_FILE,
                     pathToOutput,
-                    Constants.ARG_SYMBOL + Constants.ARG_TEMP_DIR,
+                    Constants.ARG_TEMP_DIR,
                     pathToTempDir
                 };
         String[] fullArgs =
