@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class FileUtils {
@@ -105,7 +106,24 @@ public class FileUtils {
             throws IOException {
         // JSONObject's constructor recursively uses getter methods to produce a JSON object
         JSONObject jo = new JSONObject(coreObj);
-        additionalData.forEach((k, v) -> jo.put(k, new JSONObject(v)));
+
+        // Converting List and Arrays to JSONArray, and other objects to JSONObject
+        additionalData.entrySet().stream()
+                .collect(
+                        Collectors.toMap(
+                                e -> e.getKey(),
+                                e ->
+                                        (e.getValue() instanceof List
+                                                ? ((List) e.getValue()).toArray()
+                                                : e.getValue())))
+                .forEach(
+                        (k, v) ->
+                                jo.put(
+                                        k,
+                                        (v.getClass().isArray()
+                                                ? new JSONArray(v)
+                                                : new JSONObject(v))));
+
         Files.writeString(
                 file.toPath(),
                 jo.toString(4),
