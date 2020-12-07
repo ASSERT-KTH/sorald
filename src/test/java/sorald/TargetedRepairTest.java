@@ -29,9 +29,9 @@ public class TargetedRepairTest {
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_ORIGINAL_FILES_PATH,
                     workdir.getAbsolutePath(),
-                    Constants.ARG_SYMBOL + Constants.ARG_RULE_VIOLATIONS,
+                    Constants.ARG_RULE_VIOLATIONS,
                     workdirInfo.targetViolation.violationId(workdir.toPath())
                 });
 

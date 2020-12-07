@@ -11,22 +11,21 @@ public class Constants {
     public static final String REPAIR_COMMAND_NAME = "repair";
     public static final String MINE_COMMAND_NAME = "mine";
 
-    public static final String ARG_SYMBOL = "--";
-    public static final String ARG_RULE_KEYS = "ruleKeys";
-    public static final String ARG_ORIGINAL_FILES_PATH = "originalFilesPath";
-    public static final String ARG_STATS_ON_GIT_REPOS = "statsOnGitRepos";
-    public static final String ARG_STATS_OUTPUT_FILE = "statsOutputFile";
-    public static final String ARG_GIT_REPOS_LIST = "gitReposList";
-    public static final String ARG_TEMP_DIR = "tempDir";
-    public static final String ARG_WORKSPACE = "workspace";
-    public static final String ARG_GIT_REPO_PATH = "gitRepoPath";
-    public static final String ARG_PRETTY_PRINTING_STRATEGY = "prettyPrintingStrategy";
-    public static final String ARG_FILE_OUTPUT_STRATEGY = "fileOutputStrategy";
-    public static final String ARG_MAX_FIXES_PER_RULE = "maxFixesPerRule";
-    public static final String ARG_REPAIR_STRATEGY = "repairStrategy";
-    public static final String ARG_MAX_FILES_PER_SEGMENT = "maxFilesPerSegment";
-    public static final String ARG_RULE_TYPES = "ruleTypes";
-    public static final String ARG_RULE_VIOLATIONS = "violationIds";
+    public static final String ARG_RULE_KEYS = "--ruleKeys";
+    public static final String ARG_ORIGINAL_FILES_PATH = "--originalFilesPath";
+    public static final String ARG_STATS_ON_GIT_REPOS = "--statsOnGitRepos";
+    public static final String ARG_STATS_OUTPUT_FILE = "--statsOutputFile";
+    public static final String ARG_GIT_REPOS_LIST = "--gitReposList";
+    public static final String ARG_TEMP_DIR = "--tempDir";
+    public static final String ARG_WORKSPACE = "--workspace";
+    public static final String ARG_GIT_REPO_PATH = "--gitRepoPath";
+    public static final String ARG_PRETTY_PRINTING_STRATEGY = "--prettyPrintingStrategy";
+    public static final String ARG_FILE_OUTPUT_STRATEGY = "--fileOutputStrategy";
+    public static final String ARG_MAX_FIXES_PER_RULE = "--maxFixesPerRule";
+    public static final String ARG_REPAIR_STRATEGY = "--repairStrategy";
+    public static final String ARG_MAX_FILES_PER_SEGMENT = "--maxFilesPerSegment";
+    public static final String ARG_RULE_TYPES = "--ruleTypes";
+    public static final String ARG_RULE_VIOLATIONS = "--violationIds";
 
     public static final String PROCESSOR_PACKAGE = "sorald.processor";
 

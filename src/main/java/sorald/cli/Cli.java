@@ -59,14 +59,14 @@ public class Cli {
         @CommandLine.Spec CommandLine.Model.CommandSpec spec;
 
         @CommandLine.Option(
-                names = {Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH},
+                names = {Constants.ARG_ORIGINAL_FILES_PATH},
                 description =
                         "The path to the file or folder to be analyzed and possibly repaired.",
                 required = true)
         File originalFilesPath;
 
         @CommandLine.Option(
-                names = {Constants.ARG_SYMBOL + Constants.ARG_RULE_KEYS},
+                names = {Constants.ARG_RULE_KEYS},
                 description =
                         "Choose one or more of the following rule keys "
                                 + "(use ',' to separate multiple keys):\n"
@@ -87,7 +87,7 @@ public class Cli {
         }
 
         @CommandLine.Option(
-                names = Constants.ARG_SYMBOL + Constants.ARG_RULE_VIOLATIONS,
+                names = Constants.ARG_RULE_VIOLATIONS,
                 description = "One or more specific rule violations",
                 split = ",")
         private void setRuleViolations(List<String> value) {
@@ -173,48 +173,48 @@ public class Cli {
         }
 
         @CommandLine.Option(
-                names = {Constants.ARG_SYMBOL + Constants.ARG_WORKSPACE},
+                names = {Constants.ARG_WORKSPACE},
                 description =
                         "The path to a folder that will be used as workspace by Sorald, i.e. the path for the output.",
                 defaultValue = Constants.SORALD_WORKSPACE)
         File soraldWorkspace;
 
         @CommandLine.Option(
-                names = {Constants.ARG_SYMBOL + Constants.ARG_GIT_REPO_PATH},
+                names = {Constants.ARG_GIT_REPO_PATH},
                 description = "The path to a git repository directory.")
         File gitRepoPath;
 
         @CommandLine.Option(
-                names = {Constants.ARG_SYMBOL + Constants.ARG_PRETTY_PRINTING_STRATEGY},
+                names = {Constants.ARG_PRETTY_PRINTING_STRATEGY},
                 description =
                         "Mode for pretty printing the source code: 'NORMAL', which means that all source code will be printed and its formatting might change (such as indentation), and 'SNIPER', which means that only statements changed towards the repair of Sonar rule violations will be printed.")
         PrettyPrintingStrategy prettyPrintingStrategy = PrettyPrintingStrategy.SNIPER;
 
         @CommandLine.Option(
-                names = Constants.ARG_SYMBOL + Constants.ARG_FILE_OUTPUT_STRATEGY,
+                names = Constants.ARG_FILE_OUTPUT_STRATEGY,
                 description =
                         "Mode for outputting files: 'CHANGED_ONLY', which means that only changed files will be created in the workspace. 'ALL', which means that all files, including the unchanged ones, will be created in the workspace. 'IN_PLACE', which means that results are written directly to source files.")
         FileOutputStrategy fileOutputStrategy = FileOutputStrategy.CHANGED_ONLY;
 
         @CommandLine.Option(
-                names = Constants.ARG_SYMBOL + Constants.ARG_MAX_FIXES_PER_RULE,
+                names = Constants.ARG_MAX_FIXES_PER_RULE,
                 description = "Max number of fixes per rule.")
         int maxFixesPerRule = Integer.MAX_VALUE;
 
         @CommandLine.Option(
-                names = Constants.ARG_SYMBOL + Constants.ARG_REPAIR_STRATEGY,
+                names = Constants.ARG_REPAIR_STRATEGY,
                 description =
                         "Type of repair strategy. DEFAULT - load everything without splitting up the folder in segments, SEGMENT - splitting the folder into smaller segments and repair one segment at a time (need to specify --maxFilesPerSegment if not default)")
         RepairStrategy repairStrategy = RepairStrategy.DEFAULT;
 
         @CommandLine.Option(
-                names = Constants.ARG_SYMBOL + Constants.ARG_MAX_FILES_PER_SEGMENT,
+                names = Constants.ARG_MAX_FILES_PER_SEGMENT,
                 description =
                         "Max number of files per loaded segment for segmented repair. It should be >= 3000 files per segment.")
         int maxFilesPerSegment = 6500;
 
         @CommandLine.Option(
-                names = Constants.ARG_SYMBOL + Constants.ARG_STATS_OUTPUT_FILE,
+                names = Constants.ARG_STATS_OUTPUT_FILE,
                 description =
                         "Path to a file to store execution statistics in (in JSON format). If left unspecified, Sorald does not gather statistics.")
         File statsOutputFile;
@@ -242,9 +242,7 @@ public class Cli {
             if (maxFilesPerSegment <= 0) {
                 throw new CommandLine.ParameterException(
                         spec.commandLine(),
-                        Constants.ARG_SYMBOL
-                                + Constants.ARG_MAX_FILES_PER_SEGMENT
-                                + " must be greater than 0");
+                        Constants.ARG_MAX_FILES_PER_SEGMENT + " must be greater than 0");
             }
 
             if (statsOutputFile != null && repairStrategy == RepairStrategy.SEGMENT) {
@@ -283,33 +281,33 @@ public class Cli {
         @CommandLine.Spec CommandLine.Model.CommandSpec spec;
 
         @CommandLine.Option(
-                names = {Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH},
+                names = {Constants.ARG_ORIGINAL_FILES_PATH},
                 description =
                         "The path to the file or folder to be analyzed and possibly repaired.")
         File originalFilesPath;
 
         @CommandLine.Option(
-                names = Constants.ARG_SYMBOL + Constants.ARG_STATS_ON_GIT_REPOS,
+                names = Constants.ARG_STATS_ON_GIT_REPOS,
                 description = "If the stats should be computed on git repos.")
         boolean statsOnGitRepos;
 
         @CommandLine.Option(
-                names = Constants.ARG_SYMBOL + Constants.ARG_STATS_OUTPUT_FILE,
+                names = Constants.ARG_STATS_OUTPUT_FILE,
                 description = "The path to the output file.")
         File statsOutputFile;
 
         @CommandLine.Option(
-                names = Constants.ARG_SYMBOL + Constants.ARG_GIT_REPOS_LIST,
+                names = Constants.ARG_GIT_REPOS_LIST,
                 description = "The path to the repos list.")
         File reposList;
 
         @CommandLine.Option(
-                names = Constants.ARG_SYMBOL + Constants.ARG_TEMP_DIR,
+                names = Constants.ARG_TEMP_DIR,
                 description = "The path to the temp directory.")
         File tempDir;
 
         @CommandLine.Option(
-                names = {Constants.ARG_SYMBOL + Constants.ARG_RULE_TYPES},
+                names = {Constants.ARG_RULE_TYPES},
                 description =
                         "One or more types of rules to check for (use ',' to separate multiple types). Choices: ${COMPLETION-CANDIDATES}",
                 split = ",")
