@@ -7,6 +7,7 @@ import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import sorald.Constants;
 import sorald.Main;
 import sorald.PrettyPrintingStrategy;
+import sorald.SystemExitHandler;
 import sorald.TestHelper;
 import sorald.sonar.RuleVerifier;
 
@@ -63,6 +64,6 @@ public class SegmentStrategyTest {
                     Constants.ARG_WORKSPACE,
                     Constants.SORALD_WORKSPACE + "/SEGMENT/"
                 };
-        assertThrows(RuntimeException.class, () -> Main.main(args));
+        assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
     }
 }

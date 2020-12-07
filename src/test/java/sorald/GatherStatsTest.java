@@ -82,6 +82,6 @@ public class GatherStatsTest {
                     statsFile.getAbsolutePath()
                 };
 
-        assertThrows(IllegalStateException.class, () -> Main.main(cliArgs));
+        assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(cliArgs));
     }
 }
