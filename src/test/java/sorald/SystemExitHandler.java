@@ -5,6 +5,10 @@ import org.junit.platform.engine.TestExecutionResult;
 import org.junit.platform.launcher.TestExecutionListener;
 import org.junit.platform.launcher.TestIdentifier;
 
+/**
+ * Handler for calls to {@link System#exit(int)}. It intercepts any calls and throws a {@link
+ * NonZeroExit} whenever a non-zero exit is encountered.
+ */
 public class SystemExitHandler implements TestExecutionListener {
 
     @Override
