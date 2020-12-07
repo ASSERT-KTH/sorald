@@ -7,12 +7,21 @@ import java.util.stream.Collectors;
 import org.eclipse.jgit.api.Git;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.event.EventHelper;
+import sorald.event.EventType;
+import sorald.event.SoraldEventHandler;
+import sorald.event.models.miner.MinedRuleEvent;
 import sorald.sonar.RuleVerifier;
 import sorald.sonar.RuleViolation;
 
 public class MineSonarWarnings {
+    final List<SoraldEventHandler> eventHandlers;
 
-    public static void mineGitRepos(
+    public MineSonarWarnings(List<? extends SoraldEventHandler> eventHandlers){
+        this.eventHandlers = Collections.unmodifiableList(eventHandlers);
+    }
+
+    public void mineGitRepos(
             List<? extends JavaFileScanner> checks,
             String outputPath,
             List<String> reposList,
@@ -53,7 +62,7 @@ public class MineSonarWarnings {
         }
     }
 
-    public static void mineLocalProject(
+    public void mineLocalProject(
             List<? extends JavaFileScanner> checks, String projectPath) {
         Map<String, Integer> warnings = extractWarnings(projectPath, checks);
 
@@ -67,7 +76,7 @@ public class MineSonarWarnings {
      * @param checks Checks to run on the Java files in the project
      * @return A mapping (checkClassName -> numViolations)
      */
-    static Map<String, Integer> extractWarnings(
+    Map<String, Integer> extractWarnings(
             String projectPath, List<? extends JavaFileScanner> checks) {
         List<String> filesToScan = new ArrayList<>();
         File file = new File(projectPath);
@@ -92,9 +101,17 @@ public class MineSonarWarnings {
 
         Consumer<String> incrementWarningCount =
                 (checkName) -> warnings.put(checkName, warnings.get(checkName) + 1);
-        RuleVerifier.analyze(filesToScan, file, checks).stream()
+
+        EventHelper.fireEvent(EventType.MINING_START, eventHandlers);
+        Set<RuleViolation> analyzeMessages = RuleVerifier.analyze(filesToScan, file, checks);
+        EventHelper.fireEvent(EventType.MINING_END, eventHandlers);
+
+        analyzeMessages.stream()
                 .map(RuleViolation::getCheckName)
                 .forEach(incrementWarningCount);
+
+        analyzeMessages.stream().forEach(v -> EventHelper.fireEvent(new MinedRuleEvent(v), eventHandlers));
+
         return warnings;
     }
 }

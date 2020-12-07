@@ -5,6 +5,7 @@ public class StatsMetadataKeys {
     // General data
     public static final String REPAIRS = "repairs";
     public static final String ORIGINAL_ARGS = "originalArgs";
+    public static final String EXECUTION_INFO_ARGS = "executionInfo";
     public static final String PARSE_TIME_NS = "parseTimeNs";
     public static final String REPAIR_TIME_NS = "repairTimeNs";
 

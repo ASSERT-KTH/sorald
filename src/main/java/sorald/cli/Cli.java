@@ -21,11 +21,19 @@ import sorald.RepairStrategy;
 import sorald.SoraldConfig;
 import sorald.event.StatisticsCollector;
 import sorald.event.StatsMetadataKeys;
+import sorald.event.collectors.MinerStatisticsCollector;
+import sorald.event.models.ExecutionInfo;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
 
 /** Class containing the CLI for Sorald. */
 public class Cli {
+    private static String javaVersion;
+
+    static{
+        javaVersion = System.getProperty(Constants.JAVA_VERSION_SYSTEM_PROPERTY);
+
+    }
 
     /** @return Sorald's command line interface. */
     public static CommandLine createCli() {
@@ -228,16 +236,35 @@ public class Cli {
                 split = ",")
         private List<Checks.CheckType> ruleTypes = new ArrayList<>();
 
+        @CommandLine.Option(
+                names = Constants.ARG_TARGET,
+                description = "The target of this execution (ex. sorald/92d377). This will be included in the json report.")
+        String target;
+
         @Override
         public Integer call() throws Exception {
             List<? extends JavaFileScanner> checks = inferCheckInstances(ruleTypes);
+
+            var statsCollector = new MinerStatisticsCollector();
+
             if (statsOnGitRepos) {
                 List<String> reposList = Files.readAllLines(this.reposList.toPath());
-                MineSonarWarnings.mineGitRepos(
-                        checks, statsOutputFile.getAbsolutePath(), reposList, tempDir);
+
+                new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
+                        .mineGitRepos(checks, statsOutputFile.getAbsolutePath(), reposList, tempDir);
             } else {
-                MineSonarWarnings.mineLocalProject(checks, originalFilesPath.getAbsolutePath());
+                new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
+                        .mineLocalProject(checks, originalFilesPath.getAbsolutePath());
             }
+
+            if (statsOutputFile != null) {
+                FileUtils.writeStatisticsJSON(
+                        statsOutputFile,
+                        statsCollector,
+                        new ExecutionInfo(spec.commandLine().getParseResult().originalArgs(),
+                                Constants.SORALD_VERSION, javaVersion, target));
+            }
+
             return 0;
         }
 

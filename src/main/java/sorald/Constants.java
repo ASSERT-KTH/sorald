@@ -7,6 +7,7 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.sonar.Checks;
 
 public class Constants {
+    public static final String SORALD_VERSION = "92d377cc39f63be35f9bee00d372c8f1ca06be5e";
 
     public static final String REPAIR_COMMAND_NAME = "repair";
     public static final String MINE_COMMAND_NAME = "mine";
@@ -25,6 +26,7 @@ public class Constants {
     public static final String ARG_REPAIR_STRATEGY = "--repairStrategy";
     public static final String ARG_MAX_FILES_PER_SEGMENT = "--maxFilesPerSegment";
     public static final String ARG_RULE_TYPES = "--ruleTypes";
+    public static final String ARG_TARGET = "--target";
 
     public static final String PROCESSOR_PACKAGE = "sorald.processor";
 
@@ -46,11 +48,14 @@ public class Constants {
     public static final String DOUBLE = "double";
 
     public static final String STRING_QUALIFIED_NAME = "java.lang.String";
+    public static final String JAVA_VERSION_SYSTEM_PROPERTY = "java.version";
 
     public static final String TOSTRING_METHOD_NAME = "toString";
     public static final String HASHCODE_METHOD_NAME = "hashCode";
 
     public static final String PATH_TO_STATS_OUTPUT = "experimentation/stats/warnings";
+
+    public static final String VIOLATION_USABLE_PATH_SEPARATOR = "###";
 
     public static final List<Class<? extends JavaFileScanner>> SONAR_CHECK_CLASSES;
 

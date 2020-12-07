@@ -11,6 +11,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.json.JSONObject;
+import sorald.event.SoraldEventHandler;
+import sorald.event.StatisticsCollector;
+import sorald.event.StatsMetadataKeys;
+import sorald.event.collectors.MinerStatisticsCollector;
+import sorald.event.models.ExecutionInfo;
 
 public class FileUtils {
 
@@ -108,6 +113,27 @@ public class FileUtils {
         additionalData.forEach(jo::put);
         Files.writeString(
                 file.toPath(),
+                jo.toString(4),
+                StandardOpenOption.CREATE,
+                StandardOpenOption.TRUNCATE_EXISTING);
+    }
+
+    /**
+     * Write the statistics JSON file.
+     *
+     * @param statsOutputFile The file to write to.
+     * @param statsCollector A {@link SoraldEventHandler} containing stats.
+     * @param executionInfo The information of the execution.
+     * @throws IOException If the file can't be written to.
+     */
+    public static void writeStatisticsJSON(
+            File statsOutputFile, SoraldEventHandler statsCollector, ExecutionInfo executionInfo)
+            throws IOException {
+        // JSONObject's constructor recursively uses getter methods to produce a JSON object
+        JSONObject jo = new JSONObject(statsCollector);
+        jo.put(StatsMetadataKeys.EXECUTION_INFO_ARGS, executionInfo);
+        Files.writeString(
+                statsOutputFile.toPath(),
                 jo.toString(4),
                 StandardOpenOption.CREATE,
                 StandardOpenOption.TRUNCATE_EXISTING);
