@@ -2,11 +2,10 @@ package sorald.cli;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.stream.Collectors;
 import picocli.CommandLine;
 import sorald.Constants;
 import sorald.FileOutputStrategy;
@@ -108,7 +107,7 @@ class RepairCommand implements Callable<Integer> {
 
     @Override
     public Integer call() throws IOException {
-        parseRules();
+        setRuleKeysAndViolations();
         validateArgs();
         SoraldConfig config = createConfig();
 
@@ -145,15 +144,20 @@ class RepairCommand implements Callable<Integer> {
     }
 
     /** Perform further parsing on the {@link RepairCommand#rules} options. */
-    private void parseRules() {
-        ruleKeys = rules.ruleKeys;
-        ruleViolations = List.of();
-        if (rules.ruleViolations != null) {
-            Pair<List<Integer>, List<RuleViolation>> keysAndViolations =
-                    parseRuleViolations(rules.ruleViolations, originalFilesPath);
-            ruleKeys = keysAndViolations.getLeft();
-            ruleViolations = keysAndViolations.getRight();
-        }
+    private void setRuleKeysAndViolations() {
+        ruleViolations =
+                rules.ruleViolations == null
+                        ? List.of()
+                        : rules.ruleViolations.stream()
+                                .map(this::parseRuleViolation)
+                                .collect(Collectors.toUnmodifiableList());
+        ruleKeys =
+                ruleViolations.isEmpty()
+                        ? rules.ruleKeys
+                        : ruleViolations.stream()
+                                .map(RuleViolation::getRuleKey)
+                                .map(Integer::parseInt)
+                                .collect(Collectors.toUnmodifiableList());
     }
 
     private void validateRuleKeys(List<Integer> value) {
@@ -168,25 +172,15 @@ class RepairCommand implements Callable<Integer> {
         }
     }
 
-    private static Pair<List<Integer>, List<RuleViolation>> parseRuleViolations(
-            List<String> value, File originalFilesPath) {
-        List<RuleViolation> parsedViolations = new ArrayList<>();
-        List<Integer> keys = new ArrayList<>();
-        for (String specifier : value) {
-            String[] parts = specifier.split(":");
-            String key = parts[0];
-            keys.add(Integer.parseInt(key));
-            String fileName =
-                    originalFilesPath.toPath().resolve(parts[1]).toAbsolutePath().toString();
-            int startLine = Integer.parseInt(parts[2]);
-            int startCol = Integer.parseInt(parts[3]);
-            int endLine = Integer.parseInt(parts[4]);
-            int endCol = Integer.parseInt(parts[5]);
-            parsedViolations.add(
-                    new SpecifiedRuleViolation(
-                            key, fileName, startLine, endLine, startCol, endCol));
-        }
-        return Pair.of(keys, parsedViolations);
+    private RuleViolation parseRuleViolation(String violationId) {
+        String[] parts = violationId.split(":");
+        String key = parts[0];
+        String fileName = originalFilesPath.toPath().resolve(parts[1]).toAbsolutePath().toString();
+        int startLine = Integer.parseInt(parts[2]);
+        int startCol = Integer.parseInt(parts[3]);
+        int endLine = Integer.parseInt(parts[4]);
+        int endCol = Integer.parseInt(parts[5]);
+        return new SpecifiedRuleViolation(key, fileName, startLine, endLine, startCol, endCol);
     }
 
     private SoraldConfig createConfig() {
