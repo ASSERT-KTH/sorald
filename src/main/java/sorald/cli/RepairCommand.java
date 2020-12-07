@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
+import org.apache.commons.lang3.tuple.Pair;
 import picocli.CommandLine;
 import sorald.Constants;
 import sorald.FileOutputStrategy;
@@ -55,41 +56,7 @@ class RepairCommand implements Callable<Integer> {
                 description = "One or more specific rule violations",
                 required = true,
                 split = ",")
-        List<String> ruleViolations = List.of();
-    }
-
-    private void parseRuleKeys(List<Integer> value) {
-        for (Integer ruleKey : value) {
-            if (Processors.getProcessor(ruleKey) == null) {
-                throw new CommandLine.ParameterException(
-                        spec.commandLine(),
-                        "Sorry, repair not available for rule "
-                                + ruleKey
-                                + ". See the available rules below.");
-            }
-        }
-        ruleKeys = value;
-    }
-
-    private void parseRuleViolations(List<String> value) {
-        List<RuleViolation> parsedViolations = new ArrayList<>();
-        List<Integer> keys = new ArrayList<>();
-        for (String specifier : value) {
-            String[] parts = specifier.split(":");
-            String key = parts[0];
-            keys.add(Integer.parseInt(key));
-            String fileName =
-                    originalFilesPath.toPath().resolve(parts[1]).toAbsolutePath().toString();
-            int startLine = Integer.parseInt(parts[2]);
-            int startCol = Integer.parseInt(parts[3]);
-            int endLine = Integer.parseInt(parts[4]);
-            int endCol = Integer.parseInt(parts[5]);
-            parsedViolations.add(
-                    new SpecifiedRuleViolation(
-                            key, fileName, startLine, endLine, startCol, endCol));
-        }
-        ruleViolations = parsedViolations;
-        ruleKeys = keys;
+        List<String> ruleViolations;
     }
 
     @CommandLine.Option(
@@ -141,14 +108,8 @@ class RepairCommand implements Callable<Integer> {
 
     @Override
     public Integer call() throws IOException {
+        parseRules();
         validateArgs();
-
-        if (rules.ruleKeys != null) {
-            parseRuleKeys(rules.ruleKeys);
-        } else {
-            parseRuleViolations(rules.ruleViolations);
-        }
-
         SoraldConfig config = createConfig();
 
         var statsCollector = new StatisticsCollector();
@@ -162,6 +123,8 @@ class RepairCommand implements Callable<Integer> {
                             StatsMetadataKeys.ORIGINAL_ARGS,
                             spec.commandLine().getParseResult().originalArgs()));
         }
+
+        validateRuleKeys(ruleKeys);
 
         return 0;
     }
@@ -179,6 +142,51 @@ class RepairCommand implements Callable<Integer> {
                     RepairStrategy.SEGMENT.name()
                             + " repair does not currently support statistics collection");
         }
+    }
+
+    /** Perform further parsing on the {@link RepairCommand#rules} options. */
+    private void parseRules() {
+        ruleKeys = rules.ruleKeys;
+        ruleViolations = List.of();
+        if (rules.ruleViolations != null) {
+            Pair<List<Integer>, List<RuleViolation>> keysAndViolations =
+                    parseRuleViolations(rules.ruleViolations, originalFilesPath);
+            ruleKeys = keysAndViolations.getLeft();
+            ruleViolations = keysAndViolations.getRight();
+        }
+    }
+
+    private void validateRuleKeys(List<Integer> value) {
+        for (Integer ruleKey : value) {
+            if (Processors.getProcessor(ruleKey) == null) {
+                throw new CommandLine.ParameterException(
+                        spec.commandLine(),
+                        "Sorry, repair not available for rule "
+                                + ruleKey
+                                + ". See the available rules below.");
+            }
+        }
+    }
+
+    private static Pair<List<Integer>, List<RuleViolation>> parseRuleViolations(
+            List<String> value, File originalFilesPath) {
+        List<RuleViolation> parsedViolations = new ArrayList<>();
+        List<Integer> keys = new ArrayList<>();
+        for (String specifier : value) {
+            String[] parts = specifier.split(":");
+            String key = parts[0];
+            keys.add(Integer.parseInt(key));
+            String fileName =
+                    originalFilesPath.toPath().resolve(parts[1]).toAbsolutePath().toString();
+            int startLine = Integer.parseInt(parts[2]);
+            int startCol = Integer.parseInt(parts[3]);
+            int endLine = Integer.parseInt(parts[4]);
+            int endCol = Integer.parseInt(parts[5]);
+            parsedViolations.add(
+                    new SpecifiedRuleViolation(
+                            key, fileName, startLine, endLine, startCol, endCol));
+        }
+        return Pair.of(keys, parsedViolations);
     }
 
     private SoraldConfig createConfig() {
