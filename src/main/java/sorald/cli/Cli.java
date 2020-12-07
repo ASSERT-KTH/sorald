@@ -216,8 +216,13 @@ public class Cli {
 
         @CommandLine.Option(
                 names = Constants.ARG_STATS_OUTPUT_FILE,
-                description = "The path to the output file.")
+                description = "The path to the stats output file.")
         File statsOutputFile;
+
+        @CommandLine.Option(
+                names = Constants.ARG_MINER_OUTPUT_FILE,
+                description = "The path to the output file.")
+        File minerOutputFile;
 
         @CommandLine.Option(
                 names = Constants.ARG_GIT_REPOS_LIST,
@@ -251,7 +256,7 @@ public class Cli {
                 List<String> reposList = Files.readAllLines(this.reposList.toPath());
 
                 new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
-                        .mineGitRepos(checks, statsOutputFile.getAbsolutePath(), reposList, tempDir);
+                        .mineGitRepos(checks, minerOutputFile.getAbsolutePath(), reposList, tempDir);
             } else {
                 new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
                         .mineLocalProject(checks, originalFilesPath.getAbsolutePath());

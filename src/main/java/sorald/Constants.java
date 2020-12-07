@@ -16,6 +16,7 @@ public class Constants {
     public static final String ARG_ORIGINAL_FILES_PATH = "--originalFilesPath";
     public static final String ARG_STATS_ON_GIT_REPOS = "--statsOnGitRepos";
     public static final String ARG_STATS_OUTPUT_FILE = "--statsOutputFile";
+    public static final String ARG_MINER_OUTPUT_FILE = "--minerOutputFile";
     public static final String ARG_GIT_REPOS_LIST = "--gitReposList";
     public static final String ARG_TEMP_DIR = "--tempDir";
     public static final String ARG_WORKSPACE = "--workspace";

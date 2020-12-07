@@ -4,10 +4,7 @@ import sorald.event.SoraldEvent;
 import sorald.event.SoraldEventHandler;
 import sorald.event.models.miner.MinedRuleEvent;
 
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -25,7 +22,7 @@ public class MinerStatisticsCollector implements SoraldEventHandler {
      */
     private long miningEndTime;
 
-    private List<MinedRuleEvent> minedRules;
+    private List<MinedRuleEvent> minedRules = new ArrayList<>();
 
     @Override
     public void registerEvent(SoraldEvent event) {
@@ -42,7 +39,7 @@ public class MinerStatisticsCollector implements SoraldEventHandler {
                         minedRules.stream().filter(x -> x.getRuleKey().equals(minedRuleEvent.getRuleKey()))
                                 .findFirst();
 
-                if (existingEvent.isEmpty()) {
+                if (!existingEvent.isEmpty()) {
                     existingEvent.get().addWarningLocations(minedRuleEvent.getWarningLocations());
                 } else {
                     minedRules.add(minedRuleEvent);

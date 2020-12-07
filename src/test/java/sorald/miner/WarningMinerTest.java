@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -137,7 +138,7 @@ public class WarningMinerTest {
         assertThrows(
                 AnalysisException.class,
                 () ->
-                        MineSonarWarnings.extractWarnings(
+                        new MineSonarWarnings(new ArrayList<>()).extractWarnings(
                                 Constants.PATH_TO_RESOURCES_FOLDER, Arrays.asList(crashyCheck)));
     }
 
@@ -150,7 +151,7 @@ public class WarningMinerTest {
                     Constants.ARG_STATS_ON_GIT_REPOS,
                     Constants.ARG_GIT_REPOS_LIST,
                     pathToRepos,
-                    Constants.ARG_STATS_OUTPUT_FILE,
+                    Constants.ARG_MINER_OUTPUT_FILE,
                     pathToOutput,
                     Constants.ARG_TEMP_DIR,
                     pathToTempDir
