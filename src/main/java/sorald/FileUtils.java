@@ -7,11 +7,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.json.JSONObject;
-import sorald.event.StatisticsCollector;
-import sorald.event.StatsMetadataKeys;
 
 public class FileUtils {
 
@@ -94,21 +93,21 @@ public class FileUtils {
     }
 
     /**
-     * Write the statistics JSON file.
+     * Write a core object and additional data to a JSON file.
      *
-     * @param statsOutputFile The file to write to.
-     * @param statsCollector A {@link StatisticsCollector} containing stats.
-     * @param originalArgs The original arguments passed to the command line.
+     * @param file The file to write to.
+     * @param coreObj The core object to form the basis of the JSON output. All getter methods are
+     *     recursively traversed to create the JSON output.
+     * @param additionalData Additional key/value pairs to put in the JSON output.
      * @throws IOException If the file can't be written to.
      */
-    public static void writeStatisticsJSON(
-            File statsOutputFile, StatisticsCollector statsCollector, List<String> originalArgs)
+    public static void writeJSON(File file, Object coreObj, Map<String, Object> additionalData)
             throws IOException {
         // JSONObject's constructor recursively uses getter methods to produce a JSON object
-        JSONObject jo = new JSONObject(statsCollector);
-        jo.put(StatsMetadataKeys.ORIGINAL_ARGS, originalArgs);
+        JSONObject jo = new JSONObject(coreObj);
+        additionalData.forEach(jo::put);
         Files.writeString(
-                statsOutputFile.toPath(),
+                file.toPath(),
                 jo.toString(4),
                 StandardOpenOption.CREATE,
                 StandardOpenOption.TRUNCATE_EXISTING);
