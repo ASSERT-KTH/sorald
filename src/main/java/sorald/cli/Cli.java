@@ -263,7 +263,7 @@ public class Cli {
             if (statsOutputFile != null) {
                 Map<String, Object> additionalStatData = new HashMap<>();
                 additionalStatData.put(
-                        StatsMetadataKeys.EXECUTION_INFO_ARGS,
+                        StatsMetadataKeys.EXECUTION_INFO,
                         new ExecutionInfo(
                                 spec.commandLine().getParseResult().originalArgs(),
                                 Constants.SORALD_VERSION,
