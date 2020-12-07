@@ -10,12 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import com.google.gson.JsonObject;
 import org.json.JSONObject;
-import sorald.event.SoraldEventHandler;
-import sorald.event.StatsMetadataKeys;
-import sorald.event.models.ExecutionInfo;
 
 public class FileUtils {
 

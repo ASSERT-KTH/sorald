@@ -18,8 +18,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -141,16 +139,25 @@ public class WarningMinerTest {
         String fileName = "warning_miner/test_repos.txt";
         String pathToRepos = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
 
-        runMiner(pathToRepos, outputFile.getPath(), temp.getPath(), Constants.ARG_STATS_OUTPUT_FILE, statsFile.getPath());
+        runMiner(
+                pathToRepos,
+                outputFile.getPath(),
+                temp.getPath(),
+                Constants.ARG_STATS_OUTPUT_FILE,
+                statsFile.getPath());
 
         JSONObject jo = FileUtils.readJSON(statsFile.toPath());
         JSONObject executionInfo = jo.getJSONObject(StatsMetadataKeys.EXECUTION_INFO);
 
-        assertThat(executionInfo.get(StatsMetadataKeys.SORALD_VERSION), equalTo(Constants.SORALD_VERSION));
-        assertThat(executionInfo.get(StatsMetadataKeys.JAVA_VERSION),
+        assertThat(
+                executionInfo.get(StatsMetadataKeys.SORALD_VERSION),
+                equalTo(Constants.SORALD_VERSION));
+        assertThat(
+                executionInfo.get(StatsMetadataKeys.JAVA_VERSION),
                 equalTo(System.getProperty(Constants.JAVA_VERSION_SYSTEM_PROPERTY)));
         assertThat(
-                executionInfo.getJSONArray(StatsMetadataKeys.ORIGINAL_ARGS).toList().size(), greaterThan(0));
+                executionInfo.getJSONArray(StatsMetadataKeys.ORIGINAL_ARGS).toList().size(),
+                greaterThan(0));
         assertThat(jo.getLong(StatsMetadataKeys.TOTAL_MINING_TIME), greaterThan(0L));
         assertThat(jo.getJSONArray(StatsMetadataKeys.MINED_RULES).toList().size(), greaterThan(0));
         assertTrue(jo.has(StatsMetadataKeys.MINING_START_TIME));
