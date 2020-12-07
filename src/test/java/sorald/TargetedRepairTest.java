@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -63,6 +64,27 @@ public class TargetedRepairTest {
                     workdirInfo.targetViolation.violationId(workdir.toPath()),
                     Constants.ARG_RULE_KEYS,
                     "2755"
+                };
+
+        // act/assert
+        assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
+    }
+
+    @Test
+    public void targetedRepair_requiresViolationPath_existsInOriginalFilesPath(
+            @TempDir File workdir) throws Exception {
+        // arrange
+        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir(workdir);
+
+        // make the violation ID relative to the root directory
+        String badViolationId = workdirInfo.targetViolation.violationId(Paths.get("/"));
+        var args =
+                new String[] {
+                    Constants.REPAIR_COMMAND_NAME,
+                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    workdir.getAbsolutePath(),
+                    Constants.ARG_RULE_VIOLATIONS,
+                    badViolationId
                 };
 
         // act/assert

@@ -123,8 +123,6 @@ class RepairCommand implements Callable<Integer> {
                             spec.commandLine().getParseResult().originalArgs()));
         }
 
-        validateRuleKeys(ruleKeys);
-
         return 0;
     }
 
@@ -141,6 +139,8 @@ class RepairCommand implements Callable<Integer> {
                     RepairStrategy.SEGMENT.name()
                             + " repair does not currently support statistics collection");
         }
+
+        validateRuleKeys();
     }
 
     /** Perform further parsing on the {@link RepairCommand#rules} options. */
@@ -160,8 +160,8 @@ class RepairCommand implements Callable<Integer> {
                                 .collect(Collectors.toUnmodifiableList());
     }
 
-    private void validateRuleKeys(List<Integer> value) {
-        for (Integer ruleKey : value) {
+    private void validateRuleKeys() {
+        for (Integer ruleKey : ruleKeys) {
             if (Processors.getProcessor(ruleKey) == null) {
                 throw new CommandLine.ParameterException(
                         spec.commandLine(),
@@ -175,7 +175,18 @@ class RepairCommand implements Callable<Integer> {
     private RuleViolation parseRuleViolation(String violationId) {
         String[] parts = violationId.split(":");
         String key = parts[0];
-        String fileName = originalFilesPath.toPath().resolve(parts[1]).toAbsolutePath().toString();
+        String rawFilename = parts[1];
+        String fileName =
+                originalFilesPath.toPath().resolve(rawFilename).toAbsolutePath().toString();
+
+        if (!new File(fileName).isFile()) {
+            throw new CommandLine.ParameterException(
+                    spec.commandLine(),
+                    String.format(
+                            "Invalid violation ID '%s', no file '%s' in directory '%s'",
+                            violationId, rawFilename, originalFilesPath));
+        }
+
         int startLine = Integer.parseInt(parts[2]);
         int startCol = Integer.parseInt(parts[3]);
         int endLine = Integer.parseInt(parts[4]);
