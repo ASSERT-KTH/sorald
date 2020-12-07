@@ -1,5 +1,7 @@
 package sorald.sonar;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.stream.Stream;
 
@@ -26,6 +28,17 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
 
     /** @return The key of the violated rule. */
     public abstract String getRuleKey();
+
+    /**
+     * @param rootDir The root directory of the current project.
+     * @return A violation ID that is unique relative to the given root directory.
+     */
+    public String violationId(Path rootDir) {
+        Path relPath = rootDir.relativize(Paths.get(getFileName()));
+        return String.format(
+                "%s:%s:%s:%s:%s:%s",
+                getRuleKey(), relPath, getStartLine(), getStartCol(), getEndLine(), getEndCol());
+    }
 
     @Override
     public boolean equals(Object obj) {

@@ -97,7 +97,8 @@ public class Cli {
                 String[] parts = specifier.split(":");
                 String key = parts[0];
                 keys.add(Integer.parseInt(key));
-                String fileName = parts[1];
+                String fileName =
+                        originalFilesPath.toPath().resolve(parts[1]).toAbsolutePath().toString();
                 int startLine = Integer.parseInt(parts[2]);
                 int startCol = Integer.parseInt(parts[3]);
                 int endLine = Integer.parseInt(parts[4]);

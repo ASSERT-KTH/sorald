@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -22,6 +23,33 @@ public class TargetedRepairTest {
     @Test
     void targetedRepair_correctlyRepairsSingleViolation(@TempDir File workdir) throws Exception {
         // arrange
+        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir(workdir);
+
+        // act
+        Main.main(
+                new String[] {
+                    Constants.REPAIR_COMMAND_NAME,
+                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
+                    workdir.getAbsolutePath(),
+                    Constants.ARG_SYMBOL + Constants.ARG_RULE_VIOLATIONS,
+                    workdirInfo.targetViolation.violationId(workdir.toPath())
+                });
+
+        // assert
+        File soraldWorkspace = new File(Constants.SORALD_WORKSPACE);
+        List<File> repairedFiles =
+                FileUtils.findFilesByExtension(soraldWorkspace, Constants.JAVA_EXT);
+        Set<RuleViolation> violationsAfter =
+                ProjectScanner.scanProject(soraldWorkspace, soraldWorkspace, workdirInfo.check);
+
+        assertThat(violationsAfter.size(), equalTo(workdirInfo.numViolationsBefore - 1));
+        assertFalse(violationsAfter.contains(workdirInfo.targetViolation));
+        assertThat(repairedFiles.size(), equalTo(1));
+        assertThat(repairedFiles.get(0).getName(), equalTo(workdirInfo.targetFile.getName()));
+    }
+
+    /** Setup the workdir with a specific target violation. */
+    private static TargetedRepairWorkdirInfo setupWorkdir(File workdir) throws IOException {
         org.apache.commons.io.FileUtils.copyDirectory(
                 new File(Constants.PATH_TO_RESOURCES_FOLDER), workdir);
 
@@ -43,36 +71,25 @@ public class TargetedRepairTest {
         violationsBefore.sort(RuleViolation::compareTo);
         RuleViolation violation = violationsBefore.get(violationsBefore.size() / 2);
 
-        String violationSpecifier =
-                String.format(
-                        "%s:%s:%s:%s:%s:%s",
-                        ruleKey,
-                        violation.getFileName(),
-                        violation.getStartLine(),
-                        violation.getStartCol(),
-                        violation.getEndLine(),
-                        violation.getEndCol());
+        return new TargetedRepairWorkdirInfo(check, violationsBefore.size(), targetFile, violation);
+    }
 
-        // act
-        Main.main(
-                new String[] {
-                    Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_SYMBOL + Constants.ARG_ORIGINAL_FILES_PATH,
-                    workdir.getAbsolutePath(),
-                    Constants.ARG_SYMBOL + Constants.ARG_RULE_VIOLATIONS,
-                    violationSpecifier
-                });
+    /** Simple container for info about the targeted repair working directory. */
+    private static class TargetedRepairWorkdirInfo {
+        final JavaFileScanner check;
+        final int numViolationsBefore;
+        final File targetFile;
+        final RuleViolation targetViolation;
 
-        // assert
-        File soraldWorkspace = new File(Constants.SORALD_WORKSPACE);
-        List<File> repairedFiles =
-                FileUtils.findFilesByExtension(soraldWorkspace, Constants.JAVA_EXT);
-        Set<RuleViolation> violationsAfter =
-                ProjectScanner.scanProject(soraldWorkspace, soraldWorkspace, check);
-
-        assertThat(violationsAfter.size(), equalTo(violationsBefore.size() - 1));
-        assertFalse(violationsAfter.contains(violation));
-        assertThat(repairedFiles.size(), equalTo(1));
-        assertThat(repairedFiles.get(0).getName(), equalTo(targetFile.getName()));
+        private TargetedRepairWorkdirInfo(
+                JavaFileScanner check,
+                int numViolationsBefore,
+                File targetFile,
+                RuleViolation targetViolation) {
+            this.check = check;
+            this.numViolationsBefore = numViolationsBefore;
+            this.targetFile = targetFile;
+            this.targetViolation = targetViolation;
+        }
     }
 }
