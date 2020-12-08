@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /** Representation of a violation of some Sonar rule */
@@ -41,9 +42,15 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
                 Arrays.stream(File.listRoots()).map(File::toPath).anyMatch(rootDir::equals);
         Path absPath = Paths.get(getFileName());
         Path idPath = rootDirIsFsRoot ? absPath : rootDir.relativize(absPath);
-        return String.format(
-                "%s:%s:%s:%s:%s:%s",
-                getRuleKey(), idPath, getStartLine(), getStartCol(), getEndLine(), getEndCol());
+        return Stream.of(
+                        getRuleKey(),
+                        idPath,
+                        getStartLine(),
+                        getStartCol(),
+                        getEndLine(),
+                        getEndCol())
+                .map(Object::toString)
+                .collect(Collectors.joining(File.pathSeparator));
     }
 
     @Override
