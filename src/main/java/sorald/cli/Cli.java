@@ -261,14 +261,14 @@ public class Cli {
             }
 
             if (statsOutputFile != null) {
-                Map<String, Object> additionalStatData = new HashMap<>();
-                additionalStatData.put(
-                        StatsMetadataKeys.EXECUTION_INFO,
-                        new ExecutionInfo(
-                                spec.commandLine().getParseResult().originalArgs(),
-                                Constants.SORALD_VERSION,
-                                javaVersion,
-                                target));
+                Map<String, Object> additionalStatData =
+                        Map.of(
+                                StatsMetadataKeys.EXECUTION_INFO,
+                                new ExecutionInfo(
+                                        spec.commandLine().getParseResult().originalArgs(),
+                                        Constants.SORALD_VERSION,
+                                        javaVersion,
+                                        target));
 
                 FileUtils.writeJSON(statsOutputFile, statsCollector, additionalStatData);
             }

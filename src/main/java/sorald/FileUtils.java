@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.AbstractMap;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -109,21 +109,7 @@ public class FileUtils {
         JSONObject jo = new JSONObject(coreObj);
 
         // Converting List and Arrays to JSONArray, and other objects to JSONObject
-        additionalData.entrySet().stream()
-                .map(
-                        e ->
-                                new AbstractMap.SimpleEntry(
-                                        e.getKey(),
-                                        (e.getValue() instanceof List
-                                                ? ((List) e.getValue()).toArray()
-                                                : e.getValue())))
-                .forEach(
-                        e ->
-                                jo.put(
-                                        (String) e.getKey(),
-                                        (e.getValue().getClass().isArray()
-                                                ? new JSONArray(e.getValue())
-                                                : new JSONObject(e.getValue()))));
+        additionalData.forEach((k, v) -> jo.put(k, toJSONArrayOrObject(v)));
 
         Files.writeString(
                 file.toPath(),
@@ -140,5 +126,16 @@ public class FileUtils {
     public static JSONObject readJSON(Path jsonFile) throws IOException {
         String content = Files.readString(jsonFile);
         return new JSONObject(content);
+    }
+
+    /** Convert any collection or array into a JSONArray, and anything else into a JSONObject. */
+    private static Object toJSONArrayOrObject(Object obj) {
+        if (obj instanceof Collection) {
+            return new JSONArray(((Collection<?>) obj).toArray());
+        } else if (obj.getClass().isArray()) {
+            return new JSONArray(obj);
+        } else {
+            return new JSONObject(obj);
+        }
     }
 }
