@@ -1,8 +1,8 @@
 package sorald.miner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
@@ -11,18 +11,22 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.sonar.java.AnalysisException;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.FileUtils;
 import sorald.Main;
+import sorald.event.StatsMetadataKeys;
 import sorald.sonar.Checks;
 
 public class WarningMinerTest {
@@ -126,6 +130,40 @@ public class WarningMinerTest {
         assertThat(actualChecks, equalTo(expectedChecks));
     }
 
+    /** Test that extracting warnings gives results even for rules that are not violated. */
+    @Test
+    public void extractWarnings_statsOutput_containsExpectedAttributes() throws Exception {
+        File outputFile = File.createTempFile("warnings", null),
+                temp = Files.createTempDirectory("tempDir").toFile(),
+                statsFile = File.createTempFile("stats", null);
+        String fileName = "warning_miner/test_repos.txt";
+        String pathToRepos = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+
+        runMiner(
+                pathToRepos,
+                outputFile.getPath(),
+                temp.getPath(),
+                Constants.ARG_STATS_OUTPUT_FILE,
+                statsFile.getPath());
+
+        JSONObject jo = FileUtils.readJSON(statsFile.toPath());
+        JSONObject executionInfo = jo.getJSONObject(StatsMetadataKeys.EXECUTION_INFO);
+
+        assertThat(
+                executionInfo.get(StatsMetadataKeys.SORALD_VERSION),
+                equalTo(Constants.SORALD_VERSION));
+        assertThat(
+                executionInfo.get(StatsMetadataKeys.JAVA_VERSION),
+                equalTo(System.getProperty(Constants.JAVA_VERSION_SYSTEM_PROPERTY)));
+        assertThat(
+                executionInfo.getJSONArray(StatsMetadataKeys.ORIGINAL_ARGS).toList().size(),
+                greaterThan(0));
+        assertThat(jo.getLong(StatsMetadataKeys.TOTAL_MINING_TIME), greaterThan(0L));
+        assertThat(jo.getJSONArray(StatsMetadataKeys.MINED_RULES).toList().size(), greaterThan(0));
+        assertTrue(jo.has(StatsMetadataKeys.MINING_START_TIME));
+        assertTrue(jo.has(StatsMetadataKeys.MINING_END_TIME));
+    }
+
     @Test
     @SuppressWarnings("UnstableApiUsage")
     public void extractWarnings_throwsException_whenCheckCrashes() {
@@ -137,8 +175,10 @@ public class WarningMinerTest {
         assertThrows(
                 AnalysisException.class,
                 () ->
-                        MineSonarWarnings.extractWarnings(
-                                Constants.PATH_TO_RESOURCES_FOLDER, Arrays.asList(crashyCheck)));
+                        new MineSonarWarnings(new ArrayList<>())
+                                .extractWarnings(
+                                        Constants.PATH_TO_RESOURCES_FOLDER,
+                                        Arrays.asList(crashyCheck)));
     }
 
     private static void runMiner(
@@ -150,7 +190,7 @@ public class WarningMinerTest {
                     Constants.ARG_STATS_ON_GIT_REPOS,
                     Constants.ARG_GIT_REPOS_LIST,
                     pathToRepos,
-                    Constants.ARG_STATS_OUTPUT_FILE,
+                    Constants.ARG_MINER_OUTPUT_FILE,
                     pathToOutput,
                     Constants.ARG_TEMP_DIR,
                     pathToTempDir

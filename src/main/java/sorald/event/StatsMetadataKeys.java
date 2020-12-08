@@ -8,7 +8,17 @@ public class StatsMetadataKeys {
     public static final String PARSE_TIME_NS = "parseTimeNs";
     public static final String REPAIR_TIME_NS = "repairTimeNs";
 
+    public static final String EXECUTION_INFO = "executionInfo";
+    public static final String SORALD_VERSION = "soraldVersion";
+    public static final String JAVA_VERSION = "javaVersion";
+
     // Repair-specific data
     public static final String REPAIR_RULE_KEY = "ruleKey";
     public static final String REPAIR_RULE_VIOLATION_POSITION = "ruleViolationPosition";
+
+    // Mining-specific data
+    public static final String MINING_START_TIME = "miningStartTime";
+    public static final String MINING_END_TIME = "miningEndTime";
+    public static final String MINED_RULES = "minedRules";
+    public static final String TOTAL_MINING_TIME = "totalMiningTime";
 }

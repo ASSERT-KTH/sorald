@@ -6,10 +6,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class FileUtils {
@@ -105,7 +107,10 @@ public class FileUtils {
             throws IOException {
         // JSONObject's constructor recursively uses getter methods to produce a JSON object
         JSONObject jo = new JSONObject(coreObj);
-        additionalData.forEach(jo::put);
+
+        // Converting List and Arrays to JSONArray, and other objects to JSONObject
+        additionalData.forEach((k, v) -> jo.put(k, toJSONArrayOrObject(v)));
+
         Files.writeString(
                 file.toPath(),
                 jo.toString(4),
@@ -121,5 +126,16 @@ public class FileUtils {
     public static JSONObject readJSON(Path jsonFile) throws IOException {
         String content = Files.readString(jsonFile);
         return new JSONObject(content);
+    }
+
+    /** Convert any collection or array into a JSONArray, and anything else into a JSONObject. */
+    private static Object toJSONArrayOrObject(Object obj) {
+        if (obj instanceof Collection) {
+            return new JSONArray(((Collection<?>) obj).toArray());
+        } else if (obj.getClass().isArray()) {
+            return new JSONArray(obj);
+        } else {
+            return new JSONObject(obj);
+        }
     }
 }

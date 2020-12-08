@@ -2,19 +2,26 @@ package sorald.cli;
 
 import java.io.File;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import picocli.CommandLine;
 import sorald.Constants;
+import sorald.FileUtils;
+import sorald.event.StatsMetadataKeys;
+import sorald.event.collectors.MinerStatisticsCollector;
+import sorald.event.models.ExecutionInfo;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
 
 /** Class containing the CLI for Sorald. */
 public class Cli {
+    private static String javaVersion;
+
+    static {
+        javaVersion = System.getProperty(Constants.JAVA_VERSION_SYSTEM_PROPERTY);
+    }
 
     /** @return Sorald's command line interface. */
     public static CommandLine createCli() {
@@ -58,8 +65,13 @@ public class Cli {
 
         @CommandLine.Option(
                 names = Constants.ARG_STATS_OUTPUT_FILE,
-                description = "The path to the output file.")
+                description = "The path to the stats output file.")
         File statsOutputFile;
+
+        @CommandLine.Option(
+                names = Constants.ARG_MINER_OUTPUT_FILE,
+                description = "The path to the output file.")
+        File minerOutputFile;
 
         @CommandLine.Option(
                 names = Constants.ARG_GIT_REPOS_LIST,
@@ -78,16 +90,42 @@ public class Cli {
                 split = ",")
         private List<Checks.CheckType> ruleTypes = new ArrayList<>();
 
+        @CommandLine.Option(
+                names = Constants.ARG_TARGET,
+                description =
+                        "The target of this execution (ex. sorald/92d377). This will be included in the json report.")
+        String target;
+
         @Override
         public Integer call() throws Exception {
             List<? extends JavaFileScanner> checks = inferCheckInstances(ruleTypes);
+
+            var statsCollector = new MinerStatisticsCollector();
+
             if (statsOnGitRepos) {
                 List<String> reposList = Files.readAllLines(this.reposList.toPath());
-                MineSonarWarnings.mineGitRepos(
-                        checks, statsOutputFile.getAbsolutePath(), reposList, tempDir);
+
+                new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
+                        .mineGitRepos(
+                                checks, minerOutputFile.getAbsolutePath(), reposList, tempDir);
             } else {
-                MineSonarWarnings.mineLocalProject(checks, originalFilesPath.getAbsolutePath());
+                new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
+                        .mineLocalProject(checks, originalFilesPath.getAbsolutePath());
             }
+
+            if (statsOutputFile != null) {
+                Map<String, Object> additionalStatData =
+                        Map.of(
+                                StatsMetadataKeys.EXECUTION_INFO,
+                                new ExecutionInfo(
+                                        spec.commandLine().getParseResult().originalArgs(),
+                                        Constants.SORALD_VERSION,
+                                        javaVersion,
+                                        target));
+
+                FileUtils.writeJSON(statsOutputFile, statsCollector, additionalStatData);
+            }
+
             return 0;
         }
 
