@@ -315,7 +315,9 @@ public class Cli {
                                 checks, minerOutputFile.getAbsolutePath(), reposList, tempDir);
             } else {
                 new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
-                        .mineLocalProject(checks, originalFilesPath.getAbsolutePath());
+                        .mineLocalProject(
+                                checks,
+                                originalFilesPath.toPath().normalize().toAbsolutePath().toString());
             }
 
             if (statsOutputFile != null) {

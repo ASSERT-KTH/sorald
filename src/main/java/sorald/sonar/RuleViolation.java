@@ -33,15 +33,18 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
     public abstract String getRuleKey();
 
     /**
-     * @param rootDir The root directory of the current project. If it is a file system root, the
-     *     violation specifier gets an absolute filepath.
+     * @param projectPath The root directory of the current project. If it is a file system root,
+     *     the violation specifier gets an absolute filepath.
      * @return A violation specifier that is unique relative to the given root directory.
      */
-    public String violationSpecifier(Path rootDir) {
+    public String violationSpecifier(Path projectPath) {
+        Path normalizedProjectPath = projectPath.toAbsolutePath().normalize();
         boolean rootDirIsFsRoot =
-                Arrays.stream(File.listRoots()).map(File::toPath).anyMatch(rootDir::equals);
-        Path absPath = Paths.get(getFileName());
-        Path idPath = rootDirIsFsRoot ? absPath : rootDir.relativize(absPath);
+                Arrays.stream(File.listRoots())
+                        .map(File::toPath)
+                        .anyMatch(normalizedProjectPath::equals);
+        Path absPath = Paths.get(getFileName()).toAbsolutePath().normalize();
+        Path idPath = rootDirIsFsRoot ? absPath : normalizedProjectPath.relativize(absPath);
         return Stream.of(
                         getRuleKey(),
                         idPath,
