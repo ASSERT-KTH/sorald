@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import sorald.sonar.RuleViolation;
 
 /* All config settings of Sorald should be gathered here */
 public class SoraldConfig {
     private final List<Integer> ruleKeys = new ArrayList<>();
-    private final List<RuleViolation> ruleViolations = new ArrayList<>();
+    private List<RuleViolation> ruleViolations;
     private PrettyPrintingStrategy prettyPrintingStrategy;
     private FileOutputStrategy fileOutputStrategy;
     private RepairStrategy repairStrategy;
@@ -37,8 +38,8 @@ public class SoraldConfig {
         return this.ruleKeys;
     }
 
-    public void addRuleViolations(List<RuleViolation> ruleViolations) {
-        ruleViolations.stream().distinct().forEach(this.ruleViolations::add);
+    public void setRuleViolations(List<RuleViolation> ruleViolations) {
+        this.ruleViolations = ruleViolations.stream().distinct().collect(Collectors.toList());
     }
 
     public List<RuleViolation> getRuleViolations() {

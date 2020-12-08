@@ -233,7 +233,7 @@ public class Cli {
         private SoraldConfig createConfig() {
             SoraldConfig config = new SoraldConfig();
             config.addRuleKeys(ruleKeys);
-            config.addRuleViolations(ruleViolations);
+            config.setRuleViolations(ruleViolations);
             config.setOriginalFilesPath(originalFilesPath.getAbsolutePath());
             config.setWorkspace(soraldWorkspace.getAbsolutePath());
             if (gitRepoPath != null) {
