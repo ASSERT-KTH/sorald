@@ -91,6 +91,30 @@ public class TargetedRepairTest {
         assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
     }
 
+    @Test
+    public void targetedRepair_acceptsAbsoluteViolationPath(@TempDir File workdir)
+            throws Exception {
+        // arrange
+        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir(workdir);
+
+        // act
+        String absoluteViolationId = workdirInfo.targetViolation.violationId(Paths.get("/"));
+        Main.main(
+                new String[] {
+                    Constants.REPAIR_COMMAND_NAME,
+                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    workdir.getAbsolutePath(),
+                    Constants.ARG_RULE_VIOLATIONS,
+                    absoluteViolationId
+                });
+
+        // assert
+        File soraldWorkspace = new File(Constants.SORALD_WORKSPACE);
+        Set<RuleViolation> violationsAfter =
+                ProjectScanner.scanProject(soraldWorkspace, soraldWorkspace, workdirInfo.check);
+        assertThat(violationsAfter.size(), equalTo(workdirInfo.numViolationsBefore - 1));
+    }
+
     /** Setup the workdir with a specific target violation. */
     private static TargetedRepairWorkdirInfo setupWorkdir(File workdir) throws IOException {
         org.apache.commons.io.FileUtils.copyDirectory(

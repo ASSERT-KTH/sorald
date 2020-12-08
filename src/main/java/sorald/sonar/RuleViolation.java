@@ -1,7 +1,9 @@
 package sorald.sonar;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Stream;
 
@@ -30,14 +32,18 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
     public abstract String getRuleKey();
 
     /**
-     * @param rootDir The root directory of the current project.
+     * @param rootDir The root directory of the current project. If it is a file system root, the
+     *     violation ID gets an absolute filepath.
      * @return A violation ID that is unique relative to the given root directory.
      */
     public String violationId(Path rootDir) {
-        Path relPath = rootDir.relativize(Paths.get(getFileName()));
+        boolean rootDirIsFsRoot =
+                Arrays.stream(File.listRoots()).map(File::toPath).anyMatch(rootDir::equals);
+        Path absPath = Paths.get(getFileName());
+        Path idPath = rootDirIsFsRoot ? absPath : rootDir.relativize(absPath);
         return String.format(
                 "%s:%s:%s:%s:%s:%s",
-                getRuleKey(), relPath, getStartLine(), getStartCol(), getEndLine(), getEndCol());
+                getRuleKey(), idPath, getStartLine(), getStartCol(), getEndLine(), getEndCol());
     }
 
     @Override
