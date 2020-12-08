@@ -5,5 +5,8 @@ public enum EventType {
     PARSE_END,
     REPAIR_START,
     REPAIR_END,
-    REPAIR
+    REPAIR,
+    MINING_START,
+    MINING_END,
+    MINED
 }
