@@ -34,10 +34,10 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
 
     /**
      * @param rootDir The root directory of the current project. If it is a file system root, the
-     *     violation ID gets an absolute filepath.
-     * @return A violation ID that is unique relative to the given root directory.
+     *     violation specifier gets an absolute filepath.
+     * @return A violation specifier that is unique relative to the given root directory.
      */
-    public String violationId(Path rootDir) {
+    public String violationSpecifier(Path rootDir) {
         boolean rootDirIsFsRoot =
                 Arrays.stream(File.listRoots()).map(File::toPath).anyMatch(rootDir::equals);
         Path absPath = Paths.get(getFileName());

@@ -34,7 +34,7 @@ public class TargetedRepairTest {
                     Constants.ARG_ORIGINAL_FILES_PATH,
                     workdir.getAbsolutePath(),
                     Constants.ARG_RULE_VIOLATIONS,
-                    workdirInfo.targetViolation.violationId(workdir.toPath())
+                    workdirInfo.targetViolation.violationSpecifier(workdir.toPath())
                 });
 
         // assert
@@ -61,7 +61,7 @@ public class TargetedRepairTest {
                     Constants.ARG_ORIGINAL_FILES_PATH,
                     workdir.getAbsolutePath(),
                     Constants.ARG_RULE_VIOLATIONS,
-                    workdirInfo.targetViolation.violationId(workdir.toPath()),
+                    workdirInfo.targetViolation.violationSpecifier(workdir.toPath()),
                     Constants.ARG_RULE_KEYS,
                     "2755"
                 };
@@ -78,7 +78,7 @@ public class TargetedRepairTest {
 
         // make the violation ID relative to some other directory
         String badViolationId =
-                workdirInfo.targetViolation.violationId(workdir.getParentFile().toPath());
+                workdirInfo.targetViolation.violationSpecifier(workdir.getParentFile().toPath());
         var args =
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
@@ -99,7 +99,7 @@ public class TargetedRepairTest {
         TargetedRepairWorkdirInfo workdirInfo = setupWorkdir(workdir);
 
         // act
-        String absoluteViolationId = workdirInfo.targetViolation.violationId(Paths.get("/"));
+        String absoluteViolationId = workdirInfo.targetViolation.violationSpecifier(Paths.get("/"));
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
