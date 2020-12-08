@@ -56,8 +56,6 @@ public class Constants {
 
     public static final String PATH_TO_STATS_OUTPUT = "experimentation/stats/warnings";
 
-    public static final String VIOLATION_USABLE_PATH_SEPARATOR = "###";
-
     public static final List<Class<? extends JavaFileScanner>> SONAR_CHECK_CLASSES;
 
     static {

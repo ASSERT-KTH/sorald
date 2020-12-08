@@ -1,19 +1,25 @@
 package sorald.event.collectors;
 
+import com.google.common.collect.ImmutableList;
 import java.util.*;
+import java.util.stream.Collectors;
 import sorald.event.SoraldEvent;
 import sorald.event.SoraldEventHandler;
-import sorald.event.models.miner.MinedRuleEvent;
+import sorald.event.models.WarningLocation;
+import sorald.event.models.miner.MinedRule;
+import sorald.event.models.miner.MinedViolationEvent;
 
 /** Event handler for recording the miner mode statistics. */
 public class MinerStatisticsCollector implements SoraldEventHandler {
+    private static final String RULE_ID_SEPARATOR = ":";
+
     /** start of mining determined by currentTimeMillis */
     private long miningStartTime;
 
     /** start of mining determined by currentTimeMillis */
     private long miningEndTime;
 
-    private List<MinedRuleEvent> minedRules = new ArrayList<>();
+    private Map<String, List<WarningLocation>> ruleToViolations = new HashMap<>();
 
     @Override
     public void registerEvent(SoraldEvent event) {
@@ -25,18 +31,14 @@ public class MinerStatisticsCollector implements SoraldEventHandler {
                 miningEndTime = System.currentTimeMillis();
                 break;
             case MINED:
-                MinedRuleEvent minedRuleEvent = (MinedRuleEvent) event;
-                Optional<MinedRuleEvent> existingEvent =
-                        minedRules.stream()
-                                .filter(x -> x.getRuleKey().equals(minedRuleEvent.getRuleKey()))
-                                .findFirst();
+                MinedViolationEvent minedViolationEvent = (MinedViolationEvent) event;
 
-                if (!existingEvent.isEmpty()) {
-                    existingEvent.get().addWarningLocations(minedRuleEvent.getWarningLocations());
-                } else {
-                    minedRules.add(minedRuleEvent);
-                }
+                if (!ruleToViolations.containsKey(violationToRuleId(minedViolationEvent)))
+                    ruleToViolations.put(violationToRuleId(minedViolationEvent), new ArrayList<>());
 
+                ruleToViolations
+                        .get(violationToRuleId(minedViolationEvent))
+                        .add(minedViolationEvent.getWarningLocation());
                 break;
         }
     }
@@ -57,7 +59,18 @@ public class MinerStatisticsCollector implements SoraldEventHandler {
     }
 
     /** @return All mined rules data */
-    public List<MinedRuleEvent> getMinedRules() {
-        return Collections.unmodifiableList(minedRules);
+    public List<MinedRule> getMinedRules() {
+        return ruleToViolations.entrySet().stream()
+                .map(
+                        e ->
+                                new MinedRule(
+                                        e.getKey().split(RULE_ID_SEPARATOR)[0],
+                                        e.getKey().split(RULE_ID_SEPARATOR)[1],
+                                        ImmutableList.copyOf(e.getValue())))
+                .collect(Collectors.toList());
+    }
+
+    private String violationToRuleId(MinedViolationEvent violation) {
+        return violation.getRuleKey() + RULE_ID_SEPARATOR + violation.getRuleName();
     }
 }

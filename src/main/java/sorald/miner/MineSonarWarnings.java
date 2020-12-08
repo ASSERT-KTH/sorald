@@ -10,7 +10,7 @@ import sorald.Constants;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
-import sorald.event.models.miner.MinedRuleEvent;
+import sorald.event.models.miner.MinedViolationEvent;
 import sorald.sonar.RuleVerifier;
 import sorald.sonar.RuleViolation;
 
@@ -108,7 +108,7 @@ public class MineSonarWarnings {
         analyzeMessages.stream().map(RuleViolation::getCheckName).forEach(incrementWarningCount);
 
         analyzeMessages.stream()
-                .forEach(v -> EventHelper.fireEvent(new MinedRuleEvent(v), eventHandlers));
+                .forEach(v -> EventHelper.fireEvent(new MinedViolationEvent(v), eventHandlers));
 
         return warnings;
     }

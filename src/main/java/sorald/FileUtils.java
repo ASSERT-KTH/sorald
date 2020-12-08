@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -109,20 +110,20 @@ public class FileUtils {
 
         // Converting List and Arrays to JSONArray, and other objects to JSONObject
         additionalData.entrySet().stream()
-                .collect(
-                        Collectors.toMap(
-                                e -> e.getKey(),
-                                e ->
+                .map(
+                        e ->
+                                new AbstractMap.SimpleEntry(
+                                        e.getKey(),
                                         (e.getValue() instanceof List
                                                 ? ((List) e.getValue()).toArray()
                                                 : e.getValue())))
                 .forEach(
-                        (k, v) ->
+                        e ->
                                 jo.put(
-                                        k,
-                                        (v.getClass().isArray()
-                                                ? new JSONArray(v)
-                                                : new JSONObject(v))));
+                                        (String) e.getKey(),
+                                        (e.getValue().getClass().isArray()
+                                                ? new JSONArray(e.getValue())
+                                                : new JSONObject(e.getValue()))));
 
         Files.writeString(
                 file.toPath(),
