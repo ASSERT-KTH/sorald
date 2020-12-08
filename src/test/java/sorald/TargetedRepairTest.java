@@ -76,8 +76,9 @@ public class TargetedRepairTest {
         // arrange
         TargetedRepairWorkdirInfo workdirInfo = setupWorkdir(workdir);
 
-        // make the violation ID relative to the root directory
-        String badViolationId = workdirInfo.targetViolation.violationId(Paths.get("/"));
+        // make the violation ID relative to some other directory
+        String badViolationId =
+                workdirInfo.targetViolation.violationId(workdir.getParentFile().toPath());
         var args =
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
