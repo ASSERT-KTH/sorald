@@ -1,5 +1,8 @@
 package sorald.processor;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -7,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -135,6 +139,29 @@ public class ProcessorTest {
 
         // assert
         assertTrue(new File(Constants.SORALD_WORKSPACE).exists());
+    }
+
+    @Test
+    public void sorald_doesNotIndentNewElementsWithTabs_whenSourceCodeUsesSpaces()
+            throws Exception {
+        // arrange
+        // rule 2755 always adds new elements, among other things a method
+        ProcessorTestHelper.ProcessorTestCase<?> testCase =
+                ProcessorTestHelper.getTestCaseStream()
+                        .filter(tc -> tc.ruleKey.equals("2755"))
+                        .findFirst()
+                        .get();
+
+        // act
+        ProcessorTestHelper.runSorald(testCase);
+
+        // assert
+        String output =
+                Files.readString(
+                        Paths.get(Constants.SORALD_WORKSPACE)
+                                .resolve(Constants.SPOONED)
+                                .resolve(testCase.outfileRelpath));
+        assertThat(output, not(containsString("\t")));
     }
 
     /**
