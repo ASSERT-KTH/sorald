@@ -87,7 +87,13 @@ public class Cli {
 
             @CommandLine.Option(
                     names = Constants.ARG_RULE_VIOLATIONS,
-                    description = "One or more specific rule violations",
+                    description =
+                            "One or more rule violation specifiers. Specifiers can be gathered "
+                                    + "with the '"
+                                    + Constants.MINE_COMMAND_NAME
+                                    + "' command using the "
+                                    + Constants.ARG_STATS_OUTPUT_FILE
+                                    + " option.",
                     required = true,
                     split = ",")
             List<String> ruleViolations;
