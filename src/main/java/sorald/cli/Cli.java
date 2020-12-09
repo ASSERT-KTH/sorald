@@ -83,7 +83,7 @@ public class Cli {
                                     + Processors.RULE_DESCRIPTIONS,
                     required = true,
                     split = ",")
-            List<Integer> ruleKeys;
+            List<Integer> ruleKeys = List.of();
 
             @CommandLine.Option(
                     names = Constants.ARG_RULE_VIOLATION_SPECIFIERS,
@@ -96,7 +96,7 @@ public class Cli {
                                     + " option.",
                     required = true,
                     split = ",")
-            List<String> ruleViolationSpecifiers;
+            List<String> ruleViolationSpecifiers = List.of();
         }
 
         @CommandLine.Option(
@@ -148,7 +148,7 @@ public class Cli {
 
         @Override
         public Integer call() throws IOException {
-            setRuleKeysAndViolations();
+            postprocessArgs();
             validateArgs();
             SoraldConfig config = createConfig();
 
@@ -185,21 +185,25 @@ public class Cli {
             validateRuleKeys();
         }
 
-        /** Perform further parsing on the {@link RepairCommand#rules} options. */
-        private void setRuleKeysAndViolations() {
-            ruleViolations =
-                    rules.ruleViolationSpecifiers == null
-                            ? List.of()
-                            : rules.ruleViolationSpecifiers.stream()
-                                    .map(this::parseRuleViolation)
-                                    .collect(Collectors.toUnmodifiableList());
-            ruleKeys =
-                    ruleViolations.isEmpty()
-                            ? rules.ruleKeys
-                            : ruleViolations.stream()
-                                    .map(RuleViolation::getRuleKey)
-                                    .map(Integer::parseInt)
-                                    .collect(Collectors.toUnmodifiableList());
+        /** Perform further processing of raw command line args. */
+        private void postprocessArgs() {
+            ruleViolations = parseRuleViolations(rules);
+            ruleKeys = parseRuleKeys(rules, ruleViolations);
+        }
+
+        private List<RuleViolation> parseRuleViolations(Rules rules) {
+            return rules.ruleViolationSpecifiers.stream()
+                    .map(this::parseRuleViolation)
+                    .collect(Collectors.toUnmodifiableList());
+        }
+
+        private List<Integer> parseRuleKeys(Rules rules, List<RuleViolation> ruleViolations) {
+            return ruleViolations.isEmpty()
+                    ? rules.ruleKeys
+                    : ruleViolations.stream()
+                            .map(RuleViolation::getRuleKey)
+                            .map(Integer::parseInt)
+                            .collect(Collectors.toUnmodifiableList());
         }
 
         private void validateRuleKeys() {
