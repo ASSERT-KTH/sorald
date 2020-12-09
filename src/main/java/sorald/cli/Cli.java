@@ -215,7 +215,7 @@ public class Cli {
         }
 
         private RuleViolation parseRuleViolation(String violationId) {
-            String[] parts = violationId.split(":");
+            String[] parts = violationId.split(Constants.VIOLATION_SPECIFIER_SEP);
             String key = parts[0];
             String rawFilename = parts[1];
             String fileName =

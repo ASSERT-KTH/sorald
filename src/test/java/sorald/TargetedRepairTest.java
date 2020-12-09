@@ -104,7 +104,8 @@ public class TargetedRepairTest {
                 workdirInfo
                         .targetViolation
                         .relativeSpecifier(rootDir)
-                        .replaceFirst(File.pathSeparator, File.pathSeparator + rootDir);
+                        .replaceFirst(
+                                Constants.VIOLATION_SPECIFIER_SEP, File.pathSeparator + rootDir);
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,

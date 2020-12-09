@@ -1,11 +1,11 @@
 package sorald.sonar;
 
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import sorald.Constants;
 
 /** Representation of a violation of some Sonar rule */
 public abstract class RuleViolation implements Comparable<RuleViolation> {
@@ -47,7 +47,7 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
                         getEndLine(),
                         getEndCol())
                 .map(Object::toString)
-                .collect(Collectors.joining(File.pathSeparator));
+                .collect(Collectors.joining(Constants.VIOLATION_SPECIFIER_SEP));
     }
 
     @Override

@@ -32,6 +32,8 @@ public class Constants {
 
     public static final String PROCESSOR_PACKAGE = "sorald.processor";
 
+    public static final String VIOLATION_SPECIFIER_SEP = File.pathSeparator;
+
     public static final String SORALD_WORKSPACE = "sorald-workspace";
     public static final String PATCHES = "SoraldGitPatches";
     public static final String PATCH_FILE_PREFIX = "soraldpatch_";
