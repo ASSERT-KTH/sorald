@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -34,7 +34,7 @@ public class TargetedRepairTest {
                     Constants.ARG_ORIGINAL_FILES_PATH,
                     workdir.getAbsolutePath(),
                     Constants.ARG_RULE_VIOLATIONS,
-                    workdirInfo.targetViolation.violationSpecifier(workdir.toPath())
+                    workdirInfo.targetViolation.relativeSpecifier(workdir.toPath())
                 });
 
         // assert
@@ -61,7 +61,7 @@ public class TargetedRepairTest {
                     Constants.ARG_ORIGINAL_FILES_PATH,
                     workdir.getAbsolutePath(),
                     Constants.ARG_RULE_VIOLATIONS,
-                    workdirInfo.targetViolation.violationSpecifier(workdir.toPath()),
+                    workdirInfo.targetViolation.relativeSpecifier(workdir.toPath()),
                     Constants.ARG_RULE_KEYS,
                     "2755"
                 };
@@ -78,7 +78,7 @@ public class TargetedRepairTest {
 
         // make the violation ID relative to some other directory
         String badViolationId =
-                workdirInfo.targetViolation.violationSpecifier(workdir.getParentFile().toPath());
+                workdirInfo.targetViolation.relativeSpecifier(workdir.getParentFile().toPath());
         var args =
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
@@ -99,7 +99,12 @@ public class TargetedRepairTest {
         TargetedRepairWorkdirInfo workdirInfo = setupWorkdir(workdir);
 
         // act
-        String absoluteViolationId = workdirInfo.targetViolation.violationSpecifier(Paths.get("/"));
+        Path rootDir = workdir.toPath().toAbsolutePath().getRoot();
+        String absoluteViolationId =
+                workdirInfo
+                        .targetViolation
+                        .relativeSpecifier(rootDir)
+                        .replaceFirst(File.pathSeparator, File.pathSeparator + rootDir);
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,

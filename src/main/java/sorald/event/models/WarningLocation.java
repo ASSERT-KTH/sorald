@@ -18,7 +18,7 @@ public class WarningLocation {
         this.endLine = violation.getEndLine();
         this.startColumn = violation.getStartCol();
         this.endColumn = violation.getEndCol();
-        this.violationSpecifier = violation.violationSpecifier(projectPath);
+        this.violationSpecifier = violation.relativeSpecifier(projectPath);
     }
 
     public String getFilePath() {
