@@ -227,7 +227,7 @@ public class Cli {
             int startCol = Integer.parseInt(parts[3]);
             int endLine = Integer.parseInt(parts[4]);
             int endCol = Integer.parseInt(parts[5]);
-            return new SpecifiedRuleViolation(key, fileName, startLine, endLine, startCol, endCol);
+            return new SpecifiedViolation(key, fileName, startLine, endLine, startCol, endCol);
         }
 
         private SoraldConfig createConfig() {

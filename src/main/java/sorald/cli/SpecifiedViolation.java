@@ -4,7 +4,7 @@ import sorald.sonar.Checks;
 import sorald.sonar.RuleViolation;
 
 /** Rule violation specified from the CLI. */
-class SpecifiedRuleViolation extends RuleViolation {
+class SpecifiedViolation extends RuleViolation {
     private final String ruleKey;
     private final String checkName;
     private final String fileName;
@@ -13,7 +13,7 @@ class SpecifiedRuleViolation extends RuleViolation {
     private final int endLine;
     private final int endCol;
 
-    SpecifiedRuleViolation(
+    SpecifiedViolation(
             String ruleKey, String fileName, int startLine, int startCol, int endLine, int endCol) {
         this.ruleKey = ruleKey;
         checkName = Checks.getCheck(ruleKey).getSimpleName();
