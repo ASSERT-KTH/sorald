@@ -86,7 +86,7 @@ public class Cli {
             List<Integer> ruleKeys;
 
             @CommandLine.Option(
-                    names = Constants.ARG_RULE_VIOLATIONS,
+                    names = Constants.ARG_RULE_VIOLATION_SPECIFIERS,
                     description =
                             "One or more rule violation specifiers. Specifiers can be gathered "
                                     + "with the '"
@@ -96,7 +96,7 @@ public class Cli {
                                     + " option.",
                     required = true,
                     split = ",")
-            List<String> ruleViolations;
+            List<String> ruleViolationSpecifiers;
         }
 
         @CommandLine.Option(
@@ -188,9 +188,9 @@ public class Cli {
         /** Perform further parsing on the {@link RepairCommand#rules} options. */
         private void setRuleKeysAndViolations() {
             ruleViolations =
-                    rules.ruleViolations == null
+                    rules.ruleViolationSpecifiers == null
                             ? List.of()
-                            : rules.ruleViolations.stream()
+                            : rules.ruleViolationSpecifiers.stream()
                                     .map(this::parseRuleViolation)
                                     .collect(Collectors.toUnmodifiableList());
             ruleKeys =
@@ -214,8 +214,8 @@ public class Cli {
             }
         }
 
-        private RuleViolation parseRuleViolation(String violationId) {
-            String[] parts = violationId.split(Constants.VIOLATION_SPECIFIER_SEP);
+        private RuleViolation parseRuleViolation(String violationSpecifier) {
+            String[] parts = violationSpecifier.split(Constants.VIOLATION_SPECIFIER_SEP);
             String key = parts[0];
             String rawFilename = parts[1];
             String fileName =
@@ -226,7 +226,7 @@ public class Cli {
                         spec.commandLine(),
                         String.format(
                                 "Invalid violation ID '%s', no file '%s' in directory '%s'",
-                                violationId, rawFilename, originalFilesPath));
+                                violationSpecifier, rawFilename, originalFilesPath));
             }
 
             int startLine = Integer.parseInt(parts[2]);

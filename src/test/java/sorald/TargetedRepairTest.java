@@ -33,7 +33,7 @@ public class TargetedRepairTest {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
                     workdir.getAbsolutePath(),
-                    Constants.ARG_RULE_VIOLATIONS,
+                    Constants.ARG_RULE_VIOLATION_SPECIFIERS,
                     workdirInfo.targetViolation.relativeSpecifier(workdir.toPath())
                 });
 
@@ -60,7 +60,7 @@ public class TargetedRepairTest {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
                     workdir.getAbsolutePath(),
-                    Constants.ARG_RULE_VIOLATIONS,
+                    Constants.ARG_RULE_VIOLATION_SPECIFIERS,
                     workdirInfo.targetViolation.relativeSpecifier(workdir.toPath()),
                     Constants.ARG_RULE_KEYS,
                     "2755"
@@ -84,7 +84,7 @@ public class TargetedRepairTest {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
                     workdir.getAbsolutePath(),
-                    Constants.ARG_RULE_VIOLATIONS,
+                    Constants.ARG_RULE_VIOLATION_SPECIFIERS,
                     badViolationId
                 };
 
@@ -111,7 +111,7 @@ public class TargetedRepairTest {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
                     workdir.getAbsolutePath(),
-                    Constants.ARG_RULE_VIOLATIONS,
+                    Constants.ARG_RULE_VIOLATION_SPECIFIERS,
                     absoluteViolationId
                 });
 
