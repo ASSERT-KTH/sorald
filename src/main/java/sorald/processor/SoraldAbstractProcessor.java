@@ -137,17 +137,21 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     @Override
     public final void process(E element) {
-        assert !processedViolations.contains(bestFits.get(element));
+        try {
+            assert !processedViolations.contains(bestFits.get(element));
 
-        final String ruleKey = getRuleKey();
-        final String elementPosition = element.getPosition().toString();
+            final String ruleKey = getRuleKey();
+            final String elementPosition = element.getPosition().toString();
 
-        repair(element);
+            repair(element);
 
-        EventHelper.fireEvent(new RepairEvent(ruleKey, elementPosition), eventHandlers);
-        UniqueTypesCollector.getInstance().collect(element);
+            EventHelper.fireEvent(new RepairEvent(ruleKey, elementPosition), eventHandlers);
+            UniqueTypesCollector.getInstance().collect(element);
 
-        processedViolations.add(bestFits.get(element));
+            processedViolations.add(bestFits.get(element));
+        } catch (Exception e) {
+            fireCrashEvent("process", e);
+        }
     }
 
     @Override

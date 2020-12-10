@@ -53,6 +53,17 @@ public class SoraldAbstractProcessorTest {
         assertThat(statsCollector.getCrashes().size(), equalTo(1));
     }
 
+    @Test
+    public void process_recordsCrashEvent() {
+        var statsCollector = new StatisticsCollector();
+        var crashyProcessor = new CrashyProcessor().setEventHandlers(List.of(statsCollector));
+
+        // this will crash as we haven't set the bestFits for the processor
+        crashyProcessor.process(getObjectToString());
+
+        assertThat(statsCollector.getCrashes().size(), equalTo(1));
+    }
+
     /** Processor that always crashes. */
     private static class CrashyProcessor extends SoraldAbstractProcessor<CtMethod<?>> {
         @Override
