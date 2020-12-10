@@ -13,6 +13,7 @@ public class CrashEvent implements SoraldEvent {
     public CrashEvent(String description, Exception exception) {
         this.description = description;
         this.exception = exception;
+        exception.printStackTrace();
     }
 
     @Override
