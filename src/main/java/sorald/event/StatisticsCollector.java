@@ -2,7 +2,10 @@ package sorald.event;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import sorald.event.models.RepairEvent;
 
 /** Event handler for Sorald that collects runtime statistics */
 public class StatisticsCollector implements SoraldEventHandler {
@@ -10,8 +13,9 @@ public class StatisticsCollector implements SoraldEventHandler {
     private long parseEnd = -1;
     private long repairStart = -1;
     private long repairEnd = -1;
-    private final List<SoraldEvent> repairs = new ArrayList<>();
     private final List<SoraldEvent> crashes = new ArrayList<>();
+
+    private final Map<String, List<RepairEvent>> keysToRepairEvents = new HashMap<>();
 
     @Override
     public void registerEvent(SoraldEvent event) {
@@ -29,12 +33,17 @@ public class StatisticsCollector implements SoraldEventHandler {
                 repairEnd = System.nanoTime();
                 break;
             case REPAIR:
-                repairs.add(event);
+                addRepair((RepairEvent) event);
                 break;
             case CRASH:
                 crashes.add(event);
                 break;
         }
+    }
+
+    private void addRepair(RepairEvent event) {
+        keysToRepairEvents.putIfAbsent(event.getRuleKey(), new ArrayList<>());
+        keysToRepairEvents.get(event.getRuleKey()).add(event);
     }
 
     /** @return The total amount of time spent parsing */
@@ -48,8 +57,8 @@ public class StatisticsCollector implements SoraldEventHandler {
     }
 
     /** @return All repair event data */
-    public List<SoraldEvent> getRepairs() {
-        return Collections.unmodifiableList(repairs);
+    public Map<String, List<RepairEvent>> getRepairs() {
+        return Collections.unmodifiableMap(keysToRepairEvents);
     }
 
     /** @return All crash event data */

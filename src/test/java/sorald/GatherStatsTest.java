@@ -57,11 +57,16 @@ public class GatherStatsTest {
                     repairs.getJSONObject(i).keySet(),
                     containsInAnyOrder(
                             StatsMetadataKeys.REPAIR_RULE_KEY,
-                            StatsMetadataKeys.REPAIR_RULE_VIOLATION_POSITION));
+                            StatsMetadataKeys.REPAIR_RULE_NAME,
+                            StatsMetadataKeys.REPAIR_CRASHED_LOCATIONS,
+                            StatsMetadataKeys.REPAIR_PERFORMED_LOCATIONS));
         }
 
         assertThat(
-                jo.getJSONArray(StatsMetadataKeys.ORIGINAL_ARGS).toList().size(), greaterThan(0));
+                jo.getJSONObject(StatsMetadataKeys.EXECUTION_INFO)
+                        .getJSONArray(StatsMetadataKeys.ORIGINAL_ARGS)
+                        .length(),
+                greaterThan(0));
         assertThat(jo.getLong(StatsMetadataKeys.PARSE_TIME_NS), greaterThan(0L));
         assertThat(jo.getLong(StatsMetadataKeys.REPAIR_TIME_NS), greaterThan(0L));
     }

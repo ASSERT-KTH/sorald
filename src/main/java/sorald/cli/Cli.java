@@ -3,6 +3,7 @@ package sorald.cli;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
@@ -20,6 +21,7 @@ import sorald.event.StatisticsCollector;
 import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
+import sorald.event.models.repair.RuleRepairStatistics;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleViolation;
@@ -158,15 +160,38 @@ public class Cli {
                     .repair();
 
             if (statsOutputFile != null) {
-                FileUtils.writeJSON(
-                        statsOutputFile,
+                writeStatisticsOutput(
                         statsCollector,
-                        Map.of(
-                                StatsMetadataKeys.ORIGINAL_ARGS,
-                                spec.commandLine().getParseResult().originalArgs()));
+                        FileUtils.getClosestDirectory(originalFilesPath)
+                                .toPath()
+                                .toAbsolutePath()
+                                .normalize());
             }
 
             return 0;
+        }
+
+        private void writeStatisticsOutput(StatisticsCollector statsCollector, Path projectPath)
+                throws IOException {
+            var executionInfo =
+                    new ExecutionInfo(
+                            spec.commandLine().getParseResult().originalArgs(),
+                            SoraldVersionProvider.getVersionFromPropertiesResource(
+                                    SoraldVersionProvider.DEFAULT_RESOURCE_NAME),
+                            javaVersion,
+                            "N/A");
+
+            List<RuleRepairStatistics> repairStats =
+                    RuleRepairStatistics.createRepairStatsList(statsCollector, projectPath);
+
+            FileUtils.writeJSON(
+                    statsOutputFile,
+                    statsCollector,
+                    Map.of(
+                            StatsMetadataKeys.EXECUTION_INFO,
+                            executionInfo,
+                            StatsMetadataKeys.REPAIRS,
+                            repairStats));
         }
 
         private void validateArgs() {

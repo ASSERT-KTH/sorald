@@ -2,6 +2,7 @@ package sorald.event.models;
 
 import sorald.event.EventType;
 import sorald.event.SoraldEvent;
+import sorald.sonar.RuleViolation;
 
 /**
  * Event representing a repair. This must be public for the json.org to be able to introspect it and
@@ -9,11 +10,11 @@ import sorald.event.SoraldEvent;
  */
 public class RepairEvent implements SoraldEvent {
     private final String ruleKey;
-    private final String ruleViolationPosition;
+    private final RuleViolation ruleViolation;
 
-    public RepairEvent(String ruleKey, String ruleViolationPosition) {
+    public RepairEvent(String ruleKey, RuleViolation ruleViolation) {
         this.ruleKey = ruleKey;
-        this.ruleViolationPosition = ruleViolationPosition;
+        this.ruleViolation = ruleViolation;
     }
 
     @Override
@@ -25,7 +26,7 @@ public class RepairEvent implements SoraldEvent {
         return ruleKey;
     }
 
-    public String getRuleViolationPosition() {
-        return ruleViolationPosition;
+    public RuleViolation getRuleViolation() {
+        return ruleViolation;
     }
 }

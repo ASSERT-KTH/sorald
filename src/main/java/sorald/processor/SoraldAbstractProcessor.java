@@ -140,11 +140,10 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
             assert !processedViolations.contains(bestFits.get(element));
 
             final String ruleKey = getRuleKey();
-            final String elementPosition = element.getPosition().toString();
 
             repair(element);
 
-            EventHelper.fireEvent(new RepairEvent(ruleKey, elementPosition), eventHandlers);
+            EventHelper.fireEvent(new RepairEvent(ruleKey, bestFits.get(element)), eventHandlers);
             UniqueTypesCollector.getInstance().collect(element);
 
             processedViolations.add(bestFits.get(element));

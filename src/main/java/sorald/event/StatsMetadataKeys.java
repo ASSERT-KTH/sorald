@@ -14,7 +14,9 @@ public class StatsMetadataKeys {
 
     // Repair-specific data
     public static final String REPAIR_RULE_KEY = "ruleKey";
-    public static final String REPAIR_RULE_VIOLATION_POSITION = "ruleViolationPosition";
+    public static final String REPAIR_RULE_NAME = "ruleName";
+    public static final String REPAIR_PERFORMED_LOCATIONS = "performedRepairsLocations";
+    public static final String REPAIR_CRASHED_LOCATIONS = "crashedRepairsLocations";
 
     // Mining-specific data
     public static final String MINING_START_TIME = "miningStartTime";
