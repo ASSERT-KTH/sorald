@@ -26,6 +26,7 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.FileUtils;
 import sorald.Main;
+import sorald.cli.SoraldVersionProvider;
 import sorald.event.StatsMetadataKeys;
 import sorald.sonar.Checks;
 
@@ -151,7 +152,9 @@ public class WarningMinerTest {
 
         assertThat(
                 executionInfo.get(StatsMetadataKeys.SORALD_VERSION),
-                equalTo(Constants.SORALD_VERSION));
+                equalTo(
+                        SoraldVersionProvider.getVersionFromPropertiesResource(
+                                SoraldVersionProvider.DEFAULT_RESOURCE_NAME)));
         assertThat(
                 executionInfo.get(StatsMetadataKeys.JAVA_VERSION),
                 equalTo(System.getProperty(Constants.JAVA_VERSION_SYSTEM_PROPERTY)));
