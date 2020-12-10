@@ -66,9 +66,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         try {
             return canRepairInternal(candidate);
         } catch (Exception e) {
-            EventHelper.fireEvent(
-                    new CrashEvent("Crash in " + getClass().getCanonicalName() + "::canRepair", e),
-                    eventHandlers);
+            fireCrashEvent("canRepairInternal", e);
             return false;
         }
     }
@@ -106,7 +104,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         return this;
     }
 
-    public SoraldAbstractProcessor<?> setEventHandlers(List<SoraldEventHandler> eventHandlers) {
+    public SoraldAbstractProcessor<E> setEventHandlers(List<SoraldEventHandler> eventHandlers) {
         this.eventHandlers = eventHandlers;
         return this;
     }
@@ -179,5 +177,11 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         public String getRuleViolationPosition() {
             return ruleViolationPosition;
         }
+    }
+
+    private void fireCrashEvent(String methodName, Exception e) {
+        EventHelper.fireEvent(
+                new CrashEvent("Crash in " + getClass().getCanonicalName() + "::" + methodName, e),
+                eventHandlers);
     }
 }
