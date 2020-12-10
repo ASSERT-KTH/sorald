@@ -145,6 +145,24 @@
                 </executions>
             </plugin>
             <plugin>
+                <!-- creates the build number (git commit hash) that is later attached to the manifest -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals><goal>create</goal></goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
+                    <shortRevisionLength>8</shortRevisionLength>
+                    <attach>true</attach>
+                    <addOutputDirectoryToResources>true</addOutputDirectoryToResources>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.3.0</version>
@@ -154,6 +172,8 @@
                             <mainClass>sorald.Main</mainClass>
                         </manifest>
                         <manifestEntries>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Implementation-SCM-Revision>${buildNumber}</Implementation-SCM-Revision>
                             <Multi-Release>true</Multi-Release>
                         </manifestEntries>
                     </archive>

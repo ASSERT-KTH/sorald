@@ -43,7 +43,8 @@ public class Cli {
             subcommands = {RepairCommand.class, MineCommand.class},
             description =
                     "The Sorald command line application for automatic repair of Sonar rule violations.",
-            synopsisSubcommandLabel = "<COMMAND>")
+            synopsisSubcommandLabel = "<COMMAND>",
+            versionProvider = SoraldVersionProvider.class)
     static class SoraldCLI implements Callable<Integer> {
 
         @Override
