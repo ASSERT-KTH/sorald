@@ -10,17 +10,17 @@ public class SoraldAbstractProcessorTest {
 
     @Test
     public void canRepair_returnsFalse_whenInternalMethodCrashes() {
-        SoraldAbstractProcessor<?> crashyProcessor =
-                new SoraldAbstractProcessor<CtInvocation<?>>() {
-                    @Override
-                    protected boolean canRepairInternal(CtInvocation<?> candidate) {
-                        throw new RuntimeException("I'm crashy :)");
-                    }
+        assertFalse(new CrashyProcessor().canRepair(null));
+    }
 
-                    @Override
-                    public void repair(CtInvocation<?> element) {}
-                };
+    /** Processor that always crashes. */
+    private static class CrashyProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
+        @Override
+        protected boolean canRepairInternal(CtInvocation<?> candidate) {
+            throw new RuntimeException("I'm crashy :)");
+        }
 
-        assertFalse(crashyProcessor.canRepair(null));
+        @Override
+        public void repair(CtInvocation<?> element) {}
     }
 }
