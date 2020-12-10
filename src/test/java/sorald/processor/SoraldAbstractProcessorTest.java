@@ -36,7 +36,14 @@ public class SoraldAbstractProcessorTest {
     }
 
     @Test
-    public void process_recordsCrashEvent() {
+    public void repair_returnsFalse_whenInternalMethodCrashes() {
+        var crashyProcessor =
+                new CrashyProcessor().setEventHandlers(List.of(new StatisticsCollector()));
+        assertFalse(crashyProcessor.repair(getObjectToString()));
+    }
+
+    @Test
+    public void repair_recordsCrashEvent() {
         var statsCollector = new StatisticsCollector();
         var crashyProcessor = new CrashyProcessor().setEventHandlers(List.of(statsCollector));
         CtMethod<?> objectToString = getObjectToString();

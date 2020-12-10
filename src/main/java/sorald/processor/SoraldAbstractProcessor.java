@@ -81,12 +81,15 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      * <p>This method never crashes.
      *
      * @param element An element to repair.
+     * @return true if the repair proceeded without crashing, false if errors were encountered.
      */
-    public final void repair(E element) {
+    public final boolean repair(E element) {
         try {
             repairInternal(element);
+            return true;
         } catch (Exception e) {
             fireCrashEvent("repairInternal", e);
+            return false;
         }
     }
 
