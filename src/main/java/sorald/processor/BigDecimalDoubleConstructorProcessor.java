@@ -14,7 +14,7 @@ public class BigDecimalDoubleConstructorProcessor
         extends SoraldAbstractProcessor<CtConstructorCall> {
 
     @Override
-    public boolean canRepair(CtConstructorCall cons) {
+    public boolean canRepairInternal(CtConstructorCall cons) {
         CtTypeReference bigDecimalTypeRef = getFactory().createCtTypeReference(BigDecimal.class);
         CtTypeReference doubleTypeRef = getFactory().createCtTypeReference(double.class);
         CtTypeReference floatTypeRef = getFactory().createCtTypeReference(float.class);

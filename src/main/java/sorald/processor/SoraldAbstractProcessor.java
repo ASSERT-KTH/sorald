@@ -53,20 +53,41 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      * example, when repairing something involving a method call, there may be nested calls that are
      * not actually the violating parties, but still appear in the correct vicinity.
      *
-     * <p>Note that a processor gets ONE chance to repair a violation. If it returns true, the
-     * violating element is passed to the {@link SoraldAbstractProcessor#repair(CtElement)} method,
-     * and the violation is consumed.
+     * <p><b>This method does not mutate the state of the processor</b>.
      *
-     * <p><b>This method should not mutate the state of the processor</b>.
+     * <p>This method never crashes, instead returning false if there is a problem in the concrete
+     * processor.
      *
      * @param candidate A candidate element to inspect.
      * @return true if the processor can repair the violation based on this element.
      */
-    public abstract boolean canRepair(E candidate);
+    public final boolean canRepair(E candidate) {
+        try {
+            return canRepairInternal(candidate);
+        } catch (Exception e) {
+            // TODO make note of crash as event
+            return false;
+        }
+    }
+
+    /**
+     * Same as the general description of {@link SoraldAbstractProcessor#canRepair(CtElement)}.
+     *
+     * <p>Note that a processor gets ONE chance to repair a violation. If this method returns true,
+     * the violating element is passed to the {@link SoraldAbstractProcessor#repair(CtElement)}
+     * method, and the violation is consumed.
+     *
+     * <p>It is very important that this method <b>does not mutate the state of the processor.</b>
+     * Doing so may have unexpected side effects.
+     *
+     * @param candidate A candidate element.
+     * @return true if the processor can repair the violation based on this element.
+     */
+    protected abstract boolean canRepairInternal(E candidate);
 
     /**
      * Repair a violating element. An element is only passed to this method after having been
-     * accepted by {@link SoraldAbstractProcessor#canRepair(CtElement)}.
+     * accepted by {@link SoraldAbstractProcessor#canRepairInternal(CtElement)}.
      *
      * @param element An element to repair.
      */

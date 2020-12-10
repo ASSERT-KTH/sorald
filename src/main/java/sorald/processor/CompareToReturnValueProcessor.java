@@ -12,7 +12,7 @@ import spoon.reflect.declaration.CtMethod;
 public class CompareToReturnValueProcessor extends SoraldAbstractProcessor<CtReturn<?>> {
 
     @Override
-    public boolean canRepair(CtReturn<?> ctReturn) {
+    public boolean canRepairInternal(CtReturn<?> ctReturn) {
         CtMethod ctMethod = ctReturn.getParent(CtMethod.class);
         String returnTypeName = ctMethod.getType().getSimpleName();
         if (ctMethod.getSimpleName().equals("compareTo")

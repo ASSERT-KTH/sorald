@@ -36,7 +36,7 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     private static final String XML_INPUT_FACTORY = "XMLInputFactory";
 
     @Override
-    public boolean canRepair(CtInvocation<?> candidate) {
+    public boolean canRepairInternal(CtInvocation<?> candidate) {
         return isSupported(candidate);
     }
 

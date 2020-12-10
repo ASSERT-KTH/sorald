@@ -12,7 +12,7 @@ import spoon.reflect.factory.Factory;
 public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCatch> {
 
     @Override
-    public boolean canRepair(CtCatch candidate) {
+    public boolean canRepairInternal(CtCatch candidate) {
         return true;
     }
 

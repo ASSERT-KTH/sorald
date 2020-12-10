@@ -12,7 +12,7 @@ public class SerializableFieldInSerializableClassProcessor
         extends SoraldAbstractProcessor<CtField> {
 
     @Override
-    public boolean canRepair(CtField element) {
+    public boolean canRepairInternal(CtField element) {
         return true;
     }
 

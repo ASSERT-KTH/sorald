@@ -9,7 +9,7 @@ import spoon.reflect.code.CtStatement;
 public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 
     @Override
-    public boolean canRepair(CtStatement element) {
+    public boolean canRepairInternal(CtStatement element) {
         if (element instanceof CtLocalVariable || element instanceof CtAssignment) {
             return true;
         }

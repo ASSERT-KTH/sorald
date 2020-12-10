@@ -25,7 +25,7 @@ public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMe
      *     already throw the correct error.
      */
     @Override
-    public boolean canRepair(CtMethod candidate) {
+    public boolean canRepairInternal(CtMethod candidate) {
         CtType iteratorInterface = getFactory().Interface().get(Iterator.class);
         CtMethod next = (CtMethod) iteratorInterface.getMethodsByName("next").get(0);
         if (candidate.isOverriding(next)) {

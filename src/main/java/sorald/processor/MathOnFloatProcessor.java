@@ -13,7 +13,7 @@ import spoon.reflect.visitor.filter.TypeFilter;
 public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 
     @Override
-    public boolean canRepair(CtBinaryOperator candidate) {
+    public boolean canRepairInternal(CtBinaryOperator candidate) {
         List<CtBinaryOperator> binaryOperatorChildren =
                 candidate.getElements(new TypeFilter<>(CtBinaryOperator.class));
         if (binaryOperatorChildren.size()

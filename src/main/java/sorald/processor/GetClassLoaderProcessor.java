@@ -16,7 +16,7 @@ public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocatio
     private HashMap<Integer, Boolean> hashCodesOfTypesUsingJEE = new HashMap<Integer, Boolean>();
 
     @Override
-    public boolean canRepair(CtInvocation<?> invocation) {
+    public boolean canRepairInternal(CtInvocation<?> invocation) {
         String invocationStr = invocation.toString();
         if (invocationStr.contains("getClass().getClassLoader()")
                 || invocationStr.contains(".class.getClassLoader()")) {

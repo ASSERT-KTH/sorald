@@ -17,7 +17,7 @@ import spoon.reflect.reference.CtVariableReference;
 public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstructorCall> {
 
     @Override
-    public boolean canRepair(CtConstructorCall element) {
+    public boolean canRepairInternal(CtConstructorCall element) {
         return element.getParent(e -> e instanceof CtConstructorCall) == null;
     }
 
