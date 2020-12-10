@@ -12,6 +12,7 @@ import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEvent;
 import sorald.event.SoraldEventHandler;
+import sorald.event.models.CrashEvent;
 import sorald.sonar.RuleViolation;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
@@ -65,7 +66,9 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         try {
             return canRepairInternal(candidate);
         } catch (Exception e) {
-            // TODO make note of crash as event
+            EventHelper.fireEvent(
+                    new CrashEvent("Crash in " + getClass().getCanonicalName() + "::canRepair", e),
+                    eventHandlers);
             return false;
         }
     }

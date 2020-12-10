@@ -8,5 +8,6 @@ public enum EventType {
     REPAIR,
     MINING_START,
     MINING_END,
-    MINED
+    MINED,
+    CRASH
 }
