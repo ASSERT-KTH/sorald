@@ -18,7 +18,9 @@ public class SoraldAbstractProcessorTest {
 
     @Test
     public void canRepair_returnsFalse_whenInternalMethodCrashes() {
-        assertFalse(new CrashyProcessor().canRepair(getObjectToString()));
+        var crashyProcessor =
+                new CrashyProcessor().setEventHandlers(List.of(new StatisticsCollector()));
+        assertFalse(crashyProcessor.canRepair(getObjectToString()));
     }
 
     @Test
