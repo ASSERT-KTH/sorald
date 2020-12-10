@@ -10,12 +10,12 @@ import spoon.reflect.code.CtThrow;
 public class UnusedThrowableProcessor extends SoraldAbstractProcessor<CtConstructorCall> {
 
     @Override
-    public boolean canRepair(CtConstructorCall element) {
+    public boolean canRepairInternal(CtConstructorCall element) {
         return true;
     }
 
     @Override
-    public void repair(CtConstructorCall element) {
+    public void repairInternal(CtConstructorCall element) {
         CtThrow ctThrow = getFactory().createCtThrow(element.toString());
         element.replace(ctThrow);
     }

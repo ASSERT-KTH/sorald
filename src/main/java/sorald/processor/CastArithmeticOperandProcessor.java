@@ -15,7 +15,7 @@ import spoon.reflect.visitor.filter.TypeFilter;
 public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 
     @Override
-    public boolean canRepair(CtBinaryOperator candidate) {
+    public boolean canRepairInternal(CtBinaryOperator candidate) {
         List<CtBinaryOperator> binaryOperatorChildren =
                 candidate.getElements(new TypeFilter<>(CtBinaryOperator.class));
         if (binaryOperatorChildren.size()
@@ -38,7 +38,7 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
     }
 
     @Override
-    public void repair(CtBinaryOperator element) {
+    public void repairInternal(CtBinaryOperator element) {
         CtTypeReference<?> typeToBeUsedToCast = getExpectedType(element);
         CtCodeSnippetExpression newBinaryOperator =
                 element.getFactory()

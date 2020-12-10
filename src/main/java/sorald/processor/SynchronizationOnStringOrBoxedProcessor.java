@@ -34,7 +34,7 @@ public class SynchronizationOnStringOrBoxedProcessor
     }
 
     @Override
-    public boolean canRepair(CtSynchronized element) {
+    public boolean canRepairInternal(CtSynchronized element) {
         CtExpression<?> expression = element.getExpression();
         if (!expression.getType().toString().equals("String")
                 && !expression.getType().unbox().isPrimitive()) {
@@ -67,7 +67,7 @@ public class SynchronizationOnStringOrBoxedProcessor
     }
 
     @Override
-    public void repair(CtSynchronized element) {
+    public void repairInternal(CtSynchronized element) {
         CtExpression<?> expression = element.getExpression();
         Factory factory = element.getFactory();
         CtFieldRead<?> fieldRead4Update;

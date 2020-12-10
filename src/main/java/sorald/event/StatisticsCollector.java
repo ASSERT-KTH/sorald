@@ -11,6 +11,7 @@ public class StatisticsCollector implements SoraldEventHandler {
     private long repairStart = -1;
     private long repairEnd = -1;
     private final List<SoraldEvent> repairs = new ArrayList<>();
+    private final List<SoraldEvent> crashes = new ArrayList<>();
 
     @Override
     public void registerEvent(SoraldEvent event) {
@@ -30,6 +31,9 @@ public class StatisticsCollector implements SoraldEventHandler {
             case REPAIR:
                 repairs.add(event);
                 break;
+            case CRASH:
+                crashes.add(event);
+                break;
         }
     }
 
@@ -46,5 +50,10 @@ public class StatisticsCollector implements SoraldEventHandler {
     /** @return All repair event data */
     public List<SoraldEvent> getRepairs() {
         return Collections.unmodifiableList(repairs);
+    }
+
+    /** @return All crash event data */
+    public List<SoraldEvent> getCrashes() {
+        return Collections.unmodifiableList(crashes);
     }
 }
