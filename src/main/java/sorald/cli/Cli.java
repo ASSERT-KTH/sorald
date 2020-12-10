@@ -337,7 +337,8 @@ public class Cli {
                                 StatsMetadataKeys.EXECUTION_INFO,
                                 new ExecutionInfo(
                                         spec.commandLine().getParseResult().originalArgs(),
-                                        Constants.SORALD_VERSION,
+                                        SoraldVersionProvider.getVersionFromPropertiesResource(
+                                                SoraldVersionProvider.DEFAULT_RESOURCE_NAME),
                                         javaVersion,
                                         target));
 

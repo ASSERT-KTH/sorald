@@ -7,8 +7,6 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.sonar.Checks;
 
 public class Constants {
-    public static final String SORALD_VERSION = "92d377cc39f63be35f9bee00d372c8f1ca06be5e";
-
     public static final String REPAIR_COMMAND_NAME = "repair";
     public static final String MINE_COMMAND_NAME = "mine";
 
