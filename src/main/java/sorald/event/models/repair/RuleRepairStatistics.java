@@ -11,22 +11,21 @@ import java.util.stream.Collectors;
 import sorald.event.StatisticsCollector;
 import sorald.event.models.RepairEvent;
 import sorald.event.models.WarningLocation;
+import sorald.event.models.miner.MinedViolationEvent;
 import sorald.sonar.Checks;
-import sorald.sonar.RuleViolation;
 
 /** Repair statistics for a single rule. */
 public class RuleRepairStatistics {
     private final String ruleKey;
     private final String ruleName;
-    private final List<RuleViolation> allWarnings;
-
+    private final List<MinedViolationEvent> allWarnings;
     private final List<WarningLocation> performedRepairsLocations;
     private final List<WarningLocation> crashedRepairsLocations;
 
     public RuleRepairStatistics(
             String ruleKey,
             String ruleName,
-            List<RuleViolation> allWarnings,
+            List<MinedViolationEvent> allWarnings,
             List<RepairEvent> repairedWarnings,
             List<RepairEvent> failedRepairs,
             Path projectPath) {
@@ -63,25 +62,23 @@ public class RuleRepairStatistics {
         return Collections.unmodifiableList(crashedRepairsLocations);
     }
 
-    public int nbWarningsFound() {
+    public int getNbWarningsFound() {
         return allWarnings.size();
     }
 
-    public int nbRepairs() {
+    public int getNbPerformedRepairs() {
         return performedRepairsLocations.size();
     }
 
-    public int nbFailures() {
+    public int getNbCrashedRepairs() {
         return crashedRepairsLocations.size();
     }
 
     public static List<RuleRepairStatistics> createRepairStatsList(
             StatisticsCollector statsCollector, Path projectPath) {
-        Map<String, List<RepairEvent>> keyToRepair = statsCollector.getRepairs();
-        Map<String, List<RepairEvent>> keyToFailure =
-                Map.of(); // TODO make failed repairs available in stats collector
-        Map<String, List<RuleViolation>> keyToWarnings =
-                Map.of(); // TODO make all warnings available in stats collector
+        Map<String, List<RepairEvent>> keyToRepair = statsCollector.performedRepairs();
+        Map<String, List<RepairEvent>> keyToFailure = statsCollector.crashedRepairs();
+        Map<String, List<MinedViolationEvent>> keyToWarnings = statsCollector.minedWarnings();
 
         Set<String> distinctKeys = new HashSet<>(keyToRepair.keySet());
         distinctKeys.addAll(keyToFailure.keySet());
@@ -91,7 +88,7 @@ public class RuleRepairStatistics {
                         key -> {
                             List<RepairEvent> repairs = keyToRepair.getOrDefault(key, List.of());
                             List<RepairEvent> failures = keyToFailure.getOrDefault(key, List.of());
-                            List<RuleViolation> allWarnings =
+                            List<MinedViolationEvent> allWarnings =
                                     keyToWarnings.getOrDefault(key, List.of());
                             String checkName = Checks.getCheck(key).getName();
                             return new RuleRepairStatistics(

@@ -9,12 +9,13 @@ import sorald.sonar.RuleViolation;
  * produce the nice JSON output.
  */
 public class RepairEvent implements SoraldEvent {
-    private final String ruleKey;
     private final RuleViolation ruleViolation;
+    private final boolean failure;
 
-    public RepairEvent(String ruleKey, RuleViolation ruleViolation) {
-        this.ruleKey = ruleKey;
+    // TODO document
+    public RepairEvent(RuleViolation ruleViolation, boolean failure) {
         this.ruleViolation = ruleViolation;
+        this.failure = failure;
     }
 
     @Override
@@ -23,7 +24,11 @@ public class RepairEvent implements SoraldEvent {
     }
 
     public String getRuleKey() {
-        return ruleKey;
+        return ruleViolation.getRuleKey();
+    }
+
+    public boolean isFailure() {
+        return failure;
     }
 
     public RuleViolation getRuleViolation() {

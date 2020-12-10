@@ -59,7 +59,10 @@ public class GatherStatsTest {
                             StatsMetadataKeys.REPAIR_RULE_KEY,
                             StatsMetadataKeys.REPAIR_RULE_NAME,
                             StatsMetadataKeys.REPAIR_CRASHED_LOCATIONS,
-                            StatsMetadataKeys.REPAIR_PERFORMED_LOCATIONS));
+                            StatsMetadataKeys.REPAIR_PERFORMED_LOCATIONS,
+                            StatsMetadataKeys.REPAIR_NB_PERFORMED,
+                            StatsMetadataKeys.REPAIR_NB_FAILURES,
+                            StatsMetadataKeys.REPAIR_NB_WARNINGS));
         }
 
         assertThat(

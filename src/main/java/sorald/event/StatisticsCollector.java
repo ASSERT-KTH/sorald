@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import sorald.event.models.RepairEvent;
+import sorald.event.models.miner.MinedViolationEvent;
 
 /** Event handler for Sorald that collects runtime statistics */
 public class StatisticsCollector implements SoraldEventHandler {
@@ -15,7 +16,9 @@ public class StatisticsCollector implements SoraldEventHandler {
     private long repairEnd = -1;
     private final List<SoraldEvent> crashes = new ArrayList<>();
 
-    private final Map<String, List<RepairEvent>> keysToRepairEvents = new HashMap<>();
+    private final Map<String, List<RepairEvent>> keyToRepairs = new HashMap<>();
+    private final Map<String, List<RepairEvent>> keyToFailures = new HashMap<>();
+    private final Map<String, List<MinedViolationEvent>> minedWarnings = new HashMap<>();
 
     @Override
     public void registerEvent(SoraldEvent event) {
@@ -38,12 +41,22 @@ public class StatisticsCollector implements SoraldEventHandler {
             case CRASH:
                 crashes.add(event);
                 break;
+            case MINED:
+                var mined = (MinedViolationEvent) event;
+                addToEventMap(mined.getRuleKey(), mined, minedWarnings);
+                break;
         }
     }
 
     private void addRepair(RepairEvent event) {
-        keysToRepairEvents.putIfAbsent(event.getRuleKey(), new ArrayList<>());
-        keysToRepairEvents.get(event.getRuleKey()).add(event);
+        var map = event.isFailure() ? keyToFailures : keyToRepairs;
+        addToEventMap(event.getRuleKey(), event, map);
+    }
+
+    private <T extends SoraldEvent> void addToEventMap(
+            String key, T event, Map<String, List<T>> eventsMap) {
+        eventsMap.putIfAbsent(key, new ArrayList<>());
+        eventsMap.get(key).add(event);
     }
 
     /** @return The total amount of time spent parsing */
@@ -56,9 +69,18 @@ public class StatisticsCollector implements SoraldEventHandler {
         return repairEnd - repairStart;
     }
 
-    /** @return All repair event data */
-    public Map<String, List<RepairEvent>> getRepairs() {
-        return Collections.unmodifiableMap(keysToRepairEvents);
+    /** @return All repair events that were performed without errors. */
+    public Map<String, List<RepairEvent>> performedRepairs() {
+        return Collections.unmodifiableMap(keyToRepairs);
+    }
+
+    /** @return All repair events that crashed during execution. */
+    public Map<String, List<RepairEvent>> crashedRepairs() {
+        return Collections.unmodifiableMap(keyToFailures);
+    }
+
+    public Map<String, List<MinedViolationEvent>> minedWarnings() {
+        return Collections.unmodifiableMap(minedWarnings);
     }
 
     /** @return All crash event data */

@@ -143,12 +143,13 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
             repair(element);
 
-            EventHelper.fireEvent(new RepairEvent(ruleKey, bestFits.get(element)), eventHandlers);
+            EventHelper.fireEvent(new RepairEvent(bestFits.get(element), false), eventHandlers);
             UniqueTypesCollector.getInstance().collect(element);
 
             processedViolations.add(bestFits.get(element));
         } catch (Exception e) {
             fireCrashEvent("process", e);
+            EventHelper.fireEvent(new RepairEvent(bestFits.get(element), true), eventHandlers);
         }
     }
 
