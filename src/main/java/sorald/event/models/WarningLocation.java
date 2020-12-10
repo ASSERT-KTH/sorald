@@ -1,6 +1,7 @@
 package sorald.event.models;
 
-import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import sorald.sonar.RuleViolation;
 
 public class WarningLocation {
@@ -11,25 +12,13 @@ public class WarningLocation {
     private final Integer endColumn;
     private final String violationSpecifier;
 
-    public WarningLocation(RuleViolation violation) {
-        this.filePath = violation.getFileName();
+    public WarningLocation(RuleViolation violation, Path projectPath) {
+        this.filePath = projectPath.relativize(Paths.get(violation.getFileName())).toString();
         this.startLine = violation.getStartLine();
         this.endLine = violation.getEndLine();
         this.startColumn = violation.getStartCol();
         this.endColumn = violation.getEndCol();
-
-        this.violationSpecifier =
-                violation.getRuleKey()
-                        + File.pathSeparator
-                        + filePath
-                        + File.pathSeparator
-                        + startLine
-                        + File.pathSeparator
-                        + endLine
-                        + File.pathSeparator
-                        + startColumn
-                        + File.pathSeparator
-                        + endColumn;
+        this.violationSpecifier = violation.relativeSpecifier(projectPath);
     }
 
     public String getFilePath() {

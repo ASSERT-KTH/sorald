@@ -22,6 +22,7 @@ import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
+import sorald.sonar.RuleViolation;
 
 /** Class containing the CLI for Sorald. */
 public class Cli {
@@ -58,7 +59,8 @@ public class Cli {
             mixinStandardHelpOptions = true,
             description = "Repair Sonar rule violations in a targeted project.")
     private static class RepairCommand implements Callable<Integer> {
-        private List<Integer> ruleKeys;
+        List<Integer> ruleKeys;
+        List<RuleViolation> ruleViolations = List.of();
 
         @CommandLine.Spec CommandLine.Model.CommandSpec spec;
 
@@ -69,25 +71,32 @@ public class Cli {
                 required = true)
         File originalFilesPath;
 
-        @CommandLine.Option(
-                names = {Constants.ARG_RULE_KEYS},
-                description =
-                        "Choose one or more of the following rule keys "
-                                + "(use ',' to separate multiple keys):\n"
-                                + Processors.RULE_DESCRIPTIONS,
-                required = true,
-                split = ",")
-        private void setRuleKeys(List<Integer> value) {
-            for (Integer ruleKey : value) {
-                if (Processors.getProcessor(ruleKey) == null) {
-                    throw new CommandLine.ParameterException(
-                            spec.commandLine(),
-                            "Sorry, repair not available for rule "
-                                    + ruleKey
-                                    + ". See the available rules below.");
-                }
-            }
-            ruleKeys = value;
+        @CommandLine.ArgGroup(multiplicity = "1")
+        Rules rules;
+
+        static class Rules {
+            @CommandLine.Option(
+                    names = {Constants.ARG_RULE_KEYS},
+                    description =
+                            "Choose one or more of the following rule keys "
+                                    + "(use ',' to separate multiple keys):\n"
+                                    + Processors.RULE_DESCRIPTIONS,
+                    required = true,
+                    split = ",")
+            List<Integer> ruleKeys = List.of();
+
+            @CommandLine.Option(
+                    names = Constants.ARG_RULE_VIOLATION_SPECIFIERS,
+                    description =
+                            "One or more rule violation specifiers. Specifiers can be gathered "
+                                    + "with the '"
+                                    + Constants.MINE_COMMAND_NAME
+                                    + "' command using the "
+                                    + Constants.ARG_STATS_OUTPUT_FILE
+                                    + " option.",
+                    required = true,
+                    split = ",")
+            List<String> ruleViolationSpecifiers = List.of();
         }
 
         @CommandLine.Option(
@@ -139,6 +148,7 @@ public class Cli {
 
         @Override
         public Integer call() throws IOException {
+            postprocessArgs();
             validateArgs();
             SoraldConfig config = createConfig();
 
@@ -171,11 +181,69 @@ public class Cli {
                         RepairStrategy.SEGMENT.name()
                                 + " repair does not currently support statistics collection");
             }
+
+            validateRuleKeys();
+        }
+
+        /** Perform further processing of raw command line args. */
+        private void postprocessArgs() {
+            ruleViolations = parseRuleViolations(rules);
+            ruleKeys = parseRuleKeys(rules, ruleViolations);
+        }
+
+        private List<RuleViolation> parseRuleViolations(Rules rules) {
+            return rules.ruleViolationSpecifiers.stream()
+                    .map(this::parseRuleViolation)
+                    .collect(Collectors.toUnmodifiableList());
+        }
+
+        private List<Integer> parseRuleKeys(Rules rules, List<RuleViolation> ruleViolations) {
+            return ruleViolations.isEmpty()
+                    ? rules.ruleKeys
+                    : ruleViolations.stream()
+                            .map(RuleViolation::getRuleKey)
+                            .map(Integer::parseInt)
+                            .collect(Collectors.toUnmodifiableList());
+        }
+
+        private void validateRuleKeys() {
+            for (Integer ruleKey : ruleKeys) {
+                if (Processors.getProcessor(ruleKey) == null) {
+                    throw new CommandLine.ParameterException(
+                            spec.commandLine(),
+                            "Sorry, repair not available for rule "
+                                    + ruleKey
+                                    + ". See the available rules below.");
+                }
+            }
+        }
+
+        private RuleViolation parseRuleViolation(String violationSpecifier) {
+            String[] parts = violationSpecifier.split(Constants.VIOLATION_SPECIFIER_SEP);
+            String key = parts[0];
+            String rawFilename = parts[1];
+            String fileName =
+                    originalFilesPath.toPath().resolve(rawFilename).toAbsolutePath().toString();
+
+            if (!new File(fileName).isFile()) {
+                throw new CommandLine.ParameterException(
+                        spec.commandLine(),
+                        String.format(
+                                "Invalid violation ID '%s', no file '%s' in directory '%s'",
+                                violationSpecifier, rawFilename, originalFilesPath));
+            }
+
+            int startLine = Integer.parseInt(parts[2]);
+            int startCol = Integer.parseInt(parts[3]);
+            int endLine = Integer.parseInt(parts[4]);
+            int endCol = Integer.parseInt(parts[5]);
+            return new SpecifiedViolation(key, fileName, startLine, endLine, startCol, endCol);
         }
 
         private SoraldConfig createConfig() {
             SoraldConfig config = new SoraldConfig();
             config.addRuleKeys(ruleKeys);
+            config.setRuleViolations(ruleViolations);
             config.setOriginalFilesPath(originalFilesPath.getAbsolutePath());
             config.setWorkspace(soraldWorkspace.getAbsolutePath());
             if (gitRepoPath != null) {
@@ -257,7 +325,9 @@ public class Cli {
                                 checks, minerOutputFile.getAbsolutePath(), reposList, tempDir);
             } else {
                 new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
-                        .mineLocalProject(checks, originalFilesPath.getAbsolutePath());
+                        .mineLocalProject(
+                                checks,
+                                originalFilesPath.toPath().normalize().toAbsolutePath().toString());
             }
 
             if (statsOutputFile != null) {

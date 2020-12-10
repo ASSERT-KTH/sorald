@@ -92,23 +92,23 @@ The full list of options is as follows (and can also be found by running
                     separate multiple keys):
                   1656: Variables should not be self-assigned
                   2142: "InterruptedException" should not be ignored
-                  2111: "BigDecimal(double)" should not be used
                   4973: Strings and Boxed types should be compared using
                     "equals()"
-                  2204: ".equals()" should not be used to test the values of
-                    "Atomic" classes
                   1854: Unused assignments should be removed
-                  1444: "public static" fields should be constant
-                  	(incomplete: does not fix variable naming)
                   2184: Math operands should be cast before assignment
                   2164: Math should not be performed on floats
-                  1860: Synchronization should not be based on Strings or boxed
-                    primitives
                   3032: JEE applications should not "getClassLoader"
                   1948: Fields in a "Serializable" class should either be
                     transient or serializable
                   2272: "Iterator.next()" methods should throw
                     "NoSuchElementException"
+                  2111: "BigDecimal(double)" should not be used
+                  2204: ".equals()" should not be used to test the values of
+                    "Atomic" classes
+                  1444: "public static" fields should be constant
+                  	(incomplete: does not fix variable naming)
+                  1860: Synchronization should not be based on Strings or boxed
+                    primitives
                   3984: Exception should not be created without being thrown
                   3067: "getClass" should not be used for synchronization
                   2167: "compareTo" should not return "Integer.MIN_VALUE"
@@ -119,7 +119,15 @@ The full list of options is as follows (and can also be found by running
                   	(incomplete: This processor is a WIP and currently supports
                     a subset of rule 2755. See Sorald's documentation for
                     details.)
+      --statsOutputFile=<statsOutputFile>
+                  Path to a file to store execution statistics in (in JSON
+                    format). If left unspecified, Sorald does not gather
+                    statistics.
   -V, --version   Print version information and exit.
+      --violationSpecs=<ruleViolations>[,<ruleViolations>...]
+                  One or more rule violation specifiers. Specifiers can be
+                    gathered with the 'mine' command using the
+                    --statsOutputFile option.
       --workspace=<soraldWorkspace>
                   The path to a folder that will be used as workspace by
                     Sorald, i.e. the path for the output.

@@ -1,5 +1,6 @@
 package sorald.event.models.miner;
 
+import java.nio.file.Path;
 import sorald.event.EventType;
 import sorald.event.SoraldEvent;
 import sorald.event.models.WarningLocation;
@@ -12,10 +13,10 @@ public class MinedViolationEvent implements SoraldEvent {
     private final WarningLocation warningLocation;
 
     /** Wrapping just one violation inside a mined-rule event */
-    public MinedViolationEvent(RuleViolation violation) {
+    public MinedViolationEvent(RuleViolation violation, Path projectPath) {
         this.ruleKey = violation.getRuleKey();
         this.ruleName = violation.getCheckName();
-        this.warningLocation = new WarningLocation(violation);
+        this.warningLocation = new WarningLocation(violation, projectPath);
     }
 
     public String getRuleKey() {

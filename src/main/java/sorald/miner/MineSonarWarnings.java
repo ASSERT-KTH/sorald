@@ -1,6 +1,7 @@
 package sorald.miner;
 
 import java.io.*;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -107,8 +108,10 @@ public class MineSonarWarnings {
 
         analyzeMessages.stream().map(RuleViolation::getCheckName).forEach(incrementWarningCount);
 
-        analyzeMessages.stream()
-                .forEach(v -> EventHelper.fireEvent(new MinedViolationEvent(v), eventHandlers));
+        analyzeMessages.forEach(
+                v ->
+                        EventHelper.fireEvent(
+                                new MinedViolationEvent(v, Paths.get(projectPath)), eventHandlers));
 
         return warnings;
     }

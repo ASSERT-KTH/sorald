@@ -27,9 +27,12 @@ public class Constants {
     public static final String ARG_REPAIR_STRATEGY = "--repair-strategy";
     public static final String ARG_MAX_FILES_PER_SEGMENT = "--max-files-per-segment";
     public static final String ARG_RULE_TYPES = "--rule-types";
+    public static final String ARG_RULE_VIOLATION_SPECIFIERS = "--violation-specs";
     public static final String ARG_TARGET = "--target";
 
     public static final String PROCESSOR_PACKAGE = "sorald.processor";
+
+    public static final String VIOLATION_SPECIFIER_SEP = File.pathSeparator;
 
     public static final String SORALD_WORKSPACE = "sorald-workspace";
     public static final String PATCHES = "SoraldGitPatches";
