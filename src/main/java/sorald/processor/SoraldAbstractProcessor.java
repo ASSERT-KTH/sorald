@@ -9,10 +9,9 @@ import java.util.Map;
 import sorald.UniqueTypesCollector;
 import sorald.annotations.ProcessorAnnotation;
 import sorald.event.EventHelper;
-import sorald.event.EventType;
-import sorald.event.SoraldEvent;
 import sorald.event.SoraldEventHandler;
 import sorald.event.models.CrashEvent;
+import sorald.event.models.RepairEvent;
 import sorald.sonar.RuleViolation;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
@@ -176,33 +175,6 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     public Class<E> getTargetType() {
         assert getProcessedElementTypes().size() == 1;
         return (Class<E>) getProcessedElementTypes().iterator().next();
-    }
-
-    /**
-     * Event representing a repair. This must be public for the json.org to be able to introspect it
-     * and produce the nice JSON output.
-     */
-    public static class RepairEvent implements SoraldEvent {
-        private final String ruleKey;
-        private final String ruleViolationPosition;
-
-        public RepairEvent(String ruleKey, String ruleViolationPosition) {
-            this.ruleKey = ruleKey;
-            this.ruleViolationPosition = ruleViolationPosition;
-        }
-
-        @Override
-        public EventType type() {
-            return EventType.REPAIR;
-        }
-
-        public String getRuleKey() {
-            return ruleKey;
-        }
-
-        public String getRuleViolationPosition() {
-            return ruleViolationPosition;
-        }
     }
 
     private void fireCrashEvent(String methodName, Exception e) {
