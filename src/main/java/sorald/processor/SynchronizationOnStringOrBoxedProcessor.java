@@ -67,7 +67,7 @@ public class SynchronizationOnStringOrBoxedProcessor
     }
 
     @Override
-    public void repair(CtSynchronized element) {
+    public void repairInternal(CtSynchronized element) {
         CtExpression<?> expression = element.getExpression();
         Factory factory = element.getFactory();
         CtFieldRead<?> fieldRead4Update;

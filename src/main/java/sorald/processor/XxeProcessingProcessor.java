@@ -49,7 +49,7 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
     }
 
     @Override
-    public void repair(CtInvocation<?> element) {
+    public void repairInternal(CtInvocation<?> element) {
         CtType<?> declaringType = element.getParent(CtType.class);
 
         CtMethod<?> factoryMethod = createFactoryMethod(element, declaringType);

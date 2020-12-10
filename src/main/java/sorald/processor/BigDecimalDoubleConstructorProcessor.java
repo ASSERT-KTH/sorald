@@ -31,7 +31,7 @@ public class BigDecimalDoubleConstructorProcessor
     }
 
     @Override
-    public void repair(CtConstructorCall cons) {
+    public void repairInternal(CtConstructorCall cons) {
         if (cons.getArguments().size() == 1) {
             CtType bigDecimalClass = getFactory().Class().get(BigDecimal.class);
             CtCodeSnippetExpression invoker =

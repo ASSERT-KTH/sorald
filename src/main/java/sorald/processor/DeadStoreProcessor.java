@@ -17,7 +17,7 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
     }
 
     @Override
-    public void repair(CtStatement element) {
+    public void repairInternal(CtStatement element) {
         element.delete();
     }
 }

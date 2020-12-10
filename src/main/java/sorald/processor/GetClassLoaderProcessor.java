@@ -40,7 +40,7 @@ public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocatio
     }
 
     @Override
-    public void repair(CtInvocation<?> element) {
+    public void repairInternal(CtInvocation<?> element) {
         Factory factory = element.getFactory();
         CtClass<?> c = factory.Class().get(Thread.class);
         CtTypeAccess<?> access = factory.createTypeAccess(c.getReference());

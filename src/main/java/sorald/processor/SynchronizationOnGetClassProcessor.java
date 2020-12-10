@@ -46,7 +46,7 @@ public class SynchronizationOnGetClassProcessor extends SoraldAbstractProcessor<
     }
 
     @Override
-    public void repair(CtSynchronized element) {
+    public void repairInternal(CtSynchronized element) {
         CtExpression<?> expression = element.getExpression();
         CtTypeReference<?> typeRef;
         if (expression.toString().equals("getClass()")) {

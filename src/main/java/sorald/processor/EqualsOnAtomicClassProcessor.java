@@ -27,7 +27,7 @@ public class EqualsOnAtomicClassProcessor extends SoraldAbstractProcessor<CtInvo
     }
 
     @Override
-    public void repair(CtInvocation element) {
+    public void repairInternal(CtInvocation element) {
         CtType atomicClass;
         if (isAtomicInteger(element.getTarget())) {
             atomicClass = getFactory().Class().get(AtomicInteger.class);

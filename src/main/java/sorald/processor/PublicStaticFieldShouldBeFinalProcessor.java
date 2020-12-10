@@ -14,7 +14,7 @@ public class PublicStaticFieldShouldBeFinalProcessor extends SoraldAbstractProce
     }
 
     @Override
-    public void repair(CtField<?> element) {
+    public void repairInternal(CtField<?> element) {
         element.addModifier(ModifierKind.FINAL);
     }
 }

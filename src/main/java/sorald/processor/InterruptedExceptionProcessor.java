@@ -17,7 +17,7 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
     }
 
     @Override
-    public void repair(CtCatch element) {
+    public void repairInternal(CtCatch element) {
         Factory factory = element.getFactory();
         CtClass<?> threadClass = factory.Class().get(Thread.class);
         CtTypeAccess<?> threadClassAccess = factory.createTypeAccess(threadClass.getReference());

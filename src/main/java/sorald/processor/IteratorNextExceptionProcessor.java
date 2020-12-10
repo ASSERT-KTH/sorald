@@ -52,7 +52,7 @@ public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMe
     }
 
     @Override
-    public void repair(CtMethod method) {
+    public void repairInternal(CtMethod method) {
         CtIf anIf = getFactory().Core().createIf();
         CtCodeSnippetExpression expr = getFactory().Core().createCodeSnippetExpression();
         expr.setValue("!hasNext()");

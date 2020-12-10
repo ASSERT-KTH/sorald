@@ -38,7 +38,7 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
     }
 
     @Override
-    public void repair(CtBinaryOperator element) {
+    public void repairInternal(CtBinaryOperator element) {
         CtTypeReference<?> typeToBeUsedToCast = getExpectedType(element);
         CtCodeSnippetExpression newBinaryOperator =
                 element.getFactory()

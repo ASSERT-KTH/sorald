@@ -33,7 +33,7 @@ public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignme
     }
 
     @Override
-    public void repair(CtAssignment<?, ?> element) {
+    public void repairInternal(CtAssignment<?, ?> element) {
         Factory factory = element.getFactory();
         CtType<?> type = element.getParent(CtType.class);
 

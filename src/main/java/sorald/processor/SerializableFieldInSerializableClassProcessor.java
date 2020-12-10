@@ -17,7 +17,7 @@ public class SerializableFieldInSerializableClassProcessor
     }
 
     @Override
-    public void repair(CtField element) {
+    public void repairInternal(CtField element) {
         element.addModifier(ModifierKind.TRANSIENT);
     }
 }

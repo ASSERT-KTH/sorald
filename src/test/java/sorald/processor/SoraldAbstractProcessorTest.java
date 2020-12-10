@@ -4,7 +4,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import java.io.IOException;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import sorald.event.StatisticsCollector;
@@ -24,7 +23,7 @@ public class SoraldAbstractProcessorTest {
     }
 
     @Test
-    public void canRepair_recordsCrashEvent() throws IOException {
+    public void canRepair_recordsCrashEvent() {
         var crashyProcessor = new CrashyProcessor();
         var statsCollector = new StatisticsCollector();
         CtMethod<?> objectToString = getObjectToString();
@@ -32,6 +31,17 @@ public class SoraldAbstractProcessorTest {
         crashyProcessor.setEventHandlers(List.of(statsCollector));
 
         crashyProcessor.canRepair(objectToString);
+
+        assertThat(statsCollector.getCrashes().size(), equalTo(1));
+    }
+
+    @Test
+    public void process_recordsCrashEvent() {
+        var statsCollector = new StatisticsCollector();
+        var crashyProcessor = new CrashyProcessor().setEventHandlers(List.of(statsCollector));
+        CtMethod<?> objectToString = getObjectToString();
+
+        crashyProcessor.repair(objectToString);
 
         assertThat(statsCollector.getCrashes().size(), equalTo(1));
     }
@@ -44,7 +54,9 @@ public class SoraldAbstractProcessorTest {
         }
 
         @Override
-        public void repair(CtMethod<?> element) {}
+        public void repairInternal(CtMethod<?> element) {
+            throw EXCEPTION;
+        }
     }
 
     private static CtMethod<?> getObjectToString() {

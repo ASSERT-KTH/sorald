@@ -22,7 +22,7 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
     }
 
     @Override
-    public void repair(CtConstructorCall element) {
+    public void repairInternal(CtConstructorCall element) {
         CtElement parent =
                 element.getParent(e -> e instanceof CtAssignment || e instanceof CtLocalVariable);
 

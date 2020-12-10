@@ -24,7 +24,7 @@ public class CompareToReturnValueProcessor extends SoraldAbstractProcessor<CtRet
     }
 
     @Override
-    public void repair(CtReturn<?> ctReturn) {
+    public void repairInternal(CtReturn<?> ctReturn) {
         CtLiteral<?> elem2Replace = ctReturn.getFactory().createLiteral(-1);
         ctReturn.getReturnedExpression().replace(elem2Replace);
     }

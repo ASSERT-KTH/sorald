@@ -33,7 +33,10 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         // SoraldAbstractProcessor::process
         clearProcessedElementType();
         Arrays.stream(getClass().getMethods())
-                .filter(meth -> meth.getName().equals("repair") && meth.getParameterCount() == 1)
+                .filter(
+                        meth ->
+                                meth.getName().equals("repairInternal")
+                                        && meth.getParameterCount() == 1)
                 .map(Method::getParameterTypes)
                 .flatMap(Arrays::stream)
                 .filter(CtElement.class::isAssignableFrom)
@@ -72,11 +75,27 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     }
 
     /**
+     * Repair a violating element after having been accepted by {@link
+     * SoraldAbstractProcessor#canRepair(CtElement)}.
+     *
+     * <p>This method never crashes.
+     *
+     * @param element An element to repair.
+     */
+    public final void repair(E element) {
+        try {
+            repairInternal(element);
+        } catch (Exception e) {
+            fireCrashEvent("repairInternal", e);
+        }
+    }
+
+    /**
      * Same as the general description of {@link SoraldAbstractProcessor#canRepair(CtElement)}.
      *
      * <p>Note that a processor gets ONE chance to repair a violation. If this method returns true,
-     * the violating element is passed to the {@link SoraldAbstractProcessor#repair(CtElement)}
-     * method, and the violation is consumed.
+     * the violating element is passed to the {@link
+     * SoraldAbstractProcessor#repairInternal(CtElement)} method, and the violation is consumed.
      *
      * <p>It is very important that this method <b>does not mutate the state of the processor.</b>
      * Doing so may have unexpected side effects.
@@ -92,7 +111,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      *
      * @param element An element to repair.
      */
-    public abstract void repair(E element);
+    protected abstract void repairInternal(E element);
 
     public SoraldAbstractProcessor<E> setBestFits(Map<CtElement, RuleViolation> bestFits) {
         this.bestFits = Collections.unmodifiableMap(bestFits);

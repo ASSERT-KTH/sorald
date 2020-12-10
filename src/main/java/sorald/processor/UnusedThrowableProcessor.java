@@ -15,7 +15,7 @@ public class UnusedThrowableProcessor extends SoraldAbstractProcessor<CtConstruc
     }
 
     @Override
-    public void repair(CtConstructorCall element) {
+    public void repairInternal(CtConstructorCall element) {
         CtThrow ctThrow = getFactory().createCtThrow(element.toString());
         element.replace(ctThrow);
     }

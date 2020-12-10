@@ -28,7 +28,7 @@ public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperat
     }
 
     @Override
-    public void repair(CtBinaryOperator element) {
+    public void repairInternal(CtBinaryOperator element) {
         CtCodeSnippetExpression newLeftHandOperand =
                 element.getFactory()
                         .createCodeSnippetExpression("(double) " + element.getLeftHandOperand());

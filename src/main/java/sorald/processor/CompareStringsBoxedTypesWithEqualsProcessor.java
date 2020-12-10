@@ -48,7 +48,7 @@ public class CompareStringsBoxedTypesWithEqualsProcessor
     }
 
     @Override
-    public void repair(CtBinaryOperator<?> element) {
+    public void repairInternal(CtBinaryOperator<?> element) {
         CtExpression<?> lhs = element.getLeftHandOperand();
         CtExpression<?> rhs = element.getRightHandOperand();
 
