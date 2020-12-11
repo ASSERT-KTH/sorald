@@ -139,8 +139,6 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         try {
             assert !processedViolations.contains(bestFits.get(element));
 
-            final String ruleKey = getRuleKey();
-
             repair(element);
 
             EventHelper.fireEvent(new RepairEvent(bestFits.get(element), false), eventHandlers);
