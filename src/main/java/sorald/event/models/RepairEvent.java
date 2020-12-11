@@ -12,7 +12,10 @@ public class RepairEvent implements SoraldEvent {
     private final RuleViolation ruleViolation;
     private final boolean failure;
 
-    // TODO document
+    /**
+     * @param ruleViolation The violation for which a repair was attempted.
+     * @param failure True if the repair failed with an error.
+     */
     public RepairEvent(RuleViolation ruleViolation, boolean failure) {
         this.ruleViolation = ruleViolation;
         this.failure = failure;
