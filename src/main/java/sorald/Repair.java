@@ -95,14 +95,15 @@ public class Repair {
     }
 
     private Set<RuleViolation> getRuleViolations(File target, int ruleKey) {
-        Set<RuleViolation> warnings = null;
+        Set<RuleViolation> violations = null;
         if (!eventHandlers.isEmpty() || config.getRuleViolations().isEmpty()) {
-            // if there are event handlers, we must mine warnings regardless of them being specified
+            // if there are event handlers, we must mine violations regardless of them being
+            // specified
             // in the config or not in order to trigger the mined violation events
-            warnings = mineWarnings(target, ruleKey);
+            violations = mineViolations(target, ruleKey);
         }
         if (!config.getRuleViolations().isEmpty()) {
-            warnings =
+            violations =
                     config.getRuleViolations().stream()
                             .filter(
                                     violation ->
@@ -111,9 +112,9 @@ public class Repair {
                                                     .equals(Integer.toString(ruleKey)))
                             .collect(Collectors.toSet());
         }
-        assert warnings != null;
+        assert violations != null;
 
-        return warnings;
+        return violations;
     }
 
     /**
@@ -123,18 +124,18 @@ public class Repair {
      * @param ruleKey A rule key.
      * @return All found warnings.
      */
-    public Set<RuleViolation> mineWarnings(File target, int ruleKey) {
+    public Set<RuleViolation> mineViolations(File target, int ruleKey) {
         Path projectPath = target.toPath().toAbsolutePath().normalize();
-        Set<RuleViolation> warnings =
+        Set<RuleViolation> violations =
                 ProjectScanner.scanProject(
                         target,
                         FileUtils.getClosestDirectory(target),
                         Checks.getCheckInstance(Integer.toString(ruleKey)));
-        warnings.forEach(
+        violations.forEach(
                 warn ->
                         EventHelper.fireEvent(
                                 new MinedViolationEvent(warn, projectPath), eventHandlers));
-        return warnings;
+        return violations;
     }
 
     Stream<CtModel> repair(

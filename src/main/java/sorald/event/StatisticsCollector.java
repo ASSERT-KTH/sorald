@@ -22,8 +22,8 @@ public class StatisticsCollector implements SoraldEventHandler {
 
     private final Map<String, List<RepairEvent>> keyToRepairs = new HashMap<>();
     private final Map<String, List<RepairEvent>> keyToFailures = new HashMap<>();
-    private final Map<String, List<MinedViolationEvent>> minedWarningsBefore = new HashMap<>();
-    private final Map<String, List<MinedViolationEvent>> minedWarningsAfter = new HashMap<>();
+    private final Map<String, List<MinedViolationEvent>> minedViolationsBefore = new HashMap<>();
+    private final Map<String, List<MinedViolationEvent>> minedViolationsAfter = new HashMap<>();
 
     @Override
     public void registerEvent(SoraldEvent event) {
@@ -63,10 +63,10 @@ public class StatisticsCollector implements SoraldEventHandler {
 
                 if (execEnd == INVALID_TIME) {
                     // we have not yet reached end of execution, so this is a before-warning
-                    addToEventMap(mined.getRuleKey(), mined, minedWarningsBefore);
+                    addToEventMap(mined.getRuleKey(), mined, minedViolationsBefore);
                 } else {
                     // end of execution has been reached, so this is an after-warning
-                    addToEventMap(mined.getRuleKey(), mined, minedWarningsAfter);
+                    addToEventMap(mined.getRuleKey(), mined, minedViolationsAfter);
                 }
                 break;
         }
@@ -94,13 +94,13 @@ public class StatisticsCollector implements SoraldEventHandler {
     }
 
     /** @return Mapping from key to all warnings mined for that key before repairs. */
-    public Map<String, List<MinedViolationEvent>> minedWarningsBefore() {
-        return Collections.unmodifiableMap(minedWarningsBefore);
+    public Map<String, List<MinedViolationEvent>> minedViolationsBefore() {
+        return Collections.unmodifiableMap(minedViolationsBefore);
     }
 
     /** @return Mapping from key to all warnings mined for that key after repairs. */
-    public Map<String, List<MinedViolationEvent>> minedWarningsAfter() {
-        return Collections.unmodifiableMap(minedWarningsAfter);
+    public Map<String, List<MinedViolationEvent>> minedViolationsAfter() {
+        return Collections.unmodifiableMap(minedViolationsAfter);
     }
 
     /** @return All crash event data */

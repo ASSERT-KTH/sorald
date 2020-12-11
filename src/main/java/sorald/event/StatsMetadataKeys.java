@@ -10,6 +10,7 @@ public class StatsMetadataKeys {
     public static final String TOTAL_TIME_MS = "totalTimeMs";
     public static final String START_TIME_MS = "startTimeMs";
     public static final String END_TIME_MS = "endTimeMs";
+    public static final String VIOLATION_SPECIFIER = "violationSpecifier";
 
     public static final String EXECUTION_INFO = "executionInfo";
     public static final String SORALD_VERSION = "soraldVersion";
@@ -21,8 +22,8 @@ public class StatsMetadataKeys {
     public static final String REPAIR_PERFORMED_LOCATIONS = "performedRepairsLocations";
     public static final String REPAIR_CRASHED_LOCATIONS = "crashedRepairsLocations";
     public static final String REPAIR_NB_FAILURES = "nbCrashedRepairs";
-    public static final String REPAIR_NB_WARNINGS_BEFORE = "nbWarningsBefore";
-    public static final String REPAIR_NB_WARNINGS_AFTER = "nbWarningsAfter";
+    public static final String REPAIR_NB_VIOLATIONS_BEFORE = "nbViolationsBefore";
+    public static final String REPAIR_NB_VIOLATIONS_AFTER = "nbViolationsAfter";
     public static final String REPAIR_NB_PERFORMED = "nbPerformedRepairs";
 
     // Mining-specific data

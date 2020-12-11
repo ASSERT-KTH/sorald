@@ -50,8 +50,8 @@ public class GatherStatsTest {
                             StatsMetadataKeys.REPAIR_PERFORMED_LOCATIONS,
                             StatsMetadataKeys.REPAIR_NB_PERFORMED,
                             StatsMetadataKeys.REPAIR_NB_FAILURES,
-                            StatsMetadataKeys.REPAIR_NB_WARNINGS_BEFORE,
-                            StatsMetadataKeys.REPAIR_NB_WARNINGS_AFTER));
+                            StatsMetadataKeys.REPAIR_NB_VIOLATIONS_BEFORE,
+                            StatsMetadataKeys.REPAIR_NB_VIOLATIONS_AFTER));
         }
 
         assertThat(
@@ -67,9 +67,9 @@ public class GatherStatsTest {
         assertThat(jo.getLong(StatsMetadataKeys.TOTAL_TIME_MS), greaterThan(0L));
     }
 
-    /** Check that the amount of warnings is correct when using targeted repair. */
+    /** Check that the amount of violations is correct when using targeted repair. */
     @Test
-    public void statisticsFile_containsCorrectNbWarningsBeforeAndAfter_whenUsingTargetedRepair(
+    public void statisticsFile_containsCorrectNbViolationsBeforeAndAfter_whenUsingTargetedRepair(
             @TempDir File tmpDir) throws IOException {
         // arrange
         File statsFile = tmpDir.toPath().resolve("stats.json").toFile();
@@ -80,11 +80,11 @@ public class GatherStatsTest {
         SoraldAbstractProcessor<?> targetProc = new XxeProcessingProcessor();
         JavaFileScanner targetCheck = Checks.getCheckInstance(targetProc.getRuleKey());
 
-        Set<RuleViolation> warningsBefore =
+        Set<RuleViolation> viloationsBefore =
                 ProjectScanner.scanProject(project, project, targetCheck);
-        RuleViolation targetWarning =
-                new ArrayList<>(warningsBefore).get(warningsBefore.size() / 2);
-        String specifier = targetWarning.relativeSpecifier(project.toPath());
+        RuleViolation targetViolation =
+                new ArrayList<>(viloationsBefore).get(viloationsBefore.size() / 2);
+        String specifier = targetViolation.relativeSpecifier(project.toPath());
 
         // act
         Main.main(
@@ -101,12 +101,12 @@ public class GatherStatsTest {
                 });
 
         // assert
-        Set<RuleViolation> warningsAfter =
+        Set<RuleViolation> violationsAfter =
                 ProjectScanner.scanProject(project, project, targetCheck);
         assertThat(
                 "Targeted repair did not do its job...",
-                warningsAfter.size(),
-                equalTo(warningsBefore.size() - 1));
+                violationsAfter.size(),
+                equalTo(viloationsBefore.size() - 1));
 
         JSONObject jo = FileUtils.readJSON(statsFile.toPath());
 
@@ -115,11 +115,11 @@ public class GatherStatsTest {
 
         JSONObject xxeRepairStats = repairStats.getJSONObject(0);
         assertThat(
-                xxeRepairStats.getInt(StatsMetadataKeys.REPAIR_NB_WARNINGS_BEFORE),
-                equalTo(warningsBefore.size()));
+                xxeRepairStats.getInt(StatsMetadataKeys.REPAIR_NB_VIOLATIONS_BEFORE),
+                equalTo(viloationsBefore.size()));
         assertThat(
-                xxeRepairStats.getInt(StatsMetadataKeys.REPAIR_NB_WARNINGS_AFTER),
-                equalTo(warningsAfter.size()));
+                xxeRepairStats.getInt(StatsMetadataKeys.REPAIR_NB_VIOLATIONS_AFTER),
+                equalTo(violationsAfter.size()));
     }
 
     @Test

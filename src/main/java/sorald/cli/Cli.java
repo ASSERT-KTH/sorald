@@ -195,7 +195,7 @@ public class Cli {
          */
         private void mineWarningsAfter(Repair repair, List<Integer> ruleKeys) {
             File projectPath = originalFilesPath.toPath().toAbsolutePath().normalize().toFile();
-            ruleKeys.forEach(key -> repair.mineWarnings(projectPath, key));
+            ruleKeys.forEach(key -> repair.mineViolations(projectPath, key));
         }
 
         private void writeStatisticsOutput(StatisticsCollector statsCollector, Path projectPath)

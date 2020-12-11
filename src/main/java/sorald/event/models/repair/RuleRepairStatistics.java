@@ -18,25 +18,25 @@ import sorald.sonar.Checks;
 public class RuleRepairStatistics {
     private final String ruleKey;
     private final String ruleName;
-    private final List<MinedViolationEvent> warningsBefore;
-    private final List<MinedViolationEvent> warningsAfter;
+    private final List<MinedViolationEvent> violationsBefore;
+    private final List<MinedViolationEvent> violationsAfter;
     private final List<WarningLocation> performedRepairsLocations;
     private final List<WarningLocation> crashedRepairsLocations;
 
     public RuleRepairStatistics(
             String ruleKey,
             String ruleName,
-            List<MinedViolationEvent> warningsBefore,
-            List<MinedViolationEvent> warningsAfter,
-            List<RepairEvent> repairedWarnings,
+            List<MinedViolationEvent> violationsBefore,
+            List<MinedViolationEvent> violationsAfter,
+            List<RepairEvent> repairedViolations,
             List<RepairEvent> failedRepairs,
             Path projectPath) {
         this.ruleKey = ruleKey;
         this.ruleName = ruleName;
-        this.warningsBefore = new ArrayList<>(warningsBefore);
-        this.warningsAfter = new ArrayList<>(warningsAfter);
+        this.violationsBefore = new ArrayList<>(violationsBefore);
+        this.violationsAfter = new ArrayList<>(violationsAfter);
 
-        this.performedRepairsLocations = toWarningLocations(repairedWarnings, projectPath);
+        this.performedRepairsLocations = toWarningLocations(repairedViolations, projectPath);
         this.crashedRepairsLocations = toWarningLocations(failedRepairs, projectPath);
     }
 
@@ -65,12 +65,12 @@ public class RuleRepairStatistics {
         return Collections.unmodifiableList(crashedRepairsLocations);
     }
 
-    public int getNbWarningsBefore() {
-        return warningsBefore.size();
+    public int getNbViolationsBefore() {
+        return violationsBefore.size();
     }
 
-    public int getNbWarningsAfter() {
-        return warningsAfter.size();
+    public int getNbViolationsAfter() {
+        return violationsAfter.size();
     }
 
     public int getNbPerformedRepairs() {
@@ -81,14 +81,22 @@ public class RuleRepairStatistics {
         return crashedRepairsLocations.size();
     }
 
+    /**
+     * Convert a repair statistics collector into a list of repair statistics containers designed
+     * for pretty JSON output.
+     *
+     * @param statsCollector A statistics collector for the repair mode.
+     * @param projectPath Path to the project.
+     * @return A list of repair statistics container, one for each rule.
+     */
     public static List<RuleRepairStatistics> createRepairStatsList(
             StatisticsCollector statsCollector, Path projectPath) {
         Map<String, List<RepairEvent>> keyToRepair = statsCollector.performedRepairs();
         Map<String, List<RepairEvent>> keyToFailure = statsCollector.crashedRepairs();
-        Map<String, List<MinedViolationEvent>> keyToWarningsBefore =
-                statsCollector.minedWarningsBefore();
-        Map<String, List<MinedViolationEvent>> keyToWarningsAfter =
-                statsCollector.minedWarningsAfter();
+        Map<String, List<MinedViolationEvent>> keyToViolationsBefore =
+                statsCollector.minedViolationsBefore();
+        Map<String, List<MinedViolationEvent>> keyToViolationsAfter =
+                statsCollector.minedViolationsAfter();
 
         Set<String> distinctKeys = new HashSet<>(keyToRepair.keySet());
         distinctKeys.addAll(keyToFailure.keySet());
@@ -98,16 +106,16 @@ public class RuleRepairStatistics {
                         key -> {
                             List<RepairEvent> repairs = keyToRepair.getOrDefault(key, List.of());
                             List<RepairEvent> failures = keyToFailure.getOrDefault(key, List.of());
-                            List<MinedViolationEvent> warningsBefore =
-                                    keyToWarningsBefore.getOrDefault(key, List.of());
-                            List<MinedViolationEvent> warningsAfter =
-                                    keyToWarningsAfter.getOrDefault(key, List.of());
+                            List<MinedViolationEvent> violationsBefore =
+                                    keyToViolationsBefore.getOrDefault(key, List.of());
+                            List<MinedViolationEvent> violationsAfter =
+                                    keyToViolationsAfter.getOrDefault(key, List.of());
                             String checkName = Checks.getCheck(key).getSimpleName();
                             return new RuleRepairStatistics(
                                     key,
                                     checkName.replace("Check", ""),
-                                    warningsBefore,
-                                    warningsAfter,
+                                    violationsBefore,
+                                    violationsAfter,
                                     repairs,
                                     failures,
                                     projectPath);
