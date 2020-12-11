@@ -3,6 +3,7 @@ package sorald.cli;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
@@ -16,10 +17,13 @@ import sorald.Processors;
 import sorald.Repair;
 import sorald.RepairStrategy;
 import sorald.SoraldConfig;
+import sorald.event.EventHelper;
+import sorald.event.EventType;
 import sorald.event.StatisticsCollector;
 import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
+import sorald.event.models.repair.RuleRepairStatistics;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleViolation;
@@ -54,16 +58,32 @@ public class Cli {
         }
     }
 
+    /** Base command containing the options in common for all Sorald sub-commands. */
+    @CommandLine.Command()
+    private abstract static class BaseCommand implements Callable<Integer> {
+        @CommandLine.Spec CommandLine.Model.CommandSpec spec;
+
+        @CommandLine.Option(
+                names = Constants.ARG_TARGET,
+                description =
+                        "The target of this execution (ex. sorald/92d377). This will be included in the json report.")
+        String target;
+
+        @CommandLine.Option(
+                names = Constants.ARG_STATS_OUTPUT_FILE,
+                description =
+                        "Path to a file to store execution statistics in (in JSON format). If left unspecified, Sorald does not gather statistics.")
+        File statsOutputFile;
+    }
+
     /** The CLI command for the primary repair application. */
     @CommandLine.Command(
             name = Constants.REPAIR_COMMAND_NAME,
             mixinStandardHelpOptions = true,
             description = "Repair Sonar rule violations in a targeted project.")
-    private static class RepairCommand implements Callable<Integer> {
+    private static class RepairCommand extends BaseCommand {
         List<Integer> ruleKeys;
         List<RuleViolation> ruleViolations = List.of();
-
-        @CommandLine.Spec CommandLine.Model.CommandSpec spec;
 
         @CommandLine.Option(
                 names = {Constants.ARG_ORIGINAL_FILES_PATH},
@@ -141,12 +161,6 @@ public class Cli {
                         "Max number of files per loaded segment for segmented repair. It should be >= 3000 files per segment.")
         int maxFilesPerSegment = 6500;
 
-        @CommandLine.Option(
-                names = Constants.ARG_STATS_OUTPUT_FILE,
-                description =
-                        "Path to a file to store execution statistics in (in JSON format). If left unspecified, Sorald does not gather statistics.")
-        File statsOutputFile;
-
         @Override
         public Integer call() throws IOException {
             postprocessArgs();
@@ -154,19 +168,57 @@ public class Cli {
             SoraldConfig config = createConfig();
 
             var statsCollector = new StatisticsCollector();
-            new Repair(config, statsOutputFile == null ? List.of() : List.of(statsCollector))
-                    .repair();
+            var eventHandlers = List.of(statsCollector);
+            EventHelper.fireEvent(EventType.EXEC_START, eventHandlers);
+
+            var repair = new Repair(config, statsOutputFile == null ? List.of() : eventHandlers);
+            repair.repair();
+
+            EventHelper.fireEvent(EventType.EXEC_END, List.of(statsCollector));
 
             if (statsOutputFile != null) {
-                FileUtils.writeJSON(
-                        statsOutputFile,
+                mineWarningsAfter(repair, config.getRuleKeys());
+                writeStatisticsOutput(
                         statsCollector,
-                        Map.of(
-                                StatsMetadataKeys.ORIGINAL_ARGS,
-                                spec.commandLine().getParseResult().originalArgs()));
+                        FileUtils.getClosestDirectory(originalFilesPath)
+                                .toPath()
+                                .toAbsolutePath()
+                                .normalize());
             }
 
             return 0;
+        }
+
+        /**
+         * Mine warnings after completing repairs to trigger new mined events for the stats
+         * collection.
+         */
+        private void mineWarningsAfter(Repair repair, List<Integer> ruleKeys) {
+            File projectPath = originalFilesPath.toPath().toAbsolutePath().normalize().toFile();
+            ruleKeys.forEach(key -> repair.mineViolations(projectPath, key));
+        }
+
+        private void writeStatisticsOutput(StatisticsCollector statsCollector, Path projectPath)
+                throws IOException {
+            var executionInfo =
+                    new ExecutionInfo(
+                            spec.commandLine().getParseResult().originalArgs(),
+                            SoraldVersionProvider.getVersionFromPropertiesResource(
+                                    SoraldVersionProvider.DEFAULT_RESOURCE_NAME),
+                            javaVersion,
+                            target);
+
+            List<RuleRepairStatistics> repairStats =
+                    RuleRepairStatistics.createRepairStatsList(statsCollector, projectPath);
+
+            FileUtils.writeJSON(
+                    statsOutputFile,
+                    statsCollector,
+                    Map.of(
+                            StatsMetadataKeys.EXECUTION_INFO,
+                            executionInfo,
+                            StatsMetadataKeys.REPAIRS,
+                            repairStats));
         }
 
         private void validateArgs() {
@@ -238,7 +290,7 @@ public class Cli {
             int startCol = Integer.parseInt(parts[3]);
             int endLine = Integer.parseInt(parts[4]);
             int endCol = Integer.parseInt(parts[5]);
-            return new SpecifiedViolation(key, fileName, startLine, endLine, startCol, endCol);
+            return new SpecifiedViolation(key, fileName, startLine, startCol, endLine, endCol);
         }
 
         private SoraldConfig createConfig() {
@@ -264,9 +316,7 @@ public class Cli {
             name = Constants.MINE_COMMAND_NAME,
             mixinStandardHelpOptions = true,
             description = "Mine a project for Sonar warnings.")
-    private static class MineCommand implements Callable<Integer> {
-
-        @CommandLine.Spec CommandLine.Model.CommandSpec spec;
+    private static class MineCommand extends BaseCommand {
 
         @CommandLine.Option(
                 names = {Constants.ARG_ORIGINAL_FILES_PATH},
@@ -278,11 +328,6 @@ public class Cli {
                 names = Constants.ARG_STATS_ON_GIT_REPOS,
                 description = "If the stats should be computed on git repos.")
         boolean statsOnGitRepos;
-
-        @CommandLine.Option(
-                names = Constants.ARG_STATS_OUTPUT_FILE,
-                description = "The path to the stats output file.")
-        File statsOutputFile;
 
         @CommandLine.Option(
                 names = Constants.ARG_MINER_OUTPUT_FILE,
@@ -305,12 +350,6 @@ public class Cli {
                         "One or more types of rules to check for (use ',' to separate multiple types). Choices: ${COMPLETION-CANDIDATES}",
                 split = ",")
         private List<Checks.CheckType> ruleTypes = new ArrayList<>();
-
-        @CommandLine.Option(
-                names = Constants.ARG_TARGET,
-                description =
-                        "The target of this execution (ex. sorald/92d377). This will be included in the json report.")
-        String target;
 
         @Override
         public Integer call() throws Exception {

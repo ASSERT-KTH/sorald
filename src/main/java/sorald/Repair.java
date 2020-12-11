@@ -21,6 +21,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
+import sorald.event.models.miner.MinedViolationEvent;
 import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
@@ -94,16 +95,46 @@ public class Repair {
     }
 
     private Set<RuleViolation> getRuleViolations(File target, int ruleKey) {
-        if (!config.getRuleViolations().isEmpty()) {
-            return config.getRuleViolations().stream()
-                    .filter(violation -> violation.getRuleKey().equals(Integer.toString(ruleKey)))
-                    .collect(Collectors.toSet());
-        } else {
-            return ProjectScanner.scanProject(
-                    target,
-                    FileUtils.getClosestDirectory(target),
-                    Checks.getCheckInstance(Integer.toString(ruleKey)));
+        Set<RuleViolation> violations = null;
+        if (!eventHandlers.isEmpty() || config.getRuleViolations().isEmpty()) {
+            // if there are event handlers, we must mine violations regardless of them being
+            // specified in the config or not in order to trigger the mined violation events
+            violations = mineViolations(target, ruleKey);
         }
+        if (!config.getRuleViolations().isEmpty()) {
+            violations =
+                    config.getRuleViolations().stream()
+                            .filter(
+                                    violation ->
+                                            violation
+                                                    .getRuleKey()
+                                                    .equals(Integer.toString(ruleKey)))
+                            .collect(Collectors.toSet());
+        }
+        assert violations != null;
+
+        return violations;
+    }
+
+    /**
+     * Mine warnings from the target directory and the given rule key.
+     *
+     * @param target A target directory.
+     * @param ruleKey A rule key.
+     * @return All found warnings.
+     */
+    public Set<RuleViolation> mineViolations(File target, int ruleKey) {
+        Path projectPath = target.toPath().toAbsolutePath().normalize();
+        Set<RuleViolation> violations =
+                ProjectScanner.scanProject(
+                        target,
+                        FileUtils.getClosestDirectory(target),
+                        Checks.getCheckInstance(Integer.toString(ruleKey)));
+        violations.forEach(
+                warn ->
+                        EventHelper.fireEvent(
+                                new MinedViolationEvent(warn, projectPath), eventHandlers));
+        return violations;
     }
 
     Stream<CtModel> repair(

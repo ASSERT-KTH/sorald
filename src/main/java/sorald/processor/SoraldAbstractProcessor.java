@@ -9,10 +9,9 @@ import java.util.Map;
 import sorald.UniqueTypesCollector;
 import sorald.annotations.ProcessorAnnotation;
 import sorald.event.EventHelper;
-import sorald.event.EventType;
-import sorald.event.SoraldEvent;
 import sorald.event.SoraldEventHandler;
 import sorald.event.models.CrashEvent;
+import sorald.event.models.RepairEvent;
 import sorald.sonar.RuleViolation;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
@@ -140,17 +139,18 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         try {
             assert !processedViolations.contains(bestFits.get(element));
 
-            final String ruleKey = getRuleKey();
-            final String elementPosition = element.getPosition().toString();
-
             repair(element);
 
-            EventHelper.fireEvent(new RepairEvent(ruleKey, elementPosition), eventHandlers);
+            EventHelper.fireEvent(new RepairEvent(bestFits.get(element), false), eventHandlers);
             UniqueTypesCollector.getInstance().collect(element);
 
             processedViolations.add(bestFits.get(element));
         } catch (Exception e) {
             fireCrashEvent("process", e);
+
+            if (bestFits != null && bestFits.containsKey(element)) {
+                EventHelper.fireEvent(new RepairEvent(bestFits.get(element), true), eventHandlers);
+            }
         }
     }
 
@@ -176,33 +176,6 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     public Class<E> getTargetType() {
         assert getProcessedElementTypes().size() == 1;
         return (Class<E>) getProcessedElementTypes().iterator().next();
-    }
-
-    /**
-     * Event representing a repair. This must be public for the json.org to be able to introspect it
-     * and produce the nice JSON output.
-     */
-    public static class RepairEvent implements SoraldEvent {
-        private final String ruleKey;
-        private final String ruleViolationPosition;
-
-        public RepairEvent(String ruleKey, String ruleViolationPosition) {
-            this.ruleKey = ruleKey;
-            this.ruleViolationPosition = ruleViolationPosition;
-        }
-
-        @Override
-        public EventType type() {
-            return EventType.REPAIR;
-        }
-
-        public String getRuleKey() {
-            return ruleKey;
-        }
-
-        public String getRuleViolationPosition() {
-            return ruleViolationPosition;
-        }
     }
 
     private void fireCrashEvent(String methodName, Exception e) {

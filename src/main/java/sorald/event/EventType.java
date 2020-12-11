@@ -1,6 +1,8 @@
 package sorald.event;
 
 public enum EventType {
+    EXEC_START,
+    EXEC_END,
     PARSE_START,
     PARSE_END,
     REPAIR_START,
