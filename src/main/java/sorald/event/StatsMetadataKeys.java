@@ -5,8 +5,11 @@ public class StatsMetadataKeys {
     // General data
     public static final String REPAIRS = "repairs";
     public static final String ORIGINAL_ARGS = "originalArgs";
-    public static final String PARSE_TIME_NS = "parseTimeNs";
-    public static final String REPAIR_TIME_NS = "repairTimeNs";
+    public static final String PARSE_TIME_MS = "parseTimeMs";
+    public static final String REPAIR_TIME_MS = "repairTimeMs";
+    public static final String TOTAL_TIME_MS = "totalTimeMs";
+    public static final String START_TIME_MS = "startTimeMs";
+    public static final String END_TIME_MS = "endTimeMs";
 
     public static final String EXECUTION_INFO = "executionInfo";
     public static final String SORALD_VERSION = "soraldVersion";

@@ -17,6 +17,8 @@ import sorald.Processors;
 import sorald.Repair;
 import sorald.RepairStrategy;
 import sorald.SoraldConfig;
+import sorald.event.EventHelper;
+import sorald.event.EventType;
 import sorald.event.StatisticsCollector;
 import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.MinerStatisticsCollector;
@@ -156,8 +158,12 @@ public class Cli {
             SoraldConfig config = createConfig();
 
             var statsCollector = new StatisticsCollector();
+            EventHelper.fireEvent(EventType.EXEC_START, List.of(statsCollector));
+
             new Repair(config, statsOutputFile == null ? List.of() : List.of(statsCollector))
                     .repair();
+
+            EventHelper.fireEvent(EventType.EXEC_END, List.of(statsCollector));
 
             if (statsOutputFile != null) {
                 writeStatisticsOutput(

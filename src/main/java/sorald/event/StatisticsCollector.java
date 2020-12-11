@@ -10,6 +10,8 @@ import sorald.event.models.miner.MinedViolationEvent;
 
 /** Event handler for Sorald that collects runtime statistics */
 public class StatisticsCollector implements SoraldEventHandler {
+    private long execStart = -1;
+    private long execEnd = -1;
     private long parseStart = -1;
     private long repairStart = -1;
     private long parseTotal = 0;
@@ -23,17 +25,23 @@ public class StatisticsCollector implements SoraldEventHandler {
     @Override
     public void registerEvent(SoraldEvent event) {
         switch (event.type()) {
+            case EXEC_START:
+                execStart = System.currentTimeMillis();
+                break;
+            case EXEC_END:
+                execEnd = System.currentTimeMillis();
+                break;
             case PARSE_START:
-                parseStart = System.nanoTime();
+                parseStart = System.currentTimeMillis();
                 break;
             case PARSE_END:
                 assert parseStart > 0;
-                long parseEnd = System.nanoTime();
+                long parseEnd = System.currentTimeMillis();
                 parseTotal += parseEnd - parseStart;
                 parseStart = -1;
                 break;
             case REPAIR_START:
-                repairStart = System.nanoTime();
+                repairStart = System.currentTimeMillis();
                 break;
             case REPAIR_END:
                 assert repairStart > 0;
@@ -66,12 +74,12 @@ public class StatisticsCollector implements SoraldEventHandler {
     }
 
     /** @return The total amount of time spent parsing */
-    public long getParseTimeNs() {
+    public long getParseTimeMs() {
         return parseTotal;
     }
 
     /** @return The total amount of time spent repairing */
-    public long getRepairTimeNs() {
+    public long getRepairTimeMs() {
         return repairTotal;
     }
 
@@ -92,5 +100,20 @@ public class StatisticsCollector implements SoraldEventHandler {
     /** @return All crash event data */
     public List<SoraldEvent> getCrashes() {
         return Collections.unmodifiableList(crashes);
+    }
+
+    /** The total amount of execution time. */
+    public long getTotalTimeMs() {
+        return execEnd - execStart;
+    }
+
+    /** The start time in unix epoch. */
+    public long getStartTimeMs() {
+        return execStart / 1000L;
+    }
+
+    /** The end time in unix epoch. */
+    public long getEndTimeMs() {
+        return execEnd / 1000L;
     }
 }
