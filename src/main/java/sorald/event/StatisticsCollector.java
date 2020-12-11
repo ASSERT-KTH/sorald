@@ -83,16 +83,6 @@ public class StatisticsCollector implements SoraldEventHandler {
         eventsMap.get(key).add(event);
     }
 
-    /** @return The total amount of time spent parsing */
-    public long getParseTimeMs() {
-        return parseTotal;
-    }
-
-    /** @return The total amount of time spent repairing */
-    public long getRepairTimeMs() {
-        return repairTotal;
-    }
-
     /** @return All repair events that were performed without errors. */
     public Map<String, List<RepairEvent>> performedRepairs() {
         return Collections.unmodifiableMap(keyToRepairs);
@@ -103,10 +93,12 @@ public class StatisticsCollector implements SoraldEventHandler {
         return Collections.unmodifiableMap(keyToFailures);
     }
 
+    /** @return Mapping from key to all warnings mined for that key before repairs. */
     public Map<String, List<MinedViolationEvent>> minedWarningsBefore() {
         return Collections.unmodifiableMap(minedWarningsBefore);
     }
 
+    /** @return Mapping from key to all warnings mined for that key after repairs. */
     public Map<String, List<MinedViolationEvent>> minedWarningsAfter() {
         return Collections.unmodifiableMap(minedWarningsAfter);
     }
@@ -116,18 +108,28 @@ public class StatisticsCollector implements SoraldEventHandler {
         return Collections.unmodifiableList(crashes);
     }
 
-    /** The total amount of execution time. */
+    /** @return The total amount of time spent parsing */
+    public long getParseTimeMs() {
+        return parseTotal;
+    }
+
+    /** @return The total amount of time spent repairing */
+    public long getRepairTimeMs() {
+        return repairTotal;
+    }
+
+    /** @return The total amount of execution time in milliseconds. */
     public long getTotalTimeMs() {
         return execEnd - execStart;
     }
 
-    /** The start time in unix epoch. */
+    /** @return The start time of execution in milliseconds from the unix epoch. */
     public long getStartTimeMs() {
-        return execStart / 1000L;
+        return execStart;
     }
 
-    /** The end time in unix epoch. */
+    /** @return The end time of execution in milliseconds from the unix epoch. */
     public long getEndTimeMs() {
-        return execEnd / 1000L;
+        return execEnd;
     }
 }
