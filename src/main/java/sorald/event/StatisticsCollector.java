@@ -48,7 +48,7 @@ public class StatisticsCollector implements SoraldEventHandler {
                 break;
             case REPAIR_END:
                 assert repairStart > 0;
-                long repairEnd = System.nanoTime();
+                long repairEnd = System.currentTimeMillis();
                 repairTotal += repairEnd - repairStart;
                 repairStart = -1;
                 break;
