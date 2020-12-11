@@ -90,7 +90,7 @@ public class RuleRepairStatistics {
                             List<RepairEvent> failures = keyToFailure.getOrDefault(key, List.of());
                             List<MinedViolationEvent> allWarnings =
                                     keyToWarnings.getOrDefault(key, List.of());
-                            String checkName = Checks.getCheck(key).getName();
+                            String checkName = Checks.getCheck(key).getSimpleName();
                             return new RuleRepairStatistics(
                                     key,
                                     checkName.replace("Check", ""),
