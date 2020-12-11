@@ -62,7 +62,7 @@ public class RuleRepairStatistics {
         return Collections.unmodifiableList(crashedRepairsLocations);
     }
 
-    public int getNbWarningsFound() {
+    public int getNbFoundWarnings() {
         return allWarnings.size();
     }
 

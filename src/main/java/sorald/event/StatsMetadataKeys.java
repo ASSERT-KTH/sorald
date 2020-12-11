@@ -18,7 +18,7 @@ public class StatsMetadataKeys {
     public static final String REPAIR_PERFORMED_LOCATIONS = "performedRepairsLocations";
     public static final String REPAIR_CRASHED_LOCATIONS = "crashedRepairsLocations";
     public static final String REPAIR_NB_FAILURES = "nbCrashedRepairs";
-    public static final String REPAIR_NB_WARNINGS = "nbWarningsFound";
+    public static final String REPAIR_NB_WARNINGS = "nbFoundWarnings";
     public static final String REPAIR_NB_PERFORMED = "nbPerformedRepairs";
 
     // Mining-specific data

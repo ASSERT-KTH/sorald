@@ -21,6 +21,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
+import sorald.event.models.miner.MinedViolationEvent;
 import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
@@ -94,16 +95,25 @@ public class Repair {
     }
 
     private Set<RuleViolation> getRuleViolations(File target, int ruleKey) {
-        if (!config.getRuleViolations().isEmpty()) {
-            return config.getRuleViolations().stream()
-                    .filter(violation -> violation.getRuleKey().equals(Integer.toString(ruleKey)))
-                    .collect(Collectors.toSet());
-        } else {
-            return ProjectScanner.scanProject(
-                    target,
-                    FileUtils.getClosestDirectory(target),
-                    Checks.getCheckInstance(Integer.toString(ruleKey)));
-        }
+        Path projectPath = target.toPath().toAbsolutePath().normalize();
+        Set<RuleViolation> warnings =
+                config.getRuleViolations().isEmpty()
+                        ? ProjectScanner.scanProject(
+                                target,
+                                FileUtils.getClosestDirectory(target),
+                                Checks.getCheckInstance(Integer.toString(ruleKey)))
+                        : config.getRuleViolations().stream()
+                                .filter(
+                                        violation ->
+                                                violation
+                                                        .getRuleKey()
+                                                        .equals(Integer.toString(ruleKey)))
+                                .collect(Collectors.toSet());
+        warnings.forEach(
+                warn ->
+                        EventHelper.fireEvent(
+                                new MinedViolationEvent(warn, projectPath), eventHandlers));
+        return warnings;
     }
 
     Stream<CtModel> repair(
