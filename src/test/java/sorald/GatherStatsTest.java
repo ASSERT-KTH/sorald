@@ -1,13 +1,11 @@
 package sorald;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
-import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -16,26 +14,6 @@ import sorald.event.StatsMetadataKeys;
 import sorald.processor.ProcessorTestHelper;
 
 public class GatherStatsTest {
-    @Test
-    public void statisticsFile_containsOriginalArgs(@TempDir File tempDir) throws Exception {
-        File statsFile = tempDir.toPath().resolve("stats.json").toFile();
-        List<String> cliArgs =
-                List.of(
-                        Constants.REPAIR_COMMAND_NAME,
-                        Constants.ARG_ORIGINAL_FILES_PATH,
-                        ProcessorTestHelper.TEST_FILES_ROOT.toString(),
-                        Constants.ARG_RULE_KEYS,
-                        "2755",
-                        Constants.ARG_STATS_OUTPUT_FILE,
-                        statsFile.getAbsolutePath());
-        Main.main(cliArgs.toArray(String[]::new));
-
-        JSONObject jo = FileUtils.readJSON(statsFile.toPath());
-        JSONArray args = jo.getJSONArray(StatsMetadataKeys.ORIGINAL_ARGS);
-
-        assertThat(args.toList(), equalTo(cliArgs));
-    }
-
     @Test
     public void statisticsFile_containsExpectedStats(@TempDir File tempDir) throws Exception {
         ProcessorTestHelper.ProcessorTestCase<?> testCase =
