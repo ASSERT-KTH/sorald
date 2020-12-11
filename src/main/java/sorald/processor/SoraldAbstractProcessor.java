@@ -12,6 +12,7 @@ import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEvent;
 import sorald.event.SoraldEventHandler;
+import sorald.event.models.CrashEvent;
 import sorald.sonar.RuleViolation;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
@@ -32,7 +33,10 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         // SoraldAbstractProcessor::process
         clearProcessedElementType();
         Arrays.stream(getClass().getMethods())
-                .filter(meth -> meth.getName().equals("repair") && meth.getParameterCount() == 1)
+                .filter(
+                        meth ->
+                                meth.getName().equals("repairInternal")
+                                        && meth.getParameterCount() == 1)
                 .map(Method::getParameterTypes)
                 .flatMap(Arrays::stream)
                 .filter(CtElement.class::isAssignableFrom)
@@ -53,24 +57,64 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      * example, when repairing something involving a method call, there may be nested calls that are
      * not actually the violating parties, but still appear in the correct vicinity.
      *
-     * <p>Note that a processor gets ONE chance to repair a violation. If it returns true, the
-     * violating element is passed to the {@link SoraldAbstractProcessor#repair(CtElement)} method,
-     * and the violation is consumed.
+     * <p><b>This method does not mutate the state of the processor</b>.
      *
-     * <p><b>This method should not mutate the state of the processor</b>.
+     * <p>This method never crashes, instead returning false if there is a problem in the concrete
+     * processor.
      *
      * @param candidate A candidate element to inspect.
      * @return true if the processor can repair the violation based on this element.
      */
-    public abstract boolean canRepair(E candidate);
+    public final boolean canRepair(E candidate) {
+        try {
+            return canRepairInternal(candidate);
+        } catch (Exception e) {
+            fireCrashEvent("canRepairInternal", e);
+            return false;
+        }
+    }
+
+    /**
+     * Repair a violating element after having been accepted by {@link
+     * SoraldAbstractProcessor#canRepair(CtElement)}.
+     *
+     * <p>This method never crashes.
+     *
+     * @param element An element to repair.
+     * @return true if the repair proceeded without crashing, false if errors were encountered.
+     */
+    public final boolean repair(E element) {
+        try {
+            repairInternal(element);
+            return true;
+        } catch (Exception e) {
+            fireCrashEvent("repairInternal", e);
+            return false;
+        }
+    }
+
+    /**
+     * Same as the general description of {@link SoraldAbstractProcessor#canRepair(CtElement)}.
+     *
+     * <p>Note that a processor gets ONE chance to repair a violation. If this method returns true,
+     * the violating element is passed to the {@link
+     * SoraldAbstractProcessor#repairInternal(CtElement)} method, and the violation is consumed.
+     *
+     * <p>It is very important that this method <b>does not mutate the state of the processor.</b>
+     * Doing so may have unexpected side effects.
+     *
+     * @param candidate A candidate element.
+     * @return true if the processor can repair the violation based on this element.
+     */
+    protected abstract boolean canRepairInternal(E candidate);
 
     /**
      * Repair a violating element. An element is only passed to this method after having been
-     * accepted by {@link SoraldAbstractProcessor#canRepair(CtElement)}.
+     * accepted by {@link SoraldAbstractProcessor#canRepairInternal(CtElement)}.
      *
      * @param element An element to repair.
      */
-    public abstract void repair(E element);
+    protected abstract void repairInternal(E element);
 
     public SoraldAbstractProcessor<E> setBestFits(Map<CtElement, RuleViolation> bestFits) {
         this.bestFits = Collections.unmodifiableMap(bestFits);
@@ -82,7 +126,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         return this;
     }
 
-    public SoraldAbstractProcessor<?> setEventHandlers(List<SoraldEventHandler> eventHandlers) {
+    public SoraldAbstractProcessor<E> setEventHandlers(List<SoraldEventHandler> eventHandlers) {
         this.eventHandlers = eventHandlers;
         return this;
     }
@@ -93,17 +137,21 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     @Override
     public final void process(E element) {
-        assert !processedViolations.contains(bestFits.get(element));
+        try {
+            assert !processedViolations.contains(bestFits.get(element));
 
-        final String ruleKey = getRuleKey();
-        final String elementPosition = element.getPosition().toString();
+            final String ruleKey = getRuleKey();
+            final String elementPosition = element.getPosition().toString();
 
-        repair(element);
+            repair(element);
 
-        EventHelper.fireEvent(new RepairEvent(ruleKey, elementPosition), eventHandlers);
-        UniqueTypesCollector.getInstance().collect(element);
+            EventHelper.fireEvent(new RepairEvent(ruleKey, elementPosition), eventHandlers);
+            UniqueTypesCollector.getInstance().collect(element);
 
-        processedViolations.add(bestFits.get(element));
+            processedViolations.add(bestFits.get(element));
+        } catch (Exception e) {
+            fireCrashEvent("process", e);
+        }
     }
 
     @Override
@@ -155,5 +203,11 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         public String getRuleViolationPosition() {
             return ruleViolationPosition;
         }
+    }
+
+    private void fireCrashEvent(String methodName, Exception e) {
+        EventHelper.fireEvent(
+                new CrashEvent("Crash in " + getClass().getCanonicalName() + "::" + methodName, e),
+                eventHandlers);
     }
 }

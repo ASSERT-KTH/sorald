@@ -29,7 +29,7 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
      * <p>First it tries to find a Spoon element that intersects the rule violation's position. If
      * that fails, it searches all Spoon elements that start on the same line that the rule
      * violation starts on. Only elements that return true for {@link
-     * SoraldAbstractProcessor#canRepair(CtElement)} are considered as potential best fits.
+     * SoraldAbstractProcessor#canRepairInternal(CtElement)} are considered as potential best fits.
      *
      * <p>The matching is 1:1, but there is no guarantee that all violations appear in the value
      * set.

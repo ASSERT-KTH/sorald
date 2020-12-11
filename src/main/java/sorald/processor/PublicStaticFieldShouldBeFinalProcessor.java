@@ -9,12 +9,12 @@ import spoon.reflect.declaration.ModifierKind;
 @ProcessorAnnotation(key = 1444, description = "\"public static\" fields should be constant")
 public class PublicStaticFieldShouldBeFinalProcessor extends SoraldAbstractProcessor<CtField<?>> {
     @Override
-    public boolean canRepair(CtField<?> candidate) {
+    public boolean canRepairInternal(CtField<?> candidate) {
         return true;
     }
 
     @Override
-    public void repair(CtField<?> element) {
+    public void repairInternal(CtField<?> element) {
         element.addModifier(ModifierKind.FINAL);
     }
 }

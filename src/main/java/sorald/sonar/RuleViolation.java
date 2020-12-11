@@ -1,50 +1,53 @@
 package sorald.sonar;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.sonar.java.AnalyzerMessage;
+import sorald.Constants;
 
-/** Facade around {@link org.sonar.java.AnalyzerMessage} */
-public class RuleViolation implements Comparable<RuleViolation> {
-    private final AnalyzerMessage message;
-
-    RuleViolation(AnalyzerMessage message) {
-        this.message = message;
-    }
+/** Representation of a violation of some Sonar rule */
+public abstract class RuleViolation implements Comparable<RuleViolation> {
 
     /** @return The line the element that violates the rule starts on. */
-    public int getStartLine() {
-        return message.primaryLocation().startLine;
-    }
+    public abstract int getStartLine();
 
     /** @return The line the element that violates the rule ends on. */
-    public int getEndLine() {
-        return message.primaryLocation().endLine;
-    }
+    public abstract int getEndLine();
 
     /** @return The column the element that violates the rule starts on. */
-    public int getStartCol() {
-        return message.primaryLocation().startCharacter;
-    }
+    public abstract int getStartCol();
 
     /** @return The column the element that violates the rule ends on. */
-    public int getEndCol() {
-        return message.primaryLocation().endCharacter;
-    }
+    public abstract int getEndCol();
 
     /** @return The name of the file that was analyzed. */
-    public String getFileName() {
-        return message.getInputComponent().key().replace(":", "");
-    }
+    public abstract String getFileName();
 
     /** @return The name of the check class that generated this warning. */
-    public String getCheckName() {
-        return message.getCheck().getClass().getSimpleName();
-    }
+    public abstract String getCheckName();
 
     /** @return The key of the violated rule. */
-    public String getRuleKey() {
-        return Checks.getRuleKey(message.getCheck().getClass());
+    public abstract String getRuleKey();
+
+    /**
+     * @param projectPath The root directory of the current project.
+     * @return A violation specifier that is unique relative to the given project path.
+     */
+    public String relativeSpecifier(Path projectPath) {
+        Path absPath = Paths.get(getFileName()).toAbsolutePath().normalize();
+        Path normalizedProjectPath = projectPath.toAbsolutePath().normalize();
+        Path idPath = normalizedProjectPath.relativize(absPath);
+        return Stream.of(
+                        getRuleKey(),
+                        idPath,
+                        getStartLine(),
+                        getStartCol(),
+                        getEndLine(),
+                        getEndCol())
+                .map(Object::toString)
+                .collect(Collectors.joining(Constants.VIOLATION_SPECIFIER_SEP));
     }
 
     @Override

@@ -17,6 +17,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.apache.commons.lang3.tuple.Pair;
 import sorald.event.EventHelper;
@@ -82,11 +83,7 @@ public class Repair {
             final Path inputDir = inOutPaths.getLeft();
             final Path outputDir = inOutPaths.getRight();
 
-            Set<RuleViolation> ruleViolations =
-                    ProjectScanner.scanProject(
-                            inputDir.toFile(),
-                            FileUtils.getClosestDirectory(inputDir.toFile()),
-                            Checks.getCheckInstance(Integer.toString(ruleKey)));
+            Set<RuleViolation> ruleViolations = getRuleViolations(inputDir.toFile(), ruleKey);
             SoraldAbstractProcessor<?> processor = createProcessor(ruleKey);
             addedProcessors.add(processor);
             Stream<CtModel> models = repair(inputDir, processor, ruleViolations);
@@ -96,6 +93,19 @@ public class Repair {
 
         printEndProcess(addedProcessors);
         FileUtils.deleteDirectory(intermediateSpoonedPath.toFile());
+    }
+
+    private Set<RuleViolation> getRuleViolations(File target, int ruleKey) {
+        if (!config.getRuleViolations().isEmpty()) {
+            return config.getRuleViolations().stream()
+                    .filter(violation -> violation.getRuleKey().equals(Integer.toString(ruleKey)))
+                    .collect(Collectors.toSet());
+        } else {
+            return ProjectScanner.scanProject(
+                    target,
+                    FileUtils.getClosestDirectory(target),
+                    Checks.getCheckInstance(Integer.toString(ruleKey)));
+        }
     }
 
     Stream<CtModel> repair(
