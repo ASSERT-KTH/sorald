@@ -206,7 +206,7 @@ public class Cli {
                             SoraldVersionProvider.getVersionFromPropertiesResource(
                                     SoraldVersionProvider.DEFAULT_RESOURCE_NAME),
                             javaVersion,
-                            "N/A");
+                            target);
 
             List<RuleRepairStatistics> repairStats =
                     RuleRepairStatistics.createRepairStatsList(statsCollector, projectPath);
