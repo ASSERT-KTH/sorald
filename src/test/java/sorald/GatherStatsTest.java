@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Set;
 import org.json.JSONArray;
@@ -71,7 +72,53 @@ public class GatherStatsTest {
     @Test
     public void statisticsFile_containsCorrectNbViolationsBeforeAndAfter_whenUsingTargetedRepair(
             @TempDir File tmpDir) throws IOException {
-        // arrange
+        // arrange/act
+        TargetedRepairInfo targetedRepairInfo = performTargetedRepair(tmpDir);
+
+        // assert
+        assertThat(
+                "Targeted repair did not do its job...",
+                targetedRepairInfo.violationsAfter.size(),
+                equalTo(targetedRepairInfo.violationsBefore.size() - 1));
+
+        JSONObject jo = FileUtils.readJSON(targetedRepairInfo.statsFile);
+
+        JSONArray repairStats = jo.getJSONArray(StatsMetadataKeys.REPAIRS);
+        assertThat("unexpected amount of repair stats", repairStats.length(), equalTo(1));
+
+        JSONObject xxeRepairStats = repairStats.getJSONObject(0);
+        assertThat(
+                xxeRepairStats.getInt(StatsMetadataKeys.REPAIR_NB_VIOLATIONS_BEFORE),
+                equalTo(targetedRepairInfo.violationsBefore.size()));
+        assertThat(
+                xxeRepairStats.getInt(StatsMetadataKeys.REPAIR_NB_VIOLATIONS_AFTER),
+                equalTo(targetedRepairInfo.violationsAfter.size()));
+    }
+
+    @Test
+    public void statisticsFile_containsCorrectSpecifierForPerformedRepair_whenUsingTargetedRepair(
+            @TempDir File tmpDir) throws IOException {
+        // arrange/act
+        TargetedRepairInfo targetedRepairInfo = performTargetedRepair(tmpDir);
+
+        // assert
+        String specifier =
+                targetedRepairInfo.targetViolation.relativeSpecifier(
+                        targetedRepairInfo.projectPath);
+        JSONObject xxeRepairStats =
+                FileUtils.readJSON(targetedRepairInfo.statsFile)
+                        .getJSONArray(StatsMetadataKeys.REPAIRS)
+                        .getJSONObject(0);
+
+        assertThat(
+                xxeRepairStats
+                        .getJSONArray(StatsMetadataKeys.REPAIR_PERFORMED_LOCATIONS)
+                        .getJSONObject(0)
+                        .getString(StatsMetadataKeys.VIOLATION_SPECIFIER),
+                equalTo(specifier));
+    }
+
+    private static TargetedRepairInfo performTargetedRepair(File tmpDir) throws IOException {
         File statsFile = tmpDir.toPath().resolve("stats.json").toFile();
         File processorTestFiles = ProcessorTestHelper.TEST_FILES_ROOT.toFile();
         File project = tmpDir.toPath().resolve("project").toFile();
@@ -80,10 +127,10 @@ public class GatherStatsTest {
         SoraldAbstractProcessor<?> targetProc = new XxeProcessingProcessor();
         JavaFileScanner targetCheck = Checks.getCheckInstance(targetProc.getRuleKey());
 
-        Set<RuleViolation> viloationsBefore =
+        Set<RuleViolation> violationsBefore =
                 ProjectScanner.scanProject(project, project, targetCheck);
         RuleViolation targetViolation =
-                new ArrayList<>(viloationsBefore).get(viloationsBefore.size() / 2);
+                new ArrayList<>(violationsBefore).get(violationsBefore.size() / 2);
         String specifier = targetViolation.relativeSpecifier(project.toPath());
 
         // act
@@ -100,26 +147,41 @@ public class GatherStatsTest {
                     specifier
                 });
 
-        // assert
         Set<RuleViolation> violationsAfter =
                 ProjectScanner.scanProject(project, project, targetCheck);
-        assertThat(
-                "Targeted repair did not do its job...",
-                violationsAfter.size(),
-                equalTo(viloationsBefore.size() - 1));
 
-        JSONObject jo = FileUtils.readJSON(statsFile.toPath());
+        return new TargetedRepairInfo(
+                project.toPath(),
+                statsFile.toPath(),
+                violationsBefore,
+                violationsAfter,
+                targetViolation,
+                targetCheck);
+    }
 
-        JSONArray repairStats = jo.getJSONArray(StatsMetadataKeys.REPAIRS);
-        assertThat("unexpected amount of repair stats", repairStats.length(), equalTo(1));
+    /** A simple container for test statistics of a targeted repair. */
+    private static class TargetedRepairInfo {
+        final Path projectPath;
+        final Path statsFile;
+        final Set<RuleViolation> violationsBefore;
+        final Set<RuleViolation> violationsAfter;
+        final RuleViolation targetViolation;
+        final JavaFileScanner targetCheck;
 
-        JSONObject xxeRepairStats = repairStats.getJSONObject(0);
-        assertThat(
-                xxeRepairStats.getInt(StatsMetadataKeys.REPAIR_NB_VIOLATIONS_BEFORE),
-                equalTo(viloationsBefore.size()));
-        assertThat(
-                xxeRepairStats.getInt(StatsMetadataKeys.REPAIR_NB_VIOLATIONS_AFTER),
-                equalTo(violationsAfter.size()));
+        private TargetedRepairInfo(
+                Path projectPath,
+                Path statsFile,
+                Set<RuleViolation> violationsBefore,
+                Set<RuleViolation> violationsAfter,
+                RuleViolation targetViolation,
+                JavaFileScanner targetCheck) {
+            this.projectPath = projectPath;
+            this.statsFile = statsFile;
+            this.violationsBefore = violationsBefore;
+            this.violationsAfter = violationsAfter;
+            this.targetViolation = targetViolation;
+            this.targetCheck = targetCheck;
+        }
     }
 
     @Test
