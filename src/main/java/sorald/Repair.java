@@ -98,8 +98,7 @@ public class Repair {
         Set<RuleViolation> violations = null;
         if (!eventHandlers.isEmpty() || config.getRuleViolations().isEmpty()) {
             // if there are event handlers, we must mine violations regardless of them being
-            // specified
-            // in the config or not in order to trigger the mined violation events
+            // specified in the config or not in order to trigger the mined violation events
             violations = mineViolations(target, ruleKey);
         }
         if (!config.getRuleViolations().isEmpty()) {
