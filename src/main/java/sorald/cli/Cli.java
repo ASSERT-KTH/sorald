@@ -58,16 +58,32 @@ public class Cli {
         }
     }
 
+    /** Base command containing the options in common for all Sorald sub-commands. */
+    @CommandLine.Command()
+    private abstract static class BaseCommand implements Callable<Integer> {
+        @CommandLine.Spec CommandLine.Model.CommandSpec spec;
+
+        @CommandLine.Option(
+                names = Constants.ARG_TARGET,
+                description =
+                        "The target of this execution (ex. sorald/92d377). This will be included in the json report.")
+        String target = "N/A";
+
+        @CommandLine.Option(
+                names = Constants.ARG_STATS_OUTPUT_FILE,
+                description =
+                        "Path to a file to store execution statistics in (in JSON format). If left unspecified, Sorald does not gather statistics.")
+        File statsOutputFile;
+    }
+
     /** The CLI command for the primary repair application. */
     @CommandLine.Command(
             name = Constants.REPAIR_COMMAND_NAME,
             mixinStandardHelpOptions = true,
             description = "Repair Sonar rule violations in a targeted project.")
-    private static class RepairCommand implements Callable<Integer> {
+    private static class RepairCommand extends BaseCommand {
         List<Integer> ruleKeys;
         List<RuleViolation> ruleViolations = List.of();
-
-        @CommandLine.Spec CommandLine.Model.CommandSpec spec;
 
         @CommandLine.Option(
                 names = {Constants.ARG_ORIGINAL_FILES_PATH},
@@ -144,12 +160,6 @@ public class Cli {
                 description =
                         "Max number of files per loaded segment for segmented repair. It should be >= 3000 files per segment.")
         int maxFilesPerSegment = 6500;
-
-        @CommandLine.Option(
-                names = Constants.ARG_STATS_OUTPUT_FILE,
-                description =
-                        "Path to a file to store execution statistics in (in JSON format). If left unspecified, Sorald does not gather statistics.")
-        File statsOutputFile;
 
         @Override
         public Integer call() throws IOException {
@@ -306,9 +316,7 @@ public class Cli {
             name = Constants.MINE_COMMAND_NAME,
             mixinStandardHelpOptions = true,
             description = "Mine a project for Sonar warnings.")
-    private static class MineCommand implements Callable<Integer> {
-
-        @CommandLine.Spec CommandLine.Model.CommandSpec spec;
+    private static class MineCommand extends BaseCommand {
 
         @CommandLine.Option(
                 names = {Constants.ARG_ORIGINAL_FILES_PATH},
@@ -320,11 +328,6 @@ public class Cli {
                 names = Constants.ARG_STATS_ON_GIT_REPOS,
                 description = "If the stats should be computed on git repos.")
         boolean statsOnGitRepos;
-
-        @CommandLine.Option(
-                names = Constants.ARG_STATS_OUTPUT_FILE,
-                description = "The path to the stats output file.")
-        File statsOutputFile;
 
         @CommandLine.Option(
                 names = Constants.ARG_MINER_OUTPUT_FILE,
@@ -347,12 +350,6 @@ public class Cli {
                         "One or more types of rules to check for (use ',' to separate multiple types). Choices: ${COMPLETION-CANDIDATES}",
                 split = ",")
         private List<Checks.CheckType> ruleTypes = new ArrayList<>();
-
-        @CommandLine.Option(
-                names = Constants.ARG_TARGET,
-                description =
-                        "The target of this execution (ex. sorald/92d377). This will be included in the json report.")
-        String target;
 
         @Override
         public Integer call() throws Exception {
