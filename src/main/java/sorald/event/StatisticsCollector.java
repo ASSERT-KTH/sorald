@@ -38,19 +38,19 @@ public class StatisticsCollector implements SoraldEventHandler {
                 parseStart = System.currentTimeMillis();
                 break;
             case PARSE_END:
-                assert parseStart > 0;
+                assert parseStart != INVALID_TIME;
                 long parseEnd = System.currentTimeMillis();
                 parseTotal += parseEnd - parseStart;
-                parseStart = -1;
+                parseStart = INVALID_TIME;
                 break;
             case REPAIR_START:
                 repairStart = System.currentTimeMillis();
                 break;
             case REPAIR_END:
-                assert repairStart > 0;
+                assert repairStart != INVALID_TIME;
                 long repairEnd = System.currentTimeMillis();
                 repairTotal += repairEnd - repairStart;
-                repairStart = -1;
+                repairStart = INVALID_TIME;
                 break;
             case REPAIR:
                 addRepair((RepairEvent) event);
