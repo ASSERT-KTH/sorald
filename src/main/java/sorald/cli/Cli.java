@@ -67,7 +67,7 @@ public class Cli {
                 names = Constants.ARG_TARGET,
                 description =
                         "The target of this execution (ex. sorald/92d377). This will be included in the json report.")
-        String target = "N/A";
+        String target;
 
         @CommandLine.Option(
                 names = Constants.ARG_STATS_OUTPUT_FILE,
