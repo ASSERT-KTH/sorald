@@ -11,9 +11,9 @@ import sorald.event.models.miner.MinedViolationEvent;
 /** Event handler for Sorald that collects runtime statistics */
 public class StatisticsCollector implements SoraldEventHandler {
     private long parseStart = -1;
-    private long parseEnd = -1;
     private long repairStart = -1;
-    private long repairEnd = -1;
+    private long parseTotal = 0;
+    private long repairTotal = 0;
     private final List<SoraldEvent> crashes = new ArrayList<>();
 
     private final Map<String, List<RepairEvent>> keyToRepairs = new HashMap<>();
@@ -27,13 +27,19 @@ public class StatisticsCollector implements SoraldEventHandler {
                 parseStart = System.nanoTime();
                 break;
             case PARSE_END:
-                parseEnd = System.nanoTime();
+                assert parseStart > 0;
+                long parseEnd = System.nanoTime();
+                parseTotal += parseEnd - parseStart;
+                parseStart = -1;
                 break;
             case REPAIR_START:
                 repairStart = System.nanoTime();
                 break;
             case REPAIR_END:
-                repairEnd = System.nanoTime();
+                assert repairStart > 0;
+                long repairEnd = System.nanoTime();
+                repairTotal += repairEnd - repairStart;
+                repairStart = -1;
                 break;
             case REPAIR:
                 addRepair((RepairEvent) event);
@@ -61,12 +67,12 @@ public class StatisticsCollector implements SoraldEventHandler {
 
     /** @return The total amount of time spent parsing */
     public long getParseTimeNs() {
-        return parseEnd - parseStart;
+        return parseTotal;
     }
 
     /** @return The total amount of time spent repairing */
     public long getRepairTimeNs() {
-        return repairEnd - repairStart;
+        return repairTotal;
     }
 
     /** @return All repair events that were performed without errors. */
