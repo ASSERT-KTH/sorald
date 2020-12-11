@@ -147,7 +147,10 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
             processedViolations.add(bestFits.get(element));
         } catch (Exception e) {
             fireCrashEvent("process", e);
-            EventHelper.fireEvent(new RepairEvent(bestFits.get(element), true), eventHandlers);
+
+            if (bestFits != null && bestFits.containsKey(element)) {
+                EventHelper.fireEvent(new RepairEvent(bestFits.get(element), true), eventHandlers);
+            }
         }
     }
 
