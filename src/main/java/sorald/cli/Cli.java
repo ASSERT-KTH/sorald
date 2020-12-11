@@ -158,14 +158,16 @@ public class Cli {
             SoraldConfig config = createConfig();
 
             var statsCollector = new StatisticsCollector();
-            EventHelper.fireEvent(EventType.EXEC_START, List.of(statsCollector));
+            var eventHandlers = List.of(statsCollector);
+            EventHelper.fireEvent(EventType.EXEC_START, eventHandlers);
 
-            new Repair(config, statsOutputFile == null ? List.of() : List.of(statsCollector))
-                    .repair();
+            var repair = new Repair(config, statsOutputFile == null ? List.of() : eventHandlers);
+            repair.repair();
 
             EventHelper.fireEvent(EventType.EXEC_END, List.of(statsCollector));
 
             if (statsOutputFile != null) {
+                mineWarningsAfter(repair, config.getRuleKeys());
                 writeStatisticsOutput(
                         statsCollector,
                         FileUtils.getClosestDirectory(originalFilesPath)
@@ -175,6 +177,15 @@ public class Cli {
             }
 
             return 0;
+        }
+
+        /**
+         * Mine warnings after completing repairs to trigger new mined events for the stats
+         * collection.
+         */
+        private void mineWarningsAfter(Repair repair, List<Integer> ruleKeys) {
+            File projectPath = originalFilesPath.toPath().toAbsolutePath().normalize().toFile();
+            ruleKeys.forEach(key -> repair.mineWarnings(projectPath, key));
         }
 
         private void writeStatisticsOutput(StatisticsCollector statsCollector, Path projectPath)

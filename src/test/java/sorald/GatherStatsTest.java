@@ -2,16 +2,26 @@ package sorald;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.event.StatsMetadataKeys;
 import sorald.processor.ProcessorTestHelper;
+import sorald.processor.SoraldAbstractProcessor;
+import sorald.processor.XxeProcessingProcessor;
+import sorald.sonar.Checks;
+import sorald.sonar.ProjectScanner;
+import sorald.sonar.RuleViolation;
 
 public class GatherStatsTest {
     @Test
@@ -40,7 +50,8 @@ public class GatherStatsTest {
                             StatsMetadataKeys.REPAIR_PERFORMED_LOCATIONS,
                             StatsMetadataKeys.REPAIR_NB_PERFORMED,
                             StatsMetadataKeys.REPAIR_NB_FAILURES,
-                            StatsMetadataKeys.REPAIR_NB_WARNINGS));
+                            StatsMetadataKeys.REPAIR_NB_WARNINGS_BEFORE,
+                            StatsMetadataKeys.REPAIR_NB_WARNINGS_AFTER));
         }
 
         assertThat(
@@ -54,6 +65,61 @@ public class GatherStatsTest {
         assertThat(jo.getLong(StatsMetadataKeys.START_TIME_MS), greaterThan(0L));
         assertThat(jo.getLong(StatsMetadataKeys.END_TIME_MS), greaterThan(0L));
         assertThat(jo.getLong(StatsMetadataKeys.TOTAL_TIME_MS), greaterThan(0L));
+    }
+
+    /** Check that the amount of warnings is correct when using targeted repair. */
+    @Test
+    public void statisticsFile_containsCorrectNbWarningsBeforeAndAfter_whenUsingTargetedRepair(
+            @TempDir File tmpDir) throws IOException {
+        // arrange
+        File statsFile = tmpDir.toPath().resolve("stats.json").toFile();
+        File processorTestFiles = ProcessorTestHelper.TEST_FILES_ROOT.toFile();
+        File project = tmpDir.toPath().resolve("project").toFile();
+        org.apache.commons.io.FileUtils.copyDirectory(processorTestFiles, project);
+
+        SoraldAbstractProcessor<?> targetProc = new XxeProcessingProcessor();
+        JavaFileScanner targetCheck = Checks.getCheckInstance(targetProc.getRuleKey());
+
+        Set<RuleViolation> warningsBefore =
+                ProjectScanner.scanProject(project, project, targetCheck);
+        RuleViolation targetWarning =
+                new ArrayList<>(warningsBefore).get(warningsBefore.size() / 2);
+        String specifier = targetWarning.relativeSpecifier(project.toPath());
+
+        // act
+        Main.main(
+                new String[] {
+                    Constants.REPAIR_COMMAND_NAME,
+                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    project.getAbsolutePath(),
+                    Constants.ARG_STATS_OUTPUT_FILE,
+                    statsFile.getAbsolutePath(),
+                    Constants.ARG_FILE_OUTPUT_STRATEGY,
+                    FileOutputStrategy.IN_PLACE.name(),
+                    Constants.ARG_RULE_VIOLATION_SPECIFIERS,
+                    specifier
+                });
+
+        // assert
+        Set<RuleViolation> warningsAfter =
+                ProjectScanner.scanProject(project, project, targetCheck);
+        assertThat(
+                "Targeted repair did not do its job...",
+                warningsAfter.size(),
+                equalTo(warningsBefore.size() - 1));
+
+        JSONObject jo = FileUtils.readJSON(statsFile.toPath());
+
+        JSONArray repairStats = jo.getJSONArray(StatsMetadataKeys.REPAIRS);
+        assertThat("unexpected amount of repair stats", repairStats.length(), equalTo(1));
+
+        JSONObject xxeRepairStats = repairStats.getJSONObject(0);
+        assertThat(
+                xxeRepairStats.getInt(StatsMetadataKeys.REPAIR_NB_WARNINGS_BEFORE),
+                equalTo(warningsBefore.size()));
+        assertThat(
+                xxeRepairStats.getInt(StatsMetadataKeys.REPAIR_NB_WARNINGS_AFTER),
+                equalTo(warningsAfter.size()));
     }
 
     @Test

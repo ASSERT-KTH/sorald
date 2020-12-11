@@ -95,20 +95,41 @@ public class Repair {
     }
 
     private Set<RuleViolation> getRuleViolations(File target, int ruleKey) {
+        Set<RuleViolation> warnings = null;
+        if (!eventHandlers.isEmpty() || config.getRuleViolations().isEmpty()) {
+            // if there are event handlers, we must mine warnings regardless of them being specified
+            // in the config or not in order to trigger the mined violation events
+            warnings = mineWarnings(target, ruleKey);
+        }
+        if (!config.getRuleViolations().isEmpty()) {
+            warnings =
+                    config.getRuleViolations().stream()
+                            .filter(
+                                    violation ->
+                                            violation
+                                                    .getRuleKey()
+                                                    .equals(Integer.toString(ruleKey)))
+                            .collect(Collectors.toSet());
+        }
+        assert warnings != null;
+
+        return warnings;
+    }
+
+    /**
+     * Mine warnings from the target directory and the given rule key.
+     *
+     * @param target A target directory.
+     * @param ruleKey A rule key.
+     * @return All found warnings.
+     */
+    public Set<RuleViolation> mineWarnings(File target, int ruleKey) {
         Path projectPath = target.toPath().toAbsolutePath().normalize();
         Set<RuleViolation> warnings =
-                config.getRuleViolations().isEmpty()
-                        ? ProjectScanner.scanProject(
-                                target,
-                                FileUtils.getClosestDirectory(target),
-                                Checks.getCheckInstance(Integer.toString(ruleKey)))
-                        : config.getRuleViolations().stream()
-                                .filter(
-                                        violation ->
-                                                violation
-                                                        .getRuleKey()
-                                                        .equals(Integer.toString(ruleKey)))
-                                .collect(Collectors.toSet());
+                ProjectScanner.scanProject(
+                        target,
+                        FileUtils.getClosestDirectory(target),
+                        Checks.getCheckInstance(Integer.toString(ruleKey)));
         warnings.forEach(
                 warn ->
                         EventHelper.fireEvent(
