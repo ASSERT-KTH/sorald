@@ -192,19 +192,25 @@ public class Repair {
                                 EventHelper.fireEvent(EventType.REPAIR_END, eventHandlers);
                                 return model;
                             } catch (Exception e) {
-                                List<String> rootPaths =
-                                        segment.stream()
-                                                .map(Node::getRootPath)
-                                                .collect(Collectors.toList());
-                                EventHelper.fireEvent(
-                                        new CrashEvent("Crash in segment: " + rootPaths, e),
-                                        eventHandlers);
+                                reportSegmentCrash(segment, e);
                                 e.printStackTrace();
                                 return null;
                             }
                         })
                 .filter(Objects::nonNull)
                 .takeWhile(model -> processor.getNbFixes() < config.getMaxFixesPerRule());
+    }
+
+    private void reportSegmentCrash(LinkedList<Node> segment, Exception e) {
+        List<String> paths =
+                segment.stream()
+                        .map(
+                                node ->
+                                        node.isDirNode()
+                                                ? node.getRootPath()
+                                                : node.getJavaFiles().toString())
+                        .collect(Collectors.toList());
+        EventHelper.fireEvent(new CrashEvent("Crash in segment: " + paths, e), eventHandlers);
     }
 
     private Pair<Path, Path> computeInOutPaths(boolean isFirstRule, boolean isLastRule) {
