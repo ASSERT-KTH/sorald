@@ -23,6 +23,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
+import sorald.event.models.CrashEvent;
 import sorald.event.models.miner.MinedViolationEvent;
 import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.FirstFitSegmentationAlgorithm;
@@ -191,7 +192,13 @@ public class Repair {
                                 EventHelper.fireEvent(EventType.REPAIR_END, eventHandlers);
                                 return model;
                             } catch (Exception e) {
-                                // TODO record as crash event
+                                List<String> rootPaths =
+                                        segment.stream()
+                                                .map(Node::getRootPath)
+                                                .collect(Collectors.toList());
+                                EventHelper.fireEvent(
+                                        new CrashEvent("Crash in segment: " + rootPaths, e),
+                                        eventHandlers);
                                 e.printStackTrace();
                                 return null;
                             }
