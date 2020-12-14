@@ -26,6 +26,7 @@ import sorald.sonar.RuleVerifier;
 public class ProcessorTestHelper {
     public static final Path TEST_FILES_ROOT =
             Paths.get(Constants.PATH_TO_RESOURCES_FOLDER).resolve("processor_test_files");
+
     static final String EXPECTED_FILE_SUFFIX = ".expected";
     // The processors related to these checks currently cause problems with the sniper printer
     static final List<Class<?>> BROKEN_WITH_SNIPER =

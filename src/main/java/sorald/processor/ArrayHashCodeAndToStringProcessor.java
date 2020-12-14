@@ -17,10 +17,11 @@ public class ArrayHashCodeAndToStringProcessor extends SoraldAbstractProcessor<C
 
     @Override
     public boolean canRepairInternal(CtInvocation<?> candidate) {
-        if (candidate.getTarget() == null) {
+        CtExpression<?> target = candidate.getTarget();
+        if (target == null || target.getType() == null) {
             return false;
         }
-        if (candidate.getTarget().getType().isArray()) {
+        if (target.getType().isArray()) {
             if (candidate
                             .getExecutable()
                             .getSignature()

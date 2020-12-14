@@ -2,12 +2,15 @@ package sorald.processor;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,6 +18,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.io.TempDir;
@@ -25,7 +30,9 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.FileUtils;
 import sorald.TestHelper;
+import sorald.event.StatsMetadataKeys;
 import sorald.sonar.RuleVerifier;
 import spoon.Launcher;
 import spoon.reflect.CtModel;
@@ -52,11 +59,19 @@ public class ProcessorTest {
                 new File(Constants.SORALD_WORKSPACE).exists(),
                 "workspace should must be clean before test");
 
-        ProcessorTestHelper.runSorald(testCase);
+        Path statsOutputFile =
+                Paths.get(Constants.SORALD_WORKSPACE)
+                        .resolve("stats.txt")
+                        .toAbsolutePath()
+                        .normalize();
+
+        ProcessorTestHelper.runSorald(
+                testCase, Constants.ARG_STATS_OUTPUT_FILE, statsOutputFile.toString());
 
         String pathToRepairedFile = testCase.repairedFilePath().toString();
         TestHelper.removeComplianceComments(pathToRepairedFile);
         RuleVerifier.verifyNoIssue(pathToRepairedFile, testCase.createCheckInstance());
+        assertNoCrashReport(statsOutputFile);
     }
 
     /**
@@ -205,5 +220,12 @@ public class ProcessorTest {
         return model.getAllTypes().stream()
                 .sorted(Comparator.comparing(CtType::getQualifiedName))
                 .collect(Collectors.toList());
+    }
+
+    /** Assert that the statistics output does not contain a crash report. */
+    private static void assertNoCrashReport(Path statsOutputFile) throws IOException {
+        JSONObject jo = FileUtils.readJSON(statsOutputFile);
+        JSONArray ja = jo.getJSONArray(StatsMetadataKeys.CRASHES);
+        assertThat(ja.toList(), is(empty()));
     }
 }

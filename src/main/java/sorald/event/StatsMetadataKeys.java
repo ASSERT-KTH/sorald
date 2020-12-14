@@ -11,6 +11,7 @@ public class StatsMetadataKeys {
     public static final String START_TIME_MS = "startTimeMs";
     public static final String END_TIME_MS = "endTimeMs";
     public static final String VIOLATION_SPECIFIER = "violationSpecifier";
+    public static final String CRASHES = "crashes";
 
     public static final String EXECUTION_INFO = "executionInfo";
     public static final String SORALD_VERSION = "soraldVersion";
