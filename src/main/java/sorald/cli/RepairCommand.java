@@ -18,7 +18,7 @@ import sorald.SoraldConfig;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.StatsMetadataKeys;
-import sorald.event.collectors.StatisticsCollector;
+import sorald.event.collectors.RepairStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
 import sorald.event.models.repair.RuleRepairStatistics;
 import sorald.sonar.RuleViolation;
@@ -113,7 +113,7 @@ class RepairCommand extends BaseCommand {
         validateArgs();
         SoraldConfig config = createConfig();
 
-        var statsCollector = new StatisticsCollector();
+        var statsCollector = new RepairStatisticsCollector();
         var eventHandlers = List.of(statsCollector);
         EventHelper.fireEvent(EventType.EXEC_START, eventHandlers);
 
@@ -143,7 +143,7 @@ class RepairCommand extends BaseCommand {
         ruleKeys.forEach(key -> repair.mineViolations(projectPath, key));
     }
 
-    private void writeStatisticsOutput(StatisticsCollector statsCollector, Path projectPath)
+    private void writeStatisticsOutput(RepairStatisticsCollector statsCollector, Path projectPath)
             throws IOException {
         var executionInfo =
                 new ExecutionInfo(

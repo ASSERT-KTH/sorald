@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import sorald.event.collectors.StatisticsCollector;
+import sorald.event.collectors.RepairStatisticsCollector;
 import spoon.Launcher;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
@@ -18,14 +18,14 @@ public class SoraldAbstractProcessorTest {
     @Test
     public void canRepair_returnsFalse_whenInternalMethodCrashes() {
         var crashyProcessor =
-                new CrashyProcessor().setEventHandlers(List.of(new StatisticsCollector()));
+                new CrashyProcessor().setEventHandlers(List.of(new RepairStatisticsCollector()));
         assertFalse(crashyProcessor.canRepair(getObjectToString()));
     }
 
     @Test
     public void canRepair_recordsCrashEvent() {
         var crashyProcessor = new CrashyProcessor();
-        var statsCollector = new StatisticsCollector();
+        var statsCollector = new RepairStatisticsCollector();
         CtMethod<?> objectToString = getObjectToString();
 
         crashyProcessor.setEventHandlers(List.of(statsCollector));
@@ -38,13 +38,13 @@ public class SoraldAbstractProcessorTest {
     @Test
     public void repair_returnsFalse_whenInternalMethodCrashes() {
         var crashyProcessor =
-                new CrashyProcessor().setEventHandlers(List.of(new StatisticsCollector()));
+                new CrashyProcessor().setEventHandlers(List.of(new RepairStatisticsCollector()));
         assertFalse(crashyProcessor.repair(getObjectToString()));
     }
 
     @Test
     public void repair_recordsCrashEvent() {
-        var statsCollector = new StatisticsCollector();
+        var statsCollector = new RepairStatisticsCollector();
         var crashyProcessor = new CrashyProcessor().setEventHandlers(List.of(statsCollector));
         CtMethod<?> objectToString = getObjectToString();
 
@@ -55,7 +55,7 @@ public class SoraldAbstractProcessorTest {
 
     @Test
     public void process_recordsCrashEvent() {
-        var statsCollector = new StatisticsCollector();
+        var statsCollector = new RepairStatisticsCollector();
         var crashyProcessor = new CrashyProcessor().setEventHandlers(List.of(statsCollector));
 
         // this will crash as we haven't set the bestFits for the processor

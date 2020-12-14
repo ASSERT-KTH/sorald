@@ -10,8 +10,10 @@ import sorald.event.SoraldEventHandler;
 import sorald.event.models.RepairEvent;
 import sorald.event.models.miner.MinedViolationEvent;
 
-/** Event handler for Sorald that collects runtime statistics */
-public class StatisticsCollector implements SoraldEventHandler {
+/**
+ * Event handler for Sorald that collects runtime statistics during execution of the repair command.
+ */
+public class RepairStatisticsCollector implements SoraldEventHandler {
     private static final int INVALID_TIME = -1;
 
     private long execStart = INVALID_TIME;

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import sorald.event.collectors.StatisticsCollector;
+import sorald.event.collectors.RepairStatisticsCollector;
 import sorald.event.models.RepairEvent;
 import sorald.event.models.WarningLocation;
 import sorald.event.models.miner.MinedViolationEvent;
@@ -90,7 +90,7 @@ public class RuleRepairStatistics {
      * @return A list of repair statistics container, one for each rule.
      */
     public static List<RuleRepairStatistics> createRepairStatsList(
-            StatisticsCollector statsCollector, Path projectPath) {
+            RepairStatisticsCollector statsCollector, Path projectPath) {
         Map<String, List<RepairEvent>> keyToRepair = statsCollector.performedRepairs();
         Map<String, List<RepairEvent>> keyToFailure = statsCollector.crashedRepairs();
         Map<String, List<MinedViolationEvent>> keyToViolationsBefore =
