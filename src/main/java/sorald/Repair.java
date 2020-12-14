@@ -13,7 +13,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -144,7 +146,11 @@ public class Repair {
             return Stream.of(model);
         } else {
             assert config.getRepairStrategy() == RepairStrategy.SEGMENT;
-            return segmentRepair(inputDir, processor, violations);
+            return segmentRepair(
+                    inputDir,
+                    processor,
+                    violations,
+                    segment -> createSegmentLauncher(segment).getModel());
         }
     }
 
@@ -164,7 +170,10 @@ public class Repair {
     }
 
     Stream<CtModel> segmentRepair(
-            Path inputDir, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
+            Path inputDir,
+            SoraldAbstractProcessor<?> processor,
+            Set<RuleViolation> violations,
+            Function<LinkedList<Node>, CtModel> parseSegment) {
         Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(inputDir.toString());
         LinkedList<LinkedList<Node>> segments =
                 FirstFitSegmentationAlgorithm.segment(rootNode, config.getMaxFilesPerSegment());
@@ -172,11 +181,17 @@ public class Repair {
         return segments.stream()
                 .map(
                         segment -> {
-                            Launcher launcher = createSegmentLauncher(segment);
-                            CtModel model = launcher.getModel();
-                            repairModelWithInitializedProcessor(model, processor, violations);
-                            return model;
+                            try {
+                                CtModel model = parseSegment.apply(segment);
+                                repairModelWithInitializedProcessor(model, processor, violations);
+                                return model;
+                            } catch (Exception e) {
+                                // TODO record as crash event
+                                e.printStackTrace();
+                                return null;
+                            }
                         })
+                .filter(Objects::nonNull)
                 .takeWhile(model -> processor.getNbFixes() < config.getMaxFixesPerRule());
     }
 
@@ -223,7 +238,7 @@ public class Repair {
         processingManager.process(factory.Class().getAll());
     }
 
-    private Launcher createSegmentLauncher(List<Node> segment) {
+    Launcher createSegmentLauncher(List<Node> segment) {
         Launcher launcher = new Launcher();
 
         for (Node node : segment) {
