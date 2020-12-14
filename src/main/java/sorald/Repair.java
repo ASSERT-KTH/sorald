@@ -182,8 +182,13 @@ public class Repair {
                 .map(
                         segment -> {
                             try {
+                                EventHelper.fireEvent(EventType.PARSE_START, eventHandlers);
                                 CtModel model = parseSegment.apply(segment);
+                                EventHelper.fireEvent(EventType.PARSE_END, eventHandlers);
+
+                                EventHelper.fireEvent(EventType.REPAIR_START, eventHandlers);
                                 repairModelWithInitializedProcessor(model, processor, violations);
+                                EventHelper.fireEvent(EventType.REPAIR_END, eventHandlers);
                                 return model;
                             } catch (Exception e) {
                                 // TODO record as crash event
