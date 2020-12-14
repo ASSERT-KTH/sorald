@@ -4,7 +4,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +12,9 @@ import java.util.ArrayList;
 import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.event.StatsMetadataKeys;
 import sorald.processor.ProcessorTestHelper;
@@ -25,8 +25,11 @@ import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleViolation;
 
 public class GatherStatsTest {
-    @Test
-    public void statisticsFile_containsExpectedStats(@TempDir File tempDir) throws Exception {
+
+    @ParameterizedTest
+    @EnumSource(value = RepairStrategy.class)
+    public void statisticsFile_containsExpectedStats(
+            RepairStrategy repairStrategy, @TempDir File tempDir) throws Exception {
         ProcessorTestHelper.ProcessorTestCase<?> testCase =
                 ProcessorTestHelper.getTestCaseStream()
                         .filter(tc -> tc.ruleKey.equals("2755"))
@@ -35,7 +38,11 @@ public class GatherStatsTest {
         File statsFile = tempDir.toPath().resolve("stats.json").toFile();
 
         ProcessorTestHelper.runSorald(
-                testCase, Constants.ARG_STATS_OUTPUT_FILE, statsFile.getAbsolutePath());
+                testCase,
+                Constants.ARG_STATS_OUTPUT_FILE,
+                statsFile.getAbsolutePath(),
+                Constants.ARG_REPAIR_STRATEGY,
+                repairStrategy.name());
 
         JSONObject jo = FileUtils.readJSON(statsFile.toPath());
         JSONArray repairs = jo.getJSONArray(StatsMetadataKeys.REPAIRS);
@@ -69,11 +76,12 @@ public class GatherStatsTest {
     }
 
     /** Check that the amount of violations is correct when using targeted repair. */
-    @Test
+    @ParameterizedTest
+    @EnumSource(value = RepairStrategy.class)
     public void statisticsFile_containsCorrectNbViolationsBeforeAndAfter_whenUsingTargetedRepair(
-            @TempDir File tmpDir) throws IOException {
+            RepairStrategy repairStrategy, @TempDir File tmpDir) throws IOException {
         // arrange/act
-        TargetedRepairInfo targetedRepairInfo = performTargetedRepair(tmpDir);
+        TargetedRepairInfo targetedRepairInfo = performTargetedRepair(tmpDir, repairStrategy);
 
         // assert
         assertThat(
@@ -95,11 +103,12 @@ public class GatherStatsTest {
                 equalTo(targetedRepairInfo.violationsAfter.size()));
     }
 
-    @Test
+    @ParameterizedTest
+    @EnumSource(value = RepairStrategy.class)
     public void statisticsFile_containsCorrectSpecifierForPerformedRepair_whenUsingTargetedRepair(
-            @TempDir File tmpDir) throws IOException {
+            RepairStrategy repairStrategy, @TempDir File tmpDir) throws IOException {
         // arrange/act
-        TargetedRepairInfo targetedRepairInfo = performTargetedRepair(tmpDir);
+        TargetedRepairInfo targetedRepairInfo = performTargetedRepair(tmpDir, repairStrategy);
 
         // assert
         String specifier =
@@ -118,7 +127,8 @@ public class GatherStatsTest {
                 equalTo(specifier));
     }
 
-    private static TargetedRepairInfo performTargetedRepair(File tmpDir) throws IOException {
+    private static TargetedRepairInfo performTargetedRepair(
+            File tmpDir, RepairStrategy repairStrategy) throws IOException {
         File statsFile = tmpDir.toPath().resolve("stats.json").toFile();
         File processorTestFiles = ProcessorTestHelper.TEST_FILES_ROOT.toFile();
         File project = tmpDir.toPath().resolve("project").toFile();
@@ -144,7 +154,9 @@ public class GatherStatsTest {
                     Constants.ARG_FILE_OUTPUT_STRATEGY,
                     FileOutputStrategy.IN_PLACE.name(),
                     Constants.ARG_RULE_VIOLATION_SPECIFIERS,
-                    specifier
+                    specifier,
+                    Constants.ARG_REPAIR_STRATEGY,
+                    repairStrategy.name()
                 });
 
         Set<RuleViolation> violationsAfter =
@@ -182,24 +194,5 @@ public class GatherStatsTest {
             this.targetViolation = targetViolation;
             this.targetCheck = targetCheck;
         }
-    }
-
-    @Test
-    public void segmentRepair_doesNotSupportStatsCollection(@TempDir File tempDir) {
-        File statsFile = tempDir.toPath().resolve("stats.json").toFile();
-        String[] cliArgs =
-                new String[] {
-                    Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_ORIGINAL_FILES_PATH,
-                    ProcessorTestHelper.TEST_FILES_ROOT.toString(),
-                    Constants.ARG_RULE_KEYS,
-                    "2755",
-                    Constants.ARG_REPAIR_STRATEGY,
-                    RepairStrategy.SEGMENT.name(),
-                    Constants.ARG_STATS_OUTPUT_FILE,
-                    statsFile.getAbsolutePath()
-                };
-
-        assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(cliArgs));
     }
 }
