@@ -23,6 +23,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
+import sorald.event.models.CrashEvent;
 import sorald.event.models.miner.MinedViolationEvent;
 import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.FirstFitSegmentationAlgorithm;
@@ -182,17 +183,34 @@ public class Repair {
                 .map(
                         segment -> {
                             try {
+                                EventHelper.fireEvent(EventType.PARSE_START, eventHandlers);
                                 CtModel model = parseSegment.apply(segment);
+                                EventHelper.fireEvent(EventType.PARSE_END, eventHandlers);
+
+                                EventHelper.fireEvent(EventType.REPAIR_START, eventHandlers);
                                 repairModelWithInitializedProcessor(model, processor, violations);
+                                EventHelper.fireEvent(EventType.REPAIR_END, eventHandlers);
                                 return model;
                             } catch (Exception e) {
-                                // TODO record as crash event
+                                reportSegmentCrash(segment, e);
                                 e.printStackTrace();
                                 return null;
                             }
                         })
                 .filter(Objects::nonNull)
                 .takeWhile(model -> processor.getNbFixes() < config.getMaxFixesPerRule());
+    }
+
+    private void reportSegmentCrash(LinkedList<Node> segment, Exception e) {
+        List<String> paths =
+                segment.stream()
+                        .map(
+                                node ->
+                                        node.isDirNode()
+                                                ? node.getRootPath()
+                                                : node.getJavaFiles().toString())
+                        .collect(Collectors.toList());
+        EventHelper.fireEvent(new CrashEvent("Crash in segment: " + paths, e), eventHandlers);
     }
 
     private Pair<Path, Path> computeInOutPaths(boolean isFirstRule, boolean isLastRule) {
