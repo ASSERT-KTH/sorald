@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import sorald.event.StatisticsCollector;
+import sorald.event.collectors.StatisticsCollector;
 import sorald.event.models.RepairEvent;
 import sorald.event.models.WarningLocation;
 import sorald.event.models.miner.MinedViolationEvent;
