@@ -199,6 +199,7 @@ def parse_args(args: List[str]) -> argparse.Namespace:
         "--sorald-stats-file",
         help="path to Sorald's statistics output",
         type=pathlib.Path,
+        required=True,
     )
 
     subparsers.add_parser(
