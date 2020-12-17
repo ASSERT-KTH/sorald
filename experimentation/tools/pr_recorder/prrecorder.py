@@ -16,13 +16,19 @@ PRS_JSON = "prs.json"
 
 RECORD_INITIAL = "record-initial"
 RECORD_FINAL = "record-final"
+ADD_MANUAL_EDIT = "add-manual-edit"
 
 ENCODING = "utf8"
 
 PR_DATA_KEY = "pr"
 DIFF_DATA_KEY = "diff"
-RECORD_DATA_KEY = "record_metadata"
+
 MANUAL_EDITS_KEY = "manual_edits"
+BEFORE_OPEN_PR_KEY = "before_open_pr"
+AFTER_OPEN_PR_KEY = "after_open_pr"
+
+RECORD_DATA_KEY = "record_metadata"
+RECORD_MODIFIED_KEY = "last_modified"
 
 
 def main():
@@ -41,13 +47,22 @@ def main():
         record = execute_record_initial(
             repo_slug, record_id, data, pr, parsed_args.sorald_stats_file
         )
-        data[record_id] = record
     elif parsed_args.command == RECORD_FINAL:
         record = execute_record_final(record_id, data, pr)
-        data[record_id] = record
+        update_record_metadata(record)
+    elif parsed_args.command == ADD_MANUAL_EDIT:
+        record = execute_add_manual_edit(
+            record_id,
+            data,
+            parsed_args.diff_file,
+            parsed_args.edit_reason,
+            parsed_args.edit_type,
+        )
+        update_record_metadata(record)
     else:
         raise RuntimeError(f"Unrecognized command {parsed_args.command}")
 
+    data[record_id] = record
     parsed_args.prs_json_file.write_text(json.dumps(data, indent=4), encoding=ENCODING)
 
 
@@ -73,7 +88,7 @@ def execute_record_final(
     record_id: str,
     data: dict,
     pr: github.PullRequest.PullRequest,
-):
+) -> dict:
     if record_id not in data:
         print(
             f"Cannot create final record for {record_id}: "
@@ -89,6 +104,24 @@ def execute_record_final(
     return record
 
 
+def execute_add_manual_edit(
+    record_id: str,
+    data: dict,
+    diff_file: pathlib.Path,
+    edit_reason: str,
+    edit_type: str,
+) -> dict:
+    if record_id not in data:
+        print(f"No such record: {record_id}", file=sys.stderr)
+        sys.exit(1)
+
+    diff = diff_file.read_text(encoding=sys.getdefaultencoding())
+    record = copy.deepcopy(data[record_id])
+    record[MANUAL_EDITS_KEY].append(dict(type=edit_type, reason=edit_reason, diff=diff))
+
+    return record
+
+
 def create_initial_record(
     repo_slug: str, pr: github.PullRequest.PullRequest, sorald_stats: dict
 ) -> dict:
@@ -98,9 +131,13 @@ def create_initial_record(
         PR_DATA_KEY: get_pr_state(pr),
         "sorald_statistics": sorald_stats,
         DIFF_DATA_KEY: dict(initial=get_diff(pr.diff_url), final=None),
-        MANUAL_EDITS_KEY: dict(pre_pr_open=None, post_pr_open=None),
-        RECORD_DATA_KEY: dict(created_at=created_at, last_modified=created_at),
+        MANUAL_EDITS_KEY: [],
+        RECORD_DATA_KEY: {"created_at": created_at, RECORD_MODIFIED_KEY: created_at},
     }
+
+
+def update_record_metadata(record: dict):
+    record[RECORD_DATA_KEY][RECORD_MODIFIED_KEY] = str(datetime.datetime.now())
 
 
 def get_diff(diff_url: str) -> str:
@@ -170,6 +207,37 @@ def parse_args(args: List[str]) -> argparse.Namespace:
         description="Make the final record for a PR. This requires an "
         "initial record to exist.",
         parents=[base_parser],
+    )
+
+    manual_edits_cmd = subparsers.add_parser(
+        ADD_MANUAL_EDIT,
+        help="add a diff representing a manual edit of a PR",
+        description="Add a diff representing a manual edit of a PR. This can "
+        "for example be a manual edit made before opening the PR as it "
+        "was deemed crucial for the PR, or an edit made after opening the "
+        "PR at the request of maintainers.",
+        parents=[base_parser],
+    )
+
+    manual_edits_cmd.add_argument(
+        "-d",
+        "--diff-file",
+        help="path to a file with the diff representing the manual edit",
+        type=pathlib.Path,
+        required=True,
+    )
+    manual_edits_cmd.add_argument(
+        "-e",
+        "--edit-reason",
+        help="the reason for the edit (freeform text, but keep it short!)",
+        type=str,
+        required=True,
+    )
+    manual_edits_cmd.add_argument(
+        "-t",
+        "--edit-type",
+        help="type of the edit",
+        choices=[BEFORE_OPEN_PR_KEY, AFTER_OPEN_PR_KEY],
     )
 
     # workaround for bug
