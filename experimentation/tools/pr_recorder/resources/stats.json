@@ -1,0 +1,66 @@
+{
+    "repairs": [{
+        "nbPerformedRepairs": 4,
+        "ruleName": "XxeProcessing",
+        "crashedRepairsLocations": [],
+        "nbCrashedRepairs": 0,
+        "ruleKey": "2755",
+        "nbViolationsBefore": 4,
+        "performedRepairsLocations": [
+            {
+                "endLine": 85,
+                "endColumn": 52,
+                "startColumn": 41,
+                "startLine": 85,
+                "filePath": "framework/bundles/org.jboss.tools.rsp.launching.java/src/main/java/org/jboss/tools/rsp/internal/launching/java/util/LaunchingSupportUtils.java",
+                "violationSpecifier": "2755:framework/bundles/org.jboss.tools.rsp.launching.java/src/main/java/org/jboss/tools/rsp/internal/launching/java/util/LaunchingSupportUtils.java:85:41:85:52"
+            },
+            {
+                "endLine": 92,
+                "endColumn": 70,
+                "startColumn": 59,
+                "startLine": 92,
+                "filePath": "framework/bundles/org.jboss.tools.rsp.launching/src/main/java/org/jboss/tools/rsp/launching/memento/XMLMemento.java",
+                "violationSpecifier": "2755:framework/bundles/org.jboss.tools.rsp.launching/src/main/java/org/jboss/tools/rsp/launching/memento/XMLMemento.java:92:59:92:70"
+            },
+            {
+                "endLine": 129,
+                "endColumn": 48,
+                "startColumn": 37,
+                "startLine": 129,
+                "filePath": "framework/bundles/org.jboss.tools.rsp.launching/src/main/java/org/jboss/tools/rsp/launching/memento/XMLMemento.java",
+                "violationSpecifier": "2755:framework/bundles/org.jboss.tools.rsp.launching/src/main/java/org/jboss/tools/rsp/launching/memento/XMLMemento.java:129:37:129:48"
+            },
+            {
+                "endLine": 351,
+                "endColumn": 62,
+                "startColumn": 51,
+                "startLine": 351,
+                "filePath": "framework/bundles/org.jboss.tools.rsp.launching/src/main/java/org/jboss/tools/rsp/launching/memento/XMLMemento.java",
+                "violationSpecifier": "2755:framework/bundles/org.jboss.tools.rsp.launching/src/main/java/org/jboss/tools/rsp/launching/memento/XMLMemento.java:351:51:351:62"
+            }
+        ],
+        "nbViolationsAfter": 0
+    }],
+    "executionInfo": {
+        "soraldVersion": "commit: 33c4d13b",
+        "javaVersion": "11.0.8",
+        "originalArgs": [
+            "repair",
+            "--rule-keys",
+            "2755",
+            "--file-output-strategy",
+            "IN_PLACE",
+            "--original-files-path",
+            ".",
+            "--stats-output-file",
+            "stats.json"
+        ]
+    },
+    "totalTimeMs": 11659,
+    "repairTimeMs": 315,
+    "startTimeMs": 1608221551366,
+    "crashes": [],
+    "endTimeMs": 1608221563025,
+    "parseTimeMs": 2886
+}

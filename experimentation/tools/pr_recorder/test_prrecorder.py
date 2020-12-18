@@ -11,9 +11,9 @@ import pytest
 import prrecorder
 
 CUR_DIR = pathlib.Path(__file__).absolute().parent
-STATS_JSON = CUR_DIR / "stats.json"
-
-PRS_JSON_FINAL = CUR_DIR / "prs_final.json"
+RESOURCES = CUR_DIR / "resources"
+STATS_JSON = RESOURCES / "stats.json"
+PRS_JSON_FINAL = RESOURCES / "prs_final.json"
 
 OWNER = "redhat-developer"
 REPO = "rsp-server"
