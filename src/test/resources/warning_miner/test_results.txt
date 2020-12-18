@@ -1,3 +1,17 @@
 RepoName: Tic-Tac-Toe
+SystemOutOrErrUsageCheck=401
+MagicNumberCheck=346
 CompareStringsBoxedTypesWithEqualsCheck=240
+SystemExitCalledCheck=80
+IdenticalCasesInSwitchCheck=70
+StringLiteralDuplicatedCheck=14
+StaticMembersAccessCheck=3
+DefaultEncodingUsageCheck=2
+ArrayDesignatorOnVariableCheck=2
+StandardInputReadCheck=2
+CatchExceptionCheck=1
+MainMethodThrowsExceptionCheck=1
 NullDereferenceCheck=1
+CognitiveComplexityMethodCheck=1
+MethodTooBigCheck=1
+CatchUsesExceptionWithContextCheck=1
