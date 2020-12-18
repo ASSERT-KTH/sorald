@@ -20,8 +20,8 @@ ADD_MANUAL_EDIT = "add-manual-edit"
 
 ENCODING = "utf8"
 
-PR_DATA_KEY = "pr"
-DIFF_DATA_KEY = "diff"
+PR_DATA_KEY = "pr_metadata"
+DIFF_DATA_KEY = "diffs"
 
 MANUAL_EDITS_KEY = "manual_edits"
 BEFORE_OPEN_PR_KEY = "before_open_pr"
