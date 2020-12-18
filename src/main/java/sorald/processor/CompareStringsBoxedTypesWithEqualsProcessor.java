@@ -17,7 +17,7 @@ public class CompareStringsBoxedTypesWithEqualsProcessor
         extends SoraldAbstractProcessor<CtBinaryOperator<?>> {
 
     @Override
-    public boolean canRepairInternal(CtBinaryOperator<?> candidate) {
+    protected boolean canRepairInternal(CtBinaryOperator<?> candidate) {
         BinaryOperatorKind opKind = candidate.getKind();
         if (opKind == BinaryOperatorKind.EQ || opKind == BinaryOperatorKind.NE) {
             CtExpression<?> left = candidate.getLeftHandOperand();
@@ -48,7 +48,7 @@ public class CompareStringsBoxedTypesWithEqualsProcessor
     }
 
     @Override
-    public void repairInternal(CtBinaryOperator<?> element) {
+    protected void repairInternal(CtBinaryOperator<?> element) {
         CtExpression<?> lhs = element.getLeftHandOperand();
         CtExpression<?> rhs = element.getRightHandOperand();
 

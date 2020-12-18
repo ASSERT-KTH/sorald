@@ -17,7 +17,7 @@ import spoon.reflect.factory.Factory;
 public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignment<?, ?>> {
 
     @Override
-    public boolean canRepairInternal(CtAssignment<?, ?> candidate) {
+    protected boolean canRepairInternal(CtAssignment<?, ?> candidate) {
         CtExpression<?> leftExpression = candidate.getAssigned();
         CtExpression<?> rightExpression = candidate.getAssignment();
         if (rightExpression == null || candidate.getParent(CtAssignment.class) != null) {
@@ -33,7 +33,7 @@ public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignme
     }
 
     @Override
-    public void repairInternal(CtAssignment<?, ?> element) {
+    protected void repairInternal(CtAssignment<?, ?> element) {
         Factory factory = element.getFactory();
         CtType<?> type = element.getParent(CtType.class);
 
