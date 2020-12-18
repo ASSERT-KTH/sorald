@@ -31,7 +31,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         // the process method, which with type erasure will always be CtElement for
         // SoraldAbstractProcessor::process
         clearProcessedElementType();
-        Arrays.stream(getClass().getMethods())
+        Arrays.stream(getClass().getDeclaredMethods())
                 .filter(
                         meth ->
                                 meth.getName().equals("repairInternal")
