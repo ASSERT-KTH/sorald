@@ -44,7 +44,7 @@ jobs:
         with:
           python-version: 3.8
       - name: Install prerequisites
-        run:
+        run: |
           cd experimentation/tools/pr_recorder/
           pip install --upgrade pip
           pip install -r requirements.txt
