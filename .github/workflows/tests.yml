@@ -34,3 +34,20 @@ jobs:
         uses: codecov/codecov-action@239febf655bba88b16ff5dea1d3135ea8663a1f9 # v1.0.15
         with:
           fail_ci_if_error: true
+
+  test-prrecorder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # v2.3.4
+      - uses: actions/setup-python@8c5ea631b2b2d5d8840cf4a2b183a8a0edc1e40d # v2.2.0
+        with:
+          python-version: 3.8
+      - name: Install prerequisites
+        run:
+          cd experimentation/tools/pr_recorder/
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Test prrecorder
+        run:
+          pytest test_prrecorder.py
