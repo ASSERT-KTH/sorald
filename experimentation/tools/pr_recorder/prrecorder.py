@@ -32,12 +32,18 @@ RECORD_MODIFIED_KEY = "last_modified"
 
 
 def main():
-    parsed_args = parse_args(sys.argv[1:])
+    run_cli(sys.argv[1:])
+
+
+def run_cli(sys_args: List[str]) -> None:
+    parsed_args = parse_args(sys_args)
 
     data = read_json_if_exists(parsed_args.prs_json_file, ENCODING)
 
     repo_slug = f"{parsed_args.owner}/{parsed_args.repo_name}"
-    record_id = f"{repo_slug}#{parsed_args.pr_number}"
+    record_id = create_record_id(
+        parsed_args.owner, parsed_args.repo_name, parsed_args.pr_number
+    )
 
     gh = github.Github(base_url="https://api.github.com")
     repo = gh.get_repo(repo_slug)
@@ -64,6 +70,10 @@ def main():
 
     data[record_id] = record
     parsed_args.prs_json_file.write_text(json.dumps(data, indent=4), encoding=ENCODING)
+
+
+def create_record_id(owner: str, repo: str, pr_number: int) -> str:
+    return f"{owner}/{repo}#{pr_number}"
 
 
 def execute_record_initial(
