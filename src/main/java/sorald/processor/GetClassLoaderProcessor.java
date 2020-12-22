@@ -16,7 +16,7 @@ public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocatio
     private HashMap<Integer, Boolean> hashCodesOfTypesUsingJEE = new HashMap<Integer, Boolean>();
 
     @Override
-    public boolean canRepairInternal(CtInvocation<?> invocation) {
+    protected boolean canRepairInternal(CtInvocation<?> invocation) {
         String invocationStr = invocation.toString();
         if (invocationStr.contains("getClass().getClassLoader()")
                 || invocationStr.contains(".class.getClassLoader()")) {
@@ -40,7 +40,7 @@ public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocatio
     }
 
     @Override
-    public void repairInternal(CtInvocation<?> element) {
+    protected void repairInternal(CtInvocation<?> element) {
         Factory factory = element.getFactory();
         CtClass<?> c = factory.Class().get(Thread.class);
         CtTypeAccess<?> access = factory.createTypeAccess(c.getReference());

@@ -12,12 +12,12 @@ import spoon.reflect.factory.Factory;
 public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCatch> {
 
     @Override
-    public boolean canRepairInternal(CtCatch candidate) {
+    protected boolean canRepairInternal(CtCatch candidate) {
         return true;
     }
 
     @Override
-    public void repairInternal(CtCatch element) {
+    protected void repairInternal(CtCatch element) {
         Factory factory = element.getFactory();
         CtClass<?> threadClass = factory.Class().get(Thread.class);
         CtTypeAccess<?> threadClassAccess = factory.createTypeAccess(threadClass.getReference());

@@ -16,7 +16,7 @@ import spoon.reflect.reference.CtExecutableReference;
 public class ArrayHashCodeAndToStringProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
 
     @Override
-    public boolean canRepairInternal(CtInvocation<?> candidate) {
+    protected boolean canRepairInternal(CtInvocation<?> candidate) {
         CtExpression<?> target = candidate.getTarget();
         if (target == null || target.getType() == null) {
             return false;
@@ -37,7 +37,7 @@ public class ArrayHashCodeAndToStringProcessor extends SoraldAbstractProcessor<C
     }
 
     @Override
-    public void repairInternal(CtInvocation<?> element) {
+    protected void repairInternal(CtInvocation<?> element) {
         CtExpression prevTarget = element.getTarget();
         CtClass arraysClass = getFactory().Class().get(Arrays.class);
         CtTypeAccess<?> newTarget = getFactory().createTypeAccess(arraysClass.getReference());
