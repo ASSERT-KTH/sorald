@@ -1,3 +1,6 @@
+// Test for rule s1217
+// Tests from https://raw.githubusercontent.com/SonarSource/sonar-java/master/java-checks-test-sources/src/main/java/checks/ThreadRunCheck.java
+
 package checks;
 
 import java.io.Serializable;

@@ -11,7 +11,8 @@ import spoon.reflect.factory.Factory;
 public class ThreadRunProcessor extends SoraldAbstractProcessor<CtInvocation> {
     @Override
     protected boolean canRepairInternal(CtInvocation candidate) {
-        return candidate.getExecutable().getSignature().equals("java.lang.Thread.run()");
+        return candidate.getExecutable().getSignature().equals("run()")
+                && candidate.getExecutable().getDeclaringType().toString().equals("java.lang.Thread");
     }
 
     @Override
