@@ -11,13 +11,13 @@ import spoon.reflect.visitor.filter.TypeFilter;
 @ProcessorAnnotation(
         key = 2225,
         description = "\"toString()\" and \"clone()\" methods should not return null")
-public class ToStringReturningNullProcessor extends SoraldAbstractProcessor<CtReturn<?>>{
+public class ToStringReturningNullProcessor extends SoraldAbstractProcessor<CtReturn<?>> {
 
     @Override
     protected boolean canRepairInternal(CtReturn<?> candidate) {
         CtMethod parentMethod = candidate.getParent(new TypeFilter<>(CtMethod.class));
-        if(parentMethod.getSignature().equals(Constants.TOSTRING_METHOD_NAME + "()")
-                && candidate.getReturnedExpression().toString().equals("null")){
+        if (parentMethod.getSignature().equals(Constants.TOSTRING_METHOD_NAME + "()")
+                && candidate.getReturnedExpression().toString().equals("null")) {
             return true;
         }
         return false;
