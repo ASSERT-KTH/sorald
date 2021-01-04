@@ -2,7 +2,6 @@ package sorald.processor;
 
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtInvocation;
-import spoon.reflect.code.CtTypeAccess;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
@@ -11,9 +10,14 @@ import spoon.reflect.factory.Factory;
 public class ThreadRunProcessor extends SoraldAbstractProcessor<CtInvocation> {
     @Override
     protected boolean canRepairInternal(CtInvocation candidate) {
-        return candidate.getExecutable() != null && candidate.getExecutable().getDeclaringType() != null &&
-                candidate.getExecutable().getSignature().equals("run()")
-                && candidate.getExecutable().getDeclaringType().toString().equals("java.lang.Thread");
+        return candidate.getExecutable() != null
+                && candidate.getExecutable().getDeclaringType() != null
+                && candidate.getExecutable().getSignature().equals("run()")
+                && candidate
+                        .getExecutable()
+                        .getDeclaringType()
+                        .toString()
+                        .equals("java.lang.Thread");
     }
 
     @Override
@@ -23,7 +27,8 @@ public class ThreadRunProcessor extends SoraldAbstractProcessor<CtInvocation> {
 
         CtMethod<?> method = threadClass.getMethodsByName("start").get(0);
 
-        CtInvocation threadStartInvocation = factory.createInvocation(element.getTarget(), method.getReference());
+        CtInvocation threadStartInvocation =
+                factory.createInvocation(element.getTarget(), method.getReference());
 
         element.replace(threadStartInvocation);
     }
