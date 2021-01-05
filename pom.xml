@@ -20,6 +20,8 @@
 
     <repositories>
         <repository>
+            <!--This repository is normally unused in the committed version of this pom file, but we use it to quickly
+            test new changes in Spoon, so please leave it in here :) -->
             <id>ow2.org-snapshot</id>
             <name>Maven Repository for Spoon Snapshots</name>
             <url>https://repository.ow2.org/nexus/content/repositories/snapshots/</url>
