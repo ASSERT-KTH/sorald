@@ -5,7 +5,6 @@ import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtReturn;
 import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.visitor.filter.TypeFilter;
 
 @IncompleteProcessor(description = "does not fix null returning clone()")
 @ProcessorAnnotation(
@@ -15,12 +14,9 @@ public class ToStringReturningNullProcessor extends SoraldAbstractProcessor<CtRe
 
     @Override
     protected boolean canRepairInternal(CtReturn<?> candidate) {
-        CtMethod parentMethod = candidate.getParent(new TypeFilter<>(CtMethod.class));
-        if (parentMethod.getSignature().equals(Constants.TOSTRING_METHOD_NAME + "()")
-                && candidate.getReturnedExpression().toString().equals("null")) {
-            return true;
-        }
-        return false;
+        CtMethod<?> parentMethod = candidate.getParent(CtMethod.class);
+        return parentMethod.getSignature().equals(Constants.TOSTRING_METHOD_NAME + "()")
+                && candidate.getReturnedExpression().toString().equals("null");
     }
 
     @Override

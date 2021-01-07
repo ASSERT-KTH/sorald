@@ -358,6 +358,8 @@ Example:
 
 For the return statements inside "toString()", this processor replaces the return expression with an empty string. 
 
+Note that this processor is incomplete and does not fix null-returning `clone()` methods.
+
 Example:
 ```diff
 public String toString() {
