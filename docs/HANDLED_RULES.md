@@ -19,7 +19,7 @@ Sorald can currently repair violations of the following rules:
     * [Synchronization should not be based on Strings or boxed primitives](#synchronization-should-not-be-based-on-Strings-or-boxed-primitives-sonar-rule-1860) ([Sonar Rule 1860](https://rules.sonarsource.com/java/tag/multi-threading/RSPEC-1860))
     * [Variables should not be self-assigned](#variables-should-not-be-self-assigned-sonar-rule-1656) ([Sonar Rule 1656](https://rules.sonarsource.com/java/type/Bug/RSPEC-1656))
     * ["Thread.run()" should not be called directly](#threadrun-should-not-be-called-directly-sonar-rule-1217) ([Sonar Rule 1217](https://rules.sonarsource.com/java/type/Bug/RSPEC-1217))
-    * ["toString()" and "clone()" methods should not return null](#tostring-should-not-return-null) ([Sonar Rule 2225](https://rules.sonarsource.com/java/tag/multi-threading/RSPEC-2225))
+    * ["toString()" and "clone()" methods should not return null](#tostring-and-clone-methods-should-not-return-null-sonar-rule-2225) ([Sonar Rule 2225](https://rules.sonarsource.com/java/tag/multi-threading/RSPEC-2225))
 * [Code Smell](#code-smell)
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
@@ -354,6 +354,10 @@ Example:
     Thread myThread = new Thread(runnable);
 -   myThread.run();
 +   myThread.start();
+```
+
+-----
+
 #### "toString()" and "clone()" methods should not return null ([Sonar Rule 2225](https://rules.sonarsource.com/java/type/Bug/RSPEC-2225))
 
 For the return statements inside "toString()", this processor replaces the return expression with an empty string. 
