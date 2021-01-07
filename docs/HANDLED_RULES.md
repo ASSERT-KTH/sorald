@@ -18,6 +18,7 @@ Sorald can currently repair violations of the following rules:
     * [Strings and Boxed types should be compared using "equals()"](#strings-and-boxed-types-should-be-compared-using-equals-sonar-rule-4973) ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
     * [Synchronization should not be based on Strings or boxed primitives](#synchronization-should-not-be-based-on-Strings-or-boxed-primitives-sonar-rule-1860) ([Sonar Rule 1860](https://rules.sonarsource.com/java/tag/multi-threading/RSPEC-1860))
     * [Variables should not be self-assigned](#variables-should-not-be-self-assigned-sonar-rule-1656) ([Sonar Rule 1656](https://rules.sonarsource.com/java/type/Bug/RSPEC-1656))
+    * ["Thread.run()" should not be called directly](#threadrun-should-not-be-called-directly-sonar-rule-1217) ([Sonar Rule 1217](https://rules.sonarsource.com/java/type/Bug/RSPEC-1217))
 * [Code Smell](#code-smell)
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
@@ -339,6 +340,19 @@ class SelfAssignement {
      return 0;
    }
 }
+```
+
+-----
+
+#### "Thread.run" should not be called directly ([Sonar Rule 1217](https://rules.sonarsource.com/java/type/Bug/RSPEC-1217))
+
+Sorald fixes the violations of this rule by replacing each invocation of `Thread.run()` with an invocation of `Thread.start()`. 
+
+Example:
+```diff
+    Thread myThread = new Thread(runnable);
+-   myThread.run();
++   myThread.start();
 ```
 
 -----
