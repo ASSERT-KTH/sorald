@@ -346,15 +346,13 @@ class SelfAssignement {
 
 #### "Thread.run" should not be called directly ([Sonar Rule 1217](https://rules.sonarsource.com/java/type/Bug/RSPEC-1217))
 
-The purpose of the Thread.run() method is to execute code in a separate, dedicated thread. Calling this method directly doesn't make sense because it causes its code to be executed in the current thread.
-
-To get the expected behavior, call the Thread.start() method instead.
+Sorald fixes the violations of this rule by replacing each invocation of `Thread.run()` with an invocation of `Thread.start()`. 
 
 Example:
 ```diff
     Thread myThread = new Thread(runnable);
--   myThread.run(); // Noncompliant
-+   myThread.start(); // Compliant
+-   myThread.run();
++   myThread.start();
 ```
 
 -----
