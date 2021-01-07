@@ -20,6 +20,8 @@
 
     <repositories>
         <repository>
+            <!--This repository is normally unused in the committed version of this pom file, but we use it to quickly
+            test new changes in Spoon, so please leave it in here :) -->
             <id>ow2.org-snapshot</id>
             <name>Maven Repository for Spoon Snapshots</name>
             <url>https://repository.ow2.org/nexus/content/repositories/snapshots/</url>
@@ -68,7 +70,7 @@
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>8.4.0-SNAPSHOT</version>
+            <version>8.4.0-beta-9</version>
             <exclusions>
                 <exclusion>
                     <!-- must be excluded as it is signed, which causes problems with unsigned version from sonar -->
