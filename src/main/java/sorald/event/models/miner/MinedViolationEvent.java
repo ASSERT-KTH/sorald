@@ -12,7 +12,12 @@ public class MinedViolationEvent implements SoraldEvent {
     private final String ruleName;
     private final WarningLocation warningLocation;
 
-    /** Wrapping just one violation inside a mined-rule event */
+    /**
+     * Wrapping just one violation inside a mined-rule event.
+     *
+     * @param violation A rule violation.
+     * @param projectPath Root path to the project being mined.
+     */
     public MinedViolationEvent(RuleViolation violation, Path projectPath) {
         this.ruleKey = violation.getRuleKey();
         this.ruleName = violation.getCheckName();
