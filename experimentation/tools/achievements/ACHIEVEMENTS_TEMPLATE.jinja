@@ -1,7 +1,7 @@
 # Achievements
 This document presents an overview of the pull requests performed with Sorald.
 {% for pr in pull_requests %}
-## [{{ pr.repo_owner }}/{{ pr.repo_name }}#{{ pr.number }}](https://github.com/{{ pr.repo_owner }}/{{ pr.repo_name }}/pulls/{{ pr.number }})
+## [{{ pr.repo_slug }}#{{ pr.number }}](https://github.com/{{ pr.repo_slug }}/pulls/{{ pr.number }})
 This PR was opened at {{ pr.created_at }}{% if pr.closed_at %} and {{ pr.status }} at {{ pr.closed_at }}{% endif %}.
 It provide{% if pr.closed_at %}d{% else %}s{% endif %} the following repairs:
 {% for repair in pr.repairs %}
