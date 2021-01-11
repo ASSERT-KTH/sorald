@@ -6,6 +6,7 @@ import org.sonar.plugins.java.api.JavaCheck;
 /** Facade around {@link org.sonar.java.AnalyzerMessage} */
 class ScannedViolation extends RuleViolation {
     private final AnalyzerMessage message;
+    private final AnalyzerMessage.TextSpan primaryLocation;
 
     ScannedViolation(AnalyzerMessage message) {
         if (message.primaryLocation() == null) {
@@ -15,26 +16,27 @@ class ScannedViolation extends RuleViolation {
                             + "' lacks primary location");
         }
         this.message = message;
+        this.primaryLocation = message.primaryLocation();
     }
 
     @Override
     public int getStartLine() {
-        return message.primaryLocation().startLine;
+        return primaryLocation.startLine;
     }
 
     @Override
     public int getEndLine() {
-        return message.primaryLocation().endLine;
+        return primaryLocation.endLine;
     }
 
     @Override
     public int getStartCol() {
-        return message.primaryLocation().startCharacter;
+        return primaryLocation.startCharacter;
     }
 
     @Override
     public int getEndCol() {
-        return message.primaryLocation().endCharacter;
+        return primaryLocation.endCharacter;
     }
 
     @Override
