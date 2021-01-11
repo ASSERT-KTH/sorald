@@ -18,8 +18,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import org.hamcrest.core.Every;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -68,14 +66,21 @@ public class WarningMinerTest {
         List<String> actualLines = extractSortedNonZeroChecks(outputFile.toPath());
         List<String> expectedLines = extractSortedNonZeroChecks(correctResults.toPath());
 
-        expectedLines = expectedLines.stream().filter(line -> {
-            try {
-                Class.forName("sorald.processor." + line.split("=")[0].replace("Check", "Processor"));
-                return true;
-            } catch (ClassNotFoundException e) {
-                return false;
-            }
-        }).collect(Collectors.toList());
+        expectedLines =
+                expectedLines.stream()
+                        .filter(
+                                line -> {
+                                    try {
+                                        Class.forName(
+                                                "sorald.processor."
+                                                        + line.split("=")[0].replace(
+                                                                "Check", "Processor"));
+                                        return true;
+                                    } catch (ClassNotFoundException e) {
+                                        return false;
+                                    }
+                                })
+                        .collect(Collectors.toList());
 
         assertThat(actualLines, equalTo(expectedLines));
     }

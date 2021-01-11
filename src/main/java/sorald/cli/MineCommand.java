@@ -4,9 +4,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
-
 import org.sonar.check.Rule;
-import org.sonar.java.checks.OneClassInterfacePerFileCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import picocli.CommandLine;
 import sorald.Constants;
@@ -67,12 +65,23 @@ class MineCommand extends BaseCommand {
     public Integer call() throws Exception {
         List<? extends JavaFileScanner> checks = inferCheckInstances(ruleTypes);
 
-        if(handledRules){
-            checks = checks.stream()
-                    .filter(sc -> Arrays.stream(sc.getClass().getAnnotationsByType(Rule.class))
-                            .map(Rule::key).map(Checks::stripDigits).map(Integer::parseInt)
-                            .map(Processors::getProcessor).filter(Objects::nonNull).count() > 0)
-                    .collect(Collectors.toList());
+        if (handledRules) {
+            checks =
+                    checks.stream()
+                            .filter(
+                                    sc ->
+                                            Arrays.stream(
+                                                                    sc.getClass()
+                                                                            .getAnnotationsByType(
+                                                                                    Rule.class))
+                                                            .map(Rule::key)
+                                                            .map(Checks::stripDigits)
+                                                            .map(Integer::parseInt)
+                                                            .map(Processors::getProcessor)
+                                                            .filter(Objects::nonNull)
+                                                            .count()
+                                                    > 0)
+                            .collect(Collectors.toList());
         }
 
         var statsCollector = new MinerStatisticsCollector();
