@@ -1,11 +1,14 @@
 package sorald.sonar;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.is;
+
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.sonar.check.Rule;
-import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
 import sorald.Constants;
@@ -18,10 +21,13 @@ class RuleVerifierTest {
                 Paths.get(Constants.PATH_TO_RESOURCES_FOLDER)
                         .resolve("ArrayHashCodeAndToString.java")
                         .toString();
-        RuleVerifier.analyze(
-                List.of(testFile),
-                new File(Constants.PATH_TO_RESOURCES_FOLDER),
-                List.of(new ArrayHashCodeAndToStringCheck()));
+        var violations =
+                RuleVerifier.analyze(
+                        List.of(testFile),
+                        new File(Constants.PATH_TO_RESOURCES_FOLDER),
+                        new CheckWithNoLocation());
+
+        assertThat(violations, is(empty()));
     }
 
     @Rule(key = "0000")
