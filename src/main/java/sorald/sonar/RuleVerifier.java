@@ -199,6 +199,7 @@ public class RuleVerifier {
      */
     private static class SoraldSonarComponents extends SonarComponents {
         private final List<AnalyzerMessage> messages;
+        private final PostAnalysisIssueFilter postFilter;
         private SensorContext context;
 
         public SoraldSonarComponents(
@@ -206,14 +207,18 @@ public class RuleVerifier {
                 JavaClasspath cp,
                 JavaTestClasspath testCp,
                 CheckFactory checkFactory) {
-            super(
-                    new SoraldFileLinesContextFactory(),
-                    fs,
-                    cp,
-                    testCp,
-                    checkFactory,
-                    new PostAnalysisIssueFilter());
+            this(fs, cp, testCp, checkFactory, new PostAnalysisIssueFilter());
+        }
+
+        public SoraldSonarComponents(
+                DefaultFileSystem fs,
+                JavaClasspath cp,
+                JavaTestClasspath testCp,
+                CheckFactory checkFactory,
+                PostAnalysisIssueFilter postFilter) {
+            super(new SoraldFileLinesContextFactory(), fs, cp, testCp, checkFactory, postFilter);
             messages = new ArrayList<>();
+            this.postFilter = postFilter;
         }
 
         @Override
@@ -233,7 +238,13 @@ public class RuleVerifier {
         }
 
         public List<AnalyzerMessage> getMessages() {
-            return Collections.unmodifiableList(messages);
+            return messages.stream()
+                    .filter(message -> postFilter.accept(getRuleKey(message), message))
+                    .collect(Collectors.toList());
+        }
+
+        private static RuleKey getRuleKey(AnalyzerMessage message) {
+            return RuleKey.of("java", "S" + Checks.getRuleKey(message.getCheck().getClass()));
         }
     }
 
