@@ -20,15 +20,15 @@ ADD_MANUAL_EDIT = "add-manual-edit"
 
 ENCODING = "utf8"
 
-PR_DATA_KEY = "pr_metadata"
+PR_DATA_KEY = "prMetadata"
 DIFF_DATA_KEY = "diffs"
 
-MANUAL_EDITS_KEY = "manual_edits"
-BEFORE_OPEN_PR_KEY = "before_open_pr"
-AFTER_OPEN_PR_KEY = "after_open_pr"
+MANUAL_EDITS_KEY = "manualEdits"
+BEFORE_OPEN_PR_KEY = "beforeOpenPr"
+AFTER_OPEN_PR_KEY = "afterOpenPr"
 
-RECORD_DATA_KEY = "record_metadata"
-RECORD_MODIFIED_KEY = "last_modified"
+RECORD_DATA_KEY = "recordMetadata"
+RECORD_MODIFIED_KEY = "lastModified"
 
 
 def main():
@@ -137,12 +137,12 @@ def create_initial_record(
 ) -> dict:
     created_at = str(datetime.datetime.now())
     return {
-        "repo_slug": repo_slug,
+        "repoSlug": repo_slug,
         PR_DATA_KEY: get_pr_state(pr),
-        "sorald_statistics": sorald_stats,
+        "soraldStatistics": sorald_stats,
         DIFF_DATA_KEY: dict(initial=get_diff(pr.diff_url), final=None),
         MANUAL_EDITS_KEY: [],
-        RECORD_DATA_KEY: {"created_at": created_at, RECORD_MODIFIED_KEY: created_at},
+        RECORD_DATA_KEY: {"createdAt": created_at, RECORD_MODIFIED_KEY: created_at},
     }
 
 
@@ -166,11 +166,11 @@ def read_json_if_exists(path: Optional[pathlib.Path], encoding: str) -> dict:
 def get_pr_state(pr: github.PullRequest.PullRequest) -> dict:
     return dict(
         url=pr.html_url,
-        created_at=str(pr.created_at),
-        closed_at=str(pr.closed_at) if pr.closed_at else None,
-        merged_at=str(pr.merged_at) if pr.closed_at else None,
+        createdAt=str(pr.created_at),
+        closedAt=str(pr.closed_at) if pr.closed_at else None,
+        mergedAt=str(pr.merged_at) if pr.closed_at else None,
         state=pr.state,
-        is_merged=pr.merged,
+        isMerged=pr.merged,
         number=pr.number,
     )
 
