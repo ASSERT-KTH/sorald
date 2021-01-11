@@ -111,7 +111,7 @@ public class Checks {
                                         checkClass.getName() + " does not have a key"));
     }
 
-    private static String stripDigits(String s) {
+    public static String stripDigits(String s) {
         return s.replaceAll("[^\\d]+", "");
     }
 

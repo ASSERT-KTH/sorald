@@ -25,6 +25,7 @@ public class Constants {
     public static final String ARG_REPAIR_STRATEGY = "--repair-strategy";
     public static final String ARG_MAX_FILES_PER_SEGMENT = "--max-files-per-segment";
     public static final String ARG_RULE_TYPES = "--rule-types";
+    public static final String ARG_HANDLED_RUES = "--handled-rules";
     public static final String ARG_RULE_VIOLATION_SPECIFIERS = "--violation-specs";
     public static final String ARG_TARGET = "--target";
 

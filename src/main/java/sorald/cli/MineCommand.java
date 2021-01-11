@@ -2,15 +2,16 @@ package sorald.cli;
 
 import java.io.File;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+
+import org.sonar.check.Rule;
+import org.sonar.java.checks.OneClassInterfacePerFileCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import picocli.CommandLine;
 import sorald.Constants;
 import sorald.FileUtils;
+import sorald.Processors;
 import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
@@ -56,9 +57,23 @@ class MineCommand extends BaseCommand {
             split = ",")
     private List<Checks.CheckType> ruleTypes = new ArrayList<>();
 
+    @CommandLine.Option(
+            names = {Constants.ARG_HANDLED_RUES},
+            description =
+                    "When this argument is used, Sorald only mines violations of the rules that can be fixed by Sorald.")
+    private boolean handledRules;
+
     @Override
     public Integer call() throws Exception {
         List<? extends JavaFileScanner> checks = inferCheckInstances(ruleTypes);
+
+        if(handledRules){
+            checks = checks.stream()
+                    .filter(sc -> Arrays.stream(sc.getClass().getAnnotationsByType(Rule.class))
+                            .map(Rule::key).map(Checks::stripDigits).map(Integer::parseInt)
+                            .map(Processors::getProcessor).filter(Objects::nonNull).count() > 0)
+                    .collect(Collectors.toList());
+        }
 
         var statsCollector = new MinerStatisticsCollector();
 
