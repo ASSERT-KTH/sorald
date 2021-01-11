@@ -24,10 +24,10 @@ import org.sonar.api.issue.NoSonarFilter;
 import org.sonar.api.measures.FileLinesContext;
 import org.sonar.api.measures.FileLinesContextFactory;
 import org.sonar.api.rule.RuleKey;
-import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.java.DefaultJavaResourceLocator;
 import org.sonar.java.JavaClasspath;
+import org.sonar.java.JavaSonarLintClasspath;
 import org.sonar.java.JavaTestClasspath;
 import org.sonar.java.SonarComponents;
 import org.sonar.java.ast.JavaAstScanner;
@@ -36,7 +36,6 @@ import org.sonar.java.filters.PostAnalysisIssueFilter;
 import org.sonar.java.model.JavaVersionImpl;
 import org.sonar.java.model.VisitorsBridge;
 import org.sonar.java.se.SymbolicExecutionMode;
-import org.sonar.plugins.java.JavaSonarWayProfile;
 import org.sonar.plugins.java.JavaSquidSensor;
 import org.sonar.plugins.java.api.JavaFileScanner;
 
@@ -90,28 +89,11 @@ public class RuleVerifier {
     @SuppressWarnings("UnstableApiUsage")
     public static Set<RuleViolation> analyze(
             List<String> filesToScan, File baseDir, List<? extends JavaFileScanner> checks) {
-        List<InputFile> inputFiles =
-                filesToScan.stream()
-                        .map(filename -> toInputFile(baseDir, filename))
-                        .collect(Collectors.toList());
-
-        SoraldSonarComponents sonarComponents = createSonarComponents(baseDir);
-        JavaAstScanner scanner = createAstScanner(sonarComponents, checks);
-
-        scanner.scan(inputFiles);
-
-        return sonarComponents.getMessages().stream()
-                .filter(message -> message.primaryLocation() != null)
-                .map(ScannedViolation::new)
-                .collect(Collectors.toSet());
-    }
-
-    public static void test(
-            List<String> filesToScan, File baseDir, List<? extends JavaFileScanner> checks) {
         DefaultFileSystem fs = new DefaultFileSystem(baseDir);
-        var classpath = new JavaClasspath(new MapSettings().asConfig(), fs);
+        var classpath = new JavaSonarLintClasspath(new MapSettings().asConfig(), fs);
         var testClasspath = new JavaTestClasspath(new MapSettings().asConfig(), fs);
-        SoraldSonarComponents components = createSonarComponents(baseDir, classpath, testClasspath);
+        SoraldSonarComponents components =
+                createSonarComponents(baseDir, classpath, testClasspath, checks);
         JavaSquidSensor sensor =
                 new JavaSquidSensor(
                         components,
@@ -126,7 +108,11 @@ public class RuleVerifier {
         }
 
         sensor.execute(components.getContext());
-        System.out.println(components.getMessages());
+
+        return components.getMessages().stream()
+                .filter(message -> message.primaryLocation() != null)
+                .map(ScannedViolation::new)
+                .collect(Collectors.toSet());
     }
 
     /**
@@ -175,38 +161,26 @@ public class RuleVerifier {
         return scanner;
     }
 
-    private static SoraldSonarComponents createSonarComponents(File baseDir) {
-        // FIXME The SensorContextTester is an internal and unstable component in sonar,
-        //       we should implement our own SensorContext
-        SensorContextTester context = SensorContextTester.create(baseDir);
-        context.setSettings(
-                new MapSettings().setProperty(SonarComponents.FAIL_ON_EXCEPTION_KEY, true));
-        SoraldSonarComponents sonarComponents = new SoraldSonarComponents(context.fileSystem());
-        sonarComponents.setSensorContext(context);
-        return sonarComponents;
-    }
-
     private static SoraldSonarComponents createSonarComponents(
-            File baseDir, JavaClasspath cp, JavaTestClasspath testCp) {
-        // FIXME The SensorContextTester is an internal and unstable component in sonar,
-        //       we should implement our own SensorContext
-
-        var profileDef = new JavaSonarWayProfile();
-        BuiltInQualityProfilesDefinition.Context context =
-                new BuiltInQualityProfilesDefinition.Context();
-        profileDef.define(context);
-        var profile = context.profile("java", "Sonar way");
-
+            File baseDir,
+            JavaClasspath cp,
+            JavaTestClasspath testCp,
+            List<? extends JavaFileScanner> checks) {
         var activeRulesBuilder = new ActiveRulesBuilder();
-        for (var rule : profile.rules()) {
-            activeRulesBuilder.addRule(
-                    new NewActiveRule.Builder()
-                            .setRuleKey(RuleKey.of(rule.repoKey(), rule.ruleKey()))
-                            .setLanguage("java")
-                            .build());
-        }
+        checks.stream()
+                .map(check -> "S" + Checks.getRuleKey(check.getClass()))
+                .map(
+                        ruleKey ->
+                                new NewActiveRule.Builder()
+                                        .setRuleKey(RuleKey.of("java", ruleKey))
+                                        .setLanguage("java")
+                                        .build())
+                .forEach(activeRulesBuilder::addRule);
+
         CheckFactory checkFactory = new CheckFactory(activeRulesBuilder.build());
 
+        // FIXME The SensorContextTester is an internal and unstable component in sonar,
+        //       we should implement our own SensorContext
         SensorContextTester sensorContext = SensorContextTester.create(baseDir);
         sensorContext.setSettings(
                 new MapSettings().setProperty(SonarComponents.FAIL_ON_EXCEPTION_KEY, true));
@@ -226,14 +200,6 @@ public class RuleVerifier {
     private static class SoraldSonarComponents extends SonarComponents {
         private final List<AnalyzerMessage> messages;
         private SensorContext context;
-
-        public SoraldSonarComponents(DefaultFileSystem fs) {
-            // FIXME I'm very unsure about supplying null for all of these constructor values.
-            //       They should not be null, but at this time I don't know that to put there, and
-            //       with our current usage this hack appears to work.
-            super(null, fs, null, null, null, new PostAnalysisIssueFilter());
-            messages = new ArrayList<>();
-        }
 
         public SoraldSonarComponents(
                 DefaultFileSystem fs,

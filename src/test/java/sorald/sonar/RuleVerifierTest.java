@@ -18,7 +18,7 @@ class RuleVerifierTest {
                 Paths.get(Constants.PATH_TO_RESOURCES_FOLDER)
                         .resolve("ArrayHashCodeAndToString.java")
                         .toString();
-        RuleVerifier.test(
+        RuleVerifier.analyze(
                 List.of(testFile),
                 new File(Constants.PATH_TO_RESOURCES_FOLDER),
                 List.of(new ArrayHashCodeAndToStringCheck()));
