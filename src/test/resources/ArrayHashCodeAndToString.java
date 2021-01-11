@@ -9,8 +9,9 @@ public class ArrayHashCodeAndToString {
 	}
 
 	// Tests from https://github.com/SonarSource/sonar-java/blob/master/java-checks-test-sources/src/main/java/checks/ArrayHashCodeAndToStringCheck.java
+	@SuppressWarnings("squid:S3740")
 	void method(String[] args, String string) {
-		Class class1 = args.getClass();
+		Class class1 = args.getClass(); // NOSONAR
 		String str = string.toString();
 		int hash = string.hashCode();
 	}
