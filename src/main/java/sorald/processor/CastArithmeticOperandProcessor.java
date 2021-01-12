@@ -41,38 +41,16 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
     @Override
     protected void repairInternal(CtBinaryOperator element) {
         CtTypeReference<?> typeToBeUsedToCast = getExpectedType(element);
-
         CtExpression<?> lhs = element.getLeftHandOperand();
         CtExpression<?> rhs = element.getRightHandOperand();
-        if (isLiteralInt(lhs)) {
-            int value = (int) ((CtLiteral<?>) lhs).getValue();
-            CtCodeSnippetExpression<?> newLhs =
-                    element.getFactory()
-                            .createCodeSnippetExpression(
-                                    value + getLiteralSuffix(typeToBeUsedToCast));
-            element.setLeftHandOperand(newLhs);
-        } else if (isLiteralInt(rhs)) {
-            int value = (int) ((CtLiteral<?>) rhs).getValue();
-            CtCodeSnippetExpression<?> newRhs =
-                    element.getFactory()
-                            .createCodeSnippetExpression(
-                                    value + getLiteralSuffix(typeToBeUsedToCast));
-            element.setRightHandOperand(newRhs);
-        } else {
-            CtCodeSnippetExpression newBinaryOperator =
-                    element.getFactory()
-                            .createCodeSnippetExpression(
-                                    "("
-                                            + typeToBeUsedToCast.getSimpleName()
-                                            + ") "
-                                            + element.getLeftHandOperand());
-            element.setLeftHandOperand(newBinaryOperator);
-        }
 
-        // A nicer code for the casting would be the next line. However, more parentheses are added
-        // in
-        // the expressions when using such a solution.
-        // element.getLeftHandOperand().addTypeCast(typeToBeUsedToCast.clone());
+        if (isIntLiteral(lhs)) {
+            repairWithLiteralSuffix((CtLiteral<?>) lhs, typeToBeUsedToCast);
+        } else if (isIntLiteral(rhs)) {
+            repairWithLiteralSuffix((CtLiteral<?>) rhs, typeToBeUsedToCast);
+        } else {
+            repairWithCast(element, typeToBeUsedToCast);
+        }
     }
 
     private CtTypeReference getExpectedType(CtBinaryOperator ctBinaryOperator) {
@@ -115,6 +93,32 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
         }
 
         return ctTypeReference;
+    }
+
+    private static void repairWithCast(
+            CtBinaryOperator element, CtTypeReference<?> typeToBeUsedToCast) {
+        CtCodeSnippetExpression newBinaryOperator =
+                element.getFactory()
+                        .createCodeSnippetExpression(
+                                "("
+                                        + typeToBeUsedToCast.getSimpleName()
+                                        + ") "
+                                        + element.getLeftHandOperand());
+        element.setLeftHandOperand(newBinaryOperator);
+        // A nicer code for the casting would be the next line. However, more parentheses are added
+        // in
+        // the expressions when using such a solution.
+        // element.getLeftHandOperand().addTypeCast(typeToBeUsedToCast.clone());
+    }
+
+    private static void repairWithLiteralSuffix(
+            CtLiteral<?> literalInt, CtTypeReference<?> typeForSuffix) {
+        int value = (int) literalInt.getValue();
+        CtCodeSnippetExpression<?> literalWithSuffix =
+                literalInt
+                        .getFactory()
+                        .createCodeSnippetExpression(value + getLiteralSuffix(typeForSuffix));
+        literalInt.replace(literalWithSuffix);
     }
 
     private boolean isArithmeticOperation(CtBinaryOperator ctBinaryOperator) {
@@ -216,7 +220,7 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
         return false;
     }
 
-    private static boolean isLiteralInt(CtExpression<?> expr) {
+    private static boolean isIntLiteral(CtExpression<?> expr) {
         return expr instanceof CtLiteral
                 && expr.getFactory().Type().INTEGER_PRIMITIVE.equals(expr.getType());
     }
