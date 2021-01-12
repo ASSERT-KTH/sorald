@@ -30,12 +30,8 @@ import org.sonar.java.JavaClasspath;
 import org.sonar.java.JavaSonarLintClasspath;
 import org.sonar.java.JavaTestClasspath;
 import org.sonar.java.SonarComponents;
-import org.sonar.java.ast.JavaAstScanner;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.java.filters.PostAnalysisIssueFilter;
-import org.sonar.java.model.JavaVersionImpl;
-import org.sonar.java.model.VisitorsBridge;
-import org.sonar.java.se.SymbolicExecutionMode;
 import org.sonar.plugins.java.JavaSquidSensor;
 import org.sonar.plugins.java.api.JavaFileScanner;
 
@@ -136,26 +132,6 @@ public class RuleVerifier {
         } catch (IOException e) {
             throw new RuntimeException("failed to read file " + filename);
         }
-    }
-
-    @SuppressWarnings("UnstableApiUsage")
-    private static JavaAstScanner createAstScanner(
-            SonarComponents sonarComponents, List<? extends JavaFileScanner> checks) {
-        JavaAstScanner scanner = new JavaAstScanner(sonarComponents);
-        VisitorsBridge visitorsBridge =
-                new VisitorsBridge(
-                        checks,
-                        // TODO set the classpath to something reasonable
-                        Collections.emptyList(),
-                        sonarComponents,
-                        SymbolicExecutionMode.getMode(checks.toArray(new JavaFileScanner[0])));
-        // TODO set the version number to something appropriate for the current context
-        //      setting it too high may yield false positives (fixes that aren't applicable to lower
-        // versions)
-        //      setting it too low may yield false negatives and parsing issues
-        visitorsBridge.setJavaVersion(new JavaVersionImpl(14));
-        scanner.setVisitorBridge(visitorsBridge);
-        return scanner;
     }
 
     private static SoraldSonarComponents createSonarComponents(
