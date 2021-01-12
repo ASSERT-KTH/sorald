@@ -10,7 +10,7 @@ public class ArrayHashCodeAndToString {
 
 	// Tests from https://github.com/SonarSource/sonar-java/blob/master/java-checks-test-sources/src/main/java/checks/ArrayHashCodeAndToStringCheck.java
 	void method(String[] args, String string) {
-		Class class1 = args.getClass(); // NOSONAR
+		Class class1 = args.getClass();
 		String str = string.toString();
 		int hash = string.hashCode();
 	}
