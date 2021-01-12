@@ -61,7 +61,7 @@ public class WarningMinerTest {
         fileName = "warning_miner/test_results.txt";
         File correctResults = new File(Constants.PATH_TO_RESOURCES_FOLDER + fileName);
 
-        runMiner(pathToRepos, outputFile.getPath(), temp.getPath(), Constants.ARG_HANDLED_RUES);
+        runMiner(pathToRepos, outputFile.getPath(), temp.getPath(), Constants.ARG_HANDLED_RULES);
 
         List<String> actualLines = extractSortedNonZeroChecks(outputFile.toPath());
         List<String> expectedLines = extractSortedNonZeroChecks(correctResults.toPath());
