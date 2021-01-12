@@ -221,20 +221,22 @@ public class RuleVerifier {
         }
 
         public List<AnalyzerMessage> getMessages() {
-            return messages.stream()
-                    .filter(message -> postFilter.accept(getRuleKey(message), message))
-                    .filter(
-                            message -> {
-                                DefaultInputFile inputFile =
-                                        (DefaultInputFile) message.getInputComponent();
-                                Integer line = message.getLine();
-                                return line == null || !inputFile.hasNoSonarAt(line);
-                            })
-                    .collect(Collectors.toList());
+            return messages.stream().filter(this::shouldBeReported).collect(Collectors.toList());
         }
 
         public JavaClasspath getClasspath() {
             return cp;
+        }
+
+        private boolean shouldBeReported(AnalyzerMessage message) {
+            return postFilter.accept(getRuleKey(message), message) && !fromNosonarLine(message);
+        }
+
+        private static boolean fromNosonarLine(AnalyzerMessage message) {
+            return message.getLine() != null
+                    && message.getInputComponent() instanceof DefaultInputFile
+                    && ((DefaultInputFile) message.getInputComponent())
+                            .hasNoSonarAt(message.getLine());
         }
 
         private static RuleKey getRuleKey(AnalyzerMessage message) {
