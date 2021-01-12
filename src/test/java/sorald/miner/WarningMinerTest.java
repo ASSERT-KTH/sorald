@@ -21,7 +21,6 @@ import java.util.stream.Stream;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import org.sonar.java.AnalysisException;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.FileUtils;
@@ -176,7 +175,7 @@ public class WarningMinerTest {
                 };
 
         assertThrows(
-                AnalysisException.class,
+                IllegalArgumentException.class,
                 () ->
                         new MineSonarWarnings(new ArrayList<>())
                                 .extractWarnings(
