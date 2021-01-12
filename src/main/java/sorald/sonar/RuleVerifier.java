@@ -32,6 +32,7 @@ import org.sonar.java.JavaTestClasspath;
 import org.sonar.java.SonarComponents;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.java.filters.PostAnalysisIssueFilter;
+import org.sonar.plugins.java.Java;
 import org.sonar.plugins.java.JavaSquidSensor;
 import org.sonar.plugins.java.api.JavaFileScanner;
 
@@ -87,12 +88,15 @@ public class RuleVerifier {
             List<String> filesToScan, File baseDir, List<? extends JavaFileScanner> checks) {
         DefaultFileSystem fs = new DefaultFileSystem(baseDir);
         SoraldSonarComponents components = createSonarComponents(baseDir, checks);
+
+        // TODO set the source version dynamically
+        var settings = new MapSettings().setProperty(Java.SOURCE_VERSION, "14");
         JavaSquidSensor sensor =
                 new JavaSquidSensor(
                         components,
                         fs,
                         new DefaultJavaResourceLocator(components.getClasspath()),
-                        new MapSettings().asConfig(),
+                        settings.asConfig(),
                         new NoSonarFilter(),
                         new PostAnalysisIssueFilter());
 
