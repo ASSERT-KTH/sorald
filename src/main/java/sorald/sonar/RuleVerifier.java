@@ -90,15 +90,12 @@ public class RuleVerifier {
     public static Set<RuleViolation> analyze(
             List<String> filesToScan, File baseDir, List<? extends JavaFileScanner> checks) {
         DefaultFileSystem fs = new DefaultFileSystem(baseDir);
-        var classpath = new JavaSonarLintClasspath(new MapSettings().asConfig(), fs);
-        var testClasspath = new JavaTestClasspath(new MapSettings().asConfig(), fs);
-        SoraldSonarComponents components =
-                createSonarComponents(baseDir, classpath, testClasspath, checks);
+        SoraldSonarComponents components = createSonarComponents(baseDir, checks);
         JavaSquidSensor sensor =
                 new JavaSquidSensor(
                         components,
                         fs,
-                        new DefaultJavaResourceLocator(classpath),
+                        new DefaultJavaResourceLocator(components.getClasspath()),
                         new MapSettings().asConfig(),
                         new NoSonarFilter(),
                         new PostAnalysisIssueFilter());
@@ -162,10 +159,7 @@ public class RuleVerifier {
     }
 
     private static SoraldSonarComponents createSonarComponents(
-            File baseDir,
-            JavaClasspath cp,
-            JavaTestClasspath testCp,
-            List<? extends JavaFileScanner> checks) {
+            File baseDir, List<? extends JavaFileScanner> checks) {
         var activeRulesBuilder = new ActiveRulesBuilder();
         checks.stream()
                 .map(check -> "S" + Checks.getRuleKey(check.getClass()))
@@ -184,6 +178,12 @@ public class RuleVerifier {
         SensorContextTester sensorContext = SensorContextTester.create(baseDir);
         sensorContext.setSettings(
                 new MapSettings().setProperty(SonarComponents.FAIL_ON_EXCEPTION_KEY, true));
+
+        DefaultFileSystem fs = sensorContext.fileSystem();
+        // FIXME populate the classpaths
+        var cp = new JavaSonarLintClasspath(new MapSettings().asConfig(), fs);
+        var testCp = new JavaTestClasspath(new MapSettings().asConfig(), fs);
+
         SoraldSonarComponents sonarComponents =
                 new SoraldSonarComponents(sensorContext.fileSystem(), cp, testCp, checkFactory);
         sonarComponents.setSensorContext(sensorContext);
@@ -200,6 +200,8 @@ public class RuleVerifier {
     private static class SoraldSonarComponents extends SonarComponents {
         private final List<AnalyzerMessage> messages;
         private final PostAnalysisIssueFilter postFilter;
+        private final JavaClasspath cp;
+        private final JavaTestClasspath testCp;
         private SensorContext context;
 
         public SoraldSonarComponents(
@@ -219,6 +221,8 @@ public class RuleVerifier {
             super(new SoraldFileLinesContextFactory(), fs, cp, testCp, checkFactory, postFilter);
             messages = new ArrayList<>();
             this.postFilter = postFilter;
+            this.cp = cp;
+            this.testCp = testCp;
         }
 
         @Override
@@ -243,28 +247,32 @@ public class RuleVerifier {
                     .collect(Collectors.toList());
         }
 
+        public JavaClasspath getClasspath() {
+            return cp;
+        }
+
         private static RuleKey getRuleKey(AnalyzerMessage message) {
             return RuleKey.of("java", "S" + Checks.getRuleKey(message.getCheck().getClass()));
         }
-    }
 
-    private static class SoraldFileLinesContextFactory implements FileLinesContextFactory {
-
-        @Override
-        public FileLinesContext createFor(InputFile inputFile) {
-            return new SoraldFileLinesContext();
-        }
-
-        private static class SoraldFileLinesContext implements FileLinesContext {
+        private static class SoraldFileLinesContextFactory implements FileLinesContextFactory {
 
             @Override
-            public void setIntValue(String metricKey, int line, int value) {}
+            public FileLinesContext createFor(InputFile inputFile) {
+                return new SoraldFileLinesContext();
+            }
 
-            @Override
-            public void setStringValue(String metricKey, int line, String value) {}
+            private static class SoraldFileLinesContext implements FileLinesContext {
 
-            @Override
-            public void save() {}
+                @Override
+                public void setIntValue(String metricKey, int line, int value) {}
+
+                @Override
+                public void setStringValue(String metricKey, int line, String value) {}
+
+                @Override
+                public void save() {}
+            }
         }
     }
 }
