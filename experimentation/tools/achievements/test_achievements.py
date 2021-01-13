@@ -1,7 +1,6 @@
 import json
 import shlex
 import pathlib
-import pytest
 
 import achievements
 
