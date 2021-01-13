@@ -15,7 +15,7 @@ ENCODING = "utf8"
 TEMPLATE = r"""# Achievements
 This document presents an overview of the pull requests performed with Sorald.
 {% for pr in pull_requests %}
-## [{{ pr.repo_slug }}#{{ pr.number }}](https://github.com/{{ pr.repo_slug }}/pulls/{{ pr.number }})
+## [{{ pr.repo_slug }}#{{ pr.number }}](https://github.com/{{ pr.repo_slug }}/pull/{{ pr.number }})
 This PR was opened at {{ pr.created_at }}{% if pr.closed_at %} and {{ pr.status }} at {{ pr.closed_at }}{% endif %}.
 {% if pr.contains_manual_edits %}Some manual edits were performed after applying Sorald{% else %}The patch was generated fully automatically with Sorald{% endif %}.
 {% if pr.repairs|length > 0 %}
