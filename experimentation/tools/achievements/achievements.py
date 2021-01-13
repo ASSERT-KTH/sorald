@@ -13,14 +13,13 @@ import jinja2
 CURRENT_DIR = pathlib.Path(__file__).parent
 ENCODING = "utf8"
 
-TEMPLATE = r"""
-# Achievements
+TEMPLATE = r"""# Achievements
 This document presents an overview of the pull requests performed with Sorald.
 {% for pr in pull_requests %}
 ## [{{ pr.repo_slug }}#{{ pr.number }}](https://github.com/{{ pr.repo_slug }}/pulls/{{ pr.number }})
 This PR was opened at {{ pr.created_at }}{% if pr.closed_at %} and {{ pr.status }} at {{ pr.closed_at }}{% endif %}.
 {% if pr.contains_manual_edits %}Some manual edits were performed after applying Sorald{% else %}The patch was generated fully automatically with Sorald{% endif %}.
-{% if pr.repairs %}
+{% if pr.repairs|length > 0 %}
 It provide{% if pr.closed_at %}d{% else %}s{% endif %} the following repairs:
 {% for repair in pr.repairs %}
 * [Rule {{ repair.rule_key }}](https://rules.sonarsource.com/java/RSPEC-{{ repair.rule_key }})
@@ -102,19 +101,24 @@ def parse_pull_requests(prs_json: pathlib.Path) -> List[PullRequest]:
             closed_at=pr_meta["closed_at"] or pr_meta["merged_at"],
             status="merged" if pr_meta["is_merged"] else pr_meta["state"],
             contains_manual_edits=len(data["manual_edits"] or []) > 0,
-            repairs=list(
-                map(
-                    parse_repair_stats,
-                    sorted(
-                        data["sorald_statistics"]["repairs"],
-                        key=lambda rep: int(rep["ruleKey"]),
-                    ),
-                )
-            ),
+            repairs=get_all_repairs(data["sorald_statistics"]),
         )
         for _, data in prs_data.items()
         if (pr_meta := data["pr_metadata"])
     ]
+
+
+def get_all_repairs(sorald_stats: dict) -> List[RepairStats]:
+    lst = list(
+        map(
+            parse_repair_stats,
+            sorted(
+                sorald_stats.get("repairs") or [],
+                key=lambda rep: int(rep["ruleKey"]),
+            ),
+        )
+    )
+    return lst
 
 
 def parse_repair_stats(repair_data: dict) -> RepairStats:
