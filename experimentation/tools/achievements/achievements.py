@@ -6,7 +6,7 @@ import dataclasses
 import json
 import pathlib
 import sys
-from typing import Sequence, List
+from typing import List
 
 import jinja2
 
@@ -20,12 +20,15 @@ This document presents an overview of the pull requests performed with Sorald.
 ## [{{ pr.repo_slug }}#{{ pr.number }}](https://github.com/{{ pr.repo_slug }}/pulls/{{ pr.number }})
 This PR was opened at {{ pr.created_at }}{% if pr.closed_at %} and {{ pr.status }} at {{ pr.closed_at }}{% endif %}.
 {% if pr.contains_manual_edits %}Some manual edits were performed after applying Sorald{% else %}The patch was generated fully automatically with Sorald{% endif %}.
+{% if pr.repairs %}
 It provide{% if pr.closed_at %}d{% else %}s{% endif %} the following repairs:
 {% for repair in pr.repairs %}
 * [Rule {{ repair.rule_key }}](https://rules.sonarsource.com/java/RSPEC-{{ repair.rule_key }})
     - Number of violations found: {{ repair.num_violations_found }}
     - Number of violations repaired: {{ repair.num_violations_repaired }}{% endfor %}
-{% endfor %}
+{% else %}
+Detailed repair information is missing for this PR.
+{% endif %}{% endfor %}
 """
 
 
@@ -44,7 +47,7 @@ class PullRequest:
     closed_at: str
     status: str
     contains_manual_edits: bool
-    repairs: Sequence[RepairStats]
+    repairs: List[RepairStats]
 
 
 def main():
@@ -89,7 +92,7 @@ def generate_achievements_file(
     output_file.write_text(rendered_content, encoding=ENCODING)
 
 
-def parse_pull_requests(prs_json: pathlib.Path) -> Sequence[PullRequest]:
+def parse_pull_requests(prs_json: pathlib.Path) -> List[PullRequest]:
     prs_data = json.loads(prs_json.read_text(ENCODING))
     return [
         PullRequest(
