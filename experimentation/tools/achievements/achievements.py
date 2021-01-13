@@ -11,6 +11,20 @@ import jinja2
 CURRENT_DIR = pathlib.Path(__file__).parent
 ENCODING = "utf8"
 
+TEMPLATE = r"""
+# Achievements
+This document presents an overview of the pull requests performed with Sorald.
+{% for pr in pull_requests %}
+## [{{ pr.repo_slug }}#{{ pr.number }}](https://github.com/{{ pr.repo_slug }}/pulls/{{ pr.number }})
+This PR was opened at {{ pr.created_at }}{% if pr.closed_at %} and {{ pr.status }} at {{ pr.closed_at }}{% endif %}.
+{% if pr.contains_manual_edits %}Some manual edits were performed after applying Sorald{% else %}The patch was generated fully automatically with Sorald{% endif %}.
+It provide{% if pr.closed_at %}d{% else %}s{% endif %} the following repairs:
+{% for repair in pr.repairs %}
+* [Rule {{ repair.rule_key }}](https://rules.sonarsource.com/java/RSPEC-{{ repair.rule_key }})
+    - Number of violations found: {{ repair.num_violations_found }}
+    - Number of violations repaired: {{ repair.num_violations_repaired }}{% endfor %}
+{% endfor %}
+"""
 
 @dataclasses.dataclass
 class RepairStats:
