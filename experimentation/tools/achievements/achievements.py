@@ -10,7 +10,6 @@ from typing import List
 
 import jinja2
 
-CURRENT_DIR = pathlib.Path(__file__).parent
 ENCODING = "utf8"
 
 TEMPLATE = r"""# Achievements
