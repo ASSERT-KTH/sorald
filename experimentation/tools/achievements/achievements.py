@@ -29,6 +29,9 @@ Detailed repair information is missing for this PR.
 {% endif %}{% endfor %}
 """
 
+PRS_JSON_ARG = "--prs-json-file"
+OUTPUT_ARG = "--output"
+
 
 @dataclasses.dataclass
 class RepairStats:
@@ -48,8 +51,8 @@ class PullRequest:
     repairs: List[RepairStats]
 
 
-def main():
-    parsed_args = parse_args(sys.argv[1:])
+def main(args: List[str]):
+    parsed_args = parse_args(args)
     generate_achievements_file(
         prs_json=parsed_args.prs_json_file,
         output_file=parsed_args.output,
@@ -65,14 +68,14 @@ def parse_args(args: List[str]) -> argparse.Namespace:
     )
     parser.add_argument(
         "-p",
-        "--prs-json-file",
+        PRS_JSON_ARG,
         help="path to the prs.json file",
         type=pathlib.Path,
         required=True,
     )
     parser.add_argument(
         "-o",
-        "--output",
+        OUTPUT_ARG,
         help="path to the output Markdown file",
         type=pathlib.Path,
         required=True,
@@ -130,4 +133,4 @@ def parse_repair_stats(repair_data: dict) -> RepairStats:
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])
