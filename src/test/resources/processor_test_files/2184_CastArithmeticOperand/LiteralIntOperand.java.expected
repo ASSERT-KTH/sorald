@@ -4,7 +4,7 @@ public class LiteralIntOperand {
         long longVal = 1000l + a; // Noncompliant
         float floatVal = 1000f + a; // Noncompliant
         double doubleVal = 1000d + a; // Noncompliant
-        float floatDiv = 1000f / a; // Noncompliant
+        double doubleDiv = 1000d / a; // Noncompliant
     }
 
     public static void literalIntAsRightOperand() {
@@ -12,6 +12,6 @@ public class LiteralIntOperand {
         long longVal = a + 1000l; // Noncompliant
         float floatVal = a + 1000f; // Noncompliant
         double doubleVal = a + 1000d; // Noncompliant
-        float floatDiv = a / 1000f; // Noncompliant
+        double doubleDiv = a / 1000d; // Noncompliant
     }
 }
