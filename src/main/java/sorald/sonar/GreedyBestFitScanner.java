@@ -39,6 +39,7 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
      *     single rule.
      * @param processor The processor for which to calculate best matches. Must be the processor for
      *     the single rule that the violations violate.
+     * @param <E> The type of Spoon element considered by the given processor.
      * @return A mapping from Spoon element to an associated rule violation.
      */
     public static <E extends CtElement> Map<CtElement, RuleViolation> calculateBestFits(
