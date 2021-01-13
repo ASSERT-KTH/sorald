@@ -1,10 +1,12 @@
 """Script for generating the ACHIEVEMENTS.md file, which is a human-readable
 version of the PRs json record.
 """
+import argparse
 import dataclasses
 import json
 import pathlib
-from typing import Sequence
+import sys
+from typing import Sequence, List
 
 import jinja2
 
@@ -26,6 +28,7 @@ It provide{% if pr.closed_at %}d{% else %}s{% endif %} the following repairs:
 {% endfor %}
 """
 
+
 @dataclasses.dataclass
 class RepairStats:
     rule_key: int
@@ -45,18 +48,44 @@ class PullRequest:
 
 
 def main():
+    parsed_args = parse_args(sys.argv[1:])
     generate_achievements_file(
-        CURRENT_DIR.parent / "pr_recorder" / "resources" / "prs_final.json"
+        prs_json=parsed_args.prs_json_file,
+        output_file=parsed_args.output,
+        template=TEMPLATE,
     )
+
+
+def parse_args(args: List[str]) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        prog="achievements",
+        description="Script for generating the ACHIEVEMENTS.md file, "
+        "detailing pull requests performed with Sorald.",
+    )
+    parser.add_argument(
+        "-p",
+        "--prs-json-file",
+        help="path to the prs.json file",
+        type=pathlib.Path,
+        required=True,
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        help="path to the output Markdown file",
+        type=pathlib.Path,
+        required=True,
+    )
+    return parser.parse_args(args)
 
 
 def generate_achievements_file(
     prs_json: pathlib.Path,
-    output_file: pathlib.Path = CURRENT_DIR / "ACHIEVEMENTS.md",
-    template_file: pathlib.Path = CURRENT_DIR / "ACHIEVEMENTS_TEMPLATE.jinja",
+    output_file: pathlib.Path,
+    template: str,
 ) -> None:
     pull_requests = parse_pull_requests(prs_json)
-    rendered_content = get_template(template_file).render(pull_requests=pull_requests)
+    rendered_content = jinja2.Template(template).render(pull_requests=pull_requests)
     output_file.write_text(rendered_content, encoding=ENCODING)
 
 
@@ -92,12 +121,6 @@ def parse_repair_stats(repair_data: dict) -> RepairStats:
         num_violations_repaired=repair_data["nbViolationsBefore"]
         - repair_data["nbViolationsAfter"],
     )
-
-
-def get_template(
-    template_file: pathlib.Path,
-) -> jinja2.Template:
-    return jinja2.Template(template_file.read_text(ENCODING))
 
 
 if __name__ == "__main__":
