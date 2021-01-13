@@ -2,15 +2,13 @@ package sorald.cli;
 
 import java.io.File;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import picocli.CommandLine;
 import sorald.Constants;
 import sorald.FileUtils;
+import sorald.Processors;
 import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
@@ -56,9 +54,15 @@ class MineCommand extends BaseCommand {
             split = ",")
     private List<Checks.CheckType> ruleTypes = new ArrayList<>();
 
+    @CommandLine.Option(
+            names = {Constants.ARG_HANDLED_RULES},
+            description =
+                    "When this argument is used, Sorald only mines violations of the rules that can be fixed by Sorald.")
+    private boolean handledRules;
+
     @Override
     public Integer call() throws Exception {
-        List<? extends JavaFileScanner> checks = inferCheckInstances(ruleTypes);
+        List<? extends JavaFileScanner> checks = inferCheckInstances(ruleTypes, handledRules);
 
         var statsCollector = new MinerStatisticsCollector();
 
@@ -96,8 +100,24 @@ class MineCommand extends BaseCommand {
      * command line.
      */
     private static List<? extends JavaFileScanner> inferCheckInstances(
-            List<Checks.CheckType> ruleTypes) {
-        return ruleTypes.isEmpty() ? getAllCheckInstances() : getCheckInstancesByTypes(ruleTypes);
+            List<Checks.CheckType> ruleTypes, boolean handledRules) {
+        List<? extends JavaFileScanner> checks =
+                ruleTypes.isEmpty() ? getAllCheckInstances() : getCheckInstancesByTypes(ruleTypes);
+
+        checks =
+                !handledRules
+                        ? checks
+                        : checks.stream()
+                                .filter(
+                                        sc -> {
+                                            int key =
+                                                    Integer.parseInt(
+                                                            Checks.getRuleKey(sc.getClass()));
+                                            return Processors.getProcessor(key) != null;
+                                        })
+                                .collect(Collectors.toList());
+
+        return checks;
     }
 
     private static List<? extends JavaFileScanner> getCheckInstancesByTypes(
