@@ -142,7 +142,7 @@ public class RuleVerifier {
             File baseDir, List<? extends JavaFileScanner> checks) {
         var activeRulesBuilder = new ActiveRulesBuilder();
         checks.stream()
-                .map(check -> "S" + Checks.getRuleKey(check.getClass()))
+                .map(check -> Checks.toSonarRuleKey(Checks.getRuleKey(check.getClass())))
                 .map(
                         ruleKey ->
                                 new NewActiveRule.Builder()
@@ -230,7 +230,9 @@ public class RuleVerifier {
         }
 
         private static RuleKey getRuleKey(AnalyzerMessage message) {
-            return RuleKey.of("java", "S" + Checks.getRuleKey(message.getCheck().getClass()));
+            return RuleKey.of(
+                    "java",
+                    Checks.toSonarRuleKey(Checks.getRuleKey(message.getCheck().getClass())));
         }
 
         private static class SoraldFileLinesContextFactory implements FileLinesContextFactory {
