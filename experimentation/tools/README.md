@@ -444,3 +444,17 @@ Then execute `pytest`.
 ```bash
 $ python3 -m pytest tests/
 ```
+
+## Adding a new script
+Simply put a Python script into the `sorald` directory. That makes it part of
+the `sorald` package. Assuming that the script is called `script.py`, you can
+run the script (after installing the support scripts package according to the
+instructions in this README) like so:
+
+```bash
+$ python3 -m sorald.script
+```
+
+To test the script, you can add a new file in the `tests` directory, called
+`tests/test_script.py`. Those tests can be executed with according to the
+previous section.
