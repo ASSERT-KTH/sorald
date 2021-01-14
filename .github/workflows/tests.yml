@@ -37,7 +37,7 @@ jobs:
         with:
           fail_ci_if_error: true
 
-  test-prrecorder:
+  test-support-scripts:
     runs-on: ubuntu-latest
 
     steps:
@@ -45,12 +45,12 @@ jobs:
       - uses: actions/setup-python@8c5ea631b2b2d5d8840cf4a2b183a8a0edc1e40d # v2.2.0
         with:
           python-version: 3.8
-      - name: Test prrecorder
+      - name: Test support scripts
         run: |
-          cd experimentation/tools/pr_recorder/
+          cd experimentation/tools
           pip install --upgrade pip
-          pip install -r requirements.txt
-          pytest test_prrecorder.py
+          pip install -e .[TEST]
+          pytest tests/
 
   test-code-generation:
     runs-on: ubuntu-latest
