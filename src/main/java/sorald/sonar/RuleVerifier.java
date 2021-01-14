@@ -156,8 +156,6 @@ public class RuleVerifier {
         // FIXME The SensorContextTester is an internal and unstable component in sonar,
         //       we should implement our own SensorContext
         SensorContextTester sensorContext = SensorContextTester.create(baseDir);
-        sensorContext.setSettings(
-                new MapSettings().setProperty(SonarComponents.FAIL_ON_EXCEPTION_KEY, true));
 
         DefaultFileSystem fs = sensorContext.fileSystem();
         // FIXME populate the classpaths
