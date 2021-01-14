@@ -25,7 +25,7 @@ def test_correctly_renders_merged_pr(tmp_path):
 # Achievements
 This document presents an overview of the pull requests performed with Sorald.
 
-## [redhat-developer/rsp-server#619](https://github.com/redhat-developer/rsp-server/pulls/619)
+## [redhat-developer/rsp-server#619](https://github.com/redhat-developer/rsp-server/pull/619)
 This PR was opened at 2020-11-25 12:01:06 and merged at 2020-11-30 20:45:38.
 The patch was generated fully automatically with Sorald.
 
@@ -63,7 +63,7 @@ def test_correctly_renders_pr_without_repair_data(tmp_path):
 # Achievements
 This document presents an overview of the pull requests performed with Sorald.
 
-## [redhat-developer/rsp-server#619](https://github.com/redhat-developer/rsp-server/pulls/619)
+## [redhat-developer/rsp-server#619](https://github.com/redhat-developer/rsp-server/ulls/619)
 This PR was opened at 2020-11-25 12:01:06 and merged at 2020-11-30 20:45:38.
 The patch was generated fully automatically with Sorald.
 
