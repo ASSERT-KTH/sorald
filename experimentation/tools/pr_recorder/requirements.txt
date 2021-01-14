@@ -1,4 +1,0 @@
-git-python
-pygithub
-requests
-pytest
