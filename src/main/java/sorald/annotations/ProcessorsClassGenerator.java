@@ -1,7 +1,7 @@
 package sorald.annotations;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 import spoon.processing.AbstractAnnotationProcessor;
 import spoon.reflect.code.CtExpression;
@@ -15,8 +15,8 @@ public class ProcessorsClassGenerator<T>
         extends AbstractAnnotationProcessor<ProcessorAnnotation, CtClass<T>> {
     private CtCompilationUnit cu = null;
     private CtType<?> processorsClass = null;
-    private final Map<Integer, CtClass<?>> processorMap = new HashMap<>();
-    private String ruleDescriptions = "";
+    private final SortedMap<Integer, CtClass<?>> processorMap = new TreeMap<>();
+    private final SortedMap<Integer, String> descriptions = new TreeMap<>();
 
     @Override
     public void process(ProcessorAnnotation annotation, CtClass<T> element) {
@@ -26,8 +26,12 @@ public class ProcessorsClassGenerator<T>
         }
 
         processorMap.put(annotation.key(), element);
+        descriptions.put(
+                annotation.key(),
+                generateRuleDescription(
+                        annotation, element.getAnnotation(IncompleteProcessor.class)));
         updateProcessorMapField();
-        updateRuleDescriptions(annotation, element.getAnnotation(IncompleteProcessor.class));
+        updateRuleDescriptions();
     }
 
     private void updateProcessorMapField() {
@@ -35,10 +39,8 @@ public class ProcessorsClassGenerator<T>
         procMapField.setDefaultExpression(generateProductionProcessorMapInitializer());
     }
 
-    private void updateRuleDescriptions(
-            ProcessorAnnotation processorAnnotation, IncompleteProcessor incompleteAnnotation) {
-        ruleDescriptions +=
-                "\n" + generateRuleDescription(processorAnnotation, incompleteAnnotation);
+    private void updateRuleDescriptions() {
+        String ruleDescriptions = String.join("\n", descriptions.values());
         CtField<String> field = (CtField<String>) processorsClass.getField("RULE_DESCRIPTIONS");
         field.setDefaultExpression(getFactory().createLiteral(ruleDescriptions));
     }
