@@ -48,6 +48,40 @@ public class WarningMinerTest {
         assertThat(actualLines, equalTo(expectedLines));
     }
 
+    @Test
+    public void test_onlyMineRepairableViolations() throws Exception {
+        File outputFile = File.createTempFile("warnings", null),
+                temp = Files.createTempDirectory("tempDir").toFile();
+
+        String fileName = "warning_miner/test_repos.txt";
+        String pathToRepos = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+        fileName = "warning_miner/test_results.txt";
+        File correctResults = new File(Constants.PATH_TO_RESOURCES_FOLDER + fileName);
+
+        runMiner(pathToRepos, outputFile.getPath(), temp.getPath(), Constants.ARG_HANDLED_RULES);
+
+        List<String> actualLines = extractSortedNonZeroChecks(outputFile.toPath());
+        List<String> expectedLines = extractSortedNonZeroChecks(correctResults.toPath());
+
+        expectedLines =
+                expectedLines.stream()
+                        .filter(
+                                line -> {
+                                    try {
+                                        Class.forName(
+                                                "sorald.processor."
+                                                        + line.split("=")[0].replace(
+                                                                "Check", "Processor"));
+                                        return true;
+                                    } catch (ClassNotFoundException e) {
+                                        return false;
+                                    }
+                                })
+                        .collect(Collectors.toList());
+
+        assertThat(actualLines, equalTo(expectedLines));
+    }
+
     /**
      * Test that the warnings miner respects the --ruleTypes option, and only uses checks of that
      * type when given.
