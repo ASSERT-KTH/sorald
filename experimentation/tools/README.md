@@ -33,6 +33,36 @@ For development, add the `-e` flag to make an editable install.
 $ python3 -m pip uninstall soraldscripts
 ```
 
+## Running tests
+To run the tests for the helper scripts, first install the test dependencies.
+
+```bash
+$ python3 -m pip install -e .[TEST]
+```
+
+Then execute `pytest`.
+
+```bash
+$ python3 -m pytest tests/
+```
+
+## Adding a new script
+Simply put a Python script into the `sorald` directory. That makes it part of
+the `sorald` package. Assuming that the script is called `script.py`, you can
+run the script (after installing the support scripts package according to the
+instructions in this README) like so:
+
+```bash
+$ python3 -m sorald.script
+```
+
+To test the script, you can add a new file in the `tests` directory, called
+`tests/test_script.py`. Those tests can be executed as described in [Running
+tests](#running-tests).
+
+> **Important:** Don't forget to add a description of the new script in the
+> [Scripts](#scripts) section.
+
 ## Scripts
 This section details usage of the scripts in the support package.
 
@@ -431,30 +461,3 @@ docs](https://docs.github.com/en/free-pro-team@latest/github/searching-for-infor
 
 > **Warning:** This script uses up API requests quite rapidly, and you'll hit
 > the rate limit before you know it.
-
-## Running tests
-To run the tests for the helper scripts, first install the test dependencies.
-
-```bash
-$ python3 -m pip install -e .[TEST]
-```
-
-Then execute `pytest`.
-
-```bash
-$ python3 -m pytest tests/
-```
-
-## Adding a new script
-Simply put a Python script into the `sorald` directory. That makes it part of
-the `sorald` package. Assuming that the script is called `script.py`, you can
-run the script (after installing the support scripts package according to the
-instructions in this README) like so:
-
-```bash
-$ python3 -m sorald.script
-```
-
-To test the script, you can add a new file in the `tests` directory, called
-`tests/test_script.py`. Those tests can be executed with according to the
-previous section.
