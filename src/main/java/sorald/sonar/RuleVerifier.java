@@ -14,15 +14,26 @@ import java.util.stream.Collectors;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.internal.DefaultFileSystem;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
+import org.sonar.api.batch.rule.CheckFactory;
+import org.sonar.api.batch.rule.internal.ActiveRulesBuilder;
+import org.sonar.api.batch.rule.internal.NewActiveRule;
+import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
 import org.sonar.api.config.internal.MapSettings;
+import org.sonar.api.issue.NoSonarFilter;
+import org.sonar.api.measures.FileLinesContext;
+import org.sonar.api.measures.FileLinesContextFactory;
+import org.sonar.api.rule.RuleKey;
 import org.sonar.java.AnalyzerMessage;
+import org.sonar.java.DefaultJavaResourceLocator;
+import org.sonar.java.JavaClasspath;
+import org.sonar.java.JavaSonarLintClasspath;
+import org.sonar.java.JavaTestClasspath;
 import org.sonar.java.SonarComponents;
-import org.sonar.java.ast.JavaAstScanner;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
-import org.sonar.java.model.JavaVersionImpl;
-import org.sonar.java.model.VisitorsBridge;
-import org.sonar.java.se.SymbolicExecutionMode;
+import org.sonar.java.filters.PostAnalysisIssueFilter;
+import org.sonar.plugins.java.Java;
+import org.sonar.plugins.java.JavaSquidSensor;
 import org.sonar.plugins.java.api.JavaFileScanner;
 
 /** Adapter class for interfacing with sonar-java's verification and analysis facilities. */
@@ -75,17 +86,27 @@ public class RuleVerifier {
     @SuppressWarnings("UnstableApiUsage")
     public static Set<RuleViolation> analyze(
             List<String> filesToScan, File baseDir, List<? extends JavaFileScanner> checks) {
-        List<InputFile> inputFiles =
-                filesToScan.stream()
-                        .map(filename -> toInputFile(baseDir, filename))
-                        .collect(Collectors.toList());
+        DefaultFileSystem fs = new DefaultFileSystem(baseDir);
+        SoraldSonarComponents components = createSonarComponents(baseDir, checks);
 
-        SoraldSonarComponents sonarComponents = createSonarComponents(baseDir);
-        JavaAstScanner scanner = createAstScanner(sonarComponents, checks);
+        // TODO set the source version dynamically
+        var settings = new MapSettings().setProperty(Java.SOURCE_VERSION, "14");
+        JavaSquidSensor sensor =
+                new JavaSquidSensor(
+                        components,
+                        fs,
+                        new DefaultJavaResourceLocator(components.getClasspath()),
+                        settings.asConfig(),
+                        new NoSonarFilter(),
+                        new PostAnalysisIssueFilter());
 
-        scanner.scan(inputFiles);
+        for (var file : filesToScan) {
+            fs.add(toInputFile(baseDir, file));
+        }
 
-        return sonarComponents.getMessages().stream()
+        sensor.execute(components.getContext());
+
+        return components.getMessages().stream()
                 .filter(message -> message.primaryLocation() != null)
                 .map(ScannedViolation::new)
                 .collect(Collectors.toSet());
@@ -117,34 +138,33 @@ public class RuleVerifier {
         }
     }
 
-    @SuppressWarnings("UnstableApiUsage")
-    private static JavaAstScanner createAstScanner(
-            SonarComponents sonarComponents, List<? extends JavaFileScanner> checks) {
-        JavaAstScanner scanner = new JavaAstScanner(sonarComponents);
-        VisitorsBridge visitorsBridge =
-                new VisitorsBridge(
-                        checks,
-                        // TODO set the classpath to something reasonable
-                        Collections.emptyList(),
-                        sonarComponents,
-                        SymbolicExecutionMode.getMode(checks.toArray(new JavaFileScanner[0])));
-        // TODO set the version number to something appropriate for the current context
-        //      setting it too high may yield false positives (fixes that aren't applicable to lower
-        // versions)
-        //      setting it too low may yield false negatives and parsing issues
-        visitorsBridge.setJavaVersion(new JavaVersionImpl(14));
-        scanner.setVisitorBridge(visitorsBridge);
-        return scanner;
-    }
+    private static SoraldSonarComponents createSonarComponents(
+            File baseDir, List<? extends JavaFileScanner> checks) {
+        var activeRulesBuilder = new ActiveRulesBuilder();
+        checks.stream()
+                .map(check -> Checks.toSonarRuleKey(Checks.getRuleKey(check.getClass())))
+                .map(
+                        ruleKey ->
+                                new NewActiveRule.Builder()
+                                        .setRuleKey(RuleKey.of("java", ruleKey))
+                                        .setLanguage("java")
+                                        .build())
+                .forEach(activeRulesBuilder::addRule);
 
-    private static SoraldSonarComponents createSonarComponents(File baseDir) {
+        CheckFactory checkFactory = new CheckFactory(activeRulesBuilder.build());
+
         // FIXME The SensorContextTester is an internal and unstable component in sonar,
         //       we should implement our own SensorContext
-        SensorContextTester context = SensorContextTester.create(baseDir);
-        context.setSettings(
-                new MapSettings().setProperty(SonarComponents.FAIL_ON_EXCEPTION_KEY, true));
-        SoraldSonarComponents sonarComponents = new SoraldSonarComponents(context.fileSystem());
-        sonarComponents.setSensorContext(context);
+        SensorContextTester sensorContext = SensorContextTester.create(baseDir);
+
+        DefaultFileSystem fs = sensorContext.fileSystem();
+        // FIXME populate the classpaths
+        var cp = new JavaSonarLintClasspath(new MapSettings().asConfig(), fs);
+        var testCp = new JavaTestClasspath(new MapSettings().asConfig(), fs);
+
+        SoraldSonarComponents sonarComponents =
+                new SoraldSonarComponents(sensorContext.fileSystem(), cp, testCp, checkFactory);
+        sonarComponents.setSensorContext(sensorContext);
         return sonarComponents;
     }
 
@@ -157,13 +177,30 @@ public class RuleVerifier {
      */
     private static class SoraldSonarComponents extends SonarComponents {
         private final List<AnalyzerMessage> messages;
+        private final PostAnalysisIssueFilter postFilter;
+        private final JavaClasspath cp;
+        private final JavaTestClasspath testCp;
+        private SensorContext context;
 
-        public SoraldSonarComponents(DefaultFileSystem fs) {
-            // FIXME I'm very unsure about supplying null for all of these constructor values.
-            //       They should not be null, but at this time I don't know that to put there, and
-            //       with our current usage this hack appears to work.
-            super(null, fs, null, null, null, null);
+        public SoraldSonarComponents(
+                DefaultFileSystem fs,
+                JavaClasspath cp,
+                JavaTestClasspath testCp,
+                CheckFactory checkFactory) {
+            this(fs, cp, testCp, checkFactory, new PostAnalysisIssueFilter());
+        }
+
+        public SoraldSonarComponents(
+                DefaultFileSystem fs,
+                JavaClasspath cp,
+                JavaTestClasspath testCp,
+                CheckFactory checkFactory,
+                PostAnalysisIssueFilter postFilter) {
+            super(new SoraldFileLinesContextFactory(), fs, cp, testCp, checkFactory, postFilter);
             messages = new ArrayList<>();
+            this.postFilter = postFilter;
+            this.cp = cp;
+            this.testCp = testCp;
         }
 
         @Override
@@ -172,8 +209,50 @@ public class RuleVerifier {
             messages.add(analyzerMessage);
         }
 
+        @Override
+        public void setSensorContext(SensorContext context) {
+            this.context = context;
+            super.setSensorContext(context);
+        }
+
+        public SensorContext getContext() {
+            return context;
+        }
+
         public List<AnalyzerMessage> getMessages() {
-            return Collections.unmodifiableList(messages);
+            return messages.stream()
+                    .filter(message -> postFilter.accept(getRuleKey(message), message))
+                    .collect(Collectors.toList());
+        }
+
+        public JavaClasspath getClasspath() {
+            return cp;
+        }
+
+        private static RuleKey getRuleKey(AnalyzerMessage message) {
+            return RuleKey.of(
+                    "java",
+                    Checks.toSonarRuleKey(Checks.getRuleKey(message.getCheck().getClass())));
+        }
+
+        private static class SoraldFileLinesContextFactory implements FileLinesContextFactory {
+
+            @Override
+            public FileLinesContext createFor(InputFile inputFile) {
+                return new SoraldFileLinesContext();
+            }
+
+            private static class SoraldFileLinesContext implements FileLinesContext {
+
+                @Override
+                public void setIntValue(String metricKey, int line, int value) {}
+
+                @Override
+                public void setStringValue(String metricKey, int line, String value) {}
+
+                @Override
+                public void save() {}
+            }
         }
     }
 }
