@@ -436,7 +436,7 @@ docs](https://docs.github.com/en/free-pro-team@latest/github/searching-for-infor
 To run the tests for the helper scripts, first install the test dependencies.
 
 ```bash
-$ python3 -m pip install .[TEST]
+$ python3 -m pip install -e .[TEST]
 ```
 
 Then execute `pytest`.
