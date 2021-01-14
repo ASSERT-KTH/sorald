@@ -4,7 +4,7 @@ import sorald.annotations.ProcessorsClassGenerator;
 import spoon.Launcher;
 
 /** Wrapper class for all (present and future) code generation in Sorald. */
-public class GenerateCode {
+public class CodeGenerator {
     public static void main(String[] args) {
         final Launcher launcher = new Launcher();
         launcher.getEnvironment().setAutoImports(true);
