@@ -17,9 +17,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
-import org.sonar.check.Rule;
-import org.sonar.plugins.java.api.JavaFileScanner;
-import org.sonar.plugins.java.api.JavaFileScannerContext;
+import org.sonar.java.checks.DefaultPackageCheck;
 import sorald.Constants;
 
 class RuleVerifierTest {
@@ -51,6 +49,8 @@ class RuleVerifierTest {
 
     @Test
     public void analyze_filtersOutMessages_thatLackPrimaryLocation() {
+        var checkWithNoLocation = new DefaultPackageCheck();
+
         String testFile =
                 Paths.get(Constants.PATH_TO_RESOURCES_FOLDER)
                         .resolve("ArrayHashCodeAndToString.java")
@@ -59,7 +59,7 @@ class RuleVerifierTest {
                 RuleVerifier.analyze(
                         List.of(testFile),
                         new File(Constants.PATH_TO_RESOURCES_FOLDER),
-                        new CheckWithNoLocation());
+                        checkWithNoLocation);
 
         assertThat(violations, is(empty()));
     }
@@ -85,15 +85,5 @@ class RuleVerifierTest {
         // assert
         assertThat(violations.size(), equalTo(1));
         assertThat(violations.stream().findFirst().get().getStartLine(), equalTo(violationLine));
-    }
-
-    @Rule(key = "0000")
-    @SuppressWarnings("UnstableApiUsage")
-    private static class CheckWithNoLocation implements JavaFileScanner {
-        @Override
-        public void scanFile(JavaFileScannerContext context) {
-            // setting the line to -1 causes the message to not have a primary location
-            context.addIssue(-1, this, "This is a bogus message");
-        }
     }
 }
