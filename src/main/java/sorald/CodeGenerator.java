@@ -1,5 +1,7 @@
 package sorald;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import sorald.annotations.ProcessorsClassGenerator;
 import spoon.Launcher;
 
@@ -7,16 +9,16 @@ import spoon.Launcher;
 public class CodeGenerator {
 
     public static void main(String[] args) {
-        generateSources();
+        generateSources(Paths.get("src/main/java"));
     }
 
-    private static void generateSources() {
+    static void generateSources(Path outputDirectory) {
         final Launcher launcher = new Launcher();
         launcher.getEnvironment().setAutoImports(true);
         launcher.getEnvironment().setNoClasspath(true);
         launcher.getEnvironment().setCommentEnabled(true);
 
-        launcher.setSourceOutputDirectory("./src/main/java");
+        launcher.setSourceOutputDirectory(outputDirectory.toString());
         launcher.addInputResource("src/main/java/sorald");
 
         launcher.addProcessor(new ProcessorsClassGenerator<>());
