@@ -30,6 +30,6 @@ public class NoSonarTest {
                 });
         TestHelper.removeComplianceComments(pathToRepairedFile);
         RuleVerifier.verifyHasIssue(
-                pathToBuggyFile, new ArrayHashCodeAndToStringCheck()); // one bug left
+                pathToRepairedFile, new ArrayHashCodeAndToStringCheck()); // one bug left
     }
 }
