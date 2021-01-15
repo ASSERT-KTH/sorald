@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.internal.DefaultFileSystem;
+import org.sonar.api.batch.fs.internal.DefaultInputFile;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
 import org.sonar.api.batch.rule.CheckFactory;
 import org.sonar.api.batch.rule.internal.ActiveRulesBuilder;
@@ -220,13 +221,22 @@ public class RuleVerifier {
         }
 
         public List<AnalyzerMessage> getMessages() {
-            return messages.stream()
-                    .filter(message -> postFilter.accept(getRuleKey(message), message))
-                    .collect(Collectors.toList());
+            return messages.stream().filter(this::shouldBeReported).collect(Collectors.toList());
         }
 
         public JavaClasspath getClasspath() {
             return cp;
+        }
+
+        private boolean shouldBeReported(AnalyzerMessage message) {
+            return postFilter.accept(getRuleKey(message), message) && !fromNosonarLine(message);
+        }
+
+        private static boolean fromNosonarLine(AnalyzerMessage message) {
+            return message.getLine() != null
+                    && message.getInputComponent() instanceof DefaultInputFile
+                    && ((DefaultInputFile) message.getInputComponent())
+                            .hasNoSonarAt(message.getLine());
         }
 
         private static RuleKey getRuleKey(AnalyzerMessage message) {

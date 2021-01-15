@@ -6,18 +6,20 @@ import java.io.FileReader;
 
 public class TestHelper {
 
-    /*
-    Simple helper method that removes the mandatory // Noncompliant comments from test files.
+    /**
+     * Simple helper method that removes the mandatory // Noncompliant comments from test files,
+     * except for lines that contain NOSONAR comments.
      */
     public static void removeComplianceComments(String pathToRepairedFile) {
         final String complianceComment = "// Noncompliant";
+        final String noSonar = "NOSONAR";
         try {
             BufferedReader file = new BufferedReader(new FileReader(pathToRepairedFile));
             StringBuffer inputBuffer = new StringBuffer();
             String line;
 
             while ((line = file.readLine()) != null) {
-                if (line.contains(complianceComment)) {
+                if (line.contains(complianceComment) && !line.contains(noSonar)) {
                     line.trim();
                     line = line.substring(0, line.indexOf(complianceComment));
                 }
