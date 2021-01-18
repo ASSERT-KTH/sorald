@@ -20,10 +20,10 @@ to avoid polluting your system-wide or user packages. One way to do that is
 to use the `venv` module, which normally ships with Python.
 
 ```bash
-$ python3 -m venv env # this creates a virtual environment in directory "env"
-$ source env/bin/activate # this activates the virtual environment
+$ python3 -m venv env # creates a virtual environment in directory "env"
+$ source env/bin/activate # activates the virtual environment
 [ ... work on your stuff ... ]
-$ deactivate # this exits the virtual environment
+$ deactivate # exits the virtual environment
 ```
 
 Once the virtual environment is active, any package installed with `pip
