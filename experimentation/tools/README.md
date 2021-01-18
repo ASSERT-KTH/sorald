@@ -14,18 +14,34 @@ package like so.
 $ python3 -m pip install .
 ```
 
-The package can also be installed from anywhere by replacing the `.` with the
-path to this directory.
-
+It is however strongly recommended that you install the scripts inside of a
+[virtual environment (link to a good article about it)](https://realpython.com/effective-python-environment/#virtual-environments),
+to avoid polluting your system-wide or user packages. One way to do that is
+to use the `venv` module, which normally ships with Python.
 
 ```bash
-$ python3 -m pip install /path/to/sorald/experimentation/tools
+$ python3 -m venv env # this creates a virtual environment in directory "env"
+$ source env/bin/activate # this activates the virtual environment
+[ ... work on your stuff ... ]
+$ deactivate # this exits the virtual environment
 ```
 
-> **Note:** You should do this in a virtual environment to avoid polluting
-> system-wide or user packages.
+Once the virtual environment is active, any package installed with `pip
+install` will end up in the local `env` directory.
+
+> **Note:** On some Linux distributions, such as Debian-based ones, `venv` is
+> not always shipped with `python3`, and you may need to install a separate
+> `python3-venv` or `python3-dev` system package.
 
 For development, add the `-e` flag to make an editable install.
+
+```bash
+$ python3 -m pip install -e .
+```
+
+An editable install lets any changes you make to your source code be visible in
+the installed package immediately, whereas a normal install requires you to
+reinstall the package for each change.
 
 ## Uninstall
 
