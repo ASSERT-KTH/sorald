@@ -66,9 +66,9 @@ with `ProcessorAnnotation`.
 
 As soon as you have created a skeleton for the processor, with the
 `ProcessorAnnotation` properly filled in, you should update the `Processors`
-class. You do this by running the main method of
-`sorald.annotations.ProcessorsClassGenerator`, which you can either do with
-your favorite IDE, or by running the following shell commands in `bash`:
+class. You do this by running the main method of `sorald.CodeGenerator`, which
+you can either do with your favorite IDE, or by running the following shell
+commands in `bash`:
 
 ```bash
 $ mvn clean compile dependency:build-classpath -Dmdep.outputFile=cp.txt
