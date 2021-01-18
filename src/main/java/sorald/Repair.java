@@ -291,19 +291,16 @@ public class Repair {
             assert outputStrategy == FileOutputStrategy.CHANGED_ONLY
                     || outputStrategy == FileOutputStrategy.IN_PLACE;
 
-            for (Map.Entry<String, CtType> patchedFile :
-                    UniqueTypesCollector.getInstance().getTopLevelTypes4Output().entrySet()) {
+            for (Map.Entry<String, List<CtType<?>>> patchedFile :
+                    resolveCompilationUnits().entrySet()) {
 
                 if (outputStrategy == FileOutputStrategy.CHANGED_ONLY) {
-                    javaOutputProcessor.process(patchedFile.getValue());
+                    processingManager.process(patchedFile.getValue());
                 } else {
                     assert outputStrategy == FileOutputStrategy.IN_PLACE;
-                    CtType<?> type = patchedFile.getValue();
+                    List<CtType<?>> types = patchedFile.getValue();
                     String output =
-                            type.getFactory()
-                                    .getEnvironment()
-                                    .createPrettyPrinter()
-                                    .printTypes(type);
+                            env.createPrettyPrinter().printTypes(types.toArray(CtType[]::new));
                     writeString(Paths.get(patchedFile.getKey()), output);
                 }
 
@@ -312,6 +309,19 @@ public class Repair {
                 }
             }
         }
+    }
+
+    private static Map<String, List<CtType<?>>> resolveCompilationUnits() {
+        return UniqueTypesCollector.getInstance().getTopLevelTypes4Output().entrySet().stream()
+                .map(e -> Map.entry(e.getKey(), getAllTopLevelTypesInSameCu(e.getValue())))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
+
+    /** Return all top-level types belonging to the same compilation unit as the given type. */
+    private static List<CtType<?>> getAllTopLevelTypesInSameCu(CtType<?> type) {
+        return type.getFactory().CompilationUnit().getOrCreate(type).getDeclaredTypes().stream()
+                .filter(CtType::isTopLevel)
+                .collect(Collectors.toList());
     }
 
     private static void writeString(Path filepath, String output) {
