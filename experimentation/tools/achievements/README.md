@@ -1,6 +1,6 @@
 # Achievements script
 This is a script that can be used to generate an "achievements" file for
-Sorald, detailing the pull requests performed with it. It's essentally
+Sorald, detailing the pull requests performed with it. It's essentially
 a human-readable version of the PRs JSON file.
 
 ## Requirements
