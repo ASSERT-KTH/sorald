@@ -1,6 +1,7 @@
 package sorald.processor;
 
 import java.util.List;
+import java.util.Map;
 import sorald.Constants;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.*;
@@ -40,19 +41,16 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
     @Override
     protected void repairInternal(CtBinaryOperator element) {
         CtTypeReference<?> typeToBeUsedToCast = getExpectedType(element);
-        CtCodeSnippetExpression newBinaryOperator =
-                element.getFactory()
-                        .createCodeSnippetExpression(
-                                "("
-                                        + typeToBeUsedToCast.getSimpleName()
-                                        + ") "
-                                        + element.getLeftHandOperand());
-        element.setLeftHandOperand(newBinaryOperator);
+        CtExpression<?> lhs = element.getLeftHandOperand();
+        CtExpression<?> rhs = element.getRightHandOperand();
 
-        // A nicer code for the casting would be the next line. However, more parentheses are added
-        // in
-        // the expressions when using such a solution.
-        // element.getLeftHandOperand().addTypeCast(typeToBeUsedToCast.clone());
+        if (isIntLiteral(lhs)) {
+            repairWithLiteralSuffix((CtLiteral<?>) lhs, typeToBeUsedToCast);
+        } else if (isIntLiteral(rhs)) {
+            repairWithLiteralSuffix((CtLiteral<?>) rhs, typeToBeUsedToCast);
+        } else {
+            repairWithCast(element, typeToBeUsedToCast);
+        }
     }
 
     private CtTypeReference getExpectedType(CtBinaryOperator ctBinaryOperator) {
@@ -95,6 +93,32 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
         }
 
         return ctTypeReference;
+    }
+
+    private static void repairWithCast(
+            CtBinaryOperator element, CtTypeReference<?> typeToBeUsedToCast) {
+        CtCodeSnippetExpression newBinaryOperator =
+                element.getFactory()
+                        .createCodeSnippetExpression(
+                                "("
+                                        + typeToBeUsedToCast.getSimpleName()
+                                        + ") "
+                                        + element.getLeftHandOperand());
+        element.setLeftHandOperand(newBinaryOperator);
+        // A nicer code for the casting would be the next line. However, more parentheses are added
+        // in
+        // the expressions when using such a solution.
+        // element.getLeftHandOperand().addTypeCast(typeToBeUsedToCast.clone());
+    }
+
+    private static void repairWithLiteralSuffix(
+            CtLiteral<?> literalInt, CtTypeReference<?> typeForSuffix) {
+        int value = (int) literalInt.getValue();
+        CtCodeSnippetExpression<?> literalWithSuffix =
+                literalInt
+                        .getFactory()
+                        .createCodeSnippetExpression(value + getLiteralSuffix(typeForSuffix));
+        literalInt.replace(literalWithSuffix);
     }
 
     private boolean isArithmeticOperation(CtBinaryOperator ctBinaryOperator) {
@@ -194,5 +218,17 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
             parent = parent.getParent();
         }
         return false;
+    }
+
+    private static boolean isIntLiteral(CtExpression<?> expr) {
+        return expr instanceof CtLiteral
+                && expr.getFactory().Type().INTEGER_PRIMITIVE.equals(expr.getType());
+    }
+
+    private static String getLiteralSuffix(CtTypeReference<?> floatDoubleOrLong) {
+        String simpleName = floatDoubleOrLong.getSimpleName().toLowerCase();
+        assert List.of(Constants.FLOAT, Constants.DOUBLE, Constants.LONG).contains(simpleName);
+        return Map.of(Constants.FLOAT, "f", Constants.DOUBLE, "d", Constants.LONG, "l")
+                .get(simpleName);
     }
 }
