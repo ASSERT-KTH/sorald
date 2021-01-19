@@ -10,9 +10,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.IdentityHashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
@@ -38,7 +38,10 @@ import spoon.compiler.Environment;
 import spoon.processing.ProcessingManager;
 import spoon.processing.Processor;
 import spoon.reflect.CtModel;
+import spoon.reflect.declaration.CtCompilationUnit;
 import spoon.reflect.declaration.CtElement;
+import spoon.reflect.declaration.CtModule;
+import spoon.reflect.declaration.CtPackage;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtTypeReference;
@@ -49,6 +52,7 @@ import spoon.reflect.visitor.ImportConflictDetector;
 import spoon.reflect.visitor.PrettyPrinter;
 import spoon.support.DefaultOutputDestinationHandler;
 import spoon.support.JavaOutputProcessor;
+import spoon.support.OutputDestinationHandler;
 import spoon.support.QueueProcessingManager;
 import spoon.support.sniper.SniperJavaPrettyPrinter;
 
@@ -277,54 +281,73 @@ public class Repair {
         env.setOutputDestinationHandler(
                 new DefaultOutputDestinationHandler(outputDir.toFile(), env));
 
-        JavaOutputProcessor javaOutputProcessor = new JavaOutputProcessor();
-        javaOutputProcessor.setFactory(factory);
-        QueueProcessingManager processingManager = new QueueProcessingManager(factory);
-        processingManager.addProcessor(javaOutputProcessor);
-
         boolean isIntermediateOutputDir =
                 outputDir.toString().contains(intermediateSpoonedPath.toString());
         FileOutputStrategy outputStrategy = config.getFileOutputStrategy();
-        if (outputStrategy == FileOutputStrategy.ALL || isIntermediateOutputDir) {
-            processingManager.process(model.getUnnamedModule().getFactory().Class().getAll());
-        } else {
-            assert outputStrategy == FileOutputStrategy.CHANGED_ONLY
-                    || outputStrategy == FileOutputStrategy.IN_PLACE;
 
-            for (Map.Entry<String, List<CtType<?>>> patchedFile :
-                    resolveCompilationUnits().entrySet()) {
+        Collection<CtType<?>> types =
+                outputStrategy == FileOutputStrategy.ALL || isIntermediateOutputDir
+                        ? model.getAllTypes()
+                        : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().values();
+        for (CtCompilationUnit cu : resolveCompilationUnits(types)) {
+            List<CtType<?>> typesToPrint =
+                    cu.getDeclaredTypes().stream()
+                            .filter(CtType::isTopLevel)
+                            .collect(Collectors.toList());
+            Path outputPath =
+                    outputStrategy == FileOutputStrategy.CHANGED_ONLY
+                            ? getOutputPath(cu, env.getOutputDestinationHandler())
+                            : cu.getPosition().getFile().toPath();
+            String output =
+                    env.createPrettyPrinter().printTypes(typesToPrint.toArray(CtType[]::new));
+            writeToFile(outputPath, output);
 
-                if (outputStrategy == FileOutputStrategy.CHANGED_ONLY) {
-                    processingManager.process(patchedFile.getValue());
-                } else {
-                    assert outputStrategy == FileOutputStrategy.IN_PLACE;
-                    List<CtType<?>> types = patchedFile.getValue();
-                    String output =
-                            env.createPrettyPrinter().printTypes(types.toArray(CtType[]::new));
-                    writeString(Paths.get(patchedFile.getKey()), output);
-                }
-
-                if (config.getGitRepoPath() != null) {
-                    createPatches(patchedFile.getKey(), javaOutputProcessor);
-                }
+            /*
+            if (config.getGitRepoPath() != null) {
+                createPatches(patchedFile.getKey(), javaOutputProcessor);
             }
+             */
         }
     }
 
-    private static Map<String, List<CtType<?>>> resolveCompilationUnits() {
-        return UniqueTypesCollector.getInstance().getTopLevelTypes4Output().entrySet().stream()
-                .map(e -> Map.entry(e.getKey(), getAllTopLevelTypesInSameCu(e.getValue())))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    private static Path getOutputPath(CtCompilationUnit cu, OutputDestinationHandler destHandler) {
+        CtModule mod = cu.getDeclaredModule();
+        CtPackage pack = cu.getDeclaredPackage();
+        CtType<?> type = getPrimaryType(cu);
+        return destHandler.getOutputPath(mod, pack, type);
     }
 
-    /** Return all top-level types belonging to the same compilation unit as the given type. */
-    private static List<CtType<?>> getAllTopLevelTypesInSameCu(CtType<?> type) {
-        return type.getFactory().CompilationUnit().getOrCreate(type).getDeclaredTypes().stream()
-                .filter(CtType::isTopLevel)
-                .collect(Collectors.toList());
+    private static CtType<?> getPrimaryType(CtCompilationUnit cu) {
+        String primaryTypeName =
+                cu.getPosition().getFile().getName().replace(Constants.JAVA_EXT, "");
+        var noAppropriateTypeFoundExc =
+                new IllegalArgumentException(
+                        "Compilation unit "
+                                + cu.toString()
+                                + " has no type with the same name as the file");
+        return cu.getDeclaredTypes().stream()
+                .filter(type -> type.getSimpleName().equals(primaryTypeName))
+                .findFirst()
+                .orElseThrow(() -> noAppropriateTypeFoundExc);
     }
 
-    private static void writeString(Path filepath, String output) {
+    private static Set<CtCompilationUnit> resolveCompilationUnits(Collection<CtType<?>> types) {
+        Set<CtCompilationUnit> compilationUnits =
+                Collections.newSetFromMap(new IdentityHashMap<>());
+        types.stream().map(Repair::getCompilationUnit).forEach(compilationUnits::add);
+        return compilationUnits;
+    }
+
+    private static CtCompilationUnit getCompilationUnit(CtType<?> type) {
+        return type.getFactory().CompilationUnit().getOrCreate(type);
+    }
+
+    private static void writeToFile(Path filepath, String output) {
+        File dir = filepath.getParent().toFile();
+        if (!(dir.isDirectory() || dir.mkdirs())) {
+            throw new IllegalStateException("could not create directory '" + dir + "'");
+        }
+
         try {
             Files.writeString(filepath, output);
         } catch (IOException e) {
