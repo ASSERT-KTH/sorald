@@ -10,12 +10,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.IdentityHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -42,8 +40,6 @@ import spoon.processing.Processor;
 import spoon.reflect.CtModel;
 import spoon.reflect.declaration.CtCompilationUnit;
 import spoon.reflect.declaration.CtElement;
-import spoon.reflect.declaration.CtModule;
-import spoon.reflect.declaration.CtPackage;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtTypeReference;
@@ -53,7 +49,6 @@ import spoon.reflect.visitor.ImportCleaner;
 import spoon.reflect.visitor.ImportConflictDetector;
 import spoon.reflect.visitor.PrettyPrinter;
 import spoon.support.DefaultOutputDestinationHandler;
-import spoon.support.OutputDestinationHandler;
 import spoon.support.QueueProcessingManager;
 import spoon.support.sniper.SniperJavaPrettyPrinter;
 
@@ -299,7 +294,7 @@ public class Repair {
             Path outputPath =
                     outputStrategy == FileOutputStrategy.IN_PLACE
                             ? sourcePath
-                            : getOutputPath(cu, env.getOutputDestinationHandler());
+                            : OutputPaths.resolveOutputPath(cu, outputDir.toFile());
             String output =
                     env.createPrettyPrinter().printTypes(typesToPrint.toArray(CtType[]::new));
             writeToFile(outputPath, output);
@@ -308,52 +303,6 @@ public class Repair {
                 createPatches(sourcePath, outputPath);
             }
         }
-    }
-
-    private static Path getOutputPath(CtCompilationUnit cu, OutputDestinationHandler destHandler) {
-        CtModule mod = cu.getDeclaredModule();
-        CtPackage pack = cu.getDeclaredPackage();
-        CtType<?> type = getPrimaryType(cu).orElseGet(() -> getMostLikelyPrimaryType(cu));
-        return destHandler.getOutputPath(mod, pack, type).normalize();
-    }
-
-    /**
-     * Get the primary type from the given compilation unit. This only returns a non-empty value if
-     * there is a type with the CU's file name in the CU.
-     *
-     * @param cu A compilation unit.
-     * @return The primary type of the compilation unit, or empty if there is no clear primary type.
-     */
-    private static Optional<CtType<?>> getPrimaryType(CtCompilationUnit cu) {
-        String primaryTypeName =
-                cu.getPosition().getFile().getName().replace(Constants.JAVA_EXT, "");
-        return cu.getDeclaredTypes().stream()
-                .filter(CtType::isTopLevel)
-                .filter(type -> type.getSimpleName().equals(primaryTypeName))
-                .findFirst();
-    }
-
-    /**
-     * In the event that a compilation unit has no top-level type that matches the file name, this
-     * method can be used to find the most likely "intended" top-level type.
-     */
-    private static CtType<?> getMostLikelyPrimaryType(CtCompilationUnit cu) {
-        Function<CtType<?>, Integer> visibilityOrdering =
-                (type) -> {
-                    if (type.isPublic()) {
-                        return 1;
-                    } else if (!(type.isPrivate() || type.isProtected())) { // is package-private
-                        return 2;
-                    } else {
-                        // is private or protected, which is not legal for a top-level type
-                        return 3;
-                    }
-                };
-
-        return cu.getDeclaredTypes().stream()
-                .filter(CtType::isTopLevel)
-                .min(Comparator.comparing(visibilityOrdering))
-                .orElseThrow();
     }
 
     private static Set<CtCompilationUnit> resolveCompilationUnits(Collection<CtType<?>> types) {
