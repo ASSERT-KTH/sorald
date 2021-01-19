@@ -10,10 +10,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.IdentityHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -311,22 +313,47 @@ public class Repair {
     private static Path getOutputPath(CtCompilationUnit cu, OutputDestinationHandler destHandler) {
         CtModule mod = cu.getDeclaredModule();
         CtPackage pack = cu.getDeclaredPackage();
-        CtType<?> type = getPrimaryType(cu);
+        CtType<?> type = getPrimaryType(cu).orElseGet(() -> getMostLikelyPrimaryType(cu));
         return destHandler.getOutputPath(mod, pack, type).normalize();
     }
 
-    private static CtType<?> getPrimaryType(CtCompilationUnit cu) {
+    /**
+     * Get the primary type from the given compilation unit. This only returns a non-empty value if
+     * there is a type with the CU's file name in the CU.
+     *
+     * @param cu A compilation unit.
+     * @return The primary type of the compilation unit, or empty if there is no clear primary type.
+     */
+    private static Optional<CtType<?>> getPrimaryType(CtCompilationUnit cu) {
         String primaryTypeName =
                 cu.getPosition().getFile().getName().replace(Constants.JAVA_EXT, "");
-        var noAppropriateTypeFoundExc =
-                new IllegalArgumentException(
-                        "Compilation unit "
-                                + cu.toString()
-                                + " has no type with the same name as the file");
         return cu.getDeclaredTypes().stream()
+                .filter(CtType::isTopLevel)
                 .filter(type -> type.getSimpleName().equals(primaryTypeName))
-                .findFirst()
-                .orElseThrow(() -> noAppropriateTypeFoundExc);
+                .findFirst();
+    }
+
+    /**
+     * In the event that a compilation unit has no top-level type that matches the file name, this
+     * method can be used to find the most likely "intended" top-level type.
+     */
+    private static CtType<?> getMostLikelyPrimaryType(CtCompilationUnit cu) {
+        Function<CtType<?>, Integer> visibilityOrdering =
+                (type) -> {
+                    if (type.isPublic()) {
+                        return 1;
+                    } else if (!(type.isPrivate() || type.isProtected())) { // is package-private
+                        return 2;
+                    } else {
+                        // is private or protected, which is not legal for a top-level type
+                        return 3;
+                    }
+                };
+
+        return cu.getDeclaredTypes().stream()
+                .filter(CtType::isTopLevel)
+                .min(Comparator.comparing(visibilityOrdering))
+                .orElseThrow();
     }
 
     private static Set<CtCompilationUnit> resolveCompilationUnits(Collection<CtType<?>> types) {
