@@ -155,7 +155,7 @@ like this:
             "url": "https://github.com/redhat-developer/rsp-server/pull/619",
             "created_at": "2020-11-25 12:01:06",
             "closed_at": null,
-            "merged_at": null",
+            "merged_at": null,
             "state": "open",
             "is_merged": false,
             "number": 619
