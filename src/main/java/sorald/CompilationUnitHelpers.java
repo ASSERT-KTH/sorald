@@ -2,8 +2,12 @@ package sorald;
 
 import java.io.File;
 import java.nio.file.Path;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.IdentityHashMap;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 import spoon.reflect.declaration.CtCompilationUnit;
 import spoon.reflect.declaration.CtModule;
@@ -12,8 +16,8 @@ import spoon.reflect.declaration.CtType;
 import spoon.support.DefaultOutputDestinationHandler;
 import spoon.support.OutputDestinationHandler;
 
-/** Class with utility methods for determining output paths. */
-class OutputPaths {
+/** Helpers for dealing with {@link CtCompilationUnit}s. */
+class CompilationUnitHelpers {
 
     /**
      * Compute the output path for the given compilation unit with the provided root directory as
@@ -72,5 +76,22 @@ class OutputPaths {
                 .filter(CtType::isTopLevel)
                 .min(Comparator.comparing(visibilityOrdering))
                 .orElseThrow();
+    }
+
+    /**
+     * @param types A collection of types.
+     * @return All unique compilation units related to the provided types.
+     */
+    static Set<CtCompilationUnit> resolveCompilationUnits(Collection<CtType<?>> types) {
+        Set<CtCompilationUnit> compilationUnits =
+                Collections.newSetFromMap(new IdentityHashMap<>());
+        types.stream()
+                .map(CompilationUnitHelpers::getCompilationUnit)
+                .forEach(compilationUnits::add);
+        return compilationUnits;
+    }
+
+    private static CtCompilationUnit getCompilationUnit(CtType<?> type) {
+        return type.getFactory().CompilationUnit().getOrCreate(type);
     }
 }

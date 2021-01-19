@@ -10,7 +10,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.IdentityHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -285,7 +284,7 @@ public class Repair {
                 outputStrategy == FileOutputStrategy.ALL || isIntermediateOutputDir
                         ? model.getAllTypes()
                         : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().values();
-        for (CtCompilationUnit cu : resolveCompilationUnits(types)) {
+        for (CtCompilationUnit cu : CompilationUnitHelpers.resolveCompilationUnits(types)) {
             List<CtType<?>> typesToPrint =
                     cu.getDeclaredTypes().stream()
                             .filter(CtType::isTopLevel)
@@ -294,7 +293,7 @@ public class Repair {
             Path outputPath =
                     outputStrategy == FileOutputStrategy.IN_PLACE
                             ? sourcePath
-                            : OutputPaths.resolveOutputPath(cu, outputDir.toFile());
+                            : CompilationUnitHelpers.resolveOutputPath(cu, outputDir.toFile());
             String output =
                     env.createPrettyPrinter().printTypes(typesToPrint.toArray(CtType[]::new));
             writeToFile(outputPath, output);
@@ -303,17 +302,6 @@ public class Repair {
                 createPatches(sourcePath, outputPath);
             }
         }
-    }
-
-    private static Set<CtCompilationUnit> resolveCompilationUnits(Collection<CtType<?>> types) {
-        Set<CtCompilationUnit> compilationUnits =
-                Collections.newSetFromMap(new IdentityHashMap<>());
-        types.stream().map(Repair::getCompilationUnit).forEach(compilationUnits::add);
-        return compilationUnits;
-    }
-
-    private static CtCompilationUnit getCompilationUnit(CtType<?> type) {
-        return type.getFactory().CompilationUnit().getOrCreate(type);
     }
 
     private static void writeToFile(Path filepath, String output) {
