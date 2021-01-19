@@ -9,10 +9,10 @@ import spoon.reflect.declaration.CtType;
 public class UniqueTypesCollector {
     private static UniqueTypesCollector uniqueTypesCollector;
 
-    private Map<String, CtType> topLevelTypes4Output;
+    private Map<String, CtType<?>> topLevelTypes4Output;
 
     private UniqueTypesCollector() {
-        this.topLevelTypes4Output = new HashMap<String, CtType>();
+        this.topLevelTypes4Output = new HashMap<>();
     }
 
     public static UniqueTypesCollector getInstance() {
@@ -22,7 +22,7 @@ public class UniqueTypesCollector {
         return uniqueTypesCollector;
     }
 
-    public Map<String, CtType> getTopLevelTypes4Output() {
+    public Map<String, CtType<?>> getTopLevelTypes4Output() {
         return this.topLevelTypes4Output;
     }
 
@@ -32,8 +32,8 @@ public class UniqueTypesCollector {
 
     public void collect(CtElement element) {
         if (this.topLevelTypes4Output != null) {
-            CtType t = (CtType) element.getParent(CtType.class);
-            CtType topParent = t.getReference().getTopLevelType().getDeclaration();
+            CtType<?> t = (CtType<?>) element.getParent(CtType.class);
+            CtType<?> topParent = t.getReference().getTopLevelType().getDeclaration();
             String filePath = element.getPosition().getFile().getAbsolutePath();
 
             checkIfThereIsTheSameClassInTheOriginalPath(filePath);
@@ -52,7 +52,7 @@ public class UniqueTypesCollector {
     */
     private void checkIfThereIsTheSameClassInTheOriginalPath(String filePath) {
         Object topLevelTypeToBeRemoved = null;
-        for (Map.Entry topLevelType : this.topLevelTypes4Output.entrySet()) {
+        for (Map.Entry<String, CtType<?>> topLevelType : this.topLevelTypes4Output.entrySet()) {
             int index = filePath.indexOf(Constants.SPOONED_INTERMEDIATE);
             filePath =
                     ".*"
