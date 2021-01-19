@@ -47,7 +47,6 @@ import spoon.reflect.visitor.DefaultJavaPrettyPrinter;
 import spoon.reflect.visitor.ImportCleaner;
 import spoon.reflect.visitor.ImportConflictDetector;
 import spoon.reflect.visitor.PrettyPrinter;
-import spoon.support.DefaultOutputDestinationHandler;
 import spoon.support.QueueProcessingManager;
 import spoon.support.sniper.SniperJavaPrettyPrinter;
 
@@ -271,36 +270,36 @@ public class Repair {
     }
 
     private void writeModel(CtModel model, Path outputDir) {
-        Factory factory = model.getUnnamedModule().getFactory();
-        Environment env = factory.getEnvironment();
-        env.setOutputDestinationHandler(
-                new DefaultOutputDestinationHandler(outputDir.toFile(), env));
-
         boolean isIntermediateOutputDir =
                 outputDir.toString().contains(intermediateSpoonedPath.toString());
-        FileOutputStrategy outputStrategy = config.getFileOutputStrategy();
 
         Collection<CtType<?>> types =
-                outputStrategy == FileOutputStrategy.ALL || isIntermediateOutputDir
+                config.getFileOutputStrategy() == FileOutputStrategy.ALL || isIntermediateOutputDir
                         ? model.getAllTypes()
                         : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().values();
-        for (CtCompilationUnit cu : CompilationUnitHelpers.resolveCompilationUnits(types)) {
-            List<CtType<?>> typesToPrint =
-                    cu.getDeclaredTypes().stream()
-                            .filter(CtType::isTopLevel)
-                            .collect(Collectors.toList());
-            Path sourcePath = cu.getPosition().getFile().toPath();
-            Path outputPath =
-                    outputStrategy == FileOutputStrategy.IN_PLACE
-                            ? sourcePath
-                            : CompilationUnitHelpers.resolveOutputPath(cu, outputDir.toFile());
-            String output =
-                    env.createPrettyPrinter().printTypes(typesToPrint.toArray(CtType[]::new));
-            writeToFile(outputPath, output);
+        CompilationUnitHelpers.resolveCompilationUnits(types)
+                .forEach(type -> writeCompilationUnit(type, outputDir));
+    }
 
-            if (config.getGitRepoPath() != null) {
-                createPatches(sourcePath, outputPath);
-            }
+    private void writeCompilationUnit(CtCompilationUnit cu, Path outputDir) {
+        List<CtType<?>> typesToPrint =
+                cu.getDeclaredTypes().stream()
+                        .filter(CtType::isTopLevel)
+                        .collect(Collectors.toList());
+        Path sourcePath = cu.getPosition().getFile().toPath();
+        Path outputPath =
+                config.getFileOutputStrategy() == FileOutputStrategy.IN_PLACE
+                        ? sourcePath
+                        : CompilationUnitHelpers.resolveOutputPath(cu, outputDir.toFile());
+        String output =
+                cu.getFactory()
+                        .getEnvironment()
+                        .createPrettyPrinter()
+                        .printTypes(typesToPrint.toArray(CtType[]::new));
+        writeToFile(outputPath, output);
+
+        if (config.getGitRepoPath() != null) {
+            createPatches(sourcePath, outputPath);
         }
     }
 
