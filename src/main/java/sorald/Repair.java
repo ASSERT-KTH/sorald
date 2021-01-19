@@ -51,7 +51,6 @@ import spoon.reflect.visitor.ImportCleaner;
 import spoon.reflect.visitor.ImportConflictDetector;
 import spoon.reflect.visitor.PrettyPrinter;
 import spoon.support.DefaultOutputDestinationHandler;
-import spoon.support.JavaOutputProcessor;
 import spoon.support.OutputDestinationHandler;
 import spoon.support.QueueProcessingManager;
 import spoon.support.sniper.SniperJavaPrettyPrinter;
@@ -294,19 +293,18 @@ public class Repair {
                     cu.getDeclaredTypes().stream()
                             .filter(CtType::isTopLevel)
                             .collect(Collectors.toList());
+            Path sourcePath = cu.getPosition().getFile().toPath();
             Path outputPath =
-                    outputStrategy == FileOutputStrategy.CHANGED_ONLY
-                            ? getOutputPath(cu, env.getOutputDestinationHandler())
-                            : cu.getPosition().getFile().toPath();
+                    outputStrategy == FileOutputStrategy.IN_PLACE
+                            ? sourcePath
+                            : getOutputPath(cu, env.getOutputDestinationHandler());
             String output =
                     env.createPrettyPrinter().printTypes(typesToPrint.toArray(CtType[]::new));
             writeToFile(outputPath, output);
 
-            /*
             if (config.getGitRepoPath() != null) {
-                createPatches(patchedFile.getKey(), javaOutputProcessor);
+                createPatches(sourcePath, outputPath);
             }
-             */
         }
     }
 
@@ -314,7 +312,7 @@ public class Repair {
         CtModule mod = cu.getDeclaredModule();
         CtPackage pack = cu.getDeclaredPackage();
         CtType<?> type = getPrimaryType(cu);
-        return destHandler.getOutputPath(mod, pack, type);
+        return destHandler.getOutputPath(mod, pack, type).normalize();
     }
 
     private static CtType<?> getPrimaryType(CtCompilationUnit cu) {
@@ -366,24 +364,21 @@ public class Repair {
         System.out.println("-----End of report------");
     }
 
-    private void createPatches(String patchedFilePath, JavaOutputProcessor javaOutputProcessor) {
+    private void createPatches(Path patchedFilePath, Path outputPath) {
         File patchDir = new File(config.getWorkspace() + File.separator + Constants.PATCHES);
 
         if (!patchDir.exists()) {
             patchDir.mkdirs();
         }
-        List<File> list = javaOutputProcessor.getCreatedFiles();
-        if (!list.isEmpty()) {
-            String outputPath = list.get(list.size() - 1).getAbsolutePath();
-            generator.generate(
-                    patchedFilePath,
-                    outputPath,
-                    patchDir.getAbsolutePath()
-                            + File.separator
-                            + Constants.PATCH_FILE_PREFIX
-                            + patchedFileCounter);
-            patchedFileCounter++;
-        }
+
+        generator.generate(
+                patchedFilePath.toString(),
+                outputPath.toString(),
+                patchDir.getAbsolutePath()
+                        + File.separator
+                        + Constants.PATCH_FILE_PREFIX
+                        + patchedFileCounter);
+        patchedFileCounter++;
     }
 
     private Launcher initLauncher(Launcher launcher) {
