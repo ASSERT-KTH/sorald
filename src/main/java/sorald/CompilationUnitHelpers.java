@@ -14,7 +14,6 @@ import spoon.reflect.declaration.CtModule;
 import spoon.reflect.declaration.CtPackage;
 import spoon.reflect.declaration.CtType;
 import spoon.support.DefaultOutputDestinationHandler;
-import spoon.support.OutputDestinationHandler;
 
 /** Helpers for dealing with {@link CtCompilationUnit}s. */
 class CompilationUnitHelpers {
@@ -28,12 +27,12 @@ class CompilationUnitHelpers {
      * @return Output path for the compilation unit.
      */
     static Path resolveOutputPath(CtCompilationUnit cu, File rootDir) {
-        OutputDestinationHandler destHandler =
-                new DefaultOutputDestinationHandler(rootDir, cu.getFactory().getEnvironment());
         CtModule mod = cu.getDeclaredModule();
         CtPackage pack = cu.getDeclaredPackage();
         CtType<?> type = findPrimaryType(cu).orElseGet(() -> guessIntendedPrimaryType(cu));
-        return destHandler.getOutputPath(mod, pack, type).normalize();
+        return new DefaultOutputDestinationHandler(rootDir, cu.getFactory().getEnvironment())
+                .getOutputPath(mod, pack, type)
+                .normalize();
     }
 
     /**
