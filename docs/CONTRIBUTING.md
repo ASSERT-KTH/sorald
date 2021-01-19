@@ -2,22 +2,6 @@
 
 Pull requests are very welcome by the Sorald team!
 
-### A note on using an IDE to develop Sorald
-
-Due to a somewhat unconventional annotation processor setup that includes a
-precompile step to compile the processor, IDEs sometimes have trouble building
-Sorald. There are currently two workarounds for this.
-
-1. If your IDE supports it, you may delegate building of the project to Maven
-2. Simply build with Maven from the command line
-    - `mvn test-compile`
-    - You can then run the tests with the IDE as per usual
-
-In addition, you must ensure that `target/generated-sources` is marked as a
-source root within your IDE. Otherwise, it may complain about the `Processors`
-class not existing. The IDE should pick this up from `pom.xml`, but it has
-happened that it doesn't do so correctly.
-
 ### Guidelines for all pull-requests
 
 You may open a PR at any time when working on something. Prefix the title of
@@ -72,19 +56,34 @@ So the name of your new processor is `CastArithmeticOperandCheck` replacing "Che
 
 Once you have the name for the new processor, you can create a class using that
 name in `src/main/java/sorald/processor`.  This new class must extend
-`SoraldAbstractProcessor` and implement the abstract methods.
+`SoraldAbstractProcessor` and implement the abstract methods, and be annotated
+with `ProcessorAnnotation`.
 
 > See the documentation for the abstract methods in
 > [SoraldAbstractProcessor](src/main/java/sorald/processor/SoraldAbstractProcessor.java),
 > and check out [the existing implementations
 > here](/src/main/java/sorald/processor) for guidance.
 
-When you have created your processor, you must also add the check class to one
-of the four categories of check classes in the static code block in
-[Checks.java](/src/main/java/sorald/sonar/Checks.java), if it is not already
-present. To find out which category to add your check to, look it up on the
-[SonarSource website](https://rules.sonarsource.com/java), the category is
-listed just below the rule title.
+As soon as you have created a skeleton for the processor, with the
+`ProcessorAnnotation` properly filled in, you should update the `Processors`
+class. You do this by running the main method of `sorald.CodeGenerator`, which
+you can either do with your favorite IDE, or by running the following shell
+commands in `bash`:
+
+```bash
+$ mvn clean compile dependency:build-classpath -Dmdep.outputFile=cp.txt
+$ java -cp "$(cat cp.txt):./target/classes" sorald.CodeGenerator
+$ mvn spotless:apply
+```
+
+After that, you can start developing your processor for real! Note that if you
+update the annotations of your processor, you must update the `Processors`
+class again as described above.
+
+> **Complicated?:** The procedure for adding a processor is a little bit
+> contrived. It used to be automatic through processor annotations, which
+> worked excellently with Maven, but we experienced so many issues with IDE and
+> editor integration that we eventually gave up on it.
 
 3) Add at least one test file with expected output for your processor
 
