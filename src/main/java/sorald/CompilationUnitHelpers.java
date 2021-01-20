@@ -4,11 +4,9 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.IdentityHashMap;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
 import spoon.reflect.declaration.CtCompilationUnit;
 import spoon.reflect.declaration.CtModule;
 import spoon.reflect.declaration.CtPackage;
@@ -26,13 +24,12 @@ class CompilationUnitHelpers {
      * @param rootDir The root directory to print output in.
      * @return Output path for the compilation unit.
      */
-    static Path resolveOutputPath(CtCompilationUnit cu, File rootDir) {
+    static Optional<Path> resolveOutputPath(CtCompilationUnit cu, File rootDir) {
         CtModule mod = cu.getDeclaredModule();
         CtPackage pack = cu.getDeclaredPackage();
-        CtType<?> type = findPrimaryType(cu).orElseGet(() -> guessIntendedPrimaryType(cu));
-        return new DefaultOutputDestinationHandler(rootDir, cu.getFactory().getEnvironment())
-                .getOutputPath(mod, pack, type)
-                .normalize();
+        var destHandler =
+                new DefaultOutputDestinationHandler(rootDir, cu.getFactory().getEnvironment());
+        return findPrimaryType(cu).map(type -> destHandler.getOutputPath(mod, pack, type));
     }
 
     /**
@@ -49,32 +46,6 @@ class CompilationUnitHelpers {
                 .filter(CtType::isTopLevel)
                 .filter(type -> type.getSimpleName().equals(primaryTypeName))
                 .findFirst();
-    }
-
-    /**
-     * In the event that a compilation unit has no top-level type that matches the file name, this
-     * method can be used to find the most likely "intended" top-level type.
-     *
-     * @param cu A compilation unit that lacks a well-defined primary type.
-     * @return The most likely primary type of this compilation unit.
-     */
-    private static CtType<?> guessIntendedPrimaryType(CtCompilationUnit cu) {
-        Function<CtType<?>, Integer> visibilityOrdering =
-                (type) -> {
-                    if (type.isPublic()) {
-                        return 1;
-                    } else if (!(type.isPrivate() || type.isProtected())) { // is package-private
-                        return 2;
-                    } else {
-                        // is private or protected, which is not legal for a top-level type
-                        return 3;
-                    }
-                };
-
-        return cu.getDeclaredTypes().stream()
-                .filter(CtType::isTopLevel)
-                .min(Comparator.comparing(visibilityOrdering))
-                .orElseThrow();
     }
 
     /**

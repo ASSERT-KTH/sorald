@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -287,20 +288,29 @@ public class Repair {
                         .filter(CtType::isTopLevel)
                         .collect(Collectors.toList());
         Path sourcePath = cu.getPosition().getFile().toPath();
-        Path outputPath =
-                config.getFileOutputStrategy() == FileOutputStrategy.IN_PLACE
-                        ? sourcePath
-                        : CompilationUnitHelpers.resolveOutputPath(cu, outputDir.toFile());
-        String output =
-                cu.getFactory()
-                        .getEnvironment()
-                        .createPrettyPrinter()
-                        .printTypes(typesToPrint.toArray(CtType[]::new));
-        writeToFile(outputPath, output);
+        Optional<Path> maybeOutputPath =
+                CompilationUnitHelpers.resolveOutputPath(cu, outputDir.toFile());
 
-        if (config.getGitRepoPath() != null) {
-            createPatches(sourcePath, outputPath);
-        }
+        maybeOutputPath.ifPresent(
+                outputPath -> {
+                    // For IN_PLACE repair we must adjust the final output path as it is sometimes
+                    // incorrectly calculated if the project root is not given as the root of the
+                    // Java source tree
+                    Path finalOutputPath =
+                            config.getFileOutputStrategy() == FileOutputStrategy.IN_PLACE
+                                    ? sourcePath
+                                    : outputPath;
+                    String output =
+                            cu.getFactory()
+                                    .getEnvironment()
+                                    .createPrettyPrinter()
+                                    .printTypes(typesToPrint.toArray(CtType[]::new));
+                    writeToFile(finalOutputPath, output);
+
+                    if (config.getGitRepoPath() != null) {
+                        createPatches(sourcePath, finalOutputPath);
+                    }
+                });
     }
 
     private static void writeToFile(Path filepath, String output) {
