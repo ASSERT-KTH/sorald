@@ -12,8 +12,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -38,6 +38,7 @@ import spoon.compiler.Environment;
 import spoon.processing.ProcessingManager;
 import spoon.processing.Processor;
 import spoon.reflect.CtModel;
+import spoon.reflect.declaration.CtCompilationUnit;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.factory.Factory;
@@ -47,8 +48,6 @@ import spoon.reflect.visitor.DefaultJavaPrettyPrinter;
 import spoon.reflect.visitor.ImportCleaner;
 import spoon.reflect.visitor.ImportConflictDetector;
 import spoon.reflect.visitor.PrettyPrinter;
-import spoon.support.DefaultOutputDestinationHandler;
-import spoon.support.JavaOutputProcessor;
 import spoon.support.QueueProcessingManager;
 import spoon.support.sniper.SniperJavaPrettyPrinter;
 
@@ -272,49 +271,54 @@ public class Repair {
     }
 
     private void writeModel(CtModel model, Path outputDir) {
-        Factory factory = model.getUnnamedModule().getFactory();
-        Environment env = factory.getEnvironment();
-        env.setOutputDestinationHandler(
-                new DefaultOutputDestinationHandler(outputDir.toFile(), env));
-
-        JavaOutputProcessor javaOutputProcessor = new JavaOutputProcessor();
-        javaOutputProcessor.setFactory(factory);
-        QueueProcessingManager processingManager = new QueueProcessingManager(factory);
-        processingManager.addProcessor(javaOutputProcessor);
-
         boolean isIntermediateOutputDir =
                 outputDir.toString().contains(intermediateSpoonedPath.toString());
-        FileOutputStrategy outputStrategy = config.getFileOutputStrategy();
-        if (outputStrategy == FileOutputStrategy.ALL || isIntermediateOutputDir) {
-            processingManager.process(model.getUnnamedModule().getFactory().Class().getAll());
-        } else {
-            assert outputStrategy == FileOutputStrategy.CHANGED_ONLY
-                    || outputStrategy == FileOutputStrategy.IN_PLACE;
 
-            for (Map.Entry<String, CtType> patchedFile :
-                    UniqueTypesCollector.getInstance().getTopLevelTypes4Output().entrySet()) {
-
-                if (outputStrategy == FileOutputStrategy.CHANGED_ONLY) {
-                    javaOutputProcessor.process(patchedFile.getValue());
-                } else {
-                    assert outputStrategy == FileOutputStrategy.IN_PLACE;
-                    CtType<?> type = patchedFile.getValue();
-                    String output =
-                            type.getFactory()
-                                    .getEnvironment()
-                                    .createPrettyPrinter()
-                                    .printTypes(type);
-                    writeString(Paths.get(patchedFile.getKey()), output);
-                }
-
-                if (config.getGitRepoPath() != null) {
-                    createPatches(patchedFile.getKey(), javaOutputProcessor);
-                }
-            }
-        }
+        Collection<CtType<?>> types =
+                config.getFileOutputStrategy() == FileOutputStrategy.ALL || isIntermediateOutputDir
+                        ? model.getAllTypes()
+                        : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().values();
+        CompilationUnitHelpers.resolveCompilationUnits(types)
+                .forEach(type -> writeCompilationUnit(type, outputDir));
     }
 
-    private static void writeString(Path filepath, String output) {
+    private void writeCompilationUnit(CtCompilationUnit cu, Path outputDir) {
+        List<CtType<?>> typesToPrint =
+                cu.getDeclaredTypes().stream()
+                        .filter(CtType::isTopLevel)
+                        .collect(Collectors.toList());
+        Path sourcePath = cu.getPosition().getFile().toPath();
+        Optional<Path> maybeOutputPath =
+                CompilationUnitHelpers.resolveOutputPath(cu, outputDir.toFile());
+
+        maybeOutputPath.ifPresent(
+                outputPath -> {
+                    // For IN_PLACE repair we must adjust the final output path as it is sometimes
+                    // incorrectly calculated if the project root is not given as the root of the
+                    // Java source tree
+                    Path finalOutputPath =
+                            config.getFileOutputStrategy() == FileOutputStrategy.IN_PLACE
+                                    ? sourcePath
+                                    : outputPath;
+                    String output =
+                            cu.getFactory()
+                                    .getEnvironment()
+                                    .createPrettyPrinter()
+                                    .printTypes(typesToPrint.toArray(CtType[]::new));
+                    writeToFile(finalOutputPath, output);
+
+                    if (config.getGitRepoPath() != null) {
+                        createPatches(sourcePath, finalOutputPath);
+                    }
+                });
+    }
+
+    private static void writeToFile(Path filepath, String output) {
+        File dir = filepath.getParent().toFile();
+        if (!(dir.isDirectory() || dir.mkdirs())) {
+            throw new IllegalStateException("could not create directory '" + dir + "'");
+        }
+
         try {
             Files.writeString(filepath, output);
         } catch (IOException e) {
@@ -333,24 +337,21 @@ public class Repair {
         System.out.println("-----End of report------");
     }
 
-    private void createPatches(String patchedFilePath, JavaOutputProcessor javaOutputProcessor) {
+    private void createPatches(Path patchedFilePath, Path outputPath) {
         File patchDir = new File(config.getWorkspace() + File.separator + Constants.PATCHES);
 
         if (!patchDir.exists()) {
             patchDir.mkdirs();
         }
-        List<File> list = javaOutputProcessor.getCreatedFiles();
-        if (!list.isEmpty()) {
-            String outputPath = list.get(list.size() - 1).getAbsolutePath();
-            generator.generate(
-                    patchedFilePath,
-                    outputPath,
-                    patchDir.getAbsolutePath()
-                            + File.separator
-                            + Constants.PATCH_FILE_PREFIX
-                            + patchedFileCounter);
-            patchedFileCounter++;
-        }
+
+        generator.generate(
+                patchedFilePath.toString(),
+                outputPath.toString(),
+                patchDir.getAbsolutePath()
+                        + File.separator
+                        + Constants.PATCH_FILE_PREFIX
+                        + patchedFileCounter);
+        patchedFileCounter++;
     }
 
     private Launcher initLauncher(Launcher launcher) {
