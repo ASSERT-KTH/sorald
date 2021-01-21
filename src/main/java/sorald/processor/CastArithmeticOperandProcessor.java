@@ -113,7 +113,7 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
 
     private static void repairWithLiteralSuffix(
             CtLiteral<?> literalInt, CtTypeReference<?> typeForSuffix) {
-        int value = (int) literalInt.getValue();
+        Integer value = (Integer) literalInt.getValue();
         CtCodeSnippetExpression<?> literalWithSuffix =
                 literalInt
                         .getFactory()
