@@ -29,12 +29,14 @@ import org.sonar.java.AnalyzerMessage;
 import org.sonar.java.DefaultJavaResourceLocator;
 import org.sonar.java.JavaClasspath;
 import org.sonar.java.JavaSonarLintClasspath;
+import org.sonar.java.JavaSquid;
 import org.sonar.java.JavaTestClasspath;
+import org.sonar.java.Measurer;
 import org.sonar.java.SonarComponents;
+import org.sonar.java.checks.CheckList;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.java.filters.PostAnalysisIssueFilter;
-import org.sonar.plugins.java.Java;
-import org.sonar.plugins.java.JavaSquidSensor;
+import org.sonar.java.model.JavaVersionImpl;
 import org.sonar.plugins.java.api.JavaFileScanner;
 
 /** Adapter class for interfacing with sonar-java's verification and analysis facilities. */
@@ -87,30 +89,39 @@ public class RuleVerifier {
     @SuppressWarnings("UnstableApiUsage")
     public static Set<RuleViolation> analyze(
             List<String> filesToScan, File baseDir, List<? extends JavaFileScanner> checks) {
-        DefaultFileSystem fs = new DefaultFileSystem(baseDir);
         SoraldSonarComponents components = createSonarComponents(baseDir, checks);
 
-        // TODO set the source version dynamically
-        var settings = new MapSettings().setProperty(Java.SOURCE_VERSION, "14");
-        JavaSquidSensor sensor =
-                new JavaSquidSensor(
-                        components,
-                        fs,
-                        new DefaultJavaResourceLocator(components.getClasspath()),
-                        settings.asConfig(),
-                        new NoSonarFilter(),
-                        new PostAnalysisIssueFilter());
+        components.registerCheckClasses(CheckList.REPOSITORY_KEY, CheckList.getJavaChecks());
+        components.registerTestCheckClasses(
+                CheckList.REPOSITORY_KEY, CheckList.getJavaTestChecks());
 
-        for (var file : filesToScan) {
-            fs.add(toInputFile(baseDir, file));
-        }
-
-        sensor.execute(components.getContext());
+        scanFiles(
+                filesToScan.stream().map(f -> toInputFile(baseDir, f)).collect(Collectors.toList()),
+                components);
 
         return components.getMessages().stream()
                 .filter(message -> message.primaryLocation() != null)
                 .map(ScannedViolation::new)
                 .collect(Collectors.toSet());
+    }
+
+    @SuppressWarnings("UnstableApiUsage")
+    private static void scanFiles(List<InputFile> sourceFiles, SoraldSonarComponents components) {
+        Measurer measurer = new Measurer(components.getContext(), new NoSonarFilter());
+        JavaSquid squid =
+                new JavaSquid(
+                        // TODO set the source version dynamically
+                        JavaVersionImpl.fromString("14"),
+                        components,
+                        measurer,
+                        new DefaultJavaResourceLocator(components.getClasspath()),
+                        new PostAnalysisIssueFilter(),
+                        components.checkClasses());
+        squid.scan(
+                sourceFiles,
+                List.of(), // TODO provide test files
+                Collections.emptyList() // TODO provide generated files
+                );
     }
 
     /**
