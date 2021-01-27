@@ -38,6 +38,7 @@ import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.java.filters.PostAnalysisIssueFilter;
 import org.sonar.java.model.JavaVersionImpl;
 import org.sonar.plugins.java.api.JavaFileScanner;
+import sorald.Constants;
 
 /** Adapter class for interfacing with sonar-java's verification and analysis facilities. */
 public class RuleVerifier {
@@ -111,7 +112,7 @@ public class RuleVerifier {
         JavaSquid squid =
                 new JavaSquid(
                         // TODO set the source version dynamically
-                        JavaVersionImpl.fromString("14"),
+                        JavaVersionImpl.fromString(Constants.DEFAULT_COMPLIANCE_LEVEL.toString()),
                         components,
                         measurer,
                         new DefaultJavaResourceLocator(components.getClasspath()),

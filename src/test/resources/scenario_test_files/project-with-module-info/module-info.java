@@ -1,1 +1,0 @@
-module some.pkg { }
