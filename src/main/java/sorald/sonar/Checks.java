@@ -111,6 +111,16 @@ public class Checks {
                                         checkClass.getName() + " does not have a key"));
     }
 
+    /**
+     * TODO This function should not be necessary, we should use the full Sonar keys in Sorald!
+     *
+     * @param soraldKey An internal Sorald key.
+     * @return The corresponding, full-length Sonar rule key.
+     */
+    public static String toSonarRuleKey(String soraldKey) {
+        return "S" + soraldKey;
+    }
+
     private static String stripDigits(String s) {
         return s.replaceAll("[^\\d]+", "");
     }

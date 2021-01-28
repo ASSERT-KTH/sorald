@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -21,8 +20,6 @@ import java.util.stream.Stream;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import org.sonar.java.AnalysisException;
-import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.FileUtils;
 import sorald.Main;
@@ -199,23 +196,6 @@ public class WarningMinerTest {
         assertThat(jo.getJSONArray(StatsMetadataKeys.MINED_RULES).toList().size(), greaterThan(0));
         assertTrue(jo.has(StatsMetadataKeys.MINING_START_TIME));
         assertTrue(jo.has(StatsMetadataKeys.MINING_END_TIME));
-    }
-
-    @Test
-    @SuppressWarnings("UnstableApiUsage")
-    public void extractWarnings_throwsException_whenCheckCrashes() {
-        JavaFileScanner crashyCheck =
-                context -> {
-                    throw new IllegalStateException();
-                };
-
-        assertThrows(
-                AnalysisException.class,
-                () ->
-                        new MineSonarWarnings(new ArrayList<>())
-                                .extractWarnings(
-                                        Constants.PATH_TO_RESOURCES_FOLDER,
-                                        Arrays.asList(crashyCheck)));
     }
 
     private static void runMiner(

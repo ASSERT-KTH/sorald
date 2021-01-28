@@ -70,7 +70,7 @@
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>8.4.0-beta-9</version>
+            <version>8.4.0-beta-11</version>
             <exclusions>
                 <exclusion>
                     <!-- must be excluded as it is signed, which causes problems with unsigned version from sonar -->
@@ -83,6 +83,13 @@
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-checks-testkit</artifactId>
             <version>6.9.0.23563</version>
+            <exclusions>
+                <exclusion>
+                    <!-- included in stdlib -->
+                    <groupId>xml-apis</groupId>
+                    <artifactId>xml-apis</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.sonarsource.java</groupId>
@@ -93,6 +100,13 @@
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-checks</artifactId>
             <version>6.9.0.23563</version>
+            <exclusions>
+                <exclusion>
+                    <!-- included in stdlib -->
+                    <groupId>xml-apis</groupId>
+                    <artifactId>xml-apis</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jgit</groupId>
@@ -217,36 +231,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-                <executions>
-                    <execution>
-                        <!-- The annotation processor(s) must be available at compile time,
-                        so we must compile them before the normal compile phase -->
-                        <id>precompile-annotation-processor</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <!-- setting proc to none is very important,
-                            or Maven will try to run annotation processors during this execution! -->
-                            <proc>none</proc>
-                            <includes>
-                                <include>sorald/annotations/*.java</include>
-                            </includes>
-                        </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <generatedSourcesDirectory>${project.build.directory}/generated-sources</generatedSourcesDirectory>
-                    <annotationProcessors>
-                        <annotationProcessor>
-                            sorald.annotations.ProcessorsClassGenerator
-                        </annotationProcessor>
-                    </annotationProcessors>
-                    <compilerArgs>
-                        <arg>-Aproject=${project.groupId}/${project.artifactId}</arg>
-                    </compilerArgs>
-                </configuration>
             </plugin>
             <!-- adapted from https://www.jacoco.org/jacoco/trunk/doc/examples/build/pom.xml -->
             <plugin>

@@ -8,12 +8,12 @@ import shlex
 
 import pytest
 
-import prrecorder
+from sorald import prrecorder
 
-CUR_DIR = pathlib.Path(__file__).absolute().parent
-RESOURCES = CUR_DIR / "resources"
-STATS_JSON = RESOURCES / "stats.json"
-PRS_JSON_FINAL = RESOURCES / "prs_final.json"
+import _constants
+
+STATS_JSON = _constants.RESOURCES_DIR / "stats.json"
+PRS_JSON_FINAL = _constants.RESOURCES_DIR / "prs_final.json"
 
 OWNER = "redhat-developer"
 REPO = "rsp-server"

@@ -12,9 +12,7 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
-import org.sonar.java.checks.InterruptedExceptionCheck;
 import org.sonar.java.checks.SynchronizationOnStringOrBoxedCheck;
-import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.Main;
@@ -30,10 +28,7 @@ public class ProcessorTestHelper {
     static final String EXPECTED_FILE_SUFFIX = ".expected";
     // The processors related to these checks currently cause problems with the sniper printer
     static final List<Class<?>> BROKEN_WITH_SNIPER =
-            Arrays.asList(
-                    SynchronizationOnStringOrBoxedCheck.class,
-                    InterruptedExceptionCheck.class,
-                    SerializableFieldInSerializableClassCheck.class);
+            Arrays.asList(SynchronizationOnStringOrBoxedCheck.class);
 
     /**
      * Create a {@link ProcessorTestCase} from a non-compliant (according to SonarQube rules) Java
