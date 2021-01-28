@@ -10,6 +10,8 @@ from typing import List
 
 import jinja2
 
+from sorald._helpers import jsonkeys
+
 ENCODING = "utf8"
 
 TEMPLATE = r"""# Achievements
@@ -97,16 +99,16 @@ def parse_pull_requests(prs_json: pathlib.Path) -> List[PullRequest]:
     prs_data = json.loads(prs_json.read_text(ENCODING))
     return [
         PullRequest(
-            repo_slug=data["repo_slug"],
+            repo_slug=data["repoSlug"],
             number=pr_meta["number"],
-            created_at=pr_meta["created_at"],
-            closed_at=pr_meta["closed_at"] or pr_meta["merged_at"],
-            status="merged" if pr_meta["is_merged"] else pr_meta["state"],
-            contains_manual_edits=len(data["manual_edits"] or []) > 0,
-            repairs=get_all_repairs(data["sorald_statistics"]),
+            created_at=pr_meta["createdAt"],
+            closed_at=pr_meta["closedAt"] or pr_meta["mergedAt"],
+            status="merged" if pr_meta["isMerged"] else pr_meta["state"],
+            contains_manual_edits=len(data["manualEdits"] or []) > 0,
+            repairs=get_all_repairs(data["soraldStatistics"]),
         )
         for _, data in prs_data.items()
-        if (pr_meta := data["pr_metadata"])
+        if (pr_meta := data["prMetadata"])
     ]
 
 

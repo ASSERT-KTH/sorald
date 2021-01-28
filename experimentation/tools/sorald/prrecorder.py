@@ -11,6 +11,7 @@ import git
 import github
 import requests
 
+from sorald._helpers import jsonkeys
 
 PRS_JSON = "prs.json"
 
@@ -19,16 +20,6 @@ RECORD_FINAL = "record-final"
 ADD_MANUAL_EDIT = "add-manual-edit"
 
 ENCODING = "utf8"
-
-PR_DATA_KEY = "prMetadata"
-DIFF_DATA_KEY = "diffs"
-
-MANUAL_EDITS_KEY = "manualEdits"
-BEFORE_OPEN_PR_KEY = "beforeOpenPr"
-AFTER_OPEN_PR_KEY = "afterOpenPr"
-
-RECORD_DATA_KEY = "recordMetadata"
-RECORD_MODIFIED_KEY = "lastModified"
 
 
 def main():
@@ -108,8 +99,8 @@ def execute_record_final(
         sys.exit(1)
 
     record = copy.deepcopy(data[record_id])
-    record[PR_DATA_KEY].update(get_pr_state(pr))
-    record[DIFF_DATA_KEY]["final"] = get_diff(pr.diff_url)
+    record[jsonkeys.PR.SECTION_KEY].update(get_pr_state(pr))
+    record[jsonkeys.DIFF.SECTION_KEY][jsonkeys.DIFF.FINAL] = get_diff(pr.diff_url)
 
     return record
 
@@ -127,7 +118,9 @@ def execute_add_manual_edit(
 
     diff = diff_file.read_text(encoding=sys.getdefaultencoding())
     record = copy.deepcopy(data[record_id])
-    record[MANUAL_EDITS_KEY].append(dict(type=edit_type, reason=edit_reason, diff=diff))
+    record[jsonkeys.MANUAL_EDITS.SECTION_KEY].append(
+        dict(type=edit_type, reason=edit_reason, diff=diff)
+    )
 
     return record
 
@@ -137,17 +130,22 @@ def create_initial_record(
 ) -> dict:
     created_at = str(datetime.datetime.now())
     return {
-        "repoSlug": repo_slug,
-        PR_DATA_KEY: get_pr_state(pr),
-        "soraldStatistics": sorald_stats,
-        DIFF_DATA_KEY: dict(initial=get_diff(pr.diff_url), final=None),
-        MANUAL_EDITS_KEY: [],
-        RECORD_DATA_KEY: {"createdAt": created_at, RECORD_MODIFIED_KEY: created_at},
+        jsonkeys.PR.REPO_SLUG: repo_slug,
+        jsonkeys.PR.SECTION_KEY: get_pr_state(pr),
+        jsonkeys.SORALD_STATS.SECTION_KEY: sorald_stats,
+        jsonkeys.DIFF.SECTION_KEY: dict(initial=get_diff(pr.diff_url), final=None),
+        jsonkeys.MANUAL_EDITS.SECTION_KEY: [],
+        jsonkeys.RECORD.SECTION_KEY: {
+            jsonkeys.RECORD.CREATED_AT: created_at,
+            jsonkeys.RECORD.LAST_MODIFIED: created_at,
+        },
     }
 
 
 def update_record_metadata(record: dict):
-    record[RECORD_DATA_KEY][RECORD_MODIFIED_KEY] = str(datetime.datetime.now())
+    record[jsonkeys.RECORD.SECTION_KEY][jsonkeys.RECORD.LAST_MODIFIED] = str(
+        datetime.datetime.now()
+    )
 
 
 def get_diff(diff_url: str) -> str:
@@ -164,15 +162,15 @@ def read_json_if_exists(path: Optional[pathlib.Path], encoding: str) -> dict:
 
 
 def get_pr_state(pr: github.PullRequest.PullRequest) -> dict:
-    return dict(
-        url=pr.html_url,
-        createdAt=str(pr.created_at),
-        closedAt=str(pr.closed_at) if pr.closed_at else None,
-        mergedAt=str(pr.merged_at) if pr.closed_at else None,
-        state=pr.state,
-        isMerged=pr.merged,
-        number=pr.number,
-    )
+    return {
+        jsonkeys.PR.URL: pr.html_url,
+        jsonkeys.PR.CREATED_AT: str(pr.created_at),
+        jsonkeys.PR.CLOSED_AT: str(pr.closed_at) if pr.closed_at else None,
+        jsonkeys.PR.MERGED_AT: str(pr.merged_at) if pr.closed_at else None,
+        jsonkeys.PR.STATE: pr.state,
+        jsonkeys.PR.IS_MERGED: pr.merged,
+        jsonkeys.PR.NUMBER: pr.number,
+    }
 
 
 def parse_args(args: List[str]) -> argparse.Namespace:
@@ -248,7 +246,10 @@ def parse_args(args: List[str]) -> argparse.Namespace:
         "-t",
         "--edit-type",
         help="type of the edit",
-        choices=[BEFORE_OPEN_PR_KEY, AFTER_OPEN_PR_KEY],
+        choices=[
+            jsonkeys.MANUAL_EDITS.BEFORE_OPEN_PR,
+            jsonkeys.MANUAL_EDITS.AFTER_OPEN_PR,
+        ],
     )
 
     # workaround for bug

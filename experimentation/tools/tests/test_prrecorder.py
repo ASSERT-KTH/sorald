@@ -9,6 +9,7 @@ import shlex
 import pytest
 
 from sorald import prrecorder
+from sorald._helpers import jsonkeys
 
 import _constants
 
@@ -43,8 +44,8 @@ def test_make_full_record(tmp_path):
     ]
 
     # must remove the record metadata section as it will always differ due to time
-    del actual_record[prrecorder.RECORD_DATA_KEY]
-    del expected_record[prrecorder.RECORD_DATA_KEY]
+    del actual_record[jsonkeys.RECORD.SECTION_KEY]
+    del expected_record[jsonkeys.RECORD.SECTION_KEY]
 
     assert actual_record == expected_record
 
@@ -73,7 +74,7 @@ def test_add_manual_edit(tmp_path):
     record = prrecorder.read_json_if_exists(prs_json_file, prrecorder.ENCODING)[
         RECORD_ID
     ]
-    manual_edits = record[prrecorder.MANUAL_EDITS_KEY]
+    manual_edits = record[jsonkeys.MANUAL_EDITS.SECTION_KEY]
     assert len(manual_edits) == 1
     assert sorted(manual_edits[0].values()) == sorted(
         [diff_text, edit_reason, edit_type]
