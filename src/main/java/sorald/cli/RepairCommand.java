@@ -107,6 +107,12 @@ class RepairCommand extends BaseCommand {
                     "Max number of files per loaded segment for segmented repair. It should be >= 3000 files per segment.")
     int maxFilesPerSegment = 6500;
 
+    @CommandLine.Option(
+            names = Constants.ARG_MAVEN,
+            description =
+                    "Use Maven in a project with a pom-file to resolve classpath and source files")
+    boolean maven = false;
+
     @Override
     public Integer call() throws IOException {
         postprocessArgs();
@@ -246,6 +252,7 @@ class RepairCommand extends BaseCommand {
         config.setMaxFilesPerSegment(maxFilesPerSegment);
         config.setRepairStrategy(repairStrategy);
         config.setStatsOutputFile(statsOutputFile);
+        config.setUseMaven(maven);
         return config;
     }
 }

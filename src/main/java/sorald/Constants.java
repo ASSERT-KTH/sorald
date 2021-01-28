@@ -28,6 +28,7 @@ public class Constants {
     public static final String ARG_HANDLED_RULES = "--handled-rules";
     public static final String ARG_RULE_VIOLATION_SPECIFIERS = "--violation-specs";
     public static final String ARG_TARGET = "--target";
+    public static final String ARG_MAVEN = "--maven";
 
     public static final String PROCESSOR_PACKAGE = "sorald.processor";
 
