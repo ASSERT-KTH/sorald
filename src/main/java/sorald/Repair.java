@@ -34,6 +34,7 @@ import sorald.sonar.GreedyBestFitScanner;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleViolation;
 import spoon.Launcher;
+import spoon.MavenLauncher;
 import spoon.compiler.Environment;
 import spoon.processing.ProcessingManager;
 import spoon.processing.Processor;
@@ -157,8 +158,10 @@ public class Repair {
     CtModel defaultRepair(
             Path inputDir, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
         EventHelper.fireEvent(EventType.PARSE_START, eventHandlers);
-        Launcher launcher = new Launcher();
-        launcher.addInputResource(inputDir.toString());
+        Launcher launcher =
+                config.isUseMaven()
+                        ? createMavenLauncher(inputDir)
+                        : createDefaultLauncher(inputDir);
         CtModel model = initLauncher(launcher).getModel();
         EventHelper.fireEvent(EventType.PARSE_END, eventHandlers);
 
@@ -167,6 +170,18 @@ public class Repair {
         EventHelper.fireEvent(EventType.REPAIR_END, eventHandlers);
 
         return model;
+    }
+
+    private static Launcher createDefaultLauncher(Path inputDir) {
+        Launcher launcher = new Launcher();
+        launcher.addInputResource(inputDir.toString());
+        return launcher;
+    }
+
+    private static MavenLauncher createMavenLauncher(Path inputDir) {
+        MavenLauncher launcher =
+                new MavenLauncher(inputDir.toString(), MavenLauncher.SOURCE_TYPE.APP_SOURCE);
+        return launcher;
     }
 
     Stream<CtModel> segmentRepair(
