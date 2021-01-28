@@ -47,3 +47,6 @@ class SORALD_STATS:
 
     SECTION_KEY = "soraldStatistics"
     REPAIRS = "repairs"
+    RULE_KEY = "ruleKey"
+    VIOLATIONS_BEFORE = "nbViolationsBefore"
+    VIOLATIONS_AFTER = "nbViolationsAfter"

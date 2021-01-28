@@ -99,16 +99,19 @@ def parse_pull_requests(prs_json: pathlib.Path) -> List[PullRequest]:
     prs_data = json.loads(prs_json.read_text(ENCODING))
     return [
         PullRequest(
-            repo_slug=data["repoSlug"],
-            number=pr_meta["number"],
-            created_at=pr_meta["createdAt"],
-            closed_at=pr_meta["closedAt"] or pr_meta["mergedAt"],
-            status="merged" if pr_meta["isMerged"] else pr_meta["state"],
-            contains_manual_edits=len(data["manualEdits"] or []) > 0,
-            repairs=get_all_repairs(data["soraldStatistics"]),
+            repo_slug=data[jsonkeys.TOP_LEVEL.REPO_SLUG],
+            number=pr_meta[jsonkeys.PR.NUMBER],
+            created_at=pr_meta[jsonkeys.PR.CREATED_AT],
+            closed_at=pr_meta[jsonkeys.PR.CLOSED_AT] or pr_meta[jsonkeys.PR.MERGED_AT],
+            status="merged"
+            if pr_meta[jsonkeys.PR.IS_MERGED]
+            else pr_meta[jsonkeys.PR.STATE],
+            contains_manual_edits=len(data[jsonkeys.MANUAL_EDITS.SECTION_KEY] or [])
+            > 0,
+            repairs=get_all_repairs(data[jsonkeys.SORALD_STATS.SECTION_KEY]),
         )
         for _, data in prs_data.items()
-        if (pr_meta := data["prMetadata"])
+        if (pr_meta := data[jsonkeys.PR.SECTION_KEY])
     ]
 
 
@@ -117,8 +120,8 @@ def get_all_repairs(sorald_stats: dict) -> List[RepairStats]:
         map(
             parse_repair_stats,
             sorted(
-                sorald_stats.get("repairs") or [],
-                key=lambda rep: int(rep["ruleKey"]),
+                sorald_stats.get(jsonkeys.SORALD_STATS.REPAIRS) or [],
+                key=lambda rep: int(rep[jsonkeys.SORALD_STATS.RULE_KEY]),
             ),
         )
     )
@@ -127,10 +130,10 @@ def get_all_repairs(sorald_stats: dict) -> List[RepairStats]:
 
 def parse_repair_stats(repair_data: dict) -> RepairStats:
     return RepairStats(
-        rule_key=int(repair_data["ruleKey"]),
-        num_violations_found=repair_data["nbViolationsBefore"],
-        num_violations_repaired=repair_data["nbViolationsBefore"]
-        - repair_data["nbViolationsAfter"],
+        rule_key=int(repair_data[jsonkeys.SORALD_STATS.RULE_KEY]),
+        num_violations_found=repair_data[jsonkeys.SORALD_STATS.VIOLATIONS_BEFORE],
+        num_violations_repaired=repair_data[jsonkeys.SORALD_STATS.VIOLATIONS_BEFORE]
+        - repair_data[jsonkeys.SORALD_STATS.VIOLATIONS_AFTER],
     )
 
 
