@@ -22,7 +22,6 @@ public class SoraldConfig {
     private int maxFixesPerRule;
     private int maxFilesPerSegment;
     private File statsOutputFile;
-    private boolean useMaven;
 
     public SoraldConfig() {}
 
@@ -118,13 +117,5 @@ public class SoraldConfig {
 
     public Optional<File> getStatsOutputFile() {
         return Optional.ofNullable(statsOutputFile);
-    }
-
-    public boolean isUseMaven() {
-        return useMaven;
-    }
-
-    public void setUseMaven(boolean useMaven) {
-        this.useMaven = useMaven;
     }
 }

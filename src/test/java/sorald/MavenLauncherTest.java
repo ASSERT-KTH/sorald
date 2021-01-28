@@ -36,7 +36,8 @@ public class MavenLauncherTest {
                     "1854",
                     Constants.ARG_FILE_OUTPUT_STRATEGY,
                     FileOutputStrategy.IN_PLACE.name(),
-                    Constants.ARG_MAVEN
+                    Constants.ARG_REPAIR_STRATEGY,
+                    RepairStrategy.MAVEN.name()
                 };
 
         // act

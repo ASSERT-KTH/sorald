@@ -2,5 +2,6 @@ package sorald;
 
 public enum RepairStrategy {
     DEFAULT,
-    SEGMENT
+    SEGMENT,
+    MAVEN
 }

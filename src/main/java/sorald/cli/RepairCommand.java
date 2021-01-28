@@ -98,7 +98,9 @@ class RepairCommand extends BaseCommand {
     @CommandLine.Option(
             names = Constants.ARG_REPAIR_STRATEGY,
             description =
-                    "Type of repair strategy. DEFAULT - load everything without splitting up the folder in segments, SEGMENT - splitting the folder into smaller segments and repair one segment at a time (need to specify --maxFilesPerSegment if not default)")
+                    "Type of repair strategy. DEFAULT - load everything without splitting up the folder in segments, "
+                            + "MAVEN - use Maven to locate production source code and the classpath (test source code is ignored), "
+                            + "SEGMENT - splitting the folder into smaller segments and repair one segment at a time (need to specify --maxFilesPerSegment if not default)")
     RepairStrategy repairStrategy = RepairStrategy.DEFAULT;
 
     @CommandLine.Option(
@@ -106,12 +108,6 @@ class RepairCommand extends BaseCommand {
             description =
                     "Max number of files per loaded segment for segmented repair. It should be >= 3000 files per segment.")
     int maxFilesPerSegment = 6500;
-
-    @CommandLine.Option(
-            names = Constants.ARG_MAVEN,
-            description =
-                    "Use Maven in a project with a pom-file to resolve classpath and production source files. Test sources are ignored.")
-    boolean maven = false;
 
     @Override
     public Integer call() throws IOException {
@@ -252,7 +248,6 @@ class RepairCommand extends BaseCommand {
         config.setMaxFilesPerSegment(maxFilesPerSegment);
         config.setRepairStrategy(repairStrategy);
         config.setStatsOutputFile(statsOutputFile);
-        config.setUseMaven(maven);
         return config;
     }
 }
