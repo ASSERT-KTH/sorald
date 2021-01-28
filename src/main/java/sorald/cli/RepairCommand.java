@@ -110,7 +110,7 @@ class RepairCommand extends BaseCommand {
     @CommandLine.Option(
             names = Constants.ARG_MAVEN,
             description =
-                    "Use Maven in a project with a pom-file to resolve classpath and source files")
+                    "Use Maven in a project with a pom-file to resolve classpath and production source files. Test sources are ignored.")
     boolean maven = false;
 
     @Override

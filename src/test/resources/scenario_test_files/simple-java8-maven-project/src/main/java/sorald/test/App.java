@@ -5,6 +5,7 @@ package sorald.test;
  */
 public class App {
     public static void main(String[] args) {
+        int deadStore = 2; // Noncompliant
         System.out.println("Hello World!");
     }
 }

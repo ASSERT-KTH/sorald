@@ -34,5 +34,6 @@ public class AppTest
     public void testApp()
     {
         assertTrue( true );
+        int deadStore = 3; // Noncompliant
     }
 }
