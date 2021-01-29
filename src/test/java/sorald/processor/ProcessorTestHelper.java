@@ -167,7 +167,7 @@ public class ProcessorTestHelper {
         public final Class<T> checkClass;
         public final Path outfileRelpath;
 
-        ProcessorTestCase(
+        public ProcessorTestCase(
                 String ruleName,
                 String ruleKey,
                 File nonCompliantFile,
