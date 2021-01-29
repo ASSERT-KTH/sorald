@@ -18,13 +18,13 @@ import spoon.compiler.SpoonFile;
 import spoon.compiler.SpoonFolder;
 import spoon.compiler.SpoonResourceHelper;
 
-public class ZipFolder implements SpoonFolder {
+public class NOCOMPILE_ZipFolder implements SpoonFolder {
 
     File file;
 
     List<SpoonFile> files;
 
-    public ZipFolder(File file) throws IOException {
+    public NOCOMPILE_ZipFolder(File file) throws IOException {
         super();
         if (!file.isFile()) {
             throw new IOException(file.getName() + " is not a valid zip file");
