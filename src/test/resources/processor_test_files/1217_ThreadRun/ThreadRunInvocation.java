@@ -10,4 +10,6 @@ class ThreadRunInvocation {
 
     run();
   }
+
+  public static void run() {}
 }
