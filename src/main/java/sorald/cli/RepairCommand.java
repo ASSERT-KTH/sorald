@@ -175,6 +175,7 @@ class RepairCommand extends BaseCommand {
                     Constants.ARG_MAX_FILES_PER_SEGMENT + " must be greater than 0");
         }
 
+        validateOutputAndRepairStrategyCombination();
         validateRuleKeys();
     }
 
@@ -208,6 +209,21 @@ class RepairCommand extends BaseCommand {
                                 + ruleKey
                                 + ". See the available rules below.");
             }
+        }
+    }
+
+    private void validateOutputAndRepairStrategyCombination() {
+        if (repairStrategy == RepairStrategy.MAVEN
+                && fileOutputStrategy != FileOutputStrategy.IN_PLACE
+                && ruleKeys.size() > 1) {
+            throw new CommandLine.ParameterException(
+                    spec.commandLine(),
+                    String.format(
+                            "%s=%s can only be used with %s=%s for multi-rule repair",
+                            Constants.ARG_REPAIR_STRATEGY,
+                            RepairStrategy.MAVEN.name(),
+                            Constants.ARG_FILE_OUTPUT_STRATEGY,
+                            FileOutputStrategy.IN_PLACE.name()));
         }
     }
 
