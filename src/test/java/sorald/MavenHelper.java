@@ -12,7 +12,24 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import sorald.processor.ProcessorTestHelper;
 
+/** A class for helping with Maven in testing. */
 public class MavenHelper {
+    private static final File POM_FILE =
+            Paths.get(Constants.PATH_TO_RESOURCES_FOLDER)
+                    .resolve("scenario_test_files/maven_converter_pom.xml")
+                    .toFile();
+
+    /**
+     * Convert a directory with Java source code into a Maven project. Source code in nested
+     * directories are placed into packages with package names corresponding to the directory paths.
+     *
+     * <p>Does not include source files prefixed with NOCOMPILE or IGNORE.
+     *
+     * <p>Note that this method MUTATES the provided project directory to become a Maven project.
+     *
+     * @param projectDir The root directory to convert into a Maven project.
+     * @throws IOException
+     */
     static void convertToMavenProject(File projectDir) throws IOException {
         List<File> javaFiles = FileUtils.findFilesByExtension(projectDir, Constants.JAVA_EXT);
 
@@ -27,37 +44,43 @@ public class MavenHelper {
             }
 
             Path packagePath = projectDir.toPath().relativize(javaFile.getParentFile().toPath());
-            List<String> sanitizedPathComponents =
-                    StreamSupport.stream(packagePath.spliterator(), false)
-                            .map(path -> path.toString().replaceAll("[^a-zA-Z]", ""))
-                            .collect(Collectors.toList());
-
-            String packageName = String.join(".", sanitizedPathComponents);
-            String contentWithoutPackage =
-                    Files.readAllLines(javaFile.toPath()).stream()
-                            .filter(line -> !line.matches("package .*;"))
-                            .collect(Collectors.joining("\n"));
-            String packageStatement =
-                    packageName.isEmpty() ? "" : String.format("package %s;\n", packageName);
-            Files.writeString(javaFile.toPath(), packageStatement + contentWithoutPackage);
-
-            Path packageRelPath = Paths.get(String.join(File.separator, sanitizedPathComponents));
-            Path packageAbsPath = productionSourceDir.resolve(packageRelPath);
-
-            if (!packageAbsPath.toFile().isDirectory()) {
-                boolean created = packageAbsPath.toFile().mkdirs();
-                assertTrue(created);
-            }
-
-            boolean moved = javaFile.renameTo(packageAbsPath.resolve(javaFile.getName()).toFile());
-            assertTrue(moved);
+            packageJavaFile(javaFile, productionSourceDir, packagePath);
         }
 
-        File pomFile =
-                Paths.get(Constants.PATH_TO_RESOURCES_FOLDER)
-                        .resolve("scenario_test_files/maven_converter_pom.xml")
-                        .toFile();
         org.apache.commons.io.FileUtils.copyFile(
-                pomFile, projectDir.toPath().resolve("pom.xml").toFile());
+                POM_FILE, projectDir.toPath().resolve("pom.xml").toFile());
+    }
+
+    /**
+     * Take a Java file, move it into the package indicated by packagePath with prodSrcDir as the
+     * root Java source directory. Also change the package statement in the file to match the
+     * provided package path.
+     */
+    private static void packageJavaFile(File javaFile, Path prodSrcDir, Path packagePath)
+            throws IOException {
+        List<String> sanitizedPathComponents =
+                StreamSupport.stream(packagePath.spliterator(), false)
+                        .map(path -> path.toString().replaceAll("[^a-zA-Z]", ""))
+                        .collect(Collectors.toList());
+
+        String packageName = String.join(".", sanitizedPathComponents);
+        String contentWithoutPackage =
+                Files.readAllLines(javaFile.toPath()).stream()
+                        .filter(line -> !line.matches("package .*;"))
+                        .collect(Collectors.joining("\n"));
+        String packageStatement =
+                packageName.isEmpty() ? "" : String.format("package %s;\n", packageName);
+        Files.writeString(javaFile.toPath(), packageStatement + contentWithoutPackage);
+
+        Path packageRelPath = Paths.get(String.join(File.separator, sanitizedPathComponents));
+        Path packageAbsPath = prodSrcDir.resolve(packageRelPath);
+
+        if (!packageAbsPath.toFile().isDirectory()) {
+            boolean created = packageAbsPath.toFile().mkdirs();
+            assertTrue(created);
+        }
+
+        boolean moved = javaFile.renameTo(packageAbsPath.resolve(javaFile.getName()).toFile());
+        assertTrue(moved);
     }
 }
