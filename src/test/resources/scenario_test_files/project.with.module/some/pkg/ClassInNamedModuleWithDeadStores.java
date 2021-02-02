@@ -1,6 +1,6 @@
 package some.pkg;
 
-public class DeadStores
+public class ClassInNamedModuleWithDeadStores
 {
     public void dead()
     {
