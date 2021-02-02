@@ -16,8 +16,6 @@ ENCODING = "utf8"
 
 TEMPLATE = r"""# Achievements
 This document presents an overview of the pull requests performed with Sorald.
-
-> **Generated document:** This document is generated from [prs.json](https://github.com/SpoonLabs/sorald/tree/master/{{ prs_json_relpath }})
 {% for pr in pull_requests %}
 ## [{{ pr.repo_slug }}#{{ pr.number }}](https://github.com/{{ pr.repo_slug }}/pull/{{ pr.number }})
 This PR was opened at {{ pr.created_at }}{% if pr.closed_at %} and {{ pr.status }} at {{ pr.closed_at }}{% endif %}.
@@ -93,7 +91,7 @@ def generate_achievements_file(
     template: str,
 ) -> None:
     pull_requests = parse_pull_requests(prs_json)
-    rendered_content = jinja2.Template(template).render(pull_requests=pull_requests, prs_json_relpath=str(prs_json))
+    rendered_content = jinja2.Template(template).render(pull_requests=pull_requests)
     output_file.write_text(rendered_content, encoding=ENCODING)
 
 
