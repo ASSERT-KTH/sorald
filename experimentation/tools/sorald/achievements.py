@@ -93,7 +93,9 @@ def generate_achievements_file(
     template: str,
 ) -> None:
     pull_requests = parse_pull_requests(prs_json)
-    rendered_content = jinja2.Template(template).render(pull_requests=pull_requests, prs_json_relpath=str(prs_json))
+    rendered_content = jinja2.Template(template).render(
+        pull_requests=pull_requests, prs_json_relpath=str(prs_json)
+    )
     output_file.write_text(rendered_content, encoding=ENCODING)
 
 
@@ -112,7 +114,7 @@ def parse_pull_requests(prs_json: pathlib.Path) -> List[PullRequest]:
             > 0,
             repairs=get_all_repairs(data[jsonkeys.SORALD_STATS.SECTION_KEY]),
         )
-        for _, data in prs_data.items()
+        for _, data in sorted(prs_data.items(), key=lambda entry: entry[0])
         if (pr_meta := data[jsonkeys.PR.SECTION_KEY])
     ]
 
