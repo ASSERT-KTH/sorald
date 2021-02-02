@@ -255,7 +255,7 @@ public class Repair {
                 .forEach(entry -> bestFits.put(entry.getKey(), entry.getValue()));
         processor.setBestFits(bestFits);
 
-        Factory factory = new ArrayList<>(model.getAllModules()).get(0).getFactory();
+        Factory factory = model.getUnnamedModule().getFactory();
         ProcessingManager processingManager = new QueueProcessingManager(factory);
         processingManager.addProcessor(processor);
         processingManager.process(factory.Class().getAll());
