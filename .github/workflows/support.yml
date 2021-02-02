@@ -4,12 +4,12 @@ name: support
 
 on:
   push:
-    branches: [ test-master ]
+    branches: [ master ]
 
 jobs:
   generate-achievements-md:
     # don't accidentally run on forks :)
-    if: github.repository == "slarse/sorald"
+    if: github.repository == "SpoonLabs/sorald"
     runs-on: ubuntu-latest
 
     steps:
@@ -34,4 +34,4 @@ jobs:
           git commit -m "doc: Update docs/ACHIEVEMENTS.md"
       - name: Push changes
         run: |
-          git push https://spoonlabs:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git test-master
+          git push https://spoonlabs:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git master
