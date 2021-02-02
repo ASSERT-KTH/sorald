@@ -1,8 +1,6 @@
 # Achievements
 This document presents an overview of the pull requests performed with Sorald.
 
-> **Generated document:** This document is generated from [prs.json](https://github.com/SpoonLabs/sorald/tree/master/experimentation/prs.json)
-
 ## [redhat-developer/rsp-server#619](https://github.com/redhat-developer/rsp-server/pull/619)
 This PR was opened at 2020-11-25 12:01:06 and merged at 2020-11-30 20:45:38.
 The patch was generated fully automatically with Sorald.
