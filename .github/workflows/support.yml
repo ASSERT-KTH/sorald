@@ -34,4 +34,4 @@ jobs:
           git commit -m "doc: Update docs/ACHIEVEMENTS.md"
       - name: Push changes
         run: |
-          git push https://spoonlabs:${{ secrets.GITHUB_TOKEN }}@github.com/spoonlabs/sorald.git master
+          git push https://spoonlabs:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git master
