@@ -1,0 +1,35 @@
+# Support workflows e.g. for generating documentation
+
+name: support
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  generate-achievements-md:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # v2.3.4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@8c5ea631b2b2d5d8840cf4a2b183a8a0edc1e40d # v2.2.0
+        with:
+          python-version: 3.8
+      - name: Install support scripts
+        run: |
+          pip install --upgrade pip
+          pip install -e experimentation/tools
+      - name: Generate ACHIEVEMENTS.md
+        run: python -m sorald.achievements -p experimentation/prs.json -o docs/ACHIEVEMENTS.md
+      - name: Commit changes
+        run: |
+          git config --local user.email noreply@github.com
+          git config --local user.name GitHub
+
+          git add docs/ACHIEVEMENTS.md
+          git commit -m "doc: Update docs/ACHIEVEMENTS.md"
+      - name: Push changes
+        run: |
+          git push https://spoonlabs:${{ secrets.GITHUB_TOKEN }}@github.com/spoonlabs/sorald.git master
