@@ -186,16 +186,17 @@ public class ProcessorTest {
         ProcessorTestHelper.runSorald(
                 Paths.get(Constants.PATH_TO_RESOURCES_FOLDER)
                         .resolve("scenario_test_files")
-                        // .resolve("project.with.module")
+                        .resolve("project.with.module")
                         .toFile(),
                 DeadStoreCheck.class);
 
         // assert
         Path sourceFile =
                 Paths.get(Constants.SORALD_WORKSPACE)
+                        .resolve(Constants.SPOONED)
                         .resolve("some")
                         .resolve("pkg")
-                        .resolve("DeadStores.java");
+                        .resolve("ClassInNamedModuleWithDeadStores.java");
 
         RuleVerifier.verifyNoIssue(sourceFile.toString(), new DeadStoreCheck());
     }
