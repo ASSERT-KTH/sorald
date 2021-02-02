@@ -33,7 +33,7 @@ jobs:
           git switch -c "$branch_name"
 
           git add docs/ACHIEVEMENTS.md
-          git commit -m "doc: Update docs/ACHIEVEMENTS.md" || echo "Nothing to commit" && exit 0
+          git commit -m "doc: Update docs/ACHIEVEMENTS.md" || (echo "Nothing to commit" && exit 0)
 
           git push https://${{ github.owner }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
