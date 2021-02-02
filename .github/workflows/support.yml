@@ -8,6 +8,8 @@ on:
 
 jobs:
   generate-achievements-md:
+    # don't accidentally run on forks :)
+    if: github.repository == "SpoonLabs/sorald"
     runs-on: ubuntu-latest
 
     steps:
