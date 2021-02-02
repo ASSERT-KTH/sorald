@@ -11,6 +11,7 @@ class CastArithmeticOperand {
     long bigNegNum =  Integer.MIN_VALUE-1; // Noncompliant, gives a positive result instead of a negative one.
     int seconds;
     Date myDate = new Date(seconds * 1000); // Noncompliant, won't produce the expected result if seconds > 2_147_483
+    Date myDate2 = new Date(seconds * 1000 * 10); // Noncompliant
 
     public long compute(int factor){
         return factor * 10000; // Noncompliant, won't produce the expected result if factor > 214_748
