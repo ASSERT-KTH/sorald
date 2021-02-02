@@ -10,9 +10,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.IdentityHashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -41,7 +41,6 @@ import spoon.processing.Processor;
 import spoon.reflect.CtModel;
 import spoon.reflect.declaration.CtCompilationUnit;
 import spoon.reflect.declaration.CtElement;
-import spoon.reflect.declaration.CtModule;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtTypeReference;
@@ -246,20 +245,16 @@ public class Repair {
 
     private static void repairModelWithInitializedProcessor(
             CtModel model, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
-        var bestFits =
-                model.getAllModules().stream()
-                        .map(
-                                module ->
-                                        GreedyBestFitScanner.calculateBestFits(
-                                                module, violations, processor))
-                        .flatMap(m -> m.entrySet().stream())
-                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        var bestFits = new IdentityHashMap<CtElement, RuleViolation>();
+        model.getAllModules().stream()
+                .map(
+                        module ->
+                                GreedyBestFitScanner.calculateBestFits(
+                                        module, violations, processor))
+                .flatMap(m -> m.entrySet().stream())
+                .forEach(entry -> bestFits.put(entry.getKey(), entry.getValue()));
         processor.setBestFits(bestFits);
 
-        CtModule mod =
-                model.getAllModules().stream().filter(m -> !m.isUnnamedModule()).findFirst().get();
-
-        new ArrayList<>(model.getAllTypes()).get(0).getReference().getTypeDeclaration();
         Factory factory = new ArrayList<>(model.getAllModules()).get(0).getFactory();
         ProcessingManager processingManager = new QueueProcessingManager(factory);
         processingManager.addProcessor(processor);
@@ -368,7 +363,6 @@ public class Repair {
     private Launcher initLauncher(Launcher launcher) {
         Environment env = launcher.getEnvironment();
         env.setIgnoreDuplicateDeclarations(true);
-        env.setNoClasspath(false);
         env.setComplianceLevel(Constants.DEFAULT_COMPLIANCE_LEVEL);
 
         // this is a workaround for https://github.com/INRIA/spoon/issues/3693
