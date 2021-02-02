@@ -175,7 +175,7 @@ public class Repair {
             Path inputDir, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
         EventHelper.fireEvent(EventType.PARSE_START, eventHandlers);
         MavenLauncher launcher =
-                new MavenLauncher(inputDir.toString(), MavenLauncher.SOURCE_TYPE.APP_SOURCE);
+                new MavenLauncher(inputDir.toString(), MavenLauncher.SOURCE_TYPE.ALL_SOURCE);
         CtModel model = initLauncher(launcher).getModel();
         EventHelper.fireEvent(EventType.PARSE_END, eventHandlers);
 

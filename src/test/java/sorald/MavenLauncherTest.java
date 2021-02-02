@@ -12,7 +12,7 @@ import sorald.sonar.RuleVerifier;
 public class MavenLauncherTest {
 
     @Test
-    public void sorald_repairsOnlyProductionCode_inMavenProject(@TempDir File workdir)
+    public void sorald_repairsProductionAndTestCode_inMavenProject(@TempDir File workdir)
             throws IOException {
         // arrange
         org.apache.commons.io.FileUtils.copyDirectory(
@@ -45,6 +45,6 @@ public class MavenLauncherTest {
 
         // assert
         RuleVerifier.verifyNoIssue(productionFile.toString(), new DeadStoreCheck());
-        RuleVerifier.verifyHasIssue(testFile.toString(), new DeadStoreCheck());
+        RuleVerifier.verifyNoIssue(testFile.toString(), new DeadStoreCheck());
     }
 }
