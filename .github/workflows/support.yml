@@ -8,8 +8,7 @@ on:
 
 jobs:
   generate-achievements-md:
-    # don't accidentally run on forks :)
-    if: ${{ github.repository == 'SpoonLabs/sorald' }}
+    if: ${{ github.repository == 'SpoonLabs/sorald' }} # don't accidentally run on forks :)
     runs-on: ubuntu-latest
 
     steps:
@@ -25,13 +24,27 @@ jobs:
           pip install -e experimentation/tools
       - name: Generate ACHIEVEMENTS.md
         run: python -m sorald.achievements -p experimentation/prs.json -o docs/ACHIEVEMENTS.md
-      - name: Commit changes
+      - name: Create pull request
         run: |
           git config --local user.email noreply@github.com
           git config --local user.name GitHub
 
+          branch_name=achievements-update-${{ github.sha }}
+          git switch -c "$branch_name"
+
           git add docs/ACHIEVEMENTS.md
-          git commit -m "doc: Update docs/ACHIEVEMENTS.md"
-      - name: Push changes
-        run: |
-          git push https://spoonlabs:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git master
+          git commit -m "doc: Update docs/ACHIEVEMENTS.md" || echo "Nothing to commit" && exit 0
+
+          git push https://${{ github.owner }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+
+          curl \
+            -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/pulls \
+            -d "{
+              \"head\":\"$branch_name\",
+              \"base\":\"master\",
+              \"title\":\"doc: Update docs/ACHIEVEMENTS.md\",
+              \"body\":\"Automatic update of ACHIEVEMENTS.md from ${{ github.workflow }} workflow. **Do not forget to remove this branch after merge!**\"
+            }"
