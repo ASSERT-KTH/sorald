@@ -98,7 +98,9 @@ class RepairCommand extends BaseCommand {
     @CommandLine.Option(
             names = Constants.ARG_REPAIR_STRATEGY,
             description =
-                    "Type of repair strategy. DEFAULT - load everything without splitting up the folder in segments, SEGMENT - splitting the folder into smaller segments and repair one segment at a time (need to specify --maxFilesPerSegment if not default)")
+                    "Type of repair strategy. DEFAULT - load everything without splitting up the folder in segments, "
+                            + "MAVEN - use Maven to locate production source code and the classpath (test source code is ignored), "
+                            + "SEGMENT - splitting the folder into smaller segments and repair one segment at a time (need to specify --maxFilesPerSegment if not default)")
     RepairStrategy repairStrategy = RepairStrategy.DEFAULT;
 
     @CommandLine.Option(
@@ -173,6 +175,7 @@ class RepairCommand extends BaseCommand {
                     Constants.ARG_MAX_FILES_PER_SEGMENT + " must be greater than 0");
         }
 
+        validateOutputAndRepairStrategyCombination();
         validateRuleKeys();
     }
 
@@ -206,6 +209,21 @@ class RepairCommand extends BaseCommand {
                                 + ruleKey
                                 + ". See the available rules below.");
             }
+        }
+    }
+
+    private void validateOutputAndRepairStrategyCombination() {
+        if (repairStrategy == RepairStrategy.MAVEN
+                && fileOutputStrategy != FileOutputStrategy.IN_PLACE
+                && ruleKeys.size() > 1) {
+            throw new CommandLine.ParameterException(
+                    spec.commandLine(),
+                    String.format(
+                            "%s=%s can only be used with %s=%s for multi-rule repair",
+                            Constants.ARG_REPAIR_STRATEGY,
+                            RepairStrategy.MAVEN.name(),
+                            Constants.ARG_FILE_OUTPUT_STRATEGY,
+                            FileOutputStrategy.IN_PLACE.name()));
         }
     }
 

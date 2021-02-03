@@ -10,7 +10,7 @@ class UnusedThrowable {
 			throw new IllegalArgumentException("x must be nonnegative");
 		}
 		new UnusedThrowable();
-		Throwable t = new IllegalArgumentException("x must be nonnegative");
+		RuntimeException t = new IllegalArgumentException("x must be nonnegative");
 		if (x < 0) {
 			throw t;
 		}

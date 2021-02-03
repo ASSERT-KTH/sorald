@@ -8,7 +8,7 @@ public class ExistingQualifiedNamesRemainQualified {
     public static void main(String[] args) {
         // now this is what we're actually testing, if Sorald is too aggresive in processing types
         // for auto-importing, java.util.ArrayList and javax.xml.XMLConstants will be imported
-        java.util.ArrayList<Integer, String> list = new java.util.ArrayList<>();
+        java.util.ArrayList<Integer> list = new java.util.ArrayList<>();
         String constant = javax.xml.XMLConstants.ACCESS_EXTERNAL_DTD;
     }
 }

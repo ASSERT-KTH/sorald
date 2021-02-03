@@ -94,8 +94,24 @@ public class ProcessorTestHelper {
                 .map(File::listFiles)
                 .flatMap(Arrays::stream)
                 .filter(file -> file.getName().endsWith(".java"))
-                .filter(file -> !file.getName().startsWith("IGNORE"))
+                .filter(file -> !isIgnoredTestFile(file))
                 .map(ProcessorTestHelper::toProcessorTestCase);
+    }
+
+    /**
+     * @param testFile A test file.
+     * @return Whether or not to ignore this file.
+     */
+    public static boolean isIgnoredTestFile(File testFile) {
+        return testFile.getName().startsWith("IGNORE");
+    }
+
+    /**
+     * @param testFile A test file.
+     * @return Whether or not this file is standalone compilable.
+     */
+    public static boolean isStandaloneCompilableTestFile(File testFile) {
+        return !testFile.getName().startsWith("NOCOMPILE");
     }
 
     /**
@@ -151,7 +167,7 @@ public class ProcessorTestHelper {
         public final Class<T> checkClass;
         public final Path outfileRelpath;
 
-        ProcessorTestCase(
+        public ProcessorTestCase(
                 String ruleName,
                 String ruleKey,
                 File nonCompliantFile,

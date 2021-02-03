@@ -35,6 +35,7 @@ import sorald.sonar.GreedyBestFitScanner;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleViolation;
 import spoon.Launcher;
+import spoon.MavenLauncher;
 import spoon.compiler.Environment;
 import spoon.processing.ProcessingManager;
 import spoon.processing.Processor;
@@ -142,16 +143,20 @@ public class Repair {
 
     Stream<CtModel> repair(
             Path inputDir, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
-        if (config.getRepairStrategy() == RepairStrategy.DEFAULT) {
-            CtModel model = defaultRepair(inputDir, processor, violations);
-            return Stream.of(model);
-        } else {
-            assert config.getRepairStrategy() == RepairStrategy.SEGMENT;
-            return segmentRepair(
-                    inputDir,
-                    processor,
-                    violations,
-                    segment -> createSegmentLauncher(segment).getModel());
+        switch (config.getRepairStrategy()) {
+            case DEFAULT:
+                return Stream.of(defaultRepair(inputDir, processor, violations));
+            case MAVEN:
+                return Stream.of(mavenRepair(inputDir, processor, violations));
+            case SEGMENT:
+                return segmentRepair(
+                        inputDir,
+                        processor,
+                        violations,
+                        segment -> createSegmentLauncher(segment).getModel());
+            default:
+                throw new IllegalStateException(
+                        "unknown repair strategy: " + config.getRepairStrategy());
         }
     }
 
@@ -163,10 +168,19 @@ public class Repair {
         CtModel model = initLauncher(launcher).getModel();
         EventHelper.fireEvent(EventType.PARSE_END, eventHandlers);
 
-        EventHelper.fireEvent(EventType.REPAIR_START, eventHandlers);
         repairModelWithInitializedProcessor(model, processor, violations);
-        EventHelper.fireEvent(EventType.REPAIR_END, eventHandlers);
+        return model;
+    }
 
+    CtModel mavenRepair(
+            Path inputDir, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
+        EventHelper.fireEvent(EventType.PARSE_START, eventHandlers);
+        MavenLauncher launcher =
+                new MavenLauncher(inputDir.toString(), MavenLauncher.SOURCE_TYPE.ALL_SOURCE);
+        CtModel model = initLauncher(launcher).getModel();
+        EventHelper.fireEvent(EventType.PARSE_END, eventHandlers);
+
+        repairModelWithInitializedProcessor(model, processor, violations);
         return model;
     }
 
@@ -187,9 +201,7 @@ public class Repair {
                                 CtModel model = parseSegment.apply(segment);
                                 EventHelper.fireEvent(EventType.PARSE_END, eventHandlers);
 
-                                EventHelper.fireEvent(EventType.REPAIR_START, eventHandlers);
                                 repairModelWithInitializedProcessor(model, processor, violations);
-                                EventHelper.fireEvent(EventType.REPAIR_END, eventHandlers);
                                 return model;
                             } catch (Exception e) {
                                 reportSegmentCrash(segment, e);
@@ -243,8 +255,9 @@ public class Repair {
         }
     }
 
-    private static void repairModelWithInitializedProcessor(
+    private void repairModelWithInitializedProcessor(
             CtModel model, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
+        EventHelper.fireEvent(EventType.REPAIR_START, eventHandlers);
         var bestFits = new IdentityHashMap<CtElement, RuleViolation>();
         model.getAllModules().stream()
                 .map(
@@ -259,6 +272,7 @@ public class Repair {
         ProcessingManager processingManager = new QueueProcessingManager(factory);
         processingManager.addProcessor(processor);
         processingManager.process(factory.Class().getAll());
+        EventHelper.fireEvent(EventType.REPAIR_END, eventHandlers);
     }
 
     Launcher createSegmentLauncher(List<Node> segment) {

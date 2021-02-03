@@ -23,29 +23,18 @@ public class CompareToReturnValue implements Comparable<CompareToReturnValue> {
   public Long compareTo(Long a) {
     return Long.MIN_VALUE; // Compliant
   }
+}
 
+class C implements Comparable<C> {
   @Override
-  public int compareTo(Short a) {
+  public int compareTo(C c) {
     return Integer.MAX_VALUE; // Compliant
   }
+}
 
-  public int compareTo(B b) {
-
-    class C implements Comparable<C> {
-      @Override
-      public int compareTo(C c) {
-
-        class D implements Comparable<D> {
-          @Override
-          public int compareTo(D d) {
-            return Integer.MIN_VALUE; // Noncompliant
-          }
-        }
-
-        return Integer.MIN_VALUE; // Noncompliant
-      }
-    }
-
+class D implements Comparable<D> {
+  @Override
+  public int compareTo(D d) {
     return Integer.MIN_VALUE; // Noncompliant
   }
 }

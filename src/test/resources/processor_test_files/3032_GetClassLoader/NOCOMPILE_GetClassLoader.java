@@ -1,6 +1,6 @@
 import javax.ejb.embeddable.EJBContainer;
 
-public class GetClassLoader {
+public class NOCOMPILE_GetClassLoader {
 
 	ClassLoader d = this.getClass().getClassLoader(); // Noncompliant
 
@@ -24,3 +24,5 @@ public class GetClassLoader {
 		EJBContainer container = new EJBContainer();
 	}
 }
+
+class Dummy {}

@@ -35,10 +35,20 @@ public class GatherStatsTest {
                         .filter(tc -> tc.ruleKey.equals("2755"))
                         .findFirst()
                         .get();
+
+        org.apache.commons.io.FileUtils.copyFile(
+                testCase.nonCompliantFile,
+                tempDir.toPath().resolve(testCase.nonCompliantFile.getName()).toFile());
+
+        if (repairStrategy == RepairStrategy.MAVEN) {
+            MavenHelper.convertToMavenProject(tempDir);
+        }
+
         File statsFile = tempDir.toPath().resolve("stats.json").toFile();
 
         ProcessorTestHelper.runSorald(
-                testCase,
+                tempDir,
+                testCase.checkClass,
                 Constants.ARG_STATS_OUTPUT_FILE,
                 statsFile.getAbsolutePath(),
                 Constants.ARG_REPAIR_STRATEGY,
@@ -133,6 +143,10 @@ public class GatherStatsTest {
         File processorTestFiles = ProcessorTestHelper.TEST_FILES_ROOT.toFile();
         File project = tmpDir.toPath().resolve("project").toFile();
         org.apache.commons.io.FileUtils.copyDirectory(processorTestFiles, project);
+
+        if (repairStrategy == RepairStrategy.MAVEN) {
+            MavenHelper.convertToMavenProject(project);
+        }
 
         SoraldAbstractProcessor<?> targetProc = new XxeProcessingProcessor();
         JavaFileScanner targetCheck = Checks.getCheckInstance(targetProc.getRuleKey());

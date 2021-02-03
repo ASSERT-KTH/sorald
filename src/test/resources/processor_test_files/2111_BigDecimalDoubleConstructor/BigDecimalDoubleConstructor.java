@@ -14,7 +14,7 @@ public class BigDecimalDoubleConstructor {
 
     // Tests from https://github.com/SonarSource/sonar-java/blob/master/java-checks-test-sources/src/main/java/checks/BigDecimalDoubleConstructorCheck.java
     public void main2(String[] args) {
-        MathContext mc;
+        MathContext mc = null;
         BigDecimal bd1 = new BigDecimal("1");
         BigDecimal bd2 = new BigDecimal(2.0); // Noncompliant {{Use "BigDecimal.valueOf" instead.}}
         BigDecimal bd4 = new BigDecimal(2.0, mc); // Noncompliant {{Use "BigDecimal.valueOf" instead.}}
@@ -26,7 +26,7 @@ public class BigDecimalDoubleConstructor {
     // Aditional tests
     public void foo(String[] args) {
         double d = 1.1;
-        float f = 2.2;
+        float f = 2.2f;
         float f1 = 2f;
         BigDecimal bd3 = new BigDecimal(f); // Noncompliant
         BigDecimal bd4 = new BigDecimal(f1); // Noncompliant

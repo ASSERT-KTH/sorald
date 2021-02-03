@@ -44,12 +44,13 @@ public class CompareStringsBoxedTypesWithEquals {
         eq = (null == x); // Compliant
     }
 
+    enum foo {
+        BAR,
+        XOR
+    }
+
     // ENUM comparisons are excluded from transformation
     private void nullCompare2() {
-        enum foo {
-            BAR,
-            XOR
-        }
         foo x = foo.BAR;
         eq = (x == foo.BAR); // Compliant
         eq = (foo.XOR == x); // Compliant
@@ -70,7 +71,7 @@ public class CompareStringsBoxedTypesWithEquals {
         Object a = 1;
         Object b = 1;
         eq = a == b; // Compliant
-        int x = 2;
+        Integer x = 2;
         eq = a == x; // Compliant
     }
 
