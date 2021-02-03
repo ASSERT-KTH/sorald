@@ -273,5 +273,78 @@
             "createdAt": "2021-02-02 09:06:07.088211",
             "lastModified": "2021-02-02 09:07:07.155301"
         }
+    },
+    "verificatum/verificatum-vmn#12": {
+        "repoSlug": "verificatum/verificatum-vmn",
+        "prMetadata": {
+            "url": "https://github.com/verificatum/verificatum-vmn/pull/12",
+            "createdAt": "2021-02-03 07:41:47",
+            "closedAt": null,
+            "mergedAt": null,
+            "state": "open",
+            "isMerged": false,
+            "number": 12
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 2,
+                    "ruleName": "UnclosedResources",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2095",
+                    "nbViolationsBefore": 2,
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 81,
+                            "endColumn": 56,
+                            "startColumn": 28,
+                            "startLine": 81,
+                            "filePath": "VerificatumTool.java",
+                            "violationSpecifier": "2095:VerificatumTool.java:81:28:81:56"
+                        },
+                        {
+                            "endLine": 82,
+                            "endColumn": 56,
+                            "startColumn": 28,
+                            "startLine": 82,
+                            "filePath": "src/java/com/verificatum/vmn/VMNTool.java",
+                            "violationSpecifier": "2095:src/java/com/verificatum/vmn/VMNTool.java:82:28:82:56"
+                        }
+                    ],
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: 1a579ab1",
+                "javaVersion": "11.0.10",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    ".",
+                    "--rule-keys",
+                    "2095",
+                    "--file-output-strategy",
+                    "IN_PLACE",
+                    "--stats-output-file",
+                    "repairs.json"
+                ]
+            },
+            "totalTimeMs": 5410,
+            "repairTimeMs": 187,
+            "startTimeMs": 1612337844899,
+            "crashes": [],
+            "endTimeMs": 1612337850309,
+            "parseTimeMs": 1119
+        },
+        "diffs": {
+            "initial": "diff --git a/VerificatumTool.java b/VerificatumTool.java\nindex 55fec80..c8dff05 100644\n--- a/VerificatumTool.java\n+++ b/VerificatumTool.java\n@@ -78,15 +78,15 @@ private VerificatumTool() { }\n     private static void formatParagraph(final StringBuilder sb,\n                                         final String command,\n                                         final String description) {\n-        final Formatter f = new Formatter(sb, Locale.US);\n-\n-        final String broken = Util.breakLines(description, Opt.LINE_WIDTH - 8);\n-        final String[] lines = Util.split(broken, \"\\n\");\n-        f.format(\" %-4s - %s\", command, lines[0]);\n-        for (int i = 1; i < lines.length; i++) {\n-            f.format(\"%n%5s   %s\", \"\", lines[i]);\n+        try (final Formatter f = new Formatter(sb, Locale.US)) {\n+            final String broken = Util.breakLines(description, Opt.LINE_WIDTH - 8);\n+            final String[] lines = Util.split(broken, \"\\n\");\n+            f.format(\" %-4s - %s\", command, lines[0]);\n+            for (int i = 1; i < lines.length; i++) {\n+                f.format(\"%n%5s   %s\", \"\", lines[i]);\n+            }\n+            sb.append('\\n');\n         }\n-        sb.append('\\n');\n     }\n \n     /**\ndiff --git a/src/java/com/verificatum/vmn/VMNTool.java b/src/java/com/verificatum/vmn/VMNTool.java\nindex 636d54f..4491feb 100644\n--- a/src/java/com/verificatum/vmn/VMNTool.java\n+++ b/src/java/com/verificatum/vmn/VMNTool.java\n@@ -79,15 +79,15 @@ private VMNTool() { }\n     private static void formatParagraph(final StringBuilder sb,\n                                         final String command,\n                                         final String description) {\n-        final Formatter f = new Formatter(sb, Locale.US);\n-\n-        final String broken = Util.breakLines(description, Opt.LINE_WIDTH - 8);\n-        final String[] lines = Util.split(broken, \"\\n\");\n-        f.format(\" %-4s - %s\", command, lines[0]);\n-        for (int i = 1; i < lines.length; i++) {\n-            f.format(\"%n%5s   %s\", \"\", lines[i]);\n+        try (final Formatter f = new Formatter(sb, Locale.US)) {\n+            final String broken = Util.breakLines(description, Opt.LINE_WIDTH - 8);\n+            final String[] lines = Util.split(broken, \"\\n\");\n+            f.format(\" %-4s - %s\", command, lines[0]);\n+            for (int i = 1; i < lines.length; i++) {\n+                f.format(\"%n%5s   %s\", \"\", lines[i]);\n+            }\n+            sb.append('\\n');\n         }\n-        sb.append('\\n');\n     }\n \n     /**\n",
+            "final": null
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-03 08:43:22.402412",
+            "lastModified": "2021-02-03 08:43:22.402412"
+        }
     }
 }
