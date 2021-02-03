@@ -27,6 +27,7 @@ public class GreedyBestFitScannerTest {
 
         Launcher launcher = new Launcher();
         launcher.getEnvironment().setIgnoreDuplicateDeclarations(true);
+        launcher.getEnvironment().setComplianceLevel(Constants.DEFAULT_COMPLIANCE_LEVEL);
         launcher.addInputResource(projectBaseDir.toString());
         CtModel model = launcher.buildModel();
 
