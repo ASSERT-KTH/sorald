@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.IdentityHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -257,9 +258,14 @@ public class Repair {
     private void repairModelWithInitializedProcessor(
             CtModel model, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
         EventHelper.fireEvent(EventType.REPAIR_START, eventHandlers);
-        var bestFits =
-                GreedyBestFitScanner.calculateBestFits(
-                        model.getUnnamedModule(), violations, processor);
+        var bestFits = new IdentityHashMap<CtElement, RuleViolation>();
+        model.getAllModules().stream()
+                .map(
+                        module ->
+                                GreedyBestFitScanner.calculateBestFits(
+                                        module, violations, processor))
+                .flatMap(m -> m.entrySet().stream())
+                .forEach(entry -> bestFits.put(entry.getKey(), entry.getValue()));
         processor.setBestFits(bestFits);
 
         Factory factory = model.getUnnamedModule().getFactory();
@@ -371,6 +377,7 @@ public class Repair {
     private Launcher initLauncher(Launcher launcher) {
         Environment env = launcher.getEnvironment();
         env.setIgnoreDuplicateDeclarations(true);
+        env.setComplianceLevel(Constants.DEFAULT_COMPLIANCE_LEVEL);
 
         // this is a workaround for https://github.com/INRIA/spoon/issues/3693
         if (config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER) {

@@ -3,6 +3,7 @@ import shlex
 import pathlib
 
 from sorald import achievements
+from sorald._helpers import jsonkeys
 
 import _constants
 
@@ -43,7 +44,9 @@ def test_correctly_renders_pr_without_repair_data(tmp_path):
     prs_json_file = tmp_path / "prs.json"
 
     prs_data = json.loads(PRS_JSON_FINAL.read_text(achievements.ENCODING))
-    prs_data["redhat-developer/rsp-server#619"]["sorald_statistics"]["repairs"] = []
+    prs_data["redhat-developer/rsp-server#619"][jsonkeys.SORALD_STATS.SECTION_KEY][
+        jsonkeys.SORALD_STATS.REPAIRS
+    ] = []
     prs_json_file.write_text(
         json.dumps(prs_data, indent=4), encoding=achievements.ENCODING
     )

@@ -28,6 +28,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
+import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.FileUtils;
@@ -177,6 +178,27 @@ public class ProcessorTest {
                                 .resolve(Constants.SPOONED)
                                 .resolve(testCase.outfileRelpath));
         assertThat(output, not(containsString("\t")));
+    }
+
+    @Test
+    public void sorald_canProcessProject_withModuleInfo() throws Exception {
+        // act
+        ProcessorTestHelper.runSorald(
+                Paths.get(Constants.PATH_TO_RESOURCES_FOLDER)
+                        .resolve("scenario_test_files")
+                        .resolve("project.with.module")
+                        .toFile(),
+                DeadStoreCheck.class);
+
+        // assert
+        Path sourceFile =
+                Paths.get(Constants.SORALD_WORKSPACE)
+                        .resolve(Constants.SPOONED)
+                        .resolve("some")
+                        .resolve("pkg")
+                        .resolve("ClassInNamedModuleWithDeadStores.java");
+
+        RuleVerifier.verifyNoIssue(sourceFile.toString(), new DeadStoreCheck());
     }
 
     /**

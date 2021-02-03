@@ -9,6 +9,7 @@ required = [
     "requests",
     "tqdm>=4.51.0",
     "pandas>=1.1.3",
+    "beautifulsoup4>=4.9.3",
 ]
 
 setup(
