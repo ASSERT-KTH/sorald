@@ -12,18 +12,18 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtType;
 
 /* Only add the CtType object if it does not exist in the map yet */
-public class UniqueTypesCollector {
-    private static UniqueTypesCollector uniqueTypesCollector;
+public class CompilationUnitCollector {
+    private static CompilationUnitCollector uniqueTypesCollector;
 
     private final Map<Path, CtCompilationUnit> pathToCu;
     private final SoraldConfig config;
 
-    private UniqueTypesCollector(SoraldConfig config) {
+    private CompilationUnitCollector(SoraldConfig config) {
         this.config = config;
         pathToCu = new HashMap<>();
     }
 
-    public static UniqueTypesCollector getInstance() {
+    public static CompilationUnitCollector getInstance() {
         if (uniqueTypesCollector == null) {
             throw new IllegalStateException("must call reset first");
         }
@@ -31,7 +31,7 @@ public class UniqueTypesCollector {
     }
 
     public static void reset(SoraldConfig config) {
-        UniqueTypesCollector.uniqueTypesCollector = new UniqueTypesCollector(config);
+        CompilationUnitCollector.uniqueTypesCollector = new CompilationUnitCollector(config);
     }
 
     public Set<CtCompilationUnit> getCollectedCompilationUnits() {

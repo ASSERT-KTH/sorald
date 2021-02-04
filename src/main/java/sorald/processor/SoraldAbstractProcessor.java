@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import sorald.UniqueTypesCollector;
+import sorald.CompilationUnitCollector;
 import sorald.annotations.ProcessorAnnotation;
 import sorald.event.EventHelper;
 import sorald.event.SoraldEventHandler;
@@ -142,7 +142,7 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
             repair(element);
 
             EventHelper.fireEvent(new RepairEvent(bestFits.get(element), false), eventHandlers);
-            UniqueTypesCollector.getInstance().collect(element);
+            CompilationUnitCollector.getInstance().collect(element);
 
             processedViolations.add(bestFits.get(element));
         } catch (Exception e) {
