@@ -55,7 +55,7 @@ public class CompilationUnitCollector implements SoraldEventHandler {
         Path filePath = element.getPosition().getFile().toPath().toAbsolutePath();
 
         if (config.getFileOutputStrategy() == FileOutputStrategy.CHANGED_ONLY) {
-            removeOriginalSourceVersion(filePath);
+            removeOriginalSourceCompilationUnit(filePath);
         }
 
         CtType<?> type =
@@ -72,7 +72,7 @@ public class CompilationUnitCollector implements SoraldEventHandler {
      * Therefore, this method removes the original compilation unit if it exists, and filePath is
      * located inside the intermediate dir.
      */
-    private void removeOriginalSourceVersion(Path filePath) {
+    private void removeOriginalSourceCompilationUnit(Path filePath) {
         Path spoonedIntermediatePath =
                 Paths.get(Constants.SORALD_WORKSPACE)
                         .resolve(Constants.SPOONED_INTERMEDIATE)
