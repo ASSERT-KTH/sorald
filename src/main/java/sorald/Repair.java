@@ -62,6 +62,7 @@ public class Repair {
     private int patchedFileCounter = 0;
 
     final List<SoraldEventHandler> eventHandlers;
+    private final CompilationUnitCollector cuCollector;
 
     public Repair(SoraldConfig config, List<? extends SoraldEventHandler> eventHandlers) {
         this.config = config;
@@ -70,12 +71,15 @@ public class Repair {
         }
         spoonedPath = Paths.get(config.getWorkspace()).resolve(Constants.SPOONED);
         intermediateSpoonedPath = spoonedPath.resolve(Constants.INTERMEDIATE);
-        this.eventHandlers = Collections.unmodifiableList(eventHandlers);
+
+        cuCollector = new CompilationUnitCollector(config);
+        List<SoraldEventHandler> eventHandlersCopy = new ArrayList<>(eventHandlers);
+        eventHandlersCopy.add(cuCollector);
+        this.eventHandlers = Collections.unmodifiableList(eventHandlersCopy);
     }
 
     /** Execute a repair according to the config. */
     public void repair() {
-        CompilationUnitCollector.reset(config);
         List<Integer> ruleKeys = config.getRuleKeys();
         List<SoraldAbstractProcessor<?>> addedProcessors = new ArrayList<>();
 
@@ -297,7 +301,7 @@ public class Repair {
         Collection<CtCompilationUnit> compilationUnits =
                 config.getFileOutputStrategy() == FileOutputStrategy.ALL || isIntermediateOutputDir
                         ? CompilationUnitHelpers.resolveCompilationUnits(model.getAllTypes())
-                        : CompilationUnitCollector.getInstance().getCollectedCompilationUnits();
+                        : cuCollector.getCollectedCompilationUnits();
         compilationUnits.forEach(cu -> writeCompilationUnit(cu, outputDir));
     }
 

@@ -23,17 +23,17 @@ class CompilationUnitCollectorTest {
         String originalFilesPath = ProcessorTestHelper.TEST_FILES_ROOT.toAbsolutePath().toString();
         var config = new SoraldConfig();
         config.setOriginalFilesPath(originalFilesPath);
-        CompilationUnitCollector.reset(config);
+        var cuCollector = new CompilationUnitCollector(config);
 
         launcher.addInputResource(originalFilesPath);
         Collection<CtType<?>> types = launcher.buildModel().getAllTypes();
         var expectedCUs = launcher.getFactory().CompilationUnit().getMap().values();
 
         // act
-        types.forEach(type -> CompilationUnitCollector.getInstance().collect(type));
+        types.forEach(cuCollector::collect);
 
         // assert
-        var collectedCUs = CompilationUnitCollector.getInstance().getCollectedCompilationUnits();
+        var collectedCUs = cuCollector.getCollectedCompilationUnits();
         assertThat(newIdentityHashSet(collectedCUs), equalTo(newIdentityHashSet(expectedCUs)));
     }
 }

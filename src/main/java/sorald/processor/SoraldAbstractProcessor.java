@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import sorald.CompilationUnitCollector;
 import sorald.annotations.ProcessorAnnotation;
 import sorald.event.EventHelper;
 import sorald.event.SoraldEventHandler;
@@ -136,20 +135,23 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     @Override
     public final void process(E element) {
+        CtElement elementClone = element.clone();
+        elementClone.setParent(element.getParent());
         try {
             assert !processedViolations.contains(bestFits.get(element));
 
             repair(element);
 
-            EventHelper.fireEvent(new RepairEvent(bestFits.get(element), false), eventHandlers);
-            CompilationUnitCollector.getInstance().collect(element);
+            EventHelper.fireEvent(
+                    new RepairEvent(bestFits.get(element), elementClone, false), eventHandlers);
 
             processedViolations.add(bestFits.get(element));
         } catch (Exception e) {
             fireCrashEvent("process", e);
 
             if (bestFits != null && bestFits.containsKey(element)) {
-                EventHelper.fireEvent(new RepairEvent(bestFits.get(element), true), eventHandlers);
+                EventHelper.fireEvent(
+                        new RepairEvent(bestFits.get(element), elementClone, true), eventHandlers);
             }
         }
     }

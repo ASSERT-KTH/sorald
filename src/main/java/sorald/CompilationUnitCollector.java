@@ -7,31 +7,22 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import sorald.event.EventType;
+import sorald.event.SoraldEvent;
+import sorald.event.SoraldEventHandler;
+import sorald.event.models.RepairEvent;
 import spoon.reflect.declaration.CtCompilationUnit;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtType;
 
 /* Only add the CtType object if it does not exist in the map yet */
-public class CompilationUnitCollector {
-    private static CompilationUnitCollector uniqueTypesCollector;
-
+public class CompilationUnitCollector implements SoraldEventHandler {
     private final Map<Path, CtCompilationUnit> pathToCu;
     private final SoraldConfig config;
 
-    private CompilationUnitCollector(SoraldConfig config) {
+    public CompilationUnitCollector(SoraldConfig config) {
         this.config = config;
         pathToCu = new HashMap<>();
-    }
-
-    public static CompilationUnitCollector getInstance() {
-        if (uniqueTypesCollector == null) {
-            throw new IllegalStateException("must call reset first");
-        }
-        return uniqueTypesCollector;
-    }
-
-    public static void reset(SoraldConfig config) {
-        CompilationUnitCollector.uniqueTypesCollector = new CompilationUnitCollector(config);
     }
 
     public Set<CtCompilationUnit> getCollectedCompilationUnits() {
@@ -73,6 +64,13 @@ public class CompilationUnitCollector {
                             : origFilesPath.resolve(spoonedIntermediatePath.relativize(filePath));
 
             pathToCu.remove(origPath);
+        }
+    }
+
+    @Override
+    public void registerEvent(SoraldEvent event) {
+        if (event.type() == EventType.REPAIR) {
+            collect(((RepairEvent) event).getElement());
         }
     }
 }
