@@ -10,7 +10,7 @@ import sorald.processor.ProcessorTestHelper;
 import spoon.Launcher;
 import spoon.reflect.declaration.CtType;
 
-class UniqueTypesCollectorTest {
+class CompilationUnitCollectorTest {
 
     /**
      * Test that the UniqueTypesCollector can collect and retain many unique compilation units
