@@ -61,7 +61,11 @@ class CompilationUnitHelpers {
         return compilationUnits;
     }
 
-    private static CtCompilationUnit getCompilationUnit(CtType<?> type) {
+    /**
+     * @param type A type.
+     * @return The compilation unit of this type.
+     */
+    public static CtCompilationUnit getCompilationUnit(CtType<?> type) {
         return type.getFactory().CompilationUnit().getOrCreate(type);
     }
 }

@@ -39,21 +39,15 @@ public class CompilationUnitCollector {
     }
 
     public void collect(CtElement element) {
-        CtType<?> topLevelType =
-                (element instanceof CtType) && ((CtType<?>) element).isTopLevel()
-                        ? (CtType<?>) element
-                        : element.getParent(CtType.class)
-                                .getReference()
-                                .getTopLevelType()
-                                .getTypeDeclaration();
         Path filePath = element.getPosition().getFile().toPath().toAbsolutePath();
 
         if (config.getFileOutputStrategy() == FileOutputStrategy.CHANGED_ONLY) {
             removeOriginalSourceVersion(filePath);
         }
 
-        CtCompilationUnit cu =
-                topLevelType.getFactory().CompilationUnit().getOrCreate(topLevelType);
+        CtType<?> type =
+                (element instanceof CtType) ? (CtType<?>) element : element.getParent(CtType.class);
+        CtCompilationUnit cu = CompilationUnitHelpers.getCompilationUnit(type);
         pathToCu.put(filePath, cu);
     }
 
