@@ -1,7 +1,13 @@
 package sorald;
 
+import static sorald.support.IdentityHashSet.newIdentityHashSet;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import spoon.reflect.declaration.CtCompilationUnit;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtType;
 
@@ -9,41 +15,44 @@ import spoon.reflect.declaration.CtType;
 public class UniqueTypesCollector {
     private static UniqueTypesCollector uniqueTypesCollector;
 
-    private Map<String, CtType<?>> topLevelTypes4Output;
+    private final Map<Path, CtCompilationUnit> pathToCu;
+    private final SoraldConfig config;
 
-    private UniqueTypesCollector() {
-        this.topLevelTypes4Output = new HashMap<>();
+    private UniqueTypesCollector(SoraldConfig config) {
+        this.config = config;
+        pathToCu = new HashMap<>();
     }
 
     public static UniqueTypesCollector getInstance() {
         if (uniqueTypesCollector == null) {
-            uniqueTypesCollector = new UniqueTypesCollector();
+            throw new IllegalStateException("must call reset first");
         }
         return uniqueTypesCollector;
     }
 
-    public Map<String, CtType<?>> getTopLevelTypes4Output() {
-        return this.topLevelTypes4Output;
+    public static void reset(SoraldConfig config) {
+        UniqueTypesCollector.uniqueTypesCollector = new UniqueTypesCollector(config);
     }
 
-    public void reset() {
-        this.uniqueTypesCollector = new UniqueTypesCollector();
+    public Set<CtCompilationUnit> getCollectedCompilationUnits() {
+        return newIdentityHashSet(pathToCu.values());
     }
 
     public void collect(CtElement element) {
-        if (this.topLevelTypes4Output != null) {
-            CtType<?> t =
-                    (element instanceof CtType)
-                            ? (CtType<?>) element
-                            : element.getParent(CtType.class);
-            CtType<?> topParent = t.getReference().getTopLevelType().getDeclaration();
-            String filePath = element.getPosition().getFile().getAbsolutePath();
+        CtType<?> topLevelType =
+                (element instanceof CtType) && ((CtType<?>) element).isTopLevel()
+                        ? (CtType<?>) element
+                        : element.getParent(CtType.class)
+                                .getReference()
+                                .getTopLevelType()
+                                .getTypeDeclaration();
+        Path filePath = element.getPosition().getFile().toPath().toAbsolutePath();
 
-            checkIfThereIsTheSameClassInTheOriginalPath(filePath);
-            if (!this.topLevelTypes4Output.containsKey(filePath)) {
-                this.topLevelTypes4Output.put(filePath, topParent);
-            }
-        }
+        checkIfThereIsTheSameClassInTheOriginalPath(filePath);
+
+        CtCompilationUnit cu =
+                topLevelType.getFactory().CompilationUnit().getOrCreate(topLevelType);
+        pathToCu.put(filePath, cu);
     }
 
     /*
@@ -53,22 +62,23 @@ public class UniqueTypesCollector {
     transformations when printing only changed files (FileOutputStrategy.CHANGED_ONLY).
     In such a case, the following method will unregistered an old version of the file.
     */
-    private void checkIfThereIsTheSameClassInTheOriginalPath(String filePath) {
-        Object topLevelTypeToBeRemoved = null;
-        for (Map.Entry<String, CtType<?>> topLevelType : this.topLevelTypes4Output.entrySet()) {
-            int index = filePath.indexOf(Constants.SPOONED_INTERMEDIATE);
-            filePath =
-                    ".*"
-                            + filePath.substring(
-                                    index + Constants.SPOONED_INTERMEDIATE.length(),
-                                    filePath.length());
-            if (topLevelType.getKey().toString().matches(filePath)) {
-                topLevelTypeToBeRemoved = topLevelType.getKey();
-                break;
-            }
-        }
-        if (topLevelTypeToBeRemoved != null) {
-            this.topLevelTypes4Output.remove(topLevelTypeToBeRemoved);
+    private void checkIfThereIsTheSameClassInTheOriginalPath(Path filePath) {
+        Path spoonedIntermediatePath =
+                Paths.get(Constants.SORALD_WORKSPACE)
+                        .resolve(Constants.SPOONED_INTERMEDIATE)
+                        .toAbsolutePath();
+
+        if (filePath.startsWith(spoonedIntermediatePath)) {
+            Path relPath = spoonedIntermediatePath.relativize(filePath);
+
+            // if the previous run used the original source directory
+            Path origFilesPath = Paths.get(config.getOriginalFilesPath());
+            Path origPath =
+                    origFilesPath.toFile().isFile()
+                            ? origFilesPath
+                            : origFilesPath.resolve(relPath);
+
+            pathToCu.remove(origPath);
         }
     }
 }

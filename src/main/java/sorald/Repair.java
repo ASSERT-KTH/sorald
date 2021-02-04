@@ -75,7 +75,7 @@ public class Repair {
 
     /** Execute a repair according to the config. */
     public void repair() {
-        UniqueTypesCollector.getInstance().reset();
+        UniqueTypesCollector.reset(config);
         List<Integer> ruleKeys = config.getRuleKeys();
         List<SoraldAbstractProcessor<?>> addedProcessors = new ArrayList<>();
 
@@ -294,12 +294,11 @@ public class Repair {
         boolean isIntermediateOutputDir =
                 outputDir.toString().contains(intermediateSpoonedPath.toString());
 
-        Collection<CtType<?>> types =
+        Collection<CtCompilationUnit> compilationUnits =
                 config.getFileOutputStrategy() == FileOutputStrategy.ALL || isIntermediateOutputDir
-                        ? model.getAllTypes()
-                        : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().values();
-        CompilationUnitHelpers.resolveCompilationUnits(types)
-                .forEach(type -> writeCompilationUnit(type, outputDir));
+                        ? CompilationUnitHelpers.resolveCompilationUnits(model.getAllTypes())
+                        : UniqueTypesCollector.getInstance().getCollectedCompilationUnits();
+        compilationUnits.forEach(cu -> writeCompilationUnit(cu, outputDir));
     }
 
     private void writeCompilationUnit(CtCompilationUnit cu, Path outputDir) {
