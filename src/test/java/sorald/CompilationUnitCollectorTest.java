@@ -30,7 +30,7 @@ class CompilationUnitCollectorTest {
         var expectedCUs = launcher.getFactory().CompilationUnit().getMap().values();
 
         // act
-        types.forEach(cuCollector::collect);
+        types.forEach(cuCollector::collectCompilationUnit);
 
         // assert
         var collectedCUs = cuCollector.getCollectedCompilationUnits();
