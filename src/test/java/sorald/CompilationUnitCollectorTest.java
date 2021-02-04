@@ -6,6 +6,7 @@ import static sorald.support.IdentityHashSet.newIdentityHashSet;
 
 import java.util.Collection;
 import org.junit.jupiter.api.Test;
+import sorald.event.collectors.CompilationUnitCollector;
 import sorald.processor.ProcessorTestHelper;
 import spoon.Launcher;
 import spoon.reflect.declaration.CtType;

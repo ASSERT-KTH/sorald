@@ -24,6 +24,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
+import sorald.event.collectors.CompilationUnitCollector;
 import sorald.event.models.CrashEvent;
 import sorald.event.models.miner.MinedViolationEvent;
 import sorald.processor.SoraldAbstractProcessor;

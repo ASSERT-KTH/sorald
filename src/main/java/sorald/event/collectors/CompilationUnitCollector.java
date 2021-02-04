@@ -1,4 +1,4 @@
-package sorald;
+package sorald.event.collectors;
 
 import static sorald.support.IdentityHashSet.newIdentityHashSet;
 
@@ -7,6 +7,10 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import sorald.CompilationUnitHelpers;
+import sorald.Constants;
+import sorald.FileOutputStrategy;
+import sorald.SoraldConfig;
 import sorald.event.EventType;
 import sorald.event.SoraldEvent;
 import sorald.event.SoraldEventHandler;
