@@ -48,35 +48,35 @@ public class CompilationUnitCollector {
                                 .getTypeDeclaration();
         Path filePath = element.getPosition().getFile().toPath().toAbsolutePath();
 
-        checkIfThereIsTheSameClassInTheOriginalPath(filePath);
+        if (config.getFileOutputStrategy() == FileOutputStrategy.CHANGED_ONLY) {
+            removeOriginalSourceVersion(filePath);
+        }
 
         CtCompilationUnit cu =
                 topLevelType.getFactory().CompilationUnit().getOrCreate(topLevelType);
         pathToCu.put(filePath, cu);
     }
 
-    /*
-    When multiple processors are executed, and the first one executed changes a file
-    that is also changed by another processor later, the file is registered as changed twice,
-    but with different locations (and changes), what leads to the lost of a part of the
-    transformations when printing only changed files (FileOutputStrategy.CHANGED_ONLY).
-    In such a case, the following method will unregistered an old version of the file.
-    */
-    private void checkIfThereIsTheSameClassInTheOriginalPath(Path filePath) {
+    /**
+     * When multiple processors are executed, and the first one executed changes a file that is also
+     * changed by another processor later, the file is registered as changed twice, but with
+     * different locations (one is in original source dir, one is in intermediate dir). This leads
+     * to a loss of edits when printing only changed files (FileOutputStrategy.CHANGED_ONLY).
+     * Therefore, this method removes the original compilation unit if it exists, and filePath is
+     * located inside the intermediate dir.
+     */
+    private void removeOriginalSourceVersion(Path filePath) {
         Path spoonedIntermediatePath =
                 Paths.get(Constants.SORALD_WORKSPACE)
                         .resolve(Constants.SPOONED_INTERMEDIATE)
                         .toAbsolutePath();
 
-        if (filePath.startsWith(spoonedIntermediatePath)) {
-            Path relPath = spoonedIntermediatePath.relativize(filePath);
-
-            // if the previous run used the original source directory
+        if (filePath.startsWith(spoonedIntermediatePath) && !pathToCu.containsKey(filePath)) {
             Path origFilesPath = Paths.get(config.getOriginalFilesPath());
             Path origPath =
                     origFilesPath.toFile().isFile()
                             ? origFilesPath
-                            : origFilesPath.resolve(relPath);
+                            : origFilesPath.resolve(spoonedIntermediatePath.relativize(filePath));
 
             pathToCu.remove(origPath);
         }
