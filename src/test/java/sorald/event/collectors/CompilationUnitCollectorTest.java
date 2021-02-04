@@ -1,4 +1,4 @@
-package sorald;
+package sorald.event.collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -6,7 +6,7 @@ import static sorald.support.IdentityHashSet.newIdentityHashSet;
 
 import java.util.Collection;
 import org.junit.jupiter.api.Test;
-import sorald.event.collectors.CompilationUnitCollector;
+import sorald.SoraldConfig;
 import sorald.processor.ProcessorTestHelper;
 import spoon.Launcher;
 import spoon.reflect.declaration.CtType;
