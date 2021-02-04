@@ -32,7 +32,10 @@ public class UniqueTypesCollector {
 
     public void collect(CtElement element) {
         if (this.topLevelTypes4Output != null) {
-            CtType<?> t = (CtType<?>) element.getParent(CtType.class);
+            CtType<?> t =
+                    (element instanceof CtType)
+                            ? (CtType<?>) element
+                            : element.getParent(CtType.class);
             CtType<?> topParent = t.getReference().getTopLevelType().getDeclaration();
             String filePath = element.getPosition().getFile().getAbsolutePath();
 
