@@ -59,3 +59,5 @@ class SORALD_STATS:
 
         REPO_SLUG = "repo_slug"
         PR_URL = "PR_url"
+        RULE_KEY = "rule_id"
+        NUM_VIOLATIONS = "nb_violations"

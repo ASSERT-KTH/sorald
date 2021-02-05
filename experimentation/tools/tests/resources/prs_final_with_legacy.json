@@ -1,0 +1,36 @@
+{
+    "apache/jspwiki#11": {
+        "repoSlug": "apache/jspwiki",
+        "prMetadata": {
+            "url": "https://github.com/apache/jspwiki/pull/11",
+            "createdAt": "2019-11-05 11:42:48",
+            "closedAt": "2019-11-05 19:11:09",
+            "mergedAt": "2019-11-05 19:11:08",
+            "state": "closed",
+            "isMerged": true,
+            "number": 11
+        },
+        "soraldStatistics": {
+            "rule_id": 4973,
+            "rule_name": "CompareStringsBoxedTypesWithEquals",
+            "nb_violations": 3,
+            "repo_slug": "apache/jspwiki",
+            "PR_url": "https://github.com/apache/jspwiki/pull/11",
+            "PR_opening_date": "Nov 5, 2019",
+            "PR_status": "Merged",
+            "PR_status_date": "Nov 5, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/32",
+            "diff": "https://github.com/SpoonLabs/sorald/tree/master/experimentation/pull-requests/jspwiki/4973"
+        },
+        "diffs": {
+            "initial": "diff --git a/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java b/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java\nindex b75e91129f..eb58b90eed 100644\n--- a/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java\n+++ b/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java\n@@ -484,7 +484,7 @@ public void actionPerformed( WikiEvent event )\n                     case WikiSecurityEvent.PRINCIPAL_ADD:\n                     {\n                         WikiSession target = (WikiSession)e.getTarget();\n-                        if ( this.equals( target ) && m_status == AUTHENTICATED )\n+                        if ( this.equals( target ) && m_status.equals(AUTHENTICATED) )\n                         {\n                             Set<Principal> principals = m_subject.getPrincipals();\n                             principals.add( (Principal)e.getPrincipal());\n@@ -569,7 +569,7 @@ public void actionPerformed( WikiEvent event )\n                     {\n                         // Refresh user principals based on new user profile\n                         WikiSession source = e.getSrc();\n-                        if ( this.equals( source ) && m_status == AUTHENTICATED )\n+                        if ( this.equals( source ) && m_status.equals(AUTHENTICATED) )\n                         {\n                             // To prepare for refresh, set the new full name as the primary principal\n                             UserProfile[] profiles = (UserProfile[])e.getTarget();\ndiff --git a/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java b/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java\nindex 10906ba04a..afc12e334c 100644\n--- a/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java\n+++ b/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java\n@@ -212,7 +212,7 @@ public String execute( WikiContext context, Map<String, String> params )\n \n                 res.append(\"<div class=\\\"inserted-page \");\n                 if( clazz != null ) res.append( clazz );\n-                if( style != DEFAULT_STYLE ) res.append(\"\\\" style=\\\"\"+style );\n+                if( !style.equals(DEFAULT_STYLE) ) res.append(\"\\\" style=\\\"\"+style );\n                 if( showOnce ) res.append(\"\\\" data-once=\\\"\"+cookieName );\n                 res.append(\"\\\" >\");\n \n",
+            "final": "diff --git a/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java b/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java\nindex b75e91129f..eb58b90eed 100644\n--- a/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java\n+++ b/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java\n@@ -484,7 +484,7 @@ public void actionPerformed( WikiEvent event )\n                     case WikiSecurityEvent.PRINCIPAL_ADD:\n                     {\n                         WikiSession target = (WikiSession)e.getTarget();\n-                        if ( this.equals( target ) && m_status == AUTHENTICATED )\n+                        if ( this.equals( target ) && m_status.equals(AUTHENTICATED) )\n                         {\n                             Set<Principal> principals = m_subject.getPrincipals();\n                             principals.add( (Principal)e.getPrincipal());\n@@ -569,7 +569,7 @@ public void actionPerformed( WikiEvent event )\n                     {\n                         // Refresh user principals based on new user profile\n                         WikiSession source = e.getSrc();\n-                        if ( this.equals( source ) && m_status == AUTHENTICATED )\n+                        if ( this.equals( source ) && m_status.equals(AUTHENTICATED) )\n                         {\n                             // To prepare for refresh, set the new full name as the primary principal\n                             UserProfile[] profiles = (UserProfile[])e.getTarget();\ndiff --git a/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java b/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java\nindex 10906ba04a..afc12e334c 100644\n--- a/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java\n+++ b/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java\n@@ -212,7 +212,7 @@ public String execute( WikiContext context, Map<String, String> params )\n \n                 res.append(\"<div class=\\\"inserted-page \");\n                 if( clazz != null ) res.append( clazz );\n-                if( style != DEFAULT_STYLE ) res.append(\"\\\" style=\\\"\"+style );\n+                if( !style.equals(DEFAULT_STYLE) ) res.append(\"\\\" style=\\\"\"+style );\n                 if( showOnce ) res.append(\"\\\" data-once=\\\"\"+cookieName );\n                 res.append(\"\\\" >\");\n \n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:25.905857",
+            "lastModified": "2021-02-05 08:51:27.586815",
+            "isLegacyRecord": true
+        }
+    }
+}

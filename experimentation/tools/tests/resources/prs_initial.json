@@ -85,7 +85,8 @@
         "manualEdits": [],
         "recordMetadata": {
             "createdAt": "2020-12-18 08:50:28.743261",
-            "lastModified": "2020-12-18 08:50:28.743261"
+            "lastModified": "2020-12-18 08:50:28.743261",
+            "isLegacyRecord": false
         }
     }
 }
