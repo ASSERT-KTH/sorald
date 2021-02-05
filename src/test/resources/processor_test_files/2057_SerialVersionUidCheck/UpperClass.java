@@ -1,4 +1,4 @@
 import java.io.Serializable;
 
-class UpperClass implements Serializable {
+class UpperClass implements Serializable { // Noncompliant
 }
