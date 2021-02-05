@@ -62,9 +62,14 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
                     ctBinaryOperator.getParent(CtAbstractInvocation.class);
             List<CtExpression> arguments = ctAbstractInvocation.getArguments();
 
+            CtElement argToBeFound = ctBinaryOperator;
+            while (argToBeFound.getParent() != ctAbstractInvocation) {
+                argToBeFound = argToBeFound.getParent();
+            }
+
             int indexInInvocation = -1;
             for (int i = 0; i < arguments.size(); i++) {
-                if (arguments.get(i) == ctBinaryOperator) {
+                if (arguments.get(i) == argToBeFound) {
                     indexInInvocation = i;
                     break;
                 }
