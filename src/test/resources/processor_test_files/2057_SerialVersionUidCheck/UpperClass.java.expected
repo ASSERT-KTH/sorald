@@ -1,0 +1,9 @@
+package processor_test_files.2057_SerialVersionUidCheck;
+
+import java.io.Serializable;
+
+public class UpperClass implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+ 
+}

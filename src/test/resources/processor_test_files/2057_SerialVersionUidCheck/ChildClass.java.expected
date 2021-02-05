@@ -1,0 +1,6 @@
+package processor_test_files.2057_SerialVersionUidCheck;
+
+public class ChildClass extends UpperClass {
+  
+  private static final long serialVersionUID = 1L;
+}
