@@ -1,0 +1,12 @@
+{
+    "rule_id": 2111,
+    "rule_name": "BigDecimalDoubleConstructor",
+    "nb_violations": 1,
+    "repo_slug": "apache/pdfbox",
+    "PR_url": "https://github.com/apache/pdfbox/pull/76",
+    "PR_opening_date": "Nov 13, 2019",
+    "PR_status": "Merged",
+    "PR_status_date": "Nov 13, 2019",
+    "notes": "https://github.com/SpoonLabs/sorald/pull/40",
+    "diff": "https://github.com/SpoonLabs/sorald/blob/master/experimentation/pull-requests/pdfbox/2111"
+}
