@@ -6,6 +6,7 @@ import dataclasses
 import json
 import pathlib
 import sys
+import datetime
 from typing import List
 
 import jinja2
@@ -95,7 +96,8 @@ def generate_achievements_file(
 ) -> None:
     pull_requests = sorted(
         parse_pull_requests(prs_json),
-        key=lambda pr: f"{'b' if pr.is_legacy else 'a'}{pr.repo_slug}#{pr.number}",
+        key=lambda pr: datetime.datetime.fromisoformat(pr.created_at),
+        reverse=True,
     )
     rendered_content = jinja2.Template(template).render(pull_requests=pull_requests)
     output_file.write_text(rendered_content, encoding=ENCODING)
