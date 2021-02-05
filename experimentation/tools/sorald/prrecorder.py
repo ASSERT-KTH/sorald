@@ -5,7 +5,6 @@ import json
 import pathlib
 import sys
 import copy
-import os
 from typing import List, Optional
 
 import git
