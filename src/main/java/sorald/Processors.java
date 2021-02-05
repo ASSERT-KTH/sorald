@@ -1,29 +1,7 @@
 package sorald;
 
 import java.util.Map;
-import sorald.processor.ArrayHashCodeAndToStringProcessor;
-import sorald.processor.BigDecimalDoubleConstructorProcessor;
-import sorald.processor.CastArithmeticOperandProcessor;
-import sorald.processor.CompareStringsBoxedTypesWithEqualsProcessor;
-import sorald.processor.CompareToReturnValueProcessor;
-import sorald.processor.DeadStoreProcessor;
-import sorald.processor.EqualsOnAtomicClassProcessor;
-import sorald.processor.GetClassLoaderProcessor;
-import sorald.processor.InterruptedExceptionProcessor;
-import sorald.processor.IteratorNextExceptionProcessor;
-import sorald.processor.MathOnFloatProcessor;
-import sorald.processor.PublicStaticFieldShouldBeFinalProcessor;
-import sorald.processor.SelfAssignementProcessor;
-import sorald.processor.SerialVersionUidProcessor;
-import sorald.processor.SerializableFieldInSerializableClassProcessor;
-import sorald.processor.SoraldAbstractProcessor;
-import sorald.processor.SynchronizationOnGetClassProcessor;
-import sorald.processor.SynchronizationOnStringOrBoxedProcessor;
-import sorald.processor.ThreadRunProcessor;
-import sorald.processor.ToStringReturningNullProcessor;
-import sorald.processor.UnclosedResourcesProcessor;
-import sorald.processor.UnusedThrowableProcessor;
-import sorald.processor.XxeProcessingProcessor;
+import sorald.processor.*;
 
 /**
  * This class is partially generated. It is fine to edit non-generated code as per usual, but don't
