@@ -85,7 +85,8 @@
         "manualEdits": [],
         "recordMetadata": {
             "createdAt": "2021-02-02 09:00:28.730722",
-            "lastModified": "2021-02-02 09:03:44.100114"
+            "lastModified": "2021-02-02 09:03:44.100114",
+            "isLegacyRecord": false
         }
     },
     "verificatum/verificatum-vmn#11": {
@@ -271,7 +272,8 @@
         "manualEdits": [],
         "recordMetadata": {
             "createdAt": "2021-02-02 09:06:07.088211",
-            "lastModified": "2021-02-02 09:07:07.155301"
+            "lastModified": "2021-02-02 09:07:07.155301",
+            "isLegacyRecord": false
         }
     },
     "verificatum/verificatum-vmn#12": {
@@ -344,7 +346,620 @@
         "manualEdits": [],
         "recordMetadata": {
             "createdAt": "2021-02-03 08:43:22.402412",
-            "lastModified": "2021-02-03 08:43:22.402412"
+            "lastModified": "2021-02-03 08:43:22.402412",
+            "isLegacyRecord": false
+        }
+    },
+    "apache/pdfbox#76": {
+        "repoSlug": "apache/pdfbox",
+        "prMetadata": {
+            "url": "https://github.com/apache/pdfbox/pull/76",
+            "createdAt": "2019-11-13 14:30:34",
+            "closedAt": "2019-11-13 17:04:07",
+            "mergedAt": "None",
+            "state": "closed",
+            "isMerged": false,
+            "number": 76
+        },
+        "soraldStatistics": {
+            "rule_id": 2111,
+            "rule_name": "BigDecimalDoubleConstructor",
+            "nb_violations": 1,
+            "repo_slug": "apache/pdfbox",
+            "PR_url": "https://github.com/apache/pdfbox/pull/76",
+            "PR_opening_date": "Nov 13, 2019",
+            "PR_status": "Merged",
+            "PR_status_date": "Nov 13, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/40",
+            "diff": "https://github.com/SpoonLabs/sorald/blob/master/experimentation/pull-requests/pdfbox/2111"
+        },
+        "diffs": {
+            "initial": "diff --git a/pdfbox/src/main/java/org/apache/pdfbox/rendering/TilingPaint.java b/pdfbox/src/main/java/org/apache/pdfbox/rendering/TilingPaint.java\nindex 2fda626d57..78d1dd1b5b 100644\n--- a/pdfbox/src/main/java/org/apache/pdfbox/rendering/TilingPaint.java\n+++ b/pdfbox/src/main/java/org/apache/pdfbox/rendering/TilingPaint.java\n@@ -186,7 +186,7 @@ private BufferedImage getImage(PageDrawer drawer, PDTilingPattern pattern, PDCol\n      */\n     private static int ceiling(double num)\n     {\n-        BigDecimal decimal = new BigDecimal(num);\n+        BigDecimal decimal = BigDecimal.valueOf(num);\n         decimal = decimal.setScale(5, RoundingMode.CEILING); // 5 decimal places of accuracy\n         return decimal.intValue();\n     }\n",
+            "final": "diff --git a/pdfbox/src/main/java/org/apache/pdfbox/rendering/TilingPaint.java b/pdfbox/src/main/java/org/apache/pdfbox/rendering/TilingPaint.java\nindex 2fda626d57..78d1dd1b5b 100644\n--- a/pdfbox/src/main/java/org/apache/pdfbox/rendering/TilingPaint.java\n+++ b/pdfbox/src/main/java/org/apache/pdfbox/rendering/TilingPaint.java\n@@ -186,7 +186,7 @@ private BufferedImage getImage(PageDrawer drawer, PDTilingPattern pattern, PDCol\n      */\n     private static int ceiling(double num)\n     {\n-        BigDecimal decimal = new BigDecimal(num);\n+        BigDecimal decimal = BigDecimal.valueOf(num);\n         decimal = decimal.setScale(5, RoundingMode.CEILING); // 5 decimal places of accuracy\n         return decimal.intValue();\n     }\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:09.336758",
+            "lastModified": "2021-02-05 08:51:10.971894",
+            "isLegacyRecord": true
+        }
+    },
+    "apache/pdfbox#75": {
+        "repoSlug": "apache/pdfbox",
+        "prMetadata": {
+            "url": "https://github.com/apache/pdfbox/pull/75",
+            "createdAt": "2019-11-13 14:11:13",
+            "closedAt": "2019-11-13 17:58:42",
+            "mergedAt": "None",
+            "state": "closed",
+            "isMerged": false,
+            "number": 75
+        },
+        "soraldStatistics": {
+            "rule_id": 2272,
+            "rule_name": "IteratorNextException",
+            "nb_violations": 2,
+            "repo_slug": "apache/pdfbox",
+            "PR_url": "https://github.com/apache/pdfbox/pull/75",
+            "PR_opening_date": "Nov 13, 2019",
+            "PR_status": "Merged",
+            "PR_status_date": "Nov 13, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/39",
+            "diff": "https://github.com/SpoonLabs/sorald/tree/master/experimentation/pull-requests/pdfbox/2272"
+        },
+        "diffs": {
+            "initial": "diff --git a/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/PDPageTree.java b/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/PDPageTree.java\nindex 3fff155e00..de73c8603c 100644\n--- a/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/PDPageTree.java\n+++ b/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/PDPageTree.java\n@@ -18,6 +18,7 @@\n \r\n import java.util.ArrayDeque;\r\n import java.util.Iterator;\r\n+import java.util.NoSuchElementException;\r\n import java.util.Queue;\r\n import org.apache.pdfbox.cos.COSArray;\r\n import org.apache.pdfbox.cos.COSBase;\r\n@@ -200,6 +201,9 @@ public boolean hasNext()\n         @Override\r\n         public PDPage next()\r\n         {\r\n+            if (!hasNext()) {\r\n+                throw new NoSuchElementException();\r\n+            }\r\n             COSDictionary next = queue.poll();\r\n             \r\n             sanitizeType(next);\r\ndiff --git a/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/interactive/documentnavigation/outline/PDOutlineItemIterator.java b/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/interactive/documentnavigation/outline/PDOutlineItemIterator.java\nindex 5c7675af5e..e7245c2f52 100644\n--- a/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/interactive/documentnavigation/outline/PDOutlineItemIterator.java\n+++ b/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/interactive/documentnavigation/outline/PDOutlineItemIterator.java\n@@ -17,6 +17,7 @@\n package org.apache.pdfbox.pdmodel.interactive.documentnavigation.outline;\n \n import java.util.Iterator;\n+import java.util.NoSuchElementException;\n \n /**\n  * Iterator over the linked list of {@link PDOutlineItem} siblings.\n@@ -45,6 +46,9 @@ public boolean hasNext()\n     @Override\n     public PDOutlineItem next()\n     {\n+        if (!hasNext()) {\n+            throw new NoSuchElementException();\n+        }\n         if (currentItem == null)\n         {\n             currentItem = startingItem;\n",
+            "final": "diff --git a/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/PDPageTree.java b/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/PDPageTree.java\nindex 3fff155e00..de73c8603c 100644\n--- a/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/PDPageTree.java\n+++ b/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/PDPageTree.java\n@@ -18,6 +18,7 @@\n \r\n import java.util.ArrayDeque;\r\n import java.util.Iterator;\r\n+import java.util.NoSuchElementException;\r\n import java.util.Queue;\r\n import org.apache.pdfbox.cos.COSArray;\r\n import org.apache.pdfbox.cos.COSBase;\r\n@@ -200,6 +201,9 @@ public boolean hasNext()\n         @Override\r\n         public PDPage next()\r\n         {\r\n+            if (!hasNext()) {\r\n+                throw new NoSuchElementException();\r\n+            }\r\n             COSDictionary next = queue.poll();\r\n             \r\n             sanitizeType(next);\r\ndiff --git a/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/interactive/documentnavigation/outline/PDOutlineItemIterator.java b/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/interactive/documentnavigation/outline/PDOutlineItemIterator.java\nindex 5c7675af5e..e7245c2f52 100644\n--- a/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/interactive/documentnavigation/outline/PDOutlineItemIterator.java\n+++ b/pdfbox/src/main/java/org/apache/pdfbox/pdmodel/interactive/documentnavigation/outline/PDOutlineItemIterator.java\n@@ -17,6 +17,7 @@\n package org.apache.pdfbox.pdmodel.interactive.documentnavigation.outline;\n \n import java.util.Iterator;\n+import java.util.NoSuchElementException;\n \n /**\n  * Iterator over the linked list of {@link PDOutlineItem} siblings.\n@@ -45,6 +46,9 @@ public boolean hasNext()\n     @Override\n     public PDOutlineItem next()\n     {\n+        if (!hasNext()) {\n+            throw new NoSuchElementException();\n+        }\n         if (currentItem == null)\n         {\n             currentItem = startingItem;\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:11.684943",
+            "lastModified": "2021-02-05 08:51:13.426188",
+            "isLegacyRecord": true
+        }
+    },
+    "apache/sling-org-apache-sling-launchpad-base#6": {
+        "repoSlug": "apache/sling-org-apache-sling-launchpad-base",
+        "prMetadata": {
+            "url": "https://github.com/apache/sling-org-apache-sling-launchpad-base/pull/6",
+            "createdAt": "2019-11-07 15:46:21",
+            "closedAt": null,
+            "mergedAt": null,
+            "state": "open",
+            "isMerged": false,
+            "number": 6
+        },
+        "soraldStatistics": {
+            "rule_id": 4973,
+            "rule_name": "CompareStringsBoxedTypesWithEquals",
+            "nb_violations": 14,
+            "repo_slug": "apache/sling-org-apache-sling-launchpad-base",
+            "PR_url": "https://github.com/apache/sling-org-apache-sling-launchpad-base/pull/6",
+            "PR_opening_date": "Nov 7, 2019",
+            "PR_status": "Open",
+            "PR_status_date": "Nov 7, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/38",
+            "diff": "https://github.com/SpoonLabs/sorald/tree/master/experimentation/pull-requests/sling-launchpad-base/4973"
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/org/apache/sling/launchpad/app/Main.java b/src/main/java/org/apache/sling/launchpad/app/Main.java\nindex 312ba8f..e7f3c5d 100644\n--- a/src/main/java/org/apache/sling/launchpad/app/Main.java\n+++ b/src/main/java/org/apache/sling/launchpad/app/Main.java\n@@ -733,7 +733,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                 String value = arg.getValue();\n                 switch (arg.getKey().charAt(0)) {\n                     case 'j':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-j\", \"Missing host:port value\");\n                             errorArg = true;\n                             continue;\n@@ -742,7 +742,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'l':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-l\", \"Missing log level value\");\n                             errorArg = true;\n                             continue;\n@@ -751,7 +751,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'f':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-f\", \"Missing log file value\");\n                             errorArg = true;\n                             continue;\n@@ -762,7 +762,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'c':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-c\", \"Missing directory value\");\n                             errorArg = true;\n                             continue;\n@@ -771,7 +771,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'i':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-i\", \"Missing launchpad directory value\");\n                             errorArg = true;\n                             continue;\n@@ -780,7 +780,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'a':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-a\", \"Missing address value\");\n                             errorArg = true;\n                             continue;\n@@ -789,7 +789,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'p':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-p\", \"Missing port value\");\n                             errorArg = true;\n                             continue;\n@@ -805,7 +805,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'r':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-r\", \"Missing root path value\");\n                             errorArg = true;\n                             continue;\n@@ -818,7 +818,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'D':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-D\", \"Missing property assignment\");\n                             errorArg = true;\n                             continue;\ndiff --git a/src/main/java/org/apache/sling/launchpad/base/app/MainDelegate.java b/src/main/java/org/apache/sling/launchpad/base/app/MainDelegate.java\nindex 6d17038..1397697 100644\n--- a/src/main/java/org/apache/sling/launchpad/base/app/MainDelegate.java\n+++ b/src/main/java/org/apache/sling/launchpad/base/app/MainDelegate.java\n@@ -237,7 +237,7 @@ private static void parseCommandLine(Map<String, String> args,\n                 String value = arg.getValue();\n                 switch (arg.getKey().charAt(0)) {\n                     case 'l':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             terminate(\"Missing log level value\", 1);\n                             continue;\n                         }\n@@ -245,7 +245,7 @@ private static void parseCommandLine(Map<String, String> args,\n                         break;\n \n                     case 'f':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             terminate(\"Missing log file value\", 1);\n                             continue;\n                         } else if (\"-\".equals(value)) {\n@@ -255,7 +255,7 @@ private static void parseCommandLine(Map<String, String> args,\n                         break;\n \n                     case 'c':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             terminate(\"Missing directory value\", 1);\n                             continue;\n                         }\n@@ -263,7 +263,7 @@ private static void parseCommandLine(Map<String, String> args,\n                         break;\n \n                     case 'p':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             terminate(\"Missing port value\", 1);\n                             continue;\n                         }\n@@ -277,7 +277,7 @@ private static void parseCommandLine(Map<String, String> args,\n                         break;\n \n                     case 'a':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             terminate(\"Missing address value\", 1);\n                             continue;\n                         }\n",
+            "final": "diff --git a/src/main/java/org/apache/sling/launchpad/app/Main.java b/src/main/java/org/apache/sling/launchpad/app/Main.java\nindex 312ba8f..e7f3c5d 100644\n--- a/src/main/java/org/apache/sling/launchpad/app/Main.java\n+++ b/src/main/java/org/apache/sling/launchpad/app/Main.java\n@@ -733,7 +733,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                 String value = arg.getValue();\n                 switch (arg.getKey().charAt(0)) {\n                     case 'j':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-j\", \"Missing host:port value\");\n                             errorArg = true;\n                             continue;\n@@ -742,7 +742,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'l':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-l\", \"Missing log level value\");\n                             errorArg = true;\n                             continue;\n@@ -751,7 +751,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'f':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-f\", \"Missing log file value\");\n                             errorArg = true;\n                             continue;\n@@ -762,7 +762,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'c':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-c\", \"Missing directory value\");\n                             errorArg = true;\n                             continue;\n@@ -771,7 +771,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'i':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-i\", \"Missing launchpad directory value\");\n                             errorArg = true;\n                             continue;\n@@ -780,7 +780,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'a':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-a\", \"Missing address value\");\n                             errorArg = true;\n                             continue;\n@@ -789,7 +789,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'p':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-p\", \"Missing port value\");\n                             errorArg = true;\n                             continue;\n@@ -805,7 +805,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'r':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-r\", \"Missing root path value\");\n                             errorArg = true;\n                             continue;\n@@ -818,7 +818,7 @@ private static boolean installShutdownHook(Map<String, String> props) {\n                         break;\n \n                     case 'D':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             errorArg(\"-D\", \"Missing property assignment\");\n                             errorArg = true;\n                             continue;\ndiff --git a/src/main/java/org/apache/sling/launchpad/base/app/MainDelegate.java b/src/main/java/org/apache/sling/launchpad/base/app/MainDelegate.java\nindex 6d17038..1397697 100644\n--- a/src/main/java/org/apache/sling/launchpad/base/app/MainDelegate.java\n+++ b/src/main/java/org/apache/sling/launchpad/base/app/MainDelegate.java\n@@ -237,7 +237,7 @@ private static void parseCommandLine(Map<String, String> args,\n                 String value = arg.getValue();\n                 switch (arg.getKey().charAt(0)) {\n                     case 'l':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             terminate(\"Missing log level value\", 1);\n                             continue;\n                         }\n@@ -245,7 +245,7 @@ private static void parseCommandLine(Map<String, String> args,\n                         break;\n \n                     case 'f':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             terminate(\"Missing log file value\", 1);\n                             continue;\n                         } else if (\"-\".equals(value)) {\n@@ -255,7 +255,7 @@ private static void parseCommandLine(Map<String, String> args,\n                         break;\n \n                     case 'c':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             terminate(\"Missing directory value\", 1);\n                             continue;\n                         }\n@@ -263,7 +263,7 @@ private static void parseCommandLine(Map<String, String> args,\n                         break;\n \n                     case 'p':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             terminate(\"Missing port value\", 1);\n                             continue;\n                         }\n@@ -277,7 +277,7 @@ private static void parseCommandLine(Map<String, String> args,\n                         break;\n \n                     case 'a':\n-                        if (value == arg.getKey()) {\n+                        if (value.equals(arg.getKey())) {\n                             terminate(\"Missing address value\", 1);\n                             continue;\n                         }\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:14.169280",
+            "lastModified": "2021-02-05 08:51:15.771808",
+            "isLegacyRecord": true
+        }
+    },
+    "apache/sling-org-apache-sling-scripting-jsp#2": {
+        "repoSlug": "apache/sling-org-apache-sling-scripting-jsp",
+        "prMetadata": {
+            "url": "https://github.com/apache/sling-org-apache-sling-scripting-jsp/pull/2",
+            "createdAt": "2019-11-07 14:32:47",
+            "closedAt": "2019-11-12 14:04:37",
+            "mergedAt": "2019-11-12 14:04:37",
+            "state": "closed",
+            "isMerged": true,
+            "number": 2
+        },
+        "soraldStatistics": {
+            "rule_id": 4973,
+            "rule_name": "CompareStringsBoxedTypesWithEquals",
+            "nb_violations": 8,
+            "repo_slug": "apache/sling-org-apache-sling-scripting-jsp",
+            "PR_url": "https://github.com/apache/sling-org-apache-sling-scripting-jsp/pull/2",
+            "PR_opening_date": "Nov 7, 2019",
+            "PR_status": "Denied",
+            "PR_status_date": "Nov 12, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/37",
+            "diff": "https://github.com/SpoonLabs/sorald/tree/master/experimentation/pull-requests/sling-scripting-jsp/4973"
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/Parser.java b/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/Parser.java\nindex f353fde..4496941 100644\n--- a/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/Parser.java\n+++ b/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/Parser.java\n@@ -1617,7 +1617,7 @@ private void parseBody(Node parent, String tag, String bodyType)\n                 err.jspError(start, \"jasper.error.emptybodycontent.nonempty\",\n                         tag);\n             }\n-        } else if (bodyType == JAVAX_BODY_CONTENT_PLUGIN) {\n+        } else if (bodyType == JAVAX_BODY_CONTENT_PLUGIN) { //NOSONAR\n             // (note the == since we won't recognize JAVAX_*\n             // from outside this module).\n             parsePluginTags(parent);\n@@ -1627,8 +1627,8 @@ private void parseBody(Node parent, String tag, String bodyType)\n             }\n         } else if (bodyType.equalsIgnoreCase(TagInfo.BODY_CONTENT_JSP)\n                 || bodyType.equalsIgnoreCase(TagInfo.BODY_CONTENT_SCRIPTLESS)\n-                || (bodyType == JAVAX_BODY_CONTENT_PARAM)\n-                || (bodyType == JAVAX_BODY_CONTENT_TEMPLATE_TEXT)) {\n+                || (bodyType == JAVAX_BODY_CONTENT_PARAM) //NOSONAR\n+                || (bodyType == JAVAX_BODY_CONTENT_TEMPLATE_TEXT)) { //NOSONAR\n             while (reader.hasMoreInput()) {\n                 if (reader.matchesETag(tag)) {\n                     return;\n@@ -1649,12 +1649,12 @@ private void parseBody(Node parent, String tag, String bodyType)\n                 } else if (bodyType\n                         .equalsIgnoreCase(TagInfo.BODY_CONTENT_SCRIPTLESS)) {\n                     parseElementsScriptless(parent);\n-                } else if (bodyType == JAVAX_BODY_CONTENT_PARAM) {\n+                } else if (bodyType == JAVAX_BODY_CONTENT_PARAM) { //NOSONAR\n                     // (note the == since we won't recognize JAVAX_*\n                     // from outside this module).\n                     reader.skipSpaces();\n                     parseParam(parent);\n-                } else if (bodyType == JAVAX_BODY_CONTENT_TEMPLATE_TEXT) {\n+                } else if (bodyType == JAVAX_BODY_CONTENT_TEMPLATE_TEXT) { //NOSONAR\n                     parseElementsTemplateText(parent);\n                 }\n             }\ndiff --git a/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/TagFileProcessor.java b/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/TagFileProcessor.java\nindex 57f3d4b..f7b2028 100644\n--- a/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/TagFileProcessor.java\n+++ b/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/TagFileProcessor.java\n@@ -445,10 +445,10 @@ private void checkUniqueName(String name, String type, Node n)\n         private void checkUniqueName(String name, String type, Node n,\n                 TagAttributeInfo attr) throws JasperException {\n \n-            HashMap table = (type == VAR_NAME_FROM) ? nameFromTable : nameTable;\n+            HashMap table = (type == VAR_NAME_FROM) ? nameFromTable : nameTable; //NOSONAR\n             NameEntry nameEntry = (NameEntry) table.get(name);\n             if (nameEntry != null) {\n-                if (type != TAG_DYNAMIC || nameEntry.getType() != TAG_DYNAMIC) {\n+                if (type != TAG_DYNAMIC || nameEntry.getType() != TAG_DYNAMIC) { //NOSONAR\n                     int line = nameEntry.getNode().getStart().getLineNumber();\n                     err.jspError(n, \"jsp.error.tagfile.nameNotUnique\", type,\n                             nameEntry.getType(), Integer.toString(line));\ndiff --git a/src/main/java/org/apache/sling/scripting/jsp/jasper/xmlparser/XMLEncodingDetector.java b/src/main/java/org/apache/sling/scripting/jsp/jasper/xmlparser/XMLEncodingDetector.java\nindex 07524be..fab7c90 100644\n--- a/src/main/java/org/apache/sling/scripting/jsp/jasper/xmlparser/XMLEncodingDetector.java\n+++ b/src/main/java/org/apache/sling/scripting/jsp/jasper/xmlparser/XMLEncodingDetector.java\n@@ -1327,7 +1327,7 @@ private void scanXMLDeclOrTextDecl(boolean scanningTextDecl,\n             String name = scanPseudoAttribute(scanningTextDecl, fString);\n             switch (state) {\n                 case STATE_VERSION: {\n-                    if (name == fVersionSymbol) {\n+                    if (name == fVersionSymbol) { //NOSONAR\n                         if (!sawSpace) {\n                             reportFatalError(scanningTextDecl\n                                        ? \"jsp.error.xml.spaceRequiredBeforeVersionInTextDecl\"\n@@ -1343,7 +1343,7 @@ private void scanXMLDeclOrTextDecl(boolean scanningTextDecl,\n                             err.jspError(\"jsp.error.xml.versionNotSupported\",\n \t\t\t\t\t version);\n                         }\n-                    } else if (name == fEncodingSymbol) {\n+                    } else if (name == fEncodingSymbol) { //NOSONAR\n                         if (!scanningTextDecl) {\n                             err.jspError(\"jsp.error.xml.versionInfoRequired\");\n                         }\n@@ -1366,7 +1366,7 @@ private void scanXMLDeclOrTextDecl(boolean scanningTextDecl,\n                     break;\n                 }\n                 case STATE_ENCODING: {\n-                    if (name == fEncodingSymbol) {\n+                    if (name == fEncodingSymbol) { //NOSONAR\n                         if (!sawSpace) {\n                             reportFatalError(scanningTextDecl\n                                       ? \"jsp.error.xml.spaceRequiredBeforeEncodingInTextDecl\"\n@@ -1377,7 +1377,7 @@ private void scanXMLDeclOrTextDecl(boolean scanningTextDecl,\n                         state = scanningTextDecl ? STATE_DONE : STATE_STANDALONE;\n                         // TODO: check encoding name; set encoding on\n                         //       entity scanner\n-                    } else if (!scanningTextDecl && name == fStandaloneSymbol) {\n+                    } else if (!scanningTextDecl && name == fStandaloneSymbol) { //NOSONAR\n                         if (!sawSpace) {\n                             err.jspError(\"jsp.error.xml.spaceRequiredBeforeStandalone\");\n                         }\n@@ -1392,7 +1392,7 @@ private void scanXMLDeclOrTextDecl(boolean scanningTextDecl,\n                     break;\n                 }\n                 case STATE_STANDALONE: {\n-                    if (name == fStandaloneSymbol) {\n+                    if (name == fStandaloneSymbol) { //NOSONAR\n                         if (!sawSpace) {\n                             err.jspError(\"jsp.error.xml.spaceRequiredBeforeStandalone\");\n                         }\n",
+            "final": "diff --git a/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/Parser.java b/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/Parser.java\nindex f353fde..4496941 100644\n--- a/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/Parser.java\n+++ b/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/Parser.java\n@@ -1617,7 +1617,7 @@ private void parseBody(Node parent, String tag, String bodyType)\n                 err.jspError(start, \"jasper.error.emptybodycontent.nonempty\",\n                         tag);\n             }\n-        } else if (bodyType == JAVAX_BODY_CONTENT_PLUGIN) {\n+        } else if (bodyType == JAVAX_BODY_CONTENT_PLUGIN) { //NOSONAR\n             // (note the == since we won't recognize JAVAX_*\n             // from outside this module).\n             parsePluginTags(parent);\n@@ -1627,8 +1627,8 @@ private void parseBody(Node parent, String tag, String bodyType)\n             }\n         } else if (bodyType.equalsIgnoreCase(TagInfo.BODY_CONTENT_JSP)\n                 || bodyType.equalsIgnoreCase(TagInfo.BODY_CONTENT_SCRIPTLESS)\n-                || (bodyType == JAVAX_BODY_CONTENT_PARAM)\n-                || (bodyType == JAVAX_BODY_CONTENT_TEMPLATE_TEXT)) {\n+                || (bodyType == JAVAX_BODY_CONTENT_PARAM) //NOSONAR\n+                || (bodyType == JAVAX_BODY_CONTENT_TEMPLATE_TEXT)) { //NOSONAR\n             while (reader.hasMoreInput()) {\n                 if (reader.matchesETag(tag)) {\n                     return;\n@@ -1649,12 +1649,12 @@ private void parseBody(Node parent, String tag, String bodyType)\n                 } else if (bodyType\n                         .equalsIgnoreCase(TagInfo.BODY_CONTENT_SCRIPTLESS)) {\n                     parseElementsScriptless(parent);\n-                } else if (bodyType == JAVAX_BODY_CONTENT_PARAM) {\n+                } else if (bodyType == JAVAX_BODY_CONTENT_PARAM) { //NOSONAR\n                     // (note the == since we won't recognize JAVAX_*\n                     // from outside this module).\n                     reader.skipSpaces();\n                     parseParam(parent);\n-                } else if (bodyType == JAVAX_BODY_CONTENT_TEMPLATE_TEXT) {\n+                } else if (bodyType == JAVAX_BODY_CONTENT_TEMPLATE_TEXT) { //NOSONAR\n                     parseElementsTemplateText(parent);\n                 }\n             }\ndiff --git a/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/TagFileProcessor.java b/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/TagFileProcessor.java\nindex 57f3d4b..f7b2028 100644\n--- a/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/TagFileProcessor.java\n+++ b/src/main/java/org/apache/sling/scripting/jsp/jasper/compiler/TagFileProcessor.java\n@@ -445,10 +445,10 @@ private void checkUniqueName(String name, String type, Node n)\n         private void checkUniqueName(String name, String type, Node n,\n                 TagAttributeInfo attr) throws JasperException {\n \n-            HashMap table = (type == VAR_NAME_FROM) ? nameFromTable : nameTable;\n+            HashMap table = (type == VAR_NAME_FROM) ? nameFromTable : nameTable; //NOSONAR\n             NameEntry nameEntry = (NameEntry) table.get(name);\n             if (nameEntry != null) {\n-                if (type != TAG_DYNAMIC || nameEntry.getType() != TAG_DYNAMIC) {\n+                if (type != TAG_DYNAMIC || nameEntry.getType() != TAG_DYNAMIC) { //NOSONAR\n                     int line = nameEntry.getNode().getStart().getLineNumber();\n                     err.jspError(n, \"jsp.error.tagfile.nameNotUnique\", type,\n                             nameEntry.getType(), Integer.toString(line));\ndiff --git a/src/main/java/org/apache/sling/scripting/jsp/jasper/xmlparser/XMLEncodingDetector.java b/src/main/java/org/apache/sling/scripting/jsp/jasper/xmlparser/XMLEncodingDetector.java\nindex 07524be..fab7c90 100644\n--- a/src/main/java/org/apache/sling/scripting/jsp/jasper/xmlparser/XMLEncodingDetector.java\n+++ b/src/main/java/org/apache/sling/scripting/jsp/jasper/xmlparser/XMLEncodingDetector.java\n@@ -1327,7 +1327,7 @@ private void scanXMLDeclOrTextDecl(boolean scanningTextDecl,\n             String name = scanPseudoAttribute(scanningTextDecl, fString);\n             switch (state) {\n                 case STATE_VERSION: {\n-                    if (name == fVersionSymbol) {\n+                    if (name == fVersionSymbol) { //NOSONAR\n                         if (!sawSpace) {\n                             reportFatalError(scanningTextDecl\n                                        ? \"jsp.error.xml.spaceRequiredBeforeVersionInTextDecl\"\n@@ -1343,7 +1343,7 @@ private void scanXMLDeclOrTextDecl(boolean scanningTextDecl,\n                             err.jspError(\"jsp.error.xml.versionNotSupported\",\n \t\t\t\t\t version);\n                         }\n-                    } else if (name == fEncodingSymbol) {\n+                    } else if (name == fEncodingSymbol) { //NOSONAR\n                         if (!scanningTextDecl) {\n                             err.jspError(\"jsp.error.xml.versionInfoRequired\");\n                         }\n@@ -1366,7 +1366,7 @@ private void scanXMLDeclOrTextDecl(boolean scanningTextDecl,\n                     break;\n                 }\n                 case STATE_ENCODING: {\n-                    if (name == fEncodingSymbol) {\n+                    if (name == fEncodingSymbol) { //NOSONAR\n                         if (!sawSpace) {\n                             reportFatalError(scanningTextDecl\n                                       ? \"jsp.error.xml.spaceRequiredBeforeEncodingInTextDecl\"\n@@ -1377,7 +1377,7 @@ private void scanXMLDeclOrTextDecl(boolean scanningTextDecl,\n                         state = scanningTextDecl ? STATE_DONE : STATE_STANDALONE;\n                         // TODO: check encoding name; set encoding on\n                         //       entity scanner\n-                    } else if (!scanningTextDecl && name == fStandaloneSymbol) {\n+                    } else if (!scanningTextDecl && name == fStandaloneSymbol) { //NOSONAR\n                         if (!sawSpace) {\n                             err.jspError(\"jsp.error.xml.spaceRequiredBeforeStandalone\");\n                         }\n@@ -1392,7 +1392,7 @@ private void scanXMLDeclOrTextDecl(boolean scanningTextDecl,\n                     break;\n                 }\n                 case STATE_STANDALONE: {\n-                    if (name == fStandaloneSymbol) {\n+                    if (name == fStandaloneSymbol) { //NOSONAR\n                         if (!sawSpace) {\n                             err.jspError(\"jsp.error.xml.spaceRequiredBeforeStandalone\");\n                         }\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:16.517155",
+            "lastModified": "2021-02-05 08:51:18.162070",
+            "isLegacyRecord": true
+        }
+    },
+    "apache/sling-org-apache-sling-scripting-esx#1": {
+        "repoSlug": "apache/sling-org-apache-sling-scripting-esx",
+        "prMetadata": {
+            "url": "https://github.com/apache/sling-org-apache-sling-scripting-esx/pull/1",
+            "createdAt": "2019-11-07 13:19:51",
+            "closedAt": "2019-11-11 10:44:21",
+            "mergedAt": "2019-11-11 10:44:21",
+            "state": "closed",
+            "isMerged": true,
+            "number": 1
+        },
+        "soraldStatistics": {
+            "rule_id": 4973,
+            "rule_name": "CompareStringsBoxedTypesWithEquals",
+            "nb_violations": 2,
+            "repo_slug": "apache/sling-org-apache-sling-scripting-esx",
+            "PR_url": "https://github.com/apache/sling-org-apache-sling-scripting-esx/pull/1",
+            "PR_opening_date": "Nov 7, 2019",
+            "PR_status": "Merged",
+            "PR_status_date": "Nov 11, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/36",
+            "diff": "https://github.com/SpoonLabs/sorald/tree/master/experimentation/pull-requests/sling-scripting-esx/4973"
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/org/apache/sling/scripting/esx/Module.java b/src/main/java/org/apache/sling/scripting/esx/Module.java\nindex 11ddd02..23c7015 100644\n--- a/src/main/java/org/apache/sling/scripting/esx/Module.java\n+++ b/src/main/java/org/apache/sling/scripting/esx/Module.java\n@@ -505,7 +505,7 @@ public ModuleScript loadAsModule(String module, Resource currentResource, String\n \n         for (int i = (parts.length - 1); i > 0;) {\n             log.debug(parts[i]);\n-            if (parts[i] == \"node_modules\" || parts[i] == \"esx_modules\") {\n+            if (\"node_modules\".equals(parts[i]) || \"esx_modules\".equals(parts[i])) {\n                 continue;\n             }\n             String part = StringUtils.join(parts, \"/\", 0, i);\n",
+            "final": "diff --git a/src/main/java/org/apache/sling/scripting/esx/Module.java b/src/main/java/org/apache/sling/scripting/esx/Module.java\nindex 11ddd02..23c7015 100644\n--- a/src/main/java/org/apache/sling/scripting/esx/Module.java\n+++ b/src/main/java/org/apache/sling/scripting/esx/Module.java\n@@ -505,7 +505,7 @@ public ModuleScript loadAsModule(String module, Resource currentResource, String\n \n         for (int i = (parts.length - 1); i > 0;) {\n             log.debug(parts[i]);\n-            if (parts[i] == \"node_modules\" || parts[i] == \"esx_modules\") {\n+            if (\"node_modules\".equals(parts[i]) || \"esx_modules\".equals(parts[i])) {\n                 continue;\n             }\n             String part = StringUtils.join(parts, \"/\", 0, i);\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:18.839342",
+            "lastModified": "2021-02-05 08:51:20.427940",
+            "isLegacyRecord": true
+        }
+    },
+    "apache/sling-org-apache-sling-feature#15": {
+        "repoSlug": "apache/sling-org-apache-sling-feature",
+        "prMetadata": {
+            "url": "https://github.com/apache/sling-org-apache-sling-feature/pull/15",
+            "createdAt": "2019-11-06 14:40:38",
+            "closedAt": "2019-11-07 08:41:05",
+            "mergedAt": "2019-11-07 08:41:05",
+            "state": "closed",
+            "isMerged": true,
+            "number": 15
+        },
+        "soraldStatistics": {
+            "rule_id": 4973,
+            "rule_name": "CompareStringsBoxedTypesWithEquals",
+            "nb_violations": 1,
+            "repo_slug": "apache/sling-org-apache-sling-feature",
+            "PR_url": "https://github.com/apache/sling-org-apache-sling-feature/pull/15",
+            "PR_opening_date": "Nov 6, 2019",
+            "PR_status": "Merged",
+            "PR_status_date": "Nov 7, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/35",
+            "diff": "https://github.com/SpoonLabs/sorald/tree/master/experimentation/pull-requests/sling-feature/4973"
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/org/apache/sling/feature/Bundles.java b/src/main/java/org/apache/sling/feature/Bundles.java\nindex 4528b82..a74b13a 100644\n--- a/src/main/java/org/apache/sling/feature/Bundles.java\n+++ b/src/main/java/org/apache/sling/feature/Bundles.java\n@@ -42,7 +42,7 @@\n \n             @Override\n             public int compare(final Integer o1, final Integer o2) {\n-                if ( o1 == o2 ) {\n+                if ( o1.equals(o2) ) {\n                     return 0;\n                 }\n                 if ( o1 == 0 ) {\n",
+            "final": "diff --git a/src/main/java/org/apache/sling/feature/Bundles.java b/src/main/java/org/apache/sling/feature/Bundles.java\nindex 4528b82..a74b13a 100644\n--- a/src/main/java/org/apache/sling/feature/Bundles.java\n+++ b/src/main/java/org/apache/sling/feature/Bundles.java\n@@ -42,7 +42,7 @@\n \n             @Override\n             public int compare(final Integer o1, final Integer o2) {\n-                if ( o1 == o2 ) {\n+                if ( o1.equals(o2) ) {\n                     return 0;\n                 }\n                 if ( o1 == 0 ) {\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:21.162431",
+            "lastModified": "2021-02-05 08:51:22.819058",
+            "isLegacyRecord": true
+        }
+    },
+    "apache/sling-org-apache-sling-auth-core#1": {
+        "repoSlug": "apache/sling-org-apache-sling-auth-core",
+        "prMetadata": {
+            "url": "https://github.com/apache/sling-org-apache-sling-auth-core/pull/1",
+            "createdAt": "2019-11-06 12:36:48",
+            "closedAt": null,
+            "mergedAt": null,
+            "state": "open",
+            "isMerged": false,
+            "number": 1
+        },
+        "soraldStatistics": {
+            "rule_id": 4973,
+            "rule_name": "CompareStringsBoxedTypesWithEquals",
+            "nb_violations": 1,
+            "repo_slug": "apache/sling-org-apache-sling-auth-core",
+            "PR_url": "https://github.com/apache/sling-org-apache-sling-auth-core/pull/1",
+            "PR_opening_date": "Nov 6, 2019",
+            "PR_status": "Open",
+            "PR_status_date": "Nov 6, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/33",
+            "diff": "https://github.com/SpoonLabs/sorald/tree/master/experimentation/pull-requests/sling-auth-core/4973"
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/org/apache/sling/auth/core/impl/SlingAuthenticator.java b/src/main/java/org/apache/sling/auth/core/impl/SlingAuthenticator.java\nindex 12d1b34..6e0c7b4 100644\n--- a/src/main/java/org/apache/sling/auth/core/impl/SlingAuthenticator.java\n+++ b/src/main/java/org/apache/sling/auth/core/impl/SlingAuthenticator.java\n@@ -1425,7 +1425,7 @@ private boolean setSudoCookie(HttpServletRequest req,\n         String currentSudo = getSudoCookieValue(req);\n \n         // set the (new) impersonation\n-        final boolean setCookie = sudo != currentSudo;\n+        final boolean setCookie = !sudo.equals(currentSudo);\n         if (setCookie) {\n             if (sudo == null) {\n                 // Parameter set to \"-\" to clear impersonation, which was\n",
+            "final": "diff --git a/src/main/java/org/apache/sling/auth/core/impl/SlingAuthenticator.java b/src/main/java/org/apache/sling/auth/core/impl/SlingAuthenticator.java\nindex 12d1b34..6e0c7b4 100644\n--- a/src/main/java/org/apache/sling/auth/core/impl/SlingAuthenticator.java\n+++ b/src/main/java/org/apache/sling/auth/core/impl/SlingAuthenticator.java\n@@ -1425,7 +1425,7 @@ private boolean setSudoCookie(HttpServletRequest req,\n         String currentSudo = getSudoCookieValue(req);\n \n         // set the (new) impersonation\n-        final boolean setCookie = sudo != currentSudo;\n+        final boolean setCookie = !sudo.equals(currentSudo);\n         if (setCookie) {\n             if (sudo == null) {\n                 // Parameter set to \"-\" to clear impersonation, which was\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:23.433800",
+            "lastModified": "2021-02-05 08:51:25.041159",
+            "isLegacyRecord": true
+        }
+    },
+    "apache/jspwiki#11": {
+        "repoSlug": "apache/jspwiki",
+        "prMetadata": {
+            "url": "https://github.com/apache/jspwiki/pull/11",
+            "createdAt": "2019-11-05 11:42:48",
+            "closedAt": "2019-11-05 19:11:09",
+            "mergedAt": "2019-11-05 19:11:08",
+            "state": "closed",
+            "isMerged": true,
+            "number": 11
+        },
+        "soraldStatistics": {
+            "rule_id": 4973,
+            "rule_name": "CompareStringsBoxedTypesWithEquals",
+            "nb_violations": 3,
+            "repo_slug": "apache/jspwiki",
+            "PR_url": "https://github.com/apache/jspwiki/pull/11",
+            "PR_opening_date": "Nov 5, 2019",
+            "PR_status": "Merged",
+            "PR_status_date": "Nov 5, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/32",
+            "diff": "https://github.com/SpoonLabs/sorald/tree/master/experimentation/pull-requests/jspwiki/4973"
+        },
+        "diffs": {
+            "initial": "diff --git a/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java b/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java\nindex b75e91129f..eb58b90eed 100644\n--- a/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java\n+++ b/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java\n@@ -484,7 +484,7 @@ public void actionPerformed( WikiEvent event )\n                     case WikiSecurityEvent.PRINCIPAL_ADD:\n                     {\n                         WikiSession target = (WikiSession)e.getTarget();\n-                        if ( this.equals( target ) && m_status == AUTHENTICATED )\n+                        if ( this.equals( target ) && m_status.equals(AUTHENTICATED) )\n                         {\n                             Set<Principal> principals = m_subject.getPrincipals();\n                             principals.add( (Principal)e.getPrincipal());\n@@ -569,7 +569,7 @@ public void actionPerformed( WikiEvent event )\n                     {\n                         // Refresh user principals based on new user profile\n                         WikiSession source = e.getSrc();\n-                        if ( this.equals( source ) && m_status == AUTHENTICATED )\n+                        if ( this.equals( source ) && m_status.equals(AUTHENTICATED) )\n                         {\n                             // To prepare for refresh, set the new full name as the primary principal\n                             UserProfile[] profiles = (UserProfile[])e.getTarget();\ndiff --git a/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java b/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java\nindex 10906ba04a..afc12e334c 100644\n--- a/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java\n+++ b/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java\n@@ -212,7 +212,7 @@ public String execute( WikiContext context, Map<String, String> params )\n \n                 res.append(\"<div class=\\\"inserted-page \");\n                 if( clazz != null ) res.append( clazz );\n-                if( style != DEFAULT_STYLE ) res.append(\"\\\" style=\\\"\"+style );\n+                if( !style.equals(DEFAULT_STYLE) ) res.append(\"\\\" style=\\\"\"+style );\n                 if( showOnce ) res.append(\"\\\" data-once=\\\"\"+cookieName );\n                 res.append(\"\\\" >\");\n \n",
+            "final": "diff --git a/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java b/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java\nindex b75e91129f..eb58b90eed 100644\n--- a/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java\n+++ b/jspwiki-main/src/main/java/org/apache/wiki/WikiSession.java\n@@ -484,7 +484,7 @@ public void actionPerformed( WikiEvent event )\n                     case WikiSecurityEvent.PRINCIPAL_ADD:\n                     {\n                         WikiSession target = (WikiSession)e.getTarget();\n-                        if ( this.equals( target ) && m_status == AUTHENTICATED )\n+                        if ( this.equals( target ) && m_status.equals(AUTHENTICATED) )\n                         {\n                             Set<Principal> principals = m_subject.getPrincipals();\n                             principals.add( (Principal)e.getPrincipal());\n@@ -569,7 +569,7 @@ public void actionPerformed( WikiEvent event )\n                     {\n                         // Refresh user principals based on new user profile\n                         WikiSession source = e.getSrc();\n-                        if ( this.equals( source ) && m_status == AUTHENTICATED )\n+                        if ( this.equals( source ) && m_status.equals(AUTHENTICATED) )\n                         {\n                             // To prepare for refresh, set the new full name as the primary principal\n                             UserProfile[] profiles = (UserProfile[])e.getTarget();\ndiff --git a/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java b/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java\nindex 10906ba04a..afc12e334c 100644\n--- a/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java\n+++ b/jspwiki-main/src/main/java/org/apache/wiki/plugin/InsertPage.java\n@@ -212,7 +212,7 @@ public String execute( WikiContext context, Map<String, String> params )\n \n                 res.append(\"<div class=\\\"inserted-page \");\n                 if( clazz != null ) res.append( clazz );\n-                if( style != DEFAULT_STYLE ) res.append(\"\\\" style=\\\"\"+style );\n+                if( !style.equals(DEFAULT_STYLE) ) res.append(\"\\\" style=\\\"\"+style );\n                 if( showOnce ) res.append(\"\\\" data-once=\\\"\"+cookieName );\n                 res.append(\"\\\" >\");\n \n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:25.905857",
+            "lastModified": "2021-02-05 08:51:27.586815",
+            "isLegacyRecord": true
+        }
+    },
+    "apache/sling-org-apache-sling-discovery-impl#1": {
+        "repoSlug": "apache/sling-org-apache-sling-discovery-impl",
+        "prMetadata": {
+            "url": "https://github.com/apache/sling-org-apache-sling-discovery-impl/pull/1",
+            "createdAt": "2019-11-04 11:15:41",
+            "closedAt": "2019-11-05 10:55:29",
+            "mergedAt": "2019-11-05 10:55:29",
+            "state": "closed",
+            "isMerged": true,
+            "number": 1
+        },
+        "soraldStatistics": {
+            "rule_id": 4973,
+            "rule_name": "CompareStringsBoxedTypesWithEquals",
+            "nb_violations": 1,
+            "repo_slug": "apache/sling-org-apache-sling-discovery-impl",
+            "PR_url": "https://github.com/apache/sling-org-apache-sling-discovery-impl/pull/1",
+            "PR_opening_date": "Nov 4, 2019",
+            "PR_status": "Merged",
+            "PR_status_date": "Nov 5, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/31",
+            "diff": "https://github.com/SpoonLabs/sorald/tree/master/experimentation/pull-requests/sling-discovery/4973"
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/org/apache/sling/discovery/impl/cluster/voting/VotingView.java b/src/main/java/org/apache/sling/discovery/impl/cluster/voting/VotingView.java\nindex a9e9485..eeb2211 100644\n--- a/src/main/java/org/apache/sling/discovery/impl/cluster/voting/VotingView.java\n+++ b/src/main/java/org/apache/sling/discovery/impl/cluster/voting/VotingView.java\n@@ -388,7 +388,7 @@ public void vote(final String slingId, final Boolean vote,\n                         }\n                     } else if (v instanceof Boolean) {\n                         Boolean b = (Boolean)v;\n-                        if (b == vote) {\n+                        if (b.equals(vote)) {\n                             logger.debug(\"vote: already voted, with same vote (\"+vote+\"), not voting again\");\n                             shouldVote = false;\n                         }\n",
+            "final": "diff --git a/src/main/java/org/apache/sling/discovery/impl/cluster/voting/VotingView.java b/src/main/java/org/apache/sling/discovery/impl/cluster/voting/VotingView.java\nindex a9e9485..eeb2211 100644\n--- a/src/main/java/org/apache/sling/discovery/impl/cluster/voting/VotingView.java\n+++ b/src/main/java/org/apache/sling/discovery/impl/cluster/voting/VotingView.java\n@@ -388,7 +388,7 @@ public void vote(final String slingId, final Boolean vote,\n                         }\n                     } else if (v instanceof Boolean) {\n                         Boolean b = (Boolean)v;\n-                        if (b == vote) {\n+                        if (b.equals(vote)) {\n                             logger.debug(\"vote: already voted, with same vote (\"+vote+\"), not voting again\");\n                             shouldVote = false;\n                         }\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:28.288260",
+            "lastModified": "2021-02-05 08:51:29.872063",
+            "isLegacyRecord": true
+        }
+    },
+    "INRIA/spoon#3165": {
+        "repoSlug": "INRIA/spoon",
+        "prMetadata": {
+            "url": "https://github.com/INRIA/spoon/pull/3165",
+            "createdAt": "2019-10-31 09:41:26",
+            "closedAt": "2019-11-02 06:47:15",
+            "mergedAt": "2019-11-02 06:47:15",
+            "state": "closed",
+            "isMerged": true,
+            "number": 3165
+        },
+        "soraldStatistics": {
+            "rule_id": 4973,
+            "rule_name": "CompareStringsBoxedTypesWithEquals",
+            "nb_violations": 3,
+            "repo_slug": "INRIA/spoon",
+            "PR_url": "https://github.com/INRIA/spoon/pull/3165",
+            "PR_opening_date": "Oct 31, 2019",
+            "PR_status": "Merged",
+            "PR_status_date": "Nov 2, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/25",
+            "diff": "https://github.com/SpoonLabs/sorald/tree/master/experimentation/pull-requests/spoon-core/4973"
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/spoon/support/sniper/SniperJavaPrettyPrinter.java b/src/main/java/spoon/support/sniper/SniperJavaPrettyPrinter.java\nindex 4130276c84..8033dbd57d 100644\n--- a/src/main/java/spoon/support/sniper/SniperJavaPrettyPrinter.java\n+++ b/src/main/java/spoon/support/sniper/SniperJavaPrettyPrinter.java\n@@ -265,7 +265,7 @@ private void scanInternal(CtRole role, CtElement element, SourceFragment fragmen\n \t\t\t//push the context of this collection\n \t\t\tsourceFragmentContextStack.push(listContext);\n \t\t\t//and scan first element of that collection again in new context of that collection\n-\t\t\tif (isFragmentModified == Boolean.FALSE) {\n+\t\t\tif (Boolean.FALSE.equals(isFragmentModified)) {\n \t\t\t\tmutableTokenWriter.getPrinterHelper().directPrint(fragment.getSourceCode());\n \t\t\t\t//and mute the token writer and let DJPP scan it and ignore everything\n \t\t\t\tmutableTokenWriter.setMuted(true);\ndiff --git a/src/main/java/spoon/support/sniper/internal/AbstractSourceFragmentContext.java b/src/main/java/spoon/support/sniper/internal/AbstractSourceFragmentContext.java\nindex bbec13f814..51f8bd3623 100644\n--- a/src/main/java/spoon/support/sniper/internal/AbstractSourceFragmentContext.java\n+++ b/src/main/java/spoon/support/sniper/internal/AbstractSourceFragmentContext.java\n@@ -131,7 +131,7 @@ protected Boolean isFragmentModified(SourceFragment fragment) {\n \t\t\tCollectionSourceFragment csf = (CollectionSourceFragment) fragment;\n \t\t\tfor (SourceFragment sourceFragment : csf.getItems()) {\n \t\t\t\tBoolean modified = isFragmentModified(sourceFragment);\n-\t\t\t\tif (modified != Boolean.FALSE) {\n+\t\t\t\tif (!Boolean.FALSE.equals(modified)) {\n \t\t\t\t\treturn modified;\n \t\t\t\t}\n \t\t\t}\ndiff --git a/src/main/java/spoon/support/sniper/internal/ChangeResolver.java b/src/main/java/spoon/support/sniper/internal/ChangeResolver.java\nindex b4ee1f046e..ba74920ca9 100644\n--- a/src/main/java/spoon/support/sniper/internal/ChangeResolver.java\n+++ b/src/main/java/spoon/support/sniper/internal/ChangeResolver.java\n@@ -51,7 +51,7 @@ protected void enter(CtElement e) {\n \t\t\t}\n \t\t};\n \t\tscanner.scan(this.element);\n-\t\treturn scanner.getResult() == Boolean.TRUE;\n+\t\treturn Boolean.TRUE.equals(scanner.getResult());\n \t}\n \n \t/**\n",
+            "final": "diff --git a/src/main/java/spoon/support/sniper/SniperJavaPrettyPrinter.java b/src/main/java/spoon/support/sniper/SniperJavaPrettyPrinter.java\nindex 4130276c84..8033dbd57d 100644\n--- a/src/main/java/spoon/support/sniper/SniperJavaPrettyPrinter.java\n+++ b/src/main/java/spoon/support/sniper/SniperJavaPrettyPrinter.java\n@@ -265,7 +265,7 @@ private void scanInternal(CtRole role, CtElement element, SourceFragment fragmen\n \t\t\t//push the context of this collection\n \t\t\tsourceFragmentContextStack.push(listContext);\n \t\t\t//and scan first element of that collection again in new context of that collection\n-\t\t\tif (isFragmentModified == Boolean.FALSE) {\n+\t\t\tif (Boolean.FALSE.equals(isFragmentModified)) {\n \t\t\t\tmutableTokenWriter.getPrinterHelper().directPrint(fragment.getSourceCode());\n \t\t\t\t//and mute the token writer and let DJPP scan it and ignore everything\n \t\t\t\tmutableTokenWriter.setMuted(true);\ndiff --git a/src/main/java/spoon/support/sniper/internal/AbstractSourceFragmentContext.java b/src/main/java/spoon/support/sniper/internal/AbstractSourceFragmentContext.java\nindex bbec13f814..51f8bd3623 100644\n--- a/src/main/java/spoon/support/sniper/internal/AbstractSourceFragmentContext.java\n+++ b/src/main/java/spoon/support/sniper/internal/AbstractSourceFragmentContext.java\n@@ -131,7 +131,7 @@ protected Boolean isFragmentModified(SourceFragment fragment) {\n \t\t\tCollectionSourceFragment csf = (CollectionSourceFragment) fragment;\n \t\t\tfor (SourceFragment sourceFragment : csf.getItems()) {\n \t\t\t\tBoolean modified = isFragmentModified(sourceFragment);\n-\t\t\t\tif (modified != Boolean.FALSE) {\n+\t\t\t\tif (!Boolean.FALSE.equals(modified)) {\n \t\t\t\t\treturn modified;\n \t\t\t\t}\n \t\t\t}\ndiff --git a/src/main/java/spoon/support/sniper/internal/ChangeResolver.java b/src/main/java/spoon/support/sniper/internal/ChangeResolver.java\nindex b4ee1f046e..ba74920ca9 100644\n--- a/src/main/java/spoon/support/sniper/internal/ChangeResolver.java\n+++ b/src/main/java/spoon/support/sniper/internal/ChangeResolver.java\n@@ -51,7 +51,7 @@ protected void enter(CtElement e) {\n \t\t\t}\n \t\t};\n \t\tscanner.scan(this.element);\n-\t\treturn scanner.getResult() == Boolean.TRUE;\n+\t\treturn Boolean.TRUE.equals(scanner.getResult());\n \t}\n \n \t/**\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:30.551687",
+            "lastModified": "2021-02-05 08:51:32.166028",
+            "isLegacyRecord": true
+        }
+    },
+    "INRIA/spoon#3164": {
+        "repoSlug": "INRIA/spoon",
+        "prMetadata": {
+            "url": "https://github.com/INRIA/spoon/pull/3164",
+            "createdAt": "2019-10-30 13:37:28",
+            "closedAt": "2019-10-30 14:56:59",
+            "mergedAt": "2019-10-30 14:56:59",
+            "state": "closed",
+            "isMerged": true,
+            "number": 3164
+        },
+        "soraldStatistics": {
+            "rule_id": 2272,
+            "rule_name": "IteratorNextException",
+            "nb_violations": 2,
+            "repo_slug": "INRIA/spoon",
+            "PR_url": "https://github.com/INRIA/spoon/pull/3164",
+            "PR_opening_date": "Oct 30, 2019",
+            "PR_status": "Merged",
+            "PR_status_date": "Oct 30, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/25",
+            "diff": "https://github.com/SpoonLabs/sorald/tree/master/experimentation/pull-requests/spoon-core/2272"
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/spoon/reflect/visitor/CtBFSIterator.java b/src/main/java/spoon/reflect/visitor/CtBFSIterator.java\nindex dbc299333d..5910839b0f 100644\n--- a/src/main/java/spoon/reflect/visitor/CtBFSIterator.java\n+++ b/src/main/java/spoon/reflect/visitor/CtBFSIterator.java\n@@ -55,6 +55,9 @@ public boolean hasNext() {\n \t */\n \t@Override\n \tpublic CtElement next() {\n+\t\tif (!hasNext()) {\n+\t\t\tthrow new java.util.NoSuchElementException();\n+\t\t}\n \t\tCtElement next = deque.poll(); // get the element to expand from the deque\n \t\tnext.accept(this); // call @scan for each direct child of the node\n \t\treturn next;\ndiff --git a/src/main/java/spoon/reflect/visitor/CtIterator.java b/src/main/java/spoon/reflect/visitor/CtIterator.java\nindex 40c314ff0f..0c2b0eff2e 100644\n--- a/src/main/java/spoon/reflect/visitor/CtIterator.java\n+++ b/src/main/java/spoon/reflect/visitor/CtIterator.java\n@@ -73,6 +73,9 @@ public boolean hasNext() {\n \t */\n \t@Override\n \tpublic CtElement next() {\n+\t\tif (!hasNext()) {\n+\t\t\tthrow new java.util.NoSuchElementException();\n+\t\t}\n \t\tCtElement next = deque.pollFirst(); // get the element to expand from the deque\n \t\tcurrent_children.clear(); // clear for this scan\n \t\tnext.accept(this); // call @scan for each direct child of the node\n",
+            "final": "diff --git a/src/main/java/spoon/reflect/visitor/CtBFSIterator.java b/src/main/java/spoon/reflect/visitor/CtBFSIterator.java\nindex dbc299333d..5910839b0f 100644\n--- a/src/main/java/spoon/reflect/visitor/CtBFSIterator.java\n+++ b/src/main/java/spoon/reflect/visitor/CtBFSIterator.java\n@@ -55,6 +55,9 @@ public boolean hasNext() {\n \t */\n \t@Override\n \tpublic CtElement next() {\n+\t\tif (!hasNext()) {\n+\t\t\tthrow new java.util.NoSuchElementException();\n+\t\t}\n \t\tCtElement next = deque.poll(); // get the element to expand from the deque\n \t\tnext.accept(this); // call @scan for each direct child of the node\n \t\treturn next;\ndiff --git a/src/main/java/spoon/reflect/visitor/CtIterator.java b/src/main/java/spoon/reflect/visitor/CtIterator.java\nindex 40c314ff0f..0c2b0eff2e 100644\n--- a/src/main/java/spoon/reflect/visitor/CtIterator.java\n+++ b/src/main/java/spoon/reflect/visitor/CtIterator.java\n@@ -73,6 +73,9 @@ public boolean hasNext() {\n \t */\n \t@Override\n \tpublic CtElement next() {\n+\t\tif (!hasNext()) {\n+\t\t\tthrow new java.util.NoSuchElementException();\n+\t\t}\n \t\tCtElement next = deque.pollFirst(); // get the element to expand from the deque\n \t\tcurrent_children.clear(); // clear for this scan\n \t\tnext.accept(this); // call @scan for each direct child of the node\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:32.996620",
+            "lastModified": "2021-02-05 08:51:34.576203",
+            "isLegacyRecord": true
+        }
+    },
+    "apache/commons-configuration#37": {
+        "repoSlug": "apache/commons-configuration",
+        "prMetadata": {
+            "url": "https://github.com/apache/commons-configuration/pull/37",
+            "createdAt": "2019-10-29 10:36:48",
+            "closedAt": null,
+            "mergedAt": null,
+            "state": "open",
+            "isMerged": false,
+            "number": 37
+        },
+        "soraldStatistics": {
+            "rule_id": 2111,
+            "rule_name": "BigDecimalDoubleConstructor",
+            "nb_violations": 1,
+            "repo_slug": "apache/commons-configuration",
+            "PR_url": "https://github.com/apache/commons-configuration/pull/37",
+            "PR_opening_date": "Oct 29, 2019",
+            "PR_status": "Open",
+            "PR_status_date": "Oct 29, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/25",
+            "diff": "https://github.com/SpoonLabs/sorald/blob/master/experimentation/pull-requests/commons-configuration/2111"
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/org/apache/commons/configuration2/convert/PropertyConverter.java b/src/main/java/org/apache/commons/configuration2/convert/PropertyConverter.java\nindex efd2a119a..9e496650e 100644\n--- a/src/main/java/org/apache/commons/configuration2/convert/PropertyConverter.java\n+++ b/src/main/java/org/apache/commons/configuration2/convert/PropertyConverter.java\n@@ -390,7 +390,7 @@ public static BigDecimal toBigDecimal(final Object value) throws ConversionExcep\n         {\n             return (BigDecimal) n;\n         }\n-        return new BigDecimal(n.doubleValue());\n+        return BigDecimal.valueOf(n.doubleValue());\n     }\n \n     /**\n",
+            "final": "diff --git a/src/main/java/org/apache/commons/configuration2/convert/PropertyConverter.java b/src/main/java/org/apache/commons/configuration2/convert/PropertyConverter.java\nindex efd2a119a..9e496650e 100644\n--- a/src/main/java/org/apache/commons/configuration2/convert/PropertyConverter.java\n+++ b/src/main/java/org/apache/commons/configuration2/convert/PropertyConverter.java\n@@ -390,7 +390,7 @@ public static BigDecimal toBigDecimal(final Object value) throws ConversionExcep\n         {\n             return (BigDecimal) n;\n         }\n-        return new BigDecimal(n.doubleValue());\n+        return BigDecimal.valueOf(n.doubleValue());\n     }\n \n     /**\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:35.334359",
+            "lastModified": "2021-02-05 08:51:36.996939",
+            "isLegacyRecord": true
+        }
+    },
+    "INRIA/spoon#3134": {
+        "repoSlug": "INRIA/spoon",
+        "prMetadata": {
+            "url": "https://github.com/INRIA/spoon/pull/3134",
+            "createdAt": "2019-10-04 11:41:29",
+            "closedAt": "2019-10-04 16:35:30",
+            "mergedAt": "2019-10-04 16:35:30",
+            "state": "closed",
+            "isMerged": true,
+            "number": 3134
+        },
+        "soraldStatistics": {
+            "rule_id": 2116,
+            "rule_name": "ArrayHashCodeAndToString",
+            "nb_violations": 1,
+            "repo_slug": "INRIA/spoon",
+            "PR_url": "https://github.com/INRIA/spoon/pull/3134",
+            "PR_opening_date": "Oct 4, 2019",
+            "PR_status": "Merged",
+            "PR_status_date": "Oct 4, 2019",
+            "notes": "https://github.com/SpoonLabs/sorald/pull/25",
+            "diff": "https://github.com/SpoonLabs/sorald/blob/master/experimentation/pull-requests/spoon-core/2116"
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/spoon/reflect/factory/CodeFactory.java b/src/main/java/spoon/reflect/factory/CodeFactory.java\nindex 201d9849db..df0e2c274e 100644\n--- a/src/main/java/spoon/reflect/factory/CodeFactory.java\n+++ b/src/main/java/spoon/reflect/factory/CodeFactory.java\n@@ -199,7 +199,7 @@ public CodeFactory(Factory factory) {\n \t\tCtNewClass<T> ctNewClass = factory.Core().createNewClass();\n \t\tCtConstructor<T> constructor = ((CtClass) superClass).getConstructor(Arrays.stream(parameters).map(x -> x.getType()).toArray(CtTypeReference[]::new));\n \t\tif (constructor == null) {\n-\t\t\tthrow new SpoonException(\"no appropriate constructor for these parameters \" + parameters.toString());\n+\t\t\tthrow new SpoonException(\"no appropriate constructor for these parameters \" + Arrays.toString(parameters));\n \t\t}\n \t\tCtExecutableReference<T> executableReference = constructor.getReference();\n \t\tctNewClass.setArguments(Arrays.asList(parameters));\n",
+            "final": "diff --git a/src/main/java/spoon/reflect/factory/CodeFactory.java b/src/main/java/spoon/reflect/factory/CodeFactory.java\nindex 201d9849db..df0e2c274e 100644\n--- a/src/main/java/spoon/reflect/factory/CodeFactory.java\n+++ b/src/main/java/spoon/reflect/factory/CodeFactory.java\n@@ -199,7 +199,7 @@ public CodeFactory(Factory factory) {\n \t\tCtNewClass<T> ctNewClass = factory.Core().createNewClass();\n \t\tCtConstructor<T> constructor = ((CtClass) superClass).getConstructor(Arrays.stream(parameters).map(x -> x.getType()).toArray(CtTypeReference[]::new));\n \t\tif (constructor == null) {\n-\t\t\tthrow new SpoonException(\"no appropriate constructor for these parameters \" + parameters.toString());\n+\t\t\tthrow new SpoonException(\"no appropriate constructor for these parameters \" + Arrays.toString(parameters));\n \t\t}\n \t\tCtExecutableReference<T> executableReference = constructor.getReference();\n \t\tctNewClass.setArguments(Arrays.asList(parameters));\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:37.580018",
+            "lastModified": "2021-02-05 08:51:39.326231",
+            "isLegacyRecord": true
+        }
+    },
+    "INRIA/spoon#2265": {
+        "repoSlug": "INRIA/spoon",
+        "prMetadata": {
+            "url": "https://github.com/INRIA/spoon/pull/2265",
+            "createdAt": "2018-07-23 07:55:56",
+            "closedAt": "2018-07-23 08:45:36",
+            "mergedAt": "2018-07-23 08:45:36",
+            "state": "closed",
+            "isMerged": true,
+            "number": 2265
+        },
+        "soraldStatistics": {
+            "rule_id": 1854,
+            "rule_name": "DeadStore",
+            "nb_violations": 1,
+            "repo_slug": "INRIA/spoon",
+            "PR_url": "https://github.com/INRIA/spoon/pull/2265",
+            "PR_opening_date": "Jul 23, 2018",
+            "PR_status": "Merged",
+            "PR_status_date": "Jul 23, 2018",
+            "notes": "",
+            "diff": ""
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/spoon/support/compiler/jdt/JDTTreeBuilder.java b/src/main/java/spoon/support/compiler/jdt/JDTTreeBuilder.java\nindex 013953305b..83864c44dc 100644\n--- a/src/main/java/spoon/support/compiler/jdt/JDTTreeBuilder.java\n+++ b/src/main/java/spoon/support/compiler/jdt/JDTTreeBuilder.java\n@@ -155,9 +155,6 @@\n import spoon.support.compiler.jdt.ContextBuilder.CastInfo;\n import spoon.support.reflect.CtExtendedModifier;\n \n-import java.util.HashSet;\n-import java.util.Set;\n-\n import static spoon.support.compiler.jdt.JDTTreeBuilderQuery.getBinaryOperatorKind;\n import static spoon.support.compiler.jdt.JDTTreeBuilderQuery.getModifiers;\n import static spoon.support.compiler.jdt.JDTTreeBuilderQuery.getUnaryOperator;\n@@ -1103,8 +1100,6 @@ public boolean visit(FieldDeclaration fieldDeclaration, MethodScope scope) {\n \t\t\t}\n \t\t}\n \t\tfield.setSimpleName(CharOperation.charToString(fieldDeclaration.name));\n-\n-\t\tSet<CtExtendedModifier> modifierSet = new HashSet<>();\n \t\tif (fieldDeclaration.binding != null) {\n \t\t\tif (fieldDeclaration.binding.declaringClass != null && fieldDeclaration.binding.declaringClass.isEnum()) {\n \t\t\t\t//enum values take over visibility from enum type\n",
+            "final": "diff --git a/src/main/java/spoon/support/compiler/jdt/JDTTreeBuilder.java b/src/main/java/spoon/support/compiler/jdt/JDTTreeBuilder.java\nindex 013953305b..83864c44dc 100644\n--- a/src/main/java/spoon/support/compiler/jdt/JDTTreeBuilder.java\n+++ b/src/main/java/spoon/support/compiler/jdt/JDTTreeBuilder.java\n@@ -155,9 +155,6 @@\n import spoon.support.compiler.jdt.ContextBuilder.CastInfo;\n import spoon.support.reflect.CtExtendedModifier;\n \n-import java.util.HashSet;\n-import java.util.Set;\n-\n import static spoon.support.compiler.jdt.JDTTreeBuilderQuery.getBinaryOperatorKind;\n import static spoon.support.compiler.jdt.JDTTreeBuilderQuery.getModifiers;\n import static spoon.support.compiler.jdt.JDTTreeBuilderQuery.getUnaryOperator;\n@@ -1103,8 +1100,6 @@ public boolean visit(FieldDeclaration fieldDeclaration, MethodScope scope) {\n \t\t\t}\n \t\t}\n \t\tfield.setSimpleName(CharOperation.charToString(fieldDeclaration.name));\n-\n-\t\tSet<CtExtendedModifier> modifierSet = new HashSet<>();\n \t\tif (fieldDeclaration.binding != null) {\n \t\t\tif (fieldDeclaration.binding.declaringClass != null && fieldDeclaration.binding.declaringClass.isEnum()) {\n \t\t\t\t//enum values take over visibility from enum type\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:40.031929",
+            "lastModified": "2021-02-05 08:51:41.828238",
+            "isLegacyRecord": true
+        }
+    },
+    "INRIA/spoon#2256": {
+        "repoSlug": "INRIA/spoon",
+        "prMetadata": {
+            "url": "https://github.com/INRIA/spoon/pull/2256",
+            "createdAt": "2018-07-21 12:11:06",
+            "closedAt": "2018-07-30 12:03:58",
+            "mergedAt": "2018-07-30 12:03:58",
+            "state": "closed",
+            "isMerged": true,
+            "number": 2256
+        },
+        "soraldStatistics": {
+            "rule_id": 1854,
+            "rule_name": "DeadStore",
+            "nb_violations": 2,
+            "repo_slug": "INRIA/spoon",
+            "PR_url": "https://github.com/INRIA/spoon/pull/2256",
+            "PR_opening_date": "Jul 21, 2018",
+            "PR_status": "Merged",
+            "PR_status_date": "Jul 30, 2018",
+            "notes": "",
+            "diff": ""
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/spoon/support/compiler/jdt/ReferenceBuilder.java b/src/main/java/spoon/support/compiler/jdt/ReferenceBuilder.java\nindex 269fedb9d2..371ec38241 100644\n--- a/src/main/java/spoon/support/compiler/jdt/ReferenceBuilder.java\n+++ b/src/main/java/spoon/support/compiler/jdt/ReferenceBuilder.java\n@@ -35,7 +35,6 @@\n import org.eclipse.jdt.internal.compiler.ast.TypeReference;\n import org.eclipse.jdt.internal.compiler.ast.Wildcard;\n import org.eclipse.jdt.internal.compiler.classfmt.ClassFileConstants;\n-import org.eclipse.jdt.internal.compiler.impl.ReferenceContext;\n import org.eclipse.jdt.internal.compiler.lookup.ArrayBinding;\n import org.eclipse.jdt.internal.compiler.lookup.BaseTypeBinding;\n import org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding;\n@@ -800,7 +799,6 @@ private String concatSubArray(String[] a, int endIndex) {\n \t\t\t\t}\n \t\t\t}\n \t\t\tif (bounds && b.superInterfaces != null && b.superInterfaces != Binding.NO_SUPERINTERFACES) {\n-\t\t\t\tbounds = false;\n \t\t\t\tbindingCache.put(binding, ref);\n \t\t\t\tList<CtTypeReference<?>> bounds = new ArrayList<>();\n \t\t\t\tCtTypeParameterReference typeParameterReference = (CtTypeParameterReference) ref;\n@@ -965,7 +963,6 @@ private String concatSubArray(String[] a, int endIndex) {\n \t\t\t\tCtParameterReference<T> ref = this.jdtTreeBuilder.getFactory().Core().createParameterReference();\n \t\t\t\tref.setSimpleName(new String(varbin.name));\n \t\t\t\tref.setType((CtTypeReference<T>) getTypeReference(varbin.type));\n-\t\t\t\tfinal ReferenceContext referenceContext = localVariableBinding.declaringScope.referenceContext();\n \t\t\t\treturn ref;\n \t\t\t} else if (localVariableBinding.declaration.binding instanceof CatchParameterBinding) {\n \t\t\t\tCtCatchVariableReference<T> ref = this.jdtTreeBuilder.getFactory().Core().createCatchVariableReference();\n",
+            "final": "diff --git a/src/main/java/spoon/support/compiler/jdt/ReferenceBuilder.java b/src/main/java/spoon/support/compiler/jdt/ReferenceBuilder.java\nindex 269fedb9d2..371ec38241 100644\n--- a/src/main/java/spoon/support/compiler/jdt/ReferenceBuilder.java\n+++ b/src/main/java/spoon/support/compiler/jdt/ReferenceBuilder.java\n@@ -35,7 +35,6 @@\n import org.eclipse.jdt.internal.compiler.ast.TypeReference;\n import org.eclipse.jdt.internal.compiler.ast.Wildcard;\n import org.eclipse.jdt.internal.compiler.classfmt.ClassFileConstants;\n-import org.eclipse.jdt.internal.compiler.impl.ReferenceContext;\n import org.eclipse.jdt.internal.compiler.lookup.ArrayBinding;\n import org.eclipse.jdt.internal.compiler.lookup.BaseTypeBinding;\n import org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding;\n@@ -800,7 +799,6 @@ private String concatSubArray(String[] a, int endIndex) {\n \t\t\t\t}\n \t\t\t}\n \t\t\tif (bounds && b.superInterfaces != null && b.superInterfaces != Binding.NO_SUPERINTERFACES) {\n-\t\t\t\tbounds = false;\n \t\t\t\tbindingCache.put(binding, ref);\n \t\t\t\tList<CtTypeReference<?>> bounds = new ArrayList<>();\n \t\t\t\tCtTypeParameterReference typeParameterReference = (CtTypeParameterReference) ref;\n@@ -965,7 +963,6 @@ private String concatSubArray(String[] a, int endIndex) {\n \t\t\t\tCtParameterReference<T> ref = this.jdtTreeBuilder.getFactory().Core().createParameterReference();\n \t\t\t\tref.setSimpleName(new String(varbin.name));\n \t\t\t\tref.setType((CtTypeReference<T>) getTypeReference(varbin.type));\n-\t\t\t\tfinal ReferenceContext referenceContext = localVariableBinding.declaringScope.referenceContext();\n \t\t\t\treturn ref;\n \t\t\t} else if (localVariableBinding.declaration.binding instanceof CatchParameterBinding) {\n \t\t\t\tCtCatchVariableReference<T> ref = this.jdtTreeBuilder.getFactory().Core().createCatchVariableReference();\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:42.571067",
+            "lastModified": "2021-02-05 08:51:44.406714",
+            "isLegacyRecord": true
+        }
+    },
+    "INRIA/spoon#2241": {
+        "repoSlug": "INRIA/spoon",
+        "prMetadata": {
+            "url": "https://github.com/INRIA/spoon/pull/2241",
+            "createdAt": "2018-07-17 20:54:30",
+            "closedAt": "2018-07-18 05:16:09",
+            "mergedAt": "2018-07-18 05:16:09",
+            "state": "closed",
+            "isMerged": true,
+            "number": 2241
+        },
+        "soraldStatistics": {
+            "rule_id": 1948,
+            "rule_name": "SerializableFieldInSerializableClass",
+            "nb_violations": 83,
+            "repo_slug": "INRIA/spoon",
+            "PR_url": "https://github.com/INRIA/spoon/pull/2241",
+            "PR_opening_date": "Jul 17, 2018",
+            "PR_status": "Merged",
+            "PR_status_date": "Jul 18, 2018",
+            "notes": "",
+            "diff": ""
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/spoon/reflect/declaration/CtElement.java b/src/main/java/spoon/reflect/declaration/CtElement.java\nindex 1ccde43bc5..bdc00ae603 100644\n--- a/src/main/java/spoon/reflect/declaration/CtElement.java\n+++ b/src/main/java/spoon/reflect/declaration/CtElement.java\n@@ -30,6 +30,7 @@\n import spoon.reflect.annotations.PropertyGetter;\n import spoon.reflect.annotations.PropertySetter;\n \n+import java.io.Serializable;\n import java.lang.annotation.Annotation;\n import java.util.Collection;\n import java.util.Iterator;\n@@ -47,7 +48,7 @@\n  * element).\n  */\n @Root\n-public interface CtElement extends FactoryAccessor, CtVisitable, Cloneable, CtQueryable {\n+public interface CtElement extends FactoryAccessor, CtVisitable, Cloneable, CtQueryable, Serializable {\n \n \t/**\n \t * Searches for an annotation of the given class that annotates the\n",
+            "final": "diff --git a/src/main/java/spoon/reflect/declaration/CtElement.java b/src/main/java/spoon/reflect/declaration/CtElement.java\nindex 1ccde43bc5..bdc00ae603 100644\n--- a/src/main/java/spoon/reflect/declaration/CtElement.java\n+++ b/src/main/java/spoon/reflect/declaration/CtElement.java\n@@ -30,6 +30,7 @@\n import spoon.reflect.annotations.PropertyGetter;\n import spoon.reflect.annotations.PropertySetter;\n \n+import java.io.Serializable;\n import java.lang.annotation.Annotation;\n import java.util.Collection;\n import java.util.Iterator;\n@@ -47,7 +48,7 @@\n  * element).\n  */\n @Root\n-public interface CtElement extends FactoryAccessor, CtVisitable, Cloneable, CtQueryable {\n+public interface CtElement extends FactoryAccessor, CtVisitable, Cloneable, CtQueryable, Serializable {\n \n \t/**\n \t * Searches for an annotation of the given class that annotates the\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:45.074037",
+            "lastModified": "2021-02-05 08:51:46.920656",
+            "isLegacyRecord": true
+        }
+    },
+    "INRIA/spoon#2121": {
+        "repoSlug": "INRIA/spoon",
+        "prMetadata": {
+            "url": "https://github.com/INRIA/spoon/pull/2121",
+            "createdAt": "2018-06-26 22:54:30",
+            "closedAt": "2018-06-27 19:44:09",
+            "mergedAt": "2018-06-27 19:44:09",
+            "state": "closed",
+            "isMerged": true,
+            "number": 2121
+        },
+        "soraldStatistics": {
+            "rule_id": 1948,
+            "rule_name": "SerializableFieldInSerializableClass",
+            "nb_violations": 3,
+            "repo_slug": "INRIA/spoon",
+            "PR_url": "https://github.com/INRIA/spoon/pull/2121",
+            "PR_opening_date": "Jun 27, 2018",
+            "PR_status": "Merged",
+            "PR_status_date": "Jun 27, 2018",
+            "notes": "",
+            "diff": ""
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/spoon/support/gui/SpoonObjectFieldsTable.java b/src/main/java/spoon/support/gui/SpoonObjectFieldsTable.java\nindex 1a3064f27f..6802c15eb4 100644\n--- a/src/main/java/spoon/support/gui/SpoonObjectFieldsTable.java\n+++ b/src/main/java/spoon/support/gui/SpoonObjectFieldsTable.java\n@@ -16,27 +16,28 @@\n  */\n package spoon.support.gui;\n \n-import spoon.Launcher;\n \n-import javax.swing.JFrame;\n-import javax.swing.JPanel;\n-import javax.swing.JScrollPane;\n-import javax.swing.JTable;\n-import javax.swing.table.AbstractTableModel;\n import java.awt.BorderLayout;\n import java.lang.reflect.Field;\n import java.lang.reflect.Modifier;\n import java.util.ArrayList;\n import java.util.List;\n+import javax.swing.JFrame;\n+import javax.swing.JPanel;\n+import javax.swing.JScrollPane;\n+import javax.swing.JTable;\n+import javax.swing.table.AbstractTableModel;\n+import spoon.Launcher;\n+\n \n public class SpoonObjectFieldsTable extends JFrame {\n \tpublic class SpoonObjectTableModel extends AbstractTableModel {\n \n \t\tprivate static final long serialVersionUID = 1L;\n \n-\t\tList<Field> field;\n+\t\ttransient List<Field> field;\n \n-\t\tObject o;\n+\t\ttransient Object o;\n \n \t\tpublic SpoonObjectTableModel(Object o) {\n \t\t\tsuper();\n@@ -112,7 +113,7 @@ public void scanFields(Class<?> c) {\n \n \tprivate JTable jTable = null;\n \n-\tprivate Object o;\n+\tprivate transient  Object o;\n \n \t/**\n \t * This is the default constructor\n@@ -178,3 +179,4 @@ private void initialize() {\n \t}\n \n }\n+\n",
+            "final": "diff --git a/src/main/java/spoon/support/gui/SpoonObjectFieldsTable.java b/src/main/java/spoon/support/gui/SpoonObjectFieldsTable.java\nindex 1a3064f27f..6802c15eb4 100644\n--- a/src/main/java/spoon/support/gui/SpoonObjectFieldsTable.java\n+++ b/src/main/java/spoon/support/gui/SpoonObjectFieldsTable.java\n@@ -16,27 +16,28 @@\n  */\n package spoon.support.gui;\n \n-import spoon.Launcher;\n \n-import javax.swing.JFrame;\n-import javax.swing.JPanel;\n-import javax.swing.JScrollPane;\n-import javax.swing.JTable;\n-import javax.swing.table.AbstractTableModel;\n import java.awt.BorderLayout;\n import java.lang.reflect.Field;\n import java.lang.reflect.Modifier;\n import java.util.ArrayList;\n import java.util.List;\n+import javax.swing.JFrame;\n+import javax.swing.JPanel;\n+import javax.swing.JScrollPane;\n+import javax.swing.JTable;\n+import javax.swing.table.AbstractTableModel;\n+import spoon.Launcher;\n+\n \n public class SpoonObjectFieldsTable extends JFrame {\n \tpublic class SpoonObjectTableModel extends AbstractTableModel {\n \n \t\tprivate static final long serialVersionUID = 1L;\n \n-\t\tList<Field> field;\n+\t\ttransient List<Field> field;\n \n-\t\tObject o;\n+\t\ttransient Object o;\n \n \t\tpublic SpoonObjectTableModel(Object o) {\n \t\t\tsuper();\n@@ -112,7 +113,7 @@ public void scanFields(Class<?> c) {\n \n \tprivate JTable jTable = null;\n \n-\tprivate Object o;\n+\tprivate transient  Object o;\n \n \t/**\n \t * This is the default constructor\n@@ -178,3 +179,4 @@ private void initialize() {\n \t}\n \n }\n+\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:47.626305",
+            "lastModified": "2021-02-05 08:51:49.460281",
+            "isLegacyRecord": true
+        }
+    },
+    "INRIA/spoon#2059": {
+        "repoSlug": "INRIA/spoon",
+        "prMetadata": {
+            "url": "https://github.com/INRIA/spoon/pull/2059",
+            "createdAt": "2018-06-13 14:39:40",
+            "closedAt": "2018-06-28 07:59:30",
+            "mergedAt": "2018-06-28 07:59:30",
+            "state": "closed",
+            "isMerged": true,
+            "number": 2059
+        },
+        "soraldStatistics": {
+            "rule_id": 1948,
+            "rule_name": "SerializableFieldInSerializableClass",
+            "nb_violations": 10,
+            "repo_slug": "INRIA/spoon",
+            "PR_url": "https://github.com/INRIA/spoon/pull/2059",
+            "PR_opening_date": "Jun 13, 2018",
+            "PR_status": "Merged",
+            "PR_status_date": "Jun 28, 2018",
+            "notes": "",
+            "diff": ""
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/spoon/support/StandardEnvironment.java b/src/main/java/spoon/support/StandardEnvironment.java\nindex e287a097fc..3f4bb7857f 100644\n--- a/src/main/java/spoon/support/StandardEnvironment.java\n+++ b/src/main/java/spoon/support/StandardEnvironment.java\n@@ -16,6 +16,19 @@\n  */\n package spoon.support;\n \n+\n+import java.io.File;\n+import java.io.IOException;\n+import java.io.Serializable;\n+import java.net.MalformedURLException;\n+import java.net.URL;\n+import java.net.URLClassLoader;\n+import java.nio.charset.Charset;\n+import java.util.ArrayList;\n+import java.util.Arrays;\n+import java.util.List;\n+import java.util.Map;\n+import java.util.TreeMap;\n import org.apache.log4j.Level;\n import org.apache.log4j.Logger;\n import spoon.Launcher;\n@@ -40,18 +53,6 @@\n import spoon.support.compiler.FileSystemFolder;\n import spoon.support.compiler.SpoonProgress;\n \n-import java.io.File;\n-import java.io.IOException;\n-import java.io.Serializable;\n-import java.net.MalformedURLException;\n-import java.net.URL;\n-import java.net.URLClassLoader;\n-import java.nio.charset.Charset;\n-import java.util.ArrayList;\n-import java.util.Arrays;\n-import java.util.List;\n-import java.util.Map;\n-import java.util.TreeMap;\n \n /**\n  * This class implements a simple Spoon environment that reports messages in the\n@@ -63,11 +64,11 @@\n \n \tpublic static final int DEFAULT_CODE_COMPLIANCE_LEVEL = 8;\n \n-\tprivate FileGenerator<? extends CtElement> defaultFileGenerator;\n+\tprivate transient  FileGenerator<? extends CtElement> defaultFileGenerator;\n \n \tprivate int errorCount = 0;\n \n-\tProcessingManager manager;\n+\ttransient ProcessingManager manager;\n \n \tprivate boolean processingStopped = false;\n \n@@ -83,7 +84,7 @@\n \n \tprivate boolean enableComments = true;\n \n-\tprivate Logger logger = Launcher.LOGGER;\n+\tprivate transient  Logger logger = Launcher.LOGGER;\n \n \tprivate Level level = Level.OFF;\n \n@@ -91,19 +92,19 @@\n \n \tprivate boolean skipSelfChecks = false;\n \n-\tprivate FineModelChangeListener modelChangeListener = new EmptyModelChangeListener();\n+\tprivate transient  FineModelChangeListener modelChangeListener = new EmptyModelChangeListener();\n \n-\tprivate Charset encoding = Charset.defaultCharset();\n+\tprivate transient  Charset encoding = Charset.defaultCharset();\n \n \tprivate int complianceLevel = DEFAULT_CODE_COMPLIANCE_LEVEL;\n \n-\tprivate OutputDestinationHandler outputDestinationHandler = new DefaultOutputDestinationHandler(new File(Launcher.OUTPUTDIR), this);\n+\tprivate transient  OutputDestinationHandler outputDestinationHandler = new DefaultOutputDestinationHandler(new File(Launcher.OUTPUTDIR), this);\n \n \tprivate OutputType outputType = OutputType.CLASSES;\n \n \tprivate Boolean noclasspath = null;\n \n-\tprivate SpoonProgress spoonProgress = null;\n+\tprivate transient SpoonProgress spoonProgress = null;\n \n \t/**\n \t * Creates a new environment with a <code>null</code> default file\n@@ -181,7 +182,7 @@ public ProcessingManager getManager() {\n \t\treturn manager;\n \t}\n \n-\tMap<String, ProcessorProperties> processorProperties = new TreeMap<>();\n+\ttransient Map<String, ProcessorProperties> processorProperties = new TreeMap<>();\n \n \t@Override\n \tpublic ProcessorProperties getProcessorProperties(String processorName) throws Exception {\n@@ -352,13 +353,13 @@ public void setTabulationSize(int tabulationSize) {\n \t\tthis.tabulationSize = tabulationSize;\n \t}\n \n-\tprivate ClassLoader classloader;\n+\tprivate transient  ClassLoader classloader;\n \t/*\n \t * cache class loader which loads classes from source class path\n \t * we must cache it to make all the loaded classes compatible\n \t * The cache is reset when setSourceClasspath(...) is called\n \t */\n-\tprivate ClassLoader inputClassloader;\n+private transient  ClassLoader inputClassloader;\n \n \t@Override\n \tpublic void setInputClassLoader(ClassLoader aClassLoader) {\n",
+            "final": "diff --git a/src/main/java/spoon/support/StandardEnvironment.java b/src/main/java/spoon/support/StandardEnvironment.java\nindex e287a097fc..3f4bb7857f 100644\n--- a/src/main/java/spoon/support/StandardEnvironment.java\n+++ b/src/main/java/spoon/support/StandardEnvironment.java\n@@ -16,6 +16,19 @@\n  */\n package spoon.support;\n \n+\n+import java.io.File;\n+import java.io.IOException;\n+import java.io.Serializable;\n+import java.net.MalformedURLException;\n+import java.net.URL;\n+import java.net.URLClassLoader;\n+import java.nio.charset.Charset;\n+import java.util.ArrayList;\n+import java.util.Arrays;\n+import java.util.List;\n+import java.util.Map;\n+import java.util.TreeMap;\n import org.apache.log4j.Level;\n import org.apache.log4j.Logger;\n import spoon.Launcher;\n@@ -40,18 +53,6 @@\n import spoon.support.compiler.FileSystemFolder;\n import spoon.support.compiler.SpoonProgress;\n \n-import java.io.File;\n-import java.io.IOException;\n-import java.io.Serializable;\n-import java.net.MalformedURLException;\n-import java.net.URL;\n-import java.net.URLClassLoader;\n-import java.nio.charset.Charset;\n-import java.util.ArrayList;\n-import java.util.Arrays;\n-import java.util.List;\n-import java.util.Map;\n-import java.util.TreeMap;\n \n /**\n  * This class implements a simple Spoon environment that reports messages in the\n@@ -63,11 +64,11 @@\n \n \tpublic static final int DEFAULT_CODE_COMPLIANCE_LEVEL = 8;\n \n-\tprivate FileGenerator<? extends CtElement> defaultFileGenerator;\n+\tprivate transient  FileGenerator<? extends CtElement> defaultFileGenerator;\n \n \tprivate int errorCount = 0;\n \n-\tProcessingManager manager;\n+\ttransient ProcessingManager manager;\n \n \tprivate boolean processingStopped = false;\n \n@@ -83,7 +84,7 @@\n \n \tprivate boolean enableComments = true;\n \n-\tprivate Logger logger = Launcher.LOGGER;\n+\tprivate transient  Logger logger = Launcher.LOGGER;\n \n \tprivate Level level = Level.OFF;\n \n@@ -91,19 +92,19 @@\n \n \tprivate boolean skipSelfChecks = false;\n \n-\tprivate FineModelChangeListener modelChangeListener = new EmptyModelChangeListener();\n+\tprivate transient  FineModelChangeListener modelChangeListener = new EmptyModelChangeListener();\n \n-\tprivate Charset encoding = Charset.defaultCharset();\n+\tprivate transient  Charset encoding = Charset.defaultCharset();\n \n \tprivate int complianceLevel = DEFAULT_CODE_COMPLIANCE_LEVEL;\n \n-\tprivate OutputDestinationHandler outputDestinationHandler = new DefaultOutputDestinationHandler(new File(Launcher.OUTPUTDIR), this);\n+\tprivate transient  OutputDestinationHandler outputDestinationHandler = new DefaultOutputDestinationHandler(new File(Launcher.OUTPUTDIR), this);\n \n \tprivate OutputType outputType = OutputType.CLASSES;\n \n \tprivate Boolean noclasspath = null;\n \n-\tprivate SpoonProgress spoonProgress = null;\n+\tprivate transient SpoonProgress spoonProgress = null;\n \n \t/**\n \t * Creates a new environment with a <code>null</code> default file\n@@ -181,7 +182,7 @@ public ProcessingManager getManager() {\n \t\treturn manager;\n \t}\n \n-\tMap<String, ProcessorProperties> processorProperties = new TreeMap<>();\n+\ttransient Map<String, ProcessorProperties> processorProperties = new TreeMap<>();\n \n \t@Override\n \tpublic ProcessorProperties getProcessorProperties(String processorName) throws Exception {\n@@ -352,13 +353,13 @@ public void setTabulationSize(int tabulationSize) {\n \t\tthis.tabulationSize = tabulationSize;\n \t}\n \n-\tprivate ClassLoader classloader;\n+\tprivate transient  ClassLoader classloader;\n \t/*\n \t * cache class loader which loads classes from source class path\n \t * we must cache it to make all the loaded classes compatible\n \t * The cache is reset when setSourceClasspath(...) is called\n \t */\n-\tprivate ClassLoader inputClassloader;\n+private transient  ClassLoader inputClassloader;\n \n \t@Override\n \tpublic void setInputClassLoader(ClassLoader aClassLoader) {\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-05 08:51:50.194331",
+            "lastModified": "2021-02-05 08:51:51.864979",
+            "isLegacyRecord": true
         }
     }
 }

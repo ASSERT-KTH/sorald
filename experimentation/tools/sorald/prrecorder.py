@@ -138,8 +138,19 @@ def create_initial_record(
         jsonkeys.RECORD.SECTION_KEY: {
             jsonkeys.RECORD.CREATED_AT: created_at,
             jsonkeys.RECORD.LAST_MODIFIED: created_at,
+            jsonkeys.RECORD.IS_LEGACY: is_legacy_data(sorald_stats),
         },
     }
+
+
+def is_legacy_data(sorald_stats: dict) -> bool:
+    """Detect whether this data is detailed stats output from modern Sorald or
+    legacy data (from the old PRs.json file or simply empty).
+    """
+    return all(
+        isinstance(key, str) and isinstance(value, (int, str))
+        for key, value in sorald_stats.items()
+    )
 
 
 def update_record_metadata(record: dict):

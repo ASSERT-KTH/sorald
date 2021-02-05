@@ -1,8 +1,11 @@
 """Constants for JSON keys used primarily in the PR recorder."""
 
+
 class TOP_LEVEL:
     """The top-level keys."""
+
     REPO_SLUG = "repoSlug"
+
 
 class PR:
     """Keys for PR metadata."""
@@ -32,6 +35,7 @@ class RECORD:
     SECTION_KEY = "recordMetadata"
     CREATED_AT = "createdAt"
     LAST_MODIFIED = "lastModified"
+    IS_LEGACY = "isLegacyRecord"
 
 
 class MANUAL_EDITS:
@@ -50,3 +54,8 @@ class SORALD_STATS:
     RULE_KEY = "ruleKey"
     VIOLATIONS_BEFORE = "nbViolationsBefore"
     VIOLATIONS_AFTER = "nbViolationsAfter"
+
+    class LEGACY:
+
+        REPO_SLUG = "repo_slug"
+        PR_URL = "PR_url"
