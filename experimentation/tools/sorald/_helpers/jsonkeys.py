@@ -56,7 +56,6 @@ class SORALD_STATS:
     VIOLATIONS_AFTER = "nbViolationsAfter"
 
     class LEGACY:
-        """Keys for the legacy Sorald stats from the old PRs.json."""
 
-        RULE_KEY = "rule_id"
-        NUM_VIOLATIONS = "nb_violations"
+        REPO_SLUG = "repo_slug"
+        PR_URL = "PR_url"

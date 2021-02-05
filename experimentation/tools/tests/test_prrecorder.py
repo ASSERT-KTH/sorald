@@ -14,6 +14,7 @@ from sorald._helpers import jsonkeys
 import _constants
 
 STATS_JSON = _constants.RESOURCES_DIR / "stats.json"
+LEGACY_STATS_FILE = _constants.RESOURCES_DIR / "legacy_stats.json"
 PRS_JSON_FINAL = _constants.RESOURCES_DIR / "prs_final.json"
 
 OWNER = "redhat-developer"
@@ -43,6 +44,9 @@ def test_make_full_record(tmp_path):
         RECORD_ID
     ]
 
+    assert (
+        actual_record[jsonkeys.RECORD.SECTION_KEY][jsonkeys.RECORD.IS_LEGACY] == False
+    )
     # must remove the record metadata section as it will always differ due to time
     del actual_record[jsonkeys.RECORD.SECTION_KEY]
     del expected_record[jsonkeys.RECORD.SECTION_KEY]
@@ -79,3 +83,25 @@ def test_add_manual_edit(tmp_path):
     assert sorted(manual_edits[0].values()) == sorted(
         [diff_text, edit_reason, edit_type]
     )
+
+
+def test_detects_legacy_record(tmp_path):
+    # arrange
+    stats = json.loads(LEGACY_STATS_FILE.read_text(prrecorder.ENCODING))
+    owner, repo = stats[jsonkeys.SORALD_STATS.LEGACY.REPO_SLUG].split("/")
+    pr_number = int(stats[jsonkeys.SORALD_STATS.LEGACY.PR_URL].split("/")[-1])
+    prs_json_file = tmp_path / "prs.json"
+
+    args = shlex.split(
+        f"record-initial -o {owner} -r {repo} -p {pr_number} "
+        f"-s {LEGACY_STATS_FILE} -f {prs_json_file}"
+    )
+
+    # act
+    prrecorder.run_cli(args)
+
+    # assert
+    record = prrecorder.read_json_if_exists(prs_json_file, prrecorder.ENCODING)[
+        prrecorder.create_record_id(owner, repo, pr_number)
+    ]
+    assert record[jsonkeys.RECORD.SECTION_KEY][jsonkeys.RECORD.IS_LEGACY] == True
