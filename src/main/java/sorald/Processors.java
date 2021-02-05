@@ -19,6 +19,7 @@ public class Processors {
                             put(1854, DeadStoreProcessor.class);
                             put(1860, SynchronizationOnStringOrBoxedProcessor.class);
                             put(1948, SerializableFieldInSerializableClassProcessor.class);
+                            put(2057, SerialVersionUidCheckProcessor.class);
                             put(2095, UnclosedResourcesProcessor.class);
                             put(2111, BigDecimalDoubleConstructorProcessor.class);
                             put(2116, ArrayHashCodeAndToStringProcessor.class);
