@@ -1,7 +1,29 @@
 package sorald;
 
 import java.util.Map;
-import sorald.processor.*;
+import sorald.processor.ArrayHashCodeAndToStringProcessor;
+import sorald.processor.BigDecimalDoubleConstructorProcessor;
+import sorald.processor.CastArithmeticOperandProcessor;
+import sorald.processor.CompareStringsBoxedTypesWithEqualsProcessor;
+import sorald.processor.CompareToReturnValueProcessor;
+import sorald.processor.DeadStoreProcessor;
+import sorald.processor.EqualsOnAtomicClassProcessor;
+import sorald.processor.GetClassLoaderProcessor;
+import sorald.processor.InterruptedExceptionProcessor;
+import sorald.processor.IteratorNextExceptionProcessor;
+import sorald.processor.MathOnFloatProcessor;
+import sorald.processor.PublicStaticFieldShouldBeFinalProcessor;
+import sorald.processor.SelfAssignementProcessor;
+import sorald.processor.SerialVersionUidProcessor;
+import sorald.processor.SerializableFieldInSerializableClassProcessor;
+import sorald.processor.SoraldAbstractProcessor;
+import sorald.processor.SynchronizationOnGetClassProcessor;
+import sorald.processor.SynchronizationOnStringOrBoxedProcessor;
+import sorald.processor.ThreadRunProcessor;
+import sorald.processor.ToStringReturningNullProcessor;
+import sorald.processor.UnclosedResourcesProcessor;
+import sorald.processor.UnusedThrowableProcessor;
+import sorald.processor.XxeProcessingProcessor;
 
 /**
  * This class is partially generated. It is fine to edit non-generated code as per usual, but don't
@@ -19,7 +41,7 @@ public class Processors {
                             put(1854, DeadStoreProcessor.class);
                             put(1860, SynchronizationOnStringOrBoxedProcessor.class);
                             put(1948, SerializableFieldInSerializableClassProcessor.class);
-                            put(2057, SerialVersionUidCheckProcessor.class);
+                            put(2057, SerialVersionUidProcessor.class);
                             put(2095, UnclosedResourcesProcessor.class);
                             put(2111, BigDecimalDoubleConstructorProcessor.class);
                             put(2116, ArrayHashCodeAndToStringProcessor.class);

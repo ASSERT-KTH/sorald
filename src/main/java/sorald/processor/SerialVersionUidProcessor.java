@@ -14,7 +14,7 @@ import spoon.reflect.reference.CtTypeReference;
         key = 2057,
         description =
                 "Every class implementing Serializable should declare a private static final serialVersionUID. Subclasses should have there own uid")
-public class SerialVersionUidCheckProcessor extends SoraldAbstractProcessor<CtClass<?>> {
+public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?>> {
 
     private static final String SERIAL_VERSION_UID = "serialVersionUID";
     private Set<ModifierKind> modifiers =
