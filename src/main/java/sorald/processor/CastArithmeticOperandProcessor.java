@@ -135,7 +135,7 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
 
     private boolean isExpIntAndOrLong(CtBinaryOperator ctBinaryOperator) {
         return (ctBinaryOperator.getLeftHandOperand().getType() != null
-                && ctBinaryOperator.getRightHandOperand().getType() != null)
+                        && ctBinaryOperator.getRightHandOperand().getType() != null)
                 && (ctBinaryOperator
                                 .getLeftHandOperand()
                                 .getType()
