@@ -8,6 +8,9 @@ from sorald._helpers import jsonkeys
 import _constants
 
 PRS_JSON_FINAL = _constants.RESOURCES_DIR / "prs_final.json"
+PRS_JSON_FINAL_WITH_LEGACY = (
+    _constants.RESOURCES_DIR / "prs_final_with_legacy.json"
+)
 
 
 def test_correctly_renders_merged_pr(tmp_path):
@@ -71,4 +74,38 @@ This PR was opened at 2020-11-25 12:01:06 and merged at 2020-11-30 20:45:38.
 The patch was generated fully automatically with Sorald.
 
 Detailed repair information is missing for this PR.""".strip()
+    )
+
+
+def test_correctly_renders_legacy_pr(tmp_path):
+    # arrange
+    output_file = tmp_path / "ACHIEVEMENTS.md"
+    prs_json_fil = tmp_path / "prs.json"
+
+    args = shlex.split(
+        f"{achievements.PRS_JSON_ARG} {PRS_JSON_FINAL_WITH_LEGACY} "
+        f"{achievements.OUTPUT_ARG} {output_file}"
+    )
+
+    # act
+    achievements.main(args)
+
+    # assert
+    rendered_content = output_file.read_text(achievements.ENCODING)
+    assert (
+        rendered_content.strip()
+        == """
+# Achievements
+This document presents an overview of the pull requests performed with Sorald.
+
+## [apache/jspwiki#11](https://github.com/apache/jspwiki/pull/11)
+This PR was opened at 2019-11-05 11:42:48 and merged at 2019-11-05 19:11:09.
+This is a legacy PR made before detailed record-keeping, and so we cannot say if any manual edits have been applied.
+
+It provided the following repairs:
+
+* [Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973)
+    - Number of violations found: 3
+    - Number of violations repaired: 3
+""".strip()
     )

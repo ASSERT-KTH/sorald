@@ -24,6 +24,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
+import sorald.event.collectors.CompilationUnitCollector;
 import sorald.event.models.CrashEvent;
 import sorald.event.models.miner.MinedViolationEvent;
 import sorald.processor.SoraldAbstractProcessor;
@@ -62,6 +63,7 @@ public class Repair {
     private int patchedFileCounter = 0;
 
     final List<SoraldEventHandler> eventHandlers;
+    private final CompilationUnitCollector cuCollector;
 
     public Repair(SoraldConfig config, List<? extends SoraldEventHandler> eventHandlers) {
         this.config = config;
@@ -70,12 +72,15 @@ public class Repair {
         }
         spoonedPath = Paths.get(config.getWorkspace()).resolve(Constants.SPOONED);
         intermediateSpoonedPath = spoonedPath.resolve(Constants.INTERMEDIATE);
-        this.eventHandlers = Collections.unmodifiableList(eventHandlers);
+
+        cuCollector = new CompilationUnitCollector(config);
+        List<SoraldEventHandler> eventHandlersCopy = new ArrayList<>(eventHandlers);
+        eventHandlersCopy.add(cuCollector);
+        this.eventHandlers = Collections.unmodifiableList(eventHandlersCopy);
     }
 
     /** Execute a repair according to the config. */
     public void repair() {
-        UniqueTypesCollector.getInstance().reset();
         List<Integer> ruleKeys = config.getRuleKeys();
         List<SoraldAbstractProcessor<?>> addedProcessors = new ArrayList<>();
 
@@ -294,12 +299,11 @@ public class Repair {
         boolean isIntermediateOutputDir =
                 outputDir.toString().contains(intermediateSpoonedPath.toString());
 
-        Collection<CtType<?>> types =
+        Collection<CtCompilationUnit> compilationUnits =
                 config.getFileOutputStrategy() == FileOutputStrategy.ALL || isIntermediateOutputDir
-                        ? model.getAllTypes()
-                        : UniqueTypesCollector.getInstance().getTopLevelTypes4Output().values();
-        CompilationUnitHelpers.resolveCompilationUnits(types)
-                .forEach(type -> writeCompilationUnit(type, outputDir));
+                        ? CompilationUnitHelpers.resolveCompilationUnits(model.getAllTypes())
+                        : cuCollector.getCollectedCompilationUnits();
+        compilationUnits.forEach(cu -> writeCompilationUnit(cu, outputDir));
     }
 
     private void writeCompilationUnit(CtCompilationUnit cu, Path outputDir) {
