@@ -8,3 +8,8 @@ class NullOperandType {
     Message message;
     long var = System.currentTimeMillis() - message.getJMSTimestamp();
 }
+
+
+class Message {
+
+}
