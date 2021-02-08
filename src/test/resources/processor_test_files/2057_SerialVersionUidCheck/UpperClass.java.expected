@@ -1,5 +1,6 @@
+// Test for rule s2057
 import java.io.Serializable;
 
-public class UpperClass implements Serializable {
+public class UpperClass implements Serializable { // Noncompliant
   private static final long serialVersionUID = 1L;
 }
