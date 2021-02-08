@@ -14,7 +14,7 @@ import spoon.reflect.declaration.CtType;
 import spoon.support.DefaultOutputDestinationHandler;
 
 /** Helpers for dealing with {@link CtCompilationUnit}s. */
-class CompilationUnitHelpers {
+public class CompilationUnitHelpers {
 
     /**
      * Compute the output path for the given compilation unit with the provided root directory as
@@ -61,7 +61,11 @@ class CompilationUnitHelpers {
         return compilationUnits;
     }
 
-    private static CtCompilationUnit getCompilationUnit(CtType<?> type) {
+    /**
+     * @param type A type.
+     * @return The compilation unit of this type.
+     */
+    public static CtCompilationUnit getCompilationUnit(CtType<?> type) {
         return type.getFactory().CompilationUnit().getOrCreate(type);
     }
 }
