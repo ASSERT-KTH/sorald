@@ -13,7 +13,7 @@ import spoon.reflect.reference.CtTypeReference;
 @ProcessorAnnotation(
         key = 2057,
         description =
-                "Every class implementing Serializable should declare a private static final serialVersionUID. Subclasses should have there own uid")
+                "Every class implementing Serializable should declare a private static final serialVersionUID.")
 public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?>> {
 
     private static final String SERIAL_VERSION_UID = "serialVersionUID";
