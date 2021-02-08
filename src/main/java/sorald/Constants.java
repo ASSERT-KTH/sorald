@@ -29,8 +29,6 @@ public class Constants {
     public static final String ARG_RULE_VIOLATION_SPECIFIERS = "--violation-specs";
     public static final String ARG_TARGET = "--target";
 
-    public static final String PROCESSOR_PACKAGE = "sorald.processor";
-
     public static final String VIOLATION_SPECIFIER_SEP = File.pathSeparator;
 
     public static final String SORALD_WORKSPACE = "sorald-workspace";
