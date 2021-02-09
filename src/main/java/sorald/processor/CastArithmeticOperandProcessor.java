@@ -11,6 +11,7 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtTypeReference;
 import spoon.reflect.visitor.filter.TypeFilter;
+import spoon.support.reflect.reference.CtArrayTypeReferenceImpl;
 
 @ProcessorAnnotation(key = 2184, description = "Math operands should be cast before assignment")
 public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
@@ -79,9 +80,18 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
 
             CtExecutableReference ctExecutableReference = ctAbstractInvocation.getExecutable();
             if (ctExecutableReference != null && ctExecutableReference.getParameters() != null) {
-                ctTypeReference =
-                        (CtTypeReference)
-                                ctExecutableReference.getParameters().get(indexInInvocation);
+                List<CtTypeReference> parameters = ctExecutableReference.getParameters();
+
+                if (indexInInvocation > parameters.size()
+                        && parameters.get(parameters.size() - 1).isArray()) {
+                    ctTypeReference =
+                            ((CtArrayTypeReferenceImpl) parameters.get(parameters.size() - 1))
+                                    .getComponentType();
+                } else {
+                    ctTypeReference =
+                            (CtTypeReference)
+                                    ctExecutableReference.getParameters().get(indexInInvocation);
+                }
             }
 
         } else if (ctBinaryOperator.getParent(CtField.class) != null
