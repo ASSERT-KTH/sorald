@@ -21,7 +21,9 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
                 candidate.getElements(new TypeFilter<>(CtBinaryOperator.class));
         if (binaryOperatorChildren.size()
                 == 1) { // in a nested binary operator expression, only one will be processed.
-            if (isArithmeticOperation(candidate) && areBothOperandTypesKnown(candidate) && isExpIntAndOrLong(candidate)) {
+            if (isArithmeticOperation(candidate)
+                    && areBothOperandTypesKnown(candidate)
+                    && isExpIntAndOrLong(candidate)) {
                 CtTypeReference ctType = getExpectedType(candidate);
                 if (ctType != null) {
                     if (isTypeLongOrDoubleOrFloat(ctType)
