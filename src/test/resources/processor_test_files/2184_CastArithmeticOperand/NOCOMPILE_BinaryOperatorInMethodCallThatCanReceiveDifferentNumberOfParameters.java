@@ -7,7 +7,7 @@ This test checks that such an exception doesn't happen.
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-class BinaryOperatorInMethodCallThatCanReceiveDifferentNumberOfParameters {
+class NOCOMPILE_BinaryOperatorInMethodCallThatCanReceiveDifferentNumberOfParameters {
     float twoThirds = 2/3; // Noncompliant; THIS LINE WAS ONLY ADDED TO MAKE THE TEST FIND A VIOLATION IN THIS FILE SO THE NEXT LINES CAN BE ACTUALLY TESTED!
 
     Logger LOGGER = LoggerFactory.getLogger(getClass());
