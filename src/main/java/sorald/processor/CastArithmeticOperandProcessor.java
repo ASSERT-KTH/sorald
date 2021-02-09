@@ -21,7 +21,7 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
                 candidate.getElements(new TypeFilter<>(CtBinaryOperator.class));
         if (binaryOperatorChildren.size()
                 == 1) { // in a nested binary operator expression, only one will be processed.
-            if (isArithmeticOperation(candidate) && isExpIntAndOrLong(candidate)) {
+            if (isArithmeticOperation(candidate) && areBothOperandTypesKnown(candidate) && isExpIntAndOrLong(candidate)) {
                 CtTypeReference ctType = getExpectedType(candidate);
                 if (ctType != null) {
                     if (isTypeLongOrDoubleOrFloat(ctType)
@@ -133,10 +133,13 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
                 || ctBinaryOperator.getKind().compareTo(BinaryOperatorKind.DIV) == 0;
     }
 
-    private boolean isExpIntAndOrLong(CtBinaryOperator ctBinaryOperator) {
+    private boolean areBothOperandTypesKnown(CtBinaryOperator ctBinaryOperator) {
         return (ctBinaryOperator.getLeftHandOperand().getType() != null
-                        && ctBinaryOperator.getRightHandOperand().getType() != null)
-                && (ctBinaryOperator
+                && ctBinaryOperator.getRightHandOperand().getType() != null);
+    }
+
+    private boolean isExpIntAndOrLong(CtBinaryOperator ctBinaryOperator) {
+        return (ctBinaryOperator
                                 .getLeftHandOperand()
                                 .getType()
                                 .getSimpleName()
