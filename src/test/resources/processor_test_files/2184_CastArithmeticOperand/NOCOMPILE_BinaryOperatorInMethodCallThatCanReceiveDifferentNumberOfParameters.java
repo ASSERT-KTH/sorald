@@ -1,6 +1,6 @@
 /*
-When a binary operator is in a method call that can receive different number of paraments, we can get an IndexOutOfBoundsException
-when trying to find the type expected for the argument (i.e., the binary operator in this case).
+When a binary operator is in a method call that can receive different number of parameters (e.g., `void info(String var1, Object... var2);`),
+we can get an IndexOutOfBoundsException when trying to find the type expected for the argument (i.e., the binary operator in this case).
 This test checks that such an exception doesn't happen.
 */
 
