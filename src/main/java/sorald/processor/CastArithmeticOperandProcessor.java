@@ -60,40 +60,7 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
         CtTypeReference ctTypeReference = null;
 
         if (ctBinaryOperator.getParent(CtAbstractInvocation.class) != null) {
-
-            CtAbstractInvocation ctAbstractInvocation =
-                    ctBinaryOperator.getParent(CtAbstractInvocation.class);
-            List<CtExpression> arguments = ctAbstractInvocation.getArguments();
-
-            CtElement argToBeFound = ctBinaryOperator;
-            while (argToBeFound.getParent() != ctAbstractInvocation) {
-                argToBeFound = argToBeFound.getParent();
-            }
-
-            int indexInInvocation = -1;
-            for (int i = 0; i < arguments.size(); i++) {
-                if (arguments.get(i) == argToBeFound) {
-                    indexInInvocation = i;
-                    break;
-                }
-            }
-
-            CtExecutableReference ctExecutableReference = ctAbstractInvocation.getExecutable();
-            if (ctExecutableReference != null && ctExecutableReference.getParameters() != null) {
-                List<CtTypeReference> parameters = ctExecutableReference.getParameters();
-
-                if (indexInInvocation > parameters.size()
-                        && parameters.get(parameters.size() - 1).isArray()) {
-                    ctTypeReference =
-                            ((CtArrayTypeReferenceImpl) parameters.get(parameters.size() - 1))
-                                    .getComponentType();
-                } else {
-                    ctTypeReference =
-                            (CtTypeReference)
-                                    ctExecutableReference.getParameters().get(indexInInvocation);
-                }
-            }
-
+            ctTypeReference = getExpectedTypeOfMethodCallArgument(ctBinaryOperator);
         } else if (ctBinaryOperator.getParent(CtField.class) != null
                 || ctBinaryOperator.getParent(CtLocalVariable.class) != null) {
             CtField ctField = ctBinaryOperator.getParent(CtField.class);
@@ -109,6 +76,44 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
             ctTypeReference = ctReturn.getParent(CtMethod.class).getType();
         }
 
+        return ctTypeReference;
+    }
+
+    private CtTypeReference getExpectedTypeOfMethodCallArgument(CtBinaryOperator ctBinaryOperator) {
+        CtTypeReference ctTypeReference = null;
+
+        CtAbstractInvocation ctAbstractInvocation =
+                ctBinaryOperator.getParent(CtAbstractInvocation.class);
+        List<CtExpression> arguments = ctAbstractInvocation.getArguments();
+
+        CtElement argToBeFound = ctBinaryOperator;
+        while (argToBeFound.getParent() != ctAbstractInvocation) {
+            argToBeFound = argToBeFound.getParent();
+        }
+
+        int indexInInvocation = -1;
+        for (int i = 0; i < arguments.size(); i++) {
+            if (arguments.get(i) == argToBeFound) {
+                indexInInvocation = i;
+                break;
+            }
+        }
+
+        CtExecutableReference ctExecutableReference = ctAbstractInvocation.getExecutable();
+        if (ctExecutableReference != null && ctExecutableReference.getParameters() != null) {
+            List<CtTypeReference> parameters = ctExecutableReference.getParameters();
+
+            if (indexInInvocation > parameters.size()
+                    && parameters.get(parameters.size() - 1).isArray()) {
+                ctTypeReference =
+                        ((CtArrayTypeReferenceImpl) parameters.get(parameters.size() - 1))
+                                .getComponentType();
+            } else {
+                ctTypeReference =
+                        (CtTypeReference)
+                                ctExecutableReference.getParameters().get(indexInInvocation);
+            }
+        }
         return ctTypeReference;
     }
 
