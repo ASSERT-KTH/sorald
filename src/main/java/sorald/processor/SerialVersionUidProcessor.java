@@ -2,6 +2,7 @@ package sorald.processor;
 
 import java.io.Serializable;
 import java.util.Set;
+import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtElement;
@@ -10,6 +11,9 @@ import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.reference.CtFieldReference;
 import spoon.reflect.reference.CtTypeReference;
 
+@IncompleteProcessor(
+        description =
+                "This processor ignores two corner cases: If the class has already a serialVersionUID with a non long type and if the class is not directly implementing serializable e.g. a upper class implements serializable.")
 @ProcessorAnnotation(
         key = 2057,
         description =
