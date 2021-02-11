@@ -32,26 +32,34 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
         }
         CtFieldReference<?> fieldReference = getSerialVersionUIDField(candidate);
         // class implements serializable, lets check for serialVersionUID field
+        // the type of the field can be anything here, but should be long
         if (fieldReference != null) {
             CtField<?> field = fieldReference.getDeclaration();
-            if (!field.getType().equals(getLongPrimitiveType(field))) {
+            // check the type
+            if (!isLongType(field)) {
                 // serialVersionUID found but type is not long
+                // => we cant fix it
                 return false;
             }
             // check all modifiers, the field should be private static final
-            return !(field.isFinal() && field.isPrivate() && field.isStatic());
+            return !hasCorrectModifier(field);
         }
         // here should the class implement serializable and doesn't have a serialVersionUID with
-        // proper type
+        // correct type
         return true;
+    }
+
+    private boolean hasCorrectModifier(CtField<?> field) {
+        return field.isFinal() && field.isPrivate() && field.isStatic();
+    }
+
+    private boolean isLongType(CtField<?> field) {
+        return field.getType().equals(getLongPrimitiveType(field));
     }
 
     private CtFieldReference<?> getSerialVersionUIDField(CtClass<?> candidate) {
         return candidate.getAllFields().stream()
-                .filter(
-                        v ->
-                                v.getSimpleName().equals(SERIAL_VERSION_UID)
-                                        && v.getType().equals(getLongPrimitiveType(candidate)))
+                .filter(v -> v.getSimpleName().equals(SERIAL_VERSION_UID))
                 .findFirst()
                 .orElse(null);
     }
