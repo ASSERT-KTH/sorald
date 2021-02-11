@@ -55,6 +55,8 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      * example, when repairing something involving a method call, there may be nested calls that are
      * not actually the violating parties, but still appear in the correct vicinity.
      *
+     * <p>This method is only to be called on elements that appear very close to a violation.
+     *
      * <p><b>This method does not mutate the state of the processor</b>.
      *
      * <p>This method never crashes, instead returning false if there is a problem in the concrete
@@ -94,8 +96,19 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     /**
      * Same as the general description of {@link SoraldAbstractProcessor#canRepair(CtElement)}.
      *
-     * <p>Note that a processor gets ONE chance to repair a violation. If this method returns true,
-     * the violating element is passed to the {@link
+     * <p>Note that this method is only ever called on an element that is deemed to be very close to
+     * a violation that concerns the implementing processor (most often intersecting with the
+     * violation location, otherwise at least appearing on the same line). If the processor
+     * implementing this method operates on elements that never appear close to other elements of
+     * its kind, then you can be confident that any element passed to this method does violate the
+     * considered rule.
+     *
+     * <p>For processors operating on highly granular elements, such as expressions, there is
+     * typically a need to perform some sanity checks, as other similar elements may appear very
+     * closely or even be nested.
+     *
+     * <p>Also Note that a processor gets ONE chance to repair a violation. If this method returns
+     * true, the violating element is passed to the {@link
      * SoraldAbstractProcessor#repairInternal(CtElement)} method, and the violation is consumed.
      *
      * <p>It is very important that this method <b>does not mutate the state of the processor.</b>
