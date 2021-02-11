@@ -71,12 +71,7 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
 
     @Override
     protected void enter(CtElement e) {
-        final Factory originalFactory = processor.getFactory();
-        processor.setFactory(e.getFactory());
-
-        if (processor.getTargetType().isAssignableFrom(e.getClass())
-                && processor.canRepair(processor.getTargetType().cast(e))) {
-
+        if (processor.getTargetType().isAssignableFrom(e.getClass())) {
             E candidate = processor.getTargetType().cast(e);
             for (RuleViolation violation : violations) {
                 if (!inSameFile(e, violation)) {
@@ -97,8 +92,6 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
                 }
             }
         }
-
-        processor.setFactory(originalFactory);
     }
 
     /**
@@ -112,7 +105,22 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
         List<E> sameLineCandidates = onSameLine.getOrDefault(violation, Collections.emptyList());
         Stream<E> candidates =
                 Stream.concat(intersectingCandidates.stream(), sameLineCandidates.stream());
-        return candidates.filter(e -> !bestFitsMap.containsKey(e)).findFirst();
+        return candidates
+                .filter(this::canRepair)
+                .filter(e -> !bestFitsMap.containsKey(e))
+                .findFirst();
+    }
+
+    private boolean canRepair(E element) {
+        // The processor doesn't have a factory set at this point, so we TEMPORARILY set the
+        // element's factory
+        final Factory originalFactory = processor.getFactory();
+        try {
+            processor.setFactory(element.getFactory());
+            return processor.canRepair(element);
+        } finally {
+            processor.setFactory(originalFactory);
+        }
     }
 
     private static boolean elementIntersectsViolation(CtElement element, RuleViolation violation) {
