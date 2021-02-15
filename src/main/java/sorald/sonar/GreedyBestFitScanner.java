@@ -128,6 +128,14 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
         Stream<E> candidates =
                 Stream.concat(intersectingCandidates.stream(), sameLineCandidates.stream());
         return candidates
+                .sorted(
+                        (lhs, rhs) -> {
+                            double lhsIntersect = intersectFraction(lhs, violation);
+                            double rhsIntersect = intersectFraction(rhs, violation);
+
+                            // reverse sort order, we want greater elements first
+                            return Double.compare(rhsIntersect, lhsIntersect);
+                        })
                 .filter(this::canRepair)
                 .filter(e -> !bestFitsMap.containsKey(e))
                 .findFirst();
@@ -147,13 +155,10 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
 
     private static boolean elementIntersectsViolation(CtElement element, RuleViolation violation) {
         int[] lineSeps = element.getPosition().getCompilationUnit().getLineSeparatorPositions();
-
-        int vStartLine = violation.getStartLine();
-        int vEndLine = violation.getEndLine();
         int violationSourceStart =
-                (vStartLine == 1 ? 0 : lineSeps[vStartLine - 2]) + violation.getStartCol();
+                calculateSourcePos(violation.getStartLine(), violation.getStartCol(), lineSeps);
         int violationSourceEnd =
-                (vEndLine == 1 ? 0 : lineSeps[vEndLine - 2]) + violation.getEndCol();
+                calculateSourcePos(violation.getEndLine(), violation.getEndCol(), lineSeps);
 
         int elemSourceStart = element.getPosition().getSourceStart();
         int elemSourceEnd = element.getPosition().getSourceEnd();
@@ -162,8 +167,36 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
                 violationSourceStart, violationSourceEnd, elemSourceStart, elemSourceEnd);
     }
 
+    private static int calculateSourcePos(int line, int column, int[] lineSeps) {
+        return (line == 1 ? 0 : lineSeps[line - 2]) + column;
+    }
+
     private static boolean pointsIntersect(int startLhs, int endLhs, int startRhs, int endRhs) {
         return startRhs <= endLhs && endRhs >= startLhs;
+    }
+
+    /**
+     * @param element An element.
+     * @param violation A rule violation.
+     * @return The fraction of the element's source position that is intersected by the violation's
+     *     source position.
+     */
+    private static double intersectFraction(CtElement element, RuleViolation violation) {
+        int[] lineSeps = element.getPosition().getCompilationUnit().getLineSeparatorPositions();
+        int violationSourceStart =
+                calculateSourcePos(violation.getStartLine(), violation.getStartCol(), lineSeps);
+        int violationSourceEnd =
+                calculateSourcePos(violation.getEndLine(), violation.getEndCol(), lineSeps);
+
+        int elemSourceStart = element.getPosition().getSourceStart();
+        int elemSourceEnd = element.getPosition().getSourceEnd();
+
+        int elemSize = elemSourceEnd - elemSourceStart;
+        int adjustedViolationStart = Math.max(0, violationSourceStart - elemSourceStart);
+        int adjustedViolationEnd = Math.min(violationSourceEnd - elemSourceStart, elemSize);
+
+        int violationSizeInsideElement = adjustedViolationEnd - adjustedViolationStart;
+        return (double) violationSizeInsideElement / elemSize;
     }
 
     private static boolean startOnSameLine(CtElement element, RuleViolation violation) {
