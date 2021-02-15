@@ -28,6 +28,8 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
 
     private final Set<File> filesWithViolations;
 
+    public static final double INTERSECTION_FRACTION_TOLERANCE = 0.005;
+
     /**
      * Calculate a best fits mapping between Spoon elements and rule violations.
      *
@@ -133,8 +135,12 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
                             double lhsIntersect = intersectFraction(lhs, violation);
                             double rhsIntersect = intersectFraction(rhs, violation);
 
-                            // reverse sort order, we want greater elements first
-                            return Double.compare(rhsIntersect, lhsIntersect);
+                            if (Math.abs(lhsIntersect - rhsIntersect)
+                                    < INTERSECTION_FRACTION_TOLERANCE) {
+                                return Integer.compare(elementSize(rhs), elementSize(lhs));
+                            } else {
+                                return Double.compare(rhsIntersect, lhsIntersect);
+                            }
                         })
                 .filter(this::canRepair)
                 .filter(e -> !bestFitsMap.containsKey(e))
@@ -197,6 +203,10 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
 
         int violationSizeInsideElement = adjustedViolationEnd - adjustedViolationStart;
         return (double) violationSizeInsideElement / elemSize;
+    }
+
+    private static int elementSize(CtElement element) {
+        return element.getPosition().getSourceEnd() - element.getPosition().getSourceStart();
     }
 
     private static boolean startOnSameLine(CtElement element, RuleViolation violation) {
