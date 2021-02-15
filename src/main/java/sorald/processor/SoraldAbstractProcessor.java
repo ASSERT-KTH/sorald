@@ -117,7 +117,9 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      * @param candidate A candidate element.
      * @return true if the processor can repair the violation based on this element.
      */
-    protected abstract boolean canRepairInternal(E candidate);
+    protected boolean canRepairInternal(E candidate) {
+        return true;
+    }
 
     /**
      * Repair a violating element. An element is only passed to this method after having been
