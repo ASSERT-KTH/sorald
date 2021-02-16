@@ -1021,10 +1021,16 @@
             "initial": "diff --git a/src/main/java/sorald/GitPatchGenerator.java b/src/main/java/sorald/GitPatchGenerator.java\nindex 23c30f9f..5f4c4c0b 100644\n--- a/src/main/java/sorald/GitPatchGenerator.java\n+++ b/src/main/java/sorald/GitPatchGenerator.java\n@@ -34,8 +34,6 @@ public void generate(String originalFilePath, String newFilePath, String pathToP\n         try {\n \n             FileOutputStream out = new FileOutputStream(pathToPatch + Constants.PATCH_EXT);\n-\n-            PrintWriter printer = new PrintWriter(out);\n             String relativeOriginalFilePath =\n                     new File(this.gitProjectRootDir)\n                             .toURI()\n",
             "final": null
         },
-        "manualEdits": [],
+        "manualEdits": [
+            {
+                "type": "afterOpenPr",
+                "reason": "remove unused import (project autoformatter)",
+                "diff": "diff --git a/src/main/java/sorald/GitPatchGenerator.java b/src/main/java/sorald/GitPatchGenerator.java\nindex 5f4c4c0..a85bb2e 100644\n--- a/src/main/java/sorald/GitPatchGenerator.java\n+++ b/src/main/java/sorald/GitPatchGenerator.java\n@@ -3,7 +3,6 @@ package sorald;\n import java.io.File;\n import java.io.FileOutputStream;\n import java.io.IOException;\n-import java.io.PrintWriter;\n import org.eclipse.jgit.diff.DiffFormatter;\n import org.eclipse.jgit.diff.EditList;\n import org.eclipse.jgit.diff.HistogramDiff;\n"
+            }
+        ],
         "recordMetadata": {
             "createdAt": "2021-02-16 08:59:42.602790",
-            "lastModified": "2021-02-16 08:59:42.602790",
+            "lastModified": "2021-02-16 09:16:18.446433",
             "isLegacyRecord": false
         }
     }
