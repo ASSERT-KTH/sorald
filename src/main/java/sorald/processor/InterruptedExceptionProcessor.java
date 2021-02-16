@@ -28,6 +28,6 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
         CtInvocation secondInvocation =
                 factory.createInvocation(firstInvocation, interruptMethod.getReference());
 
-        element.getBody().addStatement(element.getBody().getStatements().size(), secondInvocation);
+        element.getBody().addStatement(0, secondInvocation);
     }
 }
