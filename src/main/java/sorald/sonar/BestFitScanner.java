@@ -18,8 +18,8 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.visitor.CtScanner;
 
-/** Scanner for greedily matching rule violations against Spoon elements. */
-public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
+/** Scanner for matching rule violations against Spoon elements. */
+public class BestFitScanner<E extends CtElement> extends CtScanner {
     private final List<RuleViolation> violations;
     private final SoraldAbstractProcessor<E> processor;
 
@@ -55,7 +55,7 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
             SoraldAbstractProcessor<E> processor) {
         checkRuleViolationsConcernProcessorRule(violations, processor);
 
-        var scanner = new GreedyBestFitScanner<>(violations, processor);
+        var scanner = new BestFitScanner<>(violations, processor);
         scanner.scan(element);
 
         Map<CtElement, RuleViolation> bestFitsMap = new IdentityHashMap<>();
@@ -66,8 +66,7 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
         return bestFitsMap;
     }
 
-    private GreedyBestFitScanner(
-            Set<RuleViolation> violations, SoraldAbstractProcessor<E> processor) {
+    private BestFitScanner(Set<RuleViolation> violations, SoraldAbstractProcessor<E> processor) {
         var tmpViolations = new ArrayList<>(violations);
         Collections.sort(tmpViolations);
         this.violations = Collections.unmodifiableList(tmpViolations);

@@ -6,14 +6,14 @@ import java.io.File;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 import sorald.Constants;
+import sorald.sonar.BestFitScanner;
 import sorald.sonar.Checks;
-import sorald.sonar.GreedyBestFitScanner;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleViolation;
 import spoon.Launcher;
 import spoon.reflect.CtModel;
 
-public class GreedyBestFitScannerTest {
+public class BestFitScannerTest {
 
     @Test
     public void calculateBestFits_throws_whenProcessorConcernsDifferentRuleThanViolations() {
@@ -34,7 +34,7 @@ public class GreedyBestFitScannerTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () ->
-                        GreedyBestFitScanner.calculateBestFits(
+                        BestFitScanner.calculateBestFits(
                                 model.getUnnamedModule(),
                                 xxeProcessingViolations,
                                 arrayHashCodeProc));
