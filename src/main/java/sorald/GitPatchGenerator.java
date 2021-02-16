@@ -34,8 +34,6 @@ public class GitPatchGenerator {
         try {
 
             FileOutputStream out = new FileOutputStream(pathToPatch + Constants.PATCH_EXT);
-
-            PrintWriter printer = new PrintWriter(out);
             String relativeOriginalFilePath =
                     new File(this.gitProjectRootDir)
                             .toURI()
