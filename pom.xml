@@ -70,7 +70,7 @@
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>8.4.0-SNAPSHOT</version>
+            <version>8.4.0-beta-14</version>
             <exclusions>
                 <exclusion>
                     <!-- must be excluded as it is signed, which causes problems with unsigned version from sonar -->
