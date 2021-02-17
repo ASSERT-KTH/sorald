@@ -94,6 +94,8 @@ Example:
     }
 ```
 
+Sorald places the interrupt as late as possible in the catch block, but before any throws or returns.
+
 -----
 
 #### "Iterator.next()" methods should throw "NoSuchElementException" ([Sonar Rule 2272](https://rules.sonarsource.com/java/RSPEC-2272))
