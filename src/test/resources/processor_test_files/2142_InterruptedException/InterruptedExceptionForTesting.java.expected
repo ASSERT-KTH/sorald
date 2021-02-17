@@ -21,8 +21,8 @@ class InterruptedExceptionForTesting {
 				throw new InterruptedException();
 			}
 		}catch (InterruptedException e) { // Noncompliant; logging is not enough
-		    Thread.currentThread().interrupt();
 			LOGGER.log(Level.WARN, "Interrupted!", e);
+			Thread.currentThread().interrupt();
 		}
 	}
 
@@ -85,10 +85,10 @@ class InterruptedExceptionForTesting {
 				throw new InterruptedException();
 			}
 		} catch (InterruptedException e) { // Noncompliant {{Either re-interrupt this method or rethrow the "InterruptedException".}}
-			Thread.currentThread().interrupt();
 			LOGGER.log(Level.WARN, "Interrupted!", e);
 			// clean up state...
 			new Foo().interrupt();
+			Thread.currentThread().interrupt();
 		}
 	}
 
