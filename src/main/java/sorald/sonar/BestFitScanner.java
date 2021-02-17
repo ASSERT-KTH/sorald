@@ -131,6 +131,10 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
         return candidates
                 .sorted(
                         (lhs, rhs) -> {
+                            if (lhs == rhs) {
+                                return 0;
+                            }
+
                             double lhsIntersect = intersectFraction(lhs, violation);
                             double rhsIntersect = intersectFraction(rhs, violation);
 
@@ -196,12 +200,18 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
         int elemSourceStart = element.getPosition().getSourceStart();
         int elemSourceEnd = element.getPosition().getSourceEnd();
 
-        int elemSize = elemSourceEnd - elemSourceStart;
-        int adjustedViolationStart = Math.max(0, violationSourceStart - elemSourceStart);
-        int adjustedViolationEnd = Math.min(violationSourceEnd - elemSourceStart, elemSize);
+        if (!pointsIntersect(
+                elemSourceStart, elemSourceEnd, violationSourceStart, violationSourceEnd)) {
+            return 0;
+        } else {
+            int elemSize = elemSourceEnd - elemSourceStart;
+            int adjustedViolationStart = Math.max(0, violationSourceStart - elemSourceStart);
+            int adjustedViolationEnd =
+                    Math.max(0, Math.min(violationSourceEnd - elemSourceStart, elemSize));
 
-        int violationSizeInsideElement = adjustedViolationEnd - adjustedViolationStart;
-        return (double) violationSizeInsideElement / elemSize;
+            int violationSizeInsideElement = adjustedViolationEnd - adjustedViolationStart;
+            return (double) violationSizeInsideElement / elemSize;
+        }
     }
 
     private static int elementSize(CtElement element) {
