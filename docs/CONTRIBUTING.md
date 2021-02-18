@@ -134,20 +134,14 @@ detail below.
 
 A _test file_ is a `.java` source file with at least one violation of the
 considered rule. Sorald's test suite automatically converts each test file
-into a test case for the processor.
-
-Each violation in a test file _must_ be marked with an inline comment `//
-Noncompliant`, like so.
+into a test case for the processor. Each violation in a test file _must_ be
+marked with an inline comment `// Noncompliant`, like so.
 
 ```java
 "a" == "b" // Noncompliant
 ```
 
 > Note the capital `N` in `Noncompliant`!
-
-> See
-> [src/test/java/sorald/processor/ProcessorTest.java](/src/test/java/sorald/processor/ProcessorTest.java)
-> if you are curious as to how tests are generated from the test files.
 
 ##### A test file is a test case
 
@@ -158,6 +152,10 @@ operation of a processor, and then individual files for edge cases.
 
 The name of the test file should ideally reflect what the test case is about,
 but there are otherwise no particular naming conventions.
+
+> See
+> [src/test/java/sorald/processor/ProcessorTest.java](/src/test/java/sorald/processor/ProcessorTest.java)
+> if you are curious as to how tests are generated from the test files.
 
 ##### Test files should be standalone compilable
 
