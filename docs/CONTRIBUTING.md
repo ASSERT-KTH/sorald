@@ -179,6 +179,9 @@ require compilation.
 > **Important:** Don't forget to also prefix the primary type's name with
 > `NOCOMPILE`, such that the file name matches the type name.
 
+If a test file should be ignored completely, prefix it with `IGNORE` instead.
+This is useful for keeping test files that Sorald currently cannot handle.
+
 #### Expected files
 
 An _expected file_ is a `.java` source file that contains the expected output
