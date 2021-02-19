@@ -967,10 +967,10 @@
         "prMetadata": {
             "url": "https://github.com/SpoonLabs/sorald/pull/381",
             "createdAt": "2021-02-16 07:49:19",
-            "closedAt": null,
-            "mergedAt": null,
-            "state": "open",
-            "isMerged": false,
+            "closedAt": "2021-02-17 13:44:52",
+            "mergedAt": "2021-02-17 13:44:52",
+            "state": "closed",
+            "isMerged": true,
             "number": 381
         },
         "soraldStatistics": {
@@ -1019,7 +1019,7 @@
         },
         "diffs": {
             "initial": "diff --git a/src/main/java/sorald/GitPatchGenerator.java b/src/main/java/sorald/GitPatchGenerator.java\nindex 23c30f9f..5f4c4c0b 100644\n--- a/src/main/java/sorald/GitPatchGenerator.java\n+++ b/src/main/java/sorald/GitPatchGenerator.java\n@@ -34,8 +34,6 @@ public void generate(String originalFilePath, String newFilePath, String pathToP\n         try {\n \n             FileOutputStream out = new FileOutputStream(pathToPatch + Constants.PATCH_EXT);\n-\n-            PrintWriter printer = new PrintWriter(out);\n             String relativeOriginalFilePath =\n                     new File(this.gitProjectRootDir)\n                             .toURI()\n",
-            "final": null
+            "final": "diff --git a/src/main/java/sorald/GitPatchGenerator.java b/src/main/java/sorald/GitPatchGenerator.java\nindex 23c30f9f..a85bb2e6 100644\n--- a/src/main/java/sorald/GitPatchGenerator.java\n+++ b/src/main/java/sorald/GitPatchGenerator.java\n@@ -3,7 +3,6 @@\n import java.io.File;\n import java.io.FileOutputStream;\n import java.io.IOException;\n-import java.io.PrintWriter;\n import org.eclipse.jgit.diff.DiffFormatter;\n import org.eclipse.jgit.diff.EditList;\n import org.eclipse.jgit.diff.HistogramDiff;\n@@ -34,8 +33,6 @@ public void generate(String originalFilePath, String newFilePath, String pathToP\n         try {\n \n             FileOutputStream out = new FileOutputStream(pathToPatch + Constants.PATCH_EXT);\n-\n-            PrintWriter printer = new PrintWriter(out);\n             String relativeOriginalFilePath =\n                     new File(this.gitProjectRootDir)\n                             .toURI()\n"
         },
         "manualEdits": [
             {
@@ -1030,7 +1030,7 @@
         ],
         "recordMetadata": {
             "createdAt": "2021-02-16 08:59:42.602790",
-            "lastModified": "2021-02-16 09:16:18.446433",
+            "lastModified": "2021-02-19 09:26:45.763414",
             "isLegacyRecord": false
         }
     }
