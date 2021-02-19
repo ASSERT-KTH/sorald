@@ -1,6 +1,16 @@
 # Achievements
 This document presents an overview of the pull requests performed with Sorald.
 
+## [spoonlabs/sorald#381](https://github.com/spoonlabs/sorald/pull/381)
+This PR was opened at 2021-02-16 07:49:19 and merged at 2021-02-17 13:44:52.
+Some manual edits were performed after applying Sorald.
+
+It provided the following repairs:
+
+* [Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854)
+    - Number of violations found: 200
+    - Number of violations repaired: 1
+
 ## [verificatum/verificatum-vmn#12](https://github.com/verificatum/verificatum-vmn/pull/12)
 This PR was opened at 2021-02-03 07:41:47 and merged at 2021-02-09 17:46:35.
 The patch was generated fully automatically with Sorald.
