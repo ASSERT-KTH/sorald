@@ -124,7 +124,8 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
         CtCodeSnippetExpression<?> literalWithSuffix =
                 literalInt
                         .getFactory()
-                        .createCodeSnippetExpression(value + getLiteralSuffix(typeForSuffix));
+                        .createCodeSnippetExpression(
+                                value + getLiteralSuffix(typeForSuffix).toUpperCase());
         literalInt.replace(literalWithSuffix);
     }
 
