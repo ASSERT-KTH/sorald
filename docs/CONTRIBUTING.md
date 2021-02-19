@@ -87,39 +87,8 @@ class again as described above.
 
 3) Add at least one test file with expected output for your processor
 
-Tests for the processors are automatically generated based on a set of test
-files in
-[src/test/resources/processor_test_files](/src/test/resources/processor_test_files).
-To add test files for your new processor, you must first add a new subdirectory
-called `<RULE_KEY>_<RULE_NAME>`, were you substitute `<RULE_KEY>` for the key
-of the rule your processor is related to, and `<RULE_NAME>` for the name of the
-processor without to `Processor` suffix. Then, you put at least one Java file
-with at least one violation of the rule you're working on into the new
-directory. For each line in the file that violates the considered rule, put an
-inline comment saying `Noncompliant` at the end of the line like so:
-
-```java
-"a" == "b" // Noncompliant
-```
-
-For each noncompliant input file `SomeFile.java`, you should also add an
-expected output file called `SomeFile.java.expected` in the same directory.
-Each such "expected" file should contain the expected output from processing
-its corresponding noncompliant file with your new processor. For a concrete
-excample, see the noncompliant file
-[ArrayHashCodeAndToString.java](/src/test/resources/processor_test_files/2116_ArrayHashCodeAndToString/ArrayHashCodeAndToString.java)
-and its expected output
-[ArrayHashCodeAndToString.java.expected](/src/test/resources/processor_test_files/2116_ArrayHashCodeAndToString/ArrayHashCodeAndToString.java.expected).
-
-The precise names of the Java source files do not matter, as long as the
-noncompliant files are suffixed with `.java` and each expected file
-is suffixed with `.expected` and has a matching noncompliant file.
-For more examples, see
-[src/test/resources/processor_test_files](/src/test/resources/processor_test_files).
-
-> See
-> [src/test/java/sorald/processor/ProcessorTest.java](/src/test/java/sorald/processor/ProcessorTest.java)
-> if you are curious as to how tests are generated from the test files.
+See [Guidelines for testing processors](#guidelines-for-testing-processors) for
+details.
 
 4) Ensure compliance with code style
 
@@ -148,3 +117,84 @@ Transformation:
 ```
 
 And then you can submit your PR!
+
+### Guidelines for testing processors
+
+Tests for the processors are automatically generated based on a set of test
+files in
+[src/test/resources/processor_test_files](/src/test/resources/processor_test_files).
+To add test files for a processor, you must find or create a subdirectory called
+`<RULE_KEY>_<RULE_NAME>`, were you substitute `<RULE_KEY>` for the key of the
+rule your processor is related to, and `<RULE_NAME>` for the name of the
+processor without to `Processor` suffix. In this subdirectory, you add _test
+files_ and _expected files_ for the processor, which are described in more
+detail below.
+
+#### Test files
+
+A _test file_ is a `.java` source file with at least one violation of the
+considered rule. Sorald's test suite automatically converts each test file
+into a test case for the processor. Each violation in a test file _must_ be
+marked with an inline comment `// Noncompliant`, like so.
+
+```java
+"a" == "b" // Noncompliant
+```
+
+> Note the capital `N` in `Noncompliant`!
+
+##### A test file is a test case
+
+As each test file generates a test case, it is good practice to create one test
+file per specific case you want to test, and document it with a header. To avoid
+an explosion of test files, we typically create one test file for the general
+operation of a processor, and then individual files for edge cases.
+
+The name of the test file should ideally reflect what the test case is about,
+but there are otherwise no particular naming conventions.
+
+> See
+> [src/test/java/sorald/processor/ProcessorTest.java](/src/test/java/sorald/processor/ProcessorTest.java)
+> if you are curious as to how tests are generated from the test files.
+
+##### Test files should be standalone compilable
+
+In general, a test file must be _standalone compilable_ given only the standard
+library. In other words, it must be syntactically correct, can't reference types
+that are not part of the standard library, etc. You can easily test this by
+simply running `javac` on your test file.
+
+> **Important:** Note that this means that test files must abide by Java
+> conventions of having the name of the primary type declaration in the class
+> match the name of the file.
+
+In some cases, the point of the test case is that the test file does not
+compile, typically due types or packages that aren't available being referenced.
+To signify this, the test file name (as well as the class name) should be
+prefixed with `NOCOMPILE`, which will cause it to be ignored by tests that
+require compilation.
+
+> **Important:** Don't forget to also prefix the primary type's name with
+> `NOCOMPILE`, such that the file name matches the type name.
+
+If a test file should be ignored completely, prefix it with `IGNORE` instead.
+This is useful for keeping test files that Sorald currently cannot handle.
+
+#### Expected files
+
+An _expected file_ is a `.java` source file that contains the expected output
+after processing a test file, marked by having the suffix `.expected` tacked on
+to the end. For example, given a test file `A.java` the corresponding expected
+file would be called `A.java.expected`. After processing `A.java` with the
+appropriate processor, the test suite compares the results to `A.java.expected`.
+
+When you add a test file, you should always add a corresponding expected file.
+Otherwise, the test suite can verify that the violations are removed, but not
+that the output is actually correct, making for weak tests.
+
+For a concrete example of a test file and expected file pair, see
+[ArrayHashCodeAndToString.java](/src/test/resources/processor_test_files/2116_ArrayHashCodeAndToString/ArrayHashCodeAndToString.java)
+and its expected output
+[ArrayHashCodeAndToString.java.expected](/src/test/resources/processor_test_files/2116_ArrayHashCodeAndToString/ArrayHashCodeAndToString.java.expected).
+For more examples, see
+[src/test/resources/processor_test_files](/src/test/resources/processor_test_files).
