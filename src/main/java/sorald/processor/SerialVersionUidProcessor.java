@@ -169,9 +169,7 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
             // field exists so we add the field at the old position with the comment
             CtField<?> oldField = serialVersionUidReference.getDeclaration();
             replacement.setComments(oldField.getComments());
-            int position = element.getTypeMembers().indexOf(oldField);
-            element.removeTypeMember(oldField);
-            element.addTypeMemberAt(position, replacement);
+            oldField.replace(replacement);
         } else {
             // we have no known position so we add it to the top
             element.addFieldAtTop(replacement);
