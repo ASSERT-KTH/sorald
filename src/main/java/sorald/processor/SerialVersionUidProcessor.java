@@ -24,6 +24,7 @@ import spoon.reflect.reference.CtTypeReference;
                 "Every class implementing Serializable should declare a static final serialVersionUID.")
 public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?>> {
 
+    private static final String DEFAULT_ID_VALUE = "1L";
     private static final String SERIAL_VERSION_UID = "serialVersionUID";
     private Set<ModifierKind> modifiers = Set.of(ModifierKind.STATIC, ModifierKind.FINAL);
 
@@ -64,7 +65,7 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
      * Checks if a given class ia a expection for having an ID. SonarQube states 4 expections
      *
      * <ul>
-     *   <li>Swing and AWT classes
+     *   <li>Swing and AWT classes (GUI classes)
      *   <li>abstract classes
      *   <li>Throwable and its subclasses (Exceptions and Errors)
      *   <li>classes marked with @SuppressWarnings("serial")
@@ -119,7 +120,11 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
         }
         return false;
     }
-
+    /**
+     * checks if a given class extends {@link Throwable}
+     * @param candidate
+     * @return if subtype of throwable false otherwise
+     */
     private boolean extendsThrowable(CtClass<?> candidate) {
         return candidate.isSubtypeOf(candidate.getFactory().createCtTypeReference(Throwable.class));
     }
@@ -148,15 +153,17 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
     @Override
     protected void repairInternal(CtClass<?> element) {
         CtFieldReference<?> serialVersionUidReference = getSerialVersionUIDField(element);
-        // serialVersionUID Field missing or identifiers are wrong, we simply add a fixed field as
+        // serialVersionUID field is missing or identifiers are wrong, we simply add a fixed field as
         // replacement
+        // create replacement
         CtField<?> replacement =
                 element.getFactory()
                         .createField(
                                 null, modifiers, getLongPrimitiveType(element), SERIAL_VERSION_UID);
-        replacement.setDefaultExpression(element.getFactory().createCodeSnippetExpression("1L"));
+        replacement.setDefaultExpression(element.getFactory().createCodeSnippetExpression(DEFAULT_ID_VALUE));
+        // check if field exists
         if (serialVersionUidReference != null) {
-            // we add the field at the old position
+            // field exists so we add the field at the old position with the comment
             CtField<?> oldField = serialVersionUidReference.getDeclaration();
             replacement.setComments(oldField.getComments());
             int position = element.getTypeMembers().indexOf(oldField);
