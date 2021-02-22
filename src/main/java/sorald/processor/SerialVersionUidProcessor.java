@@ -166,7 +166,8 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
                                 null, modifiers, getLongPrimitiveType(element), SERIAL_VERSION_UID);
         replacement.setDefaultExpression(
                 element.getFactory().createCodeSnippetExpression(DEFAULT_ID_VALUE));
-
+        // we add the old modifiers here because sonar only forces final and static but a user could add more modifiers. 
+        element.getModifiers().forEach(replacement::addModifier);
         if (serialVersionUidReference != null) {
             CtField<?> oldField = serialVersionUidReference.getDeclaration();
             replacement.setComments(oldField.getComments());
