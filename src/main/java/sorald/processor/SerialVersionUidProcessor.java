@@ -122,6 +122,7 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
     }
     /**
      * checks if a given class extends {@link Throwable}
+     *
      * @param candidate
      * @return if subtype of throwable false otherwise
      */
@@ -153,14 +154,16 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
     @Override
     protected void repairInternal(CtClass<?> element) {
         CtFieldReference<?> serialVersionUidReference = getSerialVersionUIDField(element);
-        // serialVersionUID field is missing or identifiers are wrong, we simply add a fixed field as
+        // serialVersionUID field is missing or identifiers are wrong, we simply add a fixed field
+        // as
         // replacement
         // create replacement
         CtField<?> replacement =
                 element.getFactory()
                         .createField(
                                 null, modifiers, getLongPrimitiveType(element), SERIAL_VERSION_UID);
-        replacement.setDefaultExpression(element.getFactory().createCodeSnippetExpression(DEFAULT_ID_VALUE));
+        replacement.setDefaultExpression(
+                element.getFactory().createCodeSnippetExpression(DEFAULT_ID_VALUE));
         // check if field exists
         if (serialVersionUidReference != null) {
             // field exists so we add the field at the old position with the comment
