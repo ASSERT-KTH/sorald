@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
+import spoon.reflect.code.CtExpression;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtField;
@@ -75,6 +76,7 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
                 || supressesWarning(candidate)
                 || isGuiClass(candidate);
     }
+
     /**
      * Tests if a given class is a gui class. A gui class for sonarqube is a class having a swing or
      * awt class/interface as supertype. See
@@ -106,6 +108,7 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
         }
         return false;
     }
+
     /**
      * checks if a given class has a @SupressWarnings("serial") annotation
      *
@@ -120,6 +123,7 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
         }
         return false;
     }
+
     /**
      * checks if a given class extends {@link Throwable}
      *
@@ -174,6 +178,11 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
             // add more modifiers.
             oldField.getModifiers().forEach(replacement::addModifier);
             replacement.setComments(oldField.getComments());
+            CtExpression<?> expression = oldField.getDefaultExpression();
+            if (expression != null) {
+                replacement.setDefaultExpression(
+                        element.getFactory().createCodeSnippetExpression(expression.toString()));
+            }
             oldField.replace(replacement);
         } else {
             element.addFieldAtTop(replacement);
