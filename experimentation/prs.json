@@ -1033,5 +1033,87 @@
             "lastModified": "2021-02-19 09:26:45.763414",
             "isLegacyRecord": false
         }
+    },
+    "verificatum/verificatum-vmn#13": {
+        "repoSlug": "verificatum/verificatum-vmn",
+        "prMetadata": {
+            "url": "https://github.com/verificatum/verificatum-vmn/pull/13",
+            "createdAt": "2021-02-22 13:16:50",
+            "closedAt": null,
+            "mergedAt": null,
+            "state": "open",
+            "isMerged": false,
+            "number": 13
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 3,
+                    "ruleName": "InterruptedException",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2142",
+                    "nbViolationsBefore": 3,
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 154,
+                            "endColumn": 50,
+                            "startColumn": 21,
+                            "startLine": 154,
+                            "filePath": "src/java/com/verificatum/protocol/hvzk/CCPoSW.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/protocol/hvzk/CCPoSW.java:154:21:154:50"
+                        },
+                        {
+                            "endLine": 258,
+                            "endColumn": 50,
+                            "startColumn": 21,
+                            "startLine": 258,
+                            "filePath": "src/java/com/verificatum/protocol/hvzk/CCPoSW.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/protocol/hvzk/CCPoSW.java:258:21:258:50"
+                        },
+                        {
+                            "endLine": 940,
+                            "endColumn": 50,
+                            "startColumn": 21,
+                            "startLine": 940,
+                            "filePath": "src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java:940:21:940:50"
+                        }
+                    ],
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: cbc358c9",
+                "javaVersion": "11.0.10",
+                "originalArgs": [
+                    "repair",
+                    "--stats-output-file",
+                    "2142.json",
+                    "--rule-keys",
+                    "2142",
+                    "--original-files-path",
+                    ".",
+                    "--file-output-strategy",
+                    "IN_PLACE"
+                ]
+            },
+            "totalTimeMs": 3042,
+            "repairTimeMs": 145,
+            "startTimeMs": 1613997829128,
+            "crashes": [],
+            "endTimeMs": 1613997832170,
+            "parseTimeMs": 1198
+        },
+        "diffs": {
+            "initial": "diff --git a/src/java/com/verificatum/protocol/hvzk/CCPoSW.java b/src/java/com/verificatum/protocol/hvzk/CCPoSW.java\nindex afe386d..1b40b7f 100644\n--- a/src/java/com/verificatum/protocol/hvzk/CCPoSW.java\n+++ b/src/java/com/verificatum/protocol/hvzk/CCPoSW.java\n@@ -152,6 +152,7 @@ public void run() {\n             try {\n                 commitmentExportThread.join();\n             } catch (final InterruptedException ie) {\n+                Thread.currentThread().interrupt();\n             }\n         }\n     }\n@@ -256,6 +257,7 @@ public void run() {\n             try {\n                 commitmentExportThread.join();\n             } catch (final InterruptedException ie) {\n+                Thread.currentThread().interrupt();\n             }\n         }\n \ndiff --git a/src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java b/src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java\nindex 05aa99d..c2dd3c7 100644\n--- a/src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java\n+++ b/src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java\n@@ -938,6 +938,7 @@ public void run() {\n             try {\n                 nextOutputThread.join();\n             } catch (final InterruptedException ie) {\n+                Thread.currentThread().interrupt();\n                 throw new ProtocolError(\"Unable to join threads!\", ie);\n             }\n             nextOutputThread = null;\n",
+            "final": null
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-22 14:17:58.101722",
+            "lastModified": "2021-02-22 14:17:58.101722",
+            "isLegacyRecord": false
+        }
     }
 }
