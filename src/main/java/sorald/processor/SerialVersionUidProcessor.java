@@ -21,8 +21,7 @@ import spoon.reflect.reference.CtTypeReference;
 public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?>> {
 
     private static final String SERIAL_VERSION_UID = "serialVersionUID";
-    private Set<ModifierKind> modifiers =
-            Set.of(ModifierKind.PRIVATE, ModifierKind.STATIC, ModifierKind.FINAL);
+    private Set<ModifierKind> modifiers = Set.of(ModifierKind.STATIC, ModifierKind.FINAL);
 
     @Override
     protected boolean canRepairInternal(CtClass<?> candidate) {
@@ -30,31 +29,33 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
         CtTypeReference<?> serializable =
                 candidate.getFactory().createCtTypeReference(Serializable.class);
         // check if the class implements serializable
-        if (!superInterfaces.contains(serializable)) {
-            // no serializable found => nothing to repair
-            return false;
-        }
-        CtFieldReference<?> fieldReference = getSerialVersionUIDField(candidate);
-        // class implements serializable, lets check for serialVersionUID field
-        // the type of the field can be anything here, but should be long
-        if (fieldReference != null) {
-            CtField<?> field = fieldReference.getDeclaration();
-            // check the type
-            if (!isLongType(field)) {
-                // serialVersionUID found but type is not long
-                // => we cant fix it
-                return false;
-            }
-            // check all modifiers, the field should be private static final
-            return !hasCorrectModifier(field);
-        }
-        // here should the class implement serializable and doesn't have a serialVersionUID with
-        // correct type
-        return true;
-    }
+        if (superInterfaces.contains(serializable)) {
 
+            CtFieldReference<?> fieldReference = getSerialVersionUIDField(candidate);
+            // class implements serializable, lets check for serialVersionUID field
+            // the type of the field can be anything here, but should be long
+            if (fieldReference != null) {
+                CtField<?> field = fieldReference.getDeclaration();
+                // check the type
+                if (!isLongType(field)) {
+                    // serialVersionUID found but type is not long
+                    // => we cant fix it
+                    return false;
+                }
+                // check all modifiers, the field should be private static final
+                return !hasCorrectModifier(field);
+            } else {
+                // the field is missing we can add it
+                return true;
+            }
+        }
+        // class does not implement serializable
+        return false;
+    }
+    // strangly sonarcube only checks for final and static, so we do
+    // https://github.com/SonarSource/sonar-java/blob/149242d6651c797c73584615faedc8921b1bc435/java-checks/src/main/java/org/sonar/java/checks/serialization/SerialVersionUidCheck.java#L66
     private boolean hasCorrectModifier(CtField<?> field) {
-        return field.isFinal() && field.isPrivate() && field.isStatic();
+        return field.isFinal() && field.isStatic();
     }
 
     private boolean isLongType(CtField<?> field) {

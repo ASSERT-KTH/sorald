@@ -2,5 +2,5 @@
 import java.io.Serializable;
 
 class UpperClass implements Serializable { // Noncompliant
-  private static final long serialVersionUID = 1L;
+  static final long serialVersionUID = 1L;
 }
