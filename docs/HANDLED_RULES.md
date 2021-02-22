@@ -445,7 +445,7 @@ The repair consists of add a serialVersionUID to classes implementing Serializab
 Example:
 ```diff
 public class NoUID implements Serializable {
-+  private static final long serialVersionUID = 1L;
++  static final long serialVersionUID = 1L;
 }
 ```
 
