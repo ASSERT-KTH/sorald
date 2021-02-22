@@ -26,7 +26,7 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
 
     private static final String DEFAULT_ID_VALUE = "1L";
     private static final String SERIAL_VERSION_UID = "serialVersionUID";
-    private Set<ModifierKind> modifiers = Set.of(ModifierKind.STATIC, ModifierKind.FINAL);
+    private final Set<ModifierKind> modifiers = Set.of(ModifierKind.STATIC, ModifierKind.FINAL);
 
     @Override
     protected boolean canRepairInternal(CtClass<?> candidate) {
@@ -36,28 +36,22 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
         }
         CtTypeReference<?> serializable =
                 candidate.getFactory().createCtTypeReference(Serializable.class);
-        // check if the class implements serializable
         if (superInterfaces.contains(serializable)) {
 
             CtFieldReference<?> fieldReference = getSerialVersionUIDField(candidate);
-            // class implements serializable, lets check for serialVersionUID field
-            // the type of the field can be anything here, but should be long
+
             if (fieldReference != null) {
                 CtField<?> field = fieldReference.getDeclaration();
-                // check the type
                 if (!isLongType(field)) {
-                    // serialVersionUID found but type is not long
-                    // => we cant fix it
+                    // Here is the special case where the field exisits but it's type is wrong.
+                    // TODO: handle this case after discussion.
                     return false;
                 }
-                // check all modifiers, the field should be private static final
                 return !hasCorrectModifier(field);
             } else {
-                // the field is missing we can add it
                 return true;
             }
         }
-        // class does not implement serializable
         return false;
     }
 
@@ -81,9 +75,15 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
                 || supressesWarning(candidate)
                 || isGuiClass(candidate);
     }
-    // looking at the code
-    // https://github.com/SonarSource/sonar-java/blob/master/java-checks/src/main/java/org/sonar/java/checks/serialization/SerialVersionUidCheck.java#L66
-    // a gui class is a class extending any awt or swing type
+    /**
+     * Tests if a given class is a gui class. A gui class for sonarqube is a class having a swing or
+     * awt class/interface as supertype. See
+     * https://github.com/SonarSource/sonar-java/blob/master/java-checks/src/main/java/org/sonar/java/checks/serialization/SerialVersionUidCheck.java#L66
+     * for their code
+     *
+     * @param candidate
+     * @return true if gui class false otherwise
+     */
     private boolean isGuiClass(CtClass<?> candidate) {
         Set<CtTypeReference<?>> superTypes = new HashSet<>();
         superTypes.add(candidate.getReference());
@@ -130,8 +130,14 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
         return candidate.isSubtypeOf(candidate.getFactory().createCtTypeReference(Throwable.class));
     }
 
-    // strangly sonarcube only checks for final and static, so we do
-    // https://github.com/SonarSource/sonar-java/blob/149242d6651c797c73584615faedc8921b1bc435/java-checks/src/main/java/org/sonar/java/checks/serialization/SerialVersionUidCheck.java#L66
+    /**
+     * Checks if a given uid field has the correct identifiers. Sonarqube only enforces static and
+     * final.
+     * https://github.com/SonarSource/sonar-java/blob/149242d6651c797c73584615faedc8921b1bc435/java-checks/src/main/java/org/sonar/java/checks/serialization/SerialVersionUidCheck.java#L66
+     *
+     * @param field
+     * @return true if the modifiers are correct, false otherwise.
+     */
     private boolean hasCorrectModifier(CtField<?> field) {
         return field.isFinal() && field.isStatic();
     }
@@ -154,24 +160,18 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
     @Override
     protected void repairInternal(CtClass<?> element) {
         CtFieldReference<?> serialVersionUidReference = getSerialVersionUIDField(element);
-        // serialVersionUID field is missing or identifiers are wrong, we simply add a fixed field
-        // as
-        // replacement
-        // create replacement
         CtField<?> replacement =
                 element.getFactory()
                         .createField(
                                 null, modifiers, getLongPrimitiveType(element), SERIAL_VERSION_UID);
         replacement.setDefaultExpression(
                 element.getFactory().createCodeSnippetExpression(DEFAULT_ID_VALUE));
-        // check if field exists
+
         if (serialVersionUidReference != null) {
-            // field exists so we add the field at the old position with the comment
             CtField<?> oldField = serialVersionUidReference.getDeclaration();
             replacement.setComments(oldField.getComments());
             oldField.replace(replacement);
         } else {
-            // we have no known position so we add it to the top
             element.addFieldAtTop(replacement);
         }
     }
