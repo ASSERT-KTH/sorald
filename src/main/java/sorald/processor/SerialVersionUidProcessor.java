@@ -90,7 +90,13 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
         while (currentClass != null) {
             superTypes.addAll(currentClass.getSuperInterfaces());
             superTypes.add(currentClass.getSuperclass());
-            currentClass = currentClass.getSuperclass().getTypeDeclaration();
+            if(currentClass.getSuperclass() != null) {
+                currentClass = currentClass.getSuperclass().getTypeDeclaration();
+            }
+            else {
+                currentClass = null;
+            }
+            
         }
         superTypes.removeIf(Objects::isNull);
         for (CtTypeReference<?> ctTypeReference : superTypes) {
