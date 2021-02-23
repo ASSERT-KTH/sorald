@@ -196,7 +196,7 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
         } else if (depths.get(lhs) > depths.get(rhs)) {
             return greedyFindDeepestCommonParent(lhs.getParent(CtStatementList.class), rhs, depths);
         } else {
-            return rhs.getParent(CtStatementList.class);
+            return greedyFindDeepestCommonParent(lhs, rhs.getParent(CtStatementList.class), depths);
         }
     }
 
