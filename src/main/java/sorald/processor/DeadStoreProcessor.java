@@ -76,18 +76,19 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
                 computeDepths(
                         statementList,
                         statementList.getElements(e -> e instanceof CtStatementList));
-        CtStatementList commonParentList =
+        CtStatementList deepestCommonParent =
                 greedyFindDeepestCommonParent(statementListsWithVarAccess, statementListDepths);
 
         int firstStatementAccessingVarIdx =
-                findFirstStatementAccessingVarIdx(commonParentList, localVar);
-        findDeclarationMergeableWrite(varAccesses, commonParentList, firstStatementAccessingVarIdx)
+                findFirstStatementAccessingVarIdx(deepestCommonParent, localVar);
+        findDeclarationMergeableWrite(
+                        varAccesses, deepestCommonParent, firstStatementAccessingVarIdx)
                 .ifPresentOrElse(
                         this::makeDeclaration,
                         () -> {
                             CtLocalVariable<?> localVarWithoutInit = localVar.clone();
                             localVarWithoutInit.getAssignment().delete();
-                            commonParentList.addStatement(
+                            deepestCommonParent.addStatement(
                                     firstStatementAccessingVarIdx, localVarWithoutInit);
                         });
     }
