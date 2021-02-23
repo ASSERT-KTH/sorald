@@ -6,7 +6,7 @@ write.
  */
 
 public class DeadInitializerWithRootWriteInNestedBlock {
-    public int deadStoreOnInitializerWithVariableUsedInDifferentCodePaths2(int a, int b) {
+    public void deadStoreOnInitializerWithVariableUsedInDifferentCodePaths2(int a, int b) {
         int c = a; // Noncompliant
 
         if (a < b) {

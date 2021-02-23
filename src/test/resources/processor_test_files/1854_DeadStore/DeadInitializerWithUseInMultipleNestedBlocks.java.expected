@@ -5,7 +5,7 @@ the deepest common block and put the declaration there.
 */
 
 public class DeadInitializerWithUseInMultipleNestedBlocks {
-    public int deadStoreOnInitializerWithVariableUsedInDifferentCodePaths(int a, int b) {
+    public void deadStoreOnInitializerWithVariableUsedInDifferentCodePaths(int a, int b) {
 
         if (a < b) {
             int c;
