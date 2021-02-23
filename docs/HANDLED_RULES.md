@@ -423,6 +423,39 @@ Example:
      }
 ```
 
+In some cases, simply deleting a local variable declaration can lead to code
+not compiling, even if the initializer for the variable is indeed a dead store.
+Sorald then ensures that there is a declaration with the appropriate scope,
+if possible merging with the closest variable write.
+
+```diff
+    public void dead() {
+-       int a = 2; // Noncompliant
+-       a = 3;
++       int a = 3;
+        System.out.println(a);
+    }
+```
+
+In some cases where the variable in question is used in different execution
+paths, merging with the closes write isn't an option. Sorald then places a
+declaration as close to the usages as possible.
+
+```diff
+    public void dead(int a, int b) {
+-       int c = 2;
+        if (a < b) {
++           int c;
+            if (b < a) {
+                c = a + b;
+            } else {
+                c = a - b;
+            }
+            System.out.println(c);
+        }
+    }
+```
+
 Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/2265) that repairs one DeadStore violation.
 
 #### "public static" fields should be constant ([Sonar Rule 1444](https://rules.sonarsource.com/java/RSPEC-1444))
