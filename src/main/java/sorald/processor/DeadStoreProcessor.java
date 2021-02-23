@@ -13,6 +13,7 @@ import spoon.reflect.code.CtStatementList;
 import spoon.reflect.code.CtVariableAccess;
 import spoon.reflect.code.CtVariableWrite;
 import spoon.reflect.declaration.CtElement;
+import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.Filter;
 
@@ -40,14 +41,11 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
         CtStatementList statementList = localVar.getParent(CtStatementList.class);
         List<CtVariableAccess<?>> varAccesses = statementList.getElements(accessFilter(localVar));
 
-        if (varAccesses.isEmpty()) {
-            localVar.delete();
-        } else {
+        if (!varAccesses.isEmpty()) {
             List<CtStatementList> varAccessStatementLists =
                     varAccesses.stream()
                             .map(access -> access.getParent(CtStatementList.class))
                             .distinct() // TODO optimize, this will use very slow equality
-                            // comparison
                             .collect(Collectors.toList());
             Map<CtElement, Integer> statementListDepths =
                     computeDepths(
@@ -81,21 +79,22 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
                                                     .getParent(CtStatement.class))
                             == indexOfFirstAccess) {
                 CtVariableWrite<?> write = (CtVariableWrite<?>) firstVarAccessInCommonParent.get();
-                moveDeclarationToWrite(write, localVar);
+                mergeDeclaration(write);
             } else {
                 CtLocalVariable<?> localVarWithoutInit = localVar.clone();
                 localVarWithoutInit.getAssignment().delete();
                 commonParent.addStatement(indexOfFirstAccess, localVarWithoutInit);
             }
-
-            localVar.delete();
         }
+
+        localVar.delete();
     }
 
-    private void moveDeclarationToWrite(CtVariableWrite<?> write, CtLocalVariable<?> localVar) {
+    private void mergeDeclaration(CtVariableWrite<?> write) {
+        CtVariable<?> decl = write.getVariable().getDeclaration();
         CtAssignment assignment = write.getParent(CtAssignment.class);
-        localVar.setAssignment(assignment.getAssignment());
-        assignment.replace(localVar.clone());
+        decl.setDefaultExpression(assignment.getAssignment());
+        assignment.replace(decl.clone());
     }
 
     private CtStatementList findCommonParentList(
