@@ -438,7 +438,7 @@ if possible merging with the closest variable write.
 ```
 
 In some cases where the variable in question is used in different execution
-paths, merging with the closes write isn't an option. Sorald then places a
+paths, merging with the closest write isn't an option. Sorald then places a
 declaration as close to the usages as possible.
 
 ```diff
