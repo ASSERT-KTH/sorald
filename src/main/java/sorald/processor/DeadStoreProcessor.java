@@ -83,7 +83,9 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
                 CtVariableWrite<?> write = (CtVariableWrite<?>) firstVarAccessInCommonParent.get();
                 moveDeclarationToWrite(write, localVar);
             } else {
-                commonParent.addStatement(localVar.clone());
+                CtLocalVariable<?> localVarWithoutInit = localVar.clone();
+                localVarWithoutInit.getAssignment().delete();
+                commonParent.addStatement(indexOfFirstAccess, localVarWithoutInit);
             }
 
             localVar.delete();
