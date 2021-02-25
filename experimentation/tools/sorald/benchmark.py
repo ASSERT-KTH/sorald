@@ -58,7 +58,9 @@ def main(args: List[str]):
 
     parsed_args = parser.parse_args(args)
 
-    commits_frame = pd.read_csv(parsed_args.commits_csv)
+    commits_frame = pd.read_csv(parsed_args.commits_csv)    
+    if "rule_key" in commits_frame.columns.values:
+        commits_frame = commits_frame.astype({"rule_key": str})
 
     input_columns = list(commits_frame.columns.array)
     if parsed_args.compare and input_columns != stats_columns:
@@ -82,19 +84,76 @@ def main(args: List[str]):
         for rs in commit_stats.to_results_tuples():
             results_frame.loc[len(results_frame)] = rs
 
-    results_frame.sort_values(by=["url", "commit", "rule_key"])
-
+    results_frame = results_frame.sort_values(
+        by=["url", "commit", "rule_key"],
+    ).reset_index(drop=True)
     results_frame.to_csv(parsed_args.output, index=False)
+
+    if parsed_args.compare and performance_has_deteriorated(commits_frame, results_frame):
+        sys.exit(1)
+
+
+def performance_has_deteriorated(old_results: pd.DataFrame, new_results: pd.DataFrame) -> bool:
+    """Returns True iff performance has deteriorated."""
+    diff = pd.concat([old_results, new_results]).drop_duplicates(keep=False)
+    if len(diff) == 0:
+        print("Old and new results match exactly")
+        return False
+    else:
+        print("Old and new results differ on the following commits: ")
+        print(diff[["url", "commit"]].drop_duplicates(keep="first"))
+
+    deteriorated = False
+    old_num_successful_repairs = old_results.num_successful_repairs.sum()
+    new_num_successful_repairs = new_results.num_successful_repairs.sum()
+    old_total_repair_ratio = (
+        old_num_successful_repairs / old_results.num_violations_before.sum()
+    )
+    new_total_repair_ratio = (
+        new_num_successful_repairs / new_results.num_violations_before.sum()
+    )
+
+    print()
+    print(f"Old total_repair_ratio: {old_total_repair_ratio}")
+    print(f"New total_repair_ratio: {new_total_repair_ratio}")
+
+    if new_total_repair_ratio < old_total_repair_ratio:
+        print("total_repair_ratio has deteriorated")
+        deteriorated = True
+    else:
+        print("total_repair_ratio is unchanged or improved")
+
+    old_attempted_repair_ratio = (
+        old_num_successful_repairs / old_results.num_performed_repairs.sum()
+    )
+    new_attempted_repair_ratio = (
+        new_num_successful_repairs / new_results.num_performed_repairs.sum()
+    )
+
+    print()
+    print(f"Old attempted_repair_ratio: {old_attempted_repair_ratio}")
+    print(f"New attempted_repair_ratio: {new_attempted_repair_ratio}")
+
+    if new_attempted_repair_ratio < old_attempted_repair_ratio:
+        print("attempted_repair_ratio has deteriorated")
+        deteriorated = True
+    else:
+        print("attempted_repair_ratio is unchanged or improved")
+
+    return deteriorated
 
 
 def benchmark_commits(
     commits_frame: pd.DataFrame, rule_keys: List[str], num_parallel_experiments: int
 ) -> Iterable["CommitRepairStats"]:
     pool = Pool(num_parallel_experiments)
-    args = [(row.url, row.commit, rule_keys) for _, row in commits_frame.iterrows()]
+    unique_commits = commits_frame[["url", "commit"]].drop_duplicates(
+        keep="first", ignore_index=True
+    )
+    args = [(row.url, row.commit, rule_keys) for _, row in unique_commits.iterrows()]
     results = pool.imap(imappable_benchmark_commit, args)
     results_progress = tqdm.tqdm(
-        results, desc="Processing commits", total=len(commits_frame)
+        results, desc="Processing commits", total=len(unique_commits)
     )
 
     for result in results_progress:
@@ -160,8 +219,6 @@ class RepairStats:
     num_crashed_repairs: int
     num_successful_repairs: int
     num_failed_repairs: int
-    total_repair_ratio: float
-    attempted_repair_ratio: float
 
     @staticmethod
     def from_repair_dict(repair: dict) -> "RepairStats":
@@ -173,17 +230,6 @@ class RepairStats:
 
         num_successful_repairs = num_violations_before - num_violations_after
         num_failed_repairs = num_performed_repairs - num_successful_repairs
-        total_repair_ratio = (
-            num_successful_repairs / num_violations_before
-            if num_violations_before > 0
-            else 0
-        )
-        attempted_repair_ratio = (
-            num_successful_repairs / num_performed_repairs
-            if num_performed_repairs > 0
-            else 0
-        )
-
         return RepairStats(
             rule_key=repair[stat_keys.RULE_KEY],
             num_violations_before=num_violations_before,
@@ -192,8 +238,6 @@ class RepairStats:
             num_crashed_repairs=repair[stat_keys.NUM_CRASHED_REPAIRS],
             num_successful_repairs=num_successful_repairs,
             num_failed_repairs=num_failed_repairs,
-            total_repair_ratio=total_repair_ratio,
-            attempted_repair_ratio=attempted_repair_ratio,
         )
 
 
