@@ -23,6 +23,19 @@ public class ProjectScanner {
      */
     public static Set<RuleViolation> scanProject(
             File target, File baseDir, JavaFileScanner sonarCheck) {
+        return scanProject(target, baseDir, List.of(sonarCheck));
+    }
+
+    /**
+     * Scan a project for rule violations.
+     *
+     * @param target Targeted file or directory of the project.
+     * @param baseDir Base directory of the project.
+     * @param sonarChecks Checks to scan with.
+     * @return All violations in the target.
+     */
+    public static Set<RuleViolation> scanProject(
+            File target, File baseDir, List<JavaFileScanner> sonarChecks) {
         List<String> filesToScan = new ArrayList<>();
         if (target.isFile()) {
             filesToScan.add(target.getAbsolutePath());
@@ -36,6 +49,6 @@ public class ProjectScanner {
                 e.printStackTrace();
             }
         }
-        return RuleVerifier.analyze(filesToScan, baseDir, sonarCheck);
+        return RuleVerifier.analyze(filesToScan, baseDir, sonarChecks);
     }
 }
