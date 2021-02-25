@@ -19,7 +19,6 @@ def sorald(
     subcommand: str,
     *args,
     sorald_jar: pathlib.Path = DEFAULT_SORALD_JAR_PATH,
-    capture_output: bool = False,
     **kwargs,
 ) -> subprocess.CompletedProcess:
     """Wrapper around the Sorald cli.
@@ -31,7 +30,6 @@ def sorald(
         subcommand: The subcommand to execute.
         args: Positional arguments. Each positional argument is converted into a string.
         sorald_jar: Path to the sorald jarfile.
-        capture_output: Whether or not to capture output while executing Sorald.
         kwargs: Keyword arguments. Each keyword argument ``some_key=value`` is converted
             into ``"--some-key value``, where ``value`` is first evaluated as a string.
     Returns:
@@ -52,7 +50,7 @@ def sorald(
             )
         ),
     ]
-    return subprocess.run(cmd, capture_output=capture_output)
+    return subprocess.run(cmd, capture_output=True)
 
 
 def available_rule_keys(
@@ -64,7 +62,7 @@ def available_rule_keys(
     Returns:
         The available rule keys in the given jarfile.
     """
-    output = sorald("repair", "--help", capture_output=True)
+    output = sorald("repair", "--help")
     output_lines = iter(output.stdout.decode(sys.getdefaultencoding()).split("\n"))
 
     dropped_initial_lines = itertools.dropwhile(
