@@ -8,7 +8,8 @@ import tempfile
 import json
 import dataclasses
 
-from typing import List, Mapping, Iterable
+from multiprocessing import Pool, Queue
+from typing import List, Mapping, Iterable, Tuple
 
 import pandas as pd
 import tqdm
@@ -30,9 +31,34 @@ def main(args: List[str]):
     parser = argparse.ArgumentParser(
         prog=f"{__package__}.{pathlib.Path(__file__).name[:-3]}"
     )
-    parser.add_argument("--commits-csv", required=True, type=pathlib.Path)
-    parser.add_argument("-o", "--output", required=True, type=pathlib.Path)
-    parser.add_argument("-c", "--compare", action="store_true")
+    parser.add_argument(
+        "--commits-csv",
+        help="path to a csv file with commits, at least containing the column "
+        "headers 'url' and 'commit'",
+        required=True,
+        type=pathlib.Path,
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        help="path to the output CSV file",
+        required=True,
+        type=pathlib.Path,
+    )
+    parser.add_argument(
+        "-c",
+        "--compare",
+        help="use the input data to compare with the benchmark results. "
+        f"Requires all column headers the commits file: {STATS_COLUMNS}",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-p",
+        "--parallel-experiments",
+        help="amount of experiments to run in parallel",
+        type=int,
+        default=1,
+    )
 
     parsed_args = parser.parse_args(args)
 
@@ -46,7 +72,9 @@ def main(args: List[str]):
         )
 
     rule_keys = ["1444", "1854", "1948", "2116", "2142"]
-    results = benchmark_commits(commits_frame, rule_keys)
+    results = benchmark_commits(
+        commits_frame, rule_keys, parsed_args.parallel_experiments
+    )
 
     # convert to dataframe
     results_frame = pd.DataFrame(columns=STATS_COLUMNS)
@@ -65,26 +93,37 @@ def main(args: List[str]):
 
 
 def benchmark_commits(
-    commits_frame: pd.DataFrame, rule_keys: List[str]
+    commits_frame: pd.DataFrame, rule_keys: List[str], num_parallel_experiments: int
 ) -> Iterable["CommitRepairStats"]:
-    numbered_rows = tqdm.tqdm(
-        commits_frame.iterrows(), desc="Processing commits", total=len(commits_frame)
+    pool = Pool(num_parallel_experiments)
+    args = [(row.url, row.commit, rule_keys) for _, row in commits_frame.iterrows()]
+    results = pool.imap(imappable_benchmark_commit, args)
+    results_progress = tqdm.tqdm(
+        results, desc="Processing commits", total=len(commits_frame)
     )
 
-    for _, row in numbered_rows:
-        with tempfile.TemporaryDirectory() as tmpdir:
-            workdir = pathlib.Path(tmpdir)
-            numbered_rows.write(f"Cloning {row.url}@{row.commit}")
-            repo = git.Repo.clone_from(row.url, to_path=workdir)
-            repo.git.checkout(row.commit)
-
-            numbered_rows.write(f"Processing {row.url}@{row.commit}")
-            repo_repair_stats = benchmark_commit(repo, rule_keys)
-
-            yield repo_repair_stats
+    for result in results_progress:
+        results_progress.write(f"Processed {result.commit_id}")
+        yield result
 
 
-def benchmark_commit(repo: git.Repo, rule_keys: List[str]) -> "CommitRepairStats":
+def imappable_benchmark_commit(tup: Tuple[str, str, List[str]]) -> "CommitRepairStats":
+    return benchmark_commit(*tup)
+
+
+def benchmark_commit(
+    url: str, commit: str, rule_keys: List[str]
+) -> "CommitRepairStats":
+    with tempfile.TemporaryDirectory() as tmpdir:
+        workdir = pathlib.Path(tmpdir)
+        repo = git.Repo.clone_from(url, to_path=workdir)
+        repo.git.checkout(commit)
+        repo_repair_stats = _benchmark_commit(repo, rule_keys)
+
+    return repo_repair_stats
+
+
+def _benchmark_commit(repo: git.Repo, rule_keys: List[str]) -> "CommitRepairStats":
     workdir = pathlib.Path(repo.working_dir)
     stats_file = workdir / "stats.json"
     proc = soraldwrapper.sorald(
@@ -177,6 +216,10 @@ class CommitRepairStats:
     project_url: str
     commit_sha: str
     repair_stats: List[RepairStats]
+
+    @property
+    def commit_id(self):
+        return f"{self.project_url}@{self.commit_sha}"
 
 
 if __name__ == "__main__":
