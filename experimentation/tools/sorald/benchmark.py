@@ -16,18 +16,14 @@ import tqdm
 
 from sorald._helpers import soraldwrapper, jsonkeys
 
-SORALD_JAR = "/home/slarse/Documents/github/work/sorald/target/"
-
-STATS_COLUMNS = [
-    "url",
-    "commit",
-    "rule_key",
-    "total_repair_ratio",
-    "attempted_repair_ratio",
-]
-
 
 def main(args: List[str]):
+    stats_columns = [
+        "url",
+        "commit",
+        *[f.name for f in dataclasses.fields(RepairStats)],
+    ]
+
     parser = argparse.ArgumentParser(
         prog=f"{__package__}.{pathlib.Path(__file__).name[:-3]}"
     )
@@ -49,7 +45,7 @@ def main(args: List[str]):
         "-c",
         "--compare",
         help="use the input data to compare with the benchmark results. "
-        f"Requires all column headers the commits file: {STATS_COLUMNS}",
+        f"Requires all column headers the commits file: {stats_columns}",
         action="store_true",
     )
     parser.add_argument(
@@ -65,9 +61,9 @@ def main(args: List[str]):
     commits_frame = pd.read_csv(parsed_args.commits_csv)
 
     input_columns = list(commits_frame.columns.array)
-    if parsed_args.compare and input_columns != STATS_COLUMNS:
+    if parsed_args.compare and input_columns != stats_columns:
         raise RuntimeError(
-            f"Cannot compare with input data, expected columns {STATS_COLUMNS} "
+            f"Cannot compare with input data, expected columns {stats_columns} "
             f"but found {input_columns}"
         )
 
@@ -77,17 +73,16 @@ def main(args: List[str]):
     )
 
     # convert to dataframe
-    results_frame = pd.DataFrame(columns=STATS_COLUMNS)
+    first_result = next(results)
+    results_frame = pd.DataFrame(
+        columns=stats_columns, data=first_result.to_results_tuples()
+    )
 
     for commit_stats in results:
-        for rs in commit_stats.repair_stats:
-            results_frame.loc[len(results_frame)] = (
-                commit_stats.project_url,
-                commit_stats.commit_sha,
-                rs.rule_key,
-                rs.total_repair_ratio,
-                rs.attempted_repair_ratio,
-            )
+        for rs in commit_stats.to_results_tuples():
+            results_frame.loc[len(results_frame)] = rs
+
+    results_frame.sort_values(by=["url", "commit", "rule_key"])
 
     results_frame.to_csv(parsed_args.output, index=False)
 
@@ -144,7 +139,8 @@ def _benchmark_commit(repo: git.Repo, rule_keys: List[str]) -> "CommitRepairStat
 
     repairs_dict = {rs.rule_key: rs for rs in repair_stats}
     for key in set(rule_keys) - repairs_dict.keys():
-        repairs_dict[key] = RepairStats(*([0] * len(dataclasses.fields(RepairStats))))
+        zeros = [0] * (len(dataclasses.fields(RepairStats)) - 1)
+        repairs_dict[key] = RepairStats(key, *zeros)
 
     return CommitRepairStats(
         project_url=next(repo.remote().urls),
@@ -162,53 +158,43 @@ class RepairStats:
     num_violations_after: int
     num_performed_repairs: int
     num_crashed_repairs: int
-
-    @property
-    def num_successful_repairs(self) -> int:
-        return self.num_violations_before - self.num_violations_after
-
-    @property
-    def num_failed_repairs(self) -> int:
-        return self.num_performed_repairs - self.num_successful_repairs
-
-    @property
-    def total_repair_ratio(self) -> float:
-        return (
-            self.num_successful_repairs / self.num_violations_before
-            if self.num_violations_before > 0
-            else 1
-        )
-
-    @property
-    def attempted_repair_ratio(self) -> float:
-        return (
-            self.num_successful_repairs / self.num_performed_repairs
-            if self.num_performed_repairs > 0
-            else 1
-        )
+    num_successful_repairs: int
+    num_failed_repairs: int
+    total_repair_ratio: float
+    attempted_repair_ratio: float
 
     @staticmethod
     def from_repair_dict(repair: dict) -> "RepairStats":
         stat_keys = jsonkeys.SORALD_STATS
-        return RepairStats(
-            rule_key=repair[stat_keys.RULE_KEY],
-            num_violations_before=repair[stat_keys.VIOLATIONS_BEFORE],
-            num_violations_after=repair[stat_keys.VIOLATIONS_AFTER],
-            num_performed_repairs=repair[stat_keys.NUM_PERFORMED_REPAIRS],
-            num_crashed_repairs=repair[stat_keys.NUM_CRASHED_REPAIRS],
+
+        num_violations_before = repair[stat_keys.VIOLATIONS_BEFORE]
+        num_violations_after = repair[stat_keys.VIOLATIONS_AFTER]
+        num_performed_repairs = repair[stat_keys.NUM_PERFORMED_REPAIRS]
+
+        num_successful_repairs = num_violations_before - num_violations_after
+        num_failed_repairs = num_performed_repairs - num_successful_repairs
+        total_repair_ratio = (
+            num_successful_repairs / num_violations_before
+            if num_violations_before > 0
+            else 0
+        )
+        attempted_repair_ratio = (
+            num_successful_repairs / num_performed_repairs
+            if num_performed_repairs > 0
+            else 0
         )
 
-    def __add__(self, other: "RepairStats") -> "RepairStats":
-        if other.rule_key != self.rule_key:
-            raise ValueError(f"rule key mismatch {self.rule_key} and {other.rule_key}")
-        self_dict = dataclasses.asdict(self)
-        other_dict = dataclasses.asdict(other)
-        additive_dict = {
-            key: value + other_value
-            for key, value in self_dict.items()
-            if isinstance(other_value := other_dict[key], int)
-        }
-        return RepairStats(rule_key=self.rule_key, **additive_dict)
+        return RepairStats(
+            rule_key=repair[stat_keys.RULE_KEY],
+            num_violations_before=num_violations_before,
+            num_violations_after=num_violations_after,
+            num_performed_repairs=num_performed_repairs,
+            num_crashed_repairs=repair[stat_keys.NUM_CRASHED_REPAIRS],
+            num_successful_repairs=num_successful_repairs,
+            num_failed_repairs=num_failed_repairs,
+            total_repair_ratio=total_repair_ratio,
+            attempted_repair_ratio=attempted_repair_ratio,
+        )
 
 
 @dataclasses.dataclass(frozen=True)
@@ -220,6 +206,12 @@ class CommitRepairStats:
     @property
     def commit_id(self):
         return f"{self.project_url}@{self.commit_sha}"
+
+    def to_results_tuples(self) -> List[tuple]:
+        return [
+            (self.project_url, self.commit_sha, *dataclasses.astuple(rs))
+            for rs in self.repair_stats
+        ]
 
 
 if __name__ == "__main__":
