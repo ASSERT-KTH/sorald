@@ -142,7 +142,7 @@ class RepairCommand extends BaseCommand {
      */
     private void mineWarningsAfter(Repair repair, List<Integer> ruleKeys) {
         File projectPath = originalFilesPath.toPath().toAbsolutePath().normalize().toFile();
-        ruleKeys.forEach(key -> repair.mineViolations(projectPath, key));
+        repair.mineViolations(projectPath, ruleKeys);
     }
 
     private void writeStatisticsOutput(RepairStatisticsCollector statsCollector, Path projectPath)
