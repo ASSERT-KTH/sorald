@@ -133,12 +133,26 @@ public class Repair {
      * @return All found warnings.
      */
     public Set<RuleViolation> mineViolations(File target, int ruleKey) {
+        return mineViolations(target, List.of(ruleKey));
+    }
+
+    /**
+     * Mine warnings from the target directory and the given rule key.
+     *
+     * @param target A target directory.
+     * @param ruleKeys A list of rule keys.
+     * @return All found warnings.
+     */
+    public Set<RuleViolation> mineViolations(File target, List<Integer> ruleKeys) {
         Path projectPath = target.toPath().toAbsolutePath().normalize();
         Set<RuleViolation> violations =
                 ProjectScanner.scanProject(
                         target,
                         FileUtils.getClosestDirectory(target),
-                        Checks.getCheckInstance(Integer.toString(ruleKey)));
+                        ruleKeys.stream()
+                                .map(String::valueOf)
+                                .map(Checks::getCheckInstance)
+                                .collect(Collectors.toList()));
         violations.forEach(
                 warn ->
                         EventHelper.fireEvent(
