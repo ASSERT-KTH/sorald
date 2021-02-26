@@ -24,7 +24,7 @@ def main(args: List[str]):
 
     rule_keys = soraldwrapper.available_rule_keys()
     results = benchmark_commits(
-        commits_to_analyze, ["1854"], parsed_args.parallel_experiments
+        commits_to_analyze, rule_keys, parsed_args.parallel_experiments
     )
 
     crash_results_first = sorted(results, key=lambda res: int(res.crash))
