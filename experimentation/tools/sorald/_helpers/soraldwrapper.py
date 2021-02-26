@@ -5,7 +5,7 @@ import pathlib
 import re
 import sys
 
-from typing import List
+from typing import List, Optional, Tuple
 
 
 DEFAULT_SORALD_JAR_PATH = (
@@ -19,8 +19,9 @@ def sorald(
     subcommand: str,
     *args,
     sorald_jar: pathlib.Path = DEFAULT_SORALD_JAR_PATH,
+    timeout: Optional[int] = None,
     **kwargs,
-) -> subprocess.CompletedProcess:
+) -> Tuple[int, bytes, bytes]:
     """Wrapper around the Sorald cli.
 
     Note that iterables (not including strings) passed as values are converted into
@@ -30,10 +31,11 @@ def sorald(
         subcommand: The subcommand to execute.
         args: Positional arguments. Each positional argument is converted into a string.
         sorald_jar: Path to the sorald jarfile.
+        timeout: Amount of seconds before process should be aborted.
         kwargs: Keyword arguments. Each keyword argument ``some_key=value`` is converted
             into ``"--some-key value``, where ``value`` is first evaluated as a string.
     Returns:
-        The completed subprocess, with captured output.
+        A tuple of (return_code, stdout, stderr)
     """
     cmd = [
         "java",
@@ -50,7 +52,11 @@ def sorald(
             )
         ),
     ]
-    return subprocess.run(cmd, capture_output=True)
+    try:
+        proc = subprocess.run(cmd, capture_output=True, timeout=timeout)
+        return proc.returncode, proc.stdout, proc.stderr
+    except subprocess.TimeoutExpired:
+        return -1, b"", b""
 
 
 def available_rule_keys(
@@ -62,8 +68,9 @@ def available_rule_keys(
     Returns:
         The available rule keys in the given jarfile.
     """
-    output = sorald("repair", "--help")
-    output_lines = iter(output.stdout.decode(sys.getdefaultencoding()).split("\n"))
+    rc, stdout, _ = sorald("repair", "--help")
+    assert rc == 0
+    output_lines = iter(stdout.decode(sys.getdefaultencoding()).split("\n"))
 
     dropped_initial_lines = itertools.dropwhile(
         lambda line: not line.strip().startswith("--rule-keys"), output_lines

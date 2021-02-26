@@ -17,6 +17,7 @@ import tqdm
 
 from sorald._helpers import soraldwrapper, jsonkeys
 
+SINGLE_RUN_TIMEOUT = 15*60
 
 def main(args: List[str]):
     parsed_args = parse_args(args)
@@ -216,14 +217,15 @@ def _benchmark_commit(repo: git.Repo, rule_keys: List[str]) -> "CommitRepairStat
     commit_sha = repo.head.commit.hexsha
 
     stats_file = workdir / "stats.json"
-    proc = soraldwrapper.sorald(
+    return_code, *_ = soraldwrapper.sorald(
         "repair",
         original_files_path=pathlib.Path(repo.working_dir),
         stats_output_file=workdir / stats_file,
         file_output_strategy="IN_PLACE",
         rule_keys=rule_keys,
+        timeout=SINGLE_RUN_TIMEOUT,
     )
-    if proc.returncode != 0:
+    if return_code != 0:
         return CommitRepairStats(
             project_url=project_url,
             commit_sha=commit_sha,
