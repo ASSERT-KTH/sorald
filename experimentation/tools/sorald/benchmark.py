@@ -29,12 +29,13 @@ def main(args: List[str]):
 
     crash_results_first = sorted(results, key=lambda res: int(res.crash))
 
-    non_crash_results, crash_results = [
-        list(group)
-        for _, group in itertools.groupby(
-            crash_results_first, lambda res: res.crash
-        )
-    ]
+    non_crash_results = []
+    crash_results = []
+    for crash, group in itertools.groupby(crash_results_first, lambda res: res.crash):
+        if crash:
+            crash_results = list(group)
+        else:
+            non_crash_results = list(group)
 
     results_frame = convert_results_to_dataframe(non_crash_results)
     results_frame.to_csv(parsed_args.output, index=False)
@@ -213,8 +214,6 @@ def _benchmark_commit(repo: git.Repo, rule_keys: List[str]) -> "CommitRepairStat
     workdir = pathlib.Path(repo.working_dir)
     project_url = next(repo.remote().urls)
     commit_sha = repo.head.commit.hexsha
-
-    print(f"Processing {project_url}@{commit_sha}")
 
     stats_file = workdir / "stats.json"
     proc = soraldwrapper.sorald(
