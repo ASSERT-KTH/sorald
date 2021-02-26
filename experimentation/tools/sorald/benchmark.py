@@ -18,12 +18,24 @@ from sorald._helpers import soraldwrapper, jsonkeys
 
 
 def main(args: List[str]):
-    stats_columns = [
-        "url",
-        "commit",
-        *[f.name for f in dataclasses.fields(RepairStats)],
-    ]
+    parsed_args = parse_args(args)
+    commits_to_analyze = read_commits_csv(parsed_args)
 
+    rule_keys = ["1444", "1854", "1948", "2116", "2142"]
+    results = benchmark_commits(
+        commits_to_analyze, rule_keys, parsed_args.parallel_experiments
+    )
+
+    results_frame = convert_results_to_dataframe(results)
+    results_frame.to_csv(parsed_args.output, index=False)
+
+    if parsed_args.compare and performance_has_deteriorated(
+        commits_to_analyze, results_frame
+    ):
+        sys.exit(1)
+
+
+def parse_args(args: List[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         prog=f"{__package__}.{pathlib.Path(__file__).name[:-3]}"
     )
@@ -45,7 +57,7 @@ def main(args: List[str]):
         "-c",
         "--compare",
         help="use the input data to compare with the benchmark results. "
-        f"Requires all column headers the commits file: {stats_columns}",
+        f"Requires all column headers the commits file: {STATS_COLUMNS}",
         action="store_true",
     )
     parser.add_argument(
@@ -56,28 +68,27 @@ def main(args: List[str]):
         default=1,
     )
 
-    parsed_args = parser.parse_args(args)
+    return parser.parse_args(args)
 
-    commits_frame = pd.read_csv(parsed_args.commits_csv)    
-    if "rule_key" in commits_frame.columns.values:
-        commits_frame = commits_frame.astype({"rule_key": str})
 
-    input_columns = list(commits_frame.columns.array)
-    if parsed_args.compare and input_columns != stats_columns:
+def read_commits_csv(parsed_args: argparse.Namespace) -> pd.DataFrame:
+    commits_to_analyze = pd.read_csv(parsed_args.commits_csv)
+    if "rule_key" in commits_to_analyze.columns.values:
+        commits_to_analyze = commits_to_analyze.astype({"rule_key": str})
+
+    input_columns = list(commits_to_analyze.columns.array)
+    if parsed_args.compare and input_columns != STATS_COLUMNS:
         raise RuntimeError(
-            f"Cannot compare with input data, expected columns {stats_columns} "
+            f"Cannot compare with input data, expected columns {STATS_COLUMNS} "
             f"but found {input_columns}"
         )
 
-    rule_keys = ["1444", "1854", "1948", "2116", "2142"]
-    results = benchmark_commits(
-        commits_frame, rule_keys, parsed_args.parallel_experiments
-    )
+    return commits_to_analyze
 
-    # convert to dataframe
+def convert_results_to_dataframe(results: Iterable["CommitRepairStats"]) -> pd.DataFrame:
     first_result = next(results)
     results_frame = pd.DataFrame(
-        columns=stats_columns, data=first_result.to_results_tuples()
+        columns=STATS_COLUMNS, data=first_result.to_results_tuples()
     )
 
     for commit_stats in results:
@@ -87,13 +98,12 @@ def main(args: List[str]):
     results_frame = results_frame.sort_values(
         by=["url", "commit", "rule_key"],
     ).reset_index(drop=True)
-    results_frame.to_csv(parsed_args.output, index=False)
 
-    if parsed_args.compare and performance_has_deteriorated(commits_frame, results_frame):
-        sys.exit(1)
+    return results_frame
 
-
-def performance_has_deteriorated(old_results: pd.DataFrame, new_results: pd.DataFrame) -> bool:
+def performance_has_deteriorated(
+    old_results: pd.DataFrame, new_results: pd.DataFrame
+) -> bool:
     """Returns True iff performance has deteriorated."""
     diff = pd.concat([old_results, new_results]).drop_duplicates(keep=False)
     if len(diff) == 0:
@@ -144,10 +154,12 @@ def performance_has_deteriorated(old_results: pd.DataFrame, new_results: pd.Data
 
 
 def benchmark_commits(
-    commits_frame: pd.DataFrame, rule_keys: List[str], num_parallel_experiments: int
+    commits_to_analyze: pd.DataFrame,
+    rule_keys: List[str],
+    num_parallel_experiments: int,
 ) -> Iterable["CommitRepairStats"]:
     pool = Pool(num_parallel_experiments)
-    unique_commits = commits_frame[["url", "commit"]].drop_duplicates(
+    unique_commits = commits_to_analyze[["url", "commit"]].drop_duplicates(
         keep="first", ignore_index=True
     )
     args = [(row.url, row.commit, rule_keys) for _, row in unique_commits.iterrows()]
@@ -239,6 +251,13 @@ class RepairStats:
             num_successful_repairs=num_successful_repairs,
             num_failed_repairs=num_failed_repairs,
         )
+
+
+STATS_COLUMNS = [
+    "url",
+    "commit",
+    *[f.name for f in dataclasses.fields(RepairStats)],
+]
 
 
 @dataclasses.dataclass(frozen=True)
