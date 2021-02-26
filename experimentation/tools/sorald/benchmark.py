@@ -7,9 +7,10 @@ import git
 import tempfile
 import json
 import dataclasses
+import itertools
 
 from multiprocessing import Pool, Queue
-from typing import List, Mapping, Iterable, Tuple
+from typing import List, Mapping, Iterable, Tuple, Optional
 
 import pandas as pd
 import tqdm
@@ -23,15 +24,28 @@ def main(args: List[str]):
 
     rule_keys = soraldwrapper.available_rule_keys()
     results = benchmark_commits(
-        commits_to_analyze, rule_keys, parsed_args.parallel_experiments
+        commits_to_analyze, ["1854"], parsed_args.parallel_experiments
     )
 
-    results_frame = convert_results_to_dataframe(results)
+    crash_results_first = sorted(results, key=lambda res: int(res.crash))
+
+    non_crash_results, crash_results = [
+        list(group)
+        for _, group in itertools.groupby(
+            crash_results_first, lambda res: res.crash
+        )
+    ]
+
+    results_frame = convert_results_to_dataframe(non_crash_results)
     results_frame.to_csv(parsed_args.output, index=False)
 
     if parsed_args.compare and performance_has_deteriorated(
         commits_to_analyze, results_frame
     ):
+        sys.exit(1)
+    if crash_results:
+        crash_str = "\n".join([res.commit_id for res in crash_results])
+        print(f"Some repairs crashed: \n{crash_str}", file=sys.stderr)
         sys.exit(1)
 
 
@@ -88,14 +102,15 @@ def read_commits_csv(parsed_args: argparse.Namespace) -> pd.DataFrame:
 
 
 def convert_results_to_dataframe(
-    results: Iterable["CommitRepairStats"],
+    results: List["CommitRepairStats"],
 ) -> pd.DataFrame:
-    first_result = next(results)
+    results_iter = iter(results)
+    first_result = next(results_iter)
     results_frame = pd.DataFrame(
         columns=STATS_COLUMNS, data=first_result.to_results_tuples()
     )
 
-    for commit_stats in results:
+    for commit_stats in results_iter:
         for rs in commit_stats.to_results_tuples():
             results_frame.loc[len(results_frame)] = rs
 
@@ -196,6 +211,9 @@ def benchmark_commit(
 
 def _benchmark_commit(repo: git.Repo, rule_keys: List[str]) -> "CommitRepairStats":
     workdir = pathlib.Path(repo.working_dir)
+    project_url = next(repo.remote().urls)
+    commit_sha = repo.head.commit.hexsha
+
     stats_file = workdir / "stats.json"
     proc = soraldwrapper.sorald(
         "repair",
@@ -205,8 +223,12 @@ def _benchmark_commit(repo: git.Repo, rule_keys: List[str]) -> "CommitRepairStat
         rule_keys=rule_keys,
     )
     if proc.returncode != 0:
-        print(proc.stderr.decode(sys.getdefaultencoding()), file=sys.stderr)
-        raise RuntimeError("failed to execute Sorald")
+        return CommitRepairStats(
+            project_url=project_url,
+            commit_sha=commit_sha,
+            repair_stats=[],
+            crash=True,
+        )
 
     stats = json.loads(stats_file.read_text(encoding="utf8"))
     repair_stats = map(
@@ -222,6 +244,7 @@ def _benchmark_commit(repo: git.Repo, rule_keys: List[str]) -> "CommitRepairStat
         project_url=next(repo.remote().urls),
         commit_sha=repo.head.commit.hexsha,
         repair_stats=list(repairs_dict.values()),
+        crash=False,
     )
 
 
@@ -270,6 +293,7 @@ class CommitRepairStats:
     project_url: str
     commit_sha: str
     repair_stats: List[RepairStats]
+    crash: bool
 
     @property
     def commit_id(self):
