@@ -9,6 +9,9 @@ import json
 import dataclasses
 import itertools
 
+from threading
+
+from threading import Pool
 from multiprocessing import Pool, Queue
 from typing import List, Mapping, Iterable, Tuple, Optional
 
@@ -213,6 +216,8 @@ def _benchmark_commit(repo: git.Repo, rule_keys: List[str]) -> "CommitRepairStat
     workdir = pathlib.Path(repo.working_dir)
     project_url = next(repo.remote().urls)
     commit_sha = repo.head.commit.hexsha
+
+    print(f"Processing {project_url}@{commit_sha}")
 
     stats_file = workdir / "stats.json"
     proc = soraldwrapper.sorald(
