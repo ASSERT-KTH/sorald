@@ -9,10 +9,7 @@ import json
 import dataclasses
 import itertools
 
-from threading
-
-from threading import Pool
-from multiprocessing import Pool, Queue
+from multiprocessing.pool import ThreadPool
 from typing import List, Mapping, Iterable, Tuple, Optional
 
 import pandas as pd
@@ -181,7 +178,7 @@ def benchmark_commits(
     rule_keys: List[str],
     num_parallel_experiments: int,
 ) -> Iterable["CommitRepairStats"]:
-    pool = Pool(num_parallel_experiments)
+    pool = ThreadPool(num_parallel_experiments)
     unique_commits = commits_to_analyze[["url", "commit"]].drop_duplicates(
         keep="first", ignore_index=True
     )
