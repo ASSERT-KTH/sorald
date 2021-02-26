@@ -37,7 +37,8 @@ def main(args: List[str]):
 
 def parse_args(args: List[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        prog=f"{__package__}.{pathlib.Path(__file__).name[:-3]}"
+        prog=f"{__package__}.{pathlib.Path(__file__).name[:-3]}",
+        description="Benchmark script for evaluating Sorald's performance.",
     )
     parser.add_argument(
         "--commits-csv",
@@ -85,7 +86,10 @@ def read_commits_csv(parsed_args: argparse.Namespace) -> pd.DataFrame:
 
     return commits_to_analyze
 
-def convert_results_to_dataframe(results: Iterable["CommitRepairStats"]) -> pd.DataFrame:
+
+def convert_results_to_dataframe(
+    results: Iterable["CommitRepairStats"],
+) -> pd.DataFrame:
     first_result = next(results)
     results_frame = pd.DataFrame(
         columns=STATS_COLUMNS, data=first_result.to_results_tuples()
@@ -100,6 +104,7 @@ def convert_results_to_dataframe(results: Iterable["CommitRepairStats"]) -> pd.D
     ).reset_index(drop=True)
 
     return results_frame
+
 
 def performance_has_deteriorated(
     old_results: pd.DataFrame, new_results: pd.DataFrame
