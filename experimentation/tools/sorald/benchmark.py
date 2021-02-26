@@ -21,7 +21,7 @@ def main(args: List[str]):
     parsed_args = parse_args(args)
     commits_to_analyze = read_commits_csv(parsed_args)
 
-    rule_keys = ["1444", "1854", "1948", "2116", "2142"]
+    rule_keys = soraldwrapper.available_rule_keys()
     results = benchmark_commits(
         commits_to_analyze, rule_keys, parsed_args.parallel_experiments
     )
