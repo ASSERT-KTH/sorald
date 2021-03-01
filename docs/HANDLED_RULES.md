@@ -24,6 +24,7 @@ Sorald can currently repair violations of the following rules:
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
     * ["public static" fields should be constant](#public-static-fields-should-be-constant-sonar-rule-1444) ([Sonar Rule 1444](https://rules.sonarsource.com/java/RSPEC-1444))
+    * [\"Serializable\" classes should have a \"serialVersionUID\"](#Serializable-classes-should-have-a-serialVersionUID-sonar-rule-2057) ([Sonar Rule 2057](https://rules.sonarsource.com/java/RSPEC-2057))
 * [Vulnerability](#vulnerability)
     * [XML parsers should not be vulnerable to XXE attacks](#xml-parsers-should-not-be-vulnerable-to-xxe-attacks-sonar-rule-2755) ([Sonar Rule 2755](https://rules.sonarsource.com/java/type/Vulnerability/RSPEC-2755))
         - **Note:** This processor is a work in progress!
@@ -438,6 +439,16 @@ Example:
      protected static Integer order = 66; // Compliant
      static Integer roadToHill = 30; // Compliant
  }
+```
+------
+#### "Serializable" classes should have a "serialVersionUID"([Sonar Rule 2057](https://rules.sonarsource.com/java/RSPEC-2057))
+
+The repair consists of add a serialVersionUID to classes implementing Serializable
+Example:
+```diff
+public class NoUID implements Serializable {
++  static final long serialVersionUID = 1L;
+}
 ```
 
 ### *Vulnerability*

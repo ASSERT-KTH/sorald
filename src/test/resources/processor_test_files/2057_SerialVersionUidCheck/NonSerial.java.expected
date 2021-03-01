@@ -1,0 +1,6 @@
+import java.io.Serializable;
+public class NonSerial {
+    public static class Serial implements Serializable { // Noncompliant
+      static final long serialVersionUID = 1L;
+    }
+}
