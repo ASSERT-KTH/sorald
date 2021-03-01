@@ -8,6 +8,8 @@ import tempfile
 import json
 import dataclasses
 import itertools
+import contextlib
+import functools
 
 from multiprocessing.pool import ThreadPool
 from typing import List, Mapping, Iterable, Tuple, Optional
@@ -17,36 +19,29 @@ import tqdm
 
 from sorald._helpers import soraldwrapper, jsonkeys
 
-SINGLE_RUN_TIMEOUT = 15*60
+SINGLE_RUN_TIMEOUT = 15 * 60
+
 
 def main(args: List[str]):
     parsed_args = parse_args(args)
     commits_to_analyze = read_commits_csv(parsed_args)
 
     rule_keys = soraldwrapper.available_rule_keys()
-    results = benchmark_commits(
-        commits_to_analyze, rule_keys, parsed_args.parallel_experiments
+    results = list(
+        benchmark_commits(
+            commits_to_analyze, rule_keys, parsed_args.parallel_experiments
+        )
     )
 
-    crash_results_first = sorted(results, key=lambda res: int(res.crash))
-
-    non_crash_results = []
-    crash_results = []
-    for crash, group in itertools.groupby(crash_results_first, lambda res: res.crash):
-        if crash:
-            crash_results = list(group)
-        else:
-            non_crash_results = list(group)
-
-    results_frame = convert_results_to_dataframe(non_crash_results)
+    results_frame = convert_results_to_dataframe(results)
     results_frame.to_csv(parsed_args.output, index=False)
 
     if parsed_args.compare and performance_has_deteriorated(
         commits_to_analyze, results_frame
     ):
         sys.exit(1)
-    if crash_results:
-        crash_str = "\n".join([res.commit_id for res in crash_results])
+    if any(res.crash for res in results):
+        crash_str = "\n".join([res.commit_id for res in results if res.crash])
         print(f"Some repairs crashed: \n{crash_str}", file=sys.stderr)
         sys.exit(1)
 
@@ -212,43 +207,63 @@ def benchmark_commit(
 
 
 def _benchmark_commit(repo: git.Repo, rule_keys: List[str]) -> "CommitRepairStats":
-    workdir = pathlib.Path(repo.working_dir)
-    project_url = next(repo.remote().urls)
-    commit_sha = repo.head.commit.hexsha
-
-    stats_file = workdir / "stats.json"
-    return_code, *_ = soraldwrapper.sorald(
-        "repair",
-        original_files_path=pathlib.Path(repo.working_dir),
-        stats_output_file=workdir / stats_file,
-        file_output_strategy="IN_PLACE",
-        rule_keys=rule_keys,
-        timeout=SINGLE_RUN_TIMEOUT,
+    rule_key_progress = tqdm.tqdm(
+        rule_keys, desc=f"Processing rule keys for {commit_id(repo)}"
     )
-    if return_code != 0:
-        return CommitRepairStats(
-            project_url=project_url,
-            commit_sha=commit_sha,
-            repair_stats=[],
-            crash=True,
-        )
-
-    stats = json.loads(stats_file.read_text(encoding="utf8"))
-    repair_stats = map(
-        RepairStats.from_repair_dict, stats[jsonkeys.SORALD_STATS.REPAIRS]
+    repair_stats = list(
+        map(functools.partial(run_sorald_for_rule, repo), rule_key_progress)
     )
-
-    repairs_dict = {rs.rule_key: rs for rs in repair_stats}
-    for key in set(rule_keys) - repairs_dict.keys():
-        zeros = [0] * (len(dataclasses.fields(RepairStats)) - 1)
-        repairs_dict[key] = RepairStats(key, *zeros)
 
     return CommitRepairStats(
         project_url=next(repo.remote().urls),
         commit_sha=repo.head.commit.hexsha,
-        repair_stats=list(repairs_dict.values()),
-        crash=False,
+        repair_stats=repair_stats,
     )
+
+
+def run_sorald_for_rule(repo: git.Repo, rule_key: str) -> "RepairStats":
+    workdir = pathlib.Path(repo.working_dir)
+    stats_file = workdir / "stats.json"
+
+    with restore_head_after(repo):
+        return_code, *_ = soraldwrapper.sorald(
+            "repair",
+            original_files_path=pathlib.Path(repo.working_dir),
+            stats_output_file=workdir / stats_file,
+            file_output_strategy="IN_PLACE",
+            rule_keys=rule_key,
+            timeout=SINGLE_RUN_TIMEOUT,
+        )
+        if return_code != 0:
+            print(
+                f"Failed to process {commit_id(repo)} with key {rule_key}",
+                file=sys.stderr,
+            )
+            return RepairStats.empty(rule_key, crash=True)
+
+        repair_dicts = json.loads(stats_file.read_text(encoding="utf8"))[
+            jsonkeys.SORALD_STATS.REPAIRS
+        ]
+
+    assert len(repair_dicts) <= 1, "Unexpected amount of repair statistics"
+
+    return (
+        RepairStats.empty(rule_key, crash=False)
+        if not repair_dicts
+        else RepairStats.from_repair_dict(repair_dicts[0])
+    )
+
+
+def commit_id(repo: git.Repo) -> str:
+    return f"{next(repo.remote().urls)}@{repo.head.commit.hexsha}"
+
+
+@contextlib.contextmanager
+def restore_head_after(repo: git.Repo):
+    head = repo.head.commit.hexsha
+    yield
+    repo.git.checkout(head, "--force")
+    repo.git.clean("-xfd")
 
 
 @dataclasses.dataclass(frozen=True)
@@ -256,6 +271,7 @@ class RepairStats:
     """Statistics for a single repair."""
 
     rule_key: str
+    crash: bool
     num_violations_before: int
     num_violations_after: int
     num_performed_repairs: int
@@ -281,7 +297,13 @@ class RepairStats:
             num_crashed_repairs=repair[stat_keys.NUM_CRASHED_REPAIRS],
             num_successful_repairs=num_successful_repairs,
             num_failed_repairs=num_failed_repairs,
+            crash=False,
         )
+
+    @staticmethod
+    def empty(rule_key: str, crash: bool) -> "RepairStats":
+        zeros = [0] * (len(dataclasses.fields(RepairStats)) - 2)
+        return RepairStats(rule_key, crash, *zeros)
 
 
 STATS_COLUMNS = [
@@ -296,11 +318,14 @@ class CommitRepairStats:
     project_url: str
     commit_sha: str
     repair_stats: List[RepairStats]
-    crash: bool
 
     @property
     def commit_id(self):
         return f"{self.project_url}@{self.commit_sha}"
+
+    @property
+    def crash(self):
+        return any(rs.crash for rs in self.repair_stats)
 
     def to_results_tuples(self) -> List[tuple]:
         return [
