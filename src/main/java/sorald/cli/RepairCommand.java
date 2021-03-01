@@ -231,10 +231,9 @@ class RepairCommand extends BaseCommand {
         String[] parts = violationSpecifier.split(Constants.VIOLATION_SPECIFIER_SEP);
         String key = parts[0];
         String rawFilename = parts[1];
-        String fileName =
-                originalFilesPath.toPath().resolve(rawFilename).toAbsolutePath().toString();
+        Path absPath = originalFilesPath.toPath().resolve(rawFilename).toAbsolutePath().normalize();
 
-        if (!new File(fileName).isFile()) {
+        if (!absPath.toFile().isFile()) {
             throw new CommandLine.ParameterException(
                     spec.commandLine(),
                     String.format(
@@ -246,7 +245,7 @@ class RepairCommand extends BaseCommand {
         int startCol = Integer.parseInt(parts[3]);
         int endLine = Integer.parseInt(parts[4]);
         int endCol = Integer.parseInt(parts[5]);
-        return new SpecifiedViolation(key, fileName, startLine, startCol, endLine, endCol);
+        return new SpecifiedViolation(key, absPath, startLine, startCol, endLine, endCol);
     }
 
     private SoraldConfig createConfig() {

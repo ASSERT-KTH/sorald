@@ -1,5 +1,6 @@
 package sorald.cli;
 
+import java.nio.file.Path;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleViolation;
 
@@ -7,17 +8,17 @@ import sorald.sonar.RuleViolation;
 class SpecifiedViolation extends RuleViolation {
     private final String ruleKey;
     private final String checkName;
-    private final String fileName;
+    private final Path absPath;
     private final int startLine;
     private final int startCol;
     private final int endLine;
     private final int endCol;
 
     SpecifiedViolation(
-            String ruleKey, String fileName, int startLine, int startCol, int endLine, int endCol) {
+            String ruleKey, Path absPath, int startLine, int startCol, int endLine, int endCol) {
         this.ruleKey = ruleKey;
         checkName = Checks.getCheck(ruleKey).getSimpleName();
-        this.fileName = fileName;
+        this.absPath = absPath;
         this.startLine = startLine;
         this.endLine = endLine;
         this.startCol = startCol;
@@ -45,8 +46,8 @@ class SpecifiedViolation extends RuleViolation {
     }
 
     @Override
-    public String getFileName() {
-        return fileName;
+    public Path getAbsolutePath() {
+        return absPath;
     }
 
     @Override
