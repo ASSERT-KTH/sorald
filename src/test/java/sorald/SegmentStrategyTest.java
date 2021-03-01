@@ -32,11 +32,12 @@ public class SegmentStrategyTest {
     @Test
     public void arrayToStringProcessor_success_Test() throws Exception {
         String fileName = "ArrayHashCodeAndToString.java";
-        String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+        Path pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
         String pathToRepairedFile =
                 Constants.SORALD_WORKSPACE + "/SEGMENT/" + Constants.SPOONED + "/" + fileName;
 
-        RuleVerifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+        RuleVerifier.verifyHasIssue(
+                pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
@@ -62,9 +63,10 @@ public class SegmentStrategyTest {
     @Test
     public void arrayToStringProcessor_fail_Test() throws Exception {
         String fileName = "ArrayHashCodeAndToString.java";
-        String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+        Path pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
 
-        RuleVerifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+        RuleVerifier.verifyHasIssue(
+                pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
         String[] args =
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,

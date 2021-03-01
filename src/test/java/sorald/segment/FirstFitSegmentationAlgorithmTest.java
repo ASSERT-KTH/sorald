@@ -3,6 +3,7 @@ package sorald.segment;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,8 +28,8 @@ public class FirstFitSegmentationAlgorithmTest {
 
     @Test
     public void segmentationTest() throws Exception {
-        String folder = Constants.PATH_TO_RESOURCES_FOLDER + "DummyTreeDir";
-        Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(folder);
+        Path folder = Constants.PATH_TO_RESOURCES_FOLDER.resolve("DummyTreeDir");
+        Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(folder.toString());
 
         LinkedList<LinkedList<Node>> segments = FirstFitSegmentationAlgorithm.segment(rootNode, 2);
         Assertions.assertEquals(2, segments.size());
