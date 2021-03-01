@@ -1,7 +1,6 @@
 package sorald.processor;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -66,15 +65,15 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
      *   <li>classes marked with @SuppressWarnings("serial")
      * </ul>
      *
+     * The supresswarning {@code @Supresswarnings("serial")} isn't actual implemented and so not
+     * checked by us.
+     *
      * @param candidate
      * @return true if the class should be ignored
      */
     private boolean isException(CtClass<?> candidate) {
 
-        return candidate.isAbstract()
-                || extendsThrowable(candidate)
-                || supressesWarning(candidate)
-                || isGuiClass(candidate);
+        return candidate.isAbstract() || extendsThrowable(candidate) || isGuiClass(candidate);
     }
 
     /**
@@ -105,21 +104,6 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
                     || ctTypeReference.getQualifiedName().startsWith("javax.swing")) {
                 return true;
             }
-        }
-        return false;
-    }
-
-    /**
-     * checks if a given class has a @SupressWarnings("serial") annotation
-     *
-     * @param candidate
-     * @return true if present false otherwise
-     */
-    private boolean supressesWarning(CtClass<?> candidate) {
-        SuppressWarnings annotation = candidate.getAnnotation(SuppressWarnings.class);
-        if (annotation != null
-                && Arrays.stream(annotation.value()).anyMatch(v -> v.equals("serial"))) {
-            return true;
         }
         return false;
     }
