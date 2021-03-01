@@ -3,7 +3,6 @@ package sorald;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import org.eclipse.jgit.diff.DiffFormatter;
 import org.eclipse.jgit.diff.EditList;
 import org.eclipse.jgit.diff.HistogramDiff;
@@ -34,8 +33,6 @@ public class GitPatchGenerator {
         try {
 
             FileOutputStream out = new FileOutputStream(pathToPatch + Constants.PATCH_EXT);
-
-            PrintWriter printer = new PrintWriter(out);
             String relativeOriginalFilePath =
                     new File(this.gitProjectRootDir)
                             .toURI()

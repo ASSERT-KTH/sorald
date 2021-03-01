@@ -961,5 +961,159 @@
             "lastModified": "2021-02-05 08:51:51.864979",
             "isLegacyRecord": true
         }
+    },
+    "spoonlabs/sorald#381": {
+        "repoSlug": "spoonlabs/sorald",
+        "prMetadata": {
+            "url": "https://github.com/SpoonLabs/sorald/pull/381",
+            "createdAt": "2021-02-16 07:49:19",
+            "closedAt": "2021-02-17 13:44:52",
+            "mergedAt": "2021-02-17 13:44:52",
+            "state": "closed",
+            "isMerged": true,
+            "number": 381
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "DeadStore",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "1854",
+                    "nbViolationsBefore": 200,
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 38,
+                            "endColumn": 54,
+                            "startColumn": 32,
+                            "startLine": 38,
+                            "filePath": "src/main/java/sorald/GitPatchGenerator.java",
+                            "violationSpecifier": "1854:src/main/java/sorald/GitPatchGenerator.java:38:32:38:54"
+                        }
+                    ],
+                    "nbViolationsAfter": 199
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: 38248282",
+                "javaVersion": "11.0.10",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    ".",
+                    "--violation-specs",
+                    "1854:src/main/java/sorald/GitPatchGenerator.java:38:32:38:54",
+                    "--stats-output-file",
+                    "1854.json",
+                    "--file-output-strategy",
+                    "IN_PLACE"
+                ]
+            },
+            "totalTimeMs": 3741,
+            "repairTimeMs": 126,
+            "startTimeMs": 1613461392995,
+            "crashes": [],
+            "endTimeMs": 1613461396736,
+            "parseTimeMs": 1679
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/sorald/GitPatchGenerator.java b/src/main/java/sorald/GitPatchGenerator.java\nindex 23c30f9f..5f4c4c0b 100644\n--- a/src/main/java/sorald/GitPatchGenerator.java\n+++ b/src/main/java/sorald/GitPatchGenerator.java\n@@ -34,8 +34,6 @@ public void generate(String originalFilePath, String newFilePath, String pathToP\n         try {\n \n             FileOutputStream out = new FileOutputStream(pathToPatch + Constants.PATCH_EXT);\n-\n-            PrintWriter printer = new PrintWriter(out);\n             String relativeOriginalFilePath =\n                     new File(this.gitProjectRootDir)\n                             .toURI()\n",
+            "final": "diff --git a/src/main/java/sorald/GitPatchGenerator.java b/src/main/java/sorald/GitPatchGenerator.java\nindex 23c30f9f..a85bb2e6 100644\n--- a/src/main/java/sorald/GitPatchGenerator.java\n+++ b/src/main/java/sorald/GitPatchGenerator.java\n@@ -3,7 +3,6 @@\n import java.io.File;\n import java.io.FileOutputStream;\n import java.io.IOException;\n-import java.io.PrintWriter;\n import org.eclipse.jgit.diff.DiffFormatter;\n import org.eclipse.jgit.diff.EditList;\n import org.eclipse.jgit.diff.HistogramDiff;\n@@ -34,8 +33,6 @@ public void generate(String originalFilePath, String newFilePath, String pathToP\n         try {\n \n             FileOutputStream out = new FileOutputStream(pathToPatch + Constants.PATCH_EXT);\n-\n-            PrintWriter printer = new PrintWriter(out);\n             String relativeOriginalFilePath =\n                     new File(this.gitProjectRootDir)\n                             .toURI()\n"
+        },
+        "manualEdits": [
+            {
+                "type": "afterOpenPr",
+                "reason": "remove unused import (project autoformatter)",
+                "diff": "diff --git a/src/main/java/sorald/GitPatchGenerator.java b/src/main/java/sorald/GitPatchGenerator.java\nindex 5f4c4c0..a85bb2e 100644\n--- a/src/main/java/sorald/GitPatchGenerator.java\n+++ b/src/main/java/sorald/GitPatchGenerator.java\n@@ -3,7 +3,6 @@ package sorald;\n import java.io.File;\n import java.io.FileOutputStream;\n import java.io.IOException;\n-import java.io.PrintWriter;\n import org.eclipse.jgit.diff.DiffFormatter;\n import org.eclipse.jgit.diff.EditList;\n import org.eclipse.jgit.diff.HistogramDiff;\n"
+            }
+        ],
+        "recordMetadata": {
+            "createdAt": "2021-02-16 08:59:42.602790",
+            "lastModified": "2021-02-19 09:26:45.763414",
+            "isLegacyRecord": false
+        }
+    },
+    "verificatum/verificatum-vmn#13": {
+        "repoSlug": "verificatum/verificatum-vmn",
+        "prMetadata": {
+            "url": "https://github.com/verificatum/verificatum-vmn/pull/13",
+            "createdAt": "2021-02-22 13:16:50",
+            "closedAt": null,
+            "mergedAt": null,
+            "state": "open",
+            "isMerged": false,
+            "number": 13
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 3,
+                    "ruleName": "InterruptedException",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2142",
+                    "nbViolationsBefore": 3,
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 154,
+                            "endColumn": 50,
+                            "startColumn": 21,
+                            "startLine": 154,
+                            "filePath": "src/java/com/verificatum/protocol/hvzk/CCPoSW.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/protocol/hvzk/CCPoSW.java:154:21:154:50"
+                        },
+                        {
+                            "endLine": 258,
+                            "endColumn": 50,
+                            "startColumn": 21,
+                            "startLine": 258,
+                            "filePath": "src/java/com/verificatum/protocol/hvzk/CCPoSW.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/protocol/hvzk/CCPoSW.java:258:21:258:50"
+                        },
+                        {
+                            "endLine": 940,
+                            "endColumn": 50,
+                            "startColumn": 21,
+                            "startLine": 940,
+                            "filePath": "src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java:940:21:940:50"
+                        }
+                    ],
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: cbc358c9",
+                "javaVersion": "11.0.10",
+                "originalArgs": [
+                    "repair",
+                    "--stats-output-file",
+                    "2142.json",
+                    "--rule-keys",
+                    "2142",
+                    "--original-files-path",
+                    ".",
+                    "--file-output-strategy",
+                    "IN_PLACE"
+                ]
+            },
+            "totalTimeMs": 3042,
+            "repairTimeMs": 145,
+            "startTimeMs": 1613997829128,
+            "crashes": [],
+            "endTimeMs": 1613997832170,
+            "parseTimeMs": 1198
+        },
+        "diffs": {
+            "initial": "diff --git a/src/java/com/verificatum/protocol/hvzk/CCPoSW.java b/src/java/com/verificatum/protocol/hvzk/CCPoSW.java\nindex afe386d..1b40b7f 100644\n--- a/src/java/com/verificatum/protocol/hvzk/CCPoSW.java\n+++ b/src/java/com/verificatum/protocol/hvzk/CCPoSW.java\n@@ -152,6 +152,7 @@ public void run() {\n             try {\n                 commitmentExportThread.join();\n             } catch (final InterruptedException ie) {\n+                Thread.currentThread().interrupt();\n             }\n         }\n     }\n@@ -256,6 +257,7 @@ public void run() {\n             try {\n                 commitmentExportThread.join();\n             } catch (final InterruptedException ie) {\n+                Thread.currentThread().interrupt();\n             }\n         }\n \ndiff --git a/src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java b/src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java\nindex 05aa99d..c2dd3c7 100644\n--- a/src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java\n+++ b/src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java\n@@ -938,6 +938,7 @@ public void run() {\n             try {\n                 nextOutputThread.join();\n             } catch (final InterruptedException ie) {\n+                Thread.currentThread().interrupt();\n                 throw new ProtocolError(\"Unable to join threads!\", ie);\n             }\n             nextOutputThread = null;\n",
+            "final": null
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-02-22 14:17:58.101722",
+            "lastModified": "2021-02-22 14:17:58.101722",
+            "isLegacyRecord": false
+        }
     }
 }
