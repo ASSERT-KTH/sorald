@@ -37,7 +37,7 @@ public class Constants {
     public static final String PATCHES = "SoraldGitPatches";
     public static final String PATCH_FILE_PREFIX = "soraldpatch_";
     public static final Path PATH_TO_RESOURCES_FOLDER =
-            Paths.get("src").resolve("test").resolve("resources");
+            Paths.get("src").resolve("test").resolve("resources").toAbsolutePath();
 
     public static final String JAVA_EXT = ".java";
     public static final String PATCH_EXT = ".patch";
