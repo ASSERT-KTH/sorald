@@ -47,7 +47,7 @@ public class SegmentStrategyTest {
                     Constants.ARG_MAX_FILES_PER_SEGMENT,
                     "1",
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    Constants.PATH_TO_RESOURCES_FOLDER,
+                    Constants.PATH_TO_RESOURCES_FOLDER.toString(),
                     Constants.ARG_RULE_KEYS,
                     "2116",
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
@@ -73,7 +73,7 @@ public class SegmentStrategyTest {
                     Constants.ARG_MAX_FILES_PER_SEGMENT,
                     "0",
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    Constants.PATH_TO_RESOURCES_FOLDER,
+                    Constants.PATH_TO_RESOURCES_FOLDER.toString(),
                     Constants.ARG_RULE_KEYS,
                     "2116",
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
@@ -89,7 +89,7 @@ public class SegmentStrategyTest {
             throws IOException {
         // arrange
         org.apache.commons.io.FileUtils.copyDirectory(
-                new File(Constants.PATH_TO_RESOURCES_FOLDER), tempDir);
+                Constants.PATH_TO_RESOURCES_FOLDER.toFile(), tempDir);
 
         SoraldConfig config = createSegmentConfig(tempDir.getAbsolutePath());
 

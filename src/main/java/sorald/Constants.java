@@ -1,6 +1,8 @@
 package sorald;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 import org.sonar.plugins.java.api.JavaFileScanner;
@@ -34,7 +36,8 @@ public class Constants {
     public static final String SORALD_WORKSPACE = "sorald-workspace";
     public static final String PATCHES = "SoraldGitPatches";
     public static final String PATCH_FILE_PREFIX = "soraldpatch_";
-    public static final String PATH_TO_RESOURCES_FOLDER = "./src/test/resources/";
+    public static final Path PATH_TO_RESOURCES_FOLDER =
+            Paths.get("src").resolve("test").resolve("resources");
 
     public static final String JAVA_EXT = ".java";
     public static final String PATCH_EXT = ".patch";

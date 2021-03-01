@@ -17,7 +17,7 @@ public class GreedyBestFitScannerTest {
 
     @Test
     public void calculateBestFits_throws_whenProcessorConcernsDifferentRuleThanViolations() {
-        File projectBaseDir = new File(Constants.PATH_TO_RESOURCES_FOLDER);
+        File projectBaseDir = Constants.PATH_TO_RESOURCES_FOLDER.toFile();
         Set<RuleViolation> xxeProcessingViolations =
                 ProjectScanner.scanProject(
                         projectBaseDir,

@@ -8,11 +8,9 @@ import static org.hamcrest.Matchers.in;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -28,14 +26,14 @@ class RuleVerifierTest {
         String suppressedRuleKey = "2116";
         String nonSuppressedRuleKey = "2164";
         String testFile =
-                Paths.get(Constants.PATH_TO_RESOURCES_FOLDER)
+                Constants.PATH_TO_RESOURCES_FOLDER
                         .resolve("WithMethodSuppressedS" + suppressedRuleKey + ".java")
                         .toString();
 
         var violations =
                 RuleVerifier.analyze(
                         List.of(testFile),
-                        new File(Constants.PATH_TO_RESOURCES_FOLDER),
+                        Constants.PATH_TO_RESOURCES_FOLDER.toFile(),
                         List.of(
                                 Checks.getCheckInstance(suppressedRuleKey),
                                 Checks.getCheckInstance(nonSuppressedRuleKey)));
@@ -52,13 +50,13 @@ class RuleVerifierTest {
         var checkWithNoLocation = new DefaultPackageCheck();
 
         String testFile =
-                Paths.get(Constants.PATH_TO_RESOURCES_FOLDER)
+                Constants.PATH_TO_RESOURCES_FOLDER
                         .resolve("ArrayHashCodeAndToString.java")
                         .toString();
         var violations =
                 RuleVerifier.analyze(
                         List.of(testFile),
-                        new File(Constants.PATH_TO_RESOURCES_FOLDER),
+                        Constants.PATH_TO_RESOURCES_FOLDER.toFile(),
                         checkWithNoLocation);
 
         assertThat(violations, is(empty()));
@@ -67,8 +65,7 @@ class RuleVerifierTest {
     @Test
     public void analyze_doesNotReturnViolation_fromNosonarLine() throws IOException {
         // arrange
-        Path testFile =
-                Paths.get(Constants.PATH_TO_RESOURCES_FOLDER).resolve("NOSONARCommentTest.java");
+        Path testFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve("NOSONARCommentTest.java");
         int nosonarLine = 7;
         int violationLine = 8;
         List<String> lines = Files.readAllLines(testFile);
@@ -79,7 +76,7 @@ class RuleVerifierTest {
         var violations =
                 RuleVerifier.analyze(
                         List.of(testFile.toString()),
-                        new File(Constants.PATH_TO_RESOURCES_FOLDER),
+                        Constants.PATH_TO_RESOURCES_FOLDER.toFile(),
                         List.of(Checks.getCheckInstance("S2116")));
 
         // assert
