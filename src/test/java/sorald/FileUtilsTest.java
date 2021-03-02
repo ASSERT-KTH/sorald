@@ -21,7 +21,7 @@ public class FileUtilsTest {
             @TempDir File workdir) throws Exception {
         // arrange
         org.apache.commons.io.FileUtils.copyDirectory(
-                new File(Constants.PATH_TO_RESOURCES_FOLDER), workdir);
+                Constants.PATH_TO_RESOURCES_FOLDER.toFile(), workdir);
         Path javaExtDirpath = workdir.toPath().resolve("randomdir.java");
         Path javaFileInJavaExtDirpath = javaExtDirpath.resolve("SomeClass.java");
         Files.createDirectory(workdir.toPath().resolve("randomdir.java"));
@@ -41,7 +41,7 @@ public class FileUtilsTest {
         // act
         List<File> files =
                 FileUtils.findFilesByExtension(
-                        new File(Constants.PATH_TO_RESOURCES_FOLDER), Constants.JAVA_EXT);
+                        Constants.PATH_TO_RESOURCES_FOLDER.toFile(), Constants.JAVA_EXT);
 
         // assert
         Predicate<File> isJavaFile =

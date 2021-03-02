@@ -1,6 +1,7 @@
 package sorald.sonar;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -76,8 +77,8 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
         intersecting = new HashMap<>();
         filesWithViolations =
                 violations.stream()
-                        .map(RuleViolation::getFileName)
-                        .map(File::new)
+                        .map(RuleViolation::getAbsolutePath)
+                        .map(Path::toFile)
                         .collect(Collectors.toSet());
     }
 
@@ -251,7 +252,7 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
     private static boolean inSameFile(CtElement element, RuleViolation violation) {
         return element.getPosition().isValidPosition()
                 && FileUtils.pathAbsNormEqual(
-                        violation.getFileName(), element.getPosition().getFile().getAbsolutePath());
+                        violation.getAbsolutePath(), element.getPosition().getFile().toPath());
     }
 
     /** All rule violations must concern the same rule as the processor. */

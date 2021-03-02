@@ -10,7 +10,7 @@ import sorald.Constants;
 public class RuleViolationTest {
     @Test
     public void equals_onNonRuleViolationType_returnsFalse() {
-        File resources = new File(Constants.PATH_TO_RESOURCES_FOLDER);
+        File resources = Constants.PATH_TO_RESOURCES_FOLDER.toFile();
         RuleViolation violation =
                 ProjectScanner.scanProject(resources, resources, new XxeProcessingCheck()).stream()
                         .findFirst()

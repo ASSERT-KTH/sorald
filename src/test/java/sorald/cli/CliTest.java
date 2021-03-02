@@ -52,7 +52,7 @@ public class CliTest {
                                 Constants.ARG_FILE_OUTPUT_STRATEGY,
                                 outputStrategy,
                                 Constants.ARG_ORIGINAL_FILES_PATH,
-                                Constants.PATH_TO_RESOURCES_FOLDER,
+                                Constants.PATH_TO_RESOURCES_FOLDER.toString(),
                                 Constants.ARG_REPAIR_STRATEGY,
                                 RepairStrategy.MAVEN.name(),
                                 Constants.ARG_RULE_KEYS,

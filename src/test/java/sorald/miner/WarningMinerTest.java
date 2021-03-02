@@ -29,19 +29,19 @@ import sorald.sonar.Checks;
 
 public class WarningMinerTest {
 
+    private static final Path REPOS_TXT =
+            Constants.PATH_TO_RESOURCES_FOLDER.resolve("warning_miner").resolve("test_repos.txt");
+    private static final Path EXPECTED_OUTPUT_TXT =
+            Constants.PATH_TO_RESOURCES_FOLDER.resolve("warning_miner").resolve("test_results.txt");
+
     @Test
     public void test_warningMiner() throws Exception {
         File outputFile = File.createTempFile("warnings", null),
                 temp = Files.createTempDirectory("tempDir").toFile();
 
-        String fileName = "warning_miner/test_repos.txt";
-        String pathToRepos = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
-        fileName = "warning_miner/test_results.txt";
-        File correctResults = new File(Constants.PATH_TO_RESOURCES_FOLDER + fileName);
+        runMiner(REPOS_TXT, outputFile.getPath(), temp.getPath());
 
-        runMiner(pathToRepos, outputFile.getPath(), temp.getPath());
-
-        List<String> expectedLines = extractSortedNonZeroChecks(correctResults.toPath());
+        List<String> expectedLines = extractSortedNonZeroChecks(EXPECTED_OUTPUT_TXT);
         List<String> actualLines = extractSortedNonZeroChecks(outputFile.toPath());
 
         assertFalse(expectedLines.isEmpty(), "sanity check failure, expected output is empty");
@@ -53,15 +53,10 @@ public class WarningMinerTest {
         File outputFile = File.createTempFile("warnings", null),
                 temp = Files.createTempDirectory("tempDir").toFile();
 
-        String fileName = "warning_miner/test_repos.txt";
-        String pathToRepos = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
-        fileName = "warning_miner/test_results.txt";
-        File correctResults = new File(Constants.PATH_TO_RESOURCES_FOLDER + fileName);
-
-        runMiner(pathToRepos, outputFile.getPath(), temp.getPath(), Constants.ARG_HANDLED_RULES);
+        runMiner(REPOS_TXT, outputFile.getPath(), temp.getPath(), Constants.ARG_HANDLED_RULES);
 
         List<String> actualLines = extractSortedNonZeroChecks(outputFile.toPath());
-        List<String> expectedLines = extractSortedNonZeroChecks(correctResults.toPath());
+        List<String> expectedLines = extractSortedNonZeroChecks(EXPECTED_OUTPUT_TXT);
 
         expectedLines =
                 expectedLines.stream()
@@ -91,13 +86,11 @@ public class WarningMinerTest {
         List<Checks.CheckType> checkTypes =
                 Arrays.asList(Checks.CheckType.VULNERABILITY, Checks.CheckType.CODE_SMELL);
 
-        String fileName = "warning_miner/test_repos.txt";
-        String pathToRepos = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
         File outputFile = File.createTempFile("warnings", null);
         File temp = Files.createTempDirectory("tempDir").toFile();
 
         runMiner(
-                pathToRepos,
+                REPOS_TXT,
                 outputFile.getPath(),
                 temp.getPath(),
                 Constants.ARG_RULE_TYPES,
@@ -147,10 +140,8 @@ public class WarningMinerTest {
     public void extractWarnings_accountsForAllRules_whenManyAreNotViolated() throws Exception {
         File outputFile = File.createTempFile("warnings", null),
                 temp = Files.createTempDirectory("tempDir").toFile();
-        String fileName = "warning_miner/test_repos.txt";
-        String pathToRepos = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
 
-        runMiner(pathToRepos, outputFile.getPath(), temp.getPath());
+        runMiner(REPOS_TXT, outputFile.getPath(), temp.getPath());
 
         List<String> expectedChecks =
                 Checks.getAllChecks().stream()
@@ -168,11 +159,9 @@ public class WarningMinerTest {
         File outputFile = File.createTempFile("warnings", null),
                 temp = Files.createTempDirectory("tempDir").toFile(),
                 statsFile = File.createTempFile("stats", null);
-        String fileName = "warning_miner/test_repos.txt";
-        String pathToRepos = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
 
         runMiner(
-                pathToRepos,
+                REPOS_TXT,
                 outputFile.getPath(),
                 temp.getPath(),
                 Constants.ARG_STATS_OUTPUT_FILE,
@@ -199,14 +188,14 @@ public class WarningMinerTest {
     }
 
     private static void runMiner(
-            String pathToRepos, String pathToOutput, String pathToTempDir, String... extraArgs)
+            Path pathToRepos, String pathToOutput, String pathToTempDir, String... extraArgs)
             throws Exception {
         String[] baseArgs =
                 new String[] {
                     Constants.MINE_COMMAND_NAME,
                     Constants.ARG_STATS_ON_GIT_REPOS,
                     Constants.ARG_GIT_REPOS_LIST,
-                    pathToRepos,
+                    pathToRepos.toString(),
                     Constants.ARG_MINER_OUTPUT_FILE,
                     pathToOutput,
                     Constants.ARG_TEMP_DIR,

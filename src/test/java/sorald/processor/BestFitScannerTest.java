@@ -27,7 +27,7 @@ public class BestFitScannerTest {
 
     @Test
     public void calculateBestFits_throws_whenProcessorConcernsDifferentRuleThanViolations() {
-        File projectBaseDir = new File(Constants.PATH_TO_RESOURCES_FOLDER);
+        File projectBaseDir = Constants.PATH_TO_RESOURCES_FOLDER.toFile();
         Set<RuleViolation> xxeProcessingViolations =
                 ProjectScanner.scanProject(
                         projectBaseDir,
@@ -106,8 +106,8 @@ public class BestFitScannerTest {
                     }
 
                     @Override
-                    public String getFileName() {
-                        return innerMostClassPos.getFile().toString();
+                    public Path getAbsolutePath() {
+                        return innerMostClassPos.getFile().toPath().toAbsolutePath();
                     }
 
                     @Override

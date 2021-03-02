@@ -18,7 +18,7 @@ public class FileOutputStrategyTest {
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    Constants.PATH_TO_RESOURCES_FOLDER,
+                    Constants.PATH_TO_RESOURCES_FOLDER.toString(),
                     Constants.ARG_RULE_KEYS,
                     "4973",
                     Constants.ARG_FILE_OUTPUT_STRATEGY,
@@ -42,7 +42,7 @@ public class FileOutputStrategyTest {
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    Constants.PATH_TO_RESOURCES_FOLDER,
+                    Constants.PATH_TO_RESOURCES_FOLDER.toString(),
                     Constants.ARG_RULE_KEYS,
                     "4973",
                     Constants.ARG_FILE_OUTPUT_STRATEGY,
@@ -64,7 +64,7 @@ public class FileOutputStrategyTest {
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    Constants.PATH_TO_RESOURCES_FOLDER,
+                    Constants.PATH_TO_RESOURCES_FOLDER.toString(),
                     Constants.ARG_RULE_KEYS,
                     "4973",
                     Constants.ARG_FILE_OUTPUT_STRATEGY,
