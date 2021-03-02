@@ -1,5 +1,7 @@
 package sorald.sonar;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.plugins.java.api.JavaCheck;
 
@@ -40,8 +42,10 @@ class ScannedViolation extends RuleViolation {
     }
 
     @Override
-    public String getFileName() {
-        return message.getInputComponent().key().replace(":", "");
+    public Path getAbsolutePath() {
+        return Paths.get(message.getInputComponent().key().replace(":", ""))
+                .toAbsolutePath()
+                .normalize();
     }
 
     @Override
