@@ -3,6 +3,7 @@ package sorald.sonar;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.List;
@@ -126,34 +127,22 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
         List<E> intersectingCandidates =
                 intersecting.getOrDefault(violation, Collections.emptyList());
         List<E> sameLineCandidates = onSameLine.getOrDefault(violation, Collections.emptyList());
-        Stream<E> sortedUnusedCandidates =
+
+        Comparator<E> reversedComparePositionFit =
+                (lhs, rhs) -> -comparePositionFit(lhs, rhs, violation);
+        Stream<E> reverseSortedUnusedCandidates =
                 Stream.concat(intersectingCandidates.stream(), sameLineCandidates.stream())
-                        .sorted(
-                                (lhs, rhs) -> {
-                                    if (lhs == rhs) {
-                                        return 0;
-                                    }
-
-                                    double lhsIntersect = intersectFraction(lhs, violation);
-                                    double rhsIntersect = intersectFraction(rhs, violation);
-
-                                    if (Math.abs(lhsIntersect - rhsIntersect)
-                                            < INTERSECTION_FRACTION_TOLERANCE) {
-                                        return Integer.compare(elementSize(rhs), elementSize(lhs));
-                                    } else {
-                                        return Double.compare(rhsIntersect, lhsIntersect);
-                                    }
-                                })
+                        .sorted(reversedComparePositionFit)
                         .filter(e -> !bestFitsMap.containsKey(e));
 
         if (processor.isIncomplete()) {
             // if the processor is incomplete, we only consider the best position match, and a false
             // from canRepair is considered final
-            return sortedUnusedCandidates.findFirst().filter(this::canRepair);
+            return reverseSortedUnusedCandidates.findFirst().filter(this::canRepair);
         } else {
             // if the processor is not incomplete, canRepair is allowed to steer the search for a
             // suitable candidate
-            return sortedUnusedCandidates.filter(this::canRepair).findFirst();
+            return reverseSortedUnusedCandidates.filter(this::canRepair).findFirst();
         }
     }
 
@@ -189,6 +178,36 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
 
     private static boolean pointsIntersect(int startLhs, int endLhs, int startRhs, int endRhs) {
         return startRhs <= endLhs && endRhs >= startLhs;
+    }
+
+    /**
+     * Compare the intersection fraction (as defined by {@link
+     * BestFitScanner#intersectFraction(CtElement, RuleViolation)}) of the elements with the
+     * violation.
+     *
+     * <p>If the intersection fractions are equal down to {@link
+     * BestFitScanner#INTERSECTION_FRACTION_TOLERANCE}, we compare the absolute intersection
+     * instead.
+     *
+     * @param lhs The left-hand element in the comparison.
+     * @param rhs The right-hand element in the comparison.
+     * @param violation The violation to compute intersection fractions with.
+     * @return A negative value if lhs is a worse position fit than rhs, 0 if they are equally good,
+     *     and a positive value if rhs is a better position fit than lhs.
+     */
+    private int comparePositionFit(E lhs, E rhs, RuleViolation violation) {
+        if (lhs == rhs) {
+            return 0;
+        }
+
+        double lhsIntersect = intersectFraction(lhs, violation);
+        double rhsIntersect = intersectFraction(rhs, violation);
+
+        if (Math.abs(lhsIntersect - rhsIntersect) < INTERSECTION_FRACTION_TOLERANCE) {
+            return Integer.compare(elementSize(lhs), elementSize(rhs));
+        } else {
+            return Double.compare(lhsIntersect, rhsIntersect);
+        }
     }
 
     /**
