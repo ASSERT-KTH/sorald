@@ -2,6 +2,7 @@ package sorald.processor;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
@@ -124,6 +125,7 @@ public class BestFitScannerTest {
                 model.getUnnamedModule(), Set.of(ruleViolation), incompleteClassProc);
 
         assertThat(incompleteClassProc.receivedToCanRepair.size(), equalTo(1));
+        assertThat(incompleteClassProc.receivedToCanRepair.get(0), is(innerMostClass));
     }
 
     private static class IncompleteClassProc extends SoraldAbstractProcessor<CtClass<?>> {
