@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
 import sorald.event.EventHelper;
 import sorald.event.SoraldEventHandler;
@@ -128,6 +129,11 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      * @param element An element to repair.
      */
     protected abstract void repairInternal(E element);
+
+    /** @return Whether or not this processor is incomplete. */
+    public boolean isIncomplete() {
+        return getClass().getAnnotation(IncompleteProcessor.class) != null;
+    }
 
     public SoraldAbstractProcessor<E> setBestFits(Map<CtElement, RuleViolation> bestFits) {
         this.bestFits = Collections.unmodifiableMap(bestFits);

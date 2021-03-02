@@ -126,28 +126,35 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
         List<E> intersectingCandidates =
                 intersecting.getOrDefault(violation, Collections.emptyList());
         List<E> sameLineCandidates = onSameLine.getOrDefault(violation, Collections.emptyList());
-        Stream<E> candidates =
-                Stream.concat(intersectingCandidates.stream(), sameLineCandidates.stream());
-        return candidates
-                .sorted(
-                        (lhs, rhs) -> {
-                            if (lhs == rhs) {
-                                return 0;
-                            }
+        Stream<E> sortedUnusedCandidates =
+                Stream.concat(intersectingCandidates.stream(), sameLineCandidates.stream())
+                        .sorted(
+                                (lhs, rhs) -> {
+                                    if (lhs == rhs) {
+                                        return 0;
+                                    }
 
-                            double lhsIntersect = intersectFraction(lhs, violation);
-                            double rhsIntersect = intersectFraction(rhs, violation);
+                                    double lhsIntersect = intersectFraction(lhs, violation);
+                                    double rhsIntersect = intersectFraction(rhs, violation);
 
-                            if (Math.abs(lhsIntersect - rhsIntersect)
-                                    < INTERSECTION_FRACTION_TOLERANCE) {
-                                return Integer.compare(elementSize(rhs), elementSize(lhs));
-                            } else {
-                                return Double.compare(rhsIntersect, lhsIntersect);
-                            }
-                        })
-                .filter(this::canRepair)
-                .filter(e -> !bestFitsMap.containsKey(e))
-                .findFirst();
+                                    if (Math.abs(lhsIntersect - rhsIntersect)
+                                            < INTERSECTION_FRACTION_TOLERANCE) {
+                                        return Integer.compare(elementSize(rhs), elementSize(lhs));
+                                    } else {
+                                        return Double.compare(rhsIntersect, lhsIntersect);
+                                    }
+                                })
+                        .filter(e -> !bestFitsMap.containsKey(e));
+
+        if (processor.isIncomplete()) {
+            // if the processor is incomplete, we only consider the best position match, and a false
+            // from canRepair is considered final
+            return sortedUnusedCandidates.findFirst().filter(this::canRepair);
+        } else {
+            // if the processor is not incomplete, canRepair is allowed to steer the search for a
+            // suitable candidate
+            return sortedUnusedCandidates.filter(this::canRepair).findFirst();
+        }
     }
 
     private boolean canRepair(E element) {
