@@ -1,5 +1,6 @@
 package sorald.processor;
 
+import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import sorald.Constants;
@@ -11,16 +12,17 @@ public class MaxFixesPerRuleTest {
     @Test
     public void arrayToStringProcessorTest() throws Exception {
         String fileName = "ArrayHashCodeAndToString.java";
-        String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+        Path pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
         String pathToRepairedFile =
                 Constants.SORALD_WORKSPACE + "/" + Constants.SPOONED + "/" + fileName;
 
-        RuleVerifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+        RuleVerifier.verifyHasIssue(
+                pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    pathToBuggyFile,
+                    pathToBuggyFile.toString(),
                     Constants.ARG_RULE_KEYS,
                     "2116",
                     Constants.ARG_WORKSPACE,
@@ -30,6 +32,6 @@ public class MaxFixesPerRuleTest {
                 });
         TestHelper.removeComplianceComments(pathToRepairedFile);
         RuleVerifier.verifyHasIssue(
-                pathToBuggyFile, new ArrayHashCodeAndToStringCheck()); // one bug left
+                pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck()); // one bug left
     }
 }

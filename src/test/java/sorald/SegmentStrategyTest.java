@@ -32,11 +32,12 @@ public class SegmentStrategyTest {
     @Test
     public void arrayToStringProcessor_success_Test() throws Exception {
         String fileName = "ArrayHashCodeAndToString.java";
-        String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+        Path pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
         String pathToRepairedFile =
                 Constants.SORALD_WORKSPACE + "/SEGMENT/" + Constants.SPOONED + "/" + fileName;
 
-        RuleVerifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+        RuleVerifier.verifyHasIssue(
+                pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
@@ -47,7 +48,7 @@ public class SegmentStrategyTest {
                     Constants.ARG_MAX_FILES_PER_SEGMENT,
                     "1",
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    Constants.PATH_TO_RESOURCES_FOLDER,
+                    Constants.PATH_TO_RESOURCES_FOLDER.toString(),
                     Constants.ARG_RULE_KEYS,
                     "2116",
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
@@ -62,9 +63,10 @@ public class SegmentStrategyTest {
     @Test
     public void arrayToStringProcessor_fail_Test() throws Exception {
         String fileName = "ArrayHashCodeAndToString.java";
-        String pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER + fileName;
+        Path pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
 
-        RuleVerifier.verifyHasIssue(pathToBuggyFile, new ArrayHashCodeAndToStringCheck());
+        RuleVerifier.verifyHasIssue(
+                pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
         String[] args =
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
@@ -73,7 +75,7 @@ public class SegmentStrategyTest {
                     Constants.ARG_MAX_FILES_PER_SEGMENT,
                     "0",
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    Constants.PATH_TO_RESOURCES_FOLDER,
+                    Constants.PATH_TO_RESOURCES_FOLDER.toString(),
                     Constants.ARG_RULE_KEYS,
                     "2116",
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
@@ -89,7 +91,7 @@ public class SegmentStrategyTest {
             throws IOException {
         // arrange
         org.apache.commons.io.FileUtils.copyDirectory(
-                new File(Constants.PATH_TO_RESOURCES_FOLDER), tempDir);
+                Constants.PATH_TO_RESOURCES_FOLDER.toFile(), tempDir);
 
         SoraldConfig config = createSegmentConfig(tempDir.getAbsolutePath());
 

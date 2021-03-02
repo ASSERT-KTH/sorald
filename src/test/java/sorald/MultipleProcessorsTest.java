@@ -20,9 +20,7 @@ public class MultipleProcessorsTest {
     public void allStrategies_canApplyMultipleProcessors(
             RepairStrategy repairStrategy, @TempDir File tempDir) throws IOException {
         File origBuggyFile =
-                Paths.get(Constants.PATH_TO_RESOURCES_FOLDER)
-                        .resolve("MultipleProcessors.java")
-                        .toFile();
+                Constants.PATH_TO_RESOURCES_FOLDER.resolve("MultipleProcessors.java").toFile();
         File buggyFile = tempDir.toPath().resolve(origBuggyFile.getName()).toFile();
         org.apache.commons.io.FileUtils.copyFile(origBuggyFile, buggyFile);
 
@@ -59,8 +57,7 @@ public class MultipleProcessorsTest {
 
     @Test
     public void resultFileHasNoIssues_whenUsingChangedOnlyOutputStrategy() {
-        Path buggyFile =
-                Paths.get(Constants.PATH_TO_RESOURCES_FOLDER).resolve("MultipleProcessors.java");
+        Path buggyFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve("MultipleProcessors.java");
         Path repairedFile =
                 Paths.get(Constants.SORALD_WORKSPACE)
                         .resolve(Constants.SPOONED)
