@@ -3,7 +3,6 @@ package sorald;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.sonar.java.checks.DeadStoreCheck;
@@ -16,7 +15,7 @@ public class MavenLauncherTest {
             throws IOException {
         // arrange
         org.apache.commons.io.FileUtils.copyDirectory(
-                Paths.get(Constants.PATH_TO_RESOURCES_FOLDER)
+                Constants.PATH_TO_RESOURCES_FOLDER
                         .resolve("scenario_test_files/simple-java8-maven-project")
                         .toFile(),
                 workdir);

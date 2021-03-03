@@ -1,7 +1,6 @@
 package sorald.sonar;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -22,8 +21,8 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
     /** @return The column the element that violates the rule ends on. */
     public abstract int getEndCol();
 
-    /** @return The name of the file that was analyzed. */
-    public abstract String getFileName();
+    /** @return Absolute and normalized path to the analyzed file. */
+    public abstract Path getAbsolutePath();
 
     /** @return The name of the check class that generated this warning. */
     public abstract String getCheckName();
@@ -36,7 +35,7 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
      * @return A violation specifier that is unique relative to the given project path.
      */
     public String relativeSpecifier(Path projectPath) {
-        Path absPath = Paths.get(getFileName()).toAbsolutePath().normalize();
+        Path absPath = getAbsolutePath();
         Path normalizedProjectPath = projectPath.toAbsolutePath().normalize();
         Path idPath = normalizedProjectPath.relativize(absPath);
         return Stream.of(
@@ -56,7 +55,7 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
             return false;
         }
         var other = (RuleViolation) obj;
-        return getFileName().equals(other.getFileName())
+        return getAbsolutePath().equals(other.getAbsolutePath())
                 && getCheckName().equals(other.getCheckName())
                 && getRuleKey().equals(other.getRuleKey())
                 && getStartLine() == other.getStartLine()
@@ -68,7 +67,7 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
     @Override
     public int hashCode() {
         return Objects.hash(
-                getFileName(),
+                getAbsolutePath(),
                 getCheckName(),
                 getRuleKey(),
                 getStartLine(),
@@ -79,7 +78,7 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
 
     @Override
     public int compareTo(RuleViolation violation) {
-        int fileCmp = getFileName().compareTo(violation.getFileName());
+        int fileCmp = getAbsolutePath().compareTo(violation.getAbsolutePath());
         int ruleCmp = getRuleKey().compareTo(violation.getRuleKey());
         int startLineCmp = Integer.compare(getStartLine(), violation.getStartLine());
         int startColCmp = Integer.compare(getStartCol(), violation.getStartCol());

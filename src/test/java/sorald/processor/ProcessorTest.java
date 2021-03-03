@@ -141,7 +141,7 @@ public class ProcessorTest {
             throws Exception {
         // arrange
         org.apache.commons.io.FileUtils.copyDirectory(
-                new File(Constants.PATH_TO_RESOURCES_FOLDER), workdir);
+                Constants.PATH_TO_RESOURCES_FOLDER.toFile(), workdir);
         File dirWithJavaExtension = workdir.listFiles(File::isDirectory)[0];
         org.apache.commons.io.FileUtils.moveDirectory(
                 dirWithJavaExtension,
@@ -184,7 +184,7 @@ public class ProcessorTest {
     public void sorald_canProcessProject_withModuleInfo() throws Exception {
         // act
         ProcessorTestHelper.runSorald(
-                Paths.get(Constants.PATH_TO_RESOURCES_FOLDER)
+                Constants.PATH_TO_RESOURCES_FOLDER
                         .resolve("scenario_test_files")
                         .resolve("project.with.module")
                         .toFile(),

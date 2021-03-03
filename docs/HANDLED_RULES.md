@@ -24,6 +24,7 @@ Sorald can currently repair violations of the following rules:
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
     * ["public static" fields should be constant](#public-static-fields-should-be-constant-sonar-rule-1444) ([Sonar Rule 1444](https://rules.sonarsource.com/java/RSPEC-1444))
+    * [\"Serializable\" classes should have a \"serialVersionUID\"](#Serializable-classes-should-have-a-serialVersionUID-sonar-rule-2057) ([Sonar Rule 2057](https://rules.sonarsource.com/java/RSPEC-2057))
 * [Vulnerability](#vulnerability)
     * [XML parsers should not be vulnerable to XXE attacks](#xml-parsers-should-not-be-vulnerable-to-xxe-attacks-sonar-rule-2755) ([Sonar Rule 2755](https://rules.sonarsource.com/java/type/Vulnerability/RSPEC-2755))
         - **Note:** This processor is a work in progress!
@@ -423,6 +424,39 @@ Example:
      }
 ```
 
+In some cases, simply deleting a local variable declaration can lead to code
+not compiling, even if the initializer for the variable is indeed a dead store.
+Sorald then ensures that there is a declaration with the appropriate scope,
+if possible merging with the closest variable write.
+
+```diff
+    public void dead() {
+-       int a = 2; // Noncompliant
+-       a = 3;
++       int a = 3;
+        System.out.println(a);
+    }
+```
+
+In some cases where the variable in question is used in different execution
+paths, merging with the closest write isn't an option. Sorald then places a
+declaration as close to the usages as possible.
+
+```diff
+    public void dead(int a, int b) {
+-       int c = 2;
+        if (a < b) {
++           int c;
+            if (b < a) {
+                c = a + b;
+            } else {
+                c = a - b;
+            }
+            System.out.println(c);
+        }
+    }
+```
+
 Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/2265) that repairs one DeadStore violation.
 
 #### "public static" fields should be constant ([Sonar Rule 1444](https://rules.sonarsource.com/java/RSPEC-1444))
@@ -438,6 +472,16 @@ Example:
      protected static Integer order = 66; // Compliant
      static Integer roadToHill = 30; // Compliant
  }
+```
+------
+#### "Serializable" classes should have a "serialVersionUID"([Sonar Rule 2057](https://rules.sonarsource.com/java/RSPEC-2057))
+
+The repair consists of add a serialVersionUID to classes implementing Serializable
+Example:
+```diff
+public class NoUID implements Serializable {
++  static final long serialVersionUID = 1L;
+}
 ```
 
 ### *Vulnerability*
