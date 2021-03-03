@@ -26,10 +26,9 @@ def main(args: List[str]):
     parsed_args = parse_args(args)
     commits_to_analyze = read_commits_csv(parsed_args)
 
-    rule_keys = soraldwrapper.available_rule_keys()
     results = list(
         benchmark_commits(
-            commits_to_analyze, rule_keys, parsed_args.parallel_experiments
+            commits_to_analyze, parsed_args.rule_keys, parsed_args.parallel_experiments
         )
     )
 
@@ -78,6 +77,13 @@ def parse_args(args: List[str]) -> argparse.Namespace:
         help="amount of experiments to run in parallel",
         type=int,
         default=1,
+    )
+    parser.add_argument(
+        "-r",
+        "--rule-keys",
+        nargs="*",
+        help="rule keys to use. If not specified, all rule keys are used.",
+        default=soraldwrapper.available_rule_keys(),
     )
 
     return parser.parse_args(args)
