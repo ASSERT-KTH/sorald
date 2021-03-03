@@ -506,6 +506,11 @@ docs](https://docs.github.com/en/free-pro-team@latest/github/searching-for-infor
 > the rate limit before you know it.
 
 ### `sorald.benchmark`
+
+> **Important:** The current baseline for Sorald is kept in
+> [benchmark_baseline.csv](benchmark_baseline.csv). Run the benchmark with this
+> as a comparison to look for improvements/degredation.
+
 This is a benchmarking script for testing Sorald's performance on real-world
 scenarios. It runs Sorald on a given set of commits, and computes its _total
 repair ratio_ (TTR) and its _attempted repair ratio_ (ATR), which are
