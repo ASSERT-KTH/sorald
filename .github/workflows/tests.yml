@@ -51,7 +51,7 @@ jobs:
           java-package: jdk
           architecture: x64
       - name: Package Sorald
-          mvn package -DskipTests
+        run: mvn package -DskipTests
       - name: Test support scripts
         run: |
           cd experimentation/tools
