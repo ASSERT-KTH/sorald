@@ -207,12 +207,7 @@ def benchmark_commit(
 
 
 def _benchmark_commit(repo: git.Repo, rule_keys: List[str]) -> "CommitRepairStats":
-    rule_key_progress = tqdm.tqdm(
-        rule_keys, desc=f"Processing rule keys for {commit_id(repo)}"
-    )
-    repair_stats = list(
-        map(functools.partial(run_sorald_for_rule, repo), rule_key_progress)
-    )
+    repair_stats = list(map(functools.partial(run_sorald_for_rule, repo), rule_keys))
 
     return CommitRepairStats(
         project_url=next(repo.remote().urls),
