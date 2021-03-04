@@ -74,11 +74,6 @@ class RepairCommand extends BaseCommand {
     File soraldWorkspace;
 
     @CommandLine.Option(
-            names = {Constants.ARG_GIT_REPO_PATH},
-            description = "The path to a git repository directory.")
-    File gitRepoPath;
-
-    @CommandLine.Option(
             names = {Constants.ARG_PRETTY_PRINTING_STRATEGY},
             description =
                     "Mode for pretty printing the source code: 'NORMAL', which means that all source code will be printed and its formatting might change (such as indentation), and 'SNIPER', which means that only statements changed towards the repair of Sonar rule violations will be printed.")
@@ -254,9 +249,6 @@ class RepairCommand extends BaseCommand {
         config.setRuleViolations(ruleViolations);
         config.setOriginalFilesPath(originalFilesPath.getAbsolutePath());
         config.setWorkspace(soraldWorkspace.getAbsolutePath());
-        if (gitRepoPath != null) {
-            config.setGitRepoPath(gitRepoPath.getAbsolutePath());
-        }
         config.setPrettyPrintingStrategy(prettyPrintingStrategy);
         config.setFileOutputStrategy(fileOutputStrategy);
         config.setMaxFixesPerRule(maxFixesPerRule);

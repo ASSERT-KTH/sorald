@@ -87,14 +87,6 @@ public class SoraldConfig {
         return this.workspace;
     }
 
-    public void setGitRepoPath(String gitRepoPath) {
-        this.gitRepoPath = gitRepoPath;
-    }
-
-    public String getGitRepoPath() {
-        return this.gitRepoPath;
-    }
-
     public void setMaxFixesPerRule(int maxFixesPerRule) {
         this.maxFixesPerRule = maxFixesPerRule;
     }

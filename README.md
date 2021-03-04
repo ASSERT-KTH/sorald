@@ -66,8 +66,6 @@ The full list of options is as follows (and can also be found by running
                             including the unchanged ones, will be created in
                             the workspace. 'IN_PLACE', which means that results
                             are written directly to source files.
-      --git-repo-path=<gitRepoPath>
-                          The path to a git repository directory.
   -h, --help              Show this help message and exit.
       --max-files-per-segment=<maxFilesPerSegment>
                           Max number of files per loaded segment for segmented
