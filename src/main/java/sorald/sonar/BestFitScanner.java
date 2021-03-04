@@ -33,12 +33,14 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
     public static final double INTERSECTION_FRACTION_TOLERANCE = 0.005;
 
     /**
-     * Calculate a best fits mapping between Spoon elements and rule violations.
+     * Calculate a best fits mapping between Spoon elements and rule violations. Intuitively, a best
+     * fit for a violation v is the Spoon element e that is most intersected by the violation.
      *
-     * <p>First it tries to find a Spoon element that intersects the rule violation's position. If
-     * that fails, it searches all Spoon elements that start on the same line that the rule
-     * violation starts on. Only elements that return true for {@link
-     * SoraldAbstractProcessor#canRepairInternal(CtElement)} are considered as potential best fits.
+     * <p>We judge "most intersected" by considering the fraction of e that is intersected by v. If
+     * half of e's source position is intersected by the source position of v, then that fraction is
+     * 0.5. If there are two elements e1 and e2 that both have the same intersection fraction (this
+     * is common for nestable elements such as expressions), then the largest of the two is
+     * considered the better fit, as the absolute intersection is larger.
      *
      * <p>The matching is 1:1, but there is no guarantee that all violations appear in the value
      * set.
