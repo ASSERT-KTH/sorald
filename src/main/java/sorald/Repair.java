@@ -56,7 +56,6 @@ import spoon.support.sniper.SniperJavaPrettyPrinter;
 
 /** Class for repairing projects. */
 public class Repair {
-    private final GitPatchGenerator generator = new GitPatchGenerator();
     private final Path intermediateSpoonedPath;
     private final Path spoonedPath;
     private final SoraldConfig config;
@@ -67,9 +66,6 @@ public class Repair {
 
     public Repair(SoraldConfig config, List<? extends SoraldEventHandler> eventHandlers) {
         this.config = config;
-        if (this.config.getGitRepoPath() != null) {
-            generator.setGitProjectRootDir(this.config.getGitRepoPath());
-        }
         spoonedPath = Paths.get(config.getWorkspace()).resolve(Constants.SPOONED);
         intermediateSpoonedPath = spoonedPath.resolve(Constants.INTERMEDIATE);
 
@@ -344,10 +340,6 @@ public class Repair {
                                     .createPrettyPrinter()
                                     .printTypes(typesToPrint.toArray(CtType[]::new));
                     writeToFile(finalOutputPath, output);
-
-                    if (config.getGitRepoPath() != null) {
-                        createPatches(sourcePath, finalOutputPath);
-                    }
                 });
     }
 
@@ -373,23 +365,6 @@ public class Repair {
                     processor.getClass().getSimpleName() + ": " + processor.getNbFixes());
         }
         System.out.println("-----End of report------");
-    }
-
-    private void createPatches(Path patchedFilePath, Path outputPath) {
-        File patchDir = new File(config.getWorkspace() + File.separator + Constants.PATCHES);
-
-        if (!patchDir.exists()) {
-            patchDir.mkdirs();
-        }
-
-        generator.generate(
-                patchedFilePath.toString(),
-                outputPath.toString(),
-                patchDir.getAbsolutePath()
-                        + File.separator
-                        + Constants.PATCH_FILE_PREFIX
-                        + patchedFileCounter);
-        patchedFileCounter++;
     }
 
     private Launcher initLauncher(Launcher launcher) {
