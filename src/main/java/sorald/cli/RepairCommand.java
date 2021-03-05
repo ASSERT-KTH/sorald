@@ -264,7 +264,6 @@ class RepairCommand extends BaseCommand {
 
     private SoraldConfig createConfig() {
         SoraldConfig config = new SoraldConfig();
-        config.setRuleViolations(ruleViolations);
         config.setOriginalFilesPath(originalFilesPath.getAbsolutePath());
         config.setWorkspace(soraldWorkspace.getAbsolutePath());
         if (gitRepoPath != null) {
