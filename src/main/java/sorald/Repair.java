@@ -26,14 +26,11 @@ import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
 import sorald.event.collectors.CompilationUnitCollector;
 import sorald.event.models.CrashEvent;
-import sorald.event.models.miner.MinedViolationEvent;
 import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
 import sorald.segment.SoraldTreeBuilderAlgorithm;
 import sorald.sonar.BestFitScanner;
-import sorald.sonar.Checks;
-import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleViolation;
 import spoon.Launcher;
 import spoon.MavenLauncher;
@@ -104,41 +101,6 @@ public class Repair {
         models.forEach(model -> writeModel(model, outputDir));
 
         printEndProcess(addedProcessors);
-    }
-
-    /**
-     * Mine warnings from the target directory and the given rule key.
-     *
-     * @param target A target directory.
-     * @param ruleKey A rule key.
-     * @return All found warnings.
-     */
-    public Set<RuleViolation> mineViolations(File target, int ruleKey) {
-        return mineViolations(target, List.of(ruleKey));
-    }
-
-    /**
-     * Mine warnings from the target directory and the given rule key.
-     *
-     * @param target A target directory.
-     * @param ruleKeys A list of rule keys.
-     * @return All found warnings.
-     */
-    public Set<RuleViolation> mineViolations(File target, List<Integer> ruleKeys) {
-        Path projectPath = target.toPath().toAbsolutePath().normalize();
-        Set<RuleViolation> violations =
-                ProjectScanner.scanProject(
-                        target,
-                        FileUtils.getClosestDirectory(target),
-                        ruleKeys.stream()
-                                .map(String::valueOf)
-                                .map(Checks::getCheckInstance)
-                                .collect(Collectors.toList()));
-        violations.forEach(
-                warn ->
-                        EventHelper.fireEvent(
-                                new MinedViolationEvent(warn, projectPath), eventHandlers));
-        return violations;
     }
 
     Stream<CtModel> repair(

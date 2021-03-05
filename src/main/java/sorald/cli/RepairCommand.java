@@ -23,7 +23,10 @@ import sorald.event.SoraldEventHandler;
 import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.RepairStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
+import sorald.event.models.miner.MinedViolationEvent;
 import sorald.event.models.repair.RuleRepairStatistics;
+import sorald.sonar.Checks;
+import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleViolation;
 
 /** The CLI command for the primary repair application. */
@@ -116,17 +119,19 @@ class RepairCommand extends BaseCommand {
         SoraldConfig config = createConfig();
 
         var statsCollector = new RepairStatisticsCollector();
-        List<SoraldEventHandler> eventHandlers = List.of(statsCollector);
+        List<SoraldEventHandler> eventHandlers =
+                statsOutputFile == null ? List.of() : List.of(statsCollector);
         EventHelper.fireEvent(EventType.EXEC_START, eventHandlers);
 
-        var repair = new Repair(config, statsOutputFile == null ? List.of() : eventHandlers);
-        Set<RuleViolation> ruleViolations = resolveRuleViolations(repair, eventHandlers);
+        Set<RuleViolation> ruleViolations = resolveRuleViolations(eventHandlers);
+        var repair = new Repair(config, eventHandlers);
         repair.repair(ruleViolations);
 
         EventHelper.fireEvent(EventType.EXEC_END, List.of(statsCollector));
 
         if (statsOutputFile != null) {
-            mineWarningsAfter(repair, ruleKey);
+            // mine violations to trigger stats collection
+            mineViolations(originalFilesPath, ruleKey, eventHandlers);
             writeStatisticsOutput(
                     statsCollector,
                     FileUtils.getClosestDirectory(originalFilesPath)
@@ -138,28 +143,41 @@ class RepairCommand extends BaseCommand {
         return 0;
     }
 
-    private Set<RuleViolation> resolveRuleViolations(
-            Repair repair, List<SoraldEventHandler> eventHandlers) {
+    private Set<RuleViolation> resolveRuleViolations(List<SoraldEventHandler> eventHandlers) {
         Set<RuleViolation> violations = null;
         if (!eventHandlers.isEmpty() || ruleViolations.isEmpty()) {
             // if there are event handlers, we must mine violations regardless of them being
             // specified in the config or not in order to trigger the mined violation events
-            violations = repair.mineViolations(originalFilesPath, Integer.parseInt(ruleKey));
+            violations = mineViolations(originalFilesPath, ruleKey, eventHandlers);
         }
         if (!ruleViolations.isEmpty()) {
             violations = new HashSet<>(ruleViolations);
         }
-        assert violations != null;
 
         return violations;
     }
 
     /**
-     * Mine warnings after completing repairs to trigger new mined events for the stats collection.
+     * Mine violations from the target directory and the given rule key.
+     *
+     * @param target A target directory.
+     * @param ruleKey A rule key.
+     * @param eventHandlers Event handlers to use for events.
+     * @return All found warnings.
      */
-    private void mineWarningsAfter(Repair repair, String ruleKey) {
-        File projectPath = originalFilesPath.toPath().toAbsolutePath().normalize().toFile();
-        repair.mineViolations(projectPath, Integer.parseInt(ruleKey));
+    private static Set<RuleViolation> mineViolations(
+            File target, String ruleKey, List<SoraldEventHandler> eventHandlers) {
+        Path projectPath = target.toPath().toAbsolutePath().normalize();
+        Set<RuleViolation> violations =
+                ProjectScanner.scanProject(
+                        target,
+                        FileUtils.getClosestDirectory(target),
+                        Checks.getCheckInstance(ruleKey));
+        violations.forEach(
+                warn ->
+                        EventHelper.fireEvent(
+                                new MinedViolationEvent(warn, projectPath), eventHandlers));
+        return violations;
     }
 
     private void writeStatisticsOutput(RepairStatisticsCollector statsCollector, Path projectPath)
