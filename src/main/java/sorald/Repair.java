@@ -74,33 +74,37 @@ public class Repair {
         this.eventHandlers = Collections.unmodifiableList(eventHandlersCopy);
     }
 
-    /** Execute a repair according to the config. */
-    public void repair(Set<RuleViolation> ruleViolations) {
+    /**
+     * Execute a repair according to the config.
+     *
+     * @param ruleViolations Rule violations to repair. May not be empty, and must relate to a
+     *     single rule.
+     * @return The processor used in the repairs.
+     * @throws IllegalArgumentException if the supplied rule violations are empty, or relate to
+     *     multiple rules.
+     */
+    public SoraldAbstractProcessor<?> repair(Set<RuleViolation> ruleViolations) {
         List<String> distinctRuleKeys =
                 ruleViolations.stream()
                         .map(RuleViolation::getRuleKey)
                         .distinct()
                         .collect(Collectors.toList());
-
         if (distinctRuleKeys.size() != 1) {
             throw new IllegalArgumentException(
                     "expected rule violations for precisely 1 rule key, got: " + distinctRuleKeys);
         }
+
         String ruleKey = distinctRuleKeys.get(0);
-
-        List<SoraldAbstractProcessor<?>> addedProcessors = new ArrayList<>();
-
         Pair<Path, Path> inOutPaths = computeInOutPaths();
         final Path inputDir = inOutPaths.getLeft();
         final Path outputDir = inOutPaths.getRight();
 
         SoraldAbstractProcessor<?> processor = createProcessor(Integer.parseInt(ruleKey));
-        addedProcessors.add(processor);
         Stream<CtModel> models = repair(inputDir, processor, ruleViolations);
 
         models.forEach(model -> writeModel(model, outputDir));
 
-        printEndProcess(addedProcessors);
+        return processor;
     }
 
     Stream<CtModel> repair(
@@ -284,15 +288,6 @@ public class Repair {
             // is used in a stream (that can't have checked exceptions)
             throw new RuntimeException(e);
         }
-    }
-
-    private void printEndProcess(List<SoraldAbstractProcessor<?>> processors) {
-        System.out.println("-----Number of fixes------");
-        for (SoraldAbstractProcessor<?> processor : processors) {
-            System.out.println(
-                    processor.getClass().getSimpleName() + ": " + processor.getNbFixes());
-        }
-        System.out.println("-----End of report------");
     }
 
     private void createPatches(Path patchedFilePath, Path outputPath) {

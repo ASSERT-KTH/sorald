@@ -25,6 +25,7 @@ import sorald.event.collectors.RepairStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
 import sorald.event.models.miner.MinedViolationEvent;
 import sorald.event.models.repair.RuleRepairStatistics;
+import sorald.processor.SoraldAbstractProcessor;
 import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleViolation;
@@ -124,8 +125,13 @@ class RepairCommand extends BaseCommand {
         EventHelper.fireEvent(EventType.EXEC_START, eventHandlers);
 
         Set<RuleViolation> ruleViolations = resolveRuleViolations(eventHandlers);
-        var repair = new Repair(config, eventHandlers);
-        repair.repair(ruleViolations);
+        if (ruleViolations.isEmpty()) {
+            System.out.println("No rule violations found, nothing to do ...");
+        } else {
+            SoraldAbstractProcessor<?> proc =
+                    new Repair(config, eventHandlers).repair(ruleViolations);
+            printEndProcess(proc);
+        }
 
         EventHelper.fireEvent(EventType.EXEC_END, List.of(statsCollector));
 
@@ -260,6 +266,12 @@ class RepairCommand extends BaseCommand {
         int endLine = Integer.parseInt(parts[4]);
         int endCol = Integer.parseInt(parts[5]);
         return new SpecifiedViolation(key, absPath, startLine, startCol, endLine, endCol);
+    }
+
+    private static void printEndProcess(SoraldAbstractProcessor<?> processor) {
+        System.out.println("-----Number of fixes------");
+        System.out.println(processor.getClass().getSimpleName() + ": " + processor.getNbFixes());
+        System.out.println("-----End of report------");
     }
 
     private SoraldConfig createConfig() {
