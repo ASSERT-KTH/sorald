@@ -54,6 +54,8 @@ class SORALD_STATS:
     RULE_KEY = "ruleKey"
     VIOLATIONS_BEFORE = "nbViolationsBefore"
     VIOLATIONS_AFTER = "nbViolationsAfter"
+    NUM_PERFORMED_REPAIRS = "nbPerformedRepairs"
+    NUM_CRASHED_REPAIRS = "nbCrashedRepairs"
 
     class LEGACY:
 
