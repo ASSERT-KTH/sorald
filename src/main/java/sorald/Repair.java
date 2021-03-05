@@ -31,8 +31,8 @@ import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
 import sorald.segment.SoraldTreeBuilderAlgorithm;
+import sorald.sonar.BestFitScanner;
 import sorald.sonar.Checks;
-import sorald.sonar.GreedyBestFitScanner;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleViolation;
 import spoon.Launcher;
@@ -279,10 +279,7 @@ public class Repair {
         EventHelper.fireEvent(EventType.REPAIR_START, eventHandlers);
         var bestFits = new IdentityHashMap<CtElement, RuleViolation>();
         model.getAllModules().stream()
-                .map(
-                        module ->
-                                GreedyBestFitScanner.calculateBestFits(
-                                        module, violations, processor))
+                .map(module -> BestFitScanner.calculateBestFits(module, violations, processor))
                 .flatMap(m -> m.entrySet().stream())
                 .forEach(entry -> bestFits.put(entry.getKey(), entry.getValue()));
         processor.setBestFits(bestFits);

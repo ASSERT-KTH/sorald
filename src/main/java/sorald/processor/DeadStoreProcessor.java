@@ -21,14 +21,6 @@ import spoon.reflect.visitor.Filter;
 public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 
     @Override
-    protected boolean canRepairInternal(CtStatement element) {
-        if (element instanceof CtLocalVariable || element instanceof CtAssignment) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     protected void repairInternal(CtStatement element) {
         if (element instanceof CtLocalVariable) {
             retainDeclarationOnVariableUse((CtLocalVariable<?>) element);
