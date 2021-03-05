@@ -3,8 +3,10 @@ package sorald.cli;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 import picocli.CommandLine;
 import sorald.Constants;
@@ -17,6 +19,7 @@ import sorald.RepairStrategy;
 import sorald.SoraldConfig;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
+import sorald.event.SoraldEventHandler;
 import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.RepairStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
@@ -113,16 +116,17 @@ class RepairCommand extends BaseCommand {
         SoraldConfig config = createConfig();
 
         var statsCollector = new RepairStatisticsCollector();
-        var eventHandlers = List.of(statsCollector);
+        List<SoraldEventHandler> eventHandlers = List.of(statsCollector);
         EventHelper.fireEvent(EventType.EXEC_START, eventHandlers);
 
         var repair = new Repair(config, statsOutputFile == null ? List.of() : eventHandlers);
-        repair.repair();
+        Set<RuleViolation> ruleViolations = resolveRuleViolations(repair, eventHandlers);
+        repair.repair(ruleViolations);
 
         EventHelper.fireEvent(EventType.EXEC_END, List.of(statsCollector));
 
         if (statsOutputFile != null) {
-            mineWarningsAfter(repair, config.getRuleKeys());
+            mineWarningsAfter(repair, ruleKey);
             writeStatisticsOutput(
                     statsCollector,
                     FileUtils.getClosestDirectory(originalFilesPath)
@@ -134,12 +138,28 @@ class RepairCommand extends BaseCommand {
         return 0;
     }
 
+    private Set<RuleViolation> resolveRuleViolations(
+            Repair repair, List<SoraldEventHandler> eventHandlers) {
+        Set<RuleViolation> violations = null;
+        if (!eventHandlers.isEmpty() || ruleViolations.isEmpty()) {
+            // if there are event handlers, we must mine violations regardless of them being
+            // specified in the config or not in order to trigger the mined violation events
+            violations = repair.mineViolations(originalFilesPath, Integer.parseInt(ruleKey));
+        }
+        if (!ruleViolations.isEmpty()) {
+            violations = new HashSet<>(ruleViolations);
+        }
+        assert violations != null;
+
+        return violations;
+    }
+
     /**
      * Mine warnings after completing repairs to trigger new mined events for the stats collection.
      */
-    private void mineWarningsAfter(Repair repair, List<Integer> ruleKeys) {
+    private void mineWarningsAfter(Repair repair, String ruleKey) {
         File projectPath = originalFilesPath.toPath().toAbsolutePath().normalize().toFile();
-        repair.mineViolations(projectPath, ruleKeys);
+        repair.mineViolations(projectPath, Integer.parseInt(ruleKey));
     }
 
     private void writeStatisticsOutput(RepairStatisticsCollector statsCollector, Path projectPath)
@@ -226,7 +246,6 @@ class RepairCommand extends BaseCommand {
 
     private SoraldConfig createConfig() {
         SoraldConfig config = new SoraldConfig();
-        config.addRuleKeys(List.of(Integer.parseInt(ruleKey)));
         config.setRuleViolations(ruleViolations);
         config.setOriginalFilesPath(originalFilesPath.getAbsolutePath());
         config.setWorkspace(soraldWorkspace.getAbsolutePath());

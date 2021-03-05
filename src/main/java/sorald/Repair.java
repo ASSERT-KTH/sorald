@@ -80,49 +80,34 @@ public class Repair {
     }
 
     /** Execute a repair according to the config. */
-    public void repair() {
-        List<Integer> ruleKeys = config.getRuleKeys();
+    public void repair(Set<RuleViolation> ruleViolations) {
+        List<String> distinctRuleKeys =
+                ruleViolations.stream()
+                        .map(RuleViolation::getRuleKey)
+                        .distinct()
+                        .collect(Collectors.toList());
+
+        if (distinctRuleKeys.size() != 1) {
+            throw new IllegalArgumentException(
+                    "expected rule violations for precisely 1 rule key, got: " + distinctRuleKeys);
+        }
+        String ruleKey = distinctRuleKeys.get(0);
+
         List<SoraldAbstractProcessor<?>> addedProcessors = new ArrayList<>();
 
-        for (int i = 0; i < ruleKeys.size(); i++) {
-            int ruleKey = ruleKeys.get(i);
+        // TODO refactor, makes no sense since disallowing multi-rule repair
+        Pair<Path, Path> inOutPaths = computeInOutPaths(true, true);
+        final Path inputDir = inOutPaths.getLeft();
+        final Path outputDir = inOutPaths.getRight();
 
-            Pair<Path, Path> inOutPaths = computeInOutPaths(i == 0, i == ruleKeys.size() - 1);
-            final Path inputDir = inOutPaths.getLeft();
-            final Path outputDir = inOutPaths.getRight();
+        SoraldAbstractProcessor<?> processor = createProcessor(Integer.parseInt(ruleKey));
+        addedProcessors.add(processor);
+        Stream<CtModel> models = repair(inputDir, processor, ruleViolations);
 
-            Set<RuleViolation> ruleViolations = getRuleViolations(inputDir.toFile(), ruleKey);
-            SoraldAbstractProcessor<?> processor = createProcessor(ruleKey);
-            addedProcessors.add(processor);
-            Stream<CtModel> models = repair(inputDir, processor, ruleViolations);
-
-            models.forEach(model -> writeModel(model, outputDir));
-        }
+        models.forEach(model -> writeModel(model, outputDir));
 
         printEndProcess(addedProcessors);
         FileUtils.deleteDirectory(intermediateSpoonedPath.toFile());
-    }
-
-    private Set<RuleViolation> getRuleViolations(File target, int ruleKey) {
-        Set<RuleViolation> violations = null;
-        if (!eventHandlers.isEmpty() || config.getRuleViolations().isEmpty()) {
-            // if there are event handlers, we must mine violations regardless of them being
-            // specified in the config or not in order to trigger the mined violation events
-            violations = mineViolations(target, ruleKey);
-        }
-        if (!config.getRuleViolations().isEmpty()) {
-            violations =
-                    config.getRuleViolations().stream()
-                            .filter(
-                                    violation ->
-                                            violation
-                                                    .getRuleKey()
-                                                    .equals(Integer.toString(ruleKey)))
-                            .collect(Collectors.toSet());
-        }
-        assert violations != null;
-
-        return violations;
     }
 
     /**

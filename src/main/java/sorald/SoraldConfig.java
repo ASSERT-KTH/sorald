@@ -2,7 +2,6 @@ package sorald;
 
 import java.io.File;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +10,6 @@ import sorald.sonar.RuleViolation;
 
 /* All config settings of Sorald should be gathered here */
 public class SoraldConfig {
-    private final List<Integer> ruleKeys = new ArrayList<>();
     private List<RuleViolation> ruleViolations;
     private PrettyPrintingStrategy prettyPrintingStrategy;
     private FileOutputStrategy fileOutputStrategy;
@@ -24,19 +22,6 @@ public class SoraldConfig {
     private File statsOutputFile;
 
     public SoraldConfig() {}
-
-    public void addRuleKeys(List<Integer> ruleKeys) {
-        for (int i = 0; i < ruleKeys.size(); i++) {
-            int ruleKey = ruleKeys.get(i);
-            if (!this.ruleKeys.contains(ruleKey)) {
-                this.ruleKeys.add(ruleKey);
-            }
-        }
-    }
-
-    public List<Integer> getRuleKeys() {
-        return this.ruleKeys;
-    }
 
     public void setRuleViolations(List<RuleViolation> ruleViolations) {
         this.ruleViolations = ruleViolations.stream().distinct().collect(Collectors.toList());
