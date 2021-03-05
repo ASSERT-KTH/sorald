@@ -504,3 +504,87 @@ docs](https://docs.github.com/en/free-pro-team@latest/github/searching-for-infor
 
 > **Warning:** This script uses up API requests quite rapidly, and you'll hit
 > the rate limit before you know it.
+
+### `sorald.benchmark`
+
+> **Important:** The current baseline for Sorald is kept in
+> [benchmark_baseline.csv](benchmark_baseline.csv). Run the benchmark with this
+> as a comparison to look for improvements/degredation.
+
+This is a benchmarking script for testing Sorald's performance on real-world
+scenarios. It runs Sorald on a given set of commits, and computes its _total
+repair ratio_ (TTR) and its _attempted repair ratio_ (ATR), which are
+defined as follows.
+
+```
+TTR = (num_violations_before - num_violations_after) / num_violations_before
+
+ATR = (num_violations_before - num_violations_after) / num_performed_repairs
+```
+
+The difference between the values is therefore that TTR considers the absolute
+performance, while ATR considers performance relative to which violations
+Sorald _thinks_ it can repair.
+
+To use the script, you need a CSV file with the `url` (to a Git repository) and
+`commit` (targeted commit sha) headers.  Here's an example of a file called `commits.csv`:
+
+```
+url,commit
+https://github.com/spoonlabs/sorald.git,5e64028cd82336b34a68c60d314ce1c57b4bf276
+https://github.com/verificatum/verificatum-vmn.git,ffc5eeddd64701a86f395aa4fb000160af02c017
+```
+
+With this, you can invoke the script like so.
+
+```
+$ python3 -m sorald.benchmark --commits-csv commits.csv --output results.csv
+```
+
+This will produce a results CSV file that looks something like so, but the real
+result will more rules.
+
+```
+url,commit,rule_key,num_violations_before,num_violations_after,num_performed_repairs,num_crashed_repairs,num_successful_repairs,num_failed_repairs
+https://github.com/spoonlabs/sorald.git,5e64028cd82336b34a68c60d314ce1c57b4bf276,1444,2,0,2,0,2,0
+https://github.com/spoonlabs/sorald.git,5e64028cd82336b34a68c60d314ce1c57b4bf276,1854,105,28,99,0,77,22
+https://github.com/spoonlabs/sorald.git,5e64028cd82336b34a68c60d314ce1c57b4bf276,1948,1,0,1,0,1,0
+https://github.com/spoonlabs/sorald.git,5e64028cd82336b34a68c60d314ce1c57b4bf276,2116,6,4,2,0,2,0
+https://github.com/spoonlabs/sorald.git,5e64028cd82336b34a68c60d314ce1c57b4bf276,2142,7,0,7,0,7,0
+https://github.com/verificatum/verificatum-vmn.git,ffc5eeddd64701a86f395aa4fb000160af02c017,1444,0,0,0,0,0,0
+https://github.com/verificatum/verificatum-vmn.git,ffc5eeddd64701a86f395aa4fb000160af02c017,1854,8,0,8,0,8,0
+https://github.com/verificatum/verificatum-vmn.git,ffc5eeddd64701a86f395aa4fb000160af02c017,1948,0,0,0,0,0,0
+https://github.com/verificatum/verificatum-vmn.git,ffc5eeddd64701a86f395aa4fb000160af02c017,2116,0,0,0,0,0,0
+https://github.com/verificatum/verificatum-vmn.git,ffc5eeddd64701a86f395aa4fb000160af02c017,2142,3,0,3,0,3,0
+```
+
+This results file can then be used as a baseline for a future comparison by
+using it as the `--commits-csv` input file, and also specifying the `--compare`
+option.
+
+```
+$ python3 -m sorald.benchmark --commits-csv results.csv --output new_results.csv --compare
+```
+
+Now, after computing the results, the script will compare the input results
+file to the output results. If it finds no differences, it will say so and exit
+with a 0 exit status. Otherwise, and the output looks
+something like the below, and the exit status is non-zero if the performance
+has deteriorated:
+
+```
+Old and new results differ on the following commits: 
+                                       url                                    commit
+1  https://github.com/spoonlabs/sorald.git  5e64028cd82336b34a68c60d314ce1c57b4bf276
+
+Old total_repair_ratio: 0.7651515151515151
+New total_repair_ratio: 0.7575757575757576
+total_repair_ratio has deteriorated
+
+Old attempted_repair_ratio: 0.8278688524590164
+New attempted_repair_ratio: 0.819672131147541
+attempted_repair_ratio has deteriorated
+```
+
+This gives you everything you need to know to stast debugging the performance
+drop on the given commits.
