@@ -73,9 +73,9 @@ def available_rule_keys(
     output_lines = iter(stdout.decode(sys.getdefaultencoding()).split("\n"))
 
     dropped_initial_lines = itertools.dropwhile(
-        lambda line: not line.strip().startswith("--rule-keys"), output_lines
+        lambda line: not line.strip().startswith("--rule-key"), output_lines
     )
-    next(dropped_initial_lines)  # drop --rule-keys line
+    next(dropped_initial_lines)  # drop --rule-key line
     return [
         match.group()
         for line in itertools.takewhile(
