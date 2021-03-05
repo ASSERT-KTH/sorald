@@ -29,7 +29,7 @@ import sorald.sonar.RuleViolation;
         mixinStandardHelpOptions = true,
         description = "Repair Sonar rule violations in a targeted project.")
 class RepairCommand extends BaseCommand {
-    List<Integer> ruleKeys;
+    String ruleKey;
     List<RuleViolation> ruleViolations = List.of();
 
     @CommandLine.Option(
@@ -43,14 +43,11 @@ class RepairCommand extends BaseCommand {
 
     static class Rules {
         @CommandLine.Option(
-                names = {Constants.ARG_RULE_KEYS},
+                names = {Constants.ARG_RULE_KEY},
                 description =
-                        "Choose one or more of the following rule keys "
-                                + "(use ',' to separate multiple keys):\n"
-                                + Processors.RULE_DESCRIPTIONS,
-                required = true,
-                split = ",")
-        List<Integer> ruleKeys = List.of();
+                        "Choose one of the following rule keys:\n" + Processors.RULE_DESCRIPTIONS,
+                required = true)
+        String ruleKey = null;
 
         @CommandLine.Option(
                 names = Constants.ARG_RULE_VIOLATION_SPECIFIERS,
@@ -175,14 +172,13 @@ class RepairCommand extends BaseCommand {
                     Constants.ARG_MAX_FILES_PER_SEGMENT + " must be greater than 0");
         }
 
-        validateOutputAndRepairStrategyCombination();
-        validateRuleKeys();
+        validateRuleKey();
     }
 
     /** Perform further processing of raw command line args. */
     private void postprocessArgs() {
         ruleViolations = parseRuleViolations(rules);
-        ruleKeys = parseRuleKeys(rules, ruleViolations);
+        ruleKey = parseRuleKey(rules, ruleViolations);
     }
 
     private List<RuleViolation> parseRuleViolations(Rules rules) {
@@ -191,39 +187,19 @@ class RepairCommand extends BaseCommand {
                 .collect(Collectors.toUnmodifiableList());
     }
 
-    private List<Integer> parseRuleKeys(Rules rules, List<RuleViolation> ruleViolations) {
+    private String parseRuleKey(Rules rules, List<RuleViolation> ruleViolations) {
         return ruleViolations.isEmpty()
-                ? rules.ruleKeys
-                : ruleViolations.stream()
-                        .map(RuleViolation::getRuleKey)
-                        .map(Integer::parseInt)
-                        .collect(Collectors.toUnmodifiableList());
+                ? rules.ruleKey
+                : ruleViolations.stream().map(RuleViolation::getRuleKey).findFirst().get();
     }
 
-    private void validateRuleKeys() {
-        for (Integer ruleKey : ruleKeys) {
-            if (Processors.getProcessor(ruleKey) == null) {
-                throw new CommandLine.ParameterException(
-                        spec.commandLine(),
-                        "Sorry, repair not available for rule "
-                                + ruleKey
-                                + ". See the available rules below.");
-            }
-        }
-    }
-
-    private void validateOutputAndRepairStrategyCombination() {
-        if (repairStrategy == RepairStrategy.MAVEN
-                && fileOutputStrategy != FileOutputStrategy.IN_PLACE
-                && ruleKeys.size() > 1) {
+    private void validateRuleKey() {
+        if (Processors.getProcessor(Integer.parseInt(ruleKey)) == null) {
             throw new CommandLine.ParameterException(
                     spec.commandLine(),
-                    String.format(
-                            "%s=%s can only be used with %s=%s for multi-rule repair",
-                            Constants.ARG_REPAIR_STRATEGY,
-                            RepairStrategy.MAVEN.name(),
-                            Constants.ARG_FILE_OUTPUT_STRATEGY,
-                            FileOutputStrategy.IN_PLACE.name()));
+                    "Sorry, repair not available for rule "
+                            + ruleKey
+                            + ". See the available rules below.");
         }
     }
 
@@ -250,7 +226,7 @@ class RepairCommand extends BaseCommand {
 
     private SoraldConfig createConfig() {
         SoraldConfig config = new SoraldConfig();
-        config.addRuleKeys(ruleKeys);
+        config.addRuleKeys(List.of(Integer.parseInt(ruleKey)));
         config.setRuleViolations(ruleViolations);
         config.setOriginalFilesPath(originalFilesPath.getAbsolutePath());
         config.setWorkspace(soraldWorkspace.getAbsolutePath());

@@ -12,7 +12,7 @@ public class Constants {
     public static final String REPAIR_COMMAND_NAME = "repair";
     public static final String MINE_COMMAND_NAME = "mine";
 
-    public static final String ARG_RULE_KEYS = "--rule-keys";
+    public static final String ARG_RULE_KEY = "--rule-key";
     public static final String ARG_ORIGINAL_FILES_PATH = "--original-files-path";
     public static final String ARG_STATS_ON_GIT_REPOS = "--stats-on-git-repos";
     public static final String ARG_STATS_OUTPUT_FILE = "--stats-output-file";
