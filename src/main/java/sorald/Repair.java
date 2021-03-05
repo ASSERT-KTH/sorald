@@ -57,7 +57,6 @@ import spoon.support.sniper.SniperJavaPrettyPrinter;
 /** Class for repairing projects. */
 public class Repair {
     private final GitPatchGenerator generator = new GitPatchGenerator();
-    private final Path intermediateSpoonedPath;
     private final Path spoonedPath;
     private final SoraldConfig config;
     private int patchedFileCounter = 0;
@@ -71,9 +70,8 @@ public class Repair {
             generator.setGitProjectRootDir(this.config.getGitRepoPath());
         }
         spoonedPath = Paths.get(config.getWorkspace()).resolve(Constants.SPOONED);
-        intermediateSpoonedPath = spoonedPath.resolve(Constants.INTERMEDIATE);
 
-        cuCollector = new CompilationUnitCollector(config);
+        cuCollector = new CompilationUnitCollector();
         List<SoraldEventHandler> eventHandlersCopy = new ArrayList<>(eventHandlers);
         eventHandlersCopy.add(cuCollector);
         this.eventHandlers = Collections.unmodifiableList(eventHandlersCopy);
@@ -95,8 +93,7 @@ public class Repair {
 
         List<SoraldAbstractProcessor<?>> addedProcessors = new ArrayList<>();
 
-        // TODO refactor, makes no sense since disallowing multi-rule repair
-        Pair<Path, Path> inOutPaths = computeInOutPaths(true, true);
+        Pair<Path, Path> inOutPaths = computeInOutPaths();
         final Path inputDir = inOutPaths.getLeft();
         final Path outputDir = inOutPaths.getRight();
 
@@ -107,7 +104,6 @@ public class Repair {
         models.forEach(model -> writeModel(model, outputDir));
 
         printEndProcess(addedProcessors);
-        FileUtils.deleteDirectory(intermediateSpoonedPath.toFile());
     }
 
     /**
@@ -229,33 +225,16 @@ public class Repair {
         EventHelper.fireEvent(new CrashEvent("Crash in segment: " + paths, e), eventHandlers);
     }
 
-    private Pair<Path, Path> computeInOutPaths(boolean isFirstRule, boolean isLastRule) {
+    private Pair<Path, Path> computeInOutPaths() {
         final Path originalPath = Paths.get(config.getOriginalFilesPath());
 
         if (config.getFileOutputStrategy() == FileOutputStrategy.IN_PLACE) {
             // always write to the input files
             return Pair.of(originalPath, originalPath);
-        } else if (isFirstRule && isLastRule) {
+        } else {
             // one processor, straightforward repair: we use the given input file dir, run one
             // processor, directly output files the spooned output dir
             return Pair.of(Paths.get(config.getOriginalFilesPath()), spoonedPath);
-        } else {
-            // more than one processor, thus we need an intermediate dir, which will always
-            // contain all files (the changed and non-changed ones), because other processors
-            // will run on them
-            if (isFirstRule) {
-                // the first processor will run, thus we use the given input file
-                // dir and output *all* files in the intermediate dir
-                return Pair.of(originalPath, intermediateSpoonedPath);
-            } else if (isLastRule) {
-                // the last processor will run, thus we use as input files the ones in
-                // the intermediate dir and output files in the final output dir
-                return Pair.of(intermediateSpoonedPath, spoonedPath);
-            } else {
-                // neither the first nor the last processor will run, thus use as input and output
-                // dirs the intermediate dir
-                return Pair.of(intermediateSpoonedPath, intermediateSpoonedPath);
-            }
         }
     }
 
@@ -292,11 +271,8 @@ public class Repair {
     }
 
     private void writeModel(CtModel model, Path outputDir) {
-        boolean isIntermediateOutputDir =
-                outputDir.toString().contains(intermediateSpoonedPath.toString());
-
         Collection<CtCompilationUnit> compilationUnits =
-                config.getFileOutputStrategy() == FileOutputStrategy.ALL || isIntermediateOutputDir
+                config.getFileOutputStrategy() == FileOutputStrategy.ALL
                         ? CompilationUnitHelpers.resolveCompilationUnits(model.getAllTypes())
                         : cuCollector.getCollectedCompilationUnits();
         compilationUnits.forEach(cu -> writeCompilationUnit(cu, outputDir));

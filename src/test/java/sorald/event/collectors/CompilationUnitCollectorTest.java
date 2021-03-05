@@ -24,7 +24,7 @@ class CompilationUnitCollectorTest {
         String originalFilesPath = ProcessorTestHelper.TEST_FILES_ROOT.toAbsolutePath().toString();
         var config = new SoraldConfig();
         config.setOriginalFilesPath(originalFilesPath);
-        var cuCollector = new CompilationUnitCollector(config);
+        var cuCollector = new CompilationUnitCollector();
 
         launcher.addInputResource(originalFilesPath);
         Collection<CtType<?>> types = launcher.buildModel().getAllTypes();

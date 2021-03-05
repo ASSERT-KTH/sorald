@@ -43,8 +43,6 @@ public class Constants {
     public static final String PATCH_EXT = ".patch";
 
     public static final String SPOONED = "spooned";
-    public static final String INTERMEDIATE = "intermediate";
-    public static final String SPOONED_INTERMEDIATE = SPOONED + File.separator + INTERMEDIATE;
 
     public static final String INT = "int";
     public static final String LONG = "long";
