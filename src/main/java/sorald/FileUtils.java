@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Collection;
 import java.util.List;
@@ -17,25 +16,18 @@ import org.json.JSONObject;
 public class FileUtils {
 
     /**
-     * Compare the two given paths as absolute, normalized paths.
+     * Compare the two given paths as real paths, resolving any symbolic links.
      *
      * @param lhs A path.
      * @param rhs A path.
-     * @return Whether or not the paths are equal as absolute, normalized paths.
+     * @return true if both paths exist and point to the same, real location.
      */
-    public static boolean pathAbsNormEqual(String lhs, String rhs) {
-        return pathAbsNormEqual(Paths.get(lhs), Paths.get(rhs));
-    }
-
-    /**
-     * Compare the two given paths as absolute, normalized paths.
-     *
-     * @param lhs A path.
-     * @param rhs A path.
-     * @return Whether or not the paths are equal as absolute, normalized paths.
-     */
-    public static boolean pathAbsNormEqual(Path lhs, Path rhs) {
-        return lhs.toAbsolutePath().normalize().equals(rhs.toAbsolutePath().normalize());
+    public static boolean realPathEquals(Path lhs, Path rhs) {
+        try {
+            return lhs.toRealPath().equals(rhs.toRealPath());
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     /**
