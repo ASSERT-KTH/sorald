@@ -18,12 +18,7 @@ class SpecifiedViolation extends RuleViolation {
             String ruleKey, Path absPath, int startLine, int startCol, int endLine, int endCol) {
         this.ruleKey = ruleKey;
         checkName = Checks.getCheck(ruleKey).getSimpleName();
-        this.absPath = absPath.toAbsolutePath().normalize();
-
-        if (true) {
-            throw new IllegalArgumentException("this: " + this.absPath + ", supplied: " + absPath);
-        }
-
+        this.absPath = absPath;
         this.startLine = startLine;
         this.endLine = endLine;
         this.startCol = startCol;
