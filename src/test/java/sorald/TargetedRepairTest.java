@@ -62,7 +62,7 @@ public class TargetedRepairTest {
                     workdir.getAbsolutePath(),
                     Constants.ARG_RULE_VIOLATION_SPECIFIERS,
                     workdirInfo.targetViolation.relativeSpecifier(workdir.toPath()),
-                    Constants.ARG_RULE_KEYS,
+                    Constants.ARG_RULE_KEY,
                     "2755"
                 };
 

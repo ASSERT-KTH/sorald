@@ -142,7 +142,7 @@ public class ProcessorTestHelper {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
                     originalFileAbspath,
-                    Constants.ARG_RULE_KEYS,
+                    Constants.ARG_RULE_KEY,
                     Checks.getRuleKey(checkClass),
                     Constants.ARG_WORKSPACE,
                     Constants.SORALD_WORKSPACE,
