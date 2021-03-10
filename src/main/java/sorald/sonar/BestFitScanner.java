@@ -4,6 +4,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.List;
@@ -19,8 +20,8 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.visitor.CtScanner;
 
-/** Scanner for greedily matching rule violations against Spoon elements. */
-public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
+/** Scanner for matching rule violations against Spoon elements. */
+public class BestFitScanner<E extends CtElement> extends CtScanner {
     private final List<RuleViolation> violations;
     private final SoraldAbstractProcessor<E> processor;
 
@@ -29,13 +30,17 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
 
     private final Set<File> filesWithViolations;
 
+    public static final double INTERSECTION_FRACTION_TOLERANCE = 0.005;
+
     /**
-     * Calculate a best fits mapping between Spoon elements and rule violations.
+     * Calculate a best fits mapping between Spoon elements and rule violations. Intuitively, a best
+     * fit for a violation v is the Spoon element e that is most intersected by the violation.
      *
-     * <p>First it tries to find a Spoon element that intersects the rule violation's position. If
-     * that fails, it searches all Spoon elements that start on the same line that the rule
-     * violation starts on. Only elements that return true for {@link
-     * SoraldAbstractProcessor#canRepairInternal(CtElement)} are considered as potential best fits.
+     * <p>We judge "most intersected" by considering the fraction of e that is intersected by v. If
+     * half of e's source position is intersected by the source position of v, then that fraction is
+     * 0.5. If there are two elements e1 and e2 that both have the same intersection fraction (this
+     * is common for nestable elements such as expressions), then the largest of the two is
+     * considered the better fit, as the absolute intersection is larger.
      *
      * <p>The matching is 1:1, but there is no guarantee that all violations appear in the value
      * set.
@@ -54,7 +59,7 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
             SoraldAbstractProcessor<E> processor) {
         checkRuleViolationsConcernProcessorRule(violations, processor);
 
-        var scanner = new GreedyBestFitScanner<>(violations, processor);
+        var scanner = new BestFitScanner<>(violations, processor);
         scanner.scan(element);
 
         Map<CtElement, RuleViolation> bestFitsMap = new IdentityHashMap<>();
@@ -65,8 +70,7 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
         return bestFitsMap;
     }
 
-    private GreedyBestFitScanner(
-            Set<RuleViolation> violations, SoraldAbstractProcessor<E> processor) {
+    private BestFitScanner(Set<RuleViolation> violations, SoraldAbstractProcessor<E> processor) {
         var tmpViolations = new ArrayList<>(violations);
         Collections.sort(tmpViolations);
         this.violations = Collections.unmodifiableList(tmpViolations);
@@ -126,12 +130,23 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
         List<E> intersectingCandidates =
                 intersecting.getOrDefault(violation, Collections.emptyList());
         List<E> sameLineCandidates = onSameLine.getOrDefault(violation, Collections.emptyList());
-        Stream<E> candidates =
-                Stream.concat(intersectingCandidates.stream(), sameLineCandidates.stream());
-        return candidates
-                .filter(this::canRepair)
-                .filter(e -> !bestFitsMap.containsKey(e))
-                .findFirst();
+
+        Comparator<E> reversedComparePositionFit =
+                (lhs, rhs) -> -comparePositionFit(lhs, rhs, violation);
+        Stream<E> reverseSortedUnusedCandidates =
+                Stream.concat(intersectingCandidates.stream(), sameLineCandidates.stream())
+                        .sorted(reversedComparePositionFit)
+                        .filter(e -> !bestFitsMap.containsKey(e));
+
+        if (processor.isIncomplete()) {
+            // if the processor is incomplete, we only consider the best position match, and a false
+            // from canRepair is considered final
+            return reverseSortedUnusedCandidates.findFirst().filter(this::canRepair);
+        } else {
+            // if the processor is not incomplete, canRepair is allowed to steer the search for a
+            // suitable candidate
+            return reverseSortedUnusedCandidates.filter(this::canRepair).findFirst();
+        }
     }
 
     private boolean canRepair(E element) {
@@ -148,13 +163,10 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
 
     private static boolean elementIntersectsViolation(CtElement element, RuleViolation violation) {
         int[] lineSeps = element.getPosition().getCompilationUnit().getLineSeparatorPositions();
-
-        int vStartLine = violation.getStartLine();
-        int vEndLine = violation.getEndLine();
         int violationSourceStart =
-                (vStartLine == 1 ? 0 : lineSeps[vStartLine - 2]) + violation.getStartCol();
+                calculateSourcePos(violation.getStartLine(), violation.getStartCol(), lineSeps);
         int violationSourceEnd =
-                (vEndLine == 1 ? 0 : lineSeps[vEndLine - 2]) + violation.getEndCol();
+                calculateSourcePos(violation.getEndLine(), violation.getEndCol(), lineSeps);
 
         int elemSourceStart = element.getPosition().getSourceStart();
         int elemSourceEnd = element.getPosition().getSourceEnd();
@@ -163,8 +175,76 @@ public class GreedyBestFitScanner<E extends CtElement> extends CtScanner {
                 violationSourceStart, violationSourceEnd, elemSourceStart, elemSourceEnd);
     }
 
+    private static int calculateSourcePos(int line, int column, int[] lineSeps) {
+        return (line == 1 ? 0 : lineSeps[line - 2]) + column;
+    }
+
     private static boolean pointsIntersect(int startLhs, int endLhs, int startRhs, int endRhs) {
         return startRhs <= endLhs && endRhs >= startLhs;
+    }
+
+    /**
+     * Compare the intersection fraction (as defined by {@link
+     * BestFitScanner#intersectFraction(CtElement, RuleViolation)}) of the elements with the
+     * violation.
+     *
+     * <p>If the intersection fractions are equal down to {@link
+     * BestFitScanner#INTERSECTION_FRACTION_TOLERANCE}, we compare the absolute intersection
+     * instead.
+     *
+     * @param lhs The left-hand element in the comparison.
+     * @param rhs The right-hand element in the comparison.
+     * @param violation The violation to compute intersection fractions with.
+     * @return A negative value if lhs is a worse position fit than rhs, 0 if they are equally good,
+     *     and a positive value if rhs is a better position fit than lhs.
+     */
+    private int comparePositionFit(E lhs, E rhs, RuleViolation violation) {
+        if (lhs == rhs) {
+            return 0;
+        }
+
+        double lhsIntersect = intersectFraction(lhs, violation);
+        double rhsIntersect = intersectFraction(rhs, violation);
+
+        if (Math.abs(lhsIntersect - rhsIntersect) < INTERSECTION_FRACTION_TOLERANCE) {
+            return Integer.compare(elementSize(lhs), elementSize(rhs));
+        } else {
+            return Double.compare(lhsIntersect, rhsIntersect);
+        }
+    }
+
+    /**
+     * @param element An element.
+     * @param violation A rule violation.
+     * @return The fraction of the element's source position that is intersected by the violation's
+     *     source position.
+     */
+    private static double intersectFraction(CtElement element, RuleViolation violation) {
+        int[] lineSeps = element.getPosition().getCompilationUnit().getLineSeparatorPositions();
+        int violationSourceStart =
+                calculateSourcePos(violation.getStartLine(), violation.getStartCol(), lineSeps);
+        int violationSourceEnd =
+                calculateSourcePos(violation.getEndLine(), violation.getEndCol(), lineSeps);
+
+        int elemSourceStart = element.getPosition().getSourceStart();
+        int elemSourceEnd = element.getPosition().getSourceEnd();
+
+        if (!pointsIntersect(
+                elemSourceStart, elemSourceEnd, violationSourceStart, violationSourceEnd)) {
+            return 0;
+        } else {
+            int elemSize = elemSourceEnd - elemSourceStart;
+            int adjustedViolationStart = Math.max(0, violationSourceStart - elemSourceStart);
+            int adjustedViolationEnd =
+                    Math.max(0, Math.min(violationSourceEnd - elemSourceStart, elemSize));
+
+            int violationSizeInsideElement = adjustedViolationEnd - adjustedViolationStart;
+            return (double) violationSizeInsideElement / elemSize;
+        }
+    }
+
+    private static int elementSize(CtElement element) {
+        return element.getPosition().getSourceEnd() - element.getPosition().getSourceStart();
     }
 
     private static boolean startOnSameLine(CtElement element, RuleViolation violation) {

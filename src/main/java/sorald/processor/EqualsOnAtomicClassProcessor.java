@@ -18,15 +18,6 @@ import spoon.reflect.reference.CtExecutableReference;
 public class EqualsOnAtomicClassProcessor extends SoraldAbstractProcessor<CtInvocation> {
 
     @Override
-    protected boolean canRepairInternal(CtInvocation candidate) {
-        if (candidate.getExecutable().getSignature().equals("equals(java.lang.Object)")
-                && isAtomicClassRef(candidate.getTarget())) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     protected void repairInternal(CtInvocation element) {
         CtType atomicClass;
         if (isAtomicInteger(element.getTarget())) {

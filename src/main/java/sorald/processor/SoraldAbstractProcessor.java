@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
 import sorald.event.EventHelper;
 import sorald.event.SoraldEventHandler;
@@ -51,11 +52,9 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
 
     /**
      * Pass a candidate element that appears in the vicinity of a violation for the processor to
-     * inspect. This may or may not always be the exact element that should be repaired. For
-     * example, when repairing something involving a method call, there may be nested calls that are
-     * not actually the violating parties, but still appear in the correct vicinity.
-     *
-     * <p>This method is only to be called on elements that appear very close to a violation.
+     * inspect. In general, this method should only return false for incomplete processors, but it
+     * is possible that certain complete processors also need to return false to avoid repairing an
+     * incorrect element.
      *
      * <p><b>This method does not mutate the state of the processor</b>.
      *
@@ -96,20 +95,18 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
     /**
      * Same as the general description of {@link SoraldAbstractProcessor#canRepair(CtElement)}.
      *
-     * <p>Note that this method is only ever called on an element that is deemed to be very close to
-     * a violation that concerns the implementing processor (most often intersecting with the
-     * violation location, otherwise at least appearing on the same line). If the processor
-     * implementing this method operates on elements that never appear close to other elements of
-     * its kind, then you can be confident that any element passed to this method does violate the
-     * considered rule.
+     * <p>Most complete processors (i.e. processors that fully handle a rule) should not override
+     * this method. The position matching performed between rule violations and Spoon elements
+     * before this method is invoked makes it such that, for most rules, the first element passed to
+     * this method is always the violating element. If this is found not to be the case for some
+     * rule, then the first step is to attempt to improve the position matching in {@link
+     * sorald.sonar.BestFitScanner}. Only as a last resort should this method be overridden to steer
+     * the search.
      *
-     * <p>For processors operating on highly granular elements, such as expressions, there is
-     * typically a need to perform some sanity checks, as other similar elements may appear very
-     * closely or even be nested.
-     *
-     * <p>Also Note that a processor gets ONE chance to repair a violation. If this method returns
-     * true, the violating element is passed to the {@link
-     * SoraldAbstractProcessor#repairInternal(CtElement)} method, and the violation is consumed.
+     * <p>Incomplete processors must however override this method in order to decline repairing
+     * certain elements. See {@link ToStringReturningNullProcessor} for a good example. Only the
+     * best position match is passed to an incomplete processors implementation of this method, and
+     * if it returns false, no further matching is performed for that rule violation.
      *
      * <p>It is very important that this method <b>does not mutate the state of the processor.</b>
      * Doing so may have unexpected side effects.
@@ -117,7 +114,9 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      * @param candidate A candidate element.
      * @return true if the processor can repair the violation based on this element.
      */
-    protected abstract boolean canRepairInternal(E candidate);
+    protected boolean canRepairInternal(E candidate) {
+        return true;
+    }
 
     /**
      * Repair a violating element. An element is only passed to this method after having been
@@ -126,6 +125,11 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      * @param element An element to repair.
      */
     protected abstract void repairInternal(E element);
+
+    /** @return Whether or not this processor is incomplete. */
+    public boolean isIncomplete() {
+        return getClass().getAnnotation(IncompleteProcessor.class) != null;
+    }
 
     public SoraldAbstractProcessor<E> setBestFits(Map<CtElement, RuleViolation> bestFits) {
         this.bestFits = Collections.unmodifiableMap(bestFits);

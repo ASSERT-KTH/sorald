@@ -34,39 +34,6 @@ public class SynchronizationOnStringOrBoxedProcessor
     }
 
     @Override
-    protected boolean canRepairInternal(CtSynchronized element) {
-        CtExpression<?> expression = element.getExpression();
-        if (!expression.getType().toString().equals("String")
-                && !expression.getType().unbox().isPrimitive()) {
-            return false;
-        }
-        CtFieldRead<?> fieldRead;
-        if (expression instanceof CtFieldRead) {
-            fieldRead = (CtFieldRead) expression;
-        } else if (expression instanceof CtInvocation) {
-            CtExecutable<?> method = ((CtInvocation) expression).getExecutable().getDeclaration();
-            CtExpression<?> returnExpression =
-                    ((CtReturn) method.getElements(new TypeFilter(CtReturn.class)).get(0))
-                            .getReturnedExpression();
-            if (returnExpression instanceof CtFieldRead) {
-                fieldRead = (CtFieldRead) returnExpression;
-            } else {
-                /* don't support multiple recursive call */
-                return false;
-            }
-        } else {
-            return false;
-        }
-
-        CtField<?> field = fieldRead.getVariable().getDeclaration();
-        if (field != null) {
-            return true;
-        }
-
-        return false;
-    }
-
-    @Override
     protected void repairInternal(CtSynchronized element) {
         CtExpression<?> expression = element.getExpression();
         Factory factory = element.getFactory();

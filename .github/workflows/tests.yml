@@ -31,7 +31,11 @@ jobs:
       - name: Build project
         run: mvn -B package
       - name: Sanity check jarfile
-        run: java -jar target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar repair --original-files-path src/test/resources/ArrayHashCodeAndToString.java --rule-keys 2184
+        env:
+          SORALD_JAR_PATH: "target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar"
+        run: |
+          java -jar "$SORALD_JAR_PATH" repair --original-files-path src/test/resources/ArrayHashCodeAndToString.java --rule-key 2184
+          java -jar "$SORALD_JAR_PATH" repair --original-files-path src/test/resources/ArrayHashCodeAndToString.java --rule-key 2116
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@239febf655bba88b16ff5dea1d3135ea8663a1f9 # v1.0.15
         with:
@@ -45,6 +49,13 @@ jobs:
       - uses: actions/setup-python@8c5ea631b2b2d5d8840cf4a2b183a8a0edc1e40d # v2.2.0
         with:
           python-version: 3.8
+      - uses: actions/setup-java@d202f5dbf7256730fb690ec59f6381650114feb2 # v1.4.3
+        with:
+          java-version: 11
+          java-package: jdk
+          architecture: x64
+      - name: Package Sorald
+        run: mvn package -DskipTests
       - name: Test support scripts
         run: |
           cd experimentation/tools
