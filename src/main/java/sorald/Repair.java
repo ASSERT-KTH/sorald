@@ -282,15 +282,6 @@ public class Repair {
         }
     }
 
-    private void printEndProcess(List<SoraldAbstractProcessor<?>> processors) {
-        System.out.println("-----Number of fixes------");
-        for (SoraldAbstractProcessor<?> processor : processors) {
-            System.out.println(
-                    processor.getClass().getSimpleName() + ": " + processor.getNbFixes());
-        }
-        System.out.println("-----End of report------");
-    }
-
     private Launcher initLauncher(Launcher launcher) {
         Environment env = launcher.getEnvironment();
         env.setIgnoreDuplicateDeclarations(true);
