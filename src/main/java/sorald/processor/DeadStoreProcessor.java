@@ -45,8 +45,22 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
         CtStatementList statementList = localVar.getParent(CtStatementList.class);
         List<CtVariableAccess<?>> varAccesses = statementList.getElements(accessFilter(localVar));
 
-        if (!varAccesses.isEmpty()) {
+        boolean isDeadVariable = varAccesses.stream().allMatch(this::isDeadStore);
+        if (!varAccesses.isEmpty() && !isDeadVariable) {
             createNewDeclaration(statementList, varAccesses, localVar);
+        }
+    }
+
+    /**
+     * @param varAccess Access to a variable.
+     * @return true if the variable access is a dead store (according to the best fits mapping).
+     */
+    private boolean isDeadStore(CtVariableAccess<?> varAccess) {
+        CtStatement parentStatement = varAccess.getParent(CtStatement.class);
+        if (parentStatement == null) {
+            return false;
+        } else {
+            return getBestFits().containsKey(parentStatement);
         }
     }
 
