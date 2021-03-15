@@ -57,11 +57,7 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
      */
     private boolean isDeadStore(CtVariableAccess<?> varAccess) {
         CtStatement parentStatement = varAccess.getParent(CtStatement.class);
-        if (parentStatement == null) {
-            return false;
-        } else {
-            return getBestFits().containsKey(parentStatement);
-        }
+        return getBestFits().containsKey(parentStatement);
     }
 
     /**
