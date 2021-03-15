@@ -52,6 +52,17 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
     }
 
     /**
+     * Predicate that says "yes" only to live accesses to the given variable. That is to say, dead
+     * stores are not included.
+     */
+    private Filter<CtVariableAccess<?>> liveAccessFilter(CtLocalVariable<?> localVar) {
+        return (varAccess) -> {
+            CtVariableReference<?> ref = varAccess.getVariable();
+            return !isDeadStore(varAccess) && ref != null && ref.getDeclaration() == localVar;
+        };
+    }
+
+    /**
      * @param varAccess Access to a variable.
      * @return true if the variable access is a dead store (according to the best fits mapping).
      */
@@ -220,16 +231,5 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
             depth++;
         }
         return depth;
-    }
-
-    /**
-     * Predicate that says "yes" only to live accesses to the given variable. That is to say, dead
-     * stores are not included.
-     */
-    private Filter<CtVariableAccess<?>> liveAccessFilter(CtLocalVariable<?> localVar) {
-        return (varAccess) -> {
-            CtVariableReference<?> ref = varAccess.getVariable();
-            return !isDeadStore(varAccess) && ref != null && ref.getDeclaration() == localVar;
-        };
     }
 }
