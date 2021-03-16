@@ -219,7 +219,10 @@ To run Sorald on projects towards proposing fixes in the form of PRs, look at [t
 ## Academic bibliographic references
 
 "[A template-based approach to automatic program repair of Sonarqube static warnings](http://kth.diva-portal.org/smash/get/diva2:1433710/FULLTEXT01.pdf)", by Haris Adzemovic, Master's thesis, KTH, School of Electrical Engineering and Computer Science (EECS), 2020. [(bibtex)](http://www.diva-portal.org/smash/references?referenceFormat=BIBTEX&pids=[diva2:1433710]&fileName=export.txt)
- 
+
+### Experiments with Sorald
+[Sorald-Experiments repository](https://github.com/khaes-kth/Sorald-experiments) includes the data related to our experiments with Sorald that are part of a recently conducted research project.
+
 ## Contributing
 
 Contributions are welcome! Feel free to open issues on this GitHub repository, and also to open pull requests for making this project nicer (see instructions [here](/docs/CONTRIBUTING.md)).
