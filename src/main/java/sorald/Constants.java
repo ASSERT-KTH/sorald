@@ -12,7 +12,7 @@ public class Constants {
     public static final String REPAIR_COMMAND_NAME = "repair";
     public static final String MINE_COMMAND_NAME = "mine";
 
-    public static final String ARG_RULE_KEYS = "--rule-keys";
+    public static final String ARG_RULE_KEY = "--rule-key";
     public static final String ARG_ORIGINAL_FILES_PATH = "--original-files-path";
     public static final String ARG_STATS_ON_GIT_REPOS = "--stats-on-git-repos";
     public static final String ARG_STATS_OUTPUT_FILE = "--stats-output-file";
@@ -20,7 +20,6 @@ public class Constants {
     public static final String ARG_GIT_REPOS_LIST = "--git-repos-list";
     public static final String ARG_TEMP_DIR = "--temp-dir";
     public static final String ARG_WORKSPACE = "--workspace";
-    public static final String ARG_GIT_REPO_PATH = "--git-repo-path";
     public static final String ARG_PRETTY_PRINTING_STRATEGY = "--pretty-printing-strategy";
     public static final String ARG_FILE_OUTPUT_STRATEGY = "--file-output-strategy";
     public static final String ARG_MAX_FIXES_PER_RULE = "--max-fixes-per-rule";
@@ -34,17 +33,12 @@ public class Constants {
     public static final String VIOLATION_SPECIFIER_SEP = File.pathSeparator;
 
     public static final String SORALD_WORKSPACE = "sorald-workspace";
-    public static final String PATCHES = "SoraldGitPatches";
-    public static final String PATCH_FILE_PREFIX = "soraldpatch_";
     public static final Path PATH_TO_RESOURCES_FOLDER =
             Paths.get("src").resolve("test").resolve("resources").toAbsolutePath();
 
     public static final String JAVA_EXT = ".java";
-    public static final String PATCH_EXT = ".patch";
 
     public static final String SPOONED = "spooned";
-    public static final String INTERMEDIATE = "intermediate";
-    public static final String SPOONED_INTERMEDIATE = SPOONED + File.separator + INTERMEDIATE;
 
     public static final String INT = "int";
     public static final String LONG = "long";

@@ -23,7 +23,7 @@ public class MaxFixesPerRuleTest {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
                     pathToBuggyFile.toString(),
-                    Constants.ARG_RULE_KEYS,
+                    Constants.ARG_RULE_KEY,
                     "2116",
                     Constants.ARG_WORKSPACE,
                     Constants.SORALD_WORKSPACE,

@@ -45,14 +45,14 @@ jar-file pointed out in [the build instructions](#build) is located at
 $ sorald repair <arguments ...>
 ```
 
-Basic usage consists of specifying a project to repair, as well as one or more
-rules to target. The available rules [can be found here](docs/HANDLED_RULES.md),
-and are specified by their key. For example, to repair violations of the rules
-with keys 2111, 2184 and 2204 in a project located at `some/project/path`, one
-can invoke Sorald like so.
+Basic usage consists of specifying a project to target and a rule to repair
+violations of. The available rules [can be found here](docs/HANDLED_RULES.md),
+and are specified by their key. For example, to repair violations of the rule
+`2111: "BigDecimal(double)" should not be used` in a project at
+`some/project/path`, one can invoke Sorald like so.
 
 ```bash
-$ sorald repair --original-files-path some/project/path --rule-keys 2111,2184,2204
+$ sorald repair --original-files-path some/project/path --rule-key 2111
 ```
 
 The full list of options is as follows (and can also be found by running
@@ -66,80 +66,93 @@ The full list of options is as follows (and can also be found by running
                             including the unchanged ones, will be created in
                             the workspace. 'IN_PLACE', which means that results
                             are written directly to source files.
-      --git-repo-path=<gitRepoPath>
-                          The path to a git repository directory.
   -h, --help              Show this help message and exit.
       --max-files-per-segment=<maxFilesPerSegment>
-                          Max number of files per loaded segment for segmented
-                            repair. It should be >= 3000 files per segment.
+                             Max number of files per loaded segment for
+                               segmented repair. It should be >= 3000 files per
+                               segment.
       --max-fixes-per-rule=<maxFixesPerRule>
-                          Max number of fixes per rule.
+                             Max number of fixes per rule.
       --original-files-path=<originalFilesPath>
-                          The path to the file or folder to be analyzed and
-                            possibly repaired.
+                             The path to the file or folder to be analyzed and
+                               possibly repaired.
       --pretty-printing-strategy=<prettyPrintingStrategy>
-                          Mode for pretty printing the source code: 'NORMAL',
-                            which means that all source code will be printed
-                            and its formatting might change (such as
-                            indentation), and 'SNIPER', which means that only
-                            statements changed towards the repair of Sonar rule
-                            violations will be printed.
+                             Mode for pretty printing the source code:
+                               'NORMAL', which means that all source code will
+                               be printed and its formatting might change (such
+                               as indentation), and 'SNIPER', which means that
+                               only statements changed towards the repair of
+                               Sonar rule violations will be printed.
       --repair-strategy=<repairStrategy>
-                          Type of repair strategy. DEFAULT - load everything
-                            without splitting up the folder in segments,
-                            SEGMENT - splitting the folder into smaller
-                            segments and repair one segment at a time (need to
-                            specify --maxFilesPerSegment if not default)
-      --rule-keys=<ruleKeys>[,<ruleKeys>...]
-                          Choose one or more of the following rule keys (use
-                            ',' to separate multiple keys):
-                          1656: Variables should not be self-assigned
-                          2142: "InterruptedException" should not be ignored
-                          4973: Strings and Boxed types should be compared
-                            using "equals()"
-                          1854: Unused assignments should be removed
-                          2184: Math operands should be cast before assignment
-                          2164: Math should not be performed on floats
-                          3032: JEE applications should not "getClassLoader"
-                          1948: Fields in a "Serializable" class should either
-                            be transient or serializable
-                          2272: "Iterator.next()" methods should throw
-                            "NoSuchElementException"
-                          2111: "BigDecimal(double)" should not be used
-                          2204: ".equals()" should not be used to test the
-                            values of "Atomic" classes
-                          1444: "public static" fields should be constant
-                          	(incomplete: does not fix variable naming)
-                          1860: Synchronization should not be based on Strings
-                            or boxed primitives
-                          3984: Exception should not be created without being
-                            thrown
-                          3067: "getClass" should not be used for
-                            synchronization
-                          2167: "compareTo" should not return "Integer.
-                            MIN_VALUE"
-                          2116: "hashCode" and "toString" should not be called
-                            on array instances
-                          2095: Resources should be closed
-                          2755: XML parsers should not be vulnerable to XXE
-                            attacks
-                          	(incomplete: This processor is a WIP and currently
-                            supports a subset of rule 2755. See Sorald's
-                            documentation for details.)
+                             Type of repair strategy. DEFAULT - load everything
+                               without splitting up the folder in segments,
+                               MAVEN - use Maven to locate production source
+                               code and the classpath (test source code is
+                               ignored), SEGMENT - splitting the folder into
+                               smaller segments and repair one segment at a
+                               time (need to specify --maxFilesPerSegment if
+                               not default)
+      --rule-key=<ruleKey>   Choose one of the following rule keys:
+                             1217: "Thread.run()" should not be called directly
+                             1444: "public static" fields should be constant
+                             	(incomplete: does not fix variable naming)
+                             1656: Variables should not be self-assigned
+                             1854: Unused assignments should be removed
+                             1860: Synchronization should not be based on
+                               Strings or boxed primitives
+                             1948: Fields in a "Serializable" class should
+                               either be transient or serializable
+                             2057: Every class implementing Serializable should
+                               declare a static final serialVersionUID.
+                             	(incomplete: This processor ignores two corner
+                               cases: If the class has already a
+                               serialVersionUID with a non long type and if the
+                               class is not directly implementing serializable
+                               e.g. a upper class implements serializable.)
+                             2095: Resources should be closed
+                             2111: "BigDecimal(double)" should not be used
+                             2116: "hashCode" and "toString" should not be
+                               called on array instances
+                             2142: "InterruptedException" should not be ignored
+                             2164: Math should not be performed on floats
+                             2167: "compareTo" should not return "Integer.
+                               MIN_VALUE"
+                             2184: Math operands should be cast before
+                               assignment
+                             2204: ".equals()" should not be used to test the
+                               values of "Atomic" classes
+                             2225: "toString()" and "clone()" methods should
+                               not return null
+                             	(incomplete: does not fix null returning clone())
+                             2272: "Iterator.next()" methods should throw
+                               "NoSuchElementException"
+                             2755: XML parsers should not be vulnerable to XXE
+                               attacks
+                             	(incomplete: This processor is a WIP and
+                               currently supports a subset of rule 2755. See
+                               Sorald's documentation for details.)
+                             3032: JEE applications should not "getClassLoader"
+                             3067: "getClass" should not be used for
+                               synchronization
+                             3984: Exception should not be created without
+                               being thrown
+                             4973: Strings and Boxed types should be compared
+                               using "equals()"
       --stats-output-file=<statsOutputFile>
-                          Path to a file to store execution statistics in (in
-                            JSON format). If left unspecified, Sorald does not
-                            gather statistics.
-      --target=<target>   The target of this execution (ex. sorald/92d377).
-                            This will be included in the json report.
-  -V, --version           Print version information and exit.
+                             Path to a file to store execution statistics in
+                               (in JSON format). If left unspecified, Sorald
+                               does not gather statistics.
+      --target=<target>      The target of this execution (ex. sorald/92d377).
+                               This will be included in the json report.
+  -V, --version              Print version information and exit.
       --violation-specs=<ruleViolationSpecifiers>[,<ruleViolationSpecifiers>...]
-                          One or more rule violation specifiers. Specifiers can
-                            be gathered with the 'mine' command using the
-                            --stats-output-file option.
+                             One or more rule violation specifiers. Specifiers
+                               can be gathered with the 'mine' command using
+                               the --stats-output-file option.
       --workspace=<soraldWorkspace>
-                          The path to a folder that will be used as workspace
-                            by Sorald, i.e. the path for the output.
+                             The path to a folder that will be used as
+                               workspace by Sorald, i.e. the path for the
+                               output.
 ```
 
 > **Note:** Some rules (e.g. 1444) are marked as "incomplete". This means that
@@ -203,7 +216,10 @@ To run Sorald on projects towards proposing fixes in the form of PRs, look at [t
 ## Academic bibliographic references
 
 "[A template-based approach to automatic program repair of Sonarqube static warnings](http://kth.diva-portal.org/smash/get/diva2:1433710/FULLTEXT01.pdf)", by Haris Adzemovic, Master's thesis, KTH, School of Electrical Engineering and Computer Science (EECS), 2020. [(bibtex)](http://www.diva-portal.org/smash/references?referenceFormat=BIBTEX&pids=[diva2:1433710]&fileName=export.txt)
- 
+
+### Experiments with Sorald
+[Sorald-Experiments repository](https://github.com/khaes-kth/Sorald-experiments) includes the data related to our experiments with Sorald that are part of a recently conducted research project.
+
 ## Contributing
 
 Contributions are welcome! Feel free to open issues on this GitHub repository, and also to open pull requests for making this project nicer (see instructions [here](/docs/CONTRIBUTING.md)).

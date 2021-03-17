@@ -13,37 +13,13 @@ import sorald.sonar.RuleVerifier;
 public class FileOutputStrategyTest {
 
     @Test
-    public void test_onlyChangedFilesAndPatchOutput() throws Exception {
+    public void test_onlyChangedFiles() throws Exception {
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
                     Constants.PATH_TO_RESOURCES_FOLDER.toString(),
-                    Constants.ARG_RULE_KEYS,
-                    "4973",
-                    Constants.ARG_FILE_OUTPUT_STRATEGY,
-                    FileOutputStrategy.CHANGED_ONLY.name(),
-                    Constants.ARG_WORKSPACE,
-                    Constants.SORALD_WORKSPACE,
-                    Constants.ARG_GIT_REPO_PATH,
-                    "."
-                });
-
-        File spooned = new File(Constants.SORALD_WORKSPACE + File.separator + Constants.SPOONED);
-        Assertions.assertEquals(spooned.list().length, 1);
-
-        File patches = new File(Constants.SORALD_WORKSPACE + File.separator + Constants.PATCHES);
-        Assertions.assertEquals(patches.list().length, 1);
-    }
-
-    @Test
-    public void test_onlyChangedFilesAndNoPatchOutput() throws Exception {
-        Main.main(
-                new String[] {
-                    Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_ORIGINAL_FILES_PATH,
-                    Constants.PATH_TO_RESOURCES_FOLDER.toString(),
-                    Constants.ARG_RULE_KEYS,
+                    Constants.ARG_RULE_KEY,
                     "4973",
                     Constants.ARG_FILE_OUTPUT_STRATEGY,
                     FileOutputStrategy.CHANGED_ONLY.name(),
@@ -53,19 +29,16 @@ public class FileOutputStrategyTest {
 
         File spooned = new File(Constants.SORALD_WORKSPACE + File.separator + Constants.SPOONED);
         Assertions.assertEquals(spooned.list().length, 1);
-
-        File patches = new File(Constants.SORALD_WORKSPACE + File.separator + Constants.PATCHES);
-        Assertions.assertNull(patches.list());
     }
 
     @Test
-    public void test_allFilesAndNoPatchOutput() throws Exception {
+    public void test_allFiles() throws Exception {
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
                     Constants.PATH_TO_RESOURCES_FOLDER.toString(),
-                    Constants.ARG_RULE_KEYS,
+                    Constants.ARG_RULE_KEY,
                     "4973",
                     Constants.ARG_FILE_OUTPUT_STRATEGY,
                     FileOutputStrategy.ALL.name(),
@@ -77,9 +50,6 @@ public class FileOutputStrategyTest {
 
         File spooned = new File(Constants.SORALD_WORKSPACE + File.separator + Constants.SPOONED);
         Assertions.assertTrue(spooned.list().length > 1);
-
-        File patches = new File(Constants.SORALD_WORKSPACE + File.separator + Constants.PATCHES);
-        Assertions.assertNull(patches.list());
     }
 
     @Test

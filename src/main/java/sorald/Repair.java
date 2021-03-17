@@ -26,14 +26,11 @@ import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
 import sorald.event.collectors.CompilationUnitCollector;
 import sorald.event.models.CrashEvent;
-import sorald.event.models.miner.MinedViolationEvent;
 import sorald.processor.SoraldAbstractProcessor;
 import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
 import sorald.segment.SoraldTreeBuilderAlgorithm;
 import sorald.sonar.BestFitScanner;
-import sorald.sonar.Checks;
-import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleViolation;
 import spoon.Launcher;
 import spoon.MavenLauncher;
@@ -56,8 +53,6 @@ import spoon.support.sniper.SniperJavaPrettyPrinter;
 
 /** Class for repairing projects. */
 public class Repair {
-    private final GitPatchGenerator generator = new GitPatchGenerator();
-    private final Path intermediateSpoonedPath;
     private final Path spoonedPath;
     private final SoraldConfig config;
     private int patchedFileCounter = 0;
@@ -67,97 +62,45 @@ public class Repair {
 
     public Repair(SoraldConfig config, List<? extends SoraldEventHandler> eventHandlers) {
         this.config = config;
-        if (this.config.getGitRepoPath() != null) {
-            generator.setGitProjectRootDir(this.config.getGitRepoPath());
-        }
         spoonedPath = Paths.get(config.getWorkspace()).resolve(Constants.SPOONED);
-        intermediateSpoonedPath = spoonedPath.resolve(Constants.INTERMEDIATE);
 
-        cuCollector = new CompilationUnitCollector(config);
+        cuCollector = new CompilationUnitCollector();
         List<SoraldEventHandler> eventHandlersCopy = new ArrayList<>(eventHandlers);
         eventHandlersCopy.add(cuCollector);
         this.eventHandlers = Collections.unmodifiableList(eventHandlersCopy);
     }
 
-    /** Execute a repair according to the config. */
-    public void repair() {
-        List<Integer> ruleKeys = config.getRuleKeys();
-        List<SoraldAbstractProcessor<?>> addedProcessors = new ArrayList<>();
-
-        for (int i = 0; i < ruleKeys.size(); i++) {
-            int ruleKey = ruleKeys.get(i);
-
-            Pair<Path, Path> inOutPaths = computeInOutPaths(i == 0, i == ruleKeys.size() - 1);
-            final Path inputDir = inOutPaths.getLeft();
-            final Path outputDir = inOutPaths.getRight();
-
-            Set<RuleViolation> ruleViolations = getRuleViolations(inputDir.toFile(), ruleKey);
-            SoraldAbstractProcessor<?> processor = createProcessor(ruleKey);
-            addedProcessors.add(processor);
-            Stream<CtModel> models = repair(inputDir, processor, ruleViolations);
-
-            models.forEach(model -> writeModel(model, outputDir));
-        }
-
-        printEndProcess(addedProcessors);
-        FileUtils.deleteDirectory(intermediateSpoonedPath.toFile());
-    }
-
-    private Set<RuleViolation> getRuleViolations(File target, int ruleKey) {
-        Set<RuleViolation> violations = null;
-        if (!eventHandlers.isEmpty() || config.getRuleViolations().isEmpty()) {
-            // if there are event handlers, we must mine violations regardless of them being
-            // specified in the config or not in order to trigger the mined violation events
-            violations = mineViolations(target, ruleKey);
-        }
-        if (!config.getRuleViolations().isEmpty()) {
-            violations =
-                    config.getRuleViolations().stream()
-                            .filter(
-                                    violation ->
-                                            violation
-                                                    .getRuleKey()
-                                                    .equals(Integer.toString(ruleKey)))
-                            .collect(Collectors.toSet());
-        }
-        assert violations != null;
-
-        return violations;
-    }
-
     /**
-     * Mine warnings from the target directory and the given rule key.
+     * Execute a repair according to the config.
      *
-     * @param target A target directory.
-     * @param ruleKey A rule key.
-     * @return All found warnings.
+     * @param ruleViolations Rule violations to repair. May not be empty, and must relate to a
+     *     single rule.
+     * @return The processor used in the repairs.
+     * @throws IllegalArgumentException if the supplied rule violations are empty, or relate to
+     *     multiple rules.
      */
-    public Set<RuleViolation> mineViolations(File target, int ruleKey) {
-        return mineViolations(target, List.of(ruleKey));
-    }
+    public SoraldAbstractProcessor<?> repair(Set<RuleViolation> ruleViolations) {
+        List<String> distinctRuleKeys =
+                ruleViolations.stream()
+                        .map(RuleViolation::getRuleKey)
+                        .distinct()
+                        .collect(Collectors.toList());
+        if (distinctRuleKeys.size() != 1) {
+            throw new IllegalArgumentException(
+                    "expected rule violations for precisely 1 rule key, got: " + distinctRuleKeys);
+        }
 
-    /**
-     * Mine warnings from the target directory and the given rule key.
-     *
-     * @param target A target directory.
-     * @param ruleKeys A list of rule keys.
-     * @return All found warnings.
-     */
-    public Set<RuleViolation> mineViolations(File target, List<Integer> ruleKeys) {
-        Path projectPath = target.toPath().toAbsolutePath().normalize();
-        Set<RuleViolation> violations =
-                ProjectScanner.scanProject(
-                        target,
-                        FileUtils.getClosestDirectory(target),
-                        ruleKeys.stream()
-                                .map(String::valueOf)
-                                .map(Checks::getCheckInstance)
-                                .collect(Collectors.toList()));
-        violations.forEach(
-                warn ->
-                        EventHelper.fireEvent(
-                                new MinedViolationEvent(warn, projectPath), eventHandlers));
-        return violations;
+        String ruleKey = distinctRuleKeys.get(0);
+        Pair<Path, Path> inOutPaths = computeInOutPaths();
+        final Path inputDir = inOutPaths.getLeft();
+        final Path outputDir = inOutPaths.getRight();
+
+        SoraldAbstractProcessor<?> processor = createProcessor(Integer.parseInt(ruleKey));
+        Stream<CtModel> models = repair(inputDir, processor, ruleViolations);
+
+        models.forEach(model -> writeModel(model, outputDir));
+
+        return processor;
     }
 
     Stream<CtModel> repair(
@@ -244,33 +187,16 @@ public class Repair {
         EventHelper.fireEvent(new CrashEvent("Crash in segment: " + paths, e), eventHandlers);
     }
 
-    private Pair<Path, Path> computeInOutPaths(boolean isFirstRule, boolean isLastRule) {
+    private Pair<Path, Path> computeInOutPaths() {
         final Path originalPath = Paths.get(config.getOriginalFilesPath());
 
         if (config.getFileOutputStrategy() == FileOutputStrategy.IN_PLACE) {
             // always write to the input files
             return Pair.of(originalPath, originalPath);
-        } else if (isFirstRule && isLastRule) {
+        } else {
             // one processor, straightforward repair: we use the given input file dir, run one
             // processor, directly output files the spooned output dir
             return Pair.of(Paths.get(config.getOriginalFilesPath()), spoonedPath);
-        } else {
-            // more than one processor, thus we need an intermediate dir, which will always
-            // contain all files (the changed and non-changed ones), because other processors
-            // will run on them
-            if (isFirstRule) {
-                // the first processor will run, thus we use the given input file
-                // dir and output *all* files in the intermediate dir
-                return Pair.of(originalPath, intermediateSpoonedPath);
-            } else if (isLastRule) {
-                // the last processor will run, thus we use as input files the ones in
-                // the intermediate dir and output files in the final output dir
-                return Pair.of(intermediateSpoonedPath, spoonedPath);
-            } else {
-                // neither the first nor the last processor will run, thus use as input and output
-                // dirs the intermediate dir
-                return Pair.of(intermediateSpoonedPath, intermediateSpoonedPath);
-            }
         }
     }
 
@@ -307,11 +233,8 @@ public class Repair {
     }
 
     private void writeModel(CtModel model, Path outputDir) {
-        boolean isIntermediateOutputDir =
-                outputDir.toString().contains(intermediateSpoonedPath.toString());
-
         Collection<CtCompilationUnit> compilationUnits =
-                config.getFileOutputStrategy() == FileOutputStrategy.ALL || isIntermediateOutputDir
+                config.getFileOutputStrategy() == FileOutputStrategy.ALL
                         ? CompilationUnitHelpers.resolveCompilationUnits(model.getAllTypes())
                         : cuCollector.getCollectedCompilationUnits();
         compilationUnits.forEach(cu -> writeCompilationUnit(cu, outputDir));
@@ -341,10 +264,6 @@ public class Repair {
                                     .createPrettyPrinter()
                                     .printTypes(typesToPrint.toArray(CtType[]::new));
                     writeToFile(finalOutputPath, output);
-
-                    if (config.getGitRepoPath() != null) {
-                        createPatches(sourcePath, finalOutputPath);
-                    }
                 });
     }
 
@@ -361,32 +280,6 @@ public class Repair {
             // is used in a stream (that can't have checked exceptions)
             throw new RuntimeException(e);
         }
-    }
-
-    private void printEndProcess(List<SoraldAbstractProcessor<?>> processors) {
-        System.out.println("-----Number of fixes------");
-        for (SoraldAbstractProcessor<?> processor : processors) {
-            System.out.println(
-                    processor.getClass().getSimpleName() + ": " + processor.getNbFixes());
-        }
-        System.out.println("-----End of report------");
-    }
-
-    private void createPatches(Path patchedFilePath, Path outputPath) {
-        File patchDir = new File(config.getWorkspace() + File.separator + Constants.PATCHES);
-
-        if (!patchDir.exists()) {
-            patchDir.mkdirs();
-        }
-
-        generator.generate(
-                patchedFilePath.toString(),
-                outputPath.toString(),
-                patchDir.getAbsolutePath()
-                        + File.separator
-                        + Constants.PATCH_FILE_PREFIX
-                        + patchedFileCounter);
-        patchedFileCounter++;
     }
 
     private Launcher initLauncher(Launcher launcher) {

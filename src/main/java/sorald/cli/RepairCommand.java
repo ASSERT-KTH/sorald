@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 import picocli.CommandLine;
 import sorald.Constants;
@@ -18,10 +20,15 @@ import sorald.RepairStrategy;
 import sorald.SoraldConfig;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
+import sorald.event.SoraldEventHandler;
 import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.RepairStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
+import sorald.event.models.miner.MinedViolationEvent;
 import sorald.event.models.repair.RuleRepairStatistics;
+import sorald.processor.SoraldAbstractProcessor;
+import sorald.sonar.Checks;
+import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleViolation;
 
 /** The CLI command for the primary repair application. */
@@ -30,7 +37,7 @@ import sorald.sonar.RuleViolation;
         mixinStandardHelpOptions = true,
         description = "Repair Sonar rule violations in a targeted project.")
 class RepairCommand extends BaseCommand {
-    List<Integer> ruleKeys;
+    String ruleKey;
     List<RuleViolation> ruleViolations = List.of();
 
     @CommandLine.Option(
@@ -45,14 +52,11 @@ class RepairCommand extends BaseCommand {
 
     static class Rules {
         @CommandLine.Option(
-                names = {Constants.ARG_RULE_KEYS},
+                names = {Constants.ARG_RULE_KEY},
                 description =
-                        "Choose one or more of the following rule keys "
-                                + "(use ',' to separate multiple keys):\n"
-                                + Processors.RULE_DESCRIPTIONS,
-                required = true,
-                split = ",")
-        List<Integer> ruleKeys = List.of();
+                        "Choose one of the following rule keys:\n" + Processors.RULE_DESCRIPTIONS,
+                required = true)
+        String ruleKey = null;
 
         @CommandLine.Option(
                 names = Constants.ARG_RULE_VIOLATION_SPECIFIERS,
@@ -74,11 +78,6 @@ class RepairCommand extends BaseCommand {
                     "The path to a folder that will be used as workspace by Sorald, i.e. the path for the output.",
             defaultValue = Constants.SORALD_WORKSPACE)
     File soraldWorkspace;
-
-    @CommandLine.Option(
-            names = {Constants.ARG_GIT_REPO_PATH},
-            description = "The path to a git repository directory.")
-    File gitRepoPath;
 
     @CommandLine.Option(
             names = {Constants.ARG_PRETTY_PRINTING_STRATEGY},
@@ -118,16 +117,24 @@ class RepairCommand extends BaseCommand {
         SoraldConfig config = createConfig();
 
         var statsCollector = new RepairStatisticsCollector();
-        var eventHandlers = List.of(statsCollector);
+        List<SoraldEventHandler> eventHandlers =
+                statsOutputFile == null ? List.of() : List.of(statsCollector);
         EventHelper.fireEvent(EventType.EXEC_START, eventHandlers);
 
-        var repair = new Repair(config, statsOutputFile == null ? List.of() : eventHandlers);
-        repair.repair();
+        Set<RuleViolation> ruleViolations = resolveRuleViolations(eventHandlers);
+        if (ruleViolations.isEmpty()) {
+            System.out.println("No rule violations found, nothing to do ...");
+        } else {
+            SoraldAbstractProcessor<?> proc =
+                    new Repair(config, eventHandlers).repair(ruleViolations);
+            printEndProcess(proc);
+        }
 
         EventHelper.fireEvent(EventType.EXEC_END, List.of(statsCollector));
 
         if (statsOutputFile != null) {
-            mineWarningsAfter(repair, config.getRuleKeys());
+            // mine violations to trigger stats collection
+            mineViolations(originalFilesPath, ruleKey, eventHandlers);
             writeStatisticsOutput(
                     statsCollector,
                     FileUtils.getClosestDirectory(originalFilesPath)
@@ -139,12 +146,41 @@ class RepairCommand extends BaseCommand {
         return 0;
     }
 
+    private Set<RuleViolation> resolveRuleViolations(List<SoraldEventHandler> eventHandlers) {
+        Set<RuleViolation> violations = null;
+        if (!eventHandlers.isEmpty() || ruleViolations.isEmpty()) {
+            // if there are event handlers, we must mine violations regardless of them being
+            // specified in the config or not in order to trigger the mined violation events
+            violations = mineViolations(originalFilesPath, ruleKey, eventHandlers);
+        }
+        if (!ruleViolations.isEmpty()) {
+            violations = new HashSet<>(ruleViolations);
+        }
+
+        return violations;
+    }
+
     /**
-     * Mine warnings after completing repairs to trigger new mined events for the stats collection.
+     * Mine violations from the target directory and the given rule key.
+     *
+     * @param target A target directory.
+     * @param ruleKey A rule key.
+     * @param eventHandlers Event handlers to use for events.
+     * @return All found warnings.
      */
-    private void mineWarningsAfter(Repair repair, List<Integer> ruleKeys) {
-        File projectPath = originalFilesPath.toPath().toAbsolutePath().normalize().toFile();
-        repair.mineViolations(projectPath, ruleKeys);
+    private static Set<RuleViolation> mineViolations(
+            File target, String ruleKey, List<SoraldEventHandler> eventHandlers) {
+        Path projectPath = target.toPath().toAbsolutePath().normalize();
+        Set<RuleViolation> violations =
+                ProjectScanner.scanProject(
+                        target,
+                        FileUtils.getClosestDirectory(target),
+                        Checks.getCheckInstance(ruleKey));
+        violations.forEach(
+                warn ->
+                        EventHelper.fireEvent(
+                                new MinedViolationEvent(warn, projectPath), eventHandlers));
+        return violations;
     }
 
     private void writeStatisticsOutput(RepairStatisticsCollector statsCollector, Path projectPath)
@@ -177,14 +213,13 @@ class RepairCommand extends BaseCommand {
                     Constants.ARG_MAX_FILES_PER_SEGMENT + " must be greater than 0");
         }
 
-        validateOutputAndRepairStrategyCombination();
-        validateRuleKeys();
+        validateRuleKey();
     }
 
     /** Perform further processing of raw command line args. */
     private void postprocessArgs() {
         ruleViolations = parseRuleViolations(rules);
-        ruleKeys = parseRuleKeys(rules, ruleViolations);
+        ruleKey = parseRuleKey(rules, ruleViolations);
     }
 
     private List<RuleViolation> parseRuleViolations(Rules rules) {
@@ -193,39 +228,19 @@ class RepairCommand extends BaseCommand {
                 .collect(Collectors.toUnmodifiableList());
     }
 
-    private List<Integer> parseRuleKeys(Rules rules, List<RuleViolation> ruleViolations) {
+    private String parseRuleKey(Rules rules, List<RuleViolation> ruleViolations) {
         return ruleViolations.isEmpty()
-                ? rules.ruleKeys
-                : ruleViolations.stream()
-                        .map(RuleViolation::getRuleKey)
-                        .map(Integer::parseInt)
-                        .collect(Collectors.toUnmodifiableList());
+                ? rules.ruleKey
+                : ruleViolations.stream().map(RuleViolation::getRuleKey).findFirst().get();
     }
 
-    private void validateRuleKeys() {
-        for (Integer ruleKey : ruleKeys) {
-            if (Processors.getProcessor(ruleKey) == null) {
-                throw new CommandLine.ParameterException(
-                        spec.commandLine(),
-                        "Sorry, repair not available for rule "
-                                + ruleKey
-                                + ". See the available rules below.");
-            }
-        }
-    }
-
-    private void validateOutputAndRepairStrategyCombination() {
-        if (repairStrategy == RepairStrategy.MAVEN
-                && fileOutputStrategy != FileOutputStrategy.IN_PLACE
-                && ruleKeys.size() > 1) {
+    private void validateRuleKey() {
+        if (Processors.getProcessor(Integer.parseInt(ruleKey)) == null) {
             throw new CommandLine.ParameterException(
                     spec.commandLine(),
-                    String.format(
-                            "%s=%s can only be used with %s=%s for multi-rule repair",
-                            Constants.ARG_REPAIR_STRATEGY,
-                            RepairStrategy.MAVEN.name(),
-                            Constants.ARG_FILE_OUTPUT_STRATEGY,
-                            FileOutputStrategy.IN_PLACE.name()));
+                    "Sorry, repair not available for rule "
+                            + ruleKey
+                            + ". See the available rules below.");
         }
     }
 
@@ -264,15 +279,16 @@ class RepairCommand extends BaseCommand {
         return new SpecifiedViolation(key, absPath, startLine, startCol, endLine, endCol);
     }
 
+    private static void printEndProcess(SoraldAbstractProcessor<?> processor) {
+        System.out.println("-----Number of fixes------");
+        System.out.println(processor.getClass().getSimpleName() + ": " + processor.getNbFixes());
+        System.out.println("-----End of report------");
+    }
+
     private SoraldConfig createConfig() {
         SoraldConfig config = new SoraldConfig();
-        config.addRuleKeys(ruleKeys);
-        config.setRuleViolations(ruleViolations);
         config.setOriginalFilesPath(originalFilesPath.getAbsolutePath());
         config.setWorkspace(soraldWorkspace.getAbsolutePath());
-        if (gitRepoPath != null) {
-            config.setGitRepoPath(gitRepoPath.getAbsolutePath());
-        }
         config.setPrettyPrintingStrategy(prettyPrintingStrategy);
         config.setFileOutputStrategy(fileOutputStrategy);
         config.setMaxFixesPerRule(maxFixesPerRule);

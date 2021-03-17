@@ -31,7 +31,7 @@ public class MavenLauncherTest {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
                     workdir.getAbsolutePath(),
-                    Constants.ARG_RULE_KEYS,
+                    Constants.ARG_RULE_KEY,
                     "1854",
                     Constants.ARG_FILE_OUTPUT_STRATEGY,
                     FileOutputStrategy.IN_PLACE.name(),
