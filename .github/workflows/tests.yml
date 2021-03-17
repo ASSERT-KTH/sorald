@@ -29,7 +29,15 @@ jobs:
       - name: Check formatting with spotless
         run: mvn spotless:check
       - name: Build project
-        run: mvn -B package
+        run: |
+          mvn -B package -DskipTests
+          mvn -B test-compile
+      - name: Fetch final dependencies
+        # this is a hack to fetch some test runtime dependencies
+        run: timeout 10 mvn -B test || echo "Done fetching dependencies"
+        shell: bash
+      - name: Run tests
+        run: mvn test
       - name: Sanity check jarfile
         env:
           SORALD_JAR_PATH: "target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar"
