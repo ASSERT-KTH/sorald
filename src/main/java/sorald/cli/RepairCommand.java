@@ -35,7 +35,8 @@ class RepairCommand extends BaseCommand {
     @CommandLine.Option(
             names = {Constants.ARG_ORIGINAL_FILES_PATH},
             description = "The path to the file or folder to be analyzed and possibly repaired.",
-            required = true)
+            required = true,
+            converter = RealFileConverter.class)
     File originalFilesPath;
 
     @CommandLine.ArgGroup(multiplicity = "1")
