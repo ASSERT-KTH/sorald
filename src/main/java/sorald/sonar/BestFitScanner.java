@@ -92,7 +92,8 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
     }
 
     private boolean isTypeInFileWithoutViolations(CtElement element) {
-        return element instanceof CtType;
+        return element instanceof CtType
+                && !filesWithViolations.contains(element.getPosition().getFile());
     }
 
     @Override
