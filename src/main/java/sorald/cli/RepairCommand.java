@@ -3,6 +3,7 @@ package sorald.cli;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -232,7 +233,21 @@ class RepairCommand extends BaseCommand {
         String[] parts = violationSpecifier.split(Constants.VIOLATION_SPECIFIER_SEP);
         String key = parts[0];
         String rawFilename = parts[1];
-        Path absPath = originalFilesPath.toPath().resolve(rawFilename).toAbsolutePath().normalize();
+
+        Path targetPath = Paths.get(rawFilename).normalize();
+        if (targetPath.isAbsolute()) {
+            try {
+                targetPath = targetPath.toRealPath();
+            } catch (IOException e) {
+                throw new CommandLine.ParameterException(
+                        spec.commandLine(),
+                        String.format(
+                                "Invalid violation ID '%s', no such file: '%s'",
+                                violationSpecifier, rawFilename));
+            }
+        }
+
+        Path absPath = originalFilesPath.toPath().resolve(targetPath);
 
         if (!absPath.toFile().isFile()) {
             throw new CommandLine.ParameterException(
