@@ -1,5 +1,6 @@
 package sorald.sonar;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import org.sonar.java.AnalyzerMessage;
@@ -43,9 +44,11 @@ class ScannedViolation extends RuleViolation {
 
     @Override
     public Path getAbsolutePath() {
-        return Paths.get(message.getInputComponent().key().replace(":", ""))
-                .toAbsolutePath()
-                .normalize();
+        try {
+            return Paths.get(message.getInputComponent().key().replace(":", "")).toRealPath();
+        } catch (IOException e) {
+            throw new IllegalStateException("scanned violation must be backed by existing file", e);
+        }
     }
 
     @Override
