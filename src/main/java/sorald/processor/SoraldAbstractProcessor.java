@@ -136,6 +136,10 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         return this;
     }
 
+    public Map<CtElement, RuleViolation> getBestFits() {
+        return bestFits;
+    }
+
     public SoraldAbstractProcessor setMaxFixes(int maxFixes) {
         this.maxFixes = maxFixes;
         return this;

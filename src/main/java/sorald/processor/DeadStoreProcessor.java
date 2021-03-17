@@ -43,11 +43,32 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
      */
     private void retainDeclarationOnVariableUse(CtLocalVariable<?> localVar) {
         CtStatementList statementList = localVar.getParent(CtStatementList.class);
-        List<CtVariableAccess<?>> varAccesses = statementList.getElements(accessFilter(localVar));
+        List<CtVariableAccess<?>> liveVarAccesses =
+                statementList.getElements(liveAccessFilter(localVar));
 
-        if (!varAccesses.isEmpty()) {
-            createNewDeclaration(statementList, varAccesses, localVar);
+        if (!liveVarAccesses.isEmpty()) {
+            createNewDeclaration(statementList, liveVarAccesses, localVar);
         }
+    }
+
+    /**
+     * Predicate that says "yes" only to live accesses to the given variable. That is to say, dead
+     * stores are not included.
+     */
+    private Filter<CtVariableAccess<?>> liveAccessFilter(CtLocalVariable<?> localVar) {
+        return (varAccess) -> {
+            CtVariableReference<?> ref = varAccess.getVariable();
+            return !isDeadStore(varAccess) && ref != null && ref.getDeclaration() == localVar;
+        };
+    }
+
+    /**
+     * @param varAccess Access to a variable.
+     * @return true if the variable access is a dead store (according to the best fits mapping).
+     */
+    private boolean isDeadStore(CtVariableAccess<?> varAccess) {
+        CtStatement parentStatement = varAccess.getParent(CtStatement.class);
+        return getBestFits().containsKey(parentStatement);
     }
 
     /**
@@ -56,15 +77,15 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
      * declaration with a variable write if possible.
      *
      * @param statementList The statement list in which the variable declaration appears.
-     * @param varAccesses All accesses to the variable.
+     * @param liveVarAccesses All non-dead-store accesses to the variable.
      * @param localVar The variable declaration itself.
      */
     private void createNewDeclaration(
             CtStatementList statementList,
-            List<CtVariableAccess<?>> varAccesses,
+            List<CtVariableAccess<?>> liveVarAccesses,
             CtLocalVariable<?> localVar) {
         List<CtStatementList> statementListsWithVarAccess =
-                varAccesses.stream()
+                liveVarAccesses.stream()
                         .map(access -> access.getParent(CtStatementList.class))
                         .distinct() // TODO optimize, this uses taxing equality comparison
                         .collect(Collectors.toList());
@@ -79,7 +100,7 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
         int firstStatementAccessingVarIdx =
                 findFirstStatementAccessingVarIdx(deepestCommonParent, localVar);
         findDeclarationMergeableWrite(
-                        varAccesses, deepestCommonParent, firstStatementAccessingVarIdx)
+                        liveVarAccesses, deepestCommonParent, firstStatementAccessingVarIdx)
                 .ifPresentOrElse(
                         this::makeDeclaration,
                         () -> {
@@ -95,7 +116,7 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
      * statement in the common parent list, and is the first access to the processed variable that
      * appears in the common parent list.
      *
-     * @param varAccesses All variable accesses to the considered variable.
+     * @param liveVarAccesses All non-dead-store variable accesses to the considered variable.
      * @param commonParentList The common parent list.
      * @param firstStatementAccessingVarIdx Index of the first statement that accesses the
      *     considered variable (possibly nested access).
@@ -103,11 +124,11 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
      *     is found.
      */
     private Optional<CtVariableWrite<?>> findDeclarationMergeableWrite(
-            List<CtVariableAccess<?>> varAccesses,
+            List<CtVariableAccess<?>> liveVarAccesses,
             CtStatementList commonParentList,
             int firstStatementAccessingVarIdx) {
         Optional<CtVariableAccess<?>> firstNonNestedVarAccessOpt =
-                varAccesses.stream()
+                liveVarAccesses.stream()
                         .filter(
                                 access ->
                                         access.getParent(CtStatementList.class) == commonParentList)
@@ -139,7 +160,7 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
             CtStatementList statementList, CtLocalVariable<?> localVar) {
         for (int i = 0; i < statementList.getStatements().size(); i++) {
             var statement = statementList.getStatement(i);
-            if (!statement.getElements(accessFilter(localVar)).isEmpty()) {
+            if (!statement.getElements(liveAccessFilter(localVar)).isEmpty()) {
                 return i;
             }
         }
@@ -210,12 +231,5 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
             depth++;
         }
         return depth;
-    }
-
-    private static Filter<CtVariableAccess<?>> accessFilter(CtLocalVariable<?> localVar) {
-        return (varRead) -> {
-            CtVariableReference<?> ref = varRead.getVariable();
-            return ref != null && ref.getDeclaration() == localVar;
-        };
     }
 }
