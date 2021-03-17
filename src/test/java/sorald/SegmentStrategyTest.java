@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -108,7 +109,7 @@ public class SegmentStrategyTest {
         Repair repair = new Repair(config, List.of());
         Function<LinkedList<Node>, CtModel> selectivelyCrashySegmentParser =
                 segment ->
-                        segmentContainsFile(segment, crashingFile.toString())
+                        segmentContainsFile(segment, crashingFile)
                                 ? throwIllegalStateException()
                                 : repair.createSegmentLauncher(segment).getModel();
 
@@ -161,10 +162,10 @@ public class SegmentStrategyTest {
         throw new IllegalStateException("Just crashing a little bit here :)");
     }
 
-    private static boolean segmentContainsFile(LinkedList<Node> segment, String fileName) {
+    private static boolean segmentContainsFile(LinkedList<Node> segment, Path targetFile) {
         return segment.stream()
                 .map(Node::getJavaFiles)
                 .flatMap(List::stream)
-                .anyMatch(s -> s.endsWith(fileName));
+                .anyMatch(fileName -> FileUtils.realPathEquals(targetFile, Paths.get(fileName)));
     }
 }
