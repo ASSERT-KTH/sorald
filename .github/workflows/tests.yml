@@ -26,6 +26,18 @@ jobs:
           java-version: 11
           java-package: jdk
           architecture: x64
+
+      - name: Get date for cache # see https://github.com/actions/cache README
+        id: get-date
+        run: echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
+        shell: bash
+      - name: Use Maven dependency cache
+        uses: actions/cache@26968a09c0ea4f3e233fdddbafd1166051a095f6 # v2.1.4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
+
       - name: Check formatting with spotless
         run: mvn spotless:check
       - name: Build project
@@ -54,6 +66,18 @@ jobs:
           java-version: 11
           java-package: jdk
           architecture: x64
+
+      - name: Get date for cache # see https://github.com/actions/cache README
+        id: get-date
+        run: echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
+        shell: bash
+      - name: Use Maven dependency cache
+        uses: actions/cache@26968a09c0ea4f3e233fdddbafd1166051a095f6 # v2.1.4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
+
       - name: Package Sorald
         run: mvn package -DskipTests
       - name: Test support scripts
@@ -73,6 +97,18 @@ jobs:
           java-version: 11
           java-package: jdk
           architecture: x64
+
+      - name: Get date for cache # see https://github.com/actions/cache README
+        id: get-date
+        run: echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
+        shell: bash
+      - name: Use Maven dependency cache
+        uses: actions/cache@26968a09c0ea4f3e233fdddbafd1166051a095f6 # v2.1.4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
+
       - name: Test that generated code is up-to-date
         run: |
           mvn clean compile dependency:build-classpath -Dmdep.outputFile=cp.txt
