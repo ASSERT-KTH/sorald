@@ -20,8 +20,8 @@ import org.sonar.api.batch.rule.internal.ActiveRulesBuilder;
 import org.sonar.api.batch.rule.internal.NewActiveRule;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
-import org.sonar.api.batch.sensor.issue.internal.DefaultNoSonarFilter;
 import org.sonar.api.config.internal.MapSettings;
+import org.sonar.api.issue.NoSonarFilter;
 import org.sonar.api.measures.FileLinesContext;
 import org.sonar.api.measures.FileLinesContextFactory;
 import org.sonar.api.rule.RuleKey;
@@ -108,7 +108,7 @@ public class RuleVerifier {
 
     @SuppressWarnings("UnstableApiUsage")
     private static void scanFiles(List<InputFile> sourceFiles, SoraldSonarComponents components) {
-        Measurer measurer = new Measurer(components.getContext(), new DefaultNoSonarFilter());
+        Measurer measurer = new Measurer(components.getContext(), new NoSonarFilter());
         JavaSquid squid =
                 new JavaSquid(
                         // TODO set the source version dynamically

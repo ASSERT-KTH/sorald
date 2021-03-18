@@ -15,7 +15,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <picocli.version>4.5.2</picocli.version>
-        <sonar.java.version>6.13.0.25138</sonar.java.version>
+        <sonar.java.version>6.12.0.24852</sonar.java.version>
     </properties>
 
     <licenses>
