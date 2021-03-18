@@ -1,0 +1,14 @@
+/*
+When there are multiple dead stores in a row, and the first one is a dead initializer, we expect
+the declaration to be merged with the first non-dead store. Any intermediate dead stores are then
+removed as well.
+ */
+
+public class MultipleDeadStoresInARow {
+    public static void main(String[] args){
+        int a = 2; // Noncompliant
+        a = 3; // Noncompliant
+        a = 4;
+        System.out.println(a);
+    }
+}

@@ -1,0 +1,12 @@
+/*
+When a variable declaration is entirely dead AND has dead stores, we expect the variable to be
+removed entirely.
+ */
+
+public class DeadVariableWithMultipleDeadStores {
+    public static void main(String[] args) {
+        if (true) {
+            System.out.println("Hello, world!");
+        }
+    }
+}
