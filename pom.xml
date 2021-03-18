@@ -10,6 +10,14 @@
     <description>An automatic repair system for static code analysis warnings from Sonar Java.</description>
     <url>https://github.com/SpoonLabs/sorald</url>
 
+    <properties>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <picocli.version>4.5.2</picocli.version>
+        <sonar.java.version>6.13.0.25138</sonar.java.version>
+    </properties>
+
     <licenses>
         <license>
             <name>MIT License</name>
@@ -82,7 +90,7 @@
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-checks-testkit</artifactId>
-            <version>6.9.0.23563</version>
+            <version>${sonar.java.version}</version>
             <exclusions>
                 <exclusion>
                     <!-- included in stdlib -->
@@ -94,12 +102,12 @@
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-frontend</artifactId>
-            <version>6.9.0.23563</version>
+            <version>${sonar.java.version}</version>
         </dependency>
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-checks</artifactId>
-            <version>6.9.0.23563</version>
+            <version>${sonar.java.version}</version>
             <exclusions>
                 <exclusion>
                     <!-- included in stdlib -->
@@ -124,12 +132,6 @@
             <version>2.6</version>
         </dependency>
     </dependencies>
-    <properties>
-        <maven.compiler.target>11</maven.compiler.target>
-        <maven.compiler.source>11</maven.compiler.source>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <picocli.version>4.5.2</picocli.version>
-    </properties>
     <build>
         <plugins>
             <plugin>

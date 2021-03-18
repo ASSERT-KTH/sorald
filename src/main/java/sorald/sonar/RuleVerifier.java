@@ -20,21 +20,21 @@ import org.sonar.api.batch.rule.internal.ActiveRulesBuilder;
 import org.sonar.api.batch.rule.internal.NewActiveRule;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
+import org.sonar.api.batch.sensor.issue.internal.DefaultNoSonarFilter;
 import org.sonar.api.config.internal.MapSettings;
-import org.sonar.api.issue.NoSonarFilter;
 import org.sonar.api.measures.FileLinesContext;
 import org.sonar.api.measures.FileLinesContextFactory;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.java.DefaultJavaResourceLocator;
-import org.sonar.java.JavaClasspath;
-import org.sonar.java.JavaSonarLintClasspath;
 import org.sonar.java.JavaSquid;
-import org.sonar.java.JavaTestClasspath;
 import org.sonar.java.Measurer;
 import org.sonar.java.SonarComponents;
 import org.sonar.java.checks.CheckList;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.java.classpath.ClasspathForMain;
+import org.sonar.java.classpath.ClasspathForMainForSonarLint;
+import org.sonar.java.classpath.ClasspathForTest;
 import org.sonar.java.filters.PostAnalysisIssueFilter;
 import org.sonar.java.model.JavaVersionImpl;
 import org.sonar.plugins.java.api.JavaFileScanner;
@@ -108,7 +108,7 @@ public class RuleVerifier {
 
     @SuppressWarnings("UnstableApiUsage")
     private static void scanFiles(List<InputFile> sourceFiles, SoraldSonarComponents components) {
-        Measurer measurer = new Measurer(components.getContext(), new NoSonarFilter());
+        Measurer measurer = new Measurer(components.getContext(), new DefaultNoSonarFilter());
         JavaSquid squid =
                 new JavaSquid(
                         // TODO set the source version dynamically
@@ -172,8 +172,8 @@ public class RuleVerifier {
 
         DefaultFileSystem fs = sensorContext.fileSystem();
         // FIXME populate the classpaths
-        var cp = new JavaSonarLintClasspath(new MapSettings().asConfig(), fs);
-        var testCp = new JavaTestClasspath(new MapSettings().asConfig(), fs);
+        var cp = new ClasspathForMainForSonarLint(new MapSettings().asConfig(), fs);
+        var testCp = new ClasspathForTest(new MapSettings().asConfig(), fs);
 
         SoraldSonarComponents sonarComponents =
                 new SoraldSonarComponents(sensorContext.fileSystem(), cp, testCp, checkFactory);
@@ -191,25 +191,25 @@ public class RuleVerifier {
     private static class SoraldSonarComponents extends SonarComponents {
         private final List<AnalyzerMessage> messages;
         private final PostAnalysisIssueFilter postFilter;
-        private final JavaClasspath cp;
-        private final JavaTestClasspath testCp;
+        private final ClasspathForMain cp;
+        private final ClasspathForTest testCp;
         private SensorContext context;
 
         public SoraldSonarComponents(
                 DefaultFileSystem fs,
-                JavaClasspath cp,
-                JavaTestClasspath testCp,
+                ClasspathForMain cp,
+                ClasspathForTest testCp,
                 CheckFactory checkFactory) {
             this(fs, cp, testCp, checkFactory, new PostAnalysisIssueFilter());
         }
 
         public SoraldSonarComponents(
                 DefaultFileSystem fs,
-                JavaClasspath cp,
-                JavaTestClasspath testCp,
+                ClasspathForMain cp,
+                ClasspathForTest testCp,
                 CheckFactory checkFactory,
                 PostAnalysisIssueFilter postFilter) {
-            super(new SoraldFileLinesContextFactory(), fs, cp, testCp, checkFactory, postFilter);
+            super(new SoraldFileLinesContextFactory(), fs, cp, testCp, checkFactory);
             messages = new ArrayList<>();
             this.postFilter = postFilter;
             this.cp = cp;
@@ -236,12 +236,13 @@ public class RuleVerifier {
             return messages.stream().filter(this::shouldBeReported).collect(Collectors.toList());
         }
 
-        public JavaClasspath getClasspath() {
+        public ClasspathForMain getClasspath() {
             return cp;
         }
 
         private boolean shouldBeReported(AnalyzerMessage message) {
-            return postFilter.accept(getRuleKey(message), message) && !fromNosonarLine(message);
+            return true; // postFilter.accept(getRuleKey(message), message) &&
+            // !fromNosonarLine(message);
         }
 
         private static boolean fromNosonarLine(AnalyzerMessage message) {

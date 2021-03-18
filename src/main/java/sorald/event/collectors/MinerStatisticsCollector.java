@@ -1,6 +1,5 @@
 package sorald.event.collectors;
 
-import com.google.common.collect.ImmutableList;
 import java.util.*;
 import java.util.stream.Collectors;
 import sorald.event.SoraldEvent;
@@ -66,7 +65,7 @@ public class MinerStatisticsCollector implements SoraldEventHandler {
                                 new MinedRule(
                                         e.getKey().split(RULE_ID_SEPARATOR)[0],
                                         e.getKey().split(RULE_ID_SEPARATOR)[1],
-                                        ImmutableList.copyOf(e.getValue())))
+                                        List.copyOf(e.getValue())))
                 .collect(Collectors.toList());
     }
 
