@@ -200,8 +200,9 @@ public class GatherStatsTest {
                 Set<RuleViolation> violationsBefore,
                 Set<RuleViolation> violationsAfter,
                 RuleViolation targetViolation,
-                JavaFileScanner targetCheck) {
-            this.projectPath = projectPath;
+                JavaFileScanner targetCheck)
+                throws IOException {
+            this.projectPath = projectPath.toRealPath();
             this.statsFile = statsFile;
             this.violationsBefore = violationsBefore;
             this.violationsAfter = violationsAfter;
