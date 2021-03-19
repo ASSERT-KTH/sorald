@@ -34,7 +34,7 @@ public class SegmentStrategyTest {
         String fileName = "ArrayHashCodeAndToString.java";
         Path pathToBuggyFile = TestHelper.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
         String pathToRepairedFile =
-                Constants.SORALD_WORKSPACE + "/" + Constants.SPOONED + "/" + fileName;
+                TestHelper.SORALD_WORKSPACE + "/SEGMENT/" + Constants.SPOONED + "/" + fileName;
 
         RuleVerifier.verifyHasIssue(
                 pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());

@@ -28,8 +28,6 @@ public class Constants {
 
     public static final String VIOLATION_SPECIFIER_SEP = File.pathSeparator;
 
-    public static final String SORALD_WORKSPACE = "sorald-workspace";
-
     public static final String JAVA_EXT = ".java";
 
     public static final String SPOONED = "spooned";

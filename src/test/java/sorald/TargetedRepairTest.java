@@ -38,7 +38,7 @@ public class TargetedRepairTest {
                 });
 
         // assert
-        File soraldWorkspace = new File(Constants.SORALD_WORKSPACE);
+        File soraldWorkspace = new File(TestHelper.SORALD_WORKSPACE);
         List<File> repairedFiles =
                 FileUtils.findFilesByExtension(soraldWorkspace, Constants.JAVA_EXT);
         Set<RuleViolation> violationsAfter =
@@ -116,7 +116,7 @@ public class TargetedRepairTest {
                 });
 
         // assert
-        File soraldWorkspace = new File(Constants.SORALD_WORKSPACE);
+        File soraldWorkspace = new File(TestHelper.SORALD_WORKSPACE);
         Set<RuleViolation> violationsAfter =
                 ProjectScanner.scanProject(soraldWorkspace, soraldWorkspace, workdirInfo.check);
         assertThat(violationsAfter.size(), equalTo(workdirInfo.numViolationsBefore - 1));

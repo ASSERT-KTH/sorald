@@ -205,7 +205,7 @@ public class ProcessorTestHelper {
         }
 
         public Path repairedFilePath() {
-            return Paths.get(Constants.SORALD_WORKSPACE)
+            return Paths.get(TestHelper.SORALD_WORKSPACE)
                     .resolve(Constants.SPOONED)
                     .resolve(outfileRelpath);
         }

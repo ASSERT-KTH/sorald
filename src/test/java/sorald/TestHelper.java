@@ -10,6 +10,7 @@ public class TestHelper {
 
     public static final Path PATH_TO_RESOURCES_FOLDER =
             Paths.get("src").resolve("test").resolve("resources").toAbsolutePath();
+    public static final String SORALD_WORKSPACE = "sorald-workspace";
 
     /**
      * Simple helper method that removes the mandatory // Noncompliant comments from test files,
