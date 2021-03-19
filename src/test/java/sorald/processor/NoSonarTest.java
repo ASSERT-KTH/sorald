@@ -12,7 +12,7 @@ public class NoSonarTest {
     @Test
     public void noSonarTesting() throws Exception {
         String fileName = "NOSONARCommentTest.java";
-        Path pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
+        Path pathToBuggyFile = TestHelper.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
         String pathToRepairedFile =
                 Constants.SORALD_WORKSPACE + "/" + Constants.SPOONED + "/" + fileName;
 

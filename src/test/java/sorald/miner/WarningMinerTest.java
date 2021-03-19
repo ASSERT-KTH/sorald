@@ -23,6 +23,7 @@ import org.junit.jupiter.api.io.TempDir;
 import sorald.Constants;
 import sorald.FileUtils;
 import sorald.Main;
+import sorald.TestHelper;
 import sorald.cli.SoraldVersionProvider;
 import sorald.event.StatsMetadataKeys;
 import sorald.sonar.Checks;
@@ -30,9 +31,11 @@ import sorald.sonar.Checks;
 public class WarningMinerTest {
 
     private static final Path REPOS_TXT =
-            Constants.PATH_TO_RESOURCES_FOLDER.resolve("warning_miner").resolve("test_repos.txt");
+            TestHelper.PATH_TO_RESOURCES_FOLDER.resolve("warning_miner").resolve("test_repos.txt");
     private static final Path EXPECTED_OUTPUT_TXT =
-            Constants.PATH_TO_RESOURCES_FOLDER.resolve("warning_miner").resolve("test_results.txt");
+            TestHelper.PATH_TO_RESOURCES_FOLDER
+                    .resolve("warning_miner")
+                    .resolve("test_results.txt");
 
     @Test
     public void test_warningMiner() throws Exception {

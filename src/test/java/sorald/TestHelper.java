@@ -3,8 +3,13 @@ package sorald;
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class TestHelper {
+
+    public static final Path PATH_TO_RESOURCES_FOLDER =
+            Paths.get("src").resolve("test").resolve("resources").toAbsolutePath();
 
     /**
      * Simple helper method that removes the mandatory // Noncompliant comments from test files,

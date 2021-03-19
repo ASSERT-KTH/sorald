@@ -32,7 +32,7 @@ public class SegmentStrategyTest {
     @Test
     public void arrayToStringProcessor_success_Test() throws Exception {
         String fileName = "ArrayHashCodeAndToString.java";
-        Path pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
+        Path pathToBuggyFile = TestHelper.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
         String pathToRepairedFile =
                 Constants.SORALD_WORKSPACE + "/SEGMENT/" + Constants.SPOONED + "/" + fileName;
 
@@ -48,7 +48,7 @@ public class SegmentStrategyTest {
                     Constants.ARG_MAX_FILES_PER_SEGMENT,
                     "1",
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    Constants.PATH_TO_RESOURCES_FOLDER.toString(),
+                    TestHelper.PATH_TO_RESOURCES_FOLDER.toString(),
                     Constants.ARG_RULE_KEY,
                     "2116",
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
@@ -63,7 +63,7 @@ public class SegmentStrategyTest {
     @Test
     public void arrayToStringProcessor_fail_Test() throws Exception {
         String fileName = "ArrayHashCodeAndToString.java";
-        Path pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
+        Path pathToBuggyFile = TestHelper.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
 
         RuleVerifier.verifyHasIssue(
                 pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
@@ -75,7 +75,7 @@ public class SegmentStrategyTest {
                     Constants.ARG_MAX_FILES_PER_SEGMENT,
                     "0",
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    Constants.PATH_TO_RESOURCES_FOLDER.toString(),
+                    TestHelper.PATH_TO_RESOURCES_FOLDER.toString(),
                     Constants.ARG_RULE_KEY,
                     "2116",
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
@@ -91,7 +91,7 @@ public class SegmentStrategyTest {
             throws IOException {
         // arrange
         org.apache.commons.io.FileUtils.copyDirectory(
-                Constants.PATH_TO_RESOURCES_FOLDER.toFile(), tempDir);
+                TestHelper.PATH_TO_RESOURCES_FOLDER.toFile(), tempDir);
 
         SoraldConfig config = createSegmentConfig(tempDir.getAbsolutePath());
 
