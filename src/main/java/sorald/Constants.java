@@ -19,7 +19,6 @@ public class Constants {
     public static final String ARG_MINER_OUTPUT_FILE = "--miner-output-file";
     public static final String ARG_GIT_REPOS_LIST = "--git-repos-list";
     public static final String ARG_TEMP_DIR = "--temp-dir";
-    public static final String ARG_WORKSPACE = "--workspace";
     public static final String ARG_PRETTY_PRINTING_STRATEGY = "--pretty-printing-strategy";
     public static final String ARG_FILE_OUTPUT_STRATEGY = "--file-output-strategy";
     public static final String ARG_MAX_FIXES_PER_RULE = "--max-fixes-per-rule";

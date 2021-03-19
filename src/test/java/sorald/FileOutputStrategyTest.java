@@ -22,9 +22,7 @@ public class FileOutputStrategyTest {
                     Constants.ARG_RULE_KEY,
                     "4973",
                     Constants.ARG_FILE_OUTPUT_STRATEGY,
-                    FileOutputStrategy.CHANGED_ONLY.name(),
-                    Constants.ARG_WORKSPACE,
-                    Constants.SORALD_WORKSPACE
+                    FileOutputStrategy.CHANGED_ONLY.name()
                 });
 
         File spooned = new File(Constants.SORALD_WORKSPACE + File.separator + Constants.SPOONED);
@@ -43,9 +41,7 @@ public class FileOutputStrategyTest {
                     Constants.ARG_FILE_OUTPUT_STRATEGY,
                     FileOutputStrategy.ALL.name(),
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
-                    PrettyPrintingStrategy.NORMAL.name(),
-                    Constants.ARG_WORKSPACE,
-                    Constants.SORALD_WORKSPACE
+                    PrettyPrintingStrategy.NORMAL.name()
                 });
 
         File spooned = new File(Constants.SORALD_WORKSPACE + File.separator + Constants.SPOONED);

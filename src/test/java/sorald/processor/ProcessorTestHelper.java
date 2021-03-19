@@ -144,8 +144,6 @@ public class ProcessorTestHelper {
                     originalFileAbspath,
                     Constants.ARG_RULE_KEY,
                     Checks.getRuleKey(checkClass),
-                    Constants.ARG_WORKSPACE,
-                    Constants.SORALD_WORKSPACE,
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
                     brokenWithSniper
                             ? PrettyPrintingStrategy.NORMAL.name()

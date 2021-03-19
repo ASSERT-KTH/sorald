@@ -34,7 +34,7 @@ public class SegmentStrategyTest {
         String fileName = "ArrayHashCodeAndToString.java";
         Path pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
         String pathToRepairedFile =
-                Constants.SORALD_WORKSPACE + "/SEGMENT/" + Constants.SPOONED + "/" + fileName;
+                Constants.SORALD_WORKSPACE + "/" + Constants.SPOONED + "/" + fileName;
 
         RuleVerifier.verifyHasIssue(
                 pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
@@ -52,9 +52,7 @@ public class SegmentStrategyTest {
                     Constants.ARG_RULE_KEY,
                     "2116",
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
-                    PrettyPrintingStrategy.NORMAL.name(),
-                    Constants.ARG_WORKSPACE,
-                    Constants.SORALD_WORKSPACE + "/SEGMENT/"
+                    PrettyPrintingStrategy.NORMAL.name()
                 });
         TestHelper.removeComplianceComments(pathToRepairedFile);
         RuleVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
@@ -79,9 +77,7 @@ public class SegmentStrategyTest {
                     Constants.ARG_RULE_KEY,
                     "2116",
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
-                    PrettyPrintingStrategy.NORMAL.name(),
-                    Constants.ARG_WORKSPACE,
-                    Constants.SORALD_WORKSPACE + "/SEGMENT/"
+                    PrettyPrintingStrategy.NORMAL.name()
                 };
         assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
     }
