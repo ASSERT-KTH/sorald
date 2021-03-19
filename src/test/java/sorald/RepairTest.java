@@ -21,7 +21,7 @@ public class RepairTest {
     public void repair_doesNotAllowMultipleRules(@TempDir File workdir) throws IOException {
         // arrange
         File origFile =
-                Constants.PATH_TO_RESOURCES_FOLDER.resolve("MultipleProcessors.java").toFile();
+                TestHelper.PATH_TO_RESOURCES_FOLDER.resolve("MultipleProcessors.java").toFile();
         File targetFile = workdir.toPath().resolve(origFile.getName()).toFile();
         org.apache.commons.io.FileUtils.copyFile(origFile, targetFile);
         SoraldConfig config = new SoraldConfig();

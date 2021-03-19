@@ -24,7 +24,7 @@ import sorald.sonar.RuleVerifier;
 /** Helper functions for {@link ProcessorTest}. */
 public class ProcessorTestHelper {
     public static final Path TEST_FILES_ROOT =
-            Constants.PATH_TO_RESOURCES_FOLDER.resolve("processor_test_files");
+            TestHelper.PATH_TO_RESOURCES_FOLDER.resolve("processor_test_files");
 
     static final String EXPECTED_FILE_SUFFIX = ".expected";
     // The processors related to these checks currently cause problems with the sniper printer
@@ -119,8 +119,8 @@ public class ProcessorTestHelper {
      * Return a stream of all valid test cases, based on the tests files in {@link
      * ProcessorTestHelper#TEST_FILES_ROOT}.
      */
-    public static Stream<ProcessorTestCase<?>> getTestCaseStream() {
-        return getTestCaseStream(TEST_FILES_ROOT.toFile());
+    public static Stream<ProcessorTestCase<?>> getTestCaseStream() throws IOException {
+        return getTestCaseStream(TestHelper.createTemporaryProcessorTestFilesWorkspace().toFile());
     }
 
     /** Run sorald on the given test case. */
@@ -186,7 +186,7 @@ public class ProcessorTestHelper {
                     + " ruleName="
                     + ruleName
                     + " source="
-                    + TEST_FILES_ROOT.relativize(nonCompliantFile.toPath());
+                    + nonCompliantFile.getName();
         }
 
         public T createCheckInstance()
@@ -205,9 +205,8 @@ public class ProcessorTestHelper {
         }
 
         public Path repairedFilePath() {
-            return Paths.get(TestHelper.SORALD_WORKSPACE)
-                    .resolve(Constants.SPOONED)
-                    .resolve(outfileRelpath);
+            // FIXME this is redundant, all repairs are in-place!
+            return nonCompliantFile.toPath();
         }
     }
 }

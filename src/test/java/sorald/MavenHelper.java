@@ -15,7 +15,7 @@ import sorald.processor.ProcessorTestHelper;
 /** A class for helping with Maven in testing. */
 public class MavenHelper {
     private static final File POM_FILE =
-            Constants.PATH_TO_RESOURCES_FOLDER
+            TestHelper.PATH_TO_RESOURCES_FOLDER
                     .resolve("scenario_test_files")
                     .resolve("maven_converter_pom.xml")
                     .toFile();

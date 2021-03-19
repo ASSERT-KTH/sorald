@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import sorald.Constants;
+import sorald.TestHelper;
 
 public class FirstFitSegmentationAlgorithmTest {
 
@@ -28,7 +28,7 @@ public class FirstFitSegmentationAlgorithmTest {
 
     @Test
     public void segmentationTest() throws Exception {
-        Path folder = Constants.PATH_TO_RESOURCES_FOLDER.resolve("DummyTreeDir");
+        Path folder = TestHelper.PATH_TO_RESOURCES_FOLDER.resolve("DummyTreeDir");
         Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(folder.toString());
 
         LinkedList<LinkedList<Node>> segments = FirstFitSegmentationAlgorithm.segment(rootNode, 2);

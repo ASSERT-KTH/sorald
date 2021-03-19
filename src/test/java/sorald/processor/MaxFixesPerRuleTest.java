@@ -1,5 +1,8 @@
 package sorald.processor;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+
 import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
@@ -12,9 +15,7 @@ public class MaxFixesPerRuleTest {
     @Test
     public void arrayToStringProcessorTest() throws Exception {
         String fileName = "ArrayHashCodeAndToString.java";
-        Path pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
-        String pathToRepairedFile =
-                TestHelper.SORALD_WORKSPACE + "/" + Constants.SPOONED + "/" + fileName;
+        Path pathToBuggyFile = TestHelper.createTemporaryTestResourceWorkspace().resolve(fileName);
 
         RuleVerifier.verifyHasIssue(
                 pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
@@ -28,8 +29,13 @@ public class MaxFixesPerRuleTest {
                     Constants.ARG_MAX_FIXES_PER_RULE,
                     "3"
                 });
-        TestHelper.removeComplianceComments(pathToRepairedFile);
-        RuleVerifier.verifyHasIssue(
-                pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck()); // one bug left
+        TestHelper.removeComplianceComments(pathToBuggyFile.toString());
+
+        try {
+            RuleVerifier.verifyHasIssue(
+                    pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
+        } catch (AssertionError e) {
+            assertThat(e.getMessage(), containsString("Unexpected at [27]"));
+        }
     }
 }

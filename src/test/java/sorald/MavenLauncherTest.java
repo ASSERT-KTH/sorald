@@ -15,7 +15,7 @@ public class MavenLauncherTest {
             throws IOException {
         // arrange
         org.apache.commons.io.FileUtils.copyDirectory(
-                Constants.PATH_TO_RESOURCES_FOLDER
+                TestHelper.PATH_TO_RESOURCES_FOLDER
                         .resolve("scenario_test_files/simple-java8-maven-project")
                         .toFile(),
                 workdir);

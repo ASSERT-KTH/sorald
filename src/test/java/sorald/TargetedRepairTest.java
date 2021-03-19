@@ -23,38 +23,34 @@ import sorald.sonar.RuleViolation;
 public class TargetedRepairTest {
 
     @Test
-    void targetedRepair_correctlyRepairsSingleViolation(@TempDir File workdir) throws Exception {
+    void targetedRepair_correctlyRepairsSingleViolation() throws Exception {
         // arrange
-        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir(workdir);
+        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir();
 
         // act
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    workdir.getAbsolutePath(),
+                    workdirInfo.workdir.getAbsolutePath(),
                     Constants.ARG_RULE_VIOLATION_SPECIFIERS,
-                    workdirInfo.targetViolation.relativeSpecifier(workdir.toPath())
+                    workdirInfo.targetViolation.relativeSpecifier(workdirInfo.workdir.toPath())
                 });
 
         // assert
-        File soraldWorkspace = new File(TestHelper.SORALD_WORKSPACE);
-        List<File> repairedFiles =
-                FileUtils.findFilesByExtension(soraldWorkspace, Constants.JAVA_EXT);
         Set<RuleViolation> violationsAfter =
-                ProjectScanner.scanProject(soraldWorkspace, soraldWorkspace, workdirInfo.check);
+                ProjectScanner.scanProject(
+                        workdirInfo.targetFile, workdirInfo.targetFile, workdirInfo.check);
 
         assertThat(violationsAfter.size(), equalTo(workdirInfo.numViolationsBefore - 1));
         assertFalse(violationsAfter.contains(workdirInfo.targetViolation));
-        assertThat(repairedFiles.size(), equalTo(1));
-        assertThat(repairedFiles.get(0).getName(), equalTo(workdirInfo.targetFile.getName()));
     }
 
     /** It should not be possible to specify both rule keys and specific rule violations. */
     @Test
     public void targetedRepair_cannotBeUsedWithRuleKeys(@TempDir File workdir) throws Exception {
         // arrange
-        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir(workdir);
+        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir();
         var args =
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
@@ -74,7 +70,7 @@ public class TargetedRepairTest {
     public void targetedRepair_requiresViolationPath_existsInOriginalFilesPath(
             @TempDir File workdir) throws Exception {
         // arrange
-        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir(workdir);
+        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir();
 
         // make the violation ID relative to some other directory
         String badViolationId =
@@ -93,13 +89,12 @@ public class TargetedRepairTest {
     }
 
     @Test
-    public void targetedRepair_acceptsAbsoluteViolationPath(@TempDir File workdir)
-            throws Exception {
+    public void targetedRepair_acceptsAbsoluteViolationPath() throws Exception {
         // arrange
-        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir(workdir);
+        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir();
 
         // act
-        Path rootDir = workdir.toPath().toAbsolutePath().getRoot();
+        Path rootDir = workdirInfo.workdir.toPath().getRoot();
         String absoluteViolationId =
                 workdirInfo
                         .targetViolation
@@ -110,34 +105,31 @@ public class TargetedRepairTest {
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    workdir.getAbsolutePath(),
+                    workdirInfo.workdir.toString(),
                     Constants.ARG_RULE_VIOLATION_SPECIFIERS,
                     absoluteViolationId
                 });
 
         // assert
-        File soraldWorkspace = new File(TestHelper.SORALD_WORKSPACE);
         Set<RuleViolation> violationsAfter =
-                ProjectScanner.scanProject(soraldWorkspace, soraldWorkspace, workdirInfo.check);
+                ProjectScanner.scanProject(
+                        workdirInfo.workdir, workdirInfo.workdir, workdirInfo.check);
         assertThat(violationsAfter.size(), equalTo(workdirInfo.numViolationsBefore - 1));
     }
 
     /** Setup the workdir with a specific target violation. */
-    private static TargetedRepairWorkdirInfo setupWorkdir(File workdir) throws IOException {
-        org.apache.commons.io.FileUtils.copyDirectory(
-                Constants.PATH_TO_RESOURCES_FOLDER.toFile(), workdir);
+    private static TargetedRepairWorkdirInfo setupWorkdir() throws IOException {
+        Path workdir = TestHelper.createTemporaryProcessorTestFilesWorkspace();
 
         String ruleKey = "2111";
         JavaFileScanner check = Checks.getCheckInstance(ruleKey);
         File targetFile =
-                workdir.toPath()
-                        .resolve("processor_test_files")
-                        .resolve("2111_BigDecimalDoubleConstructor")
+                workdir.resolve("2111_BigDecimalDoubleConstructor")
                         .resolve("BigDecimalDoubleConstructor.java")
                         .toFile();
 
         List<RuleViolation> violationsBefore =
-                new ArrayList<>(ProjectScanner.scanProject(targetFile, workdir, check));
+                new ArrayList<>(ProjectScanner.scanProject(targetFile, workdir.toFile(), check));
         assertThat(
                 "there must be more than 1 violation in the test file for an adequate test",
                 violationsBefore.size(),
@@ -145,21 +137,25 @@ public class TargetedRepairTest {
         violationsBefore.sort(RuleViolation::compareTo);
         RuleViolation violation = violationsBefore.get(violationsBefore.size() / 2);
 
-        return new TargetedRepairWorkdirInfo(check, violationsBefore.size(), targetFile, violation);
+        return new TargetedRepairWorkdirInfo(
+                workdir.toFile(), check, violationsBefore.size(), targetFile, violation);
     }
 
     /** Simple container for info about the targeted repair working directory. */
     private static class TargetedRepairWorkdirInfo {
+        final File workdir;
         final JavaFileScanner check;
         final int numViolationsBefore;
         final File targetFile;
         final RuleViolation targetViolation;
 
         private TargetedRepairWorkdirInfo(
+                File workdirPath,
                 JavaFileScanner check,
                 int numViolationsBefore,
                 File targetFile,
                 RuleViolation targetViolation) {
+            this.workdir = workdirPath;
             this.check = check;
             this.numViolationsBefore = numViolationsBefore;
             this.targetFile = targetFile;
