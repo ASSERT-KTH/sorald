@@ -6,7 +6,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -51,7 +50,6 @@ import spoon.support.sniper.SniperJavaPrettyPrinter;
 
 /** Class for repairing projects. */
 public class Repair {
-    private final Path spoonedPath;
     private final SoraldConfig config;
     private int patchedFileCounter = 0;
 
@@ -60,7 +58,6 @@ public class Repair {
 
     public Repair(SoraldConfig config, List<? extends SoraldEventHandler> eventHandlers) {
         this.config = config;
-        spoonedPath = Paths.get(config.getWorkspace()).resolve(Constants.SPOONED);
 
         cuCollector = new CompilationUnitCollector();
         List<SoraldEventHandler> eventHandlersCopy = new ArrayList<>(eventHandlers);

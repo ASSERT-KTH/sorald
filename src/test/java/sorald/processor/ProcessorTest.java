@@ -56,12 +56,8 @@ public class ProcessorTest {
     public void testProcessSingleFile(
             ProcessorTestHelper.ProcessorTestCase<? extends JavaFileScanner> testCase)
             throws Exception {
-        assertFalse(
-                new File(Constants.SORALD_WORKSPACE).exists(),
-                "workspace should must be clean before test");
-
         Path statsOutputFile =
-                Paths.get(Constants.SORALD_WORKSPACE)
+                Paths.get(TestHelper.SORALD_WORKSPACE)
                         .resolve("stats.txt")
                         .toAbsolutePath()
                         .normalize();
@@ -103,7 +99,7 @@ public class ProcessorTest {
             throws Exception {
         // arrange
         assertFalse(
-                new File(Constants.SORALD_WORKSPACE).exists(),
+                new File(TestHelper.SORALD_WORKSPACE).exists(),
                 "workspace should must be clean before test");
 
         // Spoon does not like parsing files that don't end in .java, so we must copy the .expected
@@ -154,7 +150,7 @@ public class ProcessorTest {
         ProcessorTestHelper.runSorald(workdir, ArrayHashCodeAndToStringCheck.class);
 
         // assert
-        assertTrue(new File(Constants.SORALD_WORKSPACE).exists());
+        assertTrue(new File(TestHelper.SORALD_WORKSPACE).exists());
     }
 
     @Test
@@ -174,7 +170,7 @@ public class ProcessorTest {
         // assert
         String output =
                 Files.readString(
-                        Paths.get(Constants.SORALD_WORKSPACE)
+                        Paths.get(TestHelper.SORALD_WORKSPACE)
                                 .resolve(Constants.SPOONED)
                                 .resolve(testCase.outfileRelpath));
         assertThat(output, not(containsString("\t")));
@@ -192,7 +188,7 @@ public class ProcessorTest {
 
         // assert
         Path sourceFile =
-                Paths.get(Constants.SORALD_WORKSPACE)
+                Paths.get(TestHelper.SORALD_WORKSPACE)
                         .resolve(Constants.SPOONED)
                         .resolve("some")
                         .resolve("pkg")

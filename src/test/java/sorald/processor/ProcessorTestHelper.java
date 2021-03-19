@@ -17,6 +17,7 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.Main;
 import sorald.PrettyPrintingStrategy;
+import sorald.TestHelper;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
 
@@ -144,8 +145,6 @@ public class ProcessorTestHelper {
                     originalFileAbspath,
                     Constants.ARG_RULE_KEY,
                     Checks.getRuleKey(checkClass),
-                    Constants.ARG_WORKSPACE,
-                    Constants.SORALD_WORKSPACE,
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
                     brokenWithSniper
                             ? PrettyPrintingStrategy.NORMAL.name()
@@ -206,7 +205,7 @@ public class ProcessorTestHelper {
         }
 
         public Path repairedFilePath() {
-            return Paths.get(Constants.SORALD_WORKSPACE)
+            return Paths.get(TestHelper.SORALD_WORKSPACE)
                     .resolve(Constants.SPOONED)
                     .resolve(outfileRelpath);
         }

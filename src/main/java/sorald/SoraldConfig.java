@@ -9,7 +9,6 @@ public class SoraldConfig {
     private PrettyPrintingStrategy prettyPrintingStrategy;
     private RepairStrategy repairStrategy;
     private String originalFilesPath;
-    private String workspace;
     private String gitRepoPath;
     private int maxFixesPerRule;
     private int maxFilesPerSegment;
@@ -40,14 +39,6 @@ public class SoraldConfig {
 
     public String getOriginalFilesPath() {
         return this.originalFilesPath;
-    }
-
-    public void setWorkspace(String workspace) {
-        this.workspace = workspace;
-    }
-
-    public String getWorkspace() {
-        return this.workspace;
     }
 
     public void setMaxFixesPerRule(int maxFixesPerRule) {

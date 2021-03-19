@@ -70,13 +70,6 @@ class RepairCommand extends BaseCommand {
     }
 
     @CommandLine.Option(
-            names = {Constants.ARG_WORKSPACE},
-            description =
-                    "The path to a folder that will be used as workspace by Sorald, i.e. the path for the output.",
-            defaultValue = Constants.SORALD_WORKSPACE)
-    File soraldWorkspace;
-
-    @CommandLine.Option(
             names = {Constants.ARG_PRETTY_PRINTING_STRATEGY},
             description =
                     "Mode for pretty printing the source code: 'NORMAL', which means that all source code will be printed and its formatting might change (such as indentation), and 'SNIPER', which means that only statements changed towards the repair of Sonar rule violations will be printed.")
@@ -265,7 +258,6 @@ class RepairCommand extends BaseCommand {
     private SoraldConfig createConfig() {
         SoraldConfig config = new SoraldConfig();
         config.setOriginalFilesPath(originalFilesPath.getAbsolutePath());
-        config.setWorkspace(soraldWorkspace.getAbsolutePath());
         config.setPrettyPrintingStrategy(prettyPrintingStrategy);
         config.setMaxFixesPerRule(maxFixesPerRule);
         config.setMaxFilesPerSegment(maxFilesPerSegment);

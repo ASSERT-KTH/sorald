@@ -6,6 +6,8 @@ import java.io.FileReader;
 
 public class TestHelper {
 
+    public static final String SORALD_WORKSPACE = "sorald-workspace";
+
     /**
      * Simple helper method that removes the mandatory // Noncompliant comments from test files,
      * except for lines that contain NOSONAR comments.

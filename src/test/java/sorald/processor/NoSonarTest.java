@@ -14,7 +14,7 @@ public class NoSonarTest {
         String fileName = "NOSONARCommentTest.java";
         Path pathToBuggyFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
         String pathToRepairedFile =
-                Constants.SORALD_WORKSPACE + "/" + Constants.SPOONED + "/" + fileName;
+                TestHelper.SORALD_WORKSPACE + "/" + Constants.SPOONED + "/" + fileName;
 
         RuleVerifier.verifyHasIssue(
                 pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
@@ -25,8 +25,6 @@ public class NoSonarTest {
                     pathToBuggyFile.toString(),
                     Constants.ARG_RULE_KEY,
                     "2116",
-                    Constants.ARG_WORKSPACE,
-                    Constants.SORALD_WORKSPACE,
                     Constants.ARG_MAX_FIXES_PER_RULE,
                     "3"
                 });
