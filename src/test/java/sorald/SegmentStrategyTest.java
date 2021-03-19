@@ -151,7 +151,6 @@ public class SegmentStrategyTest {
         config.setRepairStrategy(RepairStrategy.SEGMENT);
         config.setOriginalFilesPath(originalFilesPath);
         config.setWorkspace(Constants.SORALD_WORKSPACE);
-        config.setFileOutputStrategy(FileOutputStrategy.CHANGED_ONLY);
         config.setMaxFixesPerRule(Integer.MAX_VALUE);
         config.setMaxFilesPerSegment(1);
         return config;

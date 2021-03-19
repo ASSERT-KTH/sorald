@@ -14,13 +14,11 @@ import java.util.IdentityHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.apache.commons.lang3.tuple.Pair;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
@@ -91,9 +89,10 @@ public class Repair {
         }
 
         String ruleKey = distinctRuleKeys.get(0);
-        Pair<Path, Path> inOutPaths = computeInOutPaths();
-        final Path inputDir = inOutPaths.getLeft();
-        final Path outputDir = inOutPaths.getRight();
+
+        // we do only in-place repair
+        final Path inputDir = Path.of(config.getOriginalFilesPath());
+        final Path outputDir = Path.of(config.getOriginalFilesPath());
 
         SoraldAbstractProcessor<?> processor = createProcessor(Integer.parseInt(ruleKey));
         Stream<CtModel> models = repair(inputDir, processor, ruleViolations);
@@ -187,19 +186,6 @@ public class Repair {
         EventHelper.fireEvent(new CrashEvent("Crash in segment: " + paths, e), eventHandlers);
     }
 
-    private Pair<Path, Path> computeInOutPaths() {
-        final Path originalPath = Paths.get(config.getOriginalFilesPath());
-
-        if (config.getFileOutputStrategy() == FileOutputStrategy.IN_PLACE) {
-            // always write to the input files
-            return Pair.of(originalPath, originalPath);
-        } else {
-            // one processor, straightforward repair: we use the given input file dir, run one
-            // processor, directly output files the spooned output dir
-            return Pair.of(Paths.get(config.getOriginalFilesPath()), spoonedPath);
-        }
-    }
-
     private void repairModelWithInitializedProcessor(
             CtModel model, SoraldAbstractProcessor<?> processor, Set<RuleViolation> violations) {
         EventHelper.fireEvent(EventType.REPAIR_START, eventHandlers);
@@ -233,38 +219,29 @@ public class Repair {
     }
 
     private void writeModel(CtModel model, Path outputDir) {
-        Collection<CtCompilationUnit> compilationUnits =
-                config.getFileOutputStrategy() == FileOutputStrategy.ALL
-                        ? CompilationUnitHelpers.resolveCompilationUnits(model.getAllTypes())
-                        : cuCollector.getCollectedCompilationUnits();
-        compilationUnits.forEach(cu -> writeCompilationUnit(cu, outputDir));
+        Collection<CtCompilationUnit> compilationUnits = cuCollector.getCollectedCompilationUnits();
+        compilationUnits.forEach(cu -> overwriteCompilationUnit(cu, outputDir));
     }
 
-    private void writeCompilationUnit(CtCompilationUnit cu, Path outputDir) {
+    private void overwriteCompilationUnit(CtCompilationUnit cu, Path outputDir) {
         List<CtType<?>> typesToPrint =
                 cu.getDeclaredTypes().stream()
                         .filter(CtType::isTopLevel)
                         .collect(Collectors.toList());
         Path sourcePath = cu.getPosition().getFile().toPath();
-        Optional<Path> maybeOutputPath =
-                CompilationUnitHelpers.resolveOutputPath(cu, outputDir.toFile());
 
-        maybeOutputPath.ifPresent(
-                outputPath -> {
-                    // For IN_PLACE repair we must adjust the final output path as it is sometimes
-                    // incorrectly calculated if the project root is not given as the root of the
-                    // Java source tree
-                    Path finalOutputPath =
-                            config.getFileOutputStrategy() == FileOutputStrategy.IN_PLACE
-                                    ? sourcePath
-                                    : outputPath;
-                    String output =
-                            cu.getFactory()
-                                    .getEnvironment()
-                                    .createPrettyPrinter()
-                                    .printTypes(typesToPrint.toArray(CtType[]::new));
-                    writeToFile(finalOutputPath, output);
-                });
+        // FIXME this is an unclear hack; we only write compilation units if we can compute their
+        //       output paths but the computed path is not actually used.
+        if (CompilationUnitHelpers.resolveOutputPath(cu, outputDir.toFile()).isPresent()) {
+            String output =
+                    cu.getFactory()
+                            .getEnvironment()
+                            .createPrettyPrinter()
+                            .printTypes(typesToPrint.toArray(CtType[]::new));
+
+            // we overwrite the source
+            writeToFile(sourcePath, output);
+        }
     }
 
     private static void writeToFile(Path filepath, String output) {

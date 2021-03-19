@@ -10,7 +10,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import picocli.CommandLine;
 import sorald.Constants;
-import sorald.FileOutputStrategy;
 import sorald.FileUtils;
 import sorald.PrettyPrintingStrategy;
 import sorald.Processors;
@@ -82,12 +81,6 @@ class RepairCommand extends BaseCommand {
             description =
                     "Mode for pretty printing the source code: 'NORMAL', which means that all source code will be printed and its formatting might change (such as indentation), and 'SNIPER', which means that only statements changed towards the repair of Sonar rule violations will be printed.")
     PrettyPrintingStrategy prettyPrintingStrategy = PrettyPrintingStrategy.SNIPER;
-
-    @CommandLine.Option(
-            names = Constants.ARG_FILE_OUTPUT_STRATEGY,
-            description =
-                    "Mode for outputting files: 'CHANGED_ONLY', which means that only changed files will be created in the workspace. 'ALL', which means that all files, including the unchanged ones, will be created in the workspace. 'IN_PLACE', which means that results are written directly to source files.")
-    FileOutputStrategy fileOutputStrategy = FileOutputStrategy.CHANGED_ONLY;
 
     @CommandLine.Option(
             names = Constants.ARG_MAX_FIXES_PER_RULE,
@@ -274,7 +267,6 @@ class RepairCommand extends BaseCommand {
         config.setOriginalFilesPath(originalFilesPath.getAbsolutePath());
         config.setWorkspace(soraldWorkspace.getAbsolutePath());
         config.setPrettyPrintingStrategy(prettyPrintingStrategy);
-        config.setFileOutputStrategy(fileOutputStrategy);
         config.setMaxFixesPerRule(maxFixesPerRule);
         config.setMaxFilesPerSegment(maxFilesPerSegment);
         config.setRepairStrategy(repairStrategy);

@@ -7,7 +7,6 @@ import java.util.Optional;
 /* All config settings of Sorald should be gathered here */
 public class SoraldConfig {
     private PrettyPrintingStrategy prettyPrintingStrategy;
-    private FileOutputStrategy fileOutputStrategy;
     private RepairStrategy repairStrategy;
     private String originalFilesPath;
     private String workspace;
@@ -24,14 +23,6 @@ public class SoraldConfig {
 
     public PrettyPrintingStrategy getPrettyPrintingStrategy() {
         return this.prettyPrintingStrategy;
-    }
-
-    public void setFileOutputStrategy(FileOutputStrategy fileOutputStrategy) {
-        this.fileOutputStrategy = fileOutputStrategy;
-    }
-
-    public FileOutputStrategy getFileOutputStrategy() {
-        return this.fileOutputStrategy;
     }
 
     public void setRepairStrategy(RepairStrategy repairStrategy) {
