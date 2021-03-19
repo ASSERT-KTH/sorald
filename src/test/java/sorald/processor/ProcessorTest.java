@@ -6,14 +6,11 @@ import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -56,11 +53,7 @@ public class ProcessorTest {
     public void testProcessSingleFile(
             ProcessorTestHelper.ProcessorTestCase<? extends JavaFileScanner> testCase)
             throws Exception {
-        Path statsOutputFile =
-                Paths.get(TestHelper.SORALD_WORKSPACE)
-                        .resolve("stats.txt")
-                        .toAbsolutePath()
-                        .normalize();
+        Path statsOutputFile = testCase.nonCompliantFile.toPath().resolveSibling("stats.json");
 
         ProcessorTestHelper.runSorald(
                 testCase, Constants.ARG_STATS_OUTPUT_FILE, statsOutputFile.toString());
@@ -78,7 +71,8 @@ public class ProcessorTest {
     private static class NonCompliantJavaFileProvider implements ArgumentsProvider {
 
         @Override
-        public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
+        public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext)
+                throws IOException {
             return ProcessorTestHelper.getTestCaseStream().map(Arguments::of);
         }
     }
@@ -98,9 +92,6 @@ public class ProcessorTest {
             @TempDir File tempdir)
             throws Exception {
         // arrange
-        assertFalse(
-                new File(TestHelper.SORALD_WORKSPACE).exists(),
-                "workspace should must be clean before test");
 
         // Spoon does not like parsing files that don't end in .java, so we must copy the .expected
         // files to end with .java
@@ -133,12 +124,10 @@ public class ProcessorTest {
      * presence of directories ending in `.java`
      */
     @Test
-    public void sorald_canProcessProject_whenDirectoryHasJavaFileExtension(@TempDir File workdir)
-            throws Exception {
+    public void sorald_canProcessProject_whenDirectoryHasJavaFileExtension() throws Exception {
         // arrange
-        org.apache.commons.io.FileUtils.copyDirectory(
-                TestHelper.PATH_TO_RESOURCES_FOLDER.toFile(), workdir);
-        File dirWithJavaExtension = workdir.listFiles(File::isDirectory)[0];
+        Path workdir = TestHelper.createTemporaryProcessorTestFilesWorkspace();
+        File dirWithJavaExtension = workdir.toFile().listFiles(File::isDirectory)[0];
         org.apache.commons.io.FileUtils.moveDirectory(
                 dirWithJavaExtension,
                 dirWithJavaExtension
@@ -147,10 +136,9 @@ public class ProcessorTest {
                         .toFile());
 
         // act
-        ProcessorTestHelper.runSorald(workdir, ArrayHashCodeAndToStringCheck.class);
+        ProcessorTestHelper.runSorald(workdir.toFile(), ArrayHashCodeAndToStringCheck.class);
 
-        // assert
-        assertTrue(new File(TestHelper.SORALD_WORKSPACE).exists());
+        // FIXME add assert, currently just checks that there is no crash!
     }
 
     @Test
@@ -168,28 +156,22 @@ public class ProcessorTest {
         ProcessorTestHelper.runSorald(testCase);
 
         // assert
-        String output =
-                Files.readString(
-                        Paths.get(TestHelper.SORALD_WORKSPACE)
-                                .resolve(Constants.SPOONED)
-                                .resolve(testCase.outfileRelpath));
+        String output = Files.readString(testCase.repairedFilePath());
         assertThat(output, not(containsString("\t")));
     }
 
     @Test
     public void sorald_canProcessProject_withModuleInfo() throws Exception {
+        // arrange
+        Path workdir = TestHelper.createTemporaryTestResourceWorkspace();
+        Path scenarioRoot = workdir.resolve("scenario_test_files").resolve("project.with.module");
+
         // act
-        ProcessorTestHelper.runSorald(
-                TestHelper.PATH_TO_RESOURCES_FOLDER
-                        .resolve("scenario_test_files")
-                        .resolve("project.with.module")
-                        .toFile(),
-                DeadStoreCheck.class);
+        ProcessorTestHelper.runSorald(scenarioRoot.toFile(), DeadStoreCheck.class);
 
         // assert
         Path sourceFile =
-                Paths.get(TestHelper.SORALD_WORKSPACE)
-                        .resolve(Constants.SPOONED)
+                scenarioRoot
                         .resolve("some")
                         .resolve("pkg")
                         .resolve("ClassInNamedModuleWithDeadStores.java");
@@ -205,7 +187,8 @@ public class ProcessorTest {
     private static class NonCompliantJavaFileWithExpectedProvider implements ArgumentsProvider {
 
         @Override
-        public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
+        public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext)
+                throws IOException {
             return ProcessorTestHelper.getTestCaseStream()
                     .filter(testCase -> testCase.expectedOutfile().isPresent())
                     .map(Arguments::of);

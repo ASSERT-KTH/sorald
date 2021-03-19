@@ -3,6 +3,7 @@ package sorald.segment;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,8 +15,8 @@ import sorald.TestHelper;
 public class SoraldTreeBuilderAlgorithmTest {
 
     @Test
-    public void treeBuildTest() {
-        Path folder = TestHelper.PATH_TO_RESOURCES_FOLDER.resolve("DummyTreeDir");
+    public void treeBuildTest() throws IOException {
+        Path folder = TestHelper.createTemporaryTestResourceWorkspace().resolve("DummyTreeDir");
         Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(folder.toString());
         File rootFolder = folder.toFile();
         Assertions.assertEquals("DummyTreeDir", rootFolder.getName());
