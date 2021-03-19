@@ -17,13 +17,14 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.Main;
 import sorald.PrettyPrintingStrategy;
+import sorald.TestHelper;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
 
 /** Helper functions for {@link ProcessorTest}. */
 public class ProcessorTestHelper {
     public static final Path TEST_FILES_ROOT =
-            Constants.PATH_TO_RESOURCES_FOLDER.resolve("processor_test_files");
+            TestHelper.PATH_TO_RESOURCES_FOLDER.resolve("processor_test_files");
 
     static final String EXPECTED_FILE_SUFFIX = ".expected";
     // The processors related to these checks currently cause problems with the sniper printer

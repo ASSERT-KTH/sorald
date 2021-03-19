@@ -125,7 +125,7 @@ public class TargetedRepairTest {
     /** Setup the workdir with a specific target violation. */
     private static TargetedRepairWorkdirInfo setupWorkdir(File workdir) throws IOException {
         org.apache.commons.io.FileUtils.copyDirectory(
-                Constants.PATH_TO_RESOURCES_FOLDER.toFile(), workdir);
+                TestHelper.PATH_TO_RESOURCES_FOLDER.toFile(), workdir);
 
         String ruleKey = "2111";
         JavaFileScanner check = Checks.getCheckInstance(ruleKey);

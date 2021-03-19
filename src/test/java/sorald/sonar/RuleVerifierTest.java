@@ -16,7 +16,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.DefaultPackageCheck;
-import sorald.Constants;
+import sorald.TestHelper;
 
 class RuleVerifierTest {
 
@@ -26,14 +26,14 @@ class RuleVerifierTest {
         String suppressedRuleKey = "2116";
         String nonSuppressedRuleKey = "2164";
         String testFile =
-                Constants.PATH_TO_RESOURCES_FOLDER
+                TestHelper.PATH_TO_RESOURCES_FOLDER
                         .resolve("WithMethodSuppressedS" + suppressedRuleKey + ".java")
                         .toString();
 
         var violations =
                 RuleVerifier.analyze(
                         List.of(testFile),
-                        Constants.PATH_TO_RESOURCES_FOLDER.toFile(),
+                        TestHelper.PATH_TO_RESOURCES_FOLDER.toFile(),
                         List.of(
                                 Checks.getCheckInstance(suppressedRuleKey),
                                 Checks.getCheckInstance(nonSuppressedRuleKey)));
@@ -50,13 +50,13 @@ class RuleVerifierTest {
         var checkWithNoLocation = new DefaultPackageCheck();
 
         String testFile =
-                Constants.PATH_TO_RESOURCES_FOLDER
+                TestHelper.PATH_TO_RESOURCES_FOLDER
                         .resolve("ArrayHashCodeAndToString.java")
                         .toString();
         var violations =
                 RuleVerifier.analyze(
                         List.of(testFile),
-                        Constants.PATH_TO_RESOURCES_FOLDER.toFile(),
+                        TestHelper.PATH_TO_RESOURCES_FOLDER.toFile(),
                         checkWithNoLocation);
 
         assertThat(violations, is(empty()));
@@ -65,7 +65,7 @@ class RuleVerifierTest {
     @Test
     public void analyze_doesNotReturnViolation_fromNosonarLine() throws IOException {
         // arrange
-        Path testFile = Constants.PATH_TO_RESOURCES_FOLDER.resolve("NOSONARCommentTest.java");
+        Path testFile = TestHelper.PATH_TO_RESOURCES_FOLDER.resolve("NOSONARCommentTest.java");
         int nosonarLine = 7;
         int violationLine = 8;
         List<String> lines = Files.readAllLines(testFile);
@@ -76,7 +76,7 @@ class RuleVerifierTest {
         var violations =
                 RuleVerifier.analyze(
                         List.of(testFile.toString()),
-                        Constants.PATH_TO_RESOURCES_FOLDER.toFile(),
+                        TestHelper.PATH_TO_RESOURCES_FOLDER.toFile(),
                         List.of(Checks.getCheckInstance("S2116")));
 
         // assert

@@ -9,13 +9,13 @@ import java.util.stream.Collectors;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import sorald.Constants;
+import sorald.TestHelper;
 
 public class SoraldTreeBuilderAlgorithmTest {
 
     @Test
     public void treeBuildTest() {
-        Path folder = Constants.PATH_TO_RESOURCES_FOLDER.resolve("DummyTreeDir");
+        Path folder = TestHelper.PATH_TO_RESOURCES_FOLDER.resolve("DummyTreeDir");
         Node rootNode = SoraldTreeBuilderAlgorithm.buildTree(folder.toString());
         File rootFolder = folder.toFile();
         Assertions.assertEquals("DummyTreeDir", rootFolder.getName());

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 import sorald.Constants;
+import sorald.TestHelper;
 import sorald.sonar.BestFitScanner;
 import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
@@ -27,7 +28,7 @@ public class BestFitScannerTest {
 
     @Test
     public void calculateBestFits_throws_whenProcessorConcernsDifferentRuleThanViolations() {
-        File projectBaseDir = Constants.PATH_TO_RESOURCES_FOLDER.toFile();
+        File projectBaseDir = TestHelper.PATH_TO_RESOURCES_FOLDER.toFile();
         Set<RuleViolation> xxeProcessingViolations =
                 ProjectScanner.scanProject(
                         projectBaseDir,
