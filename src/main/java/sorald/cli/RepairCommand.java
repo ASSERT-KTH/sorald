@@ -265,7 +265,6 @@ class RepairCommand extends BaseCommand {
     private SoraldConfig createConfig() {
         SoraldConfig config = new SoraldConfig();
         config.setOriginalFilesPath(originalFilesPath.getAbsolutePath());
-        config.setWorkspace(Constants.SORALD_WORKSPACE);
         config.setPrettyPrintingStrategy(prettyPrintingStrategy);
         config.setFileOutputStrategy(fileOutputStrategy);
         config.setMaxFixesPerRule(maxFixesPerRule);

@@ -146,7 +146,6 @@ public class SegmentStrategyTest {
         var config = new SoraldConfig();
         config.setRepairStrategy(RepairStrategy.SEGMENT);
         config.setOriginalFilesPath(originalFilesPath);
-        config.setWorkspace(Constants.SORALD_WORKSPACE);
         config.setFileOutputStrategy(FileOutputStrategy.CHANGED_ONLY);
         config.setMaxFixesPerRule(Integer.MAX_VALUE);
         config.setMaxFilesPerSegment(1);
