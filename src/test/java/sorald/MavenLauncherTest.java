@@ -33,8 +33,6 @@ public class MavenLauncherTest {
                     workdir.getAbsolutePath(),
                     Constants.ARG_RULE_KEY,
                     "1854",
-                    Constants.ARG_FILE_OUTPUT_STRATEGY,
-                    FileOutputStrategy.IN_PLACE.name(),
                     Constants.ARG_REPAIR_STRATEGY,
                     RepairStrategy.MAVEN.name()
                 };
