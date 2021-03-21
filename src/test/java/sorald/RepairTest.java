@@ -25,7 +25,6 @@ public class RepairTest {
         File targetFile = workdir.toPath().resolve(origFile.getName()).toFile();
         org.apache.commons.io.FileUtils.copyFile(origFile, targetFile);
         SoraldConfig config = new SoraldConfig();
-        config.setWorkspace(Constants.SORALD_WORKSPACE);
 
         Set<RuleViolation> violations =
                 Set.of("2111", "2184").stream()

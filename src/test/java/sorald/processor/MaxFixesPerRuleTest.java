@@ -25,8 +25,6 @@ public class MaxFixesPerRuleTest {
                     pathToBuggyFile.toString(),
                     Constants.ARG_RULE_KEY,
                     "2116",
-                    Constants.ARG_WORKSPACE,
-                    Constants.SORALD_WORKSPACE,
                     Constants.ARG_MAX_FIXES_PER_RULE,
                     "3"
                 });

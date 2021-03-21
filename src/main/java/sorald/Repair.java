@@ -62,7 +62,7 @@ public class Repair {
 
     public Repair(SoraldConfig config, List<? extends SoraldEventHandler> eventHandlers) {
         this.config = config;
-        spoonedPath = Paths.get(config.getWorkspace()).resolve(Constants.SPOONED);
+        spoonedPath = Paths.get(Constants.SORALD_WORKSPACE).resolve(Constants.SPOONED);
 
         cuCollector = new CompilationUnitCollector();
         List<SoraldEventHandler> eventHandlersCopy = new ArrayList<>(eventHandlers);

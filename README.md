@@ -59,14 +59,16 @@ The full list of options is as follows (and can also be found by running
 `sorald repair --help`):
 
 ```bash
+Repair Sonar rule violations in a targeted project.
       --file-output-strategy=<fileOutputStrategy>
-                          Mode for outputting files: 'CHANGED_ONLY', which
-                            means that only changed files will be created in
-                            the workspace. 'ALL', which means that all files,
-                            including the unchanged ones, will be created in
-                            the workspace. 'IN_PLACE', which means that results
-                            are written directly to source files.
-  -h, --help              Show this help message and exit.
+                             Mode for outputting files: 'CHANGED_ONLY', which
+                               means that only changed files will be created in
+                               the workspace. 'ALL', which means that all
+                               files, including the unchanged ones, will be
+                               created in the workspace. 'IN_PLACE', which
+                               means that results are written directly to
+                               source files.
+  -h, --help                 Show this help message and exit.
       --max-files-per-segment=<maxFilesPerSegment>
                              Max number of files per loaded segment for
                                segmented repair. It should be >= 3000 files per
@@ -149,10 +151,6 @@ The full list of options is as follows (and can also be found by running
                              One or more rule violation specifiers. Specifiers
                                can be gathered with the 'mine' command using
                                the --stats-output-file option.
-      --workspace=<soraldWorkspace>
-                             The path to a folder that will be used as
-                               workspace by Sorald, i.e. the path for the
-                               output.
 ```
 
 > **Note:** Some rules (e.g. 1444) are marked as "incomplete". This means that
