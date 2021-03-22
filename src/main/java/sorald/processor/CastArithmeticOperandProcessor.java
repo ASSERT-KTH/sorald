@@ -2,21 +2,32 @@ package sorald.processor;
 
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.tuple.Pair;
 import sorald.Constants;
 import sorald.annotations.ProcessorAnnotation;
+import sorald.sonar.RuleViolation;
 import spoon.reflect.code.*;
-import spoon.reflect.declaration.CtElement;
-import spoon.reflect.declaration.CtField;
-import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.reference.CtExecutableReference;
+import spoon.reflect.factory.TypeFactory;
 import spoon.reflect.reference.CtTypeReference;
 
 @ProcessorAnnotation(key = 2184, description = "Math operands should be cast before assignment")
 public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 
+    private static final Map<String, BinaryOperatorKind> toOpKind =
+            Map.of(
+                    "division", BinaryOperatorKind.DIV,
+                    "addition", BinaryOperatorKind.PLUS,
+                    "subtraction", BinaryOperatorKind.MINUS,
+                    "multiplication", BinaryOperatorKind.MUL);
+
     @Override
     protected void repairInternal(CtBinaryOperator element) {
-        CtTypeReference<?> typeToBeUsedToCast = getExpectedType(element);
+        RuleViolation violation = getBestFits().get(element);
+        CtTypeReference<?> typeToBeUsedToCast = getOpKindAndType(violation).getRight();
         CtExpression<?> lhs = element.getLeftHandOperand();
         CtExpression<?> rhs = element.getRightHandOperand();
 
@@ -27,53 +38,6 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
         } else {
             repairWithCast(element, typeToBeUsedToCast);
         }
-    }
-
-    private CtTypeReference getExpectedType(CtBinaryOperator ctBinaryOperator) {
-        CtTypeReference ctTypeReference = null;
-
-        if (ctBinaryOperator.getParent(CtAbstractInvocation.class) != null) {
-
-            CtAbstractInvocation ctAbstractInvocation =
-                    ctBinaryOperator.getParent(CtAbstractInvocation.class);
-            List<CtExpression> arguments = ctAbstractInvocation.getArguments();
-
-            CtElement argToBeFound = ctBinaryOperator;
-            while (argToBeFound.getParent() != ctAbstractInvocation) {
-                argToBeFound = argToBeFound.getParent();
-            }
-
-            int indexInInvocation = -1;
-            for (int i = 0; i < arguments.size(); i++) {
-                if (arguments.get(i) == argToBeFound) {
-                    indexInInvocation = i;
-                    break;
-                }
-            }
-
-            CtExecutableReference ctExecutableReference = ctAbstractInvocation.getExecutable();
-            if (ctExecutableReference != null && ctExecutableReference.getParameters() != null) {
-                ctTypeReference =
-                        (CtTypeReference)
-                                ctExecutableReference.getParameters().get(indexInInvocation);
-            }
-
-        } else if (ctBinaryOperator.getParent(CtField.class) != null
-                || ctBinaryOperator.getParent(CtLocalVariable.class) != null) {
-            CtField ctField = ctBinaryOperator.getParent(CtField.class);
-            CtLocalVariable ctLocalVariable = ctBinaryOperator.getParent(CtLocalVariable.class);
-            ctTypeReference = ctField != null ? ctField.getType() : ctLocalVariable.getType();
-        } else if (ctBinaryOperator.getParent(CtAssignment.class) != null) {
-            CtAssignment ctAssignment = ctBinaryOperator.getParent(CtAssignment.class);
-            if (!(ctAssignment instanceof CtOperatorAssignment)) {
-                ctTypeReference = ctAssignment.getType();
-            }
-        } else if (ctBinaryOperator.getParent(CtReturn.class) != null) {
-            CtReturn ctReturn = ctBinaryOperator.getParent(CtReturn.class);
-            ctTypeReference = ctReturn.getParent(CtMethod.class).getType();
-        }
-
-        return ctTypeReference;
     }
 
     private static void repairWithCast(
@@ -98,9 +62,29 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
         CtCodeSnippetExpression<?> literalWithSuffix =
                 literalInt
                         .getFactory()
-                        .createCodeSnippetExpression(
-                                value + getLiteralSuffix(typeForSuffix).toUpperCase());
+                        .createCodeSnippetExpression(value + getLiteralSuffix(typeForSuffix));
         literalInt.replace(literalWithSuffix);
+    }
+
+    private Pair<BinaryOperatorKind, CtTypeReference<?>> getOpKindAndType(RuleViolation violation) {
+        String message = violation.getMessage();
+        Pattern p = Pattern.compile(".*?(\\w+)( operation)? to a \"(\\w+)\".*");
+        Matcher m = p.matcher(message);
+
+        if (!m.matches()) {
+            throw new IllegalStateException(
+                    "Message '" + message + "' did not contain expected match");
+        }
+
+        String rawOpKind = m.group(1);
+        String rawExpectedType = m.group(3);
+
+        TypeFactory tf = getFactory().Type();
+        Map<String, CtTypeReference<?>> nameToPrimitiveType =
+                Stream.of(tf.floatPrimitiveType(), tf.longPrimitiveType(), tf.doublePrimitiveType())
+                        .collect(Collectors.toMap(CtTypeReference::getSimpleName, ref -> ref));
+
+        return Pair.of(toOpKind.get(rawOpKind), nameToPrimitiveType.get(rawExpectedType));
     }
 
     private static boolean isIntLiteral(CtExpression<?> expr) {
