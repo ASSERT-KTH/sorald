@@ -51,7 +51,6 @@ import spoon.support.sniper.SniperJavaPrettyPrinter;
 /** Class for repairing projects. */
 public class Repair {
     private final SoraldConfig config;
-    private int patchedFileCounter = 0;
 
     final List<SoraldEventHandler> eventHandlers;
     private final CompilationUnitCollector cuCollector;

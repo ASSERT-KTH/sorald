@@ -9,7 +9,6 @@ public class SoraldConfig {
     private PrettyPrintingStrategy prettyPrintingStrategy;
     private RepairStrategy repairStrategy;
     private String originalFilesPath;
-    private String gitRepoPath;
     private int maxFixesPerRule;
     private int maxFilesPerSegment;
     private File statsOutputFile;

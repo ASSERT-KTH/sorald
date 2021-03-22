@@ -1,10 +1,6 @@
 package sorald;
 
 import java.io.File;
-import java.util.Collections;
-import java.util.List;
-import org.sonar.plugins.java.api.JavaFileScanner;
-import sorald.sonar.Checks;
 
 public class Constants {
     public static final String REPAIR_COMMAND_NAME = "repair";
@@ -30,7 +26,6 @@ public class Constants {
 
     public static final String JAVA_EXT = ".java";
 
-    public static final String INT = "int";
     public static final String LONG = "long";
     public static final String FLOAT = "float";
     public static final String DOUBLE = "double";
@@ -44,10 +39,4 @@ public class Constants {
     public static final String PATH_TO_STATS_OUTPUT = "experimentation/stats/warnings";
 
     public static final Integer DEFAULT_COMPLIANCE_LEVEL = 11;
-
-    public static final List<Class<? extends JavaFileScanner>> SONAR_CHECK_CLASSES;
-
-    static {
-        SONAR_CHECK_CLASSES = Collections.unmodifiableList(Checks.getAllChecks());
-    }
 }

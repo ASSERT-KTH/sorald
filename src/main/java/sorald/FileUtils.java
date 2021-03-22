@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Collection;
 import java.util.List;
@@ -15,17 +14,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class FileUtils {
-
-    /**
-     * Compare the two given paths as absolute, normalized paths.
-     *
-     * @param lhs A path.
-     * @param rhs A path.
-     * @return Whether or not the paths are equal as absolute, normalized paths.
-     */
-    public static boolean pathAbsNormEqual(String lhs, String rhs) {
-        return pathAbsNormEqual(Paths.get(lhs), Paths.get(rhs));
-    }
 
     /**
      * Compare the two given paths as absolute, normalized paths.
@@ -45,22 +33,6 @@ public class FileUtils {
      */
     public static File getClosestDirectory(File file) {
         return file.isDirectory() ? file : file.getParentFile();
-    }
-
-    /**
-     * Delete a directory.
-     *
-     * @param directoryToBeDeleted The directory to delete
-     * @return true if the directory was successfully deleted
-     */
-    public static boolean deleteDirectory(File directoryToBeDeleted) {
-        File[] allContents = directoryToBeDeleted.listFiles();
-        if (allContents != null) {
-            for (File file : allContents) {
-                deleteDirectory(file);
-            }
-        }
-        return directoryToBeDeleted.delete();
     }
 
     /**

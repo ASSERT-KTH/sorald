@@ -55,17 +55,6 @@ public class RuleVerifier {
     }
 
     /**
-     * Verify that all the given files have at least one issue according to check.
-     *
-     * @param filesToScan Paths to Java files.
-     * @param check A Sonar check.
-     */
-    @SuppressWarnings("UnstableApiUsage")
-    public static void verifyHasIssue(List<String> filesToScan, JavaFileScanner check) {
-        filesToScan.forEach(filename -> verifyHasIssue(filename, check));
-    }
-
-    /**
      * Analyze the files with respect to check.
      *
      * @param filesToScan A list of paths to files.
