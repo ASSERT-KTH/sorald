@@ -231,7 +231,6 @@ def run_sorald_for_rule(repo: git.Repo, rule_key: str) -> "RepairStats":
             "repair",
             original_files_path=pathlib.Path(repo.working_dir),
             stats_output_file=workdir / stats_file,
-            file_output_strategy="IN_PLACE",
             rule_key=rule_key,
             timeout=SINGLE_RUN_TIMEOUT,
         )

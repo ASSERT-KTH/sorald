@@ -18,7 +18,6 @@ public class Constants {
     public static final String ARG_GIT_REPOS_LIST = "--git-repos-list";
     public static final String ARG_TEMP_DIR = "--temp-dir";
     public static final String ARG_PRETTY_PRINTING_STRATEGY = "--pretty-printing-strategy";
-    public static final String ARG_FILE_OUTPUT_STRATEGY = "--file-output-strategy";
     public static final String ARG_MAX_FIXES_PER_RULE = "--max-fixes-per-rule";
     public static final String ARG_REPAIR_STRATEGY = "--repair-strategy";
     public static final String ARG_MAX_FILES_PER_SEGMENT = "--max-files-per-segment";
@@ -29,11 +28,7 @@ public class Constants {
 
     public static final String VIOLATION_SPECIFIER_SEP = File.pathSeparator;
 
-    public static final String SORALD_WORKSPACE = "sorald-workspace";
-
     public static final String JAVA_EXT = ".java";
-
-    public static final String SPOONED = "spooned";
 
     public static final String INT = "int";
     public static final String LONG = "long";

@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import sorald.CompilationUnitHelpers;
 import sorald.event.EventType;
 import sorald.event.SoraldEvent;
 import sorald.event.SoraldEventHandler;
@@ -44,7 +43,11 @@ public class CompilationUnitCollector implements SoraldEventHandler {
         Path filePath = element.getPosition().getFile().toPath().toAbsolutePath();
         CtType<?> type =
                 (element instanceof CtType) ? (CtType<?>) element : element.getParent(CtType.class);
-        CtCompilationUnit cu = CompilationUnitHelpers.getCompilationUnit(type);
+        CtCompilationUnit cu = getCompilationUnit(type);
         pathToCu.put(filePath, cu);
+    }
+
+    private static CtCompilationUnit getCompilationUnit(CtType<?> type) {
+        return type.getFactory().CompilationUnit().getOrCreate(type);
     }
 }

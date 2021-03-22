@@ -165,8 +165,6 @@ public class GatherStatsTest {
                     project.getAbsolutePath(),
                     Constants.ARG_STATS_OUTPUT_FILE,
                     statsFile.getAbsolutePath(),
-                    Constants.ARG_FILE_OUTPUT_STRATEGY,
-                    FileOutputStrategy.IN_PLACE.name(),
                     Constants.ARG_RULE_VIOLATION_SPECIFIERS,
                     specifier,
                     Constants.ARG_REPAIR_STRATEGY,

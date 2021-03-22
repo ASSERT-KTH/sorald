@@ -12,9 +12,7 @@ public class NoSonarTest {
     @Test
     public void noSonarTesting() throws Exception {
         String fileName = "NOSONARCommentTest.java";
-        Path pathToBuggyFile = TestHelper.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
-        String pathToRepairedFile =
-                Constants.SORALD_WORKSPACE + "/" + Constants.SPOONED + "/" + fileName;
+        Path pathToBuggyFile = TestHelper.createTemporaryTestResourceWorkspace().resolve(fileName);
 
         RuleVerifier.verifyHasIssue(
                 pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
@@ -28,8 +26,8 @@ public class NoSonarTest {
                     Constants.ARG_MAX_FIXES_PER_RULE,
                     "3"
                 });
-        TestHelper.removeComplianceComments(pathToRepairedFile);
+        TestHelper.removeComplianceComments(pathToBuggyFile.toString());
         RuleVerifier.verifyHasIssue(
-                pathToRepairedFile, new ArrayHashCodeAndToStringCheck()); // one bug left
+                pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck()); // one bug left
     }
 }

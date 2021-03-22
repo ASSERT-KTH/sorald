@@ -15,7 +15,6 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import sorald.processor.ArrayHashCodeAndToStringProcessor;
 import sorald.processor.ProcessorTestHelper;
@@ -32,9 +31,8 @@ public class SegmentStrategyTest {
     @Test
     public void arrayToStringProcessor_success_Test() throws Exception {
         String fileName = "ArrayHashCodeAndToString.java";
-        Path pathToBuggyFile = TestHelper.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
-        String pathToRepairedFile =
-                Constants.SORALD_WORKSPACE + "/" + Constants.SPOONED + "/" + fileName;
+        Path workspace = TestHelper.createTemporaryTestResourceWorkspace();
+        Path pathToBuggyFile = workspace.resolve(fileName);
 
         RuleVerifier.verifyHasIssue(
                 pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
@@ -48,20 +46,21 @@ public class SegmentStrategyTest {
                     Constants.ARG_MAX_FILES_PER_SEGMENT,
                     "1",
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    TestHelper.PATH_TO_RESOURCES_FOLDER.toString(),
+                    workspace.toString(),
                     Constants.ARG_RULE_KEY,
                     "2116",
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
                     PrettyPrintingStrategy.NORMAL.name()
                 });
-        TestHelper.removeComplianceComments(pathToRepairedFile);
-        RuleVerifier.verifyNoIssue(pathToRepairedFile, new ArrayHashCodeAndToStringCheck());
+        TestHelper.removeComplianceComments(pathToBuggyFile.toString());
+        RuleVerifier.verifyNoIssue(pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
     }
 
     @Test
     public void arrayToStringProcessor_fail_Test() throws Exception {
         String fileName = "ArrayHashCodeAndToString.java";
-        Path pathToBuggyFile = TestHelper.PATH_TO_RESOURCES_FOLDER.resolve(fileName);
+        Path workspace = TestHelper.createTemporaryTestResourceWorkspace();
+        Path pathToBuggyFile = workspace.resolve(fileName);
 
         RuleVerifier.verifyHasIssue(
                 pathToBuggyFile.toString(), new ArrayHashCodeAndToStringCheck());
@@ -73,7 +72,7 @@ public class SegmentStrategyTest {
                     Constants.ARG_MAX_FILES_PER_SEGMENT,
                     "0",
                     Constants.ARG_ORIGINAL_FILES_PATH,
-                    TestHelper.PATH_TO_RESOURCES_FOLDER.toString(),
+                    workspace.toString(),
                     Constants.ARG_RULE_KEY,
                     "2116",
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
@@ -83,23 +82,23 @@ public class SegmentStrategyTest {
     }
 
     @Test
-    public void segmentStrategy_doesNotFail_onCrashInParsingSegment(@TempDir File tempDir)
-            throws IOException {
+    public void segmentStrategy_doesNotFail_onCrashInParsingSegment() throws IOException {
         // arrange
-        org.apache.commons.io.FileUtils.copyDirectory(
-                TestHelper.PATH_TO_RESOURCES_FOLDER.toFile(), tempDir);
+        Path workspace = TestHelper.createTemporaryProcessorTestFilesWorkspace();
 
-        SoraldConfig config = createSegmentConfig(tempDir.getAbsolutePath());
+        SoraldConfig config = createSegmentConfig(workspace);
 
         SoraldAbstractProcessor<?> processor =
                 new ArrayHashCodeAndToStringProcessor().setEventHandlers(List.of());
         Set<RuleViolation> violations =
                 ProjectScanner.scanProject(
-                        tempDir, tempDir, Checks.getCheckInstance(processor.getRuleKey()));
+                        workspace.toFile(),
+                        workspace.toFile(),
+                        Checks.getCheckInstance(processor.getRuleKey()));
 
         // we decide that parsing this class causes crashes
         String crashingClass = "DeadStores";
-        Path crashingFile = getProcessorTestJavaFilePath(tempDir, crashingClass);
+        Path crashingFile = getProcessorTestJavaFilePath(workspace.toFile(), crashingClass);
 
         Repair repair = new Repair(config, List.of());
         Function<LinkedList<Node>, CtModel> selectivelyCrashySegmentParser =
@@ -111,10 +110,7 @@ public class SegmentStrategyTest {
         // act
         List<CtModel> models =
                 repair.segmentRepair(
-                                tempDir.getAbsoluteFile().toPath(),
-                                processor,
-                                violations,
-                                selectivelyCrashySegmentParser)
+                                workspace, processor, violations, selectivelyCrashySegmentParser)
                         .collect(Collectors.toList());
 
         // assert
@@ -132,8 +128,7 @@ public class SegmentStrategyTest {
      * @return the absolute path to a Java file in the given directory with the given class name.
      */
     private static Path getProcessorTestJavaFilePath(File root, String className) {
-        return ProcessorTestHelper.getTestCaseStream(
-                        root.toPath().resolve("processor_test_files").toFile())
+        return ProcessorTestHelper.getTestCaseStream(root.toPath().toFile())
                 .map(tc -> tc.nonCompliantFile)
                 .map(File::toPath)
                 .map(Path::toAbsolutePath)
@@ -142,11 +137,10 @@ public class SegmentStrategyTest {
                 .get();
     }
 
-    private static SoraldConfig createSegmentConfig(String originalFilesPath) {
+    private static SoraldConfig createSegmentConfig(Path originalFilesPath) {
         var config = new SoraldConfig();
         config.setRepairStrategy(RepairStrategy.SEGMENT);
-        config.setOriginalFilesPath(originalFilesPath);
-        config.setFileOutputStrategy(FileOutputStrategy.CHANGED_ONLY);
+        config.setOriginalFilesPath(originalFilesPath.toString());
         config.setMaxFixesPerRule(Integer.MAX_VALUE);
         config.setMaxFilesPerSegment(1);
         return config;
