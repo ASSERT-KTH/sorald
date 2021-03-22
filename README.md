@@ -60,14 +60,6 @@ The full list of options is as follows (and can also be found by running
 
 ```bash
 Repair Sonar rule violations in a targeted project.
-      --file-output-strategy=<fileOutputStrategy>
-                             Mode for outputting files: 'CHANGED_ONLY', which
-                               means that only changed files will be created in
-                               the workspace. 'ALL', which means that all
-                               files, including the unchanged ones, will be
-                               created in the workspace. 'IN_PLACE', which
-                               means that results are written directly to
-                               source files.
   -h, --help                 Show this help message and exit.
       --max-files-per-segment=<maxFilesPerSegment>
                              Max number of files per loaded segment for
