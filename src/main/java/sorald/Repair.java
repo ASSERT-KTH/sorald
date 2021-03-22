@@ -85,15 +85,16 @@ public class Repair {
         }
 
         String ruleKey = distinctRuleKeys.get(0);
-
-        // we do only in-place repair
-        final Path inputDir = Path.of(config.getOriginalFilesPath());
-        final Path outputDir = Path.of(config.getOriginalFilesPath());
+        Path inputDir = Path.of(config.getOriginalFilesPath());
 
         SoraldAbstractProcessor<?> processor = createProcessor(Integer.parseInt(ruleKey));
         Stream<CtModel> models = repair(inputDir, processor, ruleViolations);
 
-        models.forEach(model -> writeModel(model, outputDir));
+        models.forEach(
+                model ->
+                        cuCollector
+                                .getCollectedCompilationUnits()
+                                .forEach(this::overwriteCompilationUnit));
 
         return processor;
     }
@@ -214,30 +215,21 @@ public class Repair {
         return initLauncher(launcher);
     }
 
-    private void writeModel(CtModel model, Path outputDir) {
-        Collection<CtCompilationUnit> compilationUnits = cuCollector.getCollectedCompilationUnits();
-        compilationUnits.forEach(cu -> overwriteCompilationUnit(cu, outputDir));
-    }
-
-    private void overwriteCompilationUnit(CtCompilationUnit cu, Path outputDir) {
+    private void overwriteCompilationUnit(CtCompilationUnit cu) {
         List<CtType<?>> typesToPrint =
                 cu.getDeclaredTypes().stream()
                         .filter(CtType::isTopLevel)
                         .collect(Collectors.toList());
         Path sourcePath = cu.getPosition().getFile().toPath();
 
-        // FIXME this is an unclear hack; we only write compilation units if we can compute their
-        //       output paths but the computed path is not actually used.
-        if (CompilationUnitHelpers.resolveOutputPath(cu, outputDir.toFile()).isPresent()) {
-            String output =
-                    cu.getFactory()
-                            .getEnvironment()
-                            .createPrettyPrinter()
-                            .printTypes(typesToPrint.toArray(CtType[]::new));
+        String output =
+                cu.getFactory()
+                        .getEnvironment()
+                        .createPrettyPrinter()
+                        .printTypes(typesToPrint.toArray(CtType[]::new));
 
-            // we overwrite the source
-            writeToFile(sourcePath, output);
-        }
+        // we overwrite the source
+        writeToFile(sourcePath, output);
     }
 
     private static void writeToFile(Path filepath, String output) {
