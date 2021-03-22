@@ -1,13 +1,16 @@
 package sorald;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -127,17 +130,25 @@ public class TargetedRepairTest {
         ProcessorTestHelper.runSorald(workdirInfo.workdir, workdirInfo.check.getClass());
         RuleVerifier.verifyNoIssue(
                 workdirInfo.targetViolation.getAbsolutePath().toString(), workdirInfo.check);
+        String violationSpec =
+                workdirInfo.targetViolation.relativeSpecifier(workdirInfo.workdir.toPath());
 
         String[] args = {
             Constants.REPAIR_COMMAND_NAME,
             Constants.ARG_ORIGINAL_FILES_PATH,
             workdirInfo.workdir.toString(),
             Constants.ARG_RULE_VIOLATION_SPECIFIERS,
-            workdirInfo.targetViolation.relativeSpecifier(workdirInfo.workdir.toPath())
+            violationSpec
         };
+
+        final ByteArrayOutputStream err = new ByteArrayOutputStream();
+        System.setErr(new PrintStream(err));
 
         // act/assert
         assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
+        assertThat(
+                err.toString(),
+                containsString("No actual violation matching violation spec: " + violationSpec));
     }
 
     /** Setup the workdir with a specific target violation. */

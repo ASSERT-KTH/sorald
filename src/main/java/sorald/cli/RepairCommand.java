@@ -137,7 +137,11 @@ class RepairCommand extends BaseCommand {
             specifiedRuleViolations.forEach(
                     specifiedViolation -> {
                         if (!minedViolations.contains(specifiedViolation)) {
-                            throw new IllegalStateException();
+                            throw new CommandLine.ParameterException(
+                                    spec.commandLine(),
+                                    "No actual violation matching violation spec: "
+                                            + specifiedViolation.relativeSpecifier(
+                                                    originalFilesPath.toPath()));
                         }
                     });
 
