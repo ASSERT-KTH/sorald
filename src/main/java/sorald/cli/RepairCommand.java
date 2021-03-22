@@ -3,6 +3,7 @@ package sorald.cli;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -135,21 +136,27 @@ class RepairCommand extends BaseCommand {
 
         if (!specifiedRuleViolations.isEmpty()) {
             specifiedRuleViolations.forEach(
-                    specifiedViolation -> {
-                        if (!minedViolations.contains(specifiedViolation)) {
-                            throw new CommandLine.ParameterException(
-                                    spec.commandLine(),
-                                    "No actual violation matching violation spec: "
-                                            + specifiedViolation.relativeSpecifier(
-                                                    originalFilesPath.toPath()));
-                        }
-                    });
+                    specifiedViolation ->
+                            checkSpecifiedViolationExists(specifiedViolation, minedViolations));
 
             return minedViolations.stream()
                     .filter(specifiedRuleViolations::contains)
                     .collect(Collectors.toSet());
         } else {
             return minedViolations;
+        }
+    }
+
+    private void checkSpecifiedViolationExists(
+            RuleViolation specifiedViolation, Collection<RuleViolation> minedViolations) {
+        if (!minedViolations.contains(specifiedViolation)) {
+            String violationSpecifier =
+                    specifiedViolation.relativeSpecifier(originalFilesPath.toPath());
+            throw new CommandLine.ParameterException(
+                    spec.commandLine(),
+                    String.format(
+                            "No actual violation matching violation spec: '%s'",
+                            violationSpecifier));
         }
     }
 
