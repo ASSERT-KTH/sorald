@@ -127,18 +127,18 @@ public class ProcessorTest {
     public void sorald_canProcessProject_whenDirectoryHasJavaFileExtension() throws Exception {
         // arrange
         Path workdir = TestHelper.createTemporaryProcessorTestFilesWorkspace();
-        File dirWithJavaExtension = workdir.toFile().listFiles(File::isDirectory)[0];
-        org.apache.commons.io.FileUtils.moveDirectory(
-                dirWithJavaExtension,
-                dirWithJavaExtension
-                        .toPath()
-                        .resolveSibling(dirWithJavaExtension.getName() + Constants.JAVA_EXT)
-                        .toFile());
+        File origDir = workdir.resolve("2116_ArrayHashCodeAndToString").toFile();
+        File dirWithJavaExtension =
+                origDir.toPath().resolveSibling(origDir.getName() + Constants.JAVA_EXT).toFile();
+        org.apache.commons.io.FileUtils.moveDirectory(origDir, dirWithJavaExtension);
 
         // act
         ProcessorTestHelper.runSorald(workdir.toFile(), ArrayHashCodeAndToStringCheck.class);
 
-        // FIXME add assert, currently just checks that there is no crash!
+        // assert
+        RuleVerifier.verifyNoIssue(
+                dirWithJavaExtension.toPath().resolve("ArrayHashCodeAndToString.java").toString(),
+                new ArrayHashCodeAndToStringCheck());
     }
 
     @Test
