@@ -15,8 +15,10 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.sonar.plugins.java.api.JavaFileScanner;
+import sorald.processor.ProcessorTestHelper;
 import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
+import sorald.sonar.RuleVerifier;
 import sorald.sonar.RuleViolation;
 
 /** Tests for the targeted repair functionality of Sorald. */
@@ -115,6 +117,27 @@ public class TargetedRepairTest {
                 ProjectScanner.scanProject(
                         workdirInfo.workdir, workdirInfo.workdir, workdirInfo.check);
         assertThat(violationsAfter.size(), equalTo(workdirInfo.numViolationsBefore - 1));
+    }
+
+    @Test
+    void targetedRepair_requiresViolationSpecs_pointToExistingViolations() throws Exception {
+        // arrange
+        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir();
+        // run Sorald to remove the violation
+        ProcessorTestHelper.runSorald(workdirInfo.workdir, workdirInfo.check.getClass());
+        RuleVerifier.verifyNoIssue(
+                workdirInfo.targetViolation.getAbsolutePath().toString(), workdirInfo.check);
+
+        String[] args = {
+            Constants.REPAIR_COMMAND_NAME,
+            Constants.ARG_ORIGINAL_FILES_PATH,
+            workdirInfo.workdir.toString(),
+            Constants.ARG_RULE_VIOLATION_SPECIFIERS,
+            workdirInfo.targetViolation.relativeSpecifier(workdirInfo.workdir.toPath())
+        };
+
+        // act/assert
+        assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
     }
 
     /** Setup the workdir with a specific target violation. */
