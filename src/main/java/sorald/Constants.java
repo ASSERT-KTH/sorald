@@ -30,8 +30,6 @@ public class Constants {
 
     public static final String JAVA_EXT = ".java";
 
-    public static final String SPOONED = "spooned";
-
     public static final String INT = "int";
     public static final String LONG = "long";
     public static final String FLOAT = "float";
