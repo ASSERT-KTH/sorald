@@ -30,6 +30,12 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
     /** @return The key of the violated rule. */
     public abstract String getRuleKey();
 
+    /** @return A message describing the problem. */
+    public String getMessage() {
+        throw new UnsupportedOperationException(
+                "getMessage() should not be called on this instance");
+    }
+
     /**
      * @param projectPath The root directory of the current project.
      * @return A violation specifier that is unique relative to the given project path.
@@ -55,6 +61,9 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
             return false;
         }
         var other = (RuleViolation) obj;
+
+        // IMPORTANT: The message is intentionally not part of the equality check to allow for
+        // comparing message-less implementations with those that do carry messages
         return getAbsolutePath().equals(other.getAbsolutePath())
                 && getCheckName().equals(other.getCheckName())
                 && getRuleKey().equals(other.getRuleKey())
@@ -66,6 +75,8 @@ public abstract class RuleViolation implements Comparable<RuleViolation> {
 
     @Override
     public int hashCode() {
+        // IMPORTANT: The message is intentionally not part of the hash code to allow for
+        // comparing message-less implementations with those that do carry messages
         return Objects.hash(
                 getAbsolutePath(),
                 getCheckName(),
