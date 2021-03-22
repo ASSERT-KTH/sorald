@@ -1179,5 +1179,69 @@
             "lastModified": "2021-03-22 15:10:09.677391",
             "isLegacyRecord": false
         }
+    },
+    "inria/spoon#3853": {
+        "repoSlug": "inria/spoon",
+        "prMetadata": {
+            "url": "https://github.com/INRIA/spoon/pull/3853",
+            "createdAt": "2021-03-22 15:58:57",
+            "closedAt": null,
+            "mergedAt": null,
+            "state": "open",
+            "isMerged": false,
+            "number": 3853
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "PublicStaticFieldShouldBeFinal",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "1444",
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 20,
+                            "endColumn": 31,
+                            "startColumn": 22,
+                            "startLine": 20,
+                            "filePath": "spoon/LovecraftException.java",
+                            "violationSpecifier": "1444:spoon/LovecraftException.java:20:22:20:31"
+                        }
+                    ],
+                    "nbViolationsBefore": 1,
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: 7852ccae",
+                "javaVersion": "11.0.10",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    "src/main/java",
+                    "--rule-key",
+                    "1444",
+                    "--stats-output-file",
+                    "1444.json"
+                ]
+            },
+            "totalTimeMs": 8698,
+            "repairTimeMs": 245,
+            "startTimeMs": 1616427639337,
+            "crashes": [],
+            "endTimeMs": 1616427648035,
+            "parseTimeMs": 4115
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/spoon/LovecraftException.java b/src/main/java/spoon/LovecraftException.java\nindex c6e461d7f3..e0e4f6f82e 100644\n--- a/src/main/java/spoon/LovecraftException.java\n+++ b/src/main/java/spoon/LovecraftException.java\n@@ -17,7 +17,7 @@\n public class LovecraftException extends SpoonException {\n \tprivate static final long serialVersionUID = 1L;\n \n-\tpublic static String lovecraft =\n+\tpublic static final String lovecraft =\n \t\t\"It was from the artists and poets that the pertinent answers came, and I\\n\"\n \t\t+ \"know that panic would have broken loose had they been able to compare notes.\\n\"\n \t\t+ \"As it was, lacking their original letters, I half suspected the compiler of\\n\"\n",
+            "final": null
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-03-22 17:13:54.483247",
+            "lastModified": "2021-03-22 17:13:54.483247",
+            "isLegacyRecord": false
+        }
     }
 }
