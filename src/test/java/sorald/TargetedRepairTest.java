@@ -1,6 +1,7 @@
 package sorald;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -148,7 +149,9 @@ public class TargetedRepairTest {
         assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
         assertThat(
                 err.toString(),
-                containsString("No actual violation matching violation spec: " + violationSpec));
+                allOf(
+                        containsString("No actual violation matching violation spec:"),
+                        containsString(violationSpec)));
     }
 
     /** Setup the workdir with a specific target violation. */
