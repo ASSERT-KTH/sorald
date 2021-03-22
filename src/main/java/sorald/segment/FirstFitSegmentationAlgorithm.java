@@ -11,12 +11,6 @@ public class FirstFitSegmentationAlgorithm {
         return segmentHelper(resources4Repair, maxFiles);
     }
 
-    public static LinkedList<LinkedList<Node>> segment(List<Node> oldSegment, int maxFiles) {
-        LinkedList<Node> resources4Repair = new LinkedList<Node>();
-        resources4Repair.addAll(oldSegment);
-        return segmentHelper(resources4Repair, maxFiles);
-    }
-
     private static LinkedList<LinkedList<Node>> segmentHelper(
             LinkedList<Node> resources4Repair, int maxFiles) {
         LinkedList<LinkedList<Node>> segments = new LinkedList<LinkedList<Node>>();
