@@ -1,13 +1,17 @@
 package sorald;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +19,10 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.sonar.plugins.java.api.JavaFileScanner;
+import sorald.processor.ProcessorTestHelper;
 import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
+import sorald.sonar.RuleVerifier;
 import sorald.sonar.RuleViolation;
 
 /** Tests for the targeted repair functionality of Sorald. */
@@ -115,6 +121,37 @@ public class TargetedRepairTest {
                 ProjectScanner.scanProject(
                         workdirInfo.workdir, workdirInfo.workdir, workdirInfo.check);
         assertThat(violationsAfter.size(), equalTo(workdirInfo.numViolationsBefore - 1));
+    }
+
+    @Test
+    void targetedRepair_requiresViolationSpecs_pointToExistingViolations() throws Exception {
+        // arrange
+        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir();
+        // run Sorald to remove the violation
+        ProcessorTestHelper.runSorald(workdirInfo.workdir, workdirInfo.check.getClass());
+        RuleVerifier.verifyNoIssue(
+                workdirInfo.targetViolation.getAbsolutePath().toString(), workdirInfo.check);
+        String violationSpec =
+                workdirInfo.targetViolation.relativeSpecifier(workdirInfo.workdir.toPath());
+
+        String[] args = {
+            Constants.REPAIR_COMMAND_NAME,
+            Constants.ARG_ORIGINAL_FILES_PATH,
+            workdirInfo.workdir.toString(),
+            Constants.ARG_RULE_VIOLATION_SPECIFIERS,
+            violationSpec
+        };
+
+        final ByteArrayOutputStream err = new ByteArrayOutputStream();
+        System.setErr(new PrintStream(err));
+
+        // act/assert
+        assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
+        assertThat(
+                err.toString(),
+                allOf(
+                        containsString("No actual violation matching violation spec:"),
+                        containsString(violationSpec)));
     }
 
     /** Setup the workdir with a specific target violation. */

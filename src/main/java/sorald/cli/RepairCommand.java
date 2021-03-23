@@ -3,7 +3,7 @@ package sorald.cli;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -36,7 +36,7 @@ import sorald.sonar.RuleViolation;
         description = "Repair Sonar rule violations in a targeted project.")
 class RepairCommand extends BaseCommand {
     String ruleKey;
-    List<RuleViolation> ruleViolations = List.of();
+    List<RuleViolation> specifiedRuleViolations = List.of();
 
     @CommandLine.Option(
             names = {Constants.ARG_ORIGINAL_FILES_PATH},
@@ -131,17 +131,33 @@ class RepairCommand extends BaseCommand {
     }
 
     private Set<RuleViolation> resolveRuleViolations(List<SoraldEventHandler> eventHandlers) {
-        Set<RuleViolation> violations = null;
-        if (!eventHandlers.isEmpty() || ruleViolations.isEmpty()) {
-            // if there are event handlers, we must mine violations regardless of them being
-            // specified in the config or not in order to trigger the mined violation events
-            violations = mineViolations(originalFilesPath, ruleKey, eventHandlers);
-        }
-        if (!ruleViolations.isEmpty()) {
-            violations = new HashSet<>(ruleViolations);
-        }
+        Set<RuleViolation> minedViolations =
+                mineViolations(originalFilesPath, ruleKey, eventHandlers);
 
-        return violations;
+        if (!specifiedRuleViolations.isEmpty()) {
+            specifiedRuleViolations.forEach(
+                    specifiedViolation ->
+                            checkSpecifiedViolationExists(specifiedViolation, minedViolations));
+
+            return minedViolations.stream()
+                    .filter(specifiedRuleViolations::contains)
+                    .collect(Collectors.toSet());
+        } else {
+            return minedViolations;
+        }
+    }
+
+    private void checkSpecifiedViolationExists(
+            RuleViolation specifiedViolation, Collection<RuleViolation> minedViolations) {
+        if (!minedViolations.contains(specifiedViolation)) {
+            String violationSpecifier =
+                    specifiedViolation.relativeSpecifier(originalFilesPath.toPath());
+            throw new CommandLine.ParameterException(
+                    spec.commandLine(),
+                    String.format(
+                            "No actual violation matching violation spec: '%s'",
+                            violationSpecifier));
+        }
     }
 
     /**
@@ -202,8 +218,8 @@ class RepairCommand extends BaseCommand {
 
     /** Perform further processing of raw command line args. */
     private void postprocessArgs() {
-        ruleViolations = parseRuleViolations(rules);
-        ruleKey = parseRuleKey(rules, ruleViolations);
+        specifiedRuleViolations = parseRuleViolations(rules);
+        ruleKey = parseRuleKey(rules, specifiedRuleViolations);
     }
 
     private List<RuleViolation> parseRuleViolations(Rules rules) {
