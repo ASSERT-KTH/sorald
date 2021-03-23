@@ -8,12 +8,11 @@ import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
-import spoon.reflect.reference.CtFieldReference;
 import spoon.reflect.reference.CtTypeReference;
 
 @IncompleteProcessor(
         description =
-                "This processor ignores two corner cases: If the class has already a serialVersionUID with a non long type and if the class is not directly implementing serializable e.g. a upper class implements serializable.")
+                "This processor does not address the case where the class already has a serialVersionUID with a non long type.")
 @ProcessorAnnotation(
         key = 2057,
         description =
@@ -26,16 +25,16 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
 
     @Override
     protected boolean canRepairInternal(CtClass<?> candidate) {
-        CtFieldReference<?> fieldReference = getSerialVersionUIDField(candidate);
-        return fieldReference == null || isLongType(fieldReference);
+        CtField<?> serialVersionUIDField = getDirectlyDeclaredSerialVersionUIDField(candidate);
+        return serialVersionUIDField == null || isLongType(serialVersionUIDField);
     }
 
-    private boolean isLongType(CtFieldReference<?> fieldRef) {
-        return fieldRef.getType().equals(getLongPrimitiveType(fieldRef));
+    private boolean isLongType(CtField<?> field) {
+        return field.getType().equals(getLongPrimitiveType(field));
     }
 
-    private CtFieldReference<?> getSerialVersionUIDField(CtClass<?> candidate) {
-        return candidate.getAllFields().stream()
+    private CtField<?> getDirectlyDeclaredSerialVersionUIDField(CtClass<?> candidate) {
+        return candidate.getFields().stream()
                 .filter(v -> v.getSimpleName().equals(SERIAL_VERSION_UID))
                 .findFirst()
                 .orElse(null);
@@ -47,7 +46,7 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
 
     @Override
     protected void repairInternal(CtClass<?> element) {
-        CtFieldReference<?> serialVersionUidReference = getSerialVersionUIDField(element);
+        CtField<?> serialVersionUIDField = getDirectlyDeclaredSerialVersionUIDField(element);
         CtField<?> replacement =
                 element.getFactory()
                         .createField(
@@ -55,19 +54,18 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
         replacement.setDefaultExpression(
                 element.getFactory().createCodeSnippetExpression(DEFAULT_ID_VALUE));
 
-        if (serialVersionUidReference != null) {
-            CtField<?> oldField = serialVersionUidReference.getDeclaration();
+        if (serialVersionUIDField != null) {
             // we add the old modifiers here because sonar only forces final and static but a user
             // could
             // add more modifiers.
-            oldField.getModifiers().forEach(replacement::addModifier);
-            replacement.setComments(oldField.getComments());
-            CtExpression<?> expression = oldField.getDefaultExpression();
+            serialVersionUIDField.getModifiers().forEach(replacement::addModifier);
+            replacement.setComments(serialVersionUIDField.getComments());
+            CtExpression<?> expression = serialVersionUIDField.getDefaultExpression();
             if (expression != null) {
                 replacement.setDefaultExpression(
                         element.getFactory().createCodeSnippetExpression(expression.toString()));
             }
-            oldField.replace(replacement);
+            serialVersionUIDField.replace(replacement);
         } else {
             element.addFieldAtTop(replacement);
         }
