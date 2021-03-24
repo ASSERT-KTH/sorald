@@ -111,11 +111,9 @@ Repair Sonar rule violations in a targeted project.
                                either be transient or serializable
                              2057: Every class implementing Serializable should
                                declare a static final serialVersionUID.
-                             	(incomplete: This processor ignores two corner
-                               cases: If the class has already a
-                               serialVersionUID with a non long type and if the
-                               class is not directly implementing serializable
-                               e.g. a upper class implements serializable.)
+                                (incomplete: This processor does not address the
+                               case where the class already has a
+                               serialVersionUID with a non long type.)
                              2095: Resources should be closed
                              2111: "BigDecimal(double)" should not be used
                              2116: "hashCode" and "toString" should not be
