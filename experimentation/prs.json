@@ -1115,5 +1115,133 @@
             "lastModified": "2021-03-22 15:13:23.951861",
             "isLegacyRecord": false
         }
+    },
+    "inria/spoon#3852": {
+        "repoSlug": "inria/spoon",
+        "prMetadata": {
+            "url": "https://github.com/INRIA/spoon/pull/3852",
+            "createdAt": "2021-03-22 14:06:34",
+            "closedAt": "2021-03-24 07:45:10",
+            "mergedAt": "2021-03-24 07:45:10",
+            "state": "closed",
+            "isMerged": true,
+            "number": 3852
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "InterruptedException",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2142",
+                    "nbViolationsBefore": 1,
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 548,
+                            "endColumn": 33,
+                            "startColumn": 11,
+                            "startLine": 548,
+                            "filePath": "spoon/support/compiler/SpoonPom.java",
+                            "violationSpecifier": "2142:spoon/support/compiler/SpoonPom.java:548:11:548:33"
+                        }
+                    ],
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: 7852ccae",
+                "javaVersion": "11.0.10",
+                "originalArgs": [
+                    "repair",
+                    "--rule-key",
+                    "2142",
+                    "--original-files-path",
+                    "src/main/java",
+                    "--stats-output-file",
+                    "2142.json"
+                ]
+            },
+            "totalTimeMs": 8768,
+            "repairTimeMs": 290,
+            "startTimeMs": 1616421710980,
+            "crashes": [],
+            "endTimeMs": 1616421719748,
+            "parseTimeMs": 4099
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/spoon/support/compiler/SpoonPom.java b/src/main/java/spoon/support/compiler/SpoonPom.java\nindex bd3510acb2..87b77f866b 100644\n--- a/src/main/java/spoon/support/compiler/SpoonPom.java\n+++ b/src/main/java/spoon/support/compiler/SpoonPom.java\n@@ -546,6 +546,7 @@ public static String guessMavenHome() {\n \t\t} catch (IOException e) {\n \t\t\tthrow new SpoonException(\"Maven home detection has failed.\");\n \t\t} catch (InterruptedException e) {\n+\t\t\tThread.currentThread().interrupt();\n \t\t\tthrow new SpoonException(\"Maven home detection was interrupted.\");\n \t\t}\n \t\treturn mvnHome;\n",
+            "final": "diff --git a/src/main/java/spoon/support/compiler/SpoonPom.java b/src/main/java/spoon/support/compiler/SpoonPom.java\nindex bd3510acb2..87b77f866b 100644\n--- a/src/main/java/spoon/support/compiler/SpoonPom.java\n+++ b/src/main/java/spoon/support/compiler/SpoonPom.java\n@@ -546,6 +546,7 @@ public static String guessMavenHome() {\n \t\t} catch (IOException e) {\n \t\t\tthrow new SpoonException(\"Maven home detection has failed.\");\n \t\t} catch (InterruptedException e) {\n+\t\t\tThread.currentThread().interrupt();\n \t\t\tthrow new SpoonException(\"Maven home detection was interrupted.\");\n \t\t}\n \t\treturn mvnHome;\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-03-22 15:10:09.677391",
+            "lastModified": "2021-03-24 10:38:14.344503",
+            "isLegacyRecord": false
+        }
+    },
+    "inria/spoon#3853": {
+        "repoSlug": "inria/spoon",
+        "prMetadata": {
+            "url": "https://github.com/INRIA/spoon/pull/3853",
+            "createdAt": "2021-03-22 15:58:57",
+            "closedAt": "2021-03-24 07:44:07",
+            "mergedAt": "2021-03-24 07:44:07",
+            "state": "closed",
+            "isMerged": true,
+            "number": 3853
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "PublicStaticFieldShouldBeFinal",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "1444",
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 20,
+                            "endColumn": 31,
+                            "startColumn": 22,
+                            "startLine": 20,
+                            "filePath": "spoon/LovecraftException.java",
+                            "violationSpecifier": "1444:spoon/LovecraftException.java:20:22:20:31"
+                        }
+                    ],
+                    "nbViolationsBefore": 1,
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: 7852ccae",
+                "javaVersion": "11.0.10",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    "src/main/java",
+                    "--rule-key",
+                    "1444",
+                    "--stats-output-file",
+                    "1444.json"
+                ]
+            },
+            "totalTimeMs": 8698,
+            "repairTimeMs": 245,
+            "startTimeMs": 1616427639337,
+            "crashes": [],
+            "endTimeMs": 1616427648035,
+            "parseTimeMs": 4115
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/spoon/LovecraftException.java b/src/main/java/spoon/LovecraftException.java\nindex c6e461d7f3..e0e4f6f82e 100644\n--- a/src/main/java/spoon/LovecraftException.java\n+++ b/src/main/java/spoon/LovecraftException.java\n@@ -17,7 +17,7 @@\n public class LovecraftException extends SpoonException {\n \tprivate static final long serialVersionUID = 1L;\n \n-\tpublic static String lovecraft =\n+\tpublic static final String lovecraft =\n \t\t\"It was from the artists and poets that the pertinent answers came, and I\\n\"\n \t\t+ \"know that panic would have broken loose had they been able to compare notes.\\n\"\n \t\t+ \"As it was, lacking their original letters, I half suspected the compiler of\\n\"\n",
+            "final": "diff --git a/src/main/java/spoon/LovecraftException.java b/src/main/java/spoon/LovecraftException.java\nindex c6e461d7f3..e0e4f6f82e 100644\n--- a/src/main/java/spoon/LovecraftException.java\n+++ b/src/main/java/spoon/LovecraftException.java\n@@ -17,7 +17,7 @@\n public class LovecraftException extends SpoonException {\n \tprivate static final long serialVersionUID = 1L;\n \n-\tpublic static String lovecraft =\n+\tpublic static final String lovecraft =\n \t\t\"It was from the artists and poets that the pertinent answers came, and I\\n\"\n \t\t+ \"know that panic would have broken loose had they been able to compare notes.\\n\"\n \t\t+ \"As it was, lacking their original letters, I half suspected the compiler of\\n\"\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-03-22 17:13:54.483247",
+            "lastModified": "2021-03-24 10:41:41.507284",
+            "isLegacyRecord": false
+        }
     }
 }
