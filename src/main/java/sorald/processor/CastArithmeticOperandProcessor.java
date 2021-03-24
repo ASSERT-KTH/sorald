@@ -66,6 +66,19 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
         literalInt.replace(literalWithSuffix);
     }
 
+    /**
+     * Parse the message of a SonarJava rule violation to get the operation kind and type.
+     *
+     * <p>As of SonarJava 6.9.0.23563, the message can be on two forms.<br>
+     * <code>"Cast one of the operands of this integer division to a \"double\"."</code><br>
+     * <code>
+     * "Cast one of the operands of this " + OPERATION_BY_KIND.get(expr.kind()) + " operation to a \"" + varType.name() + "\"."
+     * </code><br>
+     *
+     * @param violation A rule violation
+     * @return The operator kind and type of the expression
+     * @see org.sonar.java.checks.CastArithmeticOperandCheck
+     */
     private Pair<BinaryOperatorKind, CtTypeReference<?>> getOpKindAndType(RuleViolation violation) {
         String message = violation.getMessage();
         Pattern p = Pattern.compile(".*?(\\w+)( operation)? to a \"(\\w+)\".*");
