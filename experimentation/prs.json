@@ -1185,10 +1185,10 @@
         "prMetadata": {
             "url": "https://github.com/INRIA/spoon/pull/3853",
             "createdAt": "2021-03-22 15:58:57",
-            "closedAt": null,
-            "mergedAt": null,
-            "state": "open",
-            "isMerged": false,
+            "closedAt": "2021-03-24 07:44:07",
+            "mergedAt": "2021-03-24 07:44:07",
+            "state": "closed",
+            "isMerged": true,
             "number": 3853
         },
         "soraldStatistics": {
@@ -1235,12 +1235,12 @@
         },
         "diffs": {
             "initial": "diff --git a/src/main/java/spoon/LovecraftException.java b/src/main/java/spoon/LovecraftException.java\nindex c6e461d7f3..e0e4f6f82e 100644\n--- a/src/main/java/spoon/LovecraftException.java\n+++ b/src/main/java/spoon/LovecraftException.java\n@@ -17,7 +17,7 @@\n public class LovecraftException extends SpoonException {\n \tprivate static final long serialVersionUID = 1L;\n \n-\tpublic static String lovecraft =\n+\tpublic static final String lovecraft =\n \t\t\"It was from the artists and poets that the pertinent answers came, and I\\n\"\n \t\t+ \"know that panic would have broken loose had they been able to compare notes.\\n\"\n \t\t+ \"As it was, lacking their original letters, I half suspected the compiler of\\n\"\n",
-            "final": null
+            "final": "diff --git a/src/main/java/spoon/LovecraftException.java b/src/main/java/spoon/LovecraftException.java\nindex c6e461d7f3..e0e4f6f82e 100644\n--- a/src/main/java/spoon/LovecraftException.java\n+++ b/src/main/java/spoon/LovecraftException.java\n@@ -17,7 +17,7 @@\n public class LovecraftException extends SpoonException {\n \tprivate static final long serialVersionUID = 1L;\n \n-\tpublic static String lovecraft =\n+\tpublic static final String lovecraft =\n \t\t\"It was from the artists and poets that the pertinent answers came, and I\\n\"\n \t\t+ \"know that panic would have broken loose had they been able to compare notes.\\n\"\n \t\t+ \"As it was, lacking their original letters, I half suspected the compiler of\\n\"\n"
         },
         "manualEdits": [],
         "recordMetadata": {
             "createdAt": "2021-03-22 17:13:54.483247",
-            "lastModified": "2021-03-22 17:13:54.483247",
+            "lastModified": "2021-03-24 10:41:41.507284",
             "isLegacyRecord": false
         }
     }
