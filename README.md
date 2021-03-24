@@ -1,6 +1,19 @@
 # Sorald [![Travis Build Status](https://travis-ci.com/SpoonLabs/sorald.svg?branch=master)](https://travis-ci.com/SpoonLabs/sorald) [![Code Coverage](https://codecov.io/gh/SpoonLabs/sorald/branch/master/graph/badge.svg)](https://codecov.io/gh/SpoonLabs/sorald)
-Sorald is a collection of java code analyses and transformations made with the [Spoon](https://github.com/INRIA/spoon) library to repair violations of rules contained in [SonarQube](https://rules.sonarsource.com).
-It can currently repair violations of [15+ rules](/docs/HANDLED_RULES.md).
+Sorald is a tool to automatically repair violations of static analysis rules checked with [SonarQube](https://rules.sonarsource.com).
+It can currently repair violations of [15+ rules](/docs/HANDLED_RULES.md) based on the design described [Sorald: Automatic Patch Suggestions for SonarQube Static Analysis Violations](http://arxiv.org/pdf/2103.12033).
+
+If you use Sorald in an academic context, please cite:
+
+```
+@techreport{arXiv-2103.12033,
+ title = {Sorald: Automatic Patch Suggestions for SonarQube Static Analysis Violations},
+ year = {2021},
+ author = {Khashayar Etemadi and Nicolas Harrand and Simon Larsen and Haris Adzemovic and Henry Luong Phu and Ashutosh Verma and Fernanda Madeiral and Douglas Wikstrom and Martin Monperrus},
+ url = {http://arxiv.org/pdf/2103.12033},
+ number = {2103.12033},
+ institution = {arXiv},
+}
+```
 
 ## Getting started
 
