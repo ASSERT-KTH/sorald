@@ -2,10 +2,10 @@
 This document presents an overview of the pull requests performed with Sorald.
 
 ## [verificatum/verificatum-vmn#13](https://github.com/verificatum/verificatum-vmn/pull/13)
-This PR was opened at 2021-02-22 13:16:50.
+This PR was opened at 2021-02-22 13:16:50 and merged at 2021-03-13 20:32:44.
 The patch was generated fully automatically with Sorald.
 
-It provides the following repairs:
+It provided the following repairs:
 
 * [Rule 2142](https://rules.sonarsource.com/java/RSPEC-2142)
     - Number of violations found: 3
