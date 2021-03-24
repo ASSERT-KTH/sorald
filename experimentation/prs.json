@@ -1121,10 +1121,10 @@
         "prMetadata": {
             "url": "https://github.com/INRIA/spoon/pull/3852",
             "createdAt": "2021-03-22 14:06:34",
-            "closedAt": null,
-            "mergedAt": null,
-            "state": "open",
-            "isMerged": false,
+            "closedAt": "2021-03-24 07:45:10",
+            "mergedAt": "2021-03-24 07:45:10",
+            "state": "closed",
+            "isMerged": true,
             "number": 3852
         },
         "soraldStatistics": {
@@ -1171,12 +1171,12 @@
         },
         "diffs": {
             "initial": "diff --git a/src/main/java/spoon/support/compiler/SpoonPom.java b/src/main/java/spoon/support/compiler/SpoonPom.java\nindex bd3510acb2..87b77f866b 100644\n--- a/src/main/java/spoon/support/compiler/SpoonPom.java\n+++ b/src/main/java/spoon/support/compiler/SpoonPom.java\n@@ -546,6 +546,7 @@ public static String guessMavenHome() {\n \t\t} catch (IOException e) {\n \t\t\tthrow new SpoonException(\"Maven home detection has failed.\");\n \t\t} catch (InterruptedException e) {\n+\t\t\tThread.currentThread().interrupt();\n \t\t\tthrow new SpoonException(\"Maven home detection was interrupted.\");\n \t\t}\n \t\treturn mvnHome;\n",
-            "final": null
+            "final": "diff --git a/src/main/java/spoon/support/compiler/SpoonPom.java b/src/main/java/spoon/support/compiler/SpoonPom.java\nindex bd3510acb2..87b77f866b 100644\n--- a/src/main/java/spoon/support/compiler/SpoonPom.java\n+++ b/src/main/java/spoon/support/compiler/SpoonPom.java\n@@ -546,6 +546,7 @@ public static String guessMavenHome() {\n \t\t} catch (IOException e) {\n \t\t\tthrow new SpoonException(\"Maven home detection has failed.\");\n \t\t} catch (InterruptedException e) {\n+\t\t\tThread.currentThread().interrupt();\n \t\t\tthrow new SpoonException(\"Maven home detection was interrupted.\");\n \t\t}\n \t\treturn mvnHome;\n"
         },
         "manualEdits": [],
         "recordMetadata": {
             "createdAt": "2021-03-22 15:10:09.677391",
-            "lastModified": "2021-03-22 15:10:09.677391",
+            "lastModified": "2021-03-24 10:38:14.344503",
             "isLegacyRecord": false
         }
     },
