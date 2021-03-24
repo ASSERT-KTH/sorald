@@ -65,7 +65,7 @@ and are specified by their key. For example, to repair violations of the rule
 `some/project/path`, one can invoke Sorald like so.
 
 ```bash
-$ sorald repair --original-files-path some/project/path --rule-key 2111
+$ sorald repair --source some/project/path --rule-key 2111
 ```
 
 The full list of options is as follows (and can also be found by running
@@ -80,7 +80,7 @@ Repair Sonar rule violations in a targeted project.
                                segment.
       --max-fixes-per-rule=<maxFixesPerRule>
                              Max number of fixes per rule.
-      --original-files-path=<originalFilesPath>
+      --source=<source>
                              The path to the file or folder to be analyzed and
                                possibly repaired.
       --pretty-printing-strategy=<prettyPrintingStrategy>
@@ -168,7 +168,7 @@ To mine projects for Sonar warnings, use the `mine` command. Its most basic
 usage consists of simply pointing it to a project directory.
 
 ```bash
-$ sorald mine --original-files-path path/to/project
+$ sorald mine --source path/to/project
 ```
 
 It will then output statistics for that project with the Sonar checks available
@@ -194,7 +194,7 @@ mine --help`).
   -h, --help                 Show this help message and exit.
       --miner-output-file=<minerOutputFile>
                              The path to the output file.
-      --original-files-path=<originalFilesPath>
+      --source=<source>
                              The path to the file or folder to be analyzed and
                                possibly repaired.
       --rule-types=<ruleTypes>[,<ruleTypes>...]

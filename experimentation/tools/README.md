@@ -242,7 +242,7 @@ like this:
                     "2755",
                     "--file-output-strategy",
                     "IN_PLACE",
-                    "--original-files-path",
+                    "--source",
                     ".",
                     "--stats-output-file",
                     "stats.json"
@@ -382,7 +382,7 @@ After these three command shave been executed, my `prs.json` looks like this:
                     "2755",
                     "--file-output-strategy",
                     "IN_PLACE",
-                    "--original-files-path",
+                    "--source",
                     ".",
                     "--stats-output-file",
                     "stats.json"

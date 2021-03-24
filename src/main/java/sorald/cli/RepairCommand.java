@@ -146,8 +146,7 @@ class RepairCommand extends BaseCommand {
     private void checkSpecifiedViolationExists(
             RuleViolation specifiedViolation, Collection<RuleViolation> minedViolations) {
         if (!minedViolations.contains(specifiedViolation)) {
-            String violationSpecifier =
-                    specifiedViolation.relativeSpecifier(source.toPath());
+            String violationSpecifier = specifiedViolation.relativeSpecifier(source.toPath());
             throw new CommandLine.ParameterException(
                     spec.commandLine(),
                     String.format(

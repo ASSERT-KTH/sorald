@@ -229,7 +229,7 @@ def run_sorald_for_rule(repo: git.Repo, rule_key: str) -> "RepairStats":
     with restore_head_after(repo):
         return_code, *_ = soraldwrapper.sorald(
             "repair",
-            original_files_path=pathlib.Path(repo.working_dir),
+            source=pathlib.Path(repo.working_dir),
             stats_output_file=workdir / stats_file,
             rule_key=rule_key,
             timeout=SINGLE_RUN_TIMEOUT,
