@@ -161,7 +161,7 @@ public class GatherStatsTest {
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_SOURCE,
                     project.getAbsolutePath(),
                     Constants.ARG_STATS_OUTPUT_FILE,
                     statsFile.getAbsolutePath(),

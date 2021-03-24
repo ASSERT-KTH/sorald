@@ -253,7 +253,7 @@ def extract_warning_stats_from_dir(
             "-jar",
             str(config.sorald_jar),
             "mine",
-            "--originalFilesPath",
+            "--source",
             str(root_path),
             *extra_args,
         ],

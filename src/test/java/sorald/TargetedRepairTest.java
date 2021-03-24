@@ -37,7 +37,7 @@ public class TargetedRepairTest {
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_SOURCE,
                     workdirInfo.workdir.getAbsolutePath(),
                     Constants.ARG_RULE_VIOLATION_SPECIFIERS,
                     workdirInfo.targetViolation.relativeSpecifier(workdirInfo.workdir.toPath())
@@ -60,7 +60,7 @@ public class TargetedRepairTest {
         var args =
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_SOURCE,
                     workdir.getAbsolutePath(),
                     Constants.ARG_RULE_VIOLATION_SPECIFIERS,
                     workdirInfo.targetViolation.relativeSpecifier(workdir.toPath()),
@@ -84,7 +84,7 @@ public class TargetedRepairTest {
         var args =
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_SOURCE,
                     workdir.getAbsolutePath(),
                     Constants.ARG_RULE_VIOLATION_SPECIFIERS,
                     badViolationId
@@ -110,7 +110,7 @@ public class TargetedRepairTest {
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_SOURCE,
                     workdirInfo.workdir.toString(),
                     Constants.ARG_RULE_VIOLATION_SPECIFIERS,
                     absoluteViolationId
@@ -136,7 +136,7 @@ public class TargetedRepairTest {
 
         String[] args = {
             Constants.REPAIR_COMMAND_NAME,
-            Constants.ARG_ORIGINAL_FILES_PATH,
+            Constants.ARG_SOURCE,
             workdirInfo.workdir.toString(),
             Constants.ARG_RULE_VIOLATION_SPECIFIERS,
             violationSpec

@@ -23,9 +23,9 @@ import sorald.sonar.Checks;
 class MineCommand extends BaseCommand {
 
     @CommandLine.Option(
-            names = {Constants.ARG_ORIGINAL_FILES_PATH},
+            names = {Constants.ARG_SOURCE},
             description = "The path to the file or folder to be analyzed and possibly repaired.")
-    File originalFilesPath;
+    File source;
 
     @CommandLine.Option(
             names = Constants.ARG_STATS_ON_GIT_REPOS,
@@ -74,8 +74,7 @@ class MineCommand extends BaseCommand {
         } else {
             new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
                     .mineLocalProject(
-                            checks,
-                            originalFilesPath.toPath().normalize().toAbsolutePath().toString());
+                            checks, source.toPath().normalize().toAbsolutePath().toString());
         }
 
         if (statsOutputFile != null) {

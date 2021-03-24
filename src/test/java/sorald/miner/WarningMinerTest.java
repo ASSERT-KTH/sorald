@@ -130,9 +130,7 @@ public class WarningMinerTest {
 
         Main.main(
                 new String[] {
-                    Constants.MINE_COMMAND_NAME,
-                    Constants.ARG_ORIGINAL_FILES_PATH,
-                    workdir.toString()
+                    Constants.MINE_COMMAND_NAME, Constants.ARG_SOURCE, workdir.toString()
                 });
 
         assertThat(out.toString(), containsString("MathOnFloatCheck=1"));

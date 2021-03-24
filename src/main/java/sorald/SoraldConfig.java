@@ -8,7 +8,7 @@ import java.util.Optional;
 public class SoraldConfig {
     private PrettyPrintingStrategy prettyPrintingStrategy;
     private RepairStrategy repairStrategy;
-    private String originalFilesPath;
+    private String source;
     private int maxFixesPerRule;
     private int maxFilesPerSegment;
     private File statsOutputFile;
@@ -31,13 +31,12 @@ public class SoraldConfig {
         return this.repairStrategy;
     }
 
-    public void setOriginalFilesPath(String originalFilesPath) {
-        this.originalFilesPath =
-                Paths.get(originalFilesPath).normalize().toAbsolutePath().toString();
+    public void setSource(String source) {
+        this.source = Paths.get(source).normalize().toAbsolutePath().toString();
     }
 
-    public String getOriginalFilesPath() {
-        return this.originalFilesPath;
+    public String getSource() {
+        return this.source;
     }
 
     public void setMaxFixesPerRule(int maxFixesPerRule) {

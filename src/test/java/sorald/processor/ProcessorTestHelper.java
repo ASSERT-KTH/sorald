@@ -141,7 +141,7 @@ public class ProcessorTestHelper {
         var coreArgs =
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_SOURCE,
                     originalFileAbspath,
                     Constants.ARG_RULE_KEY,
                     Checks.getRuleKey(checkClass),

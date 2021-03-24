@@ -21,12 +21,12 @@ class CompilationUnitCollectorTest {
     public void collect_canCollectManyCompilationUnits() {
         // arrange
         Launcher launcher = new Launcher();
-        String originalFilesPath = ProcessorTestHelper.TEST_FILES_ROOT.toAbsolutePath().toString();
+        String source = ProcessorTestHelper.TEST_FILES_ROOT.toAbsolutePath().toString();
         var config = new SoraldConfig();
-        config.setOriginalFilesPath(originalFilesPath);
+        config.setSource(source);
         var cuCollector = new CompilationUnitCollector();
 
-        launcher.addInputResource(originalFilesPath);
+        launcher.addInputResource(source);
         Collection<CtType<?>> types = launcher.buildModel().getAllTypes();
         var expectedCUs = launcher.getFactory().CompilationUnit().getMap().values();
 
