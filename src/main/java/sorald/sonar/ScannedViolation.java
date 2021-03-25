@@ -58,6 +58,11 @@ class ScannedViolation extends RuleViolation {
         return Checks.getRuleKey(message.getCheck().getClass());
     }
 
+    @Override
+    public String getMessage() {
+        return message.getMessage();
+    }
+
     private static String getCheckName(JavaCheck check) {
         return check.getClass().getSimpleName();
     }
