@@ -45,7 +45,7 @@ public class SegmentStrategyTest {
                     // https://github.com/SpoonLabs/sorald/issues/154
                     Constants.ARG_MAX_FILES_PER_SEGMENT,
                     "1",
-                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_SOURCE,
                     workspace.toString(),
                     Constants.ARG_RULE_KEY,
                     "2116",
@@ -71,7 +71,7 @@ public class SegmentStrategyTest {
                     "SEGMENT",
                     Constants.ARG_MAX_FILES_PER_SEGMENT,
                     "0",
-                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_SOURCE,
                     workspace.toString(),
                     Constants.ARG_RULE_KEY,
                     "2116",
@@ -137,10 +137,10 @@ public class SegmentStrategyTest {
                 .get();
     }
 
-    private static SoraldConfig createSegmentConfig(Path originalFilesPath) {
+    private static SoraldConfig createSegmentConfig(Path source) {
         var config = new SoraldConfig();
         config.setRepairStrategy(RepairStrategy.SEGMENT);
-        config.setOriginalFilesPath(originalFilesPath.toString());
+        config.setSource(source.toString());
         config.setMaxFixesPerRule(Integer.MAX_VALUE);
         config.setMaxFilesPerSegment(1);
         return config;

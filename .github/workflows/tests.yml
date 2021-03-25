@@ -54,8 +54,8 @@ jobs:
         env:
           SORALD_JAR_PATH: "target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar"
         run: |
-          java -jar "$SORALD_JAR_PATH" repair --original-files-path src/test/resources/ArrayHashCodeAndToString.java --rule-key 2184
-          java -jar "$SORALD_JAR_PATH" repair --original-files-path src/test/resources/ArrayHashCodeAndToString.java --rule-key 2116
+          java -jar "$SORALD_JAR_PATH" repair --source src/test/resources/ArrayHashCodeAndToString.java --rule-key 2184
+          java -jar "$SORALD_JAR_PATH" repair --source src/test/resources/ArrayHashCodeAndToString.java --rule-key 2116
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@239febf655bba88b16ff5dea1d3135ea8663a1f9 # v1.0.15
         with:

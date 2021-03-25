@@ -22,7 +22,7 @@ public class MaxFixesPerRuleTest {
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_SOURCE,
                     pathToBuggyFile.toString(),
                     Constants.ARG_RULE_KEY,
                     "2116",

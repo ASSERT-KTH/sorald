@@ -39,10 +39,10 @@ class RepairCommand extends BaseCommand {
     List<RuleViolation> specifiedRuleViolations = List.of();
 
     @CommandLine.Option(
-            names = {Constants.ARG_ORIGINAL_FILES_PATH},
+            names = {Constants.ARG_SOURCE},
             description = "The path to the file or folder to be analyzed and possibly repaired.",
             required = true)
-    File originalFilesPath;
+    File source;
 
     @CommandLine.ArgGroup(multiplicity = "1")
     Rules rules;
@@ -118,21 +118,17 @@ class RepairCommand extends BaseCommand {
 
         if (statsOutputFile != null) {
             // mine violations to trigger stats collection
-            mineViolations(originalFilesPath, ruleKey, eventHandlers);
+            mineViolations(source, ruleKey, eventHandlers);
             writeStatisticsOutput(
                     statsCollector,
-                    FileUtils.getClosestDirectory(originalFilesPath)
-                            .toPath()
-                            .toAbsolutePath()
-                            .normalize());
+                    FileUtils.getClosestDirectory(source).toPath().toAbsolutePath().normalize());
         }
 
         return 0;
     }
 
     private Set<RuleViolation> resolveRuleViolations(List<SoraldEventHandler> eventHandlers) {
-        Set<RuleViolation> minedViolations =
-                mineViolations(originalFilesPath, ruleKey, eventHandlers);
+        Set<RuleViolation> minedViolations = mineViolations(source, ruleKey, eventHandlers);
 
         if (!specifiedRuleViolations.isEmpty()) {
             specifiedRuleViolations.forEach(
@@ -150,8 +146,7 @@ class RepairCommand extends BaseCommand {
     private void checkSpecifiedViolationExists(
             RuleViolation specifiedViolation, Collection<RuleViolation> minedViolations) {
         if (!minedViolations.contains(specifiedViolation)) {
-            String violationSpecifier =
-                    specifiedViolation.relativeSpecifier(originalFilesPath.toPath());
+            String violationSpecifier = specifiedViolation.relativeSpecifier(source.toPath());
             throw new CommandLine.ParameterException(
                     spec.commandLine(),
                     String.format(
@@ -248,14 +243,14 @@ class RepairCommand extends BaseCommand {
         String[] parts = violationSpecifier.split(Constants.VIOLATION_SPECIFIER_SEP);
         String key = parts[0];
         String rawFilename = parts[1];
-        Path absPath = originalFilesPath.toPath().resolve(rawFilename).toAbsolutePath().normalize();
+        Path absPath = source.toPath().resolve(rawFilename).toAbsolutePath().normalize();
 
         if (!absPath.toFile().isFile()) {
             throw new CommandLine.ParameterException(
                     spec.commandLine(),
                     String.format(
                             "Invalid violation ID '%s', no file '%s' in directory '%s'",
-                            violationSpecifier, rawFilename, originalFilesPath));
+                            violationSpecifier, rawFilename, source));
         }
 
         int startLine = Integer.parseInt(parts[2]);
@@ -273,7 +268,7 @@ class RepairCommand extends BaseCommand {
 
     private SoraldConfig createConfig() {
         SoraldConfig config = new SoraldConfig();
-        config.setOriginalFilesPath(originalFilesPath.getAbsolutePath());
+        config.setSource(source.getAbsolutePath());
         config.setPrettyPrintingStrategy(prettyPrintingStrategy);
         config.setMaxFixesPerRule(maxFixesPerRule);
         config.setMaxFilesPerSegment(maxFilesPerSegment);

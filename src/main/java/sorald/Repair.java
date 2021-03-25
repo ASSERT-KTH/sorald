@@ -84,7 +84,7 @@ public class Repair {
         }
 
         String ruleKey = distinctRuleKeys.get(0);
-        Path inputDir = Path.of(config.getOriginalFilesPath());
+        Path inputDir = Path.of(config.getSource());
 
         SoraldAbstractProcessor<?> processor = createProcessor(Integer.parseInt(ruleKey));
         Stream<CtModel> models = repair(inputDir, processor, ruleViolations);

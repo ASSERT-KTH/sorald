@@ -29,7 +29,7 @@ public class MavenLauncherTest {
         String[] args =
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
-                    Constants.ARG_ORIGINAL_FILES_PATH,
+                    Constants.ARG_SOURCE,
                     workdir.getAbsolutePath(),
                     Constants.ARG_RULE_KEY,
                     "1854",
