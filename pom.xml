@@ -18,16 +18,6 @@
         </license>
     </licenses>
 
-    <repositories>
-        <repository>
-            <!--This repository is normally unused in the committed version of this pom file, but we use it to quickly
-            test new changes in Spoon, so please leave it in here :) -->
-            <id>ow2.org-snapshot</id>
-            <name>Maven Repository for Spoon Snapshots</name>
-            <url>https://repository.ow2.org/nexus/content/repositories/snapshots/</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>info.picocli</groupId>
@@ -335,6 +325,18 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+
+        <profile>
+            <id>spoonSnapshot</id>
+            <repositories>
+                <repository>
+                    <id>ow2.org-snapshot</id>
+                    <name>Maven Repository for Spoon Snapshots</name>
+                    <url>https://repository.ow2.org/nexus/content/repositories/snapshots/</url>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+            </repositories>
         </profile>
     </profiles>
 
