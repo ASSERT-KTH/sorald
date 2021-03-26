@@ -93,7 +93,13 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
 
     private boolean isTypeInFileWithoutViolations(CtElement element) {
         return element instanceof CtType
-                && !filesWithViolations.contains(element.getPosition().getFile());
+                && element.getPosition().isValidPosition()
+                && filesWithViolations.stream()
+                        .noneMatch(
+                                fileWithViolation ->
+                                        FileUtils.realPathEquals(
+                                                fileWithViolation.toPath(),
+                                                element.getPosition().getFile().toPath()));
     }
 
     @Override
@@ -253,7 +259,7 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
 
     private static boolean inSameFile(CtElement element, RuleViolation violation) {
         return element.getPosition().isValidPosition()
-                && FileUtils.pathAbsNormEqual(
+                && FileUtils.realPathEquals(
                         violation.getAbsolutePath(), element.getPosition().getFile().toPath());
     }
 
