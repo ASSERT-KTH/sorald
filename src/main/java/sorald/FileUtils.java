@@ -16,14 +16,21 @@ import org.json.JSONObject;
 public class FileUtils {
 
     /**
-     * Compare the two given paths as absolute, normalized paths.
+     * Compare the two given paths as real paths, resolving any symbolic links.
+     *
+     * <p>Note that this method returns false if either path does not exist, even if the paths are
+     * otherwise equal!
      *
      * @param lhs A path.
      * @param rhs A path.
-     * @return Whether or not the paths are equal as absolute, normalized paths.
+     * @return true iff both paths exist and point to the same real file
      */
-    public static boolean pathAbsNormEqual(Path lhs, Path rhs) {
-        return lhs.toAbsolutePath().normalize().equals(rhs.toAbsolutePath().normalize());
+    public static boolean realPathEquals(Path lhs, Path rhs) {
+        try {
+            return lhs.toRealPath().equals(rhs.toRealPath());
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     /**

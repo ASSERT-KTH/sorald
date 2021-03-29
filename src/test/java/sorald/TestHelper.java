@@ -15,6 +15,14 @@ public class TestHelper {
     public static final String SORALD_WORKSPACE = "sorald-workspace";
 
     /**
+     * On macOS, temporary directories are put in /var, which is just a symlink to /private/var. To
+     * reproduce this on non-macOS systems, set the below environment variable to true, e.g. <code>
+     * export SORALD_TEST_SYMLINK_WORKSPACE=true</code> on Linux.
+     */
+    public static final boolean USE_SYMLINKED_WORKSPACE =
+            Boolean.parseBoolean(System.getenv("SORALD_TEST_SYMLINK_WORKSPACE"));
+
+    /**
      * Simple helper method that removes the mandatory // Noncompliant comments from test files,
      * except for lines that contain NOSONAR comments.
      */
@@ -49,10 +57,24 @@ public class TestHelper {
      */
     public static Path createTemporaryTestResourceWorkspace() throws IOException {
         Path tempDir = Files.createTempDirectory("sorald-test-workspace");
-        org.apache.commons.io.FileUtils.copyDirectory(
-                PATH_TO_RESOURCES_FOLDER.toFile(), tempDir.toFile());
         tempDir.toFile().deleteOnExit();
-        return tempDir;
+
+        Path workdir = tempDir.resolve("tempdir");
+        workdir.toFile().mkdir();
+
+        org.apache.commons.io.FileUtils.copyDirectory(
+                PATH_TO_RESOURCES_FOLDER.toFile(), workdir.toFile());
+
+        if (USE_SYMLINKED_WORKSPACE) {
+            // Somewhat reproduce macOS environment with a symlinked workspace
+            Path symlinkDir = tempDir.resolve("symlinks");
+            symlinkDir.toFile().mkdir();
+            Path symlinkToWorkdir = symlinkDir.resolve("workdir");
+            Files.createSymbolicLink(symlinkToWorkdir, workdir);
+            return symlinkToWorkdir;
+        } else {
+            return workdir;
+        }
     }
 
     /**

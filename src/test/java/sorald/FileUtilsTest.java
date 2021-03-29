@@ -1,5 +1,7 @@
 package sorald;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -62,5 +64,17 @@ public class FileUtilsTest {
     public void getExtension_returnsEmptyString_whenFileLacksExtension() {
         File fileWithoutExtension = new File("path/to/some/file");
         assertEquals("", FileUtils.getExtension(fileWithoutExtension));
+    }
+
+    /**
+     * This is an unintuitive part of the method: if two paths are precisely equal, but they don't
+     * exist in the file system, the method returns false!
+     */
+    @Test
+    void realPathEquals_returnsFalse_whenEqualPathsDoNotExist() {
+        Path lhs = Path.of("/a/path/that/certainly/does/not/exist");
+        Path rhs = Path.of(lhs.toString());
+
+        assertThat(FileUtils.realPathEquals(lhs, rhs), equalTo(false));
     }
 }
