@@ -480,7 +480,7 @@ The repair consists of add a serialVersionUID to classes implementing Serializab
 Example:
 ```diff
 public class NoUID implements Serializable {
-+  static final long serialVersionUID = 1L;
++  private static final long serialVersionUID = 1L;
 }
 ```
 

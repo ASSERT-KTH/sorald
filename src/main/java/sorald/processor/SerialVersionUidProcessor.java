@@ -67,6 +67,9 @@ public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?
             }
             serialVersionUIDField.replace(replacement);
         } else {
+            // We add a new field, and it makes most sense to make it private as it is definitely
+            // not used in the project
+            replacement.addModifier(ModifierKind.PRIVATE);
             element.addFieldAtTop(replacement);
         }
     }
