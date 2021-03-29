@@ -7,6 +7,6 @@ import java.io.Serializable;
 
 public abstract class NestedInAbstract implements Serializable {
     public static class Serial implements Serializable { // Noncompliant
-        static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 1L;
     }
 }
