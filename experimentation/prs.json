@@ -1243,5 +1243,125 @@
             "lastModified": "2021-03-24 10:41:41.507284",
             "isLegacyRecord": false
         }
+    },
+    "verificatum/verificatum-vmn#14": {
+        "repoSlug": "verificatum/verificatum-vmn",
+        "prMetadata": {
+            "url": "https://github.com/verificatum/verificatum-vmn/pull/14",
+            "createdAt": "2021-03-29 11:13:36",
+            "closedAt": null,
+            "mergedAt": null,
+            "state": "open",
+            "isMerged": false,
+            "number": 14
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 8,
+                    "ruleName": "DeadStore",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "1854",
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 241,
+                            "endColumn": 44,
+                            "startColumn": 21,
+                            "startLine": 241,
+                            "filePath": "src/java/com/verificatum/protocol/distr/IndependentGeneratorsI.java",
+                            "violationSpecifier": "1854:src/java/com/verificatum/protocol/distr/IndependentGeneratorsI.java:241:21:241:44"
+                        },
+                        {
+                            "endLine": 273,
+                            "endColumn": 40,
+                            "startColumn": 17,
+                            "startLine": 273,
+                            "filePath": "src/java/com/verificatum/protocol/distr/IndependentGeneratorsI.java",
+                            "violationSpecifier": "1854:src/java/com/verificatum/protocol/distr/IndependentGeneratorsI.java:273:17:273:40"
+                        },
+                        {
+                            "endLine": 534,
+                            "endColumn": 32,
+                            "startColumn": 26,
+                            "startLine": 534,
+                            "filePath": "src/java/com/verificatum/protocol/elgamal/DistrElGamalSession.java",
+                            "violationSpecifier": "1854:src/java/com/verificatum/protocol/elgamal/DistrElGamalSession.java:534:26:534:32"
+                        },
+                        {
+                            "endLine": 818,
+                            "endColumn": 24,
+                            "startColumn": 18,
+                            "startLine": 818,
+                            "filePath": "src/java/com/verificatum/protocol/elgamal/ProtocolElGamal.java",
+                            "violationSpecifier": "1854:src/java/com/verificatum/protocol/elgamal/ProtocolElGamal.java:818:18:818:24"
+                        },
+                        {
+                            "endLine": 824,
+                            "endColumn": 17,
+                            "startColumn": 11,
+                            "startLine": 824,
+                            "filePath": "src/java/com/verificatum/protocol/elgamal/ProtocolElGamal.java",
+                            "violationSpecifier": "1854:src/java/com/verificatum/protocol/elgamal/ProtocolElGamal.java:824:11:824:17"
+                        },
+                        {
+                            "endLine": 1029,
+                            "endColumn": 46,
+                            "startColumn": 37,
+                            "startLine": 1029,
+                            "filePath": "src/java/com/verificatum/protocol/mixnet/MixNetElGamalTool.java",
+                            "violationSpecifier": "1854:src/java/com/verificatum/protocol/mixnet/MixNetElGamalTool.java:1029:37:1029:46"
+                        },
+                        {
+                            "endLine": 1092,
+                            "endColumn": 75,
+                            "startColumn": 31,
+                            "startLine": 1092,
+                            "filePath": "src/java/com/verificatum/protocol/mixnet/MixNetElGamalTool.java",
+                            "violationSpecifier": "1854:src/java/com/verificatum/protocol/mixnet/MixNetElGamalTool.java:1092:31:1092:75"
+                        },
+                        {
+                            "endLine": 944,
+                            "endColumn": 35,
+                            "startColumn": 29,
+                            "startLine": 944,
+                            "filePath": "src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java",
+                            "violationSpecifier": "1854:src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java:944:29:944:35"
+                        }
+                    ],
+                    "nbViolationsBefore": 8,
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: 689109ee",
+                "javaVersion": "11.0.10",
+                "originalArgs": [
+                    "repair",
+                    "--source",
+                    ".",
+                    "--rule-key",
+                    "1854",
+                    "--stats-output-file",
+                    "1854.json"
+                ]
+            },
+            "totalTimeMs": 3147,
+            "repairTimeMs": 186,
+            "startTimeMs": 1617016235359,
+            "crashes": [],
+            "endTimeMs": 1617016238506,
+            "parseTimeMs": 1119
+        },
+        "diffs": {
+            "initial": "diff --git a/src/java/com/verificatum/protocol/distr/IndependentGeneratorsI.java b/src/java/com/verificatum/protocol/distr/IndependentGeneratorsI.java\nindex 5b1fe92..e024797 100644\n--- a/src/java/com/verificatum/protocol/distr/IndependentGeneratorsI.java\n+++ b/src/java/com/verificatum/protocol/distr/IndependentGeneratorsI.java\n@@ -238,7 +238,6 @@ public PGroupElementArray generate(final Log log,\n \n         // Collect generators parts.\n         tempLog.info(\"Collect generators parts.\");\n-        Log tempLog2 = tempLog.newChildLog();\n \n         // Publish our parts and read the other's.\n         publishAndReadParts(pGroup, generatorsParts, size, threshold, log);\n@@ -262,7 +261,7 @@ public PGroupElementArray generate(final Log log,\n \n         // Generate seed for batching.\n         tempLog.info(\"Generate seed for batching.\");\n-        tempLog2 = tempLog.newChildLog();\n+        Log tempLog2 = tempLog.newChildLog();\n \n         final byte[] prgSeed =\n             coins.getCoinBytes(tempLog2, 8 * prg.minNoSeedBytes(), rbitlen);\n@@ -270,7 +269,6 @@ public PGroupElementArray generate(final Log log,\n \n         // Collect commitments.\n         tempLog.info(\"Collect commitments.\");\n-        tempLog2 = tempLog.newChildLog();\n \n         // Publish our parts and read the other's.\n         publishAndSetCommitments(basic, threshold, log);\ndiff --git a/src/java/com/verificatum/protocol/elgamal/DistrElGamalSession.java b/src/java/com/verificatum/protocol/elgamal/DistrElGamalSession.java\nindex cd688db..a7a16cd 100644\n--- a/src/java/com/verificatum/protocol/elgamal/DistrElGamalSession.java\n+++ b/src/java/com/verificatum/protocol/elgamal/DistrElGamalSession.java\n@@ -531,7 +531,6 @@ public PGroupElementArray decrypt(final Log log,\n         for (int l = 1; l <= k; l++) {\n             decryptionFactors[l].free();\n         }\n-        decryptionFactors = null;\n \n         tempLog.info(\"Compute plaintexts.\");\n         final PGroupElementArray plaintexts =\ndiff --git a/src/java/com/verificatum/protocol/elgamal/ProtocolElGamal.java b/src/java/com/verificatum/protocol/elgamal/ProtocolElGamal.java\nindex d5dac29..87baff7 100644\n--- a/src/java/com/verificatum/protocol/elgamal/ProtocolElGamal.java\n+++ b/src/java/com/verificatum/protocol/elgamal/ProtocolElGamal.java\n@@ -815,13 +815,11 @@ public void setup(final Log log) {\n         plainKeys.generate(tempLog);\n         pkeys = plainKeys.getPKeys();\n         skey = plainKeys.getSKey();\n-        plainKeys = null;\n \n         // Generate an \"independent\" generator.\n         IndependentGenerator ig =\n             new IndependentGenerator(\"\", this, pGroup, pkeys, skey, rbitlen);\n         final PGroupElement h = ig.generate(tempLog);\n-        ig = null;\n \n         // Construct a source of jointly generated random coins.\n         coins = new CoinFlipPRingSource(\"\", this, h, pkeys, skey, rbitlen);\ndiff --git a/src/java/com/verificatum/protocol/mixnet/MixNetElGamalTool.java b/src/java/com/verificatum/protocol/mixnet/MixNetElGamalTool.java\nindex 102f67e..e1e0185 100644\n--- a/src/java/com/verificatum/protocol/mixnet/MixNetElGamalTool.java\n+++ b/src/java/com/verificatum/protocol/mixnet/MixNetElGamalTool.java\n@@ -1025,8 +1025,6 @@ public static void main(final String[] args) {\n             System.err.println(\"Missing parent PID!\");\n             System.exit(1);\n         }\n-\n-        final String parentPidString = args[0];\n         final String[] newargs = Arrays.copyOfRange(args, 1, args.length);\n \n         // Simple textual user interface.\n@@ -1085,11 +1083,6 @@ public static void main(final String[] args) {\n                 processSetpk(mixnet, opt);\n                 return;\n             }\n-\n-            // Create PID file. Everything from now on are protocol\n-            // executions in contrast to the operations above that are\n-            // local operations.\n-            final File pidFile = new File(mixnet.getDirectory(), \"pidfile\");\n             // try {\n             //     new PID(parentPidString, pidFile);\n             // } catch (UtilException ue) {\ndiff --git a/src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java b/src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java\nindex c2dd3c7..315ae7d 100644\n--- a/src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java\n+++ b/src/java/com/verificatum/protocol/mixnet/ShufflerElGamalSession.java\n@@ -941,7 +941,6 @@ public void run() {\n                 Thread.currentThread().interrupt();\n                 throw new ProtocolError(\"Unable to join threads!\", ie);\n             }\n-            nextOutputThread = null;\n         }\n \n         // If the proof was rejected, then we need to drop our\n",
+            "final": null
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-03-29 14:02:27.875807",
+            "lastModified": "2021-03-29 14:02:27.875807",
+            "isLegacyRecord": false
+        }
     }
 }
