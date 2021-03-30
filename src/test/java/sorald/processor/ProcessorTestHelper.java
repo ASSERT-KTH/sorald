@@ -80,9 +80,7 @@ public class ProcessorTestHelper {
                 ruleName, ruleKey, nonCompliantFile, checkClass, outfileRelpath, exactMatches);
     }
 
-    /**
-     * Parse exact match blocks from an exact match file.
-     */
+    /** Parse exact match blocks from an exact match file. */
     private static List<String> parseExactMatches(File file) {
         List<String> content;
         try {
@@ -224,8 +222,7 @@ public class ProcessorTestHelper {
             this.nonCompliantFile = nonCompliantFile;
             this.checkClass = checkClass;
             this.outfileRelpath = outfileRelpath;
-            this.expectedExactMatches =
-                    new ArrayList<>(expectedExactMatches);
+            this.expectedExactMatches = new ArrayList<>(expectedExactMatches);
         }
 
         @Override

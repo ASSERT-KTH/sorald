@@ -3,7 +3,6 @@ package sorald.processor;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -118,12 +117,14 @@ public class ProcessorTest {
     }
 
     /**
-     * Parameterized test that processes a single Java file at a time with a single processor, and asserts that
-     * literal exact matches are contained in the output.
+     * Parameterized test that processes a single Java file at a time with a single processor, and
+     * asserts that literal exact matches are contained in the output.
      */
     @ParameterizedTest
     @ArgumentsSource(NonCompliantJavaFileWithExactMatchesProvider.class)
-    public void sorald_shouldProduceOutput_containingExactMatch(ProcessorTestHelper.ProcessorTestCase<? extends JavaFileScanner> testCase) throws Exception {
+    public void sorald_shouldProduceOutput_containingExactMatch(
+            ProcessorTestHelper.ProcessorTestCase<? extends JavaFileScanner> testCase)
+            throws Exception {
         assertThat(testCase.getExpectedExactMatches(), is(not(empty())));
 
         // act
