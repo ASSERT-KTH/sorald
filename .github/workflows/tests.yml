@@ -60,7 +60,7 @@ jobs:
       - name: Run tests
         run: mvn test
       - name: Run Sonar
-        with:
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
