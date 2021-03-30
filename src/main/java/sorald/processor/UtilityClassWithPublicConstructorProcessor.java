@@ -6,6 +6,7 @@ import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtConstructor;
+import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.ModifierKind;
 
 @IncompleteProcessor(description = "Only handles implicit public constructor")
@@ -14,6 +15,12 @@ import spoon.reflect.declaration.ModifierKind;
         description = "Utility classes should not have public constructors")
 public class UtilityClassWithPublicConstructorProcessor
         extends SoraldAbstractProcessor<CtClass<?>> {
+
+    @Override
+    protected boolean canRepairInternal(CtClass<?> candidate) {
+        return candidate.getConstructors().stream().allMatch(CtElement::isImplicit);
+    }
+
     @Override
     protected void repairInternal(CtClass<?> element) {
         addExplicitConstructor(element);
