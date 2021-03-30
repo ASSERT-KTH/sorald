@@ -1,11 +1,9 @@
 package sorald.processor;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -120,6 +118,23 @@ public class ProcessorTest {
     }
 
     /**
+     * Parameterized test that processes a single Java file at a time with a single processor, and asserts that
+     * literal exact matches are contained in the output.
+     */
+    @ParameterizedTest
+    @ArgumentsSource(NonCompliantJavaFileWithExactMatchesProvider.class)
+    public void sorald_shouldProduceOutput_containingExactMatch(ProcessorTestHelper.ProcessorTestCase<? extends JavaFileScanner> testCase) throws Exception {
+        assertThat(testCase.getExpectedExactMatches(), is(not(empty())));
+
+        // act
+        ProcessorTestHelper.runSorald(testCase);
+
+        // assert
+        String output = Files.readString(testCase.repairedFilePath());
+        assertThat(output, stringContainsInOrder(testCase.getExpectedExactMatches()));
+    }
+
+    /**
      * As described in https://github.com/SpoonLabs/sorald/issues/204, Sorald would crash in the
      * presence of directories ending in `.java`
      */
@@ -191,6 +206,18 @@ public class ProcessorTest {
                 throws IOException {
             return ProcessorTestHelper.getTestCaseStream()
                     .filter(testCase -> testCase.expectedOutfile().isPresent())
+                    .map(Arguments::of);
+        }
+    }
+
+    /** Provider class that provides test cases that with exact output matches. */
+    private static class NonCompliantJavaFileWithExactMatchesProvider implements ArgumentsProvider {
+
+        @Override
+        public Stream<? extends Arguments> provideArguments(ExtensionContext context)
+                throws Exception {
+            return ProcessorTestHelper.getTestCaseStream()
+                    .filter(testCase -> testCase.getExpectedExactMatches().size() > 0)
                     .map(Arguments::of);
         }
     }

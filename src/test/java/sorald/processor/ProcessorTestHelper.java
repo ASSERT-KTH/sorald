@@ -3,10 +3,13 @@ package sorald.processor;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -27,6 +30,8 @@ public class ProcessorTestHelper {
             TestHelper.PATH_TO_RESOURCES_FOLDER.resolve("processor_test_files");
 
     static final String EXPECTED_FILE_SUFFIX = ".expected";
+    static final String EXACT_MATCH_FILE_SUFFIX = ".exact";
+    static final String EXACT_MATCH_DELIMITER = "###";
     // The processors related to these checks currently cause problems with the sniper printer
     static final List<Class<?>> BROKEN_WITH_SNIPER =
             Arrays.asList(SynchronizationOnStringOrBoxedCheck.class);
@@ -60,8 +65,48 @@ public class ProcessorTestHelper {
         String outfileDirRelpath =
                 parseSourceFilePackage(nonCompliantFile.toPath()).replace(".", File.separator);
         Path outfileRelpath = Paths.get(outfileDirRelpath).resolve(nonCompliantFile.getName());
+
+        List<String> exactMatches =
+                Arrays.stream(directory.listFiles())
+                        .filter(
+                                f ->
+                                        f.getName().startsWith(nonCompliantFile.getName())
+                                                && f.getName().endsWith(EXACT_MATCH_FILE_SUFFIX))
+                        .findFirst()
+                        .map(ProcessorTestHelper::parseExactMatches)
+                        .orElse(new ArrayList<>());
+
         return new ProcessorTestCase<>(
-                ruleName, ruleKey, nonCompliantFile, checkClass, outfileRelpath);
+                ruleName, ruleKey, nonCompliantFile, checkClass, outfileRelpath, exactMatches);
+    }
+
+    /**
+     * Parse exact match blocks from an exact match file.
+     */
+    private static List<String> parseExactMatches(File file) {
+        List<String> content;
+        try {
+            content = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        List<String> exactMatches = new ArrayList<>();
+        List<String> current = new ArrayList<>();
+        for (String line : content) {
+            if (line.startsWith(EXACT_MATCH_DELIMITER)) {
+                exactMatches.add(String.join("\n", current));
+                current.clear();
+            } else {
+                current.add(line);
+            }
+        }
+
+        if (current.size() > 0) {
+            exactMatches.add(String.join("\n", current));
+        }
+
+        return exactMatches;
     }
 
     /**
@@ -165,18 +210,22 @@ public class ProcessorTestHelper {
         public final File nonCompliantFile;
         public final Class<T> checkClass;
         public final Path outfileRelpath;
+        private final List<String> expectedExactMatches;
 
         public ProcessorTestCase(
                 String ruleName,
                 String ruleKey,
                 File nonCompliantFile,
                 Class<T> checkClass,
-                Path outfileRelpath) {
+                Path outfileRelpath,
+                List<String> expectedExactMatches) {
             this.ruleName = ruleName;
             this.ruleKey = ruleKey;
             this.nonCompliantFile = nonCompliantFile;
             this.checkClass = checkClass;
             this.outfileRelpath = outfileRelpath;
+            this.expectedExactMatches =
+                    new ArrayList<>(expectedExactMatches);
         }
 
         @Override
@@ -207,6 +256,10 @@ public class ProcessorTestHelper {
         public Path repairedFilePath() {
             // FIXME this is redundant, all repairs are in-place!
             return nonCompliantFile.toPath();
+        }
+
+        public List<String> getExpectedExactMatches() {
+            return Collections.unmodifiableList(expectedExactMatches);
         }
     }
 }
