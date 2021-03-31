@@ -18,6 +18,14 @@
         </license>
     </licenses>
 
+    <developers>
+        <developer>
+            <id>slarse</id>
+            <name>Simon Larsén</name>
+            <email>slarse@kth.se</email>
+        </developer>
+    </developers>
+
     <dependencies>
         <dependency>
             <groupId>info.picocli</groupId>
