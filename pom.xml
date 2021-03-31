@@ -23,6 +23,8 @@
             <id>slarse</id>
             <name>Simon Larsén</name>
             <email>slarse@kth.se</email>
+            <organization>KTH Royal Institute of Technology</organization>
+            <organizationUrl>https://www.kth.se</organizationUrl>
         </developer>
     </developers>
 
