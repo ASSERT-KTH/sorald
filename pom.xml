@@ -33,6 +33,13 @@
             <organization>KTH Royal Institute of Technology</organization>
             <organizationUrl>https://www.kth.se</organizationUrl>
         </developer>
+        <developer>
+            <id>fermadeiral</id>
+            <name>Fernanda Madeiral</name>
+            <email>fer.madeiral@gmail.com</email>
+            <organization>KTH Royal Institute of Technology</organization>
+            <organizationUrl>https://www.kth.se</organizationUrl>
+        </developer>
     </developers>
 
     <dependencies>
