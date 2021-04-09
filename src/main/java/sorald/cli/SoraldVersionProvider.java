@@ -28,7 +28,7 @@ public class SoraldVersionProvider implements CommandLine.IVersionProvider {
         Properties props = new Properties();
         try {
             props.load(
-                    SoraldVersionProvider.class.getClassLoader().getResourceAsStream(resourceName));
+                    Thread.currentThread().getContextClassLoader().getResourceAsStream(resourceName));
         } catch (Exception e) {
             return LOCAL_VERSION;
         }
