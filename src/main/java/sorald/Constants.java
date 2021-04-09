@@ -3,6 +3,8 @@ package sorald;
 import java.io.File;
 
 public class Constants {
+    private Constants() {}
+
     public static final String REPAIR_COMMAND_NAME = "repair";
     public static final String MINE_COMMAND_NAME = "mine";
 
