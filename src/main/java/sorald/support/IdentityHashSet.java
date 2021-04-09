@@ -10,8 +10,7 @@ import java.util.Set;
  * operate on object identity rather than equality).
  */
 public class IdentityHashSet {
-    private IdentityHashSet() {
-    }
+    private IdentityHashSet() {}
 
     /**
      * Create an identity hash set and add all elements from the given collection to it.

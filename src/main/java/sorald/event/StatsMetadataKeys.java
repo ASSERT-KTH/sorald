@@ -2,8 +2,7 @@ package sorald.event;
 
 /** Metadata keys used for the stats JSON file. */
 public class StatsMetadataKeys {
-    private StatsMetadataKeys() {
-    }
+    private StatsMetadataKeys() {}
     // General data
     public static final String REPAIRS = "repairs";
     public static final String ORIGINAL_ARGS = "originalArgs";

@@ -5,8 +5,7 @@ import picocli.CommandLine;
 
 /** Class containing the CLI for Sorald. */
 public class Cli {
-    private Cli() {
-    }
+    private Cli() {}
 
     /** @return Sorald's command line interface. */
     public static CommandLine createCli() {
