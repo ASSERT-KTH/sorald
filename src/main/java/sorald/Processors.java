@@ -8,6 +8,8 @@ import sorald.processor.*;
  * change any of the generated fields unless you know precisely what you are doing.
  */
 public class Processors {
+    private Processors() {
+    }
     // GENERATED FIELD
     private static final Map<Integer, Class<? extends SoraldAbstractProcessor<?>>>
             RULE_KEY_TO_PROCESSOR =

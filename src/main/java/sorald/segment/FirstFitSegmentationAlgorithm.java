@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class FirstFitSegmentationAlgorithm {
+    private FirstFitSegmentationAlgorithm() {
+    }
 
     public static LinkedList<LinkedList<Node>> segment(Node startNode, int maxFiles) {
         LinkedList<Node> resources4Repair = new LinkedList<Node>();

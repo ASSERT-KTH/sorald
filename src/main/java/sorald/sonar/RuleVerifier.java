@@ -42,6 +42,8 @@ import sorald.Constants;
 
 /** Adapter class for interfacing with sonar-java's verification and analysis facilities. */
 public class RuleVerifier {
+    private RuleVerifier() {
+    }
 
     /**
      * Verify that the given file has at least one issue according to check.

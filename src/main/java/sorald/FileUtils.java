@@ -14,6 +14,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class FileUtils {
+    private FileUtils() {
+    }
 
     /**
      * Compare the two given paths as real paths, resolving any symbolic links.

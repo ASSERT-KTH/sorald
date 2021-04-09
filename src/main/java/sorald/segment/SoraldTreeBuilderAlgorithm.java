@@ -4,6 +4,8 @@ import java.io.File;
 import sorald.Constants;
 
 public class SoraldTreeBuilderAlgorithm {
+    private SoraldTreeBuilderAlgorithm() {
+    }
 
     public static Node buildTree(String dirPathAbsolutePath) {
         Node startNode = new Node(dirPathAbsolutePath);

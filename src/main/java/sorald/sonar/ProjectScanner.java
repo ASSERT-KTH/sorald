@@ -12,6 +12,8 @@ import sorald.FileUtils;
 
 /** Helper class that uses Sonar to scan projects for rule violations. */
 public class ProjectScanner {
+    private ProjectScanner() {
+    }
 
     /**
      * Scan a project for rule violations.
