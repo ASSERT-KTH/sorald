@@ -4,7 +4,7 @@
 
     <groupId>se.kth.castor</groupId>
     <artifactId>sorald</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
 
     <name>Sorald</name>
     <description>An automatic repair system for static code analysis warnings from Sonar Java.</description>
