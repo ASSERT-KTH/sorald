@@ -23,12 +23,7 @@ import pandas as pd
 
 from typing import Tuple, List, Mapping, Iterable, Optional
 
-
-SORALD_JAR_PATH = (
-    pathlib.Path(__file__).absolute().parent.parent.parent.parent
-    / "target"
-    / "sorald-1.1-SNAPSHOT-jar-with-dependencies.jar"
-).resolve(strict=False)
+from sorald._helpers import soraldwrapper
 
 WARNING_STATS_OUTPUT_DIR = (
     pathlib.Path(__file__).parent / "warning_stats_output"
@@ -116,7 +111,7 @@ def parse_args(args: List[str]) -> argparse.Namespace:
         "--sorald-jar",
         help="path to the Sorald jarfile with dependencies",
         type=pathlib.Path,
-        default=SORALD_JAR_PATH,
+        default=soraldwrapper.DEFAULT_SORALD_JAR_PATH,
     )
     parser.add_argument(
         "--num-cpus",

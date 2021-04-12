@@ -58,9 +58,9 @@ jobs:
       - name: Run tests
         run: mvn test
       - name: Sanity check jarfile
-        env:
-          SORALD_JAR_PATH: "target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar"
+        shell: bash
         run: |
+          SORALD_JAR_PATH=$(echo target/sorald-*-SNAPSHOT-jar-with-dependencies.jar)
           java -jar "$SORALD_JAR_PATH" repair --source src/test/resources/ArrayHashCodeAndToString.java --rule-key 2184
           java -jar "$SORALD_JAR_PATH" repair --source src/test/resources/ArrayHashCodeAndToString.java --rule-key 2116
       - name: Upload coverage report to Codecov
