@@ -5,6 +5,7 @@ import pathlib
 import shutil
 import tempfile
 import sys
+import secrets
 
 from typing import List
 
@@ -55,47 +56,11 @@ def run(args: List[str]) -> int:
 
         # for each rule, extract all violations
         mined_data = json.loads(mining_file.read_text())
-        repaired_violation_specs = []
-        for mined_rule_data in mined_data["minedRules"]:
-            rule_key = mined_rule_data[jsonkeys.SORALD_STATS.RULE_KEY]
-            stats_output_file = workdir / f"{rule_key}.json"
-            specifiers = soraldwrapper.OPTION_LIST_SEP.join(
-                [
-                    location["violationSpecifier"]
-                    for location in mined_rule_data["warningLocations"]
-                ]
-            )
-
-            # repair all violations of a given rule
-            rc, _, stderr = soraldwrapper.sorald(
-                "repair",
-                source=source,
-                violation_specs=specifiers,
-                stats_output_file=stats_output_file,
-            )
-
-            if rc != 0:
-                raise RuntimeError(f"Sorald encountered an error: {stderr}")
-            else:
-                repair_data = json.loads(stats_output_file.read_text())
-                for rule_repair_data in repair_data[jsonkeys.SORALD_STATS.REPAIRS]:
-                    num_succesful_repairs = (
-                        rule_repair_data[jsonkeys.SORALD_STATS.VIOLATIONS_BEFORE]
-                        - rule_repair_data[jsonkeys.SORALD_STATS.VIOLATIONS_AFTER]
-                    )
-
-                    if num_succesful_repairs > 0:
-                        performed_repairs = rule_repair_data[
-                            jsonkeys.SORALD_STATS.PERFORMED_REPAIRS_LOCATIONS
-                        ]
-                        performed_repair_specs = [
-                            repair["violationSpecifier"] for repair in performed_repairs
-                        ]
-                        repaired_violation_specs.extend(performed_repair_specs)
+        repaired_violation_specs = _attempt_repairs(mined_data, source)
 
         if repaired_violation_specs:
             print(
-                f"There were succesful repairs: {' '.join(performed_repair_specs)}",
+                f"There were succesful repairs: {' '.join(repaired_violation_specs)}",
                 file=sys.stderr,
             )
             return -1
@@ -104,5 +69,72 @@ def run(args: List[str]) -> int:
             return 0
 
 
+def _attempt_repairs(mined_data: dict, source: pathlib.Path) -> List[str]:
+    """Attempt to perform targeted repairs of all mined violations at the given
+    source site.
+    """
+    repaired_violation_specs = []
+    for mined_rule_data in mined_data["minedRules"]:
+        specifiers = soraldwrapper.OPTION_LIST_SEP.join(
+            [
+                location["violationSpecifier"]
+                for location in mined_rule_data["warningLocations"]
+            ]
+        )
+
+        repaired_violation_specs.extend(_targeted_repair(source, specifiers))
+
+    return repaired_violation_specs
+
+
+def _targeted_repair(source: str, violation_specs: List[str]) -> List[str]:
+    """Perform targeted repair of the violation specs and return the violation
+    specs of repaired violations.
+    """
+    stats_output_file = source / f"{secrets.token_hex()}.json"
+    rc, _, stderr = soraldwrapper.sorald(
+        "repair",
+        source=source,
+        violation_specs=violation_specs,
+        stats_output_file=stats_output_file,
+    )
+
+    if rc != 0:
+        raise RuntimeError(f"Sorald encountered an error: {stderr}")
+    else:
+        sorald_repair_stats = json.loads(stats_output_file.read_text())
+        return _parse_repaired_violation_specs(sorald_repair_stats)
+
+
+def _parse_repaired_violation_specs(sorald_repair_stats: dict) -> List[str]:
+    rule_repairs = sorald_repair_stats[jsonkeys.SORALD_STATS.REPAIRS]
+
+    if not rule_repairs:
+        return []
+    elif len(rule_repairs) > 1:
+        raise RuntimeError(f"Expected repairs for a single rule, found: {rule_repairs}")
+
+    rule_repair_data = rule_repairs[0]
+
+    num_succesful_repairs = (
+        rule_repair_data[jsonkeys.SORALD_STATS.VIOLATIONS_BEFORE]
+        - rule_repair_data[jsonkeys.SORALD_STATS.VIOLATIONS_AFTER]
+    )
+
+    if num_succesful_repairs > 0:
+        performed_repairs = rule_repair_data[
+            jsonkeys.SORALD_STATS.PERFORMED_REPAIRS_LOCATIONS
+        ]
+        performed_repair_specs = [
+            repair["violationSpecifier"] for repair in performed_repairs
+        ]
+
+        # NOTE: This is an approximation, it's not certain that all performed
+        # repairs were succesful, but we know that at least one was.
+        return performed_repair_specs
+    else:
+        return []
+
+
 if __name__ == "__main__":
-    run(sys.argv[1:])
+    sys.exit(run(sys.argv[1:]))
