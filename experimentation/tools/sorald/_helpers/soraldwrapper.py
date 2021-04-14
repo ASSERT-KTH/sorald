@@ -26,6 +26,7 @@ def _find_default_sorald_jar() -> pathlib.Path:
 
 
 DEFAULT_SORALD_JAR_PATH = _find_default_sorald_jar()
+OPTION_LIST_SEP = ","
 
 
 def sorald(

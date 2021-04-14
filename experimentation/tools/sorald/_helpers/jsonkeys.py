@@ -56,6 +56,7 @@ class SORALD_STATS:
     VIOLATIONS_AFTER = "nbViolationsAfter"
     NUM_PERFORMED_REPAIRS = "nbPerformedRepairs"
     NUM_CRASHED_REPAIRS = "nbCrashedRepairs"
+    PERFORMED_REPAIRS_LOCATIONS = "performedRepairsLocations"
 
     class LEGACY:
 
