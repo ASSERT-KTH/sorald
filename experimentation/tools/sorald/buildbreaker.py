@@ -70,7 +70,7 @@ def run(args: List[str]) -> int:
 
         if repaired_violation_specs:
             print(
-                f"There were succesful repairs: {' '.join(repaired_violation_specs)}",
+                f"Repairable violations found: {' '.join(repaired_violation_specs)}",
                 file=sys.stderr,
             )
             return -1

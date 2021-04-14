@@ -27,7 +27,7 @@ def test_non_zero_exit_on_repairable_violations(capsys, tmp_path):
     exit_status = sorald.buildbreaker.run(["--source", str(tmp_path)])
 
     assert exit_status != 0
-    assert "There were succesful repairs" in capsys.readouterr().err
+    assert "Repairable violations found" in capsys.readouterr().err
 
 def test_zero_exit_on_no_repairable_violations(tmp_path, capsys):
     """Test that a file in which all violations have been repaired causes a
