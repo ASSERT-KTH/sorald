@@ -32,6 +32,13 @@ def run(args: List[str]) -> int:
         type=pathlib.Path,
         default=pathlib.Path("."),
     )
+    parser.add_argument(
+        "-j",
+        "--sorald-jar",
+        help="path to the Sorald JAR",
+        type=pathlib.Path,
+        default=soraldwrapper.DEFAULT_SORALD_JAR_PATH,
+    )
     parsed_args = parser.parse_args(args)
 
     if not parsed_args.source.is_dir():
@@ -51,12 +58,15 @@ def run(args: List[str]) -> int:
             "--handled-rules",
             source=source,
             stats_output_file=mining_file,
+            sorald_jar=parsed_args.sorald_jar,
         )
         assert rc == 0, stderr
 
         # for each rule, extract all violations
         mined_data = json.loads(mining_file.read_text())
-        repaired_violation_specs = _attempt_repairs(mined_data, source)
+        repaired_violation_specs = _attempt_repairs(
+            mined_data, source, parsed_args.sorald_jar
+        )
 
         if repaired_violation_specs:
             print(
@@ -69,7 +79,9 @@ def run(args: List[str]) -> int:
             return 0
 
 
-def _attempt_repairs(mined_data: dict, source: pathlib.Path) -> List[str]:
+def _attempt_repairs(
+    mined_data: dict, source: pathlib.Path, sorald_jar: pathlib.Path
+) -> List[str]:
     """Attempt to perform targeted repairs of all mined violations at the given
     source site.
     """
@@ -82,12 +94,16 @@ def _attempt_repairs(mined_data: dict, source: pathlib.Path) -> List[str]:
             ]
         )
 
-        repaired_violation_specs.extend(_targeted_repair(source, specifiers))
+        repaired_violation_specs.extend(
+            _targeted_repair(source, specifiers, sorald_jar)
+        )
 
     return repaired_violation_specs
 
 
-def _targeted_repair(source: str, violation_specs: List[str]) -> List[str]:
+def _targeted_repair(
+    source: str, violation_specs: List[str], sorald_jar: pathlib.Path
+) -> List[str]:
     """Perform targeted repair of the violation specs and return the violation
     specs of repaired violations.
     """
@@ -97,6 +113,7 @@ def _targeted_repair(source: str, violation_specs: List[str]) -> List[str]:
         source=source,
         violation_specs=violation_specs,
         stats_output_file=stats_output_file,
+        sorald_jar=sorald_jar,
     )
 
     if rc != 0:
