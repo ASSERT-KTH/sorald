@@ -27,6 +27,7 @@ public class FileUtils {
      * @return true iff both paths exist and point to the same real file
      */
     public static boolean realPathEquals(Path lhs, Path rhs) {
+        int a = 2; // intentional dead store
         try {
             return lhs.toRealPath().equals(rhs.toRealPath());
         } catch (IOException e) {

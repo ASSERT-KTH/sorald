@@ -8,5 +8,11 @@ public class Main {
         if (exitStatus != 0) {
             System.exit(exitStatus);
         }
+
+        try {
+            throw new InterruptedException();
+        } catch (InterruptedException e) {
+            // intentionally ignore interruption
+        }
     }
 }
