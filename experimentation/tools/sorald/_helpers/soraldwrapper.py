@@ -16,11 +16,8 @@ def _find_default_sorald_jar() -> pathlib.Path:
         target_dir.glob("sorald-*-SNAPSHOT-jar-with-dependencies.jar")
     )
 
-    if len(sorald_jar_matches) != 1:
-        raise RuntimeError(
-            f"expected precisely one Sorald jar in the target directory, "
-            f"but found: {sorald_jar_matches}"
-        )
+    if not sorald_jar_matches:
+        return pathlib.Path("DEFAULT_JAR_MISSING")
 
     return sorald_jar_matches[0].resolve(strict=True)
 
