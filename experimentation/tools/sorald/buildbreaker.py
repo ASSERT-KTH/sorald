@@ -27,11 +27,15 @@ def run(args: List[str]) -> int:
     parser.add_argument(
         "-s",
         "--source",
-        help="path to the source root of the project to analyze",
+        help="path to the source root of the project to analyze (must be a directory)",
         type=pathlib.Path,
         default=pathlib.Path("."),
     )
     parsed_args = parser.parse_args(args)
+
+    if not parsed_args.source.is_dir():
+        print("--source must point to a directory", file=sys.stderr)
+        return -1
 
     with tempfile.TemporaryDirectory() as tmpdir:
         workdir = pathlib.Path(tmpdir)
@@ -40,7 +44,7 @@ def run(args: List[str]) -> int:
         # mine handled rules
         original_source = parsed_args.source.resolve(strict=True)
         source = workdir / "project"
-        _copy_file_or_directory(original_source, source)
+        shutil.copytree(original_source, source)
         rc, _, stderr = soraldwrapper.sorald(
             "mine",
             "--handled-rules",
@@ -74,7 +78,6 @@ def run(args: List[str]) -> int:
                 raise RuntimeError(f"Sorald encountered an error: {stderr}")
             else:
                 repair_data = json.loads(stats_output_file.read_text())
-                print(repair_data)
                 for rule_repair_data in repair_data[jsonkeys.SORALD_STATS.REPAIRS]:
                     num_succesful_repairs = (
                         rule_repair_data[jsonkeys.SORALD_STATS.VIOLATIONS_BEFORE]
@@ -99,13 +102,6 @@ def run(args: List[str]) -> int:
         else:
             print("No repairable violations found")
             return 0
-
-
-def _copy_file_or_directory(src: pathlib.Path, dst: pathlib.Path) -> None:
-    if src.is_file():
-        shutil.copy(src, dst)
-    else:
-        shutil.copytree(src, dst)
 
 
 if __name__ == "__main__":
