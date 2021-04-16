@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: '5e64028cd82336b34a68c60d314ce1c57b4bf276'
       - name: Run Sorald Buildbreaker
         uses: slarse/test-github-action@6cc5741b092a0043999c778a8aba0c326dad14ce
         with:
