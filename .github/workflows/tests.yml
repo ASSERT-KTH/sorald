@@ -64,6 +64,7 @@ jobs:
       - name: Run tests
         run: mvn test
       - name: Run Sonar
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
