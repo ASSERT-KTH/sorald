@@ -1,0 +1,18 @@
+name: sorald-buildbreaker
+
+on:
+  pull_request:
+  push:
+    branches: master 
+
+jobs:
+  buildbreaker:
+    runs-on: ubuntu-latest
+    name: Run Sorald Buildbreaker
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run Sorald Buildbreaker
+        uses: SpoonLabs/sorald-buildbreaker@307ad54331c3428adf0e5816a2b32591a0543b04
+        with:
+          source: 'src/main/java'
