@@ -4,7 +4,7 @@
 
     <groupId>se.kth.castor</groupId>
     <artifactId>sorald</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>0.1.1-SNAPSHOT</version>
 
     <name>Sorald</name>
     <description>An automatic repair system for static code analysis warnings from Sonar Java.</description>
@@ -17,6 +17,30 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <developers>
+        <developer>
+            <id>slarse</id>
+            <name>Simon Larsén</name>
+            <email>slarse@kth.se</email>
+            <organization>KTH Royal Institute of Technology</organization>
+            <organizationUrl>https://www.kth.se</organizationUrl>
+        </developer>
+        <developer>
+            <id>khaes-kth</id>
+            <name>Khashayar Etemadi</name>
+            <email>khaes@kth.se</email>
+            <organization>KTH Royal Institute of Technology</organization>
+            <organizationUrl>https://www.kth.se</organizationUrl>
+        </developer>
+        <developer>
+            <id>fermadeiral</id>
+            <name>Fernanda Madeiral</name>
+            <email>fer.madeiral@gmail.com</email>
+            <organization>KTH Royal Institute of Technology</organization>
+            <organizationUrl>https://www.kth.se</organizationUrl>
+        </developer>
+    </developers>
 
     <dependencies>
         <dependency>
@@ -305,6 +329,13 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
                         <version>1.6</version>
+                        <configuration>
+                            <!-- Prevent gpg from using pinentry programs -->
+                            <gpgArguments>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </gpgArguments>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>

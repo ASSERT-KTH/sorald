@@ -8,11 +8,24 @@ import sys
 from typing import List, Optional, Tuple
 
 
-DEFAULT_SORALD_JAR_PATH = (
-    pathlib.Path(__file__).absolute().parent.parent.parent.parent.parent
-    / "target"
-    / "sorald-1.1-SNAPSHOT-jar-with-dependencies.jar"
-).resolve(strict=False)
+def _find_default_sorald_jar() -> pathlib.Path:
+    target_dir = (
+        pathlib.Path(__file__).absolute().parent.parent.parent.parent.parent / "target"
+    )
+    sorald_jar_matches = list(
+        target_dir.glob("sorald-*-SNAPSHOT-jar-with-dependencies.jar")
+    )
+
+    if len(sorald_jar_matches) != 1:
+        raise RuntimeError(
+            f"expected precisely one Sorald jar in the target directory, "
+            f"but found: {sorald_jar_matches}"
+        )
+
+    return sorald_jar_matches[0].resolve(strict=True)
+
+
+DEFAULT_SORALD_JAR_PATH = _find_default_sorald_jar()
 
 
 def sorald(

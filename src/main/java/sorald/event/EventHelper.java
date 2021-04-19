@@ -4,6 +4,7 @@ import java.util.Collection;
 
 /** Helper methods for firing off events. */
 public class EventHelper {
+    private EventHelper() {}
 
     /**
      * Register an event with the given type with all handlers.

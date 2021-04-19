@@ -186,7 +186,9 @@ An _expected file_ is a `.java` source file that contains the expected output
 after processing a test file, marked by having the suffix `.expected` tacked on
 to the end. For example, given a test file `A.java` the corresponding expected
 file would be called `A.java.expected`. After processing `A.java` with the
-appropriate processor, the test suite compares the results to `A.java.expected`.
+appropriate processor, the test suite compares the results to `A.java.expected`
+with an AST comparison, meaning that most formatting differences are **not**
+captured (but e.g. method order still matters).
 
 When you add a test file, you should always add a corresponding expected file.
 Otherwise, the test suite can verify that the violations are removed, but not
@@ -198,3 +200,26 @@ and its expected output
 [ArrayHashCodeAndToString.java.expected](/src/test/resources/processor_test_files/2116_ArrayHashCodeAndToString/ArrayHashCodeAndToString.java.expected).
 For more examples, see
 [src/test/resources/processor_test_files](/src/test/resources/processor_test_files).
+
+#### Exact match files
+
+An _exact match file_ contains one or more code snippets that is expected to be
+present after Sorald has processed a test file, and is marked by having the
+suffix `.exact`. For example, given a test file `A.java`, the corresponding
+exact match file is `A.java.exact`. Whereas the expected files are matched with
+an AST comparison, the code snippets of exact match files are asserted to be
+literal substrings of the output file contents, in order.
+
+A simple exact match file contains only a single code snippet to be matched as a
+substring. _Do keep in mind that indentation matters!_. For an example, see
+[DeadVariableWithMultipleDeadStores.java.exact](src/test/resources/processor_test_files/1854_DeadStore/DeadVariableWithMultipleDeadStores.java.exact).
+
+An exact match file can contain multiple code snippets, where each snippet
+except for the last one is terminated with a line containing only `###`. See
+[UpperClass.java.exact](src/test/resources/processor_test_files/2057_SerialVersionUidCheck/UpperClass.java.exact)
+for an example.
+
+> **Important:** Exact match files should be used sparingly, and should only
+> capture formatting that's of absolute relevance to Sorald itself and its
+> transformations. Overspecifying exact matches leads to unnecessary work down
+> the line.
