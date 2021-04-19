@@ -21,9 +21,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-latest, macos-latest ]
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
 
     steps:
+      - name: Disable Git's autocrlf
+        run: git config --global core.autocrlf false
       - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # v2.3.4
         with:
           fetch-depth: 2
