@@ -13,7 +13,7 @@ def _find_default_sorald_jar() -> pathlib.Path:
         pathlib.Path(__file__).absolute().parent.parent.parent.parent.parent / "target"
     )
     sorald_jar_matches = list(
-        target_dir.glob("sorald-*-SNAPSHOT-jar-with-dependencies.jar")
+        target_dir.glob("sorald-*-jar-with-dependencies.jar")
     )
 
     if len(sorald_jar_matches) != 1:
