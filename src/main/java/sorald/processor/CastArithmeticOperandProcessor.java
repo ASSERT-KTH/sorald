@@ -62,7 +62,8 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
         CtCodeSnippetExpression<?> literalWithSuffix =
                 literalInt
                         .getFactory()
-                        .createCodeSnippetExpression(value + getLiteralSuffix(typeForSuffix));
+                        .createCodeSnippetExpression(
+                                value + getUpperCaseLiteralSuffix(typeForSuffix));
         literalInt.replace(literalWithSuffix);
     }
 
@@ -105,10 +106,11 @@ public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBi
                 && expr.getFactory().Type().INTEGER_PRIMITIVE.equals(expr.getType());
     }
 
-    private static String getLiteralSuffix(CtTypeReference<?> floatDoubleOrLong) {
+    private static String getUpperCaseLiteralSuffix(CtTypeReference<?> floatDoubleOrLong) {
         String simpleName = floatDoubleOrLong.getSimpleName().toLowerCase();
         assert List.of(Constants.FLOAT, Constants.DOUBLE, Constants.LONG).contains(simpleName);
         return Map.of(Constants.FLOAT, "f", Constants.DOUBLE, "d", Constants.LONG, "l")
-                .get(simpleName);
+                .get(simpleName)
+                .toUpperCase();
     }
 }

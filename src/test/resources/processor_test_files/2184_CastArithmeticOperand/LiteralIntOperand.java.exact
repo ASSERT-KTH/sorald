@@ -1,0 +1,5 @@
+long longVal = 1000L
+###
+float floatVal = 1000F
+###
+double doubleVal = 1000D

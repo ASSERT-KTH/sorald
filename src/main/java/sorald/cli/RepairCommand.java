@@ -3,6 +3,7 @@ package sorald.cli;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +42,8 @@ class RepairCommand extends BaseCommand {
     @CommandLine.Option(
             names = {Constants.ARG_SOURCE},
             description = "The path to the file or folder to be analyzed and possibly repaired.",
-            required = true)
+            required = true,
+            converter = RealFileConverter.class)
     File source;
 
     @CommandLine.ArgGroup(multiplicity = "1")
@@ -212,15 +214,17 @@ class RepairCommand extends BaseCommand {
     }
 
     /** Perform further processing of raw command line args. */
-    private void postprocessArgs() {
+    private void postprocessArgs() throws IOException {
         specifiedRuleViolations = parseRuleViolations(rules);
         ruleKey = parseRuleKey(rules, specifiedRuleViolations);
     }
 
-    private List<RuleViolation> parseRuleViolations(Rules rules) {
-        return rules.ruleViolationSpecifiers.stream()
-                .map(this::parseRuleViolation)
-                .collect(Collectors.toUnmodifiableList());
+    private List<RuleViolation> parseRuleViolations(Rules rules) throws IOException {
+        List<RuleViolation> violations = new ArrayList<>();
+        for (var spec : rules.ruleViolationSpecifiers) {
+            violations.add(parseRuleViolation(spec));
+        }
+        return violations;
     }
 
     private String parseRuleKey(Rules rules, List<RuleViolation> ruleViolations) {
@@ -239,20 +243,11 @@ class RepairCommand extends BaseCommand {
         }
     }
 
-    private RuleViolation parseRuleViolation(String violationSpecifier) {
+    private RuleViolation parseRuleViolation(String violationSpecifier) throws IOException {
         String[] parts = violationSpecifier.split(Constants.VIOLATION_SPECIFIER_SEP);
         String key = parts[0];
         String rawFilename = parts[1];
-        Path absPath = source.toPath().resolve(rawFilename).toAbsolutePath().normalize();
-
-        if (!absPath.toFile().isFile()) {
-            throw new CommandLine.ParameterException(
-                    spec.commandLine(),
-                    String.format(
-                            "Invalid violation ID '%s', no file '%s' in directory '%s'",
-                            violationSpecifier, rawFilename, source));
-        }
-
+        Path absPath = source.toPath().resolve(rawFilename).toRealPath();
         int startLine = Integer.parseInt(parts[2]);
         int startCol = Integer.parseInt(parts[3]);
         int endLine = Integer.parseInt(parts[4]);
