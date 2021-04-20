@@ -1363,5 +1363,133 @@
             "lastModified": "2021-04-19 15:59:11.394751",
             "isLegacyRecord": false
         }
+    },
+    "inria/spoon#3866": {
+        "repoSlug": "inria/spoon",
+        "prMetadata": {
+            "url": "https://github.com/INRIA/spoon/pull/3866",
+            "createdAt": "2021-03-29 11:03:08",
+            "closedAt": "2021-03-30 07:22:53",
+            "mergedAt": "2021-03-30 07:22:53",
+            "state": "closed",
+            "isMerged": true,
+            "number": 3866
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 9,
+                    "ruleName": "SerialVersionUid",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2057",
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 36,
+                            "endColumn": 20,
+                            "startColumn": 13,
+                            "startLine": 36,
+                            "filePath": "spoon/javadoc/internal/Javadoc.java",
+                            "violationSpecifier": "2057:spoon/javadoc/internal/Javadoc.java:36:13:36:20"
+                        },
+                        {
+                            "endLine": 29,
+                            "endColumn": 28,
+                            "startColumn": 13,
+                            "startLine": 29,
+                            "filePath": "spoon/javadoc/internal/JavadocBlockTag.java",
+                            "violationSpecifier": "2057:spoon/javadoc/internal/JavadocBlockTag.java:29:13:29:28"
+                        },
+                        {
+                            "endLine": 24,
+                            "endColumn": 32,
+                            "startColumn": 14,
+                            "startLine": 24,
+                            "filePath": "spoon/javadoc/internal/JavadocDescription.java",
+                            "violationSpecifier": "2057:spoon/javadoc/internal/JavadocDescription.java:24:14:24:32"
+                        },
+                        {
+                            "endLine": 24,
+                            "endColumn": 29,
+                            "startColumn": 13,
+                            "startLine": 24,
+                            "filePath": "spoon/javadoc/internal/JavadocInlineTag.java",
+                            "violationSpecifier": "2057:spoon/javadoc/internal/JavadocInlineTag.java:24:13:24:29"
+                        },
+                        {
+                            "endLine": 25,
+                            "endColumn": 27,
+                            "startColumn": 13,
+                            "startLine": 25,
+                            "filePath": "spoon/javadoc/internal/JavadocSnippet.java",
+                            "violationSpecifier": "2057:spoon/javadoc/internal/JavadocSnippet.java:25:13:25:27"
+                        },
+                        {
+                            "endLine": 19,
+                            "endColumn": 36,
+                            "startColumn": 13,
+                            "startLine": 19,
+                            "filePath": "spoon/support/comparator/CtLineElementComparator.java",
+                            "violationSpecifier": "2057:spoon/support/comparator/CtLineElementComparator.java:19:13:19:36"
+                        },
+                        {
+                            "endLine": 18,
+                            "endColumn": 41,
+                            "startColumn": 13,
+                            "startLine": 18,
+                            "filePath": "spoon/support/comparator/DeepRepresentationComparator.java",
+                            "violationSpecifier": "2057:spoon/support/comparator/DeepRepresentationComparator.java:18:13:18:41"
+                        },
+                        {
+                            "endLine": 22,
+                            "endColumn": 31,
+                            "startColumn": 13,
+                            "startLine": 22,
+                            "filePath": "spoon/support/reflect/CtExtendedModifier.java",
+                            "violationSpecifier": "2057:spoon/support/reflect/CtExtendedModifier.java:22:13:22:31"
+                        },
+                        {
+                            "endLine": 215,
+                            "endColumn": 34,
+                            "startColumn": 22,
+                            "startLine": 215,
+                            "filePath": "spoon/support/util/ModelList.java",
+                            "violationSpecifier": "2057:spoon/support/util/ModelList.java:215:22:215:34"
+                        }
+                    ],
+                    "nbViolationsBefore": 9,
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: 689109ee",
+                "javaVersion": "11.0.10",
+                "originalArgs": [
+                    "repair",
+                    "--rule-key",
+                    "2057",
+                    "--source",
+                    "src/main/java",
+                    "--stats-output-file",
+                    "2057.json"
+                ]
+            },
+            "totalTimeMs": 8544,
+            "repairTimeMs": 331,
+            "startTimeMs": 1617015237008,
+            "crashes": [],
+            "endTimeMs": 1617015245552,
+            "parseTimeMs": 4066
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/spoon/javadoc/internal/Javadoc.java b/src/main/java/spoon/javadoc/internal/Javadoc.java\nindex 9354246ad4..e6dd8c9120 100644\n--- a/src/main/java/spoon/javadoc/internal/Javadoc.java\n+++ b/src/main/java/spoon/javadoc/internal/Javadoc.java\n@@ -34,6 +34,7 @@\n * writing this comment does not contain any block tags (such as <code>@see AnotherClass</code>)\n */\n public class Javadoc implements Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \n \tprivate JavadocDescription description;\n \tprivate List<JavadocBlockTag> blockTags;\ndiff --git a/src/main/java/spoon/javadoc/internal/JavadocBlockTag.java b/src/main/java/spoon/javadoc/internal/JavadocBlockTag.java\nindex 1334b75539..39044f864f 100644\n--- a/src/main/java/spoon/javadoc/internal/JavadocBlockTag.java\n+++ b/src/main/java/spoon/javadoc/internal/JavadocBlockTag.java\n@@ -27,6 +27,7 @@\n * </code>\n */\n public class JavadocBlockTag implements Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \n \tprivate CtJavaDocTag.TagType type;\n \tprivate JavadocDescription content;\ndiff --git a/src/main/java/spoon/javadoc/internal/JavadocDescription.java b/src/main/java/spoon/javadoc/internal/JavadocDescription.java\nindex fdb23a09d5..9269f990c6 100644\n--- a/src/main/java/spoon/javadoc/internal/JavadocDescription.java\n+++ b/src/main/java/spoon/javadoc/internal/JavadocDescription.java\n@@ -22,6 +22,7 @@\n \t* A javadoc text, potentially containing inline tags.\n \t*/\n \tpublic class JavadocDescription implements Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \n \tprivate List<JavadocDescriptionElement> elements;\n \ndiff --git a/src/main/java/spoon/javadoc/internal/JavadocInlineTag.java b/src/main/java/spoon/javadoc/internal/JavadocInlineTag.java\nindex 813d498b53..5a4dd471a3 100644\n--- a/src/main/java/spoon/javadoc/internal/JavadocInlineTag.java\n+++ b/src/main/java/spoon/javadoc/internal/JavadocInlineTag.java\n@@ -22,6 +22,7 @@\n * <p>For example <code>{@link String}</code>\n */\n public class JavadocInlineTag implements JavadocDescriptionElement, Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \n \t/** Return the next word of the string, in other words it stops when a space is encountered. */\n \tpublic static String nextWord(String string) {\ndiff --git a/src/main/java/spoon/javadoc/internal/JavadocSnippet.java b/src/main/java/spoon/javadoc/internal/JavadocSnippet.java\nindex 5ea4243b09..d2136aa2aa 100644\n--- a/src/main/java/spoon/javadoc/internal/JavadocSnippet.java\n+++ b/src/main/java/spoon/javadoc/internal/JavadocSnippet.java\n@@ -23,6 +23,7 @@\n * have two snippets: one before and one after the inline tag (<code>{@link String}</code>).\n */\n public class JavadocSnippet implements JavadocDescriptionElement, Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \tprivate String text;\n \n \tpublic JavadocSnippet(String text) {\ndiff --git a/src/main/java/spoon/support/comparator/CtLineElementComparator.java b/src/main/java/spoon/support/comparator/CtLineElementComparator.java\nindex a3c3a06c6d..f7c7daada5 100644\n--- a/src/main/java/spoon/support/comparator/CtLineElementComparator.java\n+++ b/src/main/java/spoon/support/comparator/CtLineElementComparator.java\n@@ -17,6 +17,7 @@\n  * source files.\n  */\n public class CtLineElementComparator implements Comparator<CtElement>, Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \n \t/**\n \t * Returns 0 if o1 has the same position as o2, or both positions are invalid and o1.equals(o2).\ndiff --git a/src/main/java/spoon/support/comparator/DeepRepresentationComparator.java b/src/main/java/spoon/support/comparator/DeepRepresentationComparator.java\nindex 90b993a0bb..1202339c88 100644\n--- a/src/main/java/spoon/support/comparator/DeepRepresentationComparator.java\n+++ b/src/main/java/spoon/support/comparator/DeepRepresentationComparator.java\n@@ -16,6 +16,7 @@\n  * Compares based on a toString representation.\n  */\n public class DeepRepresentationComparator implements Comparator<CtElement>, Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \n \t@Override\n \tpublic int compare(CtElement o1, CtElement o2) {\ndiff --git a/src/main/java/spoon/support/reflect/CtExtendedModifier.java b/src/main/java/spoon/support/reflect/CtExtendedModifier.java\nindex b9d5174b9e..28585c346f 100644\n--- a/src/main/java/spoon/support/reflect/CtExtendedModifier.java\n+++ b/src/main/java/spoon/support/reflect/CtExtendedModifier.java\n@@ -20,6 +20,7 @@\n  * ModifierKind in kept for sake of full backward-compatibility.\n  */\n public class CtExtendedModifier implements SourcePositionHolder, Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \tprivate boolean implicit;\n \tprivate ModifierKind kind;\n \tprivate SourcePosition position;\ndiff --git a/src/main/java/spoon/support/util/ModelList.java b/src/main/java/spoon/support/util/ModelList.java\nindex cbde69aaaf..6ee1d85b93 100644\n--- a/src/main/java/spoon/support/util/ModelList.java\n+++ b/src/main/java/spoon/support/util/ModelList.java\n@@ -213,6 +213,7 @@ public int lastIndexOf(Object o) {\n \t * See https://docs.oracle.com/javase/7/docs/api/java/util/AbstractList.html#modCount\n \t */\n \tprivate static class InternalList<T> extends ArrayList<T> {\n+\t\tprivate static final long serialVersionUID = 1L;\n \t\tInternalList(int initialCapacity) {\n \t\t\tsuper(initialCapacity);\n \t\t}\n",
+            "final": "diff --git a/src/main/java/spoon/javadoc/internal/Javadoc.java b/src/main/java/spoon/javadoc/internal/Javadoc.java\nindex 9354246ad43..e6dd8c91206 100644\n--- a/src/main/java/spoon/javadoc/internal/Javadoc.java\n+++ b/src/main/java/spoon/javadoc/internal/Javadoc.java\n@@ -34,6 +34,7 @@\n * writing this comment does not contain any block tags (such as <code>@see AnotherClass</code>)\n */\n public class Javadoc implements Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \n \tprivate JavadocDescription description;\n \tprivate List<JavadocBlockTag> blockTags;\ndiff --git a/src/main/java/spoon/javadoc/internal/JavadocBlockTag.java b/src/main/java/spoon/javadoc/internal/JavadocBlockTag.java\nindex 1334b75539f..39044f864f2 100644\n--- a/src/main/java/spoon/javadoc/internal/JavadocBlockTag.java\n+++ b/src/main/java/spoon/javadoc/internal/JavadocBlockTag.java\n@@ -27,6 +27,7 @@\n * </code>\n */\n public class JavadocBlockTag implements Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \n \tprivate CtJavaDocTag.TagType type;\n \tprivate JavadocDescription content;\ndiff --git a/src/main/java/spoon/javadoc/internal/JavadocDescription.java b/src/main/java/spoon/javadoc/internal/JavadocDescription.java\nindex fdb23a09d53..9269f990c61 100644\n--- a/src/main/java/spoon/javadoc/internal/JavadocDescription.java\n+++ b/src/main/java/spoon/javadoc/internal/JavadocDescription.java\n@@ -22,6 +22,7 @@\n \t* A javadoc text, potentially containing inline tags.\n \t*/\n \tpublic class JavadocDescription implements Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \n \tprivate List<JavadocDescriptionElement> elements;\n \ndiff --git a/src/main/java/spoon/javadoc/internal/JavadocInlineTag.java b/src/main/java/spoon/javadoc/internal/JavadocInlineTag.java\nindex 813d498b53f..5a4dd471a3d 100644\n--- a/src/main/java/spoon/javadoc/internal/JavadocInlineTag.java\n+++ b/src/main/java/spoon/javadoc/internal/JavadocInlineTag.java\n@@ -22,6 +22,7 @@\n * <p>For example <code>{@link String}</code>\n */\n public class JavadocInlineTag implements JavadocDescriptionElement, Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \n \t/** Return the next word of the string, in other words it stops when a space is encountered. */\n \tpublic static String nextWord(String string) {\ndiff --git a/src/main/java/spoon/javadoc/internal/JavadocSnippet.java b/src/main/java/spoon/javadoc/internal/JavadocSnippet.java\nindex 5ea4243b09b..d2136aa2aa0 100644\n--- a/src/main/java/spoon/javadoc/internal/JavadocSnippet.java\n+++ b/src/main/java/spoon/javadoc/internal/JavadocSnippet.java\n@@ -23,6 +23,7 @@\n * have two snippets: one before and one after the inline tag (<code>{@link String}</code>).\n */\n public class JavadocSnippet implements JavadocDescriptionElement, Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \tprivate String text;\n \n \tpublic JavadocSnippet(String text) {\ndiff --git a/src/main/java/spoon/support/comparator/CtLineElementComparator.java b/src/main/java/spoon/support/comparator/CtLineElementComparator.java\nindex a3c3a06c6d3..f7c7daada57 100644\n--- a/src/main/java/spoon/support/comparator/CtLineElementComparator.java\n+++ b/src/main/java/spoon/support/comparator/CtLineElementComparator.java\n@@ -17,6 +17,7 @@\n  * source files.\n  */\n public class CtLineElementComparator implements Comparator<CtElement>, Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \n \t/**\n \t * Returns 0 if o1 has the same position as o2, or both positions are invalid and o1.equals(o2).\ndiff --git a/src/main/java/spoon/support/comparator/DeepRepresentationComparator.java b/src/main/java/spoon/support/comparator/DeepRepresentationComparator.java\nindex 90b993a0bb2..1202339c885 100644\n--- a/src/main/java/spoon/support/comparator/DeepRepresentationComparator.java\n+++ b/src/main/java/spoon/support/comparator/DeepRepresentationComparator.java\n@@ -16,6 +16,7 @@\n  * Compares based on a toString representation.\n  */\n public class DeepRepresentationComparator implements Comparator<CtElement>, Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \n \t@Override\n \tpublic int compare(CtElement o1, CtElement o2) {\ndiff --git a/src/main/java/spoon/support/reflect/CtExtendedModifier.java b/src/main/java/spoon/support/reflect/CtExtendedModifier.java\nindex b9d5174b9e1..28585c346fe 100644\n--- a/src/main/java/spoon/support/reflect/CtExtendedModifier.java\n+++ b/src/main/java/spoon/support/reflect/CtExtendedModifier.java\n@@ -20,6 +20,7 @@\n  * ModifierKind in kept for sake of full backward-compatibility.\n  */\n public class CtExtendedModifier implements SourcePositionHolder, Serializable {\n+\tprivate static final long serialVersionUID = 1L;\n \tprivate boolean implicit;\n \tprivate ModifierKind kind;\n \tprivate SourcePosition position;\ndiff --git a/src/main/java/spoon/support/util/ModelList.java b/src/main/java/spoon/support/util/ModelList.java\nindex cbde69aaafb..6ee1d85b935 100644\n--- a/src/main/java/spoon/support/util/ModelList.java\n+++ b/src/main/java/spoon/support/util/ModelList.java\n@@ -213,6 +213,7 @@ public int lastIndexOf(Object o) {\n \t * See https://docs.oracle.com/javase/7/docs/api/java/util/AbstractList.html#modCount\n \t */\n \tprivate static class InternalList<T> extends ArrayList<T> {\n+\t\tprivate static final long serialVersionUID = 1L;\n \t\tInternalList(int initialCapacity) {\n \t\t\tsuper(initialCapacity);\n \t\t}\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-03-29 13:05:58.466492",
+            "lastModified": "2021-04-19 16:05:50.214249",
+            "isLegacyRecord": false
+        }
     }
 }
