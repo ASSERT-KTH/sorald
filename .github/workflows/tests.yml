@@ -60,7 +60,7 @@ jobs:
       - name: Sanity check jarfile
         shell: bash
         run: |
-          SORALD_JAR_PATH=$(echo target/sorald-*-SNAPSHOT-jar-with-dependencies.jar)
+          SORALD_JAR_PATH=$(echo target/sorald-*-jar-with-dependencies.jar)
           java -jar "$SORALD_JAR_PATH" repair --source src/test/resources/ArrayHashCodeAndToString.java --rule-key 2184
           java -jar "$SORALD_JAR_PATH" repair --source src/test/resources/ArrayHashCodeAndToString.java --rule-key 2116
       - name: Upload coverage report to Codecov
