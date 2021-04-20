@@ -11,6 +11,16 @@ It provided the following repairs:
     - Number of violations found: 8
     - Number of violations repaired: 8
 
+## [inria/spoon#3866](https://github.com/inria/spoon/pull/3866)
+This PR was opened at 2021-03-29 11:03:08 and merged at 2021-03-30 07:22:53.
+The patch was generated fully automatically with Sorald.
+
+It provided the following repairs:
+
+* [Rule 2057](https://rules.sonarsource.com/java/RSPEC-2057)
+    - Number of violations found: 9
+    - Number of violations repaired: 9
+
 ## [inria/spoon#3853](https://github.com/inria/spoon/pull/3853)
 This PR was opened at 2021-03-22 15:58:57 and merged at 2021-03-24 07:44:07.
 The patch was generated fully automatically with Sorald.
