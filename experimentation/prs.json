@@ -1363,5 +1363,229 @@
             "lastModified": "2021-04-19 15:59:11.394751",
             "isLegacyRecord": false
         }
+    },
+    "verificatum/verificatum-vcr#6": {
+        "repoSlug": "verificatum/verificatum-vcr",
+        "prMetadata": {
+            "url": "https://github.com/verificatum/verificatum-vcr/pull/6",
+            "createdAt": "2021-04-20 07:43:52",
+            "closedAt": null,
+            "mergedAt": null,
+            "state": "open",
+            "isMerged": false,
+            "number": 6
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 21,
+                    "ruleName": "InterruptedException",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2142",
+                    "nbViolationsBefore": 21,
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 83,
+                            "endColumn": 46,
+                            "startColumn": 17,
+                            "startLine": 83,
+                            "filePath": "src/java/com/verificatum/arithm/BPGroupElementBatchReader.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/arithm/BPGroupElementBatchReader.java:83:17:83:46"
+                        },
+                        {
+                            "endLine": 154,
+                            "endColumn": 54,
+                            "startColumn": 25,
+                            "startLine": 154,
+                            "filePath": "src/java/com/verificatum/arithm/BPGroupElementBatchReader.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/arithm/BPGroupElementBatchReader.java:154:25:154:54"
+                        },
+                        {
+                            "endLine": 69,
+                            "endColumn": 50,
+                            "startColumn": 21,
+                            "startLine": 69,
+                            "filePath": "src/java/com/verificatum/arithm/BPGroupElementBatchWriter.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/arithm/BPGroupElementBatchWriter.java:69:21:69:50"
+                        },
+                        {
+                            "endLine": 94,
+                            "endColumn": 50,
+                            "startColumn": 21,
+                            "startLine": 94,
+                            "filePath": "src/java/com/verificatum/arithm/BPGroupElementBatchWriter.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/arithm/BPGroupElementBatchWriter.java:94:21:94:50"
+                        },
+                        {
+                            "endLine": 860,
+                            "endColumn": 54,
+                            "startColumn": 25,
+                            "startLine": 860,
+                            "filePath": "src/java/com/verificatum/arithm/LargeIntegerArrayF.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/arithm/LargeIntegerArrayF.java:860:25:860:54"
+                        },
+                        {
+                            "endLine": 886,
+                            "endColumn": 54,
+                            "startColumn": 25,
+                            "startLine": 886,
+                            "filePath": "src/java/com/verificatum/arithm/LargeIntegerArrayF.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/arithm/LargeIntegerArrayF.java:886:25:886:54"
+                        },
+                        {
+                            "endLine": 82,
+                            "endColumn": 46,
+                            "startColumn": 17,
+                            "startLine": 82,
+                            "filePath": "src/java/com/verificatum/arithm/LargeIntegerBatchReader.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/arithm/LargeIntegerBatchReader.java:82:17:82:46"
+                        },
+                        {
+                            "endLine": 144,
+                            "endColumn": 54,
+                            "startColumn": 25,
+                            "startLine": 144,
+                            "filePath": "src/java/com/verificatum/arithm/LargeIntegerBatchReader.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/arithm/LargeIntegerBatchReader.java:144:25:144:54"
+                        },
+                        {
+                            "endLine": 168,
+                            "endColumn": 49,
+                            "startColumn": 21,
+                            "startLine": 168,
+                            "filePath": "src/java/com/verificatum/crypto/PRG.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/crypto/PRG.java:168:21:168:49"
+                        },
+                        {
+                            "endLine": 72,
+                            "endColumn": 46,
+                            "startColumn": 17,
+                            "startLine": 72,
+                            "filePath": "src/java/com/verificatum/protocol/Shutdown.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/protocol/Shutdown.java:72:17:72:46"
+                        },
+                        {
+                            "endLine": 234,
+                            "endColumn": 54,
+                            "startColumn": 25,
+                            "startLine": 234,
+                            "filePath": "src/java/com/verificatum/protocol/com/BullBoardBasicHTTPW.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/protocol/com/BullBoardBasicHTTPW.java:234:25:234:54"
+                        },
+                        {
+                            "endLine": 191,
+                            "endColumn": 50,
+                            "startColumn": 21,
+                            "startLine": 191,
+                            "filePath": "src/java/com/verificatum/protocol/com/BullBoardBasicSingle.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/protocol/com/BullBoardBasicSingle.java:191:21:191:50"
+                        },
+                        {
+                            "endLine": 121,
+                            "endColumn": 58,
+                            "startColumn": 29,
+                            "startLine": 121,
+                            "filePath": "src/java/com/verificatum/protocol/com/HintServer.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/protocol/com/HintServer.java:121:29:121:58"
+                        },
+                        {
+                            "endLine": 186,
+                            "endColumn": 58,
+                            "startColumn": 29,
+                            "startLine": 186,
+                            "filePath": "src/java/com/verificatum/protocol/com/SimpleHTTPServer.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/protocol/com/SimpleHTTPServer.java:186:29:186:58"
+                        },
+                        {
+                            "endLine": 59,
+                            "endColumn": 46,
+                            "startColumn": 17,
+                            "startLine": 59,
+                            "filePath": "src/java/com/verificatum/protocol/com/Sleeper.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/protocol/com/Sleeper.java:59:17:59:46"
+                        },
+                        {
+                            "endLine": 174,
+                            "endColumn": 46,
+                            "startColumn": 17,
+                            "startLine": 174,
+                            "filePath": "src/java/com/verificatum/tests/crypto/TestPRG.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/tests/crypto/TestPRG.java:174:17:174:46"
+                        },
+                        {
+                            "endLine": 179,
+                            "endColumn": 46,
+                            "startColumn": 17,
+                            "startLine": 179,
+                            "filePath": "src/java/com/verificatum/tests/crypto/TestPRG.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/tests/crypto/TestPRG.java:179:17:179:46"
+                        },
+                        {
+                            "endLine": 102,
+                            "endColumn": 50,
+                            "startColumn": 21,
+                            "startLine": 102,
+                            "filePath": "src/java/com/verificatum/ui/gui/JConsoleOutLinker.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/ui/gui/JConsoleOutLinker.java:102:21:102:50"
+                        },
+                        {
+                            "endLine": 121,
+                            "endColumn": 50,
+                            "startColumn": 21,
+                            "startLine": 121,
+                            "filePath": "src/java/com/verificatum/util/ArrayWorker.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/util/ArrayWorker.java:121:21:121:50"
+                        },
+                        {
+                            "endLine": 71,
+                            "endColumn": 54,
+                            "startColumn": 25,
+                            "startLine": 71,
+                            "filePath": "src/java/com/verificatum/util/Command.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/util/Command.java:71:25:71:54"
+                        },
+                        {
+                            "endLine": 123,
+                            "endColumn": 50,
+                            "startColumn": 21,
+                            "startLine": 123,
+                            "filePath": "src/java/com/verificatum/util/SplitWorker.java",
+                            "violationSpecifier": "2142:src/java/com/verificatum/util/SplitWorker.java:123:21:123:50"
+                        }
+                    ],
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: e8181245",
+                "javaVersion": "11.0.10",
+                "originalArgs": [
+                    "repair",
+                    "--stats-output-file",
+                    "2142.json",
+                    "--source",
+                    ".",
+                    "--rule-key",
+                    "2142"
+                ]
+            },
+            "totalTimeMs": 5164,
+            "repairTimeMs": 282,
+            "startTimeMs": 1618904409906,
+            "crashes": [],
+            "endTimeMs": 1618904415070,
+            "parseTimeMs": 1886
+        },
+        "diffs": {
+            "initial": "diff --git a/src/java/com/verificatum/arithm/BPGroupElementBatchReader.java b/src/java/com/verificatum/arithm/BPGroupElementBatchReader.java\nindex 3306cf4..08c83b2 100644\n--- a/src/java/com/verificatum/arithm/BPGroupElementBatchReader.java\n+++ b/src/java/com/verificatum/arithm/BPGroupElementBatchReader.java\n@@ -81,6 +81,7 @@\n                 return elements;\n             }\n         } catch (final InterruptedException ie) {\n+            Thread.currentThread().interrupt();\n             throw new ArithmError(\"Failed to read next batch!\", ie);\n         }\n     }\n@@ -152,6 +153,7 @@ public void run() {\n                 try {\n                     Thread.sleep(BPGroupElementBatchReader.BATCH_SLEEP_TIME);\n                 } catch (final InterruptedException ie) {\n+                    Thread.currentThread().interrupt();\n                 }\n             }\n         }\ndiff --git a/src/java/com/verificatum/arithm/BPGroupElementBatchWriter.java b/src/java/com/verificatum/arithm/BPGroupElementBatchWriter.java\nindex d7303f5..dece4e9 100644\n--- a/src/java/com/verificatum/arithm/BPGroupElementBatchWriter.java\n+++ b/src/java/com/verificatum/arithm/BPGroupElementBatchWriter.java\n@@ -67,6 +67,7 @@ void writeNext(final PGroupElement[] batch) {\n             try {\n                 Thread.sleep(100);\n             } catch (final InterruptedException ie) {\n+                Thread.currentThread().interrupt();\n             }\n         }\n \n@@ -92,6 +93,7 @@ void close() {\n             try {\n                 Thread.sleep(100);\n             } catch (final InterruptedException ie) {\n+                Thread.currentThread().interrupt();\n             }\n         }\n         btw.close();\ndiff --git a/src/java/com/verificatum/arithm/LargeIntegerArrayF.java b/src/java/com/verificatum/arithm/LargeIntegerArrayF.java\nindex fcbc637..da6a679 100644\n--- a/src/java/com/verificatum/arithm/LargeIntegerArrayF.java\n+++ b/src/java/com/verificatum/arithm/LargeIntegerArrayF.java\n@@ -858,6 +858,7 @@ void writeNext(final LargeInteger[] batch) {\n                 try {\n                     Thread.sleep(100);\n                 } catch (final InterruptedException ie) {\n+                    Thread.currentThread().interrupt();\n                 }\n             }\n \n@@ -884,6 +885,7 @@ void close() {\n                 try {\n                     Thread.sleep(100);\n                 } catch (final InterruptedException ie) {\n+                    Thread.currentThread().interrupt();\n                 }\n             }\n             btw.close();\ndiff --git a/src/java/com/verificatum/arithm/LargeIntegerBatchReader.java b/src/java/com/verificatum/arithm/LargeIntegerBatchReader.java\nindex e077264..b561779 100644\n--- a/src/java/com/verificatum/arithm/LargeIntegerBatchReader.java\n+++ b/src/java/com/verificatum/arithm/LargeIntegerBatchReader.java\n@@ -80,6 +80,7 @@\n                 return integers;\n             }\n         } catch (final InterruptedException ie) {\n+            Thread.currentThread().interrupt();\n             throw new ArithmError(\"Failed to read next batch!\", ie);\n         }\n     }\n@@ -142,6 +143,7 @@ public void run() {\n                 try {\n                     Thread.sleep(LargeIntegerBatchReader.BATCH_SLEEP_TIME);\n                 } catch (final InterruptedException ie) {\n+                    Thread.currentThread().interrupt();\n                 }\n             }\n         }\ndiff --git a/src/java/com/verificatum/crypto/PRG.java b/src/java/com/verificatum/crypto/PRG.java\nindex 838b312..4dce0d4 100644\n--- a/src/java/com/verificatum/crypto/PRG.java\n+++ b/src/java/com/verificatum/crypto/PRG.java\n@@ -166,6 +166,7 @@ public void setSeedReplaceStored(final File seedFile,\n             try {\n                 Thread.sleep(SEED_GRAB_SLEEP);\n             } catch (final InterruptedException e) {\n+                Thread.currentThread().interrupt();\n             }\n             i++;\n         }\ndiff --git a/src/java/com/verificatum/protocol/Shutdown.java b/src/java/com/verificatum/protocol/Shutdown.java\nindex 5bd8c68..74cf7da 100644\n--- a/src/java/com/verificatum/protocol/Shutdown.java\n+++ b/src/java/com/verificatum/protocol/Shutdown.java\n@@ -71,6 +71,7 @@ public void execute(final Log log) {\n             Thread.sleep(WAIT_FOR_OTHERS_TIME);\n         } catch (final InterruptedException ie) {\n             // User requested immediate shutdown. Do nothing.\n+            Thread.currentThread().interrupt();\n         }\n         bullBoard.stop(log);\n     }\ndiff --git a/src/java/com/verificatum/protocol/com/BullBoardBasicHTTPW.java b/src/java/com/verificatum/protocol/com/BullBoardBasicHTTPW.java\nindex c2ad8a4..1f90ed7 100644\n--- a/src/java/com/verificatum/protocol/com/BullBoardBasicHTTPW.java\n+++ b/src/java/com/verificatum/protocol/com/BullBoardBasicHTTPW.java\n@@ -232,6 +232,7 @@ protected void waitForAtMost(final int l, final long waitTime) {\n                 try {\n                     sleeper.wait();\n                 } catch (final InterruptedException ie) {\n+                    Thread.currentThread().interrupt();\n                 }\n                 alive = false;\n             }\ndiff --git a/src/java/com/verificatum/protocol/com/BullBoardBasicSingle.java b/src/java/com/verificatum/protocol/com/BullBoardBasicSingle.java\nindex b08a09d..ca88c05 100644\n--- a/src/java/com/verificatum/protocol/com/BullBoardBasicSingle.java\n+++ b/src/java/com/verificatum/protocol/com/BullBoardBasicSingle.java\n@@ -189,6 +189,7 @@ public ByteTreeBasic waitFor(final int l,\n             try {\n                 Thread.sleep(SLEEP_TIME);\n             } catch (final InterruptedException ie) {\n+                Thread.currentThread().interrupt();\n             }\n         }\n     }\ndiff --git a/src/java/com/verificatum/protocol/com/HintServer.java b/src/java/com/verificatum/protocol/com/HintServer.java\nindex ac54e23..9422b13 100644\n--- a/src/java/com/verificatum/protocol/com/HintServer.java\n+++ b/src/java/com/verificatum/protocol/com/HintServer.java\n@@ -119,6 +119,7 @@ public HintServer(final InetSocketAddress isa, final int k) {\n                     try {\n                         Thread.sleep(SOCKET_ATTEMPT_SLEEP);\n                     } catch (final InterruptedException ie) {\n+                        Thread.currentThread().interrupt();\n                     }\n                 }\n             }\ndiff --git a/src/java/com/verificatum/protocol/com/SimpleHTTPServer.java b/src/java/com/verificatum/protocol/com/SimpleHTTPServer.java\nindex e30b5bc..3acace5 100644\n--- a/src/java/com/verificatum/protocol/com/SimpleHTTPServer.java\n+++ b/src/java/com/verificatum/protocol/com/SimpleHTTPServer.java\n@@ -184,6 +184,7 @@ public void start() {\n                     try {\n                         Thread.sleep(SOCKET_ATTEMPT_SLEEP);\n                     } catch (final InterruptedException ie) {\n+                        Thread.currentThread().interrupt();\n                     }\n                 }\n             }\ndiff --git a/src/java/com/verificatum/protocol/com/Sleeper.java b/src/java/com/verificatum/protocol/com/Sleeper.java\nindex 3fbbf13..ef5375d 100644\n--- a/src/java/com/verificatum/protocol/com/Sleeper.java\n+++ b/src/java/com/verificatum/protocol/com/Sleeper.java\n@@ -57,6 +57,7 @@ public void run() {\n         try {\n             Thread.sleep(waitTime);\n         } catch (final InterruptedException ie) {\n+            Thread.currentThread().interrupt();\n         }\n     }\n }\ndiff --git a/src/java/com/verificatum/tests/crypto/TestPRG.java b/src/java/com/verificatum/tests/crypto/TestPRG.java\nindex edc3b32..1acdb8a 100644\n--- a/src/java/com/verificatum/tests/crypto/TestPRG.java\n+++ b/src/java/com/verificatum/tests/crypto/TestPRG.java\n@@ -172,11 +172,13 @@ public void run() {\n         try {\n             Thread.sleep(500);\n         } catch (final InterruptedException ie) {\n+            Thread.currentThread().interrupt();\n         }\n         ExtIO.atomicWriteString(TempFile.getFile(), seedFile, sb.toString());\n         try {\n             thread.join();\n         } catch (final InterruptedException ie) {\n+            Thread.currentThread().interrupt();\n         }\n         if (failed[0] != null) {\n             throw new CryptoException(failed[0]);\ndiff --git a/src/java/com/verificatum/ui/gui/JConsoleOutLinker.java b/src/java/com/verificatum/ui/gui/JConsoleOutLinker.java\nindex 150d4f1..aa47751 100644\n--- a/src/java/com/verificatum/ui/gui/JConsoleOutLinker.java\n+++ b/src/java/com/verificatum/ui/gui/JConsoleOutLinker.java\n@@ -100,6 +100,7 @@ public void run() {\n                     this.wait(100);\n                 }\n             } catch (final InterruptedException ie) {\n+                Thread.currentThread().interrupt();\n             }\n \n             int len = 0;\ndiff --git a/src/java/com/verificatum/util/ArrayWorker.java b/src/java/com/verificatum/util/ArrayWorker.java\nindex ba64e55..614b0fb 100644\n--- a/src/java/com/verificatum/util/ArrayWorker.java\n+++ b/src/java/com/verificatum/util/ArrayWorker.java\n@@ -119,6 +119,7 @@ private static void divideWork(final ArrayWorker worker, final int size) {\n             try {\n                 executor.invoke(callables);\n             } catch (final InterruptedException ie) {\n+                Thread.currentThread().interrupt();\n                 throw new UtilError(\"Interrupted threaded computatation!\", ie);\n             }\n \ndiff --git a/src/java/com/verificatum/util/Command.java b/src/java/com/verificatum/util/Command.java\nindex bc6bf5a..498e6a3 100644\n--- a/src/java/com/verificatum/util/Command.java\n+++ b/src/java/com/verificatum/util/Command.java\n@@ -69,6 +69,7 @@ private Command() { }\n                 try {\n                     process.waitFor();\n                 } catch (final InterruptedException ie) {\n+                    Thread.currentThread().interrupt();\n                     throw new UtilException(\"Native call was interrupted!\", ie);\n                 }\n                 return new Pair<Integer, String>(process.exitValue(), output);\ndiff --git a/src/java/com/verificatum/util/SplitWorker.java b/src/java/com/verificatum/util/SplitWorker.java\nindex b5cb975..d7e2451 100644\n--- a/src/java/com/verificatum/util/SplitWorker.java\n+++ b/src/java/com/verificatum/util/SplitWorker.java\n@@ -121,6 +121,7 @@ public boolean divide() {\n             try {\n                 return executor.invoke(callables);\n             } catch (final InterruptedException ie) {\n+                Thread.currentThread().interrupt();\n                 throw new UtilError(\"Interrupted threaded computatation!\", ie);\n             }\n \n",
+            "final": null
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-04-20 09:51:48.371222",
+            "lastModified": "2021-04-20 09:51:48.371222",
+            "isLegacyRecord": false
+        }
     }
 }
