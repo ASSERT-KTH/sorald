@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # v2.3.4
         with:
-          fetch-depth: 200  # SonarCloud prefers non-shallow clones, but due to some huge commits far back, we only clone 200 (arbitrary number)
+          fetch-depth: 0  # SonarCloud prefers non-shallow clones
       - uses: actions/setup-java@8764a52df183aa0ccea74521dfd9d506ffc7a19a # v2.0.0
         with:
           java-version: 11
