@@ -16,7 +16,7 @@ if [[ ! (-f "$SORALD_JAR_PATH") ]]; then
 fi
 
 HEAP_SIZE="128m"
-MAX_FILES_PER_SEGMENT=50
+MAX_FILES_PER_SEGMENT=25
 
 echo "Running memory-constrained test with heap size=$HEAP_SIZE and segment size=$MAX_FILES_PER_SEGMENT"
 
