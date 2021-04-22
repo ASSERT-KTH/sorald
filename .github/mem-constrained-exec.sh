@@ -17,12 +17,20 @@ fi
 
 HEAP_SIZE="128m"
 MAX_FILES_PER_SEGMENT=25
+SORALD_STDOUT_FILE="sorald_stdout.txt"
+EXPECTED_NUM_FIXES_LINE="SerializableFieldInSerializableClassProcessor: 170"
 
 echo "Running memory-constrained test with heap size=$HEAP_SIZE and segment size=$MAX_FILES_PER_SEGMENT"
 
 git clone https://github.com/eclipse/eclipse-collections.git --depth 1 --branch 11.0.0.M1 --single-branch
 java -Xmx"$HEAP_SIZE" -jar "$SORALD_JAR_PATH" repair --source eclipse-collections/eclipse-collections --rule-key 1948 \
     --repair-strategy SEGMENT \
-    --max-files-per-segment $MAX_FILES_PER_SEGMENT > /dev/null
+    --max-files-per-segment $MAX_FILES_PER_SEGMENT > "$SORALD_STDOUT_FILE"
+
+grep "$EXPECTED_NUM_FIXES_LINE" "$SORALD_STDOUT_FILE" || {
+  echo "Did not find the expected amount of fixes line: $EXPECTED_NUM_FIXES_LINE"
+  tail -n 10 $SORALD_STDOUT_FILE
+  exit 1
+}
 
 echo "Memory-constrained test passed without error"
