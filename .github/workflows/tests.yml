@@ -57,12 +57,9 @@ jobs:
         shell: bash
       - name: Run tests
         run: mvn test
-      - name: Sanity check jarfile
+      - name: Test memory-constrained execution with segment repair
         shell: bash
-        run: |
-          SORALD_JAR_PATH=$(echo target/sorald-*-SNAPSHOT-jar-with-dependencies.jar)
-          java -jar "$SORALD_JAR_PATH" repair --source src/test/resources/ArrayHashCodeAndToString.java --rule-key 2184
-          java -jar "$SORALD_JAR_PATH" repair --source src/test/resources/ArrayHashCodeAndToString.java --rule-key 2116
+        run: .github/mem-constrained-exec.sh
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@239febf655bba88b16ff5dea1d3135ea8663a1f9 # v1.0.15
         with:
