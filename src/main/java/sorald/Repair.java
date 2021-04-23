@@ -90,10 +90,12 @@ public class Repair {
         Stream<CtModel> models = repair(inputDir, processor, ruleViolations);
 
         models.forEach(
-                model ->
-                        cuCollector
-                                .getCollectedCompilationUnits()
-                                .forEach(this::overwriteCompilationUnit));
+                model -> {
+                    cuCollector
+                            .getCollectedCompilationUnits()
+                            .forEach(this::overwriteCompilationUnit);
+                    cuCollector.clear();
+                });
 
         return processor;
     }
