@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtAssignment;
+import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtLocalVariable;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.code.CtStatementList;
@@ -30,7 +31,7 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
         if (element instanceof CtLocalVariable) {
             retainDeclarationOnVariableUse((CtLocalVariable<?>) element);
         }
-        element.delete();
+        safeDelete(element);
     }
 
     /**
@@ -231,5 +232,22 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
             depth++;
         }
         return depth;
+    }
+
+    private void safeDelete(CtElement element) {
+        CtElement asignment;
+        if (element instanceof CtLocalVariable) {
+            asignment = ((CtLocalVariable<?>) element).getAssignment();
+        } else if (element instanceof CtAssignment) {
+            asignment = ((CtAssignment<?, ?>) element).getAssignment();
+        } else {
+            asignment = null;
+        }
+
+        if (asignment instanceof CtInvocation) {
+            element.replace(asignment);
+        } else {
+            element.delete();
+        }
     }
 }
