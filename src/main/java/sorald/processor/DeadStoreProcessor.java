@@ -246,13 +246,11 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
      * @param element An dead store element to safe-delete
      */
     private static void safeDeleteDeadStore(CtElement element) {
-        CtElement assignment;
+        CtElement assignment = null;
         if (element instanceof CtLocalVariable) {
             assignment = ((CtLocalVariable<?>) element).getAssignment();
         } else if (element instanceof CtAssignment) {
             assignment = ((CtAssignment<?, ?>) element).getAssignment();
-        } else {
-            assignment = null;
         }
 
         if (isInstanceMethodInvocation(assignment)) {
