@@ -9,7 +9,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-SORALD_JAR_PATH=$(echo target/sorald-*-SNAPSHOT-jar-with-dependencies.jar)
+SORALD_JAR_PATH=$(echo target/sorald-*-jar-with-dependencies.jar)
 if [[ ! (-f "$SORALD_JAR_PATH") ]]; then
   echo "expected Sorald jar at $SORALD_JAR_PATH"
   exit 1
