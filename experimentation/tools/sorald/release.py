@@ -16,6 +16,7 @@ import sorald._helpers
 REPO_SLUG = "SpoonLabs/sorald"
 REPO_SSH_URL = f"git@github.com:{REPO_SLUG}.git"
 REPO_MAIN_BRANCH = "master"
+RELEASE_BRANCH_TEMPLATE = "release/{}"
 
 GITHUB_API_BASE_URL = "https://api.github.com"
 
@@ -35,7 +36,7 @@ def main() -> None:
     # wait for deploy action to trigger for release before pushing next dev iteration
     time.sleep(30)
 
-    _push_branch()
+    _push_current_branch()
     _create_github_release(gh_token)
 
 
@@ -46,13 +47,14 @@ def _prepare_release() -> None:
 
 
 def _push_release() -> None:
+    release_tag = _get_release_tag_name()
     _run_cmd(
-        f"git push {REPO_SSH_URL} {_get_release_tag_name()}:{REPO_MAIN_BRANCH} --tags"
+        f"git push -u {REPO_SSH_URL} {release_tag}:{RELEASE_BRANCH_TEMPLATE.format(release_tag)} --tags"
     )
 
 
-def _push_branch() -> None:
-    _run_cmd(f"git push {REPO_SSH_URL} {REPO_MAIN_BRANCH}")
+def _push_current_branch() -> None:
+    _run_cmd(f"git push")
 
 
 def _sign_last_n_commits(n: int) -> None:
