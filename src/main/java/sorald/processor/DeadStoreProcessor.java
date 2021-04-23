@@ -14,6 +14,8 @@ import spoon.reflect.code.CtStatementList;
 import spoon.reflect.code.CtVariableAccess;
 import spoon.reflect.code.CtVariableWrite;
 import spoon.reflect.declaration.CtElement;
+import spoon.reflect.declaration.CtExecutable;
+import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.Filter;
@@ -235,19 +237,30 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
     }
 
     private void safeDelete(CtElement element) {
-        CtElement asignment;
+        CtElement assignment;
         if (element instanceof CtLocalVariable) {
-            asignment = ((CtLocalVariable<?>) element).getAssignment();
+            assignment = ((CtLocalVariable<?>) element).getAssignment();
         } else if (element instanceof CtAssignment) {
-            asignment = ((CtAssignment<?, ?>) element).getAssignment();
+            assignment = ((CtAssignment<?, ?>) element).getAssignment();
         } else {
-            asignment = null;
+            assignment = null;
         }
 
-        if (asignment instanceof CtInvocation) {
-            element.replace(asignment);
+        if (isInstanceMethodInvocation(assignment)) {
+            element.replace(assignment);
         } else {
             element.delete();
         }
+    }
+
+    private static boolean isInstanceMethodInvocation(CtElement element) {
+        if (!(element instanceof CtInvocation)
+                || ((CtInvocation<?>) element).getExecutable() == null
+                || ((CtInvocation<?>) element).getExecutable().getExecutableDeclaration() == null) {
+            return false;
+        }
+        CtExecutable<?> exec =
+                ((CtInvocation<?>) element).getExecutable().getExecutableDeclaration();
+        return exec instanceof CtMethod && !((CtMethod<?>) exec).isStatic();
     }
 }

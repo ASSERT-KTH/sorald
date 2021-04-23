@@ -10,4 +10,12 @@ public class ShouldNotRemoveInvocations {
         a = 2;
         System.out.println(a);
     }
+
+    public int someMethod() {
+        return 1;
+    }
+
+    public int otherMethod() {
+        return 2;
+    }
 }
