@@ -58,7 +58,7 @@ jobs:
           gpg-passphrase: SORALD_GPG_PASSPHRASE
 
       - name: Publish to Maven Central
-        if: ${{ contains(steps.get-sorald-version.version, 'SNAPSHOT') || github.event_name == 'release' }}
+        if: ${{ contains(steps.get-sorald-version.outputs.version, 'SNAPSHOT') || github.event_name == 'release' }}
         run: mvn -Prelease deploy
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
