@@ -243,7 +243,7 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
      * non-static method invocation, then the invocation itself is left intact, but the assignment
      * to the variable (i.e. the dead store) is removed.
      *
-     * @param element An dead store element to safe-delete
+     * @param element A dead store element to safe-delete
      */
     private static void safeDeleteDeadStore(CtElement element) {
         CtElement assignment = null;
