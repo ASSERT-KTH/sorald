@@ -5,8 +5,8 @@ so we do not want to remove it by default.
 
 public class ShouldNotRemoveUnresolvedMethod extends SomeUnresolvedClass {
     public Object something() {
-        Object obj = unresolvedMethod();
-        obj = new Object();
+        unresolvedMethod();
+        Object obj = new Object();
         return obj;
     }
 }

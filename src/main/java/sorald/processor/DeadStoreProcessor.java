@@ -252,14 +252,19 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
                         ? ((CtLocalVariable<?>) element).getAssignment()
                         : ((CtAssignment<?, ?>) element).getAssignment();
 
-        if (isInstanceMethodInvocation(assignment)) {
-            element.replace(assignment);
-        } else {
+        // Important: As Spoon can't always resolve method references, we should only delete an
+        // element if we can definitively say that it _is_ a static method invocation (rather
+        // than check if it's not an instance method invocation), or that it's not a method
+        // invocation
+        // at all. This is the "safest" approach.
+        if (!(assignment instanceof CtInvocation) || isStaticMethodInvocation(assignment)) {
             element.delete();
+        } else {
+            element.replace(assignment);
         }
     }
 
-    private static boolean isInstanceMethodInvocation(CtElement element) {
+    private static boolean isStaticMethodInvocation(CtElement element) {
         if (!(element instanceof CtInvocation)
                 || ((CtInvocation<?>) element).getExecutable() == null
                 || ((CtInvocation<?>) element).getExecutable().getExecutableDeclaration() == null) {
@@ -267,6 +272,6 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
         }
         CtExecutable<?> exec =
                 ((CtInvocation<?>) element).getExecutable().getExecutableDeclaration();
-        return exec instanceof CtMethod && !((CtMethod<?>) exec).isStatic();
+        return exec instanceof CtMethod && ((CtMethod<?>) exec).isStatic();
     }
 }
