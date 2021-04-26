@@ -458,6 +458,19 @@ declaration as close to the usages as possible.
     }
 ```
 
+In cases where the assignment is an instance method invocation, Sorald
+preserves the invocation so as not to inadvertently remove side effects of the
+invocation.
+
+```diff
+    public List<Integer> concatenate(List<Integer> lhs, List<Integer> rhs) {
+        List<Integer> base = new ArrayList<>(lhs);
+-       boolean changed = rhs.addAll(lhs);
++       rhs.addAll(lhs);
+        return rhs;
+    }
+```
+
 Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/2265) that repairs one DeadStore violation.
 
 #### "public static" fields should be constant ([Sonar Rule 1444](https://rules.sonarsource.com/java/RSPEC-1444))

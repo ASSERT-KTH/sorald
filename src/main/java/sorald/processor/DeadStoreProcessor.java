@@ -7,12 +7,15 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtAssignment;
+import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtLocalVariable;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.code.CtStatementList;
 import spoon.reflect.code.CtVariableAccess;
 import spoon.reflect.code.CtVariableWrite;
 import spoon.reflect.declaration.CtElement;
+import spoon.reflect.declaration.CtExecutable;
+import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.Filter;
@@ -30,7 +33,7 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
         if (element instanceof CtLocalVariable) {
             retainDeclarationOnVariableUse((CtLocalVariable<?>) element);
         }
-        element.delete();
+        safeDeleteDeadStore(element);
     }
 
     /**
@@ -231,5 +234,44 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
             depth++;
         }
         return depth;
+    }
+
+    /**
+     * Delete an element that SonarJava has pointed out as a dead store.
+     *
+     * <p>If the element is an assignment or local variable where the assigned expression is a
+     * non-static method invocation, then the invocation itself is left intact, but the assignment
+     * to the variable (i.e. the dead store) is removed.
+     *
+     * @param element A dead store element to safe-delete
+     */
+    private static void safeDeleteDeadStore(CtElement element) {
+        // Sonar only flags dead stores in local variables and assignments at this time
+        CtElement assignment =
+                element instanceof CtLocalVariable
+                        ? ((CtLocalVariable<?>) element).getAssignment()
+                        : ((CtAssignment<?, ?>) element).getAssignment();
+
+        // Important: As Spoon can't always resolve method references, we should only delete an
+        // element if we can definitively say that it _is_ a static method invocation (rather
+        // than check if it's not an instance method invocation), or that it's not a method
+        // invocation
+        // at all. This is the "safest" approach.
+        if (!(assignment instanceof CtInvocation) || isStaticMethodInvocation(assignment)) {
+            element.delete();
+        } else {
+            element.replace(assignment);
+        }
+    }
+
+    private static boolean isStaticMethodInvocation(CtElement element) {
+        if (!(element instanceof CtInvocation)
+                || ((CtInvocation<?>) element).getExecutable() == null
+                || ((CtInvocation<?>) element).getExecutable().getExecutableDeclaration() == null) {
+            return false;
+        }
+        CtExecutable<?> exec =
+                ((CtInvocation<?>) element).getExecutable().getExecutableDeclaration();
+        return exec instanceof CtMethod && ((CtMethod<?>) exec).isStatic();
     }
 }
