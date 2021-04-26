@@ -246,12 +246,11 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
      * @param element A dead store element to safe-delete
      */
     private static void safeDeleteDeadStore(CtElement element) {
-        CtElement assignment = null;
-        if (element instanceof CtLocalVariable) {
-            assignment = ((CtLocalVariable<?>) element).getAssignment();
-        } else if (element instanceof CtAssignment) {
-            assignment = ((CtAssignment<?, ?>) element).getAssignment();
-        }
+        // Sonar only flags dead stores in local variables and assignments at this time
+        CtElement assignment =
+                element instanceof CtLocalVariable
+                        ? ((CtLocalVariable<?>) element).getAssignment()
+                        : ((CtAssignment<?, ?>) element).getAssignment();
 
         if (isInstanceMethodInvocation(assignment)) {
             element.replace(assignment);
