@@ -12,6 +12,7 @@ import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
 import sorald.event.models.miner.MinedViolationEvent;
+import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
 import sorald.sonar.RuleViolation;
 
@@ -95,8 +96,8 @@ public class MineSonarWarnings {
 
         final Map<String, Integer> warnings = new HashMap<>();
         checks.stream()
-                .map(Object::getClass)
-                .map(Class::getSimpleName)
+                .map(JavaFileScanner::getClass)
+                .map(c -> c.getSimpleName() + "<" + Checks.getRuleKey(c) + ">")
                 .forEach(checkName -> warnings.put(checkName, 0));
 
         Consumer<String> incrementWarningCount =
