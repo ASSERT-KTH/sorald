@@ -16,6 +16,7 @@ import sorald.event.models.miner.MinedViolationEvent;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
 import sorald.sonar.RuleViolation;
+import spoon.testing.utils.Check;
 
 public class MineSonarWarnings {
     final List<SoraldEventHandler> eventHandlers;
@@ -115,15 +116,9 @@ public class MineSonarWarnings {
                         EventHelper.fireEvent(
                                 new MinedViolationEvent(v, Paths.get(projectPath)), eventHandlers));
 
-        warnings.forEach((x, y) -> {
-            warnings.remove(x);
-            warnings.put(Checks.getRuleKey(x), y);
-        });
+        Map<String, Integer> warningsWithUpdateKeys = new HashMap<>();
+        warnings.forEach((x, y) -> warningsWithUpdateKeys.put(x + "<" + Checks.getRuleKey(x) + ">", y));
 
-        return warnings;
-    }
-
-    private String checkToWarningOutputEntryKey(Class<? extends JavaCheck> checkClass){
-        return checkClass.getSimpleName() + "<" + Checks.getRuleKey(checkClass) + ">";
+        return warningsWithUpdateKeys;
     }
 }
