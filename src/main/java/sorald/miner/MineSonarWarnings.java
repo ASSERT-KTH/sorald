@@ -6,6 +6,7 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import org.eclipse.jgit.api.Git;
+import org.sonar.plugins.java.api.JavaCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.event.EventHelper;
@@ -75,7 +76,7 @@ public class MineSonarWarnings {
     /**
      * @param projectPath The root path to a Java project
      * @param checks Checks to run on the Java files in the project
-     * @return A mapping (checkClassName -> numViolations)
+     * @return A mapping (checkClassName<ruleKey> -> numViolations)
      */
     Map<String, Integer> extractWarnings(
             String projectPath, List<? extends JavaFileScanner> checks) {
@@ -96,8 +97,8 @@ public class MineSonarWarnings {
 
         final Map<String, Integer> warnings = new HashMap<>();
         checks.stream()
-                .map(JavaFileScanner::getClass)
-                .map(c -> c.getSimpleName() + "<" + Checks.getRuleKey(c) + ">")
+                .map(Object::getClass)
+                .map(Class::getSimpleName)
                 .forEach(checkName -> warnings.put(checkName, 0));
 
         Consumer<String> incrementWarningCount =
@@ -114,6 +115,15 @@ public class MineSonarWarnings {
                         EventHelper.fireEvent(
                                 new MinedViolationEvent(v, Paths.get(projectPath)), eventHandlers));
 
+        warnings.forEach((x, y) -> {
+            warnings.remove(x);
+            warnings.put(Checks.getRuleKey(x), y);
+        });
+
         return warnings;
+    }
+
+    private String checkToWarningOutputEntryKey(Class<? extends JavaCheck> checkClass){
+        return checkClass.getSimpleName() + "<" + Checks.getRuleKey(checkClass) + ">";
     }
 }
