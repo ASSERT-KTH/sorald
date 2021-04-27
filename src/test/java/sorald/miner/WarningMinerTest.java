@@ -68,7 +68,7 @@ public class WarningMinerTest {
                                     try {
                                         Class.forName(
                                                 "sorald.processor."
-                                                        + line.split("=")[0].replace(
+                                                        + line.split("<")[0].replace(
                                                                 "Check", "Processor"));
                                         return true;
                                     } catch (ClassNotFoundException e) {
