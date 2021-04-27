@@ -117,13 +117,11 @@ public class Checks {
      *     stripped, so e.g. S1234 becomes 1234.
      */
     public static String getRuleKey(String checkName) {
-        return getAllChecks().stream().filter(c -> c.getSimpleName().equals(checkName))
+        return getAllChecks().stream()
+                .filter(c -> c.getSimpleName().equals(checkName))
                 .map(Checks::getRuleKey)
                 .findFirst()
-                .orElseThrow(
-                        () ->
-                                new IllegalArgumentException(
-                                        "No key found for " + checkName));
+                .orElseThrow(() -> new IllegalArgumentException("No key found for " + checkName));
     }
 
     /**

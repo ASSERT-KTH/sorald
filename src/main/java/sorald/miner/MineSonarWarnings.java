@@ -6,7 +6,6 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import org.eclipse.jgit.api.Git;
-import org.sonar.plugins.java.api.JavaCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.event.EventHelper;
@@ -16,7 +15,6 @@ import sorald.event.models.miner.MinedViolationEvent;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
 import sorald.sonar.RuleViolation;
-import spoon.testing.utils.Check;
 
 public class MineSonarWarnings {
     final List<SoraldEventHandler> eventHandlers;
@@ -117,7 +115,8 @@ public class MineSonarWarnings {
                                 new MinedViolationEvent(v, Paths.get(projectPath)), eventHandlers));
 
         Map<String, Integer> warningsWithUpdateKeys = new HashMap<>();
-        warnings.forEach((x, y) -> warningsWithUpdateKeys.put(x + "<" + Checks.getRuleKey(x) + ">", y));
+        warnings.forEach(
+                (x, y) -> warningsWithUpdateKeys.put(x + "<" + Checks.getRuleKey(x) + ">", y));
 
         return warningsWithUpdateKeys;
     }
