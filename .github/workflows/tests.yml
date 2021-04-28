@@ -67,7 +67,7 @@ jobs:
         shell: bash
         run: .github/mem-constrained-exec.sh
       - name: Run Sonar
-        if: ${{ matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.os == 'ubuntu-latest' && github.repository == 'SpoonLabs/sorald' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
