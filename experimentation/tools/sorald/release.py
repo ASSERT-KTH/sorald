@@ -7,18 +7,17 @@ import shlex
 import subprocess
 import sys
 import time
+import secrets
 
 from typing import List, Optional
 
 import github
 import requests
 
-import sorald._helpers
-
-
 REPO_SLUG = "SpoonLabs/sorald"
 REPO_SSH_URL = f"git@github.com:{REPO_SLUG}.git"
 REPO_MAIN_BRANCH = "master"
+RELEASE_BRANCH_TEMPLATE = "release/{}"
 
 GITHUB_API_BASE_URL = "https://api.github.com"
 
@@ -57,6 +56,9 @@ def _parse_args(args: List[str]) -> argparse.Namespace:
 
 
 def _prepare_release(release_version: Optional[str]) -> None:
+    tmp_branch_name = secrets.token_hex(10)
+    _run_cmd(f"git checkout -b {tmp_branch_name}")
+
     release_version_arg = (
         f"-DreleaseVersion={release_version}" if release_version is not None else ""
     )
@@ -64,10 +66,16 @@ def _prepare_release(release_version: Optional[str]) -> None:
     _sign_last_n_commits(2)
     _sign_release_tag()
 
+    release_tag = _get_release_tag_name()
+    _run_cmd(f"git checkout -b {RELEASE_BRANCH_TEMPLATE.format(release_tag)}")
+    _run_cmd(f"git branch -D {tmp_branch_name}")
+
 
 def _push_release() -> None:
     release_tag = _get_release_tag_name()
-    _run_cmd(f"git push -u {REPO_SSH_URL} release/{release_tag} --tags")
+    _run_cmd(
+        f"git push -u {REPO_SSH_URL} {RELEASE_BRANCH_TEMPLATE.format(release_tag)} --tags"
+    )
 
 
 def _push_current_branch() -> None:
@@ -87,7 +95,7 @@ def _get_release_tag_name() -> str:
     for line in open("release.properties", mode="r", encoding=sys.getdefaultencoding()):
         if line.startswith("scm.tag="):
             _, tag_name = line.split("=")
-            return tag_name
+            return tag_name.strip()
     raise RuntimeError("expected to find 'scm.tag' in release.properties")
 
 
@@ -105,10 +113,14 @@ def _create_github_release(token: str):
     release = repo.create_git_release(
         tag=tag_name, name=tag_name, message=f"Release {tag_name}"
     )
+
+    # import this here as we need sorald to be packaged before importing
+    import sorald._helpers.soraldwrapper
+
     release.upload_asset(
-        sorald._helpers.DEFAULT_SORALD_JAR_PATH,
+        str(sorald._helpers.soraldwrapper.DEFAULT_SORALD_JAR_PATH),
         content_type="application/zip",
-        name=sorald._helpers.DEFAULT_SORALD_JAR_PATH.name,
+        name=sorald._helpers.soraldwrapper.DEFAULT_SORALD_JAR_PATH.name,
     )
 
 
