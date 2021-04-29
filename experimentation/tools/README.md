@@ -588,3 +588,87 @@ attempted_repair_ratio has deteriorated
 
 This gives you everything you need to know to stast debugging the performance
 drop on the given commits.
+
+### `sorald.release`
+
+> **Important:** This script is not entirely user friendly. It's recommended to
+> read through the script before using it to get a good idea of what it does.
+
+The release script automates the task of creating a release of Sorald. There
+are three prerequisites for using the script:
+
+1. You must be a maintainer of Sorald
+2. You must have a [signing key configured](#configuring-a-signing-key)
+3. You must have a [GitHub token with `repos` scote](#creating-a-github-token)
+
+Once these prerequisites are fulfilled, you can [create a release as described
+here]($creating-a-release).
+
+#### Configuring a signing key
+
+You must configure a _signing key_ for Git, and also make sure that the public
+key is uploaded to GitHub. This is necessary to sign the commits and the tag
+that go along with the release. See [GitHub's docs on GPG keys for
+details](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-gpg-key).
+
+Then, configure the signing key with Git:
+
+```
+$ git config --global user.signingkey YOUR_KEY_ID
+```
+
+> **Note:** This key does _not_ need to be the Sorald signing key, it can be
+> your personal key.
+
+#### Creating a GitHub token with `repos` scope
+
+See the [GitHub docs on creating personal access
+tokens](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+Create one such token with the full `repos` scope, and then put it in the
+`GITHUB_TOKEN` environment variable. 
+
+#### Creating a release
+
+To create a release based on the current SNAPSHOT version (i.e. create release
+`x.y.z` given that the pom currently states `x.y.z-SNAPSHOT`), just execute the
+script without arguments.
+
+```
+$ python -m sorald.release
+```
+
+> **Note:** The script will ask you to sign two commits and one tag with your
+> configured signing key. If it is password-protected, you will be prompted for
+> a password, so keep an eye out for that.
+
+If you need to set a different version number, provide it with the
+`--release-version` option. This is typically necessary when incrementing the
+major or minor version numbers.
+
+```
+$ python -m sorald.release --release-version 0.5.0
+```
+
+Whichever way you go, the script will checkout to a new release branch, create
+a release commit and tag it, and then create a "next-iteration" commit. Given
+that the release is version `x.y.z`, the next iteration will have version
+number `x.y.(z+1)-SNAPSHOT`.
+
+When this is done, the script pushes to a release branch and creates a GitHub
+release with the same name as the tag, as well as uploads the fat jar as a
+release artifact. This in turn triggers the deploy workflow, which
+deploys the release to Maven Central.
+
+When all lights are green, you should **merge the release branch into master**
+with a **regular merge**. This is the only time we do regular merges in
+Sorald, and it is to preserve the commit SHAs of both the release and the
+next-iteration commits.
+
+**TODO** add release notes step.
+
+#### If something goes wrong during a release
+
+With the exceptions of a successful deployment to Maven Central, which cannot be
+"undeployed", every step can be undone. Tags, releases and branches can all be
+deleted, and so you can simply try again if something goes wrong. If a bad
+artifact is deployed to Maven Central, you must simply release a new version.
