@@ -1,11 +1,14 @@
 """Script for creating a release of Sorald."""
 
+import argparse
 import os
 import pathlib
 import shlex
 import subprocess
 import sys
 import time
+
+from typing import List, Optional
 
 import github
 import requests
@@ -16,7 +19,6 @@ import sorald._helpers
 REPO_SLUG = "SpoonLabs/sorald"
 REPO_SSH_URL = f"git@github.com:{REPO_SLUG}.git"
 REPO_MAIN_BRANCH = "master"
-RELEASE_BRANCH_TEMPLATE = "release/{}"
 
 GITHUB_API_BASE_URL = "https://api.github.com"
 
@@ -25,32 +27,47 @@ REQUIRED_TOKEN_SCOPES = {"repo"}
 
 
 def main() -> None:
+    parsed_args = _parse_args(sys.argv[1:])
     gh_token = os.getenv(GITHUB_TOKEN_ENV)
     if not gh_token:
-        raise RuntimeError(f"Please set a GitHub token in {GITHUB_TOKEN_ENV}")
+        raise RuntimeError(
+            f"Please set a GitHub token in the '{GITHUB_TOKEN_ENV}' environment variable"
+        )
     _check_token_scopes(gh_token)
 
-    _prepare_release()
+    _prepare_release(parsed_args.release_version)
     _push_release()
-
-    # wait for deploy action to trigger for release before pushing next dev iteration
-    time.sleep(30)
-
-    _push_current_branch()
     _create_github_release(gh_token)
 
 
-def _prepare_release() -> None:
-    _run_cmd("mvn -B clean release:prepare -DpushChanges=false")
+def _parse_args(args: List[str]) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        prog="sorald.release",
+        description="Script for creating a release of "
+        "Sorald. By default, a release is made with the version number in the "
+        "POM, with SNAPSHOT removed. A new development iteration is prepared in "
+        "a separate commit, with a bump on the patch version number.",
+    )
+    parser.add_argument(
+        "--release-version",
+        help="version number to use for the release "
+        "(defaults to the current version without SNAPSHOT)",
+    )
+    return parser.parse_args(args)
+
+
+def _prepare_release(release_version: Optional[str]) -> None:
+    release_version_arg = (
+        f"-DreleaseVersion={release_version}" if release_version is not None else ""
+    )
+    _run_cmd(f"mvn -B clean release:prepare -DpushChanges=false {release_version_arg}")
     _sign_last_n_commits(2)
     _sign_release_tag()
 
 
 def _push_release() -> None:
     release_tag = _get_release_tag_name()
-    _run_cmd(
-        f"git push -u {REPO_SSH_URL} {release_tag}:{RELEASE_BRANCH_TEMPLATE.format(release_tag)} --tags"
-    )
+    _run_cmd(f"git push -u {REPO_SSH_URL} release/{release_tag} --tags")
 
 
 def _push_current_branch() -> None:
@@ -82,7 +99,7 @@ def _check_token_scopes(token: str) -> None:
 
 
 def _create_github_release(token: str):
-    gh = github.Github(login_or_token=os.getenv(token), base_url=GITHUB_API_BASE_URL)
+    gh = github.Github(login_or_token=token, base_url=GITHUB_API_BASE_URL)
     repo = gh.get_repo("SpoonLabs/sorald")
     tag_name = _get_release_tag_name()
     release = repo.create_git_release(
