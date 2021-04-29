@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # v2.3.4
         with:
-          fetch-depth: 2
+          fetch-depth: 0  # SonarCloud prefers non-shallow clones
       - uses: actions/setup-java@8764a52df183aa0ccea74521dfd9d506ffc7a19a # v2.0.0
         with:
           java-version: 11
@@ -44,6 +44,12 @@ jobs:
           path: ~/.m2/repository
           key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-maven-
+      - name: Use SonarCloud package cache
+        uses: actions/cache@26968a09c0ea4f3e233fdddbafd1166051a095f6 # v2.1.4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
 
       - name: Check formatting with spotless
         run: mvn spotless:check
@@ -57,12 +63,15 @@ jobs:
         shell: bash
       - name: Run tests
         run: mvn test
-      - name: Sanity check jarfile
+      - name: Test memory-constrained execution with segment repair
         shell: bash
-        run: |
-          SORALD_JAR_PATH=$(echo target/sorald-*-SNAPSHOT-jar-with-dependencies.jar)
-          java -jar "$SORALD_JAR_PATH" repair --source src/test/resources/ArrayHashCodeAndToString.java --rule-key 2184
-          java -jar "$SORALD_JAR_PATH" repair --source src/test/resources/ArrayHashCodeAndToString.java --rule-key 2116
+        run: .github/mem-constrained-exec.sh
+      - name: Run Sonar
+        if: ${{ matrix.os == 'ubuntu-latest' && github.repository == 'SpoonLabs/sorald' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@239febf655bba88b16ff5dea1d3135ea8663a1f9 # v1.0.15
         with:

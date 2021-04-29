@@ -12,6 +12,7 @@ import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
 import sorald.event.models.miner.MinedViolationEvent;
+import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
 import sorald.sonar.RuleViolation;
 
@@ -74,7 +75,7 @@ public class MineSonarWarnings {
     /**
      * @param projectPath The root path to a Java project
      * @param checks Checks to run on the Java files in the project
-     * @return A mapping (checkClassName -> numViolations)
+     * @return A mapping (checkClassName<ruleKey> -> numViolations)
      */
     Map<String, Integer> extractWarnings(
             String projectPath, List<? extends JavaFileScanner> checks) {
@@ -113,6 +114,10 @@ public class MineSonarWarnings {
                         EventHelper.fireEvent(
                                 new MinedViolationEvent(v, Paths.get(projectPath)), eventHandlers));
 
-        return warnings;
+        Map<String, Integer> warningsWithUpdateKeys = new HashMap<>();
+        warnings.forEach(
+                (x, y) -> warningsWithUpdateKeys.put(x + "<" + Checks.getRuleKey(x) + ">", y));
+
+        return warningsWithUpdateKeys;
     }
 }
