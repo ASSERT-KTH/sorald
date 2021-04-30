@@ -1,6 +1,16 @@
 # Achievements
 This document presents an overview of the pull requests performed with Sorald.
 
+## [verificatum/verificatum-vcr#6](https://github.com/verificatum/verificatum-vcr/pull/6)
+This PR was opened at 2021-04-20 07:43:52 and merged at 2021-04-30 07:52:32.
+The patch was generated fully automatically with Sorald.
+
+It provided the following repairs:
+
+* [Rule 2142](https://rules.sonarsource.com/java/RSPEC-2142)
+    - Number of violations found: 21
+    - Number of violations repaired: 21
+
 ## [verificatum/verificatum-vmn#14](https://github.com/verificatum/verificatum-vmn/pull/14)
 This PR was opened at 2021-03-29 11:13:36 and merged at 2021-03-29 12:09:02.
 The patch was generated fully automatically with Sorald.
