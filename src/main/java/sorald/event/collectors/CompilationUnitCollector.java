@@ -34,6 +34,11 @@ public class CompilationUnitCollector implements SoraldEventHandler {
         return newIdentityHashSet(pathToCu.values());
     }
 
+    /** Clear the collected compilation units. */
+    public void clear() {
+        pathToCu.clear();
+    }
+
     /**
      * Collect the compilation unit that this element belongs to.
      *

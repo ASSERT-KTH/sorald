@@ -19,21 +19,33 @@ If you use Sorald in an academic context, please cite:
 
 ### Prerequisites 
 
-A JDK (Java 11+)
+For running Sorald, all you need is a Java 11+ runtime.
+
+For building Sorald from source, you need a Java 11+ JDK, Maven and Git.
+
+### Getting a Sorald JAR
+
+To run Sorald, you need to first get your hands on the program. You can do this
+either by [building from source](#build), or going to the [latest
+release](https://github.com/spoonlabs/sorald/releases/tag/sorald-0.1.0) and
+downloading the file called `sorald-<VERSION>-jar-with-dependencies.jar` listed
+under `Assets`. Unless you keep multiple versions of Sorald, we recommend
+renaming the JAR to `sorald.jar` for the sake of simplicity.
 
 ### Build
 
-1) Clone this repository: `git clone https://github.com/SpoonLabs/sorald.git`
+1. Clone this repository: `git clone https://github.com/SpoonLabs/sorald.git`
 
-2) Build:
+2. Build:
 
  ```bash
 $ cd sorald
 $ mvn package -DskipTests
+$ cp target/sorald-*-jar-with-dependencies.jar sorald.jar
  ```
 
-The Sorald application can now be found in
-`target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar`.
+The Sorald application can now be found in `sorald.jar` in the current working
+directory.
 
 ### Usage
 
@@ -45,14 +57,15 @@ For the remainder of this section, assume that we have defined the following
 alias:
 
 ```bash
-alias sorald='java -jar /abs/path/to/target/sorald-1.1-SNAPSHOT-jar-with-dependencies.jar'
+alias sorald='java -jar /abs/path/to/sorald.jar'
 ```
+
+If you don't like using aliases, simply substitute in `java -jar sorald.jar`
+for any occurence of `sorald` in these instructions.
 
 #### Repairing rule violations (the `repair` command)
 
-To repair rule violations, use the `repair` command. Assuming that the Sorald
-jar-file pointed out in [the build instructions](#build) is located at
-`sorald.jar`, the command can be invoked like so.
+To repair rule violations, use the `repair` command.
 
 ```bash
 $ sorald repair <arguments ...>

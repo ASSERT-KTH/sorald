@@ -68,7 +68,7 @@ public class WarningMinerTest {
                                     try {
                                         Class.forName(
                                                 "sorald.processor."
-                                                        + line.split("=")[0].replace(
+                                                        + line.split("<")[0].replace(
                                                                 "Check", "Processor"));
                                         return true;
                                     } catch (ClassNotFoundException e) {
@@ -104,6 +104,7 @@ public class WarningMinerTest {
                         .map(Checks::getChecksByType)
                         .flatMap(List::stream)
                         .map(Class::getSimpleName)
+                        .map(checkName -> checkName + "<" + Checks.getRuleKey(checkName) + ">")
                         .sorted()
                         .collect(Collectors.toList());
         List<String> actualChecks = extractSortedCheckNames(outputFile.toPath());
@@ -133,7 +134,7 @@ public class WarningMinerTest {
                     Constants.MINE_COMMAND_NAME, Constants.ARG_SOURCE, workdir.toString()
                 });
 
-        assertThat(out.toString(), containsString("MathOnFloatCheck=1"));
+        assertThat(out.toString(), containsString("MathOnFloatCheck<2164>=1"));
     }
 
     /** Test that extracting warnings gives results even for rules that are not violated. */
@@ -147,6 +148,7 @@ public class WarningMinerTest {
         List<String> expectedChecks =
                 Checks.getAllChecks().stream()
                         .map(Class::getSimpleName)
+                        .map(checkName -> checkName + "<" + Checks.getRuleKey(checkName) + ">")
                         .sorted()
                         .collect(Collectors.toList());
         List<String> actualChecks = extractSortedCheckNames(outputFile.toPath());

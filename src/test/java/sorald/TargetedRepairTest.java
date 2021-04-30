@@ -154,6 +154,31 @@ public class TargetedRepairTest {
                         containsString(violationSpec)));
     }
 
+    /** Test that targeted repair works when --source points to a file rather than a directory. */
+    @Test
+    void targetedRepair_canTargetSpecificFile() throws Exception {
+        // arrange
+        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir();
+        Path target = workdirInfo.targetViolation.getAbsolutePath();
+        String violationSpec = workdirInfo.targetViolation.relativeSpecifier(target);
+
+        // act
+        Main.main(
+                new String[] {
+                    Constants.REPAIR_COMMAND_NAME,
+                    Constants.ARG_SOURCE,
+                    target.toString(),
+                    Constants.ARG_RULE_VIOLATION_SPECIFIERS,
+                    violationSpec
+                });
+
+        // assert
+        Set<RuleViolation> violationsAfter =
+                ProjectScanner.scanProject(
+                        workdirInfo.workdir, workdirInfo.workdir, workdirInfo.check);
+        assertThat(violationsAfter.size(), equalTo(workdirInfo.numViolationsBefore - 1));
+    }
+
     /** Setup the workdir with a specific target violation. */
     private static TargetedRepairWorkdirInfo setupWorkdir() throws IOException {
         Path workdir = TestHelper.createTemporaryProcessorTestFilesWorkspace();

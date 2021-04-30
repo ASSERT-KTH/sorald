@@ -112,6 +112,19 @@ public class Checks {
     }
 
     /**
+     * @param checkName A Sonar-Java check name, e.g. "StandardFunctionalInterfaceCheck".
+     * @return the numeric identifier of the rule related to the given check name. Non-digits are
+     *     stripped, so e.g. S1234 becomes 1234.
+     */
+    public static String getRuleKey(String checkName) {
+        return getAllChecks().stream()
+                .filter(c -> c.getSimpleName().equals(checkName))
+                .map(Checks::getRuleKey)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("No key found for " + checkName));
+    }
+
+    /**
      * TODO This function should not be necessary, we should use the full Sonar keys in Sorald!
      *
      * @param soraldKey An internal Sorald key.
