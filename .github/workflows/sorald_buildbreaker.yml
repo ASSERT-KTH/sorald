@@ -13,6 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run Sorald Buildbreaker
-        uses: SpoonLabs/sorald-buildbreaker@307ad54331c3428adf0e5816a2b32591a0543b04
+        uses: SpoonLabs/sorald-buildbreaker@45bafb6db29a466080328864cecf9b20d9ace3de
         with:
           source: 'src/main/java'
