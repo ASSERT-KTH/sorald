@@ -6,6 +6,7 @@ import spoon.MavenLauncher;
 
 /** Utility methods for working with Maven projects */
 public class MavenUtils {
+    private MavenUtils() {}
 
     /**
      * Resolve the full classpath for a Maven project.
