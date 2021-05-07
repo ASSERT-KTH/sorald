@@ -29,6 +29,7 @@ import sorald.processor.SoraldAbstractProcessor;
 import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleViolation;
+import sorald.util.MavenUtils;
 
 /** The CLI command for the primary repair application. */
 @CommandLine.Command(
@@ -107,7 +108,12 @@ class RepairCommand extends BaseCommand {
                 statsOutputFile == null ? List.of() : List.of(statsCollector);
         EventHelper.fireEvent(EventType.EXEC_START, eventHandlers);
 
-        Set<RuleViolation> ruleViolations = resolveRuleViolations(eventHandlers);
+        List<String> classpath =
+                repairStrategy == RepairStrategy.MAVEN
+                        ? MavenUtils.resolveClasspath(source.toPath())
+                        : List.of();
+
+        Set<RuleViolation> ruleViolations = resolveRuleViolations(eventHandlers, classpath);
         if (ruleViolations.isEmpty()) {
             System.out.println("No rule violations found, nothing to do ...");
         } else {
@@ -120,7 +126,7 @@ class RepairCommand extends BaseCommand {
 
         if (statsOutputFile != null) {
             // mine violations to trigger stats collection
-            mineViolations(source, ruleKey, eventHandlers);
+            mineViolations(source, ruleKey, eventHandlers, classpath);
             writeStatisticsOutput(
                     statsCollector,
                     FileUtils.getClosestDirectory(source).toPath().toAbsolutePath().normalize());
@@ -129,8 +135,10 @@ class RepairCommand extends BaseCommand {
         return 0;
     }
 
-    private Set<RuleViolation> resolveRuleViolations(List<SoraldEventHandler> eventHandlers) {
-        Set<RuleViolation> minedViolations = mineViolations(source, ruleKey, eventHandlers);
+    private Set<RuleViolation> resolveRuleViolations(
+            List<SoraldEventHandler> eventHandlers, List<String> classpath) {
+        Set<RuleViolation> minedViolations =
+                mineViolations(source, ruleKey, eventHandlers, classpath);
 
         if (!specifiedRuleViolations.isEmpty()) {
             specifiedRuleViolations.forEach(
@@ -163,16 +171,21 @@ class RepairCommand extends BaseCommand {
      * @param target A target directory.
      * @param ruleKey A rule key.
      * @param eventHandlers Event handlers to use for events.
+     * @param classpath
      * @return All found warnings.
      */
     private static Set<RuleViolation> mineViolations(
-            File target, String ruleKey, List<SoraldEventHandler> eventHandlers) {
+            File target,
+            String ruleKey,
+            List<SoraldEventHandler> eventHandlers,
+            List<String> classpath) {
         Path projectPath = target.toPath().toAbsolutePath().normalize();
         Set<RuleViolation> violations =
                 ProjectScanner.scanProject(
                         target,
                         FileUtils.getClosestDirectory(target),
-                        Checks.getCheckInstance(ruleKey));
+                        List.of(Checks.getCheckInstance(ruleKey)),
+                        classpath);
         violations.forEach(
                 warn ->
                         EventHelper.fireEvent(

@@ -37,6 +37,21 @@ public class ProjectScanner {
      */
     public static Set<RuleViolation> scanProject(
             File target, File baseDir, List<JavaFileScanner> sonarChecks) {
+        return scanProject(target, baseDir, sonarChecks, List.of());
+    }
+
+    /**
+     * Scan a project for rule violations, with additional type information collected from the
+     * provided classpath.
+     *
+     * @param target Targeted file or directory of the project.
+     * @param baseDir Base directory of the project.
+     * @param sonarChecks Checks to scan with.
+     * @param classpath Classpath to fetch type information from.
+     * @return All violations in the target.
+     */
+    public static Set<RuleViolation> scanProject(
+            File target, File baseDir, List<JavaFileScanner> sonarChecks, List<String> classpath) {
         List<String> filesToScan = new ArrayList<>();
         if (target.isFile()) {
             filesToScan.add(target.getAbsolutePath());
@@ -50,6 +65,6 @@ public class ProjectScanner {
                 e.printStackTrace();
             }
         }
-        return RuleVerifier.analyze(filesToScan, baseDir, sonarChecks);
+        return RuleVerifier.analyze(filesToScan, baseDir, sonarChecks, classpath);
     }
 }
