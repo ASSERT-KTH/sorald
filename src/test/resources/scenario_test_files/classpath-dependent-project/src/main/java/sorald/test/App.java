@@ -8,7 +8,7 @@ import gumtree.spoon.AstComparator;
  * App that computes the ratio of root operations to all opertions with gumtree-spoon!
  */
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Path leftPath = Path.of(args[0]);
         Path rightPath = Path.of(args[1]);
         Diff diff = new AstComparator().compare(leftPath.toFile(), rightPath.toFile());
