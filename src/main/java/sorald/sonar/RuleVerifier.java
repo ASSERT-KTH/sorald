@@ -28,6 +28,7 @@ import org.sonar.api.rule.RuleKey;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.java.DefaultJavaResourceLocator;
 import org.sonar.java.JavaClasspath;
+import org.sonar.java.JavaClasspathProperties;
 import org.sonar.java.JavaSonarLintClasspath;
 import org.sonar.java.JavaSquid;
 import org.sonar.java.JavaTestClasspath;
@@ -80,7 +81,39 @@ public class RuleVerifier {
     @SuppressWarnings("UnstableApiUsage")
     public static Set<RuleViolation> analyze(
             List<String> filesToScan, File baseDir, List<? extends JavaFileScanner> checks) {
-        SoraldSonarComponents components = createSonarComponents(baseDir, checks);
+        SoraldSonarComponents components = createSonarComponents(baseDir, checks, List.of());
+
+        components.registerCheckClasses(CheckList.REPOSITORY_KEY, CheckList.getJavaChecks());
+        components.registerTestCheckClasses(
+                CheckList.REPOSITORY_KEY, CheckList.getJavaTestChecks());
+
+        scanFiles(
+                filesToScan.stream().map(f -> toInputFile(baseDir, f)).collect(Collectors.toList()),
+                components);
+
+        return components.getMessages().stream()
+                .filter(message -> message.primaryLocation() != null)
+                .map(ScannedViolation::new)
+                .collect(Collectors.toSet());
+    }
+
+    /**
+     * Analyze the files with all of the provided checks, using the provided source classpath both
+     * as production and test classpath.
+     *
+     * @param filesToScan A list of paths to files.
+     * @param baseDir The base directory of the current project.
+     * @param checks Sonar checks to use.
+     * @param classpath The source classpath to use.
+     * @return All messages produced by the analyzer, for all files and all checks.
+     */
+    @SuppressWarnings("UnstableApiUsage")
+    public static Set<RuleViolation> analyze(
+            List<String> filesToScan,
+            File baseDir,
+            List<? extends JavaFileScanner> checks,
+            List<String> classpath) {
+        SoraldSonarComponents components = createSonarComponents(baseDir, checks, classpath);
 
         components.registerCheckClasses(CheckList.REPOSITORY_KEY, CheckList.getJavaChecks());
         components.registerTestCheckClasses(
@@ -142,7 +175,7 @@ public class RuleVerifier {
     }
 
     private static SoraldSonarComponents createSonarComponents(
-            File baseDir, List<? extends JavaFileScanner> checks) {
+            File baseDir, List<? extends JavaFileScanner> checks, List<String> classpath) {
         var activeRulesBuilder = new ActiveRulesBuilder();
         checks.stream()
                 .map(check -> Checks.toSonarRuleKey(Checks.getRuleKey(check.getClass())))
@@ -162,8 +195,13 @@ public class RuleVerifier {
 
         DefaultFileSystem fs = sensorContext.fileSystem();
         // FIXME populate the classpaths
-        var cp = new JavaSonarLintClasspath(new MapSettings().asConfig(), fs);
-        var testCp = new JavaTestClasspath(new MapSettings().asConfig(), fs);
+        MapSettings settings =
+                new MapSettings()
+                        .setProperty(
+                                JavaClasspathProperties.SONAR_JAVA_BINARIES,
+                                String.join(",", classpath));
+        var cp = new JavaSonarLintClasspath(settings.asConfig(), fs);
+        var testCp = new JavaTestClasspath(settings.asConfig(), fs);
 
         SoraldSonarComponents sonarComponents =
                 new SoraldSonarComponents(sensorContext.fileSystem(), cp, testCp, checkFactory);
