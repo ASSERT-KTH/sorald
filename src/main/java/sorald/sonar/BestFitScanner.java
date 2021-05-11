@@ -196,8 +196,9 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
                         violation.getStartLine(),
                         violation.getStartCol(),
                         cu.getLineSeparatorPositions());
-        int symbolEndPos = reverseSearch(cuSource, searchStartPos, c -> !Character.isWhitespace(c));
-        int symbolStartPos = reverseSearch(cuSource, symbolEndPos, Character::isWhitespace) + 1;
+        int symbolEndPos = reverseSearch(cuSource, searchStartPos, Character::isJavaIdentifierPart);
+        int symbolStartPos =
+                reverseSearch(cuSource, symbolEndPos, c -> !Character.isJavaIdentifierPart(c)) + 1;
         return cuSource.substring(symbolStartPos, symbolEndPos + 1);
     }
 
