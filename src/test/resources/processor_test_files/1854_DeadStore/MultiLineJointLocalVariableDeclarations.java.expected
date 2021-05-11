@@ -1,0 +1,21 @@
+/*
+An assortment of multiline joint local variable declarations.
+ */
+
+public class MultiLineJointLocalVariableDeclarations {
+
+    public void multiLineJointDeclarationWithDeadStore() {
+        int veryLongVariableName = 1;
+        int otherLongVariableName = 2;
+        System.out.println(veryLongVariableName);
+        System.out.println(otherLongVariableName);
+    }
+
+    public void multiLineJointDeclarationWithMissingInitializer() {
+        int veryLongVariableName = 1;
+        int otherLongVariableName;
+        System.out.println(veryLongVariableName);
+        otherLongVariableName = 2;
+        System.out.println(otherLongVariableName);
+    }
+}
