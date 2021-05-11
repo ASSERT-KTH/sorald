@@ -26,4 +26,11 @@ public class JointLocalVarDeclaration {
         System.out.println(x);
         System.out.println(y);
     }
+
+    // no whitespace to delimit the identifiers
+    public void noWhitespaceBetweenIdentAndComma() {
+        int x=2,y=3,z=4; // Noncompliant
+        System.out.println(x);
+        System.out.println(z);
+    }
 }
