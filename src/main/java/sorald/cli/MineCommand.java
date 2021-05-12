@@ -14,6 +14,7 @@ import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
+import sorald.util.MavenUtils;
 
 /** CLI Command for Sorald's mining functionality. */
 @CommandLine.Command(
@@ -71,20 +72,18 @@ class MineCommand extends BaseCommand {
         List<? extends JavaFileScanner> checks = inferCheckInstances(ruleTypes, handledRules);
 
         var statsCollector = new MinerStatisticsCollector();
+        List<String> classpath =
+                resolveClasspath ? MavenUtils.resolveClasspath(source.toPath()) : List.of();
+
+        var miner =
+                new MineSonarWarnings(
+                        statsOutputFile == null ? List.of() : List.of(statsCollector), classpath);
 
         if (statsOnGitRepos) {
             List<String> reposList = Files.readAllLines(this.reposList.toPath());
-
-            new MineSonarWarnings(
-                            statsOutputFile == null ? List.of() : List.of(statsCollector),
-                            resolveClasspath)
-                    .mineGitRepos(checks, minerOutputFile.getAbsolutePath(), reposList, tempDir);
+            miner.mineGitRepos(checks, minerOutputFile.getAbsolutePath(), reposList, tempDir);
         } else {
-            new MineSonarWarnings(
-                            statsOutputFile == null ? List.of() : List.of(statsCollector),
-                            resolveClasspath)
-                    .mineLocalProject(
-                            checks, source.toPath().normalize().toAbsolutePath().toString());
+            miner.mineLocalProject(checks, source.toPath().normalize().toAbsolutePath().toString());
         }
 
         if (statsOutputFile != null) {
