@@ -25,6 +25,7 @@ import org.junit.jupiter.api.io.TempDir;
 import sorald.Constants;
 import sorald.FileUtils;
 import sorald.Main;
+import sorald.SystemExitHandler;
 import sorald.TestHelper;
 import sorald.cli.SoraldVersionProvider;
 import sorald.event.StatsMetadataKeys;
@@ -216,6 +217,19 @@ public class WarningMinerTest {
         assertThat(repairs.length(), equalTo(1));
         JSONObject repair = repairs.getJSONObject(0);
         assertThat(repair.getString(StatsMetadataKeys.REPAIR_RULE_KEY), equalTo("2184"));
+    }
+
+    /** We currently only support resolving the classpath on Maven projects. */
+    @Test
+    void exitsNonZero_whenResolvingClasspathOnNonMavenProject() {
+        String[] args = {
+            Constants.MINE_COMMAND_NAME,
+            Constants.ARG_SOURCE,
+            TestHelper.PATH_TO_RESOURCES_FOLDER.toString(),
+            Constants.ARG_RESOLVE_CLASSPATH
+        };
+
+        assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
     }
 
     private static void runMiner(
