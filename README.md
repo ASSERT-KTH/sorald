@@ -203,15 +203,20 @@ mine --help`).
       --git-repos-list=<reposList>
                              The path to the repos list.
   -h, --help                 Show this help message and exit.
+      --handled-rules        When this argument is used, Sorald only mines
+                               violations of the rules that can be fixed by
+                               Sorald.
       --miner-output-file=<minerOutputFile>
                              The path to the output file.
-      --source=<source>
-                             The path to the file or folder to be analyzed and
-                               possibly repaired.
+      --resolve-classpath    Resolve the classpath of a project for more
+                               accurate scans. Currently only works for Maven
+                               projects.
       --rule-types=<ruleTypes>[,<ruleTypes>...]
                              One or more types of rules to check for (use ','
                                to separate multiple types). Choices: BUG,
                                VULNERABILITY, CODE_SMELL, SECURITY_HOTSPOT
+      --source=<source>      The path to the file or folder to be analyzed and
+                               possibly repaired.
       --stats-on-git-repos   If the stats should be computed on git repos.
       --stats-output-file=<statsOutputFile>
                              Path to a file to store execution statistics in
