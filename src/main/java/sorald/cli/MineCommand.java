@@ -60,6 +60,12 @@ class MineCommand extends BaseCommand {
                     "When this argument is used, Sorald only mines violations of the rules that can be fixed by Sorald.")
     private boolean handledRules;
 
+    @CommandLine.Option(
+            names = Constants.ARG_RESOLVE_CLASSPATH,
+            description =
+                    "Resolve the classpath of a project for more accurate scans. Currently only works for Maven projects.")
+    private boolean resolveClasspath;
+
     @Override
     public Integer call() throws Exception {
         List<? extends JavaFileScanner> checks = inferCheckInstances(ruleTypes, handledRules);
@@ -69,10 +75,14 @@ class MineCommand extends BaseCommand {
         if (statsOnGitRepos) {
             List<String> reposList = Files.readAllLines(this.reposList.toPath());
 
-            new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
+            new MineSonarWarnings(
+                            statsOutputFile == null ? List.of() : List.of(statsCollector),
+                            resolveClasspath)
                     .mineGitRepos(checks, minerOutputFile.getAbsolutePath(), reposList, tempDir);
         } else {
-            new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
+            new MineSonarWarnings(
+                            statsOutputFile == null ? List.of() : List.of(statsCollector),
+                            resolveClasspath)
                     .mineLocalProject(
                             checks, source.toPath().normalize().toAbsolutePath().toString());
         }

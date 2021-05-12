@@ -1,6 +1,7 @@
 package sorald.miner;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Consumer;
@@ -15,12 +16,16 @@ import sorald.event.models.miner.MinedViolationEvent;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
 import sorald.sonar.RuleViolation;
+import sorald.util.MavenUtils;
 
 public class MineSonarWarnings {
     final List<SoraldEventHandler> eventHandlers;
+    private final boolean resolveClasspath;
 
-    public MineSonarWarnings(List<? extends SoraldEventHandler> eventHandlers) {
+    public MineSonarWarnings(
+            List<? extends SoraldEventHandler> eventHandlers, boolean resolveClasspath) {
         this.eventHandlers = Collections.unmodifiableList(eventHandlers);
+        this.resolveClasspath = resolveClasspath;
     }
 
     public void mineGitRepos(
@@ -104,7 +109,10 @@ public class MineSonarWarnings {
                 (checkName) -> warnings.put(checkName, warnings.get(checkName) + 1);
 
         EventHelper.fireEvent(EventType.MINING_START, eventHandlers);
-        Set<RuleViolation> analyzeMessages = RuleVerifier.analyze(filesToScan, file, checks);
+        List<String> classpath =
+                resolveClasspath ? MavenUtils.resolveClasspath(Path.of(projectPath)) : List.of();
+        Set<RuleViolation> analyzeMessages =
+                RuleVerifier.analyze(filesToScan, file, checks, classpath);
         EventHelper.fireEvent(EventType.MINING_END, eventHandlers);
 
         analyzeMessages.stream().map(RuleViolation::getCheckName).forEach(incrementWarningCount);
