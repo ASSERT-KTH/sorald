@@ -69,6 +69,8 @@ class MineCommand extends BaseCommand {
 
     @Override
     public Integer call() throws Exception {
+        validateArgs();
+
         List<? extends JavaFileScanner> checks = inferCheckInstances(ruleTypes, handledRules);
 
         var statsCollector = new MinerStatisticsCollector();
@@ -101,6 +103,17 @@ class MineCommand extends BaseCommand {
         }
 
         return 0;
+    }
+
+    /** Perform validation on the parsed arguments. */
+    private void validateArgs() {
+        if (resolveClasspath && !MavenUtils.isMavenProjectRoot(source.toPath())) {
+            throw new CommandLine.ParameterException(
+                    spec.commandLine(),
+                    String.format(
+                            "%s is only supported when %s points to the root of a Maven project",
+                            Constants.ARG_RESOLVE_CLASSPATH, Constants.ARG_SOURCE));
+        }
     }
 
     /**
