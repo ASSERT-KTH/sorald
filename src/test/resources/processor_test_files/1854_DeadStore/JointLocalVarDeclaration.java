@@ -1,5 +1,5 @@
 /*
-Joint declarations are tricky in Spoon as they are modelede as separate elements with the same
+Joint declarations are tricky in Spoon as they are modeled as separate elements with the same
 source position. This test case tests that Sorald can find the correct local variable in a few
 different configurations of joint declarations.
  */
