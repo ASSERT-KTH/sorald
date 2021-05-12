@@ -82,7 +82,11 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
         ctIf.setCondition(
                 fact.createBinaryOperator(
                         varRead, interruptedExcAccess, BinaryOperatorKind.INSTANCEOF));
-        ctIf.setThenStatement(statementToWrap);
+
+        // We add a block instead of just the naked statement here to force printing of curly
+        // brackets
+        CtBlock<?> thenBranch = fact.createCtBlock(statementToWrap);
+        ctIf.setThenStatement(thenBranch);
 
         return ctIf;
     }
