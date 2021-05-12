@@ -196,13 +196,13 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
                         violation.getStartLine(),
                         violation.getStartCol(),
                         cu.getLineSeparatorPositions());
-        int identEndPos = reverseSearch(cuSource, searchStartPos, Character::isJavaIdentifierPart);
+        int identEndPos = reverseFind(cuSource, searchStartPos, Character::isJavaIdentifierPart);
         int identStartPos =
-                reverseSearch(cuSource, identEndPos, c -> !Character.isJavaIdentifierPart(c)) + 1;
+                reverseFind(cuSource, identEndPos, c -> !Character.isJavaIdentifierPart(c)) + 1;
         return cuSource.substring(identStartPos, identEndPos + 1);
     }
 
-    private static int reverseSearch(String s, int startIdx, Predicate<Character> predicate) {
+    private static int reverseFind(String s, int startIdx, Predicate<Character> predicate) {
         int searchPos = startIdx;
         while (searchPos > 0 && !predicate.test(s.charAt(searchPos))) {
             --searchPos;
