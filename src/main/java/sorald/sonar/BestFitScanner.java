@@ -178,7 +178,7 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
     private boolean candidatePostFilter(E element, RuleViolation violation) {
         if (element instanceof CtVariable && ((CtVariable<?>) element).isPartOfJointDeclaration()) {
             String ident =
-                    getPrecedingSymbol(violation, element.getPosition().getCompilationUnit());
+                    getPrecedingIdentifier(violation, element.getPosition().getCompilationUnit());
             return ident.equals(((CtVariable<?>) element).getSimpleName());
         } else {
             return true;
@@ -186,20 +186,20 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
     }
 
     /**
-     * Get the first non-whitespace symbol preceding the source position of the given rule
+     * Get the first identifier-like symbol preceding the source position of the given rule
      * violation.
      */
-    private static String getPrecedingSymbol(RuleViolation violation, CtCompilationUnit cu) {
+    private static String getPrecedingIdentifier(RuleViolation violation, CtCompilationUnit cu) {
         String cuSource = cu.getOriginalSourceCode();
         int searchStartPos =
                 calculateSourcePos(
                         violation.getStartLine(),
                         violation.getStartCol(),
                         cu.getLineSeparatorPositions());
-        int symbolEndPos = reverseSearch(cuSource, searchStartPos, Character::isJavaIdentifierPart);
-        int symbolStartPos =
-                reverseSearch(cuSource, symbolEndPos, c -> !Character.isJavaIdentifierPart(c)) + 1;
-        return cuSource.substring(symbolStartPos, symbolEndPos + 1);
+        int identEndPos = reverseSearch(cuSource, searchStartPos, Character::isJavaIdentifierPart);
+        int identStartPos =
+                reverseSearch(cuSource, identEndPos, c -> !Character.isJavaIdentifierPart(c)) + 1;
+        return cuSource.substring(identStartPos, identEndPos + 1);
     }
 
     private static int reverseSearch(String s, int startIdx, Predicate<Character> predicate) {
