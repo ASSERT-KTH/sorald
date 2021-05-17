@@ -11,12 +11,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import sorald.FileUtils;
 import sorald.processor.SoraldAbstractProcessor;
+import spoon.reflect.declaration.CtCompilationUnit;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtType;
+import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.visitor.CtScanner;
 
@@ -142,7 +145,8 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
         Stream<E> reverseSortedUnusedCandidates =
                 Stream.concat(intersectingCandidates.stream(), sameLineCandidates.stream())
                         .sorted(reversedComparePositionFit)
-                        .filter(e -> !bestFitsMap.containsKey(e));
+                        .filter(e -> !bestFitsMap.containsKey(e))
+                        .filter(e -> candidatePostFilter(e, violation));
 
         if (processor.isIncomplete()) {
             // if the processor is incomplete, we only consider the best position match, and a false
@@ -165,6 +169,45 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
         } finally {
             processor.setFactory(originalFactory);
         }
+    }
+
+    /**
+     * Post filter for position-matched candidates for elements that require special handling, such
+     * as jointly declared variables (i.e. multiple declarations in one statement).
+     */
+    private boolean candidatePostFilter(E element, RuleViolation violation) {
+        if (element instanceof CtVariable && ((CtVariable<?>) element).isPartOfJointDeclaration()) {
+            String ident =
+                    getPrecedingIdentifier(violation, element.getPosition().getCompilationUnit());
+            return ident.equals(((CtVariable<?>) element).getSimpleName());
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * Get the first identifier-like symbol preceding the source position of the given rule
+     * violation.
+     */
+    private static String getPrecedingIdentifier(RuleViolation violation, CtCompilationUnit cu) {
+        String cuSource = cu.getOriginalSourceCode();
+        int searchStartPos =
+                calculateSourcePos(
+                        violation.getStartLine(),
+                        violation.getStartCol(),
+                        cu.getLineSeparatorPositions());
+        int identEndPos = reverseFind(cuSource, searchStartPos, Character::isJavaIdentifierPart);
+        int identStartPos =
+                reverseFind(cuSource, identEndPos, c -> !Character.isJavaIdentifierPart(c)) + 1;
+        return cuSource.substring(identStartPos, identEndPos + 1);
+    }
+
+    private static int reverseFind(String s, int startIdx, Predicate<Character> predicate) {
+        int searchPos = startIdx;
+        while (searchPos > 0 && !predicate.test(s.charAt(searchPos))) {
+            --searchPos;
+        }
+        return searchPos;
     }
 
     private static boolean elementIntersectsViolation(CtElement element, RuleViolation violation) {
