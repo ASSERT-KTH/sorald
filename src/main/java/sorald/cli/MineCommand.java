@@ -62,10 +62,10 @@ class MineCommand extends BaseCommand {
     private boolean handledRules;
 
     @CommandLine.Option(
-            names = Constants.ARG_RESOLVE_CLASSPATH,
+            names = Constants.ARG_RESOLVE_CLASSPATH_FROM,
             description =
-                    "Resolve the classpath of a project for more accurate scans. Currently only works for Maven projects.")
-    private boolean resolveClasspath;
+                    "Path to the root of a project to resolve the classpath from. Currently only works for Maven projects.")
+    private File resolveClasspathFrom;
 
     @Override
     public Integer call() throws Exception {
@@ -75,7 +75,9 @@ class MineCommand extends BaseCommand {
 
         var statsCollector = new MinerStatisticsCollector();
         List<String> classpath =
-                resolveClasspath ? MavenUtils.resolveClasspath(source.toPath()) : List.of();
+                resolveClasspathFrom != null
+                        ? MavenUtils.resolveClasspath(resolveClasspathFrom.toPath())
+                        : List.of();
 
         var miner =
                 new MineSonarWarnings(
@@ -107,12 +109,13 @@ class MineCommand extends BaseCommand {
 
     /** Perform validation on the parsed arguments. */
     private void validateArgs() {
-        if (resolveClasspath && !MavenUtils.isMavenProjectRoot(source.toPath())) {
+        if (resolveClasspathFrom != null
+                && !MavenUtils.isMavenProjectRoot(resolveClasspathFrom.toPath())) {
             throw new CommandLine.ParameterException(
                     spec.commandLine(),
                     String.format(
-                            "%s is only supported when %s points to the root of a Maven project",
-                            Constants.ARG_RESOLVE_CLASSPATH, Constants.ARG_SOURCE));
+                            "%s is only supported for Maven projects, but %s has no pom.xml",
+                            Constants.ARG_RESOLVE_CLASSPATH_FROM, source));
         }
     }
 

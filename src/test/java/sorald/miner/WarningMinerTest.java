@@ -197,18 +197,21 @@ public class WarningMinerTest {
     void canDetectRuleViolation_thatRequiresClasspath_whenResolvingClasspathInMavenProject(
             @TempDir File tempdir) throws Exception {
         Path statsFile = tempdir.toPath().resolve("stats.json");
+        Path projectRoot =
+                TestHelper.PATH_TO_RESOURCES_FOLDER
+                        .resolve("scenario_test_files")
+                        .resolve("classpath-dependent-project");
+        Path source = projectRoot.resolve("src").resolve("main").resolve("java");
 
         String[] args = {
             Constants.MINE_COMMAND_NAME,
             Constants.ARG_STATS_OUTPUT_FILE,
             statsFile.toString(),
             Constants.ARG_SOURCE,
-            TestHelper.PATH_TO_RESOURCES_FOLDER
-                    .resolve("scenario_test_files")
-                    .resolve("classpath-dependent-project")
-                    .toString(),
+            source.toString(),
             Constants.ARG_HANDLED_RULES,
-            Constants.ARG_RESOLVE_CLASSPATH
+            Constants.ARG_RESOLVE_CLASSPATH_FROM,
+            projectRoot.toString()
         };
         Main.main(args);
 
@@ -226,7 +229,8 @@ public class WarningMinerTest {
             Constants.MINE_COMMAND_NAME,
             Constants.ARG_SOURCE,
             TestHelper.PATH_TO_RESOURCES_FOLDER.toString(),
-            Constants.ARG_RESOLVE_CLASSPATH
+            Constants.ARG_RESOLVE_CLASSPATH_FROM,
+            TestHelper.PATH_TO_RESOURCES_FOLDER.toString()
         };
 
         assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
