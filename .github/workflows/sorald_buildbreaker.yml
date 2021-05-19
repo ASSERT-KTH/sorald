@@ -16,3 +16,4 @@ jobs:
         uses: SpoonLabs/sorald-buildbreaker@issue/53-add-patch-suggestion
         with:
           source: 'src/main/java'
+          token: ${{ secrets.GITHUB_TOKEN }}
