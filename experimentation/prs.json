@@ -1721,10 +1721,10 @@
         "prMetadata": {
             "url": "https://github.com/INRIA/spoon/pull/3930",
             "createdAt": "2021-05-17 10:36:52",
-            "closedAt": null,
-            "mergedAt": null,
-            "state": "open",
-            "isMerged": false,
+            "closedAt": "2021-05-18 09:11:16",
+            "mergedAt": "2021-05-18 09:11:16",
+            "state": "closed",
+            "isMerged": true,
             "number": 3930
         },
         "soraldStatistics": {
@@ -1771,12 +1771,12 @@
         },
         "diffs": {
             "initial": "diff --git a/src/main/java/spoon/processing/AbstractParallelProcessor.java b/src/main/java/spoon/processing/AbstractParallelProcessor.java\nindex b29117da3d..36b1c177af 100644\n--- a/src/main/java/spoon/processing/AbstractParallelProcessor.java\n+++ b/src/main/java/spoon/processing/AbstractParallelProcessor.java\n@@ -156,6 +156,9 @@ private void awaitJobCompletion() {\n \t\t\ttry {\n \t\t\t\tjob.get();\n \t\t\t} catch (InterruptedException | ExecutionException e) {\n+\t\t\t\tif (e instanceof InterruptedException) {\n+\t\t\t\t\tThread.currentThread().interrupt();\n+\t\t\t\t}\n \t\t\t\tthrow new SpoonException(\"failed to wait for parallel processor to finish\", e);\n \t\t\t}\n \t\t}\n",
-            "final": null
+            "final": "diff --git a/src/main/java/spoon/processing/AbstractParallelProcessor.java b/src/main/java/spoon/processing/AbstractParallelProcessor.java\nindex b29117da3d..36b1c177af 100644\n--- a/src/main/java/spoon/processing/AbstractParallelProcessor.java\n+++ b/src/main/java/spoon/processing/AbstractParallelProcessor.java\n@@ -156,6 +156,9 @@ private void awaitJobCompletion() {\n \t\t\ttry {\n \t\t\t\tjob.get();\n \t\t\t} catch (InterruptedException | ExecutionException e) {\n+\t\t\t\tif (e instanceof InterruptedException) {\n+\t\t\t\t\tThread.currentThread().interrupt();\n+\t\t\t\t}\n \t\t\t\tthrow new SpoonException(\"failed to wait for parallel processor to finish\", e);\n \t\t\t}\n \t\t}\n"
         },
         "manualEdits": [],
         "recordMetadata": {
             "createdAt": "2021-05-17 12:38:20.097586",
-            "lastModified": "2021-05-17 12:38:20.097586",
+            "lastModified": "2021-05-19 10:06:47.685058",
             "isLegacyRecord": false
         }
     }
