@@ -54,13 +54,18 @@ public class Repair {
 
     final List<SoraldEventHandler> eventHandlers;
     private final CompilationUnitCollector cuCollector;
+    private final List<String> classpath;
 
-    public Repair(SoraldConfig config, List<? extends SoraldEventHandler> eventHandlers) {
+    public Repair(
+            SoraldConfig config,
+            List<String> classpath,
+            List<? extends SoraldEventHandler> eventHandlers) {
         this.config = config;
         cuCollector = new CompilationUnitCollector();
         List<SoraldEventHandler> eventHandlersCopy = new ArrayList<>(eventHandlers);
         eventHandlersCopy.add(cuCollector);
         this.eventHandlers = Collections.unmodifiableList(eventHandlersCopy);
+        this.classpath = new ArrayList<>(classpath);
     }
 
     /**
@@ -252,6 +257,11 @@ public class Repair {
         Environment env = launcher.getEnvironment();
         env.setIgnoreDuplicateDeclarations(true);
         env.setComplianceLevel(Constants.DEFAULT_COMPLIANCE_LEVEL);
+
+        if (!classpath.isEmpty()) {
+            env.setSourceClasspath(classpath.toArray(String[]::new));
+            env.setNoClasspath(false);
+        }
 
         // this is a workaround for https://github.com/INRIA/spoon/issues/3693
         if (config.getPrettyPrintingStrategy() == PrettyPrintingStrategy.SNIPER) {
