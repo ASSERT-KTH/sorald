@@ -260,7 +260,6 @@ public class Repair {
 
         if (!classpath.isEmpty()) {
             env.setSourceClasspath(classpath.toArray(String[]::new));
-            env.setNoClasspath(false);
         }
 
         // this is a workaround for https://github.com/INRIA/spoon/issues/3693
