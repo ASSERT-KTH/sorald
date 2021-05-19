@@ -14,6 +14,7 @@ import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
+import sorald.util.MavenUtils;
 
 /** CLI Command for Sorald's mining functionality. */
 @CommandLine.Command(
@@ -60,21 +61,33 @@ class MineCommand extends BaseCommand {
                     "When this argument is used, Sorald only mines violations of the rules that can be fixed by Sorald.")
     private boolean handledRules;
 
+    @CommandLine.Option(
+            names = Constants.ARG_RESOLVE_CLASSPATH_FROM,
+            description =
+                    "Path to the root of a project to resolve the classpath from. Currently only works for Maven projects.")
+    private File resolveClasspathFrom;
+
     @Override
     public Integer call() throws Exception {
+        validateArgs();
+
         List<? extends JavaFileScanner> checks = inferCheckInstances(ruleTypes, handledRules);
 
         var statsCollector = new MinerStatisticsCollector();
+        List<String> classpath =
+                resolveClasspathFrom != null
+                        ? MavenUtils.resolveClasspath(resolveClasspathFrom.toPath())
+                        : List.of();
+
+        var miner =
+                new MineSonarWarnings(
+                        statsOutputFile == null ? List.of() : List.of(statsCollector), classpath);
 
         if (statsOnGitRepos) {
             List<String> reposList = Files.readAllLines(this.reposList.toPath());
-
-            new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
-                    .mineGitRepos(checks, minerOutputFile.getAbsolutePath(), reposList, tempDir);
+            miner.mineGitRepos(checks, minerOutputFile.getAbsolutePath(), reposList, tempDir);
         } else {
-            new MineSonarWarnings(statsOutputFile == null ? List.of() : List.of(statsCollector))
-                    .mineLocalProject(
-                            checks, source.toPath().normalize().toAbsolutePath().toString());
+            miner.mineLocalProject(checks, source.toPath().normalize().toAbsolutePath().toString());
         }
 
         if (statsOutputFile != null) {
@@ -92,6 +105,18 @@ class MineCommand extends BaseCommand {
         }
 
         return 0;
+    }
+
+    /** Perform validation on the parsed arguments. */
+    private void validateArgs() {
+        if (resolveClasspathFrom != null
+                && !MavenUtils.isMavenProjectRoot(resolveClasspathFrom.toPath())) {
+            throw new CommandLine.ParameterException(
+                    spec.commandLine(),
+                    String.format(
+                            "%s is only supported for Maven projects, but %s has no pom.xml",
+                            Constants.ARG_RESOLVE_CLASSPATH_FROM, source));
+        }
     }
 
     /**
