@@ -1,5 +1,6 @@
 package sorald.miner;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.greaterThan;
@@ -17,12 +18,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import sorald.Constants;
 import sorald.FileUtils;
 import sorald.Main;
+import sorald.SystemExitHandler;
 import sorald.TestHelper;
 import sorald.cli.SoraldVersionProvider;
 import sorald.event.StatsMetadataKeys;
@@ -188,6 +191,49 @@ public class WarningMinerTest {
         assertThat(jo.getJSONArray(StatsMetadataKeys.MINED_RULES).toList().size(), greaterThan(0));
         assertTrue(jo.has(StatsMetadataKeys.MINING_START_TIME));
         assertTrue(jo.has(StatsMetadataKeys.MINING_END_TIME));
+    }
+
+    @Test
+    void canDetectRuleViolation_thatRequiresClasspath_whenResolvingClasspathInMavenProject(
+            @TempDir File tempdir) throws Exception {
+        Path statsFile = tempdir.toPath().resolve("stats.json");
+        Path projectRoot =
+                TestHelper.PATH_TO_RESOURCES_FOLDER
+                        .resolve("scenario_test_files")
+                        .resolve("classpath-dependent-project");
+        Path source = projectRoot.resolve("src").resolve("main").resolve("java");
+
+        String[] args = {
+            Constants.MINE_COMMAND_NAME,
+            Constants.ARG_STATS_OUTPUT_FILE,
+            statsFile.toString(),
+            Constants.ARG_SOURCE,
+            source.toString(),
+            Constants.ARG_HANDLED_RULES,
+            Constants.ARG_RESOLVE_CLASSPATH_FROM,
+            projectRoot.toString()
+        };
+        Main.main(args);
+
+        JSONObject stats = FileUtils.readJSON(statsFile);
+        JSONArray repairs = stats.getJSONArray(StatsMetadataKeys.MINED_RULES);
+        assertThat(repairs.length(), equalTo(1));
+        JSONObject repair = repairs.getJSONObject(0);
+        assertThat(repair.getString(StatsMetadataKeys.REPAIR_RULE_KEY), equalTo("2184"));
+    }
+
+    /** We currently only support resolving the classpath on Maven projects. */
+    @Test
+    void exitsNonZero_whenResolvingClasspathOnNonMavenProject() {
+        String[] args = {
+            Constants.MINE_COMMAND_NAME,
+            Constants.ARG_SOURCE,
+            TestHelper.PATH_TO_RESOURCES_FOLDER.toString(),
+            Constants.ARG_RESOLVE_CLASSPATH_FROM,
+            TestHelper.PATH_TO_RESOURCES_FOLDER.toString()
+        };
+
+        assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
     }
 
     private static void runMiner(

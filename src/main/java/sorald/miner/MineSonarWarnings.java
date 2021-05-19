@@ -18,9 +18,12 @@ import sorald.sonar.RuleViolation;
 
 public class MineSonarWarnings {
     final List<SoraldEventHandler> eventHandlers;
+    private final List<String> classpath;
 
-    public MineSonarWarnings(List<? extends SoraldEventHandler> eventHandlers) {
+    public MineSonarWarnings(
+            List<? extends SoraldEventHandler> eventHandlers, List<String> classpath) {
         this.eventHandlers = Collections.unmodifiableList(eventHandlers);
+        this.classpath = classpath;
     }
 
     public void mineGitRepos(
@@ -104,7 +107,8 @@ public class MineSonarWarnings {
                 (checkName) -> warnings.put(checkName, warnings.get(checkName) + 1);
 
         EventHelper.fireEvent(EventType.MINING_START, eventHandlers);
-        Set<RuleViolation> analyzeMessages = RuleVerifier.analyze(filesToScan, file, checks);
+        Set<RuleViolation> analyzeMessages =
+                RuleVerifier.analyze(filesToScan, file, checks, classpath);
         EventHelper.fireEvent(EventType.MINING_END, eventHandlers);
 
         analyzeMessages.stream().map(RuleViolation::getCheckName).forEach(incrementWarningCount);

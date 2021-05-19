@@ -19,4 +19,14 @@ public class MavenUtils {
                 new MavenLauncher(source.toString(), MavenLauncher.SOURCE_TYPE.ALL_SOURCE);
         return List.of(launcher.getEnvironment().getSourceClasspath());
     }
+
+    /**
+     * Test whether or not the given source path points to the root of a Maven project.
+     *
+     * @param source A path
+     * @return true iff the source path points to the root of a Maven project
+     */
+    public static boolean isMavenProjectRoot(Path source) {
+        return source.resolve("pom.xml").toFile().isFile();
+    }
 }
