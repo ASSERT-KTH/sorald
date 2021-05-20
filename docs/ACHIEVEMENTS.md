@@ -1,6 +1,16 @@
 # Achievements
 This document presents an overview of the pull requests performed with Sorald.
 
+## [inria/spoon#3930](https://github.com/inria/spoon/pull/3930)
+This PR was opened at 2021-05-17 10:36:52 and merged at 2021-05-18 09:11:16.
+The patch was generated fully automatically with Sorald.
+
+It provided the following repairs:
+
+* [Rule 2142](https://rules.sonarsource.com/java/RSPEC-2142)
+    - Number of violations found: 1
+    - Number of violations repaired: 1
+
 ## [verificatum/verificatum-vcr#6](https://github.com/verificatum/verificatum-vcr/pull/6)
 This PR was opened at 2021-04-20 07:43:52 and merged at 2021-04-30 07:52:32.
 The patch was generated fully automatically with Sorald.
