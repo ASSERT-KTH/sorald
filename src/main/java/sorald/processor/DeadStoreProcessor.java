@@ -11,12 +11,15 @@ import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtLocalVariable;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.code.CtStatementList;
+import spoon.reflect.code.CtUnaryOperator;
 import spoon.reflect.code.CtVariableAccess;
+import spoon.reflect.code.CtVariableRead;
 import spoon.reflect.code.CtVariableWrite;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtExecutable;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtVariable;
+import spoon.reflect.path.CtRole;
 import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.Filter;
 
@@ -25,7 +28,9 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 
     @Override
     protected boolean canRepairInternal(CtStatement candidate) {
-        return candidate instanceof CtLocalVariable || candidate instanceof CtAssignment;
+        return candidate instanceof CtLocalVariable
+                || candidate instanceof CtAssignment
+                || candidate instanceof CtUnaryOperator;
     }
 
     @Override
@@ -33,6 +38,7 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
         if (element instanceof CtLocalVariable) {
             retainDeclarationOnVariableUse((CtLocalVariable<?>) element);
         }
+
         safeDeleteDeadStore(element);
     }
 
@@ -246,7 +252,11 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
      * @param element A dead store element to safe-delete
      */
     private static void safeDeleteDeadStore(CtElement element) {
-        // Sonar only flags dead stores in local variables and assignments at this time
+        if (element.getRoleInParent() != CtRole.STATEMENT) {
+            safeDeleteDeadStoreInExpression(element);
+            return;
+        }
+
         CtElement assignment =
                 element instanceof CtLocalVariable
                         ? ((CtLocalVariable<?>) element).getAssignment()
@@ -273,5 +283,35 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
         CtExecutable<?> exec =
                 ((CtInvocation<?>) element).getExecutable().getExecutableDeclaration();
         return exec instanceof CtMethod && ((CtMethod<?>) exec).isStatic();
+    }
+
+    /**
+     * We've got a dead store inside of an expression, meaning a suffix unary operator or an
+     * expression assignment. Both of these require special treatment as the value of the expression
+     * must be retained, while the dead store must be removed.
+     */
+    private static void safeDeleteDeadStoreInExpression(CtElement element) {
+        if (element instanceof CtAssignment) {
+            // in an expression assignment, we need to keep the assignment (the RHS),
+            // but not the reference to the assigned variable (the LHS)
+            element.replace(((CtAssignment<?, ?>) element).getAssignment());
+        } else if (element instanceof CtUnaryOperator) {
+            // This must be a post-increment operator, which always contains a variable write in
+            // Spoon. We want an identical variable read.
+            CtVariableWrite<?> varWrite =
+                    (CtVariableWrite<?>) ((CtUnaryOperator<?>) element).getOperand();
+            element.replace(convertToVarRead(varWrite));
+        } else {
+            throw new IllegalArgumentException(
+                    "unexpected element type: " + element.getClass().getName());
+        }
+    }
+
+    private static <T> CtVariableRead<T> convertToVarRead(CtVariableWrite<T> varWrite) {
+        CtVariableRead<T> varRead = varWrite.getFactory().createVariableRead();
+        for (CtElement child : varWrite.getDirectChildren()) {
+            varRead.setValueByRole(child.getRoleInParent(), child.clone());
+        }
+        return varRead;
     }
 }
