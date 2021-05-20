@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Run Sorald Buildbreaker
         uses: SpoonLabs/sorald-buildbreaker@issue/53-add-patch-suggestion
         with:
