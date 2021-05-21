@@ -1,7 +1,7 @@
 /*
 When a dead store is in expression position (e.g. post-increment or an expression assignment),
 it's always read from. Thus, deleting the dead store is inappropriate; it should be replaced
-with a variable read instead.
+with a variable read _or_ binary operator instead.
  */
 
 public class ReadFromDeadStore {
@@ -20,5 +20,11 @@ public class ReadFromDeadStore {
 
     static String readLine() {
         return "hello!";
+    }
+
+    void expressionPlusEquals() {
+        int x = 1;
+        int y = (x += 10); // Compliant; false negative by Sonar, left as sentinel if it becomes positive
+        System.out.println(y);
     }
 }
