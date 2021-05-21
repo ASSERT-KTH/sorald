@@ -21,10 +21,4 @@ public class ReadFromDeadStore {
     static String readLine() {
         return "hello!";
     }
-
-    void expressionPlusEquals() {
-        int x = 1;
-        int y = (x += 10); // Compliant; false negative by Sonar, left as sentinel if it becomes positive
-        System.out.println(y);
-    }
 }
