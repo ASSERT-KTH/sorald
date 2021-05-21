@@ -1,7 +1,7 @@
 /*
 When a dead store is in expression position (e.g. post-increment or an expression assignment),
-it's always read from. Thus, deleting the dead store is inappropriate; it should be replaced
-with a variable read _or_ binary operator instead.
+it can be read from. Thus, deleting the dead store is not always appropriate; it should be replaced
+with a variable read.
  */
 
 public class ReadFromDeadStore {
