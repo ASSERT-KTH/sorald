@@ -19,6 +19,8 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtExecutable;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtVariable;
+import spoon.reflect.meta.RoleHandler;
+import spoon.reflect.meta.impl.RoleHandlerHelper;
 import spoon.reflect.path.CtRole;
 import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.Filter;
@@ -287,24 +289,45 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 
     /**
      * We've got a dead store inside of an expression, meaning a suffix unary operator or an
-     * expression assignment. Both of these require special treatment as the value of the expression
-     * must be retained, while the dead store must be removed.
+     * expression assignment. Sometimes, the store is dead but the value is still read, and then the
+     * returned value must be retained while the store is removed.
      */
     private static void safeDeleteDeadStoreInExpression(CtElement element) {
+        CtElement replacement = extractDeadStoreStatementExpressionReplacement(element);
+        if (isApplicableForRoleInParent(
+                replacement, element.getRoleInParent(), element.getParent())) {
+            element.replace(replacement);
+        } else {
+            element.delete();
+        }
+    }
+
+    private static CtElement extractDeadStoreStatementExpressionReplacement(CtElement element) {
         if (element instanceof CtAssignment) {
             // in an expression assignment, we need to keep the assignment (the RHS),
             // but not the reference to the assigned variable (the LHS)
-            element.replace(((CtAssignment<?, ?>) element).getAssignment());
+            return ((CtAssignment<?, ?>) element).getAssignment();
+
         } else if (element instanceof CtUnaryOperator) {
-            // This must be a post-increment operator, which always contains a variable write in
-            // Spoon. We want an identical variable read.
+            // This must be a postfix or suffix operator that mutates the variable,
+            // which always contains a variable write in Spoon.
             CtVariableWrite<?> varWrite =
                     (CtVariableWrite<?>) ((CtUnaryOperator<?>) element).getOperand();
-            element.replace(convertToVarRead(varWrite));
+            CtVariableRead<?> replacement = convertToVarRead(varWrite);
+            return replacement;
         } else {
             throw new IllegalArgumentException(
                     "unexpected element type: " + element.getClass().getName());
         }
+    }
+
+    /** Check whether the child can be assigned to the role in the given parent. */
+    private static boolean isApplicableForRoleInParent(
+            CtElement child, CtRole roleInParent, CtElement parent) {
+        RoleHandler parentRoleHandler =
+                RoleHandlerHelper.getRoleHandler(parent.getClass(), roleInParent);
+        Class<?> classForRole = parentRoleHandler.getValueClass();
+        return classForRole.isAssignableFrom(child.getClass());
     }
 
     private static <T> CtVariableRead<T> convertToVarRead(CtVariableWrite<T> varWrite) {
