@@ -12,6 +12,7 @@ public class Main {
 
         int exitStatus = Cli.createCli().execute(args);
         if (exitStatus != 0) {
+            int otherExitStatus = exitStatus;
             System.exit(exitStatus);
         }
     }
