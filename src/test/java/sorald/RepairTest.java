@@ -34,7 +34,7 @@ public class RepairTest {
                         .collect(Collectors.toSet());
 
         // act
-        var repair = new Repair(config, List.of());
+        var repair = new Repair(config, List.of(), List.of());
         try {
             repair.repair(violations);
         } catch (IllegalArgumentException e) {

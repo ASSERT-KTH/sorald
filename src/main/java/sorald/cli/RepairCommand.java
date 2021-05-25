@@ -108,17 +108,14 @@ class RepairCommand extends BaseCommand {
                 statsOutputFile == null ? List.of() : List.of(statsCollector);
         EventHelper.fireEvent(EventType.EXEC_START, eventHandlers);
 
-        List<String> classpath =
-                repairStrategy == RepairStrategy.MAVEN
-                        ? MavenUtils.resolveClasspath(source.toPath())
-                        : List.of();
+        List<String> classpath = resolveClasspath();
 
         Set<RuleViolation> ruleViolations = resolveRuleViolations(eventHandlers, classpath);
         if (ruleViolations.isEmpty()) {
             System.out.println("No rule violations found, nothing to do ...");
         } else {
             SoraldAbstractProcessor<?> proc =
-                    new Repair(config, eventHandlers).repair(ruleViolations);
+                    new Repair(config, classpath, eventHandlers).repair(ruleViolations);
             printEndProcess(proc);
         }
 
@@ -133,6 +130,16 @@ class RepairCommand extends BaseCommand {
         }
 
         return 0;
+    }
+
+    private List<String> resolveClasspath() {
+        if (resolveClasspathFrom != null) {
+            return MavenUtils.resolveClasspath(resolveClasspathFrom.toPath());
+        } else if (repairStrategy == RepairStrategy.MAVEN) {
+            return MavenUtils.resolveClasspath(source.toPath());
+        } else {
+            return List.of();
+        }
     }
 
     private Set<RuleViolation> resolveRuleViolations(

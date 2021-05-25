@@ -21,4 +21,10 @@ abstract class BaseCommand implements Callable<Integer> {
             description =
                     "Path to a file to store execution statistics in (in JSON format). If left unspecified, Sorald does not gather statistics.")
     File statsOutputFile;
+
+    @CommandLine.Option(
+            names = Constants.ARG_RESOLVE_CLASSPATH_FROM,
+            description =
+                    "Path to the root of a project to resolve the classpath from. Currently only works for Maven projects.")
+    File resolveClasspathFrom;
 }

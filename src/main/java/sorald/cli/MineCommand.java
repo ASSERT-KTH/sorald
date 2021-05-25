@@ -61,12 +61,6 @@ class MineCommand extends BaseCommand {
                     "When this argument is used, Sorald only mines violations of the rules that can be fixed by Sorald.")
     private boolean handledRules;
 
-    @CommandLine.Option(
-            names = Constants.ARG_RESOLVE_CLASSPATH_FROM,
-            description =
-                    "Path to the root of a project to resolve the classpath from. Currently only works for Maven projects.")
-    private File resolveClasspathFrom;
-
     @Override
     public Integer call() throws Exception {
         validateArgs();

@@ -100,7 +100,7 @@ public class SegmentStrategyTest {
         String crashingClass = "DeadStores";
         Path crashingFile = getProcessorTestJavaFilePath(workspace.toFile(), crashingClass);
 
-        Repair repair = new Repair(config, List.of());
+        Repair repair = new Repair(config, List.of(), List.of());
         Function<LinkedList<Node>, CtModel> selectivelyCrashySegmentParser =
                 segment ->
                         segmentContainsFile(segment, crashingFile.toString())
