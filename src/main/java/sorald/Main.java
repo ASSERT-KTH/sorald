@@ -8,9 +8,7 @@ public class Main {
             throw new InterruptedException();
         } catch (InterruptedException | IllegalArgumentException e) {
             System.out.println("oops!");
-            if (e instanceof InterruptedException)
-                Thread.currentThread().interrupt();
-
+            if (e instanceof InterruptedException) Thread.currentThread().interrupt();
         }
 
         int exitStatus = Cli.createCli().execute(args);
