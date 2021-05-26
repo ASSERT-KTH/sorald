@@ -8,9 +8,9 @@ Sorald can currently repair violations of the following rules:
     * ["InterruptedException" should not be ignored](#interruptedexception-should-not-be-ignored-sonar-rule-2142) ([Sonar Rule 2142](https://rules.sonarsource.com/java/RSPEC-2142))
     * ["Iterator.next()" methods should throw "NoSuchElementException"](#iteratornext-methods-should-throw-nosuchelementexception-sonar-rule-2272) ([Sonar Rule 2272](https://rules.sonarsource.com/java/RSPEC-2272))
     * ["compareTo" should not return "Integer.MIN_VALUE"](#compareto-should-not-return-integermin_value-sonar-rule-2167) ([Sonar Rule 2167](https://rules.sonarsource.com/java/RSPEC-2167))
+    * ["equals(Object obj)" should test argument type](#equalsobject-obj-should-test-argument-type-sonar-rule-2097) ([Sonar Rule 2097](https://rules.sonarsource.com/java/RSPEC-2097))
     * ["getClass" should not be used for synchronization](#getclass-should-not-be-used-for-synchronization-sonar-rule-3067) ([Sonar Rule 3067](https://rules.sonarsource.com/java/type/Bug/RSPEC-3067))
     * ["hashCode" and "toString" should not be called on array instances](#hashcode-and-tostring-should-not-be-called-on-array-instances-sonar-rule-2116) ([Sonar Rule 2116](https://rules.sonarsource.com/java/RSPEC-2116))
-    * ["equals(Object obj)" should test argument type](#equalsobject-obj-should-test-argument-type-sonar-rule-2097) ([Sonar Rule 2097](https://rules.sonarsource.com/java/RSPEC-2097))
     * [Exception should not be created without being thrown](#exception-should-not-be-created-without-being-thrown-sonar-rule-3984) ([Sonar Rule 3984](https://rules.sonarsource.com/java/RSPEC-3984))
     * [JEE applications should not "getClassLoader"](#jee-applications-should-not-getclassloader-sonar-rule-3032) ([Sonar Rule 3032](https://rules.sonarsource.com/java/RSPEC-3032))
     * [Math operands should be cast before assignment](#math-operands-should-be-cast-before-assignment-sonar-rule-2184) ([Sonar Rule 2184](https://rules.sonarsource.com/java/RSPEC-2184))
@@ -140,6 +140,24 @@ Returning `Integer.MIN_VALUE` can cause errors because the return value of `comp
 
 -----
 
+#### "equals(Object obj)" should test argument type ([Sonar Rule 2097](https://rules.sonarsource.com/java/RSPEC-2097))
+
+This repair adds a type test to any `equals(Object)` method that lacks such.
+
+Example:
+
+```diff
+    @Override
+    public boolean equals(Object obj) {
++       if (obj == null || getClass() != obj.getClass()) {
++               return false;
++       }
+        return toFile().equals(((SpoonResource) obj).toFile());
+    }
+```
+
+-----
+
 #### "getClass" should not be used for synchronization ([Sonar Rule 3067](https://rules.sonarsource.com/java/RSPEC-3067))
 
 Any invocation using getClass will be typechecked if the object's invoked by `getClass` is final or an enum. If not, the invocation will be transformed to `.class` instead of `getClass`.
@@ -179,24 +197,6 @@ Example:
 ```
 
 Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/3134) that repairs one ArrayHashCodeAndToString violation.
-
------
-
-#### "equals(Object obj)" should test argument type ([Sonar Rule 2097](https://rules.sonarsource.com/java/RSPEC-2097))
-
-This repair adds a type test to any `equals(Object)` method that lacks such.
-
-Example:
-
-```diff
-    @Override
-    public boolean equals(Object obj) {
-+       if (obj == null || getClass() != obj.getClass()) {
-+               return false;
-+       }
-        return toFile().equals(((SpoonResource) obj).toFile());
-    }
-```
 
 -----
 
