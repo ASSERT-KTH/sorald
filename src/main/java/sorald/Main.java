@@ -4,6 +4,10 @@ import sorald.cli.Cli;
 
 public class Main {
     public static void main(String[] args) {
+        if (args.length < 3) {
+            new IllegalArgumentException("Too few args!");
+        }
+
         try {
             throw new InterruptedException();
         } catch (InterruptedException | IllegalArgumentException e) {
