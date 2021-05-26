@@ -128,6 +128,8 @@ Repair Sonar rule violations in a targeted project.
                                case where the class already has a
                                serialVersionUID with a non long type.)
                              2095: Resources should be closed
+                             2097: "equals(Object obj)" should test argument
+                               type
                              2111: "BigDecimal(double)" should not be used
                              2116: "hashCode" and "toString" should not be
                                called on array instances
