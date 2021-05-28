@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class MultipleCloseablesInSingleTry {
+public class UnclosedResourceWithinTryWithResources {
     public void readAndWrite() {
 
         try (FileInputStream is = new FileInputStream(new File("random/file/path"))) {
