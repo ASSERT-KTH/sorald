@@ -302,12 +302,16 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
         }
     }
 
+    /**
+     * When there is a dead store in a statement expression from which the value is read, the dead
+     * store needs to be replaced with an expression that only returns the value, without causing a
+     * store. This method extracts that value.
+     */
     private static CtElement extractDeadStoreStatementExpressionReplacement(CtElement element) {
         if (element instanceof CtAssignment) {
             // in an expression assignment, we need to keep the assignment (the RHS),
             // but not the reference to the assigned variable (the LHS)
             return ((CtAssignment<?, ?>) element).getAssignment();
-
         } else if (element instanceof CtUnaryOperator) {
             // This must be a postfix or suffix operator that mutates the variable,
             // which always contains a variable write in Spoon.
