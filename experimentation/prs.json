@@ -1785,10 +1785,10 @@
         "prMetadata": {
             "url": "https://github.com/INRIA/spoon/pull/3972",
             "createdAt": "2021-05-31 14:21:43",
-            "closedAt": null,
-            "mergedAt": null,
-            "state": "open",
-            "isMerged": false,
+            "closedAt": "2021-06-01 05:43:16",
+            "mergedAt": "2021-06-01 05:43:16",
+            "state": "closed",
+            "isMerged": true,
             "number": 3972
         },
         "soraldStatistics": {
@@ -1837,12 +1837,12 @@
         },
         "diffs": {
             "initial": "diff --git a/src/main/java/spoon/support/compiler/FileSystemFile.java b/src/main/java/spoon/support/compiler/FileSystemFile.java\nindex d6a442dc18..bf6adab5b9 100644\n--- a/src/main/java/spoon/support/compiler/FileSystemFile.java\n+++ b/src/main/java/spoon/support/compiler/FileSystemFile.java\n@@ -110,6 +110,9 @@ public boolean isActualFile() {\n \n \t@Override\n \tpublic boolean equals(Object obj) {\n+\t\tif (obj == null || getClass() != obj.getClass()) {\n+\t\t\treturn false;\n+\t\t}\n \t\treturn toFile().equals(((SpoonResource) obj).toFile());\n \t}\n \n",
-            "final": null
+            "final": "diff --git a/src/main/java/spoon/support/compiler/FileSystemFile.java b/src/main/java/spoon/support/compiler/FileSystemFile.java\nindex d6a442dc18..bf6adab5b9 100644\n--- a/src/main/java/spoon/support/compiler/FileSystemFile.java\n+++ b/src/main/java/spoon/support/compiler/FileSystemFile.java\n@@ -110,6 +110,9 @@ public boolean isActualFile() {\n \n \t@Override\n \tpublic boolean equals(Object obj) {\n+\t\tif (obj == null || getClass() != obj.getClass()) {\n+\t\t\treturn false;\n+\t\t}\n \t\treturn toFile().equals(((SpoonResource) obj).toFile());\n \t}\n \n"
         },
         "manualEdits": [],
         "recordMetadata": {
             "createdAt": "2021-05-31 16:24:37.574440",
-            "lastModified": "2021-05-31 16:24:37.574440",
+            "lastModified": "2021-06-01 16:54:57.141186",
             "isLegacyRecord": false
         }
     }
