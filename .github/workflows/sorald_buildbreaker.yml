@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run Sorald Buildbreaker
-        uses: SpoonLabs/sorald-buildbreaker@issue/53-add-patch-suggestion
+        uses: SpoonLabs/sorald-buildbreaker@issue/86-improve-feedback-message
         with:
           source: 'src/main/java'
           suggestions-token: ${{ secrets.GITHUB_TOKEN }}
