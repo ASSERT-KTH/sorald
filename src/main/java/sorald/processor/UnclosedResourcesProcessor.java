@@ -1,5 +1,6 @@
 package sorald.processor;
 
+import java.util.List;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtBlock;
@@ -63,28 +64,24 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
         }
     }
 
+    /**
+     * Enclose the unclosed resource, and everything that comes after it, into a try block placed
+     * inside the provided try-with-resource.
+     */
     private void encloseResourceInTryBlock(
             CtStatement unclosedResourceStatement, CtTryWithResource tryWithResource) {
         CtBlock<?> enclosingBlock = unclosedResourceStatement.getParent(CtBlock.class);
         CtBlock<?> tryBlock = getFactory().createBlock();
-        int unclosedResourceStatementIdx = -1;
+        int unclosedResourceStatementIdx =
+                enclosingBlock.getStatements().indexOf(unclosedResourceStatement);
+        List<CtStatement> enclosingBlockStatements = List.copyOf(enclosingBlock.getStatements());
+        List<CtStatement> statementsToMove =
+                enclosingBlockStatements.subList(
+                        unclosedResourceStatementIdx, enclosingBlockStatements.size());
 
-        for (int i = 0; i < enclosingBlock.getStatements().size(); i++) {
-            CtStatement statement = enclosingBlock.getStatements().get(i);
-            if (statement == unclosedResourceStatement) {
-                unclosedResourceStatementIdx = i + 1;
-                continue;
-            }
-            if (unclosedResourceStatementIdx != -1) {
-                tryBlock.addStatement(statement.clone());
-            }
-        }
-
-        int numStatements = enclosingBlock.getStatements().size();
-        if (unclosedResourceStatementIdx != -1) {
-            for (int i = unclosedResourceStatementIdx; i < numStatements; i++) {
-                enclosingBlock.getStatement(unclosedResourceStatementIdx).delete();
-            }
+        for (CtStatement statement : statementsToMove) {
+            statement.delete();
+            tryBlock.addStatement(statement.clone());
         }
 
         tryWithResource.setBody(tryBlock);
