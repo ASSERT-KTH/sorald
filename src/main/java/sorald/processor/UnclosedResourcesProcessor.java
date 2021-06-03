@@ -59,32 +59,35 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
             parentCtBlock.getParent().replace(tryWithResource);
             tryWithResource.setBody(parentCtBlock);
         } else {
-            CtBlock newCtBlock = null;
-            int indexOfTheFirstStatementToBeDeleted = -1;
-
-            for (int i = 0; i < parentCtBlock.getStatements().size(); i++) {
-                CtStatement ctStatement = parentCtBlock.getStatements().get(i);
-                if (ctStatement.equals(parent)) {
-                    indexOfTheFirstStatementToBeDeleted = i + 1;
-                    continue;
-                }
-                if (indexOfTheFirstStatementToBeDeleted != -1) {
-                    if (newCtBlock == null) {
-                        newCtBlock = getFactory().createCtBlock(ctStatement.clone());
-                    } else {
-                        newCtBlock.addStatement(ctStatement.clone());
-                    }
-                }
-            }
-            int nbOfStatements = parentCtBlock.getStatements().size();
-            if (indexOfTheFirstStatementToBeDeleted != -1) {
-                for (int i = 0; i < (nbOfStatements - indexOfTheFirstStatementToBeDeleted); i++) {
-                    parentCtBlock.getStatement(indexOfTheFirstStatementToBeDeleted).delete();
-                }
-            }
-
-            tryWithResource.setBody(newCtBlock);
-            parent.replace(tryWithResource);
+            encloseResourceInTryBlock((CtStatement) parent, tryWithResource);
         }
+    }
+
+    private void encloseResourceInTryBlock(
+            CtStatement unclosedResourceStatement, CtTryWithResource tryWithResource) {
+        CtBlock<?> enclosingBlock = unclosedResourceStatement.getParent(CtBlock.class);
+        CtBlock<?> tryBlock = getFactory().createBlock();
+        int unclosedResourceStatementIdx = -1;
+
+        for (int i = 0; i < enclosingBlock.getStatements().size(); i++) {
+            CtStatement statement = enclosingBlock.getStatements().get(i);
+            if (statement == unclosedResourceStatement) {
+                unclosedResourceStatementIdx = i + 1;
+                continue;
+            }
+            if (unclosedResourceStatementIdx != -1) {
+                tryBlock.addStatement(statement.clone());
+            }
+        }
+
+        int numStatements = enclosingBlock.getStatements().size();
+        if (unclosedResourceStatementIdx != -1) {
+            for (int i = unclosedResourceStatementIdx; i < numStatements; i++) {
+                enclosingBlock.getStatement(unclosedResourceStatementIdx).delete();
+            }
+        }
+
+        tryWithResource.setBody(tryBlock);
+        unclosedResourceStatement.replace(tryWithResource);
     }
 }
