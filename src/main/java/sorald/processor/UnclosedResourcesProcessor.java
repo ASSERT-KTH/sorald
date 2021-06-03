@@ -71,20 +71,26 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
     private void encloseResourceInTryBlock(
             CtStatement unclosedResourceStatement, CtTryWithResource tryWithResource) {
         CtBlock<?> enclosingBlock = unclosedResourceStatement.getParent(CtBlock.class);
-        CtBlock<?> tryBlock = getFactory().createBlock();
-        int unclosedResourceStatementIdx =
+        int firstStatementToMoveIdx =
                 enclosingBlock.getStatements().indexOf(unclosedResourceStatement);
-        List<CtStatement> enclosingBlockStatements = List.copyOf(enclosingBlock.getStatements());
-        List<CtStatement> statementsToMove =
-                enclosingBlockStatements.subList(
-                        unclosedResourceStatementIdx, enclosingBlockStatements.size());
-
-        for (CtStatement statement : statementsToMove) {
-            statement.delete();
-            tryBlock.addStatement(statement.clone());
-        }
-
+        CtBlock<?> tryBlock =
+                moveStatementsToNewBlock(enclosingBlock.getStatements(), firstStatementToMoveIdx);
         tryWithResource.setBody(tryBlock);
         unclosedResourceStatement.replace(tryWithResource);
+    }
+
+    /**
+     * Move all statements starting from the firstStatementToMove to a new block and return that
+     * block.
+     */
+    private CtBlock<?> moveStatementsToNewBlock(
+            List<CtStatement> statements, int firstStatementToMove) {
+        var statementsToMove = statements.subList(firstStatementToMove, statements.size());
+        CtBlock<?> block = getFactory().createBlock();
+        for (var statement : List.copyOf(statementsToMove)) {
+            statement.delete();
+            block.addStatement(statement.clone());
+        }
+        return block;
     }
 }
