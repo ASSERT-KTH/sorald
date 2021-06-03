@@ -25,8 +25,8 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
         if (parent instanceof CtLocalVariable) {
             CtLocalVariable<?> ctLocalVariable = ((CtLocalVariable<?>) parent);
             createCtTryWithResource(parent, ctLocalVariable.clone());
-        } else if (parent instanceof CtAssignment) {
-            refactorAssignmentIntoTryWithResources((CtAssignment<?, ?>) parent);
+        } else if (isAssignmentWithWriteToResolvedLocalVariable(parent)) {
+            refactorLocalVariableWriteIntoTryWithResources((CtAssignment<?, ?>) parent);
         }
     }
 
@@ -54,22 +54,31 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
      * When the unclosed resource is initialized in an assignment rather than in a local variable
      * declaration, we must locate the declaration and move both declaration and assignment into the
      * resource list.
+     *
+     * <p>This requires that the expression assigned to is a variable write to a local variable.
      */
-    private <T, A extends T> void refactorAssignmentIntoTryWithResources(
+    private <T, A extends T> void refactorLocalVariableWriteIntoTryWithResources(
             CtAssignment<T, A> assignment) {
         CtExpression<T> expressionAssigned = assignment.getAssigned();
-        if (expressionAssigned instanceof CtVariableWrite) {
-            CtVariableWrite<T> ctVariableWrite = (CtVariableWrite<T>) expressionAssigned;
-            CtVariableReference<T> ctVariableReference = ctVariableWrite.getVariable();
-            if (ctVariableReference.getDeclaration() instanceof CtLocalVariable) {
-                CtLocalVariable<A> ctLocalVariable =
-                        (CtLocalVariable<A>) ctVariableReference.getDeclaration();
-                CtLocalVariable<A> clonedCtLocalVariable = ctLocalVariable.clone();
-                clonedCtLocalVariable.setAssignment(assignment.getAssignment().clone());
-                ctLocalVariable.delete();
-                createCtTryWithResource(assignment, clonedCtLocalVariable);
-            }
-        }
+        CtVariableWrite<T> variableWrite = (CtVariableWrite<T>) expressionAssigned;
+        CtVariableReference<T> variableReference = variableWrite.getVariable();
+
+        CtLocalVariable<A> localVariable = (CtLocalVariable<A>) variableReference.getDeclaration();
+        CtLocalVariable<A> localVariableClone = localVariable.clone();
+        localVariableClone.setAssignment(assignment.getAssignment().clone());
+        localVariable.delete();
+        createCtTryWithResource(assignment, localVariableClone);
+    }
+
+    private boolean isAssignmentWithWriteToResolvedLocalVariable(CtElement element) {
+        return element instanceof CtAssignment
+                && isWriteToResolvedLocalVariable(((CtAssignment<?, ?>) element).getAssigned());
+    }
+
+    private boolean isWriteToResolvedLocalVariable(CtExpression<?> expression) {
+        return (expression instanceof CtVariableWrite)
+                && ((CtVariableWrite<?>) expression).getVariable().getDeclaration()
+                        instanceof CtLocalVariable;
     }
 
     /**
