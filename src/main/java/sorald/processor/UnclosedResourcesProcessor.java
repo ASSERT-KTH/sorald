@@ -34,7 +34,7 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
         CtTryWithResource tryWithResource = getFactory().createTryWithResource();
         tryWithResource.addResource(variable);
 
-        CtBlock parentCtBlock = parent.getParent(CtBlock.class);
+        CtBlock<?> parentCtBlock = parent.getParent(CtBlock.class);
         boolean isInTry = parentCtBlock.getParent() instanceof CtTry;
         boolean isInTryWithResource = parentCtBlock.getParent() instanceof CtTryWithResource;
         if (isInTryWithResource) {
