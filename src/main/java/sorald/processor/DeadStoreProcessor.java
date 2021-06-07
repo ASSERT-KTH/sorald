@@ -257,6 +257,10 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
         if (element.getRoleInParent() != CtRole.STATEMENT) {
             safeDeleteDeadStoreInExpression(element);
             return;
+        } else if (element instanceof CtUnaryOperator) {
+            // unary operator in statement position: must be e.g. ++x, which we can just delete
+            element.delete();
+            return;
         }
 
         CtElement assignment =
