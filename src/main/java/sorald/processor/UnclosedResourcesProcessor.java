@@ -34,17 +34,18 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
         CtTryWithResource tryWithResource = getFactory().createTryWithResource();
         tryWithResource.addResource(variable);
 
-        CtBlock<?> parentCtBlock = parent.getParent(CtBlock.class);
-        boolean isInTry = parentCtBlock.getParent() instanceof CtTry;
-        boolean isInTryWithResource = parentCtBlock.getParent() instanceof CtTryWithResource;
-        if (isInTryWithResource) {
-            ((CtTryWithResource) parentCtBlock.getParent()).addResource(variable);
+        CtBlock<?> enclosingBlock = parent.getParent(CtBlock.class);
+        CtElement enclosingBlockParent = enclosingBlock.getParent();
+        if (enclosingBlockParent instanceof CtTryWithResource) {
+            ((CtTryWithResource) enclosingBlockParent).addResource(variable);
             parent.delete();
-        } else if (isInTry) {
+        } else if (enclosingBlockParent instanceof CtTry) {
+            CtTry enclosingTry = (CtTry) enclosingBlockParent;
+            tryWithResource.setCatchers(enclosingTry.getCatchers());
+            tryWithResource.setBody(enclosingBlock);
+            tryWithResource.setFinalizer(enclosingTry.getFinalizer());
+            enclosingTry.replace(tryWithResource);
             parent.delete();
-            tryWithResource.setCatchers(((CtTry) parentCtBlock.getParent()).getCatchers());
-            parentCtBlock.getParent().replace(tryWithResource);
-            tryWithResource.setBody(parentCtBlock);
         } else {
             encloseResourceInTryBlock((CtStatement) parent, tryWithResource);
         }
