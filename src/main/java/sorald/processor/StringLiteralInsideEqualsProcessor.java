@@ -48,7 +48,7 @@ public class StringLiteralInsideEqualsProcessor extends SoraldAbstractProcessor<
                                 (CtBinaryOperator) parentLeftHandOperand, variable)) {
                     nullCheck = true;
                 } else {
-                    parent = element.getParent();
+                    parent = parent.getParent();
                 }
             }
             if (nullCheck) {
