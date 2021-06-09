@@ -34,7 +34,8 @@ public class StringLiteralInsideEqualsProcessor extends SoraldAbstractProcessor<
 
             element.replace(newInvocation);
 
-            // the following is to handle the case in which there is a null check on the variable used as target
+            // the following is to handle the case in which there is a null check on the variable
+            // used as target
             CtExpression<?> variable = (CtExpression<?>) newInvocation.getArguments().get(0);
             Boolean nullCheck = false;
             CtElement parent = element.getParent();
@@ -42,8 +43,9 @@ public class StringLiteralInsideEqualsProcessor extends SoraldAbstractProcessor<
             while (parent instanceof CtBinaryOperator && !nullCheck) {
                 parentBinaryOperator = (CtBinaryOperator) parent;
                 CtElement parentLeftHandOperand = parentBinaryOperator.getLeftHandOperand();
-                if (parentLeftHandOperand instanceof CtBinaryOperator &&
-                        isNullCheckOnTheVariable((CtBinaryOperator) parentLeftHandOperand, variable)) {
+                if (parentLeftHandOperand instanceof CtBinaryOperator
+                        && isNullCheckOnTheVariable(
+                                (CtBinaryOperator) parentLeftHandOperand, variable)) {
                     nullCheck = true;
                 } else {
                     parent = element.getParent();
@@ -55,11 +57,12 @@ public class StringLiteralInsideEqualsProcessor extends SoraldAbstractProcessor<
         }
     }
 
-    private boolean isNullCheckOnTheVariable(CtBinaryOperator ctBinaryOperator, CtExpression<?> variable) {
-        return ctBinaryOperator.getKind().equals(BinaryOperatorKind.NE) &&
-                ((ctBinaryOperator.getLeftHandOperand().equals(variable) &&
-                        ctBinaryOperator.getRightHandOperand().toString().equals("null")) ||
-                        (ctBinaryOperator.getLeftHandOperand().toString().equals("null") &&
-                        ctBinaryOperator.getRightHandOperand().equals(variable)));
+    private boolean isNullCheckOnTheVariable(
+            CtBinaryOperator ctBinaryOperator, CtExpression<?> variable) {
+        return ctBinaryOperator.getKind().equals(BinaryOperatorKind.NE)
+                && ((ctBinaryOperator.getLeftHandOperand().equals(variable)
+                                && ctBinaryOperator.getRightHandOperand().toString().equals("null"))
+                        || (ctBinaryOperator.getLeftHandOperand().toString().equals("null")
+                                && ctBinaryOperator.getRightHandOperand().equals(variable)));
     }
 }
