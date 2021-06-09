@@ -1,0 +1,66 @@
+/*
+Dead stores in loop headers are tricky :)
+ */
+
+public class DeadStoreInLoopHeader {
+
+    int deadAssignmentInInit() {
+        int y = 0;
+        System.out.println(y);
+        for (y = 2; ; ) { // Noncompliant
+            break;
+        }
+        y = 10;
+        return y;
+    }
+
+    int deadAssignmentInUpdate() {
+        int y = 0;
+        System.out.println(y);
+        for (; ; y = 2) { // Noncompliant
+            break;
+        }
+        y = 10;
+        return y;
+    }
+
+    int deadPostIncrementInInit() {
+        int y = 0;
+        System.out.println(y);
+        for (y++; ; ) { // Noncompliant
+            break;
+        }
+        y = 10;
+        return y;
+    }
+
+    int deadPostIncrementInUpdate() {
+        int y = 0;
+        System.out.println(y);
+        for (; ; y++) { // Noncompliant
+            break;
+        }
+        y = 10;
+        return y;
+    }
+
+    int deadPreIncrementInInit() {
+        int y = 0;
+        System.out.println(y);
+        for (++y; ; ) { // Noncompliant
+            break;
+        }
+        y = 10;
+        return y;
+    }
+
+    int deadPreIncrementInUpdate() {
+        int y = 0;
+        System.out.println(y);
+        for (; ; ++y) { // Noncompliant
+            break;
+        }
+        y = 10;
+        return y;
+    }
+}

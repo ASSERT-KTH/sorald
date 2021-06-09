@@ -11,12 +11,17 @@ import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtLocalVariable;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.code.CtStatementList;
+import spoon.reflect.code.CtUnaryOperator;
 import spoon.reflect.code.CtVariableAccess;
+import spoon.reflect.code.CtVariableRead;
 import spoon.reflect.code.CtVariableWrite;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtExecutable;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtVariable;
+import spoon.reflect.meta.RoleHandler;
+import spoon.reflect.meta.impl.RoleHandlerHelper;
+import spoon.reflect.path.CtRole;
 import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.Filter;
 
@@ -25,7 +30,9 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 
     @Override
     protected boolean canRepairInternal(CtStatement candidate) {
-        return candidate instanceof CtLocalVariable || candidate instanceof CtAssignment;
+        return candidate instanceof CtLocalVariable
+                || candidate instanceof CtAssignment
+                || candidate instanceof CtUnaryOperator;
     }
 
     @Override
@@ -33,6 +40,7 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
         if (element instanceof CtLocalVariable) {
             retainDeclarationOnVariableUse((CtLocalVariable<?>) element);
         }
+
         safeDeleteDeadStore(element);
     }
 
@@ -246,7 +254,15 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
      * @param element A dead store element to safe-delete
      */
     private static void safeDeleteDeadStore(CtElement element) {
-        // Sonar only flags dead stores in local variables and assignments at this time
+        if (element.getRoleInParent() != CtRole.STATEMENT) {
+            safeDeleteDeadStoreInExpression(element);
+            return;
+        } else if (element instanceof CtUnaryOperator) {
+            // unary operator in statement position: must be e.g. ++x, which we can just delete
+            element.delete();
+            return;
+        }
+
         CtElement assignment =
                 element instanceof CtLocalVariable
                         ? ((CtLocalVariable<?>) element).getAssignment()
@@ -273,5 +289,60 @@ public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
         CtExecutable<?> exec =
                 ((CtInvocation<?>) element).getExecutable().getExecutableDeclaration();
         return exec instanceof CtMethod && ((CtMethod<?>) exec).isStatic();
+    }
+
+    /**
+     * We've got a dead store inside of an expression, meaning a suffix unary operator or an
+     * expression assignment. Sometimes, the store is dead but the value is still read, and then the
+     * returned value must be retained while the store is removed.
+     */
+    private static void safeDeleteDeadStoreInExpression(CtElement element) {
+        CtElement replacement = extractDeadStoreStatementExpressionReplacement(element);
+        if (isApplicableForRoleInParent(
+                replacement, element.getRoleInParent(), element.getParent())) {
+            element.replace(replacement);
+        } else {
+            element.delete();
+        }
+    }
+
+    /**
+     * When there is a dead store in a statement expression from which the value is read, the dead
+     * store needs to be replaced with an expression that only returns the value, without causing a
+     * store. This method extracts that value.
+     */
+    private static CtElement extractDeadStoreStatementExpressionReplacement(CtElement element) {
+        if (element instanceof CtAssignment) {
+            // in an expression assignment, we need to keep the assignment (the RHS),
+            // but not the reference to the assigned variable (the LHS)
+            return ((CtAssignment<?, ?>) element).getAssignment();
+        } else if (element instanceof CtUnaryOperator) {
+            // This must be a postfix or suffix operator that mutates the variable,
+            // which always contains a variable write in Spoon.
+            CtVariableWrite<?> varWrite =
+                    (CtVariableWrite<?>) ((CtUnaryOperator<?>) element).getOperand();
+            CtVariableRead<?> replacement = convertToVarRead(varWrite);
+            return replacement;
+        } else {
+            throw new IllegalArgumentException(
+                    "unexpected element type: " + element.getClass().getName());
+        }
+    }
+
+    /** Check whether the child can be assigned to the role in the given parent. */
+    private static boolean isApplicableForRoleInParent(
+            CtElement child, CtRole roleInParent, CtElement parent) {
+        RoleHandler parentRoleHandler =
+                RoleHandlerHelper.getRoleHandler(parent.getClass(), roleInParent);
+        Class<?> classForRole = parentRoleHandler.getValueClass();
+        return classForRole.isAssignableFrom(child.getClass());
+    }
+
+    private static <T> CtVariableRead<T> convertToVarRead(CtVariableWrite<T> varWrite) {
+        CtVariableRead<T> varRead = varWrite.getFactory().createVariableRead();
+        for (CtElement child : varWrite.getDirectChildren()) {
+            varRead.setValueByRole(child.getRoleInParent(), child.clone());
+        }
+        return varRead;
     }
 }

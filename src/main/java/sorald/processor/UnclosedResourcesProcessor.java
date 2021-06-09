@@ -1,5 +1,6 @@
 package sorald.processor;
 
+import java.util.List;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtBlock;
@@ -14,32 +15,18 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.reference.CtVariableReference;
 
 @ProcessorAnnotation(key = 2095, description = "Resources should be closed")
-public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstructorCall> {
+public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstructorCall<?>> {
 
     @Override
-    protected void repairInternal(CtConstructorCall element) {
+    protected void repairInternal(CtConstructorCall<?> element) {
         CtElement parent =
                 element.getParent(e -> e instanceof CtAssignment || e instanceof CtLocalVariable);
 
         if (parent instanceof CtLocalVariable) {
-            CtLocalVariable ctLocalVariable = ((CtLocalVariable) parent);
+            CtLocalVariable<?> ctLocalVariable = ((CtLocalVariable<?>) parent);
             createCtTryWithResource(parent, ctLocalVariable.clone());
-        } else if (parent instanceof CtAssignment) {
-            CtAssignment ctAssignment = (CtAssignment) parent;
-            CtExpression expressionAssigned = ctAssignment.getAssigned();
-
-            if (expressionAssigned instanceof CtVariableWrite) {
-                CtVariableWrite ctVariableWrite = (CtVariableWrite) expressionAssigned;
-                CtVariableReference ctVariableReference = ctVariableWrite.getVariable();
-                if (ctVariableReference.getDeclaration() instanceof CtLocalVariable) {
-                    CtLocalVariable ctLocalVariable =
-                            (CtLocalVariable) ctVariableReference.getDeclaration();
-                    CtLocalVariable clonedCtLocalVariable = ctLocalVariable.clone();
-                    clonedCtLocalVariable.setAssignment(ctAssignment.getAssignment().clone());
-                    ctLocalVariable.delete();
-                    createCtTryWithResource(parent, clonedCtLocalVariable);
-                }
-            }
+        } else if (isAssignmentWithWriteToResolvedLocalVariable(parent)) {
+            refactorLocalVariableWriteIntoTryWithResources((CtAssignment<?, ?>) parent);
         }
     }
 
@@ -47,40 +34,81 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
         CtTryWithResource tryWithResource = getFactory().createTryWithResource();
         tryWithResource.addResource(variable);
 
-        CtBlock parentCtBlock = parent.getParent(CtBlock.class);
-        boolean isInTry = parentCtBlock.getParent() instanceof CtTry;
-        if (isInTry) {
+        CtBlock<?> enclosingBlock = parent.getParent(CtBlock.class);
+        CtElement enclosingBlockParent = enclosingBlock.getParent();
+        if (enclosingBlockParent instanceof CtTryWithResource) {
+            ((CtTryWithResource) enclosingBlockParent).addResource(variable);
             parent.delete();
-            tryWithResource.setCatchers(((CtTry) parentCtBlock.getParent()).getCatchers());
-            parentCtBlock.getParent().replace(tryWithResource);
-            tryWithResource.setBody(parentCtBlock);
+        } else if (enclosingBlockParent instanceof CtTry) {
+            CtTry enclosingTry = (CtTry) enclosingBlockParent;
+            tryWithResource.setCatchers(enclosingTry.getCatchers());
+            tryWithResource.setBody(enclosingBlock);
+            tryWithResource.setFinalizer(enclosingTry.getFinalizer());
+            enclosingTry.replace(tryWithResource);
+            parent.delete();
         } else {
-            CtBlock newCtBlock = null;
-            int indexOfTheFirstStatementToBeDeleted = -1;
-
-            for (int i = 0; i < parentCtBlock.getStatements().size(); i++) {
-                CtStatement ctStatement = parentCtBlock.getStatements().get(i);
-                if (ctStatement.equals(parent)) {
-                    indexOfTheFirstStatementToBeDeleted = i + 1;
-                    continue;
-                }
-                if (indexOfTheFirstStatementToBeDeleted != -1) {
-                    if (newCtBlock == null) {
-                        newCtBlock = getFactory().createCtBlock(ctStatement.clone());
-                    } else {
-                        newCtBlock.addStatement(ctStatement.clone());
-                    }
-                }
-            }
-            int nbOfStatements = parentCtBlock.getStatements().size();
-            if (indexOfTheFirstStatementToBeDeleted != -1) {
-                for (int i = 0; i < (nbOfStatements - indexOfTheFirstStatementToBeDeleted); i++) {
-                    parentCtBlock.getStatement(indexOfTheFirstStatementToBeDeleted).delete();
-                }
-            }
-
-            tryWithResource.setBody(newCtBlock);
-            parent.replace(tryWithResource);
+            encloseResourceInTryBlock((CtStatement) parent, tryWithResource);
         }
+    }
+
+    /**
+     * When the unclosed resource is initialized in an assignment rather than in a local variable
+     * declaration, we must locate the declaration and move both declaration and assignment into the
+     * resource list.
+     *
+     * <p>This requires that the expression assigned to is a variable write to a local variable.
+     */
+    private <T, A extends T> void refactorLocalVariableWriteIntoTryWithResources(
+            CtAssignment<T, A> assignment) {
+        CtExpression<T> expressionAssigned = assignment.getAssigned();
+        CtVariableWrite<T> variableWrite = (CtVariableWrite<T>) expressionAssigned;
+        CtVariableReference<T> variableReference = variableWrite.getVariable();
+
+        CtLocalVariable<A> localVariable = (CtLocalVariable<A>) variableReference.getDeclaration();
+        CtLocalVariable<A> localVariableClone = localVariable.clone();
+        localVariableClone.setAssignment(assignment.getAssignment().clone());
+        localVariable.delete();
+        createCtTryWithResource(assignment, localVariableClone);
+    }
+
+    private boolean isAssignmentWithWriteToResolvedLocalVariable(CtElement element) {
+        return element instanceof CtAssignment
+                && isWriteToResolvedLocalVariable(((CtAssignment<?, ?>) element).getAssigned());
+    }
+
+    private boolean isWriteToResolvedLocalVariable(CtExpression<?> expression) {
+        return (expression instanceof CtVariableWrite)
+                && ((CtVariableWrite<?>) expression).getVariable().getDeclaration()
+                        instanceof CtLocalVariable;
+    }
+
+    /**
+     * Enclose the unclosed resource, and everything that comes after it, into a try block placed
+     * inside the provided try-with-resource.
+     */
+    private void encloseResourceInTryBlock(
+            CtStatement unclosedResourceStatement, CtTryWithResource tryWithResource) {
+        CtBlock<?> enclosingBlock = unclosedResourceStatement.getParent(CtBlock.class);
+        int firstStatementToMoveIdx =
+                enclosingBlock.getStatements().indexOf(unclosedResourceStatement);
+        CtBlock<?> tryBlock =
+                moveStatementsToNewBlock(enclosingBlock.getStatements(), firstStatementToMoveIdx);
+        tryWithResource.setBody(tryBlock);
+        unclosedResourceStatement.replace(tryWithResource);
+    }
+
+    /**
+     * Move all statements starting from the firstStatementToMove to a new block and return that
+     * block.
+     */
+    private CtBlock<?> moveStatementsToNewBlock(
+            List<CtStatement> statements, int firstStatementToMove) {
+        var statementsToMove = statements.subList(firstStatementToMove, statements.size());
+        CtBlock<?> block = getFactory().createBlock();
+        for (var statement : List.copyOf(statementsToMove)) {
+            statement.delete();
+            block.addStatement(statement.clone());
+        }
+        return block;
     }
 }

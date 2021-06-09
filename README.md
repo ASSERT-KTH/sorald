@@ -27,7 +27,7 @@ For building Sorald from source, you need a Java 11+ JDK, Maven and Git.
 
 To run Sorald, you need to first get your hands on the program. You can do this
 either by [building from source](#build), or going to the [latest
-release](https://github.com/spoonlabs/sorald/releases/tag/sorald-0.1.0) and
+release](https://github.com/spoonlabs/sorald/releases/latest) and
 downloading the file called `sorald-<VERSION>-jar-with-dependencies.jar` listed
 under `Assets`. Unless you keep multiple versions of Sorald, we recommend
 renaming the JAR to `sorald.jar` for the sake of simplicity.
@@ -128,6 +128,8 @@ Repair Sonar rule violations in a targeted project.
                                case where the class already has a
                                serialVersionUID with a non long type.)
                              2095: Resources should be closed
+                             2097: "equals(Object obj)" should test argument
+                               type
                              2111: "BigDecimal(double)" should not be used
                              2116: "hashCode" and "toString" should not be
                                called on array instances
