@@ -54,7 +54,7 @@ public class StringLiteralInsideEqualsProcessor extends SoraldAbstractProcessor<
             }
         }
         if (nullCheck) {
-            parentBinaryOperator.replace(newInvocation);
+            parentBinaryOperator.replace(parentBinaryOperator.getRightHandOperand());
         }
     }
 
