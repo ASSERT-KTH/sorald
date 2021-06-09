@@ -16,6 +16,7 @@ Sorald can currently repair violations of the following rules:
     * [Math should not be performed on floats](#math-should-not-be-performed-on-floats-sonar-rule-2164) ([Sonar Rule 2164](https://rules.sonarsource.com/java/RSPEC-2164))
     * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
     * [Strings and Boxed types should be compared using "equals()"](#strings-and-boxed-types-should-be-compared-using-equals-sonar-rule-4973) ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
+    * [Strings literals should be placed on the left side when checking for equality](#strings-literals-should-be-placed-on-the-left-side-when-checking-for-equality-sonar-rule-1132httpsrulessonarsourcecomjavarspec-1132) ([Sonar Rule 1132](https://rules.sonarsource.com/java/RSPEC-1132))
     * [Synchronization should not be based on Strings or boxed primitives](#synchronization-should-not-be-based-on-Strings-or-boxed-primitives-sonar-rule-1860) ([Sonar Rule 1860](https://rules.sonarsource.com/java/tag/multi-threading/RSPEC-1860))
     * [Variables should not be self-assigned](#variables-should-not-be-self-assigned-sonar-rule-1656) ([Sonar Rule 1656](https://rules.sonarsource.com/java/type/Bug/RSPEC-1656))
     * ["Thread.run()" should not be called directly](#threadrun-should-not-be-called-directly-sonar-rule-1217) ([Sonar Rule 1217](https://rules.sonarsource.com/java/type/Bug/RSPEC-1217))
@@ -277,6 +278,26 @@ Example:
 ```
 
 Check out an accepted PR in [Apache Sling Discovery](https://github.com/apache/sling-org-apache-sling-discovery-impl/pull/1) that repairs one CompareStringsBoxedTypesWithEquals violation.
+
+------
+
+#### Strings literals should be placed on the left side when checking for equality ([Sonar Rule 1132](https://rules.sonarsource.com/java/RSPEC-1132))
+
+String comparisons by using `equals` in which the target for the method call is a variable and the argument is a literal are changed by swapping the variable and the literal. This avoids potential null pointer exceptions.
+
+Example:
+```diff
+- System.out.println("Equal? " + myString.equals("foo")); // Noncompliant; can raise a NPE
++ System.out.println("Equal? " + "foo".equals(myString));
+```
+
+When there is a null check on the variable, it is removed.
+
+Example:
+```diff
+- System.out.println("Equal? " + (myString != null && myString.equals("foo"))); // Noncompliant
++ System.out.println("Equal? " + "foo".equals(myString));
+```
 
 -----
 
