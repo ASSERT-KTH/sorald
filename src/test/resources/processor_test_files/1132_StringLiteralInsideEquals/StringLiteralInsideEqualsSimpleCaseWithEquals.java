@@ -1,8 +1,8 @@
 /*
-Test the simple case: the target and the argument of the call should be swapped.
+Test the simple case with equals(java.lang.Object): the target and the argument of the call should be swapped.
  */
 
-public class StringLiteralInsideEqualsSimpleCase {
+public class StringLiteralInsideEqualsSimpleCaseWithEquals {
     public static void main(String[] args) {
         String myString = null;
 

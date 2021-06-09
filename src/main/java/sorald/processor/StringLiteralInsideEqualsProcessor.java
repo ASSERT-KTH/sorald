@@ -18,9 +18,18 @@ public class StringLiteralInsideEqualsProcessor extends SoraldAbstractProcessor<
 
     @Override
     protected void repairInternal(CtInvocation<?> element) {
-        if (element.getExecutable().getSignature().equals("equals(java.lang.Object)")) {
+        if (element.getExecutable().getSignature().equals("equals(java.lang.Object)")
+                || element.getExecutable()
+                        .getSignature()
+                        .equals("equalsIgnoreCase(java.lang.String)")) {
             CtType stringClass = getFactory().Class().get(String.class);
-            CtMethod ctMethodToBeCalled = (CtMethod) stringClass.getMethodsByName("equals").get(0);
+            CtMethod ctMethodToBeCalled = null;
+            if (element.getExecutable().getSignature().equals("equals(java.lang.Object)")) {
+                ctMethodToBeCalled = (CtMethod) stringClass.getMethodsByName("equals").get(0);
+            } else {
+                ctMethodToBeCalled =
+                        (CtMethod) stringClass.getMethodsByName("equalsIgnoreCase").get(0);
+            }
             CtExecutableReference ctExecutableReferenceToMethodToBeCalled =
                     getFactory().Executable().createReference(ctMethodToBeCalled);
 

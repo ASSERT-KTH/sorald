@@ -302,7 +302,7 @@ Check out an accepted PR in [Apache Sling Discovery](https://github.com/apache/s
 
 #### Strings literals should be placed on the left side when checking for equality ([Sonar Rule 1132](https://rules.sonarsource.com/java/RSPEC-1132))
 
-String comparisons by using `equals` in which the target for the method call is a variable and the argument is a literal are changed by swapping the variable and the literal. This avoids potential null pointer exceptions.
+String comparisons by using `equals` or `equalsIgnoreCase` in which the target for the method call is a variable and the argument is a literal are changed by swapping the variable and the literal. This avoids potential null pointer exceptions.
 
 Example:
 ```diff
