@@ -6,8 +6,6 @@ import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.declaration.CtElement;
-import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
 
 @ProcessorAnnotation(
@@ -18,51 +16,45 @@ public class StringLiteralInsideEqualsProcessor extends SoraldAbstractProcessor<
 
     @Override
     protected void repairInternal(CtInvocation<?> element) {
-        if (element.getExecutable().getSignature().equals("equals(java.lang.Object)")
-                || element.getExecutable()
-                        .getSignature()
-                        .equals("equalsIgnoreCase(java.lang.String)")) {
-            CtType stringClass = getFactory().Class().get(String.class);
-            CtMethod ctMethodToBeCalled = null;
-            if (element.getExecutable().getSignature().equals("equals(java.lang.Object)")) {
-                ctMethodToBeCalled = (CtMethod) stringClass.getMethodsByName("equals").get(0);
+        // Get executable reference of method to be called
+        CtExecutableReference<?> ctExecutableReferenceToMethodToBeCalled = element.getExecutable();
+
+        // Create a new invocation in which the receiver and argument are swapped
+        CtInvocation<?> newInvocation =
+                getFactory()
+                        .Code()
+                        .createInvocation(
+                                element.getArguments().get(0),
+                                ctExecutableReferenceToMethodToBeCalled,
+                                element.getTarget());
+
+        // Replace the old invocation by the new one
+        element.replace(newInvocation);
+
+        // Delete the null check on the variable if it exists
+        deleteNullCheckIfExists(newInvocation);
+    }
+
+    private void deleteNullCheckIfExists(CtInvocation<?> newInvocation) {
+        // the following is to handle the case in which there is a null check on the variable
+        // used as target
+        CtExpression<?> variable = newInvocation.getArguments().get(0);
+        Boolean nullCheck = false;
+        CtElement parent = newInvocation.getParent();
+        CtBinaryOperator parentBinaryOperator = null;
+        while (parent instanceof CtBinaryOperator && !nullCheck) {
+            parentBinaryOperator = (CtBinaryOperator) parent;
+            CtElement parentLeftHandOperand = parentBinaryOperator.getLeftHandOperand();
+            if (parentLeftHandOperand instanceof CtBinaryOperator
+                    && isNullCheckOnTheVariable(
+                            (CtBinaryOperator) parentLeftHandOperand, variable)) {
+                nullCheck = true;
             } else {
-                ctMethodToBeCalled =
-                        (CtMethod) stringClass.getMethodsByName("equalsIgnoreCase").get(0);
+                parent = parent.getParent();
             }
-            CtExecutableReference ctExecutableReferenceToMethodToBeCalled =
-                    getFactory().Executable().createReference(ctMethodToBeCalled);
-
-            CtInvocation newInvocation =
-                    getFactory()
-                            .Code()
-                            .createInvocation(
-                                    element.getArguments().get(0),
-                                    ctExecutableReferenceToMethodToBeCalled,
-                                    element.getTarget());
-
-            element.replace(newInvocation);
-
-            // the following is to handle the case in which there is a null check on the variable
-            // used as target
-            CtExpression<?> variable = (CtExpression<?>) newInvocation.getArguments().get(0);
-            Boolean nullCheck = false;
-            CtElement parent = element.getParent();
-            CtBinaryOperator parentBinaryOperator = null;
-            while (parent instanceof CtBinaryOperator && !nullCheck) {
-                parentBinaryOperator = (CtBinaryOperator) parent;
-                CtElement parentLeftHandOperand = parentBinaryOperator.getLeftHandOperand();
-                if (parentLeftHandOperand instanceof CtBinaryOperator
-                        && isNullCheckOnTheVariable(
-                                (CtBinaryOperator) parentLeftHandOperand, variable)) {
-                    nullCheck = true;
-                } else {
-                    parent = parent.getParent();
-                }
-            }
-            if (nullCheck) {
-                parentBinaryOperator.replace(newInvocation);
-            }
+        }
+        if (nullCheck) {
+            parentBinaryOperator.replace(newInvocation);
         }
     }
 
