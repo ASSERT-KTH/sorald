@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class ReferenceInCatcher {
 
-    public static void saveTo(File file) {
+    public static void saveTo(File file) throws IOException {
         BufferedWriter bw = null;
         try {
             bw = new BufferedWriter(new FileWriter(file)); // Noncompliant

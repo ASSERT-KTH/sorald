@@ -13,7 +13,7 @@ import java.io.IOException;
 public class ReferenceInCatcherAndFinalizerToFieldWithSameNameAsResource {
     private int bw = 2;
 
-    public void saveTo(File file) {
+    public void saveTo(File file) throws IOException {
         BufferedWriter bw = null;
         try {
             bw = new BufferedWriter(new FileWriter(file)); // Noncompliant
