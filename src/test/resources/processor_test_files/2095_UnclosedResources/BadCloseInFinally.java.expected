@@ -1,3 +1,10 @@
+/*
+Sometimes there is an "insufficient" close in the finalizer. In this example, bw1.close() might
+throw, so bw2.close() may not execute. In such cases, Sonar flags the bw2 initialization as an
+unclosed resource, but when we inline that into a resources block we must also make sure to clean
+out any references to the variable in the finalizer.
+ */
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
