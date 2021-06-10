@@ -1,9 +1,12 @@
 package sorald.processor;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtBlock;
+import spoon.reflect.code.CtCatch;
 import spoon.reflect.code.CtConstructorCall;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtLocalVariable;
@@ -51,16 +54,21 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
             encloseResourceInTryBlock((CtStatement) parent, tryWithResource);
         }
 
-        cleanFinalizerOfReferencesToLocalVariableWithName(
+        cleanFinalizerAndCatchersOfReferencesToLocalVariableWithName(
                 tryWithResource, variable.getSimpleName());
     }
 
-    private void cleanFinalizerOfReferencesToLocalVariableWithName(
+    private void cleanFinalizerAndCatchersOfReferencesToLocalVariableWithName(
             CtTryWithResource tryWithResource, String variableName) {
-        if (tryWithResource.getFinalizer() != null) {
-            deleteStatementsInBlockThatReferenceLocalVariableWithName(
-                    variableName, tryWithResource.getFinalizer());
-        }
+        var blocksToClean =
+                Stream.concat(
+                                Stream.of(tryWithResource.getFinalizer()),
+                                tryWithResource.getCatchers().stream().map(CtCatch::getBody))
+                        .filter(Objects::nonNull);
+        blocksToClean.forEach(
+                block ->
+                        deleteStatementsInBlockThatReferenceLocalVariableWithName(
+                                variableName, block));
     }
 
     private void deleteStatementsInBlockThatReferenceLocalVariableWithName(
