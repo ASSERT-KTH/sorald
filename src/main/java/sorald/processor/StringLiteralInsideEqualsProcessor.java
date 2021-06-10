@@ -39,22 +39,15 @@ public class StringLiteralInsideEqualsProcessor extends SoraldAbstractProcessor<
         // the following is to handle the case in which there is a null check on the variable
         // used as target
         CtExpression<?> variable = newInvocation.getArguments().get(0);
-        Boolean nullCheck = false;
         CtElement parent = newInvocation.getParent();
-        CtBinaryOperator parentBinaryOperator = null;
-        while (parent instanceof CtBinaryOperator && !nullCheck) {
-            parentBinaryOperator = (CtBinaryOperator) parent;
+        if (parent instanceof CtBinaryOperator) {
+            CtBinaryOperator<?> parentBinaryOperator = (CtBinaryOperator<?>) parent;
             CtElement parentLeftHandOperand = parentBinaryOperator.getLeftHandOperand();
             if (parentLeftHandOperand instanceof CtBinaryOperator
                     && isNullCheckOnTheVariable(
                             (CtBinaryOperator) parentLeftHandOperand, variable)) {
-                nullCheck = true;
-            } else {
-                parent = parent.getParent();
+                parentBinaryOperator.replace(newInvocation);
             }
-        }
-        if (nullCheck) {
-            parentBinaryOperator.replace(parentBinaryOperator.getRightHandOperand());
         }
     }
 
