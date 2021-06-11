@@ -1,9 +1,12 @@
 package sorald.processor;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtBlock;
+import spoon.reflect.code.CtCatch;
 import spoon.reflect.code.CtConstructorCall;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtLocalVariable;
@@ -12,6 +15,7 @@ import spoon.reflect.code.CtTry;
 import spoon.reflect.code.CtTryWithResource;
 import spoon.reflect.code.CtVariableWrite;
 import spoon.reflect.declaration.CtElement;
+import spoon.reflect.reference.CtLocalVariableReference;
 import spoon.reflect.reference.CtVariableReference;
 
 @ProcessorAnnotation(key = 2095, description = "Resources should be closed")
@@ -30,7 +34,7 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
         }
     }
 
-    private void createCtTryWithResource(CtElement parent, CtLocalVariable variable) {
+    private void createCtTryWithResource(CtElement parent, CtLocalVariable<?> variable) {
         CtTryWithResource tryWithResource = getFactory().createTryWithResource();
         tryWithResource.addResource(variable);
 
@@ -49,6 +53,9 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
         } else {
             encloseResourceInTryBlock((CtStatement) parent, tryWithResource);
         }
+
+        cleanFinalizerAndCatchersOfReferencesToLocalVariableWithName(
+                tryWithResource, variable.getSimpleName());
     }
 
     /**
@@ -110,5 +117,29 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
             block.addStatement(statement.clone());
         }
         return block;
+    }
+
+    private void cleanFinalizerAndCatchersOfReferencesToLocalVariableWithName(
+            CtTry ctTry, String variableName) {
+        var blocksToClean =
+                Stream.concat(
+                                Stream.of(ctTry.getFinalizer()),
+                                ctTry.getCatchers().stream().map(CtCatch::getBody))
+                        .filter(Objects::nonNull);
+        blocksToClean.forEach(
+                block ->
+                        deleteStatementsInBlockThatReferenceLocalVariableWithName(
+                                block, variableName));
+    }
+
+    private void deleteStatementsInBlockThatReferenceLocalVariableWithName(
+            CtBlock<?> block, String variableName) {
+        List<CtVariableReference<?>> varRefs =
+                block.filterChildren(CtLocalVariableReference.class::isInstance).list();
+
+        varRefs.stream()
+                .filter(ref -> variableName.equals(ref.getSimpleName()))
+                .map(ref -> ref.getParent(CtStatement.class))
+                .forEach(CtStatement::delete);
     }
 }
