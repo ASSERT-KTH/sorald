@@ -8,7 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class UnclosedResourceWithinTryWithResources {
-    public void readAndWrite() throws IOException {
+    public void readAndWrite() {
 
         try (FileInputStream is = new FileInputStream(new File("random/file/path"));
                 FileOutputStream os = new FileOutputStream(new File("some/other/file"))) {
