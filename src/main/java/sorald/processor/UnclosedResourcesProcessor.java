@@ -36,12 +36,12 @@ public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstr
 
     private void createCtTryWithResource(CtElement parent, CtLocalVariable<?> variable) {
         CtTryWithResource tryWithResource = getFactory().createTryWithResource();
-        tryWithResource.addResource(variable.clone());
+        tryWithResource.addResource(variable);
 
         CtBlock<?> enclosingBlock = parent.getParent(CtBlock.class);
         CtElement enclosingBlockParent = enclosingBlock.getParent();
         if (enclosingBlockParent instanceof CtTryWithResource) {
-            ((CtTryWithResource) enclosingBlockParent).addResource(variable.clone());
+            ((CtTryWithResource) enclosingBlockParent).addResource(variable);
             parent.delete();
         } else if (enclosingBlockParent instanceof CtTry) {
             CtTry enclosingTry = (CtTry) enclosingBlockParent;
