@@ -13,6 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run Sorald Buildbreaker
-        uses: SpoonLabs/sorald-buildbreaker@45bafb6db29a466080328864cecf9b20d9ace3de
+        uses: SpoonLabs/sorald-buildbreaker@upload-review-comments-as-artifact
         with:
-          source: 'src/main/java'
+          source: 'src/test/resources/processor_test_files/2095_UnclosedResources'
+          suggestions-token: ${{ secrets.GITHUB_TOKEN }}
