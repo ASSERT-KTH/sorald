@@ -14,6 +14,7 @@ import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 import javax.tools.ToolProvider;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -68,6 +69,17 @@ class ProcessorTestFilesCompileTest {
     }
 
     private static void assertCompiles(File javaFile) throws IOException {
+        var compileResults = compile(javaFile);
+        boolean compileSuccessful = compileResults.getLeft();
+        String diagnosticsOutput = compileResults.getRight();
+
+        assertTrue(compileSuccessful, diagnosticsOutput);
+    }
+
+    /** Returns a pair (compileSuccess, diagnosticsOutput) */
+    private static Pair<Boolean, String> compile(File javaFile) {
+        // inspired comment by user GETah on StackOverflow: https://stackoverflow.com/a/8364016
+
         var compiler = ToolProvider.getSystemJavaCompiler();
         assertThat(
                 "System does not have a Java compiler, please run test suite with a JDK",
@@ -82,13 +94,11 @@ class ProcessorTestFilesCompileTest {
 
         boolean success = task.call();
 
-        List<String> messages =
+        String diagnosticsOutput =
                 diagnostics.getDiagnostics().stream()
                         .map(Diagnostic::toString)
-                        .collect(Collectors.toList());
+                        .collect(Collectors.joining(System.lineSeparator()));
 
-        fileManager.close();
-
-        assertTrue(success, String.join(System.lineSeparator(), messages));
+        return Pair.of(success, diagnosticsOutput);
     }
 }
