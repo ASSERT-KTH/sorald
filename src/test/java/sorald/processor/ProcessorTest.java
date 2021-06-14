@@ -3,6 +3,7 @@ package sorald.processor;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static sorald.Assertions.assertCompiles;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
@@ -114,6 +116,23 @@ public class ProcessorTest {
 
         assertEquals(expectedTypes, repairedTypes);
         assertEquals(expectedImports, repairedImports);
+    }
+
+    @ParameterizedTest
+    @MethodSource("getCompilableProcessorTestCases")
+    void sorald_producesCompilableOutput_whenInputIsCompilable(
+            ProcessorTestHelper.ProcessorTestCase<?> compilableTestCase) throws Exception {
+        ProcessorTestHelper.runSorald(compilableTestCase);
+        assertCompiles(compilableTestCase.repairedFilePath().toFile());
+    }
+
+    private static Stream<Arguments> getCompilableProcessorTestCases() throws IOException {
+        return ProcessorTestHelper.getTestCaseStream()
+                .filter(
+                        tc ->
+                                ProcessorTestHelper.isStandaloneCompilableTestFile(
+                                        tc.nonCompliantFile))
+                .map(Arguments::of);
     }
 
     /**
