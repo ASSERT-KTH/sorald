@@ -12,8 +12,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Run Sorald Buildbreaker
         uses: SpoonLabs/sorald-buildbreaker@upload-review-comments-as-artifact
         with:
-          source: 'src/test/resources/processor_test_files/2095_UnclosedResources'
+          source: 'src/main/java'
           suggestions-token: ${{ secrets.GITHUB_TOKEN }}
+          ratchet-from: 'origin/master'
