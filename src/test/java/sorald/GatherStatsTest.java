@@ -31,7 +31,7 @@ public class GatherStatsTest {
     public void statisticsFile_containsExpectedStats(
             RepairStrategy repairStrategy, @TempDir File tempDir) throws Exception {
         ProcessorTestHelper.ProcessorTestCase<?> testCase =
-                ProcessorTestHelper.getTestCaseStream()
+                ProcessorTestHelper.getTestCasesInTemporaryDirectory()
                         .filter(tc -> tc.ruleKey.equals("2755"))
                         .findFirst()
                         .get();

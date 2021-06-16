@@ -52,7 +52,7 @@ class ProcessorTestFilesCompileTest {
 
     private static Stream<ProcessorTestHelper.ProcessorTestCase<?>>
             getCompilableProcessorTestCases() throws IOException {
-        return ProcessorTestHelper.getTestCaseStream()
+        return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
                 .filter(
                         tc ->
                                 ProcessorTestHelper.isStandaloneCompilableTestFile(
