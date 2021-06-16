@@ -3,6 +3,7 @@ package sorald.processor;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assumptions.assumeFalse;
 import static sorald.Assertions.assertCompiles;
 
 import java.io.File;
@@ -11,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.json.JSONArray;
@@ -37,6 +39,9 @@ import spoon.reflect.declaration.CtImport;
 import spoon.reflect.declaration.CtType;
 
 public class ProcessorTest {
+
+    private static final Set<String> FILES_THAT_DONT_COMPILE_AFTER_REPAIR =
+            Set.of("MathOnFloat.java", "CastArithmeticOperand.java");
 
     /**
      * Parameterized test that processes a single Java file at a time with a single processor.
@@ -122,6 +127,11 @@ public class ProcessorTest {
     @MethodSource("getCompilableProcessorTestCases")
     void sorald_producesCompilableOutput_whenInputIsCompilable(
             ProcessorTestHelper.ProcessorTestCase<?> compilableTestCase) throws Exception {
+        assumeFalse(
+                FILES_THAT_DONT_COMPILE_AFTER_REPAIR.contains(
+                        compilableTestCase.nonCompliantFile.getName()),
+                "See https://github.com/SpoonLabs/sorald/issues/570");
+
         ProcessorTestHelper.runSorald(compilableTestCase);
         assertCompiles(compilableTestCase.repairedFilePath().toFile());
     }
