@@ -24,6 +24,7 @@ Sorald can currently repair violations of the following rules:
     * ["toString()" and "clone()" methods should not return null](#tostring-and-clone-methods-should-not-return-null-sonar-rule-2225) ([Sonar Rule 2225](https://rules.sonarsource.com/java/tag/multi-threading/RSPEC-2225))
 * [Code Smell](#code-smell)
     * [Collection.isEmpty() should be used to test for emptiness](#collectionisempty-should-be-used-to-test-for-emptiness-sonar-rule-1155httpsrulessonarsourcecomjavarspec-1155) ([Sonar Rule 1155](https://rules.sonarsource.com/java/RSPEC-1155))
+    * ["Collections.EMPTY_LIST", "EMPTY_MAP", and "EMPTY_SET" should not be used](#collectionsempty_list-empty_map-and-empty_set-should-not-be-used-sonar-rule-1596httpsrulessonarsourcecomjavarspec-1596) ([Sonar Rule 1596](https://rules.sonarsource.com/java/RSPEC-1596))
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
     * [Unused local variables should be removed](#unused-local-variables-should-be-removed-sonar-rule-1481) ([Sonar Rule 1481](https://rules.sonarsource.com/java/RSPEC-1481))
@@ -444,6 +445,22 @@ Example:
 ...  
 - if (myCollection.size() != 0) {  // Noncompliant
 + if (!myCollection.isEmpty()) {
+```
+
+------
+
+#### "Collections.EMPTY_LIST", "EMPTY_MAP", and "EMPTY_SET" should not be used ([Sonar Rule 1596](https://rules.sonarsource.com/java/RSPEC-1596))
+
+The `EMPTY_...` fields from `Collections` return raw types, so they are replaced by the `empty...()` methods that return generic ones.
+
+Example:
+```diff
+- List<String> collection1 = Collections.EMPTY_LIST;  // Noncompliant
+- Map<String, String> collection2 = Collections.EMPTY_MAP;  // Noncompliant
+- Set<String> collection3 = Collections.EMPTY_SET;  // Noncompliant
++ List<String> collection1 = Collections.emptyList();
++ Map<String, String> collection2 = Collections.emptyMap();
++ Set<String> collection3 = Collections.emptySet();
 ```
 
 ------
