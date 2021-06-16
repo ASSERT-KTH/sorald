@@ -23,6 +23,7 @@ Sorald can currently repair violations of the following rules:
     * ["Thread.run()" should not be called directly](#threadrun-should-not-be-called-directly-sonar-rule-1217) ([Sonar Rule 1217](https://rules.sonarsource.com/java/type/Bug/RSPEC-1217))
     * ["toString()" and "clone()" methods should not return null](#tostring-and-clone-methods-should-not-return-null-sonar-rule-2225) ([Sonar Rule 2225](https://rules.sonarsource.com/java/tag/multi-threading/RSPEC-2225))
 * [Code Smell](#code-smell)
+    * [Collection.isEmpty() should be used to test for emptiness](#collectionisempty-should-be-used-to-test-for-emptiness-sonar-rule-1155httpsrulessonarsourcecomjavarspec-1155) ([Sonar Rule 1155](https://rules.sonarsource.com/java/RSPEC-1155))
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
     * [Unused local variables should be removed](#unused-local-variables-should-be-removed-sonar-rule-1481) ([Sonar Rule 1481](https://rules.sonarsource.com/java/RSPEC-1481))
@@ -429,6 +430,23 @@ public String toString() {
 -----
 
 ### *Code Smell*
+
+#### Collection.isEmpty() should be used to test for emptiness ([Sonar Rule 1155](https://rules.sonarsource.com/java/RSPEC-1155))
+
+Using `Collection.size()` to test for emptiness works, but using `Collection.isEmpty()` makes the code more readable and 
+can be more performant. Expressions `myCollection.size() == 0` are replaced by `myCollection.isEmpty()`, and
+expressions `myCollection.size() != 0` are replaced by `!myCollection.isEmpty()`.
+
+Example:
+```diff
+- if (myCollection.size() == 0) {  // Noncompliant
++ if (myCollection.isEmpty()) {
+...  
+- if (myCollection.size() != 0) {  // Noncompliant
++ if (!myCollection.isEmpty()) {
+```
+
+------
 
 #### Fields in a "Serializable" class should either be transient or serializable ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
 
