@@ -20,7 +20,7 @@ class ProcessorTestFilesCompileTest {
         assertCompiles(testCaseJavaFile);
     }
 
-    private static Stream<Arguments> provideCompilableProcessorTestInputFile() {
+    private static Stream<Arguments> provideCompilableProcessorTestInputFile() throws IOException {
         return getCompilableProcessorTestCases().map(tc -> tc.nonCompliantFile).map(Arguments::of);
     }
 
@@ -32,7 +32,8 @@ class ProcessorTestFilesCompileTest {
         assertCompiles(javaFile);
     }
 
-    private static Stream<Arguments> provideCompilableProcessorTestExpectedFiles() {
+    private static Stream<Arguments> provideCompilableProcessorTestExpectedFiles()
+            throws IOException {
         return getCompilableProcessorTestCases()
                 .flatMap(tc -> tc.expectedOutfile().stream())
                 .map(Arguments::of);
@@ -50,8 +51,8 @@ class ProcessorTestFilesCompileTest {
     }
 
     private static Stream<ProcessorTestHelper.ProcessorTestCase<?>>
-            getCompilableProcessorTestCases() {
-        return ProcessorTestHelper.getTestCaseStream(ProcessorTestHelper.TEST_FILES_ROOT.toFile())
+            getCompilableProcessorTestCases() throws IOException {
+        return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
                 .filter(
                         tc ->
                                 ProcessorTestHelper.isStandaloneCompilableTestFile(

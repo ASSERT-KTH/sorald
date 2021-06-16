@@ -77,7 +77,7 @@ public class ProcessorTest {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext)
                 throws IOException {
-            return ProcessorTestHelper.getTestCaseStream().map(Arguments::of);
+            return ProcessorTestHelper.getTestCasesInTemporaryDirectory().map(Arguments::of);
         }
     }
 
@@ -137,7 +137,7 @@ public class ProcessorTest {
     }
 
     private static Stream<Arguments> getCompilableProcessorTestCases() throws IOException {
-        return ProcessorTestHelper.getTestCaseStream()
+        return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
                 .filter(
                         tc ->
                                 ProcessorTestHelper.isStandaloneCompilableTestFile(
@@ -192,7 +192,7 @@ public class ProcessorTest {
         // arrange
         // rule 2755 always adds new elements, among other things a method
         ProcessorTestHelper.ProcessorTestCase<?> testCase =
-                ProcessorTestHelper.getTestCaseStream()
+                ProcessorTestHelper.getTestCasesInTemporaryDirectory()
                         .filter(tc -> tc.ruleKey.equals("2755"))
                         .findFirst()
                         .get();
@@ -234,7 +234,7 @@ public class ProcessorTest {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext)
                 throws IOException {
-            return ProcessorTestHelper.getTestCaseStream()
+            return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
                     .filter(testCase -> testCase.expectedOutfile().isPresent())
                     .map(Arguments::of);
         }
@@ -246,7 +246,7 @@ public class ProcessorTest {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context)
                 throws Exception {
-            return ProcessorTestHelper.getTestCaseStream()
+            return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
                     .filter(testCase -> testCase.getExpectedExactMatches().size() > 0)
                     .map(Arguments::of);
         }

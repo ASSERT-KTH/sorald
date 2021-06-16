@@ -160,9 +160,12 @@ public class ProcessorTestHelper {
 
     /**
      * Return a stream of all valid test cases, based on the tests files in {@link
-     * ProcessorTestHelper#TEST_FILES_ROOT}.
+     * ProcessorTestHelper#TEST_FILES_ROOT}. The test case source files are put in a temporary
+     * directory to facilitate tests that produce artifacts (e.g. compilation) or change the files
+     * (e.g. repairing).
      */
-    public static Stream<ProcessorTestCase<?>> getTestCaseStream() throws IOException {
+    public static Stream<ProcessorTestCase<?>> getTestCasesInTemporaryDirectory()
+            throws IOException {
         return getTestCaseStream(TestHelper.createTemporaryProcessorTestFilesWorkspace().toFile());
     }
 
