@@ -11,7 +11,8 @@ public class CollectionIsEmptyProcessor extends SoraldAbstractProcessor<CtBinary
 
     @Override
     protected void repairInternal(CtBinaryOperator<?> element) {
-        CtExpression<?> methodCallTarget = ((CtInvocation) element.getLeftHandOperand()).getTarget();
+        CtExpression<?> methodCallTarget =
+                ((CtInvocation) element.getLeftHandOperand()).getTarget();
 
         CtMethod<?> isEmptyMethod =
                 methodCallTarget.getType().getTypeDeclaration().getMethodsByName("isEmpty").stream()
