@@ -107,7 +107,7 @@
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-checks-testkit</artifactId>
-            <version>6.9.0.23563</version>
+            <version>${sonar.java.version}</version>
             <exclusions>
                 <exclusion>
                     <!-- included in stdlib -->
@@ -117,14 +117,20 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.sonarsource.sonarqube</groupId>
+            <artifactId>sonar-plugin-api</artifactId>
+            <version>8.9.0.43852</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-frontend</artifactId>
-            <version>6.9.0.23563</version>
+            <version>${sonar.java.version}</version>
         </dependency>
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-checks</artifactId>
-            <version>6.9.0.23563</version>
+            <version>${sonar.java.version}</version>
             <exclusions>
                 <exclusion>
                     <!-- included in stdlib -->
@@ -157,6 +163,7 @@
         <sonar.projectKey>SpoonLabs_sorald</sonar.projectKey>
         <sonar.organization>spoonlabs</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.java.version>7.0.0.26422</sonar.java.version>
     </properties>
     <build>
         <plugins>
