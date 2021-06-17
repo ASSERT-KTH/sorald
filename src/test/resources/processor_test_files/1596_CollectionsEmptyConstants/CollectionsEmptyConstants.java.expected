@@ -8,5 +8,6 @@ public class CollectionsEmptyConstants {
         List<String> collection1 = Collections.emptyList();
         Map<String, String> collection2 = Collections.emptyMap();
         Set<String> collection3 = Collections.emptySet();
+        List<Integer> list = java.util.Collections.EMPTY_LIST; // Compliant due to false positive
     }
 }
