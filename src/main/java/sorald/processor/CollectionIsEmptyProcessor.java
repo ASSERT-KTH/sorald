@@ -1,5 +1,7 @@
 package sorald.processor;
 
+import static sorald.util.Transformations.not;
+
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
@@ -23,12 +25,5 @@ public class CollectionIsEmptyProcessor extends SoraldAbstractProcessor<CtBinary
         CtExpression<?> expression =
                 element.getKind() == BinaryOperatorKind.EQ ? newInvocation : not(newInvocation);
         element.replace(expression);
-    }
-
-    private <T> CtUnaryOperator<T> not(CtExpression<T> expr) {
-        CtUnaryOperator<T> operator = getFactory().createUnaryOperator();
-        operator.setKind(UnaryOperatorKind.NOT);
-        operator.setOperand(expr);
-        return operator;
     }
 }
