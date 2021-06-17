@@ -3,6 +3,8 @@ package sorald.processor;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assumptions.assumeFalse;
+import static sorald.Assertions.assertCompiles;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.json.JSONArray;
@@ -21,6 +24,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import org.sonar.java.checks.DeadStoreCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
@@ -35,6 +39,9 @@ import spoon.reflect.declaration.CtImport;
 import spoon.reflect.declaration.CtType;
 
 public class ProcessorTest {
+
+    private static final Set<String> FILES_THAT_DONT_COMPILE_AFTER_REPAIR =
+            Set.of("MathOnFloat.java", "CastArithmeticOperand.java");
 
     /**
      * Parameterized test that processes a single Java file at a time with a single processor.
@@ -70,7 +77,7 @@ public class ProcessorTest {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext)
                 throws IOException {
-            return ProcessorTestHelper.getTestCaseStream().map(Arguments::of);
+            return ProcessorTestHelper.getTestCasesInTemporaryDirectory().map(Arguments::of);
         }
     }
 
@@ -114,6 +121,28 @@ public class ProcessorTest {
 
         assertEquals(expectedTypes, repairedTypes);
         assertEquals(expectedImports, repairedImports);
+    }
+
+    @ParameterizedTest
+    @MethodSource("getCompilableProcessorTestCases")
+    void sorald_producesCompilableOutput_whenInputIsCompilable(
+            ProcessorTestHelper.ProcessorTestCase<?> compilableTestCase) throws Exception {
+        assumeFalse(
+                FILES_THAT_DONT_COMPILE_AFTER_REPAIR.contains(
+                        compilableTestCase.nonCompliantFile.getName()),
+                "See https://github.com/SpoonLabs/sorald/issues/570");
+
+        ProcessorTestHelper.runSorald(compilableTestCase);
+        assertCompiles(compilableTestCase.repairedFilePath().toFile());
+    }
+
+    private static Stream<Arguments> getCompilableProcessorTestCases() throws IOException {
+        return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
+                .filter(
+                        tc ->
+                                ProcessorTestHelper.isStandaloneCompilableTestFile(
+                                        tc.nonCompliantFile))
+                .map(Arguments::of);
     }
 
     /**
@@ -163,7 +192,7 @@ public class ProcessorTest {
         // arrange
         // rule 2755 always adds new elements, among other things a method
         ProcessorTestHelper.ProcessorTestCase<?> testCase =
-                ProcessorTestHelper.getTestCaseStream()
+                ProcessorTestHelper.getTestCasesInTemporaryDirectory()
                         .filter(tc -> tc.ruleKey.equals("2755"))
                         .findFirst()
                         .get();
@@ -205,7 +234,7 @@ public class ProcessorTest {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext)
                 throws IOException {
-            return ProcessorTestHelper.getTestCaseStream()
+            return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
                     .filter(testCase -> testCase.expectedOutfile().isPresent())
                     .map(Arguments::of);
         }
@@ -217,7 +246,7 @@ public class ProcessorTest {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context)
                 throws Exception {
-            return ProcessorTestHelper.getTestCaseStream()
+            return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
                     .filter(testCase -> testCase.getExpectedExactMatches().size() > 0)
                     .map(Arguments::of);
         }

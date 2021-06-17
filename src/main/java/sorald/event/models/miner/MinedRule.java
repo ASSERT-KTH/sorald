@@ -1,21 +1,20 @@
 package sorald.event.models.miner;
 
-import com.google.common.collect.ImmutableList;
+import java.util.List;
 import sorald.event.models.WarningLocation;
 
 public class MinedRule {
     private final String ruleKey;
     private final String ruleName;
-    private final ImmutableList<WarningLocation> warningLocations;
+    private final List<WarningLocation> warningLocations;
 
-    public MinedRule(
-            String ruleKey, String ruleName, ImmutableList<WarningLocation> warningLocations) {
+    public MinedRule(String ruleKey, String ruleName, List<WarningLocation> warningLocations) {
         this.ruleKey = ruleKey;
         this.ruleName = ruleName;
-        this.warningLocations = warningLocations;
+        this.warningLocations = List.copyOf(warningLocations);
     }
 
-    public ImmutableList<WarningLocation> getWarningLocations() {
+    public List<WarningLocation> getWarningLocations() {
         return warningLocations;
     }
 
