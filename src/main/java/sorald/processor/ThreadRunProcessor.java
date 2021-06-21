@@ -6,7 +6,7 @@ import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
 
-@ProcessorAnnotation(key = 1217, description = "\"Thread.run()\" should not be called directly")
+@ProcessorAnnotation(key = "S1217", description = "\"Thread.run()\" should not be called directly")
 public class ThreadRunProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
     @Override
     protected void repairInternal(CtInvocation<?> element) {

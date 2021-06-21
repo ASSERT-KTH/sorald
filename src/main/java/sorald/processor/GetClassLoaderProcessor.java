@@ -8,7 +8,7 @@ import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
 
-@ProcessorAnnotation(key = 3032, description = "JEE applications should not \"getClassLoader\"")
+@ProcessorAnnotation(key = "S3032", description = "JEE applications should not \"getClassLoader\"")
 public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
     private HashMap<Integer, Boolean> hashCodesOfTypesUsingJEE = new HashMap<Integer, Boolean>();
 

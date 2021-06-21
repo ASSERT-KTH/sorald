@@ -5,7 +5,7 @@ import spoon.reflect.code.CtComment;
 import spoon.reflect.code.CtConstructorCall;
 
 @ProcessorAnnotation(
-        key = 3984,
+        key = "S3984",
         description = "Exception should not be created without being thrown")
 public class UnusedThrowableProcessor
         extends SoraldAbstractProcessor<CtConstructorCall<? extends Throwable>> {

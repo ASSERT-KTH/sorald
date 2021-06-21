@@ -24,7 +24,7 @@ import spoon.reflect.reference.CtTypeReference;
                 "This processor is a WIP and currently supports a subset of rule 2755. "
                         + "See Sorald's documentation for details.")
 @ProcessorAnnotation(
-        key = 2755,
+        key = "S2755",
         description = "XML parsers should not be vulnerable to XXE attacks")
 public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
     private static final String ACCESS_EXTERNAL_DTD = "ACCESS_EXTERNAL_DTD";

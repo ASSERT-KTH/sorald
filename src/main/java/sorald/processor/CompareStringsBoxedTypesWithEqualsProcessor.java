@@ -10,7 +10,7 @@ import spoon.reflect.code.UnaryOperatorKind;
 import spoon.reflect.declaration.CtMethod;
 
 @ProcessorAnnotation(
-        key = 4973,
+        key = "S4973",
         description = "Strings and Boxed types should be compared using \"equals()\"")
 public class CompareStringsBoxedTypesWithEqualsProcessor
         extends SoraldAbstractProcessor<CtBinaryOperator<?>> {

@@ -25,7 +25,7 @@ public class MaxFixesPerRuleTest {
                     Constants.ARG_SOURCE,
                     pathToBuggyFile.toString(),
                     Constants.ARG_RULE_KEY,
-                    "2116",
+                    new ArrayHashCodeAndToStringProcessor().getRuleKey(),
                     Constants.ARG_MAX_FIXES_PER_RULE,
                     "3"
                 });

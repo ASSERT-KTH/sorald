@@ -91,7 +91,7 @@ public class Repair {
         String ruleKey = distinctRuleKeys.get(0);
         Path inputDir = Path.of(config.getSource());
 
-        SoraldAbstractProcessor<?> processor = createProcessor(Integer.parseInt(ruleKey));
+        SoraldAbstractProcessor<?> processor = createProcessor(ruleKey);
         Stream<CtModel> models = repair(inputDir, processor, ruleViolations);
 
         models.forEach(
@@ -314,7 +314,7 @@ public class Repair {
         return () -> new DefaultJavaPrettyPrinter(env);
     }
 
-    private SoraldAbstractProcessor<?> createBaseProcessor(Integer ruleKey) {
+    private SoraldAbstractProcessor<?> createBaseProcessor(String ruleKey) {
         try {
             Class<?> processor = Processors.getProcessor(ruleKey);
             if (processor != null) {
@@ -330,7 +330,7 @@ public class Repair {
         return null;
     }
 
-    private SoraldAbstractProcessor<?> createProcessor(Integer ruleKey) {
+    private SoraldAbstractProcessor<?> createProcessor(String ruleKey) {
         SoraldAbstractProcessor<?> processor = createBaseProcessor(ruleKey);
         if (processor != null) {
             return processor

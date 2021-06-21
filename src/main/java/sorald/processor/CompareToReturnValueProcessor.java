@@ -5,7 +5,7 @@ import spoon.reflect.code.CtLiteral;
 import spoon.reflect.code.CtReturn;
 
 @ProcessorAnnotation(
-        key = 2167,
+        key = "S2167",
         description = "\"compareTo\" should not return \"Integer.MIN_VALUE\"")
 public class CompareToReturnValueProcessor extends SoraldAbstractProcessor<CtReturn<?>> {
 

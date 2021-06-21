@@ -62,7 +62,7 @@ public class BestFitScannerTest {
         // class is also contained in two other classes
         Path inputFileWithNestedClasses =
                 ProcessorTestHelper.TEST_FILES_ROOT
-                        .resolve("2057_SerialVersionUidCheck")
+                        .resolve("S2057_SerialVersionUidCheck")
                         .resolve("NestedInNestedGuiClass.java");
 
         CtModel model =

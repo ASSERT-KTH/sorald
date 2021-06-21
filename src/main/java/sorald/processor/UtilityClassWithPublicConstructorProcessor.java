@@ -11,7 +11,7 @@ import spoon.reflect.declaration.ModifierKind;
 
 @IncompleteProcessor(description = "Only handles implicit public constructor")
 @ProcessorAnnotation(
-        key = 1118,
+        key = "S1118",
         description = "Utility classes should not have public constructors")
 public class UtilityClassWithPublicConstructorProcessor
         extends SoraldAbstractProcessor<CtClass<?>> {

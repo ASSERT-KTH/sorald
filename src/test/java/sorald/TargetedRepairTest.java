@@ -19,6 +19,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.sonar.plugins.java.api.JavaFileScanner;
+import sorald.processor.BigDecimalDoubleConstructorProcessor;
 import sorald.processor.ProcessorTestHelper;
 import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
@@ -183,10 +184,10 @@ public class TargetedRepairTest {
     private static TargetedRepairWorkdirInfo setupWorkdir() throws IOException {
         Path workdir = TestHelper.createTemporaryProcessorTestFilesWorkspace();
 
-        String ruleKey = "2111";
+        String ruleKey = new BigDecimalDoubleConstructorProcessor().getRuleKey();
         JavaFileScanner check = Checks.getCheckInstance(ruleKey);
         File targetFile =
-                workdir.resolve("2111_BigDecimalDoubleConstructor")
+                workdir.resolve("S2111_BigDecimalDoubleConstructor")
                         .resolve("BigDecimalDoubleConstructor.java")
                         .toFile();
 

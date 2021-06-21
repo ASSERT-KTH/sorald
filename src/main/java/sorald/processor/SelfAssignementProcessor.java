@@ -13,7 +13,7 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.factory.Factory;
 
-@ProcessorAnnotation(key = 1656, description = "Variables should not be self-assigned")
+@ProcessorAnnotation(key = "S1656", description = "Variables should not be self-assigned")
 public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignment<?, ?>> {
 
     @Override

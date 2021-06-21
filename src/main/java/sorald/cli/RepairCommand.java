@@ -254,7 +254,7 @@ class RepairCommand extends BaseCommand {
     }
 
     private void validateRuleKey() {
-        if (Processors.getProcessor(Integer.parseInt(ruleKey)) == null) {
+        if (Processors.getProcessor(ruleKey) == null) {
             throw new CommandLine.ParameterException(
                     spec.commandLine(),
                     "Sorry, repair not available for rule "

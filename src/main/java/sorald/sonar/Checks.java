@@ -69,12 +69,11 @@ public class Checks {
      * @return The check class corresponding to the key.
      */
     public static Class<? extends JavaFileScanner> getCheck(String key) {
-        final String strippedKey = stripDigits(key);
         return TYPE_TO_CHECKS.values().stream()
-                .map(checks -> checks.get(strippedKey))
+                .map(checks -> checks.get(key))
                 .filter(Objects::nonNull)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("no rule with key " + strippedKey));
+                .orElseThrow(() -> new IllegalArgumentException("no rule with key " + key));
     }
 
     /**
@@ -103,7 +102,6 @@ public class Checks {
     public static String getRuleKey(Class<? extends JavaCheck> checkClass) {
         return Arrays.stream(checkClass.getAnnotationsByType(Rule.class))
                 .map(Rule::key)
-                .map(Checks::stripDigits)
                 .findFirst()
                 .orElseThrow(
                         () ->
@@ -122,20 +120,6 @@ public class Checks {
                 .map(Checks::getRuleKey)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("No key found for " + checkName));
-    }
-
-    /**
-     * TODO This function should not be necessary, we should use the full Sonar keys in Sorald!
-     *
-     * @param soraldKey An internal Sorald key.
-     * @return The corresponding, full-length Sonar rule key.
-     */
-    public static String toSonarRuleKey(String soraldKey) {
-        return "S" + soraldKey;
-    }
-
-    private static String stripDigits(String s) {
-        return s.replaceAll("[^\\d]+", "");
     }
 
     private static Map<String, Class<? extends JavaFileScanner>> createKeyToCheckMap(
