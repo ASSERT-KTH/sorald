@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.FileUtils;
+import sorald.rule.RuleViolation;
 
 /** Helper class that uses Sonar to scan projects for rule violations. */
 public class ProjectScanner {

@@ -1,4 +1,4 @@
-package sorald.sonar;
+package sorald.rule;
 
 import java.nio.file.Path;
 import java.util.Objects;

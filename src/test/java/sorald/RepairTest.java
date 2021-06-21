@@ -10,9 +10,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import sorald.rule.RuleViolation;
 import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
-import sorald.sonar.RuleViolation;
 
 public class RepairTest {
 

@@ -19,11 +19,11 @@ import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import sorald.processor.ArrayHashCodeAndToStringProcessor;
 import sorald.processor.ProcessorTestHelper;
 import sorald.processor.SoraldAbstractProcessor;
+import sorald.rule.RuleViolation;
 import sorald.segment.Node;
 import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleVerifier;
-import sorald.sonar.RuleViolation;
 import spoon.reflect.CtModel;
 import spoon.reflect.declaration.CtType;
 

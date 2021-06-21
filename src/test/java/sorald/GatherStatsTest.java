@@ -20,9 +20,9 @@ import sorald.event.StatsMetadataKeys;
 import sorald.processor.ProcessorTestHelper;
 import sorald.processor.SoraldAbstractProcessor;
 import sorald.processor.XxeProcessingProcessor;
+import sorald.rule.RuleViolation;
 import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
-import sorald.sonar.RuleViolation;
 
 public class GatherStatsTest {
 

@@ -26,9 +26,9 @@ import sorald.event.models.ExecutionInfo;
 import sorald.event.models.miner.MinedViolationEvent;
 import sorald.event.models.repair.RuleRepairStatistics;
 import sorald.processor.SoraldAbstractProcessor;
+import sorald.rule.RuleViolation;
 import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
-import sorald.sonar.RuleViolation;
 import sorald.util.MavenUtils;
 
 /** The CLI command for the primary repair application. */

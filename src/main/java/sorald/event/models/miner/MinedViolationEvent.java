@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import sorald.event.EventType;
 import sorald.event.SoraldEvent;
 import sorald.event.models.WarningLocation;
-import sorald.sonar.RuleViolation;
+import sorald.rule.RuleViolation;
 
 /** Event representing a mined rule information */
 public class MinedViolationEvent implements SoraldEvent {

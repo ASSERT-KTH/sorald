@@ -21,10 +21,10 @@ import org.junit.jupiter.api.io.TempDir;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.processor.BigDecimalDoubleConstructorProcessor;
 import sorald.processor.ProcessorTestHelper;
+import sorald.rule.RuleViolation;
 import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleVerifier;
-import sorald.sonar.RuleViolation;
 
 /** Tests for the targeted repair functionality of Sorald. */
 public class TargetedRepairTest {

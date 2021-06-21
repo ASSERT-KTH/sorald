@@ -40,6 +40,7 @@ import org.sonar.java.filters.PostAnalysisIssueFilter;
 import org.sonar.java.model.JavaVersionImpl;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.rule.RuleViolation;
 
 /** Adapter class for interfacing with sonar-java's verification and analysis facilities. */
 public class RuleVerifier {

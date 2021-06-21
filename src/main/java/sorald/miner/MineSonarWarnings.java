@@ -12,9 +12,9 @@ import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
 import sorald.event.models.miner.MinedViolationEvent;
+import sorald.rule.RuleViolation;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleVerifier;
-import sorald.sonar.RuleViolation;
 
 public class MineSonarWarnings {
     final List<SoraldEventHandler> eventHandlers;

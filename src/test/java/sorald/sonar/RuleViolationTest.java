@@ -6,6 +6,7 @@ import java.io.File;
 import org.junit.jupiter.api.Test;
 import org.sonar.java.se.checks.XxeProcessingCheck;
 import sorald.TestHelper;
+import sorald.rule.RuleViolation;
 
 public class RuleViolationTest {
     @Test

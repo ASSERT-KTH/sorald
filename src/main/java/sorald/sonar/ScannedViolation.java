@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.plugins.java.api.JavaCheck;
+import sorald.rule.RuleViolation;
 
 /** Facade around {@link org.sonar.java.AnalyzerMessage} */
 class ScannedViolation extends RuleViolation {
