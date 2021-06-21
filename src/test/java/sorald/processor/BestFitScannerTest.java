@@ -15,8 +15,8 @@ import sorald.Constants;
 import sorald.TestHelper;
 import sorald.rule.RuleViolation;
 import sorald.sonar.BestFitScanner;
-import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
+import sorald.sonar.SonarRule;
 import spoon.FluentLauncher;
 import spoon.Launcher;
 import spoon.reflect.CtModel;
@@ -33,7 +33,7 @@ public class BestFitScannerTest {
                 ProjectScanner.scanProject(
                         projectBaseDir,
                         projectBaseDir,
-                        Checks.getCheckInstance(new XxeProcessingProcessor().getRuleKey()));
+                        new SonarRule(new XxeProcessingProcessor().getRuleKey()));
         SoraldAbstractProcessor<?> arrayHashCodeProc = new ArrayHashCodeAndToStringProcessor();
 
         Launcher launcher = new Launcher();

@@ -19,9 +19,9 @@ import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import sorald.processor.ArrayHashCodeAndToStringProcessor;
 import sorald.processor.ProcessorTestHelper;
 import sorald.processor.SoraldAbstractProcessor;
+import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.segment.Node;
-import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.RuleVerifier;
 import spoon.reflect.CtModel;
@@ -92,9 +92,7 @@ public class SegmentStrategyTest {
                 new ArrayHashCodeAndToStringProcessor().setEventHandlers(List.of());
         Set<RuleViolation> violations =
                 ProjectScanner.scanProject(
-                        workspace.toFile(),
-                        workspace.toFile(),
-                        Checks.getCheckInstance(processor.getRuleKey()));
+                        workspace.toFile(), workspace.toFile(), Rule.of(processor.getRuleKey()));
 
         // we decide that parsing this class causes crashes
         String crashingClass = "DeadStores";

@@ -4,7 +4,6 @@ import java.io.File;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
-import org.sonar.plugins.java.api.JavaFileScanner;
 import picocli.CommandLine;
 import sorald.Constants;
 import sorald.FileUtils;
@@ -13,6 +12,7 @@ import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
 import sorald.miner.MineSonarWarnings;
+import sorald.rule.Rule;
 import sorald.sonar.Checks;
 import sorald.sonar.RuleType;
 import sorald.util.MavenUtils;
@@ -66,7 +66,7 @@ class MineCommand extends BaseCommand {
     public Integer call() throws Exception {
         validateArgs();
 
-        List<? extends JavaFileScanner> checks = inferCheckInstances(ruleTypes, handledRules);
+        List<Rule> checks = inferRules(ruleTypes, handledRules);
 
         var statsCollector = new MinerStatisticsCollector();
         List<String> classpath =
@@ -115,40 +115,34 @@ class MineCommand extends BaseCommand {
     }
 
     /**
-     * Infer which check instances to use based on rule types specified (or left unspecified) on the
-     * command line.
+     * Infer which rules to use based on rule types specified (or left unspecified) on the command
+     * line.
      */
-    private static List<? extends JavaFileScanner> inferCheckInstances(
-            List<RuleType> ruleTypes, boolean handledRules) {
-        List<? extends JavaFileScanner> checks =
-                ruleTypes.isEmpty() ? getAllCheckInstances() : getCheckInstancesByTypes(ruleTypes);
+    private static List<Rule> inferRules(List<RuleType> ruleTypes, boolean handledRules) {
+        List<Rule> rules = ruleTypes.isEmpty() ? getAllRules() : getRulesByTypes(ruleTypes);
 
-        checks =
-                !handledRules
-                        ? checks
-                        : checks.stream()
-                                .filter(
-                                        sc -> {
-                                            String key = Checks.getRuleKey(sc.getClass());
-                                            return Processors.getProcessor(key) != null;
-                                        })
-                                .collect(Collectors.toList());
-
-        return checks;
+        return !handledRules
+                ? rules
+                : rules.stream()
+                        .filter(rule -> Processors.getProcessor(rule.getKey()) != null)
+                        .collect(Collectors.toList());
     }
 
-    private static List<? extends JavaFileScanner> getCheckInstancesByTypes(
-            List<RuleType> checkTypes) {
+    private static List<Rule> getRulesByTypes(List<RuleType> checkTypes) {
+        // TODO remove use of Checks class
         return checkTypes.stream()
                 .map(Checks::getChecksByType)
                 .flatMap(Collection::stream)
-                .map(Checks::instantiateCheck)
+                .map(Checks::getRuleKey)
+                .map(Rule::of)
                 .collect(Collectors.toList());
     }
 
-    private static List<? extends JavaFileScanner> getAllCheckInstances() {
+    private static List<Rule> getAllRules() {
+        // TODO remove use of Checks class
         return Checks.getAllChecks().stream()
-                .map(Checks::instantiateCheck)
+                .map(Checks::getRuleKey)
+                .map(Rule::of)
                 .collect(Collectors.toList());
     }
 }

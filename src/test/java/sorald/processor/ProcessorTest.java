@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 import static sorald.Assertions.assertCompiles;
+import static sorald.Assertions.assertNoRuleViolations;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,11 +28,11 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
 import org.sonar.java.checks.DeadStoreCheck;
-import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
 import sorald.FileUtils;
 import sorald.TestHelper;
 import sorald.event.StatsMetadataKeys;
+import sorald.rule.Rule;
 import sorald.sonar.RuleVerifier;
 import spoon.Launcher;
 import spoon.reflect.CtModel;
@@ -54,8 +55,7 @@ public class ProcessorTest {
      */
     @ParameterizedTest
     @ArgumentsSource(NonCompliantJavaFileProvider.class)
-    public void testProcessSingleFile(
-            ProcessorTestHelper.ProcessorTestCase<? extends JavaFileScanner> testCase)
+    public void testProcessSingleFile(ProcessorTestHelper.ProcessorTestCase testCase)
             throws Exception {
         Path statsOutputFile = testCase.nonCompliantFile.toPath().resolveSibling("stats.json");
 
@@ -64,7 +64,7 @@ public class ProcessorTest {
 
         String pathToRepairedFile = testCase.repairedFilePath().toString();
         TestHelper.removeComplianceComments(pathToRepairedFile);
-        RuleVerifier.verifyNoIssue(pathToRepairedFile, testCase.createCheckInstance());
+        assertNoRuleViolations(testCase.repairedFilePath().toFile(), testCase.getRule());
         assertNoCrashReport(statsOutputFile);
     }
 
@@ -92,8 +92,7 @@ public class ProcessorTest {
     @ParameterizedTest
     @ArgumentsSource(NonCompliantJavaFileWithExpectedProvider.class)
     public void testProcessSingleFile(
-            ProcessorTestHelper.ProcessorTestCase<? extends JavaFileScanner> testCase,
-            @TempDir File tempdir)
+            ProcessorTestHelper.ProcessorTestCase testCase, @TempDir File tempdir)
             throws Exception {
         // arrange
 
@@ -103,8 +102,7 @@ public class ProcessorTest {
         Files.copy(
                 testCase.expectedOutfile().orElseThrow(IllegalStateException::new).toPath(),
                 expectedOutput);
-        RuleVerifier.verifyNoIssue(
-                expectedOutput.toAbsolutePath().toString(), testCase.createCheckInstance());
+        assertNoRuleViolations(expectedOutput.toFile(), testCase.getRule());
 
         // act
         ProcessorTestHelper.runSorald(testCase);
@@ -126,7 +124,7 @@ public class ProcessorTest {
     @ParameterizedTest
     @MethodSource("getCompilableProcessorTestCases")
     void sorald_producesCompilableOutput_whenInputIsCompilable(
-            ProcessorTestHelper.ProcessorTestCase<?> compilableTestCase) throws Exception {
+            ProcessorTestHelper.ProcessorTestCase compilableTestCase) throws Exception {
         assumeFalse(
                 FILES_THAT_DONT_COMPILE_AFTER_REPAIR.contains(
                         compilableTestCase.nonCompliantFile.getName()),
@@ -152,8 +150,7 @@ public class ProcessorTest {
     @ParameterizedTest
     @ArgumentsSource(NonCompliantJavaFileWithExactMatchesProvider.class)
     public void sorald_shouldProduceOutput_containingExactMatch(
-            ProcessorTestHelper.ProcessorTestCase<? extends JavaFileScanner> testCase)
-            throws Exception {
+            ProcessorTestHelper.ProcessorTestCase testCase) throws Exception {
         assertThat(testCase.getExpectedExactMatches(), is(not(empty())));
 
         // act
@@ -176,9 +173,10 @@ public class ProcessorTest {
         File dirWithJavaExtension =
                 origDir.toPath().resolveSibling(origDir.getName() + Constants.JAVA_EXT).toFile();
         org.apache.commons.io.FileUtils.moveDirectory(origDir, dirWithJavaExtension);
+        Rule rule = Rule.of(new ArrayHashCodeAndToStringProcessor().getRuleKey());
 
         // act
-        ProcessorTestHelper.runSorald(workdir.toFile(), ArrayHashCodeAndToStringCheck.class);
+        ProcessorTestHelper.runSorald(workdir.toFile(), rule);
 
         // assert
         RuleVerifier.verifyNoIssue(
@@ -191,7 +189,7 @@ public class ProcessorTest {
             throws Exception {
         // arrange
         // rule 2755 always adds new elements, among other things a method
-        ProcessorTestHelper.ProcessorTestCase<?> testCase =
+        ProcessorTestHelper.ProcessorTestCase testCase =
                 ProcessorTestHelper.getTestCasesInTemporaryDirectory()
                         .filter(tc -> tc.ruleKey.equals(new XxeProcessingProcessor().getRuleKey()))
                         .findFirst()
@@ -210,9 +208,10 @@ public class ProcessorTest {
         // arrange
         Path workdir = TestHelper.createTemporaryTestResourceWorkspace();
         Path scenarioRoot = workdir.resolve("scenario_test_files").resolve("project.with.module");
+        Rule rule = Rule.of(new DeadStoreProcessor().getRuleKey());
 
         // act
-        ProcessorTestHelper.runSorald(scenarioRoot.toFile(), DeadStoreCheck.class);
+        ProcessorTestHelper.runSorald(scenarioRoot.toFile(), rule);
 
         // assert
         Path sourceFile =
