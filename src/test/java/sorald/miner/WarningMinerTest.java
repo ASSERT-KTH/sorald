@@ -31,6 +31,7 @@ import sorald.cli.SoraldVersionProvider;
 import sorald.event.StatsMetadataKeys;
 import sorald.processor.CastArithmeticOperandProcessor;
 import sorald.sonar.Checks;
+import sorald.sonar.RuleType;
 
 public class WarningMinerTest {
 
@@ -90,8 +91,7 @@ public class WarningMinerTest {
      */
     @Test
     public void warningsMiner_onlyScansForGivenTypes_whenRuleTypesGiven() throws Exception {
-        List<Checks.CheckType> checkTypes =
-                Arrays.asList(Checks.CheckType.VULNERABILITY, Checks.CheckType.CODE_SMELL);
+        List<RuleType> checkTypes = Arrays.asList(RuleType.VULNERABILITY, RuleType.CODE_SMELL);
 
         File outputFile = File.createTempFile("warnings", null);
         File temp = Files.createTempDirectory("tempDir").toFile();
@@ -101,7 +101,7 @@ public class WarningMinerTest {
                 outputFile.getPath(),
                 temp.getPath(),
                 Constants.ARG_RULE_TYPES,
-                checkTypes.stream().map(Checks.CheckType::name).collect(Collectors.joining(",")));
+                checkTypes.stream().map(RuleType::name).collect(Collectors.joining(",")));
 
         List<String> expectedChecks =
                 checkTypes.stream()

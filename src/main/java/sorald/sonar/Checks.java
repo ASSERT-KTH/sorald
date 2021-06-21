@@ -32,21 +32,14 @@ import org.sonar.plugins.java.api.JavaFileScanner;
 @SuppressWarnings({"unchecked", "UnstableApiUsage"})
 public class Checks {
 
-    private static final Map<CheckType, Map<String, Class<? extends JavaFileScanner>>>
+    private static final Map<RuleType, Map<String, Class<? extends JavaFileScanner>>>
             TYPE_TO_CHECKS;
-
-    public enum CheckType {
-        BUG,
-        VULNERABILITY,
-        CODE_SMELL,
-        SECURITY_HOTSPOT;
-    }
 
     /**
      * @param checkType A check type.
      * @return All checks of the given type.
      */
-    public static List<Class<? extends JavaFileScanner>> getChecksByType(CheckType checkType) {
+    public static List<Class<? extends JavaFileScanner>> getChecksByType(RuleType checkType) {
         return new ArrayList<>(TYPE_TO_CHECKS.get(checkType).values());
     }
 
@@ -132,11 +125,11 @@ public class Checks {
     }
 
     static {
-        Map<CheckType, Map<String, Class<? extends JavaFileScanner>>> typeToChecks =
-                new EnumMap<>(CheckType.class);
+        Map<RuleType, Map<String, Class<? extends JavaFileScanner>>> typeToChecks =
+                new EnumMap<>(RuleType.class);
 
         typeToChecks.put(
-                CheckType.BUG,
+                RuleType.BUG,
                 createKeyToCheckMap(
                         AbsOnNegativeCheck.class,
                         AllBranchesAreIdenticalCheck.class,
@@ -276,7 +269,7 @@ public class Checks {
                         WrongAssignmentOperatorCheck.class));
 
         typeToChecks.put(
-                CheckType.VULNERABILITY,
+                RuleType.VULNERABILITY,
                 createKeyToCheckMap(
                         AESAlgorithmCheck.class,
                         AuthorizationsStrongDecisionsCheck.class,
@@ -318,7 +311,7 @@ public class Checks {
                         XxeProcessingCheck.class));
 
         typeToChecks.put(
-                CheckType.SECURITY_HOTSPOT,
+                RuleType.SECURITY_HOTSPOT,
                 createKeyToCheckMap(
                         AndroidBroadcastingCheck.class,
                         AndroidExternalStorageCheck.class,
@@ -359,7 +352,7 @@ public class Checks {
                         ZipEntryCheck.class));
 
         typeToChecks.put(
-                CheckType.CODE_SMELL,
+                RuleType.CODE_SMELL,
                 createKeyToCheckMap(
                         AbstractClassNoFieldShouldBeInterfaceCheck.class,
                         AbstractClassWithoutAbstractMethodCheck.class,
@@ -682,7 +675,7 @@ public class Checks {
         TYPE_TO_CHECKS = Collections.unmodifiableMap(typeToChecks);
 
         // sanity check: all CheckType values should be accounted for
-        for (CheckType type : CheckType.values()) {
+        for (RuleType type : RuleType.values()) {
             assert TYPE_TO_CHECKS.containsKey(type);
         }
     }

@@ -21,7 +21,7 @@ class ChecksTest {
     @Test
     void test_getChecksByType_whenTypeIsBug_containsBugChecks() {
         final List<Class<? extends JavaFileScanner>> bugChecks =
-                Checks.getChecksByType(Checks.CheckType.BUG);
+                Checks.getChecksByType(RuleType.BUG);
         final List<Class<? extends JavaFileScanner>> expectedBugChecksSubset =
                 Arrays.asList(
                         CompareStringsBoxedTypesWithEqualsCheck.class,
@@ -34,7 +34,7 @@ class ChecksTest {
     @Test
     void test_getChecksByType_whenTypeIsCodeSmell_containsCodeSmellChecks() {
         final List<Class<? extends JavaFileScanner>> codeSmellChecks =
-                Checks.getChecksByType(Checks.CheckType.CODE_SMELL);
+                Checks.getChecksByType(RuleType.CODE_SMELL);
         final List<Class<? extends JavaFileScanner>> expectedCodeSmellChecksSubset =
                 Arrays.asList(
                         DeadStoreCheck.class, SerializableFieldInSerializableClassCheck.class);

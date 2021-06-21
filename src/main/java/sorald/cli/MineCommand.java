@@ -14,6 +14,7 @@ import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
 import sorald.miner.MineSonarWarnings;
 import sorald.sonar.Checks;
+import sorald.sonar.RuleType;
 import sorald.util.MavenUtils;
 
 /** CLI Command for Sorald's mining functionality. */
@@ -53,7 +54,7 @@ class MineCommand extends BaseCommand {
             description =
                     "One or more types of rules to check for (use ',' to separate multiple types). Choices: ${COMPLETION-CANDIDATES}",
             split = ",")
-    private List<Checks.CheckType> ruleTypes = new ArrayList<>();
+    private List<RuleType> ruleTypes = new ArrayList<>();
 
     @CommandLine.Option(
             names = {Constants.ARG_HANDLED_RULES},
@@ -118,7 +119,7 @@ class MineCommand extends BaseCommand {
      * command line.
      */
     private static List<? extends JavaFileScanner> inferCheckInstances(
-            List<Checks.CheckType> ruleTypes, boolean handledRules) {
+            List<RuleType> ruleTypes, boolean handledRules) {
         List<? extends JavaFileScanner> checks =
                 ruleTypes.isEmpty() ? getAllCheckInstances() : getCheckInstancesByTypes(ruleTypes);
 
@@ -137,7 +138,7 @@ class MineCommand extends BaseCommand {
     }
 
     private static List<? extends JavaFileScanner> getCheckInstancesByTypes(
-            List<Checks.CheckType> checkTypes) {
+            List<RuleType> checkTypes) {
         return checkTypes.stream()
                 .map(Checks::getChecksByType)
                 .flatMap(Collection::stream)
