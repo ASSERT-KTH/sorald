@@ -13,7 +13,7 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
 
 @ProcessorAnnotation(
-        key = 2204,
+        key = "S2204",
         description = "\".equals()\" should not be used to test the values of \"Atomic\" classes")
 public class EqualsOnAtomicClassProcessor extends SoraldAbstractProcessor<CtInvocation> {
 

@@ -94,7 +94,7 @@ def available_rule_keys(
         for line in itertools.takewhile(
             lambda l: not l.strip().startswith("--"), dropped_initial_lines
         )
-        if (match := re.search(r"^\d+(?=:)", line.strip()))
+        if (match := re.search(r"^[^\s]+(?=:)", line.strip()))
     ]
 
 

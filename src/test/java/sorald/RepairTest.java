@@ -27,7 +27,7 @@ public class RepairTest {
         SoraldConfig config = new SoraldConfig();
 
         Set<RuleViolation> violations =
-                Set.of("2111", "2184").stream()
+                Set.of("S2111", "S2184").stream()
                         .map(Checks::getCheckInstance)
                         .map(check -> ProjectScanner.scanProject(targetFile, workdir, check))
                         .flatMap(Set::stream)

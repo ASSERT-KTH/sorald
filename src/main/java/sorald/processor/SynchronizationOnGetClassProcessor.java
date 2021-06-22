@@ -10,7 +10,7 @@ import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtTypeReference;
 
 @ProcessorAnnotation(
-        key = 3067,
+        key = "S3067",
         description = "\"getClass\" should not be used for synchronization")
 public class SynchronizationOnGetClassProcessor extends SoraldAbstractProcessor<CtSynchronized> {
 

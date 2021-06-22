@@ -32,7 +32,7 @@ public class GatherStatsTest {
             RepairStrategy repairStrategy, @TempDir File tempDir) throws Exception {
         ProcessorTestHelper.ProcessorTestCase<?> testCase =
                 ProcessorTestHelper.getTestCasesInTemporaryDirectory()
-                        .filter(tc -> tc.ruleKey.equals("2755"))
+                        .filter(tc -> tc.ruleKey.equals(new XxeProcessingProcessor().getRuleKey()))
                         .findFirst()
                         .get();
 

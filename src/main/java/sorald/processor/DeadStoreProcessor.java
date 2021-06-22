@@ -25,7 +25,7 @@ import spoon.reflect.path.CtRole;
 import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.Filter;
 
-@ProcessorAnnotation(key = 1854, description = "Unused assignments should be removed")
+@ProcessorAnnotation(key = "S1854", description = "Unused assignments should be removed")
 public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 
     @Override

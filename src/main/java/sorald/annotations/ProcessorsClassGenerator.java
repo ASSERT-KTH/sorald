@@ -15,8 +15,8 @@ public class ProcessorsClassGenerator<T>
         extends AbstractAnnotationProcessor<ProcessorAnnotation, CtClass<T>> {
     private CtCompilationUnit cu = null;
     private CtType<?> processorsClass = null;
-    private final SortedMap<Integer, CtClass<?>> processorMap = new TreeMap<>();
-    private final SortedMap<Integer, String> descriptions = new TreeMap<>();
+    private final SortedMap<String, CtClass<?>> processorMap = new TreeMap<>();
+    private final SortedMap<String, String> descriptions = new TreeMap<>();
 
     @Override
     public void process(ProcessorAnnotation annotation, CtClass<T> element) {
@@ -51,9 +51,9 @@ public class ProcessorsClassGenerator<T>
                         + processorMap.entrySet().stream()
                                 .map(
                                         entry ->
-                                                "put("
+                                                "put(\""
                                                         + entry.getKey()
-                                                        + ","
+                                                        + "\","
                                                         + entry.getValue().getSimpleName()
                                                         + ".class);")
                                 .collect(Collectors.joining("\n"))

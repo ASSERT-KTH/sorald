@@ -14,7 +14,7 @@ import spoon.reflect.reference.CtTypeReference;
         description =
                 "This processor does not address the case where the class already has a serialVersionUID with a non long type.")
 @ProcessorAnnotation(
-        key = 2057,
+        key = "S2057",
         description =
                 "Every class implementing Serializable should declare a static final serialVersionUID.")
 public class SerialVersionUidProcessor extends SoraldAbstractProcessor<CtClass<?>> {

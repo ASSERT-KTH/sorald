@@ -9,7 +9,7 @@ import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.visitor.filter.TypeFilter;
 
-@ProcessorAnnotation(key = 2164, description = "Math should not be performed on floats")
+@ProcessorAnnotation(key = "S2164", description = "Math should not be performed on floats")
 public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 
     @Override

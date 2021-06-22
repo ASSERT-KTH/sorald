@@ -18,7 +18,7 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.reference.CtLocalVariableReference;
 import spoon.reflect.reference.CtVariableReference;
 
-@ProcessorAnnotation(key = 2095, description = "Resources should be closed")
+@ProcessorAnnotation(key = "S2095", description = "Resources should be closed")
 public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstructorCall<?>> {
 
     @Override

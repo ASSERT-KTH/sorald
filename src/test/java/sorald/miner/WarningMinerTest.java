@@ -29,6 +29,7 @@ import sorald.SystemExitHandler;
 import sorald.TestHelper;
 import sorald.cli.SoraldVersionProvider;
 import sorald.event.StatsMetadataKeys;
+import sorald.processor.CastArithmeticOperandProcessor;
 import sorald.sonar.Checks;
 
 public class WarningMinerTest {
@@ -137,7 +138,7 @@ public class WarningMinerTest {
                     Constants.MINE_COMMAND_NAME, Constants.ARG_SOURCE, workdir.toString()
                 });
 
-        assertThat(out.toString(), containsString("MathOnFloatCheck<2164>=1"));
+        assertThat(out.toString(), containsString("MathOnFloatCheck<S2164>=1"));
     }
 
     /** Test that extracting warnings gives results even for rules that are not violated. */
@@ -219,7 +220,9 @@ public class WarningMinerTest {
         JSONArray repairs = stats.getJSONArray(StatsMetadataKeys.MINED_RULES);
         assertThat(repairs.length(), equalTo(1));
         JSONObject repair = repairs.getJSONObject(0);
-        assertThat(repair.getString(StatsMetadataKeys.REPAIR_RULE_KEY), equalTo("2184"));
+        assertThat(
+                repair.getString(StatsMetadataKeys.REPAIR_RULE_KEY),
+                equalTo(new CastArithmeticOperandProcessor().getRuleKey()));
     }
 
     /** We currently only support resolving the classpath on Maven projects. */

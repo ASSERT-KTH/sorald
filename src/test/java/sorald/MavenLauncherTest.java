@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.sonar.java.checks.DeadStoreCheck;
 import sorald.event.StatsMetadataKeys;
+import sorald.processor.CastArithmeticOperandProcessor;
+import sorald.processor.DeadStoreProcessor;
 import sorald.sonar.RuleVerifier;
 
 public class MavenLauncherTest {
@@ -38,7 +40,7 @@ public class MavenLauncherTest {
                     Constants.ARG_SOURCE,
                     workdir.getAbsolutePath(),
                     Constants.ARG_RULE_KEY,
-                    "1854",
+                    new DeadStoreProcessor().getRuleKey(),
                     Constants.ARG_REPAIR_STRATEGY,
                     RepairStrategy.MAVEN.name()
                 };
@@ -68,7 +70,7 @@ public class MavenLauncherTest {
 
         Path statsFile = workdir.toPath().resolve("stats.json");
 
-        String castArithmOperandKey = "2184";
+        String castArithmOperandKey = new CastArithmeticOperandProcessor().getRuleKey();
         String[] args = {
             Constants.REPAIR_COMMAND_NAME,
             Constants.ARG_SOURCE,
