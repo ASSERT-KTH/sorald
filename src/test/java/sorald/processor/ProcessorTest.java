@@ -26,14 +26,11 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.sonar.java.checks.ArrayHashCodeAndToStringCheck;
-import org.sonar.java.checks.DeadStoreCheck;
 import sorald.Constants;
 import sorald.FileUtils;
 import sorald.TestHelper;
 import sorald.event.StatsMetadataKeys;
 import sorald.rule.Rule;
-import sorald.sonar.RuleVerifier;
 import spoon.Launcher;
 import spoon.reflect.CtModel;
 import spoon.reflect.declaration.CtImport;
@@ -179,9 +176,9 @@ public class ProcessorTest {
         ProcessorTestHelper.runSorald(workdir.toFile(), rule);
 
         // assert
-        RuleVerifier.verifyNoIssue(
-                dirWithJavaExtension.toPath().resolve("ArrayHashCodeAndToString.java").toString(),
-                new ArrayHashCodeAndToStringCheck());
+        assertNoRuleViolations(
+                dirWithJavaExtension.toPath().resolve("ArrayHashCodeAndToString.java").toFile(),
+                Rule.of(new ArrayHashCodeAndToStringProcessor().getRuleKey()));
     }
 
     @Test
@@ -220,7 +217,7 @@ public class ProcessorTest {
                         .resolve("pkg")
                         .resolve("ClassInNamedModuleWithDeadStores.java");
 
-        RuleVerifier.verifyNoIssue(sourceFile.toString(), new DeadStoreCheck());
+        assertNoRuleViolations(sourceFile.toFile(), rule);
     }
 
     /**
