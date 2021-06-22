@@ -251,7 +251,13 @@ class RepairCommand extends BaseCommand {
         return withSonarPrefix(
                 ruleViolations.isEmpty()
                         ? rules.ruleKey
-                        : ruleViolations.stream().map(RuleViolation::getRuleKey).findFirst().get());
+                        : ruleViolations.stream()
+                                .map(RuleViolation::getRuleKey)
+                                .findFirst()
+                                .orElseThrow(
+                                        () ->
+                                                new IllegalStateException(
+                                                        "no valid rule key in input, should not happen!")));
     }
 
     private void validateRuleKey() {
