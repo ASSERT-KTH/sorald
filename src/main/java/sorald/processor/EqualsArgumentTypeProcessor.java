@@ -7,7 +7,9 @@ import spoon.reflect.code.CtReturn;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
 
-@ProcessorAnnotation(key = 2097, description = "\"equals(Object obj)\" should test argument type")
+@ProcessorAnnotation(
+        key = "S2097",
+        description = "\"equals(Object obj)\" should test argument type")
 public class EqualsArgumentTypeProcessor extends SoraldAbstractProcessor<CtMethod<?>> {
 
     @Override

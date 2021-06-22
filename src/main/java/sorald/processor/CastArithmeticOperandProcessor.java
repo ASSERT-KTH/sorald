@@ -14,7 +14,7 @@ import spoon.reflect.code.*;
 import spoon.reflect.factory.TypeFactory;
 import spoon.reflect.reference.CtTypeReference;
 
-@ProcessorAnnotation(key = 2184, description = "Math operands should be cast before assignment")
+@ProcessorAnnotation(key = "S2184", description = "Math operands should be cast before assignment")
 public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 
     private static final Map<String, BinaryOperatorKind> toOpKind =

@@ -9,7 +9,7 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.reference.CtExecutableReference;
 
 @ProcessorAnnotation(
-        key = 1132,
+        key = "S1132",
         description =
                 "Strings literals should be placed on the left side when checking for equality")
 public class StringLiteralInsideEqualsProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {

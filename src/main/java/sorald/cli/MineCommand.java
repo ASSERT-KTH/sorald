@@ -128,9 +128,7 @@ class MineCommand extends BaseCommand {
                         : checks.stream()
                                 .filter(
                                         sc -> {
-                                            int key =
-                                                    Integer.parseInt(
-                                                            Checks.getRuleKey(sc.getClass()));
+                                            String key = Checks.getRuleKey(sc.getClass());
                                             return Processors.getProcessor(key) != null;
                                         })
                                 .collect(Collectors.toList());

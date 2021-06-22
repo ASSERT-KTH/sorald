@@ -11,7 +11,7 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 
 @ProcessorAnnotation(
-        key = 2272,
+        key = "S2272",
         description = "\"Iterator.next()\" methods should throw \"NoSuchElementException\"")
 public class IteratorNextExceptionProcessor extends SoraldAbstractProcessor<CtMethod> {
 

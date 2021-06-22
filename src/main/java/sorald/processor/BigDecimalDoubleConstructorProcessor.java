@@ -7,7 +7,7 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
 
-@ProcessorAnnotation(key = 2111, description = "\"BigDecimal(double)\" should not be used")
+@ProcessorAnnotation(key = "S2111", description = "\"BigDecimal(double)\" should not be used")
 public class BigDecimalDoubleConstructorProcessor
         extends SoraldAbstractProcessor<CtConstructorCall> {
 

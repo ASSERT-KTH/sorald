@@ -48,7 +48,7 @@ public class SegmentStrategyTest {
                     Constants.ARG_SOURCE,
                     workspace.toString(),
                     Constants.ARG_RULE_KEY,
-                    "2116",
+                    new ArrayHashCodeAndToStringProcessor().getRuleKey(),
                     Constants.ARG_PRETTY_PRINTING_STRATEGY,
                     PrettyPrintingStrategy.NORMAL.name()
                 });

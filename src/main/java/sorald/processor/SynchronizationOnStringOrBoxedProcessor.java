@@ -20,7 +20,7 @@ import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.filter.TypeFilter;
 
 @ProcessorAnnotation(
-        key = 1860,
+        key = "S1860",
         description = "Synchronization should not be based on Strings or boxed primitives")
 public class SynchronizationOnStringOrBoxedProcessor
         extends SoraldAbstractProcessor<CtSynchronized> {

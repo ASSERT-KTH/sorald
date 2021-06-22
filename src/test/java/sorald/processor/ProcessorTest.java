@@ -172,7 +172,7 @@ public class ProcessorTest {
     public void sorald_canProcessProject_whenDirectoryHasJavaFileExtension() throws Exception {
         // arrange
         Path workdir = TestHelper.createTemporaryProcessorTestFilesWorkspace();
-        File origDir = workdir.resolve("2116_ArrayHashCodeAndToString").toFile();
+        File origDir = workdir.resolve("S2116_ArrayHashCodeAndToString").toFile();
         File dirWithJavaExtension =
                 origDir.toPath().resolveSibling(origDir.getName() + Constants.JAVA_EXT).toFile();
         org.apache.commons.io.FileUtils.moveDirectory(origDir, dirWithJavaExtension);
@@ -193,7 +193,7 @@ public class ProcessorTest {
         // rule 2755 always adds new elements, among other things a method
         ProcessorTestHelper.ProcessorTestCase<?> testCase =
                 ProcessorTestHelper.getTestCasesInTemporaryDirectory()
-                        .filter(tc -> tc.ruleKey.equals("2755"))
+                        .filter(tc -> tc.ruleKey.equals(new XxeProcessingProcessor().getRuleKey()))
                         .findFirst()
                         .get();
 

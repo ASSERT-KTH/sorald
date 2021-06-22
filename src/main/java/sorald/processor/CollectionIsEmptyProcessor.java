@@ -5,7 +5,7 @@ import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 
 @ProcessorAnnotation(
-        key = 1155,
+        key = "S1155",
         description = "Collection.isEmpty() should be used to test for emptiness")
 public class CollectionIsEmptyProcessor extends SoraldAbstractProcessor<CtBinaryOperator<?>> {
 

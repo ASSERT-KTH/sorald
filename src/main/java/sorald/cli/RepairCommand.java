@@ -248,13 +248,20 @@ class RepairCommand extends BaseCommand {
     }
 
     private String parseRuleKey(Rules rules, List<RuleViolation> ruleViolations) {
-        return ruleViolations.isEmpty()
-                ? rules.ruleKey
-                : ruleViolations.stream().map(RuleViolation::getRuleKey).findFirst().get();
+        return withSonarPrefix(
+                ruleViolations.isEmpty()
+                        ? rules.ruleKey
+                        : ruleViolations.stream()
+                                .map(RuleViolation::getRuleKey)
+                                .findFirst()
+                                .orElseThrow(
+                                        () ->
+                                                new IllegalStateException(
+                                                        "no valid rule key in input, should not happen!")));
     }
 
     private void validateRuleKey() {
-        if (Processors.getProcessor(Integer.parseInt(ruleKey)) == null) {
+        if (Processors.getProcessor(ruleKey) == null) {
             throw new CommandLine.ParameterException(
                     spec.commandLine(),
                     "Sorry, repair not available for rule "
@@ -272,7 +279,14 @@ class RepairCommand extends BaseCommand {
         int startCol = Integer.parseInt(parts[3]);
         int endLine = Integer.parseInt(parts[4]);
         int endCol = Integer.parseInt(parts[5]);
-        return new SpecifiedViolation(key, absPath, startLine, startCol, endLine, endCol);
+        return new SpecifiedViolation(
+                withSonarPrefix(key), absPath, startLine, startCol, endLine, endCol);
+    }
+
+    private String withSonarPrefix(String key) {
+        // TODO Remove this method when "sufficient" time has passed since introducing the S prefix
+        //      to the CLI
+        return key.startsWith("S") ? key : "S" + key;
     }
 
     private static void printEndProcess(SoraldAbstractProcessor<?> processor) {

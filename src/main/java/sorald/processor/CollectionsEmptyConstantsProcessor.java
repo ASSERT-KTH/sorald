@@ -7,7 +7,7 @@ import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 
 @ProcessorAnnotation(
-        key = 1596,
+        key = "S1596",
         description =
                 "\"Collections.EMPTY_LIST\", \"EMPTY_MAP\", and \"EMPTY_SET\" should not be used")
 public class CollectionsEmptyConstantsProcessor extends SoraldAbstractProcessor<CtFieldAccess<?>> {

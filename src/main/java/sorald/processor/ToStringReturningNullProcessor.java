@@ -8,7 +8,7 @@ import spoon.reflect.declaration.CtMethod;
 
 @IncompleteProcessor(description = "does not fix null returning clone()")
 @ProcessorAnnotation(
-        key = 2225,
+        key = "S2225",
         description = "\"toString()\" and \"clone()\" methods should not return null")
 public class ToStringReturningNullProcessor extends SoraldAbstractProcessor<CtReturn<?>> {
 

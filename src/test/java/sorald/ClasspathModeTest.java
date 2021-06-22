@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import sorald.event.StatsMetadataKeys;
+import sorald.processor.CastArithmeticOperandProcessor;
 
 /** Tests for running Sorald in classpath mode. */
 class ClasspathModeTest {
@@ -29,7 +30,7 @@ class ClasspathModeTest {
         Path statsFile = workdir.toPath().resolve("stats.json");
         Path source = workdir.toPath().resolve("src").resolve("main").resolve("java");
 
-        String castArithmOperandKey = "2184";
+        String castArithmOperandKey = new CastArithmeticOperandProcessor().getRuleKey();
         String[] args = {
             Constants.REPAIR_COMMAND_NAME,
             Constants.ARG_SOURCE,

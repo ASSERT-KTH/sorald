@@ -19,6 +19,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.sonar.plugins.java.api.JavaFileScanner;
+import sorald.processor.BigDecimalDoubleConstructorProcessor;
 import sorald.processor.ProcessorTestHelper;
 import sorald.sonar.Checks;
 import sorald.sonar.ProjectScanner;
@@ -179,14 +180,44 @@ public class TargetedRepairTest {
         assertThat(violationsAfter.size(), equalTo(workdirInfo.numViolationsBefore - 1));
     }
 
+    /**
+     * Test that targeted repair works with legacy identifiers lacking the S prefix of Sonar rules
+     */
+    @Test
+    void targetedRepair_canUseSpecifiers_withRuleKeysLackingSPrefix() throws IOException {
+        // arrange
+        TargetedRepairWorkdirInfo workdirInfo = setupWorkdir();
+        String legacyViolationSpec =
+                workdirInfo
+                        .targetViolation
+                        .relativeSpecifier(workdirInfo.workdir.toPath())
+                        .substring(1);
+
+        // act
+        Main.main(
+                new String[] {
+                    Constants.REPAIR_COMMAND_NAME,
+                    Constants.ARG_SOURCE,
+                    workdirInfo.workdir.getAbsolutePath(),
+                    Constants.ARG_RULE_VIOLATION_SPECIFIERS,
+                    legacyViolationSpec
+                });
+
+        // assert
+        Set<RuleViolation> violationsAfter =
+                ProjectScanner.scanProject(
+                        workdirInfo.workdir, workdirInfo.workdir, workdirInfo.check);
+        assertThat(violationsAfter.size(), equalTo(workdirInfo.numViolationsBefore - 1));
+    }
+
     /** Setup the workdir with a specific target violation. */
     private static TargetedRepairWorkdirInfo setupWorkdir() throws IOException {
         Path workdir = TestHelper.createTemporaryProcessorTestFilesWorkspace();
 
-        String ruleKey = "2111";
+        String ruleKey = new BigDecimalDoubleConstructorProcessor().getRuleKey();
         JavaFileScanner check = Checks.getCheckInstance(ruleKey);
         File targetFile =
-                workdir.resolve("2111_BigDecimalDoubleConstructor")
+                workdir.resolve("S2111_BigDecimalDoubleConstructor")
                         .resolve("BigDecimalDoubleConstructor.java")
                         .toFile();
 

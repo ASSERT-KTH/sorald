@@ -17,17 +17,19 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.DefaultPackageCheck;
 import sorald.TestHelper;
+import sorald.processor.ArrayHashCodeAndToStringProcessor;
+import sorald.processor.MathOnFloatProcessor;
 
 class RuleVerifierTest {
 
     @Test
     public void analyze_filtersOutMessages_thatCorrespondToMethodSuppressedWarning()
             throws IllegalAccessException, InstantiationException {
-        String suppressedRuleKey = "2116";
-        String nonSuppressedRuleKey = "2164";
+        String suppressedRuleKey = new ArrayHashCodeAndToStringProcessor().getRuleKey();
+        String nonSuppressedRuleKey = new MathOnFloatProcessor().getRuleKey();
         String testFile =
                 TestHelper.PATH_TO_RESOURCES_FOLDER
-                        .resolve("WithMethodSuppressedS" + suppressedRuleKey + ".java")
+                        .resolve("WithMethodSuppressed" + suppressedRuleKey + ".java")
                         .toString();
 
         var violations =
