@@ -2,23 +2,18 @@ package sorald.sonar;
 
 import java.util.Objects;
 import sorald.rule.Rule;
+import sorald.rule.RuleType;
 
 public class SonarRule implements Rule {
     private final String key;
     private final String name;
+    private final RuleType type;
 
     public SonarRule(String key) {
         this.key = key;
-        this.name =
-                Checks.getAllChecks().stream()
-                        .filter(check -> Checks.getRuleKey(check).equals(key))
-                        .findFirst()
-                        .orElseThrow(
-                                () ->
-                                        new IllegalArgumentException(
-                                                "No Sonar rule with key: " + key))
-                        .getSimpleName()
-                        .replaceFirst("Check$", "");
+        var check = Checks.getCheck(key);
+        this.name = check.getSimpleName().replaceFirst("Check$", "");
+        this.type = Checks.getRuleType(check);
     }
 
     @Override
@@ -29,6 +24,11 @@ public class SonarRule implements Rule {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public RuleType getType() {
+        return type;
     }
 
     @Override

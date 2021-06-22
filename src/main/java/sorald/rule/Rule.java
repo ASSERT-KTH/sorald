@@ -11,6 +11,9 @@ public interface Rule {
     /** @return The name of this rule. */
     String getName();
 
+    /** @return The type of this rule. */
+    RuleType getType();
+
     /**
      * Create a rule based on the key.
      *

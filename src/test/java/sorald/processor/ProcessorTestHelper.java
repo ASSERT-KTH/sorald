@@ -20,7 +20,6 @@ import sorald.Main;
 import sorald.PrettyPrintingStrategy;
 import sorald.TestHelper;
 import sorald.rule.Rule;
-import sorald.sonar.Checks;
 import sorald.sonar.SonarRule;
 
 /** Helper functions for {@link ProcessorTest}. */
@@ -57,8 +56,7 @@ public class ProcessorTestHelper {
         File directory = nonCompliantFile.getParentFile();
         assert directory.isDirectory();
         String ruleKey = directory.getName().split("_")[0];
-        Class<?> checkClass = Checks.getCheck(ruleKey);
-        String ruleName = checkClass.getSimpleName().replaceFirst("Check$", "");
+        String ruleName = Rule.of(ruleKey).getName();
         String outfileDirRelpath =
                 parseSourceFilePackage(nonCompliantFile.toPath()).replace(".", File.separator);
         Path outfileRelpath = Paths.get(outfileDirRelpath).resolve(nonCompliantFile.getName());

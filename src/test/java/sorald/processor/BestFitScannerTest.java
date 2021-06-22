@@ -112,11 +112,6 @@ public class BestFitScannerTest {
                     }
 
                     @Override
-                    public String getCheckName() {
-                        return "Incomplete";
-                    }
-
-                    @Override
                     public String getRuleKey() {
                         return incompleteClassProc.getRuleKey();
                     }

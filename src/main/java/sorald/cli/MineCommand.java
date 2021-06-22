@@ -13,8 +13,8 @@ import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
 import sorald.miner.MineSonarWarnings;
 import sorald.rule.Rule;
-import sorald.sonar.Checks;
-import sorald.sonar.RuleType;
+import sorald.rule.RuleType;
+import sorald.rule.Rules;
 import sorald.util.MavenUtils;
 
 /** CLI Command for Sorald's mining functionality. */
@@ -119,30 +119,16 @@ class MineCommand extends BaseCommand {
      * line.
      */
     private static List<Rule> inferRules(List<RuleType> ruleTypes, boolean handledRules) {
-        List<Rule> rules = ruleTypes.isEmpty() ? getAllRules() : getRulesByTypes(ruleTypes);
+        List<Rule> rules =
+                List.copyOf(
+                        ruleTypes.isEmpty()
+                                ? Rules.getAllRules()
+                                : Rules.getRulesByType(ruleTypes));
 
         return !handledRules
                 ? rules
                 : rules.stream()
                         .filter(rule -> Processors.getProcessor(rule.getKey()) != null)
                         .collect(Collectors.toList());
-    }
-
-    private static List<Rule> getRulesByTypes(List<RuleType> checkTypes) {
-        // TODO remove use of Checks class
-        return checkTypes.stream()
-                .map(Checks::getChecksByType)
-                .flatMap(Collection::stream)
-                .map(Checks::getRuleKey)
-                .map(Rule::of)
-                .collect(Collectors.toList());
-    }
-
-    private static List<Rule> getAllRules() {
-        // TODO remove use of Checks class
-        return Checks.getAllChecks().stream()
-                .map(Checks::getRuleKey)
-                .map(Rule::of)
-                .collect(Collectors.toList());
     }
 }

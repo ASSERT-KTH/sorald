@@ -1,4 +1,4 @@
-package sorald.sonar;
+package sorald.rule;
 
 /** Enumeration of Sonar rule types */
 public enum RuleType {

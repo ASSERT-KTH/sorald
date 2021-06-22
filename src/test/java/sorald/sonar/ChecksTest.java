@@ -15,6 +15,7 @@ import org.sonar.java.checks.NullShouldNotBeUsedWithOptionalCheck;
 import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
+import sorald.rule.RuleType;
 
 class ChecksTest {
 
