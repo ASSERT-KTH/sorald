@@ -113,50 +113,61 @@ Repair Sonar rule violations in a targeted project.
                                time (need to specify --maxFilesPerSegment if
                                not default)
       --rule-key=<ruleKey>   Choose one of the following rule keys:
-                             1217: "Thread.run()" should not be called directly
-                             1444: "public static" fields should be constant
+                             S1118: Utility classes should not have public
+                               constructors
+                             	(incomplete: Only handles implicit public
+                               constructor)
+                             S1132: Strings literals should be placed on the
+                               left side when checking for equality
+                             S1155: Collection.isEmpty() should be used to test
+                               for emptiness
+                             S1217: "Thread.run()" should not be called directly
+                             S1444: "public static" fields should be constant
                              	(incomplete: does not fix variable naming)
-                             1656: Variables should not be self-assigned
-                             1854: Unused assignments should be removed
-                             1860: Synchronization should not be based on
+                             S1481: Unused local variables should be removed
+                             S1596: "Collections.EMPTY_LIST", "EMPTY_MAP", and
+                               "EMPTY_SET" should not be used
+                             S1656: Variables should not be self-assigned
+                             S1854: Unused assignments should be removed
+                             S1860: Synchronization should not be based on
                                Strings or boxed primitives
-                             1948: Fields in a "Serializable" class should
+                             S1948: Fields in a "Serializable" class should
                                either be transient or serializable
-                             2057: Every class implementing Serializable should
-                               declare a static final serialVersionUID.
-                                (incomplete: This processor does not address the
+                             S2057: Every class implementing Serializable
+                               should declare a static final serialVersionUID.
+                             	(incomplete: This processor does not address the
                                case where the class already has a
                                serialVersionUID with a non long type.)
-                             2095: Resources should be closed
-                             2097: "equals(Object obj)" should test argument
+                             S2095: Resources should be closed
+                             S2097: "equals(Object obj)" should test argument
                                type
-                             2111: "BigDecimal(double)" should not be used
-                             2116: "hashCode" and "toString" should not be
+                             S2111: "BigDecimal(double)" should not be used
+                             S2116: "hashCode" and "toString" should not be
                                called on array instances
-                             2142: "InterruptedException" should not be ignored
-                             2164: Math should not be performed on floats
-                             2167: "compareTo" should not return "Integer.
+                             S2142: "InterruptedException" should not be ignored
+                             S2164: Math should not be performed on floats
+                             S2167: "compareTo" should not return "Integer.
                                MIN_VALUE"
-                             2184: Math operands should be cast before
+                             S2184: Math operands should be cast before
                                assignment
-                             2204: ".equals()" should not be used to test the
+                             S2204: ".equals()" should not be used to test the
                                values of "Atomic" classes
-                             2225: "toString()" and "clone()" methods should
+                             S2225: "toString()" and "clone()" methods should
                                not return null
                              	(incomplete: does not fix null returning clone())
-                             2272: "Iterator.next()" methods should throw
+                             S2272: "Iterator.next()" methods should throw
                                "NoSuchElementException"
-                             2755: XML parsers should not be vulnerable to XXE
+                             S2755: XML parsers should not be vulnerable to XXE
                                attacks
                              	(incomplete: This processor is a WIP and
                                currently supports a subset of rule 2755. See
                                Sorald's documentation for details.)
-                             3032: JEE applications should not "getClassLoader"
-                             3067: "getClass" should not be used for
+                             S3032: JEE applications should not "getClassLoader"
+                             S3067: "getClass" should not be used for
                                synchronization
-                             3984: Exception should not be created without
+                             S3984: Exception should not be created without
                                being thrown
-                             4973: Strings and Boxed types should be compared
+                             S4973: Strings and Boxed types should be compared
                                using "equals()"
       --stats-output-file=<statsOutputFile>
                              Path to a file to store execution statistics in
