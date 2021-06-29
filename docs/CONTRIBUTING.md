@@ -44,6 +44,11 @@ When merging a PR, maintainers should take care to:
 
 For adding a new processor in Sorald, please, follow the instructions described below.
 
+0) Familiarize yourself with the [`sorald.util` utility package](#reusable-utility-classes-and-methods)
+
+This is to ensure that you do not recreate functionality that we already have a
+solution for.
+
 1) Find the name for the new processor
 
 The first step is to find the name for the new processor.
@@ -117,6 +122,14 @@ Transformation:
 ```
 
 And then you can submit your PR!
+
+### Reusable utility classes and methods
+
+In the [sorald.util](/src/main/java/sorald/util) package we collect utility classes
+and methods for use throughout Sorald. It's a good idea to have a look through
+it before writing a processor. For example, the
+[Transformations](/src/main/java/sorald/util/Transformations.java) class contains
+high-level transformations that may be of use to you.
 
 ### Guidelines for testing processors
 
