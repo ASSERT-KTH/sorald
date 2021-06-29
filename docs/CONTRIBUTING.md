@@ -125,10 +125,10 @@ And then you can submit your PR!
 
 ### Reusable utility classes and methods
 
-In the [sorald.util](/src/main/sorald/util) package we collect utility classes
+In the [sorald.util](/src/main/java/sorald/util) package we collect utility classes
 and methods for use throughout Sorald. It's a good idea to have a look through
 it before writing a processor. For example, the
-[Transformations](/src/main/sorald/util/Transformations.java) class contains
+[Transformations](/src/main/java/sorald/util/Transformations.java) class contains
 high-level transformations that may be of use to you.
 
 ### Guidelines for testing processors
