@@ -35,26 +35,15 @@ import org.sonar.java.JavaTestClasspath;
 import org.sonar.java.Measurer;
 import org.sonar.java.SonarComponents;
 import org.sonar.java.checks.CheckList;
-import org.sonar.java.checks.verifier.JavaCheckVerifier;
 import org.sonar.java.filters.PostAnalysisIssueFilter;
 import org.sonar.java.model.JavaVersionImpl;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import sorald.Constants;
+import sorald.rule.RuleViolation;
 
 /** Adapter class for interfacing with sonar-java's verification and analysis facilities. */
-public class RuleVerifier {
+class RuleVerifier {
     private RuleVerifier() {}
-
-    /**
-     * Verify that the given file has at least one issue according to check.
-     *
-     * @param filename Path to a file.
-     * @param check A Sonar check.
-     */
-    @SuppressWarnings("UnstableApiUsage")
-    public static void verifyHasIssue(String filename, JavaFileScanner check) {
-        JavaCheckVerifier.newVerifier().onFile(filename).withCheck(check).verifyIssues();
-    }
 
     /**
      * Analyze the files with respect to check.
@@ -65,7 +54,7 @@ public class RuleVerifier {
      * @return All messages produced by the analyzer, for all files.
      */
     @SuppressWarnings("UnstableApiUsage")
-    public static Set<RuleViolation> analyze(
+    static Set<RuleViolation> analyze(
             List<String> filesToScan, File baseDir, JavaFileScanner check) {
         return analyze(filesToScan, baseDir, Collections.singletonList(check));
     }
@@ -79,7 +68,7 @@ public class RuleVerifier {
      * @return All messages produced by the analyzer, for all files and all checks.
      */
     @SuppressWarnings("UnstableApiUsage")
-    public static Set<RuleViolation> analyze(
+    static Set<RuleViolation> analyze(
             List<String> filesToScan, File baseDir, List<? extends JavaFileScanner> checks) {
         SoraldSonarComponents components = createSonarComponents(baseDir, checks, List.of());
 
@@ -108,7 +97,7 @@ public class RuleVerifier {
      * @return All messages produced by the analyzer, for all files and all checks.
      */
     @SuppressWarnings("UnstableApiUsage")
-    public static Set<RuleViolation> analyze(
+    static Set<RuleViolation> analyze(
             List<String> filesToScan,
             File baseDir,
             List<? extends JavaFileScanner> checks,
@@ -146,17 +135,6 @@ public class RuleVerifier {
                 List.of(), // TODO provide test files
                 Collections.emptyList() // TODO provide generated files
                 );
-    }
-
-    /**
-     * Verify that the file pointed to by filename does not violate the rule checked by check.
-     *
-     * @param filename Path to a file.
-     * @param check A Sonar check.
-     */
-    @SuppressWarnings("UnstableApiUsage")
-    public static void verifyNoIssue(String filename, JavaFileScanner check) {
-        JavaCheckVerifier.newVerifier().onFile(filename).withCheck(check).verifyNoIssues();
     }
 
     private static InputFile toInputFile(File baseDir, String filename) {

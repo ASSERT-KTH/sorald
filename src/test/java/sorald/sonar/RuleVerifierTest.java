@@ -19,6 +19,7 @@ import org.sonar.java.checks.DefaultPackageCheck;
 import sorald.TestHelper;
 import sorald.processor.ArrayHashCodeAndToStringProcessor;
 import sorald.processor.MathOnFloatProcessor;
+import sorald.rule.RuleViolation;
 
 class RuleVerifierTest {
 
