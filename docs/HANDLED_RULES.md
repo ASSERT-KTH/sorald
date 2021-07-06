@@ -571,7 +571,7 @@ Example repair where a variable declared in a loop header is unused:
 
 ------
 
-#### Unused "private" fields should be removed
+#### Unused "private" fields should be removed ([Sonar Rule 1068](https://rules.sonarsource.com/java/RSPEC-1068))
 
 The repair consists of deleting unused `private` fields as it is considered as dead code.
 
