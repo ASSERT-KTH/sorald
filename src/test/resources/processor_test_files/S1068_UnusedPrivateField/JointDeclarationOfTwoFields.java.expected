@@ -1,0 +1,9 @@
+public class JointDeclarationOfTwoFields {
+    private int usedInt = 1; // Compliant
+    private String usedStr = "hello"; // Compliant
+
+    public void printSomething() {
+        System.out.println(usedInt);
+        System.out.println(usedStr);
+    }
+}

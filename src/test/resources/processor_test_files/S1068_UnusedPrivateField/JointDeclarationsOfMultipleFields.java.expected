@@ -1,0 +1,11 @@
+public class JointDeclarationsOfMultipleFields {
+    private int a = 1, b = 2; // Compliant
+    private char c = 'c', d = 'e'; // Compliant
+    private long e = 2L, f = 3L; // Compliant
+
+    public void printSum() {
+        System.out.println(a + b);
+        System.out.println(c + d);
+        System.out.println(e + f);
+    }
+}
