@@ -178,9 +178,14 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
      */
     private boolean candidatePostFilter(E element, RuleViolation violation) {
         if (element instanceof CtVariable && ((CtVariable<?>) element).isPartOfJointDeclaration()) {
-            String ident =
+            String precedingIdentifier =
                     getPrecedingIdentifier(violation, element.getPosition().getCompilationUnit());
-            return ident.equals(((CtVariable<?>) element).getSimpleName());
+            String identifierAtViolationPosition =
+                    getIdentifierFromViolationPosition(
+                            violation, element.getPosition().getCompilationUnit());
+
+            String simpleName = ((CtVariable<?>) element).getSimpleName();
+            return Set.of(precedingIdentifier, identifierAtViolationPosition).contains(simpleName);
         } else {
             return true;
         }
@@ -201,6 +206,22 @@ public class BestFitScanner<E extends CtElement> extends CtScanner {
         int identStartPos =
                 reverseFind(cuSource, identEndPos, c -> !Character.isJavaIdentifierPart(c)) + 1;
         return cuSource.substring(identStartPos, identEndPos + 1);
+    }
+
+    private static String getIdentifierFromViolationPosition(
+            RuleViolation violation, CtCompilationUnit cu) {
+        int sourceStart =
+                calculateSourcePos(
+                        violation.getStartLine(),
+                        violation.getStartCol(),
+                        cu.getLineSeparatorPositions());
+        int sourceEnd =
+                calculateSourcePos(
+                        violation.getEndLine(),
+                        violation.getEndCol(),
+                        cu.getLineSeparatorPositions());
+        String cuSource = cu.getOriginalSourceCode();
+        return cuSource.substring(sourceStart, sourceEnd + 1).strip();
     }
 
     private static int reverseFind(String s, int startIdx, Predicate<Character> predicate) {

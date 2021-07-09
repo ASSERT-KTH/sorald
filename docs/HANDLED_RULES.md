@@ -28,6 +28,7 @@ Sorald can currently repair violations of the following rules:
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
     * [Unused assignments should be removed](#unused-assignments-should-be-removed-sonar-rule-1854) ([Sonar Rule 1854](https://rules.sonarsource.com/java/RSPEC-1854))
     * [Unused local variables should be removed](#unused-local-variables-should-be-removed-sonar-rule-1481) ([Sonar Rule 1481](https://rules.sonarsource.com/java/RSPEC-1481))
+    * [Unused \"private\" fields should be removed](#unused-private-fields-should-be-removed) ([Sonar Rule 1068](https://rules.sonarsource.com/java/RSPEC-1068))
     * ["public static" fields should be constant](#public-static-fields-should-be-constant-sonar-rule-1444) ([Sonar Rule 1444](https://rules.sonarsource.com/java/RSPEC-1444))
     * [\"Serializable\" classes should have a \"serialVersionUID\"](#Serializable-classes-should-have-a-serialVersionUID-sonar-rule-2057) ([Sonar Rule 2057](https://rules.sonarsource.com/java/RSPEC-2057))
     * [Utility classes should not have public constructors](#utility-classes-should-not-have-public-constructors-sonar-rule-1118) ([Sonar Rule 1118](https://rules.sonarsource.com/java/RSPEC-1118))
@@ -567,6 +568,27 @@ Example repair where a variable declared in a loop header is unused:
     }
 }
 ```
+
+------
+
+#### Unused "private" fields should be removed ([Sonar Rule 1068](https://rules.sonarsource.com/java/RSPEC-1068))
+
+The repair consists of deleting unused `private` fields as it is considered as dead code.
+
+Example:
+
+```diff
+ public class UnusedPrivateField {
+-    private String a = "Hello world!";
+
+     public int compute(int number) {
+         return number * 42;
+     }
+ }
+```
+
+However, the `serialVersionUID` field, which must be `private`, `static`, `final`, and of type `long`, in Serializable
+classes is not deleted because it is used during deserialization of byte stream.
 
 ------
 
