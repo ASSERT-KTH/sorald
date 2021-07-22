@@ -1845,5 +1845,71 @@
             "lastModified": "2021-06-01 16:54:57.141186",
             "isLegacyRecord": false
         }
+    },
+    "AddstarMC/Prism-Bukkit#247": {
+        "repoSlug": "AddstarMC/Prism-Bukkit",
+        "prMetadata": {
+            "url": "https://github.com/AddstarMC/Prism-Bukkit/pull/247",
+            "createdAt": "2021-02-11 14:02:42",
+            "closedAt": "2021-02-11 21:02:20",
+            "mergedAt": "None",
+            "state": "closed",
+            "isMerged": false,
+            "number": 247
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "CastArithmeticOperand",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2184",
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 136,
+                            "endColumn": 31,
+                            "startColumn": 30,
+                            "startLine": 136,
+                            "filePath": "Prism/src/main/java/me/botsko/prism/actions/GenericAction.java",
+                            "violationSpecifier": "2184:Prism/src/main/java/me/botsko/prism/actions/GenericAction.java:136:30:136:31"
+                        }
+                    ],
+                    "nbViolationsBefore": 2,
+                    "nbViolationsAfter": 1
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: b42fe921",
+                "javaVersion": "11.0.11",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    "Prism-Bukkit/",
+                    "--file-output-strategy",
+                    "IN_PLACE",
+                    "--stats-output-file",
+                    "stats.json",
+                    "--rule-keys",
+                    "2184"
+                ]
+            },
+            "totalTimeMs": 13103,
+            "repairTimeMs": 564,
+            "startTimeMs": 1626973422350,
+            "crashes": [],
+            "endTimeMs": 1626973435453,
+            "parseTimeMs": 6166
+        },
+        "diffs": {
+            "initial": "diff --git a/Prism/src/main/java/me/botsko/prism/actions/GenericAction.java b/Prism/src/main/java/me/botsko/prism/actions/GenericAction.java\nindex 32079384..e77072eb 100644\n--- a/Prism/src/main/java/me/botsko/prism/actions/GenericAction.java\n+++ b/Prism/src/main/java/me/botsko/prism/actions/GenericAction.java\n@@ -133,7 +133,7 @@ public String getTimeSince() {\n             return \"just now\";\n         }\n \n-        long period = 24 * 60 * 60;\n+        long period = (24l * 60) * 60;\n \n         final long[] diff = {\n               diffInSeconds / period,\n",
+            "final": "diff --git a/Prism/src/main/java/me/botsko/prism/actions/GenericAction.java b/Prism/src/main/java/me/botsko/prism/actions/GenericAction.java\nindex 32079384..e77072eb 100644\n--- a/Prism/src/main/java/me/botsko/prism/actions/GenericAction.java\n+++ b/Prism/src/main/java/me/botsko/prism/actions/GenericAction.java\n@@ -133,7 +133,7 @@ public String getTimeSince() {\n             return \"just now\";\n         }\n \n-        long period = 24 * 60 * 60;\n+        long period = (24l * 60) * 60;\n \n         final long[] diff = {\n               diffInSeconds / period,\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-07-22 19:19:13.063854",
+            "lastModified": "2021-07-22 19:19:24.432633",
+            "isLegacyRecord": false
+        }
     }
 }
