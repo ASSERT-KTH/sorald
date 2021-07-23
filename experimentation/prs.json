@@ -2351,5 +2351,71 @@
             "lastModified": "2021-07-23 21:54:06.908335",
             "isLegacyRecord": false
         }
+    },
+    "DanielYWoo/fast-object-pool#26": {
+        "repoSlug": "DanielYWoo/fast-object-pool",
+        "prMetadata": {
+            "url": "https://github.com/DanielYWoo/fast-object-pool/pull/26",
+            "createdAt": "2021-02-11 18:41:56",
+            "closedAt": "2021-02-12 16:51:36",
+            "mergedAt": "2021-02-12 16:51:36",
+            "state": "closed",
+            "isMerged": true,
+            "number": 26
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "InterruptedException",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2142",
+                    "nbViolationsBefore": 1,
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 170,
+                            "endColumn": 39,
+                            "startColumn": 17,
+                            "startLine": 170,
+                            "filePath": "Start.java",
+                            "violationSpecifier": "2142:Start.java:170:17:170:39"
+                        }
+                    ],
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: b42fe921",
+                "javaVersion": "11.0.11",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    "fast-object-pool/src/benchmark/",
+                    "--file-output-strategy",
+                    "IN_PLACE",
+                    "--stats-output-file",
+                    "stats.json",
+                    "--rule-keys",
+                    "2142"
+                ]
+            },
+            "totalTimeMs": 4523,
+            "repairTimeMs": 582,
+            "startTimeMs": 1627070315010,
+            "crashes": [],
+            "endTimeMs": 1627070319533,
+            "parseTimeMs": 1749
+        },
+        "diffs": {
+            "initial": "diff --git a/src/benchmark/Start.java b/src/benchmark/Start.java\nindex a90691b..a303e78 100644\n--- a/src/benchmark/Start.java\n+++ b/src/benchmark/Start.java\n@@ -169,6 +169,7 @@ private static void cleanup() {\n             Thread.sleep(1000L * 2);\n         } catch (InterruptedException e) {\n             e.printStackTrace();\n+            Thread.currentThread().interrupt();\n         }\n         System.out.println();\n     }\n",
+            "final": "diff --git a/src/benchmark/Start.java b/src/benchmark/Start.java\nindex a90691b..a303e78 100644\n--- a/src/benchmark/Start.java\n+++ b/src/benchmark/Start.java\n@@ -169,6 +169,7 @@ private static void cleanup() {\n             Thread.sleep(1000L * 2);\n         } catch (InterruptedException e) {\n             e.printStackTrace();\n+            Thread.currentThread().interrupt();\n         }\n         System.out.println();\n     }\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-07-23 22:00:45.417623",
+            "lastModified": "2021-07-23 22:01:07.786677",
+            "isLegacyRecord": false
+        }
     }
 }
