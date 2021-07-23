@@ -2285,5 +2285,71 @@
             "lastModified": "2021-07-23 21:45:57.490084",
             "isLegacyRecord": false
         }
+    },
+    "techa03/goodsKill#79": {
+        "repoSlug": "techa03/goodsKill",
+        "prMetadata": {
+            "url": "https://github.com/techa03/goodsKill/pull/79",
+            "createdAt": "2021-02-11 18:27:02",
+            "closedAt": "2021-03-20 02:49:15",
+            "mergedAt": "None",
+            "state": "closed",
+            "isMerged": false,
+            "number": 79
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "InterruptedException",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2142",
+                    "nbViolationsBefore": 1,
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 35,
+                            "endColumn": 43,
+                            "startColumn": 21,
+                            "startLine": 35,
+                            "filePath": "java/com/goodskill/chat/client/http/ChatHttpClient.java",
+                            "violationSpecifier": "2142:java/com/goodskill/chat/client/http/ChatHttpClient.java:35:21:35:43"
+                        }
+                    ],
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: b42fe921",
+                "javaVersion": "11.0.11",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    "goodsKill/goodskill-chat-provider/src/main/",
+                    "--file-output-strategy",
+                    "IN_PLACE",
+                    "--stats-output-file",
+                    "stats.json",
+                    "--rule-keys",
+                    "2142"
+                ]
+            },
+            "totalTimeMs": 2823,
+            "repairTimeMs": 272,
+            "startTimeMs": 1627069981251,
+            "crashes": [],
+            "endTimeMs": 1627069984074,
+            "parseTimeMs": 700
+        },
+        "diffs": {
+            "initial": "diff --git a/goodskill-chat-provider/src/main/java/com/goodskill/chat/client/http/ChatHttpClient.java b/goodskill-chat-provider/src/main/java/com/goodskill/chat/client/http/ChatHttpClient.java\nindex 5b32bf2..e0f8b90 100644\n--- a/goodskill-chat-provider/src/main/java/com/goodskill/chat/client/http/ChatHttpClient.java\n+++ b/goodskill-chat-provider/src/main/java/com/goodskill/chat/client/http/ChatHttpClient.java\n@@ -34,6 +34,7 @@ protected void sendMsg(ChatMessageDto dto) {\n                 channel = initConnection();\n             } catch (InterruptedException e) {\n                 e.printStackTrace();\n+\t\tThread.currentThread().interrupt();\n             }\n         }\n \n",
+            "final": "diff --git a/goodskill-chat-provider/src/main/java/com/goodskill/chat/client/http/ChatHttpClient.java b/goodskill-chat-provider/src/main/java/com/goodskill/chat/client/http/ChatHttpClient.java\nindex 5b32bf2..e0f8b90 100644\n--- a/goodskill-chat-provider/src/main/java/com/goodskill/chat/client/http/ChatHttpClient.java\n+++ b/goodskill-chat-provider/src/main/java/com/goodskill/chat/client/http/ChatHttpClient.java\n@@ -34,6 +34,7 @@ protected void sendMsg(ChatMessageDto dto) {\n                 channel = initConnection();\n             } catch (InterruptedException e) {\n                 e.printStackTrace();\n+\t\tThread.currentThread().interrupt();\n             }\n         }\n \n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-07-23 21:53:49.289825",
+            "lastModified": "2021-07-23 21:54:06.908335",
+            "isLegacyRecord": false
+        }
     }
 }
