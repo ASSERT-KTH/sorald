@@ -2219,5 +2219,71 @@
             "lastModified": "2021-07-23 21:31:52.283332",
             "isLegacyRecord": false
         }
+    },
+    "kafka-ops/julie#207": {
+        "repoSlug": "kafka-ops/julie",
+        "prMetadata": {
+            "url": "https://github.com/kafka-ops/julie/pull/207",
+            "createdAt": "2021-02-11 18:13:59",
+            "closedAt": "2021-02-26 15:22:36",
+            "mergedAt": "2021-02-26 15:22:36",
+            "state": "closed",
+            "isMerged": true,
+            "number": 207
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "UnclosedResources",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2095",
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 77,
+                            "endColumn": 77,
+                            "startColumn": 24,
+                            "startLine": 77,
+                            "filePath": "src/main/java/com/purbon/kafka/topology/backend/FileBackend.java",
+                            "violationSpecifier": "2095:src/main/java/com/purbon/kafka/topology/backend/FileBackend.java:77:24:77:77"
+                        }
+                    ],
+                    "nbViolationsBefore": 2,
+                    "nbViolationsAfter": 1
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: b42fe921",
+                "javaVersion": "11.0.11",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    "kafka-topology-builder/",
+                    "--file-output-strategy",
+                    "IN_PLACE",
+                    "--stats-output-file",
+                    "stats.json",
+                    "--rule-keys",
+                    "2095"
+                ]
+            },
+            "totalTimeMs": 12008,
+            "repairTimeMs": 491,
+            "startTimeMs": 1627069392680,
+            "crashes": [],
+            "endTimeMs": 1627069404688,
+            "parseTimeMs": 4097
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java b/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java\nindex 4c590387..bfcebbf3 100644\n--- a/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java\n+++ b/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java\n@@ -74,23 +74,24 @@ public void createOrOpen(Mode mode) {\n   public Set<TopologyAclBinding> load(URI uri) throws IOException {\n     Path filePath = Paths.get(uri);\n     Set<TopologyAclBinding> bindings = new LinkedHashSet<>();\n-    BufferedReader in = new BufferedReader(new FileReader(filePath.toFile()));\n-    String type = in.readLine();\n-    String line = null;\n-    while ((line = in.readLine()) != null) {\n-      TopologyAclBinding binding = null;\n-      if (line.equalsIgnoreCase(\"ServiceAccounts\")) {\n-        // process service accounts, should break from here.\n-        break;\n-      }\n-      if (type.equalsIgnoreCase(ACLS_TAG)) {\n-        binding = buildAclBinding(line);\n-      } else {\n-        throw new IOException(\"Binding type ( \" + type + \" )not supported.\");\n-      }\n-      bindings.add(binding);\n+    try (BufferedReader in = new BufferedReader(new FileReader(filePath.toFile()))) {\n+\tString type = in.readLine();\n+\tString line = null;\n+\twhile ((line = in.readLine()) != null) {\n+\t  TopologyAclBinding binding = null;\n+\t  if (line.equalsIgnoreCase(\"ServiceAccounts\")) {\n+\t\t// process service accounts, should break from here.\n+\t\tbreak;\n+\t  }\n+\t  if (type.equalsIgnoreCase(ACLS_TAG)) {\n+\t\tbinding = buildAclBinding(line);\n+\t  } else {\n+\t\tthrow new IOException(\"Binding type ( \" + type + \" )not supported.\");\n+\t  }\n+\t  bindings.add(binding);\n+\t}\n+\treturn bindings;\n     }\n-    return bindings;\n   }\n \n   public Set<ServiceAccount> loadServiceAccounts() throws IOException {\n",
+            "final": "diff --git a/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java b/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java\nindex 4c590387..bfcebbf3 100644\n--- a/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java\n+++ b/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java\n@@ -74,23 +74,24 @@ public void createOrOpen(Mode mode) {\n   public Set<TopologyAclBinding> load(URI uri) throws IOException {\n     Path filePath = Paths.get(uri);\n     Set<TopologyAclBinding> bindings = new LinkedHashSet<>();\n-    BufferedReader in = new BufferedReader(new FileReader(filePath.toFile()));\n-    String type = in.readLine();\n-    String line = null;\n-    while ((line = in.readLine()) != null) {\n-      TopologyAclBinding binding = null;\n-      if (line.equalsIgnoreCase(\"ServiceAccounts\")) {\n-        // process service accounts, should break from here.\n-        break;\n-      }\n-      if (type.equalsIgnoreCase(ACLS_TAG)) {\n-        binding = buildAclBinding(line);\n-      } else {\n-        throw new IOException(\"Binding type ( \" + type + \" )not supported.\");\n-      }\n-      bindings.add(binding);\n+    try (BufferedReader in = new BufferedReader(new FileReader(filePath.toFile()))) {\n+\tString type = in.readLine();\n+\tString line = null;\n+\twhile ((line = in.readLine()) != null) {\n+\t  TopologyAclBinding binding = null;\n+\t  if (line.equalsIgnoreCase(\"ServiceAccounts\")) {\n+\t\t// process service accounts, should break from here.\n+\t\tbreak;\n+\t  }\n+\t  if (type.equalsIgnoreCase(ACLS_TAG)) {\n+\t\tbinding = buildAclBinding(line);\n+\t  } else {\n+\t\tthrow new IOException(\"Binding type ( \" + type + \" )not supported.\");\n+\t  }\n+\t  bindings.add(binding);\n+\t}\n+\treturn bindings;\n     }\n-    return bindings;\n   }\n \n   public Set<ServiceAccount> loadServiceAccounts() throws IOException {\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-07-23 21:45:20.649515",
+            "lastModified": "2021-07-23 21:45:57.490084",
+            "isLegacyRecord": false
+        }
     }
 }
