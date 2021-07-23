@@ -1911,5 +1911,71 @@
             "lastModified": "2021-07-22 19:19:24.432633",
             "isLegacyRecord": false
         }
+    },
+    "AddstarMC/Prism-Bukkit#248": {
+        "repoSlug": "AddstarMC/Prism-Bukkit",
+        "prMetadata": {
+            "url": "https://github.com/AddstarMC/Prism-Bukkit/pull/248",
+            "createdAt": "2021-02-11 17:02:56",
+            "closedAt": "2021-02-11 21:24:45",
+            "mergedAt": "None",
+            "state": "closed",
+            "isMerged": false,
+            "number": 248
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "UnclosedResources",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2095",
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 49,
+                            "endColumn": 61,
+                            "startColumn": 31,
+                            "startLine": 49,
+                            "filePath": "Prism/src/main/java/me/botsko/prism/database/mysql/HikariHelper.java",
+                            "violationSpecifier": "2095:Prism/src/main/java/me/botsko/prism/database/mysql/HikariHelper.java:49:31:49:61"
+                        }
+                    ],
+                    "nbViolationsBefore": 1,
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: b42fe921",
+                "javaVersion": "11.0.11",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    "Prism-Bukkit/",
+                    "--file-output-strategy",
+                    "IN_PLACE",
+                    "--stats-output-file",
+                    "stats.json",
+                    "--rule-keys",
+                    "2095"
+                ]
+            },
+            "totalTimeMs": 21553,
+            "repairTimeMs": 504,
+            "startTimeMs": 1627064512681,
+            "crashes": [],
+            "endTimeMs": 1627064534234,
+            "parseTimeMs": 5142
+        },
+        "diffs": {
+            "initial": "diff --git a/Prism/src/main/java/me/botsko/prism/database/mysql/HikariHelper.java b/Prism/src/main/java/me/botsko/prism/database/mysql/HikariHelper.java\nindex b400b223..2b27ef61 100644\n--- a/Prism/src/main/java/me/botsko/prism/database/mysql/HikariHelper.java\n+++ b/Prism/src/main/java/me/botsko/prism/database/mysql/HikariHelper.java\n@@ -42,15 +42,13 @@ public static void createPropertiesFile(File propFile, HikariConfig dbConfig, bo\n                 prop.setProperty(\"dataSource.\" + name, val);\n             }\n         }\n-        try {\n-            if (!propFile.getParentFile().exists() && !propFile.getParentFile().mkdirs()) {\n+        try (OutputStream out = new FileOutputStream(propFile)) {\n+            if ((!propFile.getParentFile().exists()) && (!propFile.getParentFile().mkdirs())) {\n                 Prism.log(\"Prism Directory couldn't be created\");\n             }\n-            OutputStream out = new FileOutputStream(propFile);\n-            prop.store(out, \"Prism Hikari Datasource Properties for\"\n-                    + \" advanced database Configuration\");\n+            prop.store(out, \"Prism Hikari Datasource Properties for\" + \" advanced database Configuration\");\n             Prism.log(\"Database Configuration saved to - \" + propFile.getPath());\n-        } catch (IOException e) {\n+        } catch (java.io.IOException e) {\n             Prism.log(\"Could not save Hikari.properties - \" + e.getMessage());\n         }\n     }\n",
+            "final": "diff --git a/Prism/src/main/java/me/botsko/prism/database/mysql/HikariHelper.java b/Prism/src/main/java/me/botsko/prism/database/mysql/HikariHelper.java\nindex b400b223..2b27ef61 100644\n--- a/Prism/src/main/java/me/botsko/prism/database/mysql/HikariHelper.java\n+++ b/Prism/src/main/java/me/botsko/prism/database/mysql/HikariHelper.java\n@@ -42,15 +42,13 @@ public static void createPropertiesFile(File propFile, HikariConfig dbConfig, bo\n                 prop.setProperty(\"dataSource.\" + name, val);\n             }\n         }\n-        try {\n-            if (!propFile.getParentFile().exists() && !propFile.getParentFile().mkdirs()) {\n+        try (OutputStream out = new FileOutputStream(propFile)) {\n+            if ((!propFile.getParentFile().exists()) && (!propFile.getParentFile().mkdirs())) {\n                 Prism.log(\"Prism Directory couldn't be created\");\n             }\n-            OutputStream out = new FileOutputStream(propFile);\n-            prop.store(out, \"Prism Hikari Datasource Properties for\"\n-                    + \" advanced database Configuration\");\n+            prop.store(out, \"Prism Hikari Datasource Properties for\" + \" advanced database Configuration\");\n             Prism.log(\"Database Configuration saved to - \" + propFile.getPath());\n-        } catch (IOException e) {\n+        } catch (java.io.IOException e) {\n             Prism.log(\"Could not save Hikari.properties - \" + e.getMessage());\n         }\n     }\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-07-23 20:31:01.619416",
+            "lastModified": "2021-07-23 20:33:33.931388",
+            "isLegacyRecord": false
+        }
     }
 }
