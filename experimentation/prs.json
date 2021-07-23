@@ -2417,5 +2417,77 @@
             "lastModified": "2021-07-23 22:01:07.786677",
             "isLegacyRecord": false
         }
+    },
+    "LinShunKang/MyPerf4J#71": {
+        "repoSlug": "LinShunKang/MyPerf4J",
+        "prMetadata": {
+            "url": "https://github.com/LinShunKang/MyPerf4J/pull/71",
+            "createdAt": "2021-02-12 17:37:25",
+            "closedAt": "2021-03-04 23:23:05",
+            "mergedAt": "2021-03-04 23:23:05",
+            "state": "closed",
+            "isMerged": true,
+            "number": 71
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "CastArithmeticOperand",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2184",
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 142,
+                            "endColumn": 61,
+                            "startColumn": 60,
+                            "startLine": 142,
+                            "filePath": "java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java",
+                            "violationSpecifier": "2184:java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java:142:60:142:61"
+                        }
+                    ],
+                    "nbViolationsBefore": 1,
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: b42fe921",
+                "javaVersion": "11.0.11",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    "MyPerf4J/MyPerf4J-Base/src/main/",
+                    "--file-output-strategy",
+                    "IN_PLACE",
+                    "--stats-output-file",
+                    "stats.json",
+                    "--rule-keys",
+                    "2184"
+                ]
+            },
+            "totalTimeMs": 7122,
+            "repairTimeMs": 459,
+            "startTimeMs": 1627070898411,
+            "crashes": [],
+            "endTimeMs": 1627070905533,
+            "parseTimeMs": 2598
+        },
+        "diffs": {
+            "initial": "diff --git a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\nindex 8eab18b..21aece5 100644\n--- a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\n+++ b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\n@@ -139,6 +139,6 @@ public final class MyAtomicIntArray implements Serializable {\n \n     public void reset() {\n         final int[] array = this.array;\n-        unsafe.setMemory(array, byteOffset(0), array.length * scale, (byte) 0);\n+        unsafe.setMemory(array, byteOffset(0), (long) array.length * scale, ((byte) (0)));\n     }\n }", 
+            "final": "diff --git a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\nindex 8eab18b..7d36b35 100644\n--- a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\n+++ b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\n@@ -139,6 +139,6 @@ public int addAndGet(int i, int delta) {\n \n     public void reset() {\n         final int[] array = this.array;\n-        unsafe.setMemory(array, byteOffset(0), array.length * scale, (byte) 0);\n+        unsafe.setMemory(array, byteOffset(0), (long) array.length * scale, (byte) 0);\n     }\n }\n"
+        },
+        "manualEdits": [
+            {
+                "type": "afterOpenPr",
+                "reason": "fixing checkstyle issues",
+                "diff": "diff --git a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\nindex 21aece5..8eab18b 100644\n--- a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\n+++ b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\n@@ -139,6 +139,6 @@ public final class MyAtomicIntArray implements Serializable {\n \n     public void reset() {\n         final int[] array = this.array;\n-        unsafe.setMemory(array, byteOffset(0), (long) array.length * scale, ((byte) (0)));\n+        unsafe.setMemory(array, byteOffset(0), array.length * scale, (byte) 0);\n     }\n }\n"
+            }
+        ],
+        "recordMetadata": {
+            "createdAt": "2021-07-23 22:09:30.965466",
+            "lastModified": "2021-07-23 22:14:00.011405",
+            "isLegacyRecord": false
+        }
     }
 }
