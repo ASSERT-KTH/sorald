@@ -1845,5 +1845,275 @@
             "lastModified": "2021-06-01 16:54:57.141186",
             "isLegacyRecord": false
         }
+    },
+    "LinShunKang/MyPerf4J#70": {
+        "repoSlug": "LinShunKang/MyPerf4J",
+        "prMetadata": {
+            "url": "https://github.com/LinShunKang/MyPerf4J/pull/70",
+            "createdAt": "2021-02-11 17:44:21",
+            "closedAt": "2021-02-12 07:24:49",
+            "mergedAt": "2021-02-12 07:24:49",
+            "state": "closed",
+            "isMerged": true,
+            "number": 70
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "InterruptedException",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2142",
+                    "nbViolationsBefore": 1,
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 32,
+                            "endColumn": 43,
+                            "startColumn": 21,
+                            "startLine": 32,
+                            "filePath": "java/cn/myperf4j/base/util/concurrent/ExecutorManager.java",
+                            "violationSpecifier": "2142:java/cn/myperf4j/base/util/concurrent/ExecutorManager.java:32:21:32:43"
+                        }
+                    ],
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: b42fe921",
+                "javaVersion": "11.0.11",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    "myperf4j-origina/MyPerf4J-Base/src/main/",
+                    "--file-output-strategy",
+                    "IN_PLACE",
+                    "--stats-output-file",
+                    "stats.json",
+                    "--rule-keys",
+                    "2142"
+                ]
+            },
+            "totalTimeMs": 7144,
+            "repairTimeMs": 281,
+            "startTimeMs": 1627068645435,
+            "crashes": [],
+            "endTimeMs": 1627068652579,
+            "parseTimeMs": 2860
+        },
+        "diffs": {
+            "initial": "diff --git a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/ExecutorManager.java b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/ExecutorManager.java\nindex 83e1e9d..7ded6b4 100644\n--- a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/ExecutorManager.java\n+++ b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/ExecutorManager.java\n@@ -31,6 +31,7 @@ public static void stopAll(long timeout, TimeUnit unit) {\n                 executorService.awaitTermination(timeout, unit);\n             } catch (InterruptedException e) {\n                 Logger.error(\"ExecutorManager.stopAll()\", e);\n+                Thread.currentThread().interrupt();\n             }\n         }\n     }\n",
+            "final": "diff --git a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/ExecutorManager.java b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/ExecutorManager.java\nindex 83e1e9d..7ded6b4 100644\n--- a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/ExecutorManager.java\n+++ b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/ExecutorManager.java\n@@ -31,6 +31,7 @@ public static void stopAll(long timeout, TimeUnit unit) {\n                 executorService.awaitTermination(timeout, unit);\n             } catch (InterruptedException e) {\n                 Logger.error(\"ExecutorManager.stopAll()\", e);\n+                Thread.currentThread().interrupt();\n             }\n         }\n     }\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-07-23 21:31:31.115125",
+            "lastModified": "2021-07-23 21:31:52.283332",
+            "isLegacyRecord": false
+        }
+    },
+    "kafka-ops/julie#207": {
+        "repoSlug": "kafka-ops/julie",
+        "prMetadata": {
+            "url": "https://github.com/kafka-ops/julie/pull/207",
+            "createdAt": "2021-02-11 18:13:59",
+            "closedAt": "2021-02-26 15:22:36",
+            "mergedAt": "2021-02-26 15:22:36",
+            "state": "closed",
+            "isMerged": true,
+            "number": 207
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "UnclosedResources",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2095",
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 77,
+                            "endColumn": 77,
+                            "startColumn": 24,
+                            "startLine": 77,
+                            "filePath": "src/main/java/com/purbon/kafka/topology/backend/FileBackend.java",
+                            "violationSpecifier": "2095:src/main/java/com/purbon/kafka/topology/backend/FileBackend.java:77:24:77:77"
+                        }
+                    ],
+                    "nbViolationsBefore": 2,
+                    "nbViolationsAfter": 1
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: b42fe921",
+                "javaVersion": "11.0.11",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    "kafka-topology-builder/",
+                    "--file-output-strategy",
+                    "IN_PLACE",
+                    "--stats-output-file",
+                    "stats.json",
+                    "--rule-keys",
+                    "2095"
+                ]
+            },
+            "totalTimeMs": 12008,
+            "repairTimeMs": 491,
+            "startTimeMs": 1627069392680,
+            "crashes": [],
+            "endTimeMs": 1627069404688,
+            "parseTimeMs": 4097
+        },
+        "diffs": {
+            "initial": "diff --git a/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java b/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java\nindex 4c590387..bfcebbf3 100644\n--- a/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java\n+++ b/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java\n@@ -74,23 +74,24 @@ public void createOrOpen(Mode mode) {\n   public Set<TopologyAclBinding> load(URI uri) throws IOException {\n     Path filePath = Paths.get(uri);\n     Set<TopologyAclBinding> bindings = new LinkedHashSet<>();\n-    BufferedReader in = new BufferedReader(new FileReader(filePath.toFile()));\n-    String type = in.readLine();\n-    String line = null;\n-    while ((line = in.readLine()) != null) {\n-      TopologyAclBinding binding = null;\n-      if (line.equalsIgnoreCase(\"ServiceAccounts\")) {\n-        // process service accounts, should break from here.\n-        break;\n-      }\n-      if (type.equalsIgnoreCase(ACLS_TAG)) {\n-        binding = buildAclBinding(line);\n-      } else {\n-        throw new IOException(\"Binding type ( \" + type + \" )not supported.\");\n-      }\n-      bindings.add(binding);\n+    try (BufferedReader in = new BufferedReader(new FileReader(filePath.toFile()))) {\n+\tString type = in.readLine();\n+\tString line = null;\n+\twhile ((line = in.readLine()) != null) {\n+\t  TopologyAclBinding binding = null;\n+\t  if (line.equalsIgnoreCase(\"ServiceAccounts\")) {\n+\t\t// process service accounts, should break from here.\n+\t\tbreak;\n+\t  }\n+\t  if (type.equalsIgnoreCase(ACLS_TAG)) {\n+\t\tbinding = buildAclBinding(line);\n+\t  } else {\n+\t\tthrow new IOException(\"Binding type ( \" + type + \" )not supported.\");\n+\t  }\n+\t  bindings.add(binding);\n+\t}\n+\treturn bindings;\n     }\n-    return bindings;\n   }\n \n   public Set<ServiceAccount> loadServiceAccounts() throws IOException {\n",
+            "final": "diff --git a/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java b/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java\nindex 4c590387..bfcebbf3 100644\n--- a/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java\n+++ b/src/main/java/com/purbon/kafka/topology/backend/FileBackend.java\n@@ -74,23 +74,24 @@ public void createOrOpen(Mode mode) {\n   public Set<TopologyAclBinding> load(URI uri) throws IOException {\n     Path filePath = Paths.get(uri);\n     Set<TopologyAclBinding> bindings = new LinkedHashSet<>();\n-    BufferedReader in = new BufferedReader(new FileReader(filePath.toFile()));\n-    String type = in.readLine();\n-    String line = null;\n-    while ((line = in.readLine()) != null) {\n-      TopologyAclBinding binding = null;\n-      if (line.equalsIgnoreCase(\"ServiceAccounts\")) {\n-        // process service accounts, should break from here.\n-        break;\n-      }\n-      if (type.equalsIgnoreCase(ACLS_TAG)) {\n-        binding = buildAclBinding(line);\n-      } else {\n-        throw new IOException(\"Binding type ( \" + type + \" )not supported.\");\n-      }\n-      bindings.add(binding);\n+    try (BufferedReader in = new BufferedReader(new FileReader(filePath.toFile()))) {\n+\tString type = in.readLine();\n+\tString line = null;\n+\twhile ((line = in.readLine()) != null) {\n+\t  TopologyAclBinding binding = null;\n+\t  if (line.equalsIgnoreCase(\"ServiceAccounts\")) {\n+\t\t// process service accounts, should break from here.\n+\t\tbreak;\n+\t  }\n+\t  if (type.equalsIgnoreCase(ACLS_TAG)) {\n+\t\tbinding = buildAclBinding(line);\n+\t  } else {\n+\t\tthrow new IOException(\"Binding type ( \" + type + \" )not supported.\");\n+\t  }\n+\t  bindings.add(binding);\n+\t}\n+\treturn bindings;\n     }\n-    return bindings;\n   }\n \n   public Set<ServiceAccount> loadServiceAccounts() throws IOException {\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-07-23 21:45:20.649515",
+            "lastModified": "2021-07-23 21:45:57.490084",
+            "isLegacyRecord": false
+        }
+    },
+    "DanielYWoo/fast-object-pool#26": {
+        "repoSlug": "DanielYWoo/fast-object-pool",
+        "prMetadata": {
+            "url": "https://github.com/DanielYWoo/fast-object-pool/pull/26",
+            "createdAt": "2021-02-11 18:41:56",
+            "closedAt": "2021-02-12 16:51:36",
+            "mergedAt": "2021-02-12 16:51:36",
+            "state": "closed",
+            "isMerged": true,
+            "number": 26
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "InterruptedException",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2142",
+                    "nbViolationsBefore": 1,
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 170,
+                            "endColumn": 39,
+                            "startColumn": 17,
+                            "startLine": 170,
+                            "filePath": "Start.java",
+                            "violationSpecifier": "2142:Start.java:170:17:170:39"
+                        }
+                    ],
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: b42fe921",
+                "javaVersion": "11.0.11",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    "fast-object-pool/src/benchmark/",
+                    "--file-output-strategy",
+                    "IN_PLACE",
+                    "--stats-output-file",
+                    "stats.json",
+                    "--rule-keys",
+                    "2142"
+                ]
+            },
+            "totalTimeMs": 4523,
+            "repairTimeMs": 582,
+            "startTimeMs": 1627070315010,
+            "crashes": [],
+            "endTimeMs": 1627070319533,
+            "parseTimeMs": 1749
+        },
+        "diffs": {
+            "initial": "diff --git a/src/benchmark/Start.java b/src/benchmark/Start.java\nindex a90691b..a303e78 100644\n--- a/src/benchmark/Start.java\n+++ b/src/benchmark/Start.java\n@@ -169,6 +169,7 @@ private static void cleanup() {\n             Thread.sleep(1000L * 2);\n         } catch (InterruptedException e) {\n             e.printStackTrace();\n+            Thread.currentThread().interrupt();\n         }\n         System.out.println();\n     }\n",
+            "final": "diff --git a/src/benchmark/Start.java b/src/benchmark/Start.java\nindex a90691b..a303e78 100644\n--- a/src/benchmark/Start.java\n+++ b/src/benchmark/Start.java\n@@ -169,6 +169,7 @@ private static void cleanup() {\n             Thread.sleep(1000L * 2);\n         } catch (InterruptedException e) {\n             e.printStackTrace();\n+            Thread.currentThread().interrupt();\n         }\n         System.out.println();\n     }\n"
+        },
+        "manualEdits": [],
+        "recordMetadata": {
+            "createdAt": "2021-07-23 22:00:45.417623",
+            "lastModified": "2021-07-23 22:01:07.786677",
+            "isLegacyRecord": false
+        }
+    },
+    "LinShunKang/MyPerf4J#71": {
+        "repoSlug": "LinShunKang/MyPerf4J",
+        "prMetadata": {
+            "url": "https://github.com/LinShunKang/MyPerf4J/pull/71",
+            "createdAt": "2021-02-12 17:37:25",
+            "closedAt": "2021-03-04 23:23:05",
+            "mergedAt": "2021-03-04 23:23:05",
+            "state": "closed",
+            "isMerged": true,
+            "number": 71
+        },
+        "soraldStatistics": {
+            "repairs": [
+                {
+                    "nbPerformedRepairs": 1,
+                    "ruleName": "CastArithmeticOperand",
+                    "crashedRepairsLocations": [],
+                    "nbCrashedRepairs": 0,
+                    "ruleKey": "2184",
+                    "performedRepairsLocations": [
+                        {
+                            "endLine": 142,
+                            "endColumn": 61,
+                            "startColumn": 60,
+                            "startLine": 142,
+                            "filePath": "java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java",
+                            "violationSpecifier": "2184:java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java:142:60:142:61"
+                        }
+                    ],
+                    "nbViolationsBefore": 1,
+                    "nbViolationsAfter": 0
+                }
+            ],
+            "executionInfo": {
+                "soraldVersion": "commit: b42fe921",
+                "javaVersion": "11.0.11",
+                "originalArgs": [
+                    "repair",
+                    "--original-files-path",
+                    "MyPerf4J/MyPerf4J-Base/src/main/",
+                    "--file-output-strategy",
+                    "IN_PLACE",
+                    "--stats-output-file",
+                    "stats.json",
+                    "--rule-keys",
+                    "2184"
+                ]
+            },
+            "totalTimeMs": 7122,
+            "repairTimeMs": 459,
+            "startTimeMs": 1627070898411,
+            "crashes": [],
+            "endTimeMs": 1627070905533,
+            "parseTimeMs": 2598
+        },
+        "diffs": {
+            "initial": "diff --git a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\nindex 8eab18b..21aece5 100644\n--- a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\n+++ b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\n@@ -139,6 +139,6 @@ public final class MyAtomicIntArray implements Serializable {\n \n     public void reset() {\n         final int[] array = this.array;\n-        unsafe.setMemory(array, byteOffset(0), array.length * scale, (byte) 0);\n+        unsafe.setMemory(array, byteOffset(0), (long) array.length * scale, ((byte) (0)));\n     }\n }",
+            "final": "diff --git a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\nindex 8eab18b..7d36b35 100644\n--- a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\n+++ b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\n@@ -139,6 +139,6 @@ public int addAndGet(int i, int delta) {\n \n     public void reset() {\n         final int[] array = this.array;\n-        unsafe.setMemory(array, byteOffset(0), array.length * scale, (byte) 0);\n+        unsafe.setMemory(array, byteOffset(0), (long) array.length * scale, (byte) 0);\n     }\n }\n"
+        },
+        "manualEdits": [
+            {
+                "type": "afterOpenPr",
+                "reason": "fixing checkstyle issues",
+                "diff": "diff --git a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\nindex 21aece5..8eab18b 100644\n--- a/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\n+++ b/MyPerf4J-Base/src/main/java/cn/myperf4j/base/util/concurrent/MyAtomicIntArray.java\n@@ -139,6 +139,6 @@ public final class MyAtomicIntArray implements Serializable {\n \n     public void reset() {\n         final int[] array = this.array;\n-        unsafe.setMemory(array, byteOffset(0), (long) array.length * scale, ((byte) (0)));\n+        unsafe.setMemory(array, byteOffset(0), array.length * scale, (byte) 0);\n     }\n }\n"
+            }
+        ],
+        "recordMetadata": {
+            "createdAt": "2021-07-23 22:09:30.965466",
+            "lastModified": "2021-07-23 22:14:00.011405",
+            "isLegacyRecord": false
+        }
     }
 }
