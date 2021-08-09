@@ -91,46 +91,6 @@ It provided the following repairs:
     - Number of violations found: 200
     - Number of violations repaired: 1
 
-## [LinShunKang/MyPerf4J#71](https://github.com/LinShunKang/MyPerf4J/pull/71)
-This PR was opened at 2021-02-12 17:37:25 and merged at 2021-03-04 23:23:05.
-Some manual edits were performed after applying Sorald.
-
-It provided the following repairs:
-
-* [Rule 2184](https://rules.sonarsource.com/java/RSPEC-2184)
-    - Number of violations found: 1
-    - Number of violations repaired: 1
-
-## [DanielYWoo/fast-object-pool#26](https://github.com/DanielYWoo/fast-object-pool/pull/26)
-This PR was opened at 2021-02-11 18:41:56 and merged at 2021-02-12 16:51:36.
-The patch was generated fully automatically with Sorald.
-
-It provided the following repairs:
-
-* [Rule 2142](https://rules.sonarsource.com/java/RSPEC-2142)
-    - Number of violations found: 1
-    - Number of violations repaired: 1
-
-## [kafka-ops/julie#207](https://github.com/kafka-ops/julie/pull/207)
-This PR was opened at 2021-02-11 18:13:59 and merged at 2021-02-26 15:22:36.
-The patch was generated fully automatically with Sorald.
-
-It provided the following repairs:
-
-* [Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095)
-    - Number of violations found: 2
-    - Number of violations repaired: 1
-
-## [LinShunKang/MyPerf4J#70](https://github.com/LinShunKang/MyPerf4J/pull/70)
-This PR was opened at 2021-02-11 17:44:21 and merged at 2021-02-12 07:24:49.
-The patch was generated fully automatically with Sorald.
-
-It provided the following repairs:
-
-* [Rule 2142](https://rules.sonarsource.com/java/RSPEC-2142)
-    - Number of violations found: 1
-    - Number of violations repaired: 1
-
 ## [verificatum/verificatum-vmn#12](https://github.com/verificatum/verificatum-vmn/pull/12)
 This PR was opened at 2021-02-03 07:41:47 and merged at 2021-02-09 17:46:35.
 The patch was generated fully automatically with Sorald.
