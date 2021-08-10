@@ -28,7 +28,7 @@ TEMPLATE = r"""## Handled rules
 
 Sorald can currently repair violations of the following rules:
 
-* [Bug][#bug]
+* [Bug](#bug)
 {% for bug in bugs %}
     * [{{ bug.title }}]({{ bug.link_to_detail }}) ([{{ bug.sonar_url_text }}]({{ bug.sonar_url }})) {% endfor %}
 
