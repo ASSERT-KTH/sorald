@@ -63,3 +63,9 @@ class SORALD_STATS:
         PR_URL = "PR_url"
         RULE_KEY = "rule_id"
         NUM_VIOLATIONS = "nb_violations"
+
+
+class SONAR_METADATA:
+    """Keys for sonar rule metadata"""
+
+    TITLE = "title"
