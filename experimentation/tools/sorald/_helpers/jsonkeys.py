@@ -69,3 +69,5 @@ class SONAR_METADATA:
     """Keys for sonar rule metadata"""
 
     TITLE = "title"
+    TYPE = "type"
+    RULE_SPECIFICATION = "ruleSpecification"
