@@ -7,6 +7,7 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
 
+// @spotless:off
 /**
  * Any constructor of `BigDecimal` that has a parameter of type `float` or `double` is replaced with an invocation of the `BigDecimal.valueOf(parameter)` method.
  *
@@ -35,6 +36,7 @@ import spoon.reflect.reference.CtExecutableReference;
  *
  * Check out an accepted PR in [Apache PDFBox](https://github.com/apache/pdfbox/pull/76) that repairs one BigDecimalDoubleConstructor violation.
  */
+// @spotless:on
 @ProcessorAnnotation(key = "S2111", description = "\"BigDecimal(double)\" should not be used")
 public class BigDecimalDoubleConstructorProcessor
         extends SoraldAbstractProcessor<CtConstructorCall> {

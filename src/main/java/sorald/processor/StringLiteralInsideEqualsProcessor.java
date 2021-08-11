@@ -8,6 +8,7 @@ import spoon.reflect.code.CtInvocation;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.reference.CtExecutableReference;
 
+// @spotless:off
 /**
  * String comparisons by using `equals` or `equalsIgnoreCase` in which the target for the method call is a variable and the argument is a literal are changed by swapping the variable and the literal. This avoids potential null pointer exceptions.
  *
@@ -25,6 +26,7 @@ import spoon.reflect.reference.CtExecutableReference;
  * + System.out.println("Equal? " + "foo".equals(myString));
  * ```
  */
+// @spotless:on
 @ProcessorAnnotation(
         key = "S1132",
         description =

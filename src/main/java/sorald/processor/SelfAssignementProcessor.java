@@ -13,6 +13,7 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.factory.Factory;
 
+// @spotless:off
 /**
  * Any assignment with identical left and right expressions will be processed. If the identifier being used in the self-assignment exists as both a local variable and a field, then the left expression will be changed by adding `this.` at the beginning of the expression. In any other case, including cases where there are invocations or access to another class field, such as `objectA.b = objectA.b`, the assignment will be removed.
  *
@@ -50,6 +51,7 @@ import spoon.reflect.factory.Factory;
  * }
  * ```
  */
+// @spotless:on
 @ProcessorAnnotation(key = "S1656", description = "Variables should not be self-assigned")
 public class SelfAssignementProcessor extends SoraldAbstractProcessor<CtAssignment<?, ?>> {
 

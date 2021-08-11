@@ -19,6 +19,7 @@ import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.reference.CtFieldReference;
 import spoon.reflect.reference.CtTypeReference;
 
+// @spotless:off
 /**
  * **Note:** This processor is a work in progress!
  *
@@ -64,6 +65,7 @@ import spoon.reflect.reference.CtTypeReference;
  * for other cases. The repair currently cannot handle builders and factories in
  * fields, as Sonar does not appear to issue warnings for them.
  */
+// @spotless:on
 @IncompleteProcessor(
         description =
                 "This processor is a WIP and currently supports a subset of rule 2755. "

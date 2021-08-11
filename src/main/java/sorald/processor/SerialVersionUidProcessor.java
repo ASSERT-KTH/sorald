@@ -10,6 +10,7 @@ import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.reference.CtTypeReference;
 
+// @spotless:off
 /**
  * The repair consists of add a serialVersionUID to classes implementing Serializable
  * Example:
@@ -19,6 +20,7 @@ import spoon.reflect.reference.CtTypeReference;
  * }
  * ```
  */
+// @spotless:on
 @IncompleteProcessor(
         description =
                 "This processor does not address the case where the class already has a serialVersionUID with a non long type.")

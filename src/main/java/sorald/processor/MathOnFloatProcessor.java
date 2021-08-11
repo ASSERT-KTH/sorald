@@ -9,6 +9,7 @@ import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.visitor.filter.TypeFilter;
 
+// @spotless:off
 /**
  * In arithmetic expressions between two `float`s, both left and right operands are casted to `double`.
  *
@@ -20,6 +21,7 @@ import spoon.reflect.visitor.filter.TypeFilter;
  * +        float c = (double) a + (double) b;
  * ```
  */
+// @spotless:on
 @ProcessorAnnotation(key = "S2164", description = "Math should not be performed on floats")
 public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 

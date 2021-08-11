@@ -4,6 +4,7 @@ import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtLiteral;
 import spoon.reflect.code.CtReturn;
 
+// @spotless:off
 /**
  * Returning `Integer.MIN_VALUE` can cause errors because the return value of `compareTo` is sometimes inversed, with the expectation that negative values become positive. However, inversing `Integer.MIN_VALUE` yields `Integer.MIN_VALUE` rather than `Integer.MAX_VALUE`. Any `return Integer.MIN_VALUE` in a `compareTo` method is then replaced by `return -1`.
  *
@@ -16,6 +17,7 @@ import spoon.reflect.code.CtReturn;
  * +  }
  * ```
  */
+// @spotless:on
 @ProcessorAnnotation(
         key = "S2167",
         description = "\"compareTo\" should not return \"Integer.MIN_VALUE\"")

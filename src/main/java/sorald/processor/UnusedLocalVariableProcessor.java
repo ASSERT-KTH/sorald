@@ -3,6 +3,7 @@ package sorald.processor;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtLocalVariable;
 
+// @spotless:off
 /**
  * The repair consists of deleting unused local variables. This largely overlaps
  * with rule 1854 "Unused assignments should be removed", but covers some
@@ -21,6 +22,7 @@ import spoon.reflect.code.CtLocalVariable;
  * }
  * ```
  */
+// @spotless:on
 @ProcessorAnnotation(key = "S1481", description = "Unused local variables should be removed")
 public class UnusedLocalVariableProcessor extends SoraldAbstractProcessor<CtLocalVariable<?>> {
 

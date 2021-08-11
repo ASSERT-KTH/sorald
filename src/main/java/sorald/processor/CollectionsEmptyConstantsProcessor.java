@@ -6,6 +6,7 @@ import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 
+// @spotless:off
 /**
  * The `EMPTY_...` fields from `Collections` return raw types, so they are replaced by the `empty...()` methods that return generic ones.
  *
@@ -19,6 +20,7 @@ import spoon.reflect.declaration.CtMethod;
  * + Set<String> collection3 = Collections.emptySet();
  * ```
  */
+// @spotless:on
 @ProcessorAnnotation(
         key = "S1596",
         description =

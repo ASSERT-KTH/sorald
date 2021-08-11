@@ -9,6 +9,7 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtTypeReference;
 
+// @spotless:off
 /**
  * Any invocation using getClass will be typechecked if the object's invoked by `getClass` is final or an enum. If not, the invocation will be transformed to `.class` instead of `getClass`.
  *
@@ -32,6 +33,7 @@ import spoon.reflect.reference.CtTypeReference;
  * }
  * ```
  */
+// @spotless:on
 @ProcessorAnnotation(
         key = "S3067",
         description = "\"getClass\" should not be used for synchronization")
