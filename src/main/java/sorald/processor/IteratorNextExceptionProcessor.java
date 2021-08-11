@@ -10,7 +10,6 @@ import spoon.reflect.code.CtThrow;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 
-// @spotless:off
 /**
  * Any implementation of the `Iterator.next()` method that does not throw `NoSuchElementException` has a code snippet added to its start. The code snippet consists of a call to `hasNext()` and a throw of the error.
  *
@@ -32,7 +31,6 @@ import spoon.reflect.declaration.CtType;
  *
  * Check out an accepted PR in [Apache PDFBox](https://github.com/apache/pdfbox/pull/75) that repairs two IteratorNextException violations.
  */
-// @spotless:on
 @ProcessorAnnotation(
         key = "S2272",
         description = "\"Iterator.next()\" methods should throw \"NoSuchElementException\"")

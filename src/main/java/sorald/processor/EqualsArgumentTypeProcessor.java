@@ -7,7 +7,6 @@ import spoon.reflect.code.CtReturn;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
 
-// @spotless:off
 /**
  * This repair adds a type test to any `equals(Object)` method that lacks such.
  *
@@ -23,7 +22,6 @@ import spoon.reflect.factory.Factory;
  *     }
  * ```
  */
-// @spotless:on
 @ProcessorAnnotation(
         key = "S2097",
         description = "\"equals(Object obj)\" should test argument type")

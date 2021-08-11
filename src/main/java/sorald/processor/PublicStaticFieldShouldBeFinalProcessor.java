@@ -5,7 +5,6 @@ import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
 
-// @spotless:off
 /**
  * The repair consists of making public static fields final.
  *
@@ -20,7 +19,6 @@ import spoon.reflect.declaration.ModifierKind;
  *  }
  * ```
  */
-// @spotless:on
 @IncompleteProcessor(description = "does not fix variable naming")
 @ProcessorAnnotation(key = "S1444", description = "\"public static\" fields should be constant")
 public class PublicStaticFieldShouldBeFinalProcessor extends SoraldAbstractProcessor<CtField<?>> {

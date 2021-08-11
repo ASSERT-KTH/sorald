@@ -4,7 +4,6 @@ import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtComment;
 import spoon.reflect.code.CtConstructorCall;
 
-// @spotless:off
 /**
  * Throw a `Throwable` that has been created but not thrown.
  *
@@ -16,7 +15,6 @@ import spoon.reflect.code.CtConstructorCall;
  *         }
  * ```
  */
-// @spotless:on
 @ProcessorAnnotation(
         key = "S3984",
         description = "Exception should not be created without being thrown")

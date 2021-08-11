@@ -25,7 +25,6 @@ import spoon.reflect.path.CtRole;
 import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.Filter;
 
-// @spotless:off
 /**
  * The repair consists of deleting useless assignments.
  *
@@ -92,7 +91,6 @@ import spoon.reflect.visitor.Filter;
  *
  * Check out an accepted PR in [Spoon](https://github.com/INRIA/spoon/pull/2265) that repairs one DeadStore violation.
  */
-// @spotless:on
 @ProcessorAnnotation(key = "S1854", description = "Unused assignments should be removed")
 public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {
 

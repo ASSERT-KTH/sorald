@@ -8,7 +8,6 @@ import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
 
-// @spotless:off
 /**
  * Using the standard `getClassLoader()` may not return the right class loader in Java Enterprise Edition context. Instead, `getClassLoader()` usage such as `this.getClass().getClassLoader()` and `Dummy.class.getClassLoader()` should be replaced by `Thread.currentThread().getContextClassLoader()`. In particular, such replacement only occurs if the `.java` file uses the `javax` package in its imports.
  *
@@ -20,7 +19,6 @@ import spoon.reflect.factory.Factory;
  * +    Thread.currentThread().getContextClassLoader().loadClass("anotherclass");
  * ```
  */
-// @spotless:on
 @ProcessorAnnotation(key = "S3032", description = "JEE applications should not \"getClassLoader\"")
 public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
     private HashMap<Integer, Boolean> hashCodesOfTypesUsingJEE = new HashMap<Integer, Boolean>();

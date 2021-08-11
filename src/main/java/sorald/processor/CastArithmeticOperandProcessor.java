@@ -14,7 +14,6 @@ import spoon.reflect.code.*;
 import spoon.reflect.factory.TypeFactory;
 import spoon.reflect.reference.CtTypeReference;
 
-// @spotless:off
 /**
  * In arithmetic expressions, when the operands are `int` and/or `long`, but the result of the expression is assigned to
  * a `long`, `double`, or `float`, the first left-hand is casted to the final type before the operation takes place.
@@ -31,7 +30,6 @@ import spoon.reflect.reference.CtTypeReference;
  *      }
  * ```
  */
-// @spotless:on
 @ProcessorAnnotation(key = "S2184", description = "Math operands should be cast before assignment")
 public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 

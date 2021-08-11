@@ -6,7 +6,6 @@ import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
 
-// @spotless:off
 /**
  * Sorald fixes the violations of this rule by replacing each invocation of `Thread.run()` with an invocation of `Thread.start()`.
  *
@@ -17,7 +16,6 @@ import spoon.reflect.factory.Factory;
  * +   myThread.start();
  * ```
  */
-// @spotless:on
 @ProcessorAnnotation(key = "S1217", description = "\"Thread.run()\" should not be called directly")
 public class ThreadRunProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {
     @Override

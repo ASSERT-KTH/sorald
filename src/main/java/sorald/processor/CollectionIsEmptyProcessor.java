@@ -6,7 +6,6 @@ import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 
-// @spotless:off
 /**
  * Using `Collection.size()` to test for emptiness works, but using `Collection.isEmpty()` makes the code more readable and
  * can be more performant. Expressions `myCollection.size() == 0` are replaced by `myCollection.isEmpty()`, and
@@ -21,7 +20,6 @@ import spoon.reflect.declaration.CtMethod;
  * + if (!myCollection.isEmpty()) {
  * ```
  */
-// @spotless:on
 @ProcessorAnnotation(
         key = "S1155",
         description = "Collection.isEmpty() should be used to test for emptiness")

@@ -19,7 +19,6 @@ import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.filter.TypeFilter;
 
-// @spotless:off
 /**
  * Objects which are pooled, such as Strings or boxed primitives, and potentially reused should not be used for synchronization, since they can cause deadlocks. The transformation will do the following. If the lock is a field of the current class where the synchronization block is in, then it will simply add a new field as an `Object` lock. If the lock is obtained from another object through the `get` method, it will add a new field for the new `Object` lock and a new method to get the object.
  *
@@ -49,7 +48,6 @@ import spoon.reflect.visitor.filter.TypeFilter;
  *   }
  * ```
  */
-// @spotless:on
 @ProcessorAnnotation(
         key = "S1860",
         description = "Synchronization should not be based on Strings or boxed primitives")

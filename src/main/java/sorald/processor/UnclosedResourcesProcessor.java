@@ -18,7 +18,6 @@ import spoon.reflect.declaration.CtElement;
 import spoon.reflect.reference.CtLocalVariableReference;
 import spoon.reflect.reference.CtVariableReference;
 
-// @spotless:off
 /**
  * The repair encloses the parent block of resource initialization in a try-with resources.
  * If it was already in a try block it replaces the try with try-with-resources instead
@@ -37,7 +36,6 @@ import spoon.reflect.reference.CtVariableReference;
  *              }
  * ```
  */
-// @spotless:on
 @ProcessorAnnotation(key = "S2095", description = "Resources should be closed")
 public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstructorCall<?>> {
 

@@ -9,7 +9,6 @@ import spoon.reflect.declaration.CtConstructor;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.ModifierKind;
 
-// @spotless:off
 /**
  * This repair targets classes that only have static members (_utility classes_)
  * and a public constructor, which they should not have according to the rule.
@@ -29,7 +28,6 @@ import spoon.reflect.declaration.ModifierKind;
  * > **Important:** The repair does not attempt to do anything if there is an
  * > explicit public constructor.
  */
-// @spotless:on
 @IncompleteProcessor(description = "Only handles implicit public constructor")
 @ProcessorAnnotation(
         key = "S1118",

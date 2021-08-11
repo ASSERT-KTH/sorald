@@ -6,7 +6,6 @@ import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtReturn;
 import spoon.reflect.declaration.CtMethod;
 
-// @spotless:off
 /**
  * For the return statements inside "toString()", this processor replaces the return expression with an empty string.
  *
@@ -27,7 +26,6 @@ import spoon.reflect.declaration.CtMethod;
  * }
  * ```
  */
-// @spotless:on
 @IncompleteProcessor(description = "does not fix null returning clone()")
 @ProcessorAnnotation(
         key = "S2225",

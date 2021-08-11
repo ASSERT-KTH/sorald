@@ -12,7 +12,6 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
 
-// @spotless:off
 /**
  * Any equality comparison between `AtomicInteger`, `AtomicLong`, or `AtomicBoolean` objects using the method `equals`, i.e., `obj1.equals(obj2)`, is replaced by a binary operator of the kind equals, where the left and right hand operands are calls to the method `.get()` using both objects.
  *
@@ -24,7 +23,6 @@ import spoon.reflect.reference.CtExecutableReference;
  * +		isEqual = aInt1.get() == aInt2.get();
  * ```
  */
-// @spotless:on
 @ProcessorAnnotation(
         key = "S2204",
         description = "\".equals()\" should not be used to test the values of \"Atomic\" classes")
