@@ -56,10 +56,6 @@ Sorald can currently repair violations of the following rules:
 
 OUTPUT_ARG = "--output"
 
-PATH_TO_CLASSPATH = pathlib.Path(__file__).absolute().parent.parent.parent.parent / "cp.txt"
-with open(PATH_TO_CLASSPATH, "r") as cp:
-    CLASSPATH = cp.read()
-
 PATH_TO_PROCESSOR_PACKAGE = pathlib.Path(__file__).absolute().parent.parent.parent.parent / "src/main/java/sorald/processor"
 
 
