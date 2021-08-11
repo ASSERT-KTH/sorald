@@ -158,9 +158,10 @@ def parse_spoon_output(spoon_output: List[SoraldProcessorInformation]) -> None:
 
 
 def classify(metadata: Dict[str, Union[str, List[str]]], rule_key: int, repair_description: str) -> None:
+    heading_text = f"{metadata[jsonkeys.SONAR_METADATA.TITLE]} (Sonar Rule {rule_key})"
     list_information = ViolationList(
         title=metadata[jsonkeys.SONAR_METADATA.TITLE],
-        link_to_detail=get_link_to_detail(metadata[jsonkeys.SONAR_METADATA.TITLE], rule_key),
+        link_to_detail=get_link_to_detail(heading_text),
         sonar_url=get_sonar_link(metadata[jsonkeys.SONAR_METADATA.RULE_SPECIFICATION]),
         sonar_url_text=f"Sonar Rule {rule_key}",
     )
@@ -188,11 +189,10 @@ def classify(metadata: Dict[str, Union[str, List[str]]], rule_key: int, repair_d
         raise Exception(f"New rule violation type, {violation_type}, encountered.")
 
 
-def get_link_to_detail(title: str, rule_key: int) -> str:
-    link = title.lower()
-    link = re.sub(r"\s", "-", link)
-    link = re.sub(r"[^A-Za-z0-9_-]", "", link)
-    return f"#{link}-sonar-rule-{rule_key}"
+def get_link_to_detail(heading_text: str) -> str:
+    sanitized_heading = re.sub(r"[^\sA-Za-z0-9_-]", "", heading_text)
+    sanitized_heading_without_spaces = re.sub(r"\s", "-", sanitized_heading)
+    return f"#{sanitized_heading_without_spaces.lower()}"
 
 
 def get_sonar_link(rule_specification: str) -> str:
