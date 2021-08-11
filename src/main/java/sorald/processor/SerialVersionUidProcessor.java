@@ -10,15 +10,6 @@ import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.reference.CtTypeReference;
 
-/**
- * The repair consists of add a serialVersionUID to classes implementing Serializable
- * Example:
- * ```diff
- * public class NoUID implements Serializable {
- * +  private static final long serialVersionUID = 1L;
- * }
- * ```
- */
 @IncompleteProcessor(
         description =
                 "This processor does not address the case where the class already has a serialVersionUID with a non long type.")
