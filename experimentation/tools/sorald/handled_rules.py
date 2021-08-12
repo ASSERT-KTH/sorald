@@ -193,20 +193,14 @@ def parse_raw_output(raw_output: List[RawSoraldProcessorInformation]) \
 
         else:
             raise Exception(f"New rule violation type, {violation_type}, encountered.")
-    
-    bugs.sort()
-    bugs_detail.sort()
-    code_smells.sort()
-    code_smells_detail.sort()
-    vulnerabilities.sort()
-    vulnerabilities_detail.sort()
+
     return {
-        "bugs": bugs,
-        "bugs_detail": bugs_detail,
-        "code_smells": code_smells,
-        "code_smells_detail": code_smells_detail,
-        "vulnerabilities": vulnerabilities,
-        "vulnerabilities_detail": vulnerabilities_detail,
+        "bugs": sorted(bugs),
+        "bugs_detail": sorted(bugs_detail),
+        "code_smells": sorted(code_smells),
+        "code_smells_detail": sorted(code_smells_detail),
+        "vulnerabilities": sorted(vulnerabilities),
+        "vulnerabilities_detail": sorted(vulnerabilities_detail),
     }
 
 
