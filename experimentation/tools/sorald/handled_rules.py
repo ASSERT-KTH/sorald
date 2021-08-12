@@ -164,17 +164,17 @@ def parse_raw_output(raw_output: List[RawSoraldProcessorInformation]) \
         rule_key = processor_information.rule_key
         metadata = sonar_metadata.get_rule_metadata(rule_key)
 
-        heading_text = f"{metadata[jsonkeys.SONAR_METADATA.TITLE]} (Sonar Rule {rule_key})"
+        heading_text = f"{metadata[jsonkeys.SONAR_METADATA.TITLE]} ({get_sonar_link_text(rule_key)})"
         list_information = ViolationList(
             title=metadata[jsonkeys.SONAR_METADATA.TITLE],
             link_to_detail=get_link_to_detail(heading_text),
             sonar_url=get_sonar_link(metadata[jsonkeys.SONAR_METADATA.RULE_SPECIFICATION]),
-            sonar_url_text=f"Sonar Rule {rule_key}",
+            sonar_url_text=get_sonar_link_text(rule_key),
         )
         detail_information = ViolationDetail(
             title=metadata[jsonkeys.SONAR_METADATA.TITLE],
             sonar_url=get_sonar_link(metadata[jsonkeys.SONAR_METADATA.RULE_SPECIFICATION]),
-            sonar_url_text=f"Sonar Rule {rule_key}",
+            sonar_url_text=get_sonar_link_text(rule_key),
             repair_description=repair_description,
         )
 
@@ -214,6 +214,10 @@ def get_link_to_detail(heading_text: str) -> str:
     sanitized_heading = re.sub(r"[^\sA-Za-z0-9_-]", "", heading_text)
     sanitized_heading_without_spaces = re.sub(r"\s", "-", sanitized_heading)
     return f"#{sanitized_heading_without_spaces.lower()}"
+
+
+def get_sonar_link_text(rule_key: int) -> str:
+    return f"Sonar Rule {rule_key}"
 
 
 def get_sonar_link(rule_specification: str) -> str:
