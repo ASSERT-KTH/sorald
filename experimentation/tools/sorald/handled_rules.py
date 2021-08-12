@@ -6,7 +6,7 @@ import sys
 
 import jinja2
 
-from typing import Dict, List, TypedDict, Union
+from typing import Dict, List, Union
 
 from sorald._helpers import sonar_metadata, jsonkeys
 
@@ -72,6 +72,9 @@ class ViolationList:
     sonar_url: str
     sonar_url_text: str
 
+    def __lt__(self, other):
+        return self.title.lower() < other.title.lower()
+
 
 @dataclasses.dataclass
 class ViolationDetail:
@@ -79,6 +82,9 @@ class ViolationDetail:
     sonar_url: str
     sonar_url_text: str
     repair_description: str
+
+    def __lt__(self, other):
+        return self.title.lower() < other.title.lower()
 
 
 def main(args: List[str]):
@@ -188,6 +194,12 @@ def parse_raw_output(raw_output: List[RawSoraldProcessorInformation]) \
         else:
             raise Exception(f"New rule violation type, {violation_type}, encountered.")
     
+    bugs.sort()
+    bugs_detail.sort()
+    code_smells.sort()
+    code_smells_detail.sort()
+    vulnerabilities.sort()
+    vulnerabilities_detail.sort()
     return {
         "bugs": bugs,
         "bugs_detail": bugs_detail,
