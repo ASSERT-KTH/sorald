@@ -60,6 +60,12 @@ PATH_TO_PROCESSOR_PACKAGE = pathlib.Path(__file__).absolute().parent.parent.pare
 
 
 @dataclasses.dataclass
+class RawSoraldProcessorInformation:
+    repair_description: str
+    rule_key: int
+
+
+@dataclasses.dataclass
 class ViolationList:
     title: str
     link_to_detail: str
@@ -109,51 +115,36 @@ def generate_handled_rules(
     output_file.write_text(rendered_content, encoding=ENCODING)
 
 
-class RawSoraldProcessorInformation(TypedDict):
-    rule_key: int
-    repair_description: str
-
-
-def extract_ouput_from_processor_package() -> Dict[str, RawSoraldProcessorInformation]:
-    raw_output = {}
-    processors_and_descriptions =  pathlib.Path(PATH_TO_PROCESSOR_PACKAGE).glob("*")
-    for proc_or_desc_file in processors_and_descriptions:
-        if proc_or_desc_file.name == "SoraldAbstractProcessor.java":
+def extract_ouput_from_processor_package() -> List[RawSoraldProcessorInformation]:
+    raw_output: List[RawSoraldProcessorInformation] = []
+    processors =  pathlib.Path(PATH_TO_PROCESSOR_PACKAGE).glob("*.java")
+    for processor in processors:
+        if processor.name == "SoraldAbstractProcessor.java":
             continue
 
-        extension = proc_or_desc_file.suffix
-        file_name = get_file_name_without_extension(proc_or_desc_file)
-
-        info_from_sorald = raw_output.get(file_name)
-        if info_from_sorald is None:
-            raw_output[file_name] = { }
-        
-        if extension == ".md":
-            raw_output[file_name]["repair_description"] = get_repair_description(proc_or_desc_file)
-
-        elif extension == ".java":
-            raw_output[file_name]["rule_key"] = get_rule_key_from_processor(proc_or_desc_file)
+        raw_output.append(RawSoraldProcessorInformation(
+            repair_description=get_repair_description(processor),
+            rule_key=get_rule_key(processor),
+        ))
 
     return raw_output 
 
-        
-
-def get_file_name_without_extension(path: pathlib.Path) -> str:
-    return path.name.split(".")[0]
-
 
 def get_repair_description(path: pathlib.Path) -> str:
-    return path.read_text(ENCODING)
+    parent_directory = path.parent
+    processor_name = path.name.split(".")[0]
+    description_file = parent_directory / f"{processor_name}.md"
+    return description_file.read_text()
 
 
-def get_rule_key_from_processor(path: pathlib.Path) -> int:
+def get_rule_key(path: pathlib.Path) -> int:
     processor_code = path.read_text(ENCODING)
     regex = r"@ProcessorAnnotation\(\s*key\s*=\s*\"S(\d+)\""
     matches = re.search(regex, processor_code)
     return matches.group(1)
 
 
-def parse_raw_output(raw_output: Dict[str, RawSoraldProcessorInformation]) \
+def parse_raw_output(raw_output: List[RawSoraldProcessorInformation]) \
     -> Dict[str, Union[List[ViolationList], List[ViolationDetail]]]:
     bugs = []
     bugs_detail = []
@@ -162,9 +153,9 @@ def parse_raw_output(raw_output: Dict[str, RawSoraldProcessorInformation]) \
     vulnerabilities = []
     vulnerabilities_detail = []
 
-    for _, processor_information in raw_output.items():
-        rule_key = processor_information["rule_key"]
-        repair_description = processor_information["repair_description"]
+    for processor_information in raw_output:
+        repair_description = processor_information.repair_description
+        rule_key = processor_information.rule_key
         metadata = sonar_metadata.get_rule_metadata(rule_key)
 
         heading_text = f"{metadata[jsonkeys.SONAR_METADATA.TITLE]} (Sonar Rule {rule_key})"
