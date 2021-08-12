@@ -145,9 +145,9 @@ def get_repair_description(path: pathlib.Path) -> str:
 
 def get_rule_key(path: pathlib.Path) -> int:
     processor_code = path.read_text(ENCODING)
-    regex = r"@ProcessorAnnotation\(\s*key\s*=\s*\"S(\d+)\""
+    regex = r"@ProcessorAnnotation\((.|\r|\n)*key\s*=\s*\"S(\d+)\""
     matches = re.search(regex, processor_code)
-    return matches.group(1)
+    return int(matches.group(2))
 
 
 def parse_raw_output(raw_output: List[RawSoraldProcessorInformation]) \
