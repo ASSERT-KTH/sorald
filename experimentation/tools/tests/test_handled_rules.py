@@ -34,5 +34,5 @@ def test_get_rule_key_should_return_key(processor_path, expected):
         ),
     ],
 )
-def test_get_link_to_detail(heading_text, expected):
-    assert handled_rules.get_link_to_detail(heading_text) == expected
+def test_get_link_to_repair_description(heading_text, expected):
+    assert handled_rules.get_link_to_repair_description(heading_text) == expected
