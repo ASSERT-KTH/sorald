@@ -99,15 +99,17 @@ public class TargetedRepairTest {
     public void targetedRepair_acceptsAbsoluteViolationPath() throws Exception {
         // arrange
         TargetedRepairWorkdirInfo workdirInfo = setupWorkdir();
-
-        // act
         Path rootDir = workdirInfo.workdir.toPath().getRoot();
-        String absoluteViolationId =
+        String[] violationIdParts =
                 workdirInfo
                         .targetViolation
                         .relativeSpecifier(rootDir)
-                        .replaceFirst(
-                                Constants.VIOLATION_SPECIFIER_SEP, File.pathSeparator + rootDir);
+                        .split(Constants.VIOLATION_SPECIFIER_SEP);
+        violationIdParts[1] = rootDir.resolve(violationIdParts[1]).toString();
+        String absoluteViolationId =
+                String.join(Constants.VIOLATION_SPECIFIER_SEP, violationIdParts);
+
+        // act
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,
