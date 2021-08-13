@@ -10,6 +10,7 @@ SONAR_RULE_METADATA_URL_TEMPLATE = (
     "/org/sonar/l10n/java/rules/java/S{rule_key}_java.json"
 )
 
+
 class VIOLATION_TYPE:
     BUG = "BUG"
     CODE_SMELL = "CODE_SMELL"

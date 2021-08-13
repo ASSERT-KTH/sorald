@@ -59,7 +59,10 @@ Sorald can currently repair violations of the following rules:
 
 OUTPUT_ARG = "--output"
 
-PATH_TO_PROCESSOR_PACKAGE = pathlib.Path(__file__).absolute().parent.parent.parent.parent / "src/main/java/sorald/processor"
+PATH_TO_PROCESSOR_PACKAGE = (
+    pathlib.Path(__file__).absolute().parent.parent.parent.parent
+    / "src/main/java/sorald/processor"
+)
 
 
 @dataclasses.dataclass
@@ -126,17 +129,19 @@ def generate_handled_rules(
 
 def extract_ouput_from_processor_package() -> List[RawSoraldProcessorInformation]:
     raw_output: List[RawSoraldProcessorInformation] = []
-    processors =  pathlib.Path(PATH_TO_PROCESSOR_PACKAGE).glob("*.java")
+    processors = pathlib.Path(PATH_TO_PROCESSOR_PACKAGE).glob("*.java")
     for processor in processors:
         if processor.name == "SoraldAbstractProcessor.java":
             continue
 
-        raw_output.append(RawSoraldProcessorInformation(
-            repair_description=get_repair_description(processor),
-            rule_key=get_rule_key(processor),
-        ))
+        raw_output.append(
+            RawSoraldProcessorInformation(
+                repair_description=get_repair_description(processor),
+                rule_key=get_rule_key(processor),
+            )
+        )
 
-    return raw_output 
+    return raw_output
 
 
 def get_repair_description(path: pathlib.Path) -> str:
@@ -153,8 +158,9 @@ def get_rule_key(path: pathlib.Path) -> int:
     return int(matches.group(2))
 
 
-def parse_raw_output(raw_output: List[RawSoraldProcessorInformation]) \
-    -> Dict[str, Union[List[ViolationList], List[ViolationDetail]]]:
+def parse_raw_output(
+    raw_output: List[RawSoraldProcessorInformation],
+) -> Dict[str, Union[List[ViolationList], List[ViolationDetail]]]:
     bugs = []
     bugs_detail = []
     code_smells = []
@@ -171,12 +177,16 @@ def parse_raw_output(raw_output: List[RawSoraldProcessorInformation]) \
         list_information = ViolationList(
             title=metadata[jsonkeys.SONAR_METADATA.TITLE],
             link_to_detail=get_link_to_detail(heading_text),
-            sonar_url=get_sonar_link(metadata[jsonkeys.SONAR_METADATA.RULE_SPECIFICATION]),
+            sonar_url=get_sonar_link(
+                metadata[jsonkeys.SONAR_METADATA.RULE_SPECIFICATION]
+            ),
             sonar_url_text=get_sonar_link_text(rule_key),
         )
         detail_information = ViolationDetail(
             title=metadata[jsonkeys.SONAR_METADATA.TITLE],
-            sonar_url=get_sonar_link(metadata[jsonkeys.SONAR_METADATA.RULE_SPECIFICATION]),
+            sonar_url=get_sonar_link(
+                metadata[jsonkeys.SONAR_METADATA.RULE_SPECIFICATION]
+            ),
             sonar_url_text=get_sonar_link_text(rule_key),
             repair_description=repair_description,
         )
