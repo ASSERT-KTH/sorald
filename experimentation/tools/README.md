@@ -95,6 +95,18 @@ Use like so:
 $ python3 -m sorald.achievements --prs-json-file path/to/prs.json --output ACHIEVEMENTS.md
 ```
 
+### `sorald.handled_rules`
+The handled_rules script generates a markdown file for listing all the Sonar
+rules which are currently repaired by sorald. Each rule is accompanied by the
+corresponding processor summary and example repairs.
+
+The script outputs a markdown file whose name is given as parameter to the
+command like so:
+
+```bash
+python3 -m sorald.handled_rules --output HANDLED_RULES.md
+```
+
 ### `sorald.prmessage`
 The PR message script can be used to easily generate a PR message with
 information about the repairs that have been made. The current version
