@@ -21,15 +21,15 @@ Sorald can currently repair violations of the following rules:
 
 * [Bug](#bug)
 {% for bug in bugs %}
-    * [{{ bug.title }}]({{ bug.link_to_repair_description }}) ([{{ bug.sonar_url_text }}]({{ bug.sonar_url }})) {% endfor %}
+    * [{{ bug.title }}]({{ bug.link_to_repair_description }}) ([{{ bug.sonar_url_text }}]({{ bug.sonar_url }})){% endfor %}
 
 * [Code Smell](#code-smell)
 {% for cs in code_smells %}
-    * [{{ cs.title }}]({{ cs.link_to_repair_description }}) ([{{ cs.sonar_url_text }}]({{ cs.sonar_url }})) {% endfor %}
+    * [{{ cs.title }}]({{ cs.link_to_repair_description }}) ([{{ cs.sonar_url_text }}]({{ cs.sonar_url }})){% endfor %}
 
 * [Vulnerability](#vulnerability)
 {% for vulnerability in vulnerabilities %}
-    * [{{ vulnerability.title }}]({{ vulnerability.link_to_repair_description }}) ([{{ vulnerability.sonar_url_text }}]({{ vulnerability.sonar_url }})) {% endfor %}
+    * [{{ vulnerability.title }}]({{ vulnerability.link_to_repair_description }}) ([{{ vulnerability.sonar_url_text }}]({{ vulnerability.sonar_url }})){% endfor %}
 
 ### *Bug*
 {% for bug_content in bugs %}
