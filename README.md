@@ -20,7 +20,8 @@ If you use Sorald in an academic context, please cite:
 ### Prerequisites 
 
 Sorald supports macOS and Linux, with
-[support for Windows in the pipeline](https://github.com/spoonlabs/sorald/issues/273).
+[currently partial support for Windows (some features may not work
+yet)](https://github.com/spoonlabs/sorald/issues/273).
 
 For running Sorald, all you need is a Java 11+ runtime.
 

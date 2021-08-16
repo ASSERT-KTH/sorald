@@ -1,7 +1,7 @@
 package sorald.sonar;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
+import org.sonar.api.batch.fs.InputComponent;
 import org.sonar.java.AnalyzerMessage;
 import org.sonar.plugins.java.api.JavaCheck;
 import sorald.rule.RuleViolation;
@@ -44,9 +44,17 @@ class ScannedViolation extends RuleViolation {
 
     @Override
     public Path getAbsolutePath() {
-        return Paths.get(message.getInputComponent().key().replace(":", ""))
-                .toAbsolutePath()
-                .normalize();
+        return extractPath(message.getInputComponent()).toAbsolutePath().normalize();
+    }
+
+    private static Path extractPath(InputComponent inputComponent) {
+        // This key is on the form /path/to/:File.java (note the colon after the final slash).
+        // We can't however blindly remove all colons as that destroys Windows filepaths (e.g.
+        // C:\path\to\:File.java).
+        String key = inputComponent.key();
+        int indexOfLastColon = key.lastIndexOf(':');
+        String rawPath = key.substring(0, indexOfLastColon) + key.substring(indexOfLastColon + 1);
+        return Path.of(rawPath);
     }
 
     @Override

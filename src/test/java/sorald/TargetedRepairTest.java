@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 import org.junit.jupiter.api.io.TempDir;
 import sorald.processor.BigDecimalDoubleConstructorProcessor;
 import sorald.processor.ProcessorTestHelper;
@@ -27,6 +29,7 @@ import sorald.sonar.ProjectScanner;
 import sorald.sonar.SonarRule;
 
 /** Tests for the targeted repair functionality of Sorald. */
+@DisabledOnOs(OS.WINDOWS) // FIXME Make this test class pass on Windows
 public class TargetedRepairTest {
 
     @Test
@@ -99,15 +102,17 @@ public class TargetedRepairTest {
     public void targetedRepair_acceptsAbsoluteViolationPath() throws Exception {
         // arrange
         TargetedRepairWorkdirInfo workdirInfo = setupWorkdir();
-
-        // act
         Path rootDir = workdirInfo.workdir.toPath().getRoot();
-        String absoluteViolationId =
+        String[] violationIdParts =
                 workdirInfo
                         .targetViolation
                         .relativeSpecifier(rootDir)
-                        .replaceFirst(
-                                Constants.VIOLATION_SPECIFIER_SEP, File.pathSeparator + rootDir);
+                        .split(Constants.VIOLATION_SPECIFIER_SEP);
+        violationIdParts[1] = rootDir.resolve(violationIdParts[1]).toString();
+        String absoluteViolationId =
+                String.join(Constants.VIOLATION_SPECIFIER_SEP, violationIdParts);
+
+        // act
         Main.main(
                 new String[] {
                     Constants.REPAIR_COMMAND_NAME,

@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.jupiter.api.condition.DisabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -23,6 +25,7 @@ import sorald.rule.RuleViolation;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.SonarRule;
 
+@DisabledOnOs(OS.WINDOWS) // FIXME make this test class pass on Windows
 public class GatherStatsTest {
 
     @ParameterizedTest
