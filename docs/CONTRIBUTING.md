@@ -105,8 +105,8 @@ run `mvn spotless:apply`, and then commit any changes the formatter makes.
 
 Your processor is done, it's passing the minimum tests, so now you can update the documentation.
 Write a summary of the processor supporting it with an example in <PROCESSOR_NAME>.md file and place it inside the
-`sorald.processor` package. An example name of such file could be `CastArithmeticOperandProcessor.md` if your
-processor's name is `CastArithmeticOperandProcessor`.
+`sorald.processor` package. For example, if your processor is in `CastArithmeticOperandProcessor.java`, then
+the description file must be called `CastArithmeticOperandProcessor.md`.
 
 6) Open a PR
 
