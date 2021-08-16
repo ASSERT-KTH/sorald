@@ -6,6 +6,7 @@ import pytest
 import requests
 
 from sorald import prmessage
+from sorald._helpers import sonar_metadata
 
 
 @pytest.mark.parametrize("rule_key", [2111, 2204, 2142])
@@ -33,4 +34,4 @@ def test_uses_correct_sonar_version():
     pom_content = (
         pathlib.Path(__file__).parent.parent.parent.parent / "pom.xml"
     ).read_text(encoding="utf8")
-    assert re.findall(f"<version>{prmessage.SONAR_VERSION}</version>", pom_content)
+    assert re.findall(f"<version>{sonar_metadata.SONAR_VERSION}</version>", pom_content)

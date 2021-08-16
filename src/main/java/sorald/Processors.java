@@ -1,6 +1,9 @@
 package sorald;
 
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import sorald.processor.*;
 
 /**
@@ -53,5 +56,12 @@ public class Processors {
 
     public static Class<? extends SoraldAbstractProcessor<?>> getProcessor(String key) {
         return RULE_KEY_TO_PROCESSOR.get(key);
+    }
+
+    /** @return A list of all processors sorted by name. */
+    public static List<Class<? extends SoraldAbstractProcessor<?>>> getAllProcessors() {
+        return RULE_KEY_TO_PROCESSOR.values().stream()
+                .sorted(Comparator.comparing(Class::getName))
+                .collect(Collectors.toList());
     }
 }

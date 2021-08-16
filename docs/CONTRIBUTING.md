@@ -104,8 +104,9 @@ run `mvn spotless:apply`, and then commit any changes the formatter makes.
 5) Update documentation
 
 Your processor is done, it's passing the minimum tests, so now you can update the documentation.
-In the `HANDLED_RULES.md` file, you should add the new handled rule in the table of contents, and then a summary of its processor with an example.
-You should do it following the same way as the existing handled rules are documented (note that the table of contents and summaries are alphabetically ordered).
+Write a summary of the processor supporting it with an example in <PROCESSOR_NAME>.md file and place it inside the
+`sorald.processor` package. For example, if your processor is in `CastArithmeticOperandProcessor.java`, then
+the description file must be called `CastArithmeticOperandProcessor.md`.
 
 6) Open a PR
 

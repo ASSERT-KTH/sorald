@@ -10,6 +10,9 @@ from bs4 import BeautifulSoup
 
 import jinja2
 
+from sorald._helpers import jsonkeys
+from sorald._helpers.sonar_metadata import get_rule_metadata
+
 TEMPLATE = r"""PULL REQUEST TITLE: Fix violations of Sonar rule {{ rule_key }}
 Hi,
 
@@ -17,13 +20,6 @@ This PR fixes {{ num_repairs }} violations of [Sonar Rule {{ rule_key }}: '{{ ru
 
 The patch was generated automatically with the tool [Sorald](https://github.com/SpoonLabs/sorald). For details on the fix applied here, please see [Sorald's documentation on rule {{ rule_key }}]({{ rule_doc_url }}).
 """
-
-SONAR_VERSION = "6.9.0.23563"
-SONAR_RULE_METADATA_URL_TEMPLATE = (
-    "https://raw.githubusercontent.com/SonarSource/sonar-java/"
-    f"/{SONAR_VERSION}/java-checks/src/main/resources"
-    "/org/sonar/l10n/java/rules/java/S{rule_key}_java.json"
-)
 
 HANDLED_RULES_URL = (
     "https://github.com/SpoonLabs/sorald/blob/master/docs/HANDLED_RULES.md"
@@ -52,7 +48,7 @@ def main(args: List[str]):
 
 
 def generate_pr_message(rule_key: int, num_repairs: int) -> str:
-    rule_description = get_rule_description(rule_key)
+    rule_description = get_rule_metadata(rule_key)[jsonkeys.SONAR_METADATA.TITLE]
     rule_doc_url = get_rule_doc_url(rule_key)
 
     return jinja2.Template(TEMPLATE).render(
@@ -61,12 +57,6 @@ def generate_pr_message(rule_key: int, num_repairs: int) -> str:
         rule_doc_url=rule_doc_url,
         num_repairs=num_repairs,
     )
-
-
-def get_rule_description(rule_key: int) -> str:
-    return requests.get(
-        SONAR_RULE_METADATA_URL_TEMPLATE.format(rule_key=rule_key)
-    ).json()["title"]
 
 
 def get_rule_doc_url(rule_key: int, handled_rules_url: str = HANDLED_RULES_URL) -> str:
