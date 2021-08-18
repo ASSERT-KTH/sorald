@@ -22,32 +22,31 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -e experimentation/tools
-      - name: Generate ACHIEVEMENTS.md
-        run: python -m sorald.achievements -p experimentation/prs.json -o docs/ACHIEVEMENTS.md
-      - name: Create pull request
+      - name: Generate ACHIEVEMENTS.md and submit a PR if modified
         run: |
-          git config --local user.email github-actions[bot]@users.noreply.github.com
-          git config --local user.name github-actions[bot]
+          SCRIPT_NAME=achievements
+          GENERATED_FILE=docs/ACHIEVEMENTS.md
+          python -m sorald.${SCRIPT_NAME} -p experimentation/prs.json -o ${GENERATED_FILE}
 
-          branch_name=achievements-update-${{ github.sha }}
-          git switch -c "$branch_name"
+          ./.github/submit-pr.sh \
+            --branch-prefix   ${SCRIPT_NAME} \
+            --generated-file  ${GENERATED_FILE} \
+            --gh-sha          ${{ github.sha }} \
+            --gh-owner        ${{ github.owner }} \
+            --gh-token        ${{ secrets.GITHUB_TOKEN }} \
+            --gh-repository   ${{ github.repository }} \
+            --gh-workflow     ${{ github.workflow }}
+      - name: Generate HANDLED_RULES.md and submit a PR if modified
+        run: |
+          SCRIPT_NAME=handled_rules
+          GENERATED_FILE=docs/HANDLED_RULES.md
+          python -m sorald.${SCRIPT_NAME} -o ${GENERATED_FILE}
 
-          git add docs/ACHIEVEMENTS.md
-          git commit -m "doc: Update docs/ACHIEVEMENTS.md" || {
-            echo "Nothing to commit"
-            exit 0
-          }
-
-          git push https://${{ github.owner }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-
-          curl \
-            -X POST \
-            -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/${{ github.repository }}/pulls \
-            -d "{
-              \"head\":\"$branch_name\",
-              \"base\":\"master\",
-              \"title\":\"doc: Update docs/ACHIEVEMENTS.md\",
-              \"body\":\"Automatic update of ACHIEVEMENTS.md from ${{ github.workflow }} workflow. **Do not forget to remove this branch after merge!**\"
-            }"
+          ./.github/submit-pr.sh \
+            --branch-prefix   handled_rules \
+            --generated-file  ${GENERATED_FILE} \
+            --gh-sha          ${{ github.sha }} \
+            --gh-owner        ${{ github.owner }} \
+            --gh-token        ${{ secrets.GITHUB_TOKEN }} \
+            --gh-repository   ${{ github.repository }} \
+            --gh-workflow     ${{ github.workflow }}
