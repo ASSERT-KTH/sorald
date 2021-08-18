@@ -43,7 +43,7 @@ jobs:
           python -m sorald.${SCRIPT_NAME} -o ${GENERATED_FILE}
 
           ./.github/submit-pr.sh \
-            --branch-prefix   handled_rules \
+            --branch-prefix   ${SCRIPT_NAME} \
             --generated-file  ${GENERATED_FILE} \
             --gh-sha          ${{ github.sha }} \
             --gh-owner        ${{ github.owner }} \
