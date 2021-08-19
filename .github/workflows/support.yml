@@ -4,11 +4,11 @@ name: support
 
 on:
   push:
-    branches: [ master, CI-HANDLED_RULES ]
+    branches: [ master ]
 
 jobs:
   generate-achievements-handled_rules-md:
-#    if: ${{ github.repository == 'SpoonLabs/sorald' }} # don't accidentally run on forks :)
+    if: ${{ github.repository == 'SpoonLabs/sorald' }} # don't accidentally run on forks :)
     runs-on: ubuntu-latest
 
     steps:
