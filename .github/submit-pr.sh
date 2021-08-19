@@ -5,9 +5,6 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-git config --local user.email github-actions[bot]@users.noreply.github.com
-git config --local user.name github-actions[bot]
-
 # Parse command-line arguments
 # The number of command-line arguments is twice the number of flags passed and
 # that is why we `shift` twice to skip to the next `key` and its value.
@@ -50,10 +47,14 @@ while [[ $# -gt 0 ]]; do
       shift
     ;;
     *)
+      echo "Incorrect arguments"
       exit 1
     ;;
   esac
 done
+
+git config --local user.email github-actions[bot]@users.noreply.github.com
+git config --local user.name github-actions[bot]
 
 branch_name="${BRANCH_PREFIX}-update-${SHA}"
 git switch -c "$branch_name"
