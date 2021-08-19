@@ -26,11 +26,6 @@ while [[ $# -gt 0 ]]; do
       shift
       shift
     ;;
-    --gh-owner)
-      OWNER="$2"
-      shift
-      shift
-    ;;
     --gh-token)
       TOKEN="$2"
       shift
@@ -65,7 +60,7 @@ git commit -m "doc: Update ${GENERATED_FILE}" || {
   exit 0
 }
 
-git push https://"${OWNER}":"${TOKEN}"@github.com/"${REPOSITORY}".git
+git push https://"${TOKEN}"@github.com/"${REPOSITORY}".git
 
 # Submit pull-request
 curl \
@@ -80,6 +75,6 @@ curl \
     \"body\":\"Automatic update of ${GENERATED_FILE} from ${WORKFLOW} workflow. **Do not forget to remove this branch after merge!**\"
   }"
 
-# Switch back to master so that subsequent branches are checked out from
-# master and not the branch created in this script.
-git switch master
+# Switch back to previous branch so that subsequent branches are checked out
+# from that branch and not the branch created in this script.
+git switch --detach -

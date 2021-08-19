@@ -32,7 +32,6 @@ jobs:
             --branch-prefix   ${SCRIPT_NAME} \
             --generated-file  ${GENERATED_FILE} \
             --gh-sha          ${{ github.sha }} \
-            --gh-owner        ${{ github.repository_owner }} \
             --gh-token        ${{ secrets.GITHUB_TOKEN }} \
             --gh-repository   ${{ github.repository }} \
             --gh-workflow     ${{ github.workflow }}
@@ -46,7 +45,6 @@ jobs:
             --branch-prefix   ${SCRIPT_NAME} \
             --generated-file  ${GENERATED_FILE} \
             --gh-sha          ${{ github.sha }} \
-            --gh-owner        ${{ github.repository_owner }} \
             --gh-token        ${{ secrets.GITHUB_TOKEN }} \
             --gh-repository   ${{ github.repository }} \
             --gh-workflow     ${{ github.workflow }}
