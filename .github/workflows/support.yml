@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  generate-achievements-md:
+  generate-achievements-handled_rules-md:
     if: ${{ github.repository == 'SpoonLabs/sorald' }} # don't accidentally run on forks :)
     runs-on: ubuntu-latest
 
@@ -32,7 +32,7 @@ jobs:
             --branch-prefix   ${SCRIPT_NAME} \
             --generated-file  ${GENERATED_FILE} \
             --gh-sha          ${{ github.sha }} \
-            --gh-owner        ${{ github.owner }} \
+            --gh-owner        ${{ github.repository_owner }} \
             --gh-token        ${{ secrets.GITHUB_TOKEN }} \
             --gh-repository   ${{ github.repository }} \
             --gh-workflow     ${{ github.workflow }}
@@ -46,7 +46,7 @@ jobs:
             --branch-prefix   ${SCRIPT_NAME} \
             --generated-file  ${GENERATED_FILE} \
             --gh-sha          ${{ github.sha }} \
-            --gh-owner        ${{ github.owner }} \
+            --gh-owner        ${{ github.repository_owner }} \
             --gh-token        ${{ secrets.GITHUB_TOKEN }} \
             --gh-repository   ${{ github.repository }} \
             --gh-workflow     ${{ github.workflow }}

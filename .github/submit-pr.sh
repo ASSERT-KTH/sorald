@@ -75,8 +75,8 @@ curl \
   -d "{
     \"head\":\"$branch_name\",
     \"base\":\"master\",
-    \"title\":\"doc: Update docs/ACHIEVEMENTS.md\",
-    \"body\":\"Automatic update of ACHIEVEMENTS.md from ${WORKFLOW} workflow. **Do not forget to remove this branch after merge!**\"
+    \"title\":\"doc: Update ${GENERATED_FILE}\",
+    \"body\":\"Automatic update of ${GENERATED_FILE} from ${WORKFLOW} workflow. **Do not forget to remove this branch after merge!**\"
   }"
 
 # Switch back to master so that subsequent branches are checked out from
