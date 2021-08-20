@@ -47,7 +47,7 @@ Sorald can currently repair violations of the following rules:
 
 #### ".equals()" should not be used to test the values of "Atomic" classes ([Sonar Rule 2204](https://rules.sonarsource.com/java/RSPEC-2204))
 
-Any equality comparison between `AtomicInteger`, `AtomicLong`, or `AtomicBoolean` objects using the method `equals`, i.e., `obj1.equals(obj2)`, is replaced by a binary operator of the kind equals, where the left and right hand operands are calls to the method `.get()` using both objects.
+Any equality comparison between `AtomicInteger`, `AtomicLong`, or `AtomicBoolean` objects using the method `equals`, i.e., `obj1.equals(obj2)`, is replaced by a binary operator of the kind equals, where the left and right-hand operands are calls to the method `.get()` using both objects.
 
 Example:
 ```diff
@@ -129,7 +129,7 @@ Example:
 
 #### "getClass" should not be used for synchronization ([Sonar Rule 3067](https://rules.sonarsource.com/java/RSPEC-3067))
 
-Any invocation using getClass will be typechecked if the object's invoked by `getClass` is final or an enum. If not, the invocation will be transformed to `.class` instead of `getClass`.
+Any invocation using getClass will be type-checked if the object's invoked by `getClass` is final or an enum. If not, the invocation will be transformed to `.class` instead of `getClass`.
 
 Example:
 ```diff
@@ -291,7 +291,7 @@ Example:
 #### Math operands should be cast before assignment ([Sonar Rule 2184](https://rules.sonarsource.com/java/RSPEC-2184))
 
 In arithmetic expressions, when the operands are `int` and/or `long`, but the result of the expression is assigned to
-a `long`, `double`, or `float`, the first left-hand is casted to the final type before the operation takes place.
+a `long`, `double`, or `float`, the first left-hand is cast to the final type before the operation takes place.
 To the extent possible, literal suffixes (such as `f` for `float`) are used instead of casting literals.
 
 Example:
@@ -310,7 +310,7 @@ Example:
 
 #### Math should not be performed on floats ([Sonar Rule 2164](https://rules.sonarsource.com/java/RSPEC-2164))
 
-In arithmetic expressions between two `float`s, both left and right operands are casted to `double`.
+In arithmetic expressions between two `float`s, both left and right operands are cast to `double`.
 
 Example:
 ```diff
