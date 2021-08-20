@@ -1,4 +1,4 @@
-In arithmetic expressions between two `float`s, both left and right operands are casted to `double`.
+In arithmetic expressions between two `float`s, both left and right operands are cast to `double`.
 
 Example:
 ```diff

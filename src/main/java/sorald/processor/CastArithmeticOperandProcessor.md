@@ -1,5 +1,5 @@
 In arithmetic expressions, when the operands are `int` and/or `long`, but the result of the expression is assigned to
-a `long`, `double`, or `float`, the first left-hand is casted to the final type before the operation takes place.
+a `long`, `double`, or `float`, the first left-hand is cast to the final type before the operation takes place.
 To the extent possible, literal suffixes (such as `f` for `float`) are used instead of casting literals.
 
 Example:

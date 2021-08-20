@@ -1,4 +1,4 @@
-Any invocation using getClass will be typechecked if the object's invoked by `getClass` is final or an enum. If not, the invocation will be transformed to `.class` instead of `getClass`.
+Any invocation using getClass will be type-checked if the object's invoked by `getClass` is final or an enum. If not, the invocation will be transformed to `.class` instead of `getClass`.
 
 Example:
 ```diff
