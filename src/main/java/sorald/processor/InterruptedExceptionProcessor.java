@@ -4,9 +4,9 @@ import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCatch;
-import spoon.reflect.code.CtLabelledFlowBreak;
 import spoon.reflect.code.CtIf;
 import spoon.reflect.code.CtInvocation;
+import spoon.reflect.code.CtLabelledFlowBreak;
 import spoon.reflect.code.CtReturn;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.code.CtThrow;
@@ -45,8 +45,8 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
      * Return the last index that is safe to insert at, safe meaning that the interrupt is certain
      * to actually be invoked.
      *
-     * <p>This is either the first index at which some flow breaks are found, or the index past the last index if none
-     * found.
+     * <p>This is either the first index at which some flow breaks are found, or the index past the
+     * last index if none found.
      */
     private static int lastSafeInterruptIndex(CtBlock<?> block) {
         for (int i = 0; i < block.getStatements().size(); i++) {
@@ -64,7 +64,11 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
      */
     private static boolean containsReturnOrThrowOrLabelledFlowBreak(CtStatement statement) {
         return !statement
-                .filterChildren(e -> e instanceof CtReturn || e instanceof CtThrow || e instanceof CtLabelledFlowBreak)
+                .filterChildren(
+                        e ->
+                                e instanceof CtReturn
+                                        || e instanceof CtThrow
+                                        || e instanceof CtLabelledFlowBreak)
                 .list()
                 .isEmpty();
     }
