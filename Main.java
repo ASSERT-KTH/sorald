@@ -2,6 +2,8 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println(System.getenv("PATH"));
+
         String[] mvnVersion = {"mvn", "--version"};
         String[] mvnCmdVersion = {"mvn.cmd", "-version"};
         String[] mvnAbsPathVersion = {"C:\\ProgramData\\chocolatey\\lib\\maven\\apache-maven-3.8.3\\bin\\mvn.cmd", "-version"};
