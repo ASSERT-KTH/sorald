@@ -25,3 +25,12 @@ jobs:
         run: "[Environment]::GetEnvironmentVariable('Path','User')"
       - name: Process path
         run: "[Environment]::GetEnvironmentVariable('Path','Process')"
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run mvn subprocess
+        run: |
+          javac Main.java
+          java Main
+
