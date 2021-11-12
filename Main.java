@@ -16,8 +16,9 @@ public class Main {
 
         try {
             ProcessBuilder pb = new ProcessBuilder(cmd);
-            // No STDERR => merge to STDOUT
             pb.redirectErrorStream(true);
+
+            System.out.println("ENV: " + pb.environment());
 
             Process p = pb.start();
 
