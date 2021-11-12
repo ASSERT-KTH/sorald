@@ -18,7 +18,8 @@ public class Main {
             ProcessBuilder pb = new ProcessBuilder(cmd);
             pb.redirectErrorStream(true);
 
-            System.out.println("ENV: " + pb.environment());
+            String pathWithMavenBinary = pb.environment().get("PATH") + ";C:\\ProgramData\\chocolatey\\lib\\maven\\apache-maven-3.8.3\\bin\\mvn.cmd";
+            pb.environment().put("PATH", pathWithMavenBinary);
 
             Process p = pb.start();
 
