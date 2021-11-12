@@ -17,4 +17,5 @@ jobs:
       - name: Show path
         run: |
           echo $Env:Path
+          dir C:\ProgramData\chocolatey\lib\maven\apache-maven-3.8.3\bin
 
