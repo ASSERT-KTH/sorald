@@ -20,8 +20,8 @@ jobs:
           dir C:\ProgramData\chocolatey\lib\maven\apache-maven-3.8.3\bin
 
       - name: System path
-        run: [Environment]::GetEnvironmentVariable('Path','Machine')
+        run: "[Environment]::GetEnvironmentVariable('Path','Machine')"
       - name: User path
-        run: [Environment]::GetEnvironmentVariable('Path','User')
+        run: "[Environment]::GetEnvironmentVariable('Path','User')"
       - name: Process path
-        run: [Environment]::GetEnvironmentVariable('Path','Process')
+        run: "[Environment]::GetEnvironmentVariable('Path','Process')"
