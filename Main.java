@@ -1,4 +1,4 @@
-
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,6 +12,8 @@ public class Main {
     }
 
     public static void runProcess(String[] cmd) {
+        System.out.println("Executing " + Arrays.toString(cmd));
+
         try {
             ProcessBuilder pb = new ProcessBuilder(cmd);
             // No STDERR => merge to STDOUT
@@ -27,5 +29,7 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println();
     }
 }
