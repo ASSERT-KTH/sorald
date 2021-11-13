@@ -8,9 +8,9 @@ public class Main {
         String[] mvnCmdVersion = {"mvn.cmd", "-version"};
         String[] mvnAbsPathVersion = {"C:\\ProgramData\\chocolatey\\lib\\maven\\apache-maven-3.8.3\\bin\\mvn.cmd", "-version"};
 
-        runProcess(mvnVersion);
+        //runProcess(mvnVersion);
         runProcess(mvnCmdVersion);
-        runProcess(mvnAbsPathVersion);
+        //runProcess(mvnAbsPathVersion);
     }
 
     public static void runProcess(String[] cmd) {
