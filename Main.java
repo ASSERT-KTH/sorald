@@ -9,8 +9,9 @@ public class Main {
         String[] mvnAbsPathVersion = {"C:\\ProgramData\\chocolatey\\lib\\maven\\apache-maven-3.8.3\\bin\\mvn.cmd", "-version"};
 
         //runProcess(mvnVersion);
-        //runProcess(mvnCmdVersion);
-        runProcess(mvnAbsPathVersion);
+        runProcess(mvnCmdVersion);
+        //runProcess(mvnAbsPathVersion);
+        //runProcess(mvnVersion);
     }
 
     public static void runProcess(String[] cmd) {
@@ -19,9 +20,6 @@ public class Main {
         try {
             ProcessBuilder pb = new ProcessBuilder(cmd);
             pb.redirectErrorStream(true);
-
-            String pathWithMavenBinary = pb.environment().get("PATH") + ";C:\\ProgramData\\chocolatey\\lib\\maven\\apache-maven-3.8.3\\bin\\mvn.cmd";
-            pb.environment().put("PATH", pathWithMavenBinary);
 
             Process p = pb.start();
 
