@@ -194,6 +194,9 @@ public class WarningMinerTest {
     @Test
     void canDetectRuleViolation_thatRequiresClasspath_whenResolvingClasspathInMavenProject(
             @TempDir File tempdir) throws Exception {
+        // use the default security manager
+        System.setSecurityManager(null);
+
         Path statsFile = tempdir.toPath().resolve("stats.json");
         Path projectRoot =
                 TestHelper.PATH_TO_RESOURCES_FOLDER
