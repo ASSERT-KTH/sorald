@@ -78,7 +78,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
       - name: Upload coverage report to Codecov
-        uses: codecov/codecov-action@a1ed4b322b4b38cb846afb5a0ebfa17086917d27 # v1.5.0
+        uses: codecov/codecov-action@260aa3b4b2f265b8578bc0e721e33ebf8ff53313
 
   test-support-scripts:
     runs-on: ubuntu-latest
