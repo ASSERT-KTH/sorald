@@ -95,7 +95,7 @@
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>9.1.0-beta-11</version>
+            <version>10.0.0</version>
             <exclusions>
                 <exclusion>
                     <!-- must be excluded as it is signed, which causes problems with unsigned version from sonar -->
