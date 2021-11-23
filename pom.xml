@@ -119,7 +119,7 @@
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-frontend</artifactId>
-            <version>6.9.0.23563</version>
+            <version>6.15.1.26025</version>
         </dependency>
         <dependency>
             <groupId>org.sonarsource.java</groupId>
