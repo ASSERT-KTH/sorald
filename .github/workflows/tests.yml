@@ -14,7 +14,10 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/setup-java@8764a52df183aa0ccea74521dfd9d506ffc7a19a # v2.0.0
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Java
+        uses: actions/setup-java@8764a52df183aa0ccea74521dfd9d506ffc7a19a # v2.0.0
         with:
           java-version: 11
           java-package: jdk
