@@ -17,4 +17,4 @@ jobs:
       - name: Show path
         run: |
           echo $PATH
-          /opt/apache-maven-3.1.1/bin/mvn --version
+          /usr/bin/mvn --version
