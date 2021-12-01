@@ -23,7 +23,7 @@ jobs:
     environment: Deploy
 
     steps:
-      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # renovate: tag=v2.3.4
+      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2.4.0
 
       - name: Setup for Java build
         uses: actions/setup-java@5f00602cd1b2819185d88dc7a1b1985f598c6705 # renovate: tag=v2.4.0
