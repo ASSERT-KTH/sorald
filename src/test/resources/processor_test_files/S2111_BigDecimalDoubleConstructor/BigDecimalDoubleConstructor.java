@@ -17,9 +17,9 @@ public class BigDecimalDoubleConstructor {
         MathContext mc = null;
         BigDecimal bd1 = new BigDecimal("1");
         BigDecimal bd2 = new BigDecimal(2.0); // Noncompliant {{Use "BigDecimal.valueOf" instead.}}
-        BigDecimal bd4 = new BigDecimal(2.0, mc); // Noncompliant {{Use "BigDecimal.valueOf" instead.}}
+        BigDecimal bd4 = new BigDecimal(2.0, mc); // Noncompliant {{Enclose the first argument in a string.}}
         BigDecimal bd5 = new BigDecimal(2.0f); // Noncompliant {{Use "BigDecimal.valueOf" instead.}}
-        BigDecimal bd6 = new BigDecimal(2.0f, mc); // Noncompliant {{Use "BigDecimal.valueOf" instead.}}
+        BigDecimal bd6 = new BigDecimal(2.0f, mc); // Noncompliant {{Enclose the first argument in a string.}}
         BigDecimal bd3 = BigDecimal.valueOf(2.0);
     }
 
