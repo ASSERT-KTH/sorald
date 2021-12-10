@@ -1,0 +1,37 @@
+import static co.aikar.timings.TimingIdentifier.DEFAULT_GROUP;
+import static co.aikar.timings.TimingsManager.*;
+
+public class FullServerTickTiming extends Timing {
+    private static final TimingIdentifier IDENTIFIER = new TimingIdentifier(DEFAULT_GROUP.name, "Full Server Tick", null);
+    final TimingData minuteData;
+    double avgFreeMemory = -1D;
+    double avgUsedMemory = -1D;
+
+    FullServerTickTiming() {
+        super(IDENTIFIER);
+        this.minuteData = new TimingData(this.id);
+
+        TIMING_MAP.put(IDENTIFIER, this);
+    }
+
+    @Override
+    public Timing startTiming() {
+        if (TimingsManager.needsFullReset) {
+            TimingsManager.resetTimings();
+        } else if (TimingsManager.needsRecheckEnabled) {
+            TimingsManager.recheckEnabled();
+        }
+        super.startTiming();
+        return this;
+    }
+
+    @Override
+    public void stopTiming() {
+        super.stopTiming();
+        if (!this.enabled) {
+            return;
+        }
+
+        if (TimingsHistory.timedTicks % 20 == 0) {
+            final Runtime runtime = Runtime.getRuntime();
+            double usedMemory = (double) runtime.totalMemory() - runtime.freeMemory();
