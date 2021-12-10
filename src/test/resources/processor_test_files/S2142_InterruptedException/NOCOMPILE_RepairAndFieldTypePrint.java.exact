@@ -1,0 +1,162 @@
+    private final SourcePartitionValidator.MatchingStrategy validationStrategy;
+    private final MissingPartitionsJmxReporter missingPartsJmxReporter =
+            new MissingPartitionsJmxReporter();
+    private final List<Transformation<SourceRecord>> routers;
+    private final boolean topicCheckingEnabled;
+
+    // The current list of partitions to replicate.
+    private volatile List<TopicPartition> topicPartitionList;
+
+    KafkaMonitor(ConnectorContext context, SourceConfig config, TaskConfigBuilder taskConfigBuilder) {
+        this(
+                context,
+                config,
+                newSourceConsumer(config),
+                newDestinationConsumer(config),
+                taskConfigBuilder);
+    }
+
+    KafkaMonitor(
+            ConnectorContext context,
+            SourceConfig config,
+            Consumer<byte[], byte[]> sourceConsumer,
+            Consumer<byte[], byte[]> destinationConsumer,
+            TaskConfigBuilder taskConfigBuilder) {
+        this.context = context;
+        this.topicsWhitelist = config.getTopicsWhitelist();
+        this.monitorPollWaitMs = config.getMonitorPollWaitMs();
+        this.topicsRegexPattern = Pattern.compile(config.getTopicsRegex());
+        this.topicsRegexList = config.getTopicsRegexList();
+        this.sourceConsumer = sourceConsumer;
+        this.destinationConsumer = destinationConsumer;
+        if (topicsWhitelist.isEmpty()
+                && config.getTopicsRegex().isEmpty()
+                && config.getTopicsRegexList().isEmpty()) {
+            logger.warn("No whitelist configured");
+        }
+        this.taskConfigBuilder = taskConfigBuilder;
+        this.validationStrategy =
+                config.getEnablePartitionMatching()
+                        ? SourcePartitionValidator.MatchingStrategy.PARTITION
+                        : SourcePartitionValidator.MatchingStrategy.TOPIC;
+        this.topicCheckingEnabled = config.getTopicCheckingEnabled();
+        this.routers = this.validateTransformations(config.transformations());
+    }
+
+    private List<Transformation<SourceRecord>> validateTransformations(
+            List<Transformation<SourceRecord>> transformations) {
+        List<Transformation<SourceRecord>> regexRouters = new ArrayList<>();
+
+        // No need to validate transforms if we're not checking destination partitions
+        if (this.topicCheckingEnabled) {
+            for (Transformation<SourceRecord> transform : transformations) {
+                String transformName = transform.getClass().getSimpleName();
+                if (transform instanceof RegexRouter) {
+                    regexRouters.add(transform);
+                    // Slightly awkward check to see if any other routing transforms are configured
+                } else if (transformName.contains("Router")) {
+                    throw new IllegalArgumentException(
+                            String.format(
+                                    "Unsupported Router Transformation %s found."
+                                            + " To use it, please disable destination topic checking by setting 'enable.destination.topic.checking' to false.",
+                                    transformName));
+                } else {
+                    logger.debug("Ignoring non-routing Transformation {}", transformName);
+                }
+            }
+        }
+        return regexRouters;
+    }
+
+    private String applyRoutersToTopic(String topic) {
+        TopicPartition topicPartition = new TopicPartition(topic, 0);
+        Map<String, Object> sourcePartition = TopicPartitionSerDe.asMap(topicPartition);
+        SourceRecord record =
+                new SourceRecord(
+                        sourcePartition,
+                        null,
+                        topicPartition.topic(),
+                        topicPartition.partition(),
+                        Schema.BYTES_SCHEMA,
+                        null,
+                        Schema.OPTIONAL_BYTES_SCHEMA,
+                        null);
+        for (Transformation<SourceRecord> transform : this.routers) {
+            record = transform.apply(record);
+        }
+        return record.topic();
+    }
+
+    private static Consumer<byte[], byte[]> newSourceConsumer(SourceConfig config) {
+        Map<String, Object> consumerProperties = config.getConsumerProperties();
+
+        // The "monitor1" client id suffix is used to keep JMX bean names distinct
+        consumerProperties.computeIfPresent(
+                CommonClientConfigs.CLIENT_ID_CONFIG, (k, v) -> v + "monitor1");
+        return new KafkaConsumer<>(consumerProperties);
+    }
+
+    /**
+     * * Reconciles the default consumer properties with the destination-consumer properties. The
+     * destination-consumer properties have higher precedence.
+     *
+     * @param config config of the source connector
+     * @return map that includes the consumer configs
+     */
+    static Map<String, Object> getReconciledDestConsumerConfigs(SourceConfig config) {
+        // handle destination.bootstrap.server separately
+        // keeping this config for backward compatibility
+        String destBootstrap = config.getDestinationBootstrapServers();
+        Map<String, Object> destConsumerProps = config.getDestinationConsumerProperties();
+
+        if (!destConsumerProps.containsKey("bootstrap.servers")) {
+            destConsumerProps.put("bootstrap.servers", destBootstrap);
+        }
+        Map<String, Object> reconciledConsumerConfigs = config.getConsumerProperties();
+        // use destination.consumer properties to override default consumer properties
+        destConsumerProps.forEach((k, v) -> reconciledConsumerConfigs.put(k, v));
+        return reconciledConsumerConfigs;
+    }
+
+    private static Consumer<byte[], byte[]> newDestinationConsumer(SourceConfig config) {
+        Map<String, Object> consumerProperties = getReconciledDestConsumerConfigs(config);
+        // The "monitor2" client id suffix is used to keep JMX bean names distinct
+        consumerProperties.computeIfPresent(
+                CommonClientConfigs.CLIENT_ID_CONFIG, (k, v) -> v + "monitor2");
+        return new KafkaConsumer<>(consumerProperties);
+    }
+
+    @Override
+    public void run() {
+        int consecutiveRetriableErrors = 0;
+        while (true) {
+            try {
+                // Do a fast shutdown check first thing in case we're in an exponential backoff retry loop,
+                // which will never hit the poll wait below
+                if (shutDownLatch.await(0, TimeUnit.MILLISECONDS)) {
+                    logger.debug("Exiting KafkaMonitor");
+                    return;
+                }
+                if (this.topicPartitionList == null) {
+                    // Need to initialize here to prevent the constructor hanging on startup if the
+                    // source cluster is unavailable.
+                    this.topicPartitionList = fetchTopicPartitionList();
+                }
+
+                if (partitionsChanged()) {
+                    logger.info("Source partition change detected.  Requesting task reconfiguration.");
+                    this.context.requestTaskReconfiguration();
+                }
+
+                if (shutDownLatch.await(monitorPollWaitMs, TimeUnit.MILLISECONDS)) {
+                    logger.debug("Exiting KafkaMonitor");
+                    return;
+                }
+                consecutiveRetriableErrors = 0;
+            } catch (WakeupException | InterruptedException e) {
+                // Assume we've been woken or interrupted to shutdown, so continue on to checking the
+                // shutDownLatch next iteration.
+                logger.debug("KafkaMonitor woken up, checking if shutdown requested...");
+                if (e instanceof InterruptedException) {
+                    Thread.currentThread().interrupt();
+                }
