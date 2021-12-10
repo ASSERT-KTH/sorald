@@ -1,3 +1,5 @@
+// This test resource is a reproduction of https://github.com/SpoonLabs/sorald/issues/600
+
 /*
  * Copyright 2020 Matthias Bläsing.
  *
