@@ -22,9 +22,6 @@ public class MavenLauncherTest {
     @Test
     public void sorald_repairsProductionAndTestCode_inMavenProject(@TempDir File workdir)
             throws IOException {
-        // use the default security manager
-        System.setSecurityManager(null);
-
         // arrange
         org.apache.commons.io.FileUtils.copyDirectory(
                 TestHelper.PATH_TO_RESOURCES_FOLDER
@@ -67,9 +64,6 @@ public class MavenLauncherTest {
     @Test
     void sorald_repairsRuleViolation_thatRequiresClasspathToDetect(@TempDir File workdir)
             throws IOException {
-        // use the default security manager
-        System.setSecurityManager(null);
-
         // arrange
         org.apache.commons.io.FileUtils.copyDirectory(
                 TestHelper.PATH_TO_RESOURCES_FOLDER
