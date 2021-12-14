@@ -24,7 +24,7 @@ import spoon.reflect.visitor.filter.TypeFilter;
         description = "Synchronization should not be based on Strings or boxed primitives")
 public class SynchronizationOnStringOrBoxedProcessor
         extends SoraldAbstractProcessor<CtSynchronized> {
-    private Map<Integer, CtVariableReference> old2NewFields;
+    private Map<String, CtVariableReference> old2NewFields;
     private Map<Integer, CtExecutableReference> old2NewMethods;
 
     public SynchronizationOnStringOrBoxedProcessor() {
@@ -68,7 +68,7 @@ public class SynchronizationOnStringOrBoxedProcessor
     }
 
     private void updateFieldRead(CtFieldRead<?> fieldRead) {
-        if (!this.old2NewFields.containsKey(fieldRead.getVariable().hashCode())) {
+        if (!this.old2NewFields.containsKey(getFiledVariableUniqueId(fieldRead))) {
             CtField<?> field = fieldRead.getVariable().getDeclaration();
             CtType<?> c = (CtType) field.getParent(CtType.class);
 
@@ -85,10 +85,14 @@ public class SynchronizationOnStringOrBoxedProcessor
 
             c.addFieldAtTop(newField);
             old2NewFields.put(
-                    fieldRead.getVariable().hashCode(), ((CtVariable) newField).getReference());
+                    getFiledVariableUniqueId(fieldRead), ((CtVariable) newField).getReference());
             fieldRead.setVariable(((CtVariable) newField).getReference());
         } else {
-            fieldRead.setVariable(old2NewFields.get(fieldRead.getVariable().hashCode()));
+            fieldRead.setVariable(old2NewFields.get(getFiledVariableUniqueId(fieldRead)));
         }
+    }
+
+    private String getFiledVariableUniqueId(CtFieldRead<?> fieldRead){
+        return fieldRead.getVariable().hashCode() + fieldRead.getVariable().getQualifiedName();
     }
 }
