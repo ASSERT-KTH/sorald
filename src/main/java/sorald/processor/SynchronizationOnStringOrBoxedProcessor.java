@@ -92,7 +92,7 @@ public class SynchronizationOnStringOrBoxedProcessor
         }
     }
 
-    private String getFiledVariableUniqueId(CtFieldRead<?> fieldRead){
+    private String getFiledVariableUniqueId(CtFieldRead<?> fieldRead) {
         return fieldRead.getVariable().hashCode() + fieldRead.getVariable().getQualifiedName();
     }
 }
