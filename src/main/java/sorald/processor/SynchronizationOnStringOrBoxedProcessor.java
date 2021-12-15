@@ -85,11 +85,11 @@ public class SynchronizationOnStringOrBoxedProcessor
 
             c.addFieldAtTop(newField);
             old2NewFields.put(
-                    fieldRead.getVariable().getQualifiedName(), ((CtVariable) newField).getReference());
+                    fieldRead.getVariable().getQualifiedName(),
+                    ((CtVariable) newField).getReference());
             fieldRead.setVariable(((CtVariable) newField).getReference());
         } else {
             fieldRead.setVariable(old2NewFields.get(fieldRead.getVariable().getQualifiedName()));
         }
     }
-
 }
