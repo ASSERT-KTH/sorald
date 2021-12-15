@@ -1,0 +1,24 @@
+class SynchronizationOnSimilarVariables {
+
+  class InnerClass1 {
+    public Object isStoppedLegal = new Object();
+    public Boolean isStopped = false;
+
+    public void method() {
+      synchronized(isStoppedLegal) {  // Noncompliant
+        // ...
+      }
+    }
+  }
+
+  class InnerClass2 {
+    public Object isStoppedLegal = new Object();
+    public Boolean isStopped = false;
+
+    public void method() {
+      synchronized(isStoppedLegal) {  // Noncompliant
+        // ...
+      }
+    }
+  }
+}
