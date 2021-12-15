@@ -68,7 +68,7 @@ public class SynchronizationOnStringOrBoxedProcessor
     }
 
     private void updateFieldRead(CtFieldRead<?> fieldRead) {
-        if (!this.old2NewFields.containsKey(getFiledVariableUniqueId(fieldRead))) {
+        if (!this.old2NewFields.containsKey(fieldRead.getVariable().getQualifiedName())) {
             CtField<?> field = fieldRead.getVariable().getDeclaration();
             CtType<?> c = (CtType) field.getParent(CtType.class);
 
@@ -85,14 +85,11 @@ public class SynchronizationOnStringOrBoxedProcessor
 
             c.addFieldAtTop(newField);
             old2NewFields.put(
-                    getFiledVariableUniqueId(fieldRead), ((CtVariable) newField).getReference());
+                    fieldRead.getVariable().getQualifiedName(), ((CtVariable) newField).getReference());
             fieldRead.setVariable(((CtVariable) newField).getReference());
         } else {
-            fieldRead.setVariable(old2NewFields.get(getFiledVariableUniqueId(fieldRead)));
+            fieldRead.setVariable(old2NewFields.get(fieldRead.getVariable().getQualifiedName()));
         }
     }
 
-    private String getFiledVariableUniqueId(CtFieldRead<?> fieldRead) {
-        return fieldRead.getVariable().hashCode() + fieldRead.getVariable().getQualifiedName();
-    }
 }
