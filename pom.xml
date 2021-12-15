@@ -304,6 +304,17 @@
 
     <profiles>
         <profile>
+            <id>spoonSnapshot</id>
+            <repositories>
+                <repository>
+                    <id>ow2.org-snapshot</id>
+                    <name>Maven Repository for Spoon Snapshots</name>
+                    <url>https://repository.ow2.org/nexus/content/repositories/snapshots/</url>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
             <id>release</id>
             <build>
                 <plugins>
