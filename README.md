@@ -97,9 +97,6 @@ Repair Sonar rule violations in a targeted project.
                                segment.
       --max-fixes-per-rule=<maxFixesPerRule>
                              Max number of fixes per rule.
-      --source=<source>
-                             The path to the file or folder to be analyzed and
-                               possibly repaired.
       --pretty-printing-strategy=<prettyPrintingStrategy>
                              Mode for pretty printing the source code:
                                'NORMAL', which means that all source code will
@@ -116,10 +113,15 @@ Repair Sonar rule violations in a targeted project.
                                smaller segments and repair one segment at a
                                time (need to specify --maxFilesPerSegment if
                                not default)
+      --resolve-classpath-from=<resolveClasspathFrom>
+                             Path to the root of a project to resolve the
+                               classpath from. Currently only works for Maven
+                               projects.
       --rule-key=<ruleKey>   Choose one of the following rule keys:
+                             S1068: Unused "private" fields should be removed
                              S1118: Utility classes should not have public
                                constructors
-                             	(incomplete: Only handles implicit public
+                                (incomplete: Only handles implicit public
                                constructor)
                              S1132: Strings literals should be placed on the
                                left side when checking for equality
@@ -127,7 +129,7 @@ Repair Sonar rule violations in a targeted project.
                                for emptiness
                              S1217: "Thread.run()" should not be called directly
                              S1444: "public static" fields should be constant
-                             	(incomplete: does not fix variable naming)
+                                (incomplete: does not fix variable naming)
                              S1481: Unused local variables should be removed
                              S1596: "Collections.EMPTY_LIST", "EMPTY_MAP", and
                                "EMPTY_SET" should not be used
@@ -139,7 +141,7 @@ Repair Sonar rule violations in a targeted project.
                                either be transient or serializable
                              S2057: Every class implementing Serializable
                                should declare a static final serialVersionUID.
-                             	(incomplete: This processor does not address the
+                                (incomplete: This processor does not address the
                                case where the class already has a
                                serialVersionUID with a non long type.)
                              S2095: Resources should be closed
@@ -158,12 +160,12 @@ Repair Sonar rule violations in a targeted project.
                                values of "Atomic" classes
                              S2225: "toString()" and "clone()" methods should
                                not return null
-                             	(incomplete: does not fix null returning clone())
+                                (incomplete: does not fix null returning clone())
                              S2272: "Iterator.next()" methods should throw
                                "NoSuchElementException"
                              S2755: XML parsers should not be vulnerable to XXE
                                attacks
-                             	(incomplete: This processor is a WIP and
+                                (incomplete: This processor is a WIP and
                                currently supports a subset of rule 2755. See
                                Sorald's documentation for details.)
                              S3032: JEE applications should not "getClassLoader"
@@ -173,6 +175,8 @@ Repair Sonar rule violations in a targeted project.
                                being thrown
                              S4973: Strings and Boxed types should be compared
                                using "equals()"
+      --source=<source>      The path to the file or folder to be analyzed and
+                               possibly repaired.
       --stats-output-file=<statsOutputFile>
                              Path to a file to store execution statistics in
                                (in JSON format). If left unspecified, Sorald
