@@ -426,6 +426,18 @@ After these three command shave been executed, my `prs.json` looks like this:
 }
 ```
 
+### `sorald.usage`
+
+The usage script generates markdown file listing the detailed usage of the
+subcommand passed as a flag. The output in the markdown file can also be
+found by running `sorald <subcommand> --help`.
+
+One can execute the script like so:
+
+```bash
+$ python3 -m sorald.usage -s {repair|mine} -o path/to/usage.md
+```
+
 ### `sorald.warnings_extractor`
 The warnings extractor script can be used to extract warnings from individual
 commits in a given set of repositories. It's useful for finding projects that

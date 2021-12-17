@@ -5,7 +5,16 @@ import pathlib
 import re
 import sys
 
+from enum import Enum
 from typing import List, Optional, Tuple
+
+
+class SUBCOMMAND(Enum):
+    REPAIR = "repair"
+    MINE = "mine"
+
+    def __str__(self) -> str:
+        return self.value
 
 
 def _find_default_sorald_jar() -> pathlib.Path:
@@ -29,7 +38,7 @@ DEFAULT_SORALD_JAR_PATH = _find_default_sorald_jar()
 
 
 def sorald(
-    subcommand: str,
+    subcommand: SUBCOMMAND,
     *args,
     sorald_jar: pathlib.Path = DEFAULT_SORALD_JAR_PATH,
     timeout: Optional[int] = None,
@@ -54,7 +63,7 @@ def sorald(
         "java",
         "-jar",
         str(sorald_jar),
-        subcommand,
+        str(subcommand),
         *list(map(_to_cli_arg, args)),
         *list(
             itertools.chain.from_iterable(
@@ -81,7 +90,7 @@ def available_rule_keys(
     Returns:
         The available rule keys in the given jarfile.
     """
-    rc, stdout, _ = sorald("repair", "--help")
+    rc, stdout, _ = sorald(SUBCOMMAND.REPAIR, "--help")
     assert rc == 0
     output_lines = iter(stdout.decode(sys.getdefaultencoding()).split("\n"))
 
