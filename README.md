@@ -85,110 +85,8 @@ and are specified by their key. For example, to repair violations of the rule
 $ sorald repair --source some/project/path --rule-key 2111
 ```
 
-The full list of options is as follows (and can also be found by running
-`sorald repair --help`):
-
-```bash
-Repair Sonar rule violations in a targeted project.
-  -h, --help                 Show this help message and exit.
-      --max-files-per-segment=<maxFilesPerSegment>
-                             Max number of files per loaded segment for
-                               segmented repair. It should be >= 3000 files per
-                               segment.
-      --max-fixes-per-rule=<maxFixesPerRule>
-                             Max number of fixes per rule.
-      --pretty-printing-strategy=<prettyPrintingStrategy>
-                             Mode for pretty printing the source code:
-                               'NORMAL', which means that all source code will
-                               be printed and its formatting might change (such
-                               as indentation), and 'SNIPER', which means that
-                               only statements changed towards the repair of
-                               Sonar rule violations will be printed.
-      --repair-strategy=<repairStrategy>
-                             Type of repair strategy. DEFAULT - load everything
-                               without splitting up the folder in segments,
-                               MAVEN - use Maven to locate production source
-                               code and the classpath (test source code is
-                               ignored), SEGMENT - splitting the folder into
-                               smaller segments and repair one segment at a
-                               time (need to specify --maxFilesPerSegment if
-                               not default)
-      --resolve-classpath-from=<resolveClasspathFrom>
-                             Path to the root of a project to resolve the
-                               classpath from. Currently only works for Maven
-                               projects.
-      --rule-key=<ruleKey>   Choose one of the following rule keys:
-                             S1068: Unused "private" fields should be removed
-                             S1118: Utility classes should not have public
-                               constructors
-                                (incomplete: Only handles implicit public
-                               constructor)
-                             S1132: Strings literals should be placed on the
-                               left side when checking for equality
-                             S1155: Collection.isEmpty() should be used to test
-                               for emptiness
-                             S1217: "Thread.run()" should not be called directly
-                             S1444: "public static" fields should be constant
-                                (incomplete: does not fix variable naming)
-                             S1481: Unused local variables should be removed
-                             S1596: "Collections.EMPTY_LIST", "EMPTY_MAP", and
-                               "EMPTY_SET" should not be used
-                             S1656: Variables should not be self-assigned
-                             S1854: Unused assignments should be removed
-                             S1860: Synchronization should not be based on
-                               Strings or boxed primitives
-                             S1948: Fields in a "Serializable" class should
-                               either be transient or serializable
-                             S2057: Every class implementing Serializable
-                               should declare a static final serialVersionUID.
-                                (incomplete: This processor does not address the
-                               case where the class already has a
-                               serialVersionUID with a non long type.)
-                             S2095: Resources should be closed
-                             S2097: "equals(Object obj)" should test argument
-                               type
-                             S2111: "BigDecimal(double)" should not be used
-                             S2116: "hashCode" and "toString" should not be
-                               called on array instances
-                             S2142: "InterruptedException" should not be ignored
-                             S2164: Math should not be performed on floats
-                             S2167: "compareTo" should not return "Integer.
-                               MIN_VALUE"
-                             S2184: Math operands should be cast before
-                               assignment
-                             S2204: ".equals()" should not be used to test the
-                               values of "Atomic" classes
-                             S2225: "toString()" and "clone()" methods should
-                               not return null
-                                (incomplete: does not fix null returning clone())
-                             S2272: "Iterator.next()" methods should throw
-                               "NoSuchElementException"
-                             S2755: XML parsers should not be vulnerable to XXE
-                               attacks
-                                (incomplete: This processor is a WIP and
-                               currently supports a subset of rule 2755. See
-                               Sorald's documentation for details.)
-                             S3032: JEE applications should not "getClassLoader"
-                             S3067: "getClass" should not be used for
-                               synchronization
-                             S3984: Exception should not be created without
-                               being thrown
-                             S4973: Strings and Boxed types should be compared
-                               using "equals()"
-      --source=<source>      The path to the file or folder to be analyzed and
-                               possibly repaired.
-      --stats-output-file=<statsOutputFile>
-                             Path to a file to store execution statistics in
-                               (in JSON format). If left unspecified, Sorald
-                               does not gather statistics.
-      --target=<target>      The target of this execution (ex. sorald/92d377).
-                               This will be included in the json report.
-  -V, --version              Print version information and exit.
-      --violation-specs=<ruleViolationSpecifiers>[,<ruleViolationSpecifiers>...]
-                             One or more rule violation specifiers. Specifiers
-                               can be gathered with the 'mine' command using
-                               the --stats-output-file option.
-```
+The full list of options is documented [here](/docs/usage/repair.md)
+(and can also be found by running `sorald repair --help`):
 
 > **Note:** Some rules (e.g. 1444) are marked as "incomplete". This means that
 > Sorald's repair for a violation of said rule is either partial or
@@ -217,37 +115,8 @@ The `--gitReposList` should be a plain text file with one remote repository url
 (e.g. `https://github.com/SpoonLabs/sorald.git`) per line. Sorald clones each
 repository and runs Sonar checks on the head of the default branch.
 
-The full list of options is as follows (and can also be found by running `sorald
-mine --help`).
-
-```bash
-      --git-repos-list=<reposList>
-                             The path to the repos list.
-  -h, --help                 Show this help message and exit.
-      --handled-rules        When this argument is used, Sorald only mines
-                               violations of the rules that can be fixed by
-                               Sorald.
-      --miner-output-file=<minerOutputFile>
-                             The path to the output file.
-      --resolve-classpath    Resolve the classpath of a project for more
-                               accurate scans. Currently only works for Maven
-                               projects.
-      --rule-types=<ruleTypes>[,<ruleTypes>...]
-                             One or more types of rules to check for (use ','
-                               to separate multiple types). Choices: BUG,
-                               VULNERABILITY, CODE_SMELL, SECURITY_HOTSPOT
-      --source=<source>      The path to the file or folder to be analyzed and
-                               possibly repaired.
-      --stats-on-git-repos   If the stats should be computed on git repos.
-      --stats-output-file=<statsOutputFile>
-                             Path to a file to store execution statistics in
-                               (in JSON format). If left unspecified, Sorald
-                               does not gather statistics.
-      --target=<target>      The target of this execution (ex. sorald/92d377).
-                               This will be included in the json report.
-      --temp-dir=<tempDir>   The path to the temp directory.
-  -V, --version              Print version information and exit.
-```
+The full list of options documented [here](/docs/usage/mine.md)
+(and can also be found by running `sorald mine --help`).
 
 #### Running Sorald on GitHub projects to propose PRs with fixes
 
