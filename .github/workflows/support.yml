@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  generate-achievements-handled_rules-md:
+  generate-markdown-files:
     if: ${{ github.repository == 'SpoonLabs/sorald' }} # don't accidentally run on forks :)
     runs-on: ubuntu-latest
 
@@ -41,6 +41,32 @@ jobs:
           GENERATED_FILE=docs/HANDLED_RULES.md
           python -m sorald.${SCRIPT_NAME} -o ${GENERATED_FILE}
 
+          ./.github/submit-pr.sh \
+            --branch-prefix   ${SCRIPT_NAME} \
+            --generated-file  ${GENERATED_FILE} \
+            --gh-sha          ${{ github.sha }} \
+            --gh-token        ${{ secrets.GITHUB_TOKEN }} \
+            --gh-repository   ${{ github.repository }} \
+            --gh-workflow     ${{ github.workflow }}
+      - name: Generate usage/repair.md and submit a PR if modified
+        run: |
+          SCRIPT_NAME=usage
+          GENERATED_FILE=docs/usage/repair.md
+          python -m sorald.${SCRIPT_NAME} -s repair -o ${GENERATED_FILE}
+          
+          ./.github/submit-pr.sh \
+            --branch-prefix   ${SCRIPT_NAME} \
+            --generated-file  ${GENERATED_FILE} \
+            --gh-sha          ${{ github.sha }} \
+            --gh-token        ${{ secrets.GITHUB_TOKEN }} \
+            --gh-repository   ${{ github.repository }} \
+            --gh-workflow     ${{ github.workflow }}
+      - name: Generate usage/mine.md and submit a PR if modified
+        run: |
+          SCRIPT_NAME=usage
+          GENERATED_FILE=docs/usage/mine.md
+          python -m sorald.${SCRIPT_NAME} -s mine -o ${GENERATED_FILE}
+          
           ./.github/submit-pr.sh \
             --branch-prefix   ${SCRIPT_NAME} \
             --generated-file  ${GENERATED_FILE} \
