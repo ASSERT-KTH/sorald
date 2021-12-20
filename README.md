@@ -85,12 +85,8 @@ and are specified by their key. For example, to repair violations of the rule
 $ sorald repair --source some/project/path --rule-key 2111
 ```
 
-The full list of options is documented [here](/docs/usage/repair.md)
+The full list of options is documented [here](/docs/usage/repair.adoc)
 (and can also be found by running `sorald repair --help`):
-
-> **Note:** Some rules (e.g. 1444) are marked as "incomplete". This means that
-> Sorald's repair for a violation of said rule is either partial or
-> situational.
 
 #### Mining Sonar warnings (the `mine` command)
 
@@ -115,7 +111,7 @@ The `--gitReposList` should be a plain text file with one remote repository url
 (e.g. `https://github.com/SpoonLabs/sorald.git`) per line. Sorald clones each
 repository and runs Sonar checks on the head of the default branch.
 
-The full list of options documented [here](/docs/usage/mine.md)
+The full list of options documented [here](/docs/usage/mine.adoc)
 (and can also be found by running `sorald mine --help`).
 
 #### Running Sorald on GitHub projects to propose PRs with fixes
