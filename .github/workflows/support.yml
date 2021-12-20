@@ -48,3 +48,21 @@ jobs:
             --gh-token        ${{ secrets.GITHUB_TOKEN }} \
             --gh-repository   ${{ github.repository }} \
             --gh-workflow     ${{ github.workflow }}
+
+      - uses: actions/setup-java@5f00602cd1b2819185d88dc7a1b1985f598c6705 # renovate: tag=v2.4.0
+        with:
+          java-version: 11
+          java-package: jdk
+          architecture: x64
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
+      - name: Genrate usage for the subcommands and submit a PR if modified
+        run: |
+          mvn process-classes
+          
+          ./.github/submit-pr.sh \
+            --branch-prefix   usage \
+            --generated-file  docs/usage \
+            --gh-sha          ${{ github.sha }} \
+            --gh-token        ${{ secrets.GITHUB_TOKEN }} \
+            --gh-repository   ${{ github.repository }} \
+            --gh-workflow     ${{ github.workflow }}
