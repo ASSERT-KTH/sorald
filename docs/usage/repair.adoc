@@ -1,0 +1,163 @@
+// tag::picocli-generated-full-manpage[]
+// tag::picocli-generated-man-section-header[]
+:doctype: manpage
+:revnumber: 
+:manmanual: Repair Manual
+:mansource: 
+:man-linkstyle: pass:[blue R < >]
+= repair(1)
+
+// end::picocli-generated-man-section-header[]
+
+// tag::picocli-generated-man-section-name[]
+== Name
+
+repair - Repair Sonar rule violations in a targeted project.
+
+// end::picocli-generated-man-section-name[]
+
+// tag::picocli-generated-man-section-synopsis[]
+== Synopsis
+
+*repair* [*-hV*] [*--max-files-per-segment*=_<maxFilesPerSegment>_]
+       [*--max-fixes-per-rule*=_<maxFixesPerRule>_]
+       [*--pretty-printing-strategy*=_<prettyPrintingStrategy>_]
+       [*--repair-strategy*=_<repairStrategy>_]
+       [*--resolve-classpath-from*=_<resolveClasspathFrom>_] *--source*=_<source>_
+       [*--stats-output-file*=_<statsOutputFile>_] [*--target*=_<target>_]
+       (*--rule-key*=_<ruleKey>_ | *--violation-specs*=_<ruleViolationSpecifiers>_[,
+       _<ruleViolationSpecifiers>_...]
+       [*--violation-specs*=_<ruleViolationSpecifiers>_[,
+       _<ruleViolationSpecifiers>_...]]...)
+
+// end::picocli-generated-man-section-synopsis[]
+
+// tag::picocli-generated-man-section-description[]
+== Description
+
+Repair Sonar rule violations in a targeted project.
+
+// end::picocli-generated-man-section-description[]
+
+// tag::picocli-generated-man-section-options[]
+== Options
+
+*-h*, *--help*::
+  Show this help message and exit.
+
+*--max-files-per-segment*=_<maxFilesPerSegment>_::
+  Max number of files per loaded segment for segmented repair. It should be >= 3000 files per segment.
+
+*--max-fixes-per-rule*=_<maxFixesPerRule>_::
+  Max number of fixes per rule.
+
+*--pretty-printing-strategy*=_<prettyPrintingStrategy>_::
+  Mode for pretty printing the source code: 'NORMAL', which means that all source code will be printed and its formatting might change (such as indentation), and 'SNIPER', which means that only statements changed towards the repair of Sonar rule violations will be printed.
+
+*--repair-strategy*=_<repairStrategy>_::
+  Type of repair strategy. DEFAULT - load everything without splitting up the folder in segments, MAVEN - use Maven to locate production source code and the classpath (test source code is ignored), SEGMENT - splitting the folder into smaller segments and repair one segment at a time (need to specify --maxFilesPerSegment if not default)
+
+*--resolve-classpath-from*=_<resolveClasspathFrom>_::
+  Path to the root of a project to resolve the classpath from. Currently only works for Maven projects.
+
+*--rule-key*=_<ruleKey>_::
+  Choose one of the following rule keys:
++
+S1068: Unused "private" fields should be removed
++
+S1118: Utility classes should not have public constructors
++
+	(incomplete: Only handles implicit public constructor)
++
+S1132: Strings literals should be placed on the left side when checking for equality
++
+S1155: Collection.isEmpty() should be used to test for emptiness
++
+S1217: "Thread.run()" should not be called directly
++
+S1444: "public static" fields should be constant
++
+	(incomplete: does not fix variable naming)
++
+S1481: Unused local variables should be removed
++
+S1596: "Collections.EMPTY_LIST", "EMPTY_MAP", and "EMPTY_SET" should not be used
++
+S1656: Variables should not be self-assigned
++
+S1854: Unused assignments should be removed
++
+S1860: Synchronization should not be based on Strings or boxed primitives
++
+S1948: Fields in a "Serializable" class should either be transient or serializable
++
+S2057: Every class implementing Serializable should declare a static final serialVersionUID.
++
+	(incomplete: This processor does not address the case where the class already has a serialVersionUID with a non long type.)
++
+S2095: Resources should be closed
++
+S2097: "equals(Object obj)" should test argument type
++
+S2111: "BigDecimal(double)" should not be used
++
+S2116: "hashCode" and "toString" should not be called on array instances
++
+S2142: "InterruptedException" should not be ignored
++
+S2164: Math should not be performed on floats
++
+S2167: "compareTo" should not return "Integer.MIN_VALUE"
++
+S2184: Math operands should be cast before assignment
++
+S2204: ".equals()" should not be used to test the values of "Atomic" classes
++
+S2225: "toString()" and "clone()" methods should not return null
++
+	(incomplete: does not fix null returning clone())
++
+S2272: "Iterator.next()" methods should throw "NoSuchElementException"
++
+S2755: XML parsers should not be vulnerable to XXE attacks
++
+	(incomplete: This processor is a WIP and currently supports a subset of rule 2755. See Sorald's documentation for details.)
++
+S3032: JEE applications should not "getClassLoader"
++
+S3067: "getClass" should not be used for synchronization
++
+S3984: Exception should not be created without being thrown
++
+S4973: Strings and Boxed types should be compared using "equals()"
+
+*--source*=_<source>_::
+  The path to the file or folder to be analyzed and possibly repaired.
+
+*--stats-output-file*=_<statsOutputFile>_::
+  Path to a file to store execution statistics in (in JSON format). If left unspecified, Sorald does not gather statistics.
+
+*--target*=_<target>_::
+  The target of this execution (ex. sorald/92d377). This will be included in the json report.
+
+*-V*, *--version*::
+  Print version information and exit.
+
+*--violation-specs*=_<ruleViolationSpecifiers>_[,_<ruleViolationSpecifiers>_...]::
+  One or more rule violation specifiers. Specifiers can be gathered with the 'mine' command using the --stats-output-file option.
+
+// end::picocli-generated-man-section-options[]
+
+// tag::picocli-generated-man-section-arguments[]
+// end::picocli-generated-man-section-arguments[]
+
+// tag::picocli-generated-man-section-commands[]
+// end::picocli-generated-man-section-commands[]
+
+// tag::picocli-generated-man-section-exit-status[]
+// end::picocli-generated-man-section-exit-status[]
+
+// tag::picocli-generated-man-section-footer[]
+// end::picocli-generated-man-section-footer[]
+
+// end::picocli-generated-full-manpage[]
