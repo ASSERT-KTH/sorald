@@ -130,6 +130,8 @@ S3067: "getClass" should not be used for synchronization
 S3984: Exception should not be created without being thrown
 +
 S4973: Strings and Boxed types should be compared using "equals()"
++
+*Note:* _Some rules (e.g. 1444) are marked as "incomplete". This means that Sorald's repair for a violation of said rule is either partial or situational._
 
 *--source*=_<source>_::
   The path to the file or folder to be analyzed and possibly repaired.
