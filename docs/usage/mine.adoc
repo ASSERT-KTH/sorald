@@ -1,0 +1,90 @@
+// tag::picocli-generated-full-manpage[]
+// tag::picocli-generated-man-section-header[]
+:doctype: manpage
+:revnumber: 
+:manmanual: Mine Manual
+:mansource: 
+:man-linkstyle: pass:[blue R < >]
+= mine(1)
+
+// end::picocli-generated-man-section-header[]
+
+// tag::picocli-generated-man-section-name[]
+== Name
+
+mine - Mine a project for Sonar warnings.
+
+// end::picocli-generated-man-section-name[]
+
+// tag::picocli-generated-man-section-synopsis[]
+== Synopsis
+
+*mine* [*-hV*] [*--handled-rules*] [*--stats-on-git-repos*]
+     [*--git-repos-list*=_<reposList>_] [*--miner-output-file*=_<minerOutputFile>_]
+     [*--resolve-classpath-from*=_<resolveClasspathFrom>_] [*--source*=_<source>_]
+     [*--stats-output-file*=_<statsOutputFile>_] [*--target*=_<target>_]
+     [*--temp-dir*=_<tempDir>_] [*--rule-types*=_<ruleTypes>_[,_<ruleTypes>_...]]...
+
+// end::picocli-generated-man-section-synopsis[]
+
+// tag::picocli-generated-man-section-description[]
+== Description
+
+Mine a project for Sonar warnings.
+
+// end::picocli-generated-man-section-description[]
+
+// tag::picocli-generated-man-section-options[]
+== Options
+
+*--git-repos-list*=_<reposList>_::
+  The path to the repos list.
+
+*-h*, *--help*::
+  Show this help message and exit.
+
+*--handled-rules*::
+  When this argument is used, Sorald only mines violations of the rules that can be fixed by Sorald.
+
+*--miner-output-file*=_<minerOutputFile>_::
+  The path to the output file.
+
+*--resolve-classpath-from*=_<resolveClasspathFrom>_::
+  Path to the root of a project to resolve the classpath from. Currently only works for Maven projects.
+
+*--rule-types*=_<ruleTypes>_[,_<ruleTypes>_...]::
+  One or more types of rules to check for (use ',' to separate multiple types). Choices: BUG, VULNERABILITY, CODE_SMELL, SECURITY_HOTSPOT
+
+*--source*=_<source>_::
+  The path to the file or folder to be analyzed and possibly repaired.
+
+*--stats-on-git-repos*::
+  If the stats should be computed on git repos.
+
+*--stats-output-file*=_<statsOutputFile>_::
+  Path to a file to store execution statistics in (in JSON format). If left unspecified, Sorald does not gather statistics.
+
+*--target*=_<target>_::
+  The target of this execution (ex. sorald/92d377). This will be included in the json report.
+
+*--temp-dir*=_<tempDir>_::
+  The path to the temp directory.
+
+*-V*, *--version*::
+  Print version information and exit.
+
+// end::picocli-generated-man-section-options[]
+
+// tag::picocli-generated-man-section-arguments[]
+// end::picocli-generated-man-section-arguments[]
+
+// tag::picocli-generated-man-section-commands[]
+// end::picocli-generated-man-section-commands[]
+
+// tag::picocli-generated-man-section-exit-status[]
+// end::picocli-generated-man-section-exit-status[]
+
+// tag::picocli-generated-man-section-footer[]
+// end::picocli-generated-man-section-footer[]
+
+// end::picocli-generated-full-manpage[]
