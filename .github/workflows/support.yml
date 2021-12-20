@@ -6,6 +6,9 @@ on:
   push:
     branches: [ master ]
 
+env:
+  JAVA_DISTRIBUTION: 'adopt'
+
 jobs:
   generate-achievements-handled_rules-md:
     if: ${{ github.repository == 'SpoonLabs/sorald' }} # don't accidentally run on forks :)
