@@ -54,7 +54,11 @@ class RepairCommand extends BaseCommand {
         @CommandLine.Option(
                 names = {Constants.ARG_RULE_KEY},
                 description =
-                        "Choose one of the following rule keys:\n" + Processors.RULE_DESCRIPTIONS,
+                        "Choose one of the following rule keys:\n"
+                                + Processors.RULE_DESCRIPTIONS
+                                + "\n*Note:* _Some rules (e.g. 1444) are marked as \"incomplete\". This means that "
+                                + "Sorald's repair for a violation of said rule is either partial or "
+                                + "situational._",
                 required = true)
         String ruleKey = null;
 
