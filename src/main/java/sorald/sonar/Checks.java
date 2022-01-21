@@ -344,7 +344,6 @@ class Checks {
                         SpringRequestMappingMethodCheck.class,
                         SpringSecurityDisableCSRFCheck.class,
                         SQLInjectionCheck.class,
-                        StandardInputReadCheck.class,
                         Struts1EndpointCheck.class,
                         Struts2EndpointCheck.class,
                         UserEnumerationCheck.class,
