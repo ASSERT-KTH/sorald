@@ -27,7 +27,8 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
     }
 
     private static SonarLintEngine getOrCreateEngine() {
-        Path sonarJavaPath = Paths.get("target/classes").resolve("sonar-java-plugin-6.12.0.24852.jar");
+        Path sonarJavaPath =
+                Paths.get("target/classes").resolve("sonar-java-plugin-6.12.0.24852.jar");
         StandaloneGlobalConfiguration globalConfig =
                 StandaloneGlobalConfiguration.builder()
                         .addPlugin(sonarJavaPath)

@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import sorald.rule.Rule;
@@ -29,7 +28,8 @@ public class RepairTest {
         org.apache.commons.io.FileUtils.copyFile(origFile, targetFile);
         SoraldConfig config = new SoraldConfig();
 
-        List<Rule> sonarRules = Stream.of("S2111", "S2184").map(SonarRule::new).collect(Collectors.toList());
+        List<Rule> sonarRules =
+                Stream.of("S2111", "S2184").map(SonarRule::new).collect(Collectors.toList());
         Set<RuleViolation> violations = ProjectScanner.scanProject(targetFile, workdir, sonarRules);
 
         // act
