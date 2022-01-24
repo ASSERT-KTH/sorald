@@ -20,21 +20,23 @@ import sorald.rule.StaticAnalyzer;
 
 public class SonarStaticAnalyzer implements StaticAnalyzer {
     private final File projectRoot;
-    private final SonarLintEngine sonarLint = getOrCreateEngine();
+    private static SonarLintEngine sonarLint;
 
     public SonarStaticAnalyzer(File projectRoot) {
         this.projectRoot = projectRoot;
-    }
 
-    private static SonarLintEngine getOrCreateEngine() {
-        Path sonarJavaPath =
-                Paths.get("target/classes").resolve("sonar-java-plugin-6.12.0.24852.jar");
-        StandaloneGlobalConfiguration globalConfig =
-                StandaloneGlobalConfiguration.builder()
-                        .addPlugin(sonarJavaPath)
-                        .addEnabledLanguage(Language.JAVA)
-                        .build();
-        return new SonarLintEngine(globalConfig);
+        if (sonarLint == null) {
+            Path sonarJavaPath =
+                    Paths.get("target/classes").resolve("sonar-java-plugin-6.12.0.24852.jar");
+            StandaloneGlobalConfiguration globalConfig =
+                    StandaloneGlobalConfiguration.builder()
+                            .addPlugin(sonarJavaPath)
+                            .addEnabledLanguage(Language.JAVA)
+                            .build();
+            sonarLint = new SonarLintEngine(globalConfig);
+        } else {
+            sonarLint.recreateAnalysisEngine();
+        }
     }
 
     @Override

@@ -41,14 +41,17 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
     private final StandaloneGlobalConfiguration globalConfig;
     private final Collection<PluginDetails> pluginDetails;
     private final Map<String, SonarLintRuleDefinition> allRulesDefinitionsByKey;
-    private final AnalysisEngine analysisEngine;
+    private AnalysisEngine analysisEngine;
+
+    private final PluginInstancesRepository pluginInstancesRepository;
+    private final AnalysisEngineConfiguration analysisGlobalConfig;
 
     public SonarLintEngine(StandaloneGlobalConfiguration globalConfig) {
         super(globalConfig.getLogOutput());
         this.globalConfig = globalConfig;
         setLogging(null);
 
-        var pluginInstancesRepository = createPluginInstancesRepository();
+        pluginInstancesRepository = createPluginInstancesRepository();
         pluginDetails =
                 pluginInstancesRepository.getPluginCheckResultByKeys().values().stream()
                         .map(
@@ -64,7 +67,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
                 loadPluginMetadata(
                         pluginInstancesRepository, globalConfig.getEnabledLanguages(), false);
 
-        var analysisGlobalConfig =
+        analysisGlobalConfig =
                 AnalysisEngineConfiguration.builder()
                         .addEnabledLanguages(globalConfig.getEnabledLanguages())
                         .setClientPid(globalConfig.getClientPid())
@@ -75,6 +78,10 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
                         .build();
         this.analysisEngine =
                 new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, logOutput);
+    }
+
+    public void recreateAnalysisEngine() {
+        this.analysisEngine = new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, logOutput);
     }
 
     @Override
