@@ -43,7 +43,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
     private final Map<String, SonarLintRuleDefinition> allRulesDefinitionsByKey;
     private AnalysisEngine analysisEngine;
 
-    private final PluginInstancesRepository pluginInstancesRepository;
+    private static PluginInstancesRepositoryWhichCannotBeClosed pluginInstancesRepository;
     private final AnalysisEngineConfiguration analysisGlobalConfig;
 
     public SonarLintEngine(StandaloneGlobalConfiguration globalConfig) {
@@ -77,7 +77,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
                         .setModulesProvider(globalConfig.getModulesProvider())
                         .build();
         this.analysisEngine =
-                new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, logOutput);
+                new AnalysisEngine(analysisGlobalConfig, createPluginInstancesRepository(), logOutput);
     }
 
     public void recreateAnalysisEngine() {
@@ -89,13 +89,13 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
         return analysisEngine;
     }
 
-    private PluginInstancesRepository createPluginInstancesRepository() {
+    private PluginInstancesRepositoryWhichCannotBeClosed createPluginInstancesRepository() {
         var config =
                 new Configuration(
                         globalConfig.getPluginPaths(),
                         globalConfig.getEnabledLanguages(),
                         Optional.ofNullable(globalConfig.getNodeJsVersion()));
-        return new PluginInstancesRepository(config);
+        return new PluginInstancesRepositoryWhichCannotBeClosed(config);
     }
 
     @Override
@@ -209,5 +209,15 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
     @Override
     public Collection<PluginDetails> getPluginDetails() {
         return pluginDetails;
+    }
+
+    public static class PluginInstancesRepositoryWhichCannotBeClosed extends PluginInstancesRepository {
+
+        public PluginInstancesRepositoryWhichCannotBeClosed(Configuration configuration) {
+            super(configuration);
+        }
+
+        @Override
+        public void close() throws Exception { }
     }
 }
