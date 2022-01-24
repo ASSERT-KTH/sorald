@@ -77,11 +77,13 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
                         .setModulesProvider(globalConfig.getModulesProvider())
                         .build();
         this.analysisEngine =
-                new AnalysisEngine(analysisGlobalConfig, createPluginInstancesRepository(), logOutput);
+                new AnalysisEngine(
+                        analysisGlobalConfig, createPluginInstancesRepository(), logOutput);
     }
 
     public void recreateAnalysisEngine() {
-        this.analysisEngine = new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, logOutput);
+        this.analysisEngine =
+                new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, logOutput);
     }
 
     @Override
@@ -211,13 +213,14 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
         return pluginDetails;
     }
 
-    public static class PluginInstancesRepositoryWhichCannotBeClosed extends PluginInstancesRepository {
+    public static class PluginInstancesRepositoryWhichCannotBeClosed
+            extends PluginInstancesRepository {
 
         public PluginInstancesRepositoryWhichCannotBeClosed(Configuration configuration) {
             super(configuration);
         }
 
         @Override
-        public void close() throws Exception { }
+        public void close() throws Exception {}
     }
 }
