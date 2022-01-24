@@ -66,7 +66,7 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
 
         var issueHandler = new IssueHandler();
         sonarLint.analyze(config, issueHandler, null, null);
-
+        sonarLint.stop();
         return issueHandler.issues.stream().map(ScannedViolation::new).collect(Collectors.toList());
     }
 

@@ -195,7 +195,9 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
     }
 
     @Override
-    public void stop() {}
+    public void stop() {
+        analysisEngine.stop();
+    }
 
     @Override
     public Collection<PluginDetails> getPluginDetails() {
