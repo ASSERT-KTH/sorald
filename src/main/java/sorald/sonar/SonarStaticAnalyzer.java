@@ -1,8 +1,6 @@
 package sorald.sonar;
 
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -12,8 +10,6 @@ import org.sonarsource.sonarlint.core.client.api.common.RuleKey;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.Issue;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.IssueListener;
 import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneAnalysisConfiguration;
-import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneGlobalConfiguration;
-import org.sonarsource.sonarlint.core.commons.Language;
 import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.rule.StaticAnalyzer;
@@ -21,22 +17,10 @@ import sorald.rule.StaticAnalyzer;
 public class SonarStaticAnalyzer implements StaticAnalyzer {
     private final File projectRoot;
     private static SonarLintEngine sonarLint;
-    private static final Path sonarJavaPath =
-            Paths.get("target/classes").resolve("sonar-java-plugin-6.12.0.24852.jar");
 
     public SonarStaticAnalyzer(File projectRoot) {
         this.projectRoot = projectRoot;
-
-        if (sonarLint == null) {
-            StandaloneGlobalConfiguration globalConfig =
-                    StandaloneGlobalConfiguration.builder()
-                            .addPlugin(sonarJavaPath)
-                            .addEnabledLanguage(Language.JAVA)
-                            .build();
-            sonarLint = new SonarLintEngine(globalConfig);
-        } else {
-            sonarLint.recreateAnalysisEngine();
-        }
+        sonarLint = SonarLintEngine.getInstance();
     }
 
     @Override

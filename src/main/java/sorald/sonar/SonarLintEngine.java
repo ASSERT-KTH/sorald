@@ -3,6 +3,8 @@ package sorald.sonar;
 import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toSet;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
@@ -26,6 +28,7 @@ import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneAnalysisCo
 import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneGlobalConfiguration;
 import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneRuleDetails;
 import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneSonarLintEngine;
+import org.sonarsource.sonarlint.core.commons.Language;
 import org.sonarsource.sonarlint.core.commons.log.ClientLogOutput;
 import org.sonarsource.sonarlint.core.commons.progress.ClientProgressMonitor;
 import org.sonarsource.sonarlint.core.commons.progress.ProgressMonitor;
@@ -37,34 +40,71 @@ import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
 public final class SonarLintEngine extends AbstractSonarLintEngine
         implements StandaloneSonarLintEngine {
 
-    private final StandaloneGlobalConfiguration globalConfig;
-    private final Map<String, SonarLintRuleDefinition> allRulesDefinitionsByKey;
+    // The order of these initialisations is important as each field is dependent upon the previous
+    // one.
+    private static final Path sonarJavaPath =
+            Paths.get("target/classes").resolve("sonar-java-plugin-6.12.0.24852.jar");
+    private static final StandaloneGlobalConfiguration globalConfig = buildGlobalConfig();
+    private static final PluginInstancesRepositoryWhichCannotBeClosed pluginInstancesRepository =
+            createPluginInstancesRepository();
+    private static final Map<String, SonarLintRuleDefinition> allRulesDefinitionsByKey =
+            computeAllRulesDefinitionsByKey();
+    private static final AnalysisEngineConfiguration analysisGlobalConfig =
+            buildAnalysisEngineConfiguration();
 
-    private final AnalysisEngineConfiguration analysisGlobalConfig;
+    // The only instance of this singleton class
+    private static SonarLintEngine theOnlyInstance;
+
+    // We need to reinitialise it before starting analysis of any source files on any rules.
     private AnalysisEngine analysisEngine;
-    private static PluginInstancesRepositoryWhichCannotBeClosed pluginInstancesRepository;
 
-    public SonarLintEngine(StandaloneGlobalConfiguration globalConfig) {
-        super(globalConfig.getLogOutput());
-        this.globalConfig = globalConfig;
+    private SonarLintEngine() {
+        super(null);
         setLogging(null);
 
-        pluginInstancesRepository = createPluginInstancesRepository();
-
-        allRulesDefinitionsByKey =
-                loadPluginMetadata(
-                        pluginInstancesRepository, globalConfig.getEnabledLanguages(), false);
-
-        analysisGlobalConfig =
-                AnalysisEngineConfiguration.builder()
-                        .addEnabledLanguages(globalConfig.getEnabledLanguages())
-                        .setClientPid(globalConfig.getClientPid())
-                        .setExtraProperties(globalConfig.extraProperties())
-                        .setWorkDir(globalConfig.getWorkDir())
-                        .setModulesProvider(globalConfig.getModulesProvider())
-                        .build();
         this.analysisEngine =
-                new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, logOutput);
+                new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, null);
+    }
+
+    private static StandaloneGlobalConfiguration buildGlobalConfig() {
+        return StandaloneGlobalConfiguration.builder()
+                .addPlugin(sonarJavaPath)
+                .addEnabledLanguage(Language.JAVA)
+                .build();
+    }
+
+    private static PluginInstancesRepositoryWhichCannotBeClosed createPluginInstancesRepository() {
+        var config =
+                new Configuration(
+                        globalConfig.getPluginPaths(),
+                        globalConfig.getEnabledLanguages(),
+                        Optional.ofNullable(globalConfig.getNodeJsVersion()));
+        return new PluginInstancesRepositoryWhichCannotBeClosed(config);
+    }
+
+    private static Map<String, SonarLintRuleDefinition> computeAllRulesDefinitionsByKey() {
+        return loadPluginMetadata(
+                pluginInstancesRepository, globalConfig.getEnabledLanguages(), false);
+    }
+
+    private static AnalysisEngineConfiguration buildAnalysisEngineConfiguration() {
+        return AnalysisEngineConfiguration.builder()
+                .addEnabledLanguages(globalConfig.getEnabledLanguages())
+                .setClientPid(globalConfig.getClientPid())
+                .setExtraProperties(globalConfig.extraProperties())
+                .setWorkDir(globalConfig.getWorkDir())
+                .setModulesProvider(globalConfig.getModulesProvider())
+                .build();
+    }
+
+    /** Get or creates the one and only instance of this class. */
+    public static SonarLintEngine getInstance() {
+        if (theOnlyInstance == null) {
+            theOnlyInstance = new SonarLintEngine();
+        } else {
+            theOnlyInstance.recreateAnalysisEngine();
+        }
+        return theOnlyInstance;
     }
 
     /**
@@ -79,15 +119,6 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
     @Override
     public AnalysisEngine getAnalysisEngine() {
         return analysisEngine;
-    }
-
-    private PluginInstancesRepositoryWhichCannotBeClosed createPluginInstancesRepository() {
-        var config =
-                new Configuration(
-                        globalConfig.getPluginPaths(),
-                        globalConfig.getEnabledLanguages(),
-                        Optional.ofNullable(globalConfig.getNodeJsVersion()));
-        return new PluginInstancesRepositoryWhichCannotBeClosed(config);
     }
 
     @Override
