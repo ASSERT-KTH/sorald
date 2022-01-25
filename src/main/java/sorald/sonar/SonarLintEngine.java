@@ -153,6 +153,9 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                             .get();
             return analysisResults == null ? new AnalysisResults() : analysisResults;
         } catch (ExecutionException | InterruptedException e) {
+            if (e instanceof InterruptedException) {
+                Thread.currentThread().interrupt();
+            }
             throw SonarLintWrappedException.wrap(e);
         }
     }
