@@ -21,13 +21,13 @@ import sorald.rule.StaticAnalyzer;
 public class SonarStaticAnalyzer implements StaticAnalyzer {
     private final File projectRoot;
     private static SonarLintEngine sonarLint;
+    private static final Path sonarJavaPath =
+            Paths.get("target/classes").resolve("sonar-java-plugin-6.12.0.24852.jar");
 
     public SonarStaticAnalyzer(File projectRoot) {
         this.projectRoot = projectRoot;
 
         if (sonarLint == null) {
-            Path sonarJavaPath =
-                    Paths.get("target/classes").resolve("sonar-java-plugin-6.12.0.24852.jar");
             StandaloneGlobalConfiguration globalConfig =
                     StandaloneGlobalConfiguration.builder()
                             .addPlugin(sonarJavaPath)

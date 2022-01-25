@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toSet;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -39,12 +38,11 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
         implements StandaloneSonarLintEngine {
 
     private final StandaloneGlobalConfiguration globalConfig;
-    private final Collection<PluginDetails> pluginDetails;
     private final Map<String, SonarLintRuleDefinition> allRulesDefinitionsByKey;
-    private AnalysisEngine analysisEngine;
 
-    private static PluginInstancesRepositoryWhichCannotBeClosed pluginInstancesRepository;
     private final AnalysisEngineConfiguration analysisGlobalConfig;
+    private AnalysisEngine analysisEngine;
+    private static PluginInstancesRepositoryWhichCannotBeClosed pluginInstancesRepository;
 
     public SonarLintEngine(StandaloneGlobalConfiguration globalConfig) {
         super(globalConfig.getLogOutput());
@@ -52,16 +50,6 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
         setLogging(null);
 
         pluginInstancesRepository = createPluginInstancesRepository();
-        pluginDetails =
-                pluginInstancesRepository.getPluginCheckResultByKeys().values().stream()
-                        .map(
-                                c ->
-                                        new PluginDetails(
-                                                c.getPlugin().getKey(),
-                                                c.getPlugin().getName(),
-                                                c.getPlugin().getVersion().toString(),
-                                                c.getSkipReason().orElse(null)))
-                        .collect(Collectors.toList());
 
         allRulesDefinitionsByKey =
                 loadPluginMetadata(
@@ -72,13 +60,11 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
                         .addEnabledLanguages(globalConfig.getEnabledLanguages())
                         .setClientPid(globalConfig.getClientPid())
                         .setExtraProperties(globalConfig.extraProperties())
-                        .setNodeJs(globalConfig.getNodeJsPath())
                         .setWorkDir(globalConfig.getWorkDir())
                         .setModulesProvider(globalConfig.getModulesProvider())
                         .build();
         this.analysisEngine =
-                new AnalysisEngine(
-                        analysisGlobalConfig, createPluginInstancesRepository(), logOutput);
+                new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, logOutput);
     }
 
     public void recreateAnalysisEngine() {
@@ -153,38 +139,16 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
 
     private Collection<ActiveRule> identifyActiveRules(
             StandaloneAnalysisConfiguration configuration) {
-        Set<String> excludedRules =
-                configuration.excludedRules().stream().map(RuleKey::toString).collect(toSet());
         Set<String> includedRules =
-                configuration.includedRules().stream()
-                        .map(RuleKey::toString)
-                        .filter(r -> !excludedRules.contains(r))
-                        .collect(toSet());
+                configuration.includedRules().stream().map(RuleKey::toString).collect(toSet());
 
-        Collection<SonarLintRuleDefinition> filteredActiveRules =
-                allRulesDefinitionsByKey.values().stream()
-                        .filter(isIncludedByConfiguration(includedRules))
-                        .collect(Collectors.toList());
-
-        return filteredActiveRules.stream()
-                .map(
-                        rd -> {
-                            var activeRule =
-                                    new ActiveRule(rd.getKey(), rd.getLanguage().getLanguageKey());
-                            Map<String, String> effectiveParams =
-                                    new HashMap<>(rd.getDefaultParams());
-                            Optional.ofNullable(
-                                            configuration
-                                                    .ruleParameters()
-                                                    .get(RuleKey.parse(rd.getKey())))
-                                    .ifPresent(effectiveParams::putAll);
-                            activeRule.setParams(effectiveParams);
-                            return activeRule;
-                        })
+        return allRulesDefinitionsByKey.values().stream()
+                .filter(isImplementedBySonarJava(includedRules))
+                .map(rd -> new ActiveRule(rd.getKey(), rd.getLanguage().getLanguageKey()))
                 .collect(Collectors.toList());
     }
 
-    private static Predicate<? super SonarLintRuleDefinition> isIncludedByConfiguration(
+    private static Predicate<? super SonarLintRuleDefinition> isImplementedBySonarJava(
             Set<String> includedRules) {
         return r -> {
             if (includedRules.contains(r.getKey())) {
@@ -192,10 +156,11 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
             }
             for (String deprecatedKey : r.getDeprecatedKeys()) {
                 if (includedRules.contains(deprecatedKey)) {
-                    LOG.warn(
-                            "Rule '{}' was included using its deprecated key '{}'. Please fix your configuration.",
-                            r.getKey(),
-                            deprecatedKey);
+                    String msg =
+                            String.format(
+                                    "Rule %s was included using its deprecated key %s. Please fix your configuration.",
+                                    r.getKey(), deprecatedKey);
+                    System.out.println(msg);
                     return true;
                 }
             }
@@ -203,14 +168,21 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
         };
     }
 
-    @Override
     public void stop() {
         analysisEngine.stop();
     }
 
     @Override
     public Collection<PluginDetails> getPluginDetails() {
-        return pluginDetails;
+        return pluginInstancesRepository.getPluginCheckResultByKeys().values().stream()
+                .map(
+                        c ->
+                                new PluginDetails(
+                                        c.getPlugin().getKey(),
+                                        c.getPlugin().getName(),
+                                        c.getPlugin().getVersion().toString(),
+                                        c.getSkipReason().orElse(null)))
+                .collect(Collectors.toList());
     }
 
     public static class PluginInstancesRepositoryWhichCannotBeClosed
