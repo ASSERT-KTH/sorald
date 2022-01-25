@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
@@ -151,7 +152,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                                     new ProgressMonitor(monitor))
                             .get();
             return analysisResults == null ? new AnalysisResults() : analysisResults;
-        } catch (Exception e) {
+        } catch (ExecutionException | InterruptedException e) {
             throw SonarLintWrappedException.wrap(e);
         }
     }

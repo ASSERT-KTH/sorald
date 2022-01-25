@@ -1,6 +1,7 @@
 package sorald.sonar;
 
 import java.nio.file.Path;
+import java.util.Objects;
 import org.sonarsource.sonarlint.core.analysis.api.TextRange;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.Issue;
 import sorald.rule.RuleViolation;
@@ -41,7 +42,7 @@ class ScannedViolation extends RuleViolation {
 
     @Override
     public Path getAbsolutePath() {
-        Path path = issue.getInputFile().getClientObject();
+        Path path = Objects.requireNonNull(issue.getInputFile()).getClientObject();
         return path.toAbsolutePath().normalize();
     }
 
