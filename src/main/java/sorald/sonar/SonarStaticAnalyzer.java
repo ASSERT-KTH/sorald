@@ -16,11 +16,11 @@ import sorald.rule.StaticAnalyzer;
 
 public class SonarStaticAnalyzer implements StaticAnalyzer {
     private final File projectRoot;
-    private static SonarLintEngine sonarLint;
+    private final SonarLintEngine sonarLint;
 
     public SonarStaticAnalyzer(File projectRoot) {
         this.projectRoot = projectRoot;
-        sonarLint = SonarLintEngine.getInstance();
+        this.sonarLint = SonarLintEngine.getInstance();
     }
 
     @Override

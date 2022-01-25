@@ -195,8 +195,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
                             String.format(
                                     "Rule %s was included using its deprecated key %s. Please fix your configuration.",
                                     r.getKey(), deprecatedKey);
-                    System.out.println(msg);
-                    return true;
+                    throw new RuntimeException(msg);
                 }
             }
             return false;
@@ -231,6 +230,8 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
         }
 
         @Override
-        public void close() throws Exception {}
+        public void close() throws Exception {
+            // Prevent closing of instance of this class
+        }
     }
 }
