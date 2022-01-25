@@ -14,7 +14,7 @@ import org.sonarsource.sonarlint.core.analysis.AnalysisEngine;
 import org.sonarsource.sonarlint.core.client.api.common.PluginDetails;
 import org.sonarsource.sonarlint.core.commons.Language;
 
-public class SonarLintEngineTest {
+class SonarLintEngineTest {
     @Test
     void sonarLintEngineReinitializesAnalysisEngineForEachExecution() {
         // arrange
