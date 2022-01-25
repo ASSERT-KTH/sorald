@@ -6,6 +6,7 @@ import static java.util.stream.Collectors.toSet;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -189,8 +190,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
         analysisEngine.stop();
     }
 
-    @Override
-    public Collection<PluginDetails> getPluginDetails() {
+    public List<PluginDetails> getPluginDetails() {
         return pluginInstancesRepository.getPluginCheckResultByKeys().values().stream()
                 .map(
                         c ->
