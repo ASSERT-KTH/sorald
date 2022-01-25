@@ -162,28 +162,14 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                 configuration.includedRules().stream().map(RuleKey::toString).collect(toSet());
 
         return allRulesDefinitionsByKey.values().stream()
-                .filter(isImplementedBySonarJava(includedRules))
+                .filter(isImplementedBySonarJavaPlugin(includedRules))
                 .map(rd -> new ActiveRule(rd.getKey(), rd.getLanguage().getLanguageKey()))
                 .collect(Collectors.toList());
     }
 
-    private static Predicate<? super SonarLintRuleDefinition> isImplementedBySonarJava(
+    private static Predicate<? super SonarLintRuleDefinition> isImplementedBySonarJavaPlugin(
             Set<String> includedRules) {
-        return r -> {
-            if (includedRules.contains(r.getKey())) {
-                return true;
-            }
-            for (String deprecatedKey : r.getDeprecatedKeys()) {
-                if (includedRules.contains(deprecatedKey)) {
-                    String msg =
-                            String.format(
-                                    "Rule %s was included using its deprecated key %s. Please fix your configuration.",
-                                    r.getKey(), deprecatedKey);
-                    throw new RuntimeException(msg);
-                }
-            }
-            return false;
-        };
+        return r -> includedRules.contains(r.getKey());
     }
 
     public void stop() {
