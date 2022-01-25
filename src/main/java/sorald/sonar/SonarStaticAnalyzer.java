@@ -56,6 +56,10 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
         StandaloneAnalysisConfiguration config =
                 StandaloneAnalysisConfiguration.builder()
                         .setBaseDir(projectRoot.toPath())
+                        // SonarLint takes classpath as a comma separated string to make it OS
+                        // independent.
+                        // See:
+                        // https://github.com/SonarSource/sonar-java/blob/6050868761069bc5ff965a149f2fd9a64d6319e0/sonar-java-plugin/src/main/resources/static/documentation.md#java-analysis-and-bytecode
                         .putExtraProperty("sonar.java.libraries", String.join(",", classpath))
                         .addIncludedRules(
                                 rules.stream()

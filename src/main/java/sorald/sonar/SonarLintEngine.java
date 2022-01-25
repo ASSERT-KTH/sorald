@@ -67,6 +67,10 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
                 new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, logOutput);
     }
 
+    /**
+     * Recreates the analysis engine as it is stopped after each analysis executed by {@link
+     * SonarStaticAnalyzer}.
+     */
     public void recreateAnalysisEngine() {
         this.analysisEngine =
                 new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, logOutput);
@@ -185,6 +189,9 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Overriding this class to ensure its instance never closes throughout the lifecycle of JVM.
+     */
     public static class PluginInstancesRepositoryWhichCannotBeClosed
             extends PluginInstancesRepository {
 
