@@ -26,19 +26,15 @@ import org.sonarsource.sonarlint.core.client.api.common.analysis.IssueListener;
 import org.sonarsource.sonarlint.core.client.api.exceptions.SonarLintWrappedException;
 import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneAnalysisConfiguration;
 import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneGlobalConfiguration;
-import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneRuleDetails;
-import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneSonarLintEngine;
 import org.sonarsource.sonarlint.core.commons.Language;
 import org.sonarsource.sonarlint.core.commons.log.ClientLogOutput;
 import org.sonarsource.sonarlint.core.commons.progress.ClientProgressMonitor;
 import org.sonarsource.sonarlint.core.commons.progress.ProgressMonitor;
-import org.sonarsource.sonarlint.core.container.standalone.rule.StandaloneRule;
 import org.sonarsource.sonarlint.core.plugin.commons.PluginInstancesRepository;
 import org.sonarsource.sonarlint.core.plugin.commons.PluginInstancesRepository.Configuration;
 import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
 
-public final class SonarLintEngine extends AbstractSonarLintEngine
-        implements StandaloneSonarLintEngine {
+public final class SonarLintEngine extends AbstractSonarLintEngine {
 
     // The order of these initialisations is important as each field is dependent upon the previous
     // one.
@@ -121,19 +117,6 @@ public final class SonarLintEngine extends AbstractSonarLintEngine
         return analysisEngine;
     }
 
-    @Override
-    public Optional<StandaloneRuleDetails> getRuleDetails(String ruleKey) {
-        return Optional.ofNullable(allRulesDefinitionsByKey.get(ruleKey)).map(StandaloneRule::new);
-    }
-
-    @Override
-    public Collection<StandaloneRuleDetails> getAllRuleDetails() {
-        return allRulesDefinitionsByKey.values().stream()
-                .map(StandaloneRule::new)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public AnalysisResults analyze(
             StandaloneAnalysisConfiguration configuration,
             IssueListener issueListener,
