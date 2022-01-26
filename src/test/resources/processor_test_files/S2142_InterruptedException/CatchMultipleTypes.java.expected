@@ -12,11 +12,10 @@ public class CatchMultipleTypes {
             } else {
                 throw new InterruptedException();
             }
-        } catch (InterruptedException | ExecutionException e) {
-            if (e instanceof InterruptedException) {
-                Thread.currentThread().interrupt();
-            }
+        } catch (ExecutionException e) {
             throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
 }

@@ -1,21 +1,20 @@
 package sorald.processor;
 
 import sorald.annotations.ProcessorAnnotation;
-import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCatch;
-import spoon.reflect.code.CtIf;
+import spoon.reflect.code.CtCatchVariable;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtLabelledFlowBreak;
 import spoon.reflect.code.CtReturn;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.code.CtThrow;
+import spoon.reflect.code.CtTry;
 import spoon.reflect.code.CtTypeAccess;
-import spoon.reflect.code.CtVariableAccess;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.factory.Factory;
+import spoon.reflect.reference.CtTypeReference;
 
 @ProcessorAnnotation(key = "S2142", description = "\"InterruptedException\" should not be ignored")
 public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCatch> {
@@ -32,13 +31,12 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
         CtInvocation<?> secondInvocation =
                 factory.createInvocation(firstInvocation, interruptMethod.getReference());
 
-        CtStatement statementToInsert =
-                mustTypeCheckCatchVariable(element)
-                        ? wrapInTypeCheck(element.getParameter(), secondInvocation)
-                        : secondInvocation;
-
-        element.getBody()
-                .addStatement(lastSafeInterruptIndex(element.getBody()), statementToInsert);
+        if (mustTypeCheckCatchVariable(element)) {
+            wrapInCatcher(element, secondInvocation);
+        } else {
+            element.getBody()
+                    .addStatement(lastSafeInterruptIndex(element.getBody()), secondInvocation);
+        }
     }
 
     /**
@@ -77,22 +75,22 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
         return ctCatch.getParameter().getMultiTypes().size() != 1;
     }
 
-    private static CtIf wrapInTypeCheck(CtVariable<?> varToCheck, CtStatement statementToWrap) {
-        Factory fact = varToCheck.getFactory();
-        CtVariableAccess<?> varRead = fact.createVariableRead(varToCheck.getReference(), false);
-        CtTypeAccess<?> interruptedExcAccess =
-                fact.createTypeAccess(fact.Type().get(InterruptedException.class).getReference());
+    private static void wrapInCatcher(CtCatch violatedCatch, CtStatement statementToWrap) {
+        Factory factory = violatedCatch.getFactory();
+        CtTypeReference<?> refToInterruptedException =
+                factory.Type().get(InterruptedException.class).getReference();
 
-        CtIf ctIf = fact.createIf();
-        ctIf.setCondition(
-                fact.createBinaryOperator(
-                        varRead, interruptedExcAccess, BinaryOperatorKind.INSTANCEOF));
+        // Remove InterruptedException from the catch
+        CtCatchVariable<?> catchVariable = violatedCatch.getParameter();
+        catchVariable.removeMultiType(refToInterruptedException);
 
-        // We add a block instead of just the naked statement here to force printing of curly
-        // brackets
-        CtBlock<?> thenBranch = fact.createCtBlock(statementToWrap);
-        ctIf.setThenStatement(thenBranch);
-
-        return ctIf;
+        // Add statement into a new catch block
+        CtTry tryOfViolatedCatcher = violatedCatch.getParent(CtTry.class);
+        CtCatch newCatch = factory.createCatch();
+        CtCatchVariable<?> newCatchVariable =
+                factory.createCatchVariable(refToInterruptedException, "e");
+        newCatch.setParameter((CtCatchVariable<? extends Throwable>) newCatchVariable);
+        newCatch.setBody(statementToWrap);
+        tryOfViolatedCatcher.addCatcher(newCatch);
     }
 }

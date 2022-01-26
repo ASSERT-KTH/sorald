@@ -153,10 +153,20 @@
                     return;
                 }
                 consecutiveRetriableErrors = 0;
-            } catch (WakeupException | InterruptedException e) {
+            } catch (WakeupException e) {
                 // Assume we've been woken or interrupted to shutdown, so continue on to checking the
                 // shutDownLatch next iteration.
                 logger.debug("KafkaMonitor woken up, checking if shutdown requested...");
-                if (e instanceof InterruptedException) {
-                    Thread.currentThread().interrupt();
-                }
+            } catch (RetriableException e) {
+                consecutiveRetriableErrors += 1;
+                logger.warn(
+                        "Retriable exception encountered ({} consecutive), continuing processing...",
+                        consecutiveRetriableErrors,
+                        e);
+                exponentialBackoffWait(consecutiveRetriableErrors);
+            } catch (Exception e) {
+                logger.error("Raising exception to connect runtime", e);
+                context.raiseError(e);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }

@@ -47,10 +47,9 @@ class InterruptedExceptionForTesting {
 			} else {
 				throw new IOException();
 			}
-		} catch (InterruptedException | IOException e) { // Noncompliant {{Either re-interrupt this method or rethrow the "InterruptedException".}}
-			if (e instanceof InterruptedException) {
-				Thread.currentThread().interrupt();
-			}
+		} catch (IOException e) { // Noncompliant {{Either re-interrupt this method or rethrow the "InterruptedException".}}
+		} catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
 		}
 	}
 
