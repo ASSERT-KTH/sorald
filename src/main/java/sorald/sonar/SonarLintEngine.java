@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
@@ -67,25 +68,26 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                         .getContextClassLoader()
                         .getResourceAsStream(SONAR_JAVA_PLUGIN_NAME);
         if (resourceAsStream == null) {
-            throw new SonarJavaJarException("Resource does not exist");
+            throw new RuntimeException("Resource does not exist"); // NOSONAR:S112
         }
+
         File tempJar;
         try {
-            tempJar = File.createTempFile("sonar-java", ".jar");
+            Path tempDir = Files.createTempDirectory("tmpDir");
+            tempJar = File.createTempFile("sonar-java", ".jar", tempDir.toFile());
             tempJar.deleteOnExit();
+        } catch (IOException e) {
+            throw new RuntimeException("Could not create a temporary directory/file"); // NOSONAR:S112
+        }
+
+        try {
             FileOutputStream outputStream = new FileOutputStream(tempJar);
             IOUtils.copy(resourceAsStream, outputStream);
             outputStream.close();
             return tempJar.toPath();
         } catch (IOException e) {
-            e.printStackTrace();
-        }
-        throw new SonarJavaJarException("Cannot resolve path to SonarJava");
-    }
-
-    private static class SonarJavaJarException extends RuntimeException {
-        SonarJavaJarException(String message) {
-            super(message);
+            throw new RuntimeException( // NOSONAR:S112
+                    "Could not transfer stream to the temporary JAR file.");
         }
     }
 
@@ -185,10 +187,10 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                                     new ProgressMonitor(monitor))
                             .get();
             return analysisResults == null ? new AnalysisResults() : analysisResults;
-        } catch (ExecutionException | InterruptedException e) {
-            if (e instanceof InterruptedException) {
-                Thread.currentThread().interrupt();
-            }
+        } catch (ExecutionException e) {
+            throw SonarLintWrappedException.wrap(e);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             throw SonarLintWrappedException.wrap(e);
         }
     }
