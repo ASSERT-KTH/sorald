@@ -63,7 +63,9 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
     // ToDo: Write a custom classloader to load the JAR.
     private static Path getSonarJavaPath() {
         InputStream resourceAsStream =
-                SonarLintEngine.class.getClassLoader().getResourceAsStream(SONAR_JAVA_PLUGIN_NAME);
+                Thread.currentThread()
+                        .getContextClassLoader()
+                        .getResourceAsStream(SONAR_JAVA_PLUGIN_NAME);
         if (resourceAsStream == null) {
             throw new SonarJavaJarException("Resource does not exist");
         }
