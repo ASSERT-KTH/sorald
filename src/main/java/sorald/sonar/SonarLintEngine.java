@@ -77,7 +77,8 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
             tempJar = File.createTempFile("sonar-java", ".jar", tempDir.toFile());
             tempJar.deleteOnExit();
         } catch (IOException e) {
-            throw new RuntimeException("Could not create a temporary directory/file"); // NOSONAR:S112
+            throw new RuntimeException( // NOSONAR:S112
+                    "Could not create a temporary directory/file");
         }
 
         try {
