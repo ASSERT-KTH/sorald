@@ -13,10 +13,6 @@ class ScannedViolation extends RuleViolation {
 
     ScannedViolation(Issue issue) {
         textRange = issue.getTextRange();
-        if (textRange == null) {
-            throw new IllegalArgumentException(
-                    "issue for '" + issue.getRuleKey() + "' lacks primary location");
-        }
         this.issue = issue;
     }
 
