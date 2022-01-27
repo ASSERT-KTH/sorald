@@ -1,0 +1,8 @@
+
+public class ThreadLocalInitial {
+  
+  public void bar() {
+    ThreadLocal<String> threadLocal = ThreadLocal.withInitial(() -> "hello");
+    threadLocal.set("42");
+  }
+}
