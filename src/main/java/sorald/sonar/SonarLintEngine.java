@@ -3,8 +3,11 @@ package sorald.sonar;
 import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toSet;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +17,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
 import org.sonarsource.sonarlint.core.AbstractSonarLintEngine;
 import org.sonarsource.sonarlint.core.analysis.AnalysisEngine;
 import org.sonarsource.sonarlint.core.analysis.api.ActiveRule;
@@ -40,8 +44,8 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
 
     // The order of these initialisations is important as each field is dependent upon the previous
     // one.
-    private static final Path sonarJavaPath =
-            Paths.get("target/classes").resolve("sonar-java-plugin-6.12.0.24852.jar");
+    private static final String SONAR_JAVA_PLUGIN_NAME = "sonar-java-plugin-6.12.0.24852.jar";
+    private static final Path sonarJavaPath = getSonarJavaPath();
     private static final StandaloneGlobalConfiguration globalConfig = buildGlobalConfig();
     private static final PluginInstancesRepositoryWhichCannotBeClosed pluginInstancesRepository =
             createPluginInstancesRepository();
@@ -55,6 +59,33 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
 
     // We need to reinitialise it before starting analysis of any source files on any rules.
     private AnalysisEngine analysisEngine;
+
+    // ToDo: Write a custom classloader to load the JAR.
+    private static Path getSonarJavaPath() {
+        InputStream resourceAsStream =
+                SonarLintEngine.class.getClassLoader().getResourceAsStream(SONAR_JAVA_PLUGIN_NAME);
+        if (resourceAsStream == null) {
+            throw new SonarJavaJarException("Resource does not exist");
+        }
+        File tempJar;
+        try {
+            tempJar = File.createTempFile("sonar-java", ".jar");
+            tempJar.deleteOnExit();
+            FileOutputStream outputStream = new FileOutputStream(tempJar);
+            IOUtils.copy(resourceAsStream, outputStream);
+            outputStream.close();
+            return tempJar.toPath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        throw new SonarJavaJarException("Cannot resolve path to SonarJava");
+    }
+
+    private static class SonarJavaJarException extends RuntimeException {
+        SonarJavaJarException(String message) {
+            super(message);
+        }
+    }
 
     private SonarLintEngine() {
         super(null);
