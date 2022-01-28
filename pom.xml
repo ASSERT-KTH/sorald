@@ -123,7 +123,7 @@
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-checks</artifactId>
-            <version>6.9.0.23563</version>
+            <version>7.7.0.28547</version>
             <exclusions>
                 <exclusion>
                     <!-- included in stdlib -->
