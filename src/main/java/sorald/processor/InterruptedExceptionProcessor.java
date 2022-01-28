@@ -39,6 +39,36 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
         }
     }
 
+    private static void wrapInCatcher(CtCatch violatedCatch, CtStatement statementToWrap) {
+        Factory factory = violatedCatch.getFactory();
+        CtTypeReference<?> refToInterruptedException =
+                factory.Type().get(InterruptedException.class).getReference();
+
+        // Remove InterruptedException from the catch
+        CtCatchVariable<?> catchVariable = violatedCatch.getParameter();
+        catchVariable.removeMultiType(refToInterruptedException);
+
+        // Add statement into a cloned catch block
+        // Currently, we clone the body of the violated catch which is theoretically wrong because
+        // there could be statements concerning only one of the exception types.
+        // Example - `if (e instanceof IOException) { ... }`. However, it is safe // NOSONAR:S125
+        // to ignore this case because it is rare.
+        CtBlock<?> blockForNewCatcher = violatedCatch.getBody().clone();
+        blockForNewCatcher.addStatement(
+                lastSafeInterruptIndex(blockForNewCatcher), statementToWrap);
+
+        // Set the variable and body for the new catcher
+        CtCatch newCatch = factory.createCatch();
+        newCatch.setBody(blockForNewCatcher);
+        CtCatchVariable<?> newCatchVariable =
+                factory.createCatchVariable(
+                        refToInterruptedException, catchVariable.getSimpleName());
+        newCatch.setParameter((CtCatchVariable<? extends Throwable>) newCatchVariable);
+
+        CtTry tryOfViolatedCatcher = violatedCatch.getParent(CtTry.class);
+        tryOfViolatedCatcher.addCatcher(newCatch);
+    }
+
     /**
      * Return the last index that is safe to insert at, safe meaning that the interrupt is certain
      * to actually be invoked.
@@ -73,24 +103,5 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
 
     private static boolean mustTypeCheckCatchVariable(CtCatch ctCatch) {
         return ctCatch.getParameter().getMultiTypes().size() != 1;
-    }
-
-    private static void wrapInCatcher(CtCatch violatedCatch, CtStatement statementToWrap) {
-        Factory factory = violatedCatch.getFactory();
-        CtTypeReference<?> refToInterruptedException =
-                factory.Type().get(InterruptedException.class).getReference();
-
-        // Remove InterruptedException from the catch
-        CtCatchVariable<?> catchVariable = violatedCatch.getParameter();
-        catchVariable.removeMultiType(refToInterruptedException);
-
-        // Add statement into a new catch block
-        CtTry tryOfViolatedCatcher = violatedCatch.getParent(CtTry.class);
-        CtCatch newCatch = factory.createCatch();
-        CtCatchVariable<?> newCatchVariable =
-                factory.createCatchVariable(refToInterruptedException, "e");
-        newCatch.setParameter((CtCatchVariable<? extends Throwable>) newCatchVariable);
-        newCatch.setBody(statementToWrap);
-        tryOfViolatedCatcher.addCatcher(newCatch);
     }
 }

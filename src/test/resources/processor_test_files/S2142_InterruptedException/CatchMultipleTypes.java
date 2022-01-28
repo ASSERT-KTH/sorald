@@ -12,7 +12,9 @@ public class CatchMultipleTypes {
             } else {
                 throw new InterruptedException();
             }
-        } catch (InterruptedException | ExecutionException e) { // Noncompliant
+        }
+        // Noncompliant
+        catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);
         }
     }
