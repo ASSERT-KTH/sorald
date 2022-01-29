@@ -17,11 +17,9 @@ import spoon.reflect.reference.CtTypeReference;
 @ProcessorAnnotation(key = "S4065", description = "\"ThreadLocal.withInitial\" should be preferred")
 public class ThreadLocalWithInitial extends SoraldAbstractProcessor<CtNewClass<?>> {
 
-    private static final String THREADLOCAL_FQN = "java.lang.ThreadLocal";
 
     @Override
     protected void repairInternal(CtNewClass<?> newClass) {
-        if (isThreadLocalType(newClass)) {
             CtClass<?> innerClass = newClass.getAnonymousClass();
             if (hasNoFields(innerClass) && hasOnlyConstructorAndSingleMethod(innerClass)) {
                 Optional<CtExecutableReference<?>> initalValueMethod =
@@ -33,12 +31,6 @@ public class ThreadLocalWithInitial extends SoraldAbstractProcessor<CtNewClass<?
                     newClass.replace(invocation);
                 }
             }
-        }
-    }
-
-    private boolean isThreadLocalType(CtNewClass<?> newClass) {
-        return newClass.getType() != null
-                && newClass.getType().getQualifiedName().equals(THREADLOCAL_FQN);
     }
 
     private CtInvocation<?> createInitalMethod(CtNewClass<?> threadLocal, CtLambda<?> lambda) {
@@ -65,8 +57,6 @@ public class ThreadLocalWithInitial extends SoraldAbstractProcessor<CtNewClass<?
             CtStatement statement = initalValueMethod.getDeclaration().getBody().getStatement(0);
             if (statement instanceof CtReturn) {
                 lambda.setExpression(getReturnStatement(statement));
-            } else {
-                lambda.setBody(initalValueMethod.getDeclaration().getBody());
             }
         } else {
             lambda.setBody(initalValueMethod.getDeclaration().getBody());
