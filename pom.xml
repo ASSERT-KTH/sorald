@@ -106,7 +106,7 @@
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-checks-testkit</artifactId>
-            <version>7.5.0.28054</version>
+            <version>7.8.0.28662</version>
             <exclusions>
                 <exclusion>
                     <!-- included in stdlib -->
