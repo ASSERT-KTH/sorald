@@ -17,20 +17,19 @@ import spoon.reflect.reference.CtTypeReference;
 @ProcessorAnnotation(key = "S4065", description = "\"ThreadLocal.withInitial\" should be preferred")
 public class ThreadLocalWithInitial extends SoraldAbstractProcessor<CtNewClass<?>> {
 
-
     @Override
     protected void repairInternal(CtNewClass<?> newClass) {
-            CtClass<?> innerClass = newClass.getAnonymousClass();
-            if (hasNoFields(innerClass) && hasOnlyConstructorAndSingleMethod(innerClass)) {
-                Optional<CtExecutableReference<?>> initalValueMethod =
-                        findInitalValueMethod(innerClass);
-                if (initalValueMethod.isPresent()) {
-                    CtLambda<?> lambda = createSupplier(initalValueMethod.get());
-                    CtInvocation<?> invocation = createInitalMethod(newClass, lambda);
-                    invocation.setArguments(List.of(lambda));
-                    newClass.replace(invocation);
-                }
+        CtClass<?> innerClass = newClass.getAnonymousClass();
+        if (hasNoFields(innerClass) && hasOnlyConstructorAndSingleMethod(innerClass)) {
+            Optional<CtExecutableReference<?>> initalValueMethod =
+                    findInitalValueMethod(innerClass);
+            if (initalValueMethod.isPresent()) {
+                CtLambda<?> lambda = createSupplier(initalValueMethod.get());
+                CtInvocation<?> invocation = createInitalMethod(newClass, lambda);
+                invocation.setArguments(List.of(lambda));
+                newClass.replace(invocation);
             }
+        }
     }
 
     private CtInvocation<?> createInitalMethod(CtNewClass<?> threadLocal, CtLambda<?> lambda) {
