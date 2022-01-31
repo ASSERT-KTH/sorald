@@ -118,4 +118,24 @@ public class FileUtils {
             return new JSONObject(obj);
         }
     }
+
+    public static File getCacheDir() {
+        String home = System.getProperty("user.home");
+        String os = System.getProperty("os.name");
+
+        if (os.contains("Windows")) {
+            File cacheDir = new File(home + "\\Cache\\sorald\\");
+            cacheDir.mkdir();
+            return cacheDir;
+        } else if (os.contains("Linux")) {
+            File cacheDir = new File(home + "/.cache/sorald/");
+            cacheDir.mkdir();
+            return cacheDir;
+        } else if (os.contains("Mac")) {
+            File cacheDir = new File(home + "/Library/Caches/sorald/");
+            cacheDir.mkdir();
+            return cacheDir;
+        }
+        throw new RuntimeException(os + " not supported"); // NOSONAR:S112
+    }
 }

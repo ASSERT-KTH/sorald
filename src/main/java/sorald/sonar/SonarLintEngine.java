@@ -4,11 +4,10 @@ import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toSet;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +17,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
 import org.sonarsource.sonarlint.core.AbstractSonarLintEngine;
 import org.sonarsource.sonarlint.core.analysis.AnalysisEngine;
 import org.sonarsource.sonarlint.core.analysis.api.ActiveRule;
@@ -40,13 +38,13 @@ import org.sonarsource.sonarlint.core.commons.progress.ProgressMonitor;
 import org.sonarsource.sonarlint.core.plugin.commons.PluginInstancesRepository;
 import org.sonarsource.sonarlint.core.plugin.commons.PluginInstancesRepository.Configuration;
 import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
+import sorald.FileUtils;
 
 public final class SonarLintEngine extends AbstractSonarLintEngine {
 
     // The order of these initialisations is important as each field is dependent upon the previous
     // one.
-    private static final String SONAR_JAVA_PLUGIN_NAME = "sonar-java-plugin-6.12.0.24852.jar";
-    private static final Path sonarJavaPath = getSonarJavaPath();
+    private static final Path sonarJavaPath = getOrDownloadSonarJavaPlugin();
     private static final StandaloneGlobalConfiguration globalConfig = buildGlobalConfig();
     private static final PluginInstancesRepositoryWhichCannotBeClosed pluginInstancesRepository =
             createPluginInstancesRepository();
@@ -61,43 +59,41 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
     // We need to reinitialise it before starting analysis of any source files on any rules.
     private AnalysisEngine analysisEngine;
 
-    // ToDo: Write a custom classloader to load the JAR.
-    private static Path getSonarJavaPath() {
-        InputStream resourceAsStream =
-                Thread.currentThread()
-                        .getContextClassLoader()
-                        .getResourceAsStream(SONAR_JAVA_PLUGIN_NAME);
-        if (resourceAsStream == null) {
-            throw new RuntimeException("Resource does not exist"); // NOSONAR:S112
-        }
-
-        File tempJar;
-        try {
-            Path tempDir = Files.createTempDirectory("tmpDir");
-            tempJar = File.createTempFile("sonar-java", ".jar", tempDir.toFile());
-            tempJar.deleteOnExit();
-        } catch (IOException e) {
-            throw new RuntimeException( // NOSONAR:S112
-                    "Could not create a temporary directory/file");
-        }
-
-        try {
-            FileOutputStream outputStream = new FileOutputStream(tempJar);
-            IOUtils.copy(resourceAsStream, outputStream);
-            outputStream.close();
-            return tempJar.toPath();
-        } catch (IOException e) {
-            throw new RuntimeException( // NOSONAR:S112
-                    "Could not transfer stream to the temporary JAR file.");
-        }
-    }
-
     private SonarLintEngine() {
         super(null);
         setLogging(null);
 
         this.analysisEngine =
                 new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, null);
+    }
+
+    public static Path getOrDownloadSonarJavaPlugin() {
+        File cacheDirectory = FileUtils.getCacheDir();
+        Optional<File> sonarJava =
+                Arrays.stream(
+                                cacheDirectory.listFiles(
+                                        file -> file.getName().contains("sonar-java-plugin")))
+                        .findFirst();
+
+        if (sonarJava.isPresent()) {
+            return sonarJava.get().toPath();
+        }
+
+        String cmd =
+                "curl https://repo1.maven.org/maven2/org/sonarsource/java/sonar-java-plugin/6.12.0.24852/sonar-java-plugin-6.12.0.24852.jar"
+                        + " --output "
+                        + cacheDirectory
+                        + System.getProperty("file.separator")
+                        + "sonar-java-plugin.jar";
+        try {
+            Runtime.getRuntime().exec(cmd);
+            return Paths.get(
+                    cacheDirectory
+                            + System.getProperty("file.separator")
+                            + "sonar-java-plugin.jar");
+        } catch (IOException ignore) {
+            throw new RuntimeException("Could not download Sonar Java plugin");
+        }
     }
 
     private static StandaloneGlobalConfiguration buildGlobalConfig() {
