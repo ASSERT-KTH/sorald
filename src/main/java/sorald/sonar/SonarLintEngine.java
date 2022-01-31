@@ -5,8 +5,12 @@ import static java.util.stream.Collectors.toSet;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -78,12 +82,13 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
             return sonarJavaPlugin.toPath();
         }
 
-        String cmd =
-                String.format(
-                        "curl %s --output %s", SONAR_JAVA_PLUGIN_URL, sonarJavaPluginFileName);
         try {
-            Runtime.getRuntime().exec(cmd);
-            return Paths.get(sonarJavaPluginFileName);
+            InputStream inputStream = new URL(SONAR_JAVA_PLUGIN_URL).openStream();
+            Files.copy(
+                    inputStream,
+                    Paths.get(sonarJavaPluginFileName),
+                    StandardCopyOption.REPLACE_EXISTING);
+            return new File(sonarJavaPluginFileName).toPath();
         } catch (IOException ignore) {
             throw new RuntimeException("Could not download Sonar Java plugin"); // NOSONAR:S112
         }
