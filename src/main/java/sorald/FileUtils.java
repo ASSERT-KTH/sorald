@@ -119,6 +119,11 @@ public class FileUtils {
         }
     }
 
+    /**
+     * Returns the cache directory depending upon the OS.
+     *
+     * @return the file object of the cache directory
+     */
     public static File getCacheDir() {
         String home = System.getProperty("user.home");
         String os = System.getProperty("os.name");
