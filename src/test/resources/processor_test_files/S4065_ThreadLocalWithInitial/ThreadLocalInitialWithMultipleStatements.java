@@ -1,5 +1,5 @@
 
-public class ThreadLocalInitial2 {
+public class ThreadLocalInitialWithMultipleStatements {
   
   public void bar() {
     ThreadLocal<String> threadLocal = new ThreadLocal<String>() { // Noncompliant

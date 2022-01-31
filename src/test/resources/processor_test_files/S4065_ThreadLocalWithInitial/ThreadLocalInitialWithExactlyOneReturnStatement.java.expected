@@ -1,5 +1,5 @@
 
-public class ThreadLocalInitial {
+public class ThreadLocalInitialWithExactlyOneReturnStatement {
   
   public void bar() {
     ThreadLocal<String> threadLocal = ThreadLocal.withInitial(() -> "hello");

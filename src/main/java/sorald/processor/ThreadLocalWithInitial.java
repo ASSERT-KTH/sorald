@@ -20,13 +20,11 @@ public class ThreadLocalWithInitial extends SoraldAbstractProcessor<CtNewClass<?
     @Override
     protected void repairInternal(CtNewClass<?> newClass) {
         CtClass<?> innerClass = newClass.getAnonymousClass();
-        if (hasNoFields(innerClass) && hasOnlyConstructorAndSingleMethod(innerClass)) {
-            CtExecutableReference<?> initialValueMethod = findInitialValueMethod(innerClass);
-            CtLambda<?> lambda = createSupplier(initialValueMethod);
-            CtInvocation<?> invocation = createinitialMethod(newClass, lambda);
-            invocation.setArguments(List.of(lambda));
-            newClass.replace(invocation);
-        }
+        CtExecutableReference<?> initialValueMethod = findInitialValueMethod(innerClass);
+        CtLambda<?> lambda = createSupplier(initialValueMethod);
+        CtInvocation<?> invocation = createinitialMethod(newClass, lambda);
+        invocation.setArguments(List.of(lambda));
+        newClass.replace(invocation);
     }
 
     private CtInvocation<?> createinitialMethod(CtNewClass<?> threadLocal, CtLambda<?> lambda) {
@@ -69,13 +67,5 @@ public class ThreadLocalWithInitial extends SoraldAbstractProcessor<CtNewClass<?
                 .filter(v -> v.getSimpleName().equals("initialValue"))
                 .findFirst()
                 .get();
-    }
-
-    private boolean hasOnlyConstructorAndSingleMethod(CtClass<?> innerClass) {
-        return innerClass.getDeclaredExecutables().size() == 2;
-    }
-
-    private boolean hasNoFields(CtClass<?> innerClass) {
-        return innerClass.getDeclaredFields().isEmpty();
     }
 }
