@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -44,7 +43,10 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
 
     // The order of these initialisations is important as each field is dependent upon the previous
     // one.
-    private static final Path sonarJavaPath = getOrDownloadSonarJavaPlugin();
+    private static final String SONAR_JAVA_PLUGIN_JAR_NAME = "sonar-java-plugin.jar";
+    private static final String SONAR_JAVA_PLUGIN_URL =
+            "https://repo1.maven.org/maven2/org/sonarsource/java/sonar-java-plugin/6.12.0.24852/sonar-java-plugin-6.12.0.24852.jar";
+    private static final Path sonarJavaPlugin = getOrDownloadSonarJavaPlugin();
     private static final StandaloneGlobalConfiguration globalConfig = buildGlobalConfig();
     private static final PluginInstancesRepositoryWhichCannotBeClosed pluginInstancesRepository =
             createPluginInstancesRepository();
@@ -67,38 +69,29 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                 new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, null);
     }
 
-    public static Path getOrDownloadSonarJavaPlugin() {
+    private static Path getOrDownloadSonarJavaPlugin() {
         File cacheDirectory = FileUtils.getCacheDir();
-        Optional<File> sonarJava =
-                Arrays.stream(
-                                cacheDirectory.listFiles(
-                                        file -> file.getName().contains("sonar-java-plugin")))
-                        .findFirst();
-
-        if (sonarJava.isPresent()) {
-            return sonarJava.get().toPath();
+        String sonarJavaPluginFileName =
+                cacheDirectory + System.getProperty("file.separator") + SONAR_JAVA_PLUGIN_JAR_NAME;
+        File sonarJavaPlugin = new File(sonarJavaPluginFileName);
+        if (sonarJavaPlugin.exists()) {
+            return sonarJavaPlugin.toPath();
         }
 
         String cmd =
-                "curl https://repo1.maven.org/maven2/org/sonarsource/java/sonar-java-plugin/6.12.0.24852/sonar-java-plugin-6.12.0.24852.jar"
-                        + " --output "
-                        + cacheDirectory
-                        + System.getProperty("file.separator")
-                        + "sonar-java-plugin.jar";
+                String.format(
+                        "curl %s --output %s", SONAR_JAVA_PLUGIN_URL, sonarJavaPluginFileName);
         try {
             Runtime.getRuntime().exec(cmd);
-            return Paths.get(
-                    cacheDirectory
-                            + System.getProperty("file.separator")
-                            + "sonar-java-plugin.jar");
+            return Paths.get(sonarJavaPluginFileName);
         } catch (IOException ignore) {
-            throw new RuntimeException("Could not download Sonar Java plugin");
+            throw new RuntimeException("Could not download Sonar Java plugin"); // NOSONAR:S112
         }
     }
 
     private static StandaloneGlobalConfiguration buildGlobalConfig() {
         return StandaloneGlobalConfiguration.builder()
-                .addPlugin(sonarJavaPath)
+                .addPlugin(sonarJavaPlugin)
                 .addEnabledLanguage(Language.JAVA)
                 .build();
     }
