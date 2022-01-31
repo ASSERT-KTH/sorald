@@ -22,12 +22,12 @@ public class ThreadLocalWithInitial extends SoraldAbstractProcessor<CtNewClass<?
         CtClass<?> innerClass = newClass.getAnonymousClass();
         CtExecutableReference<?> initialValueMethod = findInitialValueMethod(innerClass);
         CtLambda<?> lambda = createSupplier(initialValueMethod);
-        CtInvocation<?> invocation = createinitialMethod(newClass, lambda);
+        CtInvocation<?> invocation = createInitialMethod(newClass, lambda);
         invocation.setArguments(List.of(lambda));
         newClass.replace(invocation);
     }
 
-    private CtInvocation<?> createinitialMethod(CtNewClass<?> threadLocal, CtLambda<?> lambda) {
+    private CtInvocation<?> createInitialMethod(CtNewClass<?> threadLocal, CtLambda<?> lambda) {
         CtTypeAccess<Object> target = getFactory().createTypeAccess(createThreadLocalRef());
         CtExecutableReference<?> executableReference =
                 getFactory()
