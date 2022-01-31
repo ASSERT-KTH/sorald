@@ -1,7 +1,6 @@
 package sorald.processor;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Supplier;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtExpression;
@@ -10,6 +9,7 @@ import spoon.reflect.code.CtLambda;
 import spoon.reflect.code.CtNewClass;
 import spoon.reflect.code.CtReturn;
 import spoon.reflect.code.CtStatement;
+import spoon.reflect.code.CtTypeAccess;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtTypeReference;
@@ -21,44 +21,40 @@ public class ThreadLocalWithInitial extends SoraldAbstractProcessor<CtNewClass<?
     protected void repairInternal(CtNewClass<?> newClass) {
         CtClass<?> innerClass = newClass.getAnonymousClass();
         if (hasNoFields(innerClass) && hasOnlyConstructorAndSingleMethod(innerClass)) {
-            Optional<CtExecutableReference<?>> initalValueMethod =
-                    findInitalValueMethod(innerClass);
-            if (initalValueMethod.isPresent()) {
-                CtLambda<?> lambda = createSupplier(initalValueMethod.get());
-                CtInvocation<?> invocation = createInitalMethod(newClass, lambda);
-                invocation.setArguments(List.of(lambda));
-                newClass.replace(invocation);
-            }
+            CtExecutableReference<?> initialValueMethod = findInitialValueMethod(innerClass);
+            CtLambda<?> lambda = createSupplier(initialValueMethod);
+            CtInvocation<?> invocation = createinitialMethod(newClass, lambda);
+            invocation.setArguments(List.of(lambda));
+            newClass.replace(invocation);
         }
     }
 
-    private CtInvocation<?> createInitalMethod(CtNewClass<?> threadLocal, CtLambda<?> lambda) {
-        return getFactory()
-                .createInvocation(
-                        getFactory().createTypeAccess(createThreadLocalRef()),
-                        getFactory()
-                                .Executable()
-                                .createReference(
-                                        threadLocal.getType(),
-                                        true,
-                                        threadLocal.getType(),
-                                        "withInitial",
-                                        List.of(lambda.getType())));
+    private CtInvocation<?> createinitialMethod(CtNewClass<?> threadLocal, CtLambda<?> lambda) {
+        CtTypeAccess<Object> target = getFactory().createTypeAccess(createThreadLocalRef());
+        CtExecutableReference<?> executableReference =
+                getFactory()
+                        .Executable()
+                        .createReference(
+                                threadLocal.getType(),
+                                true,
+                                threadLocal.getType(),
+                                "withInitial",
+                                List.of(lambda.getType()));
+        return getFactory().createInvocation(target, executableReference);
     }
 
     private CtTypeReference<Object> createThreadLocalRef() {
         return getFactory().createCtTypeReference(ThreadLocal.class);
     }
 
-    private CtLambda<?> createSupplier(CtExecutableReference<?> initalValueMethod) {
+    private CtLambda<?> createSupplier(CtExecutableReference<?> initialValueMethod) {
         CtLambda<?> lambda = getFactory().createLambda();
-        if (initalValueMethod.getDeclaration().getBody().getStatements().size() == 1) {
-            CtStatement statement = initalValueMethod.getDeclaration().getBody().getStatement(0);
-            if (statement instanceof CtReturn) {
-                lambda.setExpression(getReturnStatement(statement));
-            }
+        if (initialValueMethod.getDeclaration().getBody().getStatements().size() == 1) {
+            lambda.setExpression(
+                    getReturnStatement(
+                            initialValueMethod.getDeclaration().getBody().getStatement(0)));
         } else {
-            lambda.setBody(initalValueMethod.getDeclaration().getBody());
+            lambda.setBody(initialValueMethod.getDeclaration().getBody());
         }
         lambda.setType(getFactory().createCtTypeReference(Supplier.class));
         return lambda;
@@ -68,10 +64,11 @@ public class ThreadLocalWithInitial extends SoraldAbstractProcessor<CtNewClass<?
         return ((CtReturn<T>) statement).getReturnedExpression();
     }
 
-    private Optional<CtExecutableReference<?>> findInitalValueMethod(CtClass<?> innerClass) {
+    private CtExecutableReference<?> findInitialValueMethod(CtClass<?> innerClass) {
         return innerClass.getDeclaredExecutables().stream()
                 .filter(v -> v.getSimpleName().equals("initialValue"))
-                .findFirst();
+                .findFirst()
+                .get();
     }
 
     private boolean hasOnlyConstructorAndSingleMethod(CtClass<?> innerClass) {
