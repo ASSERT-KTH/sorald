@@ -31,6 +31,7 @@ Sorald can currently repair violations of the following rules:
     * ["Collections.EMPTY_LIST", "EMPTY_MAP", and "EMPTY_SET" should not be used](#collectionsempty_list-empty_map-and-empty_set-should-not-be-used-sonar-rule-1596) ([Sonar Rule 1596](https://rules.sonarsource.com/java/RSPEC-1596))
     * ["public static" fields should be constant](#public-static-fields-should-be-constant-sonar-rule-1444) ([Sonar Rule 1444](https://rules.sonarsource.com/java/RSPEC-1444))
     * ["Serializable" classes should have a "serialVersionUID"](#serializable-classes-should-have-a-serialversionuid-sonar-rule-2057) ([Sonar Rule 2057](https://rules.sonarsource.com/java/RSPEC-2057))
+    * ["ThreadLocal.withInitial" should be preferred](#threadlocalwithinitial-should-be-preferred-sonar-rule-4065) ([Sonar Rule 4065](https://rules.sonarsource.com/java/RSPEC-4065))
     * [Collection.isEmpty() should be used to test for emptiness](#collectionisempty-should-be-used-to-test-for-emptiness-sonar-rule-1155) ([Sonar Rule 1155](https://rules.sonarsource.com/java/RSPEC-1155))
     * [Fields in a "Serializable" class should either be transient or serializable](#fields-in-a-serializable-class-should-either-be-transient-or-serializable-sonar-rule-1948) ([Sonar Rule 1948](https://rules.sonarsource.com/java/RSPEC-1948))
     * [Strings literals should be placed on the left side when checking for equality](#strings-literals-should-be-placed-on-the-left-side-when-checking-for-equality-sonar-rule-1132) ([Sonar Rule 1132](https://rules.sonarsource.com/java/RSPEC-1132))
@@ -509,6 +510,21 @@ public class NoUID implements Serializable {
 }
 ```
 
+
+-----
+
+#### "ThreadLocal.withInitial" should be preferred ([Sonar Rule 4065](https://rules.sonarsource.com/java/RSPEC-4065))
+
+Sorald fixes the violations of this rule by replacing an anonymous `ThreadLocal` class overriding `initalValue` with an invocation of `ThreadLocal.withInitial(Supplier)`.
+Example:
+```diff
+-    ThreadLocal<String> myThreadLocal = new ThreadLocal<String>() {
+-       @Override
+-       protected String initialValue() {
+-           return "Hello";
+-       }
++ Threadlocal<String> myThreadLocal = ThreadLocal.withInitial(() -> "Hello");
+```
 
 -----
 
