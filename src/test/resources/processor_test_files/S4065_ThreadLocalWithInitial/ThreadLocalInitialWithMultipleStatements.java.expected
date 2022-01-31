@@ -1,0 +1,8 @@
+
+public class ThreadLocalInitialWithMultipleStatements {
+  
+  public void bar() {
+    ThreadLocal<String> threadLocal = ThreadLocal.withInitial(() -> {String s = "hello"; return s+"42";});
+    threadLocal.set("42");
+  }
+}
