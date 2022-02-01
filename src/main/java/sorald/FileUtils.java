@@ -130,15 +130,15 @@ public class FileUtils {
 
         if (os.contains("Windows")) {
             File cacheDir = new File(home + "\\Cache\\sorald\\");
-            cacheDir.mkdir();
+            cacheDir.mkdirs();
             return cacheDir;
         } else if (os.contains("Linux")) {
             File cacheDir = new File(home + "/.cache/sorald/");
-            cacheDir.mkdir();
+            cacheDir.mkdirs();
             return cacheDir;
         } else if (os.contains("Mac")) {
             File cacheDir = new File(home + "/Library/Caches/sorald/");
-            cacheDir.mkdir();
+            cacheDir.mkdirs();
             return cacheDir;
         }
         throw new RuntimeException(os + " not supported"); // NOSONAR:S112
