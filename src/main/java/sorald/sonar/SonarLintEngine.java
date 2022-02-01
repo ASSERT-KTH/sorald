@@ -211,15 +211,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
     }
 
     public List<PluginDetails> getPluginDetails() {
-        return pluginInstancesRepository.getPluginCheckResultByKeys().values().stream()
-                .map(
-                        c ->
-                                new PluginDetails(
-                                        c.getPlugin().getKey(),
-                                        c.getPlugin().getName(),
-                                        c.getPlugin().getVersion().toString(),
-                                        c.getSkipReason().orElse(null)))
-                .collect(Collectors.toList());
+        throw new RuntimeException("Not implemented"); // NOSONAR:S112
     }
 
     /**
