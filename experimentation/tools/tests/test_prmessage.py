@@ -27,11 +27,18 @@ def test_generates_correct_message(capsys, rule_key):
 
 
 def test_uses_correct_sonar_version():
-    """Check that the version of Sonar specified in the script is present in
-    the pom.xml file of Sorald. The version number is sufficiently distinct
-    that it's enough we just verify it's in there.
+    """Check that the version of Sonar Java specified matches the version of
+    loaded plugin in src/main/resources. The version number is sufficiently
+    distinct that it's enough we just verify it's in resources.
     """
-    pom_content = (
-        pathlib.Path(__file__).parent.parent.parent.parent / "pom.xml"
-    ).read_text(encoding="utf8")
-    assert re.findall(f"<version>{sonar_metadata.SONAR_VERSION}</version>", pom_content)
+
+    path_to_main_resources = (
+        pathlib.Path(__file__).parent.parent.parent.parent / "src/main/resources"
+    )
+    sonar_java_jars = list(path_to_main_resources.glob("sonar-java-plugin-*.jar"))
+
+    # We should have precisely one sonar-java plugin
+    assert len(sonar_java_jars) == 1
+
+    sonar_java = sonar_java_jars[0].name
+    assert re.match(f"sonar-java-plugin-{sonar_metadata.SONAR_VERSION}.jar", sonar_java)

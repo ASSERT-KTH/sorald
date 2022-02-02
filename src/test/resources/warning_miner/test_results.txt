@@ -8,7 +8,6 @@ StringLiteralDuplicatedCheck<S1192>=14
 StaticMembersAccessCheck<S2209>=3
 DefaultEncodingUsageCheck<S1943>=2
 ArrayDesignatorOnVariableCheck<S1197>=2
-StandardInputReadCheck<S4829>=2
 CatchExceptionCheck<S2221>=1
 MainMethodThrowsExceptionCheck<S2096>=1
 NullDereferenceCheck<S2259>=1

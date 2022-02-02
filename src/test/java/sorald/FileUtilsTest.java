@@ -2,6 +2,7 @@ package sorald;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.io.FileMatchers.anExistingDirectory;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -76,5 +77,12 @@ public class FileUtilsTest {
         Path rhs = Path.of(lhs.toString());
 
         assertThat(FileUtils.realPathEquals(lhs, rhs), equalTo(false));
+    }
+
+    @Test
+    void getCacheDir_shouldReturnAValidDirectoryOnAllSupportedOs() {
+        File cacheDir = FileUtils.getCacheDir();
+
+        assertThat(cacheDir, anExistingDirectory());
     }
 }
