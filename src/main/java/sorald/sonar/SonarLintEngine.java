@@ -50,7 +50,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
     private static final String SONAR_JAVA_PLUGIN_JAR_NAME = "sonar-java-plugin.jar";
     private static final String SONAR_JAVA_PLUGIN_URL =
             "https://repo1.maven.org/maven2/org/sonarsource/java/sonar-java-plugin/6.12.0.24852/sonar-java-plugin-6.12.0.24852.jar";
-    private static final Path sonarJavaPlugin = getOrDownloadSonarJavaPlugin();
+    private static final Path sonarJavaPlugin = getOrDownloadSonarJavaPlugin().getPath();
     private static final StandaloneGlobalConfiguration globalConfig = buildGlobalConfig();
     private static final PluginInstancesRepositoryWhichCannotBeClosed pluginInstancesRepository =
             createPluginInstancesRepository();
@@ -73,13 +73,13 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                 new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, null);
     }
 
-    private static Path getOrDownloadSonarJavaPlugin() {
+    private static SonarJavaJarHolder getOrDownloadSonarJavaPlugin() {
         File cacheDirectory = FileUtils.getCacheDir();
         String sonarJavaPluginFileName =
                 cacheDirectory + System.getProperty("file.separator") + SONAR_JAVA_PLUGIN_JAR_NAME;
         File sonarJavaPlugin = new File(sonarJavaPluginFileName);
         if (sonarJavaPlugin.exists()) {
-            return sonarJavaPlugin.toPath();
+            return new SonarJavaJarHolder(sonarJavaPlugin.toPath(), false);
         }
 
         try {
@@ -88,9 +88,28 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                     inputStream,
                     Paths.get(sonarJavaPluginFileName),
                     StandardCopyOption.REPLACE_EXISTING);
-            return new File(sonarJavaPluginFileName).toPath();
+            return new SonarJavaJarHolder(new File(sonarJavaPluginFileName).toPath(), true);
         } catch (IOException ignore) {
             throw new RuntimeException("Could not download Sonar Java plugin"); // NOSONAR:S112
+        }
+    }
+
+    /** Store the path to SonarJava plugin and if it is downloaded or fetched from cache. */
+    public static class SonarJavaJarHolder {
+        private final Path path;
+        private final boolean downloaded;
+
+        SonarJavaJarHolder(Path path, boolean downloaded) {
+            this.path = path;
+            this.downloaded = downloaded;
+        }
+
+        public Path getPath() {
+            return path;
+        }
+
+        public boolean isDownloaded() {
+            return downloaded;
         }
     }
 
