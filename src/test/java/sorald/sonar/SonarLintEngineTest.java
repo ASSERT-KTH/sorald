@@ -42,7 +42,8 @@ class SonarLintEngineTest {
         // The first invocation may download or fetch it from cache
         method.invoke(null);
         // The second invocation must get it from cache
-        SonarLintEngine.SonarJavaJarHolder result = (SonarLintEngine.SonarJavaJarHolder) method.invoke(null);
+        SonarLintEngine.SonarJavaJarHolder result =
+                (SonarLintEngine.SonarJavaJarHolder) method.invoke(null);
 
         // assert
         assertThat(result.getPath().toFile(), anExistingFile());
