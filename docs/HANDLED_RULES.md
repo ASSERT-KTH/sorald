@@ -23,7 +23,7 @@ Sorald can currently repair violations of the following rules:
     * [Math should not be performed on floats](#math-should-not-be-performed-on-floats-sonar-rule-2164) ([Sonar Rule 2164](https://rules.sonarsource.com/java/RSPEC-2164))
     * [Resources should be closed](#resources-should-be-closed-sonar-rule-2095) ([Sonar Rule 2095](https://rules.sonarsource.com/java/RSPEC-2095))
     * [Strings and Boxed types should be compared using "equals()"](#strings-and-boxed-types-should-be-compared-using-equals-sonar-rule-4973) ([Sonar Rule 4973](https://rules.sonarsource.com/java/RSPEC-4973))
-    * [Synchronization should not be based on Strings or boxed primitives](#synchronization-should-not-be-based-on-strings-or-boxed-primitives-sonar-rule-1860) ([Sonar Rule 1860](https://rules.sonarsource.com/java/RSPEC-1860))
+    * [Synchronization should not be done on instances of value-based classes](#synchronization-should-not-be-done-on-instances-of-value-based-classes-sonar-rule-1860) ([Sonar Rule 1860](https://rules.sonarsource.com/java/RSPEC-1860))
     * [Variables should not be self-assigned](#variables-should-not-be-self-assigned-sonar-rule-1656) ([Sonar Rule 1656](https://rules.sonarsource.com/java/RSPEC-1656))
 
 * [Code Smell](#code-smell)
@@ -389,7 +389,7 @@ Check out an accepted PR in [Apache Sling Discovery](https://github.com/apache/s
 
 -----
 
-#### Synchronization should not be based on Strings or boxed primitives ([Sonar Rule 1860](https://rules.sonarsource.com/java/RSPEC-1860))
+#### Synchronization should not be done on instances of value-based classes ([Sonar Rule 1860](https://rules.sonarsource.com/java/RSPEC-1860))
 
 Objects which are pooled, such as Strings or boxed primitives, and potentially reused should not be used for synchronization, since they can cause deadlocks. The transformation will do the following. If the lock is a field of the current class where the synchronization block is in, then it will simply add a new field as an `Object` lock. If the lock is obtained from another object through the `get` method, it will add a new field for the new `Object` lock and a new method to get the object.
 
