@@ -36,3 +36,28 @@ def test_get_rule_key_should_return_key(processor_path, expected):
 )
 def test_get_link_to_repair_description(heading_text, expected):
     assert handled_rules.get_link_to_repair_description(heading_text) == expected
+
+
+@pytest.mark.parametrize(
+    "processor_path,expected",
+    [
+        (
+            MOCK_PROCESSORS / "Processor.java",
+            'Unused "private" fields should be removed',
+        ),
+        (
+            MOCK_PROCESSORS / "IncompleteProcessor.java",
+            '"public static" fields should be constant',
+        ),
+        (
+            MOCK_PROCESSORS / "LineBreak.java",
+            '"equals(Object obj)" should test argument type',
+        ),
+        (
+            MOCK_PROCESSORS / "Inverse.java",
+            '"Iterator.next()" methods should throw "NoSuchElementException"',
+        ),
+    ],
+)
+def test_get_rule_title_should_return_title(processor_path, expected):
+    assert handled_rules.get_rule_title(processor_path) == expected
