@@ -3,10 +3,11 @@ import dataclasses
 import pathlib
 import re
 import sys
+from ast import literal_eval
 
 import jinja2
 
-from typing import Dict, List, Union
+from typing import Dict, List
 
 from sorald._helpers import sonar_metadata, jsonkeys
 
@@ -69,6 +70,7 @@ PATH_TO_PROCESSOR_PACKAGE = (
 class RawSoraldProcessorInformation:
     repair_description: str
     rule_key: int
+    rule_title: str
 
 
 @dataclasses.dataclass
@@ -128,6 +130,7 @@ def extract_ouput_from_processor_package() -> List[RawSoraldProcessorInformation
             RawSoraldProcessorInformation(
                 repair_description=get_repair_description(processor),
                 rule_key=get_rule_key(processor),
+                rule_title=get_rule_title(processor),
             )
         )
 
@@ -148,9 +151,16 @@ def get_rule_key(path: pathlib.Path) -> int:
     return int(matches.group(2))
 
 
+def get_rule_title(path: pathlib.Path) -> str:
+    processor_code = path.read_text(ENCODING)
+    regex = r"@ProcessorAnnotation\(\s*.*\s*description\s*=\s*\"(.*)\""
+    matches = re.search(regex, processor_code)
+    return literal_eval(f"'{matches.group(1)}'")
+
+
 def parse_raw_output(
     raw_output: List[RawSoraldProcessorInformation],
-) -> Dict[str, Union[List[ViolationInformation]]]:
+) -> Dict[str, List[ViolationInformation]]:
     bugs = []
     code_smells = []
     vulnerabilities = []
@@ -158,11 +168,12 @@ def parse_raw_output(
     for processor_information in raw_output:
         repair_description = processor_information.repair_description
         rule_key = processor_information.rule_key
+        rule_title = processor_information.rule_title
         metadata = sonar_metadata.get_rule_metadata(rule_key)
 
-        heading_text = f"{metadata[jsonkeys.SONAR_METADATA.TITLE]} ({get_sonar_link_text(rule_key)})"
+        heading_text = f"{rule_title} ({get_sonar_link_text(rule_key)})"
         violation_information = ViolationInformation(
-            title=metadata[jsonkeys.SONAR_METADATA.TITLE],
+            title=rule_title,
             sonar_url=get_sonar_link(
                 metadata[jsonkeys.SONAR_METADATA.RULE_SPECIFICATION]
             ),
