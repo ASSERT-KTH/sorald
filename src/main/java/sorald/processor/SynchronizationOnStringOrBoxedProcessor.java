@@ -46,11 +46,10 @@ public class SynchronizationOnStringOrBoxedProcessor
             CtType<?> c = (CtType) oldFieldRead.getParent(CtType.class);
             CtMethod<?> newMethod = (CtMethod) method.clone();
 
-                newMethod.setSimpleName(method.getSimpleName() + "Legal");
-                newMethod.setType((((CtType) factory.Class().get(Object.class)).getReference()));
-                c.addMethod(newMethod);
-                ((CtInvocation) expression)
-                        .setExecutable(((CtExecutable) newMethod).getReference());
+            newMethod.setSimpleName(method.getSimpleName() + "Legal");
+            newMethod.setType((((CtType) factory.Class().get(Object.class)).getReference()));
+            c.addMethod(newMethod);
+            ((CtInvocation) expression).setExecutable(((CtExecutable) newMethod).getReference());
 
             CtExpression<?> returnExpression =
                     ((CtReturn) newMethod.getElements(new TypeFilter(CtReturn.class)).get(0))
