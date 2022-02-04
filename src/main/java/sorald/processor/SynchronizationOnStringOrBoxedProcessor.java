@@ -15,7 +15,6 @@ import spoon.reflect.declaration.CtType;
 import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.factory.Factory;
-import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.filter.TypeFilter;
 
@@ -25,12 +24,10 @@ import spoon.reflect.visitor.filter.TypeFilter;
 public class SynchronizationOnStringOrBoxedProcessor
         extends SoraldAbstractProcessor<CtSynchronized> {
     private Map<String, CtVariableReference> old2NewFields;
-    private Map<Integer, CtExecutableReference> old2NewMethods;
 
     public SynchronizationOnStringOrBoxedProcessor() {
         super();
         this.old2NewFields = new HashMap<>();
-        this.old2NewMethods = new HashMap<>();
     }
 
     @Override
@@ -49,15 +46,11 @@ public class SynchronizationOnStringOrBoxedProcessor
             CtType<?> c = (CtType) oldFieldRead.getParent(CtType.class);
             CtMethod<?> newMethod = (CtMethod) method.clone();
 
-            if (!old2NewMethods.containsKey(method.hashCode())) {
                 newMethod.setSimpleName(method.getSimpleName() + "Legal");
                 newMethod.setType((((CtType) factory.Class().get(Object.class)).getReference()));
                 c.addMethod(newMethod);
                 ((CtInvocation) expression)
                         .setExecutable(((CtExecutable) newMethod).getReference());
-            } else {
-                ((CtInvocation) expression).setExecutable(old2NewMethods.get(method.hashCode()));
-            }
 
             CtExpression<?> returnExpression =
                     ((CtReturn) newMethod.getElements(new TypeFilter(CtReturn.class)).get(0))
