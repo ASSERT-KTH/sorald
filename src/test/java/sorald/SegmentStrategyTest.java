@@ -17,8 +17,6 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.DisabledOnOs;
-import org.junit.jupiter.api.condition.OS;
 import sorald.processor.ArrayHashCodeAndToStringProcessor;
 import sorald.processor.ProcessorTestHelper;
 import sorald.processor.SoraldAbstractProcessor;
@@ -84,7 +82,6 @@ public class SegmentStrategyTest {
     }
 
     @Test
-    @DisabledOnOs(OS.WINDOWS) // FIXME Make this test pass on Windows
     public void segmentStrategy_doesNotFail_onCrashInParsingSegment() throws IOException {
         // arrange
         Path workspace = TestHelper.createTemporaryProcessorTestFilesWorkspace();
