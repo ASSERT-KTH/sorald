@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.DisabledOnOs;
-import org.junit.jupiter.api.condition.OS;
 import org.junit.jupiter.api.io.TempDir;
 import sorald.processor.BigDecimalDoubleConstructorProcessor;
 import sorald.processor.ProcessorTestHelper;
@@ -29,7 +27,6 @@ import sorald.sonar.ProjectScanner;
 import sorald.sonar.SonarRule;
 
 /** Tests for the targeted repair functionality of Sorald. */
-@DisabledOnOs(OS.WINDOWS) // FIXME Make this test class pass on Windows
 public class TargetedRepairTest {
 
     @Test
