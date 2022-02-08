@@ -1,4 +1,4 @@
-# Sorald [![GHA tests Workflow Status](https://github.com/SpoonLabs/sorald/actions/workflows/tests.yml/badge.svg)](https://github.com/SpoonLabs/sorald/actions/workflows/tests.yml) [![Code Coverage](https://codecov.io/gh/SpoonLabs/sorald/branch/master/graph/badge.svg)](https://codecov.io/gh/SpoonLabs/sorald) ![Supported Platforms](https://img.shields.io/badge/platforms-Linux%2C%20macOS-blue.svg)
+# Sorald [![GHA tests Workflow Status](https://github.com/SpoonLabs/sorald/actions/workflows/tests.yml/badge.svg)](https://github.com/SpoonLabs/sorald/actions/workflows/tests.yml) [![Code Coverage](https://codecov.io/gh/SpoonLabs/sorald/branch/master/graph/badge.svg)](https://codecov.io/gh/SpoonLabs/sorald) ![Supported Platforms](https://img.shields.io/badge/platforms-Linux%2C%20macOS%2C%20Windows-blue.svg)
 Sorald is a tool to automatically repair violations of static analysis rules checked with [SonarQube](https://rules.sonarsource.com).
 It can currently repair violations of [25+ rules](/docs/HANDLED_RULES.md) based on the design described [Sorald: Automatic Patch Suggestions for SonarQube Static Analysis Violations](http://arxiv.org/pdf/2103.12033).
 
@@ -19,9 +19,7 @@ If you use Sorald in an academic context, please cite:
 
 ### Prerequisites 
 
-Sorald supports macOS and Linux, with
-[currently partial support for Windows (some features may not work
-yet)](https://github.com/spoonlabs/sorald/issues/273).
+Sorald supports macOS, Linux, and Windows.
 
 For running Sorald, all you need is a Java 11+ runtime.
 
@@ -65,7 +63,7 @@ alias sorald='java -jar /abs/path/to/sorald.jar'
 ```
 
 If you don't like using aliases, simply substitute in `java -jar sorald.jar`
-for any occurence of `sorald` in these instructions.
+for any occurrence of `sorald` in these instructions.
 
 #### Repairing rule violations (the `repair` command)
 
