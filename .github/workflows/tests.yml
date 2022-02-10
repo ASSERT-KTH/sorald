@@ -50,4 +50,4 @@ jobs:
           cd experimentation/tools
           pip install --upgrade pip
           pip install -e .[TEST]
-          pytest tests/
+          pytest tests/test_benchmark.py::test_run_benchmark
