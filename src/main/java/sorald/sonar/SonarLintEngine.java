@@ -42,14 +42,13 @@ import org.sonarsource.sonarlint.core.plugin.commons.PluginInstancesRepository;
 import org.sonarsource.sonarlint.core.plugin.commons.PluginInstancesRepository.Configuration;
 import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
 import sorald.FileUtils;
+import sorald.util.ConfigLoader;
 
 public final class SonarLintEngine extends AbstractSonarLintEngine {
 
     // The order of these initialisations is important as each field is dependent upon the previous
     // one.
     private static final String SONAR_JAVA_PLUGIN_JAR_NAME = "sonar-java-plugin.jar";
-    private static final String SONAR_JAVA_PLUGIN_URL =
-            "https://repo1.maven.org/maven2/org/sonarsource/java/sonar-java-plugin/6.12.0.24852/sonar-java-plugin-6.12.0.24852.jar";
     private static final Path sonarJavaPlugin = getOrDownloadSonarJavaPlugin().getPath();
     private static final StandaloneGlobalConfiguration globalConfig = buildGlobalConfig();
     private static final PluginInstancesRepositoryWhichCannotBeClosed pluginInstancesRepository =
@@ -83,7 +82,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
         }
 
         try {
-            InputStream inputStream = new URL(SONAR_JAVA_PLUGIN_URL).openStream();
+            InputStream inputStream = new URL(ConfigLoader.getSonarJavaPluginUrl()).openStream();
             Files.copy(
                     inputStream,
                     Paths.get(sonarJavaPluginFileName),
