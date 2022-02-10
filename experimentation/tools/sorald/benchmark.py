@@ -40,7 +40,6 @@ def main(args: List[str]):
     ):
         sys.exit(1)
     if any(res.crash for res in results):
-        print(results)
         crash_str = "\n".join([res.commit_id for res in results if res.crash])
         print(f"Some repairs crashed: \n{crash_str}", file=sys.stderr)
         sys.exit(1)
@@ -228,15 +227,13 @@ def run_sorald_for_rule(repo: git.Repo, rule_key: str) -> "RepairStats":
     stats_file = workdir / "stats.json"
 
     with restore_head_after(repo):
-        return_code, x, y = soraldwrapper.sorald(
+        return_code, *_ = soraldwrapper.sorald(
             "repair",
             source=pathlib.Path(repo.working_dir),
             stats_output_file=workdir / stats_file,
             rule_key=rule_key,
             timeout=SINGLE_RUN_TIMEOUT,
         )
-        print("Log: " + x.decode('utf-8'))
-        print("Error: "+ y.decode('utf-8'))
         if return_code != 0:
             print(
                 f"Failed to process {commit_id(repo)} with key {rule_key}",
