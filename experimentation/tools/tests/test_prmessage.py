@@ -1,3 +1,4 @@
+import pathlib
 import shlex
 import re
 
@@ -5,6 +6,7 @@ import pytest
 import requests
 
 from sorald import prmessage
+from sorald._helpers.sonar_metadata import SONAR_VERSION
 
 
 @pytest.mark.parametrize("rule_key", [2111, 2204, 2142])
@@ -24,13 +26,23 @@ def test_generates_correct_message(capsys, rule_key):
         assert resp.status_code == 200
 
 
-@pytest.mark.skip(
-    reason="Needs to be done after we put the SonarJava plugin URL in a config file"
-)
 def test_uses_correct_sonar_version():
-    """Check that the version of Sonar Java plugin specified matches the version of
-    downloaded plugin in sources. The version number is sufficiently
-    distinct that it's enough we just verify it's in resources.
+    """Check that the version of Sonar Java plugin specified matches the
+    version of downloaded plugin in sources. The version number is sufficiently
+    distinct that it's enough we just verify it's in configuration file.
     """
 
-    pass
+    config = (
+        pathlib.Path(__file__).parent.parent.parent.parent
+        / "src"
+        / "main"
+        / "resources"
+        / "config.properties"
+    ).read_text(encoding="utf8")
+
+    expected_url = (
+        "https://repo1.maven.org/maven2/org/sonarsource/java/sonar-java-plugin/"
+        f"{SONAR_VERSION}/sonar-java-plugin-{SONAR_VERSION}.jar"
+    )
+
+    assert expected_url in config
