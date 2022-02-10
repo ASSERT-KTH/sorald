@@ -27,7 +27,7 @@ public class ConfigLoader {
             configuration.load(inputStream);
             return configuration;
         } catch (IOException ignore) {
-            throw new RuntimeException("Could not read config file"); // NOSONAR:S112
+            throw new RuntimeException("Could not read config file " + ignore + properties + CONFIG_FILE); // NOSONAR:S112
         }
     }
 
