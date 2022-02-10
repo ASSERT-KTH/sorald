@@ -15,7 +15,9 @@ public class ConfigLoader {
     private static Properties loadProperties() {
         Properties configuration = new Properties();
         try (InputStream inputStream =
-                ConfigLoader.class.getClassLoader().getResourceAsStream(CONFIG_FILE_NAME)) {
+                Thread.currentThread()
+                        .getContextClassLoader()
+                        .getResourceAsStream(CONFIG_FILE_NAME)) {
             configuration.load(inputStream);
             return configuration;
         } catch (IOException exception) {
