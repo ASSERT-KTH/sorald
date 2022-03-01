@@ -11,7 +11,7 @@ jobs:
     name: Run Sorald Buildbreaker
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Run Sorald Buildbreaker
         uses: SpoonLabs/sorald-buildbreaker@45bafb6db29a466080328864cecf9b20d9ace3de
         with:
