@@ -60,17 +60,4 @@ class ChecksTest {
                 IllegalArgumentException.class,
                 () -> Checks.getRuleKey(scannerWithoutKey.getClass()));
     }
-
-    @Test
-    void getAllChecks_containsNoDeprecatedChecks() {
-        List<Class<? extends JavaFileScanner>> deprecatedChecks =
-                Checks.getAllChecks().stream()
-                        .filter(
-                                check ->
-                                        check.getAnnotationsByType(DeprecatedRuleKey.class).length
-                                                > 0)
-                        .collect(Collectors.toList());
-
-        assertThat(deprecatedChecks, empty());
-    }
 }
