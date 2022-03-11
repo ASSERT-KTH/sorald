@@ -1,12 +1,9 @@
 package sorald.sonar;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.empty;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.CompareStringsBoxedTypesWithEqualsCheck;
 import org.sonar.java.checks.DeadStoreCheck;
@@ -14,7 +11,6 @@ import org.sonar.java.checks.InputStreamReadCheck;
 import org.sonar.java.checks.NullShouldNotBeUsedWithOptionalCheck;
 import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
-import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 import sorald.rule.RuleType;
 
 class ChecksTest {
