@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import sorald.Constants;
@@ -234,6 +235,46 @@ public class WarningMinerTest {
         };
 
         assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
+    }
+
+    @Nested
+    class ChecksWithDeprecatedRuleKeys {
+
+        private void doesViolationExist(String filename, String violation) {
+            // arrange
+            String[] args = {
+                Constants.MINE_COMMAND_NAME,
+                Constants.ARG_SOURCE,
+                TestHelper.PATH_TO_RESOURCES_FOLDER
+                        .resolve("warning_miner")
+                        .resolve("deprecated_checks")
+                        .resolve(filename)
+                        .toString()
+            };
+
+            // act
+            final ByteArrayOutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+            Main.main(args);
+
+            // assert
+            assertThat(out.toString(), containsString(violation));
+        }
+
+        @Test
+        void report_S100_BadMethodNameCheck() {
+            doesViolationExist("S100_BadMethodNameCheck.java", "BadMethodNameCheck<S100>=1");
+        }
+
+        @Test
+        void report_S101_BadClassNameCheck() {
+            doesViolationExist("S101_BadClassNameCheck.java", "BadClassNameCheck<S101>=1");
+        }
+
+        @Test
+        void report_S1176_UndocumentedApiCheck() {
+            doesViolationExist("S1176_UndocumentedApiCheck.java", "UndocumentedApiCheck<S1176>=1");
+        }
     }
 
     private static void runMiner(
