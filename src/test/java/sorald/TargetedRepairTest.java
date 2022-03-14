@@ -21,7 +21,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import sorald.processor.BigDecimalDoubleConstructorProcessor;
 import sorald.processor.ProcessorTestHelper;
-import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.SonarRule;
@@ -216,7 +215,7 @@ public class TargetedRepairTest {
     private static TargetedRepairWorkdirInfo setupWorkdir() throws IOException {
         Path workdir = TestHelper.createTemporaryProcessorTestFilesWorkspace();
 
-        Rule rule = new SonarRule(new BigDecimalDoubleConstructorProcessor().getRuleKey());
+        SonarRule rule = new SonarRule(new BigDecimalDoubleConstructorProcessor().getRuleKey());
         File targetFile =
                 workdir.resolve("S2111_BigDecimalDoubleConstructor")
                         .resolve("BigDecimalDoubleConstructor.java")
@@ -238,14 +237,14 @@ public class TargetedRepairTest {
     /** Simple container for info about the targeted repair working directory. */
     private static class TargetedRepairWorkdirInfo {
         final File workdir;
-        final Rule rule;
+        final SonarRule rule;
         final int numViolationsBefore;
         final File targetFile;
         final RuleViolation targetViolation;
 
         private TargetedRepairWorkdirInfo(
                 File workdirPath,
-                Rule rule,
+                SonarRule rule,
                 int numViolationsBefore,
                 File targetFile,
                 RuleViolation targetViolation) {

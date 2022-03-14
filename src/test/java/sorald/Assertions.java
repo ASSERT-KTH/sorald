@@ -15,8 +15,8 @@ import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 import javax.tools.ToolProvider;
 import org.apache.commons.lang3.tuple.Pair;
-import sorald.rule.Rule;
 import sorald.sonar.ProjectScanner;
+import sorald.sonar.SonarRule;
 
 /** High-level assertions. */
 public class Assertions {
@@ -66,7 +66,7 @@ public class Assertions {
      * @param file A file to analyze.
      * @param rule A rule to analyze for.
      */
-    public static void assertHasRuleViolation(File file, Rule rule) {
+    public static void assertHasRuleViolation(File file, SonarRule rule) {
         var violations = ProjectScanner.scanProject(file, file.getParentFile(), rule);
         assertThat(violations, is(not(empty())));
     }
@@ -77,7 +77,7 @@ public class Assertions {
      * @param file A file to analyze.
      * @param rule A rule to analyze for.
      */
-    public static void assertNoRuleViolations(File file, Rule rule) {
+    public static void assertNoRuleViolations(File file, SonarRule rule) {
         var violations = ProjectScanner.scanProject(file, file.getParentFile(), rule);
         assertThat(violations, is(empty()));
     }

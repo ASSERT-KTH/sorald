@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 import sorald.Constants;
 import sorald.FileUtils;
-import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 
 /** Helper class that uses Sonar to scan projects for rule violations. */
@@ -23,7 +22,7 @@ public class ProjectScanner {
      * @param rule Rule to scan for.
      * @return All violations in the target.
      */
-    public static Set<RuleViolation> scanProject(File target, File baseDir, Rule rule) {
+    public static Set<RuleViolation> scanProject(File target, File baseDir, SonarRule rule) {
         return scanProject(target, baseDir, List.of(rule));
     }
 
@@ -35,7 +34,7 @@ public class ProjectScanner {
      * @param rules Rules to scan for.
      * @return All violations in the target.
      */
-    public static Set<RuleViolation> scanProject(File target, File baseDir, List<Rule> rules) {
+    public static Set<RuleViolation> scanProject(File target, File baseDir, List<SonarRule> rules) {
         return scanProject(target, baseDir, rules, List.of());
     }
 
@@ -50,7 +49,7 @@ public class ProjectScanner {
      * @return All violations in the target.
      */
     public static Set<RuleViolation> scanProject(
-            File target, File baseDir, List<Rule> rules, List<String> classpath) {
+            File target, File baseDir, List<SonarRule> rules, List<String> classpath) {
         List<File> filesToScan = new ArrayList<>();
         if (target.isFile()) {
             filesToScan.add(target);

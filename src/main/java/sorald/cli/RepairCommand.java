@@ -26,9 +26,9 @@ import sorald.event.models.ExecutionInfo;
 import sorald.event.models.miner.MinedViolationEvent;
 import sorald.event.models.repair.RuleRepairStatistics;
 import sorald.processor.SoraldAbstractProcessor;
-import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.sonar.ProjectScanner;
+import sorald.sonar.SonarRule;
 import sorald.util.MavenUtils;
 
 /** The CLI command for the primary repair application. */
@@ -190,7 +190,7 @@ class RepairCommand extends BaseCommand {
             String ruleKey,
             List<SoraldEventHandler> eventHandlers,
             List<String> classpath) {
-        Rule rule = Rule.of(ruleKey);
+        SonarRule rule = new SonarRule(ruleKey);
         Path projectPath = target.toPath().toAbsolutePath().normalize();
         Set<RuleViolation> violations =
                 ProjectScanner.scanProject(

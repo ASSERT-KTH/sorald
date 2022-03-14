@@ -12,9 +12,9 @@ import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
 import sorald.miner.MineSonarWarnings;
-import sorald.rule.Rule;
-import sorald.rule.RuleType;
-import sorald.rule.Rules;
+import sorald.sonar.SonarRule;
+import sorald.sonar.SonarRuleType;
+import sorald.sonar.SonarRules;
 import sorald.util.MavenUtils;
 
 /** CLI Command for Sorald's mining functionality. */
@@ -54,7 +54,7 @@ class MineCommand extends BaseCommand {
             description =
                     "One or more types of rules to check for (use ',' to separate multiple types). Choices: ${COMPLETION-CANDIDATES}",
             split = ",")
-    private List<RuleType> ruleTypes = new ArrayList<>();
+    private List<SonarRuleType> ruleTypes = new ArrayList<>();
 
     @CommandLine.Option(
             names = {Constants.ARG_HANDLED_RULES},
@@ -66,7 +66,7 @@ class MineCommand extends BaseCommand {
     public Integer call() throws Exception {
         validateArgs();
 
-        List<Rule> checks = inferRules(ruleTypes, handledRules);
+        List<SonarRule> checks = inferRules(ruleTypes, handledRules);
 
         var statsCollector = new MinerStatisticsCollector();
         List<String> classpath =
@@ -118,12 +118,12 @@ class MineCommand extends BaseCommand {
      * Infer which rules to use based on rule types specified (or left unspecified) on the command
      * line.
      */
-    private static List<Rule> inferRules(List<RuleType> ruleTypes, boolean handledRules) {
-        List<Rule> rules =
+    private static List<SonarRule> inferRules(List<SonarRuleType> ruleTypes, boolean handledRules) {
+        List<SonarRule> rules =
                 List.copyOf(
                         ruleTypes.isEmpty()
-                                ? Rules.getAllRules()
-                                : Rules.getRulesByType(ruleTypes));
+                                ? SonarRules.getAllRules()
+                                : SonarRules.getRulesByType(ruleTypes));
 
         return !handledRules
                 ? rules

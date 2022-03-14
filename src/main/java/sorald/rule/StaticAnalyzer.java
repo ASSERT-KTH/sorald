@@ -4,8 +4,12 @@ import java.io.File;
 import java.util.Collection;
 import java.util.List;
 
-/** A static analyzer for Java source code */
-public interface StaticAnalyzer {
+/**
+ * A static analyzer for Java source code.
+ *
+ * @param <T> rule type according to the static analyzer
+ */
+public interface StaticAnalyzer<T extends Rule<? extends RuleType>> {
 
     /**
      * Scan files for violations of some rules.
@@ -16,5 +20,5 @@ public interface StaticAnalyzer {
      * @return All violations of the rules found in the files.
      */
     Collection<RuleViolation> findViolations(
-            List<File> files, List<Rule> rule, List<String> classpath);
+            List<File> files, List<T> rule, List<String> classpath);
 }

@@ -2,12 +2,11 @@ package sorald.sonar;
 
 import java.util.Objects;
 import sorald.rule.Rule;
-import sorald.rule.RuleType;
 
-public class SonarRule implements Rule {
+public class SonarRule implements Rule<SonarRuleType> {
     private final String key;
     private final String name;
-    private final RuleType type;
+    private final SonarRuleType type;
 
     public SonarRule(String key) {
         this.key = key;
@@ -27,7 +26,7 @@ public class SonarRule implements Rule {
     }
 
     @Override
-    public RuleType getType() {
+    public SonarRuleType getType() {
         return type;
     }
 

@@ -13,6 +13,7 @@ import sorald.event.models.miner.MinedViolationEvent;
 import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.sonar.ProjectScanner;
+import sorald.sonar.SonarRule;
 
 public class MineSonarWarnings {
     final List<SoraldEventHandler> eventHandlers;
@@ -25,7 +26,7 @@ public class MineSonarWarnings {
     }
 
     public void mineGitRepos(
-            List<Rule> rules, String outputPath, List<String> reposList, File repoDir)
+            List<SonarRule> rules, String outputPath, List<String> reposList, File repoDir)
             throws IOException {
         // stats on a list of git repos
         for (String repo : reposList) {
@@ -62,7 +63,7 @@ public class MineSonarWarnings {
         }
     }
 
-    public void mineLocalProject(List<Rule> rules, String projectPath) {
+    public void mineLocalProject(List<SonarRule> rules, String projectPath) {
         Map<String, Integer> warnings = extractWarnings(projectPath, rules);
 
         warnings.entrySet().stream()
@@ -75,13 +76,14 @@ public class MineSonarWarnings {
      * @param rules Rules to find violations of in the Java files in the project
      * @return A mapping (checkClassName<ruleKey> -> numViolations)
      */
-    Map<String, Integer> extractWarnings(String projectPath, List<Rule> rules) {
+    Map<String, Integer> extractWarnings(String projectPath, List<SonarRule> rules) {
         final Map<Rule, Integer> warnings = new HashMap<>();
         final var target = new File(projectPath);
 
         rules.forEach(ruleName -> warnings.put(ruleName, 0));
 
-        Consumer<Rule> incrementWarningCount = (rule) -> warnings.put(rule, warnings.get(rule) + 1);
+        Consumer<SonarRule> incrementWarningCount =
+                (rule) -> warnings.put(rule, warnings.get(rule) + 1);
 
         EventHelper.fireEvent(EventType.MINING_START, eventHandlers);
         Set<RuleViolation> ruleViolations =
@@ -91,7 +93,7 @@ public class MineSonarWarnings {
 
         ruleViolations.stream()
                 .map(RuleViolation::getRuleKey)
-                .map(Rule::of)
+                .map(SonarRule::new)
                 .forEach(incrementWarningCount);
 
         ruleViolations.forEach(

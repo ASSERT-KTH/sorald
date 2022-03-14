@@ -10,11 +10,10 @@ import org.sonarsource.sonarlint.core.client.api.common.RuleKey;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.Issue;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.IssueListener;
 import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneAnalysisConfiguration;
-import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.rule.StaticAnalyzer;
 
-public class SonarStaticAnalyzer implements StaticAnalyzer {
+public class SonarStaticAnalyzer implements StaticAnalyzer<SonarRule> {
     private final File projectRoot;
     private final SonarLintEngine sonarLint;
 
@@ -25,12 +24,12 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
 
     @Override
     public Collection<RuleViolation> findViolations(
-            List<File> files, List<Rule> rules, List<String> classpath) {
+            List<File> files, List<SonarRule> rules, List<String> classpath) {
         return analyze(files, rules, classpath);
     }
 
     private Collection<RuleViolation> analyze(
-            List<File> files, List<Rule> rules, List<String> classpath) {
+            List<File> files, List<SonarRule> rules, List<String> classpath) {
 
         List<JavaInputFile> inputFiles =
                 files.stream()

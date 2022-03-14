@@ -9,14 +9,14 @@ import sorald.Assertions;
 import sorald.Constants;
 import sorald.Main;
 import sorald.TestHelper;
-import sorald.rule.Rule;
+import sorald.sonar.SonarRule;
 
 public class MaxFixesPerRuleTest {
     @Test
     public void arrayToStringProcessorTest() throws Exception {
         String fileName = "ArrayHashCodeAndToString.java";
         Path pathToBuggyFile = TestHelper.createTemporaryTestResourceWorkspace().resolve(fileName);
-        Rule rule = Rule.of(new ArrayHashCodeAndToStringProcessor().getRuleKey());
+        SonarRule rule = new SonarRule(new ArrayHashCodeAndToStringProcessor().getRuleKey());
 
         Assertions.assertHasRuleViolation(pathToBuggyFile.toFile(), rule);
         Main.main(

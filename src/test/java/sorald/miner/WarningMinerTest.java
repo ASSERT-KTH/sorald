@@ -31,8 +31,8 @@ import sorald.TestHelper;
 import sorald.cli.SoraldVersionProvider;
 import sorald.event.StatsMetadataKeys;
 import sorald.processor.CastArithmeticOperandProcessor;
-import sorald.rule.RuleType;
-import sorald.rule.Rules;
+import sorald.sonar.SonarRuleType;
+import sorald.sonar.SonarRules;
 
 public class WarningMinerTest {
 
@@ -92,7 +92,8 @@ public class WarningMinerTest {
      */
     @Test
     public void warningsMiner_onlyScansForGivenTypes_whenRuleTypesGiven() throws Exception {
-        Set<RuleType> ruleTypes = Set.of(RuleType.VULNERABILITY, RuleType.CODE_SMELL);
+        Set<SonarRuleType> sonarRuleTypes =
+                Set.of(SonarRuleType.VULNERABILITY, SonarRuleType.CODE_SMELL);
 
         File outputFile = File.createTempFile("warnings", null);
         File temp = Files.createTempDirectory("tempDir").toFile();
@@ -102,10 +103,10 @@ public class WarningMinerTest {
                 outputFile.getPath(),
                 temp.getPath(),
                 Constants.ARG_RULE_TYPES,
-                ruleTypes.stream().map(RuleType::name).collect(Collectors.joining(",")));
+                sonarRuleTypes.stream().map(SonarRuleType::name).collect(Collectors.joining(",")));
 
         List<String> expectedChecks =
-                Rules.getRulesByType(ruleTypes).stream()
+                SonarRules.getRulesByType(sonarRuleTypes).stream()
                         .map(rule -> rule.getName() + "Check<" + rule.getKey() + ">")
                         .sorted()
                         .collect(Collectors.toList());
@@ -148,7 +149,7 @@ public class WarningMinerTest {
         runMiner(REPOS_TXT, outputFile.getPath(), temp.getPath());
 
         List<String> expectedChecks =
-                Rules.getAllRules().stream()
+                SonarRules.getAllRules().stream()
                         .map(rule -> rule.getName() + "Check<" + rule.getKey() + ">")
                         .sorted()
                         .collect(Collectors.toList());

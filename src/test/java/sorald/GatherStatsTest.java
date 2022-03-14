@@ -18,7 +18,6 @@ import org.junit.jupiter.params.provider.EnumSource;
 import sorald.event.StatsMetadataKeys;
 import sorald.processor.ProcessorTestHelper;
 import sorald.processor.XxeProcessingProcessor;
-import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.SonarRule;
@@ -147,7 +146,7 @@ public class GatherStatsTest {
             MavenHelper.convertToMavenProject(project);
         }
 
-        Rule targetRule = new SonarRule(new XxeProcessingProcessor().getRuleKey());
+        SonarRule targetRule = new SonarRule(new XxeProcessingProcessor().getRuleKey());
 
         Set<RuleViolation> violationsBefore =
                 ProjectScanner.scanProject(project, project, targetRule);
@@ -188,7 +187,7 @@ public class GatherStatsTest {
         final Set<RuleViolation> violationsBefore;
         final Set<RuleViolation> violationsAfter;
         final RuleViolation targetViolation;
-        final Rule targetRule;
+        final SonarRule targetRule;
 
         private TargetedRepairInfo(
                 Path projectPath,
@@ -196,7 +195,7 @@ public class GatherStatsTest {
                 Set<RuleViolation> violationsBefore,
                 Set<RuleViolation> violationsAfter,
                 RuleViolation targetViolation,
-                Rule targetRule) {
+                SonarRule targetRule) {
             this.projectPath = projectPath;
             this.statsFile = statsFile;
             this.violationsBefore = violationsBefore;

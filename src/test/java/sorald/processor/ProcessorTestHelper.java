@@ -31,7 +31,7 @@ public class ProcessorTestHelper {
     static final String EXACT_MATCH_FILE_SUFFIX = ".exact";
     static final String EXACT_MATCH_DELIMITER = "###";
     // The processors related to these checks currently cause problems with the sniper printer
-    static final List<Rule> BROKEN_WITH_SNIPER =
+    static final List<SonarRule> BROKEN_WITH_SNIPER =
             List.of(new SonarRule(new SynchronizationOnStringOrBoxedProcessor().getRuleKey()));
 
     /**
@@ -56,7 +56,7 @@ public class ProcessorTestHelper {
         File directory = nonCompliantFile.getParentFile();
         assert directory.isDirectory();
         String ruleKey = directory.getName().split("_")[0];
-        String ruleName = Rule.of(ruleKey).getName();
+        String ruleName = new SonarRule(ruleKey).getName();
         String outfileDirRelpath =
                 parseSourceFilePackage(nonCompliantFile.toPath()).replace(".", File.separator);
         Path outfileRelpath = Paths.get(outfileDirRelpath).resolve(nonCompliantFile.getName());
@@ -244,7 +244,7 @@ public class ProcessorTestHelper {
             return Collections.unmodifiableList(expectedExactMatches);
         }
 
-        public Rule getRule() {
+        public SonarRule getRule() {
             return new SonarRule(ruleKey);
         }
     }

@@ -15,14 +15,13 @@ import org.sonar.java.checks.NullShouldNotBeUsedWithOptionalCheck;
 import org.sonar.java.checks.serialization.SerializableFieldInSerializableClassCheck;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
-import sorald.rule.RuleType;
 
 class ChecksTest {
 
     @Test
     void test_getChecksByType_whenTypeIsBug_containsBugChecks() {
         final List<Class<? extends JavaFileScanner>> bugChecks =
-                Checks.getChecksByType(RuleType.BUG);
+                Checks.getChecksByType(SonarRuleType.BUG);
         final List<Class<? extends JavaFileScanner>> expectedBugChecksSubset =
                 Arrays.asList(
                         CompareStringsBoxedTypesWithEqualsCheck.class,
@@ -35,7 +34,7 @@ class ChecksTest {
     @Test
     void test_getChecksByType_whenTypeIsCodeSmell_containsCodeSmellChecks() {
         final List<Class<? extends JavaFileScanner>> codeSmellChecks =
-                Checks.getChecksByType(RuleType.CODE_SMELL);
+                Checks.getChecksByType(SonarRuleType.CODE_SMELL);
         final List<Class<? extends JavaFileScanner>> expectedCodeSmellChecksSubset =
                 Arrays.asList(
                         DeadStoreCheck.class, SerializableFieldInSerializableClassCheck.class);

@@ -30,7 +30,7 @@ import sorald.Constants;
 import sorald.FileUtils;
 import sorald.TestHelper;
 import sorald.event.StatsMetadataKeys;
-import sorald.rule.Rule;
+import sorald.sonar.SonarRule;
 import spoon.Launcher;
 import spoon.reflect.CtModel;
 import spoon.reflect.declaration.CtImport;
@@ -170,7 +170,7 @@ public class ProcessorTest {
         File dirWithJavaExtension =
                 origDir.toPath().resolveSibling(origDir.getName() + Constants.JAVA_EXT).toFile();
         org.apache.commons.io.FileUtils.moveDirectory(origDir, dirWithJavaExtension);
-        Rule rule = Rule.of(new ArrayHashCodeAndToStringProcessor().getRuleKey());
+        SonarRule rule = new SonarRule(new ArrayHashCodeAndToStringProcessor().getRuleKey());
 
         // act
         ProcessorTestHelper.runSorald(workdir.toFile(), rule);
@@ -178,7 +178,7 @@ public class ProcessorTest {
         // assert
         assertNoRuleViolations(
                 dirWithJavaExtension.toPath().resolve("ArrayHashCodeAndToString.java").toFile(),
-                Rule.of(new ArrayHashCodeAndToStringProcessor().getRuleKey()));
+                new SonarRule(new ArrayHashCodeAndToStringProcessor().getRuleKey()));
     }
 
     @Test
@@ -205,7 +205,7 @@ public class ProcessorTest {
         // arrange
         Path workdir = TestHelper.createTemporaryTestResourceWorkspace();
         Path scenarioRoot = workdir.resolve("scenario_test_files").resolve("project.with.module");
-        Rule rule = Rule.of(new DeadStoreProcessor().getRuleKey());
+        SonarRule rule = new SonarRule(new DeadStoreProcessor().getRuleKey());
 
         // act
         ProcessorTestHelper.runSorald(scenarioRoot.toFile(), rule);

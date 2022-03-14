@@ -1,9 +1,11 @@
 package sorald.rule;
 
-import sorald.sonar.SonarRule;
-
-/** A static analysis rule */
-public interface Rule {
+/**
+ * A static analysis rule.
+ *
+ * @param <T> variant of static analyzer
+ */
+public interface Rule<T extends RuleType> {
 
     /** @return A key that uniquely identifies this rule within Sorald. */
     String getKey();
@@ -12,15 +14,5 @@ public interface Rule {
     String getName();
 
     /** @return The type of this rule. */
-    RuleType getType();
-
-    /**
-     * Create a rule based on the key.
-     *
-     * @param key A key for which to create a rule.
-     * @return A rule based on the key.
-     */
-    static Rule of(String key) {
-        return new SonarRule(key);
-    }
+    T getType();
 }
