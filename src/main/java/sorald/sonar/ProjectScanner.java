@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 import sorald.Constants;
 import sorald.FileUtils;
+import sorald.cli.CommandConfiguration;
 import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 
@@ -36,7 +37,8 @@ public class ProjectScanner {
      * @return All violations in the target.
      */
     public static Set<RuleViolation> scanProject(File target, File baseDir, List<Rule> rules) {
-        return scanProject(target, baseDir, rules, List.of());
+        CommandConfiguration soraldConfiguration = new CommandConfiguration(rules);
+        return scanProject(target, baseDir, List.of(), soraldConfiguration);
     }
 
     /**
@@ -50,7 +52,10 @@ public class ProjectScanner {
      * @return All violations in the target.
      */
     public static Set<RuleViolation> scanProject(
-            File target, File baseDir, List<Rule> rules, List<String> classpath) {
+            File target,
+            File baseDir,
+            List<String> classpath,
+            CommandConfiguration soraldConfiguration) {
         List<File> filesToScan = new ArrayList<>();
         if (target.isFile()) {
             filesToScan.add(target);
@@ -64,7 +69,8 @@ public class ProjectScanner {
 
         // TODO generalize to not directly use the SonarStaticAnalyzer
         var violations =
-                new SonarStaticAnalyzer(baseDir).findViolations(filesToScan, rules, classpath);
+                new SonarStaticAnalyzer(baseDir)
+                        .findViolations(filesToScan, classpath, soraldConfiguration);
         return new HashSet<>(violations);
     }
 }

@@ -67,6 +67,8 @@ class MineCommand extends BaseCommand {
         validateArgs();
 
         List<Rule> checks = inferRules(ruleTypes, handledRules);
+        CommandConfiguration soraldConfiguration =
+                new CommandConfiguration(handledRules, ruleTypes);
 
         var statsCollector = new MinerStatisticsCollector();
         List<String> classpath =
@@ -80,9 +82,11 @@ class MineCommand extends BaseCommand {
 
         if (statsOnGitRepos) {
             List<String> reposList = Files.readAllLines(this.reposList.toPath());
-            miner.mineGitRepos(checks, minerOutputFile.getAbsolutePath(), reposList, tempDir);
+            miner.mineGitRepos(
+                    minerOutputFile.getAbsolutePath(), reposList, tempDir, soraldConfiguration);
         } else {
-            miner.mineLocalProject(checks, source.toPath().normalize().toAbsolutePath().toString());
+            miner.mineLocalProject(
+                    source.toPath().normalize().toAbsolutePath().toString(), soraldConfiguration);
         }
 
         if (statsOutputFile != null) {

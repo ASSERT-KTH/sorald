@@ -192,9 +192,13 @@ class RepairCommand extends BaseCommand {
             List<String> classpath) {
         Rule rule = Rule.of(ruleKey);
         Path projectPath = target.toPath().toAbsolutePath().normalize();
+        CommandConfiguration soraldConfiguration = new CommandConfiguration(List.of(rule));
         Set<RuleViolation> violations =
                 ProjectScanner.scanProject(
-                        target, FileUtils.getClosestDirectory(target), List.of(rule), classpath);
+                        target,
+                        FileUtils.getClosestDirectory(target),
+                        classpath,
+                        soraldConfiguration);
         violations.forEach(
                 warn ->
                         EventHelper.fireEvent(

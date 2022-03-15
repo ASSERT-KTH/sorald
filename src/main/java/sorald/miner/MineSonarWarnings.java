@@ -3,9 +3,9 @@ package sorald.miner;
 import java.io.*;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.function.Consumer;
 import org.eclipse.jgit.api.Git;
 import sorald.FileUtils;
+import sorald.cli.CommandConfiguration;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
@@ -25,7 +25,10 @@ public class MineSonarWarnings {
     }
 
     public void mineGitRepos(
-            List<Rule> rules, String outputPath, List<String> reposList, File repoDir)
+            String outputPath,
+            List<String> reposList,
+            File repoDir,
+            CommandConfiguration soraldConfiguration)
             throws IOException {
         // stats on a list of git repos
         for (String repo : reposList) {
@@ -43,7 +46,8 @@ public class MineSonarWarnings {
                 e.printStackTrace();
             }
 
-            Map<String, Integer> warnings = extractWarnings(repoDir.getAbsolutePath(), rules);
+            Map<String, Integer> warnings =
+                    extractWarnings(repoDir.getAbsolutePath(), soraldConfiguration);
 
             PrintWriter pw = new PrintWriter(new FileWriter(outputPath, true));
 
@@ -62,8 +66,8 @@ public class MineSonarWarnings {
         }
     }
 
-    public void mineLocalProject(List<Rule> rules, String projectPath) {
-        Map<String, Integer> warnings = extractWarnings(projectPath, rules);
+    public void mineLocalProject(String projectPath, CommandConfiguration soraldConfiguration) {
+        Map<String, Integer> warnings = extractWarnings(projectPath, soraldConfiguration);
 
         warnings.entrySet().stream()
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
@@ -72,27 +76,21 @@ public class MineSonarWarnings {
 
     /**
      * @param projectPath The root path to a Java project
-     * @param rules Rules to find violations of in the Java files in the project
      * @return A mapping (checkClassName<ruleKey> -> numViolations)
      */
-    Map<String, Integer> extractWarnings(String projectPath, List<Rule> rules) {
+    Map<String, Integer> extractWarnings(
+            String projectPath, CommandConfiguration soraldConfiguration) {
         final Map<Rule, Integer> warnings = new HashMap<>();
         final var target = new File(projectPath);
-
-        rules.forEach(ruleName -> warnings.put(ruleName, 0));
-
-        Consumer<Rule> incrementWarningCount = (rule) -> warnings.put(rule, warnings.get(rule) + 1);
 
         EventHelper.fireEvent(EventType.MINING_START, eventHandlers);
         Set<RuleViolation> ruleViolations =
                 ProjectScanner.scanProject(
-                        target, FileUtils.getClosestDirectory(target), rules, classpath);
+                        target,
+                        FileUtils.getClosestDirectory(target),
+                        classpath,
+                        soraldConfiguration);
         EventHelper.fireEvent(EventType.MINING_END, eventHandlers);
-
-        ruleViolations.stream()
-                .map(RuleViolation::getRuleKey)
-                .map(Rule::of)
-                .forEach(incrementWarningCount);
 
         ruleViolations.forEach(
                 v ->

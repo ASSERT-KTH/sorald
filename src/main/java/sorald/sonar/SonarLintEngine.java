@@ -11,11 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -42,6 +38,9 @@ import org.sonarsource.sonarlint.core.plugin.commons.PluginInstancesRepository;
 import org.sonarsource.sonarlint.core.plugin.commons.PluginInstancesRepository.Configuration;
 import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
 import sorald.FileUtils;
+import sorald.Processors;
+import sorald.cli.CommandConfiguration;
+import sorald.rule.Rule;
 import sorald.util.ConfigLoader;
 
 public final class SonarLintEngine extends AbstractSonarLintEngine {
@@ -169,6 +168,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
 
     public AnalysisResults analyze(
             StandaloneAnalysisConfiguration configuration,
+            CommandConfiguration soraldConfiguration,
             IssueListener issueListener,
             @Nullable ClientLogOutput logOutput,
             @Nullable ClientProgressMonitor monitor) {
@@ -180,7 +180,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                 AnalysisConfiguration.builder()
                         .addInputFiles(configuration.inputFiles())
                         .putAllExtraProperties(configuration.extraProperties())
-                        .addActiveRules(identifyActiveRules(configuration))
+                        .addActiveRules(identifyActiveRules(soraldConfiguration))
                         .setBaseDir(configuration.baseDir())
                         .build();
         try {
@@ -208,20 +208,62 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
         }
     }
 
-    private Collection<ActiveRule> identifyActiveRules(
-            StandaloneAnalysisConfiguration configuration) {
-        Set<String> includedRules =
-                configuration.includedRules().stream().map(RuleKey::toString).collect(toSet());
+    private Collection<ActiveRule> identifyActiveRules(CommandConfiguration soraldConfiguration) {
+        if (soraldConfiguration.getRules() != null) {
+            return allRulesDefinitionsByKey.values().stream()
+                    .filter(isImplementedBySonarJavaPlugin(soraldConfiguration.getRules()))
+                    .map(rd -> new ActiveRule(rd.getKey(), rd.getLanguage().getLanguageKey()))
+                    .collect(toSet());
+        }
+
+        if (soraldConfiguration.onlyHandledRules() != null
+                && soraldConfiguration.getRuleTypes() != null) {
+            List<SonarLintRuleDefinition> requiredRules;
+
+            if (soraldConfiguration.getRuleTypes().isEmpty()) {
+                requiredRules = List.copyOf(allRulesDefinitionsByKey.values());
+            } else {
+                List<String> ruleTypes =
+                        soraldConfiguration.getRuleTypes().stream()
+                                .map(Enum::name)
+                                .collect(Collectors.toList());
+                requiredRules =
+                        List.copyOf(
+                                allRulesDefinitionsByKey.values().stream()
+                                        .filter(slrd -> ruleTypes.contains(slrd.getType()))
+                                        .collect(Collectors.toList()));
+            }
+
+            return !soraldConfiguration.onlyHandledRules()
+                    ? requiredRules.stream()
+                            .map(
+                                    rd ->
+                                            new ActiveRule(
+                                                    rd.getKey(), rd.getLanguage().getLanguageKey()))
+                            .collect(toSet())
+                    : requiredRules.stream()
+                            .filter(
+                                    rule ->
+                                            Processors.getProcessor(rule.getKey().substring(5))
+                                                    != null)
+                            .map(
+                                    rd ->
+                                            new ActiveRule(
+                                                    rd.getKey(), rd.getLanguage().getLanguageKey()))
+                            .collect(Collectors.toList());
+        }
 
         return allRulesDefinitionsByKey.values().stream()
-                .filter(isImplementedBySonarJavaPlugin(includedRules))
                 .map(rd -> new ActiveRule(rd.getKey(), rd.getLanguage().getLanguageKey()))
                 .collect(Collectors.toList());
     }
 
     private static Predicate<? super SonarLintRuleDefinition> isImplementedBySonarJavaPlugin(
-            Set<String> includedRules) {
-        return r -> includedRules.contains(r.getKey());
+            List<Rule> rules) {
+        return r ->
+                rules.stream()
+                        .map(rule -> RuleKey.parse("java:" + rule.getKey()))
+                        .anyMatch(providedRule -> providedRule.toString().equals(r.getKey()));
     }
 
     public void stop() {
