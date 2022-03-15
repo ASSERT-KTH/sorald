@@ -137,7 +137,7 @@ public class WarningMinerTest {
                     Constants.MINE_COMMAND_NAME, Constants.ARG_SOURCE, workdir.toString()
                 });
 
-        assertThat(out.toString(), containsString("MathOnFloatCheck<S2164>=1"));
+        assertThat(out.toString(), containsString("<S2164>=1"));
     }
 
     /** Test that extracting warnings gives results even for rules that are not violated. */
@@ -263,17 +263,17 @@ public class WarningMinerTest {
 
         @Test
         void report_S100_BadMethodNameCheck() {
-            doesViolationExist("S100_BadMethodNameCheck.java", "BadMethodNameCheck<S100>=1");
+            doesViolationExist("S100_BadMethodNameCheck.java", "<S100>=1");
         }
 
         @Test
         void report_S101_BadClassNameCheck() {
-            doesViolationExist("S101_BadClassNameCheck.java", "BadClassNameCheck<S101>=1");
+            doesViolationExist("S101_BadClassNameCheck.java", "<S101>=1");
         }
 
         @Test
         void report_S1176_UndocumentedApiCheck() {
-            doesViolationExist("S1176_UndocumentedApiCheck.java", "UndocumentedApiCheck<S1176>=1");
+            doesViolationExist("S1176_UndocumentedApiCheck.java", "<S1176>=1");
         }
     }
 

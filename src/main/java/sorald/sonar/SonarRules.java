@@ -18,8 +18,6 @@ public class SonarRules {
         Collection<SonarLintRuleDefinition> allRules =
                 SonarLintEngine.getAllRulesDefinitionsByKey().values();
 
-        return allRules.stream()
-                .map(slrd -> Rule.of(slrd.getKey().substring(5)))
-                .collect(Collectors.toList());
+        return allRules.stream().map(slrd -> Rule.of(slrd.getKey())).collect(Collectors.toList());
     }
 }
