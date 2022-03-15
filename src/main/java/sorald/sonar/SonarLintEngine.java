@@ -161,8 +161,9 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                 new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, logOutput);
     }
 
-    public static Collection<SonarLintRuleDefinition> getAllRulesDefinitions() {
-        return allRulesDefinitionsByKey.values();
+    /** Returns all rule keys available at the provided version of Sonar Java. */
+    public static Map<String, SonarLintRuleDefinition> getAllRulesDefinitionsByKey() {
+        return allRulesDefinitionsByKey;
     }
 
     @Override
@@ -212,7 +213,8 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
         }
     }
 
-    private Collection<ActiveRule> identifyActiveRules(CommandConfiguration soraldConfiguration) {
+    private static Collection<ActiveRule> identifyActiveRules(
+            CommandConfiguration soraldConfiguration) {
         if (soraldConfiguration.getRules() != null) {
             return allRulesDefinitionsByKey.values().stream()
                     .filter(isImplementedBySonarJavaPlugin(soraldConfiguration.getRules()))

@@ -93,7 +93,7 @@ public class WarningMinerTest {
                 ruleTypes.stream().map(RuleType::name).collect(Collectors.joining(",")));
 
         List<String> expectedChecks =
-                SonarLintEngine.getAllRulesDefinitions().stream()
+                SonarLintEngine.getAllRulesDefinitionsByKey().values().stream()
                         .filter(
                                 slrd ->
                                         ruleTypes.stream()
