@@ -12,8 +12,8 @@ public interface StaticAnalyzer {
      * Scan files for violations of some rules.
      *
      * @param files The files to analyze.
-     * @param rule The rules to use.
      * @param classpath Classpath that includes any dependencies.
+     * @param soraldConfiguration configuration provided via CLI.
      * @return All violations of the rules found in the files.
      */
     Collection<RuleViolation> findViolations(

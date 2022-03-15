@@ -47,8 +47,8 @@ public class ProjectScanner {
      *
      * @param target Targeted file or directory of the project.
      * @param baseDir Base directory of the project.
-     * @param rules Rules to scan for.
      * @param classpath Classpath to fetch type information from.
+     * @param soraldConfiguration configuration provided via CLI.
      * @return All violations in the target.
      */
     public static Set<RuleViolation> scanProject(
