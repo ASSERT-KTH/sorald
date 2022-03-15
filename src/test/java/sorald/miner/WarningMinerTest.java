@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -21,19 +22,16 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import sorald.Constants;
-import sorald.FileUtils;
-import sorald.Main;
-import sorald.SystemExitHandler;
-import sorald.TestHelper;
+import sorald.*;
 import sorald.cli.SoraldVersionProvider;
 import sorald.event.StatsMetadataKeys;
 import sorald.processor.CastArithmeticOperandProcessor;
 import sorald.rule.RuleType;
-import sorald.rule.Rules;
+import sorald.sonar.SonarLintEngine;
 
 public class WarningMinerTest {
 
@@ -70,18 +68,7 @@ public class WarningMinerTest {
 
         expectedLines =
                 expectedLines.stream()
-                        .filter(
-                                line -> {
-                                    try {
-                                        Class.forName(
-                                                "sorald.processor."
-                                                        + line.split("<")[0].replace(
-                                                                "Check", "Processor"));
-                                        return true;
-                                    } catch (ClassNotFoundException e) {
-                                        return false;
-                                    }
-                                })
+                        .filter(line -> Processors.getProcessor(line.split("=")[0]) != null)
                         .collect(Collectors.toList());
 
         assertThat(actualLines, equalTo(expectedLines));
@@ -106,13 +93,18 @@ public class WarningMinerTest {
                 ruleTypes.stream().map(RuleType::name).collect(Collectors.joining(",")));
 
         List<String> expectedChecks =
-                Rules.getRulesByType(ruleTypes).stream()
-                        .map(rule -> rule.getName() + "Check<" + rule.getKey() + ">")
-                        .sorted()
+                SonarLintEngine.getAllRulesDefinitions().stream()
+                        .filter(
+                                slrd ->
+                                        ruleTypes.stream()
+                                                .map(Enum::name)
+                                                .collect(Collectors.toList())
+                                                .contains(slrd.getType()))
+                        .map(slrd -> slrd.getKey().substring(5))
                         .collect(Collectors.toList());
         List<String> actualChecks = extractSortedCheckNames(outputFile.toPath());
 
-        assertThat(actualChecks, equalTo(expectedChecks));
+        assertThat(actualChecks, everyItem(is(in(expectedChecks))));
     }
 
     /**
@@ -137,10 +129,11 @@ public class WarningMinerTest {
                     Constants.MINE_COMMAND_NAME, Constants.ARG_SOURCE, workdir.toString()
                 });
 
-        assertThat(out.toString(), containsString("MathOnFloatCheck<S2164>=1"));
+        assertThat(out.toString(), containsString("S2164=1"));
     }
 
     /** Test that extracting warnings gives results even for rules that are not violated. */
+    @Disabled("We do not report all violations now")
     @Test
     public void extractWarnings_accountsForAllRules_whenManyAreNotViolated() throws Exception {
         File outputFile = File.createTempFile("warnings", null),
@@ -148,11 +141,7 @@ public class WarningMinerTest {
 
         runMiner(REPOS_TXT, outputFile.getPath(), temp.getPath());
 
-        List<String> expectedChecks =
-                Rules.getAllRules().stream()
-                        .map(rule -> rule.getName() + "Check<" + rule.getKey() + ">")
-                        .sorted()
-                        .collect(Collectors.toList());
+        List<String> expectedChecks = new ArrayList<>();
         List<String> actualChecks = extractSortedCheckNames(outputFile.toPath());
 
         assertThat(actualChecks, equalTo(expectedChecks));
@@ -263,17 +252,17 @@ public class WarningMinerTest {
 
         @Test
         void report_S100_BadMethodNameCheck() {
-            doesViolationExist("S100_BadMethodNameCheck.java", "BadMethodNameCheck<S100>=1");
+            doesViolationExist("S100_BadMethodNameCheck.java", "S100=1");
         }
 
         @Test
         void report_S101_BadClassNameCheck() {
-            doesViolationExist("S101_BadClassNameCheck.java", "BadClassNameCheck<S101>=1");
+            doesViolationExist("S101_BadClassNameCheck.java", "S101=1");
         }
 
         @Test
         void report_S1176_UndocumentedApiCheck() {
-            doesViolationExist("S1176_UndocumentedApiCheck.java", "UndocumentedApiCheck<S1176>=1");
+            doesViolationExist("S1176_UndocumentedApiCheck.java", "S1176=1");
         }
     }
 

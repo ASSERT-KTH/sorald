@@ -11,9 +11,8 @@ public class SonarRule implements Rule {
 
     public SonarRule(String key) {
         this.key = key;
-        var check = Checks.getCheck(key);
-        this.name = check.getSimpleName().replaceFirst("Check$", "");
-        this.type = Checks.getRuleType(check);
+        this.name = "None";
+        this.type = null;
     }
 
     @Override

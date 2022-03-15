@@ -92,16 +92,25 @@ public class MineSonarWarnings {
                         soraldConfiguration);
         EventHelper.fireEvent(EventType.MINING_END, eventHandlers);
 
+        ruleViolations.stream()
+                .map(RuleViolation::getRuleKey)
+                .map(Rule::of)
+                .forEach(
+                        rv -> {
+                            if (warnings.containsKey(rv)) {
+                                warnings.put(rv, warnings.get(rv) + 1);
+                            } else {
+                                warnings.put(rv, 1);
+                            }
+                        });
+
         ruleViolations.forEach(
                 v ->
                         EventHelper.fireEvent(
                                 new MinedViolationEvent(v, Paths.get(projectPath)), eventHandlers));
 
         Map<String, Integer> warningsWithUpdateKeys = new HashMap<>();
-        warnings.forEach(
-                (rule, count) ->
-                        warningsWithUpdateKeys.put(
-                                rule.getName() + "Check" + "<" + rule.getKey() + ">", count));
+        warnings.forEach((rule, count) -> warningsWithUpdateKeys.put(rule.getKey(), count));
 
         return warningsWithUpdateKeys;
     }

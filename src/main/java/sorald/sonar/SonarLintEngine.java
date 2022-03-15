@@ -161,6 +161,10 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                 new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, logOutput);
     }
 
+    public static Collection<SonarLintRuleDefinition> getAllRulesDefinitions() {
+        return allRulesDefinitionsByKey.values();
+    }
+
     @Override
     public AnalysisEngine getAnalysisEngine() {
         return analysisEngine;
