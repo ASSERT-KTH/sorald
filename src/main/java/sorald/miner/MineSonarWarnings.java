@@ -100,10 +100,7 @@ public class MineSonarWarnings {
                                 new MinedViolationEvent(v, Paths.get(projectPath)), eventHandlers));
 
         Map<String, Integer> warningsWithUpdateKeys = new HashMap<>();
-        warnings.forEach(
-                (rule, count) ->
-                        warningsWithUpdateKeys.put(
-                                rule.getName() + "Check" + "<" + rule.getKey() + ">", count));
+        warnings.forEach((rule, count) -> warningsWithUpdateKeys.put(rule.getKey(), count));
 
         return warningsWithUpdateKeys;
     }

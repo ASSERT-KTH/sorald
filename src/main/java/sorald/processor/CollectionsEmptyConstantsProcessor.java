@@ -1,7 +1,8 @@
 package sorald.processor;
 
+import static org.apache.commons.lang3.StringUtils.capitalize;
+
 import java.util.Collections;
-import org.apache.commons.lang.StringUtils;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
@@ -15,7 +16,7 @@ public class CollectionsEmptyConstantsProcessor extends SoraldAbstractProcessor<
     @Override
     protected void repairInternal(CtFieldAccess<?> element) {
         String[] loweredNameParts = element.getVariable().getSimpleName().toLowerCase().split("_");
-        String camelCasedName = loweredNameParts[0] + StringUtils.capitalize(loweredNameParts[1]);
+        String camelCasedName = loweredNameParts[0] + capitalize(loweredNameParts[1]);
         CtMethod<?> methodToBeCalled =
                 getFactory().Class().get(Collections.class).getMethod(camelCasedName);
 

@@ -1,8 +1,10 @@
 package sorald.rule;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import sorald.Processors;
 import sorald.sonar.SonarRules;
 
 /** Utility class for finding available rules. */
@@ -40,5 +42,23 @@ public class Rules {
      */
     public static Collection<Rule> getRulesByType(Collection<RuleType> types) {
         return getRulesByType(types.toArray(RuleType[]::new));
+    }
+
+    /**
+     * Infer which rules to use based on rule types specified (or left unspecified) on the command
+     * line.
+     */
+    public static List<Rule> inferRules(List<RuleType> ruleTypes, boolean handledRules) {
+        List<Rule> rules =
+                List.copyOf(
+                        ruleTypes.isEmpty()
+                                ? Rules.getAllRules()
+                                : Rules.getRulesByType(ruleTypes));
+
+        return !handledRules
+                ? rules
+                : rules.stream()
+                        .filter(rule -> Processors.getProcessor(rule.getKey()) != null)
+                        .collect(Collectors.toList());
     }
 }

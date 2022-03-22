@@ -208,6 +208,11 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
         }
     }
 
+    /** Returns all rule keys available at the provided version of Sonar Java. */
+    public static Map<String, SonarLintRuleDefinition> getAllRulesDefinitionsByKey() {
+        return allRulesDefinitionsByKey;
+    }
+
     private Collection<ActiveRule> identifyActiveRules(
             StandaloneAnalysisConfiguration configuration) {
         Set<String> includedRules =

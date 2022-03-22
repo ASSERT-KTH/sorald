@@ -3,11 +3,9 @@ package sorald.cli;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.*;
-import java.util.stream.Collectors;
 import picocli.CommandLine;
 import sorald.Constants;
 import sorald.FileUtils;
-import sorald.Processors;
 import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
@@ -66,7 +64,7 @@ class MineCommand extends BaseCommand {
     public Integer call() throws Exception {
         validateArgs();
 
-        List<Rule> checks = inferRules(ruleTypes, handledRules);
+        List<Rule> checks = Rules.inferRules(ruleTypes, handledRules);
 
         var statsCollector = new MinerStatisticsCollector();
         List<String> classpath =
@@ -112,23 +110,5 @@ class MineCommand extends BaseCommand {
                             "%s is only supported for Maven projects, but %s has no pom.xml",
                             Constants.ARG_RESOLVE_CLASSPATH_FROM, source));
         }
-    }
-
-    /**
-     * Infer which rules to use based on rule types specified (or left unspecified) on the command
-     * line.
-     */
-    private static List<Rule> inferRules(List<RuleType> ruleTypes, boolean handledRules) {
-        List<Rule> rules =
-                List.copyOf(
-                        ruleTypes.isEmpty()
-                                ? Rules.getAllRules()
-                                : Rules.getRulesByType(ruleTypes));
-
-        return !handledRules
-                ? rules
-                : rules.stream()
-                        .filter(rule -> Processors.getProcessor(rule.getKey()) != null)
-                        .collect(Collectors.toList());
     }
 }
