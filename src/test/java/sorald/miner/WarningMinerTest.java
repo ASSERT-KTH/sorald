@@ -24,14 +24,11 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import sorald.Constants;
-import sorald.FileUtils;
-import sorald.Main;
-import sorald.SystemExitHandler;
-import sorald.TestHelper;
+import sorald.*;
 import sorald.cli.SoraldVersionProvider;
 import sorald.event.StatsMetadataKeys;
 import sorald.processor.CastArithmeticOperandProcessor;
+import sorald.rule.Rule;
 import sorald.rule.RuleType;
 import sorald.rule.Rules;
 
@@ -72,15 +69,8 @@ public class WarningMinerTest {
                 expectedLines.stream()
                         .filter(
                                 line -> {
-                                    try {
-                                        Class.forName(
-                                                "sorald.processor."
-                                                        + line.split("<")[0].replace(
-                                                                "Check", "Processor"));
-                                        return true;
-                                    } catch (ClassNotFoundException e) {
-                                        return false;
-                                    }
+                                    String ruleKey = line.split("=")[0];
+                                    return Processors.getProcessor(ruleKey) != null;
                                 })
                         .collect(Collectors.toList());
 
@@ -107,7 +97,7 @@ public class WarningMinerTest {
 
         List<String> expectedChecks =
                 Rules.getRulesByType(ruleTypes).stream()
-                        .map(rule -> rule.getName() + "Check<" + rule.getKey() + ">")
+                        .map(Rule::getKey)
                         .sorted()
                         .collect(Collectors.toList());
         List<String> actualChecks = extractSortedCheckNames(outputFile.toPath());
@@ -137,7 +127,7 @@ public class WarningMinerTest {
                     Constants.MINE_COMMAND_NAME, Constants.ARG_SOURCE, workdir.toString()
                 });
 
-        assertThat(out.toString(), containsString("<S2164>=1"));
+        assertThat(out.toString(), containsString("S2164=1"));
     }
 
     /** Test that extracting warnings gives results even for rules that are not violated. */
@@ -150,7 +140,7 @@ public class WarningMinerTest {
 
         List<String> expectedChecks =
                 Rules.getAllRules().stream()
-                        .map(rule -> rule.getName() + "Check<" + rule.getKey() + ">")
+                        .map(Rule::getKey)
                         .sorted()
                         .collect(Collectors.toList());
         List<String> actualChecks = extractSortedCheckNames(outputFile.toPath());
@@ -263,17 +253,17 @@ public class WarningMinerTest {
 
         @Test
         void report_S100_BadMethodNameCheck() {
-            doesViolationExist("S100_BadMethodNameCheck.java", "<S100>=1");
+            doesViolationExist("S100_BadMethodNameCheck.java", "S100=1");
         }
 
         @Test
         void report_S101_BadClassNameCheck() {
-            doesViolationExist("S101_BadClassNameCheck.java", "<S101>=1");
+            doesViolationExist("S101_BadClassNameCheck.java", "S101=1");
         }
 
         @Test
         void report_S1176_UndocumentedApiCheck() {
-            doesViolationExist("S1176_UndocumentedApiCheck.java", "<S1176>=1");
+            doesViolationExist("S1176_UndocumentedApiCheck.java", "S1176=1");
         }
     }
 
@@ -309,7 +299,7 @@ public class WarningMinerTest {
 
     /**
      * Extract all lines from a warning miner results file for which the check has >0 detections,
-     * sorted lexicographically. Expect each relevant line to be on the form "SomeSonarCheck=%d",
+     * sorted lexicographically. Expect each relevant line to be on the form "<rule-key></>=%d",
      * where %d is any non-negative integer.
      */
     private static List<String> extractSortedNonZeroChecks(Path minerResults) throws IOException {
