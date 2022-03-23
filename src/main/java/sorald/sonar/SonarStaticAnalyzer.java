@@ -15,22 +15,15 @@ import sorald.rule.RuleViolation;
 import sorald.rule.StaticAnalyzer;
 
 public class SonarStaticAnalyzer implements StaticAnalyzer {
-    private final File projectRoot;
-    private final SonarLintEngine sonarLint;
-
-    public SonarStaticAnalyzer(File projectRoot) {
-        this.projectRoot = projectRoot;
-        this.sonarLint = SonarLintEngine.getInstance();
-    }
 
     @Override
     public Collection<RuleViolation> findViolations(
-            List<File> files, List<Rule> rules, List<String> classpath) {
-        return analyze(files, rules, classpath);
+            File projectRoot, List<File> files, List<Rule> rules, List<String> classpath) {
+        return analyze(projectRoot, files, rules, classpath);
     }
 
     private Collection<RuleViolation> analyze(
-            List<File> files, List<Rule> rules, List<String> classpath) {
+            File projectRoot, List<File> files, List<Rule> rules, List<String> classpath) {
 
         List<JavaInputFile> inputFiles =
                 files.stream()
@@ -52,6 +45,7 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
                         .addInputFiles(inputFiles)
                         .build();
 
+        SonarLintEngine sonarLint = SonarLintEngine.getInstance();
         var issueHandler = new IssueHandler();
         sonarLint.analyze(config, issueHandler, null, null);
         sonarLint.stop();

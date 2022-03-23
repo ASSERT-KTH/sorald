@@ -64,7 +64,7 @@ public class ProjectScanner {
 
         // TODO generalize to not directly use the SonarStaticAnalyzer
         var violations =
-                new SonarStaticAnalyzer(baseDir).findViolations(filesToScan, rules, classpath);
+                new SonarStaticAnalyzer().findViolations(baseDir, filesToScan, rules, classpath);
         return new HashSet<>(violations);
     }
 }
