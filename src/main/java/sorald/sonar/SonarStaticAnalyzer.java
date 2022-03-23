@@ -16,15 +16,14 @@ import sorald.rule.StaticAnalyzer;
 
 public class SonarStaticAnalyzer implements StaticAnalyzer {
 
-
     @Override
-    public Collection<RuleViolation> findViolations(File projectRoot,
-            List<File> files, List<Rule> rules, List<String> classpath) {
+    public Collection<RuleViolation> findViolations(
+            File projectRoot, List<File> files, List<Rule> rules, List<String> classpath) {
         return analyze(projectRoot, files, rules, classpath);
     }
 
-    private Collection<RuleViolation> analyze(File projectRoot,
-            List<File> files, List<Rule> rules, List<String> classpath) {
+    private Collection<RuleViolation> analyze(
+            File projectRoot, List<File> files, List<Rule> rules, List<String> classpath) {
 
         List<JavaInputFile> inputFiles =
                 files.stream()
