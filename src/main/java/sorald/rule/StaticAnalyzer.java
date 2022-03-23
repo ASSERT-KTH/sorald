@@ -10,11 +10,12 @@ public interface StaticAnalyzer {
     /**
      * Scan files for violations of some rules.
      *
+     * @param projectRoot the root folder of the project.
      * @param files The files to analyze.
      * @param rule The rules to use.
      * @param classpath Classpath that includes any dependencies.
      * @return All violations of the rules found in the files.
      */
     Collection<RuleViolation> findViolations(
-            List<File> files, List<Rule> rule, List<String> classpath);
+            File projectRoot, List<File> files, List<Rule> rule, List<String> classpath);
 }
