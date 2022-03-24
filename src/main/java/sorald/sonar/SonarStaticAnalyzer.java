@@ -1,5 +1,6 @@
 package sorald.sonar;
 
+import com.google.auto.service.AutoService;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,6 +15,7 @@ import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.rule.StaticAnalyzer;
 
+@AutoService(StaticAnalyzer.class)
 public class SonarStaticAnalyzer implements StaticAnalyzer {
 
     @Override
