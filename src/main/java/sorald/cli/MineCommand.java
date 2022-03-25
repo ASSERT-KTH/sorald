@@ -12,8 +12,8 @@ import sorald.event.models.ExecutionInfo;
 import sorald.miner.MineSonarWarnings;
 import sorald.rule.IRuleType;
 import sorald.rule.Rule;
-import sorald.rule.RuleType;
 import sorald.rule.Rules;
+import sorald.sonar.SonarRuleType;
 import sorald.util.MavenUtils;
 
 /** CLI Command for Sorald's mining functionality. */
@@ -117,7 +117,7 @@ class MineCommand extends BaseCommand {
     private static class IRuleTypeConverter implements CommandLine.ITypeConverter<IRuleType> {
         @Override
         public IRuleType convert(String value) {
-            return RuleType.valueOf(value.toUpperCase());
+            return SonarRuleType.valueOf(value.toUpperCase());
         }
     }
 }

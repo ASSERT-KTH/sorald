@@ -11,20 +11,19 @@ import org.junit.jupiter.api.Test;
 import sorald.Processors;
 import sorald.rule.IRuleType;
 import sorald.rule.Rule;
-import sorald.rule.RuleType;
 import sorald.rule.Rules;
 
 class SonarRulesTest {
     @Test
     void getRulesByType_subsetOfRulesShouldHaveCorrectRuleType() {
         // arrange
-        List<IRuleType> ruleTypes = List.of(RuleType.VULNERABILITY);
+        List<IRuleType> ruleTypes = List.of(SonarRuleType.VULNERABILITY);
 
         // act
         Collection<Rule> rules = Rules.getRulesByType(ruleTypes);
 
         // assert
-        rules.forEach(rule -> assertThat(rule.getType(), equalTo(RuleType.VULNERABILITY)));
+        rules.forEach(rule -> assertThat(rule.getType(), equalTo(SonarRuleType.VULNERABILITY)));
     }
 
     @Test

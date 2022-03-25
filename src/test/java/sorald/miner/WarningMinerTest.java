@@ -30,8 +30,8 @@ import sorald.event.StatsMetadataKeys;
 import sorald.processor.CastArithmeticOperandProcessor;
 import sorald.rule.IRuleType;
 import sorald.rule.Rule;
-import sorald.rule.RuleType;
 import sorald.rule.Rules;
+import sorald.sonar.SonarRuleType;
 
 public class WarningMinerTest {
 
@@ -84,7 +84,7 @@ public class WarningMinerTest {
      */
     @Test
     public void warningsMiner_onlyScansForGivenTypes_whenRuleTypesGiven() throws Exception {
-        Set<IRuleType> ruleTypes = Set.of(RuleType.VULNERABILITY, RuleType.CODE_SMELL);
+        Set<IRuleType> ruleTypes = Set.of(SonarRuleType.VULNERABILITY, SonarRuleType.CODE_SMELL);
 
         File outputFile = File.createTempFile("warnings", null);
         File temp = Files.createTempDirectory("tempDir").toFile();

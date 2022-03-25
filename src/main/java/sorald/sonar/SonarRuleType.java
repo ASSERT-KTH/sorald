@@ -1,7 +1,9 @@
-package sorald.rule;
+package sorald.sonar;
+
+import sorald.rule.IRuleType;
 
 /** Enumeration of Sonar rule types */
-public enum RuleType implements IRuleType {
+public enum SonarRuleType implements IRuleType {
     BUG("Bug"),
     VULNERABILITY("Vulnerability"),
     CODE_SMELL("Code_Smell"),
@@ -9,7 +11,7 @@ public enum RuleType implements IRuleType {
 
     private final String name;
 
-    RuleType(String name) {
+    SonarRuleType(String name) {
         this.name = name;
     }
 

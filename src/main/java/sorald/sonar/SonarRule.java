@@ -4,7 +4,6 @@ import java.util.Objects;
 import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
 import sorald.rule.IRuleType;
 import sorald.rule.Rule;
-import sorald.rule.RuleType;
 
 public class SonarRule implements Rule {
     private final String key;
@@ -19,7 +18,7 @@ public class SonarRule implements Rule {
         SonarLintRuleDefinition ruleDefinition =
                 SonarLintEngine.getAllRulesDefinitionsByKey().get(withLanguage(key));
         this.name = ruleDefinition.getName();
-        this.type = RuleType.valueOf(ruleDefinition.getType());
+        this.type = SonarRuleType.valueOf(ruleDefinition.getType());
     }
 
     private static String withoutLanguage(String ruleKey) {
