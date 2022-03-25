@@ -10,9 +10,10 @@ import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
 import sorald.miner.MineSonarWarnings;
+import sorald.rule.IRuleType;
 import sorald.rule.Rule;
-import sorald.rule.RuleType;
 import sorald.rule.Rules;
+import sorald.sonar.SonarRuleType;
 import sorald.util.MavenUtils;
 
 /** CLI Command for Sorald's mining functionality. */
@@ -49,10 +50,11 @@ class MineCommand extends BaseCommand {
 
     @CommandLine.Option(
             names = {Constants.ARG_RULE_TYPES},
+            converter = IRuleTypeConverter.class,
             description =
                     "One or more types of rules to check for (use ',' to separate multiple types). Choices: ${COMPLETION-CANDIDATES}",
             split = ",")
-    private List<RuleType> ruleTypes = new ArrayList<>();
+    private List<IRuleType> ruleTypes = new ArrayList<>();
 
     @CommandLine.Option(
             names = {Constants.ARG_HANDLED_RULES},
@@ -109,6 +111,13 @@ class MineCommand extends BaseCommand {
                     String.format(
                             "%s is only supported for Maven projects, but %s has no pom.xml",
                             Constants.ARG_RESOLVE_CLASSPATH_FROM, source));
+        }
+    }
+
+    private static class IRuleTypeConverter implements CommandLine.ITypeConverter<IRuleType> {
+        @Override
+        public IRuleType convert(String value) {
+            return SonarRuleType.valueOf(value.toUpperCase());
         }
     }
 }

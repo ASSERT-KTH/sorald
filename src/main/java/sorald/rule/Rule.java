@@ -12,7 +12,7 @@ public interface Rule {
     String getName();
 
     /** @return The type of this rule. */
-    RuleType getType();
+    IRuleType getType();
 
     /**
      * Create a rule based on the key.

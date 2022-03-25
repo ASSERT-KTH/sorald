@@ -2,13 +2,13 @@ package sorald.sonar;
 
 import java.util.Objects;
 import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
+import sorald.rule.IRuleType;
 import sorald.rule.Rule;
-import sorald.rule.RuleType;
 
 public class SonarRule implements Rule {
     private final String key;
     private final String name;
-    private final RuleType type;
+    private final IRuleType type;
 
     private static final String SONAR_JAVA_PREFIX = "java:";
 
@@ -18,7 +18,7 @@ public class SonarRule implements Rule {
         SonarLintRuleDefinition ruleDefinition =
                 SonarLintEngine.getAllRulesDefinitionsByKey().get(withLanguage(key));
         this.name = ruleDefinition.getName();
-        this.type = RuleType.valueOf(ruleDefinition.getType());
+        this.type = SonarRuleType.valueOf(ruleDefinition.getType());
     }
 
     private static String withoutLanguage(String ruleKey) {
@@ -46,7 +46,7 @@ public class SonarRule implements Rule {
     }
 
     @Override
-    public RuleType getType() {
+    public IRuleType getType() {
         return type;
     }
 
