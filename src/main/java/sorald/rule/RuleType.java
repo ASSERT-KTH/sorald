@@ -4,8 +4,8 @@ package sorald.rule;
 public enum RuleType implements IRuleType {
     BUG("Bug"),
     VULNERABILITY("Vulnerability"),
-    CODE_SMELL("Code Smell"),
-    SECURITY_HOTSPOT("Security Hotspot");
+    CODE_SMELL("Code_Smell"),
+    SECURITY_HOTSPOT("Security_Hotspot");
 
     private final String name;
 
