@@ -2,13 +2,14 @@ package sorald.sonar;
 
 import java.util.Objects;
 import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
+import sorald.rule.IRuleType;
 import sorald.rule.Rule;
 import sorald.rule.RuleType;
 
 public class SonarRule implements Rule {
     private final String key;
     private final String name;
-    private final RuleType type;
+    private final IRuleType type;
 
     private static final String SONAR_JAVA_PREFIX = "java:";
 
@@ -46,7 +47,7 @@ public class SonarRule implements Rule {
     }
 
     @Override
-    public RuleType getType() {
+    public IRuleType getType() {
         return type;
     }
 

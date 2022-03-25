@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import sorald.Processors;
+import sorald.rule.IRuleType;
 import sorald.rule.Rule;
 import sorald.rule.RuleType;
 import sorald.rule.Rules;
@@ -17,7 +18,7 @@ class SonarRulesTest {
     @Test
     void getRulesByType_subsetOfRulesShouldHaveCorrectRuleType() {
         // arrange
-        List<RuleType> ruleTypes = List.of(RuleType.VULNERABILITY);
+        List<IRuleType> ruleTypes = List.of(RuleType.VULNERABILITY);
 
         // act
         Collection<Rule> rules = Rules.getRulesByType(ruleTypes);
@@ -29,7 +30,7 @@ class SonarRulesTest {
     @Test
     void inferRules_subsetOfRulesShouldHaveACorrespondingProcessor() {
         // arrange
-        List<RuleType> ruleTypes = List.of();
+        List<IRuleType> ruleTypes = List.of();
         boolean handledRules = true;
 
         // act

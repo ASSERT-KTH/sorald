@@ -28,6 +28,7 @@ import sorald.*;
 import sorald.cli.SoraldVersionProvider;
 import sorald.event.StatsMetadataKeys;
 import sorald.processor.CastArithmeticOperandProcessor;
+import sorald.rule.IRuleType;
 import sorald.rule.Rule;
 import sorald.rule.RuleType;
 import sorald.rule.Rules;
@@ -83,7 +84,7 @@ public class WarningMinerTest {
      */
     @Test
     public void warningsMiner_onlyScansForGivenTypes_whenRuleTypesGiven() throws Exception {
-        Set<RuleType> ruleTypes = Set.of(RuleType.VULNERABILITY, RuleType.CODE_SMELL);
+        Set<IRuleType> ruleTypes = Set.of(RuleType.VULNERABILITY, RuleType.CODE_SMELL);
 
         File outputFile = File.createTempFile("warnings", null);
         File temp = Files.createTempDirectory("tempDir").toFile();
@@ -93,7 +94,7 @@ public class WarningMinerTest {
                 outputFile.getPath(),
                 temp.getPath(),
                 Constants.ARG_RULE_TYPES,
-                ruleTypes.stream().map(RuleType::name).collect(Collectors.joining(",")));
+                ruleTypes.stream().map(IRuleType::getName).collect(Collectors.joining(",")));
 
         List<String> expectedChecks =
                 Rules.getRulesByType(ruleTypes).stream()

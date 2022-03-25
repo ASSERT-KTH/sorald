@@ -27,7 +27,7 @@ public class Rules {
      * @param types Types to filter rules by.
      * @return All rules with any of the given types.
      */
-    public static Collection<Rule> getRulesByType(RuleType... types) {
+    public static Collection<Rule> getRulesByType(IRuleType... types) {
         var ruleTypes = Set.of(types);
         return getAllRules().stream()
                 .filter(rule -> ruleTypes.contains(rule.getType()))
@@ -40,15 +40,15 @@ public class Rules {
      * @param types Types to filter rules by.
      * @return All rules with any of the given types.
      */
-    public static Collection<Rule> getRulesByType(Collection<RuleType> types) {
-        return getRulesByType(types.toArray(RuleType[]::new));
+    public static Collection<Rule> getRulesByType(Collection<IRuleType> types) {
+        return getRulesByType(types.toArray(IRuleType[]::new));
     }
 
     /**
      * Infer which rules to use based on rule types specified (or left unspecified) on the command
      * line.
      */
-    public static List<Rule> inferRules(List<RuleType> ruleTypes, boolean handledRules) {
+    public static List<Rule> inferRules(List<IRuleType> ruleTypes, boolean handledRules) {
         List<Rule> rules =
                 List.copyOf(
                         ruleTypes.isEmpty()

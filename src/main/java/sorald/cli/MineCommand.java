@@ -10,8 +10,8 @@ import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
 import sorald.miner.MineSonarWarnings;
+import sorald.rule.IRuleType;
 import sorald.rule.Rule;
-import sorald.rule.RuleType;
 import sorald.rule.Rules;
 import sorald.util.MavenUtils;
 
@@ -52,7 +52,7 @@ class MineCommand extends BaseCommand {
             description =
                     "One or more types of rules to check for (use ',' to separate multiple types). Choices: ${COMPLETION-CANDIDATES}",
             split = ",")
-    private List<RuleType> ruleTypes = new ArrayList<>();
+    private List<IRuleType> ruleTypes = new ArrayList<>();
 
     @CommandLine.Option(
             names = {Constants.ARG_HANDLED_RULES},
