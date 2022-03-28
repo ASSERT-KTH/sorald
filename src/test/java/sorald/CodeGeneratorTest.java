@@ -23,7 +23,8 @@ public class CodeGeneratorTest {
 
         CodeGenerator.generateSources(generatedSourceDir.toPath());
 
-        CtType<?> committed = parseJavaFile(sourceDir.resolve("sorald/Processors.java"));
+        CtType<?> committed =
+                parseJavaFile(sourceDir.resolve("sorald/sonar/SonarProcessorRepository.java"));
         CtType<?> generated = parseJavaFile(generatedSourceDir.toPath().resolve("sorald/"));
 
         assertThat(printType(generated), equalTo(printType(committed)));
