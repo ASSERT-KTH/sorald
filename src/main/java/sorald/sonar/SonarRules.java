@@ -10,7 +10,6 @@ import sorald.rule.Rule;
 /** Class that knows about all Sonar rules. Should ONLY be used by {@link sorald.rule.Rules}. */
 @AutoService(RuleRepository.class)
 public class SonarRules implements RuleRepository {
-    private SonarRules() {}
 
     /**
      * Get all SonarJava rules.
