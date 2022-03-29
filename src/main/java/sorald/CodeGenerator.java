@@ -22,7 +22,7 @@ public class CodeGenerator {
         launcher.addInputResource("src/main/java/sorald");
 
         launcher.addProcessor(new ProcessorsClassGenerator<>());
-        launcher.setOutputFilter("sorald.Processors");
+        launcher.setOutputFilter("sorald.sonar.SonarProcessorRepository");
 
         launcher.run();
     }

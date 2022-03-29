@@ -22,7 +22,7 @@ public class ProcessorsClassGenerator<T>
     public void process(ProcessorAnnotation annotation, CtClass<T> element) {
         if (cu == null) {
             cu = getFactory().createCompilationUnit();
-            processorsClass = getFactory().Type().get("sorald.Processors");
+            processorsClass = getFactory().Type().get("sorald.sonar.SonarProcessorRepository");
         }
 
         processorMap.put(annotation.key(), element);

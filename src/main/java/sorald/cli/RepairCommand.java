@@ -29,6 +29,7 @@ import sorald.processor.SoraldAbstractProcessor;
 import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.sonar.ProjectScanner;
+import sorald.sonar.SonarProcessorRepository;
 import sorald.util.MavenUtils;
 
 /** The CLI command for the primary repair application. */
@@ -55,7 +56,7 @@ class RepairCommand extends BaseCommand {
                 names = {Constants.ARG_RULE_KEY},
                 description =
                         "Choose one of the following rule keys:\n"
-                                + Processors.RULE_DESCRIPTIONS
+                                + SonarProcessorRepository.RULE_DESCRIPTIONS
                                 + "\n*Note:* _Some rules (e.g. 1444) are marked as \"incomplete\". This means that "
                                 + "Sorald's repair for a violation of said rule is either partial or "
                                 + "situational._",
