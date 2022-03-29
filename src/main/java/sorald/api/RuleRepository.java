@@ -17,7 +17,8 @@ public interface RuleRepository {
      *
      * @return a collection of all rules. Never null
      */
-    @Nonnull public Collection<Rule> getAllRules();
+    @Nonnull
+    public Collection<Rule> getAllRules();
 
     /**
      * Get all rules matching one of the given types.
@@ -25,18 +26,23 @@ public interface RuleRepository {
      * @param types Types to filter rules by.
      * @return All rules with any of the given types.
      */
-    @Nonnull public Collection<Rule> getRulesByType(@Nonnull IRuleType... types);
+    @Nonnull
+    public Collection<Rule> getRulesByType(@Nonnull IRuleType... types);
 
     /**
-     * Returns a collection of rules that are handled by Sorald. 
+     * Returns a collection of rules that are handled by Sorald.
+     *
      * @return a collection of rules that are handled by Sorald. Never null.
      */
-    @Nonnull public Collection<Rule> getHandledRules();
+    @Nonnull
+    public Collection<Rule> getHandledRules();
 
     /**
      * Returns a collection of rules that are handled by Sorald and match one of the given types.
+     *
      * @param types Types to filter rules by.
      * @return All rules with any of the given types.
      */
-    @Nonnull public Collection<Rule> getHandledRulesByType(@Nonnull IRuleType... types);
+    @Nonnull
+    public Collection<Rule> getHandledRulesByType(@Nonnull IRuleType... types);
 }
