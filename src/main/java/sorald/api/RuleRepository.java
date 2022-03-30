@@ -15,7 +15,7 @@ public interface RuleRepository {
      * Get all rules available to Sorald for analysis. Note that not all rules have a defined
      * repair.
      *
-     * @return a collection of all rules. Never null
+     * @return a collection of all rules.
      */
     @Nonnull
     public Collection<Rule> getAllRules();
