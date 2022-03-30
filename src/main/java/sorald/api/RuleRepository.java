@@ -32,7 +32,7 @@ public interface RuleRepository {
     /**
      * Returns a collection of rules that are handled by Sorald.
      *
-     * @return a collection of rules that are handled by Sorald. Never null.
+     * @return a collection of rules that are handled by Sorald.
      */
     @Nonnull
     public Collection<Rule> getHandledRules();
