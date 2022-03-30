@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import sorald.Processors;
 import sorald.rule.IRuleType;
 import sorald.rule.Rule;
-import sorald.rule.Rules;
+import sorald.rule.RuleProvider;
 
 class SonarRulesTest {
     @Test
@@ -20,7 +20,7 @@ class SonarRulesTest {
         List<IRuleType> ruleTypes = List.of(SonarRuleType.VULNERABILITY);
 
         // act
-        Collection<Rule> rules = Rules.getRulesByType(ruleTypes);
+        Collection<Rule> rules = RuleProvider.getRulesByType(ruleTypes);
 
         // assert
         rules.forEach(rule -> assertThat(rule.getType(), equalTo(SonarRuleType.VULNERABILITY)));
@@ -33,7 +33,7 @@ class SonarRulesTest {
         boolean handledRules = true;
 
         // act
-        Collection<Rule> rules = Rules.inferRules(ruleTypes, handledRules);
+        Collection<Rule> rules = RuleProvider.inferRules(ruleTypes, handledRules);
 
         // assert
         assertThat(rules.size(), equalTo(Processors.getAllProcessors().size()));

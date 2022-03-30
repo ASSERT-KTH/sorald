@@ -1,8 +1,10 @@
-package sorald.annotations;
+package sorald.sonar;
 
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
+import sorald.annotations.IncompleteProcessor;
+import sorald.annotations.ProcessorAnnotation;
 import spoon.processing.AbstractAnnotationProcessor;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.declaration.CtClass;

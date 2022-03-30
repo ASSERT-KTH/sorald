@@ -30,7 +30,7 @@ import sorald.event.StatsMetadataKeys;
 import sorald.processor.CastArithmeticOperandProcessor;
 import sorald.rule.IRuleType;
 import sorald.rule.Rule;
-import sorald.rule.Rules;
+import sorald.rule.RuleProvider;
 import sorald.sonar.SonarRuleType;
 
 public class WarningMinerTest {
@@ -97,7 +97,7 @@ public class WarningMinerTest {
                 ruleTypes.stream().map(IRuleType::getName).collect(Collectors.joining(",")));
 
         List<String> expectedChecks =
-                Rules.getRulesByType(ruleTypes).stream()
+                RuleProvider.getRulesByType(ruleTypes).stream()
                         .map(Rule::getKey)
                         .sorted()
                         .collect(Collectors.toList());
@@ -140,7 +140,7 @@ public class WarningMinerTest {
         runMiner(REPOS_TXT, outputFile.getPath(), temp.getPath());
 
         List<String> expectedChecks =
-                Rules.getAllRules().stream()
+                RuleProvider.getAllRules().stream()
                         .map(Rule::getKey)
                         .sorted()
                         .collect(Collectors.toList());

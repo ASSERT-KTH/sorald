@@ -2,14 +2,16 @@ package sorald.rule;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.ServiceLoader;
+import java.util.ServiceLoader.Provider;
 import java.util.Set;
 import java.util.stream.Collectors;
 import sorald.Processors;
-import sorald.sonar.SonarRules;
+import sorald.api.RuleRepository;
 
-/** Utility class for finding available rules. */
-public class Rules {
-    private Rules() {}
+/** Entrypoint for finding available rules. */
+public class RuleProvider {
+    private RuleProvider() {}
 
     /**
      * Get all rules available to Sorald for analysis. Note that not all rules have a defined
@@ -18,7 +20,11 @@ public class Rules {
      * @return All rules.
      */
     public static Collection<Rule> getAllRules() {
-        return SonarRules.getAllRules();
+        return ServiceLoader.load(RuleRepository.class).stream()
+                .map(Provider::get)
+                .map(RuleRepository::getAllRules)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -52,8 +58,8 @@ public class Rules {
         List<Rule> rules =
                 List.copyOf(
                         ruleTypes.isEmpty()
-                                ? Rules.getAllRules()
-                                : Rules.getRulesByType(ruleTypes));
+                                ? RuleProvider.getAllRules()
+                                : RuleProvider.getRulesByType(ruleTypes));
 
         return !handledRules
                 ? rules
