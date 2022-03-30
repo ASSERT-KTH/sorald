@@ -9,9 +9,9 @@ import java.util.stream.Collectors;
 import sorald.Processors;
 import sorald.api.RuleRepository;
 
-/** Utility class for finding available rules. */
-public class Rules {
-    private Rules() {}
+/** Entrypoint for finding available rules. */
+public class RuleProvider {
+    private RuleProvider() {}
 
     /**
      * Get all rules available to Sorald for analysis. Note that not all rules have a defined
@@ -58,8 +58,8 @@ public class Rules {
         List<Rule> rules =
                 List.copyOf(
                         ruleTypes.isEmpty()
-                                ? Rules.getAllRules()
-                                : Rules.getRulesByType(ruleTypes));
+                                ? RuleProvider.getAllRules()
+                                : RuleProvider.getRulesByType(ruleTypes));
 
         return !handledRules
                 ? rules

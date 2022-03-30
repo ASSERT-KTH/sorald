@@ -12,7 +12,7 @@ import sorald.event.models.ExecutionInfo;
 import sorald.miner.MineSonarWarnings;
 import sorald.rule.IRuleType;
 import sorald.rule.Rule;
-import sorald.rule.Rules;
+import sorald.rule.RuleProvider;
 import sorald.sonar.SonarRuleType;
 import sorald.util.MavenUtils;
 
@@ -66,7 +66,7 @@ class MineCommand extends BaseCommand {
     public Integer call() throws Exception {
         validateArgs();
 
-        List<Rule> checks = Rules.inferRules(ruleTypes, handledRules);
+        List<Rule> checks = RuleProvider.inferRules(ruleTypes, handledRules);
 
         var statsCollector = new MinerStatisticsCollector();
         List<String> classpath =
