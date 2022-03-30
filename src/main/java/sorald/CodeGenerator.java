@@ -2,7 +2,7 @@ package sorald;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import sorald.annotations.ProcessorsClassGenerator;
+import sorald.sonar.ProcessorsClassGenerator;
 import spoon.Launcher;
 
 /** Wrapper class for all (present and future) code generation in Sorald. */
