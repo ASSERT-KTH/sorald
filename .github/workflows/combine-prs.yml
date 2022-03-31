@@ -36,6 +36,18 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
+            const CI_TEST_THAT_NEEDS_TO_BE_GREEN = [
+              'codecov/patch',
+              'SonarCloud',
+              'SonarCloud Code Analysis',
+              'test-support-scripts',
+              'test-code-generation',
+              'build-and-test (windows-latest)',
+              'build-and-test (macos-latest)',
+              'Run Sorald Buildbreaker',
+              'build-and-test (ubuntu-latest)'
+            ]
+            
             const pulls = await github.paginate('GET /repos/:owner/:repo/pulls', {
               owner: context.repo.owner,
               repo: context.repo.repo
@@ -51,17 +63,19 @@ jobs:
                 statusOK = true;
                 if(${{ github.event.inputs.mustBeGreen }}) {
                   console.log('Checking green status: ' + branch);
-                  const statuses = await github.paginate('GET /repos/{owner}/{repo}/commits/{ref}/status', {
+                  const check_runs = await github.paginate('GET /repos/{owner}/{repo}/commits/{ref}/check-runs', {
                     owner: context.repo.owner,
                     repo: context.repo.repo,
                     ref: branch
                   });
-                  if(statuses.length > 0) {
-                    const latest_status = statuses[0]['state'];
-                    console.log('Validating status: ' + latest_status);
-                    if(latest_status != 'success') {
-                      console.log('Discarding ' + branch + ' with status ' + latest_status);
-                      statusOK = false;
+                  for (const run of check_runs) {
+                    if (CI_TEST_THAT_NEEDS_TO_BE_GREEN.includes(check.name)) {
+                        if (run.conclusion !== 'success') {
+                          console.log(
+                            'Discarding ' + branch + ' because ' + check.name + '\'s conclusion is not success. It is: ' + run.conclusion
+                          );
+                          statusOK = false;
+                        }
                     }
                   }
                 }
