@@ -12,7 +12,6 @@ import org.sonarsource.sonarlint.core.analysis.api.ClientInputFile;
 import org.sonarsource.sonarlint.core.commons.Language;
 
 public class JavaInputFile implements ClientInputFile {
-    private final Path path;
 
     JavaInputFile(Path path) {
         this.path = path;
