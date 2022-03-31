@@ -118,8 +118,7 @@ jobs:
           echo "$COMBINE_BRANCH_NAME"
           echo "$basebranch"
           
-          git branch $COMBINE_BRANCH_NAME $basebranch
-          git checkout $COMBINE_BRANCH_NAME
+          git checkout -b $COMBINE_BRANCH_NAME
           git pull origin $sourcebranches --no-edit
           git push origin $COMBINE_BRANCH_NAME
       # Creates a PR with the new combined branch
