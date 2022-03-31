@@ -68,11 +68,11 @@ jobs:
                     repo: context.repo.repo,
                     ref: branch
                   });
-                  for (const run of check_runs) {
+                  for (const check of check_runs) {
                     if (CI_TEST_THAT_NEEDS_TO_BE_GREEN.includes(check.name)) {
-                        if (run.conclusion !== 'success') {
+                        if (check.conclusion !== 'success') {
                           console.log(
-                            'Discarding ' + branch + ' because ' + check.name + '\'s conclusion is not success. It is: ' + run.conclusion
+                            'Discarding ' + branch + ' because ' + check.name + '\'s conclusion is not success. It is: ' + check.conclusion
                           );
                           statusOK = false;
                         }
