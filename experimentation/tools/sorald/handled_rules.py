@@ -61,7 +61,7 @@ Sorald can currently repair violations of the following rules:
 OUTPUT_ARG = "--output"
 
 PATH_TO_PROCESSOR_PACKAGE = (
-    pathlib.Path(__file__).absolute().parent.parent.parent.parent
+    pathlib.Path(__file__).absolute().parent.parent.parent.parent.parent
     / "src/main/java/sorald/processor"
 )
 

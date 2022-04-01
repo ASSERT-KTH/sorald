@@ -10,7 +10,7 @@ from typing import List, Optional, Tuple
 
 def _find_default_sorald_jar() -> pathlib.Path:
     target_dir = (
-        pathlib.Path(__file__).absolute().parent.parent.parent.parent.parent / "target"
+        pathlib.Path(__file__).absolute().parent.parent.parent.parent.parent / "sorald/target"
     )
     sorald_jar_matches = list(
         target_dir.glob("sorald-*-jar-with-dependencies.jar")
