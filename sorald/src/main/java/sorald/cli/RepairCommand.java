@@ -17,7 +17,7 @@ import sorald.Processors;
 import sorald.Repair;
 import sorald.RepairStrategy;
 import sorald.SoraldConfig;
-import sorald.api.RuleRepository;
+import sorald.api.SoraldAbstractProcessor;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
@@ -26,9 +26,7 @@ import sorald.event.collectors.RepairStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
 import sorald.event.models.miner.MinedViolationEvent;
 import sorald.event.models.repair.RuleRepairStatistics;
-import sorald.api.SoraldAbstractProcessor;
 import sorald.rule.Rule;
-import sorald.rule.RuleProvider;
 import sorald.rule.RuleViolation;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.SonarProcessorRepository;
@@ -193,7 +191,7 @@ class RepairCommand extends BaseCommand {
             File target,
             String ruleKey,
             List<SoraldEventHandler> eventHandlers,
-                    List<String> classpath) {     
+            List<String> classpath) {
         Rule rule = new SonarRule(ruleKey);
         Path projectPath = target.toPath().toAbsolutePath().normalize();
         Set<RuleViolation> violations =

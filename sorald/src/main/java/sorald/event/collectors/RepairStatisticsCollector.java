@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import sorald.event.RepairEvent;
 import sorald.event.SoraldEvent;
 import sorald.event.SoraldEventHandler;
-import sorald.event.RepairEvent;
 import sorald.event.models.miner.MinedViolationEvent;
 
 /**

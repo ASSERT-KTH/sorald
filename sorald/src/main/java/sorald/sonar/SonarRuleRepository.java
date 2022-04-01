@@ -24,7 +24,9 @@ public class SonarRuleRepository implements RuleRepository {
         Collection<SonarLintRuleDefinition> allRules =
                 SonarLintEngine.getAllRulesDefinitionsByKey().values();
 
-        return allRules.stream().map(slrd -> new SonarRule(slrd.getKey())).collect(Collectors.toList());
+        return allRules.stream()
+                .map(slrd -> new SonarRule(slrd.getKey()))
+                .collect(Collectors.toList());
     }
 
     @Override

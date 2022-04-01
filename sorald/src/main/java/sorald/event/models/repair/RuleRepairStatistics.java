@@ -8,11 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import sorald.event.collectors.RepairStatisticsCollector;
 import sorald.event.RepairEvent;
+import sorald.event.collectors.RepairStatisticsCollector;
 import sorald.event.models.WarningLocation;
 import sorald.event.models.miner.MinedViolationEvent;
-import sorald.rule.Rule;
 import sorald.sonar.SonarRule;
 
 /** Repair statistics for a single rule. */

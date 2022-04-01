@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 import static sorald.Assertions.assertCompiles;
 import static sorald.Assertions.assertNoRuleViolations;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

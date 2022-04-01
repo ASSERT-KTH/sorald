@@ -4,7 +4,6 @@ import java.nio.file.Path;
 import sorald.event.EventType;
 import sorald.event.SoraldEvent;
 import sorald.event.models.WarningLocation;
-import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.sonar.SonarRule;
 

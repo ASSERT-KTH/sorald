@@ -17,9 +17,9 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
+import sorald.api.SoraldAbstractProcessor;
 import sorald.processor.ArrayHashCodeAndToStringProcessor;
 import sorald.processor.ProcessorTestHelper;
-import sorald.api.SoraldAbstractProcessor;
 import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.segment.Node;
@@ -93,7 +93,9 @@ public class SegmentStrategyTest {
                 new ArrayHashCodeAndToStringProcessor().setEventHandlers(List.of());
         Set<RuleViolation> violations =
                 ProjectScanner.scanProject(
-                        workspace.toFile(), workspace.toFile(), new SonarRule(processor.getRuleKey()));
+                        workspace.toFile(),
+                        workspace.toFile(),
+                        new SonarRule(processor.getRuleKey()));
 
         // we decide that parsing this class causes crashes
         String crashingClass = "DeadStores";
