@@ -1,0 +1,14 @@
+package sorald.processor;
+
+import sorald.annotations.ProcessorAnnotation;
+import sorald.api.SoraldAbstractProcessor;
+import spoon.reflect.code.CtLocalVariable;
+
+@ProcessorAnnotation(key = "S1481", description = "Unused local variables should be removed")
+public class UnusedLocalVariableProcessor extends SoraldAbstractProcessor<CtLocalVariable<?>> {
+
+    @Override
+    protected void repairInternal(CtLocalVariable<?> element) {
+        element.delete();
+    }
+}
