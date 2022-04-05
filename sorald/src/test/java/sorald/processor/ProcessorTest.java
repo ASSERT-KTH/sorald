@@ -179,7 +179,7 @@ public class ProcessorTest {
         // assert
         assertNoRuleViolations(
                 dirWithJavaExtension.toPath().resolve("ArrayHashCodeAndToString.java").toFile(),
-                        new SonarRule(new ArrayHashCodeAndToStringProcessor().getRuleKey()));
+                new SonarRule(new ArrayHashCodeAndToStringProcessor().getRuleKey()));
     }
 
     @Test
