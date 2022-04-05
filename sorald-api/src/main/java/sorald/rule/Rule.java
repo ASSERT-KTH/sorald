@@ -1,7 +1,5 @@
 package sorald.rule;
 
-import sorald.sonar.SonarRule;
-
 /** A static analysis rule */
 public interface Rule {
 
@@ -13,14 +11,4 @@ public interface Rule {
 
     /** @return The type of this rule. */
     IRuleType getType();
-
-    /**
-     * Create a rule based on the key.
-     *
-     * @param key A key for which to create a rule.
-     * @return A rule based on the key.
-     */
-    static Rule of(String key) {
-        return new SonarRule(key);
-    }
 }

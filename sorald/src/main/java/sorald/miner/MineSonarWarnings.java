@@ -13,6 +13,7 @@ import sorald.event.models.miner.MinedViolationEvent;
 import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.sonar.ProjectScanner;
+import sorald.sonar.SonarRule;
 
 public class MineSonarWarnings {
     final List<SoraldEventHandler> eventHandlers;
@@ -91,7 +92,7 @@ public class MineSonarWarnings {
 
         ruleViolations.stream()
                 .map(RuleViolation::getRuleKey)
-                .map(Rule::of)
+                .map(SonarRule::new)
                 .forEach(incrementWarningCount);
 
         ruleViolations.forEach(

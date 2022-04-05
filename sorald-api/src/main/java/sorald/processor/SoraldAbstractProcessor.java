@@ -99,14 +99,13 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      * this method. The position matching performed between rule violations and Spoon elements
      * before this method is invoked makes it such that, for most rules, the first element passed to
      * this method is always the violating element. If this is found not to be the case for some
-     * rule, then the first step is to attempt to improve the position matching in {@link
-     * sorald.sonar.BestFitScanner}. Only as a last resort should this method be overridden to steer
-     * the search.
+     * rule, then the first step is to attempt to improve the position matching. Only as a last
+     * resort should this method be overridden to steer the search.
      *
      * <p>Incomplete processors must however override this method in order to decline repairing
-     * certain elements. See {@link ToStringReturningNullProcessor} for a good example. Only the
-     * best position match is passed to an incomplete processors implementation of this method, and
-     * if it returns false, no further matching is performed for that rule violation.
+     * certain elements. Only the best position match is passed to an incomplete processors
+     * implementation of this method, and if it returns false, no further matching is performed for
+     * that rule violation.
      *
      * <p>It is very important that this method <b>does not mutate the state of the processor.</b>
      * Doing so may have unexpected side effects.

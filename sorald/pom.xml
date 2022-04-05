@@ -51,6 +51,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>se.kth.castor</groupId>
+            <artifactId>sorald-api</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
             <groupId>org.sonarsource.sonarlint.core</groupId>
             <artifactId>sonarlint-core</artifactId>
             <version>8.4.0.45663</version>
