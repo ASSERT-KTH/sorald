@@ -2,18 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-  <parent>
     <groupId>se.kth.castor</groupId>
     <artifactId>sorald-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <relativePath>sorald-parent</relativePath>
-  </parent>
+    <packaging>pom</packaging>
 
-    <groupId>se.kth.castor</groupId>
-    <artifactId>sorald</artifactId>
-    <version>0.3.1-SNAPSHOT</version>
-
-    <name>Sorald</name>
+    <name>Sorald-parent</name>
     <description>An automatic repair system for static code analysis warnings from Sonar Java.</description>
     <url>https://github.com/SpoonLabs/sorald</url>
 
@@ -24,7 +18,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
     <developers>
         <developer>
             <id>slarse</id>
@@ -50,26 +43,63 @@
     </developers>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
         <dependency>
-            <groupId>org.sonarsource.sonarlint.core</groupId>
-            <artifactId>sonarlint-core</artifactId>
-            <version>8.4.0.45663</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.8.2</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>info.picocli</groupId>
-            <artifactId>picocli</artifactId>
-            <version>${picocli.version}</version>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>1.8.2</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>2.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.11</version>
+            <scope>
+                <!--Enabled for tests to make it possible to silence INFO log output from SonarJava-->
+                test
+            </scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/fr.inria.gforge.spoon/spoon-core -->
+        <dependency>
+            <groupId>fr.inria.gforge.spoon</groupId>
+            <artifactId>spoon-core</artifactId>
+            <version>10.0.1-beta-9</version>
         </dependency>
         <dependency>
-            <groupId>info.picocli</groupId>
-            <artifactId>picocli-codegen</artifactId>
-            <version>${picocli.version}</version>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20220320</version>
+            <groupId>org.eclipse.jgit</groupId>
+            <artifactId>org.eclipse.jgit</artifactId>
+            <version>6.1.0.202203080745-r</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.auto.service</groupId>
+            <artifactId>auto-service</artifactId>
+            <version>1.0.1</version>
+            <optional>true</optional>
         </dependency>
     </dependencies>
     <properties>
@@ -82,29 +112,7 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <id>generateManPages</id>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>picocli.codegen.docgen.manpage.ManPageGenerator</mainClass>
-                    <arguments>
-                        <argument>--outdir=${project.basedir}/docs/usage</argument>
-                        <argument>sorald.cli.RepairCommand</argument>
-                        <argument>sorald.cli.MineCommand</argument>
-                    </arguments>
-                </configuration>
-            </plugin>
+    <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
@@ -134,55 +142,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <!-- creates the build number (git commit hash) that is later attached to the manifest -->
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>buildnumber-maven-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals><goal>create</goal></goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
-                    <shortRevisionLength>8</shortRevisionLength>
-                    <attach>true</attach>
-                    <addOutputDirectoryToResources>true</addOutputDirectoryToResources>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>sorald.Main</mainClass>
-                        </manifest>
-                        <manifestEntries>
-                            <Implementation-Version>${project.version}</Implementation-Version>
-                            <Implementation-SCM-Revision>${buildNumber}</Implementation-SCM-Revision>
-                            <Multi-Release>true</Multi-Release>
-                        </manifestEntries>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                        <!-- descriptorRef>project</descriptorRef -->
-                    </descriptorRefs>
-                    <!-- descriptor>src/main/assembly/project.xml</descriptor -->
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id><!-- this is used for inheritance merges -->
-                        <phase>package</phase><!-- append to the packaging phase. -->
-                        <goals>
-                            <goal>single</goal><!-- goals == mojos -->
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.3.2</version>
@@ -206,31 +165,6 @@
                 <version>3.10.1</version>
             </plugin>
             <!-- adapted from https://www.jacoco.org/jacoco/trunk/doc/examples/build/pom.xml -->
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version>
-                <executions>
-                    <execution>
-                        <id>default-prepare-agent</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>default-report</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                        <configuration>
-                            <excludes>
-                                <exclude>sorald/annotations/**/*.class</exclude>
-                            </excludes>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <!-- adapted from https://github.com/diffplug/spotless/blob/main/plugin-maven/README.md -->
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
@@ -335,4 +269,7 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+    <modules>
+        <module>sorald</module>
+    </modules>
 </project>

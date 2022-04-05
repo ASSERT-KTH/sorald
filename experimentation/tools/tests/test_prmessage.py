@@ -34,6 +34,7 @@ def test_uses_correct_sonar_version():
 
     config = (
         pathlib.Path(__file__).parent.parent.parent.parent
+        / "sorald"
         / "src"
         / "main"
         / "resources"
