@@ -56,7 +56,7 @@ public class ProcessorTestHelper {
         File directory = nonCompliantFile.getParentFile();
         assert directory.isDirectory();
         String ruleKey = directory.getName().split("_")[0];
-        String ruleName = Rule.of(ruleKey).getName();
+        String ruleName = new SonarRule(ruleKey).getName();
         String outfileDirRelpath =
                 parseSourceFilePackage(nonCompliantFile.toPath()).replace(".", File.separator);
         Path outfileRelpath = Paths.get(outfileDirRelpath).resolve(nonCompliantFile.getName());

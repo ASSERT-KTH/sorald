@@ -24,6 +24,7 @@ import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.segment.Node;
 import sorald.sonar.ProjectScanner;
+import sorald.sonar.SonarRule;
 import spoon.reflect.CtModel;
 import spoon.reflect.declaration.CtType;
 
@@ -33,7 +34,7 @@ public class SegmentStrategyTest {
         String fileName = "ArrayHashCodeAndToString.java";
         Path workspace = TestHelper.createTemporaryTestResourceWorkspace();
         Path pathToBuggyFile = workspace.resolve(fileName);
-        Rule rule = Rule.of(new ArrayHashCodeAndToStringProcessor().getRuleKey());
+        Rule rule = new SonarRule(new ArrayHashCodeAndToStringProcessor().getRuleKey());
 
         assertHasRuleViolation(pathToBuggyFile.toFile(), rule);
         Main.main(
@@ -61,7 +62,7 @@ public class SegmentStrategyTest {
         String fileName = "ArrayHashCodeAndToString.java";
         Path workspace = TestHelper.createTemporaryTestResourceWorkspace();
         Path pathToBuggyFile = workspace.resolve(fileName);
-        Rule rule = Rule.of(new ArrayHashCodeAndToStringProcessor().getRuleKey());
+        Rule rule = new SonarRule(new ArrayHashCodeAndToStringProcessor().getRuleKey());
 
         assertHasRuleViolation(pathToBuggyFile.toFile(), rule);
         String[] args =
@@ -92,7 +93,9 @@ public class SegmentStrategyTest {
                 new ArrayHashCodeAndToStringProcessor().setEventHandlers(List.of());
         Set<RuleViolation> violations =
                 ProjectScanner.scanProject(
-                        workspace.toFile(), workspace.toFile(), Rule.of(processor.getRuleKey()));
+                        workspace.toFile(),
+                        workspace.toFile(),
+                        new SonarRule(processor.getRuleKey()));
 
         // we decide that parsing this class causes crashes
         String crashingClass = "DeadStores";

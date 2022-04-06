@@ -6,7 +6,6 @@ import java.io.File;
 import org.junit.jupiter.api.Test;
 import sorald.TestHelper;
 import sorald.processor.XxeProcessingProcessor;
-import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 
 public class RuleViolationTest {
@@ -17,7 +16,7 @@ public class RuleViolationTest {
                 ProjectScanner.scanProject(
                                 resources,
                                 resources,
-                                Rule.of(new XxeProcessingProcessor().getRuleKey()))
+                                new SonarRule(new XxeProcessingProcessor().getRuleKey()))
                         .stream()
                         .findFirst()
                         .get();

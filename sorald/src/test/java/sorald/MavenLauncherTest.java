@@ -16,6 +16,7 @@ import sorald.event.StatsMetadataKeys;
 import sorald.processor.CastArithmeticOperandProcessor;
 import sorald.processor.DeadStoreProcessor;
 import sorald.rule.Rule;
+import sorald.sonar.SonarRule;
 
 public class MavenLauncherTest {
 
@@ -33,7 +34,7 @@ public class MavenLauncherTest {
                 workdir.toPath().resolve("src/main/java/sorald/test/App.java").toFile();
         File testFile = workdir.toPath().resolve("src/test/java/sorald/test/AppTest.java").toFile();
 
-        Rule deadStoreRule = Rule.of(new DeadStoreProcessor().getRuleKey());
+        Rule deadStoreRule = new SonarRule(new DeadStoreProcessor().getRuleKey());
 
         assertHasRuleViolation(productionFile, deadStoreRule);
         assertHasRuleViolation(testFile, deadStoreRule);

@@ -11,13 +11,14 @@ import sorald.Constants;
 import sorald.Main;
 import sorald.TestHelper;
 import sorald.rule.Rule;
+import sorald.sonar.SonarRule;
 
 public class NoSonarTest {
     @Test
     public void noSonarTesting() throws Exception {
         String fileName = "NOSONARCommentTest.java";
         Path pathToBuggyFile = TestHelper.createTemporaryTestResourceWorkspace().resolve(fileName);
-        Rule rule = Rule.of(new ArrayHashCodeAndToStringProcessor().getRuleKey());
+        Rule rule = new SonarRule(new ArrayHashCodeAndToStringProcessor().getRuleKey());
 
         assertHasRuleViolation(pathToBuggyFile.toFile(), rule);
         Main.main(
