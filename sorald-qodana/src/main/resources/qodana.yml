@@ -1,0 +1,41 @@
+profile:
+  name: qodana.recommended
+include:
+  - name: Anonymous2MethodRef
+  - name: AssignmentToCatchBlockParameter
+  - name: AssignmentToLambdaParameter
+  - name: AssignmentToMethodParameter
+  - name: CallToStringConcatCanBeReplacedByOperator
+  - name: Convert2Lambda
+  - name: DoubleBraceInitialization
+  - name: EmptyMethod
+  - name: EqualsAndHashcode
+  - name: JavaLangImport
+  - name: MissortedModifiers
+  - name: NestedAssignment
+  - name: NonProtectedConstructorInAbstractClass
+  - name: NonShortCircuitBoolean
+  - name: ParameterNameDiffersFromOverriddenParameter
+  - name: RedundantFieldInitialization
+  - name: RedundantImplements
+  - name: RedundantMethodOverride
+  - name: RedundantSuppression
+  - name: Reformat
+  - name: ReturnNull
+  - name: SamePackageImport
+  - name: StaticCallOnSubclass
+  - name: StringEquality
+  - name: UnnecessaryBoxing
+  - name: UnnecessaryFullyQualifiedName
+  - name: UnnecessaryLocalVariable
+  - name: UnnecessarySuperQualifier
+  - name: UnnecessaryToStringCall
+  - name: UnnecessaryUnboxing
+  - name: UNUSED_IMPORT
+  - name: GroovyUnnecessaryReturn
+  - name: JoinDeclarationAndAssignmentJava
+  - name: MethodMayBeStatic
+  - name: UnnecessaryCallToStringValueOf
+  - name: UnnecessaryToStringCall
+exclude:
+  - name: UseOfClone

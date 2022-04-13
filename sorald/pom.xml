@@ -76,6 +76,12 @@
             <artifactId>json</artifactId>
             <version>20220320</version>
         </dependency>
+                <dependency>
+            <groupId>se.kth.castor</groupId>
+    <artifactId>sorald-qodana</artifactId>
+    <version>0.0.1</version>
+            </dependency>
+
     </dependencies>
     <properties>
         <maven.compiler.target>11</maven.compiler.target>
