@@ -6,9 +6,7 @@ import java.io.File;
 import java.nio.file.Path;
 import sorald.rule.RuleViolation;
 
-/**
- * Representation of a violation of some Qodana rule
- */
+/** Representation of a violation of some Qodana rule */
 public class QodanaRuleViolation extends RuleViolation {
 
     private int startLine;
