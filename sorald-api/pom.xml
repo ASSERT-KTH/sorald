@@ -51,9 +51,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.sonarsource.sonarlint.core</groupId>
-            <artifactId>sonarlint-core</artifactId>
-            <version>8.2.0.43778</version>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20220320</version>
         </dependency>
     </dependencies>
     <properties>

@@ -48,7 +48,7 @@
 </dependency>
 <dependency>
     <groupId>com.google.flogger</groupId>
-    <artifactId>flogger-slf4j-backend</artifactId>
+    <artifactId>flogger-system-backend</artifactId>
     <version>0.7.4</version>
 </dependency>
 <dependency>
