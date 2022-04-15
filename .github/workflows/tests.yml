@@ -66,6 +66,8 @@ jobs:
         # this is a hack to fetch some test runtime dependencies
         run: timeout 10 mvn -B test || echo "Done fetching dependencies"
         shell: bash
+      - name : pull qodana
+        run: docker pull jetbrains/qodana-jvm-community:2021.3
       - name: Run tests
         run: mvn test
       - name: Test memory-constrained execution with segment repair
