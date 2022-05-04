@@ -52,7 +52,7 @@ jobs:
             --gh-repository   ${{ github.repository }} \
             --gh-workflow     ${{ github.workflow }}
 
-      - uses: actions/setup-java@f69f00b5e5324696b07f6b1c92f0470a6df00780 # tag=v3.0.0
+      - uses: actions/setup-java@860f60056505705214d223b91ed7a30f173f6142 # tag=v3.3.0
         with:
           java-version: 11
           java-package: jdk
