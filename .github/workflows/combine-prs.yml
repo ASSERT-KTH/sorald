@@ -121,6 +121,7 @@ jobs:
           fetch-depth: 0
       # Creates a branch with other PR branches merged together
       - name: Created combined branch
+        id: combined-branch
         env:
           BASE_BRANCH: ${{ steps.fetch-branch-names.outputs.base-branch }}
           BRANCHES_TO_COMBINE: ${{ steps.fetch-branch-names.outputs.result }}
@@ -142,7 +143,18 @@ jobs:
           
           git checkout -b $COMBINE_BRANCH_NAME
           git pull origin $sourcebranches --no-edit
-          git push origin $COMBINE_BRANCH_NAME
+          echo ::set-output name=sha::$(git rev-parse "$COMBINE_BRANCH_NAME")
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ steps.generate-token.outputs.token }}
+          script: |
+            await github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Combined PR',
+              ref: 'refs/heads/' + '${{ github.event.inputs.combineBranchName }}',
+              sha: ${{ steps.combined-branch.outputs.sha }}
+            });
       # Creates a PR with the new combined branch
       - uses: actions/github-script@v6
         name: Create Combined Pull Request
