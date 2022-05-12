@@ -42,7 +42,7 @@ jobs:
         id: fetch-branch-names
         name: Fetch branch names
         with:
-          token: ${{ steps.generate-token.outputs.token }}
+          github-token: ${{ steps.generate-token.outputs.token }}
           script: |
             const CI_TEST_THAT_NEEDS_TO_BE_GREEN = [
               'codecov/patch',
@@ -149,7 +149,7 @@ jobs:
         env:
           PRS_STRING: ${{ steps.fetch-branch-names.outputs.prs-string }}
         with:
-          token: ${{ steps.generate-token.outputs.token }}
+          github-token: ${{ steps.generate-token.outputs.token }}
           script: |
             const prString = process.env.PRS_STRING;
             const body = 'This PR was created by the Combine PRs action by combining the following PRs:\n' + prString;
