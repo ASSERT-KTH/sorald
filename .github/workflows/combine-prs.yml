@@ -121,6 +121,8 @@ jobs:
           fetch-depth: 0
       # Creates a branch with other PR branches merged together
       - name: Created combined branch
+        with:
+          github-token: ${{ steps.generate-token.outputs.token }}
         env:
           BASE_BRANCH: ${{ steps.fetch-branch-names.outputs.base-branch }}
           BRANCHES_TO_COMBINE: ${{ steps.fetch-branch-names.outputs.result }}
