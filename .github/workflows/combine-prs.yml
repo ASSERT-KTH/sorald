@@ -152,8 +152,8 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: 'Combined PR',
-              ref: 'refs/heads/' + '${{ github.event.inputs.combineBranchName }}',
-              sha: ${{ steps.combined-branch.outputs.sha }}
+              ref: 'refs/heads/${{ github.event.inputs.combineBranchName }}',
+              sha: '${{ steps.combined-branch.outputs.sha }}'
             });
       # Creates a PR with the new combined branch
       - uses: actions/github-script@v6
