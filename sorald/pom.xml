@@ -9,9 +9,8 @@
     <relativePath>../</relativePath>
   </parent>
 
-    <groupId>se.kth.castor</groupId>
     <artifactId>sorald</artifactId>
-    <version>0.3.1-SNAPSHOT</version>
+    <version>0.4.1-SNAPSHOT</version>
 
     <name>Sorald</name>
     <description>An automatic repair system for static code analysis warnings from Sonar Java.</description>
