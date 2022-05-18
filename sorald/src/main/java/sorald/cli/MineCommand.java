@@ -3,6 +3,7 @@ package sorald.cli;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.*;
+import java.util.stream.Collectors;
 import picocli.CommandLine;
 import sorald.Constants;
 import sorald.FileUtils;
@@ -51,6 +52,7 @@ class MineCommand extends BaseCommand {
     @CommandLine.Option(
             names = {Constants.ARG_RULE_TYPES},
             converter = IRuleTypeConverter.class,
+            completionCandidates = RuleTypeCandidates.class,
             description =
                     "One or more types of rules to check for (use ',' to separate multiple types). Choices: ${COMPLETION-CANDIDATES}",
             split = ",")
@@ -118,6 +120,15 @@ class MineCommand extends BaseCommand {
         @Override
         public IRuleType convert(String value) {
             return SonarRuleType.valueOf(value.toUpperCase());
+        }
+    }
+
+    private static class RuleTypeCandidates extends ArrayList<String> {
+        RuleTypeCandidates() {
+            super(
+                    Arrays.stream(SonarRuleType.values())
+                            .map(Enum::toString)
+                            .collect(Collectors.toList()));
         }
     }
 }
