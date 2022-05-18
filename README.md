@@ -43,7 +43,7 @@ renaming the JAR to `sorald.jar` for the sake of simplicity.
  ```bash
 $ cd sorald
 $ mvn package -DskipTests
-$ cp target/sorald-*-jar-with-dependencies.jar sorald.jar
+$ cp sorald/target/sorald-*-jar-with-dependencies.jar sorald.jar
  ```
 
 The Sorald application can now be found in `sorald.jar` in the current working
