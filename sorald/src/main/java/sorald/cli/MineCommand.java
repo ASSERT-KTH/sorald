@@ -125,6 +125,7 @@ class MineCommand extends BaseCommand {
 
     private static class RuleTypeCandidates extends ArrayList<String> {
         private static final long serialVersionUID = 1L;
+
         RuleTypeCandidates() {
             super(
                     Arrays.stream(SonarRuleType.values())
