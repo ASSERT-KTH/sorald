@@ -32,6 +32,10 @@ jobs:
         with:
           fetch-depth: 0  # SonarCloud prefers non-shallow clones
 
+      - name: Build project
+        run: |
+          mvn -B package -DskipTests
+          mvn -B test-compile
       - name: Run Sonar
         if: ${{ matrix.os == 'ubuntu-latest' }}
         env:
