@@ -104,7 +104,7 @@
                 <configuration>
                     <mainClass>picocli.codegen.docgen.manpage.ManPageGenerator</mainClass>
                     <arguments>
-                        <argument>--outdir=${project.basedir}/docs/usage</argument>
+                        <argument>--outdir=${project.parent.basedir}/docs/usage</argument>
                         <argument>sorald.cli.RepairCommand</argument>
                         <argument>sorald.cli.MineCommand</argument>
                     </arguments>
