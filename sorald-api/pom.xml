@@ -61,6 +61,10 @@
         <maven.compiler.source>11</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <picocli.version>4.6.3</picocli.version>
+        <sonar.projectKey>SpoonLabs_sorald</sonar.projectKey>
+        <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+        <sonar.organization>spoonlabs</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <build>
         <plugins>
