@@ -15,6 +15,7 @@ public class SoraldConfig implements CLIConfigForStaticAnalyzer {
     private int maxFilesPerSegment;
     private File statsOutputFile;
     private List<String> classpath;
+    private File ruleParameters;
 
     public SoraldConfig() {}
 
@@ -73,5 +74,14 @@ public class SoraldConfig implements CLIConfigForStaticAnalyzer {
 
     public List<String> getClasspath() {
         return classpath;
+    }
+
+    public File getRuleParameters() {
+        return ruleParameters;
+    }
+
+    public CLIConfigForStaticAnalyzer setRuleParameters(File ruleParameters) {
+        this.ruleParameters = ruleParameters;
+        return this;
     }
 }

@@ -24,6 +24,7 @@ public class Constants {
     public static final String ARG_RULE_VIOLATION_SPECIFIERS = "--violation-specs";
     public static final String ARG_TARGET = "--target";
     public static final String ARG_RESOLVE_CLASSPATH_FROM = "--resolve-classpath-from";
+    public static final String ARG_RULE_PARAMETER = "--rule-parameter";
 
     public static final String VIOLATION_SPECIFIER_SEP = File.pathSeparator;
 

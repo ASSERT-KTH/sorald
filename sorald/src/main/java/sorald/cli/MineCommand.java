@@ -65,6 +65,12 @@ class MineCommand extends BaseCommand {
                     "When this argument is used, Sorald only mines violations of the rules that can be fixed by Sorald.")
     private boolean handledRules;
 
+    @CommandLine.Option(
+            names = {Constants.ARG_RULE_PARAMETER},
+            description = "Configuration for SonarJava rules"
+    )
+    private File ruleParameters;
+
     @Override
     public Integer call() throws Exception {
         validateArgs();
@@ -141,6 +147,7 @@ class MineCommand extends BaseCommand {
     private CLIConfigForStaticAnalyzer createConfig() {
         SoraldConfig config = new SoraldConfig();
         config.setClasspath(resolveClasspath());
+        config.setRuleParameters(ruleParameters);
         return config;
     }
 }
