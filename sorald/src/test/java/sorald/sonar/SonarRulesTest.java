@@ -23,7 +23,7 @@ import sorald.rule.RuleProvider;
 
 class SonarRulesTest {
     @Nested
-    class InferSubsetOfRules {
+    class InferRules {
         @Test
         void shouldHaveAllHandledRules() {
             // arrange
