@@ -93,7 +93,7 @@ public class RuleProvider {
      *
      * @param ruleTypes Types to filter rules by.
      * @param handledRules whether to fetch only handled rules.
-     * @return Subset of {@link RuleRepository##getAllRules()}.
+     * @return Subset of all rules in the static analyzer.
      */
     public static List<Rule> inferRules(List<IRuleType> ruleTypes, boolean handledRules) {
         if (ruleTypes.isEmpty() && !handledRules) {
