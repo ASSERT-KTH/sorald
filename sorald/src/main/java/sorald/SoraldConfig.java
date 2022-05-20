@@ -2,16 +2,19 @@ package sorald;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Optional;
+import sorald.cli.CLIConfigForStaticAnalyzer;
 
 /* All config settings of Sorald should be gathered here */
-public class SoraldConfig {
+public class SoraldConfig implements CLIConfigForStaticAnalyzer {
     private PrettyPrintingStrategy prettyPrintingStrategy;
     private RepairStrategy repairStrategy;
     private String source;
     private int maxFixesPerRule;
     private int maxFilesPerSegment;
     private File statsOutputFile;
+    private List<String> classpath;
 
     public SoraldConfig() {}
 
@@ -61,5 +64,14 @@ public class SoraldConfig {
 
     public Optional<File> getStatsOutputFile() {
         return Optional.ofNullable(statsOutputFile);
+    }
+
+    public CLIConfigForStaticAnalyzer setClasspath(List<String> classpath) {
+        this.classpath = classpath;
+        return this;
+    }
+
+    public List<String> getClasspath() {
+        return classpath;
     }
 }

@@ -9,6 +9,7 @@ import java.util.ServiceLoader;
 import java.util.Set;
 import sorald.Constants;
 import sorald.FileUtils;
+import sorald.cli.CLIConfigForStaticAnalyzer;
 import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.rule.StaticAnalyzer;
@@ -26,7 +27,7 @@ public class ProjectScanner {
      * @return All violations in the target.
      */
     public static Set<RuleViolation> scanProject(File target, File baseDir, Rule rule) {
-        return scanProject(target, baseDir, List.of(rule));
+        return scanProject(target, baseDir, List.of(rule), null);
     }
 
     /**
@@ -38,7 +39,7 @@ public class ProjectScanner {
      * @return All violations in the target.
      */
     public static Set<RuleViolation> scanProject(File target, File baseDir, List<Rule> rules) {
-        return scanProject(target, baseDir, rules, List.of());
+        return scanProject(target, baseDir, rules, null);
     }
 
     /**
@@ -48,11 +49,11 @@ public class ProjectScanner {
      * @param target Targeted file or directory of the project.
      * @param baseDir Base directory of the project.
      * @param rules Rules to scan for.
-     * @param classpath Classpath to fetch type information from.
+     * @param cliOptions Options for static analyzer.
      * @return All violations in the target.
      */
     public static Set<RuleViolation> scanProject(
-            File target, File baseDir, List<Rule> rules, List<String> classpath) {
+            File target, File baseDir, List<Rule> rules, CLIConfigForStaticAnalyzer cliOptions) {
         List<File> filesToScan = new ArrayList<>();
         if (target.isFile()) {
             filesToScan.add(target);
@@ -66,7 +67,7 @@ public class ProjectScanner {
         ServiceLoader<StaticAnalyzer> analyzers = ServiceLoader.load(StaticAnalyzer.class);
         Set<RuleViolation> violations = new HashSet<>();
         for (StaticAnalyzer analyzer : analyzers) {
-            violations.addAll(analyzer.findViolations(baseDir, filesToScan, rules, classpath));
+            violations.addAll(analyzer.findViolations(baseDir, filesToScan, rules, cliOptions));
         }
         return new HashSet<>(violations);
     }

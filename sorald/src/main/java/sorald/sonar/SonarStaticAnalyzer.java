@@ -11,6 +11,7 @@ import org.sonarsource.sonarlint.core.client.api.common.RuleKey;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.Issue;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.IssueListener;
 import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneAnalysisConfiguration;
+import sorald.cli.CLIConfigForStaticAnalyzer;
 import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.rule.StaticAnalyzer;
@@ -20,32 +21,31 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
 
     @Override
     public Collection<RuleViolation> findViolations(
-            File projectRoot, List<File> files, List<Rule> rules, List<String> classpath) {
-        return analyze(projectRoot, files, rules, classpath);
+            File projectRoot,
+            List<File> files,
+            List<Rule> rules,
+            CLIConfigForStaticAnalyzer cliOptions) {
+        return analyze(projectRoot, files, rules, cliOptions);
     }
 
     private Collection<RuleViolation> analyze(
-            File projectRoot, List<File> files, List<Rule> rules, List<String> classpath) {
+            File projectRoot,
+            List<File> files,
+            List<Rule> rules,
+            CLIConfigForStaticAnalyzer cliOptions) {
 
         List<JavaInputFile> inputFiles =
                 files.stream()
                         .map(File::toPath)
                         .map(JavaInputFile::new)
                         .collect(Collectors.toList());
-        StandaloneAnalysisConfiguration config =
-                StandaloneAnalysisConfiguration.builder()
-                        .setBaseDir(projectRoot.toPath())
-                        // SonarLint takes classpath as a comma separated string to make it OS
-                        // independent.
-                        // See:
-                        // https://github.com/SonarSource/sonar-java/blob/6050868761069bc5ff965a149f2fd9a64d6319e0/sonar-java-plugin/src/main/resources/static/documentation.md#java-analysis-and-bytecode
-                        .putExtraProperty("sonar.java.libraries", String.join(",", classpath))
-                        .addIncludedRules(
-                                rules.stream()
-                                        .map(rule -> RuleKey.parse("java:" + rule.getKey()))
-                                        .collect(Collectors.toList()))
-                        .addInputFiles(inputFiles)
-                        .build();
+        StandaloneAnalysisConfiguration config;
+        if (cliOptions != null) {
+            config =
+                    analysisConfigurationWithCliOptions(projectRoot, inputFiles, rules, cliOptions);
+        } else {
+            config = analysisConfigurationWithoutCliOptions(projectRoot, inputFiles, rules);
+        }
 
         SonarLintEngine sonarLint = SonarLintEngine.getInstance();
         var issueHandler = new IssueHandler();
@@ -55,6 +55,39 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
                 .filter(issue -> issue.getTextRange() != null)
                 .map(ScannedViolation::new)
                 .collect(Collectors.toList());
+    }
+
+    private static StandaloneAnalysisConfiguration analysisConfigurationWithCliOptions(
+            File projectRoot,
+            List<JavaInputFile> inputFiles,
+            List<Rule> rules,
+            CLIConfigForStaticAnalyzer cliOptions) {
+        return StandaloneAnalysisConfiguration.builder()
+                .setBaseDir(projectRoot.toPath())
+                // SonarLint takes classpath as a comma separated string to make it OS
+                // independent.
+                // See:
+                // https://github.com/SonarSource/sonar-java/blob/6050868761069bc5ff965a149f2fd9a64d6319e0/sonar-java-plugin/src/main/resources/static/documentation.md#java-analysis-and-bytecode
+                .putExtraProperty(
+                        "sonar.java.libraries", String.join(",", cliOptions.getClasspath()))
+                .addIncludedRules(
+                        rules.stream()
+                                .map(rule -> RuleKey.parse("java:" + rule.getKey()))
+                                .collect(Collectors.toList()))
+                .addInputFiles(inputFiles)
+                .build();
+    }
+
+    private static StandaloneAnalysisConfiguration analysisConfigurationWithoutCliOptions(
+            File projectRoot, List<JavaInputFile> inputFiles, List<Rule> rules) {
+        return StandaloneAnalysisConfiguration.builder()
+                .setBaseDir(projectRoot.toPath())
+                .addIncludedRules(
+                        rules.stream()
+                                .map(rule -> RuleKey.parse("java:" + rule.getKey()))
+                                .collect(Collectors.toList()))
+                .addInputFiles(inputFiles)
+                .build();
     }
 
     private static class IssueHandler implements IssueListener {

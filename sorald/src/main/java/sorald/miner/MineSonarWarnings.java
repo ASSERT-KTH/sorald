@@ -6,6 +6,7 @@ import java.util.*;
 import java.util.function.Consumer;
 import org.eclipse.jgit.api.Git;
 import sorald.FileUtils;
+import sorald.cli.CLIConfigForStaticAnalyzer;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
@@ -17,12 +18,13 @@ import sorald.sonar.SonarRule;
 
 public class MineSonarWarnings {
     final List<SoraldEventHandler> eventHandlers;
-    private final List<String> classpath;
+    private final CLIConfigForStaticAnalyzer cliOptions;
 
     public MineSonarWarnings(
-            List<? extends SoraldEventHandler> eventHandlers, List<String> classpath) {
+            List<? extends SoraldEventHandler> eventHandlers,
+            CLIConfigForStaticAnalyzer cliOptions) {
         this.eventHandlers = Collections.unmodifiableList(eventHandlers);
-        this.classpath = classpath;
+        this.cliOptions = cliOptions;
     }
 
     public void mineGitRepos(
@@ -87,7 +89,7 @@ public class MineSonarWarnings {
         EventHelper.fireEvent(EventType.MINING_START, eventHandlers);
         Set<RuleViolation> ruleViolations =
                 ProjectScanner.scanProject(
-                        target, FileUtils.getClosestDirectory(target), rules, classpath);
+                        target, FileUtils.getClosestDirectory(target), rules, cliOptions);
         EventHelper.fireEvent(EventType.MINING_END, eventHandlers);
 
         ruleViolations.stream()
