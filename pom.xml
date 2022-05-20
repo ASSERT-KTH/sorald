@@ -78,7 +78,7 @@
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>10.0.1-beta-10</version>
+            <version>10.1.1</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
