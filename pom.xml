@@ -110,6 +110,7 @@
         <sonar.projectKey>SpoonLabs_sorald-parent</sonar.projectKey>
         <sonar.organization>spoonlabs</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.skip>true</sonar.skip>
     </properties>
     <build>
     <plugins>
