@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import picocli.CommandLine;
 import sorald.Constants;
 import sorald.FileUtils;
+import sorald.SoraldConfig;
 import sorald.event.StatsMetadataKeys;
 import sorald.event.collectors.MinerStatisticsCollector;
 import sorald.event.models.ExecutionInfo;
@@ -71,14 +72,11 @@ class MineCommand extends BaseCommand {
         List<Rule> checks = RuleProvider.inferRules(ruleTypes, handledRules);
 
         var statsCollector = new MinerStatisticsCollector();
-        List<String> classpath =
-                resolveClasspathFrom != null
-                        ? MavenUtils.resolveClasspath(resolveClasspathFrom.toPath())
-                        : List.of();
 
         var miner =
                 new MineSonarWarnings(
-                        statsOutputFile == null ? List.of() : List.of(statsCollector), classpath);
+                        statsOutputFile == null ? List.of() : List.of(statsCollector),
+                        createConfig());
 
         if (statsOnGitRepos) {
             List<String> reposList = Files.readAllLines(this.reposList.toPath());
@@ -132,5 +130,17 @@ class MineCommand extends BaseCommand {
                             .map(Enum::toString)
                             .collect(Collectors.toList()));
         }
+    }
+
+    private List<String> resolveClasspath() {
+        return resolveClasspathFrom != null
+                ? MavenUtils.resolveClasspath(resolveClasspathFrom.toPath())
+                : List.of();
+    }
+
+    private CLIConfigForStaticAnalyzer createConfig() {
+        SoraldConfig config = new SoraldConfig();
+        config.setClasspath(resolveClasspath());
+        return config;
     }
 }

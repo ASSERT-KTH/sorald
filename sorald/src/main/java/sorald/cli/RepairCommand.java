@@ -10,13 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import picocli.CommandLine;
-import sorald.Constants;
-import sorald.FileUtils;
-import sorald.PrettyPrintingStrategy;
-import sorald.Processors;
-import sorald.Repair;
-import sorald.RepairStrategy;
-import sorald.SoraldConfig;
+import sorald.*;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
@@ -187,7 +181,7 @@ class RepairCommand extends BaseCommand {
      * @param classpath
      * @return All found warnings.
      */
-    private static Set<RuleViolation> mineViolations(
+    private Set<RuleViolation> mineViolations(
             File target,
             String ruleKey,
             List<SoraldEventHandler> eventHandlers,
@@ -196,7 +190,10 @@ class RepairCommand extends BaseCommand {
         Path projectPath = target.toPath().toAbsolutePath().normalize();
         Set<RuleViolation> violations =
                 ProjectScanner.scanProject(
-                        target, FileUtils.getClosestDirectory(target), List.of(rule), classpath);
+                        target,
+                        FileUtils.getClosestDirectory(target),
+                        List.of(rule),
+                        createConfig());
         violations.forEach(
                 warn ->
                         EventHelper.fireEvent(
@@ -307,6 +304,7 @@ class RepairCommand extends BaseCommand {
         config.setMaxFilesPerSegment(maxFilesPerSegment);
         config.setRepairStrategy(repairStrategy);
         config.setStatsOutputFile(statsOutputFile);
+        config.setClasspath(resolveClasspath());
         return config;
     }
 }
