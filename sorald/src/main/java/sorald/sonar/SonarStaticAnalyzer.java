@@ -73,7 +73,7 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
                         "sonar.java.libraries", String.join(",", cliOptions.getClasspath()))
                 .addIncludedRules(
                         rules.stream()
-                                .map(rule -> RuleKey.parse("java:" + rule.getKey()))
+                                .map(rule -> RuleKey.parse(String.format("java:%s", rule.getKey())))
                                 .collect(Collectors.toList()))
                 .addInputFiles(inputFiles)
                 .build();
@@ -85,7 +85,7 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
                 .setBaseDir(projectRoot.toPath())
                 .addIncludedRules(
                         rules.stream()
-                                .map(rule -> RuleKey.parse("java:" + rule.getKey()))
+                                .map(rule -> RuleKey.parse(String.format("java:%s", rule.getKey())))
                                 .collect(Collectors.toList()))
                 .addInputFiles(inputFiles)
                 .build();
