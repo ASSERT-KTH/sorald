@@ -72,10 +72,10 @@ class MineCommand extends BaseCommand {
             names = {Constants.ARG_RULE_PARAMETERS},
             description = {
                 "Configuration for SonarJava rules.",
-                "Format of JSON file: {\n"
-                        + "    \"<RULE_KEY>\": {\n"
-                        + "        \"<RULE_PROPERTY_NAME>\": \"<VALUE>\"\n"
-                        + "    }\n"
+                "Format of JSON file: {%n"
+                        + "    \"<RULE_KEY>\": {%n"
+                        + "        \"<RULE_PROPERTY_NAME>\": \"<VALUE>\"%n"
+                        + "    }%n"
                         + "}"
             })
     private File ruleParameters;
