@@ -40,12 +40,12 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
                         .map(JavaInputFile::new)
                         .collect(Collectors.toList());
         StandaloneAnalysisConfiguration config;
-        if (cliOptions != null) {
+        if (cliOptions == null) {
+            config = getAnalysisConfigurationWithoutCliOptions(projectRoot, inputFiles, rules);
+        } else {
             config =
                     getAnalysisConfigurationWithCliOptions(
                             projectRoot, inputFiles, rules, cliOptions);
-        } else {
-            config = getAnalysisConfigurationWithoutCliOptions(projectRoot, inputFiles, rules);
         }
 
         SonarLintEngine sonarLint = SonarLintEngine.getInstance();
