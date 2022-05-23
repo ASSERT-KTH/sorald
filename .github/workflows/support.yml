@@ -62,7 +62,7 @@ jobs:
         run: |
           mvn clean compile dependency:build-classpath -Dmdep.outputFile=cp.txt
           (cd sorald && java -cp $(cat cp.txt):target/classes/ picocli.codegen.docgen.manpage.ManPageGenerator \
-            --outdir=docs/usage/ \
+            --outdir=../docs/usage/ \
             sorald.cli.MineCommand \
             sorald.cli.RepairCommand)
           
