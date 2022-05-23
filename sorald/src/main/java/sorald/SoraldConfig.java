@@ -4,11 +4,9 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
-import java.util.List;
 import java.util.Optional;
 import sorald.cli.CLIConfigForStaticAnalyzer;
 import sorald.rule.Rule;
-import sorald.cli.CLIConfigForStaticAnalyzer;
 
 /* All config settings of Sorald should be gathered here */
 public class SoraldConfig implements CLIConfigForStaticAnalyzer {
