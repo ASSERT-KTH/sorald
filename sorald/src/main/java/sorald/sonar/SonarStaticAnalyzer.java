@@ -42,9 +42,10 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
         StandaloneAnalysisConfiguration config;
         if (cliOptions != null) {
             config =
-                    analysisConfigurationWithCliOptions(projectRoot, inputFiles, rules, cliOptions);
+                    getAnalysisConfigurationWithCliOptions(
+                            projectRoot, inputFiles, rules, cliOptions);
         } else {
-            config = analysisConfigurationWithoutCliOptions(projectRoot, inputFiles, rules);
+            config = getAnalysisConfigurationWithoutCliOptions(projectRoot, inputFiles, rules);
         }
 
         SonarLintEngine sonarLint = SonarLintEngine.getInstance();
@@ -57,7 +58,7 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
                 .collect(Collectors.toList());
     }
 
-    private static StandaloneAnalysisConfiguration analysisConfigurationWithCliOptions(
+    private static StandaloneAnalysisConfiguration getAnalysisConfigurationWithCliOptions(
             File projectRoot,
             List<JavaInputFile> inputFiles,
             List<Rule> rules,
@@ -78,7 +79,7 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
                 .build();
     }
 
-    private static StandaloneAnalysisConfiguration analysisConfigurationWithoutCliOptions(
+    private static StandaloneAnalysisConfiguration getAnalysisConfigurationWithoutCliOptions(
             File projectRoot, List<JavaInputFile> inputFiles, List<Rule> rules) {
         return StandaloneAnalysisConfiguration.builder()
                 .setBaseDir(projectRoot.toPath())
