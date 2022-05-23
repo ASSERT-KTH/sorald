@@ -144,6 +144,13 @@ class MineCommand extends BaseCommand {
         }
     }
 
+    private CLIConfigForStaticAnalyzer createConfig() throws IOException {
+        SoraldConfig config = new SoraldConfig();
+        config.setClasspath(resolveClasspath());
+        config.setRuleParameters(parseRuleParameters());
+        return config;
+    }
+
     private List<String> resolveClasspath() {
         return resolveClasspathFrom != null
                 ? MavenUtils.resolveClasspath(resolveClasspathFrom.toPath())
@@ -165,12 +172,5 @@ class MineCommand extends BaseCommand {
             result.put(new SonarRule(rule), options);
         }
         return result;
-    }
-
-    private CLIConfigForStaticAnalyzer createConfig() throws IOException {
-        SoraldConfig config = new SoraldConfig();
-        config.setClasspath(resolveClasspath());
-        config.setRuleParameters(parseRuleParameters());
-        return config;
     }
 }

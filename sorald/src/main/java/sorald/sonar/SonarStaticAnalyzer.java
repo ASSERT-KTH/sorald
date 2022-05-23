@@ -11,6 +11,7 @@ import org.sonarsource.sonarlint.core.client.api.common.analysis.IssueListener;
 import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneAnalysisConfiguration;
 import sorald.SoraldConfig;
 import sorald.cli.CLIConfigForStaticAnalyzer;
+import sorald.cli.CLIConfigForStaticAnalyzer;
 import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.rule.StaticAnalyzer;
