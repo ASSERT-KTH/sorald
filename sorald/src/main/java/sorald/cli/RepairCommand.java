@@ -3,11 +3,7 @@ package sorald.cli;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import picocli.CommandLine;
 import sorald.*;
@@ -305,6 +301,7 @@ class RepairCommand extends BaseCommand {
         config.setRepairStrategy(repairStrategy);
         config.setStatsOutputFile(statsOutputFile);
         config.setClasspath(resolveClasspath());
+        config.setRuleParameters(new HashMap<>());
         return config;
     }
 }
