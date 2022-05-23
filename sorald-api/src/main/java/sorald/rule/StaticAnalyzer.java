@@ -18,5 +18,8 @@ public interface StaticAnalyzer {
      * @return All violations of the rules found in the files.
      */
     Collection<RuleViolation> findViolations(
-            File projectRoot, List<File> files, List<Rule> rule, CLIConfigForStaticAnalyzer cliOptions);
+            File projectRoot,
+            List<File> files,
+            List<Rule> rule,
+            CLIConfigForStaticAnalyzer cliOptions);
 }
