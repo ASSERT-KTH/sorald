@@ -220,7 +220,16 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
 
         return allRulesDefinitionsByKey.values().stream()
                 .filter(isImplementedBySonarJavaPlugin(includedRules))
-                .map(rd -> new ActiveRule(rd.getKey(), rd.getLanguage().getLanguageKey()))
+                .map(
+                        rd -> {
+                            ActiveRule activeRule =
+                                    new ActiveRule(rd.getKey(), rd.getLanguage().getLanguageKey());
+                            RuleKey ruleKey = RuleKey.parse(rd.getKey());
+                            if (configuration.ruleParameters().containsKey(ruleKey)) {
+                                activeRule.setParams(configuration.ruleParameters().get(ruleKey));
+                            }
+                            return activeRule;
+                        })
                 .collect(Collectors.toList());
     }
 

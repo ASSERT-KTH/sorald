@@ -3,8 +3,10 @@ package sorald;
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import sorald.cli.CLIConfigForStaticAnalyzer;
+import sorald.rule.Rule;
 
 /* All config settings of Sorald should be gathered here */
 public class SoraldConfig implements CLIConfigForStaticAnalyzer {
@@ -15,7 +17,7 @@ public class SoraldConfig implements CLIConfigForStaticAnalyzer {
     private int maxFilesPerSegment;
     private File statsOutputFile;
     private List<String> classpath;
-    private File ruleParameters;
+    private Map<Rule, Map<String, String>> ruleParameters;
 
     public SoraldConfig() {}
 
@@ -76,11 +78,12 @@ public class SoraldConfig implements CLIConfigForStaticAnalyzer {
         return classpath;
     }
 
-    public File getRuleParameters() {
+    public Map<Rule, Map<String, String>> getRuleParameters() {
         return ruleParameters;
     }
 
-    public CLIConfigForStaticAnalyzer setRuleParameters(File ruleParameters) {
+    public CLIConfigForStaticAnalyzer setRuleParameters(
+            Map<Rule, Map<String, String>> ruleParameters) {
         this.ruleParameters = ruleParameters;
         return this;
     }

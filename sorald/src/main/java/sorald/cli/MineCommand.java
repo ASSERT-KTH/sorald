@@ -1,9 +1,11 @@
 package sorald.cli;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.json.JSONObject;
 import picocli.CommandLine;
 import sorald.Constants;
 import sorald.FileUtils;
@@ -15,6 +17,7 @@ import sorald.miner.MineSonarWarnings;
 import sorald.rule.IRuleType;
 import sorald.rule.Rule;
 import sorald.rule.RuleProvider;
+import sorald.sonar.SonarRule;
 import sorald.sonar.SonarRuleType;
 import sorald.util.MavenUtils;
 
@@ -66,9 +69,8 @@ class MineCommand extends BaseCommand {
     private boolean handledRules;
 
     @CommandLine.Option(
-            names = {Constants.ARG_RULE_PARAMETER},
-            description = "Configuration for SonarJava rules"
-    )
+            names = {Constants.ARG_RULE_PARAMETERS},
+            description = "Configuration for SonarJava rules")
     private File ruleParameters;
 
     @Override
@@ -118,6 +120,10 @@ class MineCommand extends BaseCommand {
                             "%s is only supported for Maven projects, but %s has no pom.xml",
                             Constants.ARG_RESOLVE_CLASSPATH_FROM, source));
         }
+        if (ruleParameters != null && !ruleParameters.exists()) {
+            throw new CommandLine.ParameterException(
+                    spec.commandLine(), String.format("%s is not a valid file", ruleParameters));
+        }
     }
 
     private static class IRuleTypeConverter implements CommandLine.ITypeConverter<IRuleType> {
@@ -144,10 +150,27 @@ class MineCommand extends BaseCommand {
                 : List.of();
     }
 
-    private CLIConfigForStaticAnalyzer createConfig() {
+    private Map<Rule, Map<String, String>> parseRuleParameters() throws IOException {
+        if (ruleParameters == null) {
+            return new HashMap<>();
+        }
+        JSONObject ruleParametersAsJson = FileUtils.readJSON(ruleParameters.toPath());
+        Map<Rule, Map<String, String>> result = new HashMap<>();
+        for (String rule : ruleParametersAsJson.keySet()) {
+            JSONObject parameters = (JSONObject) ruleParametersAsJson.get(rule);
+            Map<String, String> options = new HashMap<>();
+            for (String option : parameters.keySet()) {
+                options.put(option, (String) parameters.get(option));
+            }
+            result.put(new SonarRule(rule), options);
+        }
+        return result;
+    }
+
+    private CLIConfigForStaticAnalyzer createConfig() throws IOException {
         SoraldConfig config = new SoraldConfig();
         config.setClasspath(resolveClasspath());
-        config.setRuleParameters(ruleParameters);
+        config.setRuleParameters(parseRuleParameters());
         return config;
     }
 }
