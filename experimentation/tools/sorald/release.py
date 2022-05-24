@@ -62,7 +62,7 @@ def _prepare_release(release_version: Optional[str]) -> None:
     release_version_arg = (
         f"-DreleaseVersion={release_version}" if release_version is not None else ""
     )
-    _run_cmd(f"mvn -B clean release:prepare -DpushChanges=false {release_version_arg}")
+    _run_cmd(f"mvn release:prepare -DpushChanges=false {release_version_arg}")
     _sign_last_n_commits(2)
     _sign_release_tag()
 
