@@ -2,15 +2,14 @@ package sorald.sonar;
 
 import com.google.auto.service.AutoService;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import org.sonarsource.sonarlint.core.client.api.common.RuleKey;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.Issue;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.IssueListener;
 import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneAnalysisConfiguration;
+import sorald.SoraldConfig;
 import sorald.cli.CLIConfigForStaticAnalyzer;
 import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
@@ -75,6 +74,8 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
                         rules.stream()
                                 .map(rule -> RuleKey.parse(String.format("java:%s", rule.getKey())))
                                 .collect(Collectors.toList()))
+                .addRuleParameters(
+                        putRuleParameters(((SoraldConfig) cliOptions).getRuleParameters()))
                 .addInputFiles(inputFiles)
                 .build();
     }
@@ -89,6 +90,20 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
                                 .collect(Collectors.toList()))
                 .addInputFiles(inputFiles)
                 .build();
+    }
+
+    private static Map<RuleKey, Map<String, String>> putRuleParameters(
+            Map<Rule, Map<String, String>> passedRuleParameters) {
+        Map<RuleKey, Map<String, String>> parsedRuleParameters = new HashMap<>();
+        passedRuleParameters
+                .keySet()
+                .forEach(
+                        rule -> {
+                            parsedRuleParameters.put(
+                                    RuleKey.parse(String.format("java:%s", rule.getKey())),
+                                    passedRuleParameters.get(rule));
+                        });
+        return parsedRuleParameters;
     }
 
     private static class IssueHandler implements IssueListener {

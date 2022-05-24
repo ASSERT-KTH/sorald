@@ -268,6 +268,60 @@ public class WarningMinerTest {
         }
     }
 
+    @Nested
+    class MineWarningsWithRuleParameters {
+        @Test
+        void S1176_shouldNotBeReportedIfParametersAreNotPassed() {
+            String[] args = {
+                Constants.MINE_COMMAND_NAME,
+                Constants.ARG_SOURCE,
+                TestHelper.PATH_TO_RESOURCES_FOLDER
+                        .resolve("warning_miner")
+                        .resolve("rule_parameters")
+                        .resolve("S1176")
+                        .resolve("Javadoc.java")
+                        .toString(),
+            };
+
+            // act
+            final ByteArrayOutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+            Main.main(args);
+
+            // assert
+            assertThat(out.toString(), not(containsString("S1176=1")));
+        }
+
+        @Test
+        void S1176_shouldBeReported() {
+            String[] args = {
+                Constants.MINE_COMMAND_NAME,
+                Constants.ARG_SOURCE,
+                TestHelper.PATH_TO_RESOURCES_FOLDER
+                        .resolve("warning_miner")
+                        .resolve("rule_parameters")
+                        .resolve("S1176")
+                        .resolve("Javadoc.java")
+                        .toString(),
+                Constants.ARG_RULE_PARAMETERS,
+                TestHelper.PATH_TO_RESOURCES_FOLDER
+                        .resolve("warning_miner")
+                        .resolve("rule_parameters")
+                        .resolve("S1176")
+                        .resolve("params.json")
+                        .toString(),
+            };
+
+            // act
+            final ByteArrayOutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+            Main.main(args);
+
+            // assert
+            assertThat(out.toString(), containsString("S1176=1"));
+        }
+    }
+
     private static void runMiner(
             Path pathToRepos, String pathToOutput, String pathToTempDir, String... extraArgs)
             throws Exception {

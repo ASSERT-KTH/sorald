@@ -58,9 +58,13 @@ jobs:
           java-package: jdk
           architecture: x64
           distribution: ${{ env.JAVA_DISTRIBUTION }}
-      - name: Genrate usage for the subcommands and submit a PR if modified
+      - name: Generate usage for the subcommands and submit a PR if modified
         run: |
-          mvn process-classes
+          mvn clean compile dependency:build-classpath -Dmdep.outputFile=cp.txt
+          (cd sorald && java -cp $(cat cp.txt):target/classes/ picocli.codegen.docgen.manpage.ManPageGenerator \
+            --outdir=../docs/usage/ \
+            sorald.cli.MineCommand \
+            sorald.cli.RepairCommand)
           
           ./.github/submit-pr.sh \
             --branch-prefix   usage \
