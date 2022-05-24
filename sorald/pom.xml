@@ -5,12 +5,12 @@
   <parent>
     <groupId>se.kth.castor</groupId>
     <artifactId>sorald-parent</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
     <artifactId>sorald</artifactId>
-    <version>0.5.0</version>
+    <version>0.5.1-SNAPSHOT</version>
 
     <name>Sorald</name>
     <description>An automatic repair system for static code analysis warnings from Sonar Java.</description>
@@ -305,7 +305,7 @@
         <connection>scm:git:https://github.com/SpoonLabs/sorald.git</connection>
         <developerConnection>scm:git:ssh://github.com/SpoonLabs/sorald.git</developerConnection>
         <url>https://github.com/SpoonLabs/sorald</url>
-        <tag>sorald-0.5.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>

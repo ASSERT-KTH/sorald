@@ -5,12 +5,12 @@
   <parent>
     <groupId>se.kth.castor</groupId>
     <artifactId>sorald-parent</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
     <artifactId>sorald-api</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Sorald-API</name>
     <description>An automatic repair system for static code analysis warnings from Sonar Java.</description>
