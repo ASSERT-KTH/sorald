@@ -21,7 +21,8 @@ mine - Mine a project for Sonar warnings.
 
 *mine* [*-hV*] [*--handled-rules*] [*--stats-on-git-repos*]
      [*--git-repos-list*=_<reposList>_] [*--miner-output-file*=_<minerOutputFile>_]
-     [*--resolve-classpath-from*=_<resolveClasspathFrom>_] [*--source*=_<source>_]
+     [*--resolve-classpath-from*=_<resolveClasspathFrom>_]
+     [*--rule-parameters*=_<ruleParameters>_] [*--source*=_<source>_]
      [*--stats-output-file*=_<statsOutputFile>_] [*--target*=_<target>_]
      [*--temp-dir*=_<tempDir>_] [*--rule-types*=_<ruleTypes>_[,_<ruleTypes>_...]]...
 
@@ -51,6 +52,19 @@ Mine a project for Sonar warnings.
 
 *--resolve-classpath-from*=_<resolveClasspathFrom>_::
   Path to the root of a project to resolve the classpath from. Currently only works for Maven projects.
+
+*--rule-parameters*=_<ruleParameters>_::
+  Configuration for SonarJava rules.
++
+Format of JSON file: {
++
+    "<RULE_KEY>": {
++
+        "<RULE_PROPERTY_NAME>": "<VALUE>"
++
+    }
++
+}
 
 *--rule-types*=_<ruleTypes>_[,_<ruleTypes>_...]::
   One or more types of rules to check for (use ',' to separate multiple types). Choices: BUG, VULNERABILITY, CODE_SMELL, SECURITY_HOTSPOT
