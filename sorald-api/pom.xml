@@ -52,7 +52,7 @@
         <dependency>
             <groupId>org.sonarsource.sonarlint.core</groupId>
             <artifactId>sonarlint-core</artifactId>
-            <version>8.2.0.43778</version>
+            <version>8.6.0.47852</version>
         </dependency>
     </dependencies>
     <properties>

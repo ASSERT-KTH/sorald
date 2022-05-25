@@ -57,7 +57,7 @@
         <dependency>
             <groupId>org.sonarsource.sonarlint.core</groupId>
             <artifactId>sonarlint-core</artifactId>
-            <version>8.4.0.45663</version>
+            <version>8.6.0.47852</version>
         </dependency>
         <dependency>
             <groupId>info.picocli</groupId>
