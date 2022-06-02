@@ -143,7 +143,8 @@ jobs:
           
           git checkout -b $COMBINE_BRANCH_NAME
           git pull origin $sourcebranches --no-edit
-          echo ::set-output name=sha::$(git rev-parse "$basebranch")
+          echo ::set-output name=sha::$(git rev-parse "refs/heads/$basebranch")
+      - name: Push combined branch
       - uses: actions/github-script@v6
         with:
           github-token: ${{ steps.generate-token.outputs.token }}
