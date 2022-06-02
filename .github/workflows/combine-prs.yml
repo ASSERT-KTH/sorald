@@ -143,19 +143,7 @@ jobs:
           
           git checkout -b $COMBINE_BRANCH_NAME
           git pull origin $sourcebranches --no-edit
-          echo ::set-output name=sha::$(git rev-parse "refs/heads/$basebranch")
-      - uses: actions/github-script@v6
-        name: Push combined branch
-        with:
-          github-token: ${{ steps.generate-token.outputs.token }}
-          script: |
-            await github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: 'Combined PR',
-              ref: 'refs/heads/${{ github.event.inputs.combineBranchName }}',
-              sha: 'a4e12ac390cc6a9e10d2180523f61b673b7b833c'
-            });
+          git push origin $COMBINE_BRANCH_NAME
       # Creates a PR with the new combined branch
       - uses: actions/github-script@v6
         name: Create Combined Pull Request
