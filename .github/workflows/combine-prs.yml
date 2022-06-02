@@ -158,7 +158,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: 'Combined PR',
-              head: '${{ github.event.inputs.combineBranchName }}',
+              head: 'algomaster99:${{ github.event.inputs.combineBranchName }}',
               base: '${{ steps.fetch-branch-names.outputs.base-branch }}',
               body: body
             });
