@@ -1,6 +1,7 @@
 package sorald.util;
 
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.List;
 import spoon.MavenLauncher;
 
@@ -17,6 +18,7 @@ public class MavenUtils {
     public static List<String> resolveClasspath(Path source) {
         MavenLauncher launcher =
                 new MavenLauncher(source.toString(), MavenLauncher.SOURCE_TYPE.ALL_SOURCE);
+        System.out.println("Spoon: " + Arrays.toString(launcher.getEnvironment().getSourceClasspath()));
         return List.of(launcher.getEnvironment().getSourceClasspath());
     }
 
