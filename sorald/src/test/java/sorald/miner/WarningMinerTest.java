@@ -24,6 +24,7 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import org.sonarsource.sonarlint.shaded.com.google.gson.Gson;
 import sorald.*;
 import sorald.cli.SoraldVersionProvider;
 import sorald.event.StatsMetadataKeys;
@@ -213,6 +214,7 @@ public class WarningMinerTest {
         Main.main(args);
 
         JSONObject stats = FileUtils.readJSON(statsFile);
+        System.out.println(new Gson().newBuilder().setPrettyPrinting().create().toJson(stats));
         JSONArray repairs = stats.getJSONArray(StatsMetadataKeys.MINED_RULES);
         assertThat(repairs.length(), equalTo(1));
         JSONObject repair = repairs.getJSONObject(0);
