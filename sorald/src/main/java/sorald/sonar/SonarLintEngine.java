@@ -199,6 +199,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                                             logOutput),
                                     new ProgressMonitor(monitor))
                             .get();
+            System.out.println(analysisConfig);
             return analysisResults == null ? new AnalysisResults() : analysisResults;
         } catch (ExecutionException e) {
             throw SonarLintWrappedException.wrap(e);
