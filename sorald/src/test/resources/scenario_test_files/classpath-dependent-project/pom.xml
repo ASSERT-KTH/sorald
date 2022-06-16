@@ -17,6 +17,12 @@
       <groupId>fr.inria.gforge.spoon.labs</groupId>
       <artifactId>gumtree-spoon-ast-diff</artifactId>
       <version>1.24</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.osgi.service</groupId>
+          <artifactId>org.osgi.service.prefs</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
 </project>
