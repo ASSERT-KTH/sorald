@@ -193,6 +193,9 @@ public class WarningMinerTest {
                         .resolve("classpath-dependent-project");
         Path source = projectRoot.resolve("src").resolve("main").resolve("java");
 
+        System.out.println("projectRoot: " + projectRoot.toAbsolutePath() + " " + projectRoot.toFile().exists());
+        System.out.println("source: " + source.toAbsolutePath() + " " + source.toFile().exists());
+
         String[] args = {
             Constants.MINE_COMMAND_NAME,
             Constants.ARG_STATS_OUTPUT_FILE,
