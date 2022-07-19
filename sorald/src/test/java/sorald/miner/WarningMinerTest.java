@@ -333,7 +333,7 @@ public class WarningMinerTest {
                     .resolve("specified_rules")
                     .toString(),
             "--rule-keys",
-            "S1068"
+            "S1068,S109"
         };
 
         // act
@@ -342,8 +342,9 @@ public class WarningMinerTest {
         Main.main(args);
 
         // assert
-        assertThat(out.toString(), equalTo("S1068=1\n"));
-        assertThat(out.toString(), not(containsString("S109=1\n")));
+        assertThat(out.toString(), containsString("S1068=1\n"));
+        assertThat(out.toString(), containsString("S109=1\n"));
+        assertThat(out.toString(), not(containsString("S1106=1\n")));
     }
 
     private static void runMiner(
