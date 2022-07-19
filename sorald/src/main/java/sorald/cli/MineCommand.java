@@ -53,37 +53,27 @@ class MineCommand extends BaseCommand {
             description = "The path to the temp directory.")
     File tempDir;
 
-    static class RuleFilter {
-        @CommandLine.Option(
-                names = {Constants.ARG_RULE_TYPES},
-                converter = IRuleTypeConverter.class,
-                completionCandidates = RuleTypeCandidates.class,
-                description =
-                        "One or more types of rules to check for (use ',' to separate multiple types). Choices: ${COMPLETION-CANDIDATES}",
-                split = ",")
-        private List<IRuleType> ruleTypes = new ArrayList<>();
+    @CommandLine.Option(
+            names = {Constants.ARG_RULE_TYPES},
+            converter = IRuleTypeConverter.class,
+            completionCandidates = RuleTypeCandidates.class,
+            description =
+                    "One or more types of rules to check for (use ',' to separate multiple types). Choices: ${COMPLETION-CANDIDATES}",
+            split = ",")
+    private List<IRuleType> ruleTypes = new ArrayList<>();
 
-        @CommandLine.Option(
-                names = {Constants.ARG_HANDLED_RULES},
-                description =
-                        "When this argument is used, Sorald only mines violations of the rules that can be fixed by Sorald.")
-        private boolean handledRules = false;
+    @CommandLine.Option(
+            names = {Constants.ARG_HANDLED_RULES},
+            description =
+                    "When this argument is used, Sorald only mines violations of the rules that can be fixed by Sorald.")
+    private boolean handledRules;
 
-        @CommandLine.Option(
-                names = "--rule-keys",
-                arity = "1..*",
-                description =
-                        "One or more rules to check for (use ',' to separate multiple types).",
-                split = ",")
-        List<String> ruleKeys;
-
-        boolean isInvalid() {
-            return !ruleKeys.isEmpty() && (handledRules || !ruleTypes.isEmpty());
-        }
-    }
-
-    @CommandLine.ArgGroup(exclusive = false)
-    RuleFilter rules;
+    @CommandLine.Option(
+            names = "--rule-keys",
+            arity = "1..*",
+            description = "One or more rules to check for (use ',' to separate multiple types).",
+            split = ",")
+    List<String> ruleKeys;
 
     @CommandLine.Option(
             names = {Constants.ARG_RULE_PARAMETERS},
@@ -102,10 +92,10 @@ class MineCommand extends BaseCommand {
         validateArgs();
 
         List<Rule> checks;
-        if (rules.ruleKeys == null) {
-            checks = RuleProvider.inferRules(rules.ruleTypes, rules.handledRules);
+        if (ruleKeys == null) {
+            checks = RuleProvider.inferRules(ruleTypes, handledRules);
         } else {
-            checks = rules.ruleKeys.stream().map(SonarRule::new).collect(Collectors.toList());
+            checks = ruleKeys.stream().map(SonarRule::new).collect(Collectors.toList());
         }
 
         var statsCollector = new MinerStatisticsCollector();
@@ -141,13 +131,6 @@ class MineCommand extends BaseCommand {
 
     /** Perform validation on the parsed arguments. */
     private void validateArgs() {
-        if (rules != null && rules.isInvalid()) {
-            throw new CommandLine.ParameterException(
-                    spec.commandLine(),
-                    String.format(
-                            "--rule-keys should not be used when either %s or %s is provided",
-                            Constants.ARG_RULE_TYPES, Constants.ARG_HANDLED_RULES));
-        }
         if (resolveClasspathFrom != null
                 && !MavenUtils.isMavenProjectRoot(resolveClasspathFrom.toPath())) {
             throw new CommandLine.ParameterException(

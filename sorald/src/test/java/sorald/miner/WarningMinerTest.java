@@ -322,51 +322,29 @@ public class WarningMinerTest {
         }
     }
 
-    @Nested
-    class MineWarningsWithRuleKeys {
-        @Test
-        void onlyMineRulesWhichAreAskedFor_S1068_S109() {
-            // arrange
-            String[] args = {
-                Constants.MINE_COMMAND_NAME,
-                Constants.ARG_SOURCE,
-                TestHelper.PATH_TO_RESOURCES_FOLDER
-                        .resolve("warning_miner")
-                        .resolve("specified_rules")
-                        .toString(),
-                "--rule-keys",
-                "S1068,S109"
-            };
+    @Test
+    void onlyMineRulesWhichAreAskedFor() {
+        // arrange
+        String[] args = {
+            Constants.MINE_COMMAND_NAME,
+            Constants.ARG_SOURCE,
+            TestHelper.PATH_TO_RESOURCES_FOLDER
+                    .resolve("warning_miner")
+                    .resolve("specified_rules")
+                    .toString(),
+            "--rule-keys",
+            "S1068,S109"
+        };
 
-            // act
-            final ByteArrayOutputStream out = new ByteArrayOutputStream();
-            System.setOut(new PrintStream(out));
-            Main.main(args);
+        // act
+        final ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Main.main(args);
 
-            // assert
-            assertThat(out.toString(), containsString("S1068=1\n"));
-            assertThat(out.toString(), containsString("S109=1\n"));
-            assertThat(out.toString(), not(containsString("S1106=1\n")));
-        }
-
-        @Test
-        void should_throwNotZeroExitException() {
-            // arrange
-            String[] args = {
-                Constants.MINE_COMMAND_NAME,
-                Constants.ARG_SOURCE,
-                TestHelper.PATH_TO_RESOURCES_FOLDER
-                        .resolve("warning_miner")
-                        .resolve("specified_rules")
-                        .toString(),
-                Constants.ARG_HANDLED_RULES,
-                "--rule-keys",
-                "S1068,S109"
-            };
-
-            // assert
-            assertThrows(SystemExitHandler.NonZeroExit.class, () -> Main.main(args));
-        }
+        // assert
+        assertThat(out.toString(), containsString("S1068=1\n"));
+        assertThat(out.toString(), containsString("S109=1\n"));
+        assertThat(out.toString(), not(containsString("S1106=1\n")));
     }
 
     private static void runMiner(
