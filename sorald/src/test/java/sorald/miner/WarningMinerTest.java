@@ -342,9 +342,9 @@ public class WarningMinerTest {
         Main.main(args);
 
         // assert
-        assertThat(out.toString(), containsString("S1068=1\n"));
-        assertThat(out.toString(), containsString("S109=1\n"));
-        assertThat(out.toString(), not(containsString("S1106=1\n")));
+        assertThat(out.toString(), containsString("S1068=1"));
+        assertThat(out.toString(), containsString("S109=1"));
+        assertThat(out.toString(), not(containsString("S1106=1")));
     }
 
     private static void runMiner(
