@@ -322,6 +322,30 @@ public class WarningMinerTest {
         }
     }
 
+    @Test
+    void onlyMineRulesWhichAreAskedFor() {
+        // arrange
+        String[] args = {
+            Constants.MINE_COMMAND_NAME,
+            Constants.ARG_SOURCE,
+            TestHelper.PATH_TO_RESOURCES_FOLDER
+                    .resolve("warning_miner")
+                    .resolve("specified_rules")
+                    .toString(),
+            "--rule-keys",
+            "S1068"
+        };
+
+        // act
+        final ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Main.main(args);
+
+        // assert
+        assertThat(out.toString(), equalTo("S1068=1\n"));
+        assertThat(out.toString(), not(containsString("S109=1\n")));
+    }
+
     private static void runMiner(
             Path pathToRepos, String pathToOutput, String pathToTempDir, String... extraArgs)
             throws Exception {
