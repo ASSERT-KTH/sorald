@@ -71,7 +71,8 @@ class MineCommand extends BaseCommand {
     @CommandLine.Option(
             names = "--rule-keys",
             arity = "1..*",
-            description = "One or more rules to check for (use ',' to separate multiple types).",
+            description =
+                    "One or more rules to check for (use ',' to separate multiple types). Usage of this argument voids values of other rule filters - handled rules and rule types.",
             split = ",")
     List<String> ruleKeys;
 
