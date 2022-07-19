@@ -1,4 +1,4 @@
-name: 'Combine PRs'
+# Workflow for combining pull requests by renovate
 
 # Controls when the action will run - in this case triggered manually
 on:
@@ -20,6 +20,10 @@ on:
         description: 'Exclude PRs with this label'
         required: true
         default: 'nocombine'
+      prTitle:
+        description: 'Title of the pull request submitted'
+        default: 'chore: combine renovate upgrades'
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -158,7 +162,7 @@ jobs:
             await github.rest.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: 'Combined PR',
+              title: '${{ github.event.inputs.prTitle }}',
               head: '${{ github.event.inputs.combineBranchName }}',
               base: '${{ steps.fetch-branch-names.outputs.base-branch }}',
               body: body
