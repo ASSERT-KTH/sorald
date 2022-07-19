@@ -1,5 +1,7 @@
 # Workflow for combining pull requests by renovate
 
+name: combine-prs
+
 # Controls when the action will run - in this case triggered manually
 on:
   workflow_dispatch:
