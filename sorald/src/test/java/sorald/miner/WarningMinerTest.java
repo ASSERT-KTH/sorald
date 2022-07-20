@@ -335,7 +335,7 @@ public class WarningMinerTest {
                         .resolve("warning_miner")
                         .resolve("specified_rules")
                         .toString(),
-                "--rule-keys",
+                Constants.ARG_RULE_KEYS,
                 "S1068,S109"
             };
 
@@ -361,7 +361,7 @@ public class WarningMinerTest {
                 Constants.ARG_HANDLED_RULES,
                 Constants.ARG_RULE_TYPES,
                 RuleType.CODE_SMELL.name(),
-                "--rule-keys",
+                Constants.ARG_RULE_KEYS,
                 "S1068,S109"
             };
 

@@ -69,7 +69,7 @@ class MineCommand extends BaseCommand {
     private boolean handledRules;
 
     @CommandLine.Option(
-            names = "--rule-keys",
+            names = {Constants.ARG_RULE_KEYS},
             arity = "1..*",
             description =
                     "One or more rules to check for (use ',' to separate multiple types). Usage of this argument voids values of other rule filters - handled rules and rule types.",
