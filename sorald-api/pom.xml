@@ -10,7 +10,7 @@
   </parent>
 
     <artifactId>sorald-api</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
     <name>Sorald-API</name>
     <description>An automatic repair system for static code analysis warnings from Sonar Java.</description>
