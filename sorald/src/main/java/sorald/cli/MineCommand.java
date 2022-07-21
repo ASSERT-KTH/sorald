@@ -69,6 +69,14 @@ class MineCommand extends BaseCommand {
     private boolean handledRules;
 
     @CommandLine.Option(
+            names = {Constants.ARG_RULE_KEYS},
+            arity = "1..*",
+            description =
+                    "One or more rules to check for (use ',' to separate multiple types). Usage of this argument voids values of other rule filters - handled rules and rule types.",
+            split = ",")
+    List<String> ruleKeys;
+
+    @CommandLine.Option(
             names = {Constants.ARG_RULE_PARAMETERS},
             description = {
                 "Configuration for SonarJava rules.",
@@ -84,7 +92,12 @@ class MineCommand extends BaseCommand {
     public Integer call() throws Exception {
         validateArgs();
 
-        List<Rule> checks = RuleProvider.inferRules(ruleTypes, handledRules);
+        List<Rule> checks;
+        if (ruleKeys == null) {
+            checks = RuleProvider.inferRules(ruleTypes, handledRules);
+        } else {
+            checks = ruleKeys.stream().map(SonarRule::new).collect(Collectors.toList());
+        }
 
         var statsCollector = new MinerStatisticsCollector();
 

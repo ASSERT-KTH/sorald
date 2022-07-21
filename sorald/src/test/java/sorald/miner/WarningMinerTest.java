@@ -24,6 +24,7 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import org.sonar.api.rules.RuleType;
 import sorald.*;
 import sorald.cli.SoraldVersionProvider;
 import sorald.event.StatsMetadataKeys;
@@ -319,6 +320,64 @@ public class WarningMinerTest {
 
             // assert
             assertThat(out.toString(), containsString("S1176=1"));
+        }
+    }
+
+    @Nested
+    class MineWarningsWithRuleKeys {
+        @Test
+        void onlyMineRulesWhichAreAskedFor_S1068_S109() {
+            // arrange
+            String[] args = {
+                Constants.MINE_COMMAND_NAME,
+                Constants.ARG_SOURCE,
+                TestHelper.PATH_TO_RESOURCES_FOLDER
+                        .resolve("warning_miner")
+                        .resolve("specified_rules")
+                        .toString(),
+                Constants.ARG_RULE_KEYS,
+                "S1068,S109"
+            };
+
+            // act
+            final ByteArrayOutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+            Main.main(args);
+
+            // assert
+            assertPresenceOfS1068AndS109(out);
+        }
+
+        @Test
+        void ruleKeysParameterShouldOverrideOtherFilters_handledRules_ruleTypes() {
+            // arrange
+            String[] args = {
+                Constants.MINE_COMMAND_NAME,
+                Constants.ARG_SOURCE,
+                TestHelper.PATH_TO_RESOURCES_FOLDER
+                        .resolve("warning_miner")
+                        .resolve("specified_rules")
+                        .toString(),
+                Constants.ARG_HANDLED_RULES,
+                Constants.ARG_RULE_TYPES,
+                RuleType.CODE_SMELL.name(),
+                Constants.ARG_RULE_KEYS,
+                "S1068,S109"
+            };
+
+            // act
+            final ByteArrayOutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+            Main.main(args);
+
+            // assert
+            assertPresenceOfS1068AndS109(out);
+        }
+
+        private void assertPresenceOfS1068AndS109(ByteArrayOutputStream output) {
+            assertThat(output.toString(), containsString("S1068=1"));
+            assertThat(output.toString(), containsString("S109=1"));
+            assertThat(output.toString(), not(containsString("S1106=1")));
         }
     }
 
