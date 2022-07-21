@@ -25,6 +25,7 @@ mine - Mine a project for Sonar warnings.
      [*--rule-parameters*=_<ruleParameters>_] [*--source*=_<source>_]
      [*--stats-output-file*=_<statsOutputFile>_] [*--target*=_<target>_]
      [*--temp-dir*=_<tempDir>_] [*--rule-types*=_<ruleTypes>_[,_<ruleTypes>_...]]...
+     [*--rule-keys*=_<ruleKeys>_[,_<ruleKeys>_...]...]...
 
 // end::picocli-generated-man-section-synopsis[]
 
@@ -52,6 +53,9 @@ Mine a project for Sonar warnings.
 
 *--resolve-classpath-from*=_<resolveClasspathFrom>_::
   Path to the root of a project to resolve the classpath from. Currently only works for Maven projects.
+
+*--rule-keys*=_<ruleKeys>_[,_<ruleKeys>_...]...::
+  One or more rules to check for (use ',' to separate multiple types). Usage of this argument voids values of other rule filters - handled rules and rule types.
 
 *--rule-parameters*=_<ruleParameters>_::
   Configuration for SonarJava rules.
