@@ -132,7 +132,7 @@ public class FileUtils {
             File cacheDir = new File(home + "\\Cache\\sorald\\");
             cacheDir.mkdirs();
             return cacheDir;
-        } else if (os.contains("Linux")) {
+        } else if (os.contains("Linux") || os.contains("BSD")) {
             File cacheDir = new File(home + "/.cache/sorald/");
             cacheDir.mkdirs();
             return cacheDir;
