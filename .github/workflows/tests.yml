@@ -43,13 +43,13 @@ jobs:
         run: echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
         shell: bash
       - name: Use Maven dependency cache
-        uses: actions/cache@0865c47f36e68161719c5b124609996bb5c40129 # tag=v3.0.5
+        uses: actions/cache@f4278025ab0f432ce369118909e46deec636f50c # tag=v3.0.6
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-maven-
       - name: Use SonarCloud package cache
-        uses: actions/cache@0865c47f36e68161719c5b124609996bb5c40129 # tag=v3.0.5
+        uses: actions/cache@f4278025ab0f432ce369118909e46deec636f50c # tag=v3.0.6
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
@@ -85,7 +85,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
-      - uses: actions/setup-python@c4e89fac7e8767b327bbad6cb4d859eda999cf08 # tag=v4.1.0
+      - uses: actions/setup-python@b55428b1882923874294fa556849718a1d7f2ca5 # tag=v4.2.0
         with:
           python-version: 3.8
       - uses: actions/setup-java@2c7a4878f5d120bd643426d54ae1209b29cc01a3 # tag=v3.4.1
@@ -100,7 +100,7 @@ jobs:
         run: echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
         shell: bash
       - name: Use Maven dependency cache
-        uses: actions/cache@0865c47f36e68161719c5b124609996bb5c40129 # tag=v3.0.5
+        uses: actions/cache@f4278025ab0f432ce369118909e46deec636f50c # tag=v3.0.6
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/pom.xml') }}
@@ -132,7 +132,7 @@ jobs:
         run: echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
         shell: bash
       - name: Use Maven dependency cache
-        uses: actions/cache@0865c47f36e68161719c5b124609996bb5c40129 # tag=v3.0.5
+        uses: actions/cache@f4278025ab0f432ce369118909e46deec636f50c # tag=v3.0.6
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/pom.xml') }}
