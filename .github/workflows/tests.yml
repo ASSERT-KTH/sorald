@@ -63,7 +63,7 @@ jobs:
         run: timeout 10 mvn -B test || echo "Done fetching dependencies"
         shell: bash
       - name: Run tests
-        run: 'mvn test -Dtest=WarningMinerTest#test_warningMiner,GatherStatsTest#statisticsFile_containsExpectedStats'
+        run: 'mvn test -Dtest=WarningMinerTest#test_warningMiner`,GatherStatsTest#statisticsFile_containsExpectedStats'
       - name: Run Sonar
         if: ${{ matrix.os == 'ubuntu-latest' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == 'SpoonLabs/sorald') }}
         env:
