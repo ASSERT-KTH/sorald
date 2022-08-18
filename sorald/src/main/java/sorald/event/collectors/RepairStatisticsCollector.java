@@ -48,7 +48,7 @@ public class RepairStatisticsCollector implements SoraldEventHandler {
                 parseStart = INVALID_TIME;
                 break;
             case REPAIR_START:
-                repairStart = System.currentTimeMillis();
+                repairStart = System.nanoTime();
                 System.out.println("---START---");
                 System.out.println(repairStart);
                 System.out.println("----------");
@@ -58,7 +58,7 @@ public class RepairStatisticsCollector implements SoraldEventHandler {
                 System.out.println("---END---");
                 System.out.println(repairStart);
                 System.out.println("----------");
-                long repairEnd = System.currentTimeMillis();
+                long repairEnd = System.nanoTime();
                 System.out.println("---END---");
                 System.out.println(repairEnd);
                 System.out.println("----------");
