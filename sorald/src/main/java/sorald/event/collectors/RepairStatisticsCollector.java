@@ -118,8 +118,8 @@ public class RepairStatisticsCollector implements SoraldEventHandler {
     }
 
     /** @return The total amount of time spent repairing */
-    public long getRepairTimeMs() {
-        return repairTotal / (long) Math.pow(10, 6);
+    public double getRepairTimeMs() {
+        return repairTotal / Math.pow(10, 6);
     }
 
     /** @return The total amount of execution time in milliseconds. */
