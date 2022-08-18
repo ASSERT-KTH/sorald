@@ -7,6 +7,7 @@ import static org.hamcrest.Matchers.greaterThan;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Set;
@@ -76,6 +77,8 @@ public class GatherStatsTest {
                         .getJSONArray(StatsMetadataKeys.ORIGINAL_ARGS)
                         .length(),
                 greaterThan(0));
+
+        System.out.println(Files.readString(statsFile.toPath()));
 
         assertThat(jo.getLong(StatsMetadataKeys.PARSE_TIME_MS), greaterThan(0L));
         assertThat(jo.getLong(StatsMetadataKeys.REPAIR_TIME_MS), greaterThan(0L));
