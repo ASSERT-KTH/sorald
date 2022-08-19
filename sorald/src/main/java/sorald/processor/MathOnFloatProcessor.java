@@ -56,12 +56,8 @@ public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperat
                      */
                     binaryOperator.setType(getFactory().Type().doublePrimitiveType());
                 }
-                if (!binaryOperator.getType().equals(getFactory().Type().doublePrimitiveType())) {
-                    binaryOperator
-                            .getRightHandOperand()
-                            .setTypeCasts(List.of(getFactory().Type().doublePrimitiveType()));
-                    binaryOperator.setType(getFactory().Type().doublePrimitiveType());
-                }
+                // We do not need to cast the type of the right hand operand as it is already a
+                // double
             }
         }
     }
