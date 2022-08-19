@@ -40,7 +40,7 @@ import spoon.reflect.declaration.CtType;
 public class ProcessorTest {
 
     private static final Set<String> FILES_THAT_DONT_COMPILE_AFTER_REPAIR =
-            Set.of("MathOnFloat.java", "CastArithmeticOperand.java");
+            Set.of("CastArithmeticOperand.java");
 
     /**
      * Parameterized test that processes a single Java file at a time with a single processor.

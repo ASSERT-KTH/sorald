@@ -2,41 +2,68 @@ package sorald.processor;
 
 import java.util.List;
 import sorald.Constants;
+import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
-import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.declaration.CtElement;
+import spoon.reflect.declaration.CtTypedElement;
 import spoon.reflect.visitor.filter.TypeFilter;
 
+@IncompleteProcessor(
+        description =
+                "does not cast the operands to double when the expected type of the result is float.")
 @ProcessorAnnotation(key = "S2164", description = "Math should not be performed on floats")
 public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 
     @Override
     protected boolean canRepairInternal(CtBinaryOperator candidate) {
-        List<CtBinaryOperator> binaryOperatorChildren =
-                candidate.getElements(new TypeFilter<>(CtBinaryOperator.class));
-        if (binaryOperatorChildren.size()
-                == 1) { // in a nested binary operator expression, only one will be processed.
-            if (isArithmeticOperation(candidate)
-                    && isOperationBetweenFloats(candidate)
-                    && !withinStringConcatenation(candidate)) {
-                return true;
+        CtElement parentOfCandidate = candidate.getParent();
+
+        if (parentOfCandidate instanceof CtTypedElement<?>) {
+            if (((CtTypedElement<?>) parentOfCandidate)
+                    .getType()
+                    .equals(getFactory().Type().floatPrimitiveType())) {
+                return false;
             }
         }
-        return false;
+
+        return isArithmeticOperation(candidate)
+                && isOperationBetweenFloats(candidate)
+                && !withinStringConcatenation(candidate);
     }
 
     @Override
     protected void repairInternal(CtBinaryOperator element) {
-        CtCodeSnippetExpression newLeftHandOperand =
-                element.getFactory()
-                        .createCodeSnippetExpression("(double) " + element.getLeftHandOperand());
-        element.setLeftHandOperand(newLeftHandOperand);
-        CtCodeSnippetExpression newRightHandOperand =
-                element.getFactory()
-                        .createCodeSnippetExpression("(double) " + element.getRightHandOperand());
-        element.setRightHandOperand(newRightHandOperand);
+        List<CtBinaryOperator> binaryOperatorChildren =
+                element.getElements(new TypeFilter<>(CtBinaryOperator.class));
+        for (CtBinaryOperator binaryOperator : binaryOperatorChildren) {
+            if (binaryOperator.getLeftHandOperand() instanceof CtBinaryOperator<?>) {
+                repairInternal((CtBinaryOperator<?>) binaryOperator.getLeftHandOperand());
+            }
+            if (binaryOperator.getRightHandOperand() instanceof CtBinaryOperator<?>) {
+                repairInternal((CtBinaryOperator<?>) binaryOperator.getRightHandOperand());
+            } else {
+                if (!binaryOperator.getType().equals(getFactory().Type().doublePrimitiveType())) {
+                    binaryOperator
+                            .getLeftHandOperand()
+                            .setTypeCasts(List.of(getFactory().Type().doublePrimitiveType()));
+
+                    /**
+                     * We also set the type so that the other operand is not explicitly cast as JVM
+                     * implicitly does that For example, `(double) a + (double) b` is equivalent to
+                     * `(double) a + b`. Thus, we provide a cleaner repair.
+                     */
+                    binaryOperator.setType(getFactory().Type().doublePrimitiveType());
+                }
+                if (!binaryOperator.getType().equals(getFactory().Type().doublePrimitiveType())) {
+                    binaryOperator
+                            .getRightHandOperand()
+                            .setTypeCasts(List.of(getFactory().Type().doublePrimitiveType()));
+                    binaryOperator.setType(getFactory().Type().doublePrimitiveType());
+                }
+            }
+        }
     }
 
     private boolean isArithmeticOperation(CtBinaryOperator ctBinaryOperator) {
