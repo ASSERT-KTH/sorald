@@ -2,6 +2,10 @@
 
 class MathOnFloat {
 
+    float e = 2.71f;
+    float pi = 3.14f;
+    double c = e * pi; // Noncompliant
+
     // Tests from https://github.com/SonarSource/sonar-java/blob/master/java-checks-test-sources/src/main/java/checks/MathOnFloatCheck.java
     void myMethod() {
         float a = 16777216.0f;
