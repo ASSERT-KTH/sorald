@@ -85,6 +85,10 @@ public class ProcessorTest {
         }
     }
 
+    /**
+     * Test cases that process non-repairable cases in partially fixable rules. This ensures that
+     * the violations exist even after the repair is performed.
+     */
     @ParameterizedTest
     @ArgumentsSource(IncompleteProcessorCaseFileProvider.class)
     void testProcessNonRepairableCases(ProcessorTestHelper.ProcessorTestCase testCase) {
