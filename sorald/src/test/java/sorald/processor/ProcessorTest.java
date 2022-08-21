@@ -5,7 +5,6 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 import static sorald.Assertions.assertCompiles;
-import static sorald.Assertions.assertHasRuleViolation;
 import static sorald.Assertions.assertNoRuleViolations;
 
 import java.io.File;
@@ -32,6 +31,7 @@ import sorald.FileUtils;
 import sorald.TestHelper;
 import sorald.event.StatsMetadataKeys;
 import sorald.rule.Rule;
+import sorald.sonar.ProjectScanner;
 import sorald.sonar.SonarRule;
 import spoon.Launcher;
 import spoon.reflect.CtModel;
@@ -92,10 +92,23 @@ public class ProcessorTest {
     @ParameterizedTest
     @ArgumentsSource(IncompleteProcessorCaseFileProvider.class)
     void testProcessNonRepairableCases(ProcessorTestHelper.ProcessorTestCase testCase) {
+        // act
+        var violationsBefore =
+                ProjectScanner.scanProject(
+                        testCase.nonCompliantFile,
+                        testCase.nonCompliantFile.getParentFile(),
+                        testCase.getRule());
         ProcessorTestHelper.runSorald(testCase);
 
-        assertHasRuleViolation(testCase.repairedFilePath().toFile(), testCase.getRule(), 1);
+        // assert
         assertCompiles(testCase.repairedFilePath().toFile());
+
+        var violationsAfter =
+                ProjectScanner.scanProject(
+                        testCase.repairedFilePath().toFile(),
+                        testCase.repairedFilePath().toFile().getParentFile(),
+                        testCase.getRule());
+        assertThat(violationsBefore, equalTo(violationsAfter));
     }
 
     private static class IncompleteProcessorCaseFileProvider implements ArgumentsProvider {

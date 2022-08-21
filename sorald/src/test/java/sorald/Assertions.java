@@ -72,18 +72,6 @@ public class Assertions {
     }
 
     /**
-     * Assert the exact amount of violations the file has.
-     *
-     * @param file A file to analyze.
-     * @param rule A rule to analyze for.
-     * @param expectedRuleViolations expected number of violations.
-     */
-    public static void assertHasRuleViolation(File file, Rule rule, int expectedRuleViolations) {
-        var violations = ProjectScanner.scanProject(file, file.getParentFile(), rule);
-        assertThat(violations.size(), is(expectedRuleViolations));
-    }
-
-    /**
      * Assert that the provided file has no violations of the rule.
      *
      * @param file A file to analyze.
