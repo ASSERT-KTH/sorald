@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 import static sorald.Assertions.assertCompiles;
+import static sorald.Assertions.assertHasRuleViolation;
 import static sorald.Assertions.assertNoRuleViolations;
 
 import java.io.File;
@@ -75,7 +76,31 @@ public class ProcessorTest {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext)
                 throws IOException {
-            return ProcessorTestHelper.getTestCasesInTemporaryDirectory().map(Arguments::of);
+            return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
+                    .filter(
+                            testCase ->
+                                    !ProcessorTestHelper.hasCasesThatMakeProcessorIncomplete(
+                                            testCase))
+                    .map(Arguments::of);
+        }
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(IncompleteProcessorCaseFileProvider.class)
+    void testProcessNonRepairableCases(ProcessorTestHelper.ProcessorTestCase testCase) {
+        ProcessorTestHelper.runSorald(testCase);
+
+        assertHasRuleViolation(testCase.repairedFilePath().toFile(), testCase.getRule(), 1);
+    }
+
+    private static class IncompleteProcessorCaseFileProvider implements ArgumentsProvider {
+
+        @Override
+        public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext)
+                throws Exception {
+            return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
+                    .filter(ProcessorTestHelper::hasCasesThatMakeProcessorIncomplete)
+                    .map(Arguments::of);
         }
     }
 
@@ -232,6 +257,10 @@ public class ProcessorTest {
         public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext)
                 throws IOException {
             return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
+                    .filter(
+                            testCase ->
+                                    !ProcessorTestHelper.hasCasesThatMakeProcessorIncomplete(
+                                            testCase))
                     .filter(testCase -> testCase.expectedOutfile().isPresent())
                     .map(Arguments::of);
         }

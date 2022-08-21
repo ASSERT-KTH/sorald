@@ -153,6 +153,10 @@ public class ProcessorTestHelper {
         return !testFile.getName().startsWith("NOCOMPILE");
     }
 
+    public static boolean hasCasesThatMakeProcessorIncomplete(ProcessorTestCase testCase) {
+        return testCase.nonCompliantFile.getName().startsWith("INCOMPLETE");
+    }
+
     /**
      * Return a stream of all valid test cases, based on the tests files in {@link
      * ProcessorTestHelper#TEST_FILES_ROOT}. The test case source files are put in a temporary
@@ -164,14 +168,13 @@ public class ProcessorTestHelper {
     }
 
     /** Run sorald on the given test case. */
-    public static void runSorald(ProcessorTestCase testCase, String... extraArgs) throws Exception {
+    public static void runSorald(ProcessorTestCase testCase, String... extraArgs) {
         Assertions.assertHasRuleViolation(testCase.nonCompliantFile, testCase.getRule());
         runSorald(testCase.nonCompliantFile, testCase.getRule(), extraArgs);
     }
 
     /** Run sorald on the given file with the given checkClass * */
-    public static void runSorald(File originaFilesPath, Rule rule, String... extraArgs)
-            throws Exception {
+    public static void runSorald(File originaFilesPath, Rule rule, String... extraArgs) {
         String originalFileAbspath = originaFilesPath.getAbsolutePath();
 
         boolean brokenWithSniper = BROKEN_WITH_SNIPER.contains(rule);
