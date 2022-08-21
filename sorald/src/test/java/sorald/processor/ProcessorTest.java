@@ -91,6 +91,7 @@ public class ProcessorTest {
         ProcessorTestHelper.runSorald(testCase);
 
         assertHasRuleViolation(testCase.repairedFilePath().toFile(), testCase.getRule(), 1);
+        assertCompiles(testCase.repairedFilePath().toFile());
     }
 
     private static class IncompleteProcessorCaseFileProvider implements ArgumentsProvider {
