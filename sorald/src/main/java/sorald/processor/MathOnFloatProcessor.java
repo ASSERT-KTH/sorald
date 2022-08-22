@@ -1,10 +1,8 @@
 package sorald.processor;
 
 import java.util.List;
-import sorald.Constants;
 import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
-import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtTypedElement;
@@ -20,15 +18,9 @@ public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperat
     protected boolean canRepairInternal(CtBinaryOperator candidate) {
         CtElement parentOfCandidate = candidate.getParent();
 
-        if (((CtTypedElement<?>) parentOfCandidate)
+        return !((CtTypedElement<?>) parentOfCandidate)
                 .getType()
-                .equals(getFactory().Type().floatPrimitiveType())) {
-            return false;
-        }
-
-        return isArithmeticOperation(candidate)
-                && isOperationBetweenFloats(candidate)
-                && !withinStringConcatenation(candidate);
+                .equals(getFactory().Type().floatPrimitiveType());
     }
 
     @Override
@@ -42,7 +34,7 @@ public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperat
             if (binaryOperator.getRightHandOperand() instanceof CtBinaryOperator<?>) {
                 repairInternal((CtBinaryOperator<?>) binaryOperator.getRightHandOperand());
             } else {
-                if (!binaryOperator.getType().equals(getFactory().Type().doublePrimitiveType())) {
+                if (isOperationBetweenFloats(binaryOperator)) {
                     binaryOperator
                             .getLeftHandOperand()
                             .setTypeCasts(List.of(getFactory().Type().doublePrimitiveType()));
@@ -60,41 +52,14 @@ public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperat
         }
     }
 
-    private boolean isArithmeticOperation(CtBinaryOperator ctBinaryOperator) {
-        return ctBinaryOperator.getKind().compareTo(BinaryOperatorKind.PLUS) == 0
-                || ctBinaryOperator.getKind().compareTo(BinaryOperatorKind.MINUS) == 0
-                || ctBinaryOperator.getKind().compareTo(BinaryOperatorKind.MUL) == 0
-                || ctBinaryOperator.getKind().compareTo(BinaryOperatorKind.DIV) == 0;
-    }
-
     private boolean isOperationBetweenFloats(CtBinaryOperator ctBinaryOperator) {
         return ctBinaryOperator
                         .getLeftHandOperand()
                         .getType()
-                        .getSimpleName()
-                        .equals(Constants.FLOAT)
+                        .equals(getFactory().Type().floatPrimitiveType())
                 && ctBinaryOperator
                         .getRightHandOperand()
                         .getType()
-                        .getSimpleName()
-                        .equals(Constants.FLOAT);
-    }
-
-    private boolean withinStringConcatenation(CtBinaryOperator ctBinaryOperator) {
-        CtElement parent = ctBinaryOperator;
-        while (parent.getParent() instanceof CtBinaryOperator) {
-            parent = parent.getParent();
-        }
-        return ((CtBinaryOperator) parent).getKind().compareTo(BinaryOperatorKind.PLUS) == 0
-                && (((CtBinaryOperator) parent)
-                                .getLeftHandOperand()
-                                .getType()
-                                .getQualifiedName()
-                                .equals(Constants.STRING_QUALIFIED_NAME)
-                        || ((CtBinaryOperator) parent)
-                                .getRightHandOperand()
-                                .getType()
-                                .getQualifiedName()
-                                .equals(Constants.STRING_QUALIFIED_NAME));
+                        .equals(getFactory().Type().floatPrimitiveType());
     }
 }

@@ -16,11 +16,13 @@ class MathOnFloat {
         double d2 = ((double) (a)) - b;
         double d3 = ((double) (a)) * b;
         double d4 = ((double) (a)) / b;
-        double d5 = ((double) (((double) (a)) / b)) + b;
+        double d5 = ((((double) (a)) / b)) + b;
 
         double d6 = a + d1;
 
         double d7 = a + ((double) (a)) / b;
+
+        double d8 = (((double) (a)) + b) + (((double) (e)) * pi);
 
         int i = 16777216;
         int j = 1;

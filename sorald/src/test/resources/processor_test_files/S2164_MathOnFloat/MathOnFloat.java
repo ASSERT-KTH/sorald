@@ -21,6 +21,8 @@ class MathOnFloat {
 
         double d7 = a + a / b; // Noncompliant
 
+        double d8 = a + b + e * pi;
+
         int i = 16777216;
         int j = 1;
         int k = i + j;
