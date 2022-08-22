@@ -4,7 +4,6 @@ import java.util.List;
 import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtBinaryOperator;
-import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtTypedElement;
 import spoon.reflect.visitor.filter.TypeFilter;
 
@@ -16,9 +15,7 @@ public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperat
 
     @Override
     protected boolean canRepairInternal(CtBinaryOperator candidate) {
-        CtElement parentOfCandidate = candidate.getParent();
-
-        return !((CtTypedElement<?>) parentOfCandidate)
+        return !((CtTypedElement<?>) candidate.getParent())
                 .getType()
                 .equals(getFactory().Type().floatPrimitiveType());
     }
