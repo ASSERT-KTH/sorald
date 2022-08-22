@@ -31,6 +31,7 @@ import sorald.FileUtils;
 import sorald.TestHelper;
 import sorald.event.StatsMetadataKeys;
 import sorald.rule.Rule;
+import sorald.sonar.ProjectScanner;
 import sorald.sonar.SonarRule;
 import spoon.Launcher;
 import spoon.reflect.CtModel;
@@ -75,7 +76,49 @@ public class ProcessorTest {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext)
                 throws IOException {
-            return ProcessorTestHelper.getTestCasesInTemporaryDirectory().map(Arguments::of);
+            return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
+                    .filter(
+                            testCase ->
+                                    !ProcessorTestHelper.hasCasesThatMakeProcessorIncomplete(
+                                            testCase))
+                    .map(Arguments::of);
+        }
+    }
+
+    /**
+     * Test cases that process non-repairable cases in partially fixable rules. This ensures that
+     * the violations exist even after the repair is performed.
+     */
+    @ParameterizedTest
+    @ArgumentsSource(IncompleteProcessorCaseFileProvider.class)
+    void testProcessNonRepairableCases(ProcessorTestHelper.ProcessorTestCase testCase) {
+        // act
+        var violationsBefore =
+                ProjectScanner.scanProject(
+                        testCase.nonCompliantFile,
+                        testCase.nonCompliantFile.getParentFile(),
+                        testCase.getRule());
+        ProcessorTestHelper.runSorald(testCase);
+
+        // assert
+        assertCompiles(testCase.repairedFilePath().toFile());
+
+        var violationsAfter =
+                ProjectScanner.scanProject(
+                        testCase.repairedFilePath().toFile(),
+                        testCase.repairedFilePath().toFile().getParentFile(),
+                        testCase.getRule());
+        assertThat(violationsBefore, equalTo(violationsAfter));
+    }
+
+    private static class IncompleteProcessorCaseFileProvider implements ArgumentsProvider {
+
+        @Override
+        public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext)
+                throws Exception {
+            return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
+                    .filter(ProcessorTestHelper::hasCasesThatMakeProcessorIncomplete)
+                    .map(Arguments::of);
         }
     }
 
@@ -232,6 +275,10 @@ public class ProcessorTest {
         public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext)
                 throws IOException {
             return ProcessorTestHelper.getTestCasesInTemporaryDirectory()
+                    .filter(
+                            testCase ->
+                                    !ProcessorTestHelper.hasCasesThatMakeProcessorIncomplete(
+                                            testCase))
                     .filter(testCase -> testCase.expectedOutfile().isPresent())
                     .map(Arguments::of);
         }

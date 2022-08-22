@@ -237,3 +237,12 @@ for an example.
 > capture formatting that's of absolute relevance to Sorald itself and its
 > transformations. Overspecifying exact matches leads to unnecessary work down
 > the line.
+
+#### Testing partially fixable rules
+
+Some processors cannot repair all cases of a violation, and they are called
+`IncompleteProcessor`. To keep track of which cases we do not attempt to
+repair, one can create test files prefixed with `INCOMPLETE`. The test suite
+will ensure that the violation persists after Sorald is run. See
+[INCOMPLETE_DoNotCastFloat.java](sorald/src/test/resources/processor_test_files/S2164_MathOnFloat/INCOMPLETE_DoNotCastFloat.java)
+for an example.
