@@ -48,11 +48,11 @@ public class RepairStatisticsCollector implements SoraldEventHandler {
                 parseStart = INVALID_TIME;
                 break;
             case REPAIR_START:
-                repairStart = System.currentTimeMillis();
+                repairStart = System.nanoTime();
                 break;
             case REPAIR_END:
                 assert repairStart != INVALID_TIME;
-                long repairEnd = System.currentTimeMillis();
+                long repairEnd = System.nanoTime();
                 repairTotal += repairEnd - repairStart;
                 repairStart = INVALID_TIME;
                 break;
@@ -118,8 +118,8 @@ public class RepairStatisticsCollector implements SoraldEventHandler {
     }
 
     /** @return The total amount of time spent repairing */
-    public long getRepairTimeMs() {
-        return repairTotal;
+    public double getRepairTimeMs() {
+        return repairTotal / Math.pow(10, 6);
     }
 
     /** @return The total amount of execution time in milliseconds. */

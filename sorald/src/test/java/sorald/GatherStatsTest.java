@@ -78,7 +78,7 @@ public class GatherStatsTest {
                 greaterThan(0));
 
         assertThat(jo.getLong(StatsMetadataKeys.PARSE_TIME_MS), greaterThan(0L));
-        assertThat(jo.getLong(StatsMetadataKeys.REPAIR_TIME_MS), greaterThan(0L));
+        assertThat(jo.getDouble(StatsMetadataKeys.REPAIR_TIME_MS), greaterThan(0d));
         assertThat(jo.getLong(StatsMetadataKeys.START_TIME_MS), greaterThan(0L));
         assertThat(jo.getLong(StatsMetadataKeys.END_TIME_MS), greaterThan(0L));
         assertThat(jo.getLong(StatsMetadataKeys.TOTAL_TIME_MS), greaterThan(0L));
