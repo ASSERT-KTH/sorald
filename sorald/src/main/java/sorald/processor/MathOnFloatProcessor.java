@@ -20,12 +20,10 @@ public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperat
     protected boolean canRepairInternal(CtBinaryOperator candidate) {
         CtElement parentOfCandidate = candidate.getParent();
 
-        if (parentOfCandidate instanceof CtTypedElement<?>) {
-            if (((CtTypedElement<?>) parentOfCandidate)
-                    .getType()
-                    .equals(getFactory().Type().floatPrimitiveType())) {
-                return false;
-            }
+        if (((CtTypedElement<?>) parentOfCandidate)
+                .getType()
+                .equals(getFactory().Type().floatPrimitiveType())) {
+            return false;
         }
 
         return isArithmeticOperation(candidate)
