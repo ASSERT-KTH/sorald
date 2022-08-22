@@ -107,6 +107,8 @@ S2142: "InterruptedException" should not be ignored
 +
 S2164: Math should not be performed on floats
 +
+	(incomplete: does not cast the operands to double when the expected type of the result is float.)
++
 S2167: "compareTo" should not return "Integer.MIN_VALUE"
 +
 S2184: Math operands should be cast before assignment
