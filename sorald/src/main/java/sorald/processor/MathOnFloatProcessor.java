@@ -1,79 +1,62 @@
 package sorald.processor;
 
 import java.util.List;
-import sorald.Constants;
+import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
-import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
-import spoon.reflect.code.CtCodeSnippetExpression;
-import spoon.reflect.declaration.CtElement;
+import spoon.reflect.declaration.CtTypedElement;
 import spoon.reflect.visitor.filter.TypeFilter;
 
+@IncompleteProcessor(
+        description =
+                "does not cast the operands to double when the expected type of the result is float.")
 @ProcessorAnnotation(key = "S2164", description = "Math should not be performed on floats")
 public class MathOnFloatProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {
 
     @Override
     protected boolean canRepairInternal(CtBinaryOperator candidate) {
-        List<CtBinaryOperator> binaryOperatorChildren =
-                candidate.getElements(new TypeFilter<>(CtBinaryOperator.class));
-        if (binaryOperatorChildren.size()
-                == 1) { // in a nested binary operator expression, only one will be processed.
-            if (isArithmeticOperation(candidate)
-                    && isOperationBetweenFloats(candidate)
-                    && !withinStringConcatenation(candidate)) {
-                return true;
-            }
-        }
-        return false;
+        return !((CtTypedElement<?>) candidate.getParent())
+                .getType()
+                .equals(getFactory().Type().floatPrimitiveType());
     }
 
     @Override
     protected void repairInternal(CtBinaryOperator element) {
-        CtCodeSnippetExpression newLeftHandOperand =
-                element.getFactory()
-                        .createCodeSnippetExpression("(double) " + element.getLeftHandOperand());
-        element.setLeftHandOperand(newLeftHandOperand);
-        CtCodeSnippetExpression newRightHandOperand =
-                element.getFactory()
-                        .createCodeSnippetExpression("(double) " + element.getRightHandOperand());
-        element.setRightHandOperand(newRightHandOperand);
-    }
+        List<CtBinaryOperator> binaryOperatorChildren =
+                element.getElements(new TypeFilter<>(CtBinaryOperator.class));
+        for (CtBinaryOperator binaryOperator : binaryOperatorChildren) {
+            if (binaryOperator.getLeftHandOperand() instanceof CtBinaryOperator<?>) {
+                repairInternal((CtBinaryOperator<?>) binaryOperator.getLeftHandOperand());
+            }
+            if (binaryOperator.getRightHandOperand() instanceof CtBinaryOperator<?>) {
+                repairInternal((CtBinaryOperator<?>) binaryOperator.getRightHandOperand());
+            } else {
+                if (isOperationBetweenFloats(binaryOperator)) {
+                    binaryOperator
+                            .getLeftHandOperand()
+                            .setTypeCasts(List.of(getFactory().Type().doublePrimitiveType()));
 
-    private boolean isArithmeticOperation(CtBinaryOperator ctBinaryOperator) {
-        return ctBinaryOperator.getKind().compareTo(BinaryOperatorKind.PLUS) == 0
-                || ctBinaryOperator.getKind().compareTo(BinaryOperatorKind.MINUS) == 0
-                || ctBinaryOperator.getKind().compareTo(BinaryOperatorKind.MUL) == 0
-                || ctBinaryOperator.getKind().compareTo(BinaryOperatorKind.DIV) == 0;
+                    /**
+                     * We also set the type so that the other operand is not explicitly cast as JVM
+                     * implicitly does that For example, `(double) a + (double) b` is equivalent to
+                     * `(double) a + b`. Thus, we provide a cleaner repair.
+                     */
+                    binaryOperator.setType(getFactory().Type().doublePrimitiveType());
+                }
+                // We do not need to cast the type of the right hand operand as it is already a
+                // double
+            }
+        }
     }
 
     private boolean isOperationBetweenFloats(CtBinaryOperator ctBinaryOperator) {
         return ctBinaryOperator
                         .getLeftHandOperand()
                         .getType()
-                        .getSimpleName()
-                        .equals(Constants.FLOAT)
+                        .equals(getFactory().Type().floatPrimitiveType())
                 && ctBinaryOperator
                         .getRightHandOperand()
                         .getType()
-                        .getSimpleName()
-                        .equals(Constants.FLOAT);
-    }
-
-    private boolean withinStringConcatenation(CtBinaryOperator ctBinaryOperator) {
-        CtElement parent = ctBinaryOperator;
-        while (parent.getParent() instanceof CtBinaryOperator) {
-            parent = parent.getParent();
-        }
-        return ((CtBinaryOperator) parent).getKind().compareTo(BinaryOperatorKind.PLUS) == 0
-                && (((CtBinaryOperator) parent)
-                                .getLeftHandOperand()
-                                .getType()
-                                .getQualifiedName()
-                                .equals(Constants.STRING_QUALIFIED_NAME)
-                        || ((CtBinaryOperator) parent)
-                                .getRightHandOperand()
-                                .getType()
-                                .getQualifiedName()
-                                .equals(Constants.STRING_QUALIFIED_NAME));
+                        .equals(getFactory().Type().floatPrimitiveType());
     }
 }

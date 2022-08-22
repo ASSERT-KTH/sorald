@@ -1,27 +1,28 @@
+
 // Test for rule s2164
 
 class MathOnFloat {
 
     float e = 2.71f;
     float pi = 3.14f;
-    double c = e * pi; // Noncompliant
+    double c = (double) e * pi;
 
     // Tests from https://github.com/SonarSource/sonar-java/blob/master/java-checks-test-sources/src/main/java/checks/MathOnFloatCheck.java
     void myMethod() {
         float a = 16777216.0f;
         float b = 1.0f;
 
-        double d1 = a + b; // Noncompliant ; addition is still between 2 floats
-        double d2 = a - b; // Noncompliant
-        double d3 = a * b; // Noncompliant
-        double d4 = a / b; // Noncompliant
-        double d5 = a / b + b; // Noncompliant
+        double d1 = ((double) (a)) + b;
+        double d2 = ((double) (a)) - b;
+        double d3 = ((double) (a)) * b;
+        double d4 = ((double) (a)) / b;
+        double d5 = ((((double) (a)) / b)) + b;
 
         double d6 = a + d1;
 
-        double d7 = a + a / b; // Noncompliant
+        double d7 = a + ((double) (a)) / b;
 
-        double d8 = a + b + e * pi; // Noncompliant
+        double d8 = (((double) (a)) + b) + (((double) (e)) * pi);
 
         int i = 16777216;
         int j = 1;
