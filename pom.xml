@@ -60,7 +60,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.11</version>
+            <version>1.4.1</version>
             <scope>
                 <!--Enabled for tests to make it possible to silence INFO log output from SonarJava-->
                 test
@@ -81,7 +81,7 @@
         <dependency>
             <groupId>org.eclipse.jgit</groupId>
             <artifactId>org.eclipse.jgit</artifactId>
-            <version>6.2.0.202206071550-r</version>
+            <version>6.3.0.202209071007-r</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -143,7 +143,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.4.0</version>
+                <version>3.4.1</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -168,7 +168,7 @@
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>
-                <version>2.24.1</version>
+                <version>2.27.0</version>
                 <configuration>
                     <java>
                         <includes>
