@@ -98,11 +98,10 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
         passedRuleParameters
                 .keySet()
                 .forEach(
-                        rule -> {
-                            parsedRuleParameters.put(
-                                    RuleKey.parse(String.format("java:%s", rule.getKey())),
-                                    passedRuleParameters.get(rule));
-                        });
+                        rule ->
+                                parsedRuleParameters.put(
+                                        RuleKey.parse(String.format("java:%s", rule.getKey())),
+                                        passedRuleParameters.get(rule)));
         return parsedRuleParameters;
     }
 
