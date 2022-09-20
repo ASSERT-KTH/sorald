@@ -2,8 +2,8 @@ package sorald.sonar;
 
 import java.nio.file.Path;
 import java.util.Objects;
-import org.sonarsource.sonarlint.core.analysis.api.TextRange;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.Issue;
+import org.sonarsource.sonarlint.core.commons.TextRange;
 import sorald.rule.RuleViolation;
 
 /** Facade around {@link org.sonarsource.sonarlint.core.client.api.common.analysis.Issue} */

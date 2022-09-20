@@ -18,7 +18,7 @@ public class SonarRule implements Rule {
         SonarLintRuleDefinition ruleDefinition =
                 SonarLintEngine.getAllRulesDefinitionsByKey().get(withLanguage(key));
         this.name = ruleDefinition.getName();
-        this.type = SonarRuleType.valueOf(ruleDefinition.getType());
+        this.type = SonarRuleType.valueOf(String.valueOf(ruleDefinition.getType()));
     }
 
     private static String withoutLanguage(String ruleKey) {

@@ -5,10 +5,10 @@ import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
-import org.sonarsource.sonarlint.core.client.api.common.RuleKey;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.Issue;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.IssueListener;
 import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneAnalysisConfiguration;
+import org.sonarsource.sonarlint.core.commons.RuleKey;
 import sorald.SoraldConfig;
 import sorald.cli.CLIConfigForStaticAnalyzer;
 import sorald.rule.Rule;
@@ -98,11 +98,10 @@ public class SonarStaticAnalyzer implements StaticAnalyzer {
         passedRuleParameters
                 .keySet()
                 .forEach(
-                        rule -> {
-                            parsedRuleParameters.put(
-                                    RuleKey.parse(String.format("java:%s", rule.getKey())),
-                                    passedRuleParameters.get(rule));
-                        });
+                        rule ->
+                                parsedRuleParameters.put(
+                                        RuleKey.parse(String.format("java:%s", rule.getKey())),
+                                        passedRuleParameters.get(rule)));
         return parsedRuleParameters;
     }
 
