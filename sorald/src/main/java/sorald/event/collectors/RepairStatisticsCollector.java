@@ -87,52 +87,72 @@ public class RepairStatisticsCollector implements SoraldEventHandler {
         eventsMap.get(key).add(event);
     }
 
-    /** @return All repair events that were performed without errors. */
+    /**
+     * @return All repair events that were performed without errors.
+     */
     public Map<String, List<RepairEvent>> performedRepairs() {
         return Collections.unmodifiableMap(keyToRepairs);
     }
 
-    /** @return All repair events that crashed during execution. */
+    /**
+     * @return All repair events that crashed during execution.
+     */
     public Map<String, List<RepairEvent>> crashedRepairs() {
         return Collections.unmodifiableMap(keyToFailures);
     }
 
-    /** @return Mapping from key to all warnings mined for that key before repairs. */
+    /**
+     * @return Mapping from key to all warnings mined for that key before repairs.
+     */
     public Map<String, List<MinedViolationEvent>> minedViolationsBefore() {
         return Collections.unmodifiableMap(minedViolationsBefore);
     }
 
-    /** @return Mapping from key to all warnings mined for that key after repairs. */
+    /**
+     * @return Mapping from key to all warnings mined for that key after repairs.
+     */
     public Map<String, List<MinedViolationEvent>> minedViolationsAfter() {
         return Collections.unmodifiableMap(minedViolationsAfter);
     }
 
-    /** @return All crash event data */
+    /**
+     * @return All crash event data
+     */
     public List<SoraldEvent> getCrashes() {
         return Collections.unmodifiableList(crashes);
     }
 
-    /** @return The total amount of time spent parsing */
+    /**
+     * @return The total amount of time spent parsing
+     */
     public long getParseTimeMs() {
         return parseTotal;
     }
 
-    /** @return The total amount of time spent repairing */
+    /**
+     * @return The total amount of time spent repairing
+     */
     public double getRepairTimeMs() {
         return repairTotal / Math.pow(10, 6);
     }
 
-    /** @return The total amount of execution time in milliseconds. */
+    /**
+     * @return The total amount of execution time in milliseconds.
+     */
     public long getTotalTimeMs() {
         return execEnd - execStart;
     }
 
-    /** @return The start time of execution in milliseconds from the unix epoch. */
+    /**
+     * @return The start time of execution in milliseconds from the unix epoch.
+     */
     public long getStartTimeMs() {
         return execStart;
     }
 
-    /** @return The end time of execution in milliseconds from the unix epoch. */
+    /**
+     * @return The end time of execution in milliseconds from the unix epoch.
+     */
     public long getEndTimeMs() {
         return execEnd;
     }

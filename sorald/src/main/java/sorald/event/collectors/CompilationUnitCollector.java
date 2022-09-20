@@ -29,7 +29,9 @@ public class CompilationUnitCollector implements SoraldEventHandler {
             collectCompilationUnit(((RepairEvent) event).getElement());
         }
     }
-    /** @return All unique compilation units that have been collected from repair events. */
+    /**
+     * @return All unique compilation units that have been collected from repair events.
+     */
     public Set<CtCompilationUnit> getCollectedCompilationUnits() {
         return newIdentityHashSet(pathToCu.values());
     }

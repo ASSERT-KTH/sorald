@@ -9,6 +9,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 /** Annotation to mark that a processor is only a partial fix for its associated rule. */
 public @interface IncompleteProcessor {
-    /** @return A description as to why and how the processor is incomplete. */
+    /**
+     * @return A description as to why and how the processor is incomplete.
+     */
     String description();
 }

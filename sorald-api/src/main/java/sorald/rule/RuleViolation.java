@@ -9,25 +9,39 @@ import sorald.Constants;
 /** Representation of a violation of some Sonar rule */
 public abstract class RuleViolation implements Comparable<RuleViolation> {
 
-    /** @return The line the element that violates the rule starts on. */
+    /**
+     * @return The line the element that violates the rule starts on.
+     */
     public abstract int getStartLine();
 
-    /** @return The line the element that violates the rule ends on. */
+    /**
+     * @return The line the element that violates the rule ends on.
+     */
     public abstract int getEndLine();
 
-    /** @return The column the element that violates the rule starts on. */
+    /**
+     * @return The column the element that violates the rule starts on.
+     */
     public abstract int getStartCol();
 
-    /** @return The column the element that violates the rule ends on. */
+    /**
+     * @return The column the element that violates the rule ends on.
+     */
     public abstract int getEndCol();
 
-    /** @return Absolute and normalized path to the analyzed file. */
+    /**
+     * @return Absolute and normalized path to the analyzed file.
+     */
     public abstract Path getAbsolutePath();
 
-    /** @return The key of the violated rule. */
+    /**
+     * @return The key of the violated rule.
+     */
     public abstract String getRuleKey();
 
-    /** @return A message describing the problem. */
+    /**
+     * @return A message describing the problem.
+     */
     public String getMessage() {
         throw new UnsupportedOperationException(
                 "getMessage() should not be called on this instance");

@@ -21,7 +21,9 @@ public class Processors {
                 .orElse(null);
     }
 
-    /** @return A list of all processors sorted by name. */
+    /**
+     * @return A list of all processors sorted by name.
+     */
     public static List<Class<? extends SoraldAbstractProcessor<?>>> getAllProcessors() {
         ServiceLoader<ProcessorRepository> loader = ServiceLoader.load(ProcessorRepository.class);
         return loader.stream()

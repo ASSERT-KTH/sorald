@@ -125,7 +125,9 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
      */
     protected abstract void repairInternal(E element);
 
-    /** @return Whether or not this processor is incomplete. */
+    /**
+     * @return Whether or not this processor is incomplete.
+     */
     public boolean isIncomplete() {
         return getClass().getAnnotation(IncompleteProcessor.class) != null;
     }
@@ -181,7 +183,9 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
         return getNbFixes() < maxFixes && bestFits.containsKey(element);
     }
 
-    /** @return The numerical identifier of the rule this processor is related to */
+    /**
+     * @return The numerical identifier of the rule this processor is related to
+     */
     public String getRuleKey() {
         return Arrays.stream(getClass().getAnnotationsByType(ProcessorAnnotation.class))
                 .map(ProcessorAnnotation::key)
@@ -193,7 +197,9 @@ public abstract class SoraldAbstractProcessor<E extends CtElement> extends Abstr
                 .toString();
     }
 
-    /** @return The concrete type that this processor accepts. */
+    /**
+     * @return The concrete type that this processor accepts.
+     */
     @SuppressWarnings("unchecked")
     public Class<E> getTargetType() {
         assert getProcessedElementTypes().size() == 1;
