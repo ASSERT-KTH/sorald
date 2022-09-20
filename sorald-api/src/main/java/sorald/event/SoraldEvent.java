@@ -4,6 +4,8 @@ package sorald.event;
 @FunctionalInterface
 public interface SoraldEvent {
 
-    /** @return The type of this event */
+    /**
+     * @return The type of this event
+     */
     EventType type();
 }

@@ -42,22 +42,30 @@ public class MinerStatisticsCollector implements SoraldEventHandler {
         }
     }
 
-    /** @return The start time of mining */
+    /**
+     * @return The start time of mining
+     */
     public Date getMiningStartTime() {
         return new Date(miningStartTime);
     }
 
-    /** @return The end time of mining */
+    /**
+     * @return The end time of mining
+     */
     public Date getMiningEndTime() {
         return new Date(miningEndTime);
     }
 
-    /** @return The duration of mining in millis */
+    /**
+     * @return The duration of mining in millis
+     */
     public long getTotalMiningTime() {
         return miningEndTime - miningStartTime;
     }
 
-    /** @return All mined rules data */
+    /**
+     * @return All mined rules data
+     */
     public List<MinedRule> getMinedRules() {
         return ruleToViolations.entrySet().stream()
                 .map(

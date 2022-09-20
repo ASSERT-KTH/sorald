@@ -145,7 +145,9 @@ public class XxeProcessingProcessor extends SoraldAbstractProcessor<CtInvocation
         return method;
     }
 
-    /** @return A local variable initialized to the given expression. */
+    /**
+     * @return A local variable initialized to the given expression.
+     */
     private <T> CtLocalVariable<T> createLocalVariable(String variableName, CtExpression<T> expr) {
         return getFactory().createLocalVariable(expr.getType().clone(), variableName, expr.clone());
     }

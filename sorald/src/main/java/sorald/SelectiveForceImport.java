@@ -16,7 +16,9 @@ import spoon.reflect.visitor.LexicalScope;
 public class SelectiveForceImport extends ForceImportProcessor {
     private final Set<CtTypeReference<?>> excludedReferences;
 
-    /** @param referencesToIgnore A collection of references to ignore when force-importing. */
+    /**
+     * @param referencesToIgnore A collection of references to ignore when force-importing.
+     */
     public SelectiveForceImport(Collection<CtTypeReference<?>> referencesToIgnore) {
         // use identity rather than equality to identify existing references to avoid mistaking
         // clones for originals
