@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 import picocli.CommandLine;
 import sorald.*;
 import sorald.event.EventHelper;
@@ -24,6 +29,7 @@ import sorald.sonar.SonarRule;
 import sorald.util.MavenUtils;
 
 /** The CLI command for the primary repair application. */
+@Mojo(name = Constants.REPAIR_COMMAND_NAME)
 @CommandLine.Command(
         name = Constants.REPAIR_COMMAND_NAME,
         mixinStandardHelpOptions = true,
@@ -32,6 +38,7 @@ class RepairCommand extends BaseCommand {
     String ruleKey;
     List<RuleViolation> specifiedRuleViolations = List.of();
 
+    @Parameter(defaultValue = "${project.basedir}", readonly = true)
     @CommandLine.Option(
             names = {Constants.ARG_SOURCE},
             description = "The path to the file or folder to be analyzed and possibly repaired.",
@@ -42,7 +49,13 @@ class RepairCommand extends BaseCommand {
     @CommandLine.ArgGroup(multiplicity = "1")
     Rules rules;
 
+    @Override
+    public void execute() throws MojoExecutionException, MojoFailureException {
+        getLog().info("Starting repairing of Sonar warnings.");
+    }
+
     static class Rules {
+        @Parameter(property = Constants.ARG_RULE_KEY, required = true)
         @CommandLine.Option(
                 names = {Constants.ARG_RULE_KEY},
                 description =
@@ -108,7 +121,7 @@ class RepairCommand extends BaseCommand {
 
         Set<RuleViolation> ruleViolations = resolveRuleViolations(eventHandlers, classpath);
         if (ruleViolations.isEmpty()) {
-            System.out.println("No rule violations found, nothing to do ...");
+            getLog().info("No rule violations found, nothing to do ...");
         } else {
             SoraldAbstractProcessor<?> proc =
                     new Repair(config, classpath, eventHandlers).repair(ruleViolations);

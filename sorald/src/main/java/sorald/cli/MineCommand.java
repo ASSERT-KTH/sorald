@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.json.JSONObject;
 import picocli.CommandLine;
 import sorald.Constants;
@@ -22,37 +26,44 @@ import sorald.sonar.SonarRuleType;
 import sorald.util.MavenUtils;
 
 /** CLI Command for Sorald's mining functionality. */
+@Mojo(name = Constants.MINE_COMMAND_NAME)
 @CommandLine.Command(
         name = Constants.MINE_COMMAND_NAME,
         mixinStandardHelpOptions = true,
         description = "Mine a project for Sonar warnings.")
 class MineCommand extends BaseCommand {
 
+    @Parameter(property = "source", defaultValue = "${project.basedir}", readonly = true)
     @CommandLine.Option(
             names = {Constants.ARG_SOURCE},
             description = "The path to the file or folder to be analyzed and possibly repaired.")
     File source;
 
+    @Parameter(property = Constants.ARG_STATS_ON_GIT_REPOS)
     @CommandLine.Option(
             names = Constants.ARG_STATS_ON_GIT_REPOS,
             description = "If the stats should be computed on git repos.")
     boolean statsOnGitRepos;
 
+    @Parameter(property = Constants.ARG_MINER_OUTPUT_FILE)
     @CommandLine.Option(
             names = Constants.ARG_MINER_OUTPUT_FILE,
             description = "The path to the output file.")
     File minerOutputFile;
 
+    @Parameter(property = Constants.ARG_STATS_ON_GIT_REPOS)
     @CommandLine.Option(
             names = Constants.ARG_GIT_REPOS_LIST,
             description = "The path to the repos list.")
     File reposList;
 
+    @Parameter(property = Constants.ARG_TEMP_DIR)
     @CommandLine.Option(
             names = Constants.ARG_TEMP_DIR,
             description = "The path to the temp directory.")
     File tempDir;
 
+    @Parameter(property = Constants.ARG_RULE_TYPES)
     @CommandLine.Option(
             names = {Constants.ARG_RULE_TYPES},
             converter = IRuleTypeConverter.class,
@@ -62,12 +73,14 @@ class MineCommand extends BaseCommand {
             split = ",")
     private List<IRuleType> ruleTypes = new ArrayList<>();
 
+    @Parameter(property = Constants.ARG_HANDLED_RULES, defaultValue = "false")
     @CommandLine.Option(
             names = {Constants.ARG_HANDLED_RULES},
             description =
                     "When this argument is used, Sorald only mines violations of the rules that can be fixed by Sorald.")
     private boolean handledRules;
 
+    @Parameter(property = Constants.ARG_RULE_KEYS)
     @CommandLine.Option(
             names = {Constants.ARG_RULE_KEYS},
             arity = "1..*",
@@ -76,6 +89,7 @@ class MineCommand extends BaseCommand {
             split = ",")
     List<String> ruleKeys;
 
+    @Parameter(property = Constants.ARG_RULE_PARAMETERS)
     @CommandLine.Option(
             names = {Constants.ARG_RULE_PARAMETERS},
             description = {
@@ -143,6 +157,15 @@ class MineCommand extends BaseCommand {
         if (ruleParameters != null && !ruleParameters.exists()) {
             throw new CommandLine.ParameterException(
                     spec.commandLine(), String.format("%s is not a valid file", ruleParameters));
+        }
+    }
+
+    @Override
+    public void execute() throws MojoExecutionException, MojoFailureException {
+        try {
+            call();
+        } catch (Exception e) {
+            getLog().error(e);
         }
     }
 
