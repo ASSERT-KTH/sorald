@@ -33,37 +33,32 @@ import sorald.util.MavenUtils;
         description = "Mine a project for Sonar warnings.")
 class MineCommand extends BaseCommand {
 
-    @Parameter(property = "source", defaultValue = "${project.basedir}", readonly = true)
+    @Parameter(defaultValue = "${project.basedir}", readonly = true)
     @CommandLine.Option(
             names = {Constants.ARG_SOURCE},
             description = "The path to the file or folder to be analyzed and possibly repaired.")
     File source;
 
-    @Parameter(property = Constants.ARG_STATS_ON_GIT_REPOS)
     @CommandLine.Option(
             names = Constants.ARG_STATS_ON_GIT_REPOS,
             description = "If the stats should be computed on git repos.")
     boolean statsOnGitRepos;
 
-    @Parameter(property = Constants.ARG_MINER_OUTPUT_FILE)
     @CommandLine.Option(
             names = Constants.ARG_MINER_OUTPUT_FILE,
             description = "The path to the output file.")
     File minerOutputFile;
 
-    @Parameter(property = Constants.ARG_STATS_ON_GIT_REPOS)
     @CommandLine.Option(
             names = Constants.ARG_GIT_REPOS_LIST,
             description = "The path to the repos list.")
     File reposList;
 
-    @Parameter(property = Constants.ARG_TEMP_DIR)
     @CommandLine.Option(
             names = Constants.ARG_TEMP_DIR,
             description = "The path to the temp directory.")
     File tempDir;
 
-    @Parameter(property = Constants.ARG_RULE_TYPES)
     @CommandLine.Option(
             names = {Constants.ARG_RULE_TYPES},
             converter = IRuleTypeConverter.class,
@@ -73,14 +68,13 @@ class MineCommand extends BaseCommand {
             split = ",")
     private List<IRuleType> ruleTypes = new ArrayList<>();
 
-    @Parameter(property = Constants.ARG_HANDLED_RULES, defaultValue = "false")
+    @Parameter(property = "handledRules")
     @CommandLine.Option(
             names = {Constants.ARG_HANDLED_RULES},
             description =
                     "When this argument is used, Sorald only mines violations of the rules that can be fixed by Sorald.")
     private boolean handledRules;
 
-    @Parameter(property = Constants.ARG_RULE_KEYS)
     @CommandLine.Option(
             names = {Constants.ARG_RULE_KEYS},
             arity = "1..*",
@@ -107,7 +101,9 @@ class MineCommand extends BaseCommand {
         validateArgs();
 
         List<Rule> checks;
-        if (ruleKeys == null) {
+        // If rule keys are specified, we ignore other rule filters
+        // ruleKeys is null for CLI, but an empty list for maven-plugin if not provided
+        if (ruleKeys == null || ruleKeys.isEmpty()) {
             checks = RuleProvider.inferRules(ruleTypes, handledRules);
         } else {
             checks = ruleKeys.stream().map(SonarRule::new).collect(Collectors.toList());

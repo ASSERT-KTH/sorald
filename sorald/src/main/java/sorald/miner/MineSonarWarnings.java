@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Consumer;
+import org.apache.maven.plugin.logging.SystemStreamLog;
 import org.eclipse.jgit.api.Git;
 import sorald.FileUtils;
 import sorald.cli.CLIConfigForStaticAnalyzer;
@@ -70,7 +71,7 @@ public class MineSonarWarnings {
 
         warnings.entrySet().stream()
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-                .forEach(System.out::println);
+                .forEach(entry -> new SystemStreamLog().info(entry.toString()));
     }
 
     /**
