@@ -83,7 +83,6 @@ class MineCommand extends BaseCommand {
             split = ",")
     List<String> ruleKeys;
 
-    @Parameter(property = Constants.ARG_RULE_PARAMETERS)
     @CommandLine.Option(
             names = {Constants.ARG_RULE_PARAMETERS},
             description = {
