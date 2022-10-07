@@ -66,6 +66,8 @@ jobs:
         # this is a hack to fetch some test runtime dependencies
         run: timeout 10 mvn -B test || echo "Done fetching dependencies"
         shell: bash
+      - name: Run integration tests
+        run: mvn -B verify -DskipTests
       - name: Run tests
         run: mvn test
       - name: Test memory-constrained execution with segment repair
