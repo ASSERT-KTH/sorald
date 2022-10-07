@@ -95,7 +95,7 @@ jobs:
           architecture: x64
           distribution: ${{ env.JAVA_DISTRIBUTION }}
       - name: Run integration tests
-        run: mvn clean verify -DskipUnitTests -pl sorald
+        run: mvn clean verify -DskipUnitTests
 
   test-support-scripts:
     runs-on: ubuntu-latest
