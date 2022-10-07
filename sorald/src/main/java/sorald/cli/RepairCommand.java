@@ -9,6 +9,9 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.codehaus.plexus.component.configurator.BasicComponentConfigurator;
+import org.codehaus.plexus.component.configurator.ComponentConfigurationException;
+import org.codehaus.plexus.component.configurator.converters.basic.AbstractBasicConverter;
 import picocli.CommandLine;
 import sorald.*;
 import sorald.event.EventHelper;
@@ -27,8 +30,12 @@ import sorald.sonar.SonarProcessorRepository;
 import sorald.sonar.SonarRule;
 import sorald.util.MavenUtils;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.inject.Named;
+
 /** The CLI command for the primary repair application. */
-@Mojo(name = Constants.REPAIR_COMMAND_NAME)
+@Mojo(name = Constants.REPAIR_COMMAND_NAME, configurator = "rules-mojo-configurator")
 @CommandLine.Command(
         name = Constants.REPAIR_COMMAND_NAME,
         mixinStandardHelpOptions = true,
@@ -46,15 +53,32 @@ class RepairCommand extends BaseCommand {
     File source;
 
     @CommandLine.ArgGroup(multiplicity = "1")
+    @Parameter(property = "ruleKey", required = true)
     Rules rules;
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        getLog().info("Starting repairing of Sonar warnings.");
+        try {
+            call();
+        } catch (Exception e) {
+            getLog().error(e);
+        }
+    }
+    static class RulesConverterForMojo extends AbstractBasicConverter {
+        @Override
+        protected Object fromString(String userInput) throws ComponentConfigurationException {
+            Rules parsedRule = new Rules(); // Dua Lip was probably writing Java while making the song :P
+            parsedRule.ruleKey = userInput;
+            return parsedRule;
+        }
+
+        @Override
+        public boolean canConvert(Class<?> aClass) {
+            return aClass.equals(Rules.class);
+        }
     }
 
     static class Rules {
-        @Parameter(property = Constants.ARG_RULE_KEY, required = true)
         @CommandLine.Option(
                 names = {Constants.ARG_RULE_KEY},
                 description =
@@ -269,10 +293,10 @@ class RepairCommand extends BaseCommand {
                                                         "no valid rule key in input, should not happen!")));
     }
 
+    // regression: we do not print the command `spec.commandline()` now
     private void validateRuleKey() {
         if (Processors.getProcessor(ruleKey) == null) {
-            throw new CommandLine.ParameterException(
-                    spec.commandLine(),
+            throw new RuntimeException(
                     "Sorry, repair not available for rule "
                             + ruleKey
                             + ". See the available rules below.");
@@ -316,4 +340,15 @@ class RepairCommand extends BaseCommand {
         config.setRuleParameters(new HashMap<>());
         return config;
     }
+}
+
+@Named("rules-mojo-configurator")
+class RulesMojoConfigurator extends BasicComponentConfigurator {
+    @PostConstruct
+    public void init() {
+        converterLookup.registerConverter(new RepairCommand.RulesConverterForMojo());
+    }
+
+    @PreDestroy
+    public void destroy() { }
 }
