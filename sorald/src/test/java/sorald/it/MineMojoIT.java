@@ -23,6 +23,21 @@ public class MineMojoIT {
         assertThat(result).isSuccessful();
     }
 
+    @MavenTest
+    @DisplayName("Mine works when configured in the POM file")
+    void pom_configured(MavenExecutionResult result) throws IOException {
+        Path expectedOutputFile =
+                Paths.get(
+                        "target/maven-it/sorald/it/MineMojoIT/pom_configured/project/src/test/resources/expected-output.txt");
+        List<String> expectedOutput = Files.readAllLines(expectedOutputFile);
+
+        assertThat(result)
+                .isSuccessful()
+                .out()
+                .plain()
+                .contains(expectedOutput.toArray(new String[0]));
+    }
+
     @MavenGoal("${project.groupId}:${project.artifactId}:${project.version}:mine")
     @MavenTest
     @DisplayName("Mine works on a non-empty Maven project")
