@@ -307,6 +307,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <skipTests>${skipIntegrationTests}</skipTests>
+                </configuration>
             </plugin>
         </plugins>
     </build>
