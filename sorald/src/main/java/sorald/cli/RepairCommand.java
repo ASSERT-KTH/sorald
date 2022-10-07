@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.inject.Named;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
@@ -29,10 +32,6 @@ import sorald.sonar.ProjectScanner;
 import sorald.sonar.SonarProcessorRepository;
 import sorald.sonar.SonarRule;
 import sorald.util.MavenUtils;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.inject.Named;
 
 /** The CLI command for the primary repair application. */
 @Mojo(name = Constants.REPAIR_COMMAND_NAME, configurator = "rules-mojo-configurator")
@@ -64,10 +63,12 @@ class RepairCommand extends BaseCommand {
             getLog().error(e);
         }
     }
+
     static class RulesConverterForMojo extends AbstractBasicConverter {
         @Override
         protected Object fromString(String userInput) throws ComponentConfigurationException {
-            Rules parsedRule = new Rules(); // Dua Lip was probably writing Java while making the song :P
+            Rules parsedRule =
+                    new Rules(); // Dua Lip was probably writing Java while composing the song :P
             parsedRule.ruleKey = userInput;
             return parsedRule;
         }
@@ -350,5 +351,5 @@ class RulesMojoConfigurator extends BasicComponentConfigurator {
     }
 
     @PreDestroy
-    public void destroy() { }
+    public void destroy() {}
 }
