@@ -96,8 +96,7 @@ jobs:
           distribution: ${{ env.JAVA_DISTRIBUTION }}
       - name: Run integration tests
         run: |
-          mvn -B package -DskipUnitTests
-          mvn -B clean verify -DskipUnitTests
+          mvn -B clean install -DskipUnitTests
 
   test-support-scripts:
     runs-on: ubuntu-latest
