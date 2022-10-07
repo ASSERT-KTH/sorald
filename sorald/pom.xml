@@ -294,15 +294,6 @@
 
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <configuration>
-                    <!--
-                     ! currently needed to run integration tests.
-                    -->
-                    <systemProperties>
-                        <maven.version>3.8.6</maven.version>
-                        <maven.home>/opt/maven</maven.home>
-                    </systemProperties>
-                </configuration>
                 <executions>
                     <execution>
                         <goals>
