@@ -69,7 +69,7 @@ jobs:
       - name: Run tests
         run: mvn test
       - name: Run integration tests
-        run: mvn failsafe:integration-test --errors --fail-at-end
+        run: mvn -B install
       - name: Test memory-constrained execution with segment repair
         shell: bash
         run: .github/mem-constrained-exec.sh
