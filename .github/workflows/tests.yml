@@ -66,8 +66,6 @@ jobs:
         # this is a hack to fetch some test runtime dependencies
         run: timeout 10 mvn -B test || echo "Done fetching dependencies"
         shell: bash
-      - name: Run integration tests
-        run: mvn -B verify -DskipUnitTests
       - name: Run tests
         run: mvn test
       - name: Test memory-constrained execution with segment repair
@@ -96,9 +94,10 @@ jobs:
           java-package: jdk
           architecture: x64
           distribution: ${{ env.JAVA_DISTRIBUTION }}
+      - name: Use Maven dependency cache
+        uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77 # tag=v3.0.8
       - name: Run integration tests
         run: |
-          mvn -B package -DskipUnitTests
           mvn -B install -DskipUnitTests
 
   test-support-scripts:
