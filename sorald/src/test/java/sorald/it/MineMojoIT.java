@@ -20,7 +20,7 @@ public class MineMojoIT {
     @MavenTest
     @DisplayName("Mine works on an empty Maven project")
     void empty_project(MavenExecutionResult result) throws IOException {
-        System.out.println("aman" + Files.readString(result.getMavenLog().getStdout()));
+        Files.readString(result.getMavenLog().getStdout());
         assertThat(result).isSuccessful();
     }
 
@@ -28,7 +28,7 @@ public class MineMojoIT {
     @MavenTest
     @DisplayName("Mine works on a non-empty Maven project")
     void mine_for_violations(MavenExecutionResult result) throws IOException {
-        System.out.println("aman" + Files.readString(result.getMavenLog().getStdout()));
+        Files.readString(result.getMavenLog().getStdout());
 
         Path expectedOutputFile =
                 Paths.get(
@@ -47,7 +47,7 @@ public class MineMojoIT {
     @MavenTest
     @DisplayName("Mine respects handled rules parameter")
     void handled_rules(MavenExecutionResult result) throws IOException {
-        System.out.println("aman" + Files.readString(result.getMavenLog().getStdout()));
+        Files.readString(result.getMavenLog().getStdout());
 
         Path expectedOutputFile =
                 Paths.get(
