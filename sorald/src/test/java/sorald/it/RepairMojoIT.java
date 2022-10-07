@@ -9,6 +9,9 @@ import com.soebes.itf.jupiter.extension.MavenTest;
 import com.soebes.itf.jupiter.maven.MavenExecutionResult;
 import org.junit.jupiter.api.DisplayName;
 
+import java.io.IOException;
+import java.nio.file.Files;
+
 @MavenJupiterExtension
 public class RepairMojoIT {
     @MavenGoal("${project.groupId}:${project.artifactId}:${project.version}:repair")
@@ -22,7 +25,8 @@ public class RepairMojoIT {
     @MavenOption("-DruleKey=S1068")
     @MavenTest
     @DisplayName("Repair works on an empty Maven project")
-    void empty_project(MavenExecutionResult result) {
+    void empty_project(MavenExecutionResult result) throws IOException {
+        System.out.println("aman"+ Files.readString(result.getMavenLog().getStdout()));
         assertThat(result).isSuccessful();
     }
 
