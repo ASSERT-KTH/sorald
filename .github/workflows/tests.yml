@@ -80,6 +80,23 @@ jobs:
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70 # tag=v3.1.1
 
+  integration-test:
+    # This job runs the integration tests for the maven plugin
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
+        with:
+          fetch-depth: 0  # SonarCloud prefers non-shallow clones
+      - uses: actions/setup-java@d854b6da19cdadd9a010605529e522c2393ebd38 # tag=v3.5.0
+        with:
+          java-version: 11
+          java-package: jdk
+          architecture: x64
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
+      - name: Run integration tests
+        run: mvn clean verify -DskipUnitTests -pl sorald
+
   test-support-scripts:
     runs-on: ubuntu-latest
 
