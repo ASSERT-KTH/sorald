@@ -18,14 +18,14 @@ import org.junit.jupiter.api.DisplayName;
 public class MineMojoIT {
     @MavenGoal("${project.groupId}:${project.artifactId}:${project.version}:mine")
     @MavenTest
-    @DisplayName("Mine works in an empty Maven project")
+    @DisplayName("Mine works on an empty Maven project")
     void empty_project(MavenExecutionResult result) {
         assertThat(result).isSuccessful();
     }
 
     @MavenGoal("${project.groupId}:${project.artifactId}:${project.version}:mine")
     @MavenTest
-    @DisplayName("Mine works in a non-empty Maven project")
+    @DisplayName("Mine works on a non-empty Maven project")
     void mine_for_violations(MavenExecutionResult result) throws IOException {
         Path expectedOutputFile =
                 Paths.get(
