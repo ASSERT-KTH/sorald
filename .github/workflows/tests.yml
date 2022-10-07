@@ -69,7 +69,7 @@ jobs:
       - name: Run tests
         run: mvn test
       - name: Run integration tests
-        run: mvn -B verify -DskipUnitTests
+        run: mvn -B verify -DskipUnitTests -pl sorald
       - name: Test memory-constrained execution with segment repair
         shell: bash
         run: .github/mem-constrained-exec.sh
