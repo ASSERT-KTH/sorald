@@ -145,7 +145,7 @@ class RepairCommand extends BaseCommand {
 
         Set<RuleViolation> ruleViolations = resolveRuleViolations(eventHandlers, classpath);
         if (ruleViolations.isEmpty()) {
-            getLog().info("No rule violations found, nothing to do ...");
+            System.out.println("No rule violations found, nothing to do ...");
         } else {
             SoraldAbstractProcessor<?> proc =
                     new Repair(config, classpath, eventHandlers).repair(ruleViolations);
