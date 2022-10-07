@@ -55,9 +55,6 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
-      - name: Check formatting with spotless
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: mvn spotless:check
       - name: Build project
         run: |
           mvn -B package -DskipUnitTests
