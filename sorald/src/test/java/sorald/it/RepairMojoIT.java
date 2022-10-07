@@ -15,7 +15,13 @@ public class RepairMojoIT {
     @MavenTest
     @DisplayName("Repair fails when ruleKey is not passed")
     void fails_without_ruleKey_parameter(MavenExecutionResult result) {
-        assertThat(result).isFailure();
+        assertThat(result)
+                .isFailure()
+                .out()
+                .plain()
+                .asString()
+                .contains(
+                        "Caused by: org.apache.maven.plugin.PluginParameterException: The parameters 'rules'");
     }
 
     @MavenGoal("${project.groupId}:${project.artifactId}:${project.version}:repair")
