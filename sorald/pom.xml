@@ -230,6 +230,20 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
             </plugin>
+            <!-- To make repair goal work on mvn3.6.3 -->
+            <!-- See https://stackoverflow.com/questions/10188534/custom-type-converter-for-mojo-configuration -->
+            <plugin>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-component-metadata</artifactId>
+                <version>2.1.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate-metadata</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <!-- adapted from https://www.jacoco.org/jacoco/trunk/doc/examples/build/pom.xml -->
             <plugin>
                 <groupId>org.jacoco</groupId>
