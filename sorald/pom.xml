@@ -220,7 +220,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <!-- Used to run ONLY integration tests and skip the unit tests -->
-                <!-- Run it like so: `mvn verify -DskipSurefireTest` -->
+                <!-- Run it like so: `mvn verify -DskipUnitTests` -->
                 <configuration>
                     <skipTests>${skipUnitTests}</skipTests>
                 </configuration>
