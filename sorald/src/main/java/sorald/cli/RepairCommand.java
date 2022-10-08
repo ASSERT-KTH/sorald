@@ -342,6 +342,7 @@ class RepairCommand extends BaseCommand {
     }
 }
 
+/** Attaches itself to {@link RepairCommand} to convert `rules` field. */
 @Component(role = ComponentConfigurator.class, hint = "basic")
 class RulesMojoConfigurator extends BasicComponentConfigurator implements Initializable {
 
