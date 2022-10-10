@@ -7,7 +7,7 @@ SONAR_VERSION = "7.14.0.30229"
 SONAR_RULE_METADATA_URL_TEMPLATE = (
     "https://raw.githubusercontent.com/SonarSource/sonar-java/"
     f"/{SONAR_VERSION}/java-checks/src/main/resources"
-    "/org/sonar/l10n/java/rules/java/S{rule_key}_java.json"
+    "/org/sonar/l10n/java/rules/java/S{rule_key}.json"
 )
 
 
