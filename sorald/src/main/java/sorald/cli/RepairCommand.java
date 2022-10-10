@@ -5,16 +5,15 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.inject.Named;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.configurator.BasicComponentConfigurator;
-import org.codehaus.plexus.component.configurator.ComponentConfigurationException;
+import org.codehaus.plexus.component.configurator.ComponentConfigurator;
 import org.codehaus.plexus.component.configurator.converters.basic.AbstractBasicConverter;
+import org.codehaus.plexus.personality.plexus.lifecycle.phase.Initializable;
 import picocli.CommandLine;
 import sorald.*;
 import sorald.event.EventHelper;
@@ -34,7 +33,7 @@ import sorald.sonar.SonarRule;
 import sorald.util.MavenUtils;
 
 /** The CLI command for the primary repair application. */
-@Mojo(name = Constants.REPAIR_COMMAND_NAME, configurator = "rules-mojo-configurator")
+@Mojo(name = Constants.REPAIR_COMMAND_NAME)
 @CommandLine.Command(
         name = Constants.REPAIR_COMMAND_NAME,
         mixinStandardHelpOptions = true,
@@ -66,7 +65,7 @@ class RepairCommand extends BaseCommand {
 
     static class RulesConverterForMojo extends AbstractBasicConverter {
         @Override
-        protected Object fromString(String userInput) throws ComponentConfigurationException {
+        protected Object fromString(String userInput) {
             Rules parsedRule =
                     new Rules(); // Dua Lip was probably writing Java while composing the song :P
             parsedRule.ruleKey = userInput;
@@ -343,13 +342,12 @@ class RepairCommand extends BaseCommand {
     }
 }
 
-@Named("rules-mojo-configurator")
-class RulesMojoConfigurator extends BasicComponentConfigurator {
-    @PostConstruct
-    public void init() {
+/** Attaches itself to {@link RepairCommand} to convert `rules` field. */
+@Component(role = ComponentConfigurator.class, hint = "basic")
+class RulesMojoConfigurator extends BasicComponentConfigurator implements Initializable {
+
+    @Override
+    public void initialize() {
         converterLookup.registerConverter(new RepairCommand.RulesConverterForMojo());
     }
-
-    @PreDestroy
-    public void destroy() {}
 }

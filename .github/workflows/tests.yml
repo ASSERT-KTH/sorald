@@ -64,7 +64,7 @@ jobs:
         run: timeout 10 mvn -B test || echo "Done fetching dependencies"
         shell: bash
       - name: Run integration tests
-        run: mvn clean -B -U install -DskipUnitTests
+        run: mvn -B install -DskipUnitTests
       - name: Test memory-constrained execution with segment repair
         shell: bash
         run: .github/mem-constrained-exec.sh

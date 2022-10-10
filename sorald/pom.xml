@@ -220,7 +220,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <!-- Used to run ONLY integration tests and skip the unit tests -->
-                <!-- Run it like so: `mvn verify -DskipSurefireTest` -->
+                <!-- Run it like so: `mvn verify -DskipUnitTests` -->
                 <configuration>
                     <skipTests>${skipUnitTests}</skipTests>
                 </configuration>
@@ -229,6 +229,20 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
+            </plugin>
+            <!-- To make repair goal work on mvn3.6.3 -->
+            <!-- See https://stackoverflow.com/questions/10188534/custom-type-converter-for-mojo-configuration -->
+            <plugin>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-component-metadata</artifactId>
+                <version>2.1.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate-metadata</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <!-- adapted from https://www.jacoco.org/jacoco/trunk/doc/examples/build/pom.xml -->
             <plugin>
