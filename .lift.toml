@@ -2,7 +2,4 @@ ignoreFiles = """
 experimentation/
 """
 
-# Disable god-class comments
-disableTools = ["refactor-first"]
-
 jdkVersion = "11"
