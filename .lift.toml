@@ -1,0 +1,5 @@
+ignoreFiles = """
+experimentation/
+"""
+
+jdkVersion = "11"
