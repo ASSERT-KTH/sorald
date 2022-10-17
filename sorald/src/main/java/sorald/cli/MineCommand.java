@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.descriptor.PluginDescriptor;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.json.JSONObject;
@@ -123,11 +124,21 @@ class MineCommand extends BaseCommand {
         }
 
         if (statsOutputFile != null) {
+            List<String> originalArgs;
+            // If the plugin is used, the original arguments are stored in the mojo descriptor
+            if (mavenArgs != null) {
+                originalArgs = mavenArgs;
+            }
+            // If the CLI is used, the original arguments are stored in the command line spec of
+            // PicoCLI
+            else {
+                originalArgs = spec.commandLine().getParseResult().originalArgs();
+            }
             Map<String, Object> additionalStatData =
                     Map.of(
                             StatsMetadataKeys.EXECUTION_INFO,
                             new ExecutionInfo(
-                                    spec.commandLine().getParseResult().originalArgs(),
+                                    originalArgs,
                                     SoraldVersionProvider.getVersionFromPropertiesResource(
                                             SoraldVersionProvider.DEFAULT_RESOURCE_NAME),
                                     System.getProperty(Constants.JAVA_VERSION_SYSTEM_PROPERTY),
@@ -157,6 +168,10 @@ class MineCommand extends BaseCommand {
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
+        mavenArgs =
+                getMavenArgs(
+                        ((PluginDescriptor) getPluginContext().get("pluginDescriptor"))
+                                .getMojo(Constants.MINE_COMMAND_NAME));
         try {
             call();
         } catch (Exception e) {
