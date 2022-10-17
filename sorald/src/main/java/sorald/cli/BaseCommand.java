@@ -2,10 +2,11 @@ package sorald.cli;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Callable;
 import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.descriptor.MojoDescriptor;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.configurator.BasicComponentConfigurator;
@@ -57,18 +58,14 @@ abstract class BaseCommand extends AbstractMojo implements Callable<Integer> {
      * This method is used to capture the arguments passed to maven-plugin to display them in the
      * report.
      *
-     * @param mojoContext the descriptor of the mojo {@link MojoDescriptor}
      * @return the list of arguments passed to the maven-plugin
      */
-    protected List<String> getMavenArgs(MojoDescriptor mojoContext) {
+    protected List<String> getMavenArgs() {
+        String[] rawCommand = System.getProperty("sun.java.command").split(" ");
+        String[] requiredParameters = Arrays.copyOfRange(rawCommand, 1, rawCommand.length);
         List<String> args = new ArrayList<>();
-        args.add(mojoContext.getGoal());
-        for (org.apache.maven.plugin.descriptor.Parameter parameter : mojoContext.getParameters()) {
-            String parameterName = String.format("-D%s", parameter.getName());
-            String parameterValue = System.getProperty(parameter.getName());
-            args.add(parameterName);
-            args.add(parameterValue);
-        }
+        args.add("mvn");
+        Collections.addAll(args, requiredParameters);
         return args;
     }
 }
