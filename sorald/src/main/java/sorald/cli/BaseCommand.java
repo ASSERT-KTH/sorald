@@ -2,12 +2,13 @@ package sorald.cli;
 
 import java.io.File;
 import java.util.concurrent.Callable;
+import org.apache.maven.plugin.AbstractMojo;
 import picocli.CommandLine;
 import sorald.Constants;
 
 /** Base command containing the options in common for all Sorald subcommands. */
 @CommandLine.Command()
-abstract class BaseCommand implements Callable<Integer> {
+abstract class BaseCommand extends AbstractMojo implements Callable<Integer> {
     @CommandLine.Spec CommandLine.Model.CommandSpec spec;
 
     @CommandLine.Option(

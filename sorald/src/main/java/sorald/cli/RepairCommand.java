@@ -5,6 +5,15 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
+import org.codehaus.plexus.component.annotations.Component;
+import org.codehaus.plexus.component.configurator.BasicComponentConfigurator;
+import org.codehaus.plexus.component.configurator.ComponentConfigurator;
+import org.codehaus.plexus.component.configurator.converters.basic.AbstractBasicConverter;
+import org.codehaus.plexus.personality.plexus.lifecycle.phase.Initializable;
 import picocli.CommandLine;
 import sorald.*;
 import sorald.event.EventHelper;
@@ -24,6 +33,7 @@ import sorald.sonar.SonarRule;
 import sorald.util.MavenUtils;
 
 /** The CLI command for the primary repair application. */
+@Mojo(name = Constants.REPAIR_COMMAND_NAME)
 @CommandLine.Command(
         name = Constants.REPAIR_COMMAND_NAME,
         mixinStandardHelpOptions = true,
@@ -32,6 +42,7 @@ class RepairCommand extends BaseCommand {
     String ruleKey;
     List<RuleViolation> specifiedRuleViolations = List.of();
 
+    @Parameter(defaultValue = "${project.basedir}", readonly = true)
     @CommandLine.Option(
             names = {Constants.ARG_SOURCE},
             description = "The path to the file or folder to be analyzed and possibly repaired.",
@@ -40,7 +51,32 @@ class RepairCommand extends BaseCommand {
     File source;
 
     @CommandLine.ArgGroup(multiplicity = "1")
+    @Parameter(property = "ruleKey", required = true)
     Rules rules;
+
+    @Override
+    public void execute() throws MojoExecutionException, MojoFailureException {
+        try {
+            call();
+        } catch (Exception e) {
+            getLog().error(e);
+        }
+    }
+
+    static class RulesConverterForMojo extends AbstractBasicConverter {
+        @Override
+        protected Object fromString(String userInput) {
+            Rules parsedRule =
+                    new Rules(); // Dua Lip was probably writing Java while composing the song :P
+            parsedRule.ruleKey = userInput;
+            return parsedRule;
+        }
+
+        @Override
+        public boolean canConvert(Class<?> aClass) {
+            return aClass.equals(Rules.class);
+        }
+    }
 
     static class Rules {
         @CommandLine.Option(
@@ -257,10 +293,10 @@ class RepairCommand extends BaseCommand {
                                                         "no valid rule key in input, should not happen!")));
     }
 
+    // regression: we do not print the command `spec.commandline()` now
     private void validateRuleKey() {
         if (Processors.getProcessor(ruleKey) == null) {
-            throw new CommandLine.ParameterException(
-                    spec.commandLine(),
+            throw new RuntimeException(
                     "Sorry, repair not available for rule "
                             + ruleKey
                             + ". See the available rules below.");
@@ -303,5 +339,15 @@ class RepairCommand extends BaseCommand {
         config.setClasspath(resolveClasspath());
         config.setRuleParameters(new HashMap<>());
         return config;
+    }
+}
+
+/** Attaches itself to {@link RepairCommand} to convert `rules` field. */
+@Component(role = ComponentConfigurator.class, hint = "basic")
+class RulesMojoConfigurator extends BasicComponentConfigurator implements Initializable {
+
+    @Override
+    public void initialize() {
+        converterLookup.registerConverter(new RepairCommand.RulesConverterForMojo());
     }
 }

@@ -23,7 +23,20 @@ Sorald supports macOS, Linux, and Windows.
 
 For running Sorald, all you need is a Java 11+ runtime.
 
-For building Sorald from source, you need a Java 11+ JDK, Maven and Git.
+For building Sorald from source, you need a Java 11+ JDK, Maven >=3.6.3, and Git.
+
+### Running Sorald in 2 seconds
+
+Sorald is available as a `maven-plugin` so you can run it from the command line with Maven.
+
+```bash
+mvn se.kth.castor:sorald:0.6.1-SNAPSHOT:repair -DruleKey=<ruleKey>
+```
+
+Next, run `git diff` on the project to see the repairs performed.
+
+> Note: Sorald `maven-plugin` is still in rudimentary stages. We have added two goals to it - `mine` and `repair`. They
+> both are analogous to the CLI tool. However, not all parameters are supported yet. We are working on adding more.
 
 ### Getting a Sorald JAR
 
@@ -42,7 +55,7 @@ renaming the JAR to `sorald.jar` for the sake of simplicity.
 
  ```bash
 $ cd sorald
-$ mvn package -DskipTests
+$ mvn package -DskipUnitTests
 $ cp sorald/target/sorald-*-jar-with-dependencies.jar sorald.jar
  ```
 

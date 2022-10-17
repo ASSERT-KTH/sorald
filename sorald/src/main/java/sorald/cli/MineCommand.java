@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.json.JSONObject;
 import picocli.CommandLine;
 import sorald.Constants;
@@ -22,12 +26,14 @@ import sorald.sonar.SonarRuleType;
 import sorald.util.MavenUtils;
 
 /** CLI Command for Sorald's mining functionality. */
+@Mojo(name = Constants.MINE_COMMAND_NAME)
 @CommandLine.Command(
         name = Constants.MINE_COMMAND_NAME,
         mixinStandardHelpOptions = true,
         description = "Mine a project for Sonar warnings.")
 class MineCommand extends BaseCommand {
 
+    @Parameter(defaultValue = "${project.basedir}", readonly = true)
     @CommandLine.Option(
             names = {Constants.ARG_SOURCE},
             description = "The path to the file or folder to be analyzed and possibly repaired.")
@@ -62,6 +68,7 @@ class MineCommand extends BaseCommand {
             split = ",")
     private List<IRuleType> ruleTypes = new ArrayList<>();
 
+    @Parameter(property = "handledRules")
     @CommandLine.Option(
             names = {Constants.ARG_HANDLED_RULES},
             description =
@@ -93,7 +100,9 @@ class MineCommand extends BaseCommand {
         validateArgs();
 
         List<Rule> checks;
-        if (ruleKeys == null) {
+        // If rule keys are specified, we ignore other rule filters
+        // ruleKeys is null for CLI, but an empty list for maven-plugin if not provided
+        if (ruleKeys == null || ruleKeys.isEmpty()) {
             checks = RuleProvider.inferRules(ruleTypes, handledRules);
         } else {
             checks = ruleKeys.stream().map(SonarRule::new).collect(Collectors.toList());
@@ -143,6 +152,15 @@ class MineCommand extends BaseCommand {
         if (ruleParameters != null && !ruleParameters.exists()) {
             throw new CommandLine.ParameterException(
                     spec.commandLine(), String.format("%s is not a valid file", ruleParameters));
+        }
+    }
+
+    @Override
+    public void execute() throws MojoExecutionException, MojoFailureException {
+        try {
+            call();
+        } catch (Exception e) {
+            getLog().error(e);
         }
     }
 
