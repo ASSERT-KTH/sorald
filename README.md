@@ -30,7 +30,7 @@ For building Sorald from source, you need a Java 11+ JDK, Maven >=3.6.3, and Git
 Sorald is available as a `maven-plugin` so you can run it from the command line with Maven.
 
 ```bash
-mvn se.kth.castor:sorald:0.6.1-SNAPSHOT:repair -DruleKey=<ruleKey>
+mvn se.kth.castor:sorald:repair -DruleKey=<ruleKey>
 ```
 
 Next, run `git diff` on the project to see the repairs performed.
