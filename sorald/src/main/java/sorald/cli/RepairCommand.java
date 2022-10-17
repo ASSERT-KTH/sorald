@@ -10,11 +10,7 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.descriptor.PluginDescriptor;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
-import org.codehaus.plexus.component.annotations.Component;
-import org.codehaus.plexus.component.configurator.BasicComponentConfigurator;
-import org.codehaus.plexus.component.configurator.ComponentConfigurator;
 import org.codehaus.plexus.component.configurator.converters.basic.AbstractBasicConverter;
-import org.codehaus.plexus.personality.plexus.lifecycle.phase.Initializable;
 import picocli.CommandLine;
 import sorald.*;
 import sorald.event.EventHelper;
@@ -354,15 +350,5 @@ class RepairCommand extends BaseCommand {
         config.setClasspath(resolveClasspath());
         config.setRuleParameters(new HashMap<>());
         return config;
-    }
-}
-
-/** Attaches itself to {@link RepairCommand} to convert `rules` field. */
-@Component(role = ComponentConfigurator.class, hint = "basic")
-class RulesMojoConfigurator extends BasicComponentConfigurator implements Initializable {
-
-    @Override
-    public void initialize() {
-        converterLookup.registerConverter(new RepairCommand.RulesConverterForMojo());
     }
 }
