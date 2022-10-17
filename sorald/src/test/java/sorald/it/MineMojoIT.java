@@ -1,18 +1,25 @@
 package sorald.it;
 
 import static com.soebes.itf.extension.assertj.MavenITAssertions.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.io.FileMatchers.anExistingFile;
 
 import com.soebes.itf.jupiter.extension.MavenGoal;
 import com.soebes.itf.jupiter.extension.MavenJupiterExtension;
 import com.soebes.itf.jupiter.extension.MavenOption;
 import com.soebes.itf.jupiter.extension.MavenTest;
 import com.soebes.itf.jupiter.maven.MavenExecutionResult;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
+import sorald.FileUtils;
+import sorald.event.StatsMetadataKeys;
 
 @MavenJupiterExtension
 public class MineMojoIT {
@@ -69,5 +76,31 @@ public class MineMojoIT {
                 .out()
                 .plain()
                 .contains(expectedOutput.toArray(new String[0]));
+    }
+
+    @MavenGoal("${project.groupId}:${project.artifactId}:${project.version}:mine")
+    @MavenOption("-DhandledRules")
+    @MavenOption("-DstatsOutputFile=stats.json")
+    @MavenTest
+    @DisplayName("Mine respects stats output file parameter and generates a JSON file")
+    void stats_output_file(MavenExecutionResult result) throws IOException {
+        File projectRoot = result.getMavenProjectResult().getTargetProjectDirectory();
+        File statsOutputFile = new File(projectRoot, "stats.json");
+
+        org.hamcrest.MatcherAssert.assertThat(statsOutputFile, anExistingFile());
+
+        Path expectedOutputFile =
+                Paths.get(
+                        "target/maven-it/sorald/it/MineMojoIT/stats_output_file/project/src/test/resources/expected-mined-rules.json");
+        JSONObject expectedJsonObject = FileUtils.readJSON(expectedOutputFile);
+        JSONObject actualJsonObject = FileUtils.readJSON(statsOutputFile.toPath());
+
+        JSONArray expectedMinedRules =
+                expectedJsonObject.getJSONArray(StatsMetadataKeys.MINED_RULES);
+        JSONArray actualMinedRules = actualJsonObject.getJSONArray(StatsMetadataKeys.MINED_RULES);
+
+        org.hamcrest.MatcherAssert.assertThat(
+                ((JSONObject) actualMinedRules.get(0)).toMap(),
+                equalTo(((JSONObject) expectedMinedRules.get(0)).toMap()));
     }
 }
