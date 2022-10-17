@@ -1,12 +1,14 @@
 package sorald.it;
 
 import static com.soebes.itf.extension.assertj.MavenITAssertions.assertThat;
+import static org.hamcrest.io.FileMatchers.anExistingFile;
 
 import com.soebes.itf.jupiter.extension.MavenGoal;
 import com.soebes.itf.jupiter.extension.MavenJupiterExtension;
 import com.soebes.itf.jupiter.extension.MavenOption;
 import com.soebes.itf.jupiter.extension.MavenTest;
 import com.soebes.itf.jupiter.maven.MavenExecutionResult;
+import java.io.File;
 import org.junit.jupiter.api.DisplayName;
 
 @MavenJupiterExtension
@@ -57,5 +59,17 @@ public class RepairMojoIT {
                         "-----Number of fixes------",
                         "ToStringReturningNullProcessor: 1",
                         "-----End of report------");
+    }
+
+    @MavenGoal("${project.groupId}:${project.artifactId}:${project.version}:repair")
+    @MavenOption("-DruleKey=S2111")
+    @MavenOption("-DstatsOutputFile=stats.json")
+    @MavenTest
+    @DisplayName("Repair respects stats output file parameter and generates a JSON file")
+    void stats_output_file(MavenExecutionResult result) {
+        File projectRoot = result.getMavenProjectResult().getTargetProjectDirectory();
+        File statsOutputFile = new File(projectRoot, "stats.json");
+
+        org.hamcrest.MatcherAssert.assertThat(statsOutputFile, anExistingFile());
     }
 }

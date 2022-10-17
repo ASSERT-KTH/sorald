@@ -9,11 +9,7 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
-import org.codehaus.plexus.component.annotations.Component;
-import org.codehaus.plexus.component.configurator.BasicComponentConfigurator;
-import org.codehaus.plexus.component.configurator.ComponentConfigurator;
 import org.codehaus.plexus.component.configurator.converters.basic.AbstractBasicConverter;
-import org.codehaus.plexus.personality.plexus.lifecycle.phase.Initializable;
 import picocli.CommandLine;
 import sorald.*;
 import sorald.event.EventHelper;
@@ -56,6 +52,7 @@ class RepairCommand extends BaseCommand {
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
+        mavenArgs = getMavenArgs();
         try {
             call();
         } catch (Exception e) {
@@ -235,9 +232,19 @@ class RepairCommand extends BaseCommand {
 
     private void writeStatisticsOutput(RepairStatisticsCollector statsCollector, Path projectPath)
             throws IOException {
+        List<String> originalArgs;
+        // If the plugin is used, the original arguments are stored in the mojo descriptor
+        if (mavenArgs != null) {
+            originalArgs = mavenArgs;
+        }
+        // If the CLI is used, the original arguments are stored in the command line spec of
+        // PicoCLI
+        else {
+            originalArgs = spec.commandLine().getParseResult().originalArgs();
+        }
         var executionInfo =
                 new ExecutionInfo(
-                        spec.commandLine().getParseResult().originalArgs(),
+                        originalArgs,
                         SoraldVersionProvider.getVersionFromPropertiesResource(
                                 SoraldVersionProvider.DEFAULT_RESOURCE_NAME),
                         System.getProperty(Constants.JAVA_VERSION_SYSTEM_PROPERTY),
@@ -339,15 +346,5 @@ class RepairCommand extends BaseCommand {
         config.setClasspath(resolveClasspath());
         config.setRuleParameters(new HashMap<>());
         return config;
-    }
-}
-
-/** Attaches itself to {@link RepairCommand} to convert `rules` field. */
-@Component(role = ComponentConfigurator.class, hint = "basic")
-class RulesMojoConfigurator extends BasicComponentConfigurator implements Initializable {
-
-    @Override
-    public void initialize() {
-        converterLookup.registerConverter(new RepairCommand.RulesConverterForMojo());
     }
 }

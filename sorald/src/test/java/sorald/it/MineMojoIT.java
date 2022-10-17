@@ -1,12 +1,14 @@
 package sorald.it;
 
 import static com.soebes.itf.extension.assertj.MavenITAssertions.assertThat;
+import static org.hamcrest.io.FileMatchers.anExistingFile;
 
 import com.soebes.itf.jupiter.extension.MavenGoal;
 import com.soebes.itf.jupiter.extension.MavenJupiterExtension;
 import com.soebes.itf.jupiter.extension.MavenOption;
 import com.soebes.itf.jupiter.extension.MavenTest;
 import com.soebes.itf.jupiter.maven.MavenExecutionResult;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -69,5 +71,17 @@ public class MineMojoIT {
                 .out()
                 .plain()
                 .contains(expectedOutput.toArray(new String[0]));
+    }
+
+    @MavenGoal("${project.groupId}:${project.artifactId}:${project.version}:mine")
+    @MavenOption("-DhandledRules")
+    @MavenOption("-DstatsOutputFile=stats.json")
+    @MavenTest
+    @DisplayName("Mine respects stats output file parameter and generates a JSON file")
+    void stats_output_file(MavenExecutionResult result) {
+        File projectRoot = result.getMavenProjectResult().getTargetProjectDirectory();
+        File statsOutputFile = new File(projectRoot, "stats.json");
+
+        org.hamcrest.MatcherAssert.assertThat(statsOutputFile, anExistingFile());
     }
 }
