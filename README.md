@@ -44,7 +44,7 @@ git clone git@github.com:SonarSource/sonar-scanner-cli.git
 cd sonar-scanner-cli/
 git checkout 5c518d6a
 
-# Runnig Sorald
+# Running Sorald
 mvn se.kth.castor:sorald:repair -DruleKey=S1118
 
 # Checking the result
