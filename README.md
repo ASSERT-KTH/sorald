@@ -33,10 +33,23 @@ Sorald is available as a `maven-plugin` so you can run it from the command line 
 mvn se.kth.castor:sorald:repair -DruleKey=<ruleKey>
 ```
 
-Next, run `git diff` on the project to see the repairs performed.
-
 > Note: Sorald `maven-plugin` is still in rudimentary stages. We have added two goals to it - `mine` and `repair`. They
 > both are analogous to the CLI tool. However, not all parameters are supported yet. We are working on adding more.
+
+For example, the following commands repair violations of `S1118` in the `5c518d6a` commit of the "sonar-scanner-cli" project.
+
+```bash
+# Cloning and moving into the project
+git clone git@github.com:SonarSource/sonar-scanner-cli.git
+cd sonar-scanner-cli/
+git checkout 5c518d6a
+
+# Runnig Sorald
+mvn se.kth.castor:sorald:repair -DruleKey=S1118
+
+# Checking the result
+git diff
+```
 
 ### Getting a Sorald JAR
 
