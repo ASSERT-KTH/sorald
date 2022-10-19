@@ -27,6 +27,14 @@
             <organizationUrl>https://www.kth.se</organizationUrl>
         </developer>
         <developer>
+            <id>algomaster99</id>
+            <name>Aman Sharma</name>
+            <email>amansha@kth.se</email>
+            <url>https://algomaster99.github.io/</url>
+            <organization>KTH Royal Institute of Technology</organization>
+            <organizationUrl>https://www.kth.se</organizationUrl>
+        </developer>
+        <developer>
             <id>fermadeiral</id>
             <name>Fernanda Madeiral</name>
             <email>fer.madeiral@gmail.com</email>
