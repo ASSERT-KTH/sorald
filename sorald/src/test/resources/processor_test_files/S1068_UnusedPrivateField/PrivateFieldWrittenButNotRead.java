@@ -1,7 +1,7 @@
 public class PrivateFieldWrittenButNotRead {
-    private int x;
+    private int x; // Noncompliant
 
-    private String foo;
+    private String foo; // Noncompliant
 
     public PrivateFieldWrittenButNotRead(int x, int y) {
         this.x = x + y;
