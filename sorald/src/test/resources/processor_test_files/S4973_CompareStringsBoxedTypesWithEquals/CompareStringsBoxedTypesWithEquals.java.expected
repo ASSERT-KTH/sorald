@@ -8,7 +8,7 @@ public class CompareStringsBoxedTypesWithEquals {
         String firstName = getFirstName(); // String overrides equals
         String lastName = getLastName();
 
-        if (firstName.equals(lastName)) { } 
+        if (firstName != null && firstName.equals(lastName)) { }
     }
 
     // Aditional tests
@@ -26,7 +26,7 @@ public class CompareStringsBoxedTypesWithEquals {
     private boolean IntegerCompare() {
         Integer a = 5;
         Integer b = 5;
-        return !b.equals(a); 
+        return b != null && !b.equals(a);
     }
 
     // Int is primitive and can use ==
@@ -60,7 +60,7 @@ public class CompareStringsBoxedTypesWithEquals {
     private boolean stringCompare() {
         String firstName = getFirstName(); // String overrides equals
         String lastName = getLastName();
-        if (firstName.equals(lastName)) { 
+        if (firstName != null && firstName.equals(lastName)) {
             return true;
         }
         return false;
