@@ -1,2 +1,3 @@
 Manifest-Version: 1.0
 Implementation-SCM-Revision: 123456
+Main-Class: sorald.Main

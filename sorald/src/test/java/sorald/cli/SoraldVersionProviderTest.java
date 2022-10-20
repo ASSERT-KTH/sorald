@@ -16,7 +16,7 @@ public class SoraldVersionProviderTest {
     @Test
     public void getVersionFromPropertiesResource_returnsLocalVersion_whenResourceDoesNotExist() {
         assertThat(
-                SoraldVersionProvider.getVersionFromPropertiesResource("no/such/resource"),
+                SoraldVersionProvider.getVersionFromManifests("no/such/resource"),
                 equalTo(SoraldVersionProvider.LOCAL_VERSION));
     }
 
@@ -24,7 +24,7 @@ public class SoraldVersionProviderTest {
     public void getVersionFromPropertiesResource_returnsVersion_whenNonSnapshot() {
         String resourceName = BOGUS_MANIFESTS.resolve("MANIFEST-RELEASE-VERSION.MF").toString();
         assertThat(
-                SoraldVersionProvider.getVersionFromPropertiesResource(resourceName),
+                SoraldVersionProvider.getVersionFromManifests(resourceName),
                 equalTo(VERSION_IN_MANIFESTS));
     }
 
@@ -32,7 +32,7 @@ public class SoraldVersionProviderTest {
     public void getVersionFromPropertiesResource_returnsCommitSha_whenSnapshot() {
         String resourceName = BOGUS_MANIFESTS.resolve("MANIFEST-SNAPSHOT-VERSION.MF").toString();
         assertThat(
-                SoraldVersionProvider.getVersionFromPropertiesResource(resourceName),
+                SoraldVersionProvider.getVersionFromManifests(resourceName),
                 equalTo("commit: " + COMMIT_IN_MANIFESTS));
     }
 
@@ -41,7 +41,7 @@ public class SoraldVersionProviderTest {
             getVersionFromPropertiesResource_returnsLocalVersion_whenResourceIsMissingVersion() {
         String resourceName = BOGUS_MANIFESTS.resolve("MANIFEST-WITHOUT-VERSION.MF").toString();
         assertThat(
-                SoraldVersionProvider.getVersionFromPropertiesResource(resourceName),
+                SoraldVersionProvider.getVersionFromManifests(resourceName),
                 equalTo(SoraldVersionProvider.LOCAL_VERSION));
     }
 }

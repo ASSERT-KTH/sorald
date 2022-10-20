@@ -245,7 +245,7 @@ class RepairCommand extends BaseCommand {
         var executionInfo =
                 new ExecutionInfo(
                         originalArgs,
-                        SoraldVersionProvider.getVersionFromPropertiesResource(
+                        SoraldVersionProvider.getVersionFromManifests(
                                 SoraldVersionProvider.DEFAULT_RESOURCE_NAME),
                         System.getProperty(Constants.JAVA_VERSION_SYSTEM_PROPERTY),
                         target);
