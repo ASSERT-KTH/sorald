@@ -1,0 +1,6 @@
+public class PrivateFieldWrittenButNotRead {
+
+    public PrivateFieldWrittenButNotRead(int x, int y) { }
+
+    public void initialize(String bar) { }
+}
