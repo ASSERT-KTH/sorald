@@ -48,4 +48,12 @@ public class SoraldVersionProviderTest {
                 JarException.class,
                 () -> SoraldVersionProvider.getVersionFromManifests(resourceName));
     }
+
+    @Test
+    void getVersionFromPropertiesResource_throwsJarException_whenResourceIsMissingCommitSha() {
+        String resourceName = BOGUS_MANIFESTS.resolve("MANIFEST-WITHOUT-COMMIT-SHA.MF").toString();
+        assertThrows(
+                JarException.class,
+                () -> SoraldVersionProvider.getVersionFromManifests(resourceName));
+    }
 }
