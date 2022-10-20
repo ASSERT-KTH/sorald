@@ -9,14 +9,14 @@ import java.nio.file.Paths;
 import java.util.jar.JarException;
 import org.junit.jupiter.api.Test;
 
-public class SoraldVersionProviderTest {
+class SoraldVersionProviderTest {
     private static final Path BOGUS_MANIFESTS = Paths.get("META-INF").resolve("bogus-manifests");
 
     private static final String VERSION_IN_MANIFESTS = "1.2.3";
     private static final String COMMIT_IN_MANIFESTS = "123456";
 
     @Test
-    public void getVersionFromPropertiesResource_returnsLocalVersion_whenResourceDoesNotExist()
+    void getVersionFromPropertiesResource_returnsLocalVersion_whenResourceDoesNotExist()
             throws JarException {
         assertThat(
                 SoraldVersionProvider.getVersionFromManifests("no/such/resource"),
@@ -24,8 +24,7 @@ public class SoraldVersionProviderTest {
     }
 
     @Test
-    public void getVersionFromPropertiesResource_returnsVersion_whenNonSnapshot()
-            throws JarException {
+    void getVersionFromPropertiesResource_returnsVersion_whenNonSnapshot() throws JarException {
         String resourceName = BOGUS_MANIFESTS.resolve("MANIFEST-RELEASE-VERSION.MF").toString();
         assertThat(
                 SoraldVersionProvider.getVersionFromManifests(resourceName),
@@ -33,8 +32,7 @@ public class SoraldVersionProviderTest {
     }
 
     @Test
-    public void getVersionFromPropertiesResource_returnsCommitSha_whenSnapshot()
-            throws JarException {
+    void getVersionFromPropertiesResource_returnsCommitSha_whenSnapshot() throws JarException {
         String resourceName = BOGUS_MANIFESTS.resolve("MANIFEST-SNAPSHOT-VERSION.MF").toString();
         assertThat(
                 SoraldVersionProvider.getVersionFromManifests(resourceName),
@@ -42,7 +40,7 @@ public class SoraldVersionProviderTest {
     }
 
     @Test
-    public void getVersionFromPropertiesResource_throwsJarException_whenResourceIsMissingVersion() {
+    void getVersionFromPropertiesResource_throwsJarException_whenResourceIsMissingVersion() {
         String resourceName = BOGUS_MANIFESTS.resolve("MANIFEST-WITHOUT-VERSION.MF").toString();
         assertThrows(
                 JarException.class,
