@@ -10,7 +10,7 @@
   </parent>
 
     <artifactId>sorald</artifactId>
-    <version>0.7.2-SNAPSHOT</version>
+    <version>0.7.2</version>
     <packaging>maven-plugin</packaging>
 
     <name>Sorald</name>
@@ -393,7 +393,7 @@
         <connection>scm:git:https://github.com/SpoonLabs/sorald.git</connection>
         <developerConnection>scm:git:ssh://github.com/SpoonLabs/sorald.git</developerConnection>
         <url>https://github.com/SpoonLabs/sorald</url>
-        <tag>HEAD</tag>
+        <tag>sorald-0.7.2</tag>
     </scm>
 
     <distributionManagement>
