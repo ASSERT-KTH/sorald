@@ -3,7 +3,7 @@ public class PrivateFieldWrittenButNotRead {
 
     private String foo; // Noncompliant
 
-    private long used;
+    private long zhang;
 
     public PrivateFieldWrittenButNotRead(int x, int y) {
         this.x = x + y;
@@ -11,10 +11,10 @@ public class PrivateFieldWrittenButNotRead {
 
     public void initialize(String bar) {
         foo = bar;
-        used = 234324L;
+        zhang = 234324L;
     }
 
-    public long getUsed() {
-        return used;
+    public long getZhang() {
+        return zhang;
     }
 }
