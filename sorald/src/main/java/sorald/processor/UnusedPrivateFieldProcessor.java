@@ -13,13 +13,16 @@ import spoon.reflect.visitor.filter.TypeFilter;
 public class UnusedPrivateFieldProcessor extends SoraldAbstractProcessor<CtField<?>> {
     @Override
     protected void repairInternal(CtField<?> element) {
+        // Delete the field
+        element.delete();
+
+        // Delete its usage
         List<CtFieldWrite> unusedFieldWrites = getFieldWritesOfSpecifiedField(element);
 
         for (CtFieldWrite<?> unusedFieldWrite : unusedFieldWrites) {
             CtStatement statement = unusedFieldWrite.getParent(CtStatement.class);
             statement.delete();
         }
-        element.delete();
     }
 
     private static List<CtFieldWrite> getFieldWritesOfSpecifiedField(CtField<?> field) {
