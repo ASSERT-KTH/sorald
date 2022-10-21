@@ -1,6 +1,13 @@
 public class PrivateFieldWrittenButNotRead {
+    private long used;
 
     public PrivateFieldWrittenButNotRead(int x, int y) { }
 
-    public void initialize(String bar) { }
+    public void initialize(String bar) {
+        used = 234324L;
+    }
+
+    public long getUsed() {
+        return used;
+    }
 }
