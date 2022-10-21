@@ -34,7 +34,7 @@ public class SoraldVersionProvider implements CommandLine.IVersionProvider {
     public static String getVersionFromManifests(String resourceName) throws JarException {
         try {
             Enumeration<URL> resources =
-                    SoraldVersionProvider.class.getClassLoader().getResources(resourceName);
+                    Thread.currentThread().getContextClassLoader().getResources(resourceName);
             while (resources.hasMoreElements()) {
                 Manifest jarManifest = new Manifest(resources.nextElement().openStream());
                 String mainClass = jarManifest.getMainAttributes().getValue(MAIN_CLASS);
