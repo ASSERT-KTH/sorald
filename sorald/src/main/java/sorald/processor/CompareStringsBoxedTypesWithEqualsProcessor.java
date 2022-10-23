@@ -17,17 +17,39 @@ public class CompareStringsBoxedTypesWithEqualsProcessor
 
     @Override
     protected void repairInternal(CtBinaryOperator<?> element) {
-        CtExpression<?> lhs = element.getLeftHandOperand();
-        CtExpression<?> rhs = element.getRightHandOperand();
+        CtExpression<?> leftHandOperand = element.getLeftHandOperand();
+        CtExpression<?> rightHandOperand = element.getRightHandOperand();
 
+        // By default, we choose the left hand operand as the target of the invocation, so we check
+        // if it is null
+        CtExpression<?> lhs = getNullCheck(leftHandOperand);
+        CtExpression<?> rhs =
+                getComparisonWithEquals(leftHandOperand, rightHandOperand, element.getKind());
+
+        CtBinaryOperator<?> transformedBinaryOperator =
+                getFactory().createBinaryOperator(lhs, rhs, BinaryOperatorKind.AND);
+
+        element.replace(transformedBinaryOperator);
+    }
+
+    private CtExpression<?> getNullCheck(CtExpression<?> operand) {
+        CtExpression<?> nullLiteral = getFactory().createLiteral(null);
+        return getFactory().createBinaryOperator(operand, nullLiteral, BinaryOperatorKind.NE);
+    }
+
+    private CtExpression<?> getComparisonWithEquals(
+            CtExpression<?> leftOperand, CtExpression<?> rightOperand, BinaryOperatorKind kind) {
         CtMethod<?> equals =
-                lhs.getType().getTypeDeclaration().getMethodsByName("equals").stream()
+                leftOperand.getType().getTypeDeclaration().getMethodsByName("equals").stream()
                         .findFirst()
                         .orElseThrow(IllegalStateException::new);
-        CtInvocation<?> lhsEqualsRhs =
-                getFactory().createInvocation(lhs, equals.getReference(), rhs);
-        CtExpression<?> expr =
-                element.getKind() == BinaryOperatorKind.NE ? not(lhsEqualsRhs) : lhsEqualsRhs;
-        element.replace(expr);
+        CtInvocation<?> equalsInvocation =
+                getFactory().createInvocation(leftOperand, equals.getReference(), rightOperand);
+        if (kind == BinaryOperatorKind.EQ) {
+            return equalsInvocation;
+        } else if (kind == BinaryOperatorKind.NE) {
+            return not(equalsInvocation);
+        }
+        throw new IllegalArgumentException("Unexpected binary operator kind: " + kind);
     }
 }
