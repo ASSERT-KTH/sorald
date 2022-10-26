@@ -51,6 +51,10 @@ mvn se.kth.castor:sorald:repair -DruleKey=S1118
 git diff
 ```
 
+You may also see the demo video:
+
+![demo-video](readme_assets/sorald-demo.webm)
+
 ### Getting a Sorald JAR
 
 To run Sorald, you need to first get your hands on the program. You can do this
