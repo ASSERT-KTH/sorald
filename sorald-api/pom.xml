@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.sonarsource.sonarlint.core</groupId>
             <artifactId>sonarlint-core</artifactId>
-            <version>8.9.0.54830</version>
+            <version>8.10.0.56343</version>
         </dependency>
     </dependencies>
     <properties>

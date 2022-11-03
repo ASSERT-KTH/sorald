@@ -51,7 +51,7 @@
         <dependency>
             <groupId>org.sonarsource.sonarlint.core</groupId>
             <artifactId>sonarlint-core</artifactId>
-            <version>8.9.0.54830</version>
+            <version>8.10.0.56343</version>
         </dependency>
         <dependency>
             <groupId>info.picocli</groupId>
@@ -112,7 +112,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.source>11</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <picocli.version>4.6.3</picocli.version>
+        <picocli.version>4.7.0</picocli.version>
         <sonar.projectKey>SpoonLabs_sorald</sonar.projectKey>
         <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
         <sonar.organization>spoonlabs</sonar.organization>
