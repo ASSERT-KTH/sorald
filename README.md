@@ -53,7 +53,7 @@ git diff
 
 You may also see the demo video:
 
-![demo-video](readme_assets/sorald-demo.mp4)
+https://user-images.githubusercontent.com/35191225/199800315-d5180de6-1fd1-44b2-95d3-82d51140073e.mp4
 
 ### Getting a Sorald JAR
 
