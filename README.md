@@ -53,7 +53,7 @@ git diff
 
 You may also see the demo video:
 
-![demo-video](readme_assets/sorald-demo.webm)
+![demo-video](readme_assets/sorald-demo.mov)
 
 ### Getting a Sorald JAR
 
