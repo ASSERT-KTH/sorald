@@ -40,7 +40,7 @@ jobs:
         id: get-sorald-version
         shell: bash
         run: |
-          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout -pl sorald)
           echo "::set-output name=version::$VERSION"
 
       - name: Setup Java for deploy
