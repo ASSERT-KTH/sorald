@@ -59,7 +59,7 @@ jobs:
 
       - name: Publish to Maven Central
         if: ${{ contains(steps.get-sorald-version.outputs.version, 'SNAPSHOT') || github.event_name == 'release' }}
-        run: mvn -Prelease deploy
+        run: mvn -Prelease deploy -pl sorald
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_CENTRAL_TOKEN: ${{ secrets.OSSRH_PASSWORD }}
