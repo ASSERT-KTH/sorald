@@ -40,7 +40,7 @@ jobs:
         id: get-sorald-version
         shell: bash
         run: |
-          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout -pl sorald)
           echo "::set-output name=version::$VERSION"
 
       - name: Setup Java for deploy
@@ -59,7 +59,7 @@ jobs:
 
       - name: Publish to Maven Central
         if: ${{ contains(steps.get-sorald-version.outputs.version, 'SNAPSHOT') || github.event_name == 'release' }}
-        run: mvn -Prelease deploy
+        run: mvn -Prelease deploy -pl sorald
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_CENTRAL_TOKEN: ${{ secrets.OSSRH_PASSWORD }}
