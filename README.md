@@ -23,7 +23,37 @@ Sorald supports macOS, Linux, and Windows.
 
 For running Sorald, all you need is a Java 11+ runtime.
 
-For building Sorald from source, you need a Java 11+ JDK, Maven and Git.
+For building Sorald from source, you need a Java 11+ JDK, Maven >=3.6.3, and Git.
+
+### Running Sorald in 2 seconds
+
+Sorald is available as a `maven-plugin` so you can run it from the command line with Maven.
+
+```bash
+mvn se.kth.castor:sorald:repair -DruleKey=<ruleKey>
+```
+
+> Note: Sorald `maven-plugin` is still in rudimentary stages. We have added two goals to it - `mine` and `repair`. They
+> both are analogous to the CLI tool. However, not all parameters are supported yet. We are working on adding more.
+
+For example, the following commands repair violations of `S1132` in [SonarSource/sonar-scanner-cli@5c518d6](https://github.com/SonarSource/sonar-scanner-cli/commit/5c518d6a6f1a30bed62836790c1233b3f2e763fd).
+
+```bash
+# Cloning and moving into the project
+git clone git@github.com:SonarSource/sonar-scanner-cli.git
+cd sonar-scanner-cli/
+git checkout 5c518d6a
+
+# Running Sorald
+mvn se.kth.castor:sorald:repair -DruleKey=S1132
+
+# Checking the result
+git diff
+```
+
+You may also see the demo video:
+
+https://user-images.githubusercontent.com/35191225/199800315-d5180de6-1fd1-44b2-95d3-82d51140073e.mp4
 
 ### Getting a Sorald JAR
 
@@ -42,7 +72,7 @@ renaming the JAR to `sorald.jar` for the sake of simplicity.
 
  ```bash
 $ cd sorald
-$ mvn package -DskipTests
+$ mvn package -DskipUnitTests
 $ cp sorald/target/sorald-*-jar-with-dependencies.jar sorald.jar
  ```
 

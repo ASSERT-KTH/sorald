@@ -5,12 +5,12 @@
   <parent>
     <groupId>se.kth.castor</groupId>
     <artifactId>sorald-parent</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3</version>
     <relativePath>../</relativePath>
   </parent>
 
     <artifactId>sorald-api</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.3</version>
     <packaging>jar</packaging>
     <name>Sorald-API</name>
     <description>An automatic repair system for static code analysis warnings from Sonar Java.</description>
@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.sonarsource.sonarlint.core</groupId>
             <artifactId>sonarlint-core</artifactId>
-            <version>8.9.0.54830</version>
+            <version>8.11.0.56591</version>
         </dependency>
     </dependencies>
     <properties>

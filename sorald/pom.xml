@@ -5,12 +5,13 @@
   <parent>
     <groupId>se.kth.castor</groupId>
     <artifactId>sorald-parent</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.3</version>
     <relativePath>../</relativePath>
   </parent>
 
     <artifactId>sorald</artifactId>
-    <version>0.6.1-SNAPSHOT</version>
+    <version>0.7.4-SNAPSHOT</version>
+    <packaging>maven-plugin</packaging>
 
     <name>Sorald</name>
     <description>An automatic repair system for static code analysis warnings from Sonar Java.</description>
@@ -45,12 +46,12 @@
         <dependency>
             <groupId>se.kth.castor</groupId>
             <artifactId>sorald-api</artifactId>
-            <version>0.0.2</version>
+            <version>0.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.sonarsource.sonarlint.core</groupId>
             <artifactId>sonarlint-core</artifactId>
-            <version>8.9.0.54830</version>
+            <version>8.11.0.56591</version>
         </dependency>
         <dependency>
             <groupId>info.picocli</groupId>
@@ -68,12 +69,50 @@
             <artifactId>json</artifactId>
             <version>20220924</version>
         </dependency>
+        <!-- maven-plugin dependencies -->
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>3.8.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+
+        <!-- Integration tests -->
+        <!-- see https://khmarbaise.github.io/maven-it-extension/itf-documentation/usersguide/usersguide.html#_grouping_test_cases -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.23.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.9.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.soebes.itf.jupiter.extension</groupId>
+            <artifactId>itf-assertj</artifactId>
+            <version>0.11.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.soebes.itf.jupiter.extension</groupId>
+            <artifactId>itf-jupiter-extension</artifactId>
+            <version>0.11.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <properties>
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.source>11</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <picocli.version>4.6.3</picocli.version>
+        <picocli.version>4.7.0</picocli.version>
         <sonar.projectKey>SpoonLabs_sorald</sonar.projectKey>
         <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
         <sonar.organization>spoonlabs</sonar.organization>
@@ -81,6 +120,11 @@
     </properties>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>3.7.0</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
@@ -175,11 +219,30 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
+                <!-- Used to run ONLY integration tests and skip the unit tests -->
+                <!-- Run it like so: `mvn verify -DskipUnitTests` -->
+                <configuration>
+                    <skipTests>${skipUnitTests}</skipTests>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
+            </plugin>
+            <!-- To make repair goal work on mvn3.6.3 -->
+            <!-- See https://stackoverflow.com/questions/10188534/custom-type-converter-for-mojo-configuration -->
+            <plugin>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-component-metadata</artifactId>
+                <version>2.1.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate-metadata</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <!-- adapted from https://www.jacoco.org/jacoco/trunk/doc/examples/build/pom.xml -->
             <plugin>
@@ -223,6 +286,38 @@
                             <style>AOSP</style>
                         </googleJavaFormat>
                     </java>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.soebes.itf.jupiter.extension</groupId>
+                <artifactId>itf-maven-plugin</artifactId>
+                <version>0.11.0</version>
+                <executions>
+                    <execution>
+                        <id>installing</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>install</goal>
+                            <goal>resources-its</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skipTests>${skipIntegrationTests}</skipTests>
                 </configuration>
             </plugin>
         </plugins>

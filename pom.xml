@@ -4,7 +4,7 @@
 
     <groupId>se.kth.castor</groupId>
     <artifactId>sorald-parent</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3</version>
     <packaging>pom</packaging>
 
     <name>Sorald-parent</name>
@@ -23,6 +23,14 @@
             <id>khaes-kth</id>
             <name>Khashayar Etemadi</name>
             <email>khaes@kth.se</email>
+            <organization>KTH Royal Institute of Technology</organization>
+            <organizationUrl>https://www.kth.se</organizationUrl>
+        </developer>
+        <developer>
+            <id>algomaster99</id>
+            <name>Aman Sharma</name>
+            <email>amansha@kth.se</email>
+            <url>https://algomaster99.github.io/</url>
             <organization>KTH Royal Institute of Technology</organization>
             <organizationUrl>https://www.kth.se</organizationUrl>
         </developer>
@@ -60,7 +68,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.4.3</version>
+            <version>1.4.4</version>
             <scope>
                 <!--Enabled for tests to make it possible to silence INFO log output from SonarJava-->
                 test
@@ -71,7 +79,7 @@
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>10.1.1</version>
+            <version>10.3.0-beta-2</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>

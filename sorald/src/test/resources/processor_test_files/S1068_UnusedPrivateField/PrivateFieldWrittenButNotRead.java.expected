@@ -1,0 +1,13 @@
+public class PrivateFieldWrittenButNotRead {
+    private long zhang;
+
+    public PrivateFieldWrittenButNotRead(int x, int y) { }
+
+    public void initialize(String bar) {
+        zhang = 234324L;
+    }
+
+    public long getZhang() {
+        return zhang;
+    }
+}
