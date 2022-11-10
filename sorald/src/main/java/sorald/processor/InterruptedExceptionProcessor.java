@@ -16,6 +16,8 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtTypeReference;
 
+import java.util.Set;
+
 @ProcessorAnnotation(key = "S2142", description = "\"InterruptedException\" should not be ignored")
 public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCatch> {
 
@@ -66,7 +68,9 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
         newCatch.setParameter((CtCatchVariable<? extends Throwable>) newCatchVariable);
 
         CtTry tryOfViolatedCatcher = violatedCatch.getParent(CtTry.class);
-        tryOfViolatedCatcher.addCatcher(newCatch);
+        int indexOfViolatedCatch = tryOfViolatedCatcher.getCatchers().indexOf(violatedCatch);
+        int indexOfNewCatch = getNewCatchIndex(violatedCatch, indexOfViolatedCatch);
+        tryOfViolatedCatcher.addCatcherAt(indexOfNewCatch, newCatch);
     }
 
     /**
@@ -84,6 +88,18 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
         }
         return block.getStatements().size();
     }
+
+    private static int getNewCatchIndex(CtCatch violatedCatch, int indexOfViolatedCatch) {
+        CtTypeReference<?> refToInterruptedException = violatedCatch.getFactory().Type().get(InterruptedException.class).getReference();
+        Set<CtTypeReference<?>> catchTypes = violatedCatch.getParameter().getReferencedTypes();
+        for (CtTypeReference<?> catchType : catchTypes) {
+            if (refToInterruptedException.isSubtypeOf(catchType)) {
+                return indexOfViolatedCatch;
+            }
+        }
+        return indexOfViolatedCatch + 1;
+    }
+
 
     /**
      * Check if the given statement contains a return, throw, or a labelled flow break.
