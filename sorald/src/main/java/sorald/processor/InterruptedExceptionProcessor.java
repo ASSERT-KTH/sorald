@@ -1,5 +1,6 @@
 package sorald.processor;
 
+import java.util.Set;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCatch;
@@ -15,8 +16,6 @@ import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtTypeReference;
-
-import java.util.Set;
 
 @ProcessorAnnotation(key = "S2142", description = "\"InterruptedException\" should not be ignored")
 public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCatch> {
@@ -90,7 +89,8 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
     }
 
     private static int getNewCatchIndex(CtCatch violatedCatch, int indexOfViolatedCatch) {
-        CtTypeReference<?> refToInterruptedException = violatedCatch.getFactory().Type().get(InterruptedException.class).getReference();
+        CtTypeReference<?> refToInterruptedException =
+                violatedCatch.getFactory().Type().get(InterruptedException.class).getReference();
         Set<CtTypeReference<?>> catchTypes = violatedCatch.getParameter().getReferencedTypes();
         for (CtTypeReference<?> catchType : catchTypes) {
             if (refToInterruptedException.isSubtypeOf(catchType)) {
@@ -99,7 +99,6 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
         }
         return indexOfViolatedCatch + 1;
     }
-
 
     /**
      * Check if the given statement contains a return, throw, or a labelled flow break.
