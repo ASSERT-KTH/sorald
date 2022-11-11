@@ -64,7 +64,6 @@ class InterruptedExceptionForTesting {
 			// clean up state...
 			throw e;
 		} catch (ThreadDeath threadDeath) { // Noncompliant {{Either re-interrupt this method or rethrow the "ThreadDeath".}}
-			Thread.currentThread().interrupt();
 			throw new IOException();
 		}
 	}
