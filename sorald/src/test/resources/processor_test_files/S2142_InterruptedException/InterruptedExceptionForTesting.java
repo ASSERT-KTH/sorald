@@ -87,6 +87,28 @@ class InterruptedExceptionForTesting {
 		}
 	}
 
+	public void run4() {
+		try {
+			while (true) {
+				// do stuff
+				throw new ThreadDeath();
+			}
+		} catch (ThreadDeath e) { // Compliant as ThreadDeath is re-thrown.
+			throw e;
+		}
+	}
+
+	public void run5() {
+		try {
+			while (true) {
+				// do stuff
+				throw new ThreadDeath();
+			}
+		} catch (ThreadDeath e) { // Noncompliant {{Either interrupt the current thread or rethrow the "ThreadDeath".}}
+
+		}
+	}
+
 	public FutureTask getNextTask(BlockingQueue<FutureTask> queue) {
 		boolean interrupted = false;
 		try {

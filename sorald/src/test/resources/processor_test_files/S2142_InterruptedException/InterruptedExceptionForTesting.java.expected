@@ -92,6 +92,26 @@ class InterruptedExceptionForTesting {
 		}
 	}
 
+	public void run4() {
+        try {
+            while (true) {
+                throw new ThreadDeath();
+            }
+        } catch (ThreadDeath e) {
+            throw e;
+        }
+    }
+
+    public void run5() {
+        try {
+            while (true) {
+                throw new ThreadDeath();
+            }
+        } catch (ThreadDeath e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
 	public FutureTask getNextTask(BlockingQueue<FutureTask> queue) {
 		boolean interrupted = false;
 		try {
