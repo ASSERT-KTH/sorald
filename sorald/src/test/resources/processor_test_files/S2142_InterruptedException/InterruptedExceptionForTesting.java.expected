@@ -63,7 +63,7 @@ class InterruptedExceptionForTesting {
 			LOGGER.log(Level.WARN, "Interrupted!", e);
 			// clean up state...
 			throw e;
-		} catch (ThreadDeath threadDeath) { // Noncompliant {{Either re-interrupt this method or rethrow the "ThreadDeath".}}
+		} catch (ThreadDeath threadDeath) {
 			throw new IOException();
 		}
 	}
