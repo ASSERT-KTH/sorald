@@ -1,5 +1,6 @@
 package sorald.processor;
 
+import java.util.Set;
 import sorald.annotations.ProcessorAnnotation;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCatch;
@@ -66,7 +67,9 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
         newCatch.setParameter((CtCatchVariable<? extends Throwable>) newCatchVariable);
 
         CtTry tryOfViolatedCatcher = violatedCatch.getParent(CtTry.class);
-        tryOfViolatedCatcher.addCatcher(newCatch);
+        int indexOfViolatedCatch = tryOfViolatedCatcher.getCatchers().indexOf(violatedCatch);
+        int indexOfNewCatch = getNewCatchIndex(violatedCatch, indexOfViolatedCatch);
+        tryOfViolatedCatcher.addCatcherAt(indexOfNewCatch, newCatch);
     }
 
     /**
@@ -83,6 +86,18 @@ public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCat
             }
         }
         return block.getStatements().size();
+    }
+
+    private static int getNewCatchIndex(CtCatch violatedCatch, int indexOfViolatedCatch) {
+        CtTypeReference<?> refToInterruptedException =
+                violatedCatch.getFactory().Type().get(InterruptedException.class).getReference();
+        Set<CtTypeReference<?>> catchTypes = violatedCatch.getParameter().getReferencedTypes();
+        for (CtTypeReference<?> catchType : catchTypes) {
+            if (refToInterruptedException.isSubtypeOf(catchType)) {
+                return indexOfViolatedCatch;
+            }
+        }
+        return indexOfViolatedCatch + 1;
     }
 
     /**

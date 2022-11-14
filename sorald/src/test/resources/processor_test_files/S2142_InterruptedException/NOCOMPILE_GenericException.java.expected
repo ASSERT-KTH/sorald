@@ -1,0 +1,11 @@
+public class GenericException {
+    public void run() {
+        try {
+            throw new InterruptedException();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        } catch (Exception e) {
+
+        }
+    }
+}
