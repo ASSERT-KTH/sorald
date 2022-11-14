@@ -92,7 +92,7 @@ class InterruptedExceptionForTesting {
 		}
 	}
 
-	public void run4() {
+    public void run4() {
         try {
             while (true) {
                 throw new ThreadDeath();
