@@ -138,7 +138,7 @@ class MineCommand extends BaseCommand {
                             StatsMetadataKeys.EXECUTION_INFO,
                             new ExecutionInfo(
                                     originalArgs,
-                                    SoraldVersionProvider.getVersionFromPropertiesResource(
+                                    SoraldVersionProvider.getVersionFromManifests(
                                             SoraldVersionProvider.DEFAULT_RESOURCE_NAME),
                                     System.getProperty(Constants.JAVA_VERSION_SYSTEM_PROPERTY),
                                     target));

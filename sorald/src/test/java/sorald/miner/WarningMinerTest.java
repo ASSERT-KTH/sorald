@@ -170,7 +170,7 @@ public class WarningMinerTest {
         assertThat(
                 executionInfo.get(StatsMetadataKeys.SORALD_VERSION),
                 equalTo(
-                        SoraldVersionProvider.getVersionFromPropertiesResource(
+                        SoraldVersionProvider.getVersionFromManifests(
                                 SoraldVersionProvider.DEFAULT_RESOURCE_NAME)));
         assertThat(
                 executionInfo.get(StatsMetadataKeys.JAVA_VERSION),
