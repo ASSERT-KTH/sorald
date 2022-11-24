@@ -45,7 +45,7 @@ public class WarningMinerTest {
 
     @Test
     public void test_warningMiner() throws Exception {
-        File outputFile = File.createTempFile("warnings", null),
+        File outputFile = Files.createTempFile("warnings", null).toFile(),
                 temp = Files.createTempDirectory("tempDir").toFile();
 
         runMiner(REPOS_TXT, outputFile.getPath(), temp.getPath());
@@ -59,7 +59,7 @@ public class WarningMinerTest {
 
     @Test
     public void test_onlyMineRepairableViolations() throws Exception {
-        File outputFile = File.createTempFile("warnings", null),
+        File outputFile = Files.createTempFile("warnings", null).toFile(),
                 temp = Files.createTempDirectory("tempDir").toFile();
 
         runMiner(REPOS_TXT, outputFile.getPath(), temp.getPath(), Constants.ARG_HANDLED_RULES);
@@ -87,7 +87,7 @@ public class WarningMinerTest {
     public void warningsMiner_onlyScansForGivenTypes_whenRuleTypesGiven() throws Exception {
         Set<IRuleType> ruleTypes = Set.of(SonarRuleType.VULNERABILITY, SonarRuleType.CODE_SMELL);
 
-        File outputFile = File.createTempFile("warnings", null);
+        File outputFile = Files.createTempFile("warnings", null).toFile();
         File temp = Files.createTempDirectory("tempDir").toFile();
 
         runMiner(
@@ -135,7 +135,7 @@ public class WarningMinerTest {
     /** Test that extracting warnings gives results even for rules that are not violated. */
     @Test
     public void extractWarnings_accountsForAllRules_whenManyAreNotViolated() throws Exception {
-        File outputFile = File.createTempFile("warnings", null),
+        File outputFile = Files.createTempFile("warnings", null).toFile(),
                 temp = Files.createTempDirectory("tempDir").toFile();
 
         runMiner(REPOS_TXT, outputFile.getPath(), temp.getPath());
@@ -153,9 +153,9 @@ public class WarningMinerTest {
     /** Test that extracting warnings gives results even for rules that are not violated. */
     @Test
     public void extractWarnings_statsOutput_containsExpectedAttributes() throws Exception {
-        File outputFile = File.createTempFile("warnings", null),
+        File outputFile = Files.createTempFile("warnings", null).toFile(),
                 temp = Files.createTempDirectory("tempDir").toFile(),
-                statsFile = File.createTempFile("stats", null);
+                statsFile = Files.createTempFile("stats", null).toFile();
 
         runMiner(
                 REPOS_TXT,
