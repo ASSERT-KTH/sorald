@@ -15,6 +15,10 @@ If you use Sorald in an academic context, please cite:
 }
 ```
 
+### Talks
+
+- [Let a bot deal with your static analysis warnings backlog @ EclipseCon'22](https://youtu.be/hlcolTu1afI). [<a href="/presentations/EclipseCon 2022/slides.pdf">Slides</a>]
+
 ## Getting started
 
 ### Prerequisites 
