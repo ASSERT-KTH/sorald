@@ -21,7 +21,6 @@
             <plugin>
                 <groupId>se.kth.castor</groupId>
                 <artifactId>sorald</artifactId>
-                <version>0.7.4-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <goals>
