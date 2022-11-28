@@ -68,7 +68,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.4.4</version>
+            <version>1.4.5</version>
             <scope>
                 <!--Enabled for tests to make it possible to silence INFO log output from SonarJava-->
                 test
@@ -79,7 +79,7 @@
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>10.3.0-beta-3</version>
+            <version>10.3.0-beta-4</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
