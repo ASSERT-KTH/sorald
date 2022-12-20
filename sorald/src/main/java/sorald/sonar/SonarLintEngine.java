@@ -88,8 +88,8 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                     Paths.get(sonarJavaPluginFileName),
                     StandardCopyOption.REPLACE_EXISTING);
             return new SonarJavaJarHolder(new File(sonarJavaPluginFileName).toPath(), true);
-        } catch (IOException ignore) {
-            throw new RuntimeException("Could not download Sonar Java plugin"); // NOSONAR:S112
+        } catch (IOException e) {
+            throw new RuntimeException("Could not download Sonar Java plugin", e); // NOSONAR:S112
         }
     }
 
