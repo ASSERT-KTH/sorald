@@ -135,6 +135,9 @@ public class FileUtils {
         } else if (os.contains("Linux")) {
             File cacheDir = new File(home + "/.cache/sorald/");
             cacheDir.mkdirs();
+            System.out.println("Can read" + cacheDir.canRead());
+            System.out.println("Can write" + cacheDir.canWrite());
+            System.out.println("Can execute" + cacheDir.canExecute());
             return cacheDir;
         } else if (os.contains("Mac")) {
             File cacheDir = new File(home + "/Library/Caches/sorald/");
