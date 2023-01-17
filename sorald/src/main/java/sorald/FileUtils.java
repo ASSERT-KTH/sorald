@@ -122,6 +122,7 @@ public class FileUtils {
     /**
      * Returns the cache directory depending upon the OS.
      *
+     * @throws RuntimeException if the cache directory cannot be created
      * @return the file object of the cache directory
      */
     public static File getCacheDir() {
@@ -130,16 +131,25 @@ public class FileUtils {
 
         if (os.contains("Windows")) {
             File cacheDir = new File(home + "\\Cache\\sorald\\");
-            cacheDir.mkdirs();
-            return cacheDir;
+            if (cacheDir.mkdirs()) {
+                return cacheDir;
+            }
+            throw new RuntimeException( // NOSONAR:S1112
+                    "Unable to create cache directory on " + os);
         } else if (os.contains("Linux")) {
             File cacheDir = new File(home + "/.cache/sorald/");
-            cacheDir.mkdirs();
-            return cacheDir;
+            if (cacheDir.mkdirs()) {
+                return cacheDir;
+            }
+            throw new RuntimeException( // NOSONAR:S1112
+                    "Unable to create cache directory on " + os);
         } else if (os.contains("Mac")) {
             File cacheDir = new File(home + "/Library/Caches/sorald/");
-            cacheDir.mkdirs();
-            return cacheDir;
+            if (cacheDir.mkdirs()) {
+                return cacheDir;
+            }
+            throw new RuntimeException( // NOSONAR:S1112
+                    "Unable to create cache directory on " + os);
         }
         throw new RuntimeException(os + " not supported"); // NOSONAR:S112
     }
