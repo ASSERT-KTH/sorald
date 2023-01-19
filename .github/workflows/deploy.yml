@@ -62,7 +62,7 @@ jobs:
         run: |
           mvn -Prelease deploy -pl sorald
           mvn -Prelease deploy -pl sorald-api
-          mvn -Prelease deploy -pl se.kth.castor:sorald-parent
+          mvn -Prelease deploy -pl se.kth.castor:sorald-parent # Fully qualified artifact ID is required
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_CENTRAL_TOKEN: ${{ secrets.OSSRH_PASSWORD }}
