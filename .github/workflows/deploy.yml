@@ -6,7 +6,11 @@
 
 name: deploy
 
-on: push
+on:
+  push:
+    branches: [ master ]
+  release:
+    types: [ published ]
 
 env:
   JAVA_DISTRIBUTION: 'adopt'
