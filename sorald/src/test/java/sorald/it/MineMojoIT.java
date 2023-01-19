@@ -79,8 +79,8 @@ public class MineMojoIT {
     @MavenTest
     @DisplayName("Mine respects stats output file parameter and generates a JSON file")
     void stats_output_file(MavenExecutionResult result) {
-        File projectRoot = result.getMavenProjectResult().getTargetProjectDirectory();
-        File statsOutputFile = new File(projectRoot, "stats.json");
+        Path projectRoot = result.getMavenProjectResult().getTargetProjectDirectory();
+        File statsOutputFile = new File(projectRoot.toFile(), "stats.json");
 
         org.hamcrest.MatcherAssert.assertThat(statsOutputFile, anExistingFile());
     }
