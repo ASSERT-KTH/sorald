@@ -3,7 +3,7 @@ import requests
 
 from typing import Dict, List, Union
 
-SONAR_VERSION = "7.15.0.30507"
+SONAR_VERSION = "7.16.0.30901"
 SONAR_RULE_METADATA_URL_TEMPLATE = (
     "https://raw.githubusercontent.com/SonarSource/sonar-java/"
     f"/{SONAR_VERSION}/java-checks/src/main/resources"
