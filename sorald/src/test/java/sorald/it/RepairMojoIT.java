@@ -9,6 +9,7 @@ import com.soebes.itf.jupiter.extension.MavenOption;
 import com.soebes.itf.jupiter.extension.MavenTest;
 import com.soebes.itf.jupiter.maven.MavenExecutionResult;
 import java.io.File;
+import java.nio.file.Path;
 import org.junit.jupiter.api.DisplayName;
 
 @MavenJupiterExtension
@@ -67,8 +68,8 @@ public class RepairMojoIT {
     @MavenTest
     @DisplayName("Repair respects stats output file parameter and generates a JSON file")
     void stats_output_file(MavenExecutionResult result) {
-        File projectRoot = result.getMavenProjectResult().getTargetProjectDirectory();
-        File statsOutputFile = new File(projectRoot, "stats.json");
+        Path projectRoot = result.getMavenProjectResult().getTargetProjectDirectory();
+        File statsOutputFile = new File(projectRoot.toFile(), "stats.json");
 
         org.hamcrest.MatcherAssert.assertThat(statsOutputFile, anExistingFile());
     }
