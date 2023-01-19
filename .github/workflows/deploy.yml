@@ -34,7 +34,7 @@ jobs:
           distribution: ${{ env.JAVA_DISTRIBUTION }}
 
       - name: Build
-        run: mvn -B package
+        run: mvn -B install
 
       - name: Get Sorald version
         id: get-sorald-version
