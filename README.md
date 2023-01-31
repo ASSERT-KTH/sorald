@@ -1,4 +1,5 @@
 # Sorald [![GHA tests Workflow Status](https://github.com/SpoonLabs/sorald/actions/workflows/tests.yml/badge.svg)](https://github.com/SpoonLabs/sorald/actions/workflows/tests.yml) [![Code Coverage](https://codecov.io/gh/SpoonLabs/sorald/branch/master/graph/badge.svg)](https://codecov.io/gh/SpoonLabs/sorald) ![Supported Platforms](https://img.shields.io/badge/platforms-Linux%2C%20macOS%2C%20Windows-blue.svg)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSpoonLabs%2Fsorald.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSpoonLabs%2Fsorald?ref=badge_shield)
 Sorald is a tool to automatically repair violations of static analysis rules checked with [SonarQube](https://rules.sonarsource.com).
 It can currently repair violations of [25+ rules](/docs/HANDLED_RULES.md) based on the design described [Sorald: Automatic Patch Suggestions for SonarQube Static Analysis Violations](http://arxiv.org/pdf/2103.12033).
 
@@ -177,3 +178,7 @@ Please read the following steps to trigger the workflow.
 ## Contributing
 
 Contributions are welcome! Feel free to open issues on this GitHub repository, and also to open pull requests for making this project nicer (see instructions [here](/docs/CONTRIBUTING.md)).
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSpoonLabs%2Fsorald.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FSpoonLabs%2Fsorald?ref=badge_large)
