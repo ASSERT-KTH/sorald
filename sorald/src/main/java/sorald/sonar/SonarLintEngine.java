@@ -1,6 +1,7 @@
 package sorald.sonar;
 
 import static java.util.Objects.requireNonNull;
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 
 import java.io.File;
@@ -20,6 +21,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.sonar.api.Plugin;
 import org.sonarsource.sonarlint.core.AbstractSonarLintEngine;
 import org.sonarsource.sonarlint.core.analysis.AnalysisEngine;
 import org.sonarsource.sonarlint.core.analysis.api.ActiveRule;
@@ -38,8 +40,13 @@ import org.sonarsource.sonarlint.core.commons.RuleKey;
 import org.sonarsource.sonarlint.core.commons.log.ClientLogOutput;
 import org.sonarsource.sonarlint.core.commons.progress.ClientProgressMonitor;
 import org.sonarsource.sonarlint.core.commons.progress.ProgressMonitor;
-import org.sonarsource.sonarlint.core.plugin.commons.PluginInstancesRepository;
-import org.sonarsource.sonarlint.core.plugin.commons.PluginInstancesRepository.Configuration;
+import org.sonarsource.sonarlint.core.plugin.commons.LoadedPlugins;
+import org.sonarsource.sonarlint.core.plugin.commons.PluginsLoadResult;
+import org.sonarsource.sonarlint.core.plugin.commons.PluginsLoader;
+import org.sonarsource.sonarlint.core.plugin.commons.PluginsLoader.Configuration;
+import org.sonarsource.sonarlint.core.plugin.commons.loading.PluginInfo;
+import org.sonarsource.sonarlint.core.plugin.commons.loading.PluginInstancesLoader;
+import org.sonarsource.sonarlint.core.plugin.commons.loading.PluginRequirementsCheckResult;
 import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
 import sorald.FileUtils;
 import sorald.util.ConfigLoader;
@@ -51,8 +58,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
     private static final String SONAR_JAVA_PLUGIN_JAR_NAME = "sonar-java-plugin.jar";
     private static final Path sonarJavaPlugin = getOrDownloadSonarJavaPlugin().getPath();
     private static final StandaloneGlobalConfiguration globalConfig = buildGlobalConfig();
-    private static final PluginInstancesRepositoryWhichCannotBeClosed pluginInstancesRepository =
-            createPluginInstancesRepository();
+    private static final LoadedPluginsThatDoesNotCloseLoader loadedPlugins = getLoadedPlugins();
     private static final Map<String, SonarLintRuleDefinition> allRulesDefinitionsByKey =
             computeAllRulesDefinitionsByKey();
     private static final AnalysisEngineConfiguration analysisGlobalConfig =
@@ -68,8 +74,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
         super(null);
         setLogging(null);
 
-        this.analysisEngine =
-                new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, null);
+        this.analysisEngine = new AnalysisEngine(analysisGlobalConfig, loadedPlugins, null);
     }
 
     private static SonarJavaJarHolder getOrDownloadSonarJavaPlugin() {
@@ -119,18 +124,38 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
                 .build();
     }
 
-    private static PluginInstancesRepositoryWhichCannotBeClosed createPluginInstancesRepository() {
+    private static LoadedPluginsThatDoesNotCloseLoader getLoadedPlugins() {
         var config =
                 new Configuration(
                         globalConfig.getPluginPaths(),
                         globalConfig.getEnabledLanguages(),
                         Optional.ofNullable(globalConfig.getNodeJsVersion()));
-        return new PluginInstancesRepositoryWhichCannotBeClosed(config);
+
+        PluginsLoadResult loadedResult = new PluginsLoader().load(config);
+        // Default loaded result stops the loader. The following code prevents that.
+
+        Map<String, PluginRequirementsCheckResult> pluginCheckResultByKeys =
+                loadedResult.getPluginCheckResultByKeys();
+        Collection<PluginInfo> allPlugins = getAllPlugins(pluginCheckResultByKeys);
+
+        // We do not want this loader to close.
+        PluginInstancesLoader instancesLoader = new PluginInstancesLoader();
+        Map<String, Plugin> pluginInstancesByKeys =
+                instancesLoader.instantiatePluginClasses(allPlugins);
+
+        return new LoadedPluginsThatDoesNotCloseLoader(
+                pluginInstancesByKeys, new PluginInstancesLoader());
+    }
+
+    private static Collection<PluginInfo> getAllPlugins(
+            Map<String, PluginRequirementsCheckResult> pluginCheckResultByKeys) {
+        return pluginCheckResultByKeys.values().stream()
+                .map(PluginRequirementsCheckResult::getPlugin)
+                .collect(toList());
     }
 
     private static Map<String, SonarLintRuleDefinition> computeAllRulesDefinitionsByKey() {
-        return loadPluginMetadata(
-                pluginInstancesRepository, globalConfig.getEnabledLanguages(), false);
+        return loadPluginMetadata(loadedPlugins, globalConfig.getEnabledLanguages(), false, false);
     }
 
     private static AnalysisEngineConfiguration buildAnalysisEngineConfiguration() {
@@ -158,8 +183,7 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
      * SonarStaticAnalyzer}.
      */
     public void recreateAnalysisEngine() {
-        this.analysisEngine =
-                new AnalysisEngine(analysisGlobalConfig, pluginInstancesRepository, logOutput);
+        this.analysisEngine = new AnalysisEngine(analysisGlobalConfig, loadedPlugins, logOutput);
     }
 
     @Override
@@ -247,18 +271,20 @@ public final class SonarLintEngine extends AbstractSonarLintEngine {
     }
 
     /**
-     * Overriding this class to ensure its instance never closes throughout the lifecycle of JVM.
+     * Overriding this class to ensure that plugin instance loader never closes throughout the
+     * lifecycle of JVM.
      */
-    public static class PluginInstancesRepositoryWhichCannotBeClosed
-            extends PluginInstancesRepository {
+    public static class LoadedPluginsThatDoesNotCloseLoader extends LoadedPlugins {
 
-        public PluginInstancesRepositoryWhichCannotBeClosed(Configuration configuration) {
-            super(configuration);
+        public LoadedPluginsThatDoesNotCloseLoader(
+                Map<String, Plugin> pluginInstancesByKeys,
+                PluginInstancesLoader pluginInstancesLoader) {
+            super(pluginInstancesByKeys, pluginInstancesLoader);
         }
 
         @Override
-        public void close() throws Exception {
-            // Prevent closing of instance of this class
+        public void unload() {
+            // Prevent closing of `pluginInstancesLoader`
         }
     }
 }
