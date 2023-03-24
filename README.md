@@ -40,6 +40,12 @@ mvn se.kth.castor:sorald:repair -DruleKey=<ruleKey>
 > Note: Sorald `maven-plugin` is still in rudimentary stages. We have added two goals to it - `mine` and `repair`. They
 > both are analogous to the CLI tool. However, not all parameters are supported yet. We are working on adding more.
 
+> Use `describe` goal of [maven-help-plugin](https://maven.apache.org/plugins/maven-help-plugin/describe-mojo.html#) to
+> see the list of parameters supported by the plugin. Example:
+> ```bash
+> mvn help:describe -Dplugin=se.kth.castor:sorald -Ddetail
+> ```
+
 For example, the following commands repair violations of `S1132` in [SonarSource/sonar-scanner-cli@5c518d6](https://github.com/SonarSource/sonar-scanner-cli/commit/5c518d6a6f1a30bed62836790c1233b3f2e763fd).
 
 ```bash
