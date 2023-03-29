@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+preferred-citation:
+  title: "Sorald: Automatic Patch Suggestions for SonarQube Static Analysis Violations"
+  doi: "10.1109/TDSC.2022.3167316"
+  year: "2022"
+  type: article
+  journal: "IEEE Transactions on Dependable and Secure Computing"
+  authors:
+    - family-names: Etemadi
+      given-names: Khashayar
+    - family-names: Harrand
+      given-names: Nicolas
+    - family-names: Larsén
+      given-names: Simon
+    - family-names: Adzemovic
+      given-names: Haris
+    - family-names: Luong
+      given-names: Henry
+    - family-names: Verma
+      given-names: Ashutosh
+    - family-names: Madeiral
+      given-names: Fernanda
+    - family-names: Wikström
+      given-names: Douglas
+    - family-names: Monperrus
+      given-names: Martin
