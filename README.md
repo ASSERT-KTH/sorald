@@ -2,18 +2,9 @@
 Sorald is a tool to automatically repair violations of static analysis rules checked with [SonarQube](https://rules.sonarsource.com).
 It can currently repair violations of [25+ rules](/docs/HANDLED_RULES.md) based on the design described [Sorald: Automatic Patch Suggestions for SonarQube Static Analysis Violations](http://arxiv.org/pdf/2103.12033).
 
-If you use Sorald in an academic context, please cite:
+If you use Sorald in an academic context, please copy BibTeX or APA citation
+from the citation widget on the sidebar of main page.
 
-```bibtex
-@article{sorald2022,
- title = {Sorald: Automatic Patch Suggestions for SonarQube Static Analysis Violations},
- year = {2022},
- author = {Khashayar Etemadi Someoliayi and Nicolas Yves Maurice Harrand and Simon Larsen and Haris Adzemovic and Henry Luong Phu and Ashutosh Verma and Fernanda Madeiral and Douglas Wikstrom and Martin Monperrus},
- url = {http://oadoi.org/10.1109/tdsc.2022.3167316},
- journal = {IEEE Transactions on Dependable and Secure Computing},
- doi = {10.1109/tdsc.2022.3167316},
-}
-```
 
 ### Talks
 
