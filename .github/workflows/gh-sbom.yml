@@ -1,0 +1,36 @@
+name: SBOM Generator
+
+on:
+  schedule:
+    - cron: 0 0 * * * # Everyday at 0000 UTC
+
+permissions: read-all
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: advanced-security/sbom-generator-action@v0.0.1
+        id: sbom
+        env: 
+          GITHUB_TOKEN: ${{ github.token }}
+          
+      - name: Push SBOM to remote
+        env:
+          # Target repo to upload SBOM file 
+          REMOTE_REPO_URL: git@github.com:chains-project/sbom-files.git
+          GIT_USER: github-actions[bot]@users.noreply.github.com
+          GIT_EMAIL: github-actions[bot]
+        run: |
+          git config --global user.name "${{ env.GIT_USER }}"
+          git config --global user.email "${{ env.GIT_EMAIL }}"
+          git clone $REMOTE_REPO_URL
+          mkdir -p sbom-files/frozen-sorald/github/
+          cp ${{ steps.sbom.outputs.fileName }} sbom-files/frozen-sorald/github/$(date '+%Y-%m-%d')-${{ github.sha }}.sbom.json
+          cd sbom-files
+          git add .
+          git commit -m "GH SBOM: $(date '+%Y-%m-%d')"
+          git push
