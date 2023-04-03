@@ -32,5 +32,5 @@ jobs:
           cp ${{ steps.sbom.outputs.fileName }} sbom-files/frozen-sorald/github/$(date '+%Y-%m-%d')-${{ github.sha }}.sbom.json
           cd sbom-files
           git add .
-          git commit -m "GH SBOM: $(date '+%Y-%m-%d')"
+          git commit -m "GH SBOM (sorald): $(date '+%Y-%m-%d')"
           git push
