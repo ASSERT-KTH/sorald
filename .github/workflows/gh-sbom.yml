@@ -1,4 +1,4 @@
-name: SBOM Generator
+name: SBOM Producer
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
 permissions: read-all
 
 jobs:
-  build:
+  produce-sbom-from-github-dependency-graph:
     runs-on: ubuntu-latest
     environment: sbom
     env:
@@ -39,7 +39,9 @@ jobs:
           git config --global user.email "${{ env.GIT_EMAIL }}"
           git clone $REMOTE_REPO_URL
           mkdir -p sbom-files/frozen-sorald/github/
-          cp ${{ steps.sbom.outputs.fileName }} sbom-files/frozen-sorald/github/$(date '+%Y-%m-%d')-${{ github.sha }}.sbom.json
+          # We do not store hash in the file name because it will always be the same
+          # since frozen-sorald is immutable
+          cp ${{ steps.sbom.outputs.fileName }} sbom-files/frozen-sorald/github/$(date '+%Y-%m-%d').sbom.json
           cd sbom-files
           git add .
           git commit -m "GH SBOM (sorald): $(date '+%Y-%m-%d')"
