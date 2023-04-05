@@ -1,7 +1,6 @@
 name: SBOM Producer
 
 on:
-  workflow_dispatch:
   schedule:
     - cron: 0 0 * * * # Everyday at 0000 UTC
 
