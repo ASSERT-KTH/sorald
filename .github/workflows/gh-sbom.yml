@@ -1,6 +1,7 @@
 name: SBOM Generator
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: 0 0 * * * # Everyday at 0000 UTC
 
@@ -9,6 +10,9 @@ permissions: read-all
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: sbom
+    env:
+      SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
     steps:
       - uses: actions/checkout@v3
@@ -17,6 +21,12 @@ jobs:
         id: sbom
         env: 
           GITHUB_TOKEN: ${{ github.token }}
+      
+      - name: Add deployment SSH private key to agent
+        run: |
+          ssh-agent -a ${{ env.SSH_AUTH_SOCK }} > /dev/null
+          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+          echo ${{ env.SSH_AUTH_SOCK }}
           
       - name: Push SBOM to remote
         env:
