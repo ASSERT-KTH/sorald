@@ -11,7 +11,6 @@
     <description>An automatic repair system for static code analysis warnings from Sonar Java.</description>
     <url>https://github.com/SpoonLabs/sorald</url>
 
-
     <licenses>
         <license>
             <name>MIT License</name>
