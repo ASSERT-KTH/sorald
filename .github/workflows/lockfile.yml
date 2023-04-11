@@ -15,7 +15,7 @@ jobs:
       - name: Set up Maven
         uses: stCarolas/setup-maven@07fbbe97d97ef44336b7382563d66743297e442f # v4.5
         with:
-        maven-version: 3.8.2
+          maven-version: 3.8.2
       - id: install-jbang
         run: curl -Ls https://sh.jbang.dev | bash -s - app setup
         shell: bash
@@ -42,10 +42,8 @@ jobs:
         shell: bash
         env:
           JSON_INPUTS: ${{ toJSON(inputs) }}
-          GITHUB_TOKEN: ${{ inputs.github-token }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - id: commit-lockfile
-        if: inputs.commit-lockfile == 'true'
         uses: EndBug/add-and-commit@61a88be553afe4206585b31aa72387c64295d08b # v9
         with:
-          default_author: ${{ inputs.commit-author }}
-          message: ${{ inputs.commit-message }}
+          message: update lockfile
