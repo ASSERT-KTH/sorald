@@ -1,6 +1,6 @@
 name: Lockfile
 on:
-  pull_request_targe:
+  pull_request_target:
 
 jobs:
  check-lockfile:
