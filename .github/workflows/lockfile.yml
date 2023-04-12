@@ -1,7 +1,8 @@
 name: Lockfile
 on:
-  pull_request_target:
-
+  pull_request:
+permissions:
+      pull-requests: write
 jobs:
  check-lockfile:
    runs-on: ubuntu-latest
