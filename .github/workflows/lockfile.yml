@@ -1,8 +1,7 @@
 name: Lockfile
 on:
   pull_request:
-permissions:
-      pull-requests: write
+
 jobs:
  check-lockfile:
    runs-on: ubuntu-latest
@@ -49,3 +48,10 @@ jobs:
         uses: EndBug/add-and-commit@61a88be553afe4206585b31aa72387c64295d08b # v9
         with:
           message: update lockfile
+      - id: upload_artifact
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: lockfile
+          path: "**/lockfile.json"
+          retention-days: 5
