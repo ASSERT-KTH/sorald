@@ -24,8 +24,8 @@
   "release": {
     "github": {
       "owner": "SpoonLabs",
-      "tagName": "v{{projectVersion}}",
-      "releaseName": "sorald-{{tagName}}",
+      "tagName": "sorald-{{projectVersion}}",
+      "releaseName": "{{tagName}}",
       "changelog": {
         "formatted": "ALWAYS",
         "preset": "conventional-commits",
