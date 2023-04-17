@@ -15,7 +15,7 @@ required = [
 setup(
     name="soraldscripts",
     description="Helper scripts for the Sorald automatic repair tool",
-    packages=find_packages('sorald/', exclude=("tests", "docs")),
+    packages=find_packages('sorald/', exclude=("tests", "docs", "legacy")),
     tests_require=test_requirements,
     install_requires=required,
     extras_require=dict(TEST=test_requirements),
