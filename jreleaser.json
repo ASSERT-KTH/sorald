@@ -50,6 +50,11 @@
     }
   },
 
+  "signing": {
+    "active": "ALWAYS",
+    "armored": true
+  },
+
   "deploy": {
     "maven": {
       "nexus2": {
