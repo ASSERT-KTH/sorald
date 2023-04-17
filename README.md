@@ -146,6 +146,16 @@ The full list of options documented [here](/docs/usage/mine.adoc)
 #### Running Sorald on GitHub projects to propose PRs with fixes
 
 To run Sorald on projects towards proposing fixes in the form of PRs, look at [this Git repository](https://github.com/HarisAdzemovic/SQ-Repair-CI-Integration) for an example. In it, Sorald is ran on the three Apache projects defined in the *projects_for_model_1.txt* file.
+
+## Releases
+
+Our releases are signed using `travis-gumtree-spoon`'s GPG key. The key is hosted
+[here](https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x1429025e3eda19a5).
+You may run the following commands to verify the signature of a release.
+```shell
+gpg --recv-keys 1429025e3eda19a5
+gpg --verify sorald-<VERSION>-jar-with-dependencies.jar.asc
+```
  
 ## Academic bibliographic references
 

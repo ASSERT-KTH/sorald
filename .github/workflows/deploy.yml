@@ -9,8 +9,6 @@ name: deploy
 on:
   push:
     branches: [ master ]
-  release:
-    types: [ published ]
 
 env:
   JAVA_DISTRIBUTION: 'adopt'
@@ -58,7 +56,7 @@ jobs:
           gpg-passphrase: SORALD_GPG_PASSPHRASE
 
       - name: Publish to Maven Central
-        if: ${{ contains(steps.get-sorald-version.outputs.version, 'SNAPSHOT') || github.event_name == 'release' }}
+        if: ${{ contains(steps.get-sorald-version.outputs.version, 'SNAPSHOT') }}
         run: |
           mvn -Prelease deploy -pl se.kth.castor:sorald-parent # Fully qualified artifact ID is required
           mvn -Prelease deploy -pl sorald-api

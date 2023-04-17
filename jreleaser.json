@@ -1,0 +1,76 @@
+{
+  "project": {
+    "name": "sorald",
+    "description": "Automatic repair system for static analysis warnings from SonarQube's SonarJava",
+    "longDescription": "Sorald is a tool to automatically repair violations of static analysis rules checked with SonarQube. It can currently repair violations of 25+ rules based on the design described Sorald: Automatic Patch Suggestions for SonarQube Static Analysis Violations.",
+
+    "authors": [
+      "slarse",
+      "algomaster99",
+      "khaes-kth",
+      "fermadeiral"
+    ],
+    "license": "MIT",
+    "links": {
+      "homepage": "https://github.com/SpoonLabs/sorald"
+    },
+    "java": {
+      "groupId": "se.kth.castor",
+      "version": "11"
+    },
+    "inceptionYear": "2018"
+  },
+
+  "release": {
+    "github": {
+      "owner": "SpoonLabs",
+      "tagName": "{{projectVersion}}",
+      "releaseName": "sorald-{{tagName}}",
+      "changelog": {
+        "formatted": "ALWAYS",
+        "preset": "conventional-commits",
+        "format": "- {{commitShortHash}} {{commitTitle}}",
+        "contributors": {
+          "format": "- {{contributorName}} ({{contributorUsernameAsLink}})"
+        }
+      }
+    }
+  },
+
+  "distributions": {
+    "sorald": {
+      "type": "SINGLE_JAR",
+      "stereotype": "CLI",
+      "artifacts": [
+        {
+          "path": "sorald/target/{{distributionName}}-{{projectVersion}}-jar-with-dependencies.jar"
+        },
+        {
+          "path": "sorald/target/{{distributionName}}-{{projectVersion}}-jar-with-dependencies.jar.asc"
+        }
+      ],
+      "tags": ["sonarqube", "program-repair"]
+    }
+  },
+
+  "signing": {
+    "active": "ALWAYS",
+    "armored": true
+  },
+
+  "deploy": {
+    "maven": {
+      "nexus2": {
+        "maven-central": {
+          "active": "ALWAYS",
+          "url": "https://oss.sonatype.org/service/local/staging/deploy/maven2",
+          "closeRepository": true,
+          "releaseRepository": true,
+          "stagingRepositories": [
+            "target/staging-deploy"
+          ]
+        }
+      }
+    }
+  }
+}

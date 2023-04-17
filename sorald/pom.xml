@@ -5,12 +5,10 @@
   <parent>
     <groupId>se.kth.castor</groupId>
     <artifactId>sorald-parent</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
-    <relativePath>../</relativePath>
+    <version>0.8.1-SNAPSHOT</version>
   </parent>
 
     <artifactId>sorald</artifactId>
-    <version>0.8.1-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
 
     <name>Sorald</name>
@@ -54,7 +52,7 @@
         <dependency>
             <groupId>se.kth.castor</groupId>
             <artifactId>sorald-api</artifactId>
-            <version>0.0.4-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.sonarsource.sonarlint.core</groupId>
