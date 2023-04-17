@@ -60,7 +60,7 @@
       "nexus2": {
         "maven-central": {
           "active": "ALWAYS",
-          "url": "https://oss.sonatype.org/service/local/staging/deploy/maven2",
+          "url": "https://oss.sonatype.org/service/local",
           "closeRepository": true,
           "releaseRepository": true,
           "stagingRepositories": [
