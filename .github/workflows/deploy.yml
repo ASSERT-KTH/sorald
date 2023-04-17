@@ -53,7 +53,6 @@ jobs:
           server-username: OSSRH_USERNAME
           server-password: OSSRH_CENTRAL_TOKEN
           gpg-private-key: ${{ secrets.SORALD_SIGNING_KEY }}
-          gpg-passphrase: SORALD_GPG_PASSPHRASE
 
       - name: Publish to Maven Central
         if: ${{ contains(steps.get-sorald-version.outputs.version, 'SNAPSHOT') }}
@@ -64,4 +63,3 @@ jobs:
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_CENTRAL_TOKEN: ${{ secrets.OSSRH_PASSWORD }}
-          SORALD_GPG_PASSPHRASE: ${{ secrets.SORALD_SIGNING_KEY_PASSPHRASE }}
