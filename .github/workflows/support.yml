@@ -29,7 +29,7 @@ jobs:
         run: |
           SCRIPT_NAME=achievements
           GENERATED_FILE=docs/ACHIEVEMENTS.md
-          python -m sorald.${SCRIPT_NAME} -p experimentation/prs.json -o ${GENERATED_FILE}
+          python experimentation/tools/sorald/${SCRIPT_NAME}.py -p experimentation/prs.json -o ${GENERATED_FILE}
 
           ./.github/submit-pr.sh \
             --branch-prefix   ${SCRIPT_NAME} \
@@ -42,7 +42,7 @@ jobs:
         run: |
           SCRIPT_NAME=handled_rules
           GENERATED_FILE=docs/HANDLED_RULES.md
-          python -m sorald.${SCRIPT_NAME} -o ${GENERATED_FILE}
+          python experimentation/tools/sorald/${SCRIPT_NAME}.py -o ${GENERATED_FILE}
 
           ./.github/submit-pr.sh \
             --branch-prefix   ${SCRIPT_NAME} \
