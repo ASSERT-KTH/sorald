@@ -44,18 +44,10 @@
       "artifacts": [
         {
           "path": "sorald/target/{{distributionName}}-{{projectVersion}}-jar-with-dependencies.jar"
-        },
-        {
-          "path": "sorald/target/{{distributionName}}-{{projectVersion}}-jar-with-dependencies.jar.asc"
         }
       ],
       "tags": ["sonarqube", "program-repair"]
     }
-  },
-
-  "signing": {
-    "active": "ALWAYS",
-    "armored": true
   },
 
   "deploy": {
