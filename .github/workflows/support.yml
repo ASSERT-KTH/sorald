@@ -4,7 +4,6 @@ name: support
 
 on:
   push:
-    branches: [ master ]
 
 env:
   JAVA_DISTRIBUTION: 'adopt'
@@ -31,26 +30,26 @@ jobs:
           GENERATED_FILE=docs/ACHIEVEMENTS.md
           python -m sorald.${SCRIPT_NAME} -p experimentation/prs.json -o ${GENERATED_FILE}
 
-          ./.github/submit-pr.sh \
-            --branch-prefix   ${SCRIPT_NAME} \
-            --generated-file  ${GENERATED_FILE} \
-            --gh-sha          ${{ github.sha }} \
-            --gh-token        ${{ secrets.GITHUB_TOKEN }} \
-            --gh-repository   ${{ github.repository }} \
-            --gh-workflow     ${{ github.workflow }}
+#          ./.github/submit-pr.sh \
+#            --branch-prefix   ${SCRIPT_NAME} \
+#            --generated-file  ${GENERATED_FILE} \
+#            --gh-sha          ${{ github.sha }} \
+#            --gh-token        ${{ secrets.GITHUB_TOKEN }} \
+#            --gh-repository   ${{ github.repository }} \
+#            --gh-workflow     ${{ github.workflow }}
       - name: Generate HANDLED_RULES.md and submit a PR if modified
         run: |
           SCRIPT_NAME=handled_rules
           GENERATED_FILE=docs/HANDLED_RULES.md
           python -m sorald.${SCRIPT_NAME} -o ${GENERATED_FILE}
 
-          ./.github/submit-pr.sh \
-            --branch-prefix   ${SCRIPT_NAME} \
-            --generated-file  ${GENERATED_FILE} \
-            --gh-sha          ${{ github.sha }} \
-            --gh-token        ${{ secrets.GITHUB_TOKEN }} \
-            --gh-repository   ${{ github.repository }} \
-            --gh-workflow     ${{ github.workflow }}
+#          ./.github/submit-pr.sh \
+#            --branch-prefix   ${SCRIPT_NAME} \
+#            --generated-file  ${GENERATED_FILE} \
+#            --gh-sha          ${{ github.sha }} \
+#            --gh-token        ${{ secrets.GITHUB_TOKEN }} \
+#            --gh-repository   ${{ github.repository }} \
+#            --gh-workflow     ${{ github.workflow }}
 
       - uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
         with:
@@ -66,10 +65,10 @@ jobs:
             sorald.cli.MineCommand \
             sorald.cli.RepairCommand)
           
-          ./.github/submit-pr.sh \
-            --branch-prefix   usage \
-            --generated-file  docs/usage \
-            --gh-sha          ${{ github.sha }} \
-            --gh-token        ${{ secrets.GITHUB_TOKEN }} \
-            --gh-repository   ${{ github.repository }} \
-            --gh-workflow     ${{ github.workflow }}
+#          ./.github/submit-pr.sh \
+#            --branch-prefix   usage \
+#            --generated-file  docs/usage \
+#            --gh-sha          ${{ github.sha }} \
+#            --gh-token        ${{ secrets.GITHUB_TOKEN }} \
+#            --gh-repository   ${{ github.repository }} \
+#            --gh-workflow     ${{ github.workflow }}
