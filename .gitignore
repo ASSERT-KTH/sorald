@@ -34,6 +34,3 @@ scripts/config.json
 # JReleaser files
 out/
 jreleaser-cli.jar
-
-# Python files
-__pycache__
