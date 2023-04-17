@@ -58,10 +58,11 @@ jobs:
         with:
           github_token: ${{ secrets.JRELEASER_GITHUB_TOKEN }}
           message: 'chore: releasing sorald ${{ env.NEXT_VERSION }}'
+          branch: ${{ github.event.repository.default_branch }}
 
       # Now we can run the release
       - name: Stage release
-        run:  mvn --no-transfer-progress --batch-mode -Prelease clean deploy -DaltDeploymentRepository=local::default::file://`pwd`/target/staging-deploy
+        run:  mvn --no-transfer-progress --batch-mode -Prelease clean deploy -DskipUnitTests -DskipIntegrationTests -DaltDeploymentRepository=local::default::file://`pwd`/target/staging-deploy
       - name: Print next version
         run: mvn help:evaluate -Dexpression=project.version -q -DforceStdout | sed 's/-SNAPSHOT//'
       - name: Run JReleaser
@@ -76,8 +77,8 @@ jobs:
           JRELEASER_GPG_PASSPHRASE: ${{ secrets.SORALD_SIGNING_KEY_PASSPHRASE }}
           JRELEASER_GPG_PUBLIC_KEY: ${{ secrets.SORALD_SIGNING_PUBLIC_KEY }}
           JRELEASER_GPG_SECRET_KEY: ${{ secrets.SORALD_SIGNING_KEY }}
-          JRELEASER_NEXUS2_MAVEN_CENTRAL_USERNAME: ${{ secrets.OSSH_USERNAME }}
-          JRELEASER_NEXUS2_MAVEN_CENTRAL_PASSWORD: ${{ secrets.OSSH_PASSWORD }}
+          JRELEASER_NEXUS2_MAVEN_CENTRAL_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          JRELEASER_NEXUS2_MAVEN_CENTRAL_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
 
       # Now we can update the changelog
       - name: Prepend changelog from out/jreleaser/CHANGELOG.md to CHANGELOG.md with version as header
@@ -101,6 +102,7 @@ jobs:
         with:
           github_token: ${{ secrets.JRELEASER_GITHUB_TOKEN }}
           message: 'chore: prepare for next development iteration of sorald'
+          branch: ${{ github.event.repository.default_branch }}
 
       # Log failure:
       - name: JReleaser release output
