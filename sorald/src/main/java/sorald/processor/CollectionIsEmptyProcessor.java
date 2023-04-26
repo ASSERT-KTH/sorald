@@ -22,8 +22,23 @@ public class CollectionIsEmptyProcessor extends SoraldAbstractProcessor<CtBinary
                         .orElseThrow(IllegalStateException::new);
         CtInvocation<?> newInvocation =
                 getFactory().createInvocation(methodCallTarget, isEmptyMethod.getReference());
-        CtExpression<?> expression =
-                element.getKind() == BinaryOperatorKind.EQ ? newInvocation : not(newInvocation);
+        CtExpression<?> expression = getIsEmptyInvocation(newInvocation, element);
         element.replace(expression);
+    }
+
+    /**
+     * Returns the invocation of isEmpty() that should be used to replace the given element. If the
+     * operator is == or < 1, then we can just return the invocation, otherwise we need to negate
+     * it.
+     */
+    private CtExpression<?> getIsEmptyInvocation(
+            CtInvocation<?> invocation, CtBinaryOperator<?> element) {
+        if (element.getKind() == BinaryOperatorKind.EQ) {
+            return invocation;
+        } else if (element.getKind() == BinaryOperatorKind.LT
+                && element.getRightHandOperand().equals(getFactory().createLiteral(1))) {
+            return invocation;
+        }
+        return not(invocation);
     }
 }
