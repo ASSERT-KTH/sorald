@@ -9,4 +9,10 @@ Example:
 ...
 - if (myCollection.size() != 0) {  // Noncompliant
 + if (!myCollection.isEmpty()) {
+...
+- if (myCollection.size() < 1) {  // Noncompliant
++ if (myCollection.isEmpty()) {
 ```
+
+> We ignore expressions such as `0 == myCollections.size()` based on heuristics
+> that it is not a common practice to do so.
