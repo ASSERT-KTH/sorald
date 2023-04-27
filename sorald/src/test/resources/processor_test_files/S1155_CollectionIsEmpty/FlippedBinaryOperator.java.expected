@@ -4,10 +4,10 @@ public class FlippedBinaryOperator {
     public static void main(String[] args) {
         Collection myCollection = null;
 
-        if (myCollection.isEmpty()) {  // Noncompliant
+        if (myCollection.isEmpty()) {  // Compliant
             /* ... */
         }
-        if (myCollection.isEmpty()) {  // Noncompliant
+        if (myCollection.isEmpty()) {  // Compliant
             /* ... */
         }
     }
