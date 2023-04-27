@@ -10,5 +10,11 @@ public class FlippedBinaryOperator {
         if (0 >= myCollection.size()) {  // Noncompliant
             /* ... */
         }
+        if (3 >= myCollection.size()) { // Compliant
+            /* ... */
+        }
+        if (1 <= myCollection.size()) {  // Noncompliant
+            /* ... */
+        }
     }
 }

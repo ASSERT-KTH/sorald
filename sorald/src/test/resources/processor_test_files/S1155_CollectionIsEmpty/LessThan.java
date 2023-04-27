@@ -7,5 +7,8 @@ public class LessThan {
         if (myCollection.size() < 1) {  // Noncompliant
             /* ... */
         }
+        if (myCollection.size() <= 0) {  // Noncompliant
+            /* ... */
+        }
     }
 }
