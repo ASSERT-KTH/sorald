@@ -1,4 +1,27 @@
 
+# 0.8.4
+## Changelog
+
+## 🐛 Fixes
+- a85ec45 fix: cover the exhaustive cases in S1155 (#1029)
+
+## 🧰 Tasks
+- 8f41a55 chore: releasing sorald 0.8.4
+- f3c59bc chore: prepare for next development iteration of sorald
+
+## 🛠  Build
+- 11f7622 ci: remove sonar check (#1030)
+
+## 📝 Documentation
+- a3c1b43 docs: Update docs/HANDLED_RULES.md (#1031)
+
+
+## Contributors
+We'd like to thank the following people for their contributions:
+- Aman Sharma ([@algomaster99](https://github.com/algomaster99))
+- GitHub ()
+- github-actions[bot] ([@github-actions[bot]](https://github.com/apps/github-actions))
+
 # 0.8.3
 ## Changelog
 
