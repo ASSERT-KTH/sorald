@@ -1,0 +1,20 @@
+import java.util.Collection;
+
+public class FlippedBinaryOperator {
+    public static void main(String[] args) {
+        Collection myCollection = null;
+
+        if (myCollection.isEmpty()) {  // Compliant
+            /* ... */
+        }
+        if (myCollection.isEmpty()) {  // Compliant
+            /* ... */
+        }
+        if (3 >= myCollection.size()) { // Compliant
+                    /* ... */
+                }
+        if (!myCollection.isEmpty()) {  // Compliant
+            /* ... */
+        }
+    }
+}

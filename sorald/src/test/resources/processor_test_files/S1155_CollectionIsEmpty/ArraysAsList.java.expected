@@ -1,0 +1,30 @@
+import java.util.Arrays;
+
+public class ArraysAsList {
+    void main() {
+        if (Arrays.asList("a", "b", "c").isEmpty()) { // Compliant
+            return;
+        }
+        if (Arrays.asList("a", "b", "c").isEmpty()) { // Compliant
+            return;
+        }
+        if (Arrays.asList("a", "b", "c").isEmpty()) { // Compliant
+            return;
+        }
+        if (Arrays.asList("a", "b", "c").size() > 3) { // Compliant
+            return;
+        }
+        if (!Arrays.asList("a", "b", "c").isEmpty()) { // Compliant
+            return;
+        }
+        if (Arrays.asList("a", "b", "c").isEmpty()) { // Compliant
+            return;
+        }
+        if (Arrays.asList(1, 2, 3).size() >= 0) { // Compliant
+            return;
+        }
+        if (1 < Arrays.asList("a", "b", "c").size()) { // Compliant
+            return;
+        }
+    }
+}
