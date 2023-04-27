@@ -4,7 +4,7 @@
 
     <groupId>se.kth.castor</groupId>
     <artifactId>sorald-parent</artifactId>
-    <version>0.8.4-SNAPSHOT</version>
+    <version>0.8.4</version>
     <packaging>pom</packaging>
 
     <name>Sorald-parent</name>
