@@ -1,0 +1,14 @@
+import java.util.Collection;
+
+public class FlippedBinaryOperator {
+    public static void main(String[] args) {
+        Collection myCollection = null;
+
+        if (myCollection.isEmpty()) {  // Noncompliant
+            /* ... */
+        }
+        if (myCollection.isEmpty()) {  // Noncompliant
+            /* ... */
+        }
+    }
+}
