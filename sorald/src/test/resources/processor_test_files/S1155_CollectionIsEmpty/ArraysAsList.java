@@ -20,7 +20,7 @@ public class ArraysAsList {
         if (0 >= Arrays.asList("a", "b", "c").size()) { // Noncompliant
             return;
         }
-        if (Arrays.asList(1, 2, 3).size() >= 0) { // Noncompliant
+        if (Arrays.asList(1, 2, 3).size() >= 0) { // Compliant
             return;
         }
     }
