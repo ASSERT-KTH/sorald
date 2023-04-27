@@ -43,12 +43,17 @@ public class CollectionIsEmptyProcessor extends SoraldAbstractProcessor<CtBinary
     }
 
     private void repairLeftHandOperand(CtBinaryOperator<?> element, CtInvocation<?> newInvocation) {
+        // == 0
         if (element.getKind() == BinaryOperatorKind.EQ) {
             element.replace(newInvocation);
-        } else if (element.getKind() == BinaryOperatorKind.LT
+        }
+        // < 1
+        else if (element.getKind() == BinaryOperatorKind.LT
                 && element.getRightHandOperand().equals(getFactory().createLiteral(1))) {
             element.replace(newInvocation);
-        } else if (element.getKind() == BinaryOperatorKind.LE
+        }
+        // <= 0
+        else if (element.getKind() == BinaryOperatorKind.LE
                 && element.getRightHandOperand().equals(getFactory().createLiteral(0))) {
             element.replace(newInvocation);
         }
@@ -57,12 +62,17 @@ public class CollectionIsEmptyProcessor extends SoraldAbstractProcessor<CtBinary
 
     private void repairRightHandOperand(
             CtBinaryOperator<?> element, CtInvocation<?> newInvocation) {
+        // 0 ==
         if (element.getKind() == BinaryOperatorKind.EQ) {
             element.replace(newInvocation);
-        } else if (element.getKind() == BinaryOperatorKind.GT
+        }
+        // 1 >
+        else if (element.getKind() == BinaryOperatorKind.GT
                 && element.getLeftHandOperand().equals(getFactory().createLiteral(1))) {
             element.replace(newInvocation);
-        } else if (element.getKind() == BinaryOperatorKind.GE
+        }
+        // 0 >=
+        else if (element.getKind() == BinaryOperatorKind.GE
                 && element.getLeftHandOperand().equals(getFactory().createLiteral(0))) {
             element.replace(newInvocation);
         }
