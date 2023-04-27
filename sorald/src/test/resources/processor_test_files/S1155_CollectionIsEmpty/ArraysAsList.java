@@ -23,5 +23,8 @@ public class ArraysAsList {
         if (Arrays.asList(1, 2, 3).size() >= 0) { // Compliant
             return;
         }
+        if (1 < Arrays.asList("a", "b", "c").size()) { // Compliant
+            return;
+        }
     }
 }
