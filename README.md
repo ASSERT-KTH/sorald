@@ -1,6 +1,6 @@
 # Sorald [![GHA tests Workflow Status](https://github.com/SpoonLabs/sorald/actions/workflows/tests.yml/badge.svg)](https://github.com/SpoonLabs/sorald/actions/workflows/tests.yml) [![Code Coverage](https://codecov.io/gh/SpoonLabs/sorald/branch/master/graph/badge.svg)](https://codecov.io/gh/SpoonLabs/sorald) ![Supported Platforms](https://img.shields.io/badge/platforms-Linux%2C%20macOS%2C%20Windows-blue.svg)
 Sorald is a tool to automatically repair violations of static analysis rules checked with [SonarQube](https://rules.sonarsource.com).
-It can currently repair violations of [25+ rules](/docs/HANDLED_RULES.md) based on the design described [Sorald: Automatic Patch Suggestions for SonarQube Static Analysis Violations](https://ieeexplore.ieee.org/document/9756950).
+It can currently repair violations of [25+ rules](/docs/HANDLED_RULES.md) based on the design described in [Sorald: Automatic Patch Suggestions for SonarQube Static Analysis Violations](http://arxiv.org/pdf/2103.12033) ([doi:10.1109/TDSC.2022.3167316](http://dx.doi.org/10.1109/TDSC.2022.3167316)).
 
 If you use Sorald in an academic context, please copy BibTeX or APA citation
 from the citation widget on the sidebar of main page.
