@@ -12,7 +12,7 @@ Example:
 ...
 - if (myCollection.size() < 1) {  // Noncompliant
 + if (myCollection.isEmpty()) {
+...
+- if (0 >= myCollection.size()) {  // Noncompliant
++ if (myCollection.isEmpty()) {
 ```
-
-> We ignore expressions such as `0 == myCollections.size()` based on heuristics
-> that it is not a common practice to do so.
