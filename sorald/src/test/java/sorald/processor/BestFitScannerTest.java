@@ -5,24 +5,27 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 import org.junit.jupiter.api.Test;
+
 import sorald.Constants;
 import sorald.TestHelper;
 import sorald.rule.RuleViolation;
 import sorald.sonar.BestFitScanner;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.SonarRule;
+
 import spoon.FluentLauncher;
 import spoon.Launcher;
 import spoon.reflect.CtModel;
 import spoon.reflect.cu.SourcePosition;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtType;
+
+import java.io.File;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class BestFitScannerTest {
 

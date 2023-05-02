@@ -1,11 +1,13 @@
 package sorald.processor;
 
-import java.math.BigDecimal;
 import sorald.annotations.ProcessorAnnotation;
+
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
+
+import java.math.BigDecimal;
 
 @ProcessorAnnotation(key = "S2111", description = "\"BigDecimal(double)\" should not be used")
 public class BigDecimalDoubleConstructorProcessor

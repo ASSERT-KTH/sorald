@@ -1,9 +1,11 @@
 package sorald.api;
 
-import java.util.Collection;
-import javax.annotation.Nonnull;
 import sorald.rule.IRuleType;
 import sorald.rule.Rule;
+
+import java.util.Collection;
+
+import javax.annotation.Nonnull;
 
 /**
  * This class defines the interface for a repository of rules. It is used by Sorald to find all

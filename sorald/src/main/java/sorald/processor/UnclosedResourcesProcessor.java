@@ -1,9 +1,7 @@
 package sorald.processor;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Stream;
 import sorald.annotations.ProcessorAnnotation;
+
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCatch;
@@ -17,6 +15,10 @@ import spoon.reflect.code.CtVariableWrite;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.reference.CtLocalVariableReference;
 import spoon.reflect.reference.CtVariableReference;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 @ProcessorAnnotation(key = "S2095", description = "Resources should be closed")
 public class UnclosedResourcesProcessor extends SoraldAbstractProcessor<CtConstructorCall<?>> {

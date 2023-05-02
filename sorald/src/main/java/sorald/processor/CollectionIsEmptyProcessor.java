@@ -3,6 +3,7 @@ package sorald.processor;
 import static sorald.util.Transformations.not;
 
 import sorald.annotations.ProcessorAnnotation;
+
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 

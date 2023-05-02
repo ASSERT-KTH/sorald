@@ -1,7 +1,7 @@
 package sorald.processor;
 
-import java.util.NoSuchElementException;
 import sorald.annotations.ProcessorAnnotation;
+
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtExpression;
@@ -9,6 +9,8 @@ import spoon.reflect.code.CtIf;
 import spoon.reflect.code.CtThrow;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
+
+import java.util.NoSuchElementException;
 
 @ProcessorAnnotation(
         key = "S2272",

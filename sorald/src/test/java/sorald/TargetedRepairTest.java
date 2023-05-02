@@ -7,7 +7,18 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import static sorald.Assertions.assertNoRuleViolations;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import sorald.processor.BigDecimalDoubleConstructorProcessor;
+import sorald.processor.ProcessorTestHelper;
+import sorald.rule.Rule;
+import sorald.rule.RuleViolation;
+import sorald.sonar.ProjectScanner;
+import sorald.sonar.SonarRule;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -17,14 +28,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-import sorald.processor.BigDecimalDoubleConstructorProcessor;
-import sorald.processor.ProcessorTestHelper;
-import sorald.rule.Rule;
-import sorald.rule.RuleViolation;
-import sorald.sonar.ProjectScanner;
-import sorald.sonar.SonarRule;
 
 /** Tests for the targeted repair functionality of Sorald. */
 public class TargetedRepairTest {

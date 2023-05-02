@@ -1,5 +1,15 @@
 package sorald.processor;
 
+import sorald.annotations.IncompleteProcessor;
+import sorald.annotations.ProcessorAnnotation;
+
+import spoon.reflect.code.*;
+import spoon.reflect.declaration.CtMethod;
+import spoon.reflect.declaration.CtType;
+import spoon.reflect.declaration.ModifierKind;
+import spoon.reflect.reference.CtFieldReference;
+import spoon.reflect.reference.CtTypeReference;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,16 +18,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilderFactory;
-import sorald.annotations.IncompleteProcessor;
-import sorald.annotations.ProcessorAnnotation;
-import spoon.reflect.code.*;
-import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.declaration.CtType;
-import spoon.reflect.declaration.ModifierKind;
-import spoon.reflect.reference.CtFieldReference;
-import spoon.reflect.reference.CtTypeReference;
 
 @IncompleteProcessor(
         description =
