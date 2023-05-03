@@ -1,11 +1,7 @@
 package sorald.processor;
 
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 import sorald.annotations.ProcessorAnnotation;
+
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtLocalVariable;
@@ -24,6 +20,12 @@ import spoon.reflect.meta.impl.RoleHandlerHelper;
 import spoon.reflect.path.CtRole;
 import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.Filter;
+
+import java.util.IdentityHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @ProcessorAnnotation(key = "S1854", description = "Unused assignments should be removed")
 public class DeadStoreProcessor extends SoraldAbstractProcessor<CtStatement> {

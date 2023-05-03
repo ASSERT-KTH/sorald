@@ -1,11 +1,13 @@
 package sorald.sonar;
 
 import com.google.auto.service.AutoService;
+
+import sorald.api.ProcessorRepository;
+import sorald.processor.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import sorald.api.ProcessorRepository;
-import sorald.processor.*;
 
 @AutoService(ProcessorRepository.class)
 public class SonarProcessorRepository implements ProcessorRepository {

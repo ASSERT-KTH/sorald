@@ -1,5 +1,8 @@
 package sorald;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,8 +13,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class FileUtils {
     private FileUtils() {}

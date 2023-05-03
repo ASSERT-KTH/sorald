@@ -1,10 +1,11 @@
 package sorald.rule;
 
+import sorald.Constants;
+
 import java.nio.file.Path;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import sorald.Constants;
 
 /** Representation of a violation of some Sonar rule */
 public abstract class RuleViolation implements Comparable<RuleViolation> {

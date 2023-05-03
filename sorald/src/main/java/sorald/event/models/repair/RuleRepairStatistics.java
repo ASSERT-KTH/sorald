@@ -1,5 +1,11 @@
 package sorald.event.models.repair;
 
+import sorald.event.collectors.RepairStatisticsCollector;
+import sorald.event.models.RepairEvent;
+import sorald.event.models.WarningLocation;
+import sorald.event.models.miner.MinedViolationEvent;
+import sorald.sonar.SonarRule;
+
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,11 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import sorald.event.collectors.RepairStatisticsCollector;
-import sorald.event.models.RepairEvent;
-import sorald.event.models.WarningLocation;
-import sorald.event.models.miner.MinedViolationEvent;
-import sorald.sonar.SonarRule;
 
 /** Repair statistics for a single rule. */
 public class RuleRepairStatistics {

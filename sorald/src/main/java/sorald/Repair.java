@@ -1,23 +1,5 @@
 package sorald;
 
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.IdentityHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
 import sorald.event.SoraldEventHandler;
@@ -29,6 +11,7 @@ import sorald.segment.FirstFitSegmentationAlgorithm;
 import sorald.segment.Node;
 import sorald.segment.SoraldTreeBuilderAlgorithm;
 import sorald.sonar.BestFitScanner;
+
 import spoon.Launcher;
 import spoon.MavenLauncher;
 import spoon.compiler.Environment;
@@ -47,6 +30,25 @@ import spoon.reflect.visitor.ImportConflictDetector;
 import spoon.reflect.visitor.PrettyPrinter;
 import spoon.support.QueueProcessingManager;
 import spoon.support.sniper.SniperJavaPrettyPrinter;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.IdentityHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /** Class for repairing projects. */
 public class Repair {

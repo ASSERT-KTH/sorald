@@ -1,13 +1,14 @@
 package sorald;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.IdentityHashMap;
-import java.util.Set;
 import spoon.reflect.path.CtRole;
 import spoon.reflect.reference.CtTypeReference;
 import spoon.reflect.visitor.ForceImportProcessor;
 import spoon.reflect.visitor.LexicalScope;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.IdentityHashMap;
+import java.util.Set;
 
 /**
  * Processor that force-imports type references only if they are not present in the excluded

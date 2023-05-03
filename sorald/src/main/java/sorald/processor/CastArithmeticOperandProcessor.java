@@ -1,18 +1,21 @@
 package sorald.processor;
 
+import org.apache.commons.lang3.tuple.Pair;
+
+import sorald.Constants;
+import sorald.annotations.ProcessorAnnotation;
+import sorald.rule.RuleViolation;
+
+import spoon.reflect.code.*;
+import spoon.reflect.factory.TypeFactory;
+import spoon.reflect.reference.CtTypeReference;
+
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.apache.commons.lang3.tuple.Pair;
-import sorald.Constants;
-import sorald.annotations.ProcessorAnnotation;
-import sorald.rule.RuleViolation;
-import spoon.reflect.code.*;
-import spoon.reflect.factory.TypeFactory;
-import spoon.reflect.reference.CtTypeReference;
 
 @ProcessorAnnotation(key = "S2184", description = "Math operands should be cast before assignment")
 public class CastArithmeticOperandProcessor extends SoraldAbstractProcessor<CtBinaryOperator> {

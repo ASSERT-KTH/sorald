@@ -2,21 +2,24 @@ package sorald;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+
 import static sorald.Assertions.assertHasRuleViolation;
 import static sorald.Assertions.assertNoRuleViolations;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+
 import sorald.event.StatsMetadataKeys;
 import sorald.processor.CastArithmeticOperandProcessor;
 import sorald.processor.DeadStoreProcessor;
 import sorald.rule.Rule;
 import sorald.sonar.SonarRule;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 
 public class MavenLauncherTest {
 

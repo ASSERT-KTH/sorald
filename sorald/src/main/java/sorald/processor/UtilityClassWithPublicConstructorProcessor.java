@@ -1,13 +1,15 @@
 package sorald.processor;
 
-import java.util.List;
-import java.util.Set;
 import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
+
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtConstructor;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.ModifierKind;
+
+import java.util.List;
+import java.util.Set;
 
 @IncompleteProcessor(description = "Only handles implicit public constructor")
 @ProcessorAnnotation(

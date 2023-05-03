@@ -1,9 +1,10 @@
 package sorald;
 
-import java.security.Permission;
 import org.junit.platform.engine.TestExecutionResult;
 import org.junit.platform.launcher.TestExecutionListener;
 import org.junit.platform.launcher.TestIdentifier;
+
+import java.security.Permission;
 
 /**
  * Handler for calls to {@link System#exit(int)}. It intercepts any calls and throws a {@link

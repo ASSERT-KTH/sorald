@@ -2,11 +2,13 @@ package sorald.sonar;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import java.io.File;
 import org.junit.jupiter.api.Test;
+
 import sorald.TestHelper;
 import sorald.processor.XxeProcessingProcessor;
 import sorald.rule.RuleViolation;
+
+import java.io.File;
 
 public class RuleViolationTest {
     @Test

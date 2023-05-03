@@ -1,9 +1,10 @@
 package sorald.rule;
 
+import sorald.cli.CLIConfigForStaticAnalyzer;
+
 import java.io.File;
 import java.util.Collection;
 import java.util.List;
-import sorald.cli.CLIConfigForStaticAnalyzer;
 
 /** A static analyzer for Java source code */
 public interface StaticAnalyzer {
