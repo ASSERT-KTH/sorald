@@ -1,7 +1,8 @@
 package sorald.cli;
 
-import java.util.concurrent.Callable;
 import picocli.CommandLine;
+
+import java.util.concurrent.Callable;
 
 /** Class containing the CLI for Sorald. */
 public class Cli {

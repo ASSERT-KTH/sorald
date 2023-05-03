@@ -1,7 +1,7 @@
 package sorald.processor;
 
-import java.util.Set;
 import sorald.annotations.ProcessorAnnotation;
+
 import spoon.reflect.code.CtBlock;
 import spoon.reflect.code.CtCatch;
 import spoon.reflect.code.CtCatchVariable;
@@ -16,6 +16,8 @@ import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtTypeReference;
+
+import java.util.Set;
 
 @ProcessorAnnotation(key = "S2142", description = "\"InterruptedException\" should not be ignored")
 public class InterruptedExceptionProcessor extends SoraldAbstractProcessor<CtCatch> {

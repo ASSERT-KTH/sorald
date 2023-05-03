@@ -1,11 +1,5 @@
 package sorald.cli;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.Callable;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.codehaus.plexus.component.annotations.Component;
@@ -13,8 +7,17 @@ import org.codehaus.plexus.component.configurator.BasicComponentConfigurator;
 import org.codehaus.plexus.component.configurator.ComponentConfigurator;
 import org.codehaus.plexus.component.configurator.converters.basic.AbstractBasicConverter;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.Initializable;
+
 import picocli.CommandLine;
+
 import sorald.Constants;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.Callable;
 
 /** Base command containing the options in common for all Sorald subcommands. */
 @CommandLine.Command()

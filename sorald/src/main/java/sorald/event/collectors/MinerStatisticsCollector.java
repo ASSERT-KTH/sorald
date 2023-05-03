@@ -1,12 +1,13 @@
 package sorald.event.collectors;
 
-import java.util.*;
-import java.util.stream.Collectors;
 import sorald.event.SoraldEvent;
 import sorald.event.SoraldEventHandler;
 import sorald.event.models.WarningLocation;
 import sorald.event.models.miner.MinedRule;
 import sorald.event.models.miner.MinedViolationEvent;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 /** Event handler for recording the miner mode statistics. */
 public class MinerStatisticsCollector implements SoraldEventHandler {

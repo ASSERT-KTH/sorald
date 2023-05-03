@@ -1,10 +1,7 @@
 package sorald.miner;
 
-import java.io.*;
-import java.nio.file.Paths;
-import java.util.*;
-import java.util.function.Consumer;
 import org.eclipse.jgit.api.Git;
+
 import sorald.FileUtils;
 import sorald.cli.CLIConfigForStaticAnalyzer;
 import sorald.event.EventHelper;
@@ -15,6 +12,11 @@ import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.SonarRule;
+
+import java.io.*;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.function.Consumer;
 
 public class MineSonarWarnings {
     final List<SoraldEventHandler> eventHandlers;

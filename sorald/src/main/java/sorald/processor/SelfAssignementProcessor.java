@@ -1,6 +1,7 @@
 package sorald.processor;
 
 import sorald.annotations.ProcessorAnnotation;
+
 import spoon.reflect.code.CtArrayAccess;
 import spoon.reflect.code.CtAssignment;
 import spoon.reflect.code.CtExpression;

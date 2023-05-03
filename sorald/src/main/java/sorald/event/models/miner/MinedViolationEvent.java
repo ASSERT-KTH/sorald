@@ -1,11 +1,12 @@
 package sorald.event.models.miner;
 
-import java.nio.file.Path;
 import sorald.event.EventType;
 import sorald.event.SoraldEvent;
 import sorald.event.models.WarningLocation;
 import sorald.rule.RuleViolation;
 import sorald.sonar.SonarRule;
+
+import java.nio.file.Path;
 
 /** Event representing a mined rule information */
 public class MinedViolationEvent implements SoraldEvent {

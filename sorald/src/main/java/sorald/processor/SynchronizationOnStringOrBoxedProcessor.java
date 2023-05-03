@@ -1,8 +1,7 @@
 package sorald.processor;
 
-import java.util.HashMap;
-import java.util.Map;
 import sorald.annotations.ProcessorAnnotation;
+
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtFieldRead;
 import spoon.reflect.code.CtInvocation;
@@ -17,6 +16,9 @@ import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.filter.TypeFilter;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @ProcessorAnnotation(
         key = "S1860",
