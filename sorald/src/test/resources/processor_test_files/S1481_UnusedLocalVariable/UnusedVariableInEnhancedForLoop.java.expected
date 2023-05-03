@@ -4,16 +4,16 @@ public class UnusedVariableInEnhancedForLoop {
     public void inForLoop(List<String> inputList) {
         // Unused local variable in for loop header
         // should not be removed
-        for (int inputIterator=0; inputIterator < inputList.size(); ++inputIterator) { // noncompliant
+        for (int inputIterator=0; inputIterator < inputList.size(); ++inputIterator) { // compliant
             doSomething();
         }
-        for (int inputIterator=0; inputIterator < inputList.size(); ++inputIterator) { // noncompliant
-            for (int input2Iterator=0; input2Iterator < inputList.size(); ++input2Iterator) { // noncompliant
+        for (int inputIterator=0; inputIterator < inputList.size(); ++inputIterator) { // compliant
+            for (int input2Iterator=0; input2Iterator < inputList.size(); ++input2Iterator) { // compliant
                 doSomething();
             }
         }
         int[] array = new int[10];
-        for (int iIterator=0; iIterator < array.length; ++iIterator) { // noncompliant
+        for (int iIterator=0; iIterator < array.length; ++iIterator) { // compliant
             doSomething();
         }
     }

@@ -3,7 +3,7 @@ import java.util.List;
 public class UnusedVariableInEnhancedForLoop {
     public void inForLoop(List<String> inputList) {
         // Unused local variable in for loop header
-        // should not be removed
+        // should be removed
         for (String input : inputList) { // noncompliant
             doSomething();
         }
