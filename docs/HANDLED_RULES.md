@@ -543,6 +543,12 @@ Example:
 ...
 - if (myCollection.size() != 0) {  // Noncompliant
 + if (!myCollection.isEmpty()) {
+...
+- if (myCollection.size() < 1) {  // Noncompliant
++ if (myCollection.isEmpty()) {
+...
+- if (0 >= myCollection.size()) {  // Noncompliant
++ if (myCollection.isEmpty()) {
 ```
 
 

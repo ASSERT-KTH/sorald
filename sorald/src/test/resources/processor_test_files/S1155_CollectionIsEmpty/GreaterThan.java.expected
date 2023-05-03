@@ -1,0 +1,19 @@
+import java.util.Collection;
+
+public class GreaterThan {
+    public static void main(String[] args) {
+        Collection myCollection = null;
+
+        if (!myCollection.isEmpty()) {  // Compliant
+            /* ... */
+        }
+        if (myCollection.size() > 3) { // Compliant
+            /* ... */
+        }
+        if (!myCollection.isEmpty()) {  // Compliant
+            /* ... */
+        } else if (!myCollection.isEmpty()) {  // Compliant
+            /* ... */
+        }
+    }
+}
