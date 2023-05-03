@@ -15,7 +15,7 @@ env:
 
 jobs:
   deploy:
-    if: ${{ github.repository == 'SpoonLabs/sorald' }}
+    if: ${{ github.repository == 'ASSERT-KTH/sorald' }}
     runs-on: ubuntu-latest
 
     environment: Deploy

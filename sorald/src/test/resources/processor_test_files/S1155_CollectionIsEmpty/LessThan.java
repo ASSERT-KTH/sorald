@@ -1,13 +1,13 @@
 import java.util.Collection;
 
-public class CollectionIsEmpty {
+public class LessThan {
     public static void main(String[] args) {
         Collection myCollection = null;
 
-        if (myCollection.isEmpty()) {
+        if (myCollection.size() < 1) {  // Noncompliant
             /* ... */
         }
-        if (!myCollection.isEmpty()) {
+        if (myCollection.size() <= 0) {  // Noncompliant
             /* ... */
         }
     }

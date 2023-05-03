@@ -55,7 +55,7 @@ branch_name="${BRANCH_PREFIX}-update-${SHA}"
 git switch -c "$branch_name"
 
 git add "${GENERATED_FILE}"
-git commit -m "doc: Update ${GENERATED_FILE}" || {
+git commit -m "docs: Update ${GENERATED_FILE}" || {
   echo "Nothing to commit"
   exit 0
 }
@@ -71,7 +71,7 @@ curl \
   -d "{
     \"head\":\"$branch_name\",
     \"base\":\"master\",
-    \"title\":\"doc: Update ${GENERATED_FILE}\",
+    \"title\":\"docs: Update ${GENERATED_FILE}\",
     \"body\":\"Automatic update of ${GENERATED_FILE} from ${WORKFLOW} workflow. **Do not forget to remove this branch after merge!**\"
   }"
 
