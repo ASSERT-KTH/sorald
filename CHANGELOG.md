@@ -1,4 +1,30 @@
 
+# 0.8.5
+## Changelog
+
+## 🐛 Fixes
+- 036c965 fix(S1481): add repair for enhanced for-loop (#1033)
+
+## 🧰 Tasks
+- cfdee77 chore: releasing sorald 0.8.5
+- 1d65137 chore(deps): update dependency com.diffplug.spotless:spotless-maven-plugin to v2.36.0 (#1014)
+- 380e815 chore: prepare for next development iteration of sorald
+
+## 📝 Documentation
+- ea97917 docs: Update docs/HANDLED_RULES.md (#1034)
+
+---
+- 91e67bd doc: add open-access link (#1032)
+
+
+## Contributors
+We'd like to thank the following people for their contributions:
+- Aman Sharma ([@algomaster99](https://github.com/algomaster99))
+- GitHub ()
+- Martin Monperrus ([@monperrus](https://github.com/monperrus))
+- github-actions[bot] ([@github-actions[bot]](https://github.com/apps/github-actions))
+- renovate[bot] ([@renovate[bot]](https://github.com/apps/renovate))
+
 # 0.8.4
 ## Changelog
 
