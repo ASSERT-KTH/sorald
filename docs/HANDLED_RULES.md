@@ -717,6 +717,17 @@ Example repair where a variable declared in a loop header is unused:
 }
 ```
 
+We also perform repair for unused variables in enhanced for-loop headers:
+
+```diff
+-    for (String input : inputList) { // noncompliant
++    for (int inputIterator=0; inputIterator < inputList.size(); ++inputIterator) { // compliant
+        doSomething();
+     }
+```
+
+> Note that this repair strategy is not suggested by SonarSource.
+
 
 -----
 
