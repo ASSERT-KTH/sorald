@@ -56,7 +56,7 @@ public class UnusedLocalVariableProcessor extends SoraldAbstractProcessor<CtLoca
                     factory.createCodeSnippetExpression(
                             newSimpleName
                                     + " < "
-                                    + ((CtVariableRead) forLoopIterable)
+                                    + ((CtVariableRead<?>) forLoopIterable)
                                             .getVariable()
                                             .getSimpleName()
                                     + ".length");
@@ -66,7 +66,7 @@ public class UnusedLocalVariableProcessor extends SoraldAbstractProcessor<CtLoca
                     factory.createCodeSnippetExpression(
                             newSimpleName
                                     + " < "
-                                    + ((CtVariableRead) forLoopIterable)
+                                    + ((CtVariableRead<?>) forLoopIterable)
                                             .getVariable()
                                             .getSimpleName()
                                     + ".size()");
