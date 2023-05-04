@@ -35,12 +35,14 @@ public class UnusedLocalVariableProcessor extends SoraldAbstractProcessor<CtLoca
         CtFor conventionalForLoop = factory.createFor();
         conventionalForLoop.setBody(body);
 
+        // int inputIterator = 0
         CtLocalVariable<Integer> forInit = factory.createLocalVariable();
         forInit.setSimpleName(newSimpleName);
         forInit.setType(factory.Type().INTEGER_PRIMITIVE);
         forInit.setAssignment(factory.createCodeSnippetExpression("0"));
         conventionalForLoop.addForInit(forInit);
 
+        // ++inputIterator
         CtUnaryOperator<Integer> forUpdate = factory.createUnaryOperator();
         forUpdate.setKind(UnaryOperatorKind.PREINC);
         forUpdate.setOperand(factory.createCodeSnippetExpression(newSimpleName));
@@ -49,7 +51,7 @@ public class UnusedLocalVariableProcessor extends SoraldAbstractProcessor<CtLoca
         CtExpression<Boolean> endCondition;
         CtExpression<?> forLoopIterable = element.getParent(CtForEach.class).getExpression();
         if (((CtForEach) element.getParent()).getExpression().getType().isArray()) {
-
+            // inputIterator < input.length
             endCondition =
                     factory.createCodeSnippetExpression(
                             newSimpleName
@@ -59,6 +61,7 @@ public class UnusedLocalVariableProcessor extends SoraldAbstractProcessor<CtLoca
                                             .getSimpleName()
                                     + ".length");
         } else {
+            // inputIterator < input.size()
             endCondition =
                     factory.createCodeSnippetExpression(
                             newSimpleName
