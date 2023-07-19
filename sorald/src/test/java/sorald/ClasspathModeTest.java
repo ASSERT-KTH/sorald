@@ -10,6 +10,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 import sorald.event.StatsMetadataKeys;
 import sorald.processor.CastArithmeticOperandProcessor;
+import sorald.util.MavenUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -54,6 +55,9 @@ class ClasspathModeTest {
             Constants.ARG_RESOLVE_CLASSPATH_FROM,
             workdir.getAbsolutePath()
         };
+
+        System.out.println(
+                "Classpath " + MavenUtils.resolveClasspath(Path.of(workdir.getAbsolutePath())));
 
         // act
         Main.main(args);
