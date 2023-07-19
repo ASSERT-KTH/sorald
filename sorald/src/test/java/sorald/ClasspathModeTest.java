@@ -31,7 +31,14 @@ class ClasspathModeTest {
                 workdir);
 
         Path statsFile = workdir.toPath().resolve("stats.json");
-        Path source = workdir.toPath().resolve("src").resolve("main").resolve("java");
+        Path source =
+                workdir.toPath()
+                        .resolve("src")
+                        .resolve("main")
+                        .resolve("java")
+                        .resolve("sorald")
+                        .resolve("test")
+                        .resolve("App.java");
 
         assertThat(Files.exists(source), equalTo(true));
 
