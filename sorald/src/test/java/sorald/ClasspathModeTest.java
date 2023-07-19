@@ -3,6 +3,7 @@ package sorald;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ class ClasspathModeTest {
 
     @Test
     void resolveClasspathFrom_enablesRepairOfViolation_thatRequiresClasspathToDetect(
-            @TempDir File workdir) throws IOException {
+            @TempDir File workdir) throws IOException, XmlPullParserException {
         // arrange
         org.apache.commons.io.FileUtils.copyDirectory(
                 TestHelper.PATH_TO_RESOURCES_FOLDER
@@ -35,14 +36,7 @@ class ClasspathModeTest {
                 workdir);
 
         Path statsFile = workdir.toPath().resolve("stats.json");
-        Path source =
-                workdir.toPath()
-                        .resolve("src")
-                        .resolve("main")
-                        .resolve("java")
-                        .resolve("sorald")
-                        .resolve("test")
-                        .resolve("App.java");
+        Path source = workdir.toPath().resolve("src").resolve("main").resolve("java");
 
         assertThat(Files.exists(source), equalTo(true));
 
@@ -63,7 +57,7 @@ class ClasspathModeTest {
                 "Classpath " + MavenUtils.resolveClasspath(Path.of(workdir.getAbsolutePath())));
 
         MavenLauncher launcher =
-                new MavenLauncher(source.toString(), MavenLauncher.SOURCE_TYPE.ALL_SOURCE);
+                new MavenLauncher(workdir.getAbsolutePath(), MavenLauncher.SOURCE_TYPE.ALL_SOURCE);
         System.out.println(
                 "Classpath " + Arrays.toString(launcher.getEnvironment().getSourceClasspath()));
 
