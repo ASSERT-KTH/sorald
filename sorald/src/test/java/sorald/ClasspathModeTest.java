@@ -33,6 +33,8 @@ class ClasspathModeTest {
         Path statsFile = workdir.toPath().resolve("stats.json");
         Path source = workdir.toPath().resolve("src").resolve("main").resolve("java");
 
+        assertThat(Files.exists(source), equalTo(true));
+
         String castArithmOperandKey = new CastArithmeticOperandProcessor().getRuleKey();
         String[] args = {
             Constants.REPAIR_COMMAND_NAME,
