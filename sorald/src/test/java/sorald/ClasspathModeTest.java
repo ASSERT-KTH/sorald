@@ -41,6 +41,7 @@ class ClasspathModeTest {
                         .resolve("App.java");
 
         assertThat(Files.exists(source), equalTo(true));
+        System.out.println(System.getenv().get("M2_HOME"));
 
         String castArithmOperandKey = new CastArithmeticOperandProcessor().getRuleKey();
         String[] args = {
