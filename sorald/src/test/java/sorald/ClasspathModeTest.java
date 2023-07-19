@@ -51,7 +51,6 @@ class ClasspathModeTest {
         // assert
         JSONObject stats = FileUtils.readJSON(statsFile);
         JSONArray repairs = stats.getJSONArray(StatsMetadataKeys.REPAIRS);
-        System.out.println(repairs);
         assertThat(repairs.length(), equalTo(1));
         JSONObject repair = repairs.getJSONObject(0);
         assertThat(
