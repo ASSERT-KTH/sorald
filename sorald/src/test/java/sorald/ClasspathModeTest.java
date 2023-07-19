@@ -13,6 +13,7 @@ import sorald.processor.CastArithmeticOperandProcessor;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 /** Tests for running Sorald in classpath mode. */
@@ -49,7 +50,7 @@ class ClasspathModeTest {
         Main.main(args);
 
         // assert
-        assertThat(statsFile.toFile().exists(), equalTo(true));
+        System.out.println(Files.readString(statsFile));
         JSONObject stats = FileUtils.readJSON(statsFile);
         JSONArray repairs = stats.getJSONArray(StatsMetadataKeys.REPAIRS);
         assertThat(repairs.length(), equalTo(1));
