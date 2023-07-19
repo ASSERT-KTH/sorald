@@ -49,6 +49,7 @@ class ClasspathModeTest {
         Main.main(args);
 
         // assert
+        assertThat(statsFile.toFile().exists(), equalTo(true));
         JSONObject stats = FileUtils.readJSON(statsFile);
         JSONArray repairs = stats.getJSONArray(StatsMetadataKeys.REPAIRS);
         assertThat(repairs.length(), equalTo(1));
