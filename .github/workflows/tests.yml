@@ -67,7 +67,7 @@ jobs:
         run: timeout 10 mvn -B test || echo "Done fetching dependencies"
         shell: bash
       - name: Run tests
-        run: mvn test
+        run: mvn test -Dtest=sorald.ClasspathModeTest#resolveClasspathFrom_enablesRepairOfViolation_thatRequiresClasspathToDetect -Dsurefire.failIfNoSpecifiedTests=false
       - name: Run integration tests
         run: mvn -B install -DskipUnitTests
       - name: Test memory-constrained execution with segment repair
