@@ -60,12 +60,13 @@ def generate_pr_message(rule_key: int, num_repairs: int) -> str:
 
 
 def get_rule_doc_url(rule_key: int, handled_rules_url: str = HANDLED_RULES_URL) -> str:
-    handled_rules = requests.get(handled_rules_url).content.decode()
+    handled_rules = requests.get(handled_rules_url, headers={"Content-Type": "text/html"}).content.decode()
     markup = BeautifulSoup(handled_rules, features="html.parser")
 
-    for a_tag in markup.find_all("a", class_="anchor"):
-        if a_tag.attrs["id"].endswith(f"sonar-rule-{rule_key}"):
-            return f"{handled_rules_url}{a_tag.attrs['href']}"
+    for a_tag in markup.find_all("a", class_="\\\"anchor\\\""):
+        if f"sonar-rule-{rule_key}" in a_tag.attrs["id"]:
+            unescaped_atrr = a_tag.attrs["href"].replace("\\\"", "")
+            return f"{handled_rules_url}{unescaped_atrr}"
 
     raise ValueError(f"No handled rule with key {rule_key}")
 
