@@ -12,10 +12,13 @@ import sorald.event.StatsMetadataKeys;
 import sorald.processor.CastArithmeticOperandProcessor;
 import sorald.util.MavenUtils;
 
+import spoon.MavenLauncher;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 
 /** Tests for running Sorald in classpath mode. */
 class ClasspathModeTest {
@@ -58,6 +61,11 @@ class ClasspathModeTest {
 
         System.out.println(
                 "Classpath " + MavenUtils.resolveClasspath(Path.of(workdir.getAbsolutePath())));
+
+        MavenLauncher launcher =
+                new MavenLauncher(source.toString(), MavenLauncher.SOURCE_TYPE.ALL_SOURCE);
+        System.out.println(
+                "Classpath " + Arrays.toString(launcher.getEnvironment().getSourceClasspath()));
 
         // act
         Main.main(args);
