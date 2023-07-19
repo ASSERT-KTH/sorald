@@ -198,7 +198,9 @@ class MineCommand extends BaseCommand {
 
     private CLIConfigForStaticAnalyzer createConfig() throws IOException {
         SoraldConfig config = new SoraldConfig();
-        config.setClasspath(resolveClasspath());
+        List<String> classpath = resolveClasspath();
+        config.setClasspath(classpath);
+        System.out.println("Classpath: " + classpath);
         config.setRuleParameters(parseRuleParameters());
         return config;
     }
