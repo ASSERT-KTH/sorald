@@ -1,11 +1,9 @@
 package sorald.api;
 
-import sorald.processor.SoraldAbstractProcessor;
-
 import java.util.List;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import sorald.processor.SoraldAbstractProcessor;
 
 /**
  * This interfaces describes a repository of processors. Each processor is a class that implements

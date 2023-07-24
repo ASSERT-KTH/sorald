@@ -1,15 +1,13 @@
 package sorald.processor;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import sorald.annotations.ProcessorAnnotation;
-
 import spoon.reflect.code.CtFieldWrite;
 import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.visitor.filter.TypeFilter;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @ProcessorAnnotation(key = "S1068", description = "Unused \"private\" fields should be removed")
 public class UnusedPrivateFieldProcessor extends SoraldAbstractProcessor<CtField<?>> {

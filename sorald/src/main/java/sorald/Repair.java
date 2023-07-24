@@ -1,36 +1,5 @@
 package sorald;
 
-import sorald.event.EventHelper;
-import sorald.event.EventType;
-import sorald.event.SoraldEventHandler;
-import sorald.event.collectors.CompilationUnitCollector;
-import sorald.event.models.CrashEvent;
-import sorald.processor.SoraldAbstractProcessor;
-import sorald.rule.RuleViolation;
-import sorald.segment.FirstFitSegmentationAlgorithm;
-import sorald.segment.Node;
-import sorald.segment.SoraldTreeBuilderAlgorithm;
-import sorald.sonar.BestFitScanner;
-
-import spoon.Launcher;
-import spoon.MavenLauncher;
-import spoon.compiler.Environment;
-import spoon.processing.ProcessingManager;
-import spoon.processing.Processor;
-import spoon.reflect.CtModel;
-import spoon.reflect.declaration.CtCompilationUnit;
-import spoon.reflect.declaration.CtElement;
-import spoon.reflect.declaration.CtType;
-import spoon.reflect.factory.Factory;
-import spoon.reflect.reference.CtTypeReference;
-import spoon.reflect.visitor.DefaultImportComparator;
-import spoon.reflect.visitor.DefaultJavaPrettyPrinter;
-import spoon.reflect.visitor.ImportCleaner;
-import spoon.reflect.visitor.ImportConflictDetector;
-import spoon.reflect.visitor.PrettyPrinter;
-import spoon.support.QueueProcessingManager;
-import spoon.support.sniper.SniperJavaPrettyPrinter;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -49,6 +18,35 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import sorald.event.EventHelper;
+import sorald.event.EventType;
+import sorald.event.SoraldEventHandler;
+import sorald.event.collectors.CompilationUnitCollector;
+import sorald.event.models.CrashEvent;
+import sorald.processor.SoraldAbstractProcessor;
+import sorald.rule.RuleViolation;
+import sorald.segment.FirstFitSegmentationAlgorithm;
+import sorald.segment.Node;
+import sorald.segment.SoraldTreeBuilderAlgorithm;
+import sorald.sonar.BestFitScanner;
+import spoon.Launcher;
+import spoon.MavenLauncher;
+import spoon.compiler.Environment;
+import spoon.processing.ProcessingManager;
+import spoon.processing.Processor;
+import spoon.reflect.CtModel;
+import spoon.reflect.declaration.CtCompilationUnit;
+import spoon.reflect.declaration.CtElement;
+import spoon.reflect.declaration.CtType;
+import spoon.reflect.factory.Factory;
+import spoon.reflect.reference.CtTypeReference;
+import spoon.reflect.visitor.DefaultImportComparator;
+import spoon.reflect.visitor.DefaultJavaPrettyPrinter;
+import spoon.reflect.visitor.ImportCleaner;
+import spoon.reflect.visitor.ImportConflictDetector;
+import spoon.reflect.visitor.PrettyPrinter;
+import spoon.support.QueueProcessingManager;
+import spoon.support.sniper.SniperJavaPrettyPrinter;
 
 /** Class for repairing projects. */
 public class Repair {

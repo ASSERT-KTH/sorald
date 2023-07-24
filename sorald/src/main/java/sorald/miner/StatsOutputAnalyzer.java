@@ -1,13 +1,12 @@
 package sorald.miner;
 
-import sorald.Constants;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import sorald.Constants;
 
 public class StatsOutputAnalyzer {
     public static void main(String[] args) throws IOException {

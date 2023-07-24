@@ -4,15 +4,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
-
 import sorald.event.collectors.RepairStatisticsCollector;
-
 import spoon.Launcher;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
-
-import java.util.List;
 
 /** Tests for the concrete methods of {@link sorald.processor.SoraldAbstractProcessor}. */
 public class SoraldAbstractProcessorTest {

@@ -1,13 +1,16 @@
 package sorald.cli;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.*;
+import java.util.stream.Collectors;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.json.JSONObject;
-
 import picocli.CommandLine;
-
 import sorald.Constants;
 import sorald.FileUtils;
 import sorald.SoraldConfig;
@@ -21,12 +24,6 @@ import sorald.rule.RuleProvider;
 import sorald.sonar.SonarRule;
 import sorald.sonar.SonarRuleType;
 import sorald.util.MavenUtils;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.*;
-import java.util.stream.Collectors;
 
 /** CLI Command for Sorald's mining functionality. */
 @Mojo(name = Constants.MINE_COMMAND_NAME)

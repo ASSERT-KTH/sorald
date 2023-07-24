@@ -2,13 +2,11 @@ package sorald.processor;
 
 import static sorald.util.Transformations.not;
 
+import java.util.Collection;
 import sorald.annotations.ProcessorAnnotation;
-
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
-
-import java.util.Collection;
 
 @ProcessorAnnotation(
         key = "S1155",

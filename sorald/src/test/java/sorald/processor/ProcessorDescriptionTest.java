@@ -2,17 +2,15 @@ package sorald.processor;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.apache.commons.io.FilenameUtils;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
-import sorald.Processors;
-
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
+import org.apache.commons.io.FilenameUtils;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import sorald.Processors;
 
 public class ProcessorDescriptionTest {
     private static final Path PROCESSOR_PACKAGE = Paths.get("src/main/java/sorald/processor");

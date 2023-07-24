@@ -1,13 +1,5 @@
 package sorald.processor;
 
-import sorald.Assertions;
-import sorald.Constants;
-import sorald.Main;
-import sorald.PrettyPrintingStrategy;
-import sorald.TestHelper;
-import sorald.rule.Rule;
-import sorald.sonar.SonarRule;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -22,6 +14,13 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
+import sorald.Assertions;
+import sorald.Constants;
+import sorald.Main;
+import sorald.PrettyPrintingStrategy;
+import sorald.TestHelper;
+import sorald.rule.Rule;
+import sorald.sonar.SonarRule;
 
 /** Helper functions for {@link ProcessorTest}. */
 public class ProcessorTestHelper {

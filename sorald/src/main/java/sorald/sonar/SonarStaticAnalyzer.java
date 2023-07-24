@@ -1,23 +1,19 @@
 package sorald.sonar;
 
 import com.google.auto.service.AutoService;
-
+import java.io.File;
+import java.util.*;
+import java.util.stream.Collectors;
+import javax.annotation.Nonnull;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.Issue;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.IssueListener;
 import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneAnalysisConfiguration;
 import org.sonarsource.sonarlint.core.commons.RuleKey;
-
 import sorald.SoraldConfig;
 import sorald.cli.CLIConfigForStaticAnalyzer;
 import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.rule.StaticAnalyzer;
-
-import java.io.File;
-import java.util.*;
-import java.util.stream.Collectors;
-
-import javax.annotation.Nonnull;
 
 @AutoService(StaticAnalyzer.class)
 public class SonarStaticAnalyzer implements StaticAnalyzer {

@@ -2,19 +2,17 @@ package sorald.event.collectors;
 
 import static sorald.support.IdentityHashSet.newIdentityHashSet;
 
-import sorald.event.EventType;
-import sorald.event.SoraldEvent;
-import sorald.event.SoraldEventHandler;
-import sorald.event.models.RepairEvent;
-
-import spoon.reflect.declaration.CtCompilationUnit;
-import spoon.reflect.declaration.CtElement;
-import spoon.reflect.declaration.CtType;
-
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import sorald.event.EventType;
+import sorald.event.SoraldEvent;
+import sorald.event.SoraldEventHandler;
+import sorald.event.models.RepairEvent;
+import spoon.reflect.declaration.CtCompilationUnit;
+import spoon.reflect.declaration.CtElement;
+import spoon.reflect.declaration.CtType;
 
 /** Event handler that collects compilation units that receive repairs. */
 public class CompilationUnitCollector implements SoraldEventHandler {
