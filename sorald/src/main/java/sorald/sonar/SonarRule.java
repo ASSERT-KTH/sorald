@@ -1,11 +1,9 @@
 package sorald.sonar;
 
+import java.util.Objects;
 import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
-
 import sorald.rule.IRuleType;
 import sorald.rule.Rule;
-
-import java.util.Objects;
 
 public class SonarRule implements Rule {
     private final String key;

@@ -1,8 +1,7 @@
 package sorald.event.models.miner;
 
-import sorald.event.models.WarningLocation;
-
 import java.util.List;
+import sorald.event.models.WarningLocation;
 
 public class MinedRule {
     private final String ruleKey;

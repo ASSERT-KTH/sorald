@@ -1,13 +1,12 @@
 package sorald.rule;
 
-import sorald.api.RuleRepository;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.ServiceLoader;
 import java.util.ServiceLoader.Provider;
 import java.util.stream.Collectors;
+import sorald.api.RuleRepository;
 
 /** Entrypoint for finding available rules. */
 public class RuleProvider {

@@ -7,19 +7,16 @@ import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.apache.commons.lang3.tuple.Pair;
-
-import sorald.rule.Rule;
-import sorald.sonar.ProjectScanner;
-
 import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 import javax.tools.ToolProvider;
+import org.apache.commons.lang3.tuple.Pair;
+import sorald.rule.Rule;
+import sorald.sonar.ProjectScanner;
 
 /** High-level assertions. */
 public class Assertions {

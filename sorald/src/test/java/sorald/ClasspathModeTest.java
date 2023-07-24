@@ -3,17 +3,15 @@ package sorald;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-
 import sorald.event.StatsMetadataKeys;
 import sorald.processor.CastArithmeticOperandProcessor;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
 
 /** Tests for running Sorald in classpath mode. */
 class ClasspathModeTest {

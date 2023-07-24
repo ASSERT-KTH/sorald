@@ -1,14 +1,12 @@
 package sorald.processor;
 
+import java.util.HashMap;
 import sorald.annotations.ProcessorAnnotation;
-
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtTypeAccess;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
-
-import java.util.HashMap;
 
 @ProcessorAnnotation(key = "S3032", description = "JEE applications should not \"getClassLoader\"")
 public class GetClassLoaderProcessor extends SoraldAbstractProcessor<CtInvocation<?>> {

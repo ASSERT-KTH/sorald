@@ -3,20 +3,18 @@ package sorald;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-
-import sorald.rule.Rule;
-import sorald.rule.RuleViolation;
-import sorald.sonar.ProjectScanner;
-import sorald.sonar.SonarRule;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import sorald.rule.Rule;
+import sorald.rule.RuleViolation;
+import sorald.sonar.ProjectScanner;
+import sorald.sonar.SonarRule;
 
 public class RepairTest {
 

@@ -2,12 +2,10 @@ package sorald.processor;
 
 import static org.apache.commons.lang3.StringUtils.capitalize;
 
+import java.util.Collections;
 import sorald.annotations.ProcessorAnnotation;
-
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtMethod;
-
-import java.util.Collections;
 
 @ProcessorAnnotation(
         key = "S1596",

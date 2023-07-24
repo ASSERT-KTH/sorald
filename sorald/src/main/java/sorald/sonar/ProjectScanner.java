@@ -1,12 +1,5 @@
 package sorald.sonar;
 
-import sorald.Constants;
-import sorald.FileUtils;
-import sorald.cli.CLIConfigForStaticAnalyzer;
-import sorald.rule.Rule;
-import sorald.rule.RuleViolation;
-import sorald.rule.StaticAnalyzer;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,6 +7,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.ServiceLoader;
 import java.util.Set;
+import sorald.Constants;
+import sorald.FileUtils;
+import sorald.cli.CLIConfigForStaticAnalyzer;
+import sorald.rule.Rule;
+import sorald.rule.RuleViolation;
+import sorald.rule.StaticAnalyzer;
 
 /** Helper class that uses Sonar to scan projects for rule violations. */
 public class ProjectScanner {

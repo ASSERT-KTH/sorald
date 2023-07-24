@@ -1,7 +1,6 @@
 package sorald.processor;
 
 import sorald.annotations.ProcessorAnnotation;
-
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
 

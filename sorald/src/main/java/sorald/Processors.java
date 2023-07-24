@@ -1,14 +1,13 @@
 package sorald;
 
-import sorald.api.ProcessorRepository;
-import sorald.processor.SoraldAbstractProcessor;
-
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.ServiceLoader;
 import java.util.stream.Collectors;
+import sorald.api.ProcessorRepository;
+import sorald.processor.SoraldAbstractProcessor;
 
 public class Processors {
     private Processors() {}

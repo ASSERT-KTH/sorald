@@ -1,16 +1,5 @@
 package sorald.sonar;
 
-import sorald.FileUtils;
-import sorald.processor.SoraldAbstractProcessor;
-import sorald.rule.RuleViolation;
-
-import spoon.reflect.declaration.CtCompilationUnit;
-import spoon.reflect.declaration.CtElement;
-import spoon.reflect.declaration.CtType;
-import spoon.reflect.declaration.CtVariable;
-import spoon.reflect.factory.Factory;
-import spoon.reflect.visitor.CtScanner;
-
 import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -25,6 +14,15 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import sorald.FileUtils;
+import sorald.processor.SoraldAbstractProcessor;
+import sorald.rule.RuleViolation;
+import spoon.reflect.declaration.CtCompilationUnit;
+import spoon.reflect.declaration.CtElement;
+import spoon.reflect.declaration.CtType;
+import spoon.reflect.declaration.CtVariable;
+import spoon.reflect.factory.Factory;
+import spoon.reflect.visitor.CtScanner;
 
 /** Scanner for matching rule violations against Spoon elements. */
 public class BestFitScanner<E extends CtElement> extends CtScanner {

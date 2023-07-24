@@ -1,5 +1,11 @@
 package sorald.processor;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
 import sorald.event.EventHelper;
@@ -7,16 +13,8 @@ import sorald.event.SoraldEventHandler;
 import sorald.event.models.CrashEvent;
 import sorald.event.models.RepairEvent;
 import sorald.rule.RuleViolation;
-
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtElement;
-
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 
 /** superclass for all processors */
 public abstract class SoraldAbstractProcessor<E extends CtElement> extends AbstractProcessor<E> {

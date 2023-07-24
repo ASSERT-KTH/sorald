@@ -2,19 +2,16 @@ package sorald.processor;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-
 import static sorald.Assertions.assertHasRuleViolation;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
-
 import sorald.Constants;
 import sorald.Main;
 import sorald.TestHelper;
 import sorald.rule.Rule;
 import sorald.sonar.SonarRule;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class NoSonarTest {
     @Test

@@ -3,7 +3,6 @@ package sorald.event.models;
 import sorald.event.EventType;
 import sorald.event.SoraldEvent;
 import sorald.rule.RuleViolation;
-
 import spoon.reflect.declaration.CtElement;
 
 /**

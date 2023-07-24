@@ -5,12 +5,16 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-
 import sorald.event.StatsMetadataKeys;
 import sorald.processor.ProcessorTestHelper;
 import sorald.processor.XxeProcessingProcessor;
@@ -18,12 +22,6 @@ import sorald.rule.Rule;
 import sorald.rule.RuleViolation;
 import sorald.sonar.ProjectScanner;
 import sorald.sonar.SonarRule;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Set;
 
 public class GatherStatsTest {
 

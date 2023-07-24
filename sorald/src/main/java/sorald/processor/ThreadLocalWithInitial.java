@@ -1,7 +1,8 @@
 package sorald.processor;
 
+import java.util.List;
+import java.util.function.Supplier;
 import sorald.annotations.ProcessorAnnotation;
-
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtLambda;
@@ -12,9 +13,6 @@ import spoon.reflect.code.CtTypeAccess;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtTypeReference;
-
-import java.util.List;
-import java.util.function.Supplier;
 
 @ProcessorAnnotation(key = "S4065", description = "\"ThreadLocal.withInitial\" should be preferred")
 public class ThreadLocalWithInitial extends SoraldAbstractProcessor<CtNewClass<?>> {

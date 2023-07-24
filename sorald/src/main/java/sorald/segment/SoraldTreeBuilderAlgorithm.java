@@ -1,8 +1,7 @@
 package sorald.segment;
 
-import sorald.Constants;
-
 import java.io.File;
+import sorald.Constants;
 
 public class SoraldTreeBuilderAlgorithm {
     private SoraldTreeBuilderAlgorithm() {}

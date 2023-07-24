@@ -4,11 +4,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.Test;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.jar.JarException;
+import org.junit.jupiter.api.Test;
 
 class SoraldVersionProviderTest {
     private static final Path BOGUS_MANIFESTS = Paths.get("META-INF").resolve("bogus-manifests");
