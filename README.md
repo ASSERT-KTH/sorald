@@ -168,21 +168,6 @@ gpg --verify sorald-<VERSION>-jar-with-dependencies.jar.asc
 ### Experiments with Sorald
 [Sorald-Experiments repository](https://github.com/khaes-kth/Sorald-experiments) includes the data related to our experiments with Sorald that are part of a recently conducted research project.
 
-## Collaborators
-
-If you relate to #755, a convenient solution has been integrated to this repository.
-We have created a workflow called [combine-prs.yml](.github/workflows/combine-prs.yml)
-that allows you to combine pull requests into one so that all those PRs can be merged
-at once. It is inspired by https://github.com/hrvey/combine-prs-workflow/.
-
-Please read the following steps to trigger the workflow.
-1. Go to [combine-prs action](https://github.com/SpoonLabs/sorald/actions/workflows/combine-prs.yml).
-2. Click on the drop-down "Run workflow". You will see a window to accept inputs for the workflow.
-
-   ![combine-prs-input](readme_assets/combine-prs-input.png)
-3. Finally, clicking "Run workflow" triggers the workflow to create a pull request containing commits from all
-   branches that satisfied the input. Example: #770.
-
 ## Contributing
 
 Contributions are welcome! Feel free to open issues on this GitHub repository, and also to open pull requests for making this project nicer (see instructions [here](/docs/CONTRIBUTING.md)).
