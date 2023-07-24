@@ -224,7 +224,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.1.2</version>
                 <!-- Used to run ONLY integration tests and skip the unit tests -->
                 <!-- Run it like so: `mvn verify -DskipUnitTests` -->
                 <configuration>
