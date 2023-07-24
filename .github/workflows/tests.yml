@@ -21,7 +21,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
 
     steps:
       - name: Disable Git's autocrlf on Windows
@@ -67,7 +67,7 @@ jobs:
         run: timeout 10 mvn -B test || echo "Done fetching dependencies"
         shell: bash
       - name: Run tests
-        run: mvn test -Dtest=sorald.ClasspathModeTest#resolveClasspathFrom_enablesRepairOfViolation_thatRequiresClasspathToDetect -Dsurefire.failIfNoSpecifiedTests=false
+        run: mvn test
       - name: Run integration tests
         run: mvn -B install -DskipUnitTests
       - name: Test memory-constrained execution with segment repair
