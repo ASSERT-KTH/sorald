@@ -1,8 +1,7 @@
 package sorald.cli;
 
-import sorald.rule.RuleViolation;
-
 import java.nio.file.Path;
+import sorald.rule.RuleViolation;
 
 /** Rule violation specified from the CLI. */
 class SpecifiedViolation extends RuleViolation {

@@ -1,9 +1,8 @@
 package sorald.util;
 
-import spoon.MavenLauncher;
-
 import java.nio.file.Path;
 import java.util.List;
+import spoon.MavenLauncher;
 
 /** Utility methods for working with Maven projects */
 public class MavenUtils {

@@ -6,10 +6,6 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.io.FileMatchers.anExistingFile;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import org.junit.jupiter.api.Test;
-import org.sonarsource.sonarlint.core.analysis.AnalysisEngine;
-import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashSet;
@@ -18,6 +14,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
+import org.sonarsource.sonarlint.core.analysis.AnalysisEngine;
+import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
 
 class SonarLintEngineTest {
 

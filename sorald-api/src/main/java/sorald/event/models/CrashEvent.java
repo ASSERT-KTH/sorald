@@ -1,10 +1,9 @@
 package sorald.event.models;
 
-import sorald.event.EventType;
-import sorald.event.SoraldEvent;
-
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import sorald.event.EventType;
+import sorald.event.SoraldEvent;
 
 /** Event recording a crash. */
 public class CrashEvent implements SoraldEvent {

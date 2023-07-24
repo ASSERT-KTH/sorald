@@ -2,8 +2,6 @@ package sorald;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import sorald.processor.ProcessorTestHelper;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+import sorald.processor.ProcessorTestHelper;
 
 /** A class for helping with Maven in testing. */
 public class MavenHelper {

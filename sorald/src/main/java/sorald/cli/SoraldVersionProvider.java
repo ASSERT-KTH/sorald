@@ -1,13 +1,12 @@
 package sorald.cli;
 
-import picocli.CommandLine;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.jar.Attributes;
 import java.util.jar.JarException;
 import java.util.jar.Manifest;
+import picocli.CommandLine;
 
 /** Class for providing the CLI with the current version. */
 public class SoraldVersionProvider implements CommandLine.IVersionProvider {

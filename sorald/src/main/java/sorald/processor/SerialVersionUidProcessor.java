@@ -1,16 +1,14 @@
 package sorald.processor;
 
+import java.util.Set;
 import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
-
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.reference.CtTypeReference;
-
-import java.util.Set;
 
 @IncompleteProcessor(
         description =

@@ -1,16 +1,13 @@
 package sorald.sonar;
 
 import com.google.auto.service.AutoService;
-
-import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
-
-import sorald.api.RuleRepository;
-import sorald.rule.IRuleType;
-import sorald.rule.Rule;
-
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.sonarsource.sonarlint.core.rule.extractor.SonarLintRuleDefinition;
+import sorald.api.RuleRepository;
+import sorald.rule.IRuleType;
+import sorald.rule.Rule;
 
 /**
  * Class that knows about all Sonar rules. Should ONLY be used by {@link sorald.rule.RuleProvider}.

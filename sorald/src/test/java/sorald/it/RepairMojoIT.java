@@ -1,7 +1,6 @@
 package sorald.it;
 
 import static com.soebes.itf.extension.assertj.MavenITAssertions.assertThat;
-
 import static org.hamcrest.io.FileMatchers.anExistingFile;
 
 import com.soebes.itf.jupiter.extension.MavenGoal;
@@ -9,11 +8,9 @@ import com.soebes.itf.jupiter.extension.MavenJupiterExtension;
 import com.soebes.itf.jupiter.extension.MavenOption;
 import com.soebes.itf.jupiter.extension.MavenTest;
 import com.soebes.itf.jupiter.maven.MavenExecutionResult;
-
-import org.junit.jupiter.api.DisplayName;
-
 import java.io.File;
 import java.nio.file.Path;
+import org.junit.jupiter.api.DisplayName;
 
 @MavenJupiterExtension
 public class RepairMojoIT {

@@ -1,16 +1,14 @@
 package sorald.processor;
 
+import java.util.Arrays;
 import sorald.Constants;
 import sorald.annotations.ProcessorAnnotation;
-
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtTypeAccess;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.reference.CtExecutableReference;
-
-import java.util.Arrays;
 
 @ProcessorAnnotation(
         key = "S2116",

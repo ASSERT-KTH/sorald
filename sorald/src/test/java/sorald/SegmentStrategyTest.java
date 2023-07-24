@@ -4,23 +4,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import static sorald.Assertions.assertHasRuleViolation;
 import static sorald.Assertions.assertNoRuleViolations;
-
-import org.junit.jupiter.api.Test;
-
-import sorald.processor.ArrayHashCodeAndToStringProcessor;
-import sorald.processor.ProcessorTestHelper;
-import sorald.processor.SoraldAbstractProcessor;
-import sorald.rule.Rule;
-import sorald.rule.RuleViolation;
-import sorald.segment.Node;
-import sorald.sonar.ProjectScanner;
-import sorald.sonar.SonarRule;
-
-import spoon.reflect.CtModel;
-import spoon.reflect.declaration.CtType;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,6 +16,17 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import org.junit.jupiter.api.Test;
+import sorald.processor.ArrayHashCodeAndToStringProcessor;
+import sorald.processor.ProcessorTestHelper;
+import sorald.processor.SoraldAbstractProcessor;
+import sorald.rule.Rule;
+import sorald.rule.RuleViolation;
+import sorald.segment.Node;
+import sorald.sonar.ProjectScanner;
+import sorald.sonar.SonarRule;
+import spoon.reflect.CtModel;
+import spoon.reflect.declaration.CtType;
 
 public class SegmentStrategyTest {
     @Test

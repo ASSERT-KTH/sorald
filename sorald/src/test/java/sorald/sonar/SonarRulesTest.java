@@ -6,14 +6,6 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
-import sorald.Processors;
-import sorald.rule.IRuleType;
-import sorald.rule.Rule;
-import sorald.rule.RuleProvider;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,6 +14,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import sorald.Processors;
+import sorald.rule.IRuleType;
+import sorald.rule.Rule;
+import sorald.rule.RuleProvider;
 
 class SonarRulesTest {
     @Nested

@@ -1,13 +1,16 @@
 package sorald.cli;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.*;
+import java.util.stream.Collectors;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.codehaus.plexus.component.configurator.converters.basic.AbstractBasicConverter;
-
 import picocli.CommandLine;
-
 import sorald.*;
 import sorald.event.EventHelper;
 import sorald.event.EventType;
@@ -24,12 +27,6 @@ import sorald.sonar.ProjectScanner;
 import sorald.sonar.SonarProcessorRepository;
 import sorald.sonar.SonarRule;
 import sorald.util.MavenUtils;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.*;
-import java.util.stream.Collectors;
 
 /** The CLI command for the primary repair application. */
 @Mojo(name = Constants.REPAIR_COMMAND_NAME)

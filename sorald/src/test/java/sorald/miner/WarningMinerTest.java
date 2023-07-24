@@ -6,22 +6,6 @@ import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-import org.sonar.api.rules.RuleType;
-
-import sorald.*;
-import sorald.cli.SoraldVersionProvider;
-import sorald.event.StatsMetadataKeys;
-import sorald.processor.CastArithmeticOperandProcessor;
-import sorald.rule.IRuleType;
-import sorald.rule.Rule;
-import sorald.rule.RuleProvider;
-import sorald.sonar.SonarRuleType;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -35,6 +19,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import org.sonar.api.rules.RuleType;
+import sorald.*;
+import sorald.cli.SoraldVersionProvider;
+import sorald.event.StatsMetadataKeys;
+import sorald.processor.CastArithmeticOperandProcessor;
+import sorald.rule.IRuleType;
+import sorald.rule.Rule;
+import sorald.rule.RuleProvider;
+import sorald.sonar.SonarRuleType;
 
 public class WarningMinerTest {
 

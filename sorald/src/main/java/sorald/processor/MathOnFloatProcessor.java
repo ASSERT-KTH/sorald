@@ -1,13 +1,11 @@
 package sorald.processor;
 
+import java.util.List;
 import sorald.annotations.IncompleteProcessor;
 import sorald.annotations.ProcessorAnnotation;
-
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.declaration.CtTypedElement;
 import spoon.reflect.visitor.filter.TypeFilter;
-
-import java.util.List;
 
 @IncompleteProcessor(
         description =

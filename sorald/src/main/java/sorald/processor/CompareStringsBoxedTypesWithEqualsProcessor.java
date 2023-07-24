@@ -3,7 +3,6 @@ package sorald.processor;
 import static sorald.util.Transformations.not;
 
 import sorald.annotations.ProcessorAnnotation;
-
 import spoon.reflect.code.BinaryOperatorKind;
 import spoon.reflect.code.CtBinaryOperator;
 import spoon.reflect.code.CtExpression;
