@@ -59,17 +59,13 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: mvn spotless:check
       - name: Build project
-        run: |
-          mvn -B package -DskipUnitTests
-          mvn -B test-compile
+        run: mvn -B install -DskipTests
       - name: Fetch final dependencies
         # this is a hack to fetch some test runtime dependencies
         run: timeout 10 mvn -B test || echo "Done fetching dependencies"
         shell: bash
-      - name: Run tests
-        run: mvn test
-      - name: Run integration tests
-        run: mvn -B install -DskipUnitTests
+      - name: Run unit tests and integration tests
+        run: mvn -B verify
       - name: Test memory-constrained execution with segment repair
         shell: bash
         run: .github/mem-constrained-exec.sh
@@ -103,7 +99,7 @@ jobs:
           restore-keys: ${{ runner.os }}-maven-
 
       - name: Package Sorald
-        run: mvn package -DskipUnitTests
+        run: mvn package -DskipTests
       - name: Test support scripts
         run: |
           cd experimentation/tools
@@ -136,7 +132,7 @@ jobs:
 
       - name: Test that generated code is up-to-date
         run: |
-          mvn install -DskipUnitTests -DskipIntegrationTests
+          mvn install -DskipTests
           mvn clean compile dependency:build-classpath -Dmdep.outputFile=cp.txt
           (cd sorald && java -cp "$(cat cp.txt):target/classes" sorald.CodeGenerator)
           mvn spotless:apply

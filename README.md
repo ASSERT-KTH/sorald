@@ -73,7 +73,7 @@ renaming the JAR to `sorald.jar` for the sake of simplicity.
 
  ```bash
 $ cd sorald
-$ mvn package -DskipUnitTests
+$ mvn package -DskipTests
 $ cp sorald/target/sorald-*-jar-with-dependencies.jar sorald.jar
  ```
 
