@@ -99,7 +99,7 @@ jobs:
           restore-keys: ${{ runner.os }}-maven-
 
       - name: Package Sorald
-        run: mvn package -DskipUnitTests
+        run: mvn package -DskipTests
       - name: Test support scripts
         run: |
           cd experimentation/tools
@@ -132,7 +132,7 @@ jobs:
 
       - name: Test that generated code is up-to-date
         run: |
-          mvn install -DskipUnitTests -DskipIntegrationTests
+          mvn install -DskipTests
           mvn clean compile dependency:build-classpath -Dmdep.outputFile=cp.txt
           (cd sorald && java -cp "$(cat cp.txt):target/classes" sorald.CodeGenerator)
           mvn spotless:apply

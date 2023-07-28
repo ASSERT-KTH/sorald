@@ -32,7 +32,7 @@ jobs:
           distribution: ${{ env.JAVA_DISTRIBUTION }}
 
       - name: Build
-        run: mvn -B install -DskipUnitTests=true -DskipIntegrationTests=true
+        run: mvn -B install -DskipTests
 
       - name: Get Sorald version
         id: get-sorald-version
@@ -59,7 +59,7 @@ jobs:
         run: |
           mvn -Prelease deploy -pl se.kth.castor:sorald-parent # Fully qualified artifact ID is required
           mvn -Prelease deploy -pl sorald-api
-          mvn -Prelease deploy -pl sorald -DskipUnitTests=true -DskipIntegrationTests=true
+          mvn -Prelease deploy -pl sorald -DskipTests
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_CENTRAL_TOKEN: ${{ secrets.OSSRH_PASSWORD }}
