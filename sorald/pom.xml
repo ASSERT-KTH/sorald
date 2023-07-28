@@ -225,11 +225,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
-                <!-- Used to run ONLY integration tests and skip the unit tests -->
-                <!-- Run it like so: `mvn verify -DskipUnitTests` -->
-                <configuration>
-                    <skipTests>${skipUnitTests}</skipTests>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -322,9 +317,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <skipTests>${skipIntegrationTests}</skipTests>
-                </configuration>
             </plugin>
         </plugins>
     </build>
