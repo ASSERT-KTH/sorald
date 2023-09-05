@@ -168,6 +168,11 @@ gpg --verify sorald-<VERSION>-jar-with-dependencies.jar.asc
 ### Experiments with Sorald
 [Sorald-Experiments repository](https://github.com/khaes-kth/Sorald-experiments) includes the data related to our experiments with Sorald that are part of a recently conducted research project.
 
+Sorald downloads `sonar-java-plugin.jar` at runtime. See [config file](https://github.com/ASSERT-KTH/sorald/blob/master/sorald/src/main/resources/config.properties) for its URL.
+Although most of the time it automatically downloads and loads it, you can manually download and store it if needed.
+See https://github.com/ASSERT-KTH/sorald/blob/02c07213264663f4fbc4728009dc4fbe7a4c00e5/sorald/src/main/java/sorald/FileUtils.java#L127 for the name of the directory for different filesystems.
+The file is called `sonar-java-plugin.jar`. In linux, `~/.cache/sorald/sonar-java-plugin.jar` is the path of the downloaded jar.
+
 ## Contributing
 
 Contributions are welcome! Feel free to open issues on this GitHub repository, and also to open pull requests for making this project nicer (see instructions [here](/docs/CONTRIBUTING.md)).
