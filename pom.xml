@@ -79,7 +79,7 @@
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>10.3.0</version>
+            <version>10.4.2</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
