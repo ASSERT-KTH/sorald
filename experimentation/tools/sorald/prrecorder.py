@@ -128,7 +128,7 @@ def execute_add_manual_edit(
 def create_initial_record(
     repo_slug: str, pr: github.PullRequest.PullRequest, sorald_stats: dict
 ) -> dict:
-    created_at = str(datetime.datetime.now())
+    created_at = str(datetime.datetime.now(tz=datetime.timezone.utc))
     return {
         jsonkeys.PR.REPO_SLUG: repo_slug,
         jsonkeys.PR.SECTION_KEY: get_pr_state(pr),
@@ -155,7 +155,7 @@ def is_legacy_data(sorald_stats: dict) -> bool:
 
 def update_record_metadata(record: dict):
     record[jsonkeys.RECORD.SECTION_KEY][jsonkeys.RECORD.LAST_MODIFIED] = str(
-        datetime.datetime.now()
+        datetime.datetime.now(tz=datetime.timezone.utc)
     )
 
 
