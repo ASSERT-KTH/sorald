@@ -3,9 +3,9 @@
         "repoSlug": "redhat-developer/rsp-server",
         "prMetadata": {
             "url": "https://github.com/redhat-developer/rsp-server/pull/619",
-            "createdAt": "2020-11-25 12:01:06",
-            "closedAt": "2020-11-30 20:45:38",
-            "mergedAt": "2020-11-30 20:45:38",
+            "createdAt": "2020-11-25 12:01:06+00:00",
+            "closedAt": "2020-11-30 20:45:38+00:00",
+            "mergedAt": "2020-11-30 20:45:38+00:00",
             "state": "closed",
             "isMerged": true,
             "number": 619

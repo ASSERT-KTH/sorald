@@ -175,9 +175,9 @@ def read_json_if_exists(path: Optional[pathlib.Path], encoding: str) -> dict:
 def get_pr_state(pr: github.PullRequest.PullRequest) -> dict:
     return {
         jsonkeys.PR.URL: pr.html_url,
-        jsonkeys.PR.CREATED_AT: str(pr.created_at),
-        jsonkeys.PR.CLOSED_AT: str(pr.closed_at) if pr.closed_at else None,
-        jsonkeys.PR.MERGED_AT: str(pr.merged_at) if pr.closed_at else None,
+        jsonkeys.PR.CREATED_AT: str(pr.created_at.replace(tzinfo=datetime.timezone.utc)),
+        jsonkeys.PR.CLOSED_AT: str(pr.closed_at.replace(tzinfo=datetime.timezone.utc)) if pr.closed_at else None,
+        jsonkeys.PR.MERGED_AT: str(pr.merged_at.replace(tzinfo=datetime.timezone.utc)) if pr.merged_at else None,
         jsonkeys.PR.STATE: pr.state,
         jsonkeys.PR.IS_MERGED: pr.merged,
         jsonkeys.PR.NUMBER: pr.number,
