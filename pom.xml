@@ -195,17 +195,6 @@
 
     <profiles>
         <profile>
-            <id>spoonSnapshot</id>
-            <repositories>
-                <repository>
-                    <id>snapshot</id>
-                    <name>Maven Repository for Spoon Snapshots</name>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-                    <snapshots><enabled>true</enabled></snapshots>
-                </repository>
-            </repositories>
-        </profile>
-        <profile>
             <id>release</id>
             <build>
                 <plugins>
@@ -248,4 +237,13 @@
         <module>sorald-api</module>
         <module>sorald</module>
     </modules>
+            <repositories>
+                <repository>
+                    <id>snapshot</id>
+                    <name>Maven Repository for Spoon Snapshots</name>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+            </repositories>
+
 </project>
