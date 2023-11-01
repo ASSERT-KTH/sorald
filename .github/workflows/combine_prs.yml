@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: combine-prs
         id: combine-prs
-        uses: github/combine-prs@v4.0.0
+        uses: github/combine-prs@v4.1.0
         with:
           branch_prefix: 'combine-prs'
           pr_title: 'chore: combine renovate[bot] PRs'
