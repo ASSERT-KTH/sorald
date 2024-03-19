@@ -43,13 +43,13 @@ jobs:
         run: echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
         shell: bash
       - name: Use Maven dependency cache
-        uses: actions/cache@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3.3.3
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-maven-
       - name: Use SonarCloud package cache
-        uses: actions/cache@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3.3.3
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
@@ -93,7 +93,7 @@ jobs:
         run: echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
         shell: bash
       - name: Use Maven dependency cache
-        uses: actions/cache@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3.3.3
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/pom.xml') }}
@@ -125,7 +125,7 @@ jobs:
         run: echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
         shell: bash
       - name: Use Maven dependency cache
-        uses: actions/cache@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3.3.3
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/pom.xml') }}
