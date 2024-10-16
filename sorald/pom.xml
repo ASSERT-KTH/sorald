@@ -229,7 +229,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.12.1</version>
+                <version>3.13.0</version>
             </plugin>
             <!-- To make repair goal work on mvn3.6.3 -->
             <!-- See https://stackoverflow.com/questions/10188534/custom-type-converter-for-mojo-configuration -->
