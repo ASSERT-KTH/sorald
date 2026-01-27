@@ -5,6 +5,7 @@ import sys
 import re
 
 from typing import List
+import json
 
 from bs4 import BeautifulSoup
 
@@ -61,10 +62,30 @@ def generate_pr_message(rule_key: int, num_repairs: int) -> str:
 
 def get_rule_doc_url(rule_key: int, handled_rules_url: str = HANDLED_RULES_URL) -> str:
     handled_rules = requests.get(handled_rules_url, headers={"Content-Type": "text/html"}).content.decode()
+    
+    # Try to extract anchor from GitHub's React embedded JSON
+    match = re.search(r'<script type="application/json" data-target="react-app.embeddedData">(.+?)</script>', handled_rules, re.DOTALL)
+    if match:
+        try:
+            json_str = match.group(1)
+            data = json.loads(json_str)
+            
+            # Search for the anchor in the JSON structure
+            json_dump = json.dumps(data)
+            # Look for the pattern: "anchor": "...-sonar-rule-XXXX"
+            pattern = rf'"anchor":\s*"([^"]*sonar-rule-{rule_key})"'
+            anchor_match = re.search(pattern, json_dump)
+            if anchor_match:
+                anchor = anchor_match.group(1)
+                return f"{handled_rules_url}#{anchor}"
+        except (json.JSONDecodeError, KeyError):
+            pass  # Fall through to legacy parsing
+    
+    # Legacy parsing (for non-GitHub URLs or if JSON parsing fails)
     markup = BeautifulSoup(handled_rules, features="html.parser")
-
     for a_tag in markup.find_all("a"):
-        if f"sonar-rule-{rule_key}" in a_tag.get("href"):
+        href = a_tag.get("href")
+        if href and f"sonar-rule-{rule_key}" in href:
             unescaped_atrr = a_tag.attrs["href"].replace("\\\"", "")
             return f"{handled_rules_url}{unescaped_atrr}"
 

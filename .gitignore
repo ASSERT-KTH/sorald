@@ -37,3 +37,5 @@ jreleaser-cli.jar
 
 # Python files
 __pycache__
+*.egg-info
+.pytest_cache
