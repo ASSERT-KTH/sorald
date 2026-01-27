@@ -70,13 +70,28 @@ def get_rule_doc_url(rule_key: int, handled_rules_url: str = HANDLED_RULES_URL) 
             json_str = match.group(1)
             data = json.loads(json_str)
             
-            # Search for the anchor in the JSON structure
-            json_dump = json.dumps(data)
-            # Look for the pattern: "anchor": "...-sonar-rule-XXXX"
-            pattern = rf'"anchor":\s*"([^"]*sonar-rule-{rule_key})"'
-            anchor_match = re.search(pattern, json_dump)
-            if anchor_match:
-                anchor = anchor_match.group(1)
+            # Search for the anchor in the JSON structure recursively
+            def find_anchor(obj, target_key):
+                """Recursively search for anchor matching the rule key."""
+                if isinstance(obj, dict):
+                    # Check if this dict has an 'anchor' key with our rule
+                    if 'anchor' in obj and f'sonar-rule-{target_key}' in obj['anchor']:
+                        return obj['anchor']
+                    # Recursively search all values
+                    for value in obj.values():
+                        result = find_anchor(value, target_key)
+                        if result:
+                            return result
+                elif isinstance(obj, list):
+                    # Recursively search all items
+                    for item in obj:
+                        result = find_anchor(item, target_key)
+                        if result:
+                            return result
+                return None
+            
+            anchor = find_anchor(data, rule_key)
+            if anchor:
                 return f"{handled_rules_url}#{anchor}"
         except (json.JSONDecodeError, KeyError):
             pass  # Fall through to legacy parsing
