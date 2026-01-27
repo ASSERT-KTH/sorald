@@ -1,0 +1,5 @@
+Metadata-Version: 2.1
+Name: soraldscripts
+Version: 0.0.0
+Summary: Helper scripts for the Sorald automatic repair tool
+Provides-Extra: TEST
