@@ -5,6 +5,7 @@ import sys
 import re
 
 from typing import List
+import json
 
 from bs4 import BeautifulSoup
 
@@ -61,12 +62,47 @@ def generate_pr_message(rule_key: int, num_repairs: int) -> str:
 
 def get_rule_doc_url(rule_key: int, handled_rules_url: str = HANDLED_RULES_URL) -> str:
     handled_rules = requests.get(handled_rules_url, headers={"Content-Type": "text/html"}).content.decode()
+    
+    # Try to extract anchor from GitHub's React embedded JSON
+    match = re.search(r'<script type="application/json" data-target="react-app.embeddedData">(.+?)</script>', handled_rules, re.DOTALL)
+    if match:
+        try:
+            json_str = match.group(1)
+            data = json.loads(json_str)
+            
+            # Search for the anchor in the JSON structure recursively
+            def find_anchor(obj, target_key):
+                """Recursively search for anchor matching the rule key."""
+                if isinstance(obj, dict):
+                    # Check if this dict has an 'anchor' key with our rule
+                    if 'anchor' in obj and f'sonar-rule-{target_key}' in obj['anchor']:
+                        return obj['anchor']
+                    # Recursively search all values
+                    for value in obj.values():
+                        result = find_anchor(value, target_key)
+                        if result:
+                            return result
+                elif isinstance(obj, list):
+                    # Recursively search all items
+                    for item in obj:
+                        result = find_anchor(item, target_key)
+                        if result:
+                            return result
+                return None
+            
+            anchor = find_anchor(data, rule_key)
+            if anchor:
+                return f"{handled_rules_url}#{anchor}"
+        except (json.JSONDecodeError, KeyError):
+            pass  # Fall through to legacy parsing
+    
+    # Legacy parsing (for non-GitHub URLs or if JSON parsing fails)
     markup = BeautifulSoup(handled_rules, features="html.parser")
-
     for a_tag in markup.find_all("a"):
-        if f"sonar-rule-{rule_key}" in a_tag.get("href"):
-            unescaped_atrr = a_tag.attrs["href"].replace("\\\"", "")
-            return f"{handled_rules_url}{unescaped_atrr}"
+        href = a_tag.get("href")
+        if href and f"sonar-rule-{rule_key}" in href:
+            unescaped_attr = a_tag.attrs["href"].replace("\\\"", "")
+            return f"{handled_rules_url}{unescaped_attr}"
 
     raise ValueError(f"No handled rule with key {rule_key}")
 
