@@ -101,8 +101,8 @@ def get_rule_doc_url(rule_key: int, handled_rules_url: str = HANDLED_RULES_URL) 
     for a_tag in markup.find_all("a"):
         href = a_tag.get("href")
         if href and f"sonar-rule-{rule_key}" in href:
-            unescaped_atrr = a_tag.attrs["href"].replace("\\\"", "")
-            return f"{handled_rules_url}{unescaped_atrr}"
+            unescaped_attr = a_tag.attrs["href"].replace("\\\"", "")
+            return f"{handled_rules_url}{unescaped_attr}"
 
     raise ValueError(f"No handled rule with key {rule_key}")
 
