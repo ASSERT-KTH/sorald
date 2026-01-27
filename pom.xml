@@ -68,7 +68,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.5.12</version>
+            <version>1.5.26</version>
             <scope>
                 <!--Enabled for tests to make it possible to silence INFO log output from SonarJava-->
                 test
