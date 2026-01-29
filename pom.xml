@@ -169,7 +169,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
+                <version>3.14.1</version>
             </plugin>
             <!-- adapted from https://www.jacoco.org/jacoco/trunk/doc/examples/build/pom.xml -->
             <!-- adapted from https://github.com/diffplug/spotless/blob/main/plugin-maven/README.md -->
