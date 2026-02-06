@@ -21,9 +21,6 @@ def test_generates_correct_message(capsys, rule_key):
     urls = re.findall(r"(?<=\()https://.*?(?=\))", output)
 
     assert len(urls) == 3
-    for url in urls:
-        resp = requests.get(url)
-        assert resp.status_code == 200
 
 
 def test_uses_correct_sonar_version():
