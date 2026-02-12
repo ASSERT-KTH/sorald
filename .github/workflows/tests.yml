@@ -70,7 +70,7 @@ jobs:
         shell: bash
         run: .github/mem-constrained-exec.sh
       - name: Upload coverage report to Codecov
-        uses: codecov/codecov-action@ab904c41d6ece82784817410c45d8b8c02684457 # v3.1.6
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
 
   test-support-scripts:
     runs-on: ubuntu-latest
